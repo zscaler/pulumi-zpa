@@ -3,7 +3,7 @@ module github.com/zscaler/pulumi-zpa/provider
 go 1.19
 
 require (
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.37.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.39.0
 	github.com/pulumi/pulumi/sdk/v3 v3.51.0
 	github.com/zscaler/terraform-provider-zpa/v2 v2.5.5
 )
