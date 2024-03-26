@@ -1,0 +1,1104 @@
+{
+    "auto-aliasing": {
+        "resources": {
+            "zpa_app_connector_assistant_schedule": {
+                "current": "zpa:index/assistantSchedule:AssistantSchedule"
+            },
+            "zpa_app_connector_group": {
+                "current": "zpa:index/connectorGroup:ConnectorGroup"
+            },
+            "zpa_application_segment": {
+                "current": "zpa:index/applicationSegment:ApplicationSegment",
+                "fields": {
+                    "domain_names": {
+                        "maxItemsOne": false
+                    },
+                    "server_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tcp_port_range": {
+                        "maxItemsOne": false
+                    },
+                    "tcp_port_ranges": {
+                        "maxItemsOne": false
+                    },
+                    "udp_port_range": {
+                        "maxItemsOne": false
+                    },
+                    "udp_port_ranges": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_application_segment_browser_access": {
+                "current": "zpa:index/applicationSegmentBrowserAccess:ApplicationSegmentBrowserAccess",
+                "fields": {
+                    "clientless_apps": {
+                        "maxItemsOne": false
+                    },
+                    "domain_names": {
+                        "maxItemsOne": false
+                    },
+                    "server_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tcp_port_range": {
+                        "maxItemsOne": false
+                    },
+                    "tcp_port_ranges": {
+                        "maxItemsOne": false
+                    },
+                    "udp_port_range": {
+                        "maxItemsOne": false
+                    },
+                    "udp_port_ranges": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_application_segment_inspection": {
+                "current": "zpa:index/applicationSegmentInspection:ApplicationSegmentInspection",
+                "fields": {
+                    "common_apps_dto": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "apps_config": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "app_types": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "domain_names": {
+                        "maxItemsOne": false
+                    },
+                    "server_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tcp_port_range": {
+                        "maxItemsOne": false
+                    },
+                    "tcp_port_ranges": {
+                        "maxItemsOne": false
+                    },
+                    "udp_port_range": {
+                        "maxItemsOne": false
+                    },
+                    "udp_port_ranges": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_application_segment_pra": {
+                "current": "zpa:index/applicationSegmentPRA:ApplicationSegmentPRA",
+                "fields": {
+                    "common_apps_dto": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "apps_config": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "app_types": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "domain_names": {
+                        "maxItemsOne": false
+                    },
+                    "server_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tcp_port_range": {
+                        "maxItemsOne": false
+                    },
+                    "tcp_port_ranges": {
+                        "maxItemsOne": false
+                    },
+                    "udp_port_range": {
+                        "maxItemsOne": false
+                    },
+                    "udp_port_ranges": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_application_server": {
+                "current": "zpa:index/applicationServer:ApplicationServer",
+                "fields": {
+                    "app_server_group_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_ba_certificate": {
+                "current": "zpa:index/browserCertificate:BrowserCertificate"
+            },
+            "zpa_browser_access": {
+                "current": "zpa:index/browserAccess:BrowserAccess",
+                "fields": {
+                    "clientless_apps": {
+                        "maxItemsOne": false
+                    },
+                    "domain_names": {
+                        "maxItemsOne": false
+                    },
+                    "server_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tcp_port_range": {
+                        "maxItemsOne": false
+                    },
+                    "tcp_port_ranges": {
+                        "maxItemsOne": false
+                    },
+                    "udp_port_range": {
+                        "maxItemsOne": false
+                    },
+                    "udp_port_ranges": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_cloud_browser_isolation_banner": {
+                "current": "zpa:index/cloudBrowserIsolationBanner:CloudBrowserIsolationBanner"
+            },
+            "zpa_cloud_browser_isolation_certificate": {
+                "current": "zpa:index/cloudBrowserIsolationCertificate:CloudBrowserIsolationCertificate"
+            },
+            "zpa_cloud_browser_isolation_external_profile": {
+                "current": "zpa:index/cloudBrowserIsolationExternalProfile:CloudBrowserIsolationExternalProfile",
+                "fields": {
+                    "certificate_ids": {
+                        "maxItemsOne": false
+                    },
+                    "region_ids": {
+                        "maxItemsOne": false
+                    },
+                    "security_controls": {
+                        "maxItemsOne": false
+                    },
+                    "user_experience": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_inspection_custom_controls": {
+                "current": "zpa:index/inspectionCustomControls:InspectionCustomControls",
+                "fields": {
+                    "associated_inspection_profile_names": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "conditions": {
+                                    "maxItemsOne": true
+                                },
+                                "names": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_inspection_profile": {
+                "current": "zpa:index/inspectionProfile:InspectionProfile",
+                "fields": {
+                    "controls_info": {
+                        "maxItemsOne": false
+                    },
+                    "custom_controls": {
+                        "maxItemsOne": false
+                    },
+                    "global_control_actions": {
+                        "maxItemsOne": false
+                    },
+                    "predefined_controls": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_lss_config_controller": {
+                "current": "zpa:index/lSSConfigController:LSSConfigController",
+                "fields": {
+                    "config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "filter": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "connector_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "policy_rule_resource": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "conditions": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "operands": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "entry_values": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_microtenant_controller": {
+                "current": "zpa:index/microtenant:Microtenant",
+                "fields": {
+                    "criteria_attribute_values": {
+                        "maxItemsOne": false
+                    },
+                    "user": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_policy_access_rule": {
+                "current": "zpa:index/policyAccessRule:PolicyAccessRule",
+                "fields": {
+                    "app_connector_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "app_server_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "operands": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "rhs_list": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_policy_access_rule_reorder": {
+                "current": "zpa:index/policyAccessReorderRule:PolicyAccessReorderRule",
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_policy_forwarding_rule": {
+                "current": "zpa:index/policyAccessForwardingRule:PolicyAccessForwardingRule",
+                "fields": {
+                    "conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "operands": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "rhs_list": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_policy_inspection_rule": {
+                "current": "zpa:index/policyAccessInspectionRule:PolicyAccessInspectionRule",
+                "fields": {
+                    "conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "operands": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "rhs_list": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_policy_isolation_rule": {
+                "current": "zpa:index/policyAccessIsolationRule:PolicyAccessIsolationRule",
+                "fields": {
+                    "conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "operands": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "rhs_list": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_policy_timeout_rule": {
+                "current": "zpa:index/policyAccessTimeOutRule:PolicyAccessTimeOutRule",
+                "fields": {
+                    "conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "operands": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "rhs_list": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_provisioning_key": {
+                "current": "zpa:index/provisioningKey:ProvisioningKey",
+                "fields": {
+                    "ip_acl": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_segment_group": {
+                "current": "zpa:index/segmentGroup:SegmentGroup",
+                "fields": {
+                    "applications": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_server_group": {
+                "current": "zpa:index/serverGroup:ServerGroup",
+                "fields": {
+                    "app_connector_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "applications": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "servers": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_service_edge_group": {
+                "current": "zpa:index/serviceEdgeGroup:ServiceEdgeGroup",
+                "fields": {
+                    "service_edges": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "trusted_networks": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "datasources": {
+            "zpa_access_policy_client_types": {
+                "current": "zpa:index/getPolicyClientType:getPolicyClientType"
+            },
+            "zpa_access_policy_platforms": {
+                "current": "zpa:index/getPolicyPlatform:getPolicyPlatform"
+            },
+            "zpa_app_connector_assistant_schedule": {
+                "current": "zpa:index/getAssistantSchedule:getAssistantSchedule"
+            },
+            "zpa_app_connector_controller": {
+                "current": "zpa:index/getAppConnectorController:getAppConnectorController"
+            },
+            "zpa_app_connector_group": {
+                "current": "zpa:index/getAppConnectorGroup:getAppConnectorGroup",
+                "fields": {
+                    "connectors": {
+                        "maxItemsOne": false
+                    },
+                    "server_groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_application_segment": {
+                "current": "zpa:index/getApplicationSegment:getApplicationSegment",
+                "fields": {
+                    "domain_names": {
+                        "maxItemsOne": false
+                    },
+                    "server_groups": {
+                        "maxItemsOne": false
+                    },
+                    "tcp_port_range": {
+                        "maxItemsOne": false
+                    },
+                    "tcp_port_ranges": {
+                        "maxItemsOne": false
+                    },
+                    "udp_port_range": {
+                        "maxItemsOne": false
+                    },
+                    "udp_port_ranges": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_application_segment_browser_access": {
+                "current": "zpa:index/getApplicationSegmentBrowserAccess:getApplicationSegmentBrowserAccess",
+                "fields": {
+                    "clientless_apps": {
+                        "maxItemsOne": false
+                    },
+                    "domain_names": {
+                        "maxItemsOne": false
+                    },
+                    "server_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tcp_port_range": {
+                        "maxItemsOne": false
+                    },
+                    "tcp_port_ranges": {
+                        "maxItemsOne": false
+                    },
+                    "udp_port_range": {
+                        "maxItemsOne": false
+                    },
+                    "udp_port_ranges": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_application_segment_inspection": {
+                "current": "zpa:index/getApplicationSegmentInspection:getApplicationSegmentInspection",
+                "fields": {
+                    "domain_names": {
+                        "maxItemsOne": false
+                    },
+                    "inspection_apps": {
+                        "maxItemsOne": false
+                    },
+                    "server_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tcp_port_range": {
+                        "maxItemsOne": false
+                    },
+                    "tcp_port_ranges": {
+                        "maxItemsOne": false
+                    },
+                    "udp_port_range": {
+                        "maxItemsOne": false
+                    },
+                    "udp_port_ranges": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_application_segment_pra": {
+                "current": "zpa:index/getApplicationSegmentPRA:getApplicationSegmentPRA",
+                "fields": {
+                    "domain_names": {
+                        "maxItemsOne": false
+                    },
+                    "server_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sra_apps": {
+                        "maxItemsOne": false
+                    },
+                    "tcp_port_range": {
+                        "maxItemsOne": false
+                    },
+                    "tcp_port_ranges": {
+                        "maxItemsOne": false
+                    },
+                    "udp_port_range": {
+                        "maxItemsOne": false
+                    },
+                    "udp_port_ranges": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_application_server": {
+                "current": "zpa:index/getApplicationServer:getApplicationServer",
+                "fields": {
+                    "app_server_group_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_ba_certificate": {
+                "current": "zpa:index/getBaCertificate:getBaCertificate",
+                "fields": {
+                    "san": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_cloud_browser_isolation_banner": {
+                "current": "zpa:index/getCloudBrowserIsolationBanner:getCloudBrowserIsolationBanner"
+            },
+            "zpa_cloud_browser_isolation_certificate": {
+                "current": "zpa:index/getCloudBrowserIsolationCertificate:getCloudBrowserIsolationCertificate"
+            },
+            "zpa_cloud_browser_isolation_external_profile": {
+                "current": "zpa:index/getCloudBrowserIsolationExternalProfile:getCloudBrowserIsolationExternalProfile",
+                "fields": {
+                    "regions": {
+                        "maxItemsOne": false
+                    },
+                    "security_controls": {
+                        "maxItemsOne": false
+                    },
+                    "user_experience": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_cloud_browser_isolation_region": {
+                "current": "zpa:index/getCloudBrowserIsolationRegion:getCloudBrowserIsolationRegion"
+            },
+            "zpa_cloud_browser_isolation_zpa_profile": {
+                "current": "zpa:index/getCloudBrowserIsolationZPAProfile:getCloudBrowserIsolationZPAProfile"
+            },
+            "zpa_cloud_connector_group": {
+                "current": "zpa:index/getCloudConnectorGroup:getCloudConnectorGroup",
+                "fields": {
+                    "cloud_connectors": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ipacl": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_customer_version_profile": {
+                "current": "zpa:index/getCustomerVersionProfile:getCustomerVersionProfile",
+                "fields": {
+                    "custom_scope_customer_ids": {
+                        "maxItemsOne": false
+                    },
+                    "versions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_enrollment_cert": {
+                "current": "zpa:index/getEnrollmentCert:getEnrollmentCert"
+            },
+            "zpa_idp_controller": {
+                "current": "zpa:index/getIdPController:getIdPController",
+                "fields": {
+                    "admin_metadata": {
+                        "maxItemsOne": false
+                    },
+                    "domain_list": {
+                        "maxItemsOne": false
+                    },
+                    "sso_type": {
+                        "maxItemsOne": false
+                    },
+                    "user_metadata": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_inspection_all_predefined_controls": {
+                "current": "zpa:index/getInspectionAllPredefinedControls:getInspectionAllPredefinedControls",
+                "fields": {
+                    "list": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "associated_inspection_profile_names": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_inspection_custom_controls": {
+                "current": "zpa:index/getInspectionCustomControls:getInspectionCustomControls",
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "conditions": {
+                                    "maxItemsOne": false
+                                },
+                                "names": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_inspection_predefined_controls": {
+                "current": "zpa:index/getInspectionPredefinedControls:getInspectionPredefinedControls",
+                "fields": {
+                    "associated_inspection_profile_names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_inspection_profile": {
+                "current": "zpa:index/getInspectionProfile:getInspectionProfile",
+                "fields": {
+                    "controls_info": {
+                        "maxItemsOne": false
+                    },
+                    "custom_controls": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "associated_inspection_profile_names": {
+                                    "maxItemsOne": false
+                                },
+                                "rules": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "conditions": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "global_control_actions": {
+                        "maxItemsOne": false
+                    },
+                    "predefined_controls": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "associated_inspection_profile_names": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "web_socket_controls": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "associated_inspection_profile_names": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_isolation_profile": {
+                "current": "zpa:index/getIsolationProfile:getIsolationProfile"
+            },
+            "zpa_lss_config_client_types": {
+                "current": "zpa:index/getLSSClientTypes:getLSSClientTypes"
+            },
+            "zpa_lss_config_controller": {
+                "current": "zpa:index/getLSSConfigController:getLSSConfigController",
+                "fields": {
+                    "config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "filter": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "connector_groups": {
+                        "maxItemsOne": false
+                    },
+                    "policy_rule": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "conditions": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "operands": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_lss_config_log_type_formats": {
+                "current": "zpa:index/getLSSLogTypeFormats:getLSSLogTypeFormats"
+            },
+            "zpa_lss_config_status_codes": {
+                "current": "zpa:index/getLSSStatusCodes:getLSSStatusCodes"
+            },
+            "zpa_machine_group": {
+                "current": "zpa:index/getMachineGroup:getMachineGroup",
+                "fields": {
+                    "machines": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_microtenant_controller": {
+                "current": "zpa:index/getMicrotenant:getMicrotenant",
+                "fields": {
+                    "criteria_attribute_values": {
+                        "maxItemsOne": false
+                    },
+                    "roles": {
+                        "maxItemsOne": false
+                    },
+                    "user": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_policy_type": {
+                "current": "zpa:index/getPolicyType:getPolicyType",
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "conditions": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "operands": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_posture_profile": {
+                "current": "zpa:index/getPostureProfile:getPostureProfile"
+            },
+            "zpa_provisioning_key": {
+                "current": "zpa:index/getProvisioningKey:getProvisioningKey",
+                "fields": {
+                    "ip_acl": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_saml_attribute": {
+                "current": "zpa:index/getSAMLAttribute:getSAMLAttribute"
+            },
+            "zpa_scim_attribute_header": {
+                "current": "zpa:index/getSCIMAttributeHeader:getSCIMAttributeHeader",
+                "fields": {
+                    "canonical_values": {
+                        "maxItemsOne": false
+                    },
+                    "values": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_scim_groups": {
+                "current": "zpa:index/getSCIMGroups:getSCIMGroups"
+            },
+            "zpa_segment_group": {
+                "current": "zpa:index/getSegmentGroup:getSegmentGroup",
+                "fields": {
+                    "applications": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "domain_names": {
+                                    "maxItemsOne": false
+                                },
+                                "log_features": {
+                                    "maxItemsOne": false
+                                },
+                                "server_groups": {
+                                    "maxItemsOne": false
+                                },
+                                "tcp_port_ranges": {
+                                    "maxItemsOne": false
+                                },
+                                "tcp_ports_in": {
+                                    "maxItemsOne": false
+                                },
+                                "tcp_ports_out": {
+                                    "maxItemsOne": false
+                                },
+                                "udp_port_ranges": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_server_group": {
+                "current": "zpa:index/getServerGroup:getServerGroup",
+                "fields": {
+                    "app_connector_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "connectors": {
+                                    "maxItemsOne": false
+                                },
+                                "server_groups": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "applications": {
+                        "maxItemsOne": false
+                    },
+                    "servers": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "app_server_group_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_service_edge_controller": {
+                "current": "zpa:index/getServiceEdgeController:getServiceEdgeController",
+                "fields": {
+                    "publish_ips": {
+                        "maxItemsOne": false
+                    },
+                    "zpn_sub_module_upgrade_list": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_service_edge_group": {
+                "current": "zpa:index/getServiceEdgeGroup:getServiceEdgeGroup",
+                "fields": {
+                    "service_edges": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "publish_ips": {
+                                    "maxItemsOne": false
+                                },
+                                "zpn_sub_module_upgrade_list": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "trusted_networks": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_trusted_network": {
+                "current": "zpa:index/getTrustedNetwork:getTrustedNetwork"
+            }
+        }
+    },
+    "auto-settings": {}
+}

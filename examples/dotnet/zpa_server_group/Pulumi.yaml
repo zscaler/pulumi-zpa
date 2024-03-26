@@ -1,0 +1,3 @@
+name: zpa_server_group
+runtime: dotnet
+description: A minimal C# Pulumi program
