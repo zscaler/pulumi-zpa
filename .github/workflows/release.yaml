@@ -23,13 +23,21 @@ env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
   NUGET_FEED_URL: https://api.nuget.org/v3/index.json
+  PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+  PULUMI_API: https://api.pulumi.com
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
-  PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+  PULUMI_TEST_OWNER: "zscaler"
+  PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
   PYPI_USERNAME: "__token__"
   PUBLISH_PYPI: true
   PUBLISH_NPM: true
   PUBLISH_NUGET: true
+  ZPA_CLIENT_ID: ${{ secrets.ZPA_CLIENT_ID }}
+  ZPA_CLIENT_SECRET: ${{ secrets.ZPA_CLIENT_SECRET }}
+  ZPA_CUSTOMER_ID: ${{ secrets.ZPA_CUSTOMER_ID }}
+  ZPA_CLOUD: ${{ secrets.ZPA_CLOUD }}
+  TRAVIS_OS_NAME: linux
 
 jobs:
   publish_binary:
