@@ -29,7 +29,7 @@ env:
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
   PULUMI_TEST_OWNER: "zscaler"
   PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-  PYPI_USERNAME: "__token__"
+  PYPI_USERNAME: __token__
   PUBLISH_PYPI: true
   PUBLISH_NPM: true
   PUBLISH_NUGET: true
