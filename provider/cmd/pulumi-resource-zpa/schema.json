@@ -12,7 +12,7 @@
     "license": "MIT",
     "attribution": "This Pulumi package is based on the [`zpa` Terraform Provider](https://github.com/zscaler/terraform-provider-zpa).",
     "repository": "https://github.com/zscaler/pulumi-zpa",
-    "logoUrl": "https://raw.githubusercontent.com/zscaler/pulumi-zpa/main/assets/zscaler.png",
+    "logoUrl": "https://raw.githubusercontent.com/zscaler/pulumi-zpa/master/assets/zscaler.png",
     "pluginDownloadURL": "github://api.github.com/zscaler",
     "publisher": "Zscaler",
     "meta": {
