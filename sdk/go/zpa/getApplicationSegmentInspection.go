@@ -78,85 +78,43 @@ func LookupApplicationSegmentInspection(ctx *pulumi.Context, args *LookupApplica
 
 // A collection of arguments for invoking getApplicationSegmentInspection.
 type LookupApplicationSegmentInspectionArgs struct {
-	// The ID of the Inspection Application Segment to be exported.
-	Id *string `pulumi:"id"`
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
-	MicrotenantName *string `pulumi:"microtenantName"`
-	// The name of the Inspection Application Segment to be exported.
-	Name *string `pulumi:"name"`
-	// (string) TCP port ranges used to access the app.
-	// * `from:`
-	// * `to:`
-	TcpPortRange []GetApplicationSegmentInspectionTcpPortRange `pulumi:"tcpPortRange"`
-	// (string) UDP port ranges used to access the app.
-	// * `from:`
-	// * `to:`
-	UdpPortRange []GetApplicationSegmentInspectionUdpPortRange `pulumi:"udpPortRange"`
+	Id              *string                                       `pulumi:"id"`
+	MicrotenantId   *string                                       `pulumi:"microtenantId"`
+	MicrotenantName *string                                       `pulumi:"microtenantName"`
+	Name            *string                                       `pulumi:"name"`
+	TcpPortRange    []GetApplicationSegmentInspectionTcpPortRange `pulumi:"tcpPortRange"`
+	UdpPortRange    []GetApplicationSegmentInspectionUdpPortRange `pulumi:"udpPortRange"`
 }
 
 // A collection of values returned by getApplicationSegmentInspection.
 type LookupApplicationSegmentInspectionResult struct {
-	// (string) Indicates whether users can bypass ZPA to access applications.
-	BypassType string `pulumi:"bypassType"`
-	// (String)
-	CreationTime string `pulumi:"creationTime"`
-	// (string) Description of the application.
-	Description string `pulumi:"description"`
-	// (string) List of domains and IPs.
-	DomainNames []string `pulumi:"domainNames"`
-	// (bool) Whether Double Encryption is enabled or disabled for the app.
-	DoubleEncrypt bool `pulumi:"doubleEncrypt"`
-	// (bool) Whether this application is enabled or not
-	Enabled bool `pulumi:"enabled"`
-	// (string)
-	HealthCheckType string `pulumi:"healthCheckType"`
-	// (string) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
-	HealthReporting string `pulumi:"healthReporting"`
-	// (string)
-	IcmpAccessType string  `pulumi:"icmpAccessType"`
-	Id             *string `pulumi:"id"`
-	// (string) TCP port ranges used to access the app.
-	// * `app_id:` - (string)
-	// * `name:` - (string) Name of the Inspection Application
-	// * `description:` - (string) Description of the Inspection Application
-	// * `domain:` - (string) Domain name of the inspection application
-	InspectionApps []GetApplicationSegmentInspectionInspectionApp `pulumi:"inspectionApps"`
-	// (bool)
-	IpAnchored bool `pulumi:"ipAnchored"`
-	// (bool) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
-	IsCnameEnabled bool `pulumi:"isCnameEnabled"`
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
-	MicrotenantName *string `pulumi:"microtenantName"`
-	ModifiedBy      string  `pulumi:"modifiedBy"`
-	// (String)
-	ModifiedTime string  `pulumi:"modifiedTime"`
-	Name         *string `pulumi:"name"`
-	// (bool)
-	PassiveHealthEnabled bool `pulumi:"passiveHealthEnabled"`
-	// (String) Segment Group IDs
-	SegmentGroupId   string `pulumi:"segmentGroupId"`
-	SegmentGroupName string `pulumi:"segmentGroupName"`
-	// (bool)
-	SelectConnectorCloseToApp bool `pulumi:"selectConnectorCloseToApp"`
-	// (string) List of Server Group IDs
-	// * `id:` - (string) List of Server Group IDs
-	ServerGroups []GetApplicationSegmentInspectionServerGroup `pulumi:"serverGroups"`
-	// (string) TCP port ranges used to access the app.
-	// * `from:`
-	// * `to:`
-	TcpPortRange []GetApplicationSegmentInspectionTcpPortRange `pulumi:"tcpPortRange"`
-	// (string) TCP port ranges used to access the app.
-	TcpPortRanges []string `pulumi:"tcpPortRanges"`
-	// (string) UDP port ranges used to access the app.
-	// * `from:`
-	// * `to:`
-	UdpPortRange []GetApplicationSegmentInspectionUdpPortRange `pulumi:"udpPortRange"`
-	// (string) UDP port ranges used to access the app.
-	UdpPortRanges []string `pulumi:"udpPortRanges"`
+	BypassType                string                                         `pulumi:"bypassType"`
+	CreationTime              string                                         `pulumi:"creationTime"`
+	Description               string                                         `pulumi:"description"`
+	DomainNames               []string                                       `pulumi:"domainNames"`
+	DoubleEncrypt             bool                                           `pulumi:"doubleEncrypt"`
+	Enabled                   bool                                           `pulumi:"enabled"`
+	HealthCheckType           string                                         `pulumi:"healthCheckType"`
+	HealthReporting           string                                         `pulumi:"healthReporting"`
+	IcmpAccessType            string                                         `pulumi:"icmpAccessType"`
+	Id                        *string                                        `pulumi:"id"`
+	InspectionApps            []GetApplicationSegmentInspectionInspectionApp `pulumi:"inspectionApps"`
+	IpAnchored                bool                                           `pulumi:"ipAnchored"`
+	IsCnameEnabled            bool                                           `pulumi:"isCnameEnabled"`
+	MicrotenantId             *string                                        `pulumi:"microtenantId"`
+	MicrotenantName           *string                                        `pulumi:"microtenantName"`
+	ModifiedBy                string                                         `pulumi:"modifiedBy"`
+	ModifiedTime              string                                         `pulumi:"modifiedTime"`
+	Name                      *string                                        `pulumi:"name"`
+	PassiveHealthEnabled      bool                                           `pulumi:"passiveHealthEnabled"`
+	SegmentGroupId            string                                         `pulumi:"segmentGroupId"`
+	SegmentGroupName          string                                         `pulumi:"segmentGroupName"`
+	SelectConnectorCloseToApp bool                                           `pulumi:"selectConnectorCloseToApp"`
+	ServerGroups              []GetApplicationSegmentInspectionServerGroup   `pulumi:"serverGroups"`
+	TcpPortRange              []GetApplicationSegmentInspectionTcpPortRange  `pulumi:"tcpPortRange"`
+	TcpPortRanges             []string                                       `pulumi:"tcpPortRanges"`
+	UdpPortRange              []GetApplicationSegmentInspectionUdpPortRange  `pulumi:"udpPortRange"`
+	UdpPortRanges             []string                                       `pulumi:"udpPortRanges"`
 }
 
 func LookupApplicationSegmentInspectionOutput(ctx *pulumi.Context, args LookupApplicationSegmentInspectionOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationSegmentInspectionResultOutput {
@@ -174,22 +132,12 @@ func LookupApplicationSegmentInspectionOutput(ctx *pulumi.Context, args LookupAp
 
 // A collection of arguments for invoking getApplicationSegmentInspection.
 type LookupApplicationSegmentInspectionOutputArgs struct {
-	// The ID of the Inspection Application Segment to be exported.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId pulumi.StringPtrInput `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
-	MicrotenantName pulumi.StringPtrInput `pulumi:"microtenantName"`
-	// The name of the Inspection Application Segment to be exported.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// (string) TCP port ranges used to access the app.
-	// * `from:`
-	// * `to:`
-	TcpPortRange GetApplicationSegmentInspectionTcpPortRangeArrayInput `pulumi:"tcpPortRange"`
-	// (string) UDP port ranges used to access the app.
-	// * `from:`
-	// * `to:`
-	UdpPortRange GetApplicationSegmentInspectionUdpPortRangeArrayInput `pulumi:"udpPortRange"`
+	Id              pulumi.StringPtrInput                                 `pulumi:"id"`
+	MicrotenantId   pulumi.StringPtrInput                                 `pulumi:"microtenantId"`
+	MicrotenantName pulumi.StringPtrInput                                 `pulumi:"microtenantName"`
+	Name            pulumi.StringPtrInput                                 `pulumi:"name"`
+	TcpPortRange    GetApplicationSegmentInspectionTcpPortRangeArrayInput `pulumi:"tcpPortRange"`
+	UdpPortRange    GetApplicationSegmentInspectionUdpPortRangeArrayInput `pulumi:"udpPortRange"`
 }
 
 func (LookupApplicationSegmentInspectionOutputArgs) ElementType() reflect.Type {
@@ -211,47 +159,38 @@ func (o LookupApplicationSegmentInspectionResultOutput) ToLookupApplicationSegme
 	return o
 }
 
-// (string) Indicates whether users can bypass ZPA to access applications.
 func (o LookupApplicationSegmentInspectionResultOutput) BypassType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) string { return v.BypassType }).(pulumi.StringOutput)
 }
 
-// (String)
 func (o LookupApplicationSegmentInspectionResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// (string) Description of the application.
 func (o LookupApplicationSegmentInspectionResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (string) List of domains and IPs.
 func (o LookupApplicationSegmentInspectionResultOutput) DomainNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) []string { return v.DomainNames }).(pulumi.StringArrayOutput)
 }
 
-// (bool) Whether Double Encryption is enabled or disabled for the app.
 func (o LookupApplicationSegmentInspectionResultOutput) DoubleEncrypt() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) bool { return v.DoubleEncrypt }).(pulumi.BoolOutput)
 }
 
-// (bool) Whether this application is enabled or not
 func (o LookupApplicationSegmentInspectionResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// (string)
 func (o LookupApplicationSegmentInspectionResultOutput) HealthCheckType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) string { return v.HealthCheckType }).(pulumi.StringOutput)
 }
 
-// (string) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
 func (o LookupApplicationSegmentInspectionResultOutput) HealthReporting() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) string { return v.HealthReporting }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o LookupApplicationSegmentInspectionResultOutput) IcmpAccessType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) string { return v.IcmpAccessType }).(pulumi.StringOutput)
 }
@@ -260,33 +199,24 @@ func (o LookupApplicationSegmentInspectionResultOutput) Id() pulumi.StringPtrOut
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// (string) TCP port ranges used to access the app.
-// * `app_id:` - (string)
-// * `name:` - (string) Name of the Inspection Application
-// * `description:` - (string) Description of the Inspection Application
-// * `domain:` - (string) Domain name of the inspection application
 func (o LookupApplicationSegmentInspectionResultOutput) InspectionApps() GetApplicationSegmentInspectionInspectionAppArrayOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) []GetApplicationSegmentInspectionInspectionApp {
 		return v.InspectionApps
 	}).(GetApplicationSegmentInspectionInspectionAppArrayOutput)
 }
 
-// (bool)
 func (o LookupApplicationSegmentInspectionResultOutput) IpAnchored() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) bool { return v.IpAnchored }).(pulumi.BoolOutput)
 }
 
-// (bool) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
 func (o LookupApplicationSegmentInspectionResultOutput) IsCnameEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) bool { return v.IsCnameEnabled }).(pulumi.BoolOutput)
 }
 
-// (string) The ID of the microtenant the resource is to be associated with.
 func (o LookupApplicationSegmentInspectionResultOutput) MicrotenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) *string { return v.MicrotenantId }).(pulumi.StringPtrOutput)
 }
 
-// (string) The name of the microtenant the resource is to be associated with.
 func (o LookupApplicationSegmentInspectionResultOutput) MicrotenantName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) *string { return v.MicrotenantName }).(pulumi.StringPtrOutput)
 }
@@ -295,7 +225,6 @@ func (o LookupApplicationSegmentInspectionResultOutput) ModifiedBy() pulumi.Stri
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) string { return v.ModifiedBy }).(pulumi.StringOutput)
 }
 
-// (String)
 func (o LookupApplicationSegmentInspectionResultOutput) ModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
@@ -304,12 +233,10 @@ func (o LookupApplicationSegmentInspectionResultOutput) Name() pulumi.StringPtrO
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// (bool)
 func (o LookupApplicationSegmentInspectionResultOutput) PassiveHealthEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) bool { return v.PassiveHealthEnabled }).(pulumi.BoolOutput)
 }
 
-// (String) Segment Group IDs
 func (o LookupApplicationSegmentInspectionResultOutput) SegmentGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) string { return v.SegmentGroupId }).(pulumi.StringOutput)
 }
@@ -318,43 +245,32 @@ func (o LookupApplicationSegmentInspectionResultOutput) SegmentGroupName() pulum
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) string { return v.SegmentGroupName }).(pulumi.StringOutput)
 }
 
-// (bool)
 func (o LookupApplicationSegmentInspectionResultOutput) SelectConnectorCloseToApp() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) bool { return v.SelectConnectorCloseToApp }).(pulumi.BoolOutput)
 }
 
-// (string) List of Server Group IDs
-// * `id:` - (string) List of Server Group IDs
 func (o LookupApplicationSegmentInspectionResultOutput) ServerGroups() GetApplicationSegmentInspectionServerGroupArrayOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) []GetApplicationSegmentInspectionServerGroup {
 		return v.ServerGroups
 	}).(GetApplicationSegmentInspectionServerGroupArrayOutput)
 }
 
-// (string) TCP port ranges used to access the app.
-// * `from:`
-// * `to:`
 func (o LookupApplicationSegmentInspectionResultOutput) TcpPortRange() GetApplicationSegmentInspectionTcpPortRangeArrayOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) []GetApplicationSegmentInspectionTcpPortRange {
 		return v.TcpPortRange
 	}).(GetApplicationSegmentInspectionTcpPortRangeArrayOutput)
 }
 
-// (string) TCP port ranges used to access the app.
 func (o LookupApplicationSegmentInspectionResultOutput) TcpPortRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) []string { return v.TcpPortRanges }).(pulumi.StringArrayOutput)
 }
 
-// (string) UDP port ranges used to access the app.
-// * `from:`
-// * `to:`
 func (o LookupApplicationSegmentInspectionResultOutput) UdpPortRange() GetApplicationSegmentInspectionUdpPortRangeArrayOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) []GetApplicationSegmentInspectionUdpPortRange {
 		return v.UdpPortRange
 	}).(GetApplicationSegmentInspectionUdpPortRangeArrayOutput)
 }
 
-// (string) UDP port ranges used to access the app.
 func (o LookupApplicationSegmentInspectionResultOutput) UdpPortRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) []string { return v.UdpPortRanges }).(pulumi.StringArrayOutput)
 }

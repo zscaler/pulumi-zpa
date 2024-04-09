@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-machine-groups)
+ * * [API documentation](https://help.zscaler.com/zpa/obtaining-machine-group-details-using-api)
+ *
  * Use the **zpa_machine_group** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
  *
  * ## Example Usage
@@ -49,21 +52,9 @@ export function getMachineGroup(args?: GetMachineGroupArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getMachineGroup.
  */
 export interface GetMachineGroupArgs {
-    /**
-     * The ID of the machine group to be exported.
-     */
     id?: string;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: string;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     microtenantName?: string;
-    /**
-     * The name of the machine group to be exported.
-     */
     name?: string;
 }
 
@@ -71,48 +62,21 @@ export interface GetMachineGroupArgs {
  * A collection of values returned by getMachineGroup.
  */
 export interface GetMachineGroupResult {
-    /**
-     * (string)
-     */
     readonly creationTime: string;
-    /**
-     * (string)
-     */
     readonly description: string;
-    /**
-     * (bool)
-     */
     readonly enabled: boolean;
-    /**
-     * (string)
-     */
     readonly id?: string;
-    /**
-     * (string)
-     */
     readonly machines: outputs.GetMachineGroupMachine[];
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     readonly microtenantId?: string;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     readonly microtenantName?: string;
-    /**
-     * (string)
-     */
     readonly modifiedBy: string;
-    /**
-     * (string)
-     */
     readonly modifiedTime: string;
-    /**
-     * (string)
-     */
     readonly name?: string;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-machine-groups)
+ * * [API documentation](https://help.zscaler.com/zpa/obtaining-machine-group-details-using-api)
+ *
  * Use the **zpa_machine_group** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
  *
  * ## Example Usage
@@ -147,20 +111,8 @@ export function getMachineGroupOutput(args?: GetMachineGroupOutputArgs, opts?: p
  * A collection of arguments for invoking getMachineGroup.
  */
 export interface GetMachineGroupOutputArgs {
-    /**
-     * The ID of the machine group to be exported.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: pulumi.Input<string>;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     microtenantName?: pulumi.Input<string>;
-    /**
-     * The name of the machine group to be exported.
-     */
     name?: pulumi.Input<string>;
 }

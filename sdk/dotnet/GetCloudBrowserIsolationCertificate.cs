@@ -13,6 +13,8 @@ namespace Zscaler.Zpa
     public static class GetCloudBrowserIsolationCertificate
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/isolation/adding-banner-theme-isolation-end-user-notification-zpa)
+        /// 
         /// Use the **zpa_cloud_browser_isolation_certificate** data source to get information about Cloud Browser Isolation Certificate. This data source information is required as part of the attribute `certificate_ids` when creating an Cloud Browser Isolation External Profile ``zpa.CloudBrowserIsolationExternalProfile``
         /// 
         /// ## Example Usage
@@ -39,6 +41,8 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCloudBrowserIsolationCertificateResult>("zpa:index/getCloudBrowserIsolationCertificate:getCloudBrowserIsolationCertificate", args ?? new GetCloudBrowserIsolationCertificateArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/isolation/adding-banner-theme-isolation-end-user-notification-zpa)
+        /// 
         /// Use the **zpa_cloud_browser_isolation_certificate** data source to get information about Cloud Browser Isolation Certificate. This data source information is required as part of the attribute `certificate_ids` when creating an Cloud Browser Isolation External Profile ``zpa.CloudBrowserIsolationExternalProfile``
         /// 
         /// ## Example Usage
@@ -68,15 +72,9 @@ namespace Zscaler.Zpa
 
     public sealed class GetCloudBrowserIsolationCertificateArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The id of the CBI certificate to be exported.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// The name of the CBI certificate to be exported.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -88,15 +86,9 @@ namespace Zscaler.Zpa
 
     public sealed class GetCloudBrowserIsolationCertificateInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The id of the CBI certificate to be exported.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// The name of the CBI certificate to be exported.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

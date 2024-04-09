@@ -53,9 +53,6 @@ class GetCloudBrowserIsolationBannerResult:
     @property
     @pulumi.getter
     def banner(self) -> bool:
-        """
-        (bool) - Show Welcome Notification
-        """
         return pulumi.get(self, "banner")
 
     @property
@@ -66,17 +63,11 @@ class GetCloudBrowserIsolationBannerResult:
     @property
     @pulumi.getter(name="isDefault")
     def is_default(self) -> bool:
-        """
-        (bool) - Use the default banner
-        """
         return pulumi.get(self, "is_default")
 
     @property
     @pulumi.getter
     def logo(self) -> str:
-        """
-        (string) - The Logo Image (.jpeg or .png; Maximum file size is 100KB.)
-        """
         return pulumi.get(self, "logo")
 
     @property
@@ -87,33 +78,21 @@ class GetCloudBrowserIsolationBannerResult:
     @property
     @pulumi.getter(name="notificationText")
     def notification_text(self) -> str:
-        """
-        (string) The Banner Notification Text
-        """
         return pulumi.get(self, "notification_text")
 
     @property
     @pulumi.getter(name="notificationTitle")
     def notification_title(self) -> str:
-        """
-        (string) The Banner Notification Title
-        """
         return pulumi.get(self, "notification_title")
 
     @property
     @pulumi.getter(name="primaryColor")
     def primary_color(self) -> str:
-        """
-        (string) - The Banner Primary Color code in hexadecimal way to represent the color of the banner in RGB format
-        """
         return pulumi.get(self, "primary_color")
 
     @property
     @pulumi.getter(name="textColor")
     def text_color(self) -> str:
-        """
-        (string) - The Banner Text Color code in hexadecimal way to represent the color of the text in RGB format
-        """
         return pulumi.get(self, "text_color")
 
 
@@ -138,6 +117,8 @@ def get_cloud_browser_isolation_banner(id: Optional[str] = None,
                                        name: Optional[str] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCloudBrowserIsolationBannerResult:
     """
+    * [Official documentation](https://help.zscaler.com/isolation/adding-banner-theme-isolation-end-user-notification-zpa)
+
     Use the **zpa_cloud_browser_isolation_banner** data source to get information about Cloud Browser Isolation banner. This data source information is required as part of the attribute `banner_id` when creating an Cloud Browser Isolation External Profile ``CloudBrowserIsolationExternalProfile``
 
     ## Example Usage
@@ -150,10 +131,6 @@ def get_cloud_browser_isolation_banner(id: Optional[str] = None,
     this = zpa.get_cloud_browser_isolation_banner(name="Default")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: The id of the CBI banner to be exported.
-    :param str name: The name of the CBI banner to be exported.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -178,6 +155,8 @@ def get_cloud_browser_isolation_banner_output(id: Optional[pulumi.Input[Optional
                                               name: Optional[pulumi.Input[Optional[str]]] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCloudBrowserIsolationBannerResult]:
     """
+    * [Official documentation](https://help.zscaler.com/isolation/adding-banner-theme-isolation-end-user-notification-zpa)
+
     Use the **zpa_cloud_browser_isolation_banner** data source to get information about Cloud Browser Isolation banner. This data source information is required as part of the attribute `banner_id` when creating an Cloud Browser Isolation External Profile ``CloudBrowserIsolationExternalProfile``
 
     ## Example Usage
@@ -190,9 +169,5 @@ def get_cloud_browser_isolation_banner_output(id: Optional[pulumi.Input[Optional
     this = zpa.get_cloud_browser_isolation_banner(name="Default")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: The id of the CBI banner to be exported.
-    :param str name: The name of the CBI banner to be exported.
     """
     ...

@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-web-server-certificates)
+// * [API documentation](https://help.zscaler.com/zpa/obtaining-cloud-connector-group-details-using-api)
+//
 // Use the **zpa_cloud_connector_group** data source to get information about a cloud connector group created from the Zscaler Private Access cloud. This data source can then be referenced within an Access Policy rule
 //
 // > **NOTE:** A Cloud Connector Group resource is created in the Zscaler Cloud Connector cloud and replicated to the ZPA cloud. This resource can then be referenced in a Access Policy Rule where the Object Type = `CLOUD_CONNECTOR_GROUP` is being used.
@@ -80,34 +83,23 @@ func GetCloudConnectorGroup(ctx *pulumi.Context, args *GetCloudConnectorGroupArg
 
 // A collection of arguments for invoking getCloudConnectorGroup.
 type GetCloudConnectorGroupArgs struct {
-	// This field defines the id of the cloud connector group.
-	Id *string `pulumi:"id"`
-	// This field defines the name of the cloud connector group.
+	Id   *string `pulumi:"id"`
 	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getCloudConnectorGroup.
 type GetCloudConnectorGroupResult struct {
-	// (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
 	CloudConnectors []GetCloudConnectorGroupCloudConnector `pulumi:"cloudConnectors"`
-	// (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-	CreationTime string `pulumi:"creationTime"`
-	// (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-	Description string `pulumi:"description"`
-	// (bool) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-	Enabled bool `pulumi:"enabled"`
-	// (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-	GeolocationId string  `pulumi:"geolocationId"`
-	Id            *string `pulumi:"id"`
-	// (string)- Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-	ModifiedTime string `pulumi:"modifiedTime"`
-	Modifiedby   string `pulumi:"modifiedby"`
-	// (string) - This field defines the name of the cloud connector group.
-	Name *string `pulumi:"name"`
-	// (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-	ZiaCloud string `pulumi:"ziaCloud"`
-	// (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-	ZiaOrgId string `pulumi:"ziaOrgId"`
+	CreationTime    string                                 `pulumi:"creationTime"`
+	Description     string                                 `pulumi:"description"`
+	Enabled         bool                                   `pulumi:"enabled"`
+	GeolocationId   string                                 `pulumi:"geolocationId"`
+	Id              *string                                `pulumi:"id"`
+	ModifiedTime    string                                 `pulumi:"modifiedTime"`
+	Modifiedby      string                                 `pulumi:"modifiedby"`
+	Name            *string                                `pulumi:"name"`
+	ZiaCloud        string                                 `pulumi:"ziaCloud"`
+	ZiaOrgId        string                                 `pulumi:"ziaOrgId"`
 }
 
 func GetCloudConnectorGroupOutput(ctx *pulumi.Context, args GetCloudConnectorGroupOutputArgs, opts ...pulumi.InvokeOption) GetCloudConnectorGroupResultOutput {
@@ -125,9 +117,7 @@ func GetCloudConnectorGroupOutput(ctx *pulumi.Context, args GetCloudConnectorGro
 
 // A collection of arguments for invoking getCloudConnectorGroup.
 type GetCloudConnectorGroupOutputArgs struct {
-	// This field defines the id of the cloud connector group.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// This field defines the name of the cloud connector group.
+	Id   pulumi.StringPtrInput `pulumi:"id"`
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -150,27 +140,22 @@ func (o GetCloudConnectorGroupResultOutput) ToGetCloudConnectorGroupResultOutput
 	return o
 }
 
-// (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
 func (o GetCloudConnectorGroupResultOutput) CloudConnectors() GetCloudConnectorGroupCloudConnectorArrayOutput {
 	return o.ApplyT(func(v GetCloudConnectorGroupResult) []GetCloudConnectorGroupCloudConnector { return v.CloudConnectors }).(GetCloudConnectorGroupCloudConnectorArrayOutput)
 }
 
-// (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
 func (o GetCloudConnectorGroupResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudConnectorGroupResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
 func (o GetCloudConnectorGroupResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudConnectorGroupResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (bool) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
 func (o GetCloudConnectorGroupResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCloudConnectorGroupResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
 func (o GetCloudConnectorGroupResultOutput) GeolocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudConnectorGroupResult) string { return v.GeolocationId }).(pulumi.StringOutput)
 }
@@ -179,7 +164,6 @@ func (o GetCloudConnectorGroupResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCloudConnectorGroupResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// (string)- Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
 func (o GetCloudConnectorGroupResultOutput) ModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudConnectorGroupResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
@@ -188,17 +172,14 @@ func (o GetCloudConnectorGroupResultOutput) Modifiedby() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudConnectorGroupResult) string { return v.Modifiedby }).(pulumi.StringOutput)
 }
 
-// (string) - This field defines the name of the cloud connector group.
 func (o GetCloudConnectorGroupResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCloudConnectorGroupResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
 func (o GetCloudConnectorGroupResultOutput) ZiaCloud() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudConnectorGroupResult) string { return v.ZiaCloud }).(pulumi.StringOutput)
 }
 
-// (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
 func (o GetCloudConnectorGroupResultOutput) ZiaOrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudConnectorGroupResult) string { return v.ZiaOrgId }).(pulumi.StringOutput)
 }

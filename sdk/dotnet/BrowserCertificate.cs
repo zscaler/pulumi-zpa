@@ -11,6 +11,9 @@ using Pulumi;
 namespace Zscaler.Zpa
 {
     /// <summary>
+    /// * [Official documentation](https://help.zscaler.com/zpa/about-web-server-certificates)
+    /// * [API documentation](https://help.zscaler.com/zpa/configuring-certificates-using-api)
+    /// 
     /// Use the **zpa_ba_certificate** creates a browser access certificate with a private key in the Zscaler Private Access cloud. This resource is required when creating a browser access application segment resource.
     /// 
     /// ## Example Usage
@@ -58,15 +61,33 @@ namespace Zscaler.Zpa
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## Let's Encrypt Certbot
+    /// 
+    /// This example demonstrates generatoring a domain certificate with letsencrypt
+    /// certbot https://letsencrypt.org/getting-started/
+    /// 
+    /// Use letsencrypt's certbot to generate domain certificates in RSA output mode.
+    /// The generator's output corresponds to `zpa.BrowserCertificate` fields in the
+    /// following manner.
+    /// 
+    /// Zscaler Field          | Certbot file
+    /// --------------------|--------------
+    /// `certblob`          | `cert.pem`
+    /// `certblob`          | `privkey.pem`
+    /// 
+    /// ## Import
+    /// 
+    /// This resource does not support importing.
     /// </summary>
     [ZpaResourceType("zpa:index/browserCertificate:BrowserCertificate")]
     public partial class BrowserCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The content of the certificate in PEM format.
+        /// The description of the certificate
         /// </summary>
         [Output("certBlob")]
-        public Output<string> CertBlob { get; private set; } = null!;
+        public Output<string?> CertBlob { get; private set; } = null!;
 
         /// <summary>
         /// The certificate text in PEM format
@@ -75,7 +96,7 @@ namespace Zscaler.Zpa
         public Output<string> Certificate { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The description of the certificate.
+        /// The description of the certificate
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -87,7 +108,7 @@ namespace Zscaler.Zpa
         public Output<string> MicrotenantId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the browser access certificate to be created.
+        /// The name of the certificate.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -100,7 +121,7 @@ namespace Zscaler.Zpa
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public BrowserCertificate(string name, BrowserCertificateArgs args, CustomResourceOptions? options = null)
+        public BrowserCertificate(string name, BrowserCertificateArgs? args = null, CustomResourceOptions? options = null)
             : base("zpa:index/browserCertificate:BrowserCertificate", name, args ?? new BrowserCertificateArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -140,13 +161,13 @@ namespace Zscaler.Zpa
     public sealed class BrowserCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The content of the certificate in PEM format.
+        /// The description of the certificate
         /// </summary>
-        [Input("certBlob", required: true)]
-        public Input<string> CertBlob { get; set; } = null!;
+        [Input("certBlob")]
+        public Input<string>? CertBlob { get; set; }
 
         /// <summary>
-        /// (string) - The description of the certificate.
+        /// The description of the certificate
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -158,7 +179,7 @@ namespace Zscaler.Zpa
         public Input<string>? MicrotenantId { get; set; }
 
         /// <summary>
-        /// The name of the browser access certificate to be created.
+        /// The name of the certificate.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -172,7 +193,7 @@ namespace Zscaler.Zpa
     public sealed class BrowserCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The content of the certificate in PEM format.
+        /// The description of the certificate
         /// </summary>
         [Input("certBlob")]
         public Input<string>? CertBlob { get; set; }
@@ -184,7 +205,7 @@ namespace Zscaler.Zpa
         public Input<string>? Certificate { get; set; }
 
         /// <summary>
-        /// (string) - The description of the certificate.
+        /// The description of the certificate
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -196,7 +217,7 @@ namespace Zscaler.Zpa
         public Input<string>? MicrotenantId { get; set; }
 
         /// <summary>
-        /// The name of the browser access certificate to be created.
+        /// The name of the certificate.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

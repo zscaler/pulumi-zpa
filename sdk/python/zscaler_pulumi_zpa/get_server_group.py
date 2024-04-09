@@ -72,9 +72,6 @@ class GetServerGroupResult:
     @property
     @pulumi.getter(name="appConnectorGroups")
     def app_connector_groups(self) -> Sequence['outputs.GetServerGroupAppConnectorGroupResult']:
-        """
-        (string)This field is a json array of app-connector-id only.
-        """
         return pulumi.get(self, "app_connector_groups")
 
     @property
@@ -85,9 +82,6 @@ class GetServerGroupResult:
     @property
     @pulumi.getter(name="configSpace")
     def config_space(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "config_space")
 
     @property
@@ -98,25 +92,16 @@ class GetServerGroupResult:
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string) This field is the description of the server group.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="dynamicDiscovery")
     def dynamic_discovery(self) -> bool:
-        """
-        (bool) This field controls dynamic discovery of the servers.
-        """
         return pulumi.get(self, "dynamic_discovery")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool) This field defines if the server group is enabled or disabled.
-        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -127,25 +112,16 @@ class GetServerGroupResult:
     @property
     @pulumi.getter(name="ipAnchored")
     def ip_anchored(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "ip_anchored")
 
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[str]:
-        """
-        (string) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @property
     @pulumi.getter(name="microtenantName")
     def microtenant_name(self) -> Optional[str]:
-        """
-        (string) The name of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_name")
 
     @property
@@ -208,12 +184,6 @@ def get_server_group(id: Optional[str] = None,
     example = zpa.get_server_group(name="server_group_name")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: The ID of the server group to be exported.
-    :param str microtenant_id: (string) The ID of the microtenant the resource is to be associated with.
-    :param str microtenant_name: (string) The name of the microtenant the resource is to be associated with.
-    :param str name: The name of the server group to be exported.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -258,11 +228,5 @@ def get_server_group_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     example = zpa.get_server_group(name="server_group_name")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: The ID of the server group to be exported.
-    :param str microtenant_id: (string) The ID of the microtenant the resource is to be associated with.
-    :param str microtenant_name: (string) The name of the microtenant the resource is to be associated with.
-    :param str name: The name of the server group to be exported.
     """
     ...

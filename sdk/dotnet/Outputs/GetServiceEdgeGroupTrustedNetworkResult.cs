@@ -14,38 +14,14 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetServiceEdgeGroupTrustedNetworkResult
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Domain;
-        /// <summary>
-        /// The ID of the service edge group to be exported.
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string MasterCustomerId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
-        /// <summary>
-        /// The name of the service edge group to be exported.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string NetworkId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ZscalerCloud;
 
         [OutputConstructor]

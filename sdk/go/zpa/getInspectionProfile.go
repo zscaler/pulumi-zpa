@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-browser-protection-profiles)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-profiles-using-api)
+//
 // Use the **zpa_inspection_profile** data source to get information about an inspection profile in the Zscaler Private Access cloud. This resource can then be referenced in an inspection custom control resource.
 //
 // ## Example Usage
@@ -52,38 +55,29 @@ func LookupInspectionProfile(ctx *pulumi.Context, args *LookupInspectionProfileA
 
 // A collection of arguments for invoking getInspectionProfile.
 type LookupInspectionProfileArgs struct {
-	// This field defines the id of the inspection profile.
 	Id *string `pulumi:"id"`
-	// This field defines the name of the inspection profile.
+	// - (String) This field defines the name of the inspection profile.
 	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getInspectionProfile.
 type LookupInspectionProfileResult struct {
-	// (string)
-	CommonGlobalOverrideActionsConfig map[string]string `pulumi:"commonGlobalOverrideActionsConfig"`
-	// (string) Types for custom controls
-	ControlsInfos []GetInspectionProfileControlsInfo `pulumi:"controlsInfos"`
-	CreationTime  string                             `pulumi:"creationTime"`
-	// (string) Types for custom controls
-	CustomControls []GetInspectionProfileCustomControl `pulumi:"customControls"`
-	// (string) Description of the inspection profile.
-	Description          string   `pulumi:"description"`
-	GlobalControlActions []string `pulumi:"globalControlActions"`
-	// (string) ID of the predefined control
-	Id                string `pulumi:"id"`
-	IncarnationNumber string `pulumi:"incarnationNumber"`
-	ModifiedBy        string `pulumi:"modifiedBy"`
-	ModifiedTime      string `pulumi:"modifiedTime"`
-	// (string)
-	Name string `pulumi:"name"`
-	// (string) OWASP Predefined Paranoia Level. Range: [1-4], inclusive
-	ParanoiaLevel string `pulumi:"paranoiaLevel"`
-	// (string) The predefined controls
+	CommonGlobalOverrideActionsConfig map[string]string                   `pulumi:"commonGlobalOverrideActionsConfig"`
+	ControlsInfos                     []GetInspectionProfileControlsInfo  `pulumi:"controlsInfos"`
+	CreationTime                      string                              `pulumi:"creationTime"`
+	CustomControls                    []GetInspectionProfileCustomControl `pulumi:"customControls"`
+	Description                       string                              `pulumi:"description"`
+	GlobalControlActions              []string                            `pulumi:"globalControlActions"`
+	Id                                string                              `pulumi:"id"`
+	IncarnationNumber                 string                              `pulumi:"incarnationNumber"`
+	ModifiedBy                        string                              `pulumi:"modifiedBy"`
+	ModifiedTime                      string                              `pulumi:"modifiedTime"`
+	// - (String) This field defines the name of the inspection profile.
+	Name                      string                                  `pulumi:"name"`
+	ParanoiaLevel             string                                  `pulumi:"paranoiaLevel"`
 	PredefinedControls        []GetInspectionProfilePredefinedControl `pulumi:"predefinedControls"`
 	PredefinedControlsVersion string                                  `pulumi:"predefinedControlsVersion"`
-	// (string)
-	WebSocketControls []GetInspectionProfileWebSocketControl `pulumi:"webSocketControls"`
+	WebSocketControls         []GetInspectionProfileWebSocketControl  `pulumi:"webSocketControls"`
 }
 
 func LookupInspectionProfileOutput(ctx *pulumi.Context, args LookupInspectionProfileOutputArgs, opts ...pulumi.InvokeOption) LookupInspectionProfileResultOutput {
@@ -101,9 +95,8 @@ func LookupInspectionProfileOutput(ctx *pulumi.Context, args LookupInspectionPro
 
 // A collection of arguments for invoking getInspectionProfile.
 type LookupInspectionProfileOutputArgs struct {
-	// This field defines the id of the inspection profile.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// This field defines the name of the inspection profile.
+	// - (String) This field defines the name of the inspection profile.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -126,12 +119,10 @@ func (o LookupInspectionProfileResultOutput) ToLookupInspectionProfileResultOutp
 	return o
 }
 
-// (string)
 func (o LookupInspectionProfileResultOutput) CommonGlobalOverrideActionsConfig() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupInspectionProfileResult) map[string]string { return v.CommonGlobalOverrideActionsConfig }).(pulumi.StringMapOutput)
 }
 
-// (string) Types for custom controls
 func (o LookupInspectionProfileResultOutput) ControlsInfos() GetInspectionProfileControlsInfoArrayOutput {
 	return o.ApplyT(func(v LookupInspectionProfileResult) []GetInspectionProfileControlsInfo { return v.ControlsInfos }).(GetInspectionProfileControlsInfoArrayOutput)
 }
@@ -140,12 +131,10 @@ func (o LookupInspectionProfileResultOutput) CreationTime() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupInspectionProfileResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// (string) Types for custom controls
 func (o LookupInspectionProfileResultOutput) CustomControls() GetInspectionProfileCustomControlArrayOutput {
 	return o.ApplyT(func(v LookupInspectionProfileResult) []GetInspectionProfileCustomControl { return v.CustomControls }).(GetInspectionProfileCustomControlArrayOutput)
 }
 
-// (string) Description of the inspection profile.
 func (o LookupInspectionProfileResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInspectionProfileResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -154,7 +143,6 @@ func (o LookupInspectionProfileResultOutput) GlobalControlActions() pulumi.Strin
 	return o.ApplyT(func(v LookupInspectionProfileResult) []string { return v.GlobalControlActions }).(pulumi.StringArrayOutput)
 }
 
-// (string) ID of the predefined control
 func (o LookupInspectionProfileResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInspectionProfileResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -171,17 +159,15 @@ func (o LookupInspectionProfileResultOutput) ModifiedTime() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupInspectionProfileResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
 
-// (string)
+// - (String) This field defines the name of the inspection profile.
 func (o LookupInspectionProfileResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInspectionProfileResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (string) OWASP Predefined Paranoia Level. Range: [1-4], inclusive
 func (o LookupInspectionProfileResultOutput) ParanoiaLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInspectionProfileResult) string { return v.ParanoiaLevel }).(pulumi.StringOutput)
 }
 
-// (string) The predefined controls
 func (o LookupInspectionProfileResultOutput) PredefinedControls() GetInspectionProfilePredefinedControlArrayOutput {
 	return o.ApplyT(func(v LookupInspectionProfileResult) []GetInspectionProfilePredefinedControl {
 		return v.PredefinedControls
@@ -192,7 +178,6 @@ func (o LookupInspectionProfileResultOutput) PredefinedControlsVersion() pulumi.
 	return o.ApplyT(func(v LookupInspectionProfileResult) string { return v.PredefinedControlsVersion }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o LookupInspectionProfileResultOutput) WebSocketControls() GetInspectionProfileWebSocketControlArrayOutput {
 	return o.ApplyT(func(v LookupInspectionProfileResult) []GetInspectionProfileWebSocketControl {
 		return v.WebSocketControls

@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-connectors)
+// * [API documentation](https://help.zscaler.com/zpa/managing-app-connectors-using-api)
+//
 // Use the **zpa_app_connector_controller** data source to get information about a app connector created in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group.
 //
 // ## Example Usage
@@ -52,88 +55,51 @@ func GetAppConnectorController(ctx *pulumi.Context, args *GetAppConnectorControl
 
 // A collection of arguments for invoking getAppConnectorController.
 type GetAppConnectorControllerArgs struct {
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
+	MicrotenantId   *string `pulumi:"microtenantId"`
 	MicrotenantName *string `pulumi:"microtenantName"`
-	// Name of the App Connector Group.
-	Name *string `pulumi:"name"`
+	Name            *string `pulumi:"name"`
 }
 
 // A collection of values returned by getAppConnectorController.
 type GetAppConnectorControllerResult struct {
-	// (Computed)
-	AppConnectorGroupId string `pulumi:"appConnectorGroupId"`
-	// (Computed) - Expected values: UNKNOWN/ZPN_STATUS_AUTHENTICATED(1)/ZPN_STATUS_DISCONNECTED
-	AppConnectorGroupName string `pulumi:"appConnectorGroupName"`
-	// (Computed)
-	ApplicationStartTime string `pulumi:"applicationStartTime"`
-	// (Computed)
-	ControlChannelStatus string `pulumi:"controlChannelStatus"`
-	// (Computed)
-	CreationTime string `pulumi:"creationTime"`
-	// (Computed)
-	CtrlBrokerName string `pulumi:"ctrlBrokerName"`
-	// (Computed)
-	CurrentVersion string `pulumi:"currentVersion"`
-	// (Computed) - Description of the App Connector.
-	Description string `pulumi:"description"`
-	// (Computed) - Whether this App Connector is enabled or not. Default value: `true`. Supported values: `true`, `false`
-	Enabled bool `pulumi:"enabled"`
-	// (Computed)
-	EnrollmentCert map[string]interface{} `pulumi:"enrollmentCert"`
-	// (Computed)
-	ExpectedUpgradeTime string `pulumi:"expectedUpgradeTime"`
-	// (Computed)
-	ExpectedVersion string `pulumi:"expectedVersion"`
-	Fingerprint     string `pulumi:"fingerprint"`
-	Id              string `pulumi:"id"`
-	// (Computed)
-	IpAcl string `pulumi:"ipAcl"`
-	// (Computed)
-	IssuedCertId string `pulumi:"issuedCertId"`
-	// (Computed)
-	LastBrokerConnectTime string `pulumi:"lastBrokerConnectTime"`
-	// (Computed)
-	LastBrokerConnectTimeDuration string `pulumi:"lastBrokerConnectTimeDuration"`
-	// (Computed)
-	LastBrokerDisconnectTime string `pulumi:"lastBrokerDisconnectTime"`
-	// (Computed)
-	LastBrokerDisconnectTimeDuration string `pulumi:"lastBrokerDisconnectTimeDuration"`
-	// (Computed)
-	LastUpgradeTime string `pulumi:"lastUpgradeTime"`
-	// (Computed) - Latitude of the App Connector. Integer or decimal. With values in the range of `-90` to `90`
-	Latitude string `pulumi:"latitude"`
-	// (Computed) - Location of the App Connector.
-	Location string `pulumi:"location"`
-	// (Computed) - Longitude of the App Connector. Integer or decimal. With values in the range of `-180` to `180`
-	Longitude string `pulumi:"longitude"`
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
-	MicrotenantName *string `pulumi:"microtenantName"`
-	// (Computed)
-	ModifiedTime string  `pulumi:"modifiedTime"`
-	Modifiedby   string  `pulumi:"modifiedby"`
-	Name         *string `pulumi:"name"`
-	// (Computed)
-	Platform string `pulumi:"platform"`
-	// (Computed)
-	PreviousVersion string `pulumi:"previousVersion"`
-	// (Computed)
-	PrivateIp string `pulumi:"privateIp"`
-	// (Computed)
-	ProvisioningKeyId string `pulumi:"provisioningKeyId"`
-	// (Computed)
-	ProvisioningKeyName string `pulumi:"provisioningKeyName"`
-	// (Computed)
-	PublicIp string `pulumi:"publicIp"`
-	// (Computed)
-	SargeVersion string `pulumi:"sargeVersion"`
-	// (Computed)
-	UpgradeAttempt string `pulumi:"upgradeAttempt"`
-	// (Computed)
-	UpgradeStatus string `pulumi:"upgradeStatus"`
+	AppConnectorGroupId              string                 `pulumi:"appConnectorGroupId"`
+	AppConnectorGroupName            string                 `pulumi:"appConnectorGroupName"`
+	ApplicationStartTime             string                 `pulumi:"applicationStartTime"`
+	ControlChannelStatus             string                 `pulumi:"controlChannelStatus"`
+	CreationTime                     string                 `pulumi:"creationTime"`
+	CtrlBrokerName                   string                 `pulumi:"ctrlBrokerName"`
+	CurrentVersion                   string                 `pulumi:"currentVersion"`
+	Description                      string                 `pulumi:"description"`
+	Enabled                          bool                   `pulumi:"enabled"`
+	EnrollmentCert                   map[string]interface{} `pulumi:"enrollmentCert"`
+	ExpectedUpgradeTime              string                 `pulumi:"expectedUpgradeTime"`
+	ExpectedVersion                  string                 `pulumi:"expectedVersion"`
+	Fingerprint                      string                 `pulumi:"fingerprint"`
+	Id                               string                 `pulumi:"id"`
+	IpAcl                            string                 `pulumi:"ipAcl"`
+	IssuedCertId                     string                 `pulumi:"issuedCertId"`
+	LastBrokerConnectTime            string                 `pulumi:"lastBrokerConnectTime"`
+	LastBrokerConnectTimeDuration    string                 `pulumi:"lastBrokerConnectTimeDuration"`
+	LastBrokerDisconnectTime         string                 `pulumi:"lastBrokerDisconnectTime"`
+	LastBrokerDisconnectTimeDuration string                 `pulumi:"lastBrokerDisconnectTimeDuration"`
+	LastUpgradeTime                  string                 `pulumi:"lastUpgradeTime"`
+	Latitude                         string                 `pulumi:"latitude"`
+	Location                         string                 `pulumi:"location"`
+	Longitude                        string                 `pulumi:"longitude"`
+	MicrotenantId                    *string                `pulumi:"microtenantId"`
+	MicrotenantName                  *string                `pulumi:"microtenantName"`
+	ModifiedTime                     string                 `pulumi:"modifiedTime"`
+	Modifiedby                       string                 `pulumi:"modifiedby"`
+	Name                             *string                `pulumi:"name"`
+	Platform                         string                 `pulumi:"platform"`
+	PreviousVersion                  string                 `pulumi:"previousVersion"`
+	PrivateIp                        string                 `pulumi:"privateIp"`
+	ProvisioningKeyId                string                 `pulumi:"provisioningKeyId"`
+	ProvisioningKeyName              string                 `pulumi:"provisioningKeyName"`
+	PublicIp                         string                 `pulumi:"publicIp"`
+	SargeVersion                     string                 `pulumi:"sargeVersion"`
+	UpgradeAttempt                   string                 `pulumi:"upgradeAttempt"`
+	UpgradeStatus                    string                 `pulumi:"upgradeStatus"`
 }
 
 func GetAppConnectorControllerOutput(ctx *pulumi.Context, args GetAppConnectorControllerOutputArgs, opts ...pulumi.InvokeOption) GetAppConnectorControllerResultOutput {
@@ -151,12 +117,9 @@ func GetAppConnectorControllerOutput(ctx *pulumi.Context, args GetAppConnectorCo
 
 // A collection of arguments for invoking getAppConnectorController.
 type GetAppConnectorControllerOutputArgs struct {
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId pulumi.StringPtrInput `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
+	MicrotenantId   pulumi.StringPtrInput `pulumi:"microtenantId"`
 	MicrotenantName pulumi.StringPtrInput `pulumi:"microtenantName"`
-	// Name of the App Connector Group.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name            pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (GetAppConnectorControllerOutputArgs) ElementType() reflect.Type {
@@ -178,62 +141,50 @@ func (o GetAppConnectorControllerResultOutput) ToGetAppConnectorControllerResult
 	return o
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) AppConnectorGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.AppConnectorGroupId }).(pulumi.StringOutput)
 }
 
-// (Computed) - Expected values: UNKNOWN/ZPN_STATUS_AUTHENTICATED(1)/ZPN_STATUS_DISCONNECTED
 func (o GetAppConnectorControllerResultOutput) AppConnectorGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.AppConnectorGroupName }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) ApplicationStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.ApplicationStartTime }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) ControlChannelStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.ControlChannelStatus }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) CtrlBrokerName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.CtrlBrokerName }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) CurrentVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.CurrentVersion }).(pulumi.StringOutput)
 }
 
-// (Computed) - Description of the App Connector.
 func (o GetAppConnectorControllerResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (Computed) - Whether this App Connector is enabled or not. Default value: `true`. Supported values: `true`, `false`
 func (o GetAppConnectorControllerResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) EnrollmentCert() pulumi.MapOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) map[string]interface{} { return v.EnrollmentCert }).(pulumi.MapOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) ExpectedUpgradeTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.ExpectedUpgradeTime }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) ExpectedVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.ExpectedVersion }).(pulumi.StringOutput)
 }
@@ -246,67 +197,54 @@ func (o GetAppConnectorControllerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) IpAcl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.IpAcl }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) IssuedCertId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.IssuedCertId }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) LastBrokerConnectTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.LastBrokerConnectTime }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) LastBrokerConnectTimeDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.LastBrokerConnectTimeDuration }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) LastBrokerDisconnectTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.LastBrokerDisconnectTime }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) LastBrokerDisconnectTimeDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.LastBrokerDisconnectTimeDuration }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) LastUpgradeTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.LastUpgradeTime }).(pulumi.StringOutput)
 }
 
-// (Computed) - Latitude of the App Connector. Integer or decimal. With values in the range of `-90` to `90`
 func (o GetAppConnectorControllerResultOutput) Latitude() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.Latitude }).(pulumi.StringOutput)
 }
 
-// (Computed) - Location of the App Connector.
 func (o GetAppConnectorControllerResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// (Computed) - Longitude of the App Connector. Integer or decimal. With values in the range of `-180` to `180`
 func (o GetAppConnectorControllerResultOutput) Longitude() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.Longitude }).(pulumi.StringOutput)
 }
 
-// (string) The ID of the microtenant the resource is to be associated with.
 func (o GetAppConnectorControllerResultOutput) MicrotenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) *string { return v.MicrotenantId }).(pulumi.StringPtrOutput)
 }
 
-// (string) The name of the microtenant the resource is to be associated with.
 func (o GetAppConnectorControllerResultOutput) MicrotenantName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) *string { return v.MicrotenantName }).(pulumi.StringPtrOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) ModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
@@ -319,47 +257,38 @@ func (o GetAppConnectorControllerResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) Platform() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.Platform }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) PreviousVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.PreviousVersion }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) PrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.PrivateIp }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) ProvisioningKeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.ProvisioningKeyId }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) ProvisioningKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.ProvisioningKeyName }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) SargeVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.SargeVersion }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) UpgradeAttempt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.UpgradeAttempt }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetAppConnectorControllerResultOutput) UpgradeStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.UpgradeStatus }).(pulumi.StringOutput)
 }

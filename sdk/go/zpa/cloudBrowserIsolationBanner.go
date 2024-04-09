@@ -11,6 +11,8 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/isolation/adding-banner-theme-isolation-end-user-notification-zpa)
+//
 // The **zpa_cloud_browser_isolation_banner** resource creates a Cloud Browser Isolation banner. This resource is required as part of the attribute `bannerId` when creating an Cloud Browser Isolation External Profile “CloudBrowserIsolationExternalProfile“
 //
 // ## Import
@@ -33,21 +35,14 @@ import (
 type CloudBrowserIsolationBanner struct {
 	pulumi.CustomResourceState
 
-	// (Optional) - Show Welcome Notification
-	Banner pulumi.BoolOutput `pulumi:"banner"`
-	// The Logo Image (.jpeg or .png; Maximum file size is 100KB.)
-	Logo pulumi.StringOutput `pulumi:"logo"`
-	// The name of the CBI banner to be exported.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The Banner Notification Text
-	NotificationText pulumi.StringPtrOutput `pulumi:"notificationText"`
-	// The Banner Notification Title
+	Banner            pulumi.BoolOutput      `pulumi:"banner"`
+	Logo              pulumi.StringOutput    `pulumi:"logo"`
+	Name              pulumi.StringOutput    `pulumi:"name"`
+	NotificationText  pulumi.StringPtrOutput `pulumi:"notificationText"`
 	NotificationTitle pulumi.StringPtrOutput `pulumi:"notificationTitle"`
 	Persist           pulumi.BoolOutput      `pulumi:"persist"`
-	// The Banner Primary Color code in hexadecimal way to represent the color of the banner in RGB format
-	PrimaryColor pulumi.StringPtrOutput `pulumi:"primaryColor"`
-	// The Banner Text Color code in hexadecimal way to represent the color of the text in RGB format
-	TextColor pulumi.StringPtrOutput `pulumi:"textColor"`
+	PrimaryColor      pulumi.StringPtrOutput `pulumi:"primaryColor"`
+	TextColor         pulumi.StringPtrOutput `pulumi:"textColor"`
 }
 
 // NewCloudBrowserIsolationBanner registers a new resource with the given unique name, arguments, and options.
@@ -80,39 +75,25 @@ func GetCloudBrowserIsolationBanner(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CloudBrowserIsolationBanner resources.
 type cloudBrowserIsolationBannerState struct {
-	// (Optional) - Show Welcome Notification
-	Banner *bool `pulumi:"banner"`
-	// The Logo Image (.jpeg or .png; Maximum file size is 100KB.)
-	Logo *string `pulumi:"logo"`
-	// The name of the CBI banner to be exported.
-	Name *string `pulumi:"name"`
-	// The Banner Notification Text
-	NotificationText *string `pulumi:"notificationText"`
-	// The Banner Notification Title
+	Banner            *bool   `pulumi:"banner"`
+	Logo              *string `pulumi:"logo"`
+	Name              *string `pulumi:"name"`
+	NotificationText  *string `pulumi:"notificationText"`
 	NotificationTitle *string `pulumi:"notificationTitle"`
 	Persist           *bool   `pulumi:"persist"`
-	// The Banner Primary Color code in hexadecimal way to represent the color of the banner in RGB format
-	PrimaryColor *string `pulumi:"primaryColor"`
-	// The Banner Text Color code in hexadecimal way to represent the color of the text in RGB format
-	TextColor *string `pulumi:"textColor"`
+	PrimaryColor      *string `pulumi:"primaryColor"`
+	TextColor         *string `pulumi:"textColor"`
 }
 
 type CloudBrowserIsolationBannerState struct {
-	// (Optional) - Show Welcome Notification
-	Banner pulumi.BoolPtrInput
-	// The Logo Image (.jpeg or .png; Maximum file size is 100KB.)
-	Logo pulumi.StringPtrInput
-	// The name of the CBI banner to be exported.
-	Name pulumi.StringPtrInput
-	// The Banner Notification Text
-	NotificationText pulumi.StringPtrInput
-	// The Banner Notification Title
+	Banner            pulumi.BoolPtrInput
+	Logo              pulumi.StringPtrInput
+	Name              pulumi.StringPtrInput
+	NotificationText  pulumi.StringPtrInput
 	NotificationTitle pulumi.StringPtrInput
 	Persist           pulumi.BoolPtrInput
-	// The Banner Primary Color code in hexadecimal way to represent the color of the banner in RGB format
-	PrimaryColor pulumi.StringPtrInput
-	// The Banner Text Color code in hexadecimal way to represent the color of the text in RGB format
-	TextColor pulumi.StringPtrInput
+	PrimaryColor      pulumi.StringPtrInput
+	TextColor         pulumi.StringPtrInput
 }
 
 func (CloudBrowserIsolationBannerState) ElementType() reflect.Type {
@@ -120,40 +101,26 @@ func (CloudBrowserIsolationBannerState) ElementType() reflect.Type {
 }
 
 type cloudBrowserIsolationBannerArgs struct {
-	// (Optional) - Show Welcome Notification
-	Banner *bool `pulumi:"banner"`
-	// The Logo Image (.jpeg or .png; Maximum file size is 100KB.)
-	Logo *string `pulumi:"logo"`
-	// The name of the CBI banner to be exported.
-	Name *string `pulumi:"name"`
-	// The Banner Notification Text
-	NotificationText *string `pulumi:"notificationText"`
-	// The Banner Notification Title
+	Banner            *bool   `pulumi:"banner"`
+	Logo              *string `pulumi:"logo"`
+	Name              *string `pulumi:"name"`
+	NotificationText  *string `pulumi:"notificationText"`
 	NotificationTitle *string `pulumi:"notificationTitle"`
 	Persist           *bool   `pulumi:"persist"`
-	// The Banner Primary Color code in hexadecimal way to represent the color of the banner in RGB format
-	PrimaryColor *string `pulumi:"primaryColor"`
-	// The Banner Text Color code in hexadecimal way to represent the color of the text in RGB format
-	TextColor *string `pulumi:"textColor"`
+	PrimaryColor      *string `pulumi:"primaryColor"`
+	TextColor         *string `pulumi:"textColor"`
 }
 
 // The set of arguments for constructing a CloudBrowserIsolationBanner resource.
 type CloudBrowserIsolationBannerArgs struct {
-	// (Optional) - Show Welcome Notification
-	Banner pulumi.BoolPtrInput
-	// The Logo Image (.jpeg or .png; Maximum file size is 100KB.)
-	Logo pulumi.StringPtrInput
-	// The name of the CBI banner to be exported.
-	Name pulumi.StringPtrInput
-	// The Banner Notification Text
-	NotificationText pulumi.StringPtrInput
-	// The Banner Notification Title
+	Banner            pulumi.BoolPtrInput
+	Logo              pulumi.StringPtrInput
+	Name              pulumi.StringPtrInput
+	NotificationText  pulumi.StringPtrInput
 	NotificationTitle pulumi.StringPtrInput
 	Persist           pulumi.BoolPtrInput
-	// The Banner Primary Color code in hexadecimal way to represent the color of the banner in RGB format
-	PrimaryColor pulumi.StringPtrInput
-	// The Banner Text Color code in hexadecimal way to represent the color of the text in RGB format
-	TextColor pulumi.StringPtrInput
+	PrimaryColor      pulumi.StringPtrInput
+	TextColor         pulumi.StringPtrInput
 }
 
 func (CloudBrowserIsolationBannerArgs) ElementType() reflect.Type {
@@ -243,27 +210,22 @@ func (o CloudBrowserIsolationBannerOutput) ToCloudBrowserIsolationBannerOutputWi
 	return o
 }
 
-// (Optional) - Show Welcome Notification
 func (o CloudBrowserIsolationBannerOutput) Banner() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CloudBrowserIsolationBanner) pulumi.BoolOutput { return v.Banner }).(pulumi.BoolOutput)
 }
 
-// The Logo Image (.jpeg or .png; Maximum file size is 100KB.)
 func (o CloudBrowserIsolationBannerOutput) Logo() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudBrowserIsolationBanner) pulumi.StringOutput { return v.Logo }).(pulumi.StringOutput)
 }
 
-// The name of the CBI banner to be exported.
 func (o CloudBrowserIsolationBannerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudBrowserIsolationBanner) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The Banner Notification Text
 func (o CloudBrowserIsolationBannerOutput) NotificationText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudBrowserIsolationBanner) pulumi.StringPtrOutput { return v.NotificationText }).(pulumi.StringPtrOutput)
 }
 
-// The Banner Notification Title
 func (o CloudBrowserIsolationBannerOutput) NotificationTitle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudBrowserIsolationBanner) pulumi.StringPtrOutput { return v.NotificationTitle }).(pulumi.StringPtrOutput)
 }
@@ -272,12 +234,10 @@ func (o CloudBrowserIsolationBannerOutput) Persist() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CloudBrowserIsolationBanner) pulumi.BoolOutput { return v.Persist }).(pulumi.BoolOutput)
 }
 
-// The Banner Primary Color code in hexadecimal way to represent the color of the banner in RGB format
 func (o CloudBrowserIsolationBannerOutput) PrimaryColor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudBrowserIsolationBanner) pulumi.StringPtrOutput { return v.PrimaryColor }).(pulumi.StringPtrOutput)
 }
 
-// The Banner Text Color code in hexadecimal way to represent the color of the text in RGB format
 func (o CloudBrowserIsolationBannerOutput) TextColor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudBrowserIsolationBanner) pulumi.StringPtrOutput { return v.TextColor }).(pulumi.StringPtrOutput)
 }

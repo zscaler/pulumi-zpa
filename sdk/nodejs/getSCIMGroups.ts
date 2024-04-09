@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-scim-groups)
+ * * [API documentation](https://help.zscaler.com/zpa/obtaining-scim-group-details-using-api)
+ *
  * Use the **zpa_scim_groups** data source to get information about a SCIM Group from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
  *
  * ## Example Usage
@@ -38,17 +41,8 @@ export function getSCIMGroups(args?: GetSCIMGroupsArgs, opts?: pulumi.InvokeOpti
  */
 export interface GetSCIMGroupsArgs {
     id?: string;
-    /**
-     * (string) The ID of the IdP corresponding to the SAML attribute.
-     */
     idpId?: number;
-    /**
-     * Name. The name of the IdP where the scim group must be exported from.
-     */
     idpName?: string;
-    /**
-     * Name. The name of the scim group to be exported.
-     */
     name?: string;
 }
 
@@ -56,27 +50,18 @@ export interface GetSCIMGroupsArgs {
  * A collection of values returned by getSCIMGroups.
  */
 export interface GetSCIMGroupsResult {
-    /**
-     * (string)
-     */
     readonly creationTime: number;
     readonly id?: string;
-    /**
-     * (string)
-     */
     readonly idpGroupId: string;
-    /**
-     * (string) The ID of the IdP corresponding to the SAML attribute.
-     */
     readonly idpId?: number;
     readonly idpName?: string;
-    /**
-     * (string)
-     */
     readonly modifiedTime: number;
     readonly name?: string;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-scim-groups)
+ * * [API documentation](https://help.zscaler.com/zpa/obtaining-scim-group-details-using-api)
+ *
  * Use the **zpa_scim_groups** data source to get information about a SCIM Group from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
  *
  * ## Example Usage
@@ -102,16 +87,7 @@ export function getSCIMGroupsOutput(args?: GetSCIMGroupsOutputArgs, opts?: pulum
  */
 export interface GetSCIMGroupsOutputArgs {
     id?: pulumi.Input<string>;
-    /**
-     * (string) The ID of the IdP corresponding to the SAML attribute.
-     */
     idpId?: pulumi.Input<number>;
-    /**
-     * Name. The name of the IdP where the scim group must be exported from.
-     */
     idpName?: pulumi.Input<string>;
-    /**
-     * Name. The name of the scim group to be exported.
-     */
     name?: pulumi.Input<string>;
 }

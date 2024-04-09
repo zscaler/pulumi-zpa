@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/client-connector/about-trusted-networks)
+// * [API documentation](https://help.zscaler.com/zpa/obtaining-trusted-network-details-using-api)
+//
 // The **zpa_trusted_network** data source to get information about a trusted network created in the Zscaler Private Access Mobile Portal. This data source can then be referenced within the following resources:
 //
 // 1. Access Policy
@@ -87,27 +90,20 @@ func GetTrustedNetwork(ctx *pulumi.Context, args *GetTrustedNetworkArgs, opts ..
 
 // A collection of arguments for invoking getTrustedNetwork.
 type GetTrustedNetworkArgs struct {
-	// The ID of the posture profile to be exported.
-	Id *string `pulumi:"id"`
-	// The name of the posture profile to be exported.
+	Id   *string `pulumi:"id"`
 	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getTrustedNetwork.
 type GetTrustedNetworkResult struct {
-	// (string)
-	CreationTime string `pulumi:"creationTime"`
-	// (string)
-	Domain string  `pulumi:"domain"`
-	Id     *string `pulumi:"id"`
-	// (string)
+	CreationTime string  `pulumi:"creationTime"`
+	Domain       string  `pulumi:"domain"`
+	Id           *string `pulumi:"id"`
 	ModifiedTime string  `pulumi:"modifiedTime"`
 	Modifiedby   string  `pulumi:"modifiedby"`
 	Name         *string `pulumi:"name"`
-	// (string)
-	NetworkId string `pulumi:"networkId"`
-	// (string)
-	ZscalerCloud string `pulumi:"zscalerCloud"`
+	NetworkId    string  `pulumi:"networkId"`
+	ZscalerCloud string  `pulumi:"zscalerCloud"`
 }
 
 func GetTrustedNetworkOutput(ctx *pulumi.Context, args GetTrustedNetworkOutputArgs, opts ...pulumi.InvokeOption) GetTrustedNetworkResultOutput {
@@ -125,9 +121,7 @@ func GetTrustedNetworkOutput(ctx *pulumi.Context, args GetTrustedNetworkOutputAr
 
 // A collection of arguments for invoking getTrustedNetwork.
 type GetTrustedNetworkOutputArgs struct {
-	// The ID of the posture profile to be exported.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The name of the posture profile to be exported.
+	Id   pulumi.StringPtrInput `pulumi:"id"`
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -150,12 +144,10 @@ func (o GetTrustedNetworkResultOutput) ToGetTrustedNetworkResultOutputWithContex
 	return o
 }
 
-// (string)
 func (o GetTrustedNetworkResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrustedNetworkResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetTrustedNetworkResultOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrustedNetworkResult) string { return v.Domain }).(pulumi.StringOutput)
 }
@@ -164,7 +156,6 @@ func (o GetTrustedNetworkResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTrustedNetworkResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// (string)
 func (o GetTrustedNetworkResultOutput) ModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrustedNetworkResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
@@ -177,12 +168,10 @@ func (o GetTrustedNetworkResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTrustedNetworkResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// (string)
 func (o GetTrustedNetworkResultOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrustedNetworkResult) string { return v.NetworkId }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetTrustedNetworkResultOutput) ZscalerCloud() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrustedNetworkResult) string { return v.ZscalerCloud }).(pulumi.StringOutput)
 }

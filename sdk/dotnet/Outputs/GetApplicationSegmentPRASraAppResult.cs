@@ -15,42 +15,18 @@ namespace Zscaler.Zpa.Outputs
     public sealed class GetApplicationSegmentPRASraAppResult
     {
         public readonly string AppId;
-        /// <summary>
-        /// (string) Port for the Privileged Remote Accessvalues: `RDP` and `SSH`
-        /// </summary>
         public readonly string ApplicationPort;
-        /// <summary>
-        /// (string) Protocol for the Privileged Remote Access. Supported values: `RDP` and `SSH`
-        /// </summary>
         public readonly string ApplicationProtocol;
         public readonly string CertificateId;
         public readonly string CertificateName;
-        /// <summary>
-        /// (string) - Parameter required when `application_protocol` is of type `RDP`
-        /// </summary>
         public readonly string ConnectionSecurity;
-        /// <summary>
-        /// (string) Description of the application.
-        /// </summary>
         public readonly string Description;
         public readonly string Domain;
-        /// <summary>
-        /// (bool) Whether this application is enabled or not
-        /// </summary>
         public readonly bool Enabled;
         public readonly bool Hidden;
         public readonly string Id;
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         public readonly string MicrotenantId;
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         public readonly string MicrotenantName;
-        /// <summary>
-        /// The name of the PRA Application Segment to be exported.
-        /// </summary>
         public readonly string Name;
         public readonly bool Portal;
 

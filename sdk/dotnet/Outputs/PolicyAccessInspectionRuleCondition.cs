@@ -16,7 +16,6 @@ namespace Zscaler.Zpa.Outputs
     {
         public readonly string? Id;
         public readonly string? MicrotenantId;
-        public readonly bool? Negated;
         /// <summary>
         /// This signifies the various policy criteria.
         /// </summary>
@@ -29,15 +28,12 @@ namespace Zscaler.Zpa.Outputs
 
             string? microtenantId,
 
-            bool? negated,
-
             ImmutableArray<Outputs.PolicyAccessInspectionRuleConditionOperand> operands,
 
             string @operator)
         {
             Id = id;
             MicrotenantId = microtenantId;
-            Negated = negated;
             Operands = operands;
             Operator = @operator;
         }

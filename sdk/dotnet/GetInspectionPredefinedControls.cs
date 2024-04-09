@@ -13,6 +13,9 @@ namespace Zscaler.Zpa
     public static class GetInspectionPredefinedControls
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+        /// 
         /// Use the **zpa_inspection_predefined_controls** data source to get information about an OWASP predefined control and prefedined control version. This data source is required when creating an inspection profile.
         /// 
         /// ## Example Usage
@@ -44,6 +47,9 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInspectionPredefinedControlsResult>("zpa:index/getInspectionPredefinedControls:getInspectionPredefinedControls", args ?? new GetInspectionPredefinedControlsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+        /// 
         /// Use the **zpa_inspection_predefined_controls** data source to get information about an OWASP predefined control and prefedined control version. This data source is required when creating an inspection profile.
         /// 
         /// ## Example Usage
@@ -78,21 +84,12 @@ namespace Zscaler.Zpa
 
     public sealed class GetInspectionPredefinedControlsArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// The name of the predefined control.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
-        /// <summary>
-        /// The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
-        /// </summary>
         [Input("version")]
         public string? Version { get; set; }
 
@@ -104,21 +101,12 @@ namespace Zscaler.Zpa
 
     public sealed class GetInspectionPredefinedControlsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// The name of the predefined control.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
-        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 
@@ -132,74 +120,23 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetInspectionPredefinedControlsResult
     {
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string Action;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string ActionValue;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetInspectionPredefinedControlsAssociatedInspectionProfileNameResult> AssociatedInspectionProfileNames;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string Attachment;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string ControlGroup;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string ControlNumber;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string ControlType;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string DefaultAction;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string DefaultActionValue;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string ParanoiaLevel;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string ProtocolType;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string Severity;
         public readonly string? Version;
 

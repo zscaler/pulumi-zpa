@@ -11,6 +11,9 @@ using Pulumi;
 namespace Zscaler.Zpa
 {
     /// <summary>
+    /// * [Official documentation](https://help.zscaler.com/zpa/about-microtenants)
+    /// * [API documentation](https://help.zscaler.com/zpa/configuring-microtenants-using-api)
+    /// 
     /// The **zpa_microtenant_controller** resource creates a microtenant controller in the Zscaler Private Access cloud. This resource allows organizations to delegate responsibilities of admins directly to the acquired or merged company admins so that they can manage their configurations independently
     /// 
     /// ⚠️ **WARNING:**: This feature is in limited availability and requires additional license. To learn more, contact Zscaler Support or your local account team.
@@ -78,31 +81,25 @@ namespace Zscaler.Zpa
     public partial class Microtenant : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (Required) Type of authentication criteria for the microtenant
+        /// - (Required) Type of authentication criteria for the microtenant
         /// </summary>
         [Output("criteriaAttribute")]
         public Output<string?> CriteriaAttribute { get; private set; } = null!;
 
         /// <summary>
-        /// (Required) The domain associated with the respective microtenant controller resource
+        /// - (Required) The domain associated with the respective microtenant controller resource
         /// </summary>
         [Output("criteriaAttributeValues")]
         public Output<ImmutableArray<string>> CriteriaAttributeValues { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional) Description of the microtenant controller.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional) Whether this microtenant resource is enabled or not.
-        /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// (Required) Name of the microtenant controller.
+        /// - (Required) Name of the microtenant controller.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -158,7 +155,7 @@ namespace Zscaler.Zpa
     public sealed class MicrotenantArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Required) Type of authentication criteria for the microtenant
+        /// - (Required) Type of authentication criteria for the microtenant
         /// </summary>
         [Input("criteriaAttribute")]
         public Input<string>? CriteriaAttribute { get; set; }
@@ -167,7 +164,7 @@ namespace Zscaler.Zpa
         private InputList<string>? _criteriaAttributeValues;
 
         /// <summary>
-        /// (Required) The domain associated with the respective microtenant controller resource
+        /// - (Required) The domain associated with the respective microtenant controller resource
         /// </summary>
         public InputList<string> CriteriaAttributeValues
         {
@@ -175,20 +172,14 @@ namespace Zscaler.Zpa
             set => _criteriaAttributeValues = value;
         }
 
-        /// <summary>
-        /// (Optional) Description of the microtenant controller.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// (Optional) Whether this microtenant resource is enabled or not.
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// (Required) Name of the microtenant controller.
+        /// - (Required) Name of the microtenant controller.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -210,7 +201,7 @@ namespace Zscaler.Zpa
     public sealed class MicrotenantState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Required) Type of authentication criteria for the microtenant
+        /// - (Required) Type of authentication criteria for the microtenant
         /// </summary>
         [Input("criteriaAttribute")]
         public Input<string>? CriteriaAttribute { get; set; }
@@ -219,7 +210,7 @@ namespace Zscaler.Zpa
         private InputList<string>? _criteriaAttributeValues;
 
         /// <summary>
-        /// (Required) The domain associated with the respective microtenant controller resource
+        /// - (Required) The domain associated with the respective microtenant controller resource
         /// </summary>
         public InputList<string> CriteriaAttributeValues
         {
@@ -227,20 +218,14 @@ namespace Zscaler.Zpa
             set => _criteriaAttributeValues = value;
         }
 
-        /// <summary>
-        /// (Optional) Description of the microtenant controller.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// (Optional) Whether this microtenant resource is enabled or not.
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// (Required) Name of the microtenant controller.
+        /// - (Required) Name of the microtenant controller.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

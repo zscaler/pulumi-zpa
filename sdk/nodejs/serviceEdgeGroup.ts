@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-zpa-private-service-edge-groups)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-zpa-private-service-edge-groups-using-api)
+ *
  * The **zpa_service_edge_group** resource creates a service edge group in the Zscaler Private Access cloud. This resource can then be referenced in a service edge connector.
  *
  * ## Example Usage
@@ -102,28 +105,22 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === ServiceEdgeGroup.__pulumiType;
     }
 
-    /**
-     * This field controls dynamic discovery of the servers.
-     */
     public readonly cityCountry!: pulumi.Output<string>;
-    /**
-     * This field is an array of app-connector-id only.
-     */
     public readonly countryCode!: pulumi.Output<string>;
     /**
      * Description of the Service Edge Group.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Whether this Service Edge Group is enabled or not. Default value: `true` Supported values: `true`, `false`
+     * Whether this Service Edge Group is enabled or not.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable or disable public access for the Service Edge Group. Default value: `false` Supported values: `true`, `false`
+     * Enable or disable public access for the Service Edge Group.
      */
     public readonly isPublic!: pulumi.Output<boolean | undefined>;
     /**
-     * Latitude for the Service Edge Group. Integer or decimal with values in the range of `-90` to `90`
+     * Latitude for the Service Edge Group.
      */
     public readonly latitude!: pulumi.Output<string>;
     /**
@@ -131,38 +128,33 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Longitude for the Service Edge Group. Integer or decimal with values in the range of `-180` to `180`
+     * Longitude for the Service Edge Group.
      */
     public readonly longitude!: pulumi.Output<string>;
-    /**
-     * The ID of the microtenant the resource is to be associated with.
-     *
-     * ⚠️ **WARNING:**: The attribute ``microtenantId`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-     */
     public readonly microtenantId!: pulumi.Output<string>;
     /**
      * Name of the Service Edge Group.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
+     * Whether the default version profile of the App Connector Group is applied or overridden.
      */
     public readonly overrideVersionProfile!: pulumi.Output<boolean | undefined>;
     public readonly serviceEdges!: pulumi.Output<outputs.ServiceEdgeGroupServiceEdge[]>;
     /**
-     * Trusted networks for this Service Edge Group. List of trusted network objects
+     * List of trusted network IDs.
      */
     public readonly trustedNetworks!: pulumi.Output<outputs.ServiceEdgeGroupTrustedNetwork[]>;
     /**
-     * Service Edges in this group will attempt to update to a newer version of the software during this specified day. Default value: `SUNDAY` List of valid days (i.e., Sunday, Monday)
+     * Service Edges in this group will attempt to update to a newer version of the software during this specified day.
      */
     public readonly upgradeDay!: pulumi.Output<string | undefined>;
     /**
-     * Service Edges in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600` Integer in seconds (i..e, 66600). The integer must be greater than or equal to 0 and less than `86400`, in `15` minute intervals
+     * Service Edges in this group will attempt to update to a newer version of the software during this specified time.
      */
     public readonly upgradeTimeInSecs!: pulumi.Output<string | undefined>;
     /**
-     * ID of the version profile. To learn more, see Version Profile Use Cases. Supported values are:
+     * ID of the version profile.
      */
     public readonly versionProfileId!: pulumi.Output<string>;
     /**
@@ -244,28 +236,22 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ServiceEdgeGroup resources.
  */
 export interface ServiceEdgeGroupState {
-    /**
-     * This field controls dynamic discovery of the servers.
-     */
     cityCountry?: pulumi.Input<string>;
-    /**
-     * This field is an array of app-connector-id only.
-     */
     countryCode?: pulumi.Input<string>;
     /**
      * Description of the Service Edge Group.
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether this Service Edge Group is enabled or not. Default value: `true` Supported values: `true`, `false`
+     * Whether this Service Edge Group is enabled or not.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Enable or disable public access for the Service Edge Group. Default value: `false` Supported values: `true`, `false`
+     * Enable or disable public access for the Service Edge Group.
      */
     isPublic?: pulumi.Input<boolean>;
     /**
-     * Latitude for the Service Edge Group. Integer or decimal with values in the range of `-90` to `90`
+     * Latitude for the Service Edge Group.
      */
     latitude?: pulumi.Input<string>;
     /**
@@ -273,38 +259,33 @@ export interface ServiceEdgeGroupState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Longitude for the Service Edge Group. Integer or decimal with values in the range of `-180` to `180`
+     * Longitude for the Service Edge Group.
      */
     longitude?: pulumi.Input<string>;
-    /**
-     * The ID of the microtenant the resource is to be associated with.
-     *
-     * ⚠️ **WARNING:**: The attribute ``microtenantId`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-     */
     microtenantId?: pulumi.Input<string>;
     /**
      * Name of the Service Edge Group.
      */
     name?: pulumi.Input<string>;
     /**
-     * Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
+     * Whether the default version profile of the App Connector Group is applied or overridden.
      */
     overrideVersionProfile?: pulumi.Input<boolean>;
     serviceEdges?: pulumi.Input<pulumi.Input<inputs.ServiceEdgeGroupServiceEdge>[]>;
     /**
-     * Trusted networks for this Service Edge Group. List of trusted network objects
+     * List of trusted network IDs.
      */
     trustedNetworks?: pulumi.Input<pulumi.Input<inputs.ServiceEdgeGroupTrustedNetwork>[]>;
     /**
-     * Service Edges in this group will attempt to update to a newer version of the software during this specified day. Default value: `SUNDAY` List of valid days (i.e., Sunday, Monday)
+     * Service Edges in this group will attempt to update to a newer version of the software during this specified day.
      */
     upgradeDay?: pulumi.Input<string>;
     /**
-     * Service Edges in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600` Integer in seconds (i..e, 66600). The integer must be greater than or equal to 0 and less than `86400`, in `15` minute intervals
+     * Service Edges in this group will attempt to update to a newer version of the software during this specified time.
      */
     upgradeTimeInSecs?: pulumi.Input<string>;
     /**
-     * ID of the version profile. To learn more, see Version Profile Use Cases. Supported values are:
+     * ID of the version profile.
      */
     versionProfileId?: pulumi.Input<string>;
     /**
@@ -321,28 +302,22 @@ export interface ServiceEdgeGroupState {
  * The set of arguments for constructing a ServiceEdgeGroup resource.
  */
 export interface ServiceEdgeGroupArgs {
-    /**
-     * This field controls dynamic discovery of the servers.
-     */
     cityCountry?: pulumi.Input<string>;
-    /**
-     * This field is an array of app-connector-id only.
-     */
     countryCode?: pulumi.Input<string>;
     /**
      * Description of the Service Edge Group.
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether this Service Edge Group is enabled or not. Default value: `true` Supported values: `true`, `false`
+     * Whether this Service Edge Group is enabled or not.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Enable or disable public access for the Service Edge Group. Default value: `false` Supported values: `true`, `false`
+     * Enable or disable public access for the Service Edge Group.
      */
     isPublic?: pulumi.Input<boolean>;
     /**
-     * Latitude for the Service Edge Group. Integer or decimal with values in the range of `-90` to `90`
+     * Latitude for the Service Edge Group.
      */
     latitude: pulumi.Input<string>;
     /**
@@ -350,38 +325,33 @@ export interface ServiceEdgeGroupArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * Longitude for the Service Edge Group. Integer or decimal with values in the range of `-180` to `180`
+     * Longitude for the Service Edge Group.
      */
     longitude: pulumi.Input<string>;
-    /**
-     * The ID of the microtenant the resource is to be associated with.
-     *
-     * ⚠️ **WARNING:**: The attribute ``microtenantId`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-     */
     microtenantId?: pulumi.Input<string>;
     /**
      * Name of the Service Edge Group.
      */
     name?: pulumi.Input<string>;
     /**
-     * Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
+     * Whether the default version profile of the App Connector Group is applied or overridden.
      */
     overrideVersionProfile?: pulumi.Input<boolean>;
     serviceEdges?: pulumi.Input<pulumi.Input<inputs.ServiceEdgeGroupServiceEdge>[]>;
     /**
-     * Trusted networks for this Service Edge Group. List of trusted network objects
+     * List of trusted network IDs.
      */
     trustedNetworks?: pulumi.Input<pulumi.Input<inputs.ServiceEdgeGroupTrustedNetwork>[]>;
     /**
-     * Service Edges in this group will attempt to update to a newer version of the software during this specified day. Default value: `SUNDAY` List of valid days (i.e., Sunday, Monday)
+     * Service Edges in this group will attempt to update to a newer version of the software during this specified day.
      */
     upgradeDay?: pulumi.Input<string>;
     /**
-     * Service Edges in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600` Integer in seconds (i..e, 66600). The integer must be greater than or equal to 0 and less than `86400`, in `15` minute intervals
+     * Service Edges in this group will attempt to update to a newer version of the software during this specified time.
      */
     upgradeTimeInSecs?: pulumi.Input<string>;
     /**
-     * ID of the version profile. To learn more, see Version Profile Use Cases. Supported values are:
+     * ID of the version profile.
      */
     versionProfileId?: pulumi.Input<string>;
     /**

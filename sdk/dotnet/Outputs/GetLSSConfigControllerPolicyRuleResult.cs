@@ -18,30 +18,15 @@ namespace Zscaler.Zpa.Outputs
         public readonly string ActionId;
         public readonly bool BypassDefaultRule;
         public readonly ImmutableArray<Outputs.GetLSSConfigControllerPolicyRuleConditionResult> Conditions;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
         public readonly string CustomMsg;
         public readonly bool DefaultRule;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// This field defines the name of the log streaming resource.
-        /// </summary>
         public readonly string Id;
         public readonly bool IsolationDefaultRule;
         public readonly bool LssDefaultRule;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
-        /// <summary>
-        /// This field defines the name of the log streaming resource.
-        /// </summary>
         public readonly string Name;
         public readonly string Operator;
         public readonly string PolicySetId;

@@ -14,9 +14,6 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class PolicyAccessRuleAppConnectorGroup
     {
-        /// <summary>
-        /// (Optional) The ID of a server group resource
-        /// </summary>
         public readonly ImmutableArray<string> Ids;
 
         [OutputConstructor]

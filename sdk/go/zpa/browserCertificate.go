@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-web-server-certificates)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-certificates-using-api)
+//
 // Use the **zpa_ba_certificate** creates a browser access certificate with a private key in the Zscaler Private Access cloud. This resource is required when creating a browser access application segment resource.
 //
 // ## Example Usage
@@ -77,18 +79,36 @@ import (
 //
 // ```
 // <!--End PulumiCodeChooser -->
+//
+// ## Let's Encrypt Certbot
+//
+// This example demonstrates generatoring a domain certificate with letsencrypt
+// certbot https://letsencrypt.org/getting-started/
+//
+// Use letsencrypt's certbot to generate domain certificates in RSA output mode.
+// The generator's output corresponds to `BrowserCertificate` fields in the
+// following manner.
+//
+// Zscaler Field          | Certbot file
+// --------------------|--------------
+// `certblob`          | `cert.pem`
+// `certblob`          | `privkey.pem`
+//
+// ## Import
+//
+// This resource does not support importing.
 type BrowserCertificate struct {
 	pulumi.CustomResourceState
 
-	// The content of the certificate in PEM format.
-	CertBlob pulumi.StringOutput `pulumi:"certBlob"`
+	// The description of the certificate
+	CertBlob pulumi.StringPtrOutput `pulumi:"certBlob"`
 	// The certificate text in PEM format
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
-	// (string) - The description of the certificate.
+	// The description of the certificate
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The unique identifier of the Microtenant
 	MicrotenantId pulumi.StringOutput `pulumi:"microtenantId"`
-	// The name of the browser access certificate to be created.
+	// The name of the certificate.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -96,12 +116,9 @@ type BrowserCertificate struct {
 func NewBrowserCertificate(ctx *pulumi.Context,
 	name string, args *BrowserCertificateArgs, opts ...pulumi.ResourceOption) (*BrowserCertificate, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &BrowserCertificateArgs{}
 	}
 
-	if args.CertBlob == nil {
-		return nil, errors.New("invalid value for required argument 'CertBlob'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BrowserCertificate
 	err := ctx.RegisterResource("zpa:index/browserCertificate:BrowserCertificate", name, args, &resource, opts...)
@@ -125,28 +142,28 @@ func GetBrowserCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BrowserCertificate resources.
 type browserCertificateState struct {
-	// The content of the certificate in PEM format.
+	// The description of the certificate
 	CertBlob *string `pulumi:"certBlob"`
 	// The certificate text in PEM format
 	Certificate *string `pulumi:"certificate"`
-	// (string) - The description of the certificate.
+	// The description of the certificate
 	Description *string `pulumi:"description"`
 	// The unique identifier of the Microtenant
 	MicrotenantId *string `pulumi:"microtenantId"`
-	// The name of the browser access certificate to be created.
+	// The name of the certificate.
 	Name *string `pulumi:"name"`
 }
 
 type BrowserCertificateState struct {
-	// The content of the certificate in PEM format.
+	// The description of the certificate
 	CertBlob pulumi.StringPtrInput
 	// The certificate text in PEM format
 	Certificate pulumi.StringPtrInput
-	// (string) - The description of the certificate.
+	// The description of the certificate
 	Description pulumi.StringPtrInput
 	// The unique identifier of the Microtenant
 	MicrotenantId pulumi.StringPtrInput
-	// The name of the browser access certificate to be created.
+	// The name of the certificate.
 	Name pulumi.StringPtrInput
 }
 
@@ -155,25 +172,25 @@ func (BrowserCertificateState) ElementType() reflect.Type {
 }
 
 type browserCertificateArgs struct {
-	// The content of the certificate in PEM format.
-	CertBlob string `pulumi:"certBlob"`
-	// (string) - The description of the certificate.
+	// The description of the certificate
+	CertBlob *string `pulumi:"certBlob"`
+	// The description of the certificate
 	Description *string `pulumi:"description"`
 	// The unique identifier of the Microtenant
 	MicrotenantId *string `pulumi:"microtenantId"`
-	// The name of the browser access certificate to be created.
+	// The name of the certificate.
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a BrowserCertificate resource.
 type BrowserCertificateArgs struct {
-	// The content of the certificate in PEM format.
-	CertBlob pulumi.StringInput
-	// (string) - The description of the certificate.
+	// The description of the certificate
+	CertBlob pulumi.StringPtrInput
+	// The description of the certificate
 	Description pulumi.StringPtrInput
 	// The unique identifier of the Microtenant
 	MicrotenantId pulumi.StringPtrInput
-	// The name of the browser access certificate to be created.
+	// The name of the certificate.
 	Name pulumi.StringPtrInput
 }
 
@@ -264,9 +281,9 @@ func (o BrowserCertificateOutput) ToBrowserCertificateOutputWithContext(ctx cont
 	return o
 }
 
-// The content of the certificate in PEM format.
-func (o BrowserCertificateOutput) CertBlob() pulumi.StringOutput {
-	return o.ApplyT(func(v *BrowserCertificate) pulumi.StringOutput { return v.CertBlob }).(pulumi.StringOutput)
+// The description of the certificate
+func (o BrowserCertificateOutput) CertBlob() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BrowserCertificate) pulumi.StringPtrOutput { return v.CertBlob }).(pulumi.StringPtrOutput)
 }
 
 // The certificate text in PEM format
@@ -274,7 +291,7 @@ func (o BrowserCertificateOutput) Certificate() pulumi.StringOutput {
 	return o.ApplyT(func(v *BrowserCertificate) pulumi.StringOutput { return v.Certificate }).(pulumi.StringOutput)
 }
 
-// (string) - The description of the certificate.
+// The description of the certificate
 func (o BrowserCertificateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrowserCertificate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -284,7 +301,7 @@ func (o BrowserCertificateOutput) MicrotenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BrowserCertificate) pulumi.StringOutput { return v.MicrotenantId }).(pulumi.StringOutput)
 }
 
-// The name of the browser access certificate to be created.
+// The name of the certificate.
 func (o BrowserCertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BrowserCertificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

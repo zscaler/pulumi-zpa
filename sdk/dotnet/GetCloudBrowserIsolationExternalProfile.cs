@@ -13,6 +13,8 @@ namespace Zscaler.Zpa
     public static class GetCloudBrowserIsolationExternalProfile
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
+        /// 
         /// Use the **zpa_cloud_browser_isolation_external_profile** data source to get information about Cloud Browser Isolation external profile. This data source information can then be used in as part of `zpa.PolicyAccessIsolationRule` when the `action` attribute is set to `ISOLATE`.
         /// 
         /// ## Example Usage
@@ -39,6 +41,8 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCloudBrowserIsolationExternalProfileResult>("zpa:index/getCloudBrowserIsolationExternalProfile:getCloudBrowserIsolationExternalProfile", args ?? new GetCloudBrowserIsolationExternalProfileArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
+        /// 
         /// Use the **zpa_cloud_browser_isolation_external_profile** data source to get information about Cloud Browser Isolation external profile. This data source information can then be used in as part of `zpa.PolicyAccessIsolationRule` when the `action` attribute is set to `ISOLATE`.
         /// 
         /// ## Example Usage
@@ -71,9 +75,6 @@ namespace Zscaler.Zpa
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// The name of the CBI banner to be exported.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -88,9 +89,6 @@ namespace Zscaler.Zpa
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// The name of the CBI banner to be exported.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -104,41 +102,13 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetCloudBrowserIsolationExternalProfileResult
     {
-        /// <summary>
-        /// (string) - The description of the CBI profile
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Href;
         public readonly string? Id;
-        /// <summary>
-        /// (bool) - Indicates if the CBI profile is the default one.
-        /// </summary>
         public readonly bool IsDefault;
         public readonly string? Name;
-        /// <summary>
-        /// (string) List of regions where multi-region deployment is enabled
-        /// * `id:` - (string) Region ID where the profile is applied to
-        /// * `name:` - (string) Region name where the profile is applied to
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetCloudBrowserIsolationExternalProfileRegionResult> Regions;
-        /// <summary>
-        /// The CBI security controls enabled for the profile
-        /// * `copy_paste:` - (string) Enable or disable copy &amp; paste for local computer to isolation
-        /// * `document_viewer:` - (bool) Enable or disable to view Microsoft Office files in isolation.
-        /// * `local_render:` - (bool) Enables non-isolated hyperlinks to be opened on the user's native browser.
-        /// * `upload_download:` - (string) Enable or disable file transfer from local computer to isolation
-        /// * `allow_printing:` - (bool) Enables the user to print web pages and documents rendered within the isolation browser.
-        /// * `restrict_keystrokes:` - (bool) Prevents keyboard and text input to isolated web pages.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetCloudBrowserIsolationExternalProfileSecurityControlResult> SecurityControls;
-        /// <summary>
-        /// The CBI security controls enabled for the profile
-        /// * `session_persistence:` - (bool) Save user cookies between sessions. If disabled, all cookies will be discarded when isolation session ends.
-        /// * `browser_in_browser:` - (bool) Enable or disable browser-in-browser or native browser experience
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetCloudBrowserIsolationExternalProfileUserExperienceResult> UserExperiences;
 
         [OutputConstructor]

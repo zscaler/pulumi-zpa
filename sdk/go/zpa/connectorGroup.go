@@ -73,52 +73,51 @@ import (
 type ConnectorGroup struct {
 	pulumi.CustomResourceState
 
-	// Whether Double Encryption is enabled or disabled for the app. i.e ``"San Jose, US"``
 	CityCountry pulumi.StringOutput `pulumi:"cityCountry"`
-	// i.e ``"US"``, ``"CA"``
 	CountryCode pulumi.StringOutput `pulumi:"countryCode"`
-	// Description of the App Connector Group.
+	// Description of the App Connector Group
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Supported values are:
+	// Whether to enable IPv4 or IPv6, or both, for DNS resolution of all applications in the App Connector Group
 	DnsQueryType pulumi.StringPtrOutput `pulumi:"dnsQueryType"`
-	// Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
+	// Whether this App Connector Group is enabled or not
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// Latitude of the App Connector Group. Integer or decimal. With values in the range of `-90` to `90`
+	// Latitude of the App Connector Group. Integer or decimal. With values in the range of -90 to 90
 	Latitude pulumi.StringOutput `pulumi:"latitude"`
-	// Location of the App Connector Group. i.e ``"San Jose, CA, USA"``
+	// Location of the App Connector Group
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Longitude of the App Connector Group. Integer or decimal. With values in the range of `-180` to `180`
+	// Longitude of the App Connector Group. Integer or decimal. With values in the range of -180 to 180
 	Longitude            pulumi.StringOutput `pulumi:"longitude"`
 	LssAppConnectorGroup pulumi.BoolOutput   `pulumi:"lssAppConnectorGroup"`
-	// The ID of the microtenant the resource is to be associated with.
-	//
-	// ⚠️ **WARNING:**: The attribute ``microtenantId`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-	MicrotenantId pulumi.StringOutput `pulumi:"microtenantId"`
-	// Name of the App Connector Group.
+	MicrotenantId        pulumi.StringOutput `pulumi:"microtenantId"`
+	// Name of the App Connector Group
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
+	// Whether the default version profile of the App Connector Group is applied or overridden. Supported values: true, false
 	OverrideVersionProfile pulumi.BoolOutput `pulumi:"overrideVersionProfile"`
-	// Supported values: `true`, `false`
-	PraEnabled pulumi.BoolOutput `pulumi:"praEnabled"`
-	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+	PraEnabled             pulumi.BoolOutput `pulumi:"praEnabled"`
+	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+	// and tcpQuickAckReadAssistant fields must all share the same value.
 	TcpQuickAckApp pulumi.BoolOutput `pulumi:"tcpQuickAckApp"`
-	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+	// and tcpQuickAckReadAssistant fields must all share the same value.
 	TcpQuickAckAssistant pulumi.BoolOutput `pulumi:"tcpQuickAckAssistant"`
-	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+	// and tcpQuickAckReadAssistant fields must all share the same value.
 	TcpQuickAckReadAssistant pulumi.BoolOutput `pulumi:"tcpQuickAckReadAssistant"`
-	// App Connectors in this group will attempt to update to a newer version of the software during this specified day i.e ``SUNDAY``
+	// App Connectors in this group will attempt to update to a newer version of the software during this specified day. List
+	// of valid days (i.e., Sunday, Monday)
 	UpgradeDay pulumi.StringPtrOutput `pulumi:"upgradeDay"`
-	// App Connectors in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600`. Integer in seconds (i.e., `-66600`). The integer should be greater than or equal to `0` and less than `86400`, in `15` minute intervals
+	// App Connectors in this group will attempt to update to a newer version of the software during this specified time.
+	// Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute
+	// intervals
 	UpgradeTimeInSecs pulumi.StringPtrOutput `pulumi:"upgradeTimeInSecs"`
-	// Supported values: `true`, `false`
-	UseInDrMode pulumi.BoolOutput `pulumi:"useInDrMode"`
-	// ID of the version profile. To learn more, see Version Profile Use Cases. Supported values are:
+	UseInDrMode       pulumi.BoolOutput      `pulumi:"useInDrMode"`
+	// ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
+	// overrideVersionProfile is set to true
 	VersionProfileId pulumi.StringOutput `pulumi:"versionProfileId"`
 	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
 	// overrideVersionProfile is set to true
 	VersionProfileName pulumi.StringOutput `pulumi:"versionProfileName"`
-	// Supported values: `true`, `false`
-	WafDisabled pulumi.BoolOutput `pulumi:"wafDisabled"`
+	WafDisabled        pulumi.BoolOutput   `pulumi:"wafDisabled"`
 }
 
 // NewConnectorGroup registers a new resource with the given unique name, arguments, and options.
@@ -160,101 +159,99 @@ func GetConnectorGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConnectorGroup resources.
 type connectorGroupState struct {
-	// Whether Double Encryption is enabled or disabled for the app. i.e ``"San Jose, US"``
 	CityCountry *string `pulumi:"cityCountry"`
-	// i.e ``"US"``, ``"CA"``
 	CountryCode *string `pulumi:"countryCode"`
-	// Description of the App Connector Group.
+	// Description of the App Connector Group
 	Description *string `pulumi:"description"`
-	// Supported values are:
+	// Whether to enable IPv4 or IPv6, or both, for DNS resolution of all applications in the App Connector Group
 	DnsQueryType *string `pulumi:"dnsQueryType"`
-	// Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
+	// Whether this App Connector Group is enabled or not
 	Enabled *bool `pulumi:"enabled"`
-	// Latitude of the App Connector Group. Integer or decimal. With values in the range of `-90` to `90`
+	// Latitude of the App Connector Group. Integer or decimal. With values in the range of -90 to 90
 	Latitude *string `pulumi:"latitude"`
-	// Location of the App Connector Group. i.e ``"San Jose, CA, USA"``
+	// Location of the App Connector Group
 	Location *string `pulumi:"location"`
-	// Longitude of the App Connector Group. Integer or decimal. With values in the range of `-180` to `180`
+	// Longitude of the App Connector Group. Integer or decimal. With values in the range of -180 to 180
 	Longitude            *string `pulumi:"longitude"`
 	LssAppConnectorGroup *bool   `pulumi:"lssAppConnectorGroup"`
-	// The ID of the microtenant the resource is to be associated with.
-	//
-	// ⚠️ **WARNING:**: The attribute ``microtenantId`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// Name of the App Connector Group.
+	MicrotenantId        *string `pulumi:"microtenantId"`
+	// Name of the App Connector Group
 	Name *string `pulumi:"name"`
-	// Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
+	// Whether the default version profile of the App Connector Group is applied or overridden. Supported values: true, false
 	OverrideVersionProfile *bool `pulumi:"overrideVersionProfile"`
-	// Supported values: `true`, `false`
-	PraEnabled *bool `pulumi:"praEnabled"`
-	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+	PraEnabled             *bool `pulumi:"praEnabled"`
+	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+	// and tcpQuickAckReadAssistant fields must all share the same value.
 	TcpQuickAckApp *bool `pulumi:"tcpQuickAckApp"`
-	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+	// and tcpQuickAckReadAssistant fields must all share the same value.
 	TcpQuickAckAssistant *bool `pulumi:"tcpQuickAckAssistant"`
-	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+	// and tcpQuickAckReadAssistant fields must all share the same value.
 	TcpQuickAckReadAssistant *bool `pulumi:"tcpQuickAckReadAssistant"`
-	// App Connectors in this group will attempt to update to a newer version of the software during this specified day i.e ``SUNDAY``
+	// App Connectors in this group will attempt to update to a newer version of the software during this specified day. List
+	// of valid days (i.e., Sunday, Monday)
 	UpgradeDay *string `pulumi:"upgradeDay"`
-	// App Connectors in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600`. Integer in seconds (i.e., `-66600`). The integer should be greater than or equal to `0` and less than `86400`, in `15` minute intervals
+	// App Connectors in this group will attempt to update to a newer version of the software during this specified time.
+	// Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute
+	// intervals
 	UpgradeTimeInSecs *string `pulumi:"upgradeTimeInSecs"`
-	// Supported values: `true`, `false`
-	UseInDrMode *bool `pulumi:"useInDrMode"`
-	// ID of the version profile. To learn more, see Version Profile Use Cases. Supported values are:
+	UseInDrMode       *bool   `pulumi:"useInDrMode"`
+	// ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
+	// overrideVersionProfile is set to true
 	VersionProfileId *string `pulumi:"versionProfileId"`
 	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
 	// overrideVersionProfile is set to true
 	VersionProfileName *string `pulumi:"versionProfileName"`
-	// Supported values: `true`, `false`
-	WafDisabled *bool `pulumi:"wafDisabled"`
+	WafDisabled        *bool   `pulumi:"wafDisabled"`
 }
 
 type ConnectorGroupState struct {
-	// Whether Double Encryption is enabled or disabled for the app. i.e ``"San Jose, US"``
 	CityCountry pulumi.StringPtrInput
-	// i.e ``"US"``, ``"CA"``
 	CountryCode pulumi.StringPtrInput
-	// Description of the App Connector Group.
+	// Description of the App Connector Group
 	Description pulumi.StringPtrInput
-	// Supported values are:
+	// Whether to enable IPv4 or IPv6, or both, for DNS resolution of all applications in the App Connector Group
 	DnsQueryType pulumi.StringPtrInput
-	// Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
+	// Whether this App Connector Group is enabled or not
 	Enabled pulumi.BoolPtrInput
-	// Latitude of the App Connector Group. Integer or decimal. With values in the range of `-90` to `90`
+	// Latitude of the App Connector Group. Integer or decimal. With values in the range of -90 to 90
 	Latitude pulumi.StringPtrInput
-	// Location of the App Connector Group. i.e ``"San Jose, CA, USA"``
+	// Location of the App Connector Group
 	Location pulumi.StringPtrInput
-	// Longitude of the App Connector Group. Integer or decimal. With values in the range of `-180` to `180`
+	// Longitude of the App Connector Group. Integer or decimal. With values in the range of -180 to 180
 	Longitude            pulumi.StringPtrInput
 	LssAppConnectorGroup pulumi.BoolPtrInput
-	// The ID of the microtenant the resource is to be associated with.
-	//
-	// ⚠️ **WARNING:**: The attribute ``microtenantId`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-	MicrotenantId pulumi.StringPtrInput
-	// Name of the App Connector Group.
+	MicrotenantId        pulumi.StringPtrInput
+	// Name of the App Connector Group
 	Name pulumi.StringPtrInput
-	// Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
+	// Whether the default version profile of the App Connector Group is applied or overridden. Supported values: true, false
 	OverrideVersionProfile pulumi.BoolPtrInput
-	// Supported values: `true`, `false`
-	PraEnabled pulumi.BoolPtrInput
-	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+	PraEnabled             pulumi.BoolPtrInput
+	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+	// and tcpQuickAckReadAssistant fields must all share the same value.
 	TcpQuickAckApp pulumi.BoolPtrInput
-	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+	// and tcpQuickAckReadAssistant fields must all share the same value.
 	TcpQuickAckAssistant pulumi.BoolPtrInput
-	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+	// and tcpQuickAckReadAssistant fields must all share the same value.
 	TcpQuickAckReadAssistant pulumi.BoolPtrInput
-	// App Connectors in this group will attempt to update to a newer version of the software during this specified day i.e ``SUNDAY``
+	// App Connectors in this group will attempt to update to a newer version of the software during this specified day. List
+	// of valid days (i.e., Sunday, Monday)
 	UpgradeDay pulumi.StringPtrInput
-	// App Connectors in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600`. Integer in seconds (i.e., `-66600`). The integer should be greater than or equal to `0` and less than `86400`, in `15` minute intervals
+	// App Connectors in this group will attempt to update to a newer version of the software during this specified time.
+	// Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute
+	// intervals
 	UpgradeTimeInSecs pulumi.StringPtrInput
-	// Supported values: `true`, `false`
-	UseInDrMode pulumi.BoolPtrInput
-	// ID of the version profile. To learn more, see Version Profile Use Cases. Supported values are:
+	UseInDrMode       pulumi.BoolPtrInput
+	// ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
+	// overrideVersionProfile is set to true
 	VersionProfileId pulumi.StringPtrInput
 	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
 	// overrideVersionProfile is set to true
 	VersionProfileName pulumi.StringPtrInput
-	// Supported values: `true`, `false`
-	WafDisabled pulumi.BoolPtrInput
+	WafDisabled        pulumi.BoolPtrInput
 }
 
 func (ConnectorGroupState) ElementType() reflect.Type {
@@ -262,102 +259,100 @@ func (ConnectorGroupState) ElementType() reflect.Type {
 }
 
 type connectorGroupArgs struct {
-	// Whether Double Encryption is enabled or disabled for the app. i.e ``"San Jose, US"``
 	CityCountry *string `pulumi:"cityCountry"`
-	// i.e ``"US"``, ``"CA"``
 	CountryCode *string `pulumi:"countryCode"`
-	// Description of the App Connector Group.
+	// Description of the App Connector Group
 	Description *string `pulumi:"description"`
-	// Supported values are:
+	// Whether to enable IPv4 or IPv6, or both, for DNS resolution of all applications in the App Connector Group
 	DnsQueryType *string `pulumi:"dnsQueryType"`
-	// Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
+	// Whether this App Connector Group is enabled or not
 	Enabled *bool `pulumi:"enabled"`
-	// Latitude of the App Connector Group. Integer or decimal. With values in the range of `-90` to `90`
+	// Latitude of the App Connector Group. Integer or decimal. With values in the range of -90 to 90
 	Latitude string `pulumi:"latitude"`
-	// Location of the App Connector Group. i.e ``"San Jose, CA, USA"``
+	// Location of the App Connector Group
 	Location string `pulumi:"location"`
-	// Longitude of the App Connector Group. Integer or decimal. With values in the range of `-180` to `180`
-	Longitude            string `pulumi:"longitude"`
-	LssAppConnectorGroup *bool  `pulumi:"lssAppConnectorGroup"`
-	// The ID of the microtenant the resource is to be associated with.
-	//
-	// ⚠️ **WARNING:**: The attribute ``microtenantId`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// Name of the App Connector Group.
+	// Longitude of the App Connector Group. Integer or decimal. With values in the range of -180 to 180
+	Longitude            string  `pulumi:"longitude"`
+	LssAppConnectorGroup *bool   `pulumi:"lssAppConnectorGroup"`
+	MicrotenantId        *string `pulumi:"microtenantId"`
+	// Name of the App Connector Group
 	Name *string `pulumi:"name"`
-	// Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
+	// Whether the default version profile of the App Connector Group is applied or overridden. Supported values: true, false
 	OverrideVersionProfile *bool `pulumi:"overrideVersionProfile"`
-	// Supported values: `true`, `false`
-	PraEnabled *bool `pulumi:"praEnabled"`
-	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+	PraEnabled             *bool `pulumi:"praEnabled"`
+	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+	// and tcpQuickAckReadAssistant fields must all share the same value.
 	TcpQuickAckApp *bool `pulumi:"tcpQuickAckApp"`
-	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+	// and tcpQuickAckReadAssistant fields must all share the same value.
 	TcpQuickAckAssistant *bool `pulumi:"tcpQuickAckAssistant"`
-	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+	// and tcpQuickAckReadAssistant fields must all share the same value.
 	TcpQuickAckReadAssistant *bool `pulumi:"tcpQuickAckReadAssistant"`
-	// App Connectors in this group will attempt to update to a newer version of the software during this specified day i.e ``SUNDAY``
+	// App Connectors in this group will attempt to update to a newer version of the software during this specified day. List
+	// of valid days (i.e., Sunday, Monday)
 	UpgradeDay *string `pulumi:"upgradeDay"`
-	// App Connectors in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600`. Integer in seconds (i.e., `-66600`). The integer should be greater than or equal to `0` and less than `86400`, in `15` minute intervals
+	// App Connectors in this group will attempt to update to a newer version of the software during this specified time.
+	// Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute
+	// intervals
 	UpgradeTimeInSecs *string `pulumi:"upgradeTimeInSecs"`
-	// Supported values: `true`, `false`
-	UseInDrMode *bool `pulumi:"useInDrMode"`
-	// ID of the version profile. To learn more, see Version Profile Use Cases. Supported values are:
+	UseInDrMode       *bool   `pulumi:"useInDrMode"`
+	// ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
+	// overrideVersionProfile is set to true
 	VersionProfileId *string `pulumi:"versionProfileId"`
 	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
 	// overrideVersionProfile is set to true
 	VersionProfileName *string `pulumi:"versionProfileName"`
-	// Supported values: `true`, `false`
-	WafDisabled *bool `pulumi:"wafDisabled"`
+	WafDisabled        *bool   `pulumi:"wafDisabled"`
 }
 
 // The set of arguments for constructing a ConnectorGroup resource.
 type ConnectorGroupArgs struct {
-	// Whether Double Encryption is enabled or disabled for the app. i.e ``"San Jose, US"``
 	CityCountry pulumi.StringPtrInput
-	// i.e ``"US"``, ``"CA"``
 	CountryCode pulumi.StringPtrInput
-	// Description of the App Connector Group.
+	// Description of the App Connector Group
 	Description pulumi.StringPtrInput
-	// Supported values are:
+	// Whether to enable IPv4 or IPv6, or both, for DNS resolution of all applications in the App Connector Group
 	DnsQueryType pulumi.StringPtrInput
-	// Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
+	// Whether this App Connector Group is enabled or not
 	Enabled pulumi.BoolPtrInput
-	// Latitude of the App Connector Group. Integer or decimal. With values in the range of `-90` to `90`
+	// Latitude of the App Connector Group. Integer or decimal. With values in the range of -90 to 90
 	Latitude pulumi.StringInput
-	// Location of the App Connector Group. i.e ``"San Jose, CA, USA"``
+	// Location of the App Connector Group
 	Location pulumi.StringInput
-	// Longitude of the App Connector Group. Integer or decimal. With values in the range of `-180` to `180`
+	// Longitude of the App Connector Group. Integer or decimal. With values in the range of -180 to 180
 	Longitude            pulumi.StringInput
 	LssAppConnectorGroup pulumi.BoolPtrInput
-	// The ID of the microtenant the resource is to be associated with.
-	//
-	// ⚠️ **WARNING:**: The attribute ``microtenantId`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-	MicrotenantId pulumi.StringPtrInput
-	// Name of the App Connector Group.
+	MicrotenantId        pulumi.StringPtrInput
+	// Name of the App Connector Group
 	Name pulumi.StringPtrInput
-	// Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
+	// Whether the default version profile of the App Connector Group is applied or overridden. Supported values: true, false
 	OverrideVersionProfile pulumi.BoolPtrInput
-	// Supported values: `true`, `false`
-	PraEnabled pulumi.BoolPtrInput
-	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+	PraEnabled             pulumi.BoolPtrInput
+	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+	// and tcpQuickAckReadAssistant fields must all share the same value.
 	TcpQuickAckApp pulumi.BoolPtrInput
-	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+	// and tcpQuickAckReadAssistant fields must all share the same value.
 	TcpQuickAckAssistant pulumi.BoolPtrInput
-	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+	// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+	// and tcpQuickAckReadAssistant fields must all share the same value.
 	TcpQuickAckReadAssistant pulumi.BoolPtrInput
-	// App Connectors in this group will attempt to update to a newer version of the software during this specified day i.e ``SUNDAY``
+	// App Connectors in this group will attempt to update to a newer version of the software during this specified day. List
+	// of valid days (i.e., Sunday, Monday)
 	UpgradeDay pulumi.StringPtrInput
-	// App Connectors in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600`. Integer in seconds (i.e., `-66600`). The integer should be greater than or equal to `0` and less than `86400`, in `15` minute intervals
+	// App Connectors in this group will attempt to update to a newer version of the software during this specified time.
+	// Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute
+	// intervals
 	UpgradeTimeInSecs pulumi.StringPtrInput
-	// Supported values: `true`, `false`
-	UseInDrMode pulumi.BoolPtrInput
-	// ID of the version profile. To learn more, see Version Profile Use Cases. Supported values are:
+	UseInDrMode       pulumi.BoolPtrInput
+	// ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
+	// overrideVersionProfile is set to true
 	VersionProfileId pulumi.StringPtrInput
 	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
 	// overrideVersionProfile is set to true
 	VersionProfileName pulumi.StringPtrInput
-	// Supported values: `true`, `false`
-	WafDisabled pulumi.BoolPtrInput
+	WafDisabled        pulumi.BoolPtrInput
 }
 
 func (ConnectorGroupArgs) ElementType() reflect.Type {
@@ -447,42 +442,40 @@ func (o ConnectorGroupOutput) ToConnectorGroupOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Whether Double Encryption is enabled or disabled for the app. i.e “"San Jose, US"“
 func (o ConnectorGroupOutput) CityCountry() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.StringOutput { return v.CityCountry }).(pulumi.StringOutput)
 }
 
-// i.e “"US"“, “"CA"“
 func (o ConnectorGroupOutput) CountryCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.StringOutput { return v.CountryCode }).(pulumi.StringOutput)
 }
 
-// Description of the App Connector Group.
+// Description of the App Connector Group
 func (o ConnectorGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Supported values are:
+// Whether to enable IPv4 or IPv6, or both, for DNS resolution of all applications in the App Connector Group
 func (o ConnectorGroupOutput) DnsQueryType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.StringPtrOutput { return v.DnsQueryType }).(pulumi.StringPtrOutput)
 }
 
-// Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
+// Whether this App Connector Group is enabled or not
 func (o ConnectorGroupOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Latitude of the App Connector Group. Integer or decimal. With values in the range of `-90` to `90`
+// Latitude of the App Connector Group. Integer or decimal. With values in the range of -90 to 90
 func (o ConnectorGroupOutput) Latitude() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.StringOutput { return v.Latitude }).(pulumi.StringOutput)
 }
 
-// Location of the App Connector Group. i.e “"San Jose, CA, USA"“
+// Location of the App Connector Group
 func (o ConnectorGroupOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Longitude of the App Connector Group. Integer or decimal. With values in the range of `-180` to `180`
+// Longitude of the App Connector Group. Integer or decimal. With values in the range of -180 to 180
 func (o ConnectorGroupOutput) Longitude() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.StringOutput { return v.Longitude }).(pulumi.StringOutput)
 }
@@ -491,59 +484,61 @@ func (o ConnectorGroupOutput) LssAppConnectorGroup() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.BoolOutput { return v.LssAppConnectorGroup }).(pulumi.BoolOutput)
 }
 
-// The ID of the microtenant the resource is to be associated with.
-//
-// ⚠️ **WARNING:**: The attribute “microtenantId“ is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
 func (o ConnectorGroupOutput) MicrotenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.StringOutput { return v.MicrotenantId }).(pulumi.StringOutput)
 }
 
-// Name of the App Connector Group.
+// Name of the App Connector Group
 func (o ConnectorGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
+// Whether the default version profile of the App Connector Group is applied or overridden. Supported values: true, false
 func (o ConnectorGroupOutput) OverrideVersionProfile() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.BoolOutput { return v.OverrideVersionProfile }).(pulumi.BoolOutput)
 }
 
-// Supported values: `true`, `false`
 func (o ConnectorGroupOutput) PraEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.BoolOutput { return v.PraEnabled }).(pulumi.BoolOutput)
 }
 
-// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+// and tcpQuickAckReadAssistant fields must all share the same value.
 func (o ConnectorGroupOutput) TcpQuickAckApp() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.BoolOutput { return v.TcpQuickAckApp }).(pulumi.BoolOutput)
 }
 
-// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+// and tcpQuickAckReadAssistant fields must all share the same value.
 func (o ConnectorGroupOutput) TcpQuickAckAssistant() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.BoolOutput { return v.TcpQuickAckAssistant }).(pulumi.BoolOutput)
 }
 
-// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+// and tcpQuickAckReadAssistant fields must all share the same value.
 func (o ConnectorGroupOutput) TcpQuickAckReadAssistant() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.BoolOutput { return v.TcpQuickAckReadAssistant }).(pulumi.BoolOutput)
 }
 
-// App Connectors in this group will attempt to update to a newer version of the software during this specified day i.e “SUNDAY“
+// App Connectors in this group will attempt to update to a newer version of the software during this specified day. List
+// of valid days (i.e., Sunday, Monday)
 func (o ConnectorGroupOutput) UpgradeDay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.StringPtrOutput { return v.UpgradeDay }).(pulumi.StringPtrOutput)
 }
 
-// App Connectors in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600`. Integer in seconds (i.e., `-66600`). The integer should be greater than or equal to `0` and less than `86400`, in `15` minute intervals
+// App Connectors in this group will attempt to update to a newer version of the software during this specified time.
+// Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute
+// intervals
 func (o ConnectorGroupOutput) UpgradeTimeInSecs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.StringPtrOutput { return v.UpgradeTimeInSecs }).(pulumi.StringPtrOutput)
 }
 
-// Supported values: `true`, `false`
 func (o ConnectorGroupOutput) UseInDrMode() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.BoolOutput { return v.UseInDrMode }).(pulumi.BoolOutput)
 }
 
-// ID of the version profile. To learn more, see Version Profile Use Cases. Supported values are:
+// ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
+// overrideVersionProfile is set to true
 func (o ConnectorGroupOutput) VersionProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.StringOutput { return v.VersionProfileId }).(pulumi.StringOutput)
 }
@@ -554,7 +549,6 @@ func (o ConnectorGroupOutput) VersionProfileName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.StringOutput { return v.VersionProfileName }).(pulumi.StringOutput)
 }
 
-// Supported values: `true`, `false`
 func (o ConnectorGroupOutput) WafDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.BoolOutput { return v.WafDisabled }).(pulumi.BoolOutput)
 }

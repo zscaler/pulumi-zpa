@@ -17,7 +17,7 @@ namespace Zscaler.Zpa.Outputs
         public readonly bool CustomRole;
         public readonly string Id;
         /// <summary>
-        /// (Required) Name of the microtenant controller.
+        /// - (Required) Name of the microtenant controller.
         /// </summary>
         public readonly string Name;
 

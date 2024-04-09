@@ -15,25 +15,13 @@ namespace Zscaler.Zpa.Outputs
     public sealed class GetServerGroupAppConnectorGroupConnectorResult
     {
         public readonly string CreationTime;
-        /// <summary>
-        /// (string) This field is the description of the server group.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (bool) This field defines if the server group is enabled or disabled.
-        /// </summary>
         public readonly bool Enabled;
         public readonly string Fingerprint;
-        /// <summary>
-        /// The ID of the server group to be exported.
-        /// </summary>
         public readonly string Id;
         public readonly string IssuedCertId;
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
-        /// <summary>
-        /// The name of the server group to be exported.
-        /// </summary>
         public readonly string? Name;
         public readonly string UpgradeAttempt;
 

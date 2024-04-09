@@ -45,21 +45,9 @@ export function getApplicationServer(args?: GetApplicationServerArgs, opts?: pul
  * A collection of arguments for invoking getApplicationServer.
  */
 export interface GetApplicationServerArgs {
-    /**
-     * This field defines the id of the application server.
-     */
     id?: string;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: string;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     microtenantName?: string;
-    /**
-     * This field defines the name of the server.
-     */
     name?: string;
 }
 
@@ -67,32 +55,14 @@ export interface GetApplicationServerArgs {
  * A collection of values returned by getApplicationServer.
  */
 export interface GetApplicationServerResult {
-    /**
-     * (string) This field defines the domain or IP address of the server.
-     */
     readonly address: string;
-    /**
-     * (Set of String) This field defines the list of server groups IDs.
-     */
     readonly appServerGroupIds: string[];
     readonly configSpace: string;
     readonly creationTime: string;
-    /**
-     * (string) This field defines the description of the server.
-     */
     readonly description: string;
-    /**
-     * (bool) This field defines the status of the server.
-     */
     readonly enabled: boolean;
     readonly id?: string;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     readonly microtenantId?: string;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     readonly microtenantName?: string;
     readonly modifiedTime: string;
     readonly modifiedby: string;
@@ -131,20 +101,8 @@ export function getApplicationServerOutput(args?: GetApplicationServerOutputArgs
  * A collection of arguments for invoking getApplicationServer.
  */
 export interface GetApplicationServerOutputArgs {
-    /**
-     * This field defines the id of the application server.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: pulumi.Input<string>;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     microtenantName?: pulumi.Input<string>;
-    /**
-     * This field defines the name of the server.
-     */
     name?: pulumi.Input<string>;
 }

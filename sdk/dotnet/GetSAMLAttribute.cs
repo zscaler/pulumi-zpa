@@ -13,6 +13,9 @@ namespace Zscaler.Zpa
     public static class GetSAMLAttribute
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-saml-attributes)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-saml-attribute-details-using-api)
+        /// 
         /// Use the **zpa_saml_attribute** data source to get information about a SAML Attributes from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
         /// 
         /// ## Example Usage
@@ -59,6 +62,9 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSAMLAttributeResult>("zpa:index/getSAMLAttribute:getSAMLAttribute", args ?? new GetSAMLAttributeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-saml-attributes)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-saml-attribute-details-using-api)
+        /// 
         /// Use the **zpa_saml_attribute** data source to get information about a SAML Attributes from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
         /// 
         /// ## Example Usage
@@ -108,23 +114,12 @@ namespace Zscaler.Zpa
 
     public sealed class GetSAMLAttributeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the machine group to be exported.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// The name of the IdP corresponding to the SAML attribute.
-        /// 
-        /// &gt; **NOTE** When multiple Identity Providers (IdP) are onboarded in ZPA, the parameter ``idp_name`` is required in order to reture the attribute from the correct IdP.
-        /// </summary>
         [Input("idpName")]
         public string? IdpName { get; set; }
 
-        /// <summary>
-        /// The name of the saml attribute to be exported.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -136,23 +131,12 @@ namespace Zscaler.Zpa
 
     public sealed class GetSAMLAttributeInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the machine group to be exported.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// The name of the IdP corresponding to the SAML attribute.
-        /// 
-        /// &gt; **NOTE** When multiple Identity Providers (IdP) are onboarded in ZPA, the parameter ``idp_name`` is required in order to reture the attribute from the correct IdP.
-        /// </summary>
         [Input("idpName")]
         public Input<string>? IdpName { get; set; }
 
-        /// <summary>
-        /// The name of the saml attribute to be exported.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -166,32 +150,14 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetSAMLAttributeResult
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
         public readonly string Id;
-        /// <summary>
-        /// (string) The ID of the IdP corresponding to the SAML attribute.
-        /// </summary>
         public readonly string IdpId;
         public readonly string? IdpName;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string SamlName;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly bool UserAttribute;
 
         [OutputConstructor]

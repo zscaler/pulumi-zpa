@@ -15,15 +15,15 @@ namespace Zscaler.Zpa.Outputs
     public sealed class InspectionProfileCustomControl
     {
         /// <summary>
-        /// The action of the predefined control. Supported values: `PASS`, `BLOCK` and `REDIRECT`
+        /// The action of the custom control
         /// </summary>
         public readonly string? Action;
         /// <summary>
-        /// Value for the predefined controls action. This field is only required if the action is set to REDIRECT. This field is only required if the action is set to `REDIRECT`.
+        /// Denotes the action. Supports any string
         /// </summary>
         public readonly string? ActionValue;
         /// <summary>
-        /// ID of the predefined control
+        /// The unique identifier of the custom control
         /// </summary>
         public readonly string Id;
 

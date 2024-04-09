@@ -13,9 +13,6 @@ namespace Zscaler.Zpa.Inputs
 
     public sealed class LSSConfigControllerPolicyRuleResourceConditionArgs : global::Pulumi.ResourceArgs
     {
-        [Input("negated")]
-        public Input<bool>? Negated { get; set; }
-
         [Input("operands")]
         private InputList<Inputs.LSSConfigControllerPolicyRuleResourceConditionOperandArgs>? _operands;
 

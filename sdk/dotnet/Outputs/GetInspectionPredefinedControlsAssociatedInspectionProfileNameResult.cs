@@ -14,13 +14,7 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetInspectionPredefinedControlsAssociatedInspectionProfileNameResult
     {
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The name of the predefined control.
-        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

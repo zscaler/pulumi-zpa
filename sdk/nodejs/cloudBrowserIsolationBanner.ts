@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/isolation/adding-banner-theme-isolation-end-user-notification-zpa)
+ *
  * The **zpa_cloud_browser_isolation_banner** resource creates a Cloud Browser Isolation banner. This resource is required as part of the attribute `bannerId` when creating an Cloud Browser Isolation External Profile ``zpa.CloudBrowserIsolationExternalProfile``
  *
  * ## Import
@@ -53,34 +55,13 @@ export class CloudBrowserIsolationBanner extends pulumi.CustomResource {
         return obj['__pulumiType'] === CloudBrowserIsolationBanner.__pulumiType;
     }
 
-    /**
-     * (Optional) - Show Welcome Notification
-     */
     public readonly banner!: pulumi.Output<boolean>;
-    /**
-     * The Logo Image (.jpeg or .png; Maximum file size is 100KB.)
-     */
     public readonly logo!: pulumi.Output<string>;
-    /**
-     * The name of the CBI banner to be exported.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The Banner Notification Text
-     */
     public readonly notificationText!: pulumi.Output<string | undefined>;
-    /**
-     * The Banner Notification Title
-     */
     public readonly notificationTitle!: pulumi.Output<string | undefined>;
     public readonly persist!: pulumi.Output<boolean>;
-    /**
-     * The Banner Primary Color code in hexadecimal way to represent the color of the banner in RGB format
-     */
     public readonly primaryColor!: pulumi.Output<string | undefined>;
-    /**
-     * The Banner Text Color code in hexadecimal way to represent the color of the text in RGB format
-     */
     public readonly textColor!: pulumi.Output<string | undefined>;
 
     /**
@@ -124,34 +105,13 @@ export class CloudBrowserIsolationBanner extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CloudBrowserIsolationBanner resources.
  */
 export interface CloudBrowserIsolationBannerState {
-    /**
-     * (Optional) - Show Welcome Notification
-     */
     banner?: pulumi.Input<boolean>;
-    /**
-     * The Logo Image (.jpeg or .png; Maximum file size is 100KB.)
-     */
     logo?: pulumi.Input<string>;
-    /**
-     * The name of the CBI banner to be exported.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The Banner Notification Text
-     */
     notificationText?: pulumi.Input<string>;
-    /**
-     * The Banner Notification Title
-     */
     notificationTitle?: pulumi.Input<string>;
     persist?: pulumi.Input<boolean>;
-    /**
-     * The Banner Primary Color code in hexadecimal way to represent the color of the banner in RGB format
-     */
     primaryColor?: pulumi.Input<string>;
-    /**
-     * The Banner Text Color code in hexadecimal way to represent the color of the text in RGB format
-     */
     textColor?: pulumi.Input<string>;
 }
 
@@ -159,33 +119,12 @@ export interface CloudBrowserIsolationBannerState {
  * The set of arguments for constructing a CloudBrowserIsolationBanner resource.
  */
 export interface CloudBrowserIsolationBannerArgs {
-    /**
-     * (Optional) - Show Welcome Notification
-     */
     banner?: pulumi.Input<boolean>;
-    /**
-     * The Logo Image (.jpeg or .png; Maximum file size is 100KB.)
-     */
     logo?: pulumi.Input<string>;
-    /**
-     * The name of the CBI banner to be exported.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The Banner Notification Text
-     */
     notificationText?: pulumi.Input<string>;
-    /**
-     * The Banner Notification Title
-     */
     notificationTitle?: pulumi.Input<string>;
     persist?: pulumi.Input<boolean>;
-    /**
-     * The Banner Primary Color code in hexadecimal way to represent the color of the banner in RGB format
-     */
     primaryColor?: pulumi.Input<string>;
-    /**
-     * The Banner Text Color code in hexadecimal way to represent the color of the text in RGB format
-     */
     textColor?: pulumi.Input<string>;
 }

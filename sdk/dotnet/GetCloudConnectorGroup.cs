@@ -13,6 +13,9 @@ namespace Zscaler.Zpa
     public static class GetCloudConnectorGroup
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-web-server-certificates)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-cloud-connector-group-details-using-api)
+        /// 
         /// Use the **zpa_cloud_connector_group** data source to get information about a cloud connector group created from the Zscaler Private Access cloud. This data source can then be referenced within an Access Policy rule
         /// 
         /// &gt; **NOTE:** A Cloud Connector Group resource is created in the Zscaler Cloud Connector cloud and replicated to the ZPA cloud. This resource can then be referenced in a Access Policy Rule where the Object Type = `CLOUD_CONNECTOR_GROUP` is being used.
@@ -59,6 +62,9 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCloudConnectorGroupResult>("zpa:index/getCloudConnectorGroup:getCloudConnectorGroup", args ?? new GetCloudConnectorGroupArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-web-server-certificates)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-cloud-connector-group-details-using-api)
+        /// 
         /// Use the **zpa_cloud_connector_group** data source to get information about a cloud connector group created from the Zscaler Private Access cloud. This data source can then be referenced within an Access Policy rule
         /// 
         /// &gt; **NOTE:** A Cloud Connector Group resource is created in the Zscaler Cloud Connector cloud and replicated to the ZPA cloud. This resource can then be referenced in a Access Policy Rule where the Object Type = `CLOUD_CONNECTOR_GROUP` is being used.
@@ -108,15 +114,9 @@ namespace Zscaler.Zpa
 
     public sealed class GetCloudConnectorGroupArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// This field defines the id of the cloud connector group.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// This field defines the name of the cloud connector group.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -128,15 +128,9 @@ namespace Zscaler.Zpa
 
     public sealed class GetCloudConnectorGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// This field defines the id of the cloud connector group.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// This field defines the name of the cloud connector group.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -150,43 +144,16 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetCloudConnectorGroupResult
     {
-        /// <summary>
-        /// (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetCloudConnectorGroupCloudConnectorResult> CloudConnectors;
-        /// <summary>
-        /// (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (bool) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        /// </summary>
         public readonly string GeolocationId;
         public readonly string? Id;
-        /// <summary>
-        /// (string)- Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
-        /// <summary>
-        /// (string) - This field defines the name of the cloud connector group.
-        /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        /// </summary>
         public readonly string ZiaCloud;
-        /// <summary>
-        /// (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        /// </summary>
         public readonly string ZiaOrgId;
 
         [OutputConstructor]

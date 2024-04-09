@@ -60,9 +60,6 @@ class GetCustomerVersionProfileResult:
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
@@ -78,9 +75,6 @@ class GetCustomerVersionProfileResult:
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -91,17 +85,11 @@ class GetCustomerVersionProfileResult:
     @property
     @pulumi.getter(name="modifiedBy")
     def modified_by(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_by")
 
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -147,6 +135,9 @@ class AwaitableGetCustomerVersionProfileResult(GetCustomerVersionProfileResult):
 def get_customer_version_profile(name: Optional[str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCustomerVersionProfileResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-connectors)
+    * [API documentation](https://help.zscaler.com/zpa/obtaining-version-profile-details-using-api)
+
     Use the **zpa_customer_version_profile** data source to get information about all customer version profiles from the Zscaler Private Access cloud. This data source can be associated with an App Connector Group within the parameter `version_profile_id` or `version_profile_name`
 
     The customer version profile IDs are:
@@ -167,9 +158,6 @@ def get_customer_version_profile(name: Optional[str] = None,
     new_release = zpa.get_customer_version_profile(name="New Release")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str name: The name of the enrollment certificate to be exported.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -194,6 +182,9 @@ def get_customer_version_profile(name: Optional[str] = None,
 def get_customer_version_profile_output(name: Optional[pulumi.Input[str]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCustomerVersionProfileResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-connectors)
+    * [API documentation](https://help.zscaler.com/zpa/obtaining-version-profile-details-using-api)
+
     Use the **zpa_customer_version_profile** data source to get information about all customer version profiles from the Zscaler Private Access cloud. This data source can be associated with an App Connector Group within the parameter `version_profile_id` or `version_profile_name`
 
     The customer version profile IDs are:
@@ -214,8 +205,5 @@ def get_customer_version_profile_output(name: Optional[pulumi.Input[str]] = None
     new_release = zpa.get_customer_version_profile(name="New Release")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str name: The name of the enrollment certificate to be exported.
     """
     ...

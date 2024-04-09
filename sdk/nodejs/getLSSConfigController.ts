@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-log-streaming-service)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
+ *
  * Use the **zpa_lss_config_controller** data source to get information about a Log Streaming (LSS) configuration resource created in the Zscaler Private Access.
  */
 export function getLSSConfigController(args?: GetLSSConfigControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetLSSConfigControllerResult> {
@@ -23,13 +26,7 @@ export function getLSSConfigController(args?: GetLSSConfigControllerArgs, opts?:
  * A collection of arguments for invoking getLSSConfigController.
  */
 export interface GetLSSConfigControllerArgs {
-    /**
-     * (Computed)
-     */
     configs?: inputs.GetLSSConfigControllerConfig[];
-    /**
-     * This field defines the name of the log streaming resource.
-     */
     id?: string;
 }
 
@@ -37,21 +34,15 @@ export interface GetLSSConfigControllerArgs {
  * A collection of values returned by getLSSConfigController.
  */
 export interface GetLSSConfigControllerResult {
-    /**
-     * (Computed)
-     */
     readonly configs: outputs.GetLSSConfigControllerConfig[];
-    /**
-     * (Computed)
-     */
     readonly connectorGroups: outputs.GetLSSConfigControllerConnectorGroup[];
-    /**
-     * (string)
-     */
     readonly id?: string;
     readonly policyRules: outputs.GetLSSConfigControllerPolicyRule[];
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-log-streaming-service)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
+ *
  * Use the **zpa_lss_config_controller** data source to get information about a Log Streaming (LSS) configuration resource created in the Zscaler Private Access.
  */
 export function getLSSConfigControllerOutput(args?: GetLSSConfigControllerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLSSConfigControllerResult> {
@@ -62,12 +53,6 @@ export function getLSSConfigControllerOutput(args?: GetLSSConfigControllerOutput
  * A collection of arguments for invoking getLSSConfigController.
  */
 export interface GetLSSConfigControllerOutputArgs {
-    /**
-     * (Computed)
-     */
     configs?: pulumi.Input<pulumi.Input<inputs.GetLSSConfigControllerConfigArgs>[]>;
-    /**
-     * This field defines the name of the log streaming resource.
-     */
     id?: pulumi.Input<string>;
 }

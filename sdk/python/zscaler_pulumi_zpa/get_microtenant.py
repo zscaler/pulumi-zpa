@@ -71,33 +71,21 @@ class GetMicrotenantResult:
     @property
     @pulumi.getter(name="criteriaAttribute")
     def criteria_attribute(self) -> str:
-        """
-        (string) Type of authentication criteria for the microtenant
-        """
         return pulumi.get(self, "criteria_attribute")
 
     @property
     @pulumi.getter(name="criteriaAttributeValues")
     def criteria_attribute_values(self) -> Sequence[str]:
-        """
-        (string) The domain associated with the respective microtenant controller resource
-        """
         return pulumi.get(self, "criteria_attribute_values")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string) Description of the microtenant controller.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool) Whether this microtenant resource is enabled or not.
-        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -119,7 +107,7 @@ class GetMicrotenantResult:
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        (Required) Name of the microtenant controller.
+        - (Required) Name of the microtenant controller.
         """
         return pulumi.get(self, "name")
 
@@ -169,6 +157,9 @@ def get_microtenant(id: Optional[str] = None,
                     name: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMicrotenantResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-microtenants)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-microtenants-using-api)
+
     The **zpa_microtenant_controller** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source allows administrators to retrieve a specific microtenant ID, which can be passed to other supported resources via the `microtenant_id` attribute.
 
     ⚠️ **WARNING:**: This feature is in limited availability and requires additional license. To learn more, contact Zscaler Support or your local account team.
@@ -185,7 +176,7 @@ def get_microtenant(id: Optional[str] = None,
     <!--End PulumiCodeChooser -->
 
 
-    :param str name: (Required) Name of the microtenant controller.
+    :param str name: - (Required) Name of the microtenant controller.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -214,6 +205,9 @@ def get_microtenant_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                            name: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMicrotenantResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-microtenants)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-microtenants-using-api)
+
     The **zpa_microtenant_controller** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source allows administrators to retrieve a specific microtenant ID, which can be passed to other supported resources via the `microtenant_id` attribute.
 
     ⚠️ **WARNING:**: This feature is in limited availability and requires additional license. To learn more, contact Zscaler Support or your local account team.
@@ -230,6 +224,6 @@ def get_microtenant_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     <!--End PulumiCodeChooser -->
 
 
-    :param str name: (Required) Name of the microtenant controller.
+    :param str name: - (Required) Name of the microtenant controller.
     """
     ...

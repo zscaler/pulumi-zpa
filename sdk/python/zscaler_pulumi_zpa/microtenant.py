@@ -24,11 +24,9 @@ class MicrotenantArgs:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input['MicrotenantUserArgs']]]] = None):
         """
         The set of arguments for constructing a Microtenant resource.
-        :param pulumi.Input[str] criteria_attribute: (Required) Type of authentication criteria for the microtenant
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] criteria_attribute_values: (Required) The domain associated with the respective microtenant controller resource
-        :param pulumi.Input[str] description: (Optional) Description of the microtenant controller.
-        :param pulumi.Input[bool] enabled: (Optional) Whether this microtenant resource is enabled or not.
-        :param pulumi.Input[str] name: (Required) Name of the microtenant controller.
+        :param pulumi.Input[str] criteria_attribute: - (Required) Type of authentication criteria for the microtenant
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] criteria_attribute_values: - (Required) The domain associated with the respective microtenant controller resource
+        :param pulumi.Input[str] name: - (Required) Name of the microtenant controller.
         """
         if criteria_attribute is not None:
             pulumi.set(__self__, "criteria_attribute", criteria_attribute)
@@ -47,7 +45,7 @@ class MicrotenantArgs:
     @pulumi.getter(name="criteriaAttribute")
     def criteria_attribute(self) -> Optional[pulumi.Input[str]]:
         """
-        (Required) Type of authentication criteria for the microtenant
+        - (Required) Type of authentication criteria for the microtenant
         """
         return pulumi.get(self, "criteria_attribute")
 
@@ -59,7 +57,7 @@ class MicrotenantArgs:
     @pulumi.getter(name="criteriaAttributeValues")
     def criteria_attribute_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        (Required) The domain associated with the respective microtenant controller resource
+        - (Required) The domain associated with the respective microtenant controller resource
         """
         return pulumi.get(self, "criteria_attribute_values")
 
@@ -70,9 +68,6 @@ class MicrotenantArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) Description of the microtenant controller.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -82,9 +77,6 @@ class MicrotenantArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        (Optional) Whether this microtenant resource is enabled or not.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -95,7 +87,7 @@ class MicrotenantArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        (Required) Name of the microtenant controller.
+        - (Required) Name of the microtenant controller.
         """
         return pulumi.get(self, "name")
 
@@ -124,11 +116,9 @@ class _MicrotenantState:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input['MicrotenantUserArgs']]]] = None):
         """
         Input properties used for looking up and filtering Microtenant resources.
-        :param pulumi.Input[str] criteria_attribute: (Required) Type of authentication criteria for the microtenant
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] criteria_attribute_values: (Required) The domain associated with the respective microtenant controller resource
-        :param pulumi.Input[str] description: (Optional) Description of the microtenant controller.
-        :param pulumi.Input[bool] enabled: (Optional) Whether this microtenant resource is enabled or not.
-        :param pulumi.Input[str] name: (Required) Name of the microtenant controller.
+        :param pulumi.Input[str] criteria_attribute: - (Required) Type of authentication criteria for the microtenant
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] criteria_attribute_values: - (Required) The domain associated with the respective microtenant controller resource
+        :param pulumi.Input[str] name: - (Required) Name of the microtenant controller.
         """
         if criteria_attribute is not None:
             pulumi.set(__self__, "criteria_attribute", criteria_attribute)
@@ -147,7 +137,7 @@ class _MicrotenantState:
     @pulumi.getter(name="criteriaAttribute")
     def criteria_attribute(self) -> Optional[pulumi.Input[str]]:
         """
-        (Required) Type of authentication criteria for the microtenant
+        - (Required) Type of authentication criteria for the microtenant
         """
         return pulumi.get(self, "criteria_attribute")
 
@@ -159,7 +149,7 @@ class _MicrotenantState:
     @pulumi.getter(name="criteriaAttributeValues")
     def criteria_attribute_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        (Required) The domain associated with the respective microtenant controller resource
+        - (Required) The domain associated with the respective microtenant controller resource
         """
         return pulumi.get(self, "criteria_attribute_values")
 
@@ -170,9 +160,6 @@ class _MicrotenantState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) Description of the microtenant controller.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -182,9 +169,6 @@ class _MicrotenantState:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        (Optional) Whether this microtenant resource is enabled or not.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -195,7 +179,7 @@ class _MicrotenantState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        (Required) Name of the microtenant controller.
+        - (Required) Name of the microtenant controller.
         """
         return pulumi.get(self, "name")
 
@@ -226,6 +210,9 @@ class Microtenant(pulumi.CustomResource):
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MicrotenantUserArgs']]]]] = None,
                  __props__=None):
         """
+        * [Official documentation](https://help.zscaler.com/zpa/about-microtenants)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-microtenants-using-api)
+
         The **zpa_microtenant_controller** resource creates a microtenant controller in the Zscaler Private Access cloud. This resource allows organizations to delegate responsibilities of admins directly to the acquired or merged company admins so that they can manage their configurations independently
 
         ⚠️ **WARNING:**: This feature is in limited availability and requires additional license. To learn more, contact Zscaler Support or your local account team.
@@ -273,11 +260,9 @@ class Microtenant(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] criteria_attribute: (Required) Type of authentication criteria for the microtenant
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] criteria_attribute_values: (Required) The domain associated with the respective microtenant controller resource
-        :param pulumi.Input[str] description: (Optional) Description of the microtenant controller.
-        :param pulumi.Input[bool] enabled: (Optional) Whether this microtenant resource is enabled or not.
-        :param pulumi.Input[str] name: (Required) Name of the microtenant controller.
+        :param pulumi.Input[str] criteria_attribute: - (Required) Type of authentication criteria for the microtenant
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] criteria_attribute_values: - (Required) The domain associated with the respective microtenant controller resource
+        :param pulumi.Input[str] name: - (Required) Name of the microtenant controller.
         """
         ...
     @overload
@@ -286,6 +271,9 @@ class Microtenant(pulumi.CustomResource):
                  args: Optional[MicrotenantArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        * [Official documentation](https://help.zscaler.com/zpa/about-microtenants)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-microtenants-using-api)
+
         The **zpa_microtenant_controller** resource creates a microtenant controller in the Zscaler Private Access cloud. This resource allows organizations to delegate responsibilities of admins directly to the acquired or merged company admins so that they can manage their configurations independently
 
         ⚠️ **WARNING:**: This feature is in limited availability and requires additional license. To learn more, contact Zscaler Support or your local account team.
@@ -390,11 +378,9 @@ class Microtenant(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] criteria_attribute: (Required) Type of authentication criteria for the microtenant
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] criteria_attribute_values: (Required) The domain associated with the respective microtenant controller resource
-        :param pulumi.Input[str] description: (Optional) Description of the microtenant controller.
-        :param pulumi.Input[bool] enabled: (Optional) Whether this microtenant resource is enabled or not.
-        :param pulumi.Input[str] name: (Required) Name of the microtenant controller.
+        :param pulumi.Input[str] criteria_attribute: - (Required) Type of authentication criteria for the microtenant
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] criteria_attribute_values: - (Required) The domain associated with the respective microtenant controller resource
+        :param pulumi.Input[str] name: - (Required) Name of the microtenant controller.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -412,7 +398,7 @@ class Microtenant(pulumi.CustomResource):
     @pulumi.getter(name="criteriaAttribute")
     def criteria_attribute(self) -> pulumi.Output[Optional[str]]:
         """
-        (Required) Type of authentication criteria for the microtenant
+        - (Required) Type of authentication criteria for the microtenant
         """
         return pulumi.get(self, "criteria_attribute")
 
@@ -420,31 +406,25 @@ class Microtenant(pulumi.CustomResource):
     @pulumi.getter(name="criteriaAttributeValues")
     def criteria_attribute_values(self) -> pulumi.Output[Sequence[str]]:
         """
-        (Required) The domain associated with the respective microtenant controller resource
+        - (Required) The domain associated with the respective microtenant controller resource
         """
         return pulumi.get(self, "criteria_attribute_values")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        (Optional) Description of the microtenant controller.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
-        """
-        (Optional) Whether this microtenant resource is enabled or not.
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        (Required) Name of the microtenant controller.
+        - (Required) Name of the microtenant controller.
         """
         return pulumi.get(self, "name")
 

@@ -128,42 +128,37 @@ import (
 type ApplicationSegmentBrowserAccess struct {
 	pulumi.CustomResourceState
 
-	// (Optional) Indicates whether users can bypass ZPA to access applications. Default value is: `NEVER` and supported values are: `ALWAYS`, `NEVER` and `ON_NET`. The value `NEVER` indicates the use of the client forwarding policy.
+	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
+	// The value NEVER indicates the use of the client forwarding policy.
 	BypassType     pulumi.StringPtrOutput                                  `pulumi:"bypassType"`
 	ClientlessApps ApplicationSegmentBrowserAccessClientlessAppArrayOutput `pulumi:"clientlessApps"`
-	// (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `SIEM`
-	ConfigSpace pulumi.StringPtrOutput `pulumi:"configSpace"`
-	// (Optional) Description of the application.
+	ConfigSpace    pulumi.StringPtrOutput                                  `pulumi:"configSpace"`
+	// Description of the application.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// List of domains and IPs.
 	DomainNames pulumi.StringArrayOutput `pulumi:"domainNames"`
-	// (Optional) Whether Double Encryption is enabled or disabled for the app.
-	DoubleEncrypt pulumi.BoolPtrOutput `pulumi:"doubleEncrypt"`
-	// (Optional) - Whether this app is enabled or not.
-	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `NONE`
-	HealthCheckType pulumi.StringOutput `pulumi:"healthCheckType"`
-	// (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
-	HealthReporting pulumi.StringOutput    `pulumi:"healthReporting"`
+	// Whether Double Encryption is enabled or disabled for the app.
+	DoubleEncrypt   pulumi.BoolPtrOutput   `pulumi:"doubleEncrypt"`
+	Enabled         pulumi.BoolOutput      `pulumi:"enabled"`
+	HealthCheckType pulumi.StringPtrOutput `pulumi:"healthCheckType"`
+	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
+	HealthReporting pulumi.StringPtrOutput `pulumi:"healthReporting"`
 	IcmpAccessType  pulumi.StringPtrOutput `pulumi:"icmpAccessType"`
-	// (Optional) - If Source IP Anchoring for use with ZIA, is enabled or disabled for the app. Supported values are `true` and `false`
-	IpAnchored pulumi.BoolPtrOutput `pulumi:"ipAnchored"`
-	// (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
-	IsCnameEnabled pulumi.BoolPtrOutput `pulumi:"isCnameEnabled"`
-	// (Optional) Supported values: `true`, `false`
+	IpAnchored      pulumi.BoolPtrOutput   `pulumi:"ipAnchored"`
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+	// connectors.
+	IsCnameEnabled       pulumi.BoolPtrOutput `pulumi:"isCnameEnabled"`
 	IsIncompleteDrConfig pulumi.BoolPtrOutput `pulumi:"isIncompleteDrConfig"`
-	// Name of BA app.
-	Name                 pulumi.StringOutput `pulumi:"name"`
-	PassiveHealthEnabled pulumi.BoolOutput   `pulumi:"passiveHealthEnabled"`
-	// List of Segment Group IDs
-	SegmentGroupId   pulumi.StringOutput `pulumi:"segmentGroupId"`
-	SegmentGroupName pulumi.StringOutput `pulumi:"segmentGroupName"`
-	// (Optional) Supported values: `true`, `false`
+	MatchStyle           pulumi.StringOutput  `pulumi:"matchStyle"`
+	// Name of the application.
+	Name                      pulumi.StringOutput  `pulumi:"name"`
+	PassiveHealthEnabled      pulumi.BoolOutput    `pulumi:"passiveHealthEnabled"`
+	SegmentGroupId            pulumi.StringOutput  `pulumi:"segmentGroupId"`
+	SegmentGroupName          pulumi.StringOutput  `pulumi:"segmentGroupName"`
 	SelectConnectorCloseToApp pulumi.BoolPtrOutput `pulumi:"selectConnectorCloseToApp"`
-	// List of Server Group IDs
+	// List of the server group IDs.
 	ServerGroups ApplicationSegmentBrowserAccessServerGroupArrayOutput `pulumi:"serverGroups"`
-	// (Optional) Supported values: ``1`` for Enabled and ``0`` for Disabled
-	TcpKeepAlive pulumi.StringOutput `pulumi:"tcpKeepAlive"`
+	TcpKeepAlive pulumi.StringOutput                                   `pulumi:"tcpKeepAlive"`
 	// tcp port range
 	TcpPortRange ApplicationSegmentBrowserAccessTcpPortRangeArrayOutput `pulumi:"tcpPortRange"`
 	// TCP port ranges used to access the app.
@@ -172,8 +167,7 @@ type ApplicationSegmentBrowserAccess struct {
 	UdpPortRange ApplicationSegmentBrowserAccessUdpPortRangeArrayOutput `pulumi:"udpPortRange"`
 	// UDP port ranges used to access the app.
 	UdpPortRanges pulumi.StringArrayOutput `pulumi:"udpPortRanges"`
-	// (Optional) Supported values: `true`, `false`
-	UseInDrMode pulumi.BoolPtrOutput `pulumi:"useInDrMode"`
+	UseInDrMode   pulumi.BoolPtrOutput     `pulumi:"useInDrMode"`
 }
 
 // NewApplicationSegmentBrowserAccess registers a new resource with the given unique name, arguments, and options.
@@ -215,42 +209,37 @@ func GetApplicationSegmentBrowserAccess(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApplicationSegmentBrowserAccess resources.
 type applicationSegmentBrowserAccessState struct {
-	// (Optional) Indicates whether users can bypass ZPA to access applications. Default value is: `NEVER` and supported values are: `ALWAYS`, `NEVER` and `ON_NET`. The value `NEVER` indicates the use of the client forwarding policy.
+	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
+	// The value NEVER indicates the use of the client forwarding policy.
 	BypassType     *string                                        `pulumi:"bypassType"`
 	ClientlessApps []ApplicationSegmentBrowserAccessClientlessApp `pulumi:"clientlessApps"`
-	// (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `SIEM`
-	ConfigSpace *string `pulumi:"configSpace"`
-	// (Optional) Description of the application.
+	ConfigSpace    *string                                        `pulumi:"configSpace"`
+	// Description of the application.
 	Description *string `pulumi:"description"`
 	// List of domains and IPs.
 	DomainNames []string `pulumi:"domainNames"`
-	// (Optional) Whether Double Encryption is enabled or disabled for the app.
-	DoubleEncrypt *bool `pulumi:"doubleEncrypt"`
-	// (Optional) - Whether this app is enabled or not.
-	Enabled *bool `pulumi:"enabled"`
-	// (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `NONE`
+	// Whether Double Encryption is enabled or disabled for the app.
+	DoubleEncrypt   *bool   `pulumi:"doubleEncrypt"`
+	Enabled         *bool   `pulumi:"enabled"`
 	HealthCheckType *string `pulumi:"healthCheckType"`
-	// (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
+	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting *string `pulumi:"healthReporting"`
 	IcmpAccessType  *string `pulumi:"icmpAccessType"`
-	// (Optional) - If Source IP Anchoring for use with ZIA, is enabled or disabled for the app. Supported values are `true` and `false`
-	IpAnchored *bool `pulumi:"ipAnchored"`
-	// (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
-	IsCnameEnabled *bool `pulumi:"isCnameEnabled"`
-	// (Optional) Supported values: `true`, `false`
-	IsIncompleteDrConfig *bool `pulumi:"isIncompleteDrConfig"`
-	// Name of BA app.
-	Name                 *string `pulumi:"name"`
-	PassiveHealthEnabled *bool   `pulumi:"passiveHealthEnabled"`
-	// List of Segment Group IDs
-	SegmentGroupId   *string `pulumi:"segmentGroupId"`
-	SegmentGroupName *string `pulumi:"segmentGroupName"`
-	// (Optional) Supported values: `true`, `false`
-	SelectConnectorCloseToApp *bool `pulumi:"selectConnectorCloseToApp"`
-	// List of Server Group IDs
+	IpAnchored      *bool   `pulumi:"ipAnchored"`
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+	// connectors.
+	IsCnameEnabled       *bool   `pulumi:"isCnameEnabled"`
+	IsIncompleteDrConfig *bool   `pulumi:"isIncompleteDrConfig"`
+	MatchStyle           *string `pulumi:"matchStyle"`
+	// Name of the application.
+	Name                      *string `pulumi:"name"`
+	PassiveHealthEnabled      *bool   `pulumi:"passiveHealthEnabled"`
+	SegmentGroupId            *string `pulumi:"segmentGroupId"`
+	SegmentGroupName          *string `pulumi:"segmentGroupName"`
+	SelectConnectorCloseToApp *bool   `pulumi:"selectConnectorCloseToApp"`
+	// List of the server group IDs.
 	ServerGroups []ApplicationSegmentBrowserAccessServerGroup `pulumi:"serverGroups"`
-	// (Optional) Supported values: ``1`` for Enabled and ``0`` for Disabled
-	TcpKeepAlive *string `pulumi:"tcpKeepAlive"`
+	TcpKeepAlive *string                                      `pulumi:"tcpKeepAlive"`
 	// tcp port range
 	TcpPortRange []ApplicationSegmentBrowserAccessTcpPortRange `pulumi:"tcpPortRange"`
 	// TCP port ranges used to access the app.
@@ -259,46 +248,40 @@ type applicationSegmentBrowserAccessState struct {
 	UdpPortRange []ApplicationSegmentBrowserAccessUdpPortRange `pulumi:"udpPortRange"`
 	// UDP port ranges used to access the app.
 	UdpPortRanges []string `pulumi:"udpPortRanges"`
-	// (Optional) Supported values: `true`, `false`
-	UseInDrMode *bool `pulumi:"useInDrMode"`
+	UseInDrMode   *bool    `pulumi:"useInDrMode"`
 }
 
 type ApplicationSegmentBrowserAccessState struct {
-	// (Optional) Indicates whether users can bypass ZPA to access applications. Default value is: `NEVER` and supported values are: `ALWAYS`, `NEVER` and `ON_NET`. The value `NEVER` indicates the use of the client forwarding policy.
+	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
+	// The value NEVER indicates the use of the client forwarding policy.
 	BypassType     pulumi.StringPtrInput
 	ClientlessApps ApplicationSegmentBrowserAccessClientlessAppArrayInput
-	// (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `SIEM`
-	ConfigSpace pulumi.StringPtrInput
-	// (Optional) Description of the application.
+	ConfigSpace    pulumi.StringPtrInput
+	// Description of the application.
 	Description pulumi.StringPtrInput
 	// List of domains and IPs.
 	DomainNames pulumi.StringArrayInput
-	// (Optional) Whether Double Encryption is enabled or disabled for the app.
-	DoubleEncrypt pulumi.BoolPtrInput
-	// (Optional) - Whether this app is enabled or not.
-	Enabled pulumi.BoolPtrInput
-	// (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `NONE`
+	// Whether Double Encryption is enabled or disabled for the app.
+	DoubleEncrypt   pulumi.BoolPtrInput
+	Enabled         pulumi.BoolPtrInput
 	HealthCheckType pulumi.StringPtrInput
-	// (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
+	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting pulumi.StringPtrInput
 	IcmpAccessType  pulumi.StringPtrInput
-	// (Optional) - If Source IP Anchoring for use with ZIA, is enabled or disabled for the app. Supported values are `true` and `false`
-	IpAnchored pulumi.BoolPtrInput
-	// (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
-	IsCnameEnabled pulumi.BoolPtrInput
-	// (Optional) Supported values: `true`, `false`
+	IpAnchored      pulumi.BoolPtrInput
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+	// connectors.
+	IsCnameEnabled       pulumi.BoolPtrInput
 	IsIncompleteDrConfig pulumi.BoolPtrInput
-	// Name of BA app.
-	Name                 pulumi.StringPtrInput
-	PassiveHealthEnabled pulumi.BoolPtrInput
-	// List of Segment Group IDs
-	SegmentGroupId   pulumi.StringPtrInput
-	SegmentGroupName pulumi.StringPtrInput
-	// (Optional) Supported values: `true`, `false`
+	MatchStyle           pulumi.StringPtrInput
+	// Name of the application.
+	Name                      pulumi.StringPtrInput
+	PassiveHealthEnabled      pulumi.BoolPtrInput
+	SegmentGroupId            pulumi.StringPtrInput
+	SegmentGroupName          pulumi.StringPtrInput
 	SelectConnectorCloseToApp pulumi.BoolPtrInput
-	// List of Server Group IDs
+	// List of the server group IDs.
 	ServerGroups ApplicationSegmentBrowserAccessServerGroupArrayInput
-	// (Optional) Supported values: ``1`` for Enabled and ``0`` for Disabled
 	TcpKeepAlive pulumi.StringPtrInput
 	// tcp port range
 	TcpPortRange ApplicationSegmentBrowserAccessTcpPortRangeArrayInput
@@ -308,8 +291,7 @@ type ApplicationSegmentBrowserAccessState struct {
 	UdpPortRange ApplicationSegmentBrowserAccessUdpPortRangeArrayInput
 	// UDP port ranges used to access the app.
 	UdpPortRanges pulumi.StringArrayInput
-	// (Optional) Supported values: `true`, `false`
-	UseInDrMode pulumi.BoolPtrInput
+	UseInDrMode   pulumi.BoolPtrInput
 }
 
 func (ApplicationSegmentBrowserAccessState) ElementType() reflect.Type {
@@ -317,42 +299,37 @@ func (ApplicationSegmentBrowserAccessState) ElementType() reflect.Type {
 }
 
 type applicationSegmentBrowserAccessArgs struct {
-	// (Optional) Indicates whether users can bypass ZPA to access applications. Default value is: `NEVER` and supported values are: `ALWAYS`, `NEVER` and `ON_NET`. The value `NEVER` indicates the use of the client forwarding policy.
+	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
+	// The value NEVER indicates the use of the client forwarding policy.
 	BypassType     *string                                        `pulumi:"bypassType"`
 	ClientlessApps []ApplicationSegmentBrowserAccessClientlessApp `pulumi:"clientlessApps"`
-	// (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `SIEM`
-	ConfigSpace *string `pulumi:"configSpace"`
-	// (Optional) Description of the application.
+	ConfigSpace    *string                                        `pulumi:"configSpace"`
+	// Description of the application.
 	Description *string `pulumi:"description"`
 	// List of domains and IPs.
 	DomainNames []string `pulumi:"domainNames"`
-	// (Optional) Whether Double Encryption is enabled or disabled for the app.
-	DoubleEncrypt *bool `pulumi:"doubleEncrypt"`
-	// (Optional) - Whether this app is enabled or not.
-	Enabled *bool `pulumi:"enabled"`
-	// (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `NONE`
+	// Whether Double Encryption is enabled or disabled for the app.
+	DoubleEncrypt   *bool   `pulumi:"doubleEncrypt"`
+	Enabled         *bool   `pulumi:"enabled"`
 	HealthCheckType *string `pulumi:"healthCheckType"`
-	// (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
+	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting *string `pulumi:"healthReporting"`
 	IcmpAccessType  *string `pulumi:"icmpAccessType"`
-	// (Optional) - If Source IP Anchoring for use with ZIA, is enabled or disabled for the app. Supported values are `true` and `false`
-	IpAnchored *bool `pulumi:"ipAnchored"`
-	// (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
-	IsCnameEnabled *bool `pulumi:"isCnameEnabled"`
-	// (Optional) Supported values: `true`, `false`
-	IsIncompleteDrConfig *bool `pulumi:"isIncompleteDrConfig"`
-	// Name of BA app.
-	Name                 *string `pulumi:"name"`
-	PassiveHealthEnabled *bool   `pulumi:"passiveHealthEnabled"`
-	// List of Segment Group IDs
-	SegmentGroupId   string  `pulumi:"segmentGroupId"`
-	SegmentGroupName *string `pulumi:"segmentGroupName"`
-	// (Optional) Supported values: `true`, `false`
-	SelectConnectorCloseToApp *bool `pulumi:"selectConnectorCloseToApp"`
-	// List of Server Group IDs
+	IpAnchored      *bool   `pulumi:"ipAnchored"`
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+	// connectors.
+	IsCnameEnabled       *bool   `pulumi:"isCnameEnabled"`
+	IsIncompleteDrConfig *bool   `pulumi:"isIncompleteDrConfig"`
+	MatchStyle           *string `pulumi:"matchStyle"`
+	// Name of the application.
+	Name                      *string `pulumi:"name"`
+	PassiveHealthEnabled      *bool   `pulumi:"passiveHealthEnabled"`
+	SegmentGroupId            string  `pulumi:"segmentGroupId"`
+	SegmentGroupName          *string `pulumi:"segmentGroupName"`
+	SelectConnectorCloseToApp *bool   `pulumi:"selectConnectorCloseToApp"`
+	// List of the server group IDs.
 	ServerGroups []ApplicationSegmentBrowserAccessServerGroup `pulumi:"serverGroups"`
-	// (Optional) Supported values: ``1`` for Enabled and ``0`` for Disabled
-	TcpKeepAlive *string `pulumi:"tcpKeepAlive"`
+	TcpKeepAlive *string                                      `pulumi:"tcpKeepAlive"`
 	// tcp port range
 	TcpPortRange []ApplicationSegmentBrowserAccessTcpPortRange `pulumi:"tcpPortRange"`
 	// TCP port ranges used to access the app.
@@ -361,47 +338,41 @@ type applicationSegmentBrowserAccessArgs struct {
 	UdpPortRange []ApplicationSegmentBrowserAccessUdpPortRange `pulumi:"udpPortRange"`
 	// UDP port ranges used to access the app.
 	UdpPortRanges []string `pulumi:"udpPortRanges"`
-	// (Optional) Supported values: `true`, `false`
-	UseInDrMode *bool `pulumi:"useInDrMode"`
+	UseInDrMode   *bool    `pulumi:"useInDrMode"`
 }
 
 // The set of arguments for constructing a ApplicationSegmentBrowserAccess resource.
 type ApplicationSegmentBrowserAccessArgs struct {
-	// (Optional) Indicates whether users can bypass ZPA to access applications. Default value is: `NEVER` and supported values are: `ALWAYS`, `NEVER` and `ON_NET`. The value `NEVER` indicates the use of the client forwarding policy.
+	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
+	// The value NEVER indicates the use of the client forwarding policy.
 	BypassType     pulumi.StringPtrInput
 	ClientlessApps ApplicationSegmentBrowserAccessClientlessAppArrayInput
-	// (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `SIEM`
-	ConfigSpace pulumi.StringPtrInput
-	// (Optional) Description of the application.
+	ConfigSpace    pulumi.StringPtrInput
+	// Description of the application.
 	Description pulumi.StringPtrInput
 	// List of domains and IPs.
 	DomainNames pulumi.StringArrayInput
-	// (Optional) Whether Double Encryption is enabled or disabled for the app.
-	DoubleEncrypt pulumi.BoolPtrInput
-	// (Optional) - Whether this app is enabled or not.
-	Enabled pulumi.BoolPtrInput
-	// (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `NONE`
+	// Whether Double Encryption is enabled or disabled for the app.
+	DoubleEncrypt   pulumi.BoolPtrInput
+	Enabled         pulumi.BoolPtrInput
 	HealthCheckType pulumi.StringPtrInput
-	// (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
+	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting pulumi.StringPtrInput
 	IcmpAccessType  pulumi.StringPtrInput
-	// (Optional) - If Source IP Anchoring for use with ZIA, is enabled or disabled for the app. Supported values are `true` and `false`
-	IpAnchored pulumi.BoolPtrInput
-	// (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
-	IsCnameEnabled pulumi.BoolPtrInput
-	// (Optional) Supported values: `true`, `false`
+	IpAnchored      pulumi.BoolPtrInput
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+	// connectors.
+	IsCnameEnabled       pulumi.BoolPtrInput
 	IsIncompleteDrConfig pulumi.BoolPtrInput
-	// Name of BA app.
-	Name                 pulumi.StringPtrInput
-	PassiveHealthEnabled pulumi.BoolPtrInput
-	// List of Segment Group IDs
-	SegmentGroupId   pulumi.StringInput
-	SegmentGroupName pulumi.StringPtrInput
-	// (Optional) Supported values: `true`, `false`
+	MatchStyle           pulumi.StringPtrInput
+	// Name of the application.
+	Name                      pulumi.StringPtrInput
+	PassiveHealthEnabled      pulumi.BoolPtrInput
+	SegmentGroupId            pulumi.StringInput
+	SegmentGroupName          pulumi.StringPtrInput
 	SelectConnectorCloseToApp pulumi.BoolPtrInput
-	// List of Server Group IDs
+	// List of the server group IDs.
 	ServerGroups ApplicationSegmentBrowserAccessServerGroupArrayInput
-	// (Optional) Supported values: ``1`` for Enabled and ``0`` for Disabled
 	TcpKeepAlive pulumi.StringPtrInput
 	// tcp port range
 	TcpPortRange ApplicationSegmentBrowserAccessTcpPortRangeArrayInput
@@ -411,8 +382,7 @@ type ApplicationSegmentBrowserAccessArgs struct {
 	UdpPortRange ApplicationSegmentBrowserAccessUdpPortRangeArrayInput
 	// UDP port ranges used to access the app.
 	UdpPortRanges pulumi.StringArrayInput
-	// (Optional) Supported values: `true`, `false`
-	UseInDrMode pulumi.BoolPtrInput
+	UseInDrMode   pulumi.BoolPtrInput
 }
 
 func (ApplicationSegmentBrowserAccessArgs) ElementType() reflect.Type {
@@ -502,7 +472,8 @@ func (o ApplicationSegmentBrowserAccessOutput) ToApplicationSegmentBrowserAccess
 	return o
 }
 
-// (Optional) Indicates whether users can bypass ZPA to access applications. Default value is: `NEVER` and supported values are: `ALWAYS`, `NEVER` and `ON_NET`. The value `NEVER` indicates the use of the client forwarding policy.
+// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
+// The value NEVER indicates the use of the client forwarding policy.
 func (o ApplicationSegmentBrowserAccessOutput) BypassType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.StringPtrOutput { return v.BypassType }).(pulumi.StringPtrOutput)
 }
@@ -513,12 +484,11 @@ func (o ApplicationSegmentBrowserAccessOutput) ClientlessApps() ApplicationSegme
 	}).(ApplicationSegmentBrowserAccessClientlessAppArrayOutput)
 }
 
-// (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `SIEM`
 func (o ApplicationSegmentBrowserAccessOutput) ConfigSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.StringPtrOutput { return v.ConfigSpace }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Description of the application.
+// Description of the application.
 func (o ApplicationSegmentBrowserAccessOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -528,46 +498,47 @@ func (o ApplicationSegmentBrowserAccessOutput) DomainNames() pulumi.StringArrayO
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.StringArrayOutput { return v.DomainNames }).(pulumi.StringArrayOutput)
 }
 
-// (Optional) Whether Double Encryption is enabled or disabled for the app.
+// Whether Double Encryption is enabled or disabled for the app.
 func (o ApplicationSegmentBrowserAccessOutput) DoubleEncrypt() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.BoolPtrOutput { return v.DoubleEncrypt }).(pulumi.BoolPtrOutput)
 }
 
-// (Optional) - Whether this app is enabled or not.
 func (o ApplicationSegmentBrowserAccessOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `NONE`
-func (o ApplicationSegmentBrowserAccessOutput) HealthCheckType() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.StringOutput { return v.HealthCheckType }).(pulumi.StringOutput)
+func (o ApplicationSegmentBrowserAccessOutput) HealthCheckType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.StringPtrOutput { return v.HealthCheckType }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
-func (o ApplicationSegmentBrowserAccessOutput) HealthReporting() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.StringOutput { return v.HealthReporting }).(pulumi.StringOutput)
+// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
+func (o ApplicationSegmentBrowserAccessOutput) HealthReporting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.StringPtrOutput { return v.HealthReporting }).(pulumi.StringPtrOutput)
 }
 
 func (o ApplicationSegmentBrowserAccessOutput) IcmpAccessType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.StringPtrOutput { return v.IcmpAccessType }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) - If Source IP Anchoring for use with ZIA, is enabled or disabled for the app. Supported values are `true` and `false`
 func (o ApplicationSegmentBrowserAccessOutput) IpAnchored() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.BoolPtrOutput { return v.IpAnchored }).(pulumi.BoolPtrOutput)
 }
 
-// (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
+// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+// connectors.
 func (o ApplicationSegmentBrowserAccessOutput) IsCnameEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.BoolPtrOutput { return v.IsCnameEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// (Optional) Supported values: `true`, `false`
 func (o ApplicationSegmentBrowserAccessOutput) IsIncompleteDrConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.BoolPtrOutput { return v.IsIncompleteDrConfig }).(pulumi.BoolPtrOutput)
 }
 
-// Name of BA app.
+func (o ApplicationSegmentBrowserAccessOutput) MatchStyle() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.StringOutput { return v.MatchStyle }).(pulumi.StringOutput)
+}
+
+// Name of the application.
 func (o ApplicationSegmentBrowserAccessOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -576,7 +547,6 @@ func (o ApplicationSegmentBrowserAccessOutput) PassiveHealthEnabled() pulumi.Boo
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.BoolOutput { return v.PassiveHealthEnabled }).(pulumi.BoolOutput)
 }
 
-// List of Segment Group IDs
 func (o ApplicationSegmentBrowserAccessOutput) SegmentGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.StringOutput { return v.SegmentGroupId }).(pulumi.StringOutput)
 }
@@ -585,19 +555,17 @@ func (o ApplicationSegmentBrowserAccessOutput) SegmentGroupName() pulumi.StringO
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.StringOutput { return v.SegmentGroupName }).(pulumi.StringOutput)
 }
 
-// (Optional) Supported values: `true`, `false`
 func (o ApplicationSegmentBrowserAccessOutput) SelectConnectorCloseToApp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.BoolPtrOutput { return v.SelectConnectorCloseToApp }).(pulumi.BoolPtrOutput)
 }
 
-// List of Server Group IDs
+// List of the server group IDs.
 func (o ApplicationSegmentBrowserAccessOutput) ServerGroups() ApplicationSegmentBrowserAccessServerGroupArrayOutput {
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) ApplicationSegmentBrowserAccessServerGroupArrayOutput {
 		return v.ServerGroups
 	}).(ApplicationSegmentBrowserAccessServerGroupArrayOutput)
 }
 
-// (Optional) Supported values: “1“ for Enabled and “0“ for Disabled
 func (o ApplicationSegmentBrowserAccessOutput) TcpKeepAlive() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.StringOutput { return v.TcpKeepAlive }).(pulumi.StringOutput)
 }
@@ -626,7 +594,6 @@ func (o ApplicationSegmentBrowserAccessOutput) UdpPortRanges() pulumi.StringArra
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.StringArrayOutput { return v.UdpPortRanges }).(pulumi.StringArrayOutput)
 }
 
-// (Optional) Supported values: `true`, `false`
 func (o ApplicationSegmentBrowserAccessOutput) UseInDrMode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.BoolPtrOutput { return v.UseInDrMode }).(pulumi.BoolPtrOutput)
 }

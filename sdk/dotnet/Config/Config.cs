@@ -54,7 +54,7 @@ namespace Zscaler.Zpa
 
         private static readonly __Value<string?> _zpaCloud = new __Value<string?>(() => __config.Get("zpaCloud") ?? Utilities.GetEnv("ZPA_CLOUD"));
         /// <summary>
-        /// Cloud to use PRODUCTION, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
+        /// Cloud to use PRODUCTION, ZPATWO, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
         /// </summary>
         public static string? ZpaCloud
         {

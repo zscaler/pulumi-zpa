@@ -80,41 +80,26 @@ class GetBaCertificateResult:
     @property
     @pulumi.getter(name="certChain")
     def cert_chain(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "cert_chain")
 
     @property
     @pulumi.getter
     def certificate(self) -> str:
-        """
-        (string) The certificate text is in PEM format.
-        """
         return pulumi.get(self, "certificate")
 
     @property
     @pulumi.getter
     def cname(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "cname")
 
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -125,17 +110,11 @@ class GetBaCertificateResult:
     @property
     @pulumi.getter(name="issuedBy")
     def issued_by(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "issued_by")
 
     @property
     @pulumi.getter(name="issuedTo")
     def issued_to(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "issued_to")
 
     @property
@@ -146,17 +125,11 @@ class GetBaCertificateResult:
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
     @pulumi.getter
     def modifiedby(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modifiedby")
 
     @property
@@ -172,41 +145,26 @@ class GetBaCertificateResult:
     @property
     @pulumi.getter
     def sans(self) -> Sequence[str]:
-        """
-        (string)
-        """
         return pulumi.get(self, "sans")
 
     @property
     @pulumi.getter(name="serialNo")
     def serial_no(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "serial_no")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="validFromInEpochsec")
     def valid_from_in_epochsec(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "valid_from_in_epochsec")
 
     @property
     @pulumi.getter(name="validToInEpochsec")
     def valid_to_in_epochsec(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "valid_to_in_epochsec")
 
 
@@ -240,6 +198,9 @@ def get_ba_certificate(id: Optional[str] = None,
                        name: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBaCertificateResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-web-server-certificates)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-certificates-using-api)
+
     Use the **zpa_ba_certificate** data source to get information about a browser access certificate created in the Zscaler Private Access cloud. This data source is required when creating a browser access application segment resource.
 
     ## Example Usage
@@ -261,10 +222,6 @@ def get_ba_certificate(id: Optional[str] = None,
     foo = zpa.get_ba_certificate(id="1234567890")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: The id of the browser access certificate to be exported.
-    :param str name: The name of the browser access certificate to be exported.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -298,6 +255,9 @@ def get_ba_certificate_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                               name: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBaCertificateResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-web-server-certificates)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-certificates-using-api)
+
     Use the **zpa_ba_certificate** data source to get information about a browser access certificate created in the Zscaler Private Access cloud. This data source is required when creating a browser access application segment resource.
 
     ## Example Usage
@@ -319,9 +279,5 @@ def get_ba_certificate_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     foo = zpa.get_ba_certificate(id="1234567890")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: The id of the browser access certificate to be exported.
-    :param str name: The name of the browser access certificate to be exported.
     """
     ...

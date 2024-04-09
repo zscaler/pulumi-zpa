@@ -18,7 +18,6 @@ import * as utilities from "./utilities";
  * const testSegmentGroup = new zpa.SegmentGroup("testSegmentGroup", {
  *     description: "test1-segment-group",
  *     enabled: true,
- *     tcpKeepAliveEnabled: "1",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -73,31 +72,18 @@ export class SegmentGroup extends pulumi.CustomResource {
 
     public readonly applications!: pulumi.Output<outputs.SegmentGroupApplication[]>;
     /**
-     * (Optional) Description of the segment group.
+     * Description of the app group.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * (Optional) Whether this segment group is enabled or not.
+     * Whether this app group is enabled or not.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * (Optional) The ID of the microtenant the resource is to be associated with.
-     */
     public readonly microtenantId!: pulumi.Output<string>;
     /**
-     * (Required) Name of the segment group.
+     * Name of the app group.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * @deprecated The `policyMigrated` field is now deprecated for the resource `zpa.SegmentGroup`, please remove this attribute to prevent configuration drifts
-     */
-    public readonly policyMigrated!: pulumi.Output<boolean | undefined>;
-    /**
-     * (Deprecated)
-     *
-     * @deprecated The `tcpKeepAliveEnabled` field is now deprecated for the resource `zpa.SegmentGroup`, please replace all uses of this within the `zpa.ApplicationSegment`resources with the attribute `tcpKeepAlive`
-     */
-    public readonly tcpKeepAliveEnabled!: pulumi.Output<string | undefined>;
 
     /**
      * Create a SegmentGroup resource with the given unique name, arguments, and options.
@@ -117,8 +103,6 @@ export class SegmentGroup extends pulumi.CustomResource {
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policyMigrated"] = state ? state.policyMigrated : undefined;
-            resourceInputs["tcpKeepAliveEnabled"] = state ? state.tcpKeepAliveEnabled : undefined;
         } else {
             const args = argsOrState as SegmentGroupArgs | undefined;
             resourceInputs["applications"] = args ? args.applications : undefined;
@@ -126,8 +110,6 @@ export class SegmentGroup extends pulumi.CustomResource {
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["policyMigrated"] = args ? args.policyMigrated : undefined;
-            resourceInputs["tcpKeepAliveEnabled"] = args ? args.tcpKeepAliveEnabled : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SegmentGroup.__pulumiType, name, resourceInputs, opts);
@@ -140,31 +122,18 @@ export class SegmentGroup extends pulumi.CustomResource {
 export interface SegmentGroupState {
     applications?: pulumi.Input<pulumi.Input<inputs.SegmentGroupApplication>[]>;
     /**
-     * (Optional) Description of the segment group.
+     * Description of the app group.
      */
     description?: pulumi.Input<string>;
     /**
-     * (Optional) Whether this segment group is enabled or not.
+     * Whether this app group is enabled or not.
      */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * (Optional) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: pulumi.Input<string>;
     /**
-     * (Required) Name of the segment group.
+     * Name of the app group.
      */
     name?: pulumi.Input<string>;
-    /**
-     * @deprecated The `policyMigrated` field is now deprecated for the resource `zpa.SegmentGroup`, please remove this attribute to prevent configuration drifts
-     */
-    policyMigrated?: pulumi.Input<boolean>;
-    /**
-     * (Deprecated)
-     *
-     * @deprecated The `tcpKeepAliveEnabled` field is now deprecated for the resource `zpa.SegmentGroup`, please replace all uses of this within the `zpa.ApplicationSegment`resources with the attribute `tcpKeepAlive`
-     */
-    tcpKeepAliveEnabled?: pulumi.Input<string>;
 }
 
 /**
@@ -173,29 +142,16 @@ export interface SegmentGroupState {
 export interface SegmentGroupArgs {
     applications?: pulumi.Input<pulumi.Input<inputs.SegmentGroupApplication>[]>;
     /**
-     * (Optional) Description of the segment group.
+     * Description of the app group.
      */
     description?: pulumi.Input<string>;
     /**
-     * (Optional) Whether this segment group is enabled or not.
+     * Whether this app group is enabled or not.
      */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * (Optional) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: pulumi.Input<string>;
     /**
-     * (Required) Name of the segment group.
+     * Name of the app group.
      */
     name?: pulumi.Input<string>;
-    /**
-     * @deprecated The `policyMigrated` field is now deprecated for the resource `zpa.SegmentGroup`, please remove this attribute to prevent configuration drifts
-     */
-    policyMigrated?: pulumi.Input<boolean>;
-    /**
-     * (Deprecated)
-     *
-     * @deprecated The `tcpKeepAliveEnabled` field is now deprecated for the resource `zpa.SegmentGroup`, please replace all uses of this within the `zpa.ApplicationSegment`resources with the attribute `tcpKeepAlive`
-     */
-    tcpKeepAliveEnabled?: pulumi.Input<string>;
 }

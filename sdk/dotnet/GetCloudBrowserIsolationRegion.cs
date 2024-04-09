@@ -68,15 +68,9 @@ namespace Zscaler.Zpa
 
     public sealed class GetCloudBrowserIsolationRegionArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The id of the CBI region to be exported.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// The name of the CBI region to be exported.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -88,15 +82,9 @@ namespace Zscaler.Zpa
 
     public sealed class GetCloudBrowserIsolationRegionInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The id of the CBI region to be exported.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// The name of the CBI region to be exported.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -110,13 +98,7 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetCloudBrowserIsolationRegionResult
     {
-        /// <summary>
-        /// (string) - ID information of the CBI region
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (string) - Name of the CBI region
-        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

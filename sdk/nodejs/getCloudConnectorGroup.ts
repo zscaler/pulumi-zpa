@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-web-server-certificates)
+ * * [API documentation](https://help.zscaler.com/zpa/obtaining-cloud-connector-group-details-using-api)
+ *
  * Use the **zpa_cloud_connector_group** data source to get information about a cloud connector group created from the Zscaler Private Access cloud. This data source can then be referenced within an Access Policy rule
  *
  * > **NOTE:** A Cloud Connector Group resource is created in the Zscaler Cloud Connector cloud and replicated to the ZPA cloud. This resource can then be referenced in a Access Policy Rule where the Object Type = `CLOUD_CONNECTOR_GROUP` is being used.
@@ -49,13 +52,7 @@ export function getCloudConnectorGroup(args?: GetCloudConnectorGroupArgs, opts?:
  * A collection of arguments for invoking getCloudConnectorGroup.
  */
 export interface GetCloudConnectorGroupArgs {
-    /**
-     * This field defines the id of the cloud connector group.
-     */
     id?: string;
-    /**
-     * This field defines the name of the cloud connector group.
-     */
     name?: string;
 }
 
@@ -63,46 +60,22 @@ export interface GetCloudConnectorGroupArgs {
  * A collection of values returned by getCloudConnectorGroup.
  */
 export interface GetCloudConnectorGroupResult {
-    /**
-     * (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-     */
     readonly cloudConnectors: outputs.GetCloudConnectorGroupCloudConnector[];
-    /**
-     * (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-     */
     readonly creationTime: string;
-    /**
-     * (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-     */
     readonly description: string;
-    /**
-     * (bool) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-     */
     readonly enabled: boolean;
-    /**
-     * (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-     */
     readonly geolocationId: string;
     readonly id?: string;
-    /**
-     * (string)- Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-     */
     readonly modifiedTime: string;
     readonly modifiedby: string;
-    /**
-     * (string) - This field defines the name of the cloud connector group.
-     */
     readonly name?: string;
-    /**
-     * (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-     */
     readonly ziaCloud: string;
-    /**
-     * (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-     */
     readonly ziaOrgId: string;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-web-server-certificates)
+ * * [API documentation](https://help.zscaler.com/zpa/obtaining-cloud-connector-group-details-using-api)
+ *
  * Use the **zpa_cloud_connector_group** data source to get information about a cloud connector group created from the Zscaler Private Access cloud. This data source can then be referenced within an Access Policy rule
  *
  * > **NOTE:** A Cloud Connector Group resource is created in the Zscaler Cloud Connector cloud and replicated to the ZPA cloud. This resource can then be referenced in a Access Policy Rule where the Object Type = `CLOUD_CONNECTOR_GROUP` is being used.
@@ -139,12 +112,6 @@ export function getCloudConnectorGroupOutput(args?: GetCloudConnectorGroupOutput
  * A collection of arguments for invoking getCloudConnectorGroup.
  */
 export interface GetCloudConnectorGroupOutputArgs {
-    /**
-     * This field defines the id of the cloud connector group.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * This field defines the name of the cloud connector group.
-     */
     name?: pulumi.Input<string>;
 }

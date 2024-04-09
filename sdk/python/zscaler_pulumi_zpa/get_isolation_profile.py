@@ -56,25 +56,16 @@ class GetIsolationProfileResult:
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (string)
-        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -85,33 +76,21 @@ class GetIsolationProfileResult:
     @property
     @pulumi.getter(name="isolationProfileId")
     def isolation_profile_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "isolation_profile_id")
 
     @property
     @pulumi.getter(name="isolationTenantId")
     def isolation_tenant_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "isolation_tenant_id")
 
     @property
     @pulumi.getter(name="isolationUrl")
     def isolation_url(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "isolation_url")
 
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -122,6 +101,9 @@ class GetIsolationProfileResult:
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        - (Required) This field defines the name of the isolation profile.
+        """
         return pulumi.get(self, "name")
 
 
@@ -146,6 +128,9 @@ class AwaitableGetIsolationProfileResult(GetIsolationProfileResult):
 def get_isolation_profile(name: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIsolationProfileResult:
     """
+    * [Official documentation](https://help.zscaler.com/isolation/creating-isolation-profiles-zpa)
+    * [API documentation](https://help.zscaler.com/zpa/obtaining-isolation-profile-details-using-api)
+
     Use the **zpa_isolation_profile** data source to get information about an isolation profile in the Zscaler Private Access cloud. This data source is required when configuring an isolation policy rule resource
 
     ## Example Usage
@@ -160,7 +145,7 @@ def get_isolation_profile(name: Optional[str] = None,
     <!--End PulumiCodeChooser -->
 
 
-    :param str name: This field defines the name of the isolation profile.
+    :param str name: - (Required) This field defines the name of the isolation profile.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -184,6 +169,9 @@ def get_isolation_profile(name: Optional[str] = None,
 def get_isolation_profile_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIsolationProfileResult]:
     """
+    * [Official documentation](https://help.zscaler.com/isolation/creating-isolation-profiles-zpa)
+    * [API documentation](https://help.zscaler.com/zpa/obtaining-isolation-profile-details-using-api)
+
     Use the **zpa_isolation_profile** data source to get information about an isolation profile in the Zscaler Private Access cloud. This data source is required when configuring an isolation policy rule resource
 
     ## Example Usage
@@ -198,6 +186,6 @@ def get_isolation_profile_output(name: Optional[pulumi.Input[Optional[str]]] = N
     <!--End PulumiCodeChooser -->
 
 
-    :param str name: This field defines the name of the isolation profile.
+    :param str name: - (Required) This field defines the name of the isolation profile.
     """
     ...

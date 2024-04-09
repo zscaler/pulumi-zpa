@@ -50,7 +50,8 @@ namespace Zscaler.Zpa
         public Output<string> AppConnectorGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are `CONNECTOR_GRP` and `SERVICE_EDGE_GRP`
+        /// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
+        /// CONNECTOR_GRP and SERVICE_EDGE_GRP.
         /// </summary>
         [Output("associationType")]
         public Output<string> AssociationType { get; private set; } = null!;
@@ -62,7 +63,7 @@ namespace Zscaler.Zpa
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the enrollment certificate that can be used for this provisioning key. `ID` of the existing enrollment certificate that has the private key
+        /// ID of the enrollment certificate that can be used for this provisioning key.
         /// </summary>
         [Output("enrollmentCertId")]
         public Output<string> EnrollmentCertId { get; private set; } = null!;
@@ -76,11 +77,6 @@ namespace Zscaler.Zpa
         [Output("maxUsage")]
         public Output<string> MaxUsage { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the microtenant the resource is to be associated with.
-        /// 
-        /// ⚠️ **WARNING:**: The attribute ``microtenant_id`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-        /// </summary>
         [Output("microtenantId")]
         public Output<string?> MicrotenantId { get; private set; } = null!;
 
@@ -166,7 +162,8 @@ namespace Zscaler.Zpa
         public Input<string>? AppConnectorGroupId { get; set; }
 
         /// <summary>
-        /// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are `CONNECTOR_GRP` and `SERVICE_EDGE_GRP`
+        /// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
+        /// CONNECTOR_GRP and SERVICE_EDGE_GRP.
         /// </summary>
         [Input("associationType", required: true)]
         public Input<string> AssociationType { get; set; } = null!;
@@ -178,7 +175,7 @@ namespace Zscaler.Zpa
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// ID of the enrollment certificate that can be used for this provisioning key. `ID` of the existing enrollment certificate that has the private key
+        /// ID of the enrollment certificate that can be used for this provisioning key.
         /// </summary>
         [Input("enrollmentCertId", required: true)]
         public Input<string> EnrollmentCertId { get; set; } = null!;
@@ -197,11 +194,6 @@ namespace Zscaler.Zpa
         [Input("maxUsage", required: true)]
         public Input<string> MaxUsage { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the microtenant the resource is to be associated with.
-        /// 
-        /// ⚠️ **WARNING:**: The attribute ``microtenant_id`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-        /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
@@ -266,7 +258,8 @@ namespace Zscaler.Zpa
         public Input<string>? AppConnectorGroupName { get; set; }
 
         /// <summary>
-        /// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are `CONNECTOR_GRP` and `SERVICE_EDGE_GRP`
+        /// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
+        /// CONNECTOR_GRP and SERVICE_EDGE_GRP.
         /// </summary>
         [Input("associationType")]
         public Input<string>? AssociationType { get; set; }
@@ -278,7 +271,7 @@ namespace Zscaler.Zpa
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// ID of the enrollment certificate that can be used for this provisioning key. `ID` of the existing enrollment certificate that has the private key
+        /// ID of the enrollment certificate that can be used for this provisioning key.
         /// </summary>
         [Input("enrollmentCertId")]
         public Input<string>? EnrollmentCertId { get; set; }
@@ -297,11 +290,6 @@ namespace Zscaler.Zpa
         [Input("maxUsage")]
         public Input<string>? MaxUsage { get; set; }
 
-        /// <summary>
-        /// The ID of the microtenant the resource is to be associated with.
-        /// 
-        /// ⚠️ **WARNING:**: The attribute ``microtenant_id`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-        /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 

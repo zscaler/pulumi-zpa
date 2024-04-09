@@ -69,7 +69,7 @@ namespace Zscaler.Zpa
     public sealed class GetCloudBrowserIsolationZPAProfileArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// This field defines the name of the isolation profile.
+        /// - (String) This field defines the name of the isolation profile.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -83,7 +83,7 @@ namespace Zscaler.Zpa
     public sealed class GetCloudBrowserIsolationZPAProfileInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// This field defines the name of the isolation profile.
+        /// - (String) This field defines the name of the isolation profile.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -98,36 +98,18 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetCloudBrowserIsolationZPAProfileResult
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CbiProfileId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CbiTenantId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CbiUrl;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly bool Enabled;
         public readonly string Id;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
+        /// <summary>
+        /// - (String) This field defines the name of the isolation profile.
+        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

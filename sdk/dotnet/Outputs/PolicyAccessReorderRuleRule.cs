@@ -14,13 +14,7 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class PolicyAccessReorderRuleRule
     {
-        /// <summary>
-        /// (Required) - The ID of the rule to which the order number will be applied.
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (Required) - The order number that should be applied to the respective rule ID.
-        /// </summary>
         public readonly string Order;
 
         [OutputConstructor]

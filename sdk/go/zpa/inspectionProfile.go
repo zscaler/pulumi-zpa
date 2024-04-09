@@ -11,25 +11,26 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-browser-protection-profiles)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-profiles-using-api)
+//
 // The  **zpa_inspection_profile** resource creates an inspection profile in the Zscaler Private Access cloud. This resource can then be referenced in an inspection custom control resource.
 type InspectionProfile struct {
 	pulumi.CustomResourceState
 
-	AssociateAllControls pulumi.BoolPtrOutput `pulumi:"associateAllControls"`
-	// (Optional) Types for custom controls
-	ControlsInfos InspectionProfileControlsInfoArrayOutput `pulumi:"controlsInfos"`
-	// (Optional) Types for custom controls
+	AssociateAllControls pulumi.BoolPtrOutput                     `pulumi:"associateAllControls"`
+	ControlsInfos        InspectionProfileControlsInfoArrayOutput `pulumi:"controlsInfos"`
+	// The set of AppProtection controls used to define how inspections are managed
 	CustomControls InspectionProfileCustomControlArrayOutput `pulumi:"customControls"`
-	// Description of the inspection profile.
+	// The description of the AppProtection profile
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The actions of the predefined, custom, or override controls
 	GlobalControlActions pulumi.StringArrayOutput `pulumi:"globalControlActions"`
 	IncarnationNumber    pulumi.StringPtrOutput   `pulumi:"incarnationNumber"`
-	// The name of the inspection profile.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// OWASP Predefined Paranoia Level. Range: [1-4], inclusive
+	Name                 pulumi.StringOutput      `pulumi:"name"`
+	// The OWASP Predefined Paranoia Level
 	ParanoiaLevel pulumi.StringPtrOutput `pulumi:"paranoiaLevel"`
-	// The predefined controls. The default predefined control `Preprocessors` are mandatory and injected in the request by default. Individual `predefinedControls` can be set by using the data source `dataSourceZpaPredefinedControls` or by group using the data source `getInspectionAllPredefinedControls`.
+	// The predefined controls
 	PredefinedControls InspectionProfilePredefinedControlArrayOutput `pulumi:"predefinedControls"`
 	// The protocol for the AppProtection application
 	PredefinedControlsVersion pulumi.StringPtrOutput `pulumi:"predefinedControlsVersion"`
@@ -67,21 +68,19 @@ func GetInspectionProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InspectionProfile resources.
 type inspectionProfileState struct {
-	AssociateAllControls *bool `pulumi:"associateAllControls"`
-	// (Optional) Types for custom controls
-	ControlsInfos []InspectionProfileControlsInfo `pulumi:"controlsInfos"`
-	// (Optional) Types for custom controls
+	AssociateAllControls *bool                           `pulumi:"associateAllControls"`
+	ControlsInfos        []InspectionProfileControlsInfo `pulumi:"controlsInfos"`
+	// The set of AppProtection controls used to define how inspections are managed
 	CustomControls []InspectionProfileCustomControl `pulumi:"customControls"`
-	// Description of the inspection profile.
+	// The description of the AppProtection profile
 	Description *string `pulumi:"description"`
 	// The actions of the predefined, custom, or override controls
 	GlobalControlActions []string `pulumi:"globalControlActions"`
 	IncarnationNumber    *string  `pulumi:"incarnationNumber"`
-	// The name of the inspection profile.
-	Name *string `pulumi:"name"`
-	// OWASP Predefined Paranoia Level. Range: [1-4], inclusive
+	Name                 *string  `pulumi:"name"`
+	// The OWASP Predefined Paranoia Level
 	ParanoiaLevel *string `pulumi:"paranoiaLevel"`
-	// The predefined controls. The default predefined control `Preprocessors` are mandatory and injected in the request by default. Individual `predefinedControls` can be set by using the data source `dataSourceZpaPredefinedControls` or by group using the data source `getInspectionAllPredefinedControls`.
+	// The predefined controls
 	PredefinedControls []InspectionProfilePredefinedControl `pulumi:"predefinedControls"`
 	// The protocol for the AppProtection application
 	PredefinedControlsVersion *string `pulumi:"predefinedControlsVersion"`
@@ -91,20 +90,18 @@ type inspectionProfileState struct {
 
 type InspectionProfileState struct {
 	AssociateAllControls pulumi.BoolPtrInput
-	// (Optional) Types for custom controls
-	ControlsInfos InspectionProfileControlsInfoArrayInput
-	// (Optional) Types for custom controls
+	ControlsInfos        InspectionProfileControlsInfoArrayInput
+	// The set of AppProtection controls used to define how inspections are managed
 	CustomControls InspectionProfileCustomControlArrayInput
-	// Description of the inspection profile.
+	// The description of the AppProtection profile
 	Description pulumi.StringPtrInput
 	// The actions of the predefined, custom, or override controls
 	GlobalControlActions pulumi.StringArrayInput
 	IncarnationNumber    pulumi.StringPtrInput
-	// The name of the inspection profile.
-	Name pulumi.StringPtrInput
-	// OWASP Predefined Paranoia Level. Range: [1-4], inclusive
+	Name                 pulumi.StringPtrInput
+	// The OWASP Predefined Paranoia Level
 	ParanoiaLevel pulumi.StringPtrInput
-	// The predefined controls. The default predefined control `Preprocessors` are mandatory and injected in the request by default. Individual `predefinedControls` can be set by using the data source `dataSourceZpaPredefinedControls` or by group using the data source `getInspectionAllPredefinedControls`.
+	// The predefined controls
 	PredefinedControls InspectionProfilePredefinedControlArrayInput
 	// The protocol for the AppProtection application
 	PredefinedControlsVersion pulumi.StringPtrInput
@@ -117,21 +114,19 @@ func (InspectionProfileState) ElementType() reflect.Type {
 }
 
 type inspectionProfileArgs struct {
-	AssociateAllControls *bool `pulumi:"associateAllControls"`
-	// (Optional) Types for custom controls
-	ControlsInfos []InspectionProfileControlsInfo `pulumi:"controlsInfos"`
-	// (Optional) Types for custom controls
+	AssociateAllControls *bool                           `pulumi:"associateAllControls"`
+	ControlsInfos        []InspectionProfileControlsInfo `pulumi:"controlsInfos"`
+	// The set of AppProtection controls used to define how inspections are managed
 	CustomControls []InspectionProfileCustomControl `pulumi:"customControls"`
-	// Description of the inspection profile.
+	// The description of the AppProtection profile
 	Description *string `pulumi:"description"`
 	// The actions of the predefined, custom, or override controls
 	GlobalControlActions []string `pulumi:"globalControlActions"`
 	IncarnationNumber    *string  `pulumi:"incarnationNumber"`
-	// The name of the inspection profile.
-	Name *string `pulumi:"name"`
-	// OWASP Predefined Paranoia Level. Range: [1-4], inclusive
+	Name                 *string  `pulumi:"name"`
+	// The OWASP Predefined Paranoia Level
 	ParanoiaLevel *string `pulumi:"paranoiaLevel"`
-	// The predefined controls. The default predefined control `Preprocessors` are mandatory and injected in the request by default. Individual `predefinedControls` can be set by using the data source `dataSourceZpaPredefinedControls` or by group using the data source `getInspectionAllPredefinedControls`.
+	// The predefined controls
 	PredefinedControls []InspectionProfilePredefinedControl `pulumi:"predefinedControls"`
 	// The protocol for the AppProtection application
 	PredefinedControlsVersion *string `pulumi:"predefinedControlsVersion"`
@@ -142,20 +137,18 @@ type inspectionProfileArgs struct {
 // The set of arguments for constructing a InspectionProfile resource.
 type InspectionProfileArgs struct {
 	AssociateAllControls pulumi.BoolPtrInput
-	// (Optional) Types for custom controls
-	ControlsInfos InspectionProfileControlsInfoArrayInput
-	// (Optional) Types for custom controls
+	ControlsInfos        InspectionProfileControlsInfoArrayInput
+	// The set of AppProtection controls used to define how inspections are managed
 	CustomControls InspectionProfileCustomControlArrayInput
-	// Description of the inspection profile.
+	// The description of the AppProtection profile
 	Description pulumi.StringPtrInput
 	// The actions of the predefined, custom, or override controls
 	GlobalControlActions pulumi.StringArrayInput
 	IncarnationNumber    pulumi.StringPtrInput
-	// The name of the inspection profile.
-	Name pulumi.StringPtrInput
-	// OWASP Predefined Paranoia Level. Range: [1-4], inclusive
+	Name                 pulumi.StringPtrInput
+	// The OWASP Predefined Paranoia Level
 	ParanoiaLevel pulumi.StringPtrInput
-	// The predefined controls. The default predefined control `Preprocessors` are mandatory and injected in the request by default. Individual `predefinedControls` can be set by using the data source `dataSourceZpaPredefinedControls` or by group using the data source `getInspectionAllPredefinedControls`.
+	// The predefined controls
 	PredefinedControls InspectionProfilePredefinedControlArrayInput
 	// The protocol for the AppProtection application
 	PredefinedControlsVersion pulumi.StringPtrInput
@@ -254,17 +247,16 @@ func (o InspectionProfileOutput) AssociateAllControls() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InspectionProfile) pulumi.BoolPtrOutput { return v.AssociateAllControls }).(pulumi.BoolPtrOutput)
 }
 
-// (Optional) Types for custom controls
 func (o InspectionProfileOutput) ControlsInfos() InspectionProfileControlsInfoArrayOutput {
 	return o.ApplyT(func(v *InspectionProfile) InspectionProfileControlsInfoArrayOutput { return v.ControlsInfos }).(InspectionProfileControlsInfoArrayOutput)
 }
 
-// (Optional) Types for custom controls
+// The set of AppProtection controls used to define how inspections are managed
 func (o InspectionProfileOutput) CustomControls() InspectionProfileCustomControlArrayOutput {
 	return o.ApplyT(func(v *InspectionProfile) InspectionProfileCustomControlArrayOutput { return v.CustomControls }).(InspectionProfileCustomControlArrayOutput)
 }
 
-// Description of the inspection profile.
+// The description of the AppProtection profile
 func (o InspectionProfileOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InspectionProfile) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -278,17 +270,16 @@ func (o InspectionProfileOutput) IncarnationNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InspectionProfile) pulumi.StringPtrOutput { return v.IncarnationNumber }).(pulumi.StringPtrOutput)
 }
 
-// The name of the inspection profile.
 func (o InspectionProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InspectionProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// OWASP Predefined Paranoia Level. Range: [1-4], inclusive
+// The OWASP Predefined Paranoia Level
 func (o InspectionProfileOutput) ParanoiaLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InspectionProfile) pulumi.StringPtrOutput { return v.ParanoiaLevel }).(pulumi.StringPtrOutput)
 }
 
-// The predefined controls. The default predefined control `Preprocessors` are mandatory and injected in the request by default. Individual `predefinedControls` can be set by using the data source `dataSourceZpaPredefinedControls` or by group using the data source `getInspectionAllPredefinedControls`.
+// The predefined controls
 func (o InspectionProfileOutput) PredefinedControls() InspectionProfilePredefinedControlArrayOutput {
 	return o.ApplyT(func(v *InspectionProfile) InspectionProfilePredefinedControlArrayOutput { return v.PredefinedControls }).(InspectionProfilePredefinedControlArrayOutput)
 }

@@ -32,63 +32,46 @@ import (
 type ApplicationSegment struct {
 	pulumi.CustomResourceState
 
-	// (Optional) Indicates whether users can bypass ZPA to access applications. Supported values: `ALWAYS`, `NEVER`, `ON_NET`.
-	BypassType pulumi.StringOutput `pulumi:"bypassType"`
-	// (Optional) Supported values: `DEFAULT`, `SIEM`.
+	// Indicates whether users can bypass ZPA to access applications.
+	BypassType  pulumi.StringOutput    `pulumi:"bypassType"`
 	ConfigSpace pulumi.StringPtrOutput `pulumi:"configSpace"`
-	// (Optional) Description of the application.
+	// Description of the application.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// List of domains and IPs.
 	DomainNames pulumi.StringArrayOutput `pulumi:"domainNames"`
-	// (Optional) Whether Double Encryption is enabled or disabled for the app.
+	// Whether Double Encryption is enabled or disabled for the app.
 	DoubleEncrypt pulumi.BoolPtrOutput `pulumi:"doubleEncrypt"`
-	// (Optional) Whether this application is enabled or not.
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// (Optional) Supported values: `DEFAULT`, `NONE`.
+	// Whether this application is enabled or not.
+	Enabled         pulumi.BoolPtrOutput   `pulumi:"enabled"`
 	HealthCheckType pulumi.StringPtrOutput `pulumi:"healthCheckType"`
-	// (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
+	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting pulumi.StringPtrOutput `pulumi:"healthReporting"`
-	// (Optional) Supported values: `NONE`, `PING_TRACEROUTING`, `PING`.
-	IcmpAccessType pulumi.StringPtrOutput `pulumi:"icmpAccessType"`
-	// (Optional) Supported values: `true`, `false`
-	IpAnchored pulumi.BoolPtrOutput `pulumi:"ipAnchored"`
-	// (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
-	IsCnameEnabled pulumi.BoolOutput `pulumi:"isCnameEnabled"`
-	// (Optional) Supported values: `true`, `false`
-	IsIncompleteDrConfig pulumi.BoolPtrOutput `pulumi:"isIncompleteDrConfig"`
-	// (Optional) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId pulumi.StringPtrOutput `pulumi:"microtenantId"`
-	// Name. The name of the App Connector Group to be exported.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// (Optional) Supported values: `true`, `false`
-	PassiveHealthEnabled pulumi.BoolOutput `pulumi:"passiveHealthEnabled"`
-	// List of Segment Group IDs
+	IcmpAccessType  pulumi.StringPtrOutput `pulumi:"icmpAccessType"`
+	IpAnchored      pulumi.BoolPtrOutput   `pulumi:"ipAnchored"`
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+	// connectors.
+	IsCnameEnabled       pulumi.BoolOutput      `pulumi:"isCnameEnabled"`
+	IsIncompleteDrConfig pulumi.BoolPtrOutput   `pulumi:"isIncompleteDrConfig"`
+	MatchStyle           pulumi.StringOutput    `pulumi:"matchStyle"`
+	MicrotenantId        pulumi.StringPtrOutput `pulumi:"microtenantId"`
+	// Name of the application.
+	Name                      pulumi.StringOutput  `pulumi:"name"`
+	PassiveHealthEnabled      pulumi.BoolOutput    `pulumi:"passiveHealthEnabled"`
 	SegmentGroupId            pulumi.StringOutput  `pulumi:"segmentGroupId"`
 	SegmentGroupName          pulumi.StringOutput  `pulumi:"segmentGroupName"`
 	SelectConnectorCloseToApp pulumi.BoolPtrOutput `pulumi:"selectConnectorCloseToApp"`
-	// List of Server Group IDs
+	// List of the server group IDs.
 	ServerGroups ApplicationSegmentServerGroupArrayOutput `pulumi:"serverGroups"`
-	// (Optional) Supported values: ``1`` for Enabled and ``0`` for Disabled
-	TcpKeepAlive pulumi.StringOutput `pulumi:"tcpKeepAlive"`
-	// TCP port ranges used to access the app.
-	// * `from:`
-	// * `to:`
+	TcpKeepAlive pulumi.StringOutput                      `pulumi:"tcpKeepAlive"`
+	// tcp port range
 	TcpPortRange ApplicationSegmentTcpPortRangeArrayOutput `pulumi:"tcpPortRange"`
 	// TCP port ranges used to access the app.
 	TcpPortRanges pulumi.StringArrayOutput `pulumi:"tcpPortRanges"`
-	// UDP port ranges used to access the app.
-	// * `from:`
-	// * `to:`
-	//
-	// > **NOTE:** Application segments must have unique ports and cannot have overlapping domain names using the same tcp/udp ports across multiple application segments.
+	// udp port range
 	UdpPortRange ApplicationSegmentUdpPortRangeArrayOutput `pulumi:"udpPortRange"`
 	// UDP port ranges used to access the app.
-	//
-	// > **NOTE:**  TCP and UDP ports can also be defined using the following model:
-	// **NOTE:** When removing TCP and/or UDP ports, parameter must be defined but set as empty due to current API behavior.
 	UdpPortRanges pulumi.StringArrayOutput `pulumi:"udpPortRanges"`
-	// (Optional) Supported values: `true`, `false`
-	UseInDrMode pulumi.BoolPtrOutput `pulumi:"useInDrMode"`
+	UseInDrMode   pulumi.BoolPtrOutput     `pulumi:"useInDrMode"`
 }
 
 // NewApplicationSegment registers a new resource with the given unique name, arguments, and options.
@@ -124,123 +107,89 @@ func GetApplicationSegment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApplicationSegment resources.
 type applicationSegmentState struct {
-	// (Optional) Indicates whether users can bypass ZPA to access applications. Supported values: `ALWAYS`, `NEVER`, `ON_NET`.
-	BypassType *string `pulumi:"bypassType"`
-	// (Optional) Supported values: `DEFAULT`, `SIEM`.
+	// Indicates whether users can bypass ZPA to access applications.
+	BypassType  *string `pulumi:"bypassType"`
 	ConfigSpace *string `pulumi:"configSpace"`
-	// (Optional) Description of the application.
+	// Description of the application.
 	Description *string `pulumi:"description"`
 	// List of domains and IPs.
 	DomainNames []string `pulumi:"domainNames"`
-	// (Optional) Whether Double Encryption is enabled or disabled for the app.
+	// Whether Double Encryption is enabled or disabled for the app.
 	DoubleEncrypt *bool `pulumi:"doubleEncrypt"`
-	// (Optional) Whether this application is enabled or not.
-	Enabled *bool `pulumi:"enabled"`
-	// (Optional) Supported values: `DEFAULT`, `NONE`.
+	// Whether this application is enabled or not.
+	Enabled         *bool   `pulumi:"enabled"`
 	HealthCheckType *string `pulumi:"healthCheckType"`
-	// (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
+	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting *string `pulumi:"healthReporting"`
-	// (Optional) Supported values: `NONE`, `PING_TRACEROUTING`, `PING`.
-	IcmpAccessType *string `pulumi:"icmpAccessType"`
-	// (Optional) Supported values: `true`, `false`
-	IpAnchored *bool `pulumi:"ipAnchored"`
-	// (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
-	IsCnameEnabled *bool `pulumi:"isCnameEnabled"`
-	// (Optional) Supported values: `true`, `false`
-	IsIncompleteDrConfig *bool `pulumi:"isIncompleteDrConfig"`
-	// (Optional) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// Name. The name of the App Connector Group to be exported.
-	Name *string `pulumi:"name"`
-	// (Optional) Supported values: `true`, `false`
-	PassiveHealthEnabled *bool `pulumi:"passiveHealthEnabled"`
-	// List of Segment Group IDs
+	IcmpAccessType  *string `pulumi:"icmpAccessType"`
+	IpAnchored      *bool   `pulumi:"ipAnchored"`
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+	// connectors.
+	IsCnameEnabled       *bool   `pulumi:"isCnameEnabled"`
+	IsIncompleteDrConfig *bool   `pulumi:"isIncompleteDrConfig"`
+	MatchStyle           *string `pulumi:"matchStyle"`
+	MicrotenantId        *string `pulumi:"microtenantId"`
+	// Name of the application.
+	Name                      *string `pulumi:"name"`
+	PassiveHealthEnabled      *bool   `pulumi:"passiveHealthEnabled"`
 	SegmentGroupId            *string `pulumi:"segmentGroupId"`
 	SegmentGroupName          *string `pulumi:"segmentGroupName"`
 	SelectConnectorCloseToApp *bool   `pulumi:"selectConnectorCloseToApp"`
-	// List of Server Group IDs
+	// List of the server group IDs.
 	ServerGroups []ApplicationSegmentServerGroup `pulumi:"serverGroups"`
-	// (Optional) Supported values: ``1`` for Enabled and ``0`` for Disabled
-	TcpKeepAlive *string `pulumi:"tcpKeepAlive"`
-	// TCP port ranges used to access the app.
-	// * `from:`
-	// * `to:`
+	TcpKeepAlive *string                         `pulumi:"tcpKeepAlive"`
+	// tcp port range
 	TcpPortRange []ApplicationSegmentTcpPortRange `pulumi:"tcpPortRange"`
 	// TCP port ranges used to access the app.
 	TcpPortRanges []string `pulumi:"tcpPortRanges"`
-	// UDP port ranges used to access the app.
-	// * `from:`
-	// * `to:`
-	//
-	// > **NOTE:** Application segments must have unique ports and cannot have overlapping domain names using the same tcp/udp ports across multiple application segments.
+	// udp port range
 	UdpPortRange []ApplicationSegmentUdpPortRange `pulumi:"udpPortRange"`
 	// UDP port ranges used to access the app.
-	//
-	// > **NOTE:**  TCP and UDP ports can also be defined using the following model:
-	// **NOTE:** When removing TCP and/or UDP ports, parameter must be defined but set as empty due to current API behavior.
 	UdpPortRanges []string `pulumi:"udpPortRanges"`
-	// (Optional) Supported values: `true`, `false`
-	UseInDrMode *bool `pulumi:"useInDrMode"`
+	UseInDrMode   *bool    `pulumi:"useInDrMode"`
 }
 
 type ApplicationSegmentState struct {
-	// (Optional) Indicates whether users can bypass ZPA to access applications. Supported values: `ALWAYS`, `NEVER`, `ON_NET`.
-	BypassType pulumi.StringPtrInput
-	// (Optional) Supported values: `DEFAULT`, `SIEM`.
+	// Indicates whether users can bypass ZPA to access applications.
+	BypassType  pulumi.StringPtrInput
 	ConfigSpace pulumi.StringPtrInput
-	// (Optional) Description of the application.
+	// Description of the application.
 	Description pulumi.StringPtrInput
 	// List of domains and IPs.
 	DomainNames pulumi.StringArrayInput
-	// (Optional) Whether Double Encryption is enabled or disabled for the app.
+	// Whether Double Encryption is enabled or disabled for the app.
 	DoubleEncrypt pulumi.BoolPtrInput
-	// (Optional) Whether this application is enabled or not.
-	Enabled pulumi.BoolPtrInput
-	// (Optional) Supported values: `DEFAULT`, `NONE`.
+	// Whether this application is enabled or not.
+	Enabled         pulumi.BoolPtrInput
 	HealthCheckType pulumi.StringPtrInput
-	// (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
+	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting pulumi.StringPtrInput
-	// (Optional) Supported values: `NONE`, `PING_TRACEROUTING`, `PING`.
-	IcmpAccessType pulumi.StringPtrInput
-	// (Optional) Supported values: `true`, `false`
-	IpAnchored pulumi.BoolPtrInput
-	// (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
-	IsCnameEnabled pulumi.BoolPtrInput
-	// (Optional) Supported values: `true`, `false`
+	IcmpAccessType  pulumi.StringPtrInput
+	IpAnchored      pulumi.BoolPtrInput
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+	// connectors.
+	IsCnameEnabled       pulumi.BoolPtrInput
 	IsIncompleteDrConfig pulumi.BoolPtrInput
-	// (Optional) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId pulumi.StringPtrInput
-	// Name. The name of the App Connector Group to be exported.
-	Name pulumi.StringPtrInput
-	// (Optional) Supported values: `true`, `false`
-	PassiveHealthEnabled pulumi.BoolPtrInput
-	// List of Segment Group IDs
+	MatchStyle           pulumi.StringPtrInput
+	MicrotenantId        pulumi.StringPtrInput
+	// Name of the application.
+	Name                      pulumi.StringPtrInput
+	PassiveHealthEnabled      pulumi.BoolPtrInput
 	SegmentGroupId            pulumi.StringPtrInput
 	SegmentGroupName          pulumi.StringPtrInput
 	SelectConnectorCloseToApp pulumi.BoolPtrInput
-	// List of Server Group IDs
+	// List of the server group IDs.
 	ServerGroups ApplicationSegmentServerGroupArrayInput
-	// (Optional) Supported values: ``1`` for Enabled and ``0`` for Disabled
 	TcpKeepAlive pulumi.StringPtrInput
-	// TCP port ranges used to access the app.
-	// * `from:`
-	// * `to:`
+	// tcp port range
 	TcpPortRange ApplicationSegmentTcpPortRangeArrayInput
 	// TCP port ranges used to access the app.
 	TcpPortRanges pulumi.StringArrayInput
-	// UDP port ranges used to access the app.
-	// * `from:`
-	// * `to:`
-	//
-	// > **NOTE:** Application segments must have unique ports and cannot have overlapping domain names using the same tcp/udp ports across multiple application segments.
+	// udp port range
 	UdpPortRange ApplicationSegmentUdpPortRangeArrayInput
 	// UDP port ranges used to access the app.
-	//
-	// > **NOTE:**  TCP and UDP ports can also be defined using the following model:
-	// **NOTE:** When removing TCP and/or UDP ports, parameter must be defined but set as empty due to current API behavior.
 	UdpPortRanges pulumi.StringArrayInput
-	// (Optional) Supported values: `true`, `false`
-	UseInDrMode pulumi.BoolPtrInput
+	UseInDrMode   pulumi.BoolPtrInput
 }
 
 func (ApplicationSegmentState) ElementType() reflect.Type {
@@ -248,124 +197,90 @@ func (ApplicationSegmentState) ElementType() reflect.Type {
 }
 
 type applicationSegmentArgs struct {
-	// (Optional) Indicates whether users can bypass ZPA to access applications. Supported values: `ALWAYS`, `NEVER`, `ON_NET`.
-	BypassType *string `pulumi:"bypassType"`
-	// (Optional) Supported values: `DEFAULT`, `SIEM`.
+	// Indicates whether users can bypass ZPA to access applications.
+	BypassType  *string `pulumi:"bypassType"`
 	ConfigSpace *string `pulumi:"configSpace"`
-	// (Optional) Description of the application.
+	// Description of the application.
 	Description *string `pulumi:"description"`
 	// List of domains and IPs.
 	DomainNames []string `pulumi:"domainNames"`
-	// (Optional) Whether Double Encryption is enabled or disabled for the app.
+	// Whether Double Encryption is enabled or disabled for the app.
 	DoubleEncrypt *bool `pulumi:"doubleEncrypt"`
-	// (Optional) Whether this application is enabled or not.
-	Enabled *bool `pulumi:"enabled"`
-	// (Optional) Supported values: `DEFAULT`, `NONE`.
+	// Whether this application is enabled or not.
+	Enabled         *bool   `pulumi:"enabled"`
 	HealthCheckType *string `pulumi:"healthCheckType"`
-	// (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
+	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting *string `pulumi:"healthReporting"`
-	// (Optional) Supported values: `NONE`, `PING_TRACEROUTING`, `PING`.
-	IcmpAccessType *string `pulumi:"icmpAccessType"`
-	// (Optional) Supported values: `true`, `false`
-	IpAnchored *bool `pulumi:"ipAnchored"`
-	// (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
-	IsCnameEnabled *bool `pulumi:"isCnameEnabled"`
-	// (Optional) Supported values: `true`, `false`
-	IsIncompleteDrConfig *bool `pulumi:"isIncompleteDrConfig"`
-	// (Optional) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// Name. The name of the App Connector Group to be exported.
-	Name *string `pulumi:"name"`
-	// (Optional) Supported values: `true`, `false`
-	PassiveHealthEnabled *bool `pulumi:"passiveHealthEnabled"`
-	// List of Segment Group IDs
+	IcmpAccessType  *string `pulumi:"icmpAccessType"`
+	IpAnchored      *bool   `pulumi:"ipAnchored"`
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+	// connectors.
+	IsCnameEnabled       *bool   `pulumi:"isCnameEnabled"`
+	IsIncompleteDrConfig *bool   `pulumi:"isIncompleteDrConfig"`
+	MatchStyle           *string `pulumi:"matchStyle"`
+	MicrotenantId        *string `pulumi:"microtenantId"`
+	// Name of the application.
+	Name                      *string `pulumi:"name"`
+	PassiveHealthEnabled      *bool   `pulumi:"passiveHealthEnabled"`
 	SegmentGroupId            *string `pulumi:"segmentGroupId"`
 	SegmentGroupName          *string `pulumi:"segmentGroupName"`
 	SelectConnectorCloseToApp *bool   `pulumi:"selectConnectorCloseToApp"`
-	// List of Server Group IDs
+	// List of the server group IDs.
 	ServerGroups []ApplicationSegmentServerGroup `pulumi:"serverGroups"`
-	// (Optional) Supported values: ``1`` for Enabled and ``0`` for Disabled
-	TcpKeepAlive *string `pulumi:"tcpKeepAlive"`
-	// TCP port ranges used to access the app.
-	// * `from:`
-	// * `to:`
+	TcpKeepAlive *string                         `pulumi:"tcpKeepAlive"`
+	// tcp port range
 	TcpPortRange []ApplicationSegmentTcpPortRange `pulumi:"tcpPortRange"`
 	// TCP port ranges used to access the app.
 	TcpPortRanges []string `pulumi:"tcpPortRanges"`
-	// UDP port ranges used to access the app.
-	// * `from:`
-	// * `to:`
-	//
-	// > **NOTE:** Application segments must have unique ports and cannot have overlapping domain names using the same tcp/udp ports across multiple application segments.
+	// udp port range
 	UdpPortRange []ApplicationSegmentUdpPortRange `pulumi:"udpPortRange"`
 	// UDP port ranges used to access the app.
-	//
-	// > **NOTE:**  TCP and UDP ports can also be defined using the following model:
-	// **NOTE:** When removing TCP and/or UDP ports, parameter must be defined but set as empty due to current API behavior.
 	UdpPortRanges []string `pulumi:"udpPortRanges"`
-	// (Optional) Supported values: `true`, `false`
-	UseInDrMode *bool `pulumi:"useInDrMode"`
+	UseInDrMode   *bool    `pulumi:"useInDrMode"`
 }
 
 // The set of arguments for constructing a ApplicationSegment resource.
 type ApplicationSegmentArgs struct {
-	// (Optional) Indicates whether users can bypass ZPA to access applications. Supported values: `ALWAYS`, `NEVER`, `ON_NET`.
-	BypassType pulumi.StringPtrInput
-	// (Optional) Supported values: `DEFAULT`, `SIEM`.
+	// Indicates whether users can bypass ZPA to access applications.
+	BypassType  pulumi.StringPtrInput
 	ConfigSpace pulumi.StringPtrInput
-	// (Optional) Description of the application.
+	// Description of the application.
 	Description pulumi.StringPtrInput
 	// List of domains and IPs.
 	DomainNames pulumi.StringArrayInput
-	// (Optional) Whether Double Encryption is enabled or disabled for the app.
+	// Whether Double Encryption is enabled or disabled for the app.
 	DoubleEncrypt pulumi.BoolPtrInput
-	// (Optional) Whether this application is enabled or not.
-	Enabled pulumi.BoolPtrInput
-	// (Optional) Supported values: `DEFAULT`, `NONE`.
+	// Whether this application is enabled or not.
+	Enabled         pulumi.BoolPtrInput
 	HealthCheckType pulumi.StringPtrInput
-	// (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
+	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting pulumi.StringPtrInput
-	// (Optional) Supported values: `NONE`, `PING_TRACEROUTING`, `PING`.
-	IcmpAccessType pulumi.StringPtrInput
-	// (Optional) Supported values: `true`, `false`
-	IpAnchored pulumi.BoolPtrInput
-	// (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
-	IsCnameEnabled pulumi.BoolPtrInput
-	// (Optional) Supported values: `true`, `false`
+	IcmpAccessType  pulumi.StringPtrInput
+	IpAnchored      pulumi.BoolPtrInput
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+	// connectors.
+	IsCnameEnabled       pulumi.BoolPtrInput
 	IsIncompleteDrConfig pulumi.BoolPtrInput
-	// (Optional) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId pulumi.StringPtrInput
-	// Name. The name of the App Connector Group to be exported.
-	Name pulumi.StringPtrInput
-	// (Optional) Supported values: `true`, `false`
-	PassiveHealthEnabled pulumi.BoolPtrInput
-	// List of Segment Group IDs
+	MatchStyle           pulumi.StringPtrInput
+	MicrotenantId        pulumi.StringPtrInput
+	// Name of the application.
+	Name                      pulumi.StringPtrInput
+	PassiveHealthEnabled      pulumi.BoolPtrInput
 	SegmentGroupId            pulumi.StringPtrInput
 	SegmentGroupName          pulumi.StringPtrInput
 	SelectConnectorCloseToApp pulumi.BoolPtrInput
-	// List of Server Group IDs
+	// List of the server group IDs.
 	ServerGroups ApplicationSegmentServerGroupArrayInput
-	// (Optional) Supported values: ``1`` for Enabled and ``0`` for Disabled
 	TcpKeepAlive pulumi.StringPtrInput
-	// TCP port ranges used to access the app.
-	// * `from:`
-	// * `to:`
+	// tcp port range
 	TcpPortRange ApplicationSegmentTcpPortRangeArrayInput
 	// TCP port ranges used to access the app.
 	TcpPortRanges pulumi.StringArrayInput
-	// UDP port ranges used to access the app.
-	// * `from:`
-	// * `to:`
-	//
-	// > **NOTE:** Application segments must have unique ports and cannot have overlapping domain names using the same tcp/udp ports across multiple application segments.
+	// udp port range
 	UdpPortRange ApplicationSegmentUdpPortRangeArrayInput
 	// UDP port ranges used to access the app.
-	//
-	// > **NOTE:**  TCP and UDP ports can also be defined using the following model:
-	// **NOTE:** When removing TCP and/or UDP ports, parameter must be defined but set as empty due to current API behavior.
 	UdpPortRanges pulumi.StringArrayInput
-	// (Optional) Supported values: `true`, `false`
-	UseInDrMode pulumi.BoolPtrInput
+	UseInDrMode   pulumi.BoolPtrInput
 }
 
 func (ApplicationSegmentArgs) ElementType() reflect.Type {
@@ -455,17 +370,16 @@ func (o ApplicationSegmentOutput) ToApplicationSegmentOutputWithContext(ctx cont
 	return o
 }
 
-// (Optional) Indicates whether users can bypass ZPA to access applications. Supported values: `ALWAYS`, `NEVER`, `ON_NET`.
+// Indicates whether users can bypass ZPA to access applications.
 func (o ApplicationSegmentOutput) BypassType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.StringOutput { return v.BypassType }).(pulumi.StringOutput)
 }
 
-// (Optional) Supported values: `DEFAULT`, `SIEM`.
 func (o ApplicationSegmentOutput) ConfigSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.StringPtrOutput { return v.ConfigSpace }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Description of the application.
+// Description of the application.
 func (o ApplicationSegmentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -475,62 +389,60 @@ func (o ApplicationSegmentOutput) DomainNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.StringArrayOutput { return v.DomainNames }).(pulumi.StringArrayOutput)
 }
 
-// (Optional) Whether Double Encryption is enabled or disabled for the app.
+// Whether Double Encryption is enabled or disabled for the app.
 func (o ApplicationSegmentOutput) DoubleEncrypt() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.BoolPtrOutput { return v.DoubleEncrypt }).(pulumi.BoolPtrOutput)
 }
 
-// (Optional) Whether this application is enabled or not.
+// Whether this application is enabled or not.
 func (o ApplicationSegmentOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// (Optional) Supported values: `DEFAULT`, `NONE`.
 func (o ApplicationSegmentOutput) HealthCheckType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.StringPtrOutput { return v.HealthCheckType }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
+// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 func (o ApplicationSegmentOutput) HealthReporting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.StringPtrOutput { return v.HealthReporting }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Supported values: `NONE`, `PING_TRACEROUTING`, `PING`.
 func (o ApplicationSegmentOutput) IcmpAccessType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.StringPtrOutput { return v.IcmpAccessType }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Supported values: `true`, `false`
 func (o ApplicationSegmentOutput) IpAnchored() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.BoolPtrOutput { return v.IpAnchored }).(pulumi.BoolPtrOutput)
 }
 
-// (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
+// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+// connectors.
 func (o ApplicationSegmentOutput) IsCnameEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.BoolOutput { return v.IsCnameEnabled }).(pulumi.BoolOutput)
 }
 
-// (Optional) Supported values: `true`, `false`
 func (o ApplicationSegmentOutput) IsIncompleteDrConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.BoolPtrOutput { return v.IsIncompleteDrConfig }).(pulumi.BoolPtrOutput)
 }
 
-// (Optional) The ID of the microtenant the resource is to be associated with.
+func (o ApplicationSegmentOutput) MatchStyle() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationSegment) pulumi.StringOutput { return v.MatchStyle }).(pulumi.StringOutput)
+}
+
 func (o ApplicationSegmentOutput) MicrotenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.StringPtrOutput { return v.MicrotenantId }).(pulumi.StringPtrOutput)
 }
 
-// Name. The name of the App Connector Group to be exported.
+// Name of the application.
 func (o ApplicationSegmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Optional) Supported values: `true`, `false`
 func (o ApplicationSegmentOutput) PassiveHealthEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.BoolOutput { return v.PassiveHealthEnabled }).(pulumi.BoolOutput)
 }
 
-// List of Segment Group IDs
 func (o ApplicationSegmentOutput) SegmentGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.StringOutput { return v.SegmentGroupId }).(pulumi.StringOutput)
 }
@@ -543,19 +455,16 @@ func (o ApplicationSegmentOutput) SelectConnectorCloseToApp() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.BoolPtrOutput { return v.SelectConnectorCloseToApp }).(pulumi.BoolPtrOutput)
 }
 
-// List of Server Group IDs
+// List of the server group IDs.
 func (o ApplicationSegmentOutput) ServerGroups() ApplicationSegmentServerGroupArrayOutput {
 	return o.ApplyT(func(v *ApplicationSegment) ApplicationSegmentServerGroupArrayOutput { return v.ServerGroups }).(ApplicationSegmentServerGroupArrayOutput)
 }
 
-// (Optional) Supported values: “1“ for Enabled and “0“ for Disabled
 func (o ApplicationSegmentOutput) TcpKeepAlive() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.StringOutput { return v.TcpKeepAlive }).(pulumi.StringOutput)
 }
 
-// TCP port ranges used to access the app.
-// * `from:`
-// * `to:`
+// tcp port range
 func (o ApplicationSegmentOutput) TcpPortRange() ApplicationSegmentTcpPortRangeArrayOutput {
 	return o.ApplyT(func(v *ApplicationSegment) ApplicationSegmentTcpPortRangeArrayOutput { return v.TcpPortRange }).(ApplicationSegmentTcpPortRangeArrayOutput)
 }
@@ -565,24 +474,16 @@ func (o ApplicationSegmentOutput) TcpPortRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.StringArrayOutput { return v.TcpPortRanges }).(pulumi.StringArrayOutput)
 }
 
-// UDP port ranges used to access the app.
-// * `from:`
-// * `to:`
-//
-// > **NOTE:** Application segments must have unique ports and cannot have overlapping domain names using the same tcp/udp ports across multiple application segments.
+// udp port range
 func (o ApplicationSegmentOutput) UdpPortRange() ApplicationSegmentUdpPortRangeArrayOutput {
 	return o.ApplyT(func(v *ApplicationSegment) ApplicationSegmentUdpPortRangeArrayOutput { return v.UdpPortRange }).(ApplicationSegmentUdpPortRangeArrayOutput)
 }
 
 // UDP port ranges used to access the app.
-//
-// > **NOTE:**  TCP and UDP ports can also be defined using the following model:
-// **NOTE:** When removing TCP and/or UDP ports, parameter must be defined but set as empty due to current API behavior.
 func (o ApplicationSegmentOutput) UdpPortRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.StringArrayOutput { return v.UdpPortRanges }).(pulumi.StringArrayOutput)
 }
 
-// (Optional) Supported values: `true`, `false`
 func (o ApplicationSegmentOutput) UseInDrMode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.BoolPtrOutput { return v.UseInDrMode }).(pulumi.BoolPtrOutput)
 }

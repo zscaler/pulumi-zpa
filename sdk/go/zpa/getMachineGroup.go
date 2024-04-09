@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-machine-groups)
+// * [API documentation](https://help.zscaler.com/zpa/obtaining-machine-group-details-using-api)
+//
 // Use the **zpa_machine_group** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
 //
 // ## Example Usage
@@ -78,38 +81,24 @@ func GetMachineGroup(ctx *pulumi.Context, args *GetMachineGroupArgs, opts ...pul
 
 // A collection of arguments for invoking getMachineGroup.
 type GetMachineGroupArgs struct {
-	// The ID of the machine group to be exported.
-	Id *string `pulumi:"id"`
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
+	Id              *string `pulumi:"id"`
+	MicrotenantId   *string `pulumi:"microtenantId"`
 	MicrotenantName *string `pulumi:"microtenantName"`
-	// The name of the machine group to be exported.
-	Name *string `pulumi:"name"`
+	Name            *string `pulumi:"name"`
 }
 
 // A collection of values returned by getMachineGroup.
 type GetMachineGroupResult struct {
-	// (string)
-	CreationTime string `pulumi:"creationTime"`
-	// (string)
-	Description string `pulumi:"description"`
-	// (bool)
-	Enabled bool `pulumi:"enabled"`
-	// (string)
-	Id *string `pulumi:"id"`
-	// (string)
-	Machines []GetMachineGroupMachine `pulumi:"machines"`
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
-	MicrotenantName *string `pulumi:"microtenantName"`
-	// (string)
-	ModifiedBy string `pulumi:"modifiedBy"`
-	// (string)
-	ModifiedTime string `pulumi:"modifiedTime"`
-	// (string)
-	Name *string `pulumi:"name"`
+	CreationTime    string                   `pulumi:"creationTime"`
+	Description     string                   `pulumi:"description"`
+	Enabled         bool                     `pulumi:"enabled"`
+	Id              *string                  `pulumi:"id"`
+	Machines        []GetMachineGroupMachine `pulumi:"machines"`
+	MicrotenantId   *string                  `pulumi:"microtenantId"`
+	MicrotenantName *string                  `pulumi:"microtenantName"`
+	ModifiedBy      string                   `pulumi:"modifiedBy"`
+	ModifiedTime    string                   `pulumi:"modifiedTime"`
+	Name            *string                  `pulumi:"name"`
 }
 
 func GetMachineGroupOutput(ctx *pulumi.Context, args GetMachineGroupOutputArgs, opts ...pulumi.InvokeOption) GetMachineGroupResultOutput {
@@ -127,14 +116,10 @@ func GetMachineGroupOutput(ctx *pulumi.Context, args GetMachineGroupOutputArgs, 
 
 // A collection of arguments for invoking getMachineGroup.
 type GetMachineGroupOutputArgs struct {
-	// The ID of the machine group to be exported.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId pulumi.StringPtrInput `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
+	Id              pulumi.StringPtrInput `pulumi:"id"`
+	MicrotenantId   pulumi.StringPtrInput `pulumi:"microtenantId"`
 	MicrotenantName pulumi.StringPtrInput `pulumi:"microtenantName"`
-	// The name of the machine group to be exported.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name            pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (GetMachineGroupOutputArgs) ElementType() reflect.Type {
@@ -156,52 +141,42 @@ func (o GetMachineGroupResultOutput) ToGetMachineGroupResultOutputWithContext(ct
 	return o
 }
 
-// (string)
 func (o GetMachineGroupResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMachineGroupResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetMachineGroupResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMachineGroupResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (bool)
 func (o GetMachineGroupResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetMachineGroupResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// (string)
 func (o GetMachineGroupResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMachineGroupResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// (string)
 func (o GetMachineGroupResultOutput) Machines() GetMachineGroupMachineArrayOutput {
 	return o.ApplyT(func(v GetMachineGroupResult) []GetMachineGroupMachine { return v.Machines }).(GetMachineGroupMachineArrayOutput)
 }
 
-// (string) The ID of the microtenant the resource is to be associated with.
 func (o GetMachineGroupResultOutput) MicrotenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMachineGroupResult) *string { return v.MicrotenantId }).(pulumi.StringPtrOutput)
 }
 
-// (string) The name of the microtenant the resource is to be associated with.
 func (o GetMachineGroupResultOutput) MicrotenantName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMachineGroupResult) *string { return v.MicrotenantName }).(pulumi.StringPtrOutput)
 }
 
-// (string)
 func (o GetMachineGroupResultOutput) ModifiedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMachineGroupResult) string { return v.ModifiedBy }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetMachineGroupResultOutput) ModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMachineGroupResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetMachineGroupResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMachineGroupResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

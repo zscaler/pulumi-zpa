@@ -18,7 +18,6 @@ namespace Zscaler.Zpa.Outputs
         public readonly string Id;
         public readonly string ModifiedBy;
         public readonly string ModifiedTime;
-        public readonly bool Negated;
         public readonly ImmutableArray<Outputs.GetPolicyTypeRuleConditionOperandResult> Operands;
         public readonly string Operator;
 
@@ -32,8 +31,6 @@ namespace Zscaler.Zpa.Outputs
 
             string modifiedTime,
 
-            bool negated,
-
             ImmutableArray<Outputs.GetPolicyTypeRuleConditionOperandResult> operands,
 
             string @operator)
@@ -42,7 +39,6 @@ namespace Zscaler.Zpa.Outputs
             Id = id;
             ModifiedBy = modifiedBy;
             ModifiedTime = modifiedTime;
-            Negated = negated;
             Operands = operands;
             Operator = @operator;
         }

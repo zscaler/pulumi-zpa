@@ -20,16 +20,12 @@ class SegmentGroupArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  microtenant_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 policy_migrated: Optional[pulumi.Input[bool]] = None,
-                 tcp_keep_alive_enabled: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SegmentGroup resource.
-        :param pulumi.Input[str] description: (Optional) Description of the segment group.
-        :param pulumi.Input[bool] enabled: (Optional) Whether this segment group is enabled or not.
-        :param pulumi.Input[str] microtenant_id: (Optional) The ID of the microtenant the resource is to be associated with.
-        :param pulumi.Input[str] name: (Required) Name of the segment group.
-        :param pulumi.Input[str] tcp_keep_alive_enabled: (Deprecated)
+        :param pulumi.Input[str] description: Description of the app group.
+        :param pulumi.Input[bool] enabled: Whether this app group is enabled or not.
+        :param pulumi.Input[str] name: Name of the app group.
         """
         if applications is not None:
             pulumi.set(__self__, "applications", applications)
@@ -41,16 +37,6 @@ class SegmentGroupArgs:
             pulumi.set(__self__, "microtenant_id", microtenant_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if policy_migrated is not None:
-            warnings.warn("""The `policy_migrated` field is now deprecated for the resource `SegmentGroup`, please remove this attribute to prevent configuration drifts""", DeprecationWarning)
-            pulumi.log.warn("""policy_migrated is deprecated: The `policy_migrated` field is now deprecated for the resource `SegmentGroup`, please remove this attribute to prevent configuration drifts""")
-        if policy_migrated is not None:
-            pulumi.set(__self__, "policy_migrated", policy_migrated)
-        if tcp_keep_alive_enabled is not None:
-            warnings.warn("""The `tcp_keep_alive_enabled` field is now deprecated for the resource `SegmentGroup`, please replace all uses of this within the `ApplicationSegment`resources with the attribute `tcp_keep_alive`""", DeprecationWarning)
-            pulumi.log.warn("""tcp_keep_alive_enabled is deprecated: The `tcp_keep_alive_enabled` field is now deprecated for the resource `SegmentGroup`, please replace all uses of this within the `ApplicationSegment`resources with the attribute `tcp_keep_alive`""")
-        if tcp_keep_alive_enabled is not None:
-            pulumi.set(__self__, "tcp_keep_alive_enabled", tcp_keep_alive_enabled)
 
     @property
     @pulumi.getter
@@ -65,7 +51,7 @@ class SegmentGroupArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional) Description of the segment group.
+        Description of the app group.
         """
         return pulumi.get(self, "description")
 
@@ -77,7 +63,7 @@ class SegmentGroupArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional) Whether this segment group is enabled or not.
+        Whether this app group is enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -88,9 +74,6 @@ class SegmentGroupArgs:
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @microtenant_id.setter
@@ -101,40 +84,13 @@ class SegmentGroupArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        (Required) Name of the segment group.
+        Name of the app group.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="policyMigrated")
-    def policy_migrated(self) -> Optional[pulumi.Input[bool]]:
-        warnings.warn("""The `policy_migrated` field is now deprecated for the resource `SegmentGroup`, please remove this attribute to prevent configuration drifts""", DeprecationWarning)
-        pulumi.log.warn("""policy_migrated is deprecated: The `policy_migrated` field is now deprecated for the resource `SegmentGroup`, please remove this attribute to prevent configuration drifts""")
-
-        return pulumi.get(self, "policy_migrated")
-
-    @policy_migrated.setter
-    def policy_migrated(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "policy_migrated", value)
-
-    @property
-    @pulumi.getter(name="tcpKeepAliveEnabled")
-    def tcp_keep_alive_enabled(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Deprecated)
-        """
-        warnings.warn("""The `tcp_keep_alive_enabled` field is now deprecated for the resource `SegmentGroup`, please replace all uses of this within the `ApplicationSegment`resources with the attribute `tcp_keep_alive`""", DeprecationWarning)
-        pulumi.log.warn("""tcp_keep_alive_enabled is deprecated: The `tcp_keep_alive_enabled` field is now deprecated for the resource `SegmentGroup`, please replace all uses of this within the `ApplicationSegment`resources with the attribute `tcp_keep_alive`""")
-
-        return pulumi.get(self, "tcp_keep_alive_enabled")
-
-    @tcp_keep_alive_enabled.setter
-    def tcp_keep_alive_enabled(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "tcp_keep_alive_enabled", value)
 
 
 @pulumi.input_type
@@ -144,16 +100,12 @@ class _SegmentGroupState:
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  microtenant_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 policy_migrated: Optional[pulumi.Input[bool]] = None,
-                 tcp_keep_alive_enabled: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SegmentGroup resources.
-        :param pulumi.Input[str] description: (Optional) Description of the segment group.
-        :param pulumi.Input[bool] enabled: (Optional) Whether this segment group is enabled or not.
-        :param pulumi.Input[str] microtenant_id: (Optional) The ID of the microtenant the resource is to be associated with.
-        :param pulumi.Input[str] name: (Required) Name of the segment group.
-        :param pulumi.Input[str] tcp_keep_alive_enabled: (Deprecated)
+        :param pulumi.Input[str] description: Description of the app group.
+        :param pulumi.Input[bool] enabled: Whether this app group is enabled or not.
+        :param pulumi.Input[str] name: Name of the app group.
         """
         if applications is not None:
             pulumi.set(__self__, "applications", applications)
@@ -165,16 +117,6 @@ class _SegmentGroupState:
             pulumi.set(__self__, "microtenant_id", microtenant_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if policy_migrated is not None:
-            warnings.warn("""The `policy_migrated` field is now deprecated for the resource `SegmentGroup`, please remove this attribute to prevent configuration drifts""", DeprecationWarning)
-            pulumi.log.warn("""policy_migrated is deprecated: The `policy_migrated` field is now deprecated for the resource `SegmentGroup`, please remove this attribute to prevent configuration drifts""")
-        if policy_migrated is not None:
-            pulumi.set(__self__, "policy_migrated", policy_migrated)
-        if tcp_keep_alive_enabled is not None:
-            warnings.warn("""The `tcp_keep_alive_enabled` field is now deprecated for the resource `SegmentGroup`, please replace all uses of this within the `ApplicationSegment`resources with the attribute `tcp_keep_alive`""", DeprecationWarning)
-            pulumi.log.warn("""tcp_keep_alive_enabled is deprecated: The `tcp_keep_alive_enabled` field is now deprecated for the resource `SegmentGroup`, please replace all uses of this within the `ApplicationSegment`resources with the attribute `tcp_keep_alive`""")
-        if tcp_keep_alive_enabled is not None:
-            pulumi.set(__self__, "tcp_keep_alive_enabled", tcp_keep_alive_enabled)
 
     @property
     @pulumi.getter
@@ -189,7 +131,7 @@ class _SegmentGroupState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional) Description of the segment group.
+        Description of the app group.
         """
         return pulumi.get(self, "description")
 
@@ -201,7 +143,7 @@ class _SegmentGroupState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional) Whether this segment group is enabled or not.
+        Whether this app group is enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -212,9 +154,6 @@ class _SegmentGroupState:
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @microtenant_id.setter
@@ -225,40 +164,13 @@ class _SegmentGroupState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        (Required) Name of the segment group.
+        Name of the app group.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="policyMigrated")
-    def policy_migrated(self) -> Optional[pulumi.Input[bool]]:
-        warnings.warn("""The `policy_migrated` field is now deprecated for the resource `SegmentGroup`, please remove this attribute to prevent configuration drifts""", DeprecationWarning)
-        pulumi.log.warn("""policy_migrated is deprecated: The `policy_migrated` field is now deprecated for the resource `SegmentGroup`, please remove this attribute to prevent configuration drifts""")
-
-        return pulumi.get(self, "policy_migrated")
-
-    @policy_migrated.setter
-    def policy_migrated(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "policy_migrated", value)
-
-    @property
-    @pulumi.getter(name="tcpKeepAliveEnabled")
-    def tcp_keep_alive_enabled(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Deprecated)
-        """
-        warnings.warn("""The `tcp_keep_alive_enabled` field is now deprecated for the resource `SegmentGroup`, please replace all uses of this within the `ApplicationSegment`resources with the attribute `tcp_keep_alive`""", DeprecationWarning)
-        pulumi.log.warn("""tcp_keep_alive_enabled is deprecated: The `tcp_keep_alive_enabled` field is now deprecated for the resource `SegmentGroup`, please replace all uses of this within the `ApplicationSegment`resources with the attribute `tcp_keep_alive`""")
-
-        return pulumi.get(self, "tcp_keep_alive_enabled")
-
-    @tcp_keep_alive_enabled.setter
-    def tcp_keep_alive_enabled(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "tcp_keep_alive_enabled", value)
 
 
 class SegmentGroup(pulumi.CustomResource):
@@ -271,8 +183,6 @@ class SegmentGroup(pulumi.CustomResource):
                  enabled: Optional[pulumi.Input[bool]] = None,
                  microtenant_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 policy_migrated: Optional[pulumi.Input[bool]] = None,
-                 tcp_keep_alive_enabled: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -285,8 +195,7 @@ class SegmentGroup(pulumi.CustomResource):
         # ZPA Segment Group resource
         test_segment_group = zpa.SegmentGroup("testSegmentGroup",
             description="test1-segment-group",
-            enabled=True,
-            tcp_keep_alive_enabled="1")
+            enabled=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -312,11 +221,9 @@ class SegmentGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: (Optional) Description of the segment group.
-        :param pulumi.Input[bool] enabled: (Optional) Whether this segment group is enabled or not.
-        :param pulumi.Input[str] microtenant_id: (Optional) The ID of the microtenant the resource is to be associated with.
-        :param pulumi.Input[str] name: (Required) Name of the segment group.
-        :param pulumi.Input[str] tcp_keep_alive_enabled: (Deprecated)
+        :param pulumi.Input[str] description: Description of the app group.
+        :param pulumi.Input[bool] enabled: Whether this app group is enabled or not.
+        :param pulumi.Input[str] name: Name of the app group.
         """
         ...
     @overload
@@ -335,8 +242,7 @@ class SegmentGroup(pulumi.CustomResource):
         # ZPA Segment Group resource
         test_segment_group = zpa.SegmentGroup("testSegmentGroup",
             description="test1-segment-group",
-            enabled=True,
-            tcp_keep_alive_enabled="1")
+            enabled=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -380,8 +286,6 @@ class SegmentGroup(pulumi.CustomResource):
                  enabled: Optional[pulumi.Input[bool]] = None,
                  microtenant_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 policy_migrated: Optional[pulumi.Input[bool]] = None,
-                 tcp_keep_alive_enabled: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -396,8 +300,6 @@ class SegmentGroup(pulumi.CustomResource):
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["microtenant_id"] = microtenant_id
             __props__.__dict__["name"] = name
-            __props__.__dict__["policy_migrated"] = policy_migrated
-            __props__.__dict__["tcp_keep_alive_enabled"] = tcp_keep_alive_enabled
         super(SegmentGroup, __self__).__init__(
             'zpa:index/segmentGroup:SegmentGroup',
             resource_name,
@@ -412,9 +314,7 @@ class SegmentGroup(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             microtenant_id: Optional[pulumi.Input[str]] = None,
-            name: Optional[pulumi.Input[str]] = None,
-            policy_migrated: Optional[pulumi.Input[bool]] = None,
-            tcp_keep_alive_enabled: Optional[pulumi.Input[str]] = None) -> 'SegmentGroup':
+            name: Optional[pulumi.Input[str]] = None) -> 'SegmentGroup':
         """
         Get an existing SegmentGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -422,11 +322,9 @@ class SegmentGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: (Optional) Description of the segment group.
-        :param pulumi.Input[bool] enabled: (Optional) Whether this segment group is enabled or not.
-        :param pulumi.Input[str] microtenant_id: (Optional) The ID of the microtenant the resource is to be associated with.
-        :param pulumi.Input[str] name: (Required) Name of the segment group.
-        :param pulumi.Input[str] tcp_keep_alive_enabled: (Deprecated)
+        :param pulumi.Input[str] description: Description of the app group.
+        :param pulumi.Input[bool] enabled: Whether this app group is enabled or not.
+        :param pulumi.Input[str] name: Name of the app group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -437,8 +335,6 @@ class SegmentGroup(pulumi.CustomResource):
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["microtenant_id"] = microtenant_id
         __props__.__dict__["name"] = name
-        __props__.__dict__["policy_migrated"] = policy_migrated
-        __props__.__dict__["tcp_keep_alive_enabled"] = tcp_keep_alive_enabled
         return SegmentGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -450,7 +346,7 @@ class SegmentGroup(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        (Optional) Description of the segment group.
+        Description of the app group.
         """
         return pulumi.get(self, "description")
 
@@ -458,42 +354,20 @@ class SegmentGroup(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        (Optional) Whether this segment group is enabled or not.
+        Whether this app group is enabled or not.
         """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> pulumi.Output[str]:
-        """
-        (Optional) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        (Required) Name of the segment group.
+        Name of the app group.
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="policyMigrated")
-    def policy_migrated(self) -> pulumi.Output[Optional[bool]]:
-        warnings.warn("""The `policy_migrated` field is now deprecated for the resource `SegmentGroup`, please remove this attribute to prevent configuration drifts""", DeprecationWarning)
-        pulumi.log.warn("""policy_migrated is deprecated: The `policy_migrated` field is now deprecated for the resource `SegmentGroup`, please remove this attribute to prevent configuration drifts""")
-
-        return pulumi.get(self, "policy_migrated")
-
-    @property
-    @pulumi.getter(name="tcpKeepAliveEnabled")
-    def tcp_keep_alive_enabled(self) -> pulumi.Output[Optional[str]]:
-        """
-        (Deprecated)
-        """
-        warnings.warn("""The `tcp_keep_alive_enabled` field is now deprecated for the resource `SegmentGroup`, please replace all uses of this within the `ApplicationSegment`resources with the attribute `tcp_keep_alive`""", DeprecationWarning)
-        pulumi.log.warn("""tcp_keep_alive_enabled is deprecated: The `tcp_keep_alive_enabled` field is now deprecated for the resource `SegmentGroup`, please replace all uses of this within the `ApplicationSegment`resources with the attribute `tcp_keep_alive`""")
-
-        return pulumi.get(self, "tcp_keep_alive_enabled")
 

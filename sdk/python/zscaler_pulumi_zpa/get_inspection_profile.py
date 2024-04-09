@@ -72,17 +72,11 @@ class GetInspectionProfileResult:
     @property
     @pulumi.getter(name="commonGlobalOverrideActionsConfig")
     def common_global_override_actions_config(self) -> Mapping[str, str]:
-        """
-        (string)
-        """
         return pulumi.get(self, "common_global_override_actions_config")
 
     @property
     @pulumi.getter(name="controlsInfos")
     def controls_infos(self) -> Sequence['outputs.GetInspectionProfileControlsInfoResult']:
-        """
-        (string) Types for custom controls
-        """
         return pulumi.get(self, "controls_infos")
 
     @property
@@ -93,17 +87,11 @@ class GetInspectionProfileResult:
     @property
     @pulumi.getter(name="customControls")
     def custom_controls(self) -> Sequence['outputs.GetInspectionProfileCustomControlResult']:
-        """
-        (string) Types for custom controls
-        """
         return pulumi.get(self, "custom_controls")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string) Description of the inspection profile.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -114,9 +102,6 @@ class GetInspectionProfileResult:
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        (string) ID of the predefined control
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -138,24 +123,18 @@ class GetInspectionProfileResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        (string)
+        - (String) This field defines the name of the inspection profile.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="paranoiaLevel")
     def paranoia_level(self) -> str:
-        """
-        (string) OWASP Predefined Paranoia Level. Range: [1-4], inclusive
-        """
         return pulumi.get(self, "paranoia_level")
 
     @property
     @pulumi.getter(name="predefinedControls")
     def predefined_controls(self) -> Sequence['outputs.GetInspectionProfilePredefinedControlResult']:
-        """
-        (string) The predefined controls
-        """
         return pulumi.get(self, "predefined_controls")
 
     @property
@@ -166,9 +145,6 @@ class GetInspectionProfileResult:
     @property
     @pulumi.getter(name="webSocketControls")
     def web_socket_controls(self) -> Sequence['outputs.GetInspectionProfileWebSocketControlResult']:
-        """
-        (string)
-        """
         return pulumi.get(self, "web_socket_controls")
 
 
@@ -199,6 +175,9 @@ def get_inspection_profile(id: Optional[str] = None,
                            name: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInspectionProfileResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-browser-protection-profiles)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-profiles-using-api)
+
     Use the **zpa_inspection_profile** data source to get information about an inspection profile in the Zscaler Private Access cloud. This resource can then be referenced in an inspection custom control resource.
 
     ## Example Usage
@@ -213,8 +192,7 @@ def get_inspection_profile(id: Optional[str] = None,
     <!--End PulumiCodeChooser -->
 
 
-    :param str id: This field defines the id of the inspection profile.
-    :param str name: This field defines the name of the inspection profile.
+    :param str name: - (String) This field defines the name of the inspection profile.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -245,6 +223,9 @@ def get_inspection_profile_output(id: Optional[pulumi.Input[Optional[str]]] = No
                                   name: Optional[pulumi.Input[Optional[str]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInspectionProfileResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-browser-protection-profiles)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-profiles-using-api)
+
     Use the **zpa_inspection_profile** data source to get information about an inspection profile in the Zscaler Private Access cloud. This resource can then be referenced in an inspection custom control resource.
 
     ## Example Usage
@@ -259,7 +240,6 @@ def get_inspection_profile_output(id: Optional[pulumi.Input[Optional[str]]] = No
     <!--End PulumiCodeChooser -->
 
 
-    :param str id: This field defines the id of the inspection profile.
-    :param str name: This field defines the name of the inspection profile.
+    :param str name: - (String) This field defines the name of the inspection profile.
     """
     ...

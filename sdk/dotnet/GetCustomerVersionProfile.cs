@@ -13,6 +13,9 @@ namespace Zscaler.Zpa
     public static class GetCustomerVersionProfile
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-connectors)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-version-profile-details-using-api)
+        /// 
         /// Use the **zpa_customer_version_profile** data source to get information about all customer version profiles from the Zscaler Private Access cloud. This data source can be associated with an App Connector Group within the parameter `version_profile_id` or `version_profile_name`
         /// 
         /// The customer version profile IDs are:
@@ -55,6 +58,9 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomerVersionProfileResult>("zpa:index/getCustomerVersionProfile:getCustomerVersionProfile", args ?? new GetCustomerVersionProfileArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-connectors)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-version-profile-details-using-api)
+        /// 
         /// Use the **zpa_customer_version_profile** data source to get information about all customer version profiles from the Zscaler Private Access cloud. This data source can be associated with an App Connector Group within the parameter `version_profile_id` or `version_profile_name`
         /// 
         /// The customer version profile IDs are:
@@ -100,9 +106,6 @@ namespace Zscaler.Zpa
 
     public sealed class GetCustomerVersionProfileArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the enrollment certificate to be exported.
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -114,9 +117,6 @@ namespace Zscaler.Zpa
 
     public sealed class GetCustomerVersionProfileInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the enrollment certificate to be exported.
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -130,24 +130,12 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetCustomerVersionProfileResult
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
         public readonly ImmutableArray<Outputs.GetCustomerVersionProfileCustomScopeCustomerIdResult> CustomScopeCustomerIds;
         public readonly string CustomerId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Description;
         public readonly string Id;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedBy;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string Name;
         public readonly string UpgradePriority;

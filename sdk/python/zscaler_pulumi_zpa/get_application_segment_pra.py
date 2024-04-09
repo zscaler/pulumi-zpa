@@ -97,65 +97,41 @@ class GetApplicationSegmentPRAResult:
     @property
     @pulumi.getter(name="bypassType")
     def bypass_type(self) -> str:
-        """
-        (string) Indicates whether users can bypass ZPA to access applications.
-        """
         return pulumi.get(self, "bypass_type")
 
     @property
     @pulumi.getter(name="configSpace")
     def config_space(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "config_space")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string) Description of the application.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="domainNames")
     def domain_names(self) -> Sequence[str]:
-        """
-        (string) List of domains and IPs.
-        """
         return pulumi.get(self, "domain_names")
 
     @property
     @pulumi.getter(name="doubleEncrypt")
     def double_encrypt(self) -> bool:
-        """
-        (bool) Whether Double Encryption is enabled or disabled for the app.
-        """
         return pulumi.get(self, "double_encrypt")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool) Whether this application is enabled or not
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "health_check_type")
 
     @property
     @pulumi.getter(name="healthReporting")
     def health_reporting(self) -> str:
-        """
-        (string) Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
-        """
         return pulumi.get(self, "health_reporting")
 
     @property
@@ -166,33 +142,21 @@ class GetApplicationSegmentPRAResult:
     @property
     @pulumi.getter(name="ipAnchored")
     def ip_anchored(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "ip_anchored")
 
     @property
     @pulumi.getter(name="isCnameEnabled")
     def is_cname_enabled(self) -> bool:
-        """
-        (bool) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
-        """
         return pulumi.get(self, "is_cname_enabled")
 
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[str]:
-        """
-        (string) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @property
     @pulumi.getter(name="microtenantName")
     def microtenant_name(self) -> Optional[str]:
-        """
-        (string) The name of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_name")
 
     @property
@@ -203,17 +167,11 @@ class GetApplicationSegmentPRAResult:
     @property
     @pulumi.getter(name="passiveHealthEnabled")
     def passive_health_enabled(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "passive_health_enabled")
 
     @property
     @pulumi.getter(name="segmentGroupId")
     def segment_group_id(self) -> str:
-        """
-        (String) Segment Group IDs
-        """
         return pulumi.get(self, "segment_group_id")
 
     @property
@@ -224,58 +182,31 @@ class GetApplicationSegmentPRAResult:
     @property
     @pulumi.getter(name="serverGroups")
     def server_groups(self) -> Sequence['outputs.GetApplicationSegmentPRAServerGroupResult']:
-        """
-        (string) List of Server Group IDs
-        * `id:` - (string) List of Server Group IDs
-        """
         return pulumi.get(self, "server_groups")
 
     @property
     @pulumi.getter(name="sraApps")
     def sra_apps(self) -> Sequence['outputs.GetApplicationSegmentPRASraAppResult']:
-        """
-        (string) TCP port ranges used to access the app.
-        * `app_id:` - (string)
-        * `name:` - (string) Name of the Privileged Remote Access
-        * `description:` - (string) Description of the Privileged Remote Access
-        * `domain:` - (string) Domain name of the Privileged Remote Access
-        """
         return pulumi.get(self, "sra_apps")
 
     @property
     @pulumi.getter(name="tcpPortRange")
     def tcp_port_range(self) -> Sequence['outputs.GetApplicationSegmentPRATcpPortRangeResult']:
-        """
-        (string) TCP port ranges used to access the app.
-        * `from:`
-        * `to:`
-        """
         return pulumi.get(self, "tcp_port_range")
 
     @property
     @pulumi.getter(name="tcpPortRanges")
     def tcp_port_ranges(self) -> Sequence[str]:
-        """
-        (string) TCP port ranges used to access the app.
-        """
         return pulumi.get(self, "tcp_port_ranges")
 
     @property
     @pulumi.getter(name="udpPortRange")
     def udp_port_range(self) -> Sequence['outputs.GetApplicationSegmentPRAUdpPortRangeResult']:
-        """
-        (string) UDP port ranges used to access the app.
-        * `from:`
-        * `to:`
-        """
         return pulumi.get(self, "udp_port_range")
 
     @property
     @pulumi.getter(name="udpPortRanges")
     def udp_port_ranges(self) -> Sequence[str]:
-        """
-        (string) UDP port ranges used to access the app.
-        """
         return pulumi.get(self, "udp_port_ranges")
 
 
@@ -318,6 +249,9 @@ def get_application_segment_pra(id: Optional[str] = None,
                                 udp_port_range: Optional[Sequence[pulumi.InputType['GetApplicationSegmentPRAUdpPortRangeArgs']]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApplicationSegmentPRAResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-privileged-remote-access-applications)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
+
     Use the **zpa_application_segment_pra** data source to get information about an application segment for Privileged Remote Access in the Zscaler Private Access cloud. This resource can then be referenced in an access policy rule, access policy timeout rule, access policy client forwarding rule and inspection policy. This resource supports Privileged Remote Access for both `RDP` and `SSH`.
 
     ## Example Usage
@@ -339,17 +273,6 @@ def get_application_segment_pra(id: Optional[str] = None,
     this = zpa.get_application_segment_pra(id="123456789")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str microtenant_id: (string) The ID of the microtenant the resource is to be associated with.
-    :param str microtenant_name: (string) The name of the microtenant the resource is to be associated with.
-    :param str name: The name of the PRA Application Segment to be exported.
-    :param Sequence[pulumi.InputType['GetApplicationSegmentPRATcpPortRangeArgs']] tcp_port_range: (string) TCP port ranges used to access the app.
-           * `from:`
-           * `to:`
-    :param Sequence[pulumi.InputType['GetApplicationSegmentPRAUdpPortRangeArgs']] udp_port_range: (string) UDP port ranges used to access the app.
-           * `from:`
-           * `to:`
     """
     __args__ = dict()
     __args__['id'] = id
@@ -396,6 +319,9 @@ def get_application_segment_pra_output(id: Optional[pulumi.Input[Optional[str]]]
                                        udp_port_range: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetApplicationSegmentPRAUdpPortRangeArgs']]]]] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationSegmentPRAResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-privileged-remote-access-applications)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
+
     Use the **zpa_application_segment_pra** data source to get information about an application segment for Privileged Remote Access in the Zscaler Private Access cloud. This resource can then be referenced in an access policy rule, access policy timeout rule, access policy client forwarding rule and inspection policy. This resource supports Privileged Remote Access for both `RDP` and `SSH`.
 
     ## Example Usage
@@ -417,16 +343,5 @@ def get_application_segment_pra_output(id: Optional[pulumi.Input[Optional[str]]]
     this = zpa.get_application_segment_pra(id="123456789")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str microtenant_id: (string) The ID of the microtenant the resource is to be associated with.
-    :param str microtenant_name: (string) The name of the microtenant the resource is to be associated with.
-    :param str name: The name of the PRA Application Segment to be exported.
-    :param Sequence[pulumi.InputType['GetApplicationSegmentPRATcpPortRangeArgs']] tcp_port_range: (string) TCP port ranges used to access the app.
-           * `from:`
-           * `to:`
-    :param Sequence[pulumi.InputType['GetApplicationSegmentPRAUdpPortRangeArgs']] udp_port_range: (string) UDP port ranges used to access the app.
-           * `from:`
-           * `to:`
     """
     ...

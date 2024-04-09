@@ -17,15 +17,9 @@ namespace Zscaler.Zpa.Outputs
         public readonly string Comments;
         public readonly string CreationTime;
         public readonly string CustomerId;
-        /// <summary>
-        /// (string) Description of the microtenant controller.
-        /// </summary>
         public readonly string Description;
         public readonly string DisplayName;
         public readonly string Email;
-        /// <summary>
-        /// (bool) Whether this microtenant resource is enabled or not.
-        /// </summary>
         public readonly bool Enabled;
         public readonly string Eula;
         public readonly bool ForcePwdChange;
@@ -40,7 +34,7 @@ namespace Zscaler.Zpa.Outputs
         public readonly int ModifiedTime;
         public readonly int Modifiedby;
         /// <summary>
-        /// (Required) Name of the microtenant controller.
+        /// - (Required) Name of the microtenant controller.
         /// </summary>
         public readonly string Name;
         public readonly string Password;

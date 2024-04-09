@@ -16,9 +16,6 @@ namespace Zscaler.Zpa.Outputs
     {
         public readonly string CustomerId;
         public readonly bool ExcludeConstellation;
-        /// <summary>
-        /// The name of the enrollment certificate to be exported.
-        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

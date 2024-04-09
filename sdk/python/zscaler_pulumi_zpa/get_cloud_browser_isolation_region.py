@@ -32,17 +32,11 @@ class GetCloudBrowserIsolationRegionResult:
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        (string) - ID information of the CBI region
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        (string) - Name of the CBI region
-        """
         return pulumi.get(self, "name")
 
 
@@ -72,10 +66,6 @@ def get_cloud_browser_isolation_region(id: Optional[str] = None,
     this = zpa.get_cloud_browser_isolation_region(name="Singapore")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: The id of the CBI region to be exported.
-    :param str name: The name of the CBI region to be exported.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -105,9 +95,5 @@ def get_cloud_browser_isolation_region_output(id: Optional[pulumi.Input[Optional
     this = zpa.get_cloud_browser_isolation_region(name="Singapore")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: The id of the CBI region to be exported.
-    :param str name: The name of the CBI region to be exported.
     """
     ...

@@ -14,45 +14,15 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetLSSConfigControllerConfigResult
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string AuditMessage;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly ImmutableArray<string> Filters;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Format;
-        /// <summary>
-        /// This field defines the name of the log streaming resource.
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string LssHost;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string LssPort;
-        /// <summary>
-        /// This field defines the name of the log streaming resource.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string SourceLogType;
         public readonly bool UseTls;
 

@@ -28,14 +28,12 @@ class ProvisioningKeyArgs:
                  zcomponent_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ProvisioningKey resource.
-        :param pulumi.Input[str] association_type: Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are `CONNECTOR_GRP` and `SERVICE_EDGE_GRP`
-        :param pulumi.Input[str] enrollment_cert_id: ID of the enrollment certificate that can be used for this provisioning key. `ID` of the existing enrollment certificate that has the private key
+        :param pulumi.Input[str] association_type: Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
+               CONNECTOR_GRP and SERVICE_EDGE_GRP.
+        :param pulumi.Input[str] enrollment_cert_id: ID of the enrollment certificate that can be used for this provisioning key.
         :param pulumi.Input[str] max_usage: The maximum number of instances where this provisioning key can be used for enrolling an App Connector or Service Edge.
         :param pulumi.Input[str] zcomponent_id: ID of the existing App Connector or Service Edge Group.
         :param pulumi.Input[bool] enabled: Whether the provisioning key is enabled or not. Supported values: true, false
-        :param pulumi.Input[str] microtenant_id: The ID of the microtenant the resource is to be associated with.
-               
-               ⚠️ **WARNING:**: The attribute ``microtenant_id`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
         :param pulumi.Input[str] name: Name of the provisioning key.
         :param pulumi.Input[str] usage_count: The provisioning key utilization count.
         :param pulumi.Input[str] zcomponent_name: Read only property. Applicable only for GET calls, ignored in PUT/POST calls.
@@ -65,7 +63,8 @@ class ProvisioningKeyArgs:
     @pulumi.getter(name="associationType")
     def association_type(self) -> pulumi.Input[str]:
         """
-        Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are `CONNECTOR_GRP` and `SERVICE_EDGE_GRP`
+        Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
+        CONNECTOR_GRP and SERVICE_EDGE_GRP.
         """
         return pulumi.get(self, "association_type")
 
@@ -77,7 +76,7 @@ class ProvisioningKeyArgs:
     @pulumi.getter(name="enrollmentCertId")
     def enrollment_cert_id(self) -> pulumi.Input[str]:
         """
-        ID of the enrollment certificate that can be used for this provisioning key. `ID` of the existing enrollment certificate that has the private key
+        ID of the enrollment certificate that can be used for this provisioning key.
         """
         return pulumi.get(self, "enrollment_cert_id")
 
@@ -142,11 +141,6 @@ class ProvisioningKeyArgs:
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the microtenant the resource is to be associated with.
-
-        ⚠️ **WARNING:**: The attribute ``microtenant_id`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @microtenant_id.setter
@@ -220,13 +214,11 @@ class _ProvisioningKeyState:
         Input properties used for looking up and filtering ProvisioningKey resources.
         :param pulumi.Input[str] provisioning_key_value: read only field. Ignored in PUT/POST calls.
         :param pulumi.Input[str] app_connector_group_name: Read only property. Applicable only for GET calls, ignored in PUT/POST calls.
-        :param pulumi.Input[str] association_type: Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are `CONNECTOR_GRP` and `SERVICE_EDGE_GRP`
+        :param pulumi.Input[str] association_type: Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
+               CONNECTOR_GRP and SERVICE_EDGE_GRP.
         :param pulumi.Input[bool] enabled: Whether the provisioning key is enabled or not. Supported values: true, false
-        :param pulumi.Input[str] enrollment_cert_id: ID of the enrollment certificate that can be used for this provisioning key. `ID` of the existing enrollment certificate that has the private key
+        :param pulumi.Input[str] enrollment_cert_id: ID of the enrollment certificate that can be used for this provisioning key.
         :param pulumi.Input[str] max_usage: The maximum number of instances where this provisioning key can be used for enrolling an App Connector or Service Edge.
-        :param pulumi.Input[str] microtenant_id: The ID of the microtenant the resource is to be associated with.
-               
-               ⚠️ **WARNING:**: The attribute ``microtenant_id`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
         :param pulumi.Input[str] name: Name of the provisioning key.
         :param pulumi.Input[str] usage_count: The provisioning key utilization count.
         :param pulumi.Input[str] zcomponent_id: ID of the existing App Connector or Service Edge Group.
@@ -298,7 +290,8 @@ class _ProvisioningKeyState:
     @pulumi.getter(name="associationType")
     def association_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are `CONNECTOR_GRP` and `SERVICE_EDGE_GRP`
+        Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
+        CONNECTOR_GRP and SERVICE_EDGE_GRP.
         """
         return pulumi.get(self, "association_type")
 
@@ -322,7 +315,7 @@ class _ProvisioningKeyState:
     @pulumi.getter(name="enrollmentCertId")
     def enrollment_cert_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the enrollment certificate that can be used for this provisioning key. `ID` of the existing enrollment certificate that has the private key
+        ID of the enrollment certificate that can be used for this provisioning key.
         """
         return pulumi.get(self, "enrollment_cert_id")
 
@@ -354,11 +347,6 @@ class _ProvisioningKeyState:
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the microtenant the resource is to be associated with.
-
-        ⚠️ **WARNING:**: The attribute ``microtenant_id`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @microtenant_id.setter
@@ -464,13 +452,11 @@ class ProvisioningKey(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] association_type: Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are `CONNECTOR_GRP` and `SERVICE_EDGE_GRP`
+        :param pulumi.Input[str] association_type: Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
+               CONNECTOR_GRP and SERVICE_EDGE_GRP.
         :param pulumi.Input[bool] enabled: Whether the provisioning key is enabled or not. Supported values: true, false
-        :param pulumi.Input[str] enrollment_cert_id: ID of the enrollment certificate that can be used for this provisioning key. `ID` of the existing enrollment certificate that has the private key
+        :param pulumi.Input[str] enrollment_cert_id: ID of the enrollment certificate that can be used for this provisioning key.
         :param pulumi.Input[str] max_usage: The maximum number of instances where this provisioning key can be used for enrolling an App Connector or Service Edge.
-        :param pulumi.Input[str] microtenant_id: The ID of the microtenant the resource is to be associated with.
-               
-               ⚠️ **WARNING:**: The attribute ``microtenant_id`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
         :param pulumi.Input[str] name: Name of the provisioning key.
         :param pulumi.Input[str] usage_count: The provisioning key utilization count.
         :param pulumi.Input[str] zcomponent_id: ID of the existing App Connector or Service Edge Group.
@@ -596,13 +582,11 @@ class ProvisioningKey(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] provisioning_key_value: read only field. Ignored in PUT/POST calls.
         :param pulumi.Input[str] app_connector_group_name: Read only property. Applicable only for GET calls, ignored in PUT/POST calls.
-        :param pulumi.Input[str] association_type: Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are `CONNECTOR_GRP` and `SERVICE_EDGE_GRP`
+        :param pulumi.Input[str] association_type: Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
+               CONNECTOR_GRP and SERVICE_EDGE_GRP.
         :param pulumi.Input[bool] enabled: Whether the provisioning key is enabled or not. Supported values: true, false
-        :param pulumi.Input[str] enrollment_cert_id: ID of the enrollment certificate that can be used for this provisioning key. `ID` of the existing enrollment certificate that has the private key
+        :param pulumi.Input[str] enrollment_cert_id: ID of the enrollment certificate that can be used for this provisioning key.
         :param pulumi.Input[str] max_usage: The maximum number of instances where this provisioning key can be used for enrolling an App Connector or Service Edge.
-        :param pulumi.Input[str] microtenant_id: The ID of the microtenant the resource is to be associated with.
-               
-               ⚠️ **WARNING:**: The attribute ``microtenant_id`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
         :param pulumi.Input[str] name: Name of the provisioning key.
         :param pulumi.Input[str] usage_count: The provisioning key utilization count.
         :param pulumi.Input[str] zcomponent_id: ID of the existing App Connector or Service Edge Group.
@@ -653,7 +637,8 @@ class ProvisioningKey(pulumi.CustomResource):
     @pulumi.getter(name="associationType")
     def association_type(self) -> pulumi.Output[str]:
         """
-        Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are `CONNECTOR_GRP` and `SERVICE_EDGE_GRP`
+        Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
+        CONNECTOR_GRP and SERVICE_EDGE_GRP.
         """
         return pulumi.get(self, "association_type")
 
@@ -669,7 +654,7 @@ class ProvisioningKey(pulumi.CustomResource):
     @pulumi.getter(name="enrollmentCertId")
     def enrollment_cert_id(self) -> pulumi.Output[str]:
         """
-        ID of the enrollment certificate that can be used for this provisioning key. `ID` of the existing enrollment certificate that has the private key
+        ID of the enrollment certificate that can be used for this provisioning key.
         """
         return pulumi.get(self, "enrollment_cert_id")
 
@@ -689,11 +674,6 @@ class ProvisioningKey(pulumi.CustomResource):
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The ID of the microtenant the resource is to be associated with.
-
-        ⚠️ **WARNING:**: The attribute ``microtenant_id`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @property

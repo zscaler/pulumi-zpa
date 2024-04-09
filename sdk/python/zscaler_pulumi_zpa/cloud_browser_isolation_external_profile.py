@@ -25,23 +25,8 @@ class CloudBrowserIsolationExternalProfileArgs:
                  user_experiences: Optional[pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceArgs']]]] = None):
         """
         The set of arguments for constructing a CloudBrowserIsolationExternalProfile resource.
-        :param pulumi.Input[str] banner_id: The ID of the CBI banner to be exported.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: The CBI security controls enabled for the profile
-               * `id:` - (Optional) The ID of the CBI Certificate to be associated with the profile.
-        :param pulumi.Input[str] description: (Optional) - The description of the CBI profile
-        :param pulumi.Input[str] name: The name of the CBI banner to be exported.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: The CBI region
-               * `id:` - (Optional) The ID of CBI region where the profile must be deployed. At least 2 regions are required.
-        :param pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileSecurityControlArgs']]] security_controls: (Optional) The CBI security controls enabled for the profile
-               * `copy_paste:` - (Optional) Enable or disable copy & paste for local computer to isolation. Supported values are: `none` or `all`
-               * `document_viewer:` - (Optional) Enable or disable to view Microsoft Office files in isolation.
-               * `local_render:` - (Optional) Enables non-isolated hyperlinks to be opened on the user's native browser.
-               * `upload_download:` - (Optional) Enable or disable file transfer from local computer to isolation. Supported values are: `none` or `all`
-               * `allow_printing:` - (Optional) Enables the user to print web pages and documents rendered within the isolation browser. Supported values are: `true` or `false`
-               * `restrict_keystrokes:` - (Optional) Prevents keyboard and text input to isolated web pages. Supported values are: `true` or `false`
-        :param pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceArgs']]] user_experiences: The CBI security controls enabled for the profile
-               * `session_persistence:` - (Optional) Save user cookies between sessions. If disabled, all cookies will be discarded when isolation session ends. Supported values are: `true` or `false`
-               * `browser_in_browser:` - (Optional) Enable or disable browser-in-browser or native browser experience. Supported values are: `true` or `false`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: This field defines the list of server groups IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: This field defines the list of server groups IDs.
         """
         pulumi.set(__self__, "banner_id", banner_id)
         if certificate_ids is not None:
@@ -60,9 +45,6 @@ class CloudBrowserIsolationExternalProfileArgs:
     @property
     @pulumi.getter(name="bannerId")
     def banner_id(self) -> pulumi.Input[str]:
-        """
-        The ID of the CBI banner to be exported.
-        """
         return pulumi.get(self, "banner_id")
 
     @banner_id.setter
@@ -73,8 +55,7 @@ class CloudBrowserIsolationExternalProfileArgs:
     @pulumi.getter(name="certificateIds")
     def certificate_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The CBI security controls enabled for the profile
-        * `id:` - (Optional) The ID of the CBI Certificate to be associated with the profile.
+        This field defines the list of server groups IDs.
         """
         return pulumi.get(self, "certificate_ids")
 
@@ -85,9 +66,6 @@ class CloudBrowserIsolationExternalProfileArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) - The description of the CBI profile
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -97,9 +75,6 @@ class CloudBrowserIsolationExternalProfileArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the CBI banner to be exported.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -110,8 +85,7 @@ class CloudBrowserIsolationExternalProfileArgs:
     @pulumi.getter(name="regionIds")
     def region_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The CBI region
-        * `id:` - (Optional) The ID of CBI region where the profile must be deployed. At least 2 regions are required.
+        This field defines the list of server groups IDs.
         """
         return pulumi.get(self, "region_ids")
 
@@ -122,15 +96,6 @@ class CloudBrowserIsolationExternalProfileArgs:
     @property
     @pulumi.getter(name="securityControls")
     def security_controls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileSecurityControlArgs']]]]:
-        """
-        (Optional) The CBI security controls enabled for the profile
-        * `copy_paste:` - (Optional) Enable or disable copy & paste for local computer to isolation. Supported values are: `none` or `all`
-        * `document_viewer:` - (Optional) Enable or disable to view Microsoft Office files in isolation.
-        * `local_render:` - (Optional) Enables non-isolated hyperlinks to be opened on the user's native browser.
-        * `upload_download:` - (Optional) Enable or disable file transfer from local computer to isolation. Supported values are: `none` or `all`
-        * `allow_printing:` - (Optional) Enables the user to print web pages and documents rendered within the isolation browser. Supported values are: `true` or `false`
-        * `restrict_keystrokes:` - (Optional) Prevents keyboard and text input to isolated web pages. Supported values are: `true` or `false`
-        """
         return pulumi.get(self, "security_controls")
 
     @security_controls.setter
@@ -140,11 +105,6 @@ class CloudBrowserIsolationExternalProfileArgs:
     @property
     @pulumi.getter(name="userExperiences")
     def user_experiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceArgs']]]]:
-        """
-        The CBI security controls enabled for the profile
-        * `session_persistence:` - (Optional) Save user cookies between sessions. If disabled, all cookies will be discarded when isolation session ends. Supported values are: `true` or `false`
-        * `browser_in_browser:` - (Optional) Enable or disable browser-in-browser or native browser experience. Supported values are: `true` or `false`
-        """
         return pulumi.get(self, "user_experiences")
 
     @user_experiences.setter
@@ -164,23 +124,8 @@ class _CloudBrowserIsolationExternalProfileState:
                  user_experiences: Optional[pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceArgs']]]] = None):
         """
         Input properties used for looking up and filtering CloudBrowserIsolationExternalProfile resources.
-        :param pulumi.Input[str] banner_id: The ID of the CBI banner to be exported.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: The CBI security controls enabled for the profile
-               * `id:` - (Optional) The ID of the CBI Certificate to be associated with the profile.
-        :param pulumi.Input[str] description: (Optional) - The description of the CBI profile
-        :param pulumi.Input[str] name: The name of the CBI banner to be exported.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: The CBI region
-               * `id:` - (Optional) The ID of CBI region where the profile must be deployed. At least 2 regions are required.
-        :param pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileSecurityControlArgs']]] security_controls: (Optional) The CBI security controls enabled for the profile
-               * `copy_paste:` - (Optional) Enable or disable copy & paste for local computer to isolation. Supported values are: `none` or `all`
-               * `document_viewer:` - (Optional) Enable or disable to view Microsoft Office files in isolation.
-               * `local_render:` - (Optional) Enables non-isolated hyperlinks to be opened on the user's native browser.
-               * `upload_download:` - (Optional) Enable or disable file transfer from local computer to isolation. Supported values are: `none` or `all`
-               * `allow_printing:` - (Optional) Enables the user to print web pages and documents rendered within the isolation browser. Supported values are: `true` or `false`
-               * `restrict_keystrokes:` - (Optional) Prevents keyboard and text input to isolated web pages. Supported values are: `true` or `false`
-        :param pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceArgs']]] user_experiences: The CBI security controls enabled for the profile
-               * `session_persistence:` - (Optional) Save user cookies between sessions. If disabled, all cookies will be discarded when isolation session ends. Supported values are: `true` or `false`
-               * `browser_in_browser:` - (Optional) Enable or disable browser-in-browser or native browser experience. Supported values are: `true` or `false`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: This field defines the list of server groups IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: This field defines the list of server groups IDs.
         """
         if banner_id is not None:
             pulumi.set(__self__, "banner_id", banner_id)
@@ -200,9 +145,6 @@ class _CloudBrowserIsolationExternalProfileState:
     @property
     @pulumi.getter(name="bannerId")
     def banner_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the CBI banner to be exported.
-        """
         return pulumi.get(self, "banner_id")
 
     @banner_id.setter
@@ -213,8 +155,7 @@ class _CloudBrowserIsolationExternalProfileState:
     @pulumi.getter(name="certificateIds")
     def certificate_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The CBI security controls enabled for the profile
-        * `id:` - (Optional) The ID of the CBI Certificate to be associated with the profile.
+        This field defines the list of server groups IDs.
         """
         return pulumi.get(self, "certificate_ids")
 
@@ -225,9 +166,6 @@ class _CloudBrowserIsolationExternalProfileState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) - The description of the CBI profile
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -237,9 +175,6 @@ class _CloudBrowserIsolationExternalProfileState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the CBI banner to be exported.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -250,8 +185,7 @@ class _CloudBrowserIsolationExternalProfileState:
     @pulumi.getter(name="regionIds")
     def region_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The CBI region
-        * `id:` - (Optional) The ID of CBI region where the profile must be deployed. At least 2 regions are required.
+        This field defines the list of server groups IDs.
         """
         return pulumi.get(self, "region_ids")
 
@@ -262,15 +196,6 @@ class _CloudBrowserIsolationExternalProfileState:
     @property
     @pulumi.getter(name="securityControls")
     def security_controls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileSecurityControlArgs']]]]:
-        """
-        (Optional) The CBI security controls enabled for the profile
-        * `copy_paste:` - (Optional) Enable or disable copy & paste for local computer to isolation. Supported values are: `none` or `all`
-        * `document_viewer:` - (Optional) Enable or disable to view Microsoft Office files in isolation.
-        * `local_render:` - (Optional) Enables non-isolated hyperlinks to be opened on the user's native browser.
-        * `upload_download:` - (Optional) Enable or disable file transfer from local computer to isolation. Supported values are: `none` or `all`
-        * `allow_printing:` - (Optional) Enables the user to print web pages and documents rendered within the isolation browser. Supported values are: `true` or `false`
-        * `restrict_keystrokes:` - (Optional) Prevents keyboard and text input to isolated web pages. Supported values are: `true` or `false`
-        """
         return pulumi.get(self, "security_controls")
 
     @security_controls.setter
@@ -280,11 +205,6 @@ class _CloudBrowserIsolationExternalProfileState:
     @property
     @pulumi.getter(name="userExperiences")
     def user_experiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceArgs']]]]:
-        """
-        The CBI security controls enabled for the profile
-        * `session_persistence:` - (Optional) Save user cookies between sessions. If disabled, all cookies will be discarded when isolation session ends. Supported values are: `true` or `false`
-        * `browser_in_browser:` - (Optional) Enable or disable browser-in-browser or native browser experience. Supported values are: `true` or `false`
-        """
         return pulumi.get(self, "user_experiences")
 
     @user_experiences.setter
@@ -306,6 +226,8 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
                  user_experiences: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudBrowserIsolationExternalProfileUserExperienceArgs']]]]] = None,
                  __props__=None):
         """
+        * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
+
         The **zpa_cloud_browser_isolation_external_profile** resource creates a Cloud Browser Isolation external profile. This resource can then be used in as part of `PolicyAccessIsolationRule` when the `action` attribute is set to `ISOLATE`.
 
         ## Example Usage
@@ -342,23 +264,8 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] banner_id: The ID of the CBI banner to be exported.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: The CBI security controls enabled for the profile
-               * `id:` - (Optional) The ID of the CBI Certificate to be associated with the profile.
-        :param pulumi.Input[str] description: (Optional) - The description of the CBI profile
-        :param pulumi.Input[str] name: The name of the CBI banner to be exported.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: The CBI region
-               * `id:` - (Optional) The ID of CBI region where the profile must be deployed. At least 2 regions are required.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudBrowserIsolationExternalProfileSecurityControlArgs']]]] security_controls: (Optional) The CBI security controls enabled for the profile
-               * `copy_paste:` - (Optional) Enable or disable copy & paste for local computer to isolation. Supported values are: `none` or `all`
-               * `document_viewer:` - (Optional) Enable or disable to view Microsoft Office files in isolation.
-               * `local_render:` - (Optional) Enables non-isolated hyperlinks to be opened on the user's native browser.
-               * `upload_download:` - (Optional) Enable or disable file transfer from local computer to isolation. Supported values are: `none` or `all`
-               * `allow_printing:` - (Optional) Enables the user to print web pages and documents rendered within the isolation browser. Supported values are: `true` or `false`
-               * `restrict_keystrokes:` - (Optional) Prevents keyboard and text input to isolated web pages. Supported values are: `true` or `false`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudBrowserIsolationExternalProfileUserExperienceArgs']]]] user_experiences: The CBI security controls enabled for the profile
-               * `session_persistence:` - (Optional) Save user cookies between sessions. If disabled, all cookies will be discarded when isolation session ends. Supported values are: `true` or `false`
-               * `browser_in_browser:` - (Optional) Enable or disable browser-in-browser or native browser experience. Supported values are: `true` or `false`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: This field defines the list of server groups IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: This field defines the list of server groups IDs.
         """
         ...
     @overload
@@ -367,6 +274,8 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
                  args: CloudBrowserIsolationExternalProfileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
+
         The **zpa_cloud_browser_isolation_external_profile** resource creates a Cloud Browser Isolation external profile. This resource can then be used in as part of `PolicyAccessIsolationRule` when the `action` attribute is set to `ISOLATE`.
 
         ## Example Usage
@@ -465,23 +374,8 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] banner_id: The ID of the CBI banner to be exported.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: The CBI security controls enabled for the profile
-               * `id:` - (Optional) The ID of the CBI Certificate to be associated with the profile.
-        :param pulumi.Input[str] description: (Optional) - The description of the CBI profile
-        :param pulumi.Input[str] name: The name of the CBI banner to be exported.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: The CBI region
-               * `id:` - (Optional) The ID of CBI region where the profile must be deployed. At least 2 regions are required.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudBrowserIsolationExternalProfileSecurityControlArgs']]]] security_controls: (Optional) The CBI security controls enabled for the profile
-               * `copy_paste:` - (Optional) Enable or disable copy & paste for local computer to isolation. Supported values are: `none` or `all`
-               * `document_viewer:` - (Optional) Enable or disable to view Microsoft Office files in isolation.
-               * `local_render:` - (Optional) Enables non-isolated hyperlinks to be opened on the user's native browser.
-               * `upload_download:` - (Optional) Enable or disable file transfer from local computer to isolation. Supported values are: `none` or `all`
-               * `allow_printing:` - (Optional) Enables the user to print web pages and documents rendered within the isolation browser. Supported values are: `true` or `false`
-               * `restrict_keystrokes:` - (Optional) Prevents keyboard and text input to isolated web pages. Supported values are: `true` or `false`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudBrowserIsolationExternalProfileUserExperienceArgs']]]] user_experiences: The CBI security controls enabled for the profile
-               * `session_persistence:` - (Optional) Save user cookies between sessions. If disabled, all cookies will be discarded when isolation session ends. Supported values are: `true` or `false`
-               * `browser_in_browser:` - (Optional) Enable or disable browser-in-browser or native browser experience. Supported values are: `true` or `false`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: This field defines the list of server groups IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: This field defines the list of server groups IDs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -499,66 +393,41 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
     @property
     @pulumi.getter(name="bannerId")
     def banner_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the CBI banner to be exported.
-        """
         return pulumi.get(self, "banner_id")
 
     @property
     @pulumi.getter(name="certificateIds")
     def certificate_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        The CBI security controls enabled for the profile
-        * `id:` - (Optional) The ID of the CBI Certificate to be associated with the profile.
+        This field defines the list of server groups IDs.
         """
         return pulumi.get(self, "certificate_ids")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        (Optional) - The description of the CBI profile
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the CBI banner to be exported.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="regionIds")
     def region_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        The CBI region
-        * `id:` - (Optional) The ID of CBI region where the profile must be deployed. At least 2 regions are required.
+        This field defines the list of server groups IDs.
         """
         return pulumi.get(self, "region_ids")
 
     @property
     @pulumi.getter(name="securityControls")
     def security_controls(self) -> pulumi.Output[Optional[Sequence['outputs.CloudBrowserIsolationExternalProfileSecurityControl']]]:
-        """
-        (Optional) The CBI security controls enabled for the profile
-        * `copy_paste:` - (Optional) Enable or disable copy & paste for local computer to isolation. Supported values are: `none` or `all`
-        * `document_viewer:` - (Optional) Enable or disable to view Microsoft Office files in isolation.
-        * `local_render:` - (Optional) Enables non-isolated hyperlinks to be opened on the user's native browser.
-        * `upload_download:` - (Optional) Enable or disable file transfer from local computer to isolation. Supported values are: `none` or `all`
-        * `allow_printing:` - (Optional) Enables the user to print web pages and documents rendered within the isolation browser. Supported values are: `true` or `false`
-        * `restrict_keystrokes:` - (Optional) Prevents keyboard and text input to isolated web pages. Supported values are: `true` or `false`
-        """
         return pulumi.get(self, "security_controls")
 
     @property
     @pulumi.getter(name="userExperiences")
     def user_experiences(self) -> pulumi.Output[Optional[Sequence['outputs.CloudBrowserIsolationExternalProfileUserExperience']]]:
-        """
-        The CBI security controls enabled for the profile
-        * `session_persistence:` - (Optional) Save user cookies between sessions. If disabled, all cookies will be discarded when isolation session ends. Supported values are: `true` or `false`
-        * `browser_in_browser:` - (Optional) Enable or disable browser-in-browser or native browser experience. Supported values are: `true` or `false`
-        """
         return pulumi.get(self, "user_experiences")
 

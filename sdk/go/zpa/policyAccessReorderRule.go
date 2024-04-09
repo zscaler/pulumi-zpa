@@ -12,7 +12,10 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
-// The **zpa_policy_access_rule_reorder** is a dedicated resource to manage and update ruleOrders in any of the supported ZPA Policy Access types Zscaler Private Access cloud.
+// * [Official documentation](https://help.zscaler.com/zpa/about-access-policy)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api)
+//
+// The **zpa_policy_access_rule_reorder** is a dedicated resource to manage and update `ruleOrders` in any of the supported ZPA Policy Access types Zscaler Private Access cloud.
 //
 // ⚠️ **WARNING:**: The attribute “ruleOrder“ is now deprecated in favor of this resource for all ZPA policy types.
 //
@@ -21,7 +24,7 @@ type PolicyAccessReorderRule struct {
 	pulumi.CustomResourceState
 
 	PolicyType pulumi.StringOutput `pulumi:"policyType"`
-	// (Required)
+	// List of rules and their orders
 	Rules PolicyAccessReorderRuleRuleArrayOutput `pulumi:"rules"`
 }
 
@@ -62,13 +65,13 @@ func GetPolicyAccessReorderRule(ctx *pulumi.Context,
 // Input properties used for looking up and filtering PolicyAccessReorderRule resources.
 type policyAccessReorderRuleState struct {
 	PolicyType *string `pulumi:"policyType"`
-	// (Required)
+	// List of rules and their orders
 	Rules []PolicyAccessReorderRuleRule `pulumi:"rules"`
 }
 
 type PolicyAccessReorderRuleState struct {
 	PolicyType pulumi.StringPtrInput
-	// (Required)
+	// List of rules and their orders
 	Rules PolicyAccessReorderRuleRuleArrayInput
 }
 
@@ -78,14 +81,14 @@ func (PolicyAccessReorderRuleState) ElementType() reflect.Type {
 
 type policyAccessReorderRuleArgs struct {
 	PolicyType string `pulumi:"policyType"`
-	// (Required)
+	// List of rules and their orders
 	Rules []PolicyAccessReorderRuleRule `pulumi:"rules"`
 }
 
 // The set of arguments for constructing a PolicyAccessReorderRule resource.
 type PolicyAccessReorderRuleArgs struct {
 	PolicyType pulumi.StringInput
-	// (Required)
+	// List of rules and their orders
 	Rules PolicyAccessReorderRuleRuleArrayInput
 }
 
@@ -180,7 +183,7 @@ func (o PolicyAccessReorderRuleOutput) PolicyType() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyAccessReorderRule) pulumi.StringOutput { return v.PolicyType }).(pulumi.StringOutput)
 }
 
-// (Required)
+// List of rules and their orders
 func (o PolicyAccessReorderRuleOutput) Rules() PolicyAccessReorderRuleRuleArrayOutput {
 	return o.ApplyT(func(v *PolicyAccessReorderRule) PolicyAccessReorderRuleRuleArrayOutput { return v.Rules }).(PolicyAccessReorderRuleRuleArrayOutput)
 }

@@ -14,37 +14,13 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class ApplicationSegmentInspectionCommonAppsDtoAppsConfig
     {
-        /// <summary>
-        /// Indicates the type of application as inspection. Supported value: `INSPECT`
-        /// </summary>
         public readonly ImmutableArray<string> AppTypes;
-        /// <summary>
-        /// Port for the Inspection Application Segment.
-        /// </summary>
         public readonly string? ApplicationPort;
-        /// <summary>
-        /// Protocol for the Inspection Application Segment.. Supported values: `HTTP` and `HTTPS`
-        /// </summary>
         public readonly string? ApplicationProtocol;
-        /// <summary>
-        /// ID of the signing certificate. This field is required if the ``application_protocol`` is set to `HTTPS`. The ``certificate_id`` is **NOT** supported if the application_protocol is set to `HTTP`.
-        /// </summary>
         public readonly string? CertificateId;
-        /// <summary>
-        /// (Optional) Description of the application.
-        /// </summary>
         public readonly string? Description;
-        /// <summary>
-        /// Domain name of the Inspection Application Segment.
-        /// </summary>
         public readonly string? Domain;
-        /// <summary>
-        /// Whether this application is enabled or not
-        /// </summary>
         public readonly bool? Enabled;
-        /// <summary>
-        /// Name of the Inspection Application Segment.
-        /// </summary>
         public readonly string? Name;
         public readonly bool? TrustUntrustedCert;
 

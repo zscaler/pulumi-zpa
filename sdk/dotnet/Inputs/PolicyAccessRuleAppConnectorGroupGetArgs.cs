@@ -15,10 +15,6 @@ namespace Zscaler.Zpa.Inputs
     {
         [Input("ids")]
         private InputList<string>? _ids;
-
-        /// <summary>
-        /// (Optional) The ID of a server group resource
-        /// </summary>
         public InputList<string> Ids
         {
             get => _ids ?? (_ids = new InputList<string>());

@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-web-server-certificates)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-certificates-using-api)
+ *
  * Use the **zpa_ba_certificate** data source to get information about a browser access certificate created in the Zscaler Private Access cloud. This data source is required when creating a browser access application segment resource.
  *
  * ## Example Usage
@@ -45,13 +48,7 @@ export function getBaCertificate(args?: GetBaCertificateArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getBaCertificate.
  */
 export interface GetBaCertificateArgs {
-    /**
-     * The id of the browser access certificate to be exported.
-     */
     id?: string;
-    /**
-     * The name of the browser access certificate to be exported.
-     */
     name?: string;
 }
 
@@ -59,68 +56,29 @@ export interface GetBaCertificateArgs {
  * A collection of values returned by getBaCertificate.
  */
 export interface GetBaCertificateResult {
-    /**
-     * (string)
-     */
     readonly certChain: string;
-    /**
-     * (string) The certificate text is in PEM format.
-     */
     readonly certificate: string;
-    /**
-     * (string)
-     */
     readonly cname: string;
-    /**
-     * (string)
-     */
     readonly creationTime: string;
-    /**
-     * (string)
-     */
     readonly description: string;
     readonly id?: string;
-    /**
-     * (string)
-     */
     readonly issuedBy: string;
-    /**
-     * (string)
-     */
     readonly issuedTo: string;
     readonly microtenantId: string;
-    /**
-     * (string)
-     */
     readonly modifiedTime: string;
-    /**
-     * (string)
-     */
     readonly modifiedby: string;
     readonly name?: string;
     readonly publicKey: string;
-    /**
-     * (string)
-     */
     readonly sans: string[];
-    /**
-     * (string)
-     */
     readonly serialNo: string;
-    /**
-     * (string)
-     */
     readonly status: string;
-    /**
-     * (string)
-     */
     readonly validFromInEpochsec: string;
-    /**
-     * (string)
-     */
     readonly validToInEpochsec: string;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-web-server-certificates)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-certificates-using-api)
+ *
  * Use the **zpa_ba_certificate** data source to get information about a browser access certificate created in the Zscaler Private Access cloud. This data source is required when creating a browser access application segment resource.
  *
  * ## Example Usage
@@ -155,12 +113,6 @@ export function getBaCertificateOutput(args?: GetBaCertificateOutputArgs, opts?:
  * A collection of arguments for invoking getBaCertificate.
  */
 export interface GetBaCertificateOutputArgs {
-    /**
-     * The id of the browser access certificate to be exported.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * The name of the browser access certificate to be exported.
-     */
     name?: pulumi.Input<string>;
 }

@@ -54,15 +54,12 @@ export class ApplicationSegment extends pulumi.CustomResource {
     }
 
     /**
-     * (Optional) Indicates whether users can bypass ZPA to access applications. Supported values: `ALWAYS`, `NEVER`, `ON_NET`.
+     * Indicates whether users can bypass ZPA to access applications.
      */
     public readonly bypassType!: pulumi.Output<string>;
-    /**
-     * (Optional) Supported values: `DEFAULT`, `SIEM`.
-     */
     public readonly configSpace!: pulumi.Output<string | undefined>;
     /**
-     * (Optional) Description of the application.
+     * Description of the application.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -70,67 +67,43 @@ export class ApplicationSegment extends pulumi.CustomResource {
      */
     public readonly domainNames!: pulumi.Output<string[]>;
     /**
-     * (Optional) Whether Double Encryption is enabled or disabled for the app.
+     * Whether Double Encryption is enabled or disabled for the app.
      */
     public readonly doubleEncrypt!: pulumi.Output<boolean | undefined>;
     /**
-     * (Optional) Whether this application is enabled or not.
+     * Whether this application is enabled or not.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * (Optional) Supported values: `DEFAULT`, `NONE`.
-     */
     public readonly healthCheckType!: pulumi.Output<string | undefined>;
     /**
-     * (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
+     * Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
      */
     public readonly healthReporting!: pulumi.Output<string | undefined>;
-    /**
-     * (Optional) Supported values: `NONE`, `PING_TRACEROUTING`, `PING`.
-     */
     public readonly icmpAccessType!: pulumi.Output<string | undefined>;
-    /**
-     * (Optional) Supported values: `true`, `false`
-     */
     public readonly ipAnchored!: pulumi.Output<boolean | undefined>;
     /**
-     * (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
+     * Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+     * connectors.
      */
     public readonly isCnameEnabled!: pulumi.Output<boolean>;
-    /**
-     * (Optional) Supported values: `true`, `false`
-     */
     public readonly isIncompleteDrConfig!: pulumi.Output<boolean | undefined>;
-    /**
-     * (Optional) The ID of the microtenant the resource is to be associated with.
-     */
+    public readonly matchStyle!: pulumi.Output<string>;
     public readonly microtenantId!: pulumi.Output<string | undefined>;
     /**
-     * Name. The name of the App Connector Group to be exported.
+     * Name of the application.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * (Optional) Supported values: `true`, `false`
-     */
     public readonly passiveHealthEnabled!: pulumi.Output<boolean>;
-    /**
-     * List of Segment Group IDs
-     */
     public readonly segmentGroupId!: pulumi.Output<string>;
     public readonly segmentGroupName!: pulumi.Output<string>;
     public readonly selectConnectorCloseToApp!: pulumi.Output<boolean | undefined>;
     /**
-     * List of Server Group IDs
+     * List of the server group IDs.
      */
     public readonly serverGroups!: pulumi.Output<outputs.ApplicationSegmentServerGroup[]>;
-    /**
-     * (Optional) Supported values: ``1`` for Enabled and ``0`` for Disabled
-     */
     public readonly tcpKeepAlive!: pulumi.Output<string>;
     /**
-     * TCP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
+     * tcp port range
      */
     public readonly tcpPortRange!: pulumi.Output<outputs.ApplicationSegmentTcpPortRange[]>;
     /**
@@ -138,23 +111,13 @@ export class ApplicationSegment extends pulumi.CustomResource {
      */
     public readonly tcpPortRanges!: pulumi.Output<string[]>;
     /**
-     * UDP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
-     *
-     * > **NOTE:** Application segments must have unique ports and cannot have overlapping domain names using the same tcp/udp ports across multiple application segments.
+     * udp port range
      */
     public readonly udpPortRange!: pulumi.Output<outputs.ApplicationSegmentUdpPortRange[]>;
     /**
      * UDP port ranges used to access the app.
-     *
-     * > **NOTE:**  TCP and UDP ports can also be defined using the following model:
-     * > **NOTE:** When removing TCP and/or UDP ports, parameter must be defined but set as empty due to current API behavior.
      */
     public readonly udpPortRanges!: pulumi.Output<string[]>;
-    /**
-     * (Optional) Supported values: `true`, `false`
-     */
     public readonly useInDrMode!: pulumi.Output<boolean | undefined>;
 
     /**
@@ -182,6 +145,7 @@ export class ApplicationSegment extends pulumi.CustomResource {
             resourceInputs["ipAnchored"] = state ? state.ipAnchored : undefined;
             resourceInputs["isCnameEnabled"] = state ? state.isCnameEnabled : undefined;
             resourceInputs["isIncompleteDrConfig"] = state ? state.isIncompleteDrConfig : undefined;
+            resourceInputs["matchStyle"] = state ? state.matchStyle : undefined;
             resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["passiveHealthEnabled"] = state ? state.passiveHealthEnabled : undefined;
@@ -212,6 +176,7 @@ export class ApplicationSegment extends pulumi.CustomResource {
             resourceInputs["ipAnchored"] = args ? args.ipAnchored : undefined;
             resourceInputs["isCnameEnabled"] = args ? args.isCnameEnabled : undefined;
             resourceInputs["isIncompleteDrConfig"] = args ? args.isIncompleteDrConfig : undefined;
+            resourceInputs["matchStyle"] = args ? args.matchStyle : undefined;
             resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["passiveHealthEnabled"] = args ? args.passiveHealthEnabled : undefined;
@@ -236,15 +201,12 @@ export class ApplicationSegment extends pulumi.CustomResource {
  */
 export interface ApplicationSegmentState {
     /**
-     * (Optional) Indicates whether users can bypass ZPA to access applications. Supported values: `ALWAYS`, `NEVER`, `ON_NET`.
+     * Indicates whether users can bypass ZPA to access applications.
      */
     bypassType?: pulumi.Input<string>;
-    /**
-     * (Optional) Supported values: `DEFAULT`, `SIEM`.
-     */
     configSpace?: pulumi.Input<string>;
     /**
-     * (Optional) Description of the application.
+     * Description of the application.
      */
     description?: pulumi.Input<string>;
     /**
@@ -252,67 +214,43 @@ export interface ApplicationSegmentState {
      */
     domainNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * (Optional) Whether Double Encryption is enabled or disabled for the app.
+     * Whether Double Encryption is enabled or disabled for the app.
      */
     doubleEncrypt?: pulumi.Input<boolean>;
     /**
-     * (Optional) Whether this application is enabled or not.
+     * Whether this application is enabled or not.
      */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * (Optional) Supported values: `DEFAULT`, `NONE`.
-     */
     healthCheckType?: pulumi.Input<string>;
     /**
-     * (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
+     * Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
      */
     healthReporting?: pulumi.Input<string>;
-    /**
-     * (Optional) Supported values: `NONE`, `PING_TRACEROUTING`, `PING`.
-     */
     icmpAccessType?: pulumi.Input<string>;
-    /**
-     * (Optional) Supported values: `true`, `false`
-     */
     ipAnchored?: pulumi.Input<boolean>;
     /**
-     * (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
+     * Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+     * connectors.
      */
     isCnameEnabled?: pulumi.Input<boolean>;
-    /**
-     * (Optional) Supported values: `true`, `false`
-     */
     isIncompleteDrConfig?: pulumi.Input<boolean>;
-    /**
-     * (Optional) The ID of the microtenant the resource is to be associated with.
-     */
+    matchStyle?: pulumi.Input<string>;
     microtenantId?: pulumi.Input<string>;
     /**
-     * Name. The name of the App Connector Group to be exported.
+     * Name of the application.
      */
     name?: pulumi.Input<string>;
-    /**
-     * (Optional) Supported values: `true`, `false`
-     */
     passiveHealthEnabled?: pulumi.Input<boolean>;
-    /**
-     * List of Segment Group IDs
-     */
     segmentGroupId?: pulumi.Input<string>;
     segmentGroupName?: pulumi.Input<string>;
     selectConnectorCloseToApp?: pulumi.Input<boolean>;
     /**
-     * List of Server Group IDs
+     * List of the server group IDs.
      */
     serverGroups?: pulumi.Input<pulumi.Input<inputs.ApplicationSegmentServerGroup>[]>;
-    /**
-     * (Optional) Supported values: ``1`` for Enabled and ``0`` for Disabled
-     */
     tcpKeepAlive?: pulumi.Input<string>;
     /**
-     * TCP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
+     * tcp port range
      */
     tcpPortRange?: pulumi.Input<pulumi.Input<inputs.ApplicationSegmentTcpPortRange>[]>;
     /**
@@ -320,23 +258,13 @@ export interface ApplicationSegmentState {
      */
     tcpPortRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * UDP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
-     *
-     * > **NOTE:** Application segments must have unique ports and cannot have overlapping domain names using the same tcp/udp ports across multiple application segments.
+     * udp port range
      */
     udpPortRange?: pulumi.Input<pulumi.Input<inputs.ApplicationSegmentUdpPortRange>[]>;
     /**
      * UDP port ranges used to access the app.
-     *
-     * > **NOTE:**  TCP and UDP ports can also be defined using the following model:
-     * > **NOTE:** When removing TCP and/or UDP ports, parameter must be defined but set as empty due to current API behavior.
      */
     udpPortRanges?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (Optional) Supported values: `true`, `false`
-     */
     useInDrMode?: pulumi.Input<boolean>;
 }
 
@@ -345,15 +273,12 @@ export interface ApplicationSegmentState {
  */
 export interface ApplicationSegmentArgs {
     /**
-     * (Optional) Indicates whether users can bypass ZPA to access applications. Supported values: `ALWAYS`, `NEVER`, `ON_NET`.
+     * Indicates whether users can bypass ZPA to access applications.
      */
     bypassType?: pulumi.Input<string>;
-    /**
-     * (Optional) Supported values: `DEFAULT`, `SIEM`.
-     */
     configSpace?: pulumi.Input<string>;
     /**
-     * (Optional) Description of the application.
+     * Description of the application.
      */
     description?: pulumi.Input<string>;
     /**
@@ -361,67 +286,43 @@ export interface ApplicationSegmentArgs {
      */
     domainNames: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * (Optional) Whether Double Encryption is enabled or disabled for the app.
+     * Whether Double Encryption is enabled or disabled for the app.
      */
     doubleEncrypt?: pulumi.Input<boolean>;
     /**
-     * (Optional) Whether this application is enabled or not.
+     * Whether this application is enabled or not.
      */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * (Optional) Supported values: `DEFAULT`, `NONE`.
-     */
     healthCheckType?: pulumi.Input<string>;
     /**
-     * (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
+     * Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
      */
     healthReporting?: pulumi.Input<string>;
-    /**
-     * (Optional) Supported values: `NONE`, `PING_TRACEROUTING`, `PING`.
-     */
     icmpAccessType?: pulumi.Input<string>;
-    /**
-     * (Optional) Supported values: `true`, `false`
-     */
     ipAnchored?: pulumi.Input<boolean>;
     /**
-     * (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
+     * Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+     * connectors.
      */
     isCnameEnabled?: pulumi.Input<boolean>;
-    /**
-     * (Optional) Supported values: `true`, `false`
-     */
     isIncompleteDrConfig?: pulumi.Input<boolean>;
-    /**
-     * (Optional) The ID of the microtenant the resource is to be associated with.
-     */
+    matchStyle?: pulumi.Input<string>;
     microtenantId?: pulumi.Input<string>;
     /**
-     * Name. The name of the App Connector Group to be exported.
+     * Name of the application.
      */
     name?: pulumi.Input<string>;
-    /**
-     * (Optional) Supported values: `true`, `false`
-     */
     passiveHealthEnabled?: pulumi.Input<boolean>;
-    /**
-     * List of Segment Group IDs
-     */
     segmentGroupId?: pulumi.Input<string>;
     segmentGroupName?: pulumi.Input<string>;
     selectConnectorCloseToApp?: pulumi.Input<boolean>;
     /**
-     * List of Server Group IDs
+     * List of the server group IDs.
      */
     serverGroups?: pulumi.Input<pulumi.Input<inputs.ApplicationSegmentServerGroup>[]>;
-    /**
-     * (Optional) Supported values: ``1`` for Enabled and ``0`` for Disabled
-     */
     tcpKeepAlive?: pulumi.Input<string>;
     /**
-     * TCP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
+     * tcp port range
      */
     tcpPortRange?: pulumi.Input<pulumi.Input<inputs.ApplicationSegmentTcpPortRange>[]>;
     /**
@@ -429,22 +330,12 @@ export interface ApplicationSegmentArgs {
      */
     tcpPortRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * UDP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
-     *
-     * > **NOTE:** Application segments must have unique ports and cannot have overlapping domain names using the same tcp/udp ports across multiple application segments.
+     * udp port range
      */
     udpPortRange?: pulumi.Input<pulumi.Input<inputs.ApplicationSegmentUdpPortRange>[]>;
     /**
      * UDP port ranges used to access the app.
-     *
-     * > **NOTE:**  TCP and UDP ports can also be defined using the following model:
-     * > **NOTE:** When removing TCP and/or UDP ports, parameter must be defined but set as empty due to current API behavior.
      */
     udpPortRanges?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (Optional) Supported values: `true`, `false`
-     */
     useInDrMode?: pulumi.Input<boolean>;
 }

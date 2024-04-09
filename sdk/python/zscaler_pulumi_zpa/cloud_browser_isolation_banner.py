@@ -24,13 +24,6 @@ class CloudBrowserIsolationBannerArgs:
                  text_color: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CloudBrowserIsolationBanner resource.
-        :param pulumi.Input[bool] banner: (Optional) - Show Welcome Notification
-        :param pulumi.Input[str] logo: The Logo Image (.jpeg or .png; Maximum file size is 100KB.)
-        :param pulumi.Input[str] name: The name of the CBI banner to be exported.
-        :param pulumi.Input[str] notification_text: The Banner Notification Text
-        :param pulumi.Input[str] notification_title: The Banner Notification Title
-        :param pulumi.Input[str] primary_color: The Banner Primary Color code in hexadecimal way to represent the color of the banner in RGB format
-        :param pulumi.Input[str] text_color: The Banner Text Color code in hexadecimal way to represent the color of the text in RGB format
         """
         if banner is not None:
             pulumi.set(__self__, "banner", banner)
@@ -52,9 +45,6 @@ class CloudBrowserIsolationBannerArgs:
     @property
     @pulumi.getter
     def banner(self) -> Optional[pulumi.Input[bool]]:
-        """
-        (Optional) - Show Welcome Notification
-        """
         return pulumi.get(self, "banner")
 
     @banner.setter
@@ -64,9 +54,6 @@ class CloudBrowserIsolationBannerArgs:
     @property
     @pulumi.getter
     def logo(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Logo Image (.jpeg or .png; Maximum file size is 100KB.)
-        """
         return pulumi.get(self, "logo")
 
     @logo.setter
@@ -76,9 +63,6 @@ class CloudBrowserIsolationBannerArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the CBI banner to be exported.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -88,9 +72,6 @@ class CloudBrowserIsolationBannerArgs:
     @property
     @pulumi.getter(name="notificationText")
     def notification_text(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Banner Notification Text
-        """
         return pulumi.get(self, "notification_text")
 
     @notification_text.setter
@@ -100,9 +81,6 @@ class CloudBrowserIsolationBannerArgs:
     @property
     @pulumi.getter(name="notificationTitle")
     def notification_title(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Banner Notification Title
-        """
         return pulumi.get(self, "notification_title")
 
     @notification_title.setter
@@ -121,9 +99,6 @@ class CloudBrowserIsolationBannerArgs:
     @property
     @pulumi.getter(name="primaryColor")
     def primary_color(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Banner Primary Color code in hexadecimal way to represent the color of the banner in RGB format
-        """
         return pulumi.get(self, "primary_color")
 
     @primary_color.setter
@@ -133,9 +108,6 @@ class CloudBrowserIsolationBannerArgs:
     @property
     @pulumi.getter(name="textColor")
     def text_color(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Banner Text Color code in hexadecimal way to represent the color of the text in RGB format
-        """
         return pulumi.get(self, "text_color")
 
     @text_color.setter
@@ -156,13 +128,6 @@ class _CloudBrowserIsolationBannerState:
                  text_color: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CloudBrowserIsolationBanner resources.
-        :param pulumi.Input[bool] banner: (Optional) - Show Welcome Notification
-        :param pulumi.Input[str] logo: The Logo Image (.jpeg or .png; Maximum file size is 100KB.)
-        :param pulumi.Input[str] name: The name of the CBI banner to be exported.
-        :param pulumi.Input[str] notification_text: The Banner Notification Text
-        :param pulumi.Input[str] notification_title: The Banner Notification Title
-        :param pulumi.Input[str] primary_color: The Banner Primary Color code in hexadecimal way to represent the color of the banner in RGB format
-        :param pulumi.Input[str] text_color: The Banner Text Color code in hexadecimal way to represent the color of the text in RGB format
         """
         if banner is not None:
             pulumi.set(__self__, "banner", banner)
@@ -184,9 +149,6 @@ class _CloudBrowserIsolationBannerState:
     @property
     @pulumi.getter
     def banner(self) -> Optional[pulumi.Input[bool]]:
-        """
-        (Optional) - Show Welcome Notification
-        """
         return pulumi.get(self, "banner")
 
     @banner.setter
@@ -196,9 +158,6 @@ class _CloudBrowserIsolationBannerState:
     @property
     @pulumi.getter
     def logo(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Logo Image (.jpeg or .png; Maximum file size is 100KB.)
-        """
         return pulumi.get(self, "logo")
 
     @logo.setter
@@ -208,9 +167,6 @@ class _CloudBrowserIsolationBannerState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the CBI banner to be exported.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -220,9 +176,6 @@ class _CloudBrowserIsolationBannerState:
     @property
     @pulumi.getter(name="notificationText")
     def notification_text(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Banner Notification Text
-        """
         return pulumi.get(self, "notification_text")
 
     @notification_text.setter
@@ -232,9 +185,6 @@ class _CloudBrowserIsolationBannerState:
     @property
     @pulumi.getter(name="notificationTitle")
     def notification_title(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Banner Notification Title
-        """
         return pulumi.get(self, "notification_title")
 
     @notification_title.setter
@@ -253,9 +203,6 @@ class _CloudBrowserIsolationBannerState:
     @property
     @pulumi.getter(name="primaryColor")
     def primary_color(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Banner Primary Color code in hexadecimal way to represent the color of the banner in RGB format
-        """
         return pulumi.get(self, "primary_color")
 
     @primary_color.setter
@@ -265,9 +212,6 @@ class _CloudBrowserIsolationBannerState:
     @property
     @pulumi.getter(name="textColor")
     def text_color(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Banner Text Color code in hexadecimal way to represent the color of the text in RGB format
-        """
         return pulumi.get(self, "text_color")
 
     @text_color.setter
@@ -290,6 +234,8 @@ class CloudBrowserIsolationBanner(pulumi.CustomResource):
                  text_color: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        * [Official documentation](https://help.zscaler.com/isolation/adding-banner-theme-isolation-end-user-notification-zpa)
+
         The **zpa_cloud_browser_isolation_banner** resource creates a Cloud Browser Isolation banner. This resource is required as part of the attribute `banner_id` when creating an Cloud Browser Isolation External Profile ``CloudBrowserIsolationExternalProfile``
 
         ## Import
@@ -312,13 +258,6 @@ class CloudBrowserIsolationBanner(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] banner: (Optional) - Show Welcome Notification
-        :param pulumi.Input[str] logo: The Logo Image (.jpeg or .png; Maximum file size is 100KB.)
-        :param pulumi.Input[str] name: The name of the CBI banner to be exported.
-        :param pulumi.Input[str] notification_text: The Banner Notification Text
-        :param pulumi.Input[str] notification_title: The Banner Notification Title
-        :param pulumi.Input[str] primary_color: The Banner Primary Color code in hexadecimal way to represent the color of the banner in RGB format
-        :param pulumi.Input[str] text_color: The Banner Text Color code in hexadecimal way to represent the color of the text in RGB format
         """
         ...
     @overload
@@ -327,6 +266,8 @@ class CloudBrowserIsolationBanner(pulumi.CustomResource):
                  args: Optional[CloudBrowserIsolationBannerArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        * [Official documentation](https://help.zscaler.com/isolation/adding-banner-theme-isolation-end-user-notification-zpa)
+
         The **zpa_cloud_browser_isolation_banner** resource creates a Cloud Browser Isolation banner. This resource is required as part of the attribute `banner_id` when creating an Cloud Browser Isolation External Profile ``CloudBrowserIsolationExternalProfile``
 
         ## Import
@@ -412,13 +353,6 @@ class CloudBrowserIsolationBanner(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] banner: (Optional) - Show Welcome Notification
-        :param pulumi.Input[str] logo: The Logo Image (.jpeg or .png; Maximum file size is 100KB.)
-        :param pulumi.Input[str] name: The name of the CBI banner to be exported.
-        :param pulumi.Input[str] notification_text: The Banner Notification Text
-        :param pulumi.Input[str] notification_title: The Banner Notification Title
-        :param pulumi.Input[str] primary_color: The Banner Primary Color code in hexadecimal way to represent the color of the banner in RGB format
-        :param pulumi.Input[str] text_color: The Banner Text Color code in hexadecimal way to represent the color of the text in RGB format
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -437,41 +371,26 @@ class CloudBrowserIsolationBanner(pulumi.CustomResource):
     @property
     @pulumi.getter
     def banner(self) -> pulumi.Output[bool]:
-        """
-        (Optional) - Show Welcome Notification
-        """
         return pulumi.get(self, "banner")
 
     @property
     @pulumi.getter
     def logo(self) -> pulumi.Output[str]:
-        """
-        The Logo Image (.jpeg or .png; Maximum file size is 100KB.)
-        """
         return pulumi.get(self, "logo")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the CBI banner to be exported.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="notificationText")
     def notification_text(self) -> pulumi.Output[Optional[str]]:
-        """
-        The Banner Notification Text
-        """
         return pulumi.get(self, "notification_text")
 
     @property
     @pulumi.getter(name="notificationTitle")
     def notification_title(self) -> pulumi.Output[Optional[str]]:
-        """
-        The Banner Notification Title
-        """
         return pulumi.get(self, "notification_title")
 
     @property
@@ -482,16 +401,10 @@ class CloudBrowserIsolationBanner(pulumi.CustomResource):
     @property
     @pulumi.getter(name="primaryColor")
     def primary_color(self) -> pulumi.Output[Optional[str]]:
-        """
-        The Banner Primary Color code in hexadecimal way to represent the color of the banner in RGB format
-        """
         return pulumi.get(self, "primary_color")
 
     @property
     @pulumi.getter(name="textColor")
     def text_color(self) -> pulumi.Output[Optional[str]]:
-        """
-        The Banner Text Color code in hexadecimal way to represent the color of the text in RGB format
-        """
         return pulumi.get(self, "text_color")
 

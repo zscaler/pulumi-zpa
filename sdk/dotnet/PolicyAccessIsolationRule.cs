@@ -10,6 +10,93 @@ using Pulumi;
 
 namespace Zscaler.Zpa
 {
+    /// <summary>
+    /// * [Official documentation](https://help.zscaler.com/zpa/about-isolation-policy)
+    /// * [API documentation](https://help.zscaler.com/zpa/configuring-isolation-policies-using-api)
+    /// 
+    /// The **zpa_policy_isolation_rule** resource creates a policy isolation access rule in the Zscaler Private Access cloud.
+    /// 
+    ///   ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+    /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Pulumi.Zpa;
+    /// using Zpa = Zscaler.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var isolationProfile = Zpa.GetIsolationProfile.Invoke(new()
+    ///     {
+    ///         Name = "zpa_isolation_profile",
+    ///     });
+    /// 
+    ///     //Create Client Isolation Access Rule
+    ///     var @this = new Zpa.PolicyAccessIsolationRule("this", new()
+    ///     {
+    ///         Description = "Example_Isolation_Policy",
+    ///         Action = "ISOLATE",
+    ///         Operator = "AND",
+    ///         ZpnIsolationProfileId = isolationProfile.Apply(getIsolationProfileResult =&gt; getIsolationProfileResult.Id),
+    ///         Conditions = new[]
+    ///         {
+    ///             new Zpa.Inputs.PolicyAccessIsolationRuleConditionArgs
+    ///             {
+    ///                 Operator = "OR",
+    ///                 Operands = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.PolicyAccessIsolationRuleConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "CLIENT_TYPE",
+    ///                         Lhs = "id",
+    ///                         Rhs = "zpn_client_type_exporter",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## LHS and RHS Values
+    /// 
+    /// LHS and RHS values differ based on object types. Refer to the following table:
+    /// 
+    /// | Object Type | LHS| RHS
+    /// |----------|-----------|----------
+    /// | APP | ``"id"`` | ``application_segment_id`` |
+    /// | APP_GROUP | ``"id"`` | ``segment_group_id``|
+    /// | CLIENT_TYPE | ``"id"`` | ``zpn_client_type_exporter`` |
+    /// | PLATFORM | ``mac``, ``ios``, ``windows``, ``android``, ``linux`` | ``"true"`` / ``"false"`` |
+    /// | EDGE_CONNECTOR_GROUP | ``"id"`` | ``edge_connector_id`` |
+    /// | IDP | ``"id"`` | ``identity_provider_id`` |
+    /// | SAML | ``saml_attribute_id``  | &lt;Attribute_value_to_match&gt; |
+    /// | SCIM | ``scim_attribute_id``  | &lt;Attribute_value_to_match&gt;  |
+    /// | SCIM_GROUP | ``scim_group_attribute_id``  | &lt;Attribute_value_to_match&gt;  |
+    /// | MACHINE_GRP | ``"id"`` | ``machine_group_id`` |
+    /// | POSTURE | ``posture_udid``  | ``"true"`` / ``"false"`` |
+    /// | TRUSTED_NETWORK | ``network_id``  | ``"true"`` |
+    /// 
+    /// ## Import
+    /// 
+    /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+    /// 
+    /// Visit
+    /// 
+    /// Policy Access Isolation Rule can be imported by using `&lt;POLICY ISOLATION RULE ID&gt;` as the import ID.
+    /// 
+    /// For example:
+    /// 
+    /// ```sh
+    /// $ pulumi import zpa:index/policyAccessIsolationRule:PolicyAccessIsolationRule example &lt;policy_isolation_rule_id&gt;
+    /// ```
+    /// </summary>
     [ZpaResourceType("zpa:index/policyAccessIsolationRule:PolicyAccessIsolationRule")]
     public partial class PolicyAccessIsolationRule : global::Pulumi.CustomResource
     {

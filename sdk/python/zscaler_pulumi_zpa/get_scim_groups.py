@@ -47,9 +47,6 @@ class GetSCIMGroupsResult:
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> int:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
@@ -60,17 +57,11 @@ class GetSCIMGroupsResult:
     @property
     @pulumi.getter(name="idpGroupId")
     def idp_group_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "idp_group_id")
 
     @property
     @pulumi.getter(name="idpId")
     def idp_id(self) -> Optional[int]:
-        """
-        (string) The ID of the IdP corresponding to the SAML attribute.
-        """
         return pulumi.get(self, "idp_id")
 
     @property
@@ -81,9 +72,6 @@ class GetSCIMGroupsResult:
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> int:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -113,6 +101,9 @@ def get_scim_groups(id: Optional[str] = None,
                     name: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSCIMGroupsResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-scim-groups)
+    * [API documentation](https://help.zscaler.com/zpa/obtaining-scim-group-details-using-api)
+
     Use the **zpa_scim_groups** data source to get information about a SCIM Group from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
 
     ## Example Usage
@@ -126,11 +117,6 @@ def get_scim_groups(id: Optional[str] = None,
         name="Engineering")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param int idp_id: (string) The ID of the IdP corresponding to the SAML attribute.
-    :param str idp_name: Name. The name of the IdP where the scim group must be exported from.
-    :param str name: Name. The name of the scim group to be exported.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -157,6 +143,9 @@ def get_scim_groups_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                            name: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSCIMGroupsResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-scim-groups)
+    * [API documentation](https://help.zscaler.com/zpa/obtaining-scim-group-details-using-api)
+
     Use the **zpa_scim_groups** data source to get information about a SCIM Group from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
 
     ## Example Usage
@@ -170,10 +159,5 @@ def get_scim_groups_output(id: Optional[pulumi.Input[Optional[str]]] = None,
         name="Engineering")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param int idp_id: (string) The ID of the IdP corresponding to the SAML attribute.
-    :param str idp_name: Name. The name of the IdP where the scim group must be exported from.
-    :param str name: Name. The name of the scim group to be exported.
     """
     ...

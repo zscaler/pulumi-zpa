@@ -64,27 +64,15 @@ namespace Zscaler.Zpa
 
     public sealed class GetServerGroupArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the server group to be exported.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public string? MicrotenantId { get; set; }
 
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantName")]
         public string? MicrotenantName { get; set; }
 
-        /// <summary>
-        /// The name of the server group to be exported.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -96,27 +84,15 @@ namespace Zscaler.Zpa
 
     public sealed class GetServerGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the server group to be exported.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantName")]
         public Input<string>? MicrotenantName { get; set; }
 
-        /// <summary>
-        /// The name of the server group to be exported.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -130,40 +106,16 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetServerGroupResult
     {
-        /// <summary>
-        /// (string)This field is a json array of app-connector-id only.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetServerGroupAppConnectorGroupResult> AppConnectorGroups;
         public readonly ImmutableArray<Outputs.GetServerGroupApplicationResult> Applications;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ConfigSpace;
         public readonly string CreationTime;
-        /// <summary>
-        /// (string) This field is the description of the server group.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (bool) This field controls dynamic discovery of the servers.
-        /// </summary>
         public readonly bool DynamicDiscovery;
-        /// <summary>
-        /// (bool) This field defines if the server group is enabled or disabled.
-        /// </summary>
         public readonly bool Enabled;
         public readonly string? Id;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool IpAnchored;
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         public readonly string? MicrotenantId;
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         public readonly string? MicrotenantName;
         public readonly string ModifiedTime;
         public readonly string Modifiedby;

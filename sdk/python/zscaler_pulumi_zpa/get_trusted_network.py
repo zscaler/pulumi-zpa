@@ -50,17 +50,11 @@ class GetTrustedNetworkResult:
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter
     def domain(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "domain")
 
     @property
@@ -71,9 +65,6 @@ class GetTrustedNetworkResult:
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -89,17 +80,11 @@ class GetTrustedNetworkResult:
     @property
     @pulumi.getter(name="networkId")
     def network_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "network_id")
 
     @property
     @pulumi.getter(name="zscalerCloud")
     def zscaler_cloud(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "zscaler_cloud")
 
 
@@ -123,6 +108,9 @@ def get_trusted_network(id: Optional[str] = None,
                         name: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTrustedNetworkResult:
     """
+    * [Official documentation](https://help.zscaler.com/client-connector/about-trusted-networks)
+    * [API documentation](https://help.zscaler.com/zpa/obtaining-trusted-network-details-using-api)
+
     The **zpa_trusted_network** data source to get information about a trusted network created in the Zscaler Private Access Mobile Portal. This data source can then be referenced within the following resources:
 
     1. Access Policy
@@ -153,10 +141,6 @@ def get_trusted_network(id: Optional[str] = None,
     pulumi.export("zpaTrustedNetwork", example1.network_id)
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: The ID of the posture profile to be exported.
-    :param str name: The name of the posture profile to be exported.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -180,6 +164,9 @@ def get_trusted_network_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                                name: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTrustedNetworkResult]:
     """
+    * [Official documentation](https://help.zscaler.com/client-connector/about-trusted-networks)
+    * [API documentation](https://help.zscaler.com/zpa/obtaining-trusted-network-details-using-api)
+
     The **zpa_trusted_network** data source to get information about a trusted network created in the Zscaler Private Access Mobile Portal. This data source can then be referenced within the following resources:
 
     1. Access Policy
@@ -210,9 +197,5 @@ def get_trusted_network_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     pulumi.export("zpaTrustedNetwork", example1.network_id)
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: The ID of the posture profile to be exported.
-    :param str name: The name of the posture profile to be exported.
     """
     ...

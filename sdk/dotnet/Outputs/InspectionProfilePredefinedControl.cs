@@ -15,19 +15,19 @@ namespace Zscaler.Zpa.Outputs
     public sealed class InspectionProfilePredefinedControl
     {
         /// <summary>
-        /// The action of the predefined control. Supported values: `PASS`, `BLOCK` and `REDIRECT`
+        /// The action of the predefined control
         /// </summary>
         public readonly string? Action;
         /// <summary>
-        /// Value for the predefined controls action. This field is only required if the action is set to REDIRECT. This field is only required if the action is set to `REDIRECT`.
+        /// The value for the predefined controls action. This field is only required if the action is set to REDIRECT
         /// </summary>
         public readonly string? ActionValue;
         /// <summary>
-        /// (string) Control types. Supported Values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `CUSTOM`, `PREDEFINED`, `ZSCALER`
+        /// The control type of the custom control
         /// </summary>
         public readonly string? ControlType;
         /// <summary>
-        /// ID of the predefined control
+        /// The unique identifier of the predefined control
         /// </summary>
         public readonly string? Id;
         /// <summary>

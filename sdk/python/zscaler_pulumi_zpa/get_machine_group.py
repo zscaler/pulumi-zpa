@@ -57,81 +57,51 @@ class GetMachineGroupResult:
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        (string)
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def machines(self) -> Sequence['outputs.GetMachineGroupMachineResult']:
-        """
-        (string)
-        """
         return pulumi.get(self, "machines")
 
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[str]:
-        """
-        (string) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @property
     @pulumi.getter(name="microtenantName")
     def microtenant_name(self) -> Optional[str]:
-        """
-        (string) The name of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_name")
 
     @property
     @pulumi.getter(name="modifiedBy")
     def modified_by(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_by")
 
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        (string)
-        """
         return pulumi.get(self, "name")
 
 
@@ -159,6 +129,9 @@ def get_machine_group(id: Optional[str] = None,
                       name: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMachineGroupResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-machine-groups)
+    * [API documentation](https://help.zscaler.com/zpa/obtaining-machine-group-details-using-api)
+
     Use the **zpa_machine_group** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
 
     ## Example Usage
@@ -180,12 +153,6 @@ def get_machine_group(id: Optional[str] = None,
     example = zpa.get_machine_group(id="1234567890")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: The ID of the machine group to be exported.
-    :param str microtenant_id: (string) The ID of the microtenant the resource is to be associated with.
-    :param str microtenant_name: (string) The name of the microtenant the resource is to be associated with.
-    :param str name: The name of the machine group to be exported.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -215,6 +182,9 @@ def get_machine_group_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                              name: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMachineGroupResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-machine-groups)
+    * [API documentation](https://help.zscaler.com/zpa/obtaining-machine-group-details-using-api)
+
     Use the **zpa_machine_group** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
 
     ## Example Usage
@@ -236,11 +206,5 @@ def get_machine_group_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     example = zpa.get_machine_group(id="1234567890")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: The ID of the machine group to be exported.
-    :param str microtenant_id: (string) The ID of the microtenant the resource is to be associated with.
-    :param str microtenant_name: (string) The name of the microtenant the resource is to be associated with.
-    :param str name: The name of the machine group to be exported.
     """
     ...

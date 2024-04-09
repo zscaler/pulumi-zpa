@@ -11,6 +11,8 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/isolation/adding-banner-theme-isolation-end-user-notification-zpa)
+//
 // Use the **zpa_cloud_browser_isolation_certificate** data source to get information about Cloud Browser Isolation Certificate. This data source information is required as part of the attribute `certificateIds` when creating an Cloud Browser Isolation External Profile “CloudBrowserIsolationExternalProfile“
 //
 // ## Example Usage
@@ -52,9 +54,7 @@ func LookupCloudBrowserIsolationCertificate(ctx *pulumi.Context, args *LookupClo
 
 // A collection of arguments for invoking getCloudBrowserIsolationCertificate.
 type LookupCloudBrowserIsolationCertificateArgs struct {
-	// The id of the CBI certificate to be exported.
-	Id *string `pulumi:"id"`
-	// The name of the CBI certificate to be exported.
+	Id   *string `pulumi:"id"`
 	Name *string `pulumi:"name"`
 }
 
@@ -81,9 +81,7 @@ func LookupCloudBrowserIsolationCertificateOutput(ctx *pulumi.Context, args Look
 
 // A collection of arguments for invoking getCloudBrowserIsolationCertificate.
 type LookupCloudBrowserIsolationCertificateOutputArgs struct {
-	// The id of the CBI certificate to be exported.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The name of the CBI certificate to be exported.
+	Id   pulumi.StringPtrInput `pulumi:"id"`
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 

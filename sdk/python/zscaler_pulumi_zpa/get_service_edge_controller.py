@@ -144,81 +144,51 @@ class GetServiceEdgeControllerResult:
     @property
     @pulumi.getter(name="applicationStartTime")
     def application_start_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "application_start_time")
 
     @property
     @pulumi.getter(name="controlChannelStatus")
     def control_channel_status(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "control_channel_status")
 
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter(name="ctrlBrokerName")
     def ctrl_broker_name(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "ctrl_broker_name")
 
     @property
     @pulumi.getter(name="currentVersion")
     def current_version(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "current_version")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string) - Description of the App Connector.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool) Whether this Service Edge Controller is enabled or not. Default value: `true`. Supported values: `true`, `false`
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="enrollmentCert")
     def enrollment_cert(self) -> Mapping[str, Any]:
-        """
-        (string)
-        """
         return pulumi.get(self, "enrollment_cert")
 
     @property
     @pulumi.getter(name="expectedUpgradeTime")
     def expected_upgrade_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "expected_upgrade_time")
 
     @property
     @pulumi.getter(name="expectedVersion")
     def expected_version(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "expected_version")
 
     @property
@@ -234,65 +204,41 @@ class GetServiceEdgeControllerResult:
     @property
     @pulumi.getter(name="ipAcl")
     def ip_acl(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "ip_acl")
 
     @property
     @pulumi.getter(name="issuedCertId")
     def issued_cert_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "issued_cert_id")
 
     @property
     @pulumi.getter(name="lastBrokerConnectTime")
     def last_broker_connect_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "last_broker_connect_time")
 
     @property
     @pulumi.getter(name="lastBrokerConnectTimeDuration")
     def last_broker_connect_time_duration(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "last_broker_connect_time_duration")
 
     @property
     @pulumi.getter(name="lastBrokerDisconnectTime")
     def last_broker_disconnect_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "last_broker_disconnect_time")
 
     @property
     @pulumi.getter(name="lastBrokerDisconnectTimeDuration")
     def last_broker_disconnect_time_duration(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "last_broker_disconnect_time_duration")
 
     @property
     @pulumi.getter(name="lastUpgradeTime")
     def last_upgrade_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "last_upgrade_time")
 
     @property
     @pulumi.getter
     def latitude(self) -> str:
-        """
-        (string) Latitude of the Service Edge Controller. Integer or decimal. With values in the range of `-90` to `90`
-        """
         return pulumi.get(self, "latitude")
 
     @property
@@ -303,33 +249,21 @@ class GetServiceEdgeControllerResult:
     @property
     @pulumi.getter
     def location(self) -> str:
-        """
-        (string) Location of the Service Edge Controller.
-        """
         return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
     def longitude(self) -> str:
-        """
-        (string) Longitude of the Service Edge Controller. Integer or decimal. With values in the range of `-180` to `180`
-        """
         return pulumi.get(self, "longitude")
 
     @property
     @pulumi.getter(name="modifiedBy")
     def modified_by(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_by")
 
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -340,49 +274,31 @@ class GetServiceEdgeControllerResult:
     @property
     @pulumi.getter
     def platform(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "platform")
 
     @property
     @pulumi.getter(name="previousVersion")
     def previous_version(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "previous_version")
 
     @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "private_ip")
 
     @property
     @pulumi.getter(name="provisioningKeyId")
     def provisioning_key_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "provisioning_key_id")
 
     @property
     @pulumi.getter(name="provisioningKeyName")
     def provisioning_key_name(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "provisioning_key_name")
 
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "public_ip")
 
     @property
@@ -393,9 +309,6 @@ class GetServiceEdgeControllerResult:
     @property
     @pulumi.getter(name="sargeVersion")
     def sarge_version(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "sarge_version")
 
     @property
@@ -411,17 +324,11 @@ class GetServiceEdgeControllerResult:
     @property
     @pulumi.getter(name="upgradeAttempt")
     def upgrade_attempt(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "upgrade_attempt")
 
     @property
     @pulumi.getter(name="upgradeStatus")
     def upgrade_status(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "upgrade_status")
 
     @property
@@ -480,6 +387,9 @@ class AwaitableGetServiceEdgeControllerResult(GetServiceEdgeControllerResult):
 def get_service_edge_controller(name: Optional[str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceEdgeControllerResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-zpa-private-service-edges)
+    * [API documentation](https://help.zscaler.com/zpa/managing-zpa-private-service-edges-using-api)
+
     Use the **zpa_service_edge_controller** data source to get information about a service edge controller in the Zscaler Private Access cloud. This data source can then be referenced in a Service Edge Group and Provisioning Key.
 
     ## Example Usage
@@ -492,9 +402,6 @@ def get_service_edge_controller(name: Optional[str] = None,
     example = zpa.get_service_edge_controller(name="On-Prem-PSE")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str name: The name of the service edge controller to be exported.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -547,6 +454,9 @@ def get_service_edge_controller(name: Optional[str] = None,
 def get_service_edge_controller_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceEdgeControllerResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-zpa-private-service-edges)
+    * [API documentation](https://help.zscaler.com/zpa/managing-zpa-private-service-edges-using-api)
+
     Use the **zpa_service_edge_controller** data source to get information about a service edge controller in the Zscaler Private Access cloud. This data source can then be referenced in a Service Edge Group and Provisioning Key.
 
     ## Example Usage
@@ -559,8 +469,5 @@ def get_service_edge_controller_output(name: Optional[pulumi.Input[Optional[str]
     example = zpa.get_service_edge_controller(name="On-Prem-PSE")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str name: The name of the service edge controller to be exported.
     """
     ...

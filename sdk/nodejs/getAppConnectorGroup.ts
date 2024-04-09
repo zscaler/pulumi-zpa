@@ -48,25 +48,10 @@ export function getAppConnectorGroup(args?: GetAppConnectorGroupArgs, opts?: pul
  * A collection of arguments for invoking getAppConnectorGroup.
  */
 export interface GetAppConnectorGroupArgs {
-    /**
-     * ID of the App Connector Group.
-     */
     id?: string;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: string;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     microtenantName?: string;
-    /**
-     * Name of the App Connector Group.
-     */
     name?: string;
-    /**
-     * (bool) Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
-     */
     overrideVersionProfile?: boolean;
 }
 
@@ -74,91 +59,34 @@ export interface GetAppConnectorGroupArgs {
  * A collection of values returned by getAppConnectorGroup.
  */
 export interface GetAppConnectorGroupResult {
-    /**
-     * (String) Whether Double Encryption is enabled or disabled for the app.
-     */
     readonly cityCountry: string;
     readonly connectors: outputs.GetAppConnectorGroupConnector[];
-    /**
-     * (String)
-     */
     readonly countryCode: string;
     readonly creationTime: string;
-    /**
-     * (String) Description of the App Connector Group.
-     */
     readonly description: string;
-    /**
-     * (String)
-     */
     readonly dnsQueryType: string;
-    /**
-     * (String) Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
-     */
     readonly enabled: boolean;
-    /**
-     * (String)
-     */
     readonly geoLocationId: string;
     readonly id?: string;
-    /**
-     * (String) Latitude of the App Connector Group. Integer or decimal. With values in the range of `-90` to `90`
-     */
     readonly latitude: string;
-    /**
-     * (String) Location of the App Connector Group.
-     */
     readonly location: string;
-    /**
-     * (String) Longitude of the App Connector Group. Integer or decimal. With values in the range of `-180` to `180`
-     */
     readonly longitude: string;
     readonly lssAppConnectorGroup: boolean;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     readonly microtenantId?: string;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     readonly microtenantName?: string;
     readonly modifiedTime: string;
     readonly modifiedby: string;
     readonly name?: string;
-    /**
-     * (bool) Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
-     */
     readonly overrideVersionProfile?: boolean;
     readonly serverGroups: outputs.GetAppConnectorGroupServerGroup[];
     readonly tcpQuickAckApp: boolean;
     readonly tcpQuickAckAssistant: boolean;
     readonly tcpQuickAckReadAssistant: boolean;
-    /**
-     * (String) App Connectors in this group will attempt to update to a newer version of the software during this specified day
-     */
     readonly upgradeDay: string;
-    /**
-     * (String) App Connectors in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600`. Integer in seconds (i.e., `-66600`). The integer should be greater than or equal to `0` and less than `86400`, in `15` minute intervals
-     */
     readonly upgradeTimeInSecs: string;
-    /**
-     * (Optional) Supported values: `true`, `false`
-     */
     readonly useInDrMode: boolean;
-    /**
-     * (String) ID of the version profile.
-     * Exported values are:
-     */
     readonly versionProfileId: string;
-    /**
-     * (String)
-     * Exported values are:
-     */
     readonly versionProfileName: string;
-    /**
-     * (String)
-     * Exported values are:
-     */
     readonly versionProfileVisibilityScope: string;
 }
 /**
@@ -194,24 +122,9 @@ export function getAppConnectorGroupOutput(args?: GetAppConnectorGroupOutputArgs
  * A collection of arguments for invoking getAppConnectorGroup.
  */
 export interface GetAppConnectorGroupOutputArgs {
-    /**
-     * ID of the App Connector Group.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: pulumi.Input<string>;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     microtenantName?: pulumi.Input<string>;
-    /**
-     * Name of the App Connector Group.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * (bool) Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
-     */
     overrideVersionProfile?: pulumi.Input<boolean>;
 }

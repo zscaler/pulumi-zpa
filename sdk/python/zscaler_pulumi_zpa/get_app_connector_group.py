@@ -114,9 +114,6 @@ class GetAppConnectorGroupResult:
     @property
     @pulumi.getter(name="cityCountry")
     def city_country(self) -> str:
-        """
-        (String) Whether Double Encryption is enabled or disabled for the app.
-        """
         return pulumi.get(self, "city_country")
 
     @property
@@ -127,9 +124,6 @@ class GetAppConnectorGroupResult:
     @property
     @pulumi.getter(name="countryCode")
     def country_code(self) -> str:
-        """
-        (String)
-        """
         return pulumi.get(self, "country_code")
 
     @property
@@ -140,33 +134,21 @@ class GetAppConnectorGroupResult:
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (String) Description of the App Connector Group.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="dnsQueryType")
     def dns_query_type(self) -> str:
-        """
-        (String)
-        """
         return pulumi.get(self, "dns_query_type")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (String) Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="geoLocationId")
     def geo_location_id(self) -> str:
-        """
-        (String)
-        """
         return pulumi.get(self, "geo_location_id")
 
     @property
@@ -177,25 +159,16 @@ class GetAppConnectorGroupResult:
     @property
     @pulumi.getter
     def latitude(self) -> str:
-        """
-        (String) Latitude of the App Connector Group. Integer or decimal. With values in the range of `-90` to `90`
-        """
         return pulumi.get(self, "latitude")
 
     @property
     @pulumi.getter
     def location(self) -> str:
-        """
-        (String) Location of the App Connector Group.
-        """
         return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
     def longitude(self) -> str:
-        """
-        (String) Longitude of the App Connector Group. Integer or decimal. With values in the range of `-180` to `180`
-        """
         return pulumi.get(self, "longitude")
 
     @property
@@ -206,17 +179,11 @@ class GetAppConnectorGroupResult:
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[str]:
-        """
-        (string) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @property
     @pulumi.getter(name="microtenantName")
     def microtenant_name(self) -> Optional[str]:
-        """
-        (string) The name of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_name")
 
     @property
@@ -237,9 +204,6 @@ class GetAppConnectorGroupResult:
     @property
     @pulumi.getter(name="overrideVersionProfile")
     def override_version_profile(self) -> Optional[bool]:
-        """
-        (bool) Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
-        """
         return pulumi.get(self, "override_version_profile")
 
     @property
@@ -265,52 +229,31 @@ class GetAppConnectorGroupResult:
     @property
     @pulumi.getter(name="upgradeDay")
     def upgrade_day(self) -> str:
-        """
-        (String) App Connectors in this group will attempt to update to a newer version of the software during this specified day
-        """
         return pulumi.get(self, "upgrade_day")
 
     @property
     @pulumi.getter(name="upgradeTimeInSecs")
     def upgrade_time_in_secs(self) -> str:
-        """
-        (String) App Connectors in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600`. Integer in seconds (i.e., `-66600`). The integer should be greater than or equal to `0` and less than `86400`, in `15` minute intervals
-        """
         return pulumi.get(self, "upgrade_time_in_secs")
 
     @property
     @pulumi.getter(name="useInDrMode")
     def use_in_dr_mode(self) -> bool:
-        """
-        (Optional) Supported values: `true`, `false`
-        """
         return pulumi.get(self, "use_in_dr_mode")
 
     @property
     @pulumi.getter(name="versionProfileId")
     def version_profile_id(self) -> str:
-        """
-        (String) ID of the version profile.
-        Exported values are:
-        """
         return pulumi.get(self, "version_profile_id")
 
     @property
     @pulumi.getter(name="versionProfileName")
     def version_profile_name(self) -> str:
-        """
-        (String)
-        Exported values are:
-        """
         return pulumi.get(self, "version_profile_name")
 
     @property
     @pulumi.getter(name="versionProfileVisibilityScope")
     def version_profile_visibility_scope(self) -> str:
-        """
-        (String)
-        Exported values are:
-        """
         return pulumi.get(self, "version_profile_visibility_scope")
 
 
@@ -377,13 +320,6 @@ def get_app_connector_group(id: Optional[str] = None,
     foo = zpa.get_app_connector_group(id="123456789")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: ID of the App Connector Group.
-    :param str microtenant_id: (string) The ID of the microtenant the resource is to be associated with.
-    :param str microtenant_name: (string) The name of the microtenant the resource is to be associated with.
-    :param str name: Name of the App Connector Group.
-    :param bool override_version_profile: (bool) Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
     """
     __args__ = dict()
     __args__['id'] = id
@@ -453,12 +389,5 @@ def get_app_connector_group_output(id: Optional[pulumi.Input[Optional[str]]] = N
     foo = zpa.get_app_connector_group(id="123456789")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: ID of the App Connector Group.
-    :param str microtenant_id: (string) The ID of the microtenant the resource is to be associated with.
-    :param str microtenant_name: (string) The name of the microtenant the resource is to be associated with.
-    :param str name: Name of the App Connector Group.
-    :param bool override_version_profile: (bool) Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
     """
     ...

@@ -14,25 +14,25 @@ namespace Zscaler.Zpa.Inputs
     public sealed class InspectionProfilePredefinedControlGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The action of the predefined control. Supported values: `PASS`, `BLOCK` and `REDIRECT`
+        /// The action of the predefined control
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
         /// <summary>
-        /// Value for the predefined controls action. This field is only required if the action is set to REDIRECT. This field is only required if the action is set to `REDIRECT`.
+        /// The value for the predefined controls action. This field is only required if the action is set to REDIRECT
         /// </summary>
         [Input("actionValue")]
         public Input<string>? ActionValue { get; set; }
 
         /// <summary>
-        /// (string) Control types. Supported Values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `CUSTOM`, `PREDEFINED`, `ZSCALER`
+        /// The control type of the custom control
         /// </summary>
         [Input("controlType")]
         public Input<string>? ControlType { get; set; }
 
         /// <summary>
-        /// ID of the predefined control
+        /// The unique identifier of the predefined control
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

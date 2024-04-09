@@ -72,6 +72,8 @@ def get_cloud_browser_isolation_certificate(id: Optional[str] = None,
                                             name: Optional[str] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCloudBrowserIsolationCertificateResult:
     """
+    * [Official documentation](https://help.zscaler.com/isolation/adding-banner-theme-isolation-end-user-notification-zpa)
+
     Use the **zpa_cloud_browser_isolation_certificate** data source to get information about Cloud Browser Isolation Certificate. This data source information is required as part of the attribute `certificate_ids` when creating an Cloud Browser Isolation External Profile ``CloudBrowserIsolationExternalProfile``
 
     ## Example Usage
@@ -84,10 +86,6 @@ def get_cloud_browser_isolation_certificate(id: Optional[str] = None,
     this = zpa.get_cloud_browser_isolation_certificate(name="Zscaler Root Certificate")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: The id of the CBI certificate to be exported.
-    :param str name: The name of the CBI certificate to be exported.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -107,6 +105,8 @@ def get_cloud_browser_isolation_certificate_output(id: Optional[pulumi.Input[Opt
                                                    name: Optional[pulumi.Input[Optional[str]]] = None,
                                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCloudBrowserIsolationCertificateResult]:
     """
+    * [Official documentation](https://help.zscaler.com/isolation/adding-banner-theme-isolation-end-user-notification-zpa)
+
     Use the **zpa_cloud_browser_isolation_certificate** data source to get information about Cloud Browser Isolation Certificate. This data source information is required as part of the attribute `certificate_ids` when creating an Cloud Browser Isolation External Profile ``CloudBrowserIsolationExternalProfile``
 
     ## Example Usage
@@ -119,9 +119,5 @@ def get_cloud_browser_isolation_certificate_output(id: Optional[pulumi.Input[Opt
     this = zpa.get_cloud_browser_isolation_certificate(name="Zscaler Root Certificate")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: The id of the CBI certificate to be exported.
-    :param str name: The name of the CBI certificate to be exported.
     """
     ...

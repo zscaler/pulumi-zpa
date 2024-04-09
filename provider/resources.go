@@ -151,11 +151,20 @@ func Provider() tfbridge.ProviderInfo {
 			"zpa_lss_config_controller":                    {Tok: zpaResource(zpaMod, "LSSConfigController")},
 			"zpa_microtenant_controller":                   {Tok: zpaResource(zpaMod, "Microtenant")},
 			"zpa_policy_access_rule":                       {Tok: zpaResource(zpaMod, "PolicyAccessRule")},
+			"zpa_policy_access_rule_v2":                    {Tok: zpaResource(zpaMod, "PolicyAccessRuleV2")},
 			"zpa_policy_forwarding_rule":                   {Tok: zpaResource(zpaMod, "PolicyAccessForwardingRule")},
+			"zpa_policy_forwarding_rule_v2":                {Tok: zpaResource(zpaMod, "PolicyAccessForwardingRuleV2")},
 			"zpa_policy_timeout_rule":                      {Tok: zpaResource(zpaMod, "PolicyAccessTimeOutRule")},
+			"zpa_policy_timeout_rule_v2":                   {Tok: zpaResource(zpaMod, "PolicyAccessTimeOutRuleV2")},
 			"zpa_policy_inspection_rule":                   {Tok: zpaResource(zpaMod, "PolicyAccessInspectionRule")},
+			"zpa_policy_inspection_rule_v2":                {Tok: zpaResource(zpaMod, "PolicyAccessInspectionRuleV2")},
 			"zpa_policy_isolation_rule":                    {Tok: zpaResource(zpaMod, "PolicyAccessIsolationRule")},
+			"zpa_policy_isolation_rule_v2":                 {Tok: zpaResource(zpaMod, "PolicyAccessIsolationRuleV2")},
 			"zpa_policy_access_rule_reorder":               {Tok: zpaResource(zpaMod, "PolicyAccessReorderRule")},
+			"zpa_pra_approval_controller":                  {Tok: zpaResource(zpaMod, "PRAApproval")},
+			"zpa_pra_console_controller":                   {Tok: zpaResource(zpaMod, "PRAConsole")},
+			"zpa_pra_credential_controller":                {Tok: zpaResource(zpaMod, "PRACredential")},
+			"zpa_pra_portal_controller":                    {Tok: zpaResource(zpaMod, "PRAPortal")},
 			"zpa_provisioning_key": {Tok: zpaResource(zpaMod, "ProvisioningKey"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					// Rename field to prevent this error in the DotNet SDK generation:
@@ -274,6 +283,18 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"zpa_isolation_profile": {
 				Tok: zpaDataSource(zpaMod, "getIsolationProfile"),
+			},
+			"zpa_pra_approval_controller": {
+				Tok: zpaDataSource(zpaMod, "getPRAApproval"),
+			},
+			"zpa_pra_console_controller": {
+				Tok: zpaDataSource(zpaMod, "getPRAConsole"),
+			},
+			"zpa_pra_credential_controller": {
+				Tok: zpaDataSource(zpaMod, "getPRACredential"),
+			},
+			"zpa_pra_portal_controller": {
+				Tok: zpaDataSource(zpaMod, "getPRAPortal"),
 			},
 			"zpa_saml_attribute": {
 				Tok: zpaDataSource(zpaMod, "getSAMLAttribute"),

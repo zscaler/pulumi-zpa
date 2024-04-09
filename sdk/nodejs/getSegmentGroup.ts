@@ -29,7 +29,6 @@ export function getSegmentGroup(args?: GetSegmentGroupArgs, opts?: pulumi.Invoke
         "microtenantId": args.microtenantId,
         "microtenantName": args.microtenantName,
         "name": args.name,
-        "policyMigrated": args.policyMigrated,
     }, opts);
 }
 
@@ -37,84 +36,27 @@ export function getSegmentGroup(args?: GetSegmentGroupArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getSegmentGroup.
  */
 export interface GetSegmentGroupArgs {
-    /**
-     * The ID of the segment group to be exported.
-     */
     id?: string;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: string;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     microtenantName?: string;
-    /**
-     * The name of the segment group to be exported.
-     */
     name?: string;
-    /**
-     * (bool)
-     */
-    policyMigrated?: boolean;
 }
 
 /**
  * A collection of values returned by getSegmentGroup.
  */
 export interface GetSegmentGroupResult {
-    /**
-     * (Computed)
-     */
     readonly applications: outputs.GetSegmentGroupApplication[];
-    /**
-     * (string)
-     */
     readonly configSpace: string;
-    /**
-     * (string)
-     */
     readonly creationTime: string;
-    /**
-     * (string)
-     */
     readonly description: string;
-    /**
-     * (bool)
-     */
     readonly enabled: boolean;
-    /**
-     * (string)
-     */
     readonly id?: string;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     readonly microtenantId?: string;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     readonly microtenantName?: string;
-    /**
-     * (string)
-     */
     readonly modifiedBy: string;
-    /**
-     * (string)
-     */
     readonly modifiedTime: string;
-    /**
-     * (string)
-     */
     readonly name?: string;
-    /**
-     * (bool)
-     */
-    readonly policyMigrated: boolean;
-    /**
-     * (string)
-     */
-    readonly tcpKeepAliveEnabled: string;
 }
 /**
  * ## Example Usage
@@ -138,24 +80,8 @@ export function getSegmentGroupOutput(args?: GetSegmentGroupOutputArgs, opts?: p
  * A collection of arguments for invoking getSegmentGroup.
  */
 export interface GetSegmentGroupOutputArgs {
-    /**
-     * The ID of the segment group to be exported.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: pulumi.Input<string>;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     microtenantName?: pulumi.Input<string>;
-    /**
-     * The name of the segment group to be exported.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * (bool)
-     */
-    policyMigrated?: pulumi.Input<boolean>;
 }

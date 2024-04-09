@@ -14,24 +14,12 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetLSSConfigControllerPolicyRuleConditionOperandResult
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// This field defines the name of the log streaming resource.
-        /// </summary>
         public readonly string Id;
         public readonly string IdpId;
         public readonly string Lhs;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
-        /// <summary>
-        /// This field defines the name of the log streaming resource.
-        /// </summary>
         public readonly string Name;
         public readonly string ObjectType;
         public readonly string Operator;

@@ -10,6 +10,135 @@ using Pulumi;
 
 namespace Zscaler.Zpa
 {
+    /// <summary>
+    /// * [Official documentation](https://help.zscaler.com/zpa/about-security-policy)
+    /// * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-policies-using-api)
+    /// 
+    /// The **zpa_policy_inspection_rule** resource creates a policy inspection access rule in the Zscaler Private Access cloud.
+    /// 
+    ///   ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource ``zpa.PolicyAccessReorderRule`` policy_access_rule_reorder
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### 1
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Zscaler.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     //Create Inspection Access Rule
+    ///     var @this = new Zpa.PolicyAccessInspectionRule("this", new()
+    ///     {
+    ///         Description = "Example",
+    ///         Action = "INSPECT",
+    ///         Operator = "AND",
+    ///         PolicySetId = data.Zpa_policy_type.Inspection_policy.Id,
+    ///         ZpnInspectionProfileId = zpa_inspection_profile.This.Id,
+    ///         Conditions = new[]
+    ///         {
+    ///             new Zpa.Inputs.PolicyAccessInspectionRuleConditionArgs
+    ///             {
+    ///                 Operator = "OR",
+    ///                 Operands = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.PolicyAccessInspectionRuleConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "APP",
+    ///                         Lhs = "id",
+    ///                         Rhs = zpa_application_segment_inspection.This.Id,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ### 2
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Pulumi.Zpa;
+    /// using Zpa = Zscaler.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var inspectionPolicy = Zpa.GetPolicyType.Invoke(new()
+    ///     {
+    ///         PolicyType = "INSPECTION_POLICY",
+    ///     });
+    /// 
+    ///     //Create Inspection Access Rule
+    ///     var @this = new Zpa.PolicyAccessInspectionRule("this", new()
+    ///     {
+    ///         Description = "Example",
+    ///         Action = "BYPASS_INSPECT",
+    ///         RuleOrder = "1",
+    ///         Operator = "AND",
+    ///         PolicySetId = inspectionPolicy.Apply(getPolicyTypeResult =&gt; getPolicyTypeResult.Id),
+    ///         Conditions = new[]
+    ///         {
+    ///             new Zpa.Inputs.PolicyAccessInspectionRuleConditionArgs
+    ///             {
+    ///                 Operator = "OR",
+    ///                 Operands = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.PolicyAccessInspectionRuleConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "APP",
+    ///                         Lhs = "id",
+    ///                         Rhs = zpa_application_segment_inspection.This.Id,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## LHS and RHS Values
+    /// 
+    /// | Object Type | LHS| RHS
+    /// |----------|-----------|----------
+    /// | APP | ``"id"`` | ``application_segment_id`` |
+    /// | APP_GROUP | ``"id"`` | ``segment_group_id``|
+    /// | CLIENT_TYPE | ``"id"`` | ``zpn_client_type_zappl``, ``zpn_client_type_exporter``, ``zpn_client_type_browser_isolation``, ``zpn_client_type_ip_anchoring``, ``zpn_client_type_edge_connector``, ``zpn_client_type_branch_connector``,  ``zpn_client_type_zapp_partner``, ``zpn_client_type_zapp``  |
+    /// | EDGE_CONNECTOR_GROUP | ``"id"`` | ``edge_connector_id`` |
+    /// | IDP | ``"id"`` | ``identity_provider_id`` |
+    /// | SAML | ``saml_attribute_id``  | ``attribute_value_to_match`` |
+    /// | SCIM | ``scim_attribute_id``  | ``attribute_value_to_match``  |
+    /// | SCIM_GROUP | ``scim_group_attribute_id``  | ``attribute_value_to_match``  |
+    /// | PLATFORM | ``mac``, ``ios``, ``windows``, ``android``, ``linux`` | ``"true"`` / ``"false"`` |
+    /// | MACHINE_GRP | ``"id"`` | ``machine_group_id`` |
+    /// | POSTURE | ``posture_udid``  | ``"true"`` / ``"false"`` |
+    /// | TRUSTED_NETWORK | ``network_id``  | ``"true"`` |
+    /// 
+    /// ## Import
+    /// 
+    /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+    /// 
+    /// Visit
+    /// 
+    /// Policy Access Inspection Rule can be imported by using `&lt;POLICY INSPECTION RULE ID&gt;` as the import ID.
+    /// 
+    /// For example:
+    /// 
+    /// ```sh
+    /// $ pulumi import zpa:index/policyAccessInspectionRule:PolicyAccessInspectionRule example &lt;policy_inspection_rule_id&gt;
+    /// ```
+    /// </summary>
     [ZpaResourceType("zpa:index/policyAccessInspectionRule:PolicyAccessInspectionRule")]
     public partial class PolicyAccessInspectionRule : global::Pulumi.CustomResource
     {

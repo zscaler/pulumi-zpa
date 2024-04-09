@@ -47,25 +47,10 @@ export function getProvisioningKey(args: GetProvisioningKeyArgs, opts?: pulumi.I
  * A collection of arguments for invoking getProvisioningKey.
  */
 export interface GetProvisioningKeyArgs {
-    /**
-     * Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are `CONNECTOR_GRP` and `SERVICE_EDGE_GRP`
-     */
     associationType: string;
-    /**
-     * The ID of the provisioning key to be exported.
-     */
     id?: string;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: string;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     microtenantName?: string;
-    /**
-     * Name of the provisioning key.
-     */
     name?: string;
 }
 
@@ -76,68 +61,23 @@ export interface GetProvisioningKeyResult {
     readonly appConnectorGroupId: string;
     readonly appConnectorGroupName: string;
     readonly associationType: string;
-    /**
-     * (string)
-     */
     readonly creationTime: string;
-    /**
-     * (bool)
-     */
     readonly enabled: boolean;
-    /**
-     * (string)
-     */
     readonly enrollmentCertId: string;
-    /**
-     * (string) Applicable only for GET calls, ignored in PUT/POST calls.
-     */
     readonly enrollmentCertName: string;
-    /**
-     * (string)
-     */
     readonly expirationInEpochSec: string;
     readonly id?: string;
-    /**
-     * (string)
-     */
     readonly ipAcls: string[];
-    /**
-     * (string)
-     */
     readonly maxUsage: string;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     readonly microtenantId?: string;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     readonly microtenantName?: string;
-    /**
-     * (string)
-     */
     readonly modifiedTime: string;
     readonly modifiedby: string;
     readonly name?: string;
-    /**
-     * (string) Ignored in PUT/POST calls.
-     */
     readonly provisioningKey: string;
-    /**
-     * (string)
-     */
     readonly uiConfig: string;
-    /**
-     * (string)
-     */
     readonly usageCount: string;
-    /**
-     * (string)
-     */
     readonly zcomponentId: string;
-    /**
-     * (string) Applicable only for GET calls, ignored in PUT/POST calls.
-     */
     readonly zcomponentName: string;
 }
 /**
@@ -175,24 +115,9 @@ export function getProvisioningKeyOutput(args: GetProvisioningKeyOutputArgs, opt
  * A collection of arguments for invoking getProvisioningKey.
  */
 export interface GetProvisioningKeyOutputArgs {
-    /**
-     * Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are `CONNECTOR_GRP` and `SERVICE_EDGE_GRP`
-     */
     associationType: pulumi.Input<string>;
-    /**
-     * The ID of the provisioning key to be exported.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: pulumi.Input<string>;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     microtenantName?: pulumi.Input<string>;
-    /**
-     * Name of the provisioning key.
-     */
     name?: pulumi.Input<string>;
 }

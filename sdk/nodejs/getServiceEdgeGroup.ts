@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-zpa-private-service-edge-groups)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-zpa-private-service-edge-groups-using-api)
+ *
  * Use the **zpa_service_edge_group** data source to get information about a service edge group in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group. This data source can then be referenced in the following resources:
  *
  * * Create a server group
@@ -51,13 +54,7 @@ export function getServiceEdgeGroup(args?: GetServiceEdgeGroupArgs, opts?: pulum
  * A collection of arguments for invoking getServiceEdgeGroup.
  */
 export interface GetServiceEdgeGroupArgs {
-    /**
-     * The ID of the service edge group to be exported.
-     */
     id?: string;
-    /**
-     * The name of the service edge group to be exported.
-     */
     name?: string;
 }
 
@@ -65,96 +62,33 @@ export interface GetServiceEdgeGroupArgs {
  * A collection of values returned by getServiceEdgeGroup.
  */
 export interface GetServiceEdgeGroupResult {
-    /**
-     * (string) Whether Double Encryption is enabled or disabled for the app.
-     */
     readonly cityCountry: string;
-    /**
-     * (string)
-     */
     readonly countryCode: string;
-    /**
-     * (string)
-     */
     readonly creationTime: string;
-    /**
-     * (string) Description of the Service Edge Group.
-     */
     readonly description: string;
-    /**
-     * (bool) Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
-     */
     readonly enabled: boolean;
-    /**
-     * (string)
-     */
     readonly geoLocationId: string;
-    /**
-     * (string)
-     */
     readonly id: string;
-    /**
-     * (string)
-     */
     readonly isPublic: string;
-    /**
-     * (string)
-     */
     readonly latitude: string;
-    /**
-     * (string)
-     */
     readonly location: string;
-    /**
-     * (string)
-     */
     readonly longitude: string;
-    /**
-     * (string)
-     */
     readonly modifiedTime: string;
     readonly modifiedby: string;
-    /**
-     * (string)
-     */
     readonly name: string;
-    /**
-     * (bool) Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
-     */
     readonly overrideVersionProfile: boolean;
-    /**
-     * (string)
-     */
     readonly serviceEdges: outputs.GetServiceEdgeGroupServiceEdge[];
-    /**
-     * (string)
-     */
     readonly trustedNetworks: outputs.GetServiceEdgeGroupTrustedNetwork[];
-    /**
-     * (string) App Connectors in this group will attempt to update to a newer version of the software during this specified day
-     */
     readonly upgradeDay: string;
-    /**
-     * (string) App Connectors in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600`. Integer in seconds (i.e., `-66600`). The integer should be greater than or equal to `0` and less than `86400`, in `15` minute intervals
-     */
     readonly upgradeTimeInSecs: string;
-    /**
-     * (String) ID of the version profile.
-     * Exported values are:
-     */
     readonly versionProfileId: string;
-    /**
-     * (String)
-     * Exported values are:
-     */
     readonly versionProfileName: string;
-    /**
-     * (string)
-     * Exported values are:
-     */
     readonly versionProfileVisibilityScope: string;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-zpa-private-service-edge-groups)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-zpa-private-service-edge-groups-using-api)
+ *
  * Use the **zpa_service_edge_group** data source to get information about a service edge group in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group. This data source can then be referenced in the following resources:
  *
  * * Create a server group
@@ -193,12 +127,6 @@ export function getServiceEdgeGroupOutput(args?: GetServiceEdgeGroupOutputArgs, 
  * A collection of arguments for invoking getServiceEdgeGroup.
  */
 export interface GetServiceEdgeGroupOutputArgs {
-    /**
-     * The ID of the service edge group to be exported.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * The name of the service edge group to be exported.
-     */
     name?: pulumi.Input<string>;
 }

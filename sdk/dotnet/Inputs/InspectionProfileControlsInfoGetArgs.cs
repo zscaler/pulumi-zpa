@@ -13,9 +13,6 @@ namespace Zscaler.Zpa.Inputs
 
     public sealed class InspectionProfileControlsInfoGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// (string) Control types. Supported Values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `CUSTOM`, `PREDEFINED`, `ZSCALER`
-        /// </summary>
         [Input("controlType")]
         public Input<string>? ControlType { get; set; }
 

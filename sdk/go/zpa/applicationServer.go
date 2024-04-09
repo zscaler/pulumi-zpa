@@ -94,19 +94,17 @@ import (
 type ApplicationServer struct {
 	pulumi.CustomResourceState
 
-	// Address. The address of the application server to be exported.
+	// This field defines the domain or IP address of the server.
 	Address pulumi.StringOutput `pulumi:"address"`
-	// (Optional) This field defines the list of server group IDs.
+	// This field defines the list of server groups IDs.
 	AppServerGroupIds pulumi.StringArrayOutput `pulumi:"appServerGroupIds"`
-	// (Optional)
-	ConfigSpace pulumi.StringPtrOutput `pulumi:"configSpace"`
-	// (Optional) This field defines the description of the server.
+	ConfigSpace       pulumi.StringPtrOutput   `pulumi:"configSpace"`
+	// This field defines the description of the server.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// (Optional) This field defines the status of the server.
-	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// (Optional) The ID of the microtenant the resource is to be associated with.
+	// This field defines the status of the server.
+	Enabled       pulumi.BoolOutput   `pulumi:"enabled"`
 	MicrotenantId pulumi.StringOutput `pulumi:"microtenantId"`
-	// Name. The name of the application server to be exported.
+	// This field defines the name of the server.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -143,36 +141,32 @@ func GetApplicationServer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApplicationServer resources.
 type applicationServerState struct {
-	// Address. The address of the application server to be exported.
+	// This field defines the domain or IP address of the server.
 	Address *string `pulumi:"address"`
-	// (Optional) This field defines the list of server group IDs.
+	// This field defines the list of server groups IDs.
 	AppServerGroupIds []string `pulumi:"appServerGroupIds"`
-	// (Optional)
-	ConfigSpace *string `pulumi:"configSpace"`
-	// (Optional) This field defines the description of the server.
+	ConfigSpace       *string  `pulumi:"configSpace"`
+	// This field defines the description of the server.
 	Description *string `pulumi:"description"`
-	// (Optional) This field defines the status of the server.
-	Enabled *bool `pulumi:"enabled"`
-	// (Optional) The ID of the microtenant the resource is to be associated with.
+	// This field defines the status of the server.
+	Enabled       *bool   `pulumi:"enabled"`
 	MicrotenantId *string `pulumi:"microtenantId"`
-	// Name. The name of the application server to be exported.
+	// This field defines the name of the server.
 	Name *string `pulumi:"name"`
 }
 
 type ApplicationServerState struct {
-	// Address. The address of the application server to be exported.
+	// This field defines the domain or IP address of the server.
 	Address pulumi.StringPtrInput
-	// (Optional) This field defines the list of server group IDs.
+	// This field defines the list of server groups IDs.
 	AppServerGroupIds pulumi.StringArrayInput
-	// (Optional)
-	ConfigSpace pulumi.StringPtrInput
-	// (Optional) This field defines the description of the server.
+	ConfigSpace       pulumi.StringPtrInput
+	// This field defines the description of the server.
 	Description pulumi.StringPtrInput
-	// (Optional) This field defines the status of the server.
-	Enabled pulumi.BoolPtrInput
-	// (Optional) The ID of the microtenant the resource is to be associated with.
+	// This field defines the status of the server.
+	Enabled       pulumi.BoolPtrInput
 	MicrotenantId pulumi.StringPtrInput
-	// Name. The name of the application server to be exported.
+	// This field defines the name of the server.
 	Name pulumi.StringPtrInput
 }
 
@@ -181,37 +175,33 @@ func (ApplicationServerState) ElementType() reflect.Type {
 }
 
 type applicationServerArgs struct {
-	// Address. The address of the application server to be exported.
+	// This field defines the domain or IP address of the server.
 	Address string `pulumi:"address"`
-	// (Optional) This field defines the list of server group IDs.
+	// This field defines the list of server groups IDs.
 	AppServerGroupIds []string `pulumi:"appServerGroupIds"`
-	// (Optional)
-	ConfigSpace *string `pulumi:"configSpace"`
-	// (Optional) This field defines the description of the server.
+	ConfigSpace       *string  `pulumi:"configSpace"`
+	// This field defines the description of the server.
 	Description *string `pulumi:"description"`
-	// (Optional) This field defines the status of the server.
-	Enabled *bool `pulumi:"enabled"`
-	// (Optional) The ID of the microtenant the resource is to be associated with.
+	// This field defines the status of the server.
+	Enabled       *bool   `pulumi:"enabled"`
 	MicrotenantId *string `pulumi:"microtenantId"`
-	// Name. The name of the application server to be exported.
+	// This field defines the name of the server.
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a ApplicationServer resource.
 type ApplicationServerArgs struct {
-	// Address. The address of the application server to be exported.
+	// This field defines the domain or IP address of the server.
 	Address pulumi.StringInput
-	// (Optional) This field defines the list of server group IDs.
+	// This field defines the list of server groups IDs.
 	AppServerGroupIds pulumi.StringArrayInput
-	// (Optional)
-	ConfigSpace pulumi.StringPtrInput
-	// (Optional) This field defines the description of the server.
+	ConfigSpace       pulumi.StringPtrInput
+	// This field defines the description of the server.
 	Description pulumi.StringPtrInput
-	// (Optional) This field defines the status of the server.
-	Enabled pulumi.BoolPtrInput
-	// (Optional) The ID of the microtenant the resource is to be associated with.
+	// This field defines the status of the server.
+	Enabled       pulumi.BoolPtrInput
 	MicrotenantId pulumi.StringPtrInput
-	// Name. The name of the application server to be exported.
+	// This field defines the name of the server.
 	Name pulumi.StringPtrInput
 }
 
@@ -302,37 +292,35 @@ func (o ApplicationServerOutput) ToApplicationServerOutputWithContext(ctx contex
 	return o
 }
 
-// Address. The address of the application server to be exported.
+// This field defines the domain or IP address of the server.
 func (o ApplicationServerOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationServer) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
 }
 
-// (Optional) This field defines the list of server group IDs.
+// This field defines the list of server groups IDs.
 func (o ApplicationServerOutput) AppServerGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApplicationServer) pulumi.StringArrayOutput { return v.AppServerGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// (Optional)
 func (o ApplicationServerOutput) ConfigSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationServer) pulumi.StringPtrOutput { return v.ConfigSpace }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) This field defines the description of the server.
+// This field defines the description of the server.
 func (o ApplicationServerOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationServer) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// (Optional) This field defines the status of the server.
+// This field defines the status of the server.
 func (o ApplicationServerOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationServer) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// (Optional) The ID of the microtenant the resource is to be associated with.
 func (o ApplicationServerOutput) MicrotenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationServer) pulumi.StringOutput { return v.MicrotenantId }).(pulumi.StringOutput)
 }
 
-// Name. The name of the application server to be exported.
+// This field defines the name of the server.
 func (o ApplicationServerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationServer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

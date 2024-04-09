@@ -80,57 +80,36 @@ class GetSCIMAttributeHeaderResult:
     @property
     @pulumi.getter(name="canonicalValues")
     def canonical_values(self) -> Sequence[str]:
-        """
-        (string)
-        """
         return pulumi.get(self, "canonical_values")
 
     @property
     @pulumi.getter(name="caseSensitive")
     def case_sensitive(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "case_sensitive")
 
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter(name="dataType")
     def data_type(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "data_type")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="idpId")
     def idp_id(self) -> Optional[str]:
-        """
-        (string) The ID of the IdP corresponding to the SAML attribute.
-        """
         return pulumi.get(self, "idp_id")
 
     @property
@@ -141,9 +120,6 @@ class GetSCIMAttributeHeaderResult:
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -154,17 +130,11 @@ class GetSCIMAttributeHeaderResult:
     @property
     @pulumi.getter
     def multivalued(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "multivalued")
 
     @property
     @pulumi.getter
     def mutability(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "mutability")
 
     @property
@@ -175,33 +145,21 @@ class GetSCIMAttributeHeaderResult:
     @property
     @pulumi.getter
     def required(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "required")
 
     @property
     @pulumi.getter
     def returned(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "returned")
 
     @property
     @pulumi.getter(name="schemaUri")
     def schema_uri(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "schema_uri")
 
     @property
     @pulumi.getter
     def uniqueness(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "uniqueness")
 
     @property
@@ -241,6 +199,9 @@ def get_scim_attribute_header(idp_id: Optional[str] = None,
                               name: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSCIMAttributeHeaderResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-scim)
+    * [API documentation](https://help.zscaler.com/zpa/obtaining-scim-attribute-details-using-api)
+
     Use the **zpa_scim_attribute_header** data source to get information about a SCIM attribute from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Inspection Policy.
 
     ## Example Usage
@@ -256,11 +217,6 @@ def get_scim_attribute_header(idp_id: Optional[str] = None,
         name="name.familyName")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str idp_id: (string) The ID of the IdP corresponding to the SAML attribute.
-    :param str idp_name: The name of the scim attribute header that must be exported.
-    :param str name: The name of the scim attribute header to be exported.
     """
     __args__ = dict()
     __args__['idpId'] = idp_id
@@ -296,6 +252,9 @@ def get_scim_attribute_header_output(idp_id: Optional[pulumi.Input[Optional[str]
                                      name: Optional[pulumi.Input[Optional[str]]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSCIMAttributeHeaderResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-scim)
+    * [API documentation](https://help.zscaler.com/zpa/obtaining-scim-attribute-details-using-api)
+
     Use the **zpa_scim_attribute_header** data source to get information about a SCIM attribute from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Inspection Policy.
 
     ## Example Usage
@@ -311,10 +270,5 @@ def get_scim_attribute_header_output(idp_id: Optional[pulumi.Input[Optional[str]
         name="name.familyName")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str idp_id: (string) The ID of the IdP corresponding to the SAML attribute.
-    :param str idp_name: The name of the scim attribute header that must be exported.
-    :param str name: The name of the scim attribute header to be exported.
     """
     ...

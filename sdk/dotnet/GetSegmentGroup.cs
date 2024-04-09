@@ -64,35 +64,17 @@ namespace Zscaler.Zpa
 
     public sealed class GetSegmentGroupArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the segment group to be exported.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public string? MicrotenantId { get; set; }
 
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantName")]
         public string? MicrotenantName { get; set; }
 
-        /// <summary>
-        /// The name of the segment group to be exported.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
-
-        /// <summary>
-        /// (bool)
-        /// </summary>
-        [Input("policyMigrated")]
-        public bool? PolicyMigrated { get; set; }
 
         public GetSegmentGroupArgs()
         {
@@ -102,35 +84,17 @@ namespace Zscaler.Zpa
 
     public sealed class GetSegmentGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the segment group to be exported.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantName")]
         public Input<string>? MicrotenantName { get; set; }
 
-        /// <summary>
-        /// The name of the segment group to be exported.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// (bool)
-        /// </summary>
-        [Input("policyMigrated")]
-        public Input<bool>? PolicyMigrated { get; set; }
 
         public GetSegmentGroupInvokeArgs()
         {
@@ -142,58 +106,17 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetSegmentGroupResult
     {
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetSegmentGroupApplicationResult> Applications;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ConfigSpace;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? Id;
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         public readonly string? MicrotenantId;
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         public readonly string? MicrotenantName;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedBy;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// (bool)
-        /// </summary>
-        public readonly bool PolicyMigrated;
-        /// <summary>
-        /// (string)
-        /// </summary>
-        public readonly string TcpKeepAliveEnabled;
 
         [OutputConstructor]
         private GetSegmentGroupResult(
@@ -217,11 +140,7 @@ namespace Zscaler.Zpa
 
             string modifiedTime,
 
-            string? name,
-
-            bool policyMigrated,
-
-            string tcpKeepAliveEnabled)
+            string? name)
         {
             Applications = applications;
             ConfigSpace = configSpace;
@@ -234,8 +153,6 @@ namespace Zscaler.Zpa
             ModifiedBy = modifiedBy;
             ModifiedTime = modifiedTime;
             Name = name;
-            PolicyMigrated = policyMigrated;
-            TcpKeepAliveEnabled = tcpKeepAliveEnabled;
         }
     }
 }

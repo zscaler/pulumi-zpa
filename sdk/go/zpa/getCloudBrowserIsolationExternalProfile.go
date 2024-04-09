@@ -11,6 +11,8 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
+//
 // Use the **zpa_cloud_browser_isolation_external_profile** data source to get information about Cloud Browser Isolation external profile. This data source information can then be used in as part of `PolicyAccessIsolationRule` when the `action` attribute is set to `ISOLATE`.
 //
 // ## Example Usage
@@ -52,37 +54,20 @@ func LookupCloudBrowserIsolationExternalProfile(ctx *pulumi.Context, args *Looku
 
 // A collection of arguments for invoking getCloudBrowserIsolationExternalProfile.
 type LookupCloudBrowserIsolationExternalProfileArgs struct {
-	Id *string `pulumi:"id"`
-	// The name of the CBI banner to be exported.
+	Id   *string `pulumi:"id"`
 	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getCloudBrowserIsolationExternalProfile.
 type LookupCloudBrowserIsolationExternalProfileResult struct {
-	// (string) - The description of the CBI profile
-	Description string `pulumi:"description"`
-	// (string)
-	Href string  `pulumi:"href"`
-	Id   *string `pulumi:"id"`
-	// (bool) - Indicates if the CBI profile is the default one.
-	IsDefault bool    `pulumi:"isDefault"`
-	Name      *string `pulumi:"name"`
-	// (string) List of regions where multi-region deployment is enabled
-	// * `id:` - (string) Region ID where the profile is applied to
-	// * `name:` - (string) Region name where the profile is applied to
-	Regions []GetCloudBrowserIsolationExternalProfileRegion `pulumi:"regions"`
-	// The CBI security controls enabled for the profile
-	// * `copy_paste:` - (string) Enable or disable copy & paste for local computer to isolation
-	// * `document_viewer:` - (bool) Enable or disable to view Microsoft Office files in isolation.
-	// * `local_render:` - (bool) Enables non-isolated hyperlinks to be opened on the user's native browser.
-	// * `upload_download:` - (string) Enable or disable file transfer from local computer to isolation
-	// * `allow_printing:` - (bool) Enables the user to print web pages and documents rendered within the isolation browser.
-	// * `restrict_keystrokes:` - (bool) Prevents keyboard and text input to isolated web pages.
+	Description      string                                                   `pulumi:"description"`
+	Href             string                                                   `pulumi:"href"`
+	Id               *string                                                  `pulumi:"id"`
+	IsDefault        bool                                                     `pulumi:"isDefault"`
+	Name             *string                                                  `pulumi:"name"`
+	Regions          []GetCloudBrowserIsolationExternalProfileRegion          `pulumi:"regions"`
 	SecurityControls []GetCloudBrowserIsolationExternalProfileSecurityControl `pulumi:"securityControls"`
-	// The CBI security controls enabled for the profile
-	// * `session_persistence:` - (bool) Save user cookies between sessions. If disabled, all cookies will be discarded when isolation session ends.
-	// * `browser_in_browser:` - (bool) Enable or disable browser-in-browser or native browser experience
-	UserExperiences []GetCloudBrowserIsolationExternalProfileUserExperience `pulumi:"userExperiences"`
+	UserExperiences  []GetCloudBrowserIsolationExternalProfileUserExperience  `pulumi:"userExperiences"`
 }
 
 func LookupCloudBrowserIsolationExternalProfileOutput(ctx *pulumi.Context, args LookupCloudBrowserIsolationExternalProfileOutputArgs, opts ...pulumi.InvokeOption) LookupCloudBrowserIsolationExternalProfileResultOutput {
@@ -100,8 +85,7 @@ func LookupCloudBrowserIsolationExternalProfileOutput(ctx *pulumi.Context, args 
 
 // A collection of arguments for invoking getCloudBrowserIsolationExternalProfile.
 type LookupCloudBrowserIsolationExternalProfileOutputArgs struct {
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The name of the CBI banner to be exported.
+	Id   pulumi.StringPtrInput `pulumi:"id"`
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -124,12 +108,10 @@ func (o LookupCloudBrowserIsolationExternalProfileResultOutput) ToLookupCloudBro
 	return o
 }
 
-// (string) - The description of the CBI profile
 func (o LookupCloudBrowserIsolationExternalProfileResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudBrowserIsolationExternalProfileResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o LookupCloudBrowserIsolationExternalProfileResultOutput) Href() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudBrowserIsolationExternalProfileResult) string { return v.Href }).(pulumi.StringOutput)
 }
@@ -138,7 +120,6 @@ func (o LookupCloudBrowserIsolationExternalProfileResultOutput) Id() pulumi.Stri
 	return o.ApplyT(func(v LookupCloudBrowserIsolationExternalProfileResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// (bool) - Indicates if the CBI profile is the default one.
 func (o LookupCloudBrowserIsolationExternalProfileResultOutput) IsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupCloudBrowserIsolationExternalProfileResult) bool { return v.IsDefault }).(pulumi.BoolOutput)
 }
@@ -147,31 +128,18 @@ func (o LookupCloudBrowserIsolationExternalProfileResultOutput) Name() pulumi.St
 	return o.ApplyT(func(v LookupCloudBrowserIsolationExternalProfileResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// (string) List of regions where multi-region deployment is enabled
-// * `id:` - (string) Region ID where the profile is applied to
-// * `name:` - (string) Region name where the profile is applied to
 func (o LookupCloudBrowserIsolationExternalProfileResultOutput) Regions() GetCloudBrowserIsolationExternalProfileRegionArrayOutput {
 	return o.ApplyT(func(v LookupCloudBrowserIsolationExternalProfileResult) []GetCloudBrowserIsolationExternalProfileRegion {
 		return v.Regions
 	}).(GetCloudBrowserIsolationExternalProfileRegionArrayOutput)
 }
 
-// The CBI security controls enabled for the profile
-// * `copy_paste:` - (string) Enable or disable copy & paste for local computer to isolation
-// * `document_viewer:` - (bool) Enable or disable to view Microsoft Office files in isolation.
-// * `local_render:` - (bool) Enables non-isolated hyperlinks to be opened on the user's native browser.
-// * `upload_download:` - (string) Enable or disable file transfer from local computer to isolation
-// * `allow_printing:` - (bool) Enables the user to print web pages and documents rendered within the isolation browser.
-// * `restrict_keystrokes:` - (bool) Prevents keyboard and text input to isolated web pages.
 func (o LookupCloudBrowserIsolationExternalProfileResultOutput) SecurityControls() GetCloudBrowserIsolationExternalProfileSecurityControlArrayOutput {
 	return o.ApplyT(func(v LookupCloudBrowserIsolationExternalProfileResult) []GetCloudBrowserIsolationExternalProfileSecurityControl {
 		return v.SecurityControls
 	}).(GetCloudBrowserIsolationExternalProfileSecurityControlArrayOutput)
 }
 
-// The CBI security controls enabled for the profile
-// * `session_persistence:` - (bool) Save user cookies between sessions. If disabled, all cookies will be discarded when isolation session ends.
-// * `browser_in_browser:` - (bool) Enable or disable browser-in-browser or native browser experience
 func (o LookupCloudBrowserIsolationExternalProfileResultOutput) UserExperiences() GetCloudBrowserIsolationExternalProfileUserExperienceArrayOutput {
 	return o.ApplyT(func(v LookupCloudBrowserIsolationExternalProfileResult) []GetCloudBrowserIsolationExternalProfileUserExperience {
 		return v.UserExperiences

@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-saml-attributes)
+ * * [API documentation](https://help.zscaler.com/zpa/obtaining-saml-attribute-details-using-api)
+ *
  * Use the **zpa_saml_attribute** data source to get information about a SAML Attributes from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
  *
  * ## Example Usage
@@ -48,19 +51,8 @@ export function getSAMLAttribute(args?: GetSAMLAttributeArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getSAMLAttribute.
  */
 export interface GetSAMLAttributeArgs {
-    /**
-     * The ID of the machine group to be exported.
-     */
     id?: string;
-    /**
-     * The name of the IdP corresponding to the SAML attribute.
-     *
-     * > **NOTE** When multiple Identity Providers (IdP) are onboarded in ZPA, the parameter ``idpName`` is required in order to reture the attribute from the correct IdP.
-     */
     idpName?: string;
-    /**
-     * The name of the saml attribute to be exported.
-     */
     name?: string;
 }
 
@@ -68,35 +60,20 @@ export interface GetSAMLAttributeArgs {
  * A collection of values returned by getSAMLAttribute.
  */
 export interface GetSAMLAttributeResult {
-    /**
-     * (string)
-     */
     readonly creationTime: string;
     readonly id: string;
-    /**
-     * (string) The ID of the IdP corresponding to the SAML attribute.
-     */
     readonly idpId: string;
     readonly idpName?: string;
-    /**
-     * (string)
-     */
     readonly modifiedTime: string;
     readonly modifiedby: string;
-    /**
-     * (string)
-     */
     readonly name: string;
-    /**
-     * (string)
-     */
     readonly samlName: string;
-    /**
-     * (string)
-     */
     readonly userAttribute: boolean;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-saml-attributes)
+ * * [API documentation](https://help.zscaler.com/zpa/obtaining-saml-attribute-details-using-api)
+ *
  * Use the **zpa_saml_attribute** data source to get information about a SAML Attributes from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
  *
  * ## Example Usage
@@ -133,18 +110,7 @@ export function getSAMLAttributeOutput(args?: GetSAMLAttributeOutputArgs, opts?:
  * A collection of arguments for invoking getSAMLAttribute.
  */
 export interface GetSAMLAttributeOutputArgs {
-    /**
-     * The ID of the machine group to be exported.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * The name of the IdP corresponding to the SAML attribute.
-     *
-     * > **NOTE** When multiple Identity Providers (IdP) are onboarded in ZPA, the parameter ``idpName`` is required in order to reture the attribute from the correct IdP.
-     */
     idpName?: pulumi.Input<string>;
-    /**
-     * The name of the saml attribute to be exported.
-     */
     name?: pulumi.Input<string>;
 }

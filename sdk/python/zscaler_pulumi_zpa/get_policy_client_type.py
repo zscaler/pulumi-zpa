@@ -127,6 +127,9 @@ class AwaitableGetPolicyClientTypeResult(GetPolicyClientTypeResult):
 
 def get_policy_client_type(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicyClientTypeResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api#getClientTypes)
+
     Use the **zpa_access_policy_client_types** data source to get information about all client types for the specified customer in the Zscaler Private Access cloud. This data source can be optionally used when defining the following policy types:
         - ``PolicyAccessRule``
         - ``PolicyAccessTimeOutRule``
@@ -171,6 +174,9 @@ def get_policy_client_type(opts: Optional[pulumi.InvokeOptions] = None) -> Await
 @_utilities.lift_output_func(get_policy_client_type)
 def get_policy_client_type_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyClientTypeResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api#getClientTypes)
+
     Use the **zpa_access_policy_client_types** data source to get information about all client types for the specified customer in the Zscaler Private Access cloud. This data source can be optionally used when defining the following policy types:
         - ``PolicyAccessRule``
         - ``PolicyAccessTimeOutRule``

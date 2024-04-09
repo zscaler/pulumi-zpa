@@ -14,41 +14,14 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetSegmentGroupApplicationServerGroupResult
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ConfigSpace;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool DynamicDiscovery;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// The ID of the segment group to be exported.
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedBy;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
-        /// <summary>
-        /// The name of the segment group to be exported.
-        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

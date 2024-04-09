@@ -231,6 +231,9 @@
                     }
                 }
             },
+            "zpa_emergency_access_user": {
+                "current": "zpa:index/emergencyAccessUser:EmergencyAccessUser"
+            },
             "zpa_inspection_custom_controls": {
                 "current": "zpa:index/inspectionCustomControls:InspectionCustomControls",
                 "fields": {
@@ -389,6 +392,107 @@
                     }
                 }
             },
+            "zpa_policy_access_rule_v2": {
+                "current": "zpa:index/policyAccessRuleV2:PolicyAccessRuleV2",
+                "fields": {
+                    "app_connector_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "app_server_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "operands": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "entry_values": {
+                                                "maxItemsOne": false
+                                            },
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_policy_capabilities_rule": {
+                "current": "zpa:index/policyCapabilitiesRule:PolicyCapabilitiesRule",
+                "fields": {
+                    "conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "operands": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "entry_values": {
+                                                "maxItemsOne": false
+                                            },
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "privileged_capabilities": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "zpa_policy_credential_rule": {
+                "current": "zpa:index/policyCredentialRule:PolicyCredentialRule",
+                "fields": {
+                    "conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "operands": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "entry_values": {
+                                                "maxItemsOne": false
+                                            },
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "credential": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "zpa_policy_forwarding_rule": {
                 "current": "zpa:index/policyAccessForwardingRule:PolicyAccessForwardingRule",
                 "fields": {
@@ -401,6 +505,38 @@
                                     "elem": {
                                         "fields": {
                                             "rhs_list": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_policy_forwarding_rule_v2": {
+                "current": "zpa:index/policyAccessForwardingRuleV2:PolicyAccessForwardingRuleV2",
+                "past": [
+                    {
+                        "name": "zpa:index/policyForwardingRuleV2:PolicyForwardingRuleV2",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
+                "fields": {
+                    "conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "operands": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "entry_values": {
+                                                "maxItemsOne": false
+                                            },
+                                            "values": {
                                                 "maxItemsOne": false
                                             }
                                         }
@@ -433,6 +569,38 @@
                     }
                 }
             },
+            "zpa_policy_inspection_rule_v2": {
+                "current": "zpa:index/policyAccessInspectionRuleV2:PolicyAccessInspectionRuleV2",
+                "past": [
+                    {
+                        "name": "zpa:index/policyInspectionRuleV2:PolicyInspectionRuleV2",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
+                "fields": {
+                    "conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "operands": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "entry_values": {
+                                                "maxItemsOne": false
+                                            },
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "zpa_policy_isolation_rule": {
                 "current": "zpa:index/policyAccessIsolationRule:PolicyAccessIsolationRule",
                 "fields": {
@@ -449,6 +617,70 @@
                                             }
                                         }
                                     }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_policy_isolation_rule_v2": {
+                "current": "zpa:index/policyAccessIsolationRuleV2:PolicyAccessIsolationRuleV2",
+                "past": [
+                    {
+                        "name": "zpa:index/policyIsolationRuleV2:PolicyIsolationRuleV2",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
+                "fields": {
+                    "conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "operands": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "entry_values": {
+                                                "maxItemsOne": false
+                                            },
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_policy_redirection_rule": {
+                "current": "zpa:index/policyRedirectionRule:PolicyRedirectionRule",
+                "fields": {
+                    "conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "operands": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "rhs_list": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "service_edge_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -476,6 +708,118 @@
                         }
                     }
                 }
+            },
+            "zpa_policy_timeout_rule_v2": {
+                "current": "zpa:index/policyAccessTimeOutRuleV2:PolicyAccessTimeOutRuleV2",
+                "past": [
+                    {
+                        "name": "zpa:index/policyTimeoutRuleV2:PolicyTimeoutRuleV2",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
+                "fields": {
+                    "conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "operands": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "entry_values": {
+                                                "maxItemsOne": false
+                                            },
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_pra_approval_controller": {
+                "current": "zpa:index/pRAApproval:PRAApproval",
+                "past": [
+                    {
+                        "name": "zpa:index/praApprovalController:PraApprovalController",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
+                "fields": {
+                    "applications": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "email_ids": {
+                        "maxItemsOne": true
+                    },
+                    "working_hours": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "days": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_pra_console_controller": {
+                "current": "zpa:index/pRAConsole:PRAConsole",
+                "past": [
+                    {
+                        "name": "zpa:index/praConsoleController:PraConsoleController",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
+                "fields": {
+                    "pra_application": {
+                        "maxItemsOne": true
+                    },
+                    "pra_portals": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_pra_credential_controller": {
+                "current": "zpa:index/pRACredential:PRACredential",
+                "past": [
+                    {
+                        "name": "zpa:index/praCredentialController:PraCredentialController",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ]
+            },
+            "zpa_pra_portal_controller": {
+                "current": "zpa:index/pRAPortal:PRAPortal",
+                "past": [
+                    {
+                        "name": "zpa:index/praPortalController:PraPortalController",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ]
             },
             "zpa_provisioning_key": {
                 "current": "zpa:index/provisioningKey:ProvisioningKey",
@@ -974,6 +1318,72 @@
             "zpa_posture_profile": {
                 "current": "zpa:index/getPostureProfile:getPostureProfile"
             },
+            "zpa_pra_approval_controller": {
+                "current": "zpa:index/getPRAApproval:getPRAApproval",
+                "past": [
+                    {
+                        "name": "zpa:index/getPraApprovalController:getPraApprovalController",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
+                "fields": {
+                    "applications": {
+                        "maxItemsOne": false
+                    },
+                    "email_ids": {
+                        "maxItemsOne": false
+                    },
+                    "working_hours": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "days": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_pra_console_controller": {
+                "current": "zpa:index/getPRAConsole:getPRAConsole",
+                "past": [
+                    {
+                        "name": "zpa:index/getPraConsoleController:getPraConsoleController",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
+                "fields": {
+                    "pra_application": {
+                        "maxItemsOne": false
+                    },
+                    "pra_portals": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_pra_credential_controller": {
+                "current": "zpa:index/getPRACredential:getPRACredential",
+                "past": [
+                    {
+                        "name": "zpa:index/getPraCredentialController:getPraCredentialController",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ]
+            },
+            "zpa_pra_portal_controller": {
+                "current": "zpa:index/getPRAPortal:getPRAPortal",
+                "past": [
+                    {
+                        "name": "zpa:index/getPraPortalController:getPraPortalController",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ]
+            },
             "zpa_provisioning_key": {
                 "current": "zpa:index/getProvisioningKey:getProvisioningKey",
                 "fields": {
@@ -1100,5 +1510,70 @@
             }
         }
     },
-    "auto-settings": {}
+    "auto-settings": {
+        "resources": {
+            "zpa_policy_forwarding_rule_v2": {
+                "aliases": [
+                    "zpa:index/policyForwardingRuleV2:PolicyForwardingRuleV2"
+                ]
+            },
+            "zpa_policy_inspection_rule_v2": {
+                "aliases": [
+                    "zpa:index/policyInspectionRuleV2:PolicyInspectionRuleV2"
+                ]
+            },
+            "zpa_policy_isolation_rule_v2": {
+                "aliases": [
+                    "zpa:index/policyIsolationRuleV2:PolicyIsolationRuleV2"
+                ]
+            },
+            "zpa_policy_timeout_rule_v2": {
+                "aliases": [
+                    "zpa:index/policyTimeoutRuleV2:PolicyTimeoutRuleV2"
+                ]
+            },
+            "zpa_pra_approval_controller": {
+                "aliases": [
+                    "zpa:index/praApprovalController:PraApprovalController"
+                ]
+            },
+            "zpa_pra_console_controller": {
+                "aliases": [
+                    "zpa:index/praConsoleController:PraConsoleController"
+                ]
+            },
+            "zpa_pra_credential_controller": {
+                "aliases": [
+                    "zpa:index/praCredentialController:PraCredentialController"
+                ]
+            },
+            "zpa_pra_portal_controller": {
+                "aliases": [
+                    "zpa:index/praPortalController:PraPortalController"
+                ]
+            }
+        },
+        "datasources": {
+            "zpa_pra_approval_controller": {
+                "renames": [
+                    "zpa:index/getPraApprovalController:getPraApprovalController"
+                ]
+            },
+            "zpa_pra_console_controller": {
+                "renames": [
+                    "zpa:index/getPraConsoleController:getPraConsoleController"
+                ]
+            },
+            "zpa_pra_credential_controller": {
+                "renames": [
+                    "zpa:index/getPraCredentialController:getPraCredentialController"
+                ]
+            },
+            "zpa_pra_portal_controller": {
+                "renames": [
+                    "zpa:index/getPraPortalController:getPraPortalController"
+                ]
+            }
+        }
+    }
 }

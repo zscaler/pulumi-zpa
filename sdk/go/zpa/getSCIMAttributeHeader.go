@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-scim)
+// * [API documentation](https://help.zscaler.com/zpa/obtaining-scim-attribute-details-using-api)
+//
 // Use the **zpa_scim_attribute_header** data source to get information about a SCIM attribute from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Inspection Policy.
 //
 // ## Example Usage
@@ -60,48 +63,31 @@ func GetSCIMAttributeHeader(ctx *pulumi.Context, args *GetSCIMAttributeHeaderArg
 
 // A collection of arguments for invoking getSCIMAttributeHeader.
 type GetSCIMAttributeHeaderArgs struct {
-	// (string) The ID of the IdP corresponding to the SAML attribute.
-	IdpId *string `pulumi:"idpId"`
-	// The name of the scim attribute header that must be exported.
+	IdpId   *string `pulumi:"idpId"`
 	IdpName *string `pulumi:"idpName"`
-	// The name of the scim attribute header to be exported.
-	Name *string `pulumi:"name"`
+	Name    *string `pulumi:"name"`
 }
 
 // A collection of values returned by getSCIMAttributeHeader.
 type GetSCIMAttributeHeaderResult struct {
-	// (string)
 	CanonicalValues []string `pulumi:"canonicalValues"`
-	// (bool)
-	CaseSensitive bool `pulumi:"caseSensitive"`
-	// (string)
-	CreationTime string `pulumi:"creationTime"`
-	// (string)
-	DataType string `pulumi:"dataType"`
-	// (string)
-	Description string `pulumi:"description"`
-	// (string)
-	Id string `pulumi:"id"`
-	// (string) The ID of the IdP corresponding to the SAML attribute.
-	IdpId   *string `pulumi:"idpId"`
-	IdpName *string `pulumi:"idpName"`
-	// (string)
-	ModifiedTime string `pulumi:"modifiedTime"`
-	Modifiedby   string `pulumi:"modifiedby"`
-	// (bool)
-	Multivalued bool `pulumi:"multivalued"`
-	// (string)
-	Mutability string  `pulumi:"mutability"`
-	Name       *string `pulumi:"name"`
-	// (bool)
-	Required bool `pulumi:"required"`
-	// (string)
-	Returned string `pulumi:"returned"`
-	// (string)
-	SchemaUri string `pulumi:"schemaUri"`
-	// (bool)
-	Uniqueness bool     `pulumi:"uniqueness"`
-	Values     []string `pulumi:"values"`
+	CaseSensitive   bool     `pulumi:"caseSensitive"`
+	CreationTime    string   `pulumi:"creationTime"`
+	DataType        string   `pulumi:"dataType"`
+	Description     string   `pulumi:"description"`
+	Id              string   `pulumi:"id"`
+	IdpId           *string  `pulumi:"idpId"`
+	IdpName         *string  `pulumi:"idpName"`
+	ModifiedTime    string   `pulumi:"modifiedTime"`
+	Modifiedby      string   `pulumi:"modifiedby"`
+	Multivalued     bool     `pulumi:"multivalued"`
+	Mutability      string   `pulumi:"mutability"`
+	Name            *string  `pulumi:"name"`
+	Required        bool     `pulumi:"required"`
+	Returned        string   `pulumi:"returned"`
+	SchemaUri       string   `pulumi:"schemaUri"`
+	Uniqueness      bool     `pulumi:"uniqueness"`
+	Values          []string `pulumi:"values"`
 }
 
 func GetSCIMAttributeHeaderOutput(ctx *pulumi.Context, args GetSCIMAttributeHeaderOutputArgs, opts ...pulumi.InvokeOption) GetSCIMAttributeHeaderResultOutput {
@@ -119,12 +105,9 @@ func GetSCIMAttributeHeaderOutput(ctx *pulumi.Context, args GetSCIMAttributeHead
 
 // A collection of arguments for invoking getSCIMAttributeHeader.
 type GetSCIMAttributeHeaderOutputArgs struct {
-	// (string) The ID of the IdP corresponding to the SAML attribute.
-	IdpId pulumi.StringPtrInput `pulumi:"idpId"`
-	// The name of the scim attribute header that must be exported.
+	IdpId   pulumi.StringPtrInput `pulumi:"idpId"`
 	IdpName pulumi.StringPtrInput `pulumi:"idpName"`
-	// The name of the scim attribute header to be exported.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name    pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (GetSCIMAttributeHeaderOutputArgs) ElementType() reflect.Type {
@@ -146,37 +129,30 @@ func (o GetSCIMAttributeHeaderResultOutput) ToGetSCIMAttributeHeaderResultOutput
 	return o
 }
 
-// (string)
 func (o GetSCIMAttributeHeaderResultOutput) CanonicalValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSCIMAttributeHeaderResult) []string { return v.CanonicalValues }).(pulumi.StringArrayOutput)
 }
 
-// (bool)
 func (o GetSCIMAttributeHeaderResultOutput) CaseSensitive() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSCIMAttributeHeaderResult) bool { return v.CaseSensitive }).(pulumi.BoolOutput)
 }
 
-// (string)
 func (o GetSCIMAttributeHeaderResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSCIMAttributeHeaderResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetSCIMAttributeHeaderResultOutput) DataType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSCIMAttributeHeaderResult) string { return v.DataType }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetSCIMAttributeHeaderResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSCIMAttributeHeaderResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetSCIMAttributeHeaderResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSCIMAttributeHeaderResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (string) The ID of the IdP corresponding to the SAML attribute.
 func (o GetSCIMAttributeHeaderResultOutput) IdpId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSCIMAttributeHeaderResult) *string { return v.IdpId }).(pulumi.StringPtrOutput)
 }
@@ -185,7 +161,6 @@ func (o GetSCIMAttributeHeaderResultOutput) IdpName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSCIMAttributeHeaderResult) *string { return v.IdpName }).(pulumi.StringPtrOutput)
 }
 
-// (string)
 func (o GetSCIMAttributeHeaderResultOutput) ModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSCIMAttributeHeaderResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
@@ -194,12 +169,10 @@ func (o GetSCIMAttributeHeaderResultOutput) Modifiedby() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSCIMAttributeHeaderResult) string { return v.Modifiedby }).(pulumi.StringOutput)
 }
 
-// (bool)
 func (o GetSCIMAttributeHeaderResultOutput) Multivalued() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSCIMAttributeHeaderResult) bool { return v.Multivalued }).(pulumi.BoolOutput)
 }
 
-// (string)
 func (o GetSCIMAttributeHeaderResultOutput) Mutability() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSCIMAttributeHeaderResult) string { return v.Mutability }).(pulumi.StringOutput)
 }
@@ -208,22 +181,18 @@ func (o GetSCIMAttributeHeaderResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSCIMAttributeHeaderResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// (bool)
 func (o GetSCIMAttributeHeaderResultOutput) Required() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSCIMAttributeHeaderResult) bool { return v.Required }).(pulumi.BoolOutput)
 }
 
-// (string)
 func (o GetSCIMAttributeHeaderResultOutput) Returned() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSCIMAttributeHeaderResult) string { return v.Returned }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetSCIMAttributeHeaderResultOutput) SchemaUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSCIMAttributeHeaderResult) string { return v.SchemaUri }).(pulumi.StringOutput)
 }
 
-// (bool)
 func (o GetSCIMAttributeHeaderResultOutput) Uniqueness() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSCIMAttributeHeaderResult) bool { return v.Uniqueness }).(pulumi.BoolOutput)
 }

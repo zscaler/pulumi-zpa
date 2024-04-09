@@ -14,7 +14,6 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class LSSConfigControllerPolicyRuleResourceCondition
     {
-        public readonly bool? Negated;
         /// <summary>
         /// This signifies the various policy criteria.
         /// </summary>
@@ -23,13 +22,10 @@ namespace Zscaler.Zpa.Outputs
 
         [OutputConstructor]
         private LSSConfigControllerPolicyRuleResourceCondition(
-            bool? negated,
-
             ImmutableArray<Outputs.LSSConfigControllerPolicyRuleResourceConditionOperand> operands,
 
             string @operator)
         {
-            Negated = negated;
             Operands = operands;
             Operator = @operator;
         }

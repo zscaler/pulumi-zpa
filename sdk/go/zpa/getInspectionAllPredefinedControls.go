@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+//
 // Use the **zpa_inspection_all_predefined_controls** data source to get information about all OWASP predefined control and prefedined control version by group name. The `Preprocessors` predefined control is the default predefined control, This data source is always required, when creating an inspection profile.
 //
 // ## Example Usage
@@ -53,10 +56,8 @@ func GetInspectionAllPredefinedControls(ctx *pulumi.Context, args *GetInspection
 
 // A collection of arguments for invoking getInspectionAllPredefinedControls.
 type GetInspectionAllPredefinedControlsArgs struct {
-	// The name of the predefined control.
 	GroupName *string `pulumi:"groupName"`
-	// The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
-	Version string `pulumi:"version"`
+	Version   string  `pulumi:"version"`
 }
 
 // A collection of values returned by getInspectionAllPredefinedControls.
@@ -83,10 +84,8 @@ func GetInspectionAllPredefinedControlsOutput(ctx *pulumi.Context, args GetInspe
 
 // A collection of arguments for invoking getInspectionAllPredefinedControls.
 type GetInspectionAllPredefinedControlsOutputArgs struct {
-	// The name of the predefined control.
 	GroupName pulumi.StringPtrInput `pulumi:"groupName"`
-	// The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
-	Version pulumi.StringInput `pulumi:"version"`
+	Version   pulumi.StringInput    `pulumi:"version"`
 }
 
 func (GetInspectionAllPredefinedControlsOutputArgs) ElementType() reflect.Type {

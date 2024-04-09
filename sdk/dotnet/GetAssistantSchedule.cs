@@ -13,6 +13,9 @@ namespace Zscaler.Zpa
     public static class GetAssistantSchedule
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/deleting-disconnected-app-connectors)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-auto-delete-disconnected-app-connectors-using-api)
+        /// 
         /// Use the **zpa_app_connector_assistant_schedule** data source to get information about Auto Delete frequency of the App Connector for the specified customer in the Zscaler Private Access cloud.
         /// 
         /// &gt; **NOTE** - The `customer_id` attribute is optional and not required during the configuration.
@@ -41,6 +44,9 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAssistantScheduleResult>("zpa:index/getAssistantSchedule:getAssistantSchedule", args ?? new GetAssistantScheduleArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/deleting-disconnected-app-connectors)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-auto-delete-disconnected-app-connectors-using-api)
+        /// 
         /// Use the **zpa_app_connector_assistant_schedule** data source to get information about Auto Delete frequency of the App Connector for the specified customer in the Zscaler Private Access cloud.
         /// 
         /// &gt; **NOTE** - The `customer_id` attribute is optional and not required during the configuration.
@@ -72,15 +78,9 @@ namespace Zscaler.Zpa
 
     public sealed class GetAssistantScheduleArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The unique identifier of the ZPA tenant.
-        /// </summary>
         [Input("customerId")]
         public string? CustomerId { get; set; }
 
-        /// <summary>
-        /// The unique identifier for the App Connector auto deletion configuration for a customer. This field is only required for the PUT request to update the frequency of the App Connector Settings.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
@@ -92,15 +92,9 @@ namespace Zscaler.Zpa
 
     public sealed class GetAssistantScheduleInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The unique identifier of the ZPA tenant.
-        /// </summary>
         [Input("customerId")]
         public Input<string>? CustomerId { get; set; }
 
-        /// <summary>
-        /// The unique identifier for the App Connector auto deletion configuration for a customer. This field is only required for the PUT request to update the frequency of the App Connector Settings.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
@@ -115,21 +109,9 @@ namespace Zscaler.Zpa
     public sealed class GetAssistantScheduleResult
     {
         public readonly string? CustomerId;
-        /// <summary>
-        /// (Boolean) - Indicates if the App Connectors are included for deletion if they are in a disconnected state based on frequencyInterval and frequency values.
-        /// </summary>
         public readonly bool DeleteDisabled;
-        /// <summary>
-        /// (Boolean) - Indicates if the setting for deleting App Connectors is enabled or disabled.
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// (String) - The scheduled frequency at which the disconnected App Connectors are deleted. Supported value is: `days`
-        /// </summary>
         public readonly string Frequency;
-        /// <summary>
-        /// (String) - The interval for the configured frequency value. The minimum supported value is 5. Supported values are: `5`, `7`, `14`, `30`, `60` and `90`
-        /// </summary>
         public readonly string FrequencyInterval;
         public readonly string? Id;
 

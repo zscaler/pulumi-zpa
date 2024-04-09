@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-log-streaming-service)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
+//
 // Use the **zpa_lss_config_log_type_formats** data source to get information about all LSS log type formats in the Zscaler Private Access cloud. This data source is required when creating an LSS Config Controller resource.
 //
 // ## Example Usage
@@ -88,6 +91,21 @@ import (
 //
 // ```
 // <!--End PulumiCodeChooser -->
+//
+// ### Read-Only
+//
+// The following arguments are supported:
+//
+// * `logType` - (Required) The type of log to be exported.
+//   - `zpnTransLog`
+//   - `zpnAuthLog`
+//   - `zpnAstAuthLog`
+//   - `zpnHttpTransLog`
+//   - `zpnAuditLog`
+//   - `zpnSysAuthLog`
+//   - `zpnAstComprehensiveStats`
+//   - `zpnWafHttpExchangesLog`
+//   - `zpnPbrokerComprehensiveStats`
 func GetLSSLogTypeFormats(ctx *pulumi.Context, args *GetLSSLogTypeFormatsArgs, opts ...pulumi.InvokeOption) (*GetLSSLogTypeFormatsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLSSLogTypeFormatsResult
@@ -100,7 +118,6 @@ func GetLSSLogTypeFormats(ctx *pulumi.Context, args *GetLSSLogTypeFormatsArgs, o
 
 // A collection of arguments for invoking getLSSLogTypeFormats.
 type GetLSSLogTypeFormatsArgs struct {
-	// The type of log to be exported.
 	LogType string `pulumi:"logType"`
 }
 
@@ -129,7 +146,6 @@ func GetLSSLogTypeFormatsOutput(ctx *pulumi.Context, args GetLSSLogTypeFormatsOu
 
 // A collection of arguments for invoking getLSSLogTypeFormats.
 type GetLSSLogTypeFormatsOutputArgs struct {
-	// The type of log to be exported.
 	LogType pulumi.StringInput `pulumi:"logType"`
 }
 

@@ -14,32 +14,14 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetServiceEdgeGroupServiceEdgeZpnSubModuleUpgradeListResult
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CurrentVersion;
         public readonly string EntityGid;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ExpectedVersion;
-        /// <summary>
-        /// The ID of the service edge group to be exported.
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
         public readonly string Role;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string UpgradeStatus;
         public readonly string UpgradeTime;
 

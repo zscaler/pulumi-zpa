@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/deleting-disconnected-app-connectors)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-auto-delete-disconnected-app-connectors-using-api)
+//
 // Use the **zpa_app_connector_assistant_schedule** data source to get information about Auto Delete frequency of the App Connector for the specified customer in the Zscaler Private Access cloud.
 //
 // > **NOTE** - The `customerId` attribute is optional and not required during the configuration.
@@ -54,22 +57,16 @@ func LookupAssistantSchedule(ctx *pulumi.Context, args *LookupAssistantScheduleA
 
 // A collection of arguments for invoking getAssistantSchedule.
 type LookupAssistantScheduleArgs struct {
-	// The unique identifier of the ZPA tenant.
 	CustomerId *string `pulumi:"customerId"`
-	// The unique identifier for the App Connector auto deletion configuration for a customer. This field is only required for the PUT request to update the frequency of the App Connector Settings.
-	Id *string `pulumi:"id"`
+	Id         *string `pulumi:"id"`
 }
 
 // A collection of values returned by getAssistantSchedule.
 type LookupAssistantScheduleResult struct {
-	CustomerId *string `pulumi:"customerId"`
-	// (Boolean) - Indicates if the App Connectors are included for deletion if they are in a disconnected state based on frequencyInterval and frequency values.
-	DeleteDisabled bool `pulumi:"deleteDisabled"`
-	// (Boolean) - Indicates if the setting for deleting App Connectors is enabled or disabled.
-	Enabled bool `pulumi:"enabled"`
-	// (String) - The scheduled frequency at which the disconnected App Connectors are deleted. Supported value is: `days`
-	Frequency string `pulumi:"frequency"`
-	// (String) - The interval for the configured frequency value. The minimum supported value is 5. Supported values are: `5`, `7`, `14`, `30`, `60` and `90`
+	CustomerId        *string `pulumi:"customerId"`
+	DeleteDisabled    bool    `pulumi:"deleteDisabled"`
+	Enabled           bool    `pulumi:"enabled"`
+	Frequency         string  `pulumi:"frequency"`
 	FrequencyInterval string  `pulumi:"frequencyInterval"`
 	Id                *string `pulumi:"id"`
 }
@@ -89,10 +86,8 @@ func LookupAssistantScheduleOutput(ctx *pulumi.Context, args LookupAssistantSche
 
 // A collection of arguments for invoking getAssistantSchedule.
 type LookupAssistantScheduleOutputArgs struct {
-	// The unique identifier of the ZPA tenant.
 	CustomerId pulumi.StringPtrInput `pulumi:"customerId"`
-	// The unique identifier for the App Connector auto deletion configuration for a customer. This field is only required for the PUT request to update the frequency of the App Connector Settings.
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	Id         pulumi.StringPtrInput `pulumi:"id"`
 }
 
 func (LookupAssistantScheduleOutputArgs) ElementType() reflect.Type {
@@ -118,22 +113,18 @@ func (o LookupAssistantScheduleResultOutput) CustomerId() pulumi.StringPtrOutput
 	return o.ApplyT(func(v LookupAssistantScheduleResult) *string { return v.CustomerId }).(pulumi.StringPtrOutput)
 }
 
-// (Boolean) - Indicates if the App Connectors are included for deletion if they are in a disconnected state based on frequencyInterval and frequency values.
 func (o LookupAssistantScheduleResultOutput) DeleteDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAssistantScheduleResult) bool { return v.DeleteDisabled }).(pulumi.BoolOutput)
 }
 
-// (Boolean) - Indicates if the setting for deleting App Connectors is enabled or disabled.
 func (o LookupAssistantScheduleResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAssistantScheduleResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// (String) - The scheduled frequency at which the disconnected App Connectors are deleted. Supported value is: `days`
 func (o LookupAssistantScheduleResultOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssistantScheduleResult) string { return v.Frequency }).(pulumi.StringOutput)
 }
 
-// (String) - The interval for the configured frequency value. The minimum supported value is 5. Supported values are: `5`, `7`, `14`, `30`, `60` and `90`
 func (o LookupAssistantScheduleResultOutput) FrequencyInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssistantScheduleResult) string { return v.FrequencyInterval }).(pulumi.StringOutput)
 }

@@ -11,6 +11,9 @@ using Pulumi;
 namespace Zscaler.Zpa
 {
     /// <summary>
+    /// * [Official documentation](https://help.zscaler.com/zpa/about-browser-protection-profiles)
+    /// * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-profiles-using-api)
+    /// 
     /// The  **zpa_inspection_profile** resource creates an inspection profile in the Zscaler Private Access cloud. This resource can then be referenced in an inspection custom control resource.
     /// </summary>
     [ZpaResourceType("zpa:index/inspectionProfile:InspectionProfile")]
@@ -19,20 +22,17 @@ namespace Zscaler.Zpa
         [Output("associateAllControls")]
         public Output<bool?> AssociateAllControls { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional) Types for custom controls
-        /// </summary>
         [Output("controlsInfos")]
         public Output<ImmutableArray<Outputs.InspectionProfileControlsInfo>> ControlsInfos { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Types for custom controls
+        /// The set of AppProtection controls used to define how inspections are managed
         /// </summary>
         [Output("customControls")]
         public Output<ImmutableArray<Outputs.InspectionProfileCustomControl>> CustomControls { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the inspection profile.
+        /// The description of the AppProtection profile
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -46,20 +46,17 @@ namespace Zscaler.Zpa
         [Output("incarnationNumber")]
         public Output<string?> IncarnationNumber { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the inspection profile.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// OWASP Predefined Paranoia Level. Range: [1-4], inclusive
+        /// The OWASP Predefined Paranoia Level
         /// </summary>
         [Output("paranoiaLevel")]
         public Output<string?> ParanoiaLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The predefined controls. The default predefined control `Preprocessors` are mandatory and injected in the request by default. Individual `predefined_controls` can be set by using the data source `data_source_zpa_predefined_controls` or by group using the data source `zpa.getInspectionAllPredefinedControls`.
+        /// The predefined controls
         /// </summary>
         [Output("predefinedControls")]
         public Output<ImmutableArray<Outputs.InspectionProfilePredefinedControl>> PredefinedControls { get; private set; } = null!;
@@ -128,10 +125,6 @@ namespace Zscaler.Zpa
 
         [Input("controlsInfos")]
         private InputList<Inputs.InspectionProfileControlsInfoArgs>? _controlsInfos;
-
-        /// <summary>
-        /// (Optional) Types for custom controls
-        /// </summary>
         public InputList<Inputs.InspectionProfileControlsInfoArgs> ControlsInfos
         {
             get => _controlsInfos ?? (_controlsInfos = new InputList<Inputs.InspectionProfileControlsInfoArgs>());
@@ -142,7 +135,7 @@ namespace Zscaler.Zpa
         private InputList<Inputs.InspectionProfileCustomControlArgs>? _customControls;
 
         /// <summary>
-        /// (Optional) Types for custom controls
+        /// The set of AppProtection controls used to define how inspections are managed
         /// </summary>
         public InputList<Inputs.InspectionProfileCustomControlArgs> CustomControls
         {
@@ -151,7 +144,7 @@ namespace Zscaler.Zpa
         }
 
         /// <summary>
-        /// Description of the inspection profile.
+        /// The description of the AppProtection profile
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -171,14 +164,11 @@ namespace Zscaler.Zpa
         [Input("incarnationNumber")]
         public Input<string>? IncarnationNumber { get; set; }
 
-        /// <summary>
-        /// The name of the inspection profile.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// OWASP Predefined Paranoia Level. Range: [1-4], inclusive
+        /// The OWASP Predefined Paranoia Level
         /// </summary>
         [Input("paranoiaLevel")]
         public Input<string>? ParanoiaLevel { get; set; }
@@ -187,7 +177,7 @@ namespace Zscaler.Zpa
         private InputList<Inputs.InspectionProfilePredefinedControlArgs>? _predefinedControls;
 
         /// <summary>
-        /// The predefined controls. The default predefined control `Preprocessors` are mandatory and injected in the request by default. Individual `predefined_controls` can be set by using the data source `data_source_zpa_predefined_controls` or by group using the data source `zpa.getInspectionAllPredefinedControls`.
+        /// The predefined controls
         /// </summary>
         public InputList<Inputs.InspectionProfilePredefinedControlArgs> PredefinedControls
         {
@@ -220,10 +210,6 @@ namespace Zscaler.Zpa
 
         [Input("controlsInfos")]
         private InputList<Inputs.InspectionProfileControlsInfoGetArgs>? _controlsInfos;
-
-        /// <summary>
-        /// (Optional) Types for custom controls
-        /// </summary>
         public InputList<Inputs.InspectionProfileControlsInfoGetArgs> ControlsInfos
         {
             get => _controlsInfos ?? (_controlsInfos = new InputList<Inputs.InspectionProfileControlsInfoGetArgs>());
@@ -234,7 +220,7 @@ namespace Zscaler.Zpa
         private InputList<Inputs.InspectionProfileCustomControlGetArgs>? _customControls;
 
         /// <summary>
-        /// (Optional) Types for custom controls
+        /// The set of AppProtection controls used to define how inspections are managed
         /// </summary>
         public InputList<Inputs.InspectionProfileCustomControlGetArgs> CustomControls
         {
@@ -243,7 +229,7 @@ namespace Zscaler.Zpa
         }
 
         /// <summary>
-        /// Description of the inspection profile.
+        /// The description of the AppProtection profile
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -263,14 +249,11 @@ namespace Zscaler.Zpa
         [Input("incarnationNumber")]
         public Input<string>? IncarnationNumber { get; set; }
 
-        /// <summary>
-        /// The name of the inspection profile.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// OWASP Predefined Paranoia Level. Range: [1-4], inclusive
+        /// The OWASP Predefined Paranoia Level
         /// </summary>
         [Input("paranoiaLevel")]
         public Input<string>? ParanoiaLevel { get; set; }
@@ -279,7 +262,7 @@ namespace Zscaler.Zpa
         private InputList<Inputs.InspectionProfilePredefinedControlGetArgs>? _predefinedControls;
 
         /// <summary>
-        /// The predefined controls. The default predefined control `Preprocessors` are mandatory and injected in the request by default. Individual `predefined_controls` can be set by using the data source `data_source_zpa_predefined_controls` or by group using the data source `zpa.getInspectionAllPredefinedControls`.
+        /// The predefined controls
         /// </summary>
         public InputList<Inputs.InspectionProfilePredefinedControlGetArgs> PredefinedControls
         {

@@ -52,17 +52,13 @@ func GetCloudBrowserIsolationRegion(ctx *pulumi.Context, args *GetCloudBrowserIs
 
 // A collection of arguments for invoking getCloudBrowserIsolationRegion.
 type GetCloudBrowserIsolationRegionArgs struct {
-	// The id of the CBI region to be exported.
-	Id *string `pulumi:"id"`
-	// The name of the CBI region to be exported.
+	Id   *string `pulumi:"id"`
 	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getCloudBrowserIsolationRegion.
 type GetCloudBrowserIsolationRegionResult struct {
-	// (string) - ID information of the CBI region
-	Id string `pulumi:"id"`
-	// (string) - Name of the CBI region
+	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 }
 
@@ -81,9 +77,7 @@ func GetCloudBrowserIsolationRegionOutput(ctx *pulumi.Context, args GetCloudBrow
 
 // A collection of arguments for invoking getCloudBrowserIsolationRegion.
 type GetCloudBrowserIsolationRegionOutputArgs struct {
-	// The id of the CBI region to be exported.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The name of the CBI region to be exported.
+	Id   pulumi.StringPtrInput `pulumi:"id"`
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -106,12 +100,10 @@ func (o GetCloudBrowserIsolationRegionResultOutput) ToGetCloudBrowserIsolationRe
 	return o
 }
 
-// (string) - ID information of the CBI region
 func (o GetCloudBrowserIsolationRegionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudBrowserIsolationRegionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (string) - Name of the CBI region
 func (o GetCloudBrowserIsolationRegionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudBrowserIsolationRegionResult) string { return v.Name }).(pulumi.StringOutput)
 }

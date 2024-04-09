@@ -13,6 +13,9 @@ namespace Zscaler.Zpa
     public static class GetPostureProfile
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/client-connector/about-device-posture-profiles)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-posture-profile-details-using-api)
+        /// 
         /// Use the **zpa_posture_profile** data source to get information about a posture profile created in the Zscaler Private Access Mobile Portal. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
         /// 
         /// ## Example Usage
@@ -119,6 +122,9 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostureProfileResult>("zpa:index/getPostureProfile:getPostureProfile", args ?? new GetPostureProfileArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/client-connector/about-device-posture-profiles)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-posture-profile-details-using-api)
+        /// 
         /// Use the **zpa_posture_profile** data source to get information about a posture profile created in the Zscaler Private Access Mobile Portal. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
         /// 
         /// ## Example Usage
@@ -228,9 +234,6 @@ namespace Zscaler.Zpa
 
     public sealed class GetPostureProfileArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the posture profile to be exported.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -242,9 +245,6 @@ namespace Zscaler.Zpa
 
     public sealed class GetPostureProfileInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the posture profile to be exported.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -258,36 +258,15 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetPostureProfileResult
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Domain;
         public readonly string Id;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string MasterCustomerId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
         public readonly string? Name;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string PostureUdid;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ZscalerCloud;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ZscalerCustomerId;
 
         [OutputConstructor]

@@ -79,43 +79,37 @@ namespace Zscaler.Zpa
     public partial class ApplicationServer : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Address. The address of the application server to be exported.
+        /// This field defines the domain or IP address of the server.
         /// </summary>
         [Output("address")]
         public Output<string> Address { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) This field defines the list of server group IDs.
+        /// This field defines the list of server groups IDs.
         /// </summary>
         [Output("appServerGroupIds")]
         public Output<ImmutableArray<string>> AppServerGroupIds { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Output("configSpace")]
         public Output<string?> ConfigSpace { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) This field defines the description of the server.
+        /// This field defines the description of the server.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) This field defines the status of the server.
+        /// This field defines the status of the server.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Output("microtenantId")]
         public Output<string> MicrotenantId { get; private set; } = null!;
 
         /// <summary>
-        /// Name. The name of the application server to be exported.
+        /// This field defines the name of the server.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -168,7 +162,7 @@ namespace Zscaler.Zpa
     public sealed class ApplicationServerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Address. The address of the application server to be exported.
+        /// This field defines the domain or IP address of the server.
         /// </summary>
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
@@ -177,7 +171,7 @@ namespace Zscaler.Zpa
         private InputList<string>? _appServerGroupIds;
 
         /// <summary>
-        /// (Optional) This field defines the list of server group IDs.
+        /// This field defines the list of server groups IDs.
         /// </summary>
         public InputList<string> AppServerGroupIds
         {
@@ -185,32 +179,26 @@ namespace Zscaler.Zpa
             set => _appServerGroupIds = value;
         }
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Input("configSpace")]
         public Input<string>? ConfigSpace { get; set; }
 
         /// <summary>
-        /// (Optional) This field defines the description of the server.
+        /// This field defines the description of the server.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// (Optional) This field defines the status of the server.
+        /// This field defines the status of the server.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// (Optional) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
         /// <summary>
-        /// Name. The name of the application server to be exported.
+        /// This field defines the name of the server.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -224,7 +212,7 @@ namespace Zscaler.Zpa
     public sealed class ApplicationServerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Address. The address of the application server to be exported.
+        /// This field defines the domain or IP address of the server.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
@@ -233,7 +221,7 @@ namespace Zscaler.Zpa
         private InputList<string>? _appServerGroupIds;
 
         /// <summary>
-        /// (Optional) This field defines the list of server group IDs.
+        /// This field defines the list of server groups IDs.
         /// </summary>
         public InputList<string> AppServerGroupIds
         {
@@ -241,32 +229,26 @@ namespace Zscaler.Zpa
             set => _appServerGroupIds = value;
         }
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Input("configSpace")]
         public Input<string>? ConfigSpace { get; set; }
 
         /// <summary>
-        /// (Optional) This field defines the description of the server.
+        /// This field defines the description of the server.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// (Optional) This field defines the status of the server.
+        /// This field defines the status of the server.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// (Optional) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
         /// <summary>
-        /// Name. The name of the application server to be exported.
+        /// This field defines the name of the server.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

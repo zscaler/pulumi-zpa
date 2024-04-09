@@ -76,36 +76,26 @@ func LookupApplicationServer(ctx *pulumi.Context, args *LookupApplicationServerA
 
 // A collection of arguments for invoking getApplicationServer.
 type LookupApplicationServerArgs struct {
-	// This field defines the id of the application server.
-	Id *string `pulumi:"id"`
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
+	Id              *string `pulumi:"id"`
+	MicrotenantId   *string `pulumi:"microtenantId"`
 	MicrotenantName *string `pulumi:"microtenantName"`
-	// This field defines the name of the server.
-	Name *string `pulumi:"name"`
+	Name            *string `pulumi:"name"`
 }
 
 // A collection of values returned by getApplicationServer.
 type LookupApplicationServerResult struct {
-	// (string) This field defines the domain or IP address of the server.
-	Address string `pulumi:"address"`
-	// (Set of String) This field defines the list of server groups IDs.
+	Address           string   `pulumi:"address"`
 	AppServerGroupIds []string `pulumi:"appServerGroupIds"`
 	ConfigSpace       string   `pulumi:"configSpace"`
 	CreationTime      string   `pulumi:"creationTime"`
-	// (string) This field defines the description of the server.
-	Description string `pulumi:"description"`
-	// (bool) This field defines the status of the server.
-	Enabled bool    `pulumi:"enabled"`
-	Id      *string `pulumi:"id"`
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
-	MicrotenantName *string `pulumi:"microtenantName"`
-	ModifiedTime    string  `pulumi:"modifiedTime"`
-	Modifiedby      string  `pulumi:"modifiedby"`
-	Name            *string `pulumi:"name"`
+	Description       string   `pulumi:"description"`
+	Enabled           bool     `pulumi:"enabled"`
+	Id                *string  `pulumi:"id"`
+	MicrotenantId     *string  `pulumi:"microtenantId"`
+	MicrotenantName   *string  `pulumi:"microtenantName"`
+	ModifiedTime      string   `pulumi:"modifiedTime"`
+	Modifiedby        string   `pulumi:"modifiedby"`
+	Name              *string  `pulumi:"name"`
 }
 
 func LookupApplicationServerOutput(ctx *pulumi.Context, args LookupApplicationServerOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationServerResultOutput {
@@ -123,14 +113,10 @@ func LookupApplicationServerOutput(ctx *pulumi.Context, args LookupApplicationSe
 
 // A collection of arguments for invoking getApplicationServer.
 type LookupApplicationServerOutputArgs struct {
-	// This field defines the id of the application server.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId pulumi.StringPtrInput `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
+	Id              pulumi.StringPtrInput `pulumi:"id"`
+	MicrotenantId   pulumi.StringPtrInput `pulumi:"microtenantId"`
 	MicrotenantName pulumi.StringPtrInput `pulumi:"microtenantName"`
-	// This field defines the name of the server.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name            pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (LookupApplicationServerOutputArgs) ElementType() reflect.Type {
@@ -152,12 +138,10 @@ func (o LookupApplicationServerResultOutput) ToLookupApplicationServerResultOutp
 	return o
 }
 
-// (string) This field defines the domain or IP address of the server.
 func (o LookupApplicationServerResultOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationServerResult) string { return v.Address }).(pulumi.StringOutput)
 }
 
-// (Set of String) This field defines the list of server groups IDs.
 func (o LookupApplicationServerResultOutput) AppServerGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupApplicationServerResult) []string { return v.AppServerGroupIds }).(pulumi.StringArrayOutput)
 }
@@ -170,12 +154,10 @@ func (o LookupApplicationServerResultOutput) CreationTime() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupApplicationServerResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// (string) This field defines the description of the server.
 func (o LookupApplicationServerResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationServerResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (bool) This field defines the status of the server.
 func (o LookupApplicationServerResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupApplicationServerResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -184,12 +166,10 @@ func (o LookupApplicationServerResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationServerResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// (string) The ID of the microtenant the resource is to be associated with.
 func (o LookupApplicationServerResultOutput) MicrotenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationServerResult) *string { return v.MicrotenantId }).(pulumi.StringPtrOutput)
 }
 
-// (string) The name of the microtenant the resource is to be associated with.
 func (o LookupApplicationServerResultOutput) MicrotenantName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationServerResult) *string { return v.MicrotenantName }).(pulumi.StringPtrOutput)
 }

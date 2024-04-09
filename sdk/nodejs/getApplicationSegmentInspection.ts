@@ -51,33 +51,11 @@ export function getApplicationSegmentInspection(args?: GetApplicationSegmentInsp
  * A collection of arguments for invoking getApplicationSegmentInspection.
  */
 export interface GetApplicationSegmentInspectionArgs {
-    /**
-     * The ID of the Inspection Application Segment to be exported.
-     */
     id?: string;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: string;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     microtenantName?: string;
-    /**
-     * The name of the Inspection Application Segment to be exported.
-     */
     name?: string;
-    /**
-     * (string) TCP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
-     */
     tcpPortRange?: inputs.GetApplicationSegmentInspectionTcpPortRange[];
-    /**
-     * (string) UDP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
-     */
     udpPortRange?: inputs.GetApplicationSegmentInspectionUdpPortRange[];
 }
 
@@ -85,110 +63,32 @@ export interface GetApplicationSegmentInspectionArgs {
  * A collection of values returned by getApplicationSegmentInspection.
  */
 export interface GetApplicationSegmentInspectionResult {
-    /**
-     * (string) Indicates whether users can bypass ZPA to access applications.
-     */
     readonly bypassType: string;
-    /**
-     * (String)
-     */
     readonly creationTime: string;
-    /**
-     * (string) Description of the application.
-     */
     readonly description: string;
-    /**
-     * (string) List of domains and IPs.
-     */
     readonly domainNames: string[];
-    /**
-     * (bool) Whether Double Encryption is enabled or disabled for the app.
-     */
     readonly doubleEncrypt: boolean;
-    /**
-     * (bool) Whether this application is enabled or not
-     */
     readonly enabled: boolean;
-    /**
-     * (string)
-     */
     readonly healthCheckType: string;
-    /**
-     * (string) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
-     */
     readonly healthReporting: string;
-    /**
-     * (string)
-     */
     readonly icmpAccessType: string;
     readonly id?: string;
-    /**
-     * (string) TCP port ranges used to access the app.
-     * * `app_id:` - (string)
-     * * `name:` - (string) Name of the Inspection Application
-     * * `description:` - (string) Description of the Inspection Application
-     * * `domain:` - (string) Domain name of the inspection application
-     */
     readonly inspectionApps: outputs.GetApplicationSegmentInspectionInspectionApp[];
-    /**
-     * (bool)
-     */
     readonly ipAnchored: boolean;
-    /**
-     * (bool) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
-     */
     readonly isCnameEnabled: boolean;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     readonly microtenantId?: string;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     readonly microtenantName?: string;
     readonly modifiedBy: string;
-    /**
-     * (String)
-     */
     readonly modifiedTime: string;
     readonly name?: string;
-    /**
-     * (bool)
-     */
     readonly passiveHealthEnabled: boolean;
-    /**
-     * (String) Segment Group IDs
-     */
     readonly segmentGroupId: string;
     readonly segmentGroupName: string;
-    /**
-     * (bool)
-     */
     readonly selectConnectorCloseToApp: boolean;
-    /**
-     * (string) List of Server Group IDs
-     * * `id:` - (string) List of Server Group IDs
-     */
     readonly serverGroups: outputs.GetApplicationSegmentInspectionServerGroup[];
-    /**
-     * (string) TCP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
-     */
     readonly tcpPortRange: outputs.GetApplicationSegmentInspectionTcpPortRange[];
-    /**
-     * (string) TCP port ranges used to access the app.
-     */
     readonly tcpPortRanges: string[];
-    /**
-     * (string) UDP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
-     */
     readonly udpPortRange: outputs.GetApplicationSegmentInspectionUdpPortRange[];
-    /**
-     * (string) UDP port ranges used to access the app.
-     */
     readonly udpPortRanges: string[];
 }
 /**
@@ -226,32 +126,10 @@ export function getApplicationSegmentInspectionOutput(args?: GetApplicationSegme
  * A collection of arguments for invoking getApplicationSegmentInspection.
  */
 export interface GetApplicationSegmentInspectionOutputArgs {
-    /**
-     * The ID of the Inspection Application Segment to be exported.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: pulumi.Input<string>;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     microtenantName?: pulumi.Input<string>;
-    /**
-     * The name of the Inspection Application Segment to be exported.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * (string) TCP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
-     */
     tcpPortRange?: pulumi.Input<pulumi.Input<inputs.GetApplicationSegmentInspectionTcpPortRangeArgs>[]>;
-    /**
-     * (string) UDP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
-     */
     udpPortRange?: pulumi.Input<pulumi.Input<inputs.GetApplicationSegmentInspectionUdpPortRangeArgs>[]>;
 }

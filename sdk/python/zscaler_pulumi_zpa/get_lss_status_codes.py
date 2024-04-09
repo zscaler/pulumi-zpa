@@ -82,6 +82,9 @@ class AwaitableGetLSSStatusCodesResult(GetLSSStatusCodesResult):
 
 def get_lss_status_codes(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLSSStatusCodesResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-log-streaming-service)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
+
     Use the **zpa_lss_config_status_codes** data source to get information about all LSS status codes in the Zscaler Private Access cloud. This data source is required when the `filter` parameter in the LSS Config Controller resource is set. To learn more see the [Getting Details of All LSS Status Codes](https://help.zscaler.com/zpa/log-streaming-service-configuration-use-cases#GettingLSSStatusCodes)
 
     > **NOTE** By Default the ZPA provider will return all status codes
@@ -112,6 +115,9 @@ def get_lss_status_codes(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitab
 @_utilities.lift_output_func(get_lss_status_codes)
 def get_lss_status_codes_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLSSStatusCodesResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-log-streaming-service)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
+
     Use the **zpa_lss_config_status_codes** data source to get information about all LSS status codes in the Zscaler Private Access cloud. This data source is required when the `filter` parameter in the LSS Config Controller resource is set. To learn more see the [Getting Details of All LSS Status Codes](https://help.zscaler.com/zpa/log-streaming-service-configuration-use-cases#GettingLSSStatusCodes)
 
     > **NOTE** By Default the ZPA provider will return all status codes

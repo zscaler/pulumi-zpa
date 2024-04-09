@@ -11,6 +11,8 @@ using Pulumi;
 namespace Zscaler.Zpa
 {
     /// <summary>
+    /// * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
+    /// 
     /// The **zpa_cloud_browser_isolation_certificate** resource creates a Cloud Browser Isolation certificate. This resource can then be used when creating a CBI External Profile `zpa.CloudBrowserIsolationExternalProfile`.`
     /// 
     /// ## Example Usage
@@ -45,15 +47,9 @@ namespace Zscaler.Zpa
     [ZpaResourceType("zpa:index/cloudBrowserIsolationCertificate:CloudBrowserIsolationCertificate")]
     public partial class CloudBrowserIsolationCertificate : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The name of the CBI certificate.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The certificate in PEM format.
-        /// </summary>
         [Output("pem")]
         public Output<string?> Pem { get; private set; } = null!;
 
@@ -104,15 +100,9 @@ namespace Zscaler.Zpa
 
     public sealed class CloudBrowserIsolationCertificateArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the CBI certificate.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The certificate in PEM format.
-        /// </summary>
         [Input("pem")]
         public Input<string>? Pem { get; set; }
 
@@ -124,15 +114,9 @@ namespace Zscaler.Zpa
 
     public sealed class CloudBrowserIsolationCertificateState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the CBI certificate.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The certificate in PEM format.
-        /// </summary>
         [Input("pem")]
         public Input<string>? Pem { get; set; }
 

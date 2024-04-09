@@ -142,12 +142,6 @@ import (
 // ```
 // <!--End PulumiCodeChooser -->
 //
-// ### Required
-//
-// * `name` - (Required) This field defines the name of the server group.
-// * `appConnectorGroups` - (Required)
-//   - `id` - (Required) The ID of this resource.
-//
 // ## Import
 //
 // Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
@@ -175,18 +169,18 @@ type ServerGroup struct {
 	// This field is a json array of app-connector-id only.
 	Applications ServerGroupApplicationArrayOutput `pulumi:"applications"`
 	ConfigSpace  pulumi.StringPtrOutput            `pulumi:"configSpace"`
-	// (Optional) This field is the description of the server group.
+	// This field is the description of the server group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// (Optional) This field controls dynamic discovery of the servers.
+	// This field controls dynamic discovery of the servers.
 	DynamicDiscovery pulumi.BoolPtrOutput `pulumi:"dynamicDiscovery"`
-	// (Optional) This field defines if the server group is enabled or disabled.
-	Enabled    pulumi.BoolPtrOutput `pulumi:"enabled"`
-	IpAnchored pulumi.BoolPtrOutput `pulumi:"ipAnchored"`
-	// (Optional) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId pulumi.StringOutput `pulumi:"microtenantId"`
+	// This field defines if the server group is enabled or disabled.
+	Enabled       pulumi.BoolPtrOutput `pulumi:"enabled"`
+	IpAnchored    pulumi.BoolPtrOutput `pulumi:"ipAnchored"`
+	MicrotenantId pulumi.StringOutput  `pulumi:"microtenantId"`
 	// This field defines the name of the server group.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// (Block List) This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API.
+	// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
+	// only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
 	Servers ServerGroupServerArrayOutput `pulumi:"servers"`
 }
 
@@ -225,18 +219,18 @@ type serverGroupState struct {
 	// This field is a json array of app-connector-id only.
 	Applications []ServerGroupApplication `pulumi:"applications"`
 	ConfigSpace  *string                  `pulumi:"configSpace"`
-	// (Optional) This field is the description of the server group.
+	// This field is the description of the server group.
 	Description *string `pulumi:"description"`
-	// (Optional) This field controls dynamic discovery of the servers.
+	// This field controls dynamic discovery of the servers.
 	DynamicDiscovery *bool `pulumi:"dynamicDiscovery"`
-	// (Optional) This field defines if the server group is enabled or disabled.
-	Enabled    *bool `pulumi:"enabled"`
-	IpAnchored *bool `pulumi:"ipAnchored"`
-	// (Optional) The ID of the microtenant the resource is to be associated with.
+	// This field defines if the server group is enabled or disabled.
+	Enabled       *bool   `pulumi:"enabled"`
+	IpAnchored    *bool   `pulumi:"ipAnchored"`
 	MicrotenantId *string `pulumi:"microtenantId"`
 	// This field defines the name of the server group.
 	Name *string `pulumi:"name"`
-	// (Block List) This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API.
+	// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
+	// only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
 	Servers []ServerGroupServer `pulumi:"servers"`
 }
 
@@ -246,18 +240,18 @@ type ServerGroupState struct {
 	// This field is a json array of app-connector-id only.
 	Applications ServerGroupApplicationArrayInput
 	ConfigSpace  pulumi.StringPtrInput
-	// (Optional) This field is the description of the server group.
+	// This field is the description of the server group.
 	Description pulumi.StringPtrInput
-	// (Optional) This field controls dynamic discovery of the servers.
+	// This field controls dynamic discovery of the servers.
 	DynamicDiscovery pulumi.BoolPtrInput
-	// (Optional) This field defines if the server group is enabled or disabled.
-	Enabled    pulumi.BoolPtrInput
-	IpAnchored pulumi.BoolPtrInput
-	// (Optional) The ID of the microtenant the resource is to be associated with.
+	// This field defines if the server group is enabled or disabled.
+	Enabled       pulumi.BoolPtrInput
+	IpAnchored    pulumi.BoolPtrInput
 	MicrotenantId pulumi.StringPtrInput
 	// This field defines the name of the server group.
 	Name pulumi.StringPtrInput
-	// (Block List) This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API.
+	// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
+	// only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
 	Servers ServerGroupServerArrayInput
 }
 
@@ -271,18 +265,18 @@ type serverGroupArgs struct {
 	// This field is a json array of app-connector-id only.
 	Applications []ServerGroupApplication `pulumi:"applications"`
 	ConfigSpace  *string                  `pulumi:"configSpace"`
-	// (Optional) This field is the description of the server group.
+	// This field is the description of the server group.
 	Description *string `pulumi:"description"`
-	// (Optional) This field controls dynamic discovery of the servers.
+	// This field controls dynamic discovery of the servers.
 	DynamicDiscovery *bool `pulumi:"dynamicDiscovery"`
-	// (Optional) This field defines if the server group is enabled or disabled.
-	Enabled    *bool `pulumi:"enabled"`
-	IpAnchored *bool `pulumi:"ipAnchored"`
-	// (Optional) The ID of the microtenant the resource is to be associated with.
+	// This field defines if the server group is enabled or disabled.
+	Enabled       *bool   `pulumi:"enabled"`
+	IpAnchored    *bool   `pulumi:"ipAnchored"`
 	MicrotenantId *string `pulumi:"microtenantId"`
 	// This field defines the name of the server group.
 	Name *string `pulumi:"name"`
-	// (Block List) This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API.
+	// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
+	// only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
 	Servers []ServerGroupServer `pulumi:"servers"`
 }
 
@@ -293,18 +287,18 @@ type ServerGroupArgs struct {
 	// This field is a json array of app-connector-id only.
 	Applications ServerGroupApplicationArrayInput
 	ConfigSpace  pulumi.StringPtrInput
-	// (Optional) This field is the description of the server group.
+	// This field is the description of the server group.
 	Description pulumi.StringPtrInput
-	// (Optional) This field controls dynamic discovery of the servers.
+	// This field controls dynamic discovery of the servers.
 	DynamicDiscovery pulumi.BoolPtrInput
-	// (Optional) This field defines if the server group is enabled or disabled.
-	Enabled    pulumi.BoolPtrInput
-	IpAnchored pulumi.BoolPtrInput
-	// (Optional) The ID of the microtenant the resource is to be associated with.
+	// This field defines if the server group is enabled or disabled.
+	Enabled       pulumi.BoolPtrInput
+	IpAnchored    pulumi.BoolPtrInput
 	MicrotenantId pulumi.StringPtrInput
 	// This field defines the name of the server group.
 	Name pulumi.StringPtrInput
-	// (Block List) This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API.
+	// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
+	// only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
 	Servers ServerGroupServerArrayInput
 }
 
@@ -409,17 +403,17 @@ func (o ServerGroupOutput) ConfigSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringPtrOutput { return v.ConfigSpace }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) This field is the description of the server group.
+// This field is the description of the server group.
 func (o ServerGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) This field controls dynamic discovery of the servers.
+// This field controls dynamic discovery of the servers.
 func (o ServerGroupOutput) DynamicDiscovery() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.BoolPtrOutput { return v.DynamicDiscovery }).(pulumi.BoolPtrOutput)
 }
 
-// (Optional) This field defines if the server group is enabled or disabled.
+// This field defines if the server group is enabled or disabled.
 func (o ServerGroupOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -428,7 +422,6 @@ func (o ServerGroupOutput) IpAnchored() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.BoolPtrOutput { return v.IpAnchored }).(pulumi.BoolPtrOutput)
 }
 
-// (Optional) The ID of the microtenant the resource is to be associated with.
 func (o ServerGroupOutput) MicrotenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.MicrotenantId }).(pulumi.StringOutput)
 }
@@ -438,7 +431,8 @@ func (o ServerGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Block List) This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API.
+// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
+// only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
 func (o ServerGroupOutput) Servers() ServerGroupServerArrayOutput {
 	return o.ApplyT(func(v *ServerGroup) ServerGroupServerArrayOutput { return v.Servers }).(ServerGroupServerArrayOutput)
 }

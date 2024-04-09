@@ -11,7 +11,10 @@ using Pulumi;
 namespace Zscaler.Zpa
 {
     /// <summary>
-    /// The **zpa_policy_access_rule_reorder** is a dedicated resource to manage and update rule_orders in any of the supported ZPA Policy Access types Zscaler Private Access cloud.
+    /// * [Official documentation](https://help.zscaler.com/zpa/about-access-policy)
+    /// * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api)
+    /// 
+    /// The **zpa_policy_access_rule_reorder** is a dedicated resource to manage and update `rule_orders` in any of the supported ZPA Policy Access types Zscaler Private Access cloud.
     /// 
     /// ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of this resource for all ZPA policy types.
     /// 
@@ -24,7 +27,7 @@ namespace Zscaler.Zpa
         public Output<string> PolicyType { get; private set; } = null!;
 
         /// <summary>
-        /// (Required)
+        /// List of rules and their orders
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.PolicyAccessReorderRuleRule>> Rules { get; private set; } = null!;
@@ -83,7 +86,7 @@ namespace Zscaler.Zpa
         private InputList<Inputs.PolicyAccessReorderRuleRuleArgs>? _rules;
 
         /// <summary>
-        /// (Required)
+        /// List of rules and their orders
         /// </summary>
         public InputList<Inputs.PolicyAccessReorderRuleRuleArgs> Rules
         {
@@ -106,7 +109,7 @@ namespace Zscaler.Zpa
         private InputList<Inputs.PolicyAccessReorderRuleRuleGetArgs>? _rules;
 
         /// <summary>
-        /// (Required)
+        /// List of rules and their orders
         /// </summary>
         public InputList<Inputs.PolicyAccessReorderRuleRuleGetArgs> Rules
         {

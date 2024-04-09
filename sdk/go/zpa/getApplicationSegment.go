@@ -76,17 +76,13 @@ func LookupApplicationSegment(ctx *pulumi.Context, args *LookupApplicationSegmen
 
 // A collection of arguments for invoking getApplicationSegment.
 type LookupApplicationSegmentArgs struct {
-	Id *string `pulumi:"id"`
-	// Default: false. Boolean: `true`, `false`.
-	IsIncompleteDrConfig *bool `pulumi:"isIncompleteDrConfig"`
-	// The ID of the microtenant the resource is to be associated with.
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// The name of the microtenant the resource is to be associated with.
-	MicrotenantName *string `pulumi:"microtenantName"`
-	// Name of the application.
-	Name         *string                             `pulumi:"name"`
-	TcpPortRange []GetApplicationSegmentTcpPortRange `pulumi:"tcpPortRange"`
-	UdpPortRange []GetApplicationSegmentUdpPortRange `pulumi:"udpPortRange"`
+	Id                   *string                             `pulumi:"id"`
+	IsIncompleteDrConfig *bool                               `pulumi:"isIncompleteDrConfig"`
+	MicrotenantId        *string                             `pulumi:"microtenantId"`
+	MicrotenantName      *string                             `pulumi:"microtenantName"`
+	Name                 *string                             `pulumi:"name"`
+	TcpPortRange         []GetApplicationSegmentTcpPortRange `pulumi:"tcpPortRange"`
+	UdpPortRange         []GetApplicationSegmentUdpPortRange `pulumi:"udpPortRange"`
 }
 
 // A collection of values returned by getApplicationSegment.
@@ -138,17 +134,13 @@ func LookupApplicationSegmentOutput(ctx *pulumi.Context, args LookupApplicationS
 
 // A collection of arguments for invoking getApplicationSegment.
 type LookupApplicationSegmentOutputArgs struct {
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Default: false. Boolean: `true`, `false`.
-	IsIncompleteDrConfig pulumi.BoolPtrInput `pulumi:"isIncompleteDrConfig"`
-	// The ID of the microtenant the resource is to be associated with.
-	MicrotenantId pulumi.StringPtrInput `pulumi:"microtenantId"`
-	// The name of the microtenant the resource is to be associated with.
-	MicrotenantName pulumi.StringPtrInput `pulumi:"microtenantName"`
-	// Name of the application.
-	Name         pulumi.StringPtrInput                       `pulumi:"name"`
-	TcpPortRange GetApplicationSegmentTcpPortRangeArrayInput `pulumi:"tcpPortRange"`
-	UdpPortRange GetApplicationSegmentUdpPortRangeArrayInput `pulumi:"udpPortRange"`
+	Id                   pulumi.StringPtrInput                       `pulumi:"id"`
+	IsIncompleteDrConfig pulumi.BoolPtrInput                         `pulumi:"isIncompleteDrConfig"`
+	MicrotenantId        pulumi.StringPtrInput                       `pulumi:"microtenantId"`
+	MicrotenantName      pulumi.StringPtrInput                       `pulumi:"microtenantName"`
+	Name                 pulumi.StringPtrInput                       `pulumi:"name"`
+	TcpPortRange         GetApplicationSegmentTcpPortRangeArrayInput `pulumi:"tcpPortRange"`
+	UdpPortRange         GetApplicationSegmentUdpPortRangeArrayInput `pulumi:"udpPortRange"`
 }
 
 func (LookupApplicationSegmentOutputArgs) ElementType() reflect.Type {

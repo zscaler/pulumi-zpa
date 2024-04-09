@@ -41,19 +41,18 @@ class PolicyAccessRuleArgs:
                  zpn_isolation_profile_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PolicyAccessRule resource.
-        :param pulumi.Input[str] action: (Optional) This is for providing the rule action. Supported values: ``ALLOW``, ``DENY``, and ``REQUIRE_APPROVAL``
+        :param pulumi.Input[str] action: This is for providing the rule action. Supported values: `ALLOW`, `DENY`, and `REQUIRE_APPROVAL`
         :param pulumi.Input[str] action_id: This field defines the description of the server.
         :param pulumi.Input[Sequence[pulumi.Input['PolicyAccessRuleAppConnectorGroupArgs']]] app_connector_groups: List of app-connector IDs.
         :param pulumi.Input[Sequence[pulumi.Input['PolicyAccessRuleAppServerGroupArgs']]] app_server_groups: List of the server group IDs.
-        :param pulumi.Input[Sequence[pulumi.Input['PolicyAccessRuleConditionArgs']]] conditions: (Optional)
-        :param pulumi.Input[str] custom_msg: (Optional) This is for providing a customer message for the user.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyAccessRuleConditionArgs']]] conditions: This is for proviidng the set of conditions for the policy.
+        :param pulumi.Input[str] custom_msg: This is for providing a customer message for the user.
         :param pulumi.Input[bool] default_rule: This is for providing a customer message for the user.
-        :param pulumi.Input[str] description: (Optional) This is the description of the access policy rule.
-        :param pulumi.Input[str] microtenant_id: (Optional) The ID of the microtenant the resource is to be associated with.
-        :param pulumi.Input[str] name: (Optional)
-        :param pulumi.Input[str] operator: (Optional) Supported values: ``AND``, and ``OR``
-        :param pulumi.Input[str] policy_type: (Optional) Supported values: ``ACCESS_POLICY`` or ``GLOBAL_POLICY``
-        :param pulumi.Input[str] rule_order: (Deprecated)
+        :param pulumi.Input[str] description: This is the description of the access policy rule.
+        :param pulumi.Input[str] name: This is the name of the policy rule.
+        :param pulumi.Input[str] operator: Supported values: `AND`, `OR`
+        :param pulumi.Input[str] policy_set_id: - (String) Use zpa*policy*type data source to retrieve the necessary policy Set ID `policy_set_id`
+               > **NOTE** As of v3.2.0 the `policy_set_id` attribute is now optional, and will be automatically determined based on the policy type being configured. The attribute is being kept for backwards compatibility, but can be safely removed from existing configurations.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -109,7 +108,7 @@ class PolicyAccessRuleArgs:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional) This is for providing the rule action. Supported values: ``ALLOW``, ``DENY``, and ``REQUIRE_APPROVAL``
+        This is for providing the rule action. Supported values: `ALLOW`, `DENY`, and `REQUIRE_APPROVAL`
         """
         return pulumi.get(self, "action")
 
@@ -166,7 +165,7 @@ class PolicyAccessRuleArgs:
     @pulumi.getter
     def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAccessRuleConditionArgs']]]]:
         """
-        (Optional)
+        This is for proviidng the set of conditions for the policy.
         """
         return pulumi.get(self, "conditions")
 
@@ -178,7 +177,7 @@ class PolicyAccessRuleArgs:
     @pulumi.getter(name="customMsg")
     def custom_msg(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional) This is for providing a customer message for the user.
+        This is for providing a customer message for the user.
         """
         return pulumi.get(self, "custom_msg")
 
@@ -202,7 +201,7 @@ class PolicyAccessRuleArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional) This is the description of the access policy rule.
+        This is the description of the access policy rule.
         """
         return pulumi.get(self, "description")
 
@@ -222,9 +221,6 @@ class PolicyAccessRuleArgs:
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @microtenant_id.setter
@@ -235,7 +231,7 @@ class PolicyAccessRuleArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional)
+        This is the name of the policy rule.
         """
         return pulumi.get(self, "name")
 
@@ -247,7 +243,7 @@ class PolicyAccessRuleArgs:
     @pulumi.getter
     def operator(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional) Supported values: ``AND``, and ``OR``
+        Supported values: `AND`, `OR`
         """
         return pulumi.get(self, "operator")
 
@@ -258,6 +254,10 @@ class PolicyAccessRuleArgs:
     @property
     @pulumi.getter(name="policySetId")
     def policy_set_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        - (String) Use zpa*policy*type data source to retrieve the necessary policy Set ID `policy_set_id`
+        > **NOTE** As of v3.2.0 the `policy_set_id` attribute is now optional, and will be automatically determined based on the policy type being configured. The attribute is being kept for backwards compatibility, but can be safely removed from existing configurations.
+        """
         return pulumi.get(self, "policy_set_id")
 
     @policy_set_id.setter
@@ -267,9 +267,6 @@ class PolicyAccessRuleArgs:
     @property
     @pulumi.getter(name="policyType")
     def policy_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) Supported values: ``ACCESS_POLICY`` or ``GLOBAL_POLICY``
-        """
         return pulumi.get(self, "policy_type")
 
     @policy_type.setter
@@ -315,9 +312,6 @@ class PolicyAccessRuleArgs:
     @property
     @pulumi.getter(name="ruleOrder")
     def rule_order(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Deprecated)
-        """
         warnings.warn("""The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""", DeprecationWarning)
         pulumi.log.warn("""rule_order is deprecated: The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""")
 
@@ -383,19 +377,18 @@ class _PolicyAccessRuleState:
                  zpn_isolation_profile_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PolicyAccessRule resources.
-        :param pulumi.Input[str] action: (Optional) This is for providing the rule action. Supported values: ``ALLOW``, ``DENY``, and ``REQUIRE_APPROVAL``
+        :param pulumi.Input[str] action: This is for providing the rule action. Supported values: `ALLOW`, `DENY`, and `REQUIRE_APPROVAL`
         :param pulumi.Input[str] action_id: This field defines the description of the server.
         :param pulumi.Input[Sequence[pulumi.Input['PolicyAccessRuleAppConnectorGroupArgs']]] app_connector_groups: List of app-connector IDs.
         :param pulumi.Input[Sequence[pulumi.Input['PolicyAccessRuleAppServerGroupArgs']]] app_server_groups: List of the server group IDs.
-        :param pulumi.Input[Sequence[pulumi.Input['PolicyAccessRuleConditionArgs']]] conditions: (Optional)
-        :param pulumi.Input[str] custom_msg: (Optional) This is for providing a customer message for the user.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyAccessRuleConditionArgs']]] conditions: This is for proviidng the set of conditions for the policy.
+        :param pulumi.Input[str] custom_msg: This is for providing a customer message for the user.
         :param pulumi.Input[bool] default_rule: This is for providing a customer message for the user.
-        :param pulumi.Input[str] description: (Optional) This is the description of the access policy rule.
-        :param pulumi.Input[str] microtenant_id: (Optional) The ID of the microtenant the resource is to be associated with.
-        :param pulumi.Input[str] name: (Optional)
-        :param pulumi.Input[str] operator: (Optional) Supported values: ``AND``, and ``OR``
-        :param pulumi.Input[str] policy_type: (Optional) Supported values: ``ACCESS_POLICY`` or ``GLOBAL_POLICY``
-        :param pulumi.Input[str] rule_order: (Deprecated)
+        :param pulumi.Input[str] description: This is the description of the access policy rule.
+        :param pulumi.Input[str] name: This is the name of the policy rule.
+        :param pulumi.Input[str] operator: Supported values: `AND`, `OR`
+        :param pulumi.Input[str] policy_set_id: - (String) Use zpa*policy*type data source to retrieve the necessary policy Set ID `policy_set_id`
+               > **NOTE** As of v3.2.0 the `policy_set_id` attribute is now optional, and will be automatically determined based on the policy type being configured. The attribute is being kept for backwards compatibility, but can be safely removed from existing configurations.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -451,7 +444,7 @@ class _PolicyAccessRuleState:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional) This is for providing the rule action. Supported values: ``ALLOW``, ``DENY``, and ``REQUIRE_APPROVAL``
+        This is for providing the rule action. Supported values: `ALLOW`, `DENY`, and `REQUIRE_APPROVAL`
         """
         return pulumi.get(self, "action")
 
@@ -508,7 +501,7 @@ class _PolicyAccessRuleState:
     @pulumi.getter
     def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAccessRuleConditionArgs']]]]:
         """
-        (Optional)
+        This is for proviidng the set of conditions for the policy.
         """
         return pulumi.get(self, "conditions")
 
@@ -520,7 +513,7 @@ class _PolicyAccessRuleState:
     @pulumi.getter(name="customMsg")
     def custom_msg(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional) This is for providing a customer message for the user.
+        This is for providing a customer message for the user.
         """
         return pulumi.get(self, "custom_msg")
 
@@ -544,7 +537,7 @@ class _PolicyAccessRuleState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional) This is the description of the access policy rule.
+        This is the description of the access policy rule.
         """
         return pulumi.get(self, "description")
 
@@ -564,9 +557,6 @@ class _PolicyAccessRuleState:
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @microtenant_id.setter
@@ -577,7 +567,7 @@ class _PolicyAccessRuleState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional)
+        This is the name of the policy rule.
         """
         return pulumi.get(self, "name")
 
@@ -589,7 +579,7 @@ class _PolicyAccessRuleState:
     @pulumi.getter
     def operator(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional) Supported values: ``AND``, and ``OR``
+        Supported values: `AND`, `OR`
         """
         return pulumi.get(self, "operator")
 
@@ -600,6 +590,10 @@ class _PolicyAccessRuleState:
     @property
     @pulumi.getter(name="policySetId")
     def policy_set_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        - (String) Use zpa*policy*type data source to retrieve the necessary policy Set ID `policy_set_id`
+        > **NOTE** As of v3.2.0 the `policy_set_id` attribute is now optional, and will be automatically determined based on the policy type being configured. The attribute is being kept for backwards compatibility, but can be safely removed from existing configurations.
+        """
         return pulumi.get(self, "policy_set_id")
 
     @policy_set_id.setter
@@ -609,9 +603,6 @@ class _PolicyAccessRuleState:
     @property
     @pulumi.getter(name="policyType")
     def policy_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) Supported values: ``ACCESS_POLICY`` or ``GLOBAL_POLICY``
-        """
         return pulumi.get(self, "policy_type")
 
     @policy_type.setter
@@ -657,9 +648,6 @@ class _PolicyAccessRuleState:
     @property
     @pulumi.getter(name="ruleOrder")
     def rule_order(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Deprecated)
-        """
         warnings.warn("""The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""", DeprecationWarning)
         pulumi.log.warn("""rule_order is deprecated: The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""")
 
@@ -727,6 +715,9 @@ class PolicyAccessRule(pulumi.CustomResource):
                  zpn_isolation_profile_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        * [Official documentation](https://help.zscaler.com/zpa/about-access-policy)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api)
+
         The **zpa_policy_access_rule** resource creates and manages policy access rule in the Zscaler Private Access cloud.
 
           ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
@@ -739,7 +730,6 @@ class PolicyAccessRule(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        access_policy = zpa.get_policy_type(policy_type="ACCESS_POLICY")
         idp_name = zpa.get_id_p_controller(name="IdP_Name")
         engineering = zpa.get_scim_groups(name="Engineering",
             idp_name="IdP_Name")
@@ -748,10 +738,8 @@ class PolicyAccessRule(pulumi.CustomResource):
             description="Example",
             action="ALLOW",
             operator="AND",
-            policy_set_id=access_policy.id,
             conditions=[
                 zpa.PolicyAccessRuleConditionArgs(
-                    negated=False,
                     operator="OR",
                     operands=[zpa.PolicyAccessRuleConditionOperandArgs(
                         object_type="APP",
@@ -760,7 +748,6 @@ class PolicyAccessRule(pulumi.CustomResource):
                     )],
                 ),
                 zpa.PolicyAccessRuleConditionArgs(
-                    negated=False,
                     operator="OR",
                     operands=[zpa.PolicyAccessRuleConditionOperandArgs(
                         object_type="SCIM_GROUP",
@@ -771,11 +758,6 @@ class PolicyAccessRule(pulumi.CustomResource):
             ])
         ```
         <!--End PulumiCodeChooser -->
-
-        ### Required
-
-        * `name` - (Required) This is the name of the policy rule.
-        * `policy_set_id` - (Required) Use get_policy_type data source to retrieve the necessary policy Set ID ``policy_set_id``
 
         ## LHS and RHS Values
 
@@ -811,19 +793,18 @@ class PolicyAccessRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: (Optional) This is for providing the rule action. Supported values: ``ALLOW``, ``DENY``, and ``REQUIRE_APPROVAL``
+        :param pulumi.Input[str] action: This is for providing the rule action. Supported values: `ALLOW`, `DENY`, and `REQUIRE_APPROVAL`
         :param pulumi.Input[str] action_id: This field defines the description of the server.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyAccessRuleAppConnectorGroupArgs']]]] app_connector_groups: List of app-connector IDs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyAccessRuleAppServerGroupArgs']]]] app_server_groups: List of the server group IDs.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyAccessRuleConditionArgs']]]] conditions: (Optional)
-        :param pulumi.Input[str] custom_msg: (Optional) This is for providing a customer message for the user.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyAccessRuleConditionArgs']]]] conditions: This is for proviidng the set of conditions for the policy.
+        :param pulumi.Input[str] custom_msg: This is for providing a customer message for the user.
         :param pulumi.Input[bool] default_rule: This is for providing a customer message for the user.
-        :param pulumi.Input[str] description: (Optional) This is the description of the access policy rule.
-        :param pulumi.Input[str] microtenant_id: (Optional) The ID of the microtenant the resource is to be associated with.
-        :param pulumi.Input[str] name: (Optional)
-        :param pulumi.Input[str] operator: (Optional) Supported values: ``AND``, and ``OR``
-        :param pulumi.Input[str] policy_type: (Optional) Supported values: ``ACCESS_POLICY`` or ``GLOBAL_POLICY``
-        :param pulumi.Input[str] rule_order: (Deprecated)
+        :param pulumi.Input[str] description: This is the description of the access policy rule.
+        :param pulumi.Input[str] name: This is the name of the policy rule.
+        :param pulumi.Input[str] operator: Supported values: `AND`, `OR`
+        :param pulumi.Input[str] policy_set_id: - (String) Use zpa*policy*type data source to retrieve the necessary policy Set ID `policy_set_id`
+               > **NOTE** As of v3.2.0 the `policy_set_id` attribute is now optional, and will be automatically determined based on the policy type being configured. The attribute is being kept for backwards compatibility, but can be safely removed from existing configurations.
         """
         ...
     @overload
@@ -832,6 +813,9 @@ class PolicyAccessRule(pulumi.CustomResource):
                  args: Optional[PolicyAccessRuleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        * [Official documentation](https://help.zscaler.com/zpa/about-access-policy)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api)
+
         The **zpa_policy_access_rule** resource creates and manages policy access rule in the Zscaler Private Access cloud.
 
           ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
@@ -844,7 +828,6 @@ class PolicyAccessRule(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        access_policy = zpa.get_policy_type(policy_type="ACCESS_POLICY")
         idp_name = zpa.get_id_p_controller(name="IdP_Name")
         engineering = zpa.get_scim_groups(name="Engineering",
             idp_name="IdP_Name")
@@ -853,10 +836,8 @@ class PolicyAccessRule(pulumi.CustomResource):
             description="Example",
             action="ALLOW",
             operator="AND",
-            policy_set_id=access_policy.id,
             conditions=[
                 zpa.PolicyAccessRuleConditionArgs(
-                    negated=False,
                     operator="OR",
                     operands=[zpa.PolicyAccessRuleConditionOperandArgs(
                         object_type="APP",
@@ -865,7 +846,6 @@ class PolicyAccessRule(pulumi.CustomResource):
                     )],
                 ),
                 zpa.PolicyAccessRuleConditionArgs(
-                    negated=False,
                     operator="OR",
                     operands=[zpa.PolicyAccessRuleConditionOperandArgs(
                         object_type="SCIM_GROUP",
@@ -876,11 +856,6 @@ class PolicyAccessRule(pulumi.CustomResource):
             ])
         ```
         <!--End PulumiCodeChooser -->
-
-        ### Required
-
-        * `name` - (Required) This is the name of the policy rule.
-        * `policy_set_id` - (Required) Use get_policy_type data source to retrieve the necessary policy Set ID ``policy_set_id``
 
         ## LHS and RHS Values
 
@@ -1024,19 +999,18 @@ class PolicyAccessRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: (Optional) This is for providing the rule action. Supported values: ``ALLOW``, ``DENY``, and ``REQUIRE_APPROVAL``
+        :param pulumi.Input[str] action: This is for providing the rule action. Supported values: `ALLOW`, `DENY`, and `REQUIRE_APPROVAL`
         :param pulumi.Input[str] action_id: This field defines the description of the server.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyAccessRuleAppConnectorGroupArgs']]]] app_connector_groups: List of app-connector IDs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyAccessRuleAppServerGroupArgs']]]] app_server_groups: List of the server group IDs.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyAccessRuleConditionArgs']]]] conditions: (Optional)
-        :param pulumi.Input[str] custom_msg: (Optional) This is for providing a customer message for the user.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyAccessRuleConditionArgs']]]] conditions: This is for proviidng the set of conditions for the policy.
+        :param pulumi.Input[str] custom_msg: This is for providing a customer message for the user.
         :param pulumi.Input[bool] default_rule: This is for providing a customer message for the user.
-        :param pulumi.Input[str] description: (Optional) This is the description of the access policy rule.
-        :param pulumi.Input[str] microtenant_id: (Optional) The ID of the microtenant the resource is to be associated with.
-        :param pulumi.Input[str] name: (Optional)
-        :param pulumi.Input[str] operator: (Optional) Supported values: ``AND``, and ``OR``
-        :param pulumi.Input[str] policy_type: (Optional) Supported values: ``ACCESS_POLICY`` or ``GLOBAL_POLICY``
-        :param pulumi.Input[str] rule_order: (Deprecated)
+        :param pulumi.Input[str] description: This is the description of the access policy rule.
+        :param pulumi.Input[str] name: This is the name of the policy rule.
+        :param pulumi.Input[str] operator: Supported values: `AND`, `OR`
+        :param pulumi.Input[str] policy_set_id: - (String) Use zpa*policy*type data source to retrieve the necessary policy Set ID `policy_set_id`
+               > **NOTE** As of v3.2.0 the `policy_set_id` attribute is now optional, and will be automatically determined based on the policy type being configured. The attribute is being kept for backwards compatibility, but can be safely removed from existing configurations.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1071,7 +1045,7 @@ class PolicyAccessRule(pulumi.CustomResource):
     @pulumi.getter
     def action(self) -> pulumi.Output[Optional[str]]:
         """
-        (Optional) This is for providing the rule action. Supported values: ``ALLOW``, ``DENY``, and ``REQUIRE_APPROVAL``
+        This is for providing the rule action. Supported values: `ALLOW`, `DENY`, and `REQUIRE_APPROVAL`
         """
         return pulumi.get(self, "action")
 
@@ -1108,7 +1082,7 @@ class PolicyAccessRule(pulumi.CustomResource):
     @pulumi.getter
     def conditions(self) -> pulumi.Output[Optional[Sequence['outputs.PolicyAccessRuleCondition']]]:
         """
-        (Optional)
+        This is for proviidng the set of conditions for the policy.
         """
         return pulumi.get(self, "conditions")
 
@@ -1116,7 +1090,7 @@ class PolicyAccessRule(pulumi.CustomResource):
     @pulumi.getter(name="customMsg")
     def custom_msg(self) -> pulumi.Output[Optional[str]]:
         """
-        (Optional) This is for providing a customer message for the user.
+        This is for providing a customer message for the user.
         """
         return pulumi.get(self, "custom_msg")
 
@@ -1132,7 +1106,7 @@ class PolicyAccessRule(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        (Optional) This is the description of the access policy rule.
+        This is the description of the access policy rule.
         """
         return pulumi.get(self, "description")
 
@@ -1144,16 +1118,13 @@ class PolicyAccessRule(pulumi.CustomResource):
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> pulumi.Output[str]:
-        """
-        (Optional) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        (Optional)
+        This is the name of the policy rule.
         """
         return pulumi.get(self, "name")
 
@@ -1161,21 +1132,22 @@ class PolicyAccessRule(pulumi.CustomResource):
     @pulumi.getter
     def operator(self) -> pulumi.Output[str]:
         """
-        (Optional) Supported values: ``AND``, and ``OR``
+        Supported values: `AND`, `OR`
         """
         return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter(name="policySetId")
     def policy_set_id(self) -> pulumi.Output[str]:
+        """
+        - (String) Use zpa*policy*type data source to retrieve the necessary policy Set ID `policy_set_id`
+        > **NOTE** As of v3.2.0 the `policy_set_id` attribute is now optional, and will be automatically determined based on the policy type being configured. The attribute is being kept for backwards compatibility, but can be safely removed from existing configurations.
+        """
         return pulumi.get(self, "policy_set_id")
 
     @property
     @pulumi.getter(name="policyType")
     def policy_type(self) -> pulumi.Output[str]:
-        """
-        (Optional) Supported values: ``ACCESS_POLICY`` or ``GLOBAL_POLICY``
-        """
         return pulumi.get(self, "policy_type")
 
     @property
@@ -1201,9 +1173,6 @@ class PolicyAccessRule(pulumi.CustomResource):
     @property
     @pulumi.getter(name="ruleOrder")
     def rule_order(self) -> pulumi.Output[str]:
-        """
-        (Deprecated)
-        """
         warnings.warn("""The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""", DeprecationWarning)
         pulumi.log.warn("""rule_order is deprecated: The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""")
 

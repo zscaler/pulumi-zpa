@@ -11,6 +11,141 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-security-policy)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-policies-using-api)
+//
+// The **zpa_policy_inspection_rule** resource creates a policy inspection access rule in the Zscaler Private Access cloud.
+//
+//	⚠️ **WARNING:**: The attribute ``ruleOrder`` is now deprecated in favor of the new resource ``PolicyAccessReorderRule`` policyAccessRuleReorder
+//
+// ## Example Usage
+//
+// ### 1
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create Inspection Access Rule
+//			_, err := zpa.NewPolicyAccessInspectionRule(ctx, "this", &zpa.PolicyAccessInspectionRuleArgs{
+//				Description:            pulumi.String("Example"),
+//				Action:                 pulumi.String("INSPECT"),
+//				Operator:               pulumi.String("AND"),
+//				PolicySetId:            pulumi.Any(data.Zpa_policy_type.Inspection_policy.Id),
+//				ZpnInspectionProfileId: pulumi.Any(zpa_inspection_profile.This.Id),
+//				Conditions: zpa.PolicyAccessInspectionRuleConditionArray{
+//					&zpa.PolicyAccessInspectionRuleConditionArgs{
+//						Operator: pulumi.String("OR"),
+//						Operands: zpa.PolicyAccessInspectionRuleConditionOperandArray{
+//							&zpa.PolicyAccessInspectionRuleConditionOperandArgs{
+//								ObjectType: pulumi.String("APP"),
+//								Lhs:        pulumi.String("id"),
+//								Rhs:        pulumi.Any(zpa_application_segment_inspection.This.Id),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ### 2
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			inspectionPolicy, err := zpa.GetPolicyType(ctx, &zpa.GetPolicyTypeArgs{
+//				PolicyType: pulumi.StringRef("INSPECTION_POLICY"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Create Inspection Access Rule
+//			_, err = zpa.NewPolicyAccessInspectionRule(ctx, "this", &zpa.PolicyAccessInspectionRuleArgs{
+//				Description: pulumi.String("Example"),
+//				Action:      pulumi.String("BYPASS_INSPECT"),
+//				RuleOrder:   pulumi.String("1"),
+//				Operator:    pulumi.String("AND"),
+//				PolicySetId: pulumi.String(inspectionPolicy.Id),
+//				Conditions: zpa.PolicyAccessInspectionRuleConditionArray{
+//					&zpa.PolicyAccessInspectionRuleConditionArgs{
+//						Operator: pulumi.String("OR"),
+//						Operands: zpa.PolicyAccessInspectionRuleConditionOperandArray{
+//							&zpa.PolicyAccessInspectionRuleConditionOperandArgs{
+//								ObjectType: pulumi.String("APP"),
+//								Lhs:        pulumi.String("id"),
+//								Rhs:        pulumi.Any(zpa_application_segment_inspection.This.Id),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## LHS and RHS Values
+//
+// | Object Type | LHS| RHS
+// |----------|-----------|----------
+// | APP | “"id"“ | “applicationSegmentId“ |
+// | APP_GROUP | “"id"“ | “segmentGroupId“|
+// | CLIENT_TYPE | “"id"“ | “zpnClientTypeZappl“, “zpnClientTypeExporter“, “zpnClientTypeBrowserIsolation“, “zpnClientTypeIpAnchoring“, “zpnClientTypeEdgeConnector“, “zpnClientTypeBranchConnector“,  “zpnClientTypeZappPartner“, “zpnClientTypeZapp“  |
+// | EDGE_CONNECTOR_GROUP | “"id"“ | “edgeConnectorId“ |
+// | IDP | “"id"“ | “identityProviderId“ |
+// | SAML | “samlAttributeId“  | “attributeValueToMatch“ |
+// | SCIM | “scimAttributeId“  | “attributeValueToMatch“  |
+// | SCIM_GROUP | “scimGroupAttributeId“  | “attributeValueToMatch“  |
+// | PLATFORM | “mac“, “ios“, “windows“, “android“, “linux“ | “"true"“ / “"false"“ |
+// | MACHINE_GRP | “"id"“ | “machineGroupId“ |
+// | POSTURE | “postureUdid“  | “"true"“ / “"false"“ |
+// | TRUSTED_NETWORK | “networkId“  | “"true"“ |
+//
+// ## Import
+//
+// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+//
+// # Visit
+//
+// Policy Access Inspection Rule can be imported by using `<POLICY INSPECTION RULE ID>` as the import ID.
+//
+// For example:
+//
+// ```sh
+// $ pulumi import zpa:index/policyAccessInspectionRule:PolicyAccessInspectionRule example <policy_inspection_rule_id>
+// ```
 type PolicyAccessInspectionRule struct {
 	pulumi.CustomResourceState
 

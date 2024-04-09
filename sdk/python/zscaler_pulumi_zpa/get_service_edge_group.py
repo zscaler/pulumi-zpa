@@ -93,97 +93,61 @@ class GetServiceEdgeGroupResult:
     @property
     @pulumi.getter(name="cityCountry")
     def city_country(self) -> str:
-        """
-        (string) Whether Double Encryption is enabled or disabled for the app.
-        """
         return pulumi.get(self, "city_country")
 
     @property
     @pulumi.getter(name="countryCode")
     def country_code(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "country_code")
 
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string) Description of the Service Edge Group.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool) Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="geoLocationId")
     def geo_location_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "geo_location_id")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="isPublic")
     def is_public(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "is_public")
 
     @property
     @pulumi.getter
     def latitude(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "latitude")
 
     @property
     @pulumi.getter
     def location(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
     def longitude(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "longitude")
 
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -194,76 +158,46 @@ class GetServiceEdgeGroupResult:
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="overrideVersionProfile")
     def override_version_profile(self) -> bool:
-        """
-        (bool) Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
-        """
         return pulumi.get(self, "override_version_profile")
 
     @property
     @pulumi.getter(name="serviceEdges")
     def service_edges(self) -> Sequence['outputs.GetServiceEdgeGroupServiceEdgeResult']:
-        """
-        (string)
-        """
         return pulumi.get(self, "service_edges")
 
     @property
     @pulumi.getter(name="trustedNetworks")
     def trusted_networks(self) -> Sequence['outputs.GetServiceEdgeGroupTrustedNetworkResult']:
-        """
-        (string)
-        """
         return pulumi.get(self, "trusted_networks")
 
     @property
     @pulumi.getter(name="upgradeDay")
     def upgrade_day(self) -> str:
-        """
-        (string) App Connectors in this group will attempt to update to a newer version of the software during this specified day
-        """
         return pulumi.get(self, "upgrade_day")
 
     @property
     @pulumi.getter(name="upgradeTimeInSecs")
     def upgrade_time_in_secs(self) -> str:
-        """
-        (string) App Connectors in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600`. Integer in seconds (i.e., `-66600`). The integer should be greater than or equal to `0` and less than `86400`, in `15` minute intervals
-        """
         return pulumi.get(self, "upgrade_time_in_secs")
 
     @property
     @pulumi.getter(name="versionProfileId")
     def version_profile_id(self) -> str:
-        """
-        (String) ID of the version profile.
-        Exported values are:
-        """
         return pulumi.get(self, "version_profile_id")
 
     @property
     @pulumi.getter(name="versionProfileName")
     def version_profile_name(self) -> str:
-        """
-        (String)
-        Exported values are:
-        """
         return pulumi.get(self, "version_profile_name")
 
     @property
     @pulumi.getter(name="versionProfileVisibilityScope")
     def version_profile_visibility_scope(self) -> str:
-        """
-        (string)
-        Exported values are:
-        """
         return pulumi.get(self, "version_profile_visibility_scope")
 
 
@@ -301,6 +235,9 @@ def get_service_edge_group(id: Optional[str] = None,
                            name: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceEdgeGroupResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-zpa-private-service-edge-groups)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-zpa-private-service-edge-groups-using-api)
+
     Use the **zpa_service_edge_group** data source to get information about a service edge group in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group. This data source can then be referenced in the following resources:
 
     * Create a server group
@@ -326,10 +263,6 @@ def get_service_edge_group(id: Optional[str] = None,
     foo = zpa.get_service_edge_group(id="123456789")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: The ID of the service edge group to be exported.
-    :param str name: The name of the service edge group to be exported.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -367,6 +300,9 @@ def get_service_edge_group_output(id: Optional[pulumi.Input[Optional[str]]] = No
                                   name: Optional[pulumi.Input[Optional[str]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceEdgeGroupResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-zpa-private-service-edge-groups)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-zpa-private-service-edge-groups-using-api)
+
     Use the **zpa_service_edge_group** data source to get information about a service edge group in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group. This data source can then be referenced in the following resources:
 
     * Create a server group
@@ -392,9 +328,5 @@ def get_service_edge_group_output(id: Optional[pulumi.Input[Optional[str]]] = No
     foo = zpa.get_service_edge_group(id="123456789")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: The ID of the service edge group to be exported.
-    :param str name: The name of the service edge group to be exported.
     """
     ...

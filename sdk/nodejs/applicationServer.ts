@@ -84,31 +84,25 @@ export class ApplicationServer extends pulumi.CustomResource {
     }
 
     /**
-     * Address. The address of the application server to be exported.
+     * This field defines the domain or IP address of the server.
      */
     public readonly address!: pulumi.Output<string>;
     /**
-     * (Optional) This field defines the list of server group IDs.
+     * This field defines the list of server groups IDs.
      */
     public readonly appServerGroupIds!: pulumi.Output<string[]>;
-    /**
-     * (Optional)
-     */
     public readonly configSpace!: pulumi.Output<string | undefined>;
     /**
-     * (Optional) This field defines the description of the server.
+     * This field defines the description of the server.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * (Optional) This field defines the status of the server.
+     * This field defines the status of the server.
      */
     public readonly enabled!: pulumi.Output<boolean>;
-    /**
-     * (Optional) The ID of the microtenant the resource is to be associated with.
-     */
     public readonly microtenantId!: pulumi.Output<string>;
     /**
-     * Name. The name of the application server to be exported.
+     * This field defines the name of the server.
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -155,31 +149,25 @@ export class ApplicationServer extends pulumi.CustomResource {
  */
 export interface ApplicationServerState {
     /**
-     * Address. The address of the application server to be exported.
+     * This field defines the domain or IP address of the server.
      */
     address?: pulumi.Input<string>;
     /**
-     * (Optional) This field defines the list of server group IDs.
+     * This field defines the list of server groups IDs.
      */
     appServerGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (Optional)
-     */
     configSpace?: pulumi.Input<string>;
     /**
-     * (Optional) This field defines the description of the server.
+     * This field defines the description of the server.
      */
     description?: pulumi.Input<string>;
     /**
-     * (Optional) This field defines the status of the server.
+     * This field defines the status of the server.
      */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * (Optional) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: pulumi.Input<string>;
     /**
-     * Name. The name of the application server to be exported.
+     * This field defines the name of the server.
      */
     name?: pulumi.Input<string>;
 }
@@ -189,31 +177,25 @@ export interface ApplicationServerState {
  */
 export interface ApplicationServerArgs {
     /**
-     * Address. The address of the application server to be exported.
+     * This field defines the domain or IP address of the server.
      */
     address: pulumi.Input<string>;
     /**
-     * (Optional) This field defines the list of server group IDs.
+     * This field defines the list of server groups IDs.
      */
     appServerGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (Optional)
-     */
     configSpace?: pulumi.Input<string>;
     /**
-     * (Optional) This field defines the description of the server.
+     * This field defines the description of the server.
      */
     description?: pulumi.Input<string>;
     /**
-     * (Optional) This field defines the status of the server.
+     * This field defines the status of the server.
      */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * (Optional) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: pulumi.Input<string>;
     /**
-     * Name. The name of the application server to be exported.
+     * This field defines the name of the server.
      */
     name?: pulumi.Input<string>;
 }

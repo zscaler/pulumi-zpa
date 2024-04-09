@@ -21,21 +21,12 @@ namespace Zscaler.Zpa.Outputs
         public readonly string CreationTime;
         public readonly string CtrlBrokerName;
         public readonly string CurrentVersion;
-        /// <summary>
-        /// (String) Description of the App Connector Group.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (String) Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
-        /// </summary>
         public readonly bool Enabled;
         public readonly ImmutableDictionary<string, object> EnrollmentCert;
         public readonly string ExpectedUpgradeTime;
         public readonly string ExpectedVersion;
         public readonly string Fingerprint;
-        /// <summary>
-        /// ID of the App Connector Group.
-        /// </summary>
         public readonly string Id;
         public readonly string Ipacl;
         public readonly string IssuedCertId;
@@ -44,23 +35,11 @@ namespace Zscaler.Zpa.Outputs
         public readonly string LastBrokerDisconnectTime;
         public readonly string LastBrokerDisconnectTimeDuration;
         public readonly string LastUpgradeTime;
-        /// <summary>
-        /// (String) Latitude of the App Connector Group. Integer or decimal. With values in the range of `-90` to `90`
-        /// </summary>
         public readonly string Latitude;
-        /// <summary>
-        /// (String) Location of the App Connector Group.
-        /// </summary>
         public readonly string Location;
-        /// <summary>
-        /// (String) Longitude of the App Connector Group. Integer or decimal. With values in the range of `-180` to `180`
-        /// </summary>
         public readonly string Longitude;
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
-        /// <summary>
-        /// Name of the App Connector Group.
-        /// </summary>
         public readonly string Name;
         public readonly string Platform;
         public readonly string PreviousVersion;

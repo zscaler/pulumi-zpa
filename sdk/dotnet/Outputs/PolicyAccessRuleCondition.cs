@@ -14,24 +14,14 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class PolicyAccessRuleCondition
     {
-        /// <summary>
-        /// (Optional) The ID of a server group resource
-        /// </summary>
         public readonly string? Id;
-        /// <summary>
-        /// (Optional) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         public readonly string? MicrotenantId;
         /// <summary>
-        /// (Optional) Supported values: ``true`` or ``false``
-        /// </summary>
-        public readonly bool? Negated;
-        /// <summary>
-        /// (Optional) - Operands block must be repeated if multiple per `object_type` conditions are to be added to the rule.
+        /// This signifies the various policy criteria.
         /// </summary>
         public readonly ImmutableArray<Outputs.PolicyAccessRuleConditionOperand> Operands;
         /// <summary>
-        /// (Optional) Supported values: ``AND``, and ``OR``
+        /// Supported values: `AND`, `OR`
         /// </summary>
         public readonly string Operator;
 
@@ -41,15 +31,12 @@ namespace Zscaler.Zpa.Outputs
 
             string? microtenantId,
 
-            bool? negated,
-
             ImmutableArray<Outputs.PolicyAccessRuleConditionOperand> operands,
 
             string @operator)
         {
             Id = id;
             MicrotenantId = microtenantId;
-            Negated = negated;
             Operands = operands;
             Operator = @operator;
         }

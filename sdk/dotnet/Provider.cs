@@ -32,7 +32,7 @@ namespace Zscaler.Zpa
         public Output<string?> ZpaClientSecret { get; private set; } = null!;
 
         /// <summary>
-        /// Cloud to use PRODUCTION, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
+        /// Cloud to use PRODUCTION, ZPATWO, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
         /// </summary>
         [Output("zpaCloud")]
         public Output<string?> ZpaCloud { get; private set; } = null!;
@@ -100,7 +100,7 @@ namespace Zscaler.Zpa
         }
 
         /// <summary>
-        /// Cloud to use PRODUCTION, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
+        /// Cloud to use PRODUCTION, ZPATWO, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
         /// </summary>
         [Input("zpaCloud")]
         public Input<string>? ZpaCloud { get; set; }

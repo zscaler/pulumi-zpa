@@ -101,25 +101,19 @@ namespace Zscaler.Zpa
     public sealed class GetApplicationSegmentBrowserAccessArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// This field defines the id of the application server.
+        /// - (String) This field defines the id of the application server.
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// This field defines the name of the server.
+        /// - (String) This field defines the name of the server.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
         [Input("tcpPortRange")]
         private List<Inputs.GetApplicationSegmentBrowserAccessTcpPortRangeArgs>? _tcpPortRange;
-
-        /// <summary>
-        /// (string) TCP port ranges used to access the app.
-        /// * `from:`
-        /// * `to:`
-        /// </summary>
         public List<Inputs.GetApplicationSegmentBrowserAccessTcpPortRangeArgs> TcpPortRange
         {
             get => _tcpPortRange ?? (_tcpPortRange = new List<Inputs.GetApplicationSegmentBrowserAccessTcpPortRangeArgs>());
@@ -128,12 +122,6 @@ namespace Zscaler.Zpa
 
         [Input("udpPortRange")]
         private List<Inputs.GetApplicationSegmentBrowserAccessUdpPortRangeArgs>? _udpPortRange;
-
-        /// <summary>
-        /// (string) UDP port ranges used to access the app.
-        /// * `from:`
-        /// * `to:`
-        /// </summary>
         public List<Inputs.GetApplicationSegmentBrowserAccessUdpPortRangeArgs> UdpPortRange
         {
             get => _udpPortRange ?? (_udpPortRange = new List<Inputs.GetApplicationSegmentBrowserAccessUdpPortRangeArgs>());
@@ -149,25 +137,19 @@ namespace Zscaler.Zpa
     public sealed class GetApplicationSegmentBrowserAccessInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// This field defines the id of the application server.
+        /// - (String) This field defines the id of the application server.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// This field defines the name of the server.
+        /// - (String) This field defines the name of the server.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tcpPortRange")]
         private InputList<Inputs.GetApplicationSegmentBrowserAccessTcpPortRangeInputArgs>? _tcpPortRange;
-
-        /// <summary>
-        /// (string) TCP port ranges used to access the app.
-        /// * `from:`
-        /// * `to:`
-        /// </summary>
         public InputList<Inputs.GetApplicationSegmentBrowserAccessTcpPortRangeInputArgs> TcpPortRange
         {
             get => _tcpPortRange ?? (_tcpPortRange = new InputList<Inputs.GetApplicationSegmentBrowserAccessTcpPortRangeInputArgs>());
@@ -176,12 +158,6 @@ namespace Zscaler.Zpa
 
         [Input("udpPortRange")]
         private InputList<Inputs.GetApplicationSegmentBrowserAccessUdpPortRangeInputArgs>? _udpPortRange;
-
-        /// <summary>
-        /// (string) UDP port ranges used to access the app.
-        /// * `from:`
-        /// * `to:`
-        /// </summary>
         public InputList<Inputs.GetApplicationSegmentBrowserAccessUdpPortRangeInputArgs> UdpPortRange
         {
             get => _udpPortRange ?? (_udpPortRange = new InputList<Inputs.GetApplicationSegmentBrowserAccessUdpPortRangeInputArgs>());
@@ -198,81 +174,32 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetApplicationSegmentBrowserAccessResult
     {
-        /// <summary>
-        /// (string) Indicates whether users can bypass ZPA to access applications. Default: `NEVER`. Supported values: `ALWAYS`, `NEVER`, `ON_NET`. The value `NEVER` indicates the use of the client forwarding policy.
-        /// </summary>
         public readonly string BypassType;
         public readonly ImmutableArray<Outputs.GetApplicationSegmentBrowserAccessClientlessAppResult> ClientlessApps;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ConfigSpace;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// List of domains and IPs.
-        /// </summary>
         public readonly ImmutableArray<string> DomainNames;
-        /// <summary>
-        /// (string) Whether Double Encryption is enabled or disabled for the app. Default: false. Boolean: `true`, `false`.
-        /// </summary>
         public readonly bool DoubleEncrypt;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool Enabled;
         public readonly string HealthCheckType;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string HealthReporting;
+        /// <summary>
+        /// - (String) This field defines the id of the application server.
+        /// </summary>
         public readonly string? Id;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool IpAnchored;
-        /// <summary>
-        /// (bool) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors. Default: true. Boolean: `true`, `false`.
-        /// </summary>
         public readonly bool IsCnameEnabled;
         /// <summary>
-        /// (string)
+        /// - (String) This field defines the name of the server.
         /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool PassiveHealthEnabled;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string SegmentGroupId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string SegmentGroupName;
         public readonly ImmutableArray<Outputs.GetApplicationSegmentBrowserAccessServerGroupResult> ServerGroups;
-        /// <summary>
-        /// (string) TCP port ranges used to access the app.
-        /// * `from:`
-        /// * `to:`
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationSegmentBrowserAccessTcpPortRangeResult> TcpPortRange;
-        /// <summary>
-        /// (string) TCP port ranges used to access the app.
-        /// </summary>
         public readonly ImmutableArray<string> TcpPortRanges;
-        /// <summary>
-        /// (string) UDP port ranges used to access the app.
-        /// * `from:`
-        /// * `to:`
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationSegmentBrowserAccessUdpPortRangeResult> UdpPortRange;
-        /// <summary>
-        /// (string) UDP port ranges used to access the app.
-        /// </summary>
         public readonly ImmutableArray<string> UdpPortRanges;
 
         [OutputConstructor]

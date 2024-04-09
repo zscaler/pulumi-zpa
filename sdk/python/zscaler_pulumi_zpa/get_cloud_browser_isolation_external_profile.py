@@ -51,17 +51,11 @@ class GetCloudBrowserIsolationExternalProfileResult:
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string) - The description of the CBI profile
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def href(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "href")
 
     @property
@@ -72,9 +66,6 @@ class GetCloudBrowserIsolationExternalProfileResult:
     @property
     @pulumi.getter(name="isDefault")
     def is_default(self) -> bool:
-        """
-        (bool) - Indicates if the CBI profile is the default one.
-        """
         return pulumi.get(self, "is_default")
 
     @property
@@ -85,35 +76,16 @@ class GetCloudBrowserIsolationExternalProfileResult:
     @property
     @pulumi.getter
     def regions(self) -> Sequence['outputs.GetCloudBrowserIsolationExternalProfileRegionResult']:
-        """
-        (string) List of regions where multi-region deployment is enabled
-        * `id:` - (string) Region ID where the profile is applied to
-        * `name:` - (string) Region name where the profile is applied to
-        """
         return pulumi.get(self, "regions")
 
     @property
     @pulumi.getter(name="securityControls")
     def security_controls(self) -> Sequence['outputs.GetCloudBrowserIsolationExternalProfileSecurityControlResult']:
-        """
-        The CBI security controls enabled for the profile
-        * `copy_paste:` - (string) Enable or disable copy & paste for local computer to isolation
-        * `document_viewer:` - (bool) Enable or disable to view Microsoft Office files in isolation.
-        * `local_render:` - (bool) Enables non-isolated hyperlinks to be opened on the user's native browser.
-        * `upload_download:` - (string) Enable or disable file transfer from local computer to isolation
-        * `allow_printing:` - (bool) Enables the user to print web pages and documents rendered within the isolation browser.
-        * `restrict_keystrokes:` - (bool) Prevents keyboard and text input to isolated web pages.
-        """
         return pulumi.get(self, "security_controls")
 
     @property
     @pulumi.getter(name="userExperiences")
     def user_experiences(self) -> Sequence['outputs.GetCloudBrowserIsolationExternalProfileUserExperienceResult']:
-        """
-        The CBI security controls enabled for the profile
-        * `session_persistence:` - (bool) Save user cookies between sessions. If disabled, all cookies will be discarded when isolation session ends.
-        * `browser_in_browser:` - (bool) Enable or disable browser-in-browser or native browser experience
-        """
         return pulumi.get(self, "user_experiences")
 
 
@@ -137,6 +109,8 @@ def get_cloud_browser_isolation_external_profile(id: Optional[str] = None,
                                                  name: Optional[str] = None,
                                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCloudBrowserIsolationExternalProfileResult:
     """
+    * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
+
     Use the **zpa_cloud_browser_isolation_external_profile** data source to get information about Cloud Browser Isolation external profile. This data source information can then be used in as part of `PolicyAccessIsolationRule` when the `action` attribute is set to `ISOLATE`.
 
     ## Example Usage
@@ -149,9 +123,6 @@ def get_cloud_browser_isolation_external_profile(id: Optional[str] = None,
     this = zpa.get_cloud_browser_isolation_external_profile(name="Example")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str name: The name of the CBI banner to be exported.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -175,6 +146,8 @@ def get_cloud_browser_isolation_external_profile_output(id: Optional[pulumi.Inpu
                                                         name: Optional[pulumi.Input[Optional[str]]] = None,
                                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCloudBrowserIsolationExternalProfileResult]:
     """
+    * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
+
     Use the **zpa_cloud_browser_isolation_external_profile** data source to get information about Cloud Browser Isolation external profile. This data source information can then be used in as part of `PolicyAccessIsolationRule` when the `action` attribute is set to `ISOLATE`.
 
     ## Example Usage
@@ -187,8 +160,5 @@ def get_cloud_browser_isolation_external_profile_output(id: Optional[pulumi.Inpu
     this = zpa.get_cloud_browser_isolation_external_profile(name="Example")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str name: The name of the CBI banner to be exported.
     """
     ...

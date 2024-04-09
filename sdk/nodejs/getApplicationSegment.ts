@@ -51,21 +51,9 @@ export function getApplicationSegment(args?: GetApplicationSegmentArgs, opts?: p
  */
 export interface GetApplicationSegmentArgs {
     id?: string;
-    /**
-     * Default: false. Boolean: `true`, `false`.
-     */
     isIncompleteDrConfig?: boolean;
-    /**
-     * The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: string;
-    /**
-     * The name of the microtenant the resource is to be associated with.
-     */
     microtenantName?: string;
-    /**
-     * Name of the application.
-     */
     name?: string;
     tcpPortRange?: inputs.GetApplicationSegmentTcpPortRange[];
     udpPortRange?: inputs.GetApplicationSegmentUdpPortRange[];
@@ -140,21 +128,9 @@ export function getApplicationSegmentOutput(args?: GetApplicationSegmentOutputAr
  */
 export interface GetApplicationSegmentOutputArgs {
     id?: pulumi.Input<string>;
-    /**
-     * Default: false. Boolean: `true`, `false`.
-     */
     isIncompleteDrConfig?: pulumi.Input<boolean>;
-    /**
-     * The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: pulumi.Input<string>;
-    /**
-     * The name of the microtenant the resource is to be associated with.
-     */
     microtenantName?: pulumi.Input<string>;
-    /**
-     * Name of the application.
-     */
     name?: pulumi.Input<string>;
     tcpPortRange?: pulumi.Input<pulumi.Input<inputs.GetApplicationSegmentTcpPortRangeArgs>[]>;
     udpPortRange?: pulumi.Input<pulumi.Input<inputs.GetApplicationSegmentUdpPortRangeArgs>[]>;

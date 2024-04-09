@@ -14,36 +14,15 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetCloudConnectorGroupCloudConnectorResult
     {
-        /// <summary>
-        /// (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (bool) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        /// </summary>
         public readonly bool Enabled;
         public readonly string Fingerprint;
-        /// <summary>
-        /// This field defines the id of the cloud connector group.
-        /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<object> Ipacls;
-        /// <summary>
-        /// (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        /// </summary>
         public readonly string IssuedCertId;
-        /// <summary>
-        /// (string)- Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
-        /// <summary>
-        /// This field defines the name of the cloud connector group.
-        /// </summary>
         public readonly string Name;
         public readonly ImmutableDictionary<string, object> SigningCert;
 

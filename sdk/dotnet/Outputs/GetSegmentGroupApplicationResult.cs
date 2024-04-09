@@ -14,91 +14,28 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetSegmentGroupApplicationResult
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string BypassType;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ConfigSpace;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string DefaultIdleTimeout;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string DefaultMaxAge;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string DomainName;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly ImmutableArray<string> DomainNames;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly bool DoubleEncrypt;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string HealthCheckType;
-        /// <summary>
-        /// The ID of the segment group to be exported.
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool IpAnchored;
         public readonly ImmutableArray<string> LogFeatures;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedBy;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
-        /// <summary>
-        /// The name of the segment group to be exported.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool PassiveHealthEnabled;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetSegmentGroupApplicationServerGroupResult> ServerGroups;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly ImmutableArray<string> TcpPortRanges;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly ImmutableArray<string> TcpPortsIns;
         public readonly ImmutableArray<string> TcpPortsOuts;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly ImmutableArray<string> UdpPortRanges;
 
         [OutputConstructor]

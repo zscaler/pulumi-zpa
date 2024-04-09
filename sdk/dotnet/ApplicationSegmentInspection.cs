@@ -11,6 +11,9 @@ using Pulumi;
 namespace Zscaler.Zpa
 {
     /// <summary>
+    /// * [Official documentation](https://help.zscaler.com/zpa/about-appprotection-applications)
+    /// * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
+    /// 
     /// The **zpa_application_segment_inspection** resource creates an inspection application segment in the Zscaler Private Access cloud. This resource can then be referenced in an access policy inspection rule. This resource supports Inspection for both `HTTP` and `HTTPS`.
     /// 
     /// ## Example Usage
@@ -27,7 +30,7 @@ namespace Zscaler.Zpa
     /// {
     ///     var jenkins = Zpa.GetBaCertificate.Invoke(new()
     ///     {
-    ///         Name = "jenkins.securitygeek.io",
+    ///         Name = "jenkins.example.com",
     ///     });
     /// 
     ///     var @this = new Zpa.ApplicationSegmentInspection("this", new()
@@ -104,26 +107,20 @@ namespace Zscaler.Zpa
     public partial class ApplicationSegmentInspection : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (Optional) Indicates whether users can bypass ZPA to access applications.
+        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
+        /// The value NEVER indicates the use of the client forwarding policy.
         /// </summary>
         [Output("bypassType")]
         public Output<string> BypassType { get; private set; } = null!;
 
-        /// <summary>
-        /// List of applications (e.g., Inspection, Browser Access or Privileged Remote Access)
-        /// * `apps_config:` - (Required) List of applications to be configured
-        /// </summary>
         [Output("commonAppsDto")]
         public Output<Outputs.ApplicationSegmentInspectionCommonAppsDto?> CommonAppsDto { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Output("configSpace")]
         public Output<string?> ConfigSpace { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Description of the application.
+        /// Description of the application.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -135,96 +132,71 @@ namespace Zscaler.Zpa
         public Output<ImmutableArray<string>> DomainNames { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Whether Double Encryption is enabled or disabled for the app.
+        /// Whether Double Encryption is enabled or disabled for the app.
         /// </summary>
         [Output("doubleEncrypt")]
         public Output<bool> DoubleEncrypt { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether this application is enabled or not
-        /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Output("healthCheckType")]
         public Output<string?> HealthCheckType { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
+        /// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
         /// </summary>
         [Output("healthReporting")]
         public Output<string?> HealthReporting { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Output("icmpAccessType")]
         public Output<string> IcmpAccessType { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Output("ipAnchored")]
         public Output<bool> IpAnchored { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
+        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+        /// connectors.
         /// </summary>
         [Output("isCnameEnabled")]
         public Output<bool> IsCnameEnabled { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional) Supported values: `true`, `false`
-        /// </summary>
         [Output("isIncompleteDrConfig")]
         public Output<bool?> IsIncompleteDrConfig { get; private set; } = null!;
 
+        [Output("matchStyle")]
+        public Output<string> MatchStyle { get; private set; } = null!;
+
         /// <summary>
-        /// Name of the Inspection Application Segment.
+        /// Name of the application.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional) Supported values: `true`, `false`
-        /// </summary>
         [Output("passiveHealthEnabled")]
         public Output<bool> PassiveHealthEnabled { get; private set; } = null!;
 
-        /// <summary>
-        /// List of Segment Group IDs
-        /// </summary>
         [Output("segmentGroupId")]
         public Output<string> SegmentGroupId { get; private set; } = null!;
 
         [Output("segmentGroupName")]
         public Output<string> SegmentGroupName { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional) Supported values: `true`, `false`
-        /// </summary>
         [Output("selectConnectorCloseToApp")]
         public Output<bool?> SelectConnectorCloseToApp { get; private set; } = null!;
 
         /// <summary>
-        /// List of Server Group IDs
+        /// List of the server group IDs.
         /// </summary>
         [Output("serverGroups")]
         public Output<ImmutableArray<Outputs.ApplicationSegmentInspectionServerGroup>> ServerGroups { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional) Supported values: ``1`` for Enabled and ``0`` for Disabled
-        /// </summary>
         [Output("tcpKeepAlive")]
         public Output<string> TcpKeepAlive { get; private set; } = null!;
 
         /// <summary>
-        /// TCP port ranges used to access the app.
-        /// * `from:`
-        /// * `to:`
+        /// tcp port range
         /// </summary>
         [Output("tcpPortRange")]
         public Output<ImmutableArray<Outputs.ApplicationSegmentInspectionTcpPortRange>> TcpPortRange { get; private set; } = null!;
@@ -236,27 +208,17 @@ namespace Zscaler.Zpa
         public Output<ImmutableArray<string>> TcpPortRanges { get; private set; } = null!;
 
         /// <summary>
-        /// UDP port ranges used to access the app.
-        /// * `from:`
-        /// * `to:`
-        /// 
-        /// &gt; **NOTE:** Application segments must have unique ports and cannot have overlapping domain names using the same tcp/udp ports across multiple application segments.
+        /// udp port range
         /// </summary>
         [Output("udpPortRange")]
         public Output<ImmutableArray<Outputs.ApplicationSegmentInspectionUdpPortRange>> UdpPortRange { get; private set; } = null!;
 
         /// <summary>
         /// UDP port ranges used to access the app.
-        /// 
-        /// &gt; **NOTE:**  TCP and UDP ports can also be defined using the following model:
-        /// &gt; **NOTE:** When removing TCP and/or UDP ports, parameter must be defined but set as empty due to current API behavior.
         /// </summary>
         [Output("udpPortRanges")]
         public Output<ImmutableArray<string>> UdpPortRanges { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional) Supported values: `true`, `false`
-        /// </summary>
         [Output("useInDrMode")]
         public Output<bool?> UseInDrMode { get; private set; } = null!;
 
@@ -308,26 +270,20 @@ namespace Zscaler.Zpa
     public sealed class ApplicationSegmentInspectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional) Indicates whether users can bypass ZPA to access applications.
+        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
+        /// The value NEVER indicates the use of the client forwarding policy.
         /// </summary>
         [Input("bypassType")]
         public Input<string>? BypassType { get; set; }
 
-        /// <summary>
-        /// List of applications (e.g., Inspection, Browser Access or Privileged Remote Access)
-        /// * `apps_config:` - (Required) List of applications to be configured
-        /// </summary>
         [Input("commonAppsDto")]
         public Input<Inputs.ApplicationSegmentInspectionCommonAppsDtoArgs>? CommonAppsDto { get; set; }
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Input("configSpace")]
         public Input<string>? ConfigSpace { get; set; }
 
         /// <summary>
-        /// (Optional) Description of the application.
+        /// Description of the application.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -345,77 +301,57 @@ namespace Zscaler.Zpa
         }
 
         /// <summary>
-        /// (Optional) Whether Double Encryption is enabled or disabled for the app.
+        /// Whether Double Encryption is enabled or disabled for the app.
         /// </summary>
         [Input("doubleEncrypt")]
         public Input<bool>? DoubleEncrypt { get; set; }
 
-        /// <summary>
-        /// Whether this application is enabled or not
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
         /// <summary>
-        /// (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
+        /// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
         /// </summary>
         [Input("healthReporting")]
         public Input<string>? HealthReporting { get; set; }
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Input("icmpAccessType")]
         public Input<string>? IcmpAccessType { get; set; }
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Input("ipAnchored")]
         public Input<bool>? IpAnchored { get; set; }
 
         /// <summary>
-        /// (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
+        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+        /// connectors.
         /// </summary>
         [Input("isCnameEnabled")]
         public Input<bool>? IsCnameEnabled { get; set; }
 
-        /// <summary>
-        /// (Optional) Supported values: `true`, `false`
-        /// </summary>
         [Input("isIncompleteDrConfig")]
         public Input<bool>? IsIncompleteDrConfig { get; set; }
 
+        [Input("matchStyle")]
+        public Input<string>? MatchStyle { get; set; }
+
         /// <summary>
-        /// Name of the Inspection Application Segment.
+        /// Name of the application.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// (Optional) Supported values: `true`, `false`
-        /// </summary>
         [Input("passiveHealthEnabled")]
         public Input<bool>? PassiveHealthEnabled { get; set; }
 
-        /// <summary>
-        /// List of Segment Group IDs
-        /// </summary>
         [Input("segmentGroupId", required: true)]
         public Input<string> SegmentGroupId { get; set; } = null!;
 
         [Input("segmentGroupName")]
         public Input<string>? SegmentGroupName { get; set; }
 
-        /// <summary>
-        /// (Optional) Supported values: `true`, `false`
-        /// </summary>
         [Input("selectConnectorCloseToApp")]
         public Input<bool>? SelectConnectorCloseToApp { get; set; }
 
@@ -423,7 +359,7 @@ namespace Zscaler.Zpa
         private InputList<Inputs.ApplicationSegmentInspectionServerGroupArgs>? _serverGroups;
 
         /// <summary>
-        /// List of Server Group IDs
+        /// List of the server group IDs.
         /// </summary>
         public InputList<Inputs.ApplicationSegmentInspectionServerGroupArgs> ServerGroups
         {
@@ -431,9 +367,6 @@ namespace Zscaler.Zpa
             set => _serverGroups = value;
         }
 
-        /// <summary>
-        /// (Optional) Supported values: ``1`` for Enabled and ``0`` for Disabled
-        /// </summary>
         [Input("tcpKeepAlive")]
         public Input<string>? TcpKeepAlive { get; set; }
 
@@ -441,9 +374,7 @@ namespace Zscaler.Zpa
         private InputList<Inputs.ApplicationSegmentInspectionTcpPortRangeArgs>? _tcpPortRange;
 
         /// <summary>
-        /// TCP port ranges used to access the app.
-        /// * `from:`
-        /// * `to:`
+        /// tcp port range
         /// </summary>
         public InputList<Inputs.ApplicationSegmentInspectionTcpPortRangeArgs> TcpPortRange
         {
@@ -467,11 +398,7 @@ namespace Zscaler.Zpa
         private InputList<Inputs.ApplicationSegmentInspectionUdpPortRangeArgs>? _udpPortRange;
 
         /// <summary>
-        /// UDP port ranges used to access the app.
-        /// * `from:`
-        /// * `to:`
-        /// 
-        /// &gt; **NOTE:** Application segments must have unique ports and cannot have overlapping domain names using the same tcp/udp ports across multiple application segments.
+        /// udp port range
         /// </summary>
         public InputList<Inputs.ApplicationSegmentInspectionUdpPortRangeArgs> UdpPortRange
         {
@@ -484,9 +411,6 @@ namespace Zscaler.Zpa
 
         /// <summary>
         /// UDP port ranges used to access the app.
-        /// 
-        /// &gt; **NOTE:**  TCP and UDP ports can also be defined using the following model:
-        /// &gt; **NOTE:** When removing TCP and/or UDP ports, parameter must be defined but set as empty due to current API behavior.
         /// </summary>
         public InputList<string> UdpPortRanges
         {
@@ -494,9 +418,6 @@ namespace Zscaler.Zpa
             set => _udpPortRanges = value;
         }
 
-        /// <summary>
-        /// (Optional) Supported values: `true`, `false`
-        /// </summary>
         [Input("useInDrMode")]
         public Input<bool>? UseInDrMode { get; set; }
 
@@ -509,26 +430,20 @@ namespace Zscaler.Zpa
     public sealed class ApplicationSegmentInspectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional) Indicates whether users can bypass ZPA to access applications.
+        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
+        /// The value NEVER indicates the use of the client forwarding policy.
         /// </summary>
         [Input("bypassType")]
         public Input<string>? BypassType { get; set; }
 
-        /// <summary>
-        /// List of applications (e.g., Inspection, Browser Access or Privileged Remote Access)
-        /// * `apps_config:` - (Required) List of applications to be configured
-        /// </summary>
         [Input("commonAppsDto")]
         public Input<Inputs.ApplicationSegmentInspectionCommonAppsDtoGetArgs>? CommonAppsDto { get; set; }
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Input("configSpace")]
         public Input<string>? ConfigSpace { get; set; }
 
         /// <summary>
-        /// (Optional) Description of the application.
+        /// Description of the application.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -546,77 +461,57 @@ namespace Zscaler.Zpa
         }
 
         /// <summary>
-        /// (Optional) Whether Double Encryption is enabled or disabled for the app.
+        /// Whether Double Encryption is enabled or disabled for the app.
         /// </summary>
         [Input("doubleEncrypt")]
         public Input<bool>? DoubleEncrypt { get; set; }
 
-        /// <summary>
-        /// Whether this application is enabled or not
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
         /// <summary>
-        /// (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
+        /// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
         /// </summary>
         [Input("healthReporting")]
         public Input<string>? HealthReporting { get; set; }
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Input("icmpAccessType")]
         public Input<string>? IcmpAccessType { get; set; }
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Input("ipAnchored")]
         public Input<bool>? IpAnchored { get; set; }
 
         /// <summary>
-        /// (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
+        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+        /// connectors.
         /// </summary>
         [Input("isCnameEnabled")]
         public Input<bool>? IsCnameEnabled { get; set; }
 
-        /// <summary>
-        /// (Optional) Supported values: `true`, `false`
-        /// </summary>
         [Input("isIncompleteDrConfig")]
         public Input<bool>? IsIncompleteDrConfig { get; set; }
 
+        [Input("matchStyle")]
+        public Input<string>? MatchStyle { get; set; }
+
         /// <summary>
-        /// Name of the Inspection Application Segment.
+        /// Name of the application.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// (Optional) Supported values: `true`, `false`
-        /// </summary>
         [Input("passiveHealthEnabled")]
         public Input<bool>? PassiveHealthEnabled { get; set; }
 
-        /// <summary>
-        /// List of Segment Group IDs
-        /// </summary>
         [Input("segmentGroupId")]
         public Input<string>? SegmentGroupId { get; set; }
 
         [Input("segmentGroupName")]
         public Input<string>? SegmentGroupName { get; set; }
 
-        /// <summary>
-        /// (Optional) Supported values: `true`, `false`
-        /// </summary>
         [Input("selectConnectorCloseToApp")]
         public Input<bool>? SelectConnectorCloseToApp { get; set; }
 
@@ -624,7 +519,7 @@ namespace Zscaler.Zpa
         private InputList<Inputs.ApplicationSegmentInspectionServerGroupGetArgs>? _serverGroups;
 
         /// <summary>
-        /// List of Server Group IDs
+        /// List of the server group IDs.
         /// </summary>
         public InputList<Inputs.ApplicationSegmentInspectionServerGroupGetArgs> ServerGroups
         {
@@ -632,9 +527,6 @@ namespace Zscaler.Zpa
             set => _serverGroups = value;
         }
 
-        /// <summary>
-        /// (Optional) Supported values: ``1`` for Enabled and ``0`` for Disabled
-        /// </summary>
         [Input("tcpKeepAlive")]
         public Input<string>? TcpKeepAlive { get; set; }
 
@@ -642,9 +534,7 @@ namespace Zscaler.Zpa
         private InputList<Inputs.ApplicationSegmentInspectionTcpPortRangeGetArgs>? _tcpPortRange;
 
         /// <summary>
-        /// TCP port ranges used to access the app.
-        /// * `from:`
-        /// * `to:`
+        /// tcp port range
         /// </summary>
         public InputList<Inputs.ApplicationSegmentInspectionTcpPortRangeGetArgs> TcpPortRange
         {
@@ -668,11 +558,7 @@ namespace Zscaler.Zpa
         private InputList<Inputs.ApplicationSegmentInspectionUdpPortRangeGetArgs>? _udpPortRange;
 
         /// <summary>
-        /// UDP port ranges used to access the app.
-        /// * `from:`
-        /// * `to:`
-        /// 
-        /// &gt; **NOTE:** Application segments must have unique ports and cannot have overlapping domain names using the same tcp/udp ports across multiple application segments.
+        /// udp port range
         /// </summary>
         public InputList<Inputs.ApplicationSegmentInspectionUdpPortRangeGetArgs> UdpPortRange
         {
@@ -685,9 +571,6 @@ namespace Zscaler.Zpa
 
         /// <summary>
         /// UDP port ranges used to access the app.
-        /// 
-        /// &gt; **NOTE:**  TCP and UDP ports can also be defined using the following model:
-        /// &gt; **NOTE:** When removing TCP and/or UDP ports, parameter must be defined but set as empty due to current API behavior.
         /// </summary>
         public InputList<string> UdpPortRanges
         {
@@ -695,9 +578,6 @@ namespace Zscaler.Zpa
             set => _udpPortRanges = value;
         }
 
-        /// <summary>
-        /// (Optional) Supported values: `true`, `false`
-        /// </summary>
         [Input("useInDrMode")]
         public Input<bool>? UseInDrMode { get; set; }
 

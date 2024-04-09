@@ -19,9 +19,6 @@ namespace Zscaler.Zpa.Inputs
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
-        [Input("negated")]
-        public Input<bool>? Negated { get; set; }
-
         [Input("operands")]
         private InputList<Inputs.PolicyAccessInspectionRuleConditionOperandGetArgs>? _operands;
 

@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+//
 // Use the **zpa_inspection_predefined_controls** data source to get information about an OWASP predefined control and prefedined control version. This data source is required when creating an inspection profile.
 //
 // ## Example Usage
@@ -54,52 +57,32 @@ func GetInspectionPredefinedControls(ctx *pulumi.Context, args *GetInspectionPre
 
 // A collection of arguments for invoking getInspectionPredefinedControls.
 type GetInspectionPredefinedControlsArgs struct {
-	// (Computed)
-	Id *string `pulumi:"id"`
-	// The name of the predefined control.
-	Name *string `pulumi:"name"`
-	// The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
+	Id      *string `pulumi:"id"`
+	Name    *string `pulumi:"name"`
 	Version *string `pulumi:"version"`
 }
 
 // A collection of values returned by getInspectionPredefinedControls.
 type GetInspectionPredefinedControlsResult struct {
-	// (Computed)
-	Action string `pulumi:"action"`
-	// (Computed)
-	ActionValue string `pulumi:"actionValue"`
-	// (Computed)
+	Action                           string                                                           `pulumi:"action"`
+	ActionValue                      string                                                           `pulumi:"actionValue"`
 	AssociatedInspectionProfileNames []GetInspectionPredefinedControlsAssociatedInspectionProfileName `pulumi:"associatedInspectionProfileNames"`
-	// (Computed)
-	Attachment string `pulumi:"attachment"`
-	// (Computed)
-	ControlGroup string `pulumi:"controlGroup"`
-	// (Computed)
-	ControlNumber string `pulumi:"controlNumber"`
-	// (Computed)
-	ControlType string `pulumi:"controlType"`
-	// (Computed)
-	CreationTime string `pulumi:"creationTime"`
-	// (Computed)
-	DefaultAction string `pulumi:"defaultAction"`
-	// (Computed)
-	DefaultActionValue string `pulumi:"defaultActionValue"`
-	// (Computed)
-	Description string `pulumi:"description"`
-	// (Computed)
-	Id string `pulumi:"id"`
-	// (Computed)
-	ModifiedTime string `pulumi:"modifiedTime"`
-	Modifiedby   string `pulumi:"modifiedby"`
-	// (Computed)
-	Name string `pulumi:"name"`
-	// (Computed)
-	ParanoiaLevel string `pulumi:"paranoiaLevel"`
-	// (Computed)
-	ProtocolType string `pulumi:"protocolType"`
-	// (Computed)
-	Severity string  `pulumi:"severity"`
-	Version  *string `pulumi:"version"`
+	Attachment                       string                                                           `pulumi:"attachment"`
+	ControlGroup                     string                                                           `pulumi:"controlGroup"`
+	ControlNumber                    string                                                           `pulumi:"controlNumber"`
+	ControlType                      string                                                           `pulumi:"controlType"`
+	CreationTime                     string                                                           `pulumi:"creationTime"`
+	DefaultAction                    string                                                           `pulumi:"defaultAction"`
+	DefaultActionValue               string                                                           `pulumi:"defaultActionValue"`
+	Description                      string                                                           `pulumi:"description"`
+	Id                               string                                                           `pulumi:"id"`
+	ModifiedTime                     string                                                           `pulumi:"modifiedTime"`
+	Modifiedby                       string                                                           `pulumi:"modifiedby"`
+	Name                             string                                                           `pulumi:"name"`
+	ParanoiaLevel                    string                                                           `pulumi:"paranoiaLevel"`
+	ProtocolType                     string                                                           `pulumi:"protocolType"`
+	Severity                         string                                                           `pulumi:"severity"`
+	Version                          *string                                                          `pulumi:"version"`
 }
 
 func GetInspectionPredefinedControlsOutput(ctx *pulumi.Context, args GetInspectionPredefinedControlsOutputArgs, opts ...pulumi.InvokeOption) GetInspectionPredefinedControlsResultOutput {
@@ -117,11 +100,8 @@ func GetInspectionPredefinedControlsOutput(ctx *pulumi.Context, args GetInspecti
 
 // A collection of arguments for invoking getInspectionPredefinedControls.
 type GetInspectionPredefinedControlsOutputArgs struct {
-	// (Computed)
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The name of the predefined control.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
+	Id      pulumi.StringPtrInput `pulumi:"id"`
+	Name    pulumi.StringPtrInput `pulumi:"name"`
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -144,69 +124,56 @@ func (o GetInspectionPredefinedControlsResultOutput) ToGetInspectionPredefinedCo
 	return o
 }
 
-// (Computed)
 func (o GetInspectionPredefinedControlsResultOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInspectionPredefinedControlsResult) string { return v.Action }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetInspectionPredefinedControlsResultOutput) ActionValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInspectionPredefinedControlsResult) string { return v.ActionValue }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetInspectionPredefinedControlsResultOutput) AssociatedInspectionProfileNames() GetInspectionPredefinedControlsAssociatedInspectionProfileNameArrayOutput {
 	return o.ApplyT(func(v GetInspectionPredefinedControlsResult) []GetInspectionPredefinedControlsAssociatedInspectionProfileName {
 		return v.AssociatedInspectionProfileNames
 	}).(GetInspectionPredefinedControlsAssociatedInspectionProfileNameArrayOutput)
 }
 
-// (Computed)
 func (o GetInspectionPredefinedControlsResultOutput) Attachment() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInspectionPredefinedControlsResult) string { return v.Attachment }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetInspectionPredefinedControlsResultOutput) ControlGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInspectionPredefinedControlsResult) string { return v.ControlGroup }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetInspectionPredefinedControlsResultOutput) ControlNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInspectionPredefinedControlsResult) string { return v.ControlNumber }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetInspectionPredefinedControlsResultOutput) ControlType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInspectionPredefinedControlsResult) string { return v.ControlType }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetInspectionPredefinedControlsResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInspectionPredefinedControlsResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetInspectionPredefinedControlsResultOutput) DefaultAction() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInspectionPredefinedControlsResult) string { return v.DefaultAction }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetInspectionPredefinedControlsResultOutput) DefaultActionValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInspectionPredefinedControlsResult) string { return v.DefaultActionValue }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetInspectionPredefinedControlsResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInspectionPredefinedControlsResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetInspectionPredefinedControlsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInspectionPredefinedControlsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetInspectionPredefinedControlsResultOutput) ModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInspectionPredefinedControlsResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
@@ -215,22 +182,18 @@ func (o GetInspectionPredefinedControlsResultOutput) Modifiedby() pulumi.StringO
 	return o.ApplyT(func(v GetInspectionPredefinedControlsResult) string { return v.Modifiedby }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetInspectionPredefinedControlsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInspectionPredefinedControlsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetInspectionPredefinedControlsResultOutput) ParanoiaLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInspectionPredefinedControlsResult) string { return v.ParanoiaLevel }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetInspectionPredefinedControlsResultOutput) ProtocolType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInspectionPredefinedControlsResult) string { return v.ProtocolType }).(pulumi.StringOutput)
 }
 
-// (Computed)
 func (o GetInspectionPredefinedControlsResultOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInspectionPredefinedControlsResult) string { return v.Severity }).(pulumi.StringOutput)
 }

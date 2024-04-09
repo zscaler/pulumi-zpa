@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-log-streaming-service)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
+ *
  * Use the **zpa_lss_config_client_types** data source to get information about all LSS client types in the Zscaler Private Access cloud. This data source is required when the defining a policy rule resource for an object type as `CLIENT_TYPE` parameter in the LSS Config Controller resource is set. To learn more see the To learn more see the [Getting Details of All LSS Status Codes](https://help.zscaler.com/zpa/log-streaming-service-configuration-use-cases#GettingLSSClientTypes)
  *
  * > **NOTE** By Default the ZPA provider will return all client types
@@ -19,6 +22,19 @@ import * as utilities from "./utilities";
  * const example = zpa.getLSSClientTypes({});
  * ```
  * <!--End PulumiCodeChooser -->
+ *
+ * ### Read-Only
+ *
+ * The following arguments are supported:
+ *
+ * * `"zpnClientTypeEdgeConnector" = "Cloud Connector"`
+ * * `"zpnClientTypeExporter" = "Web Browser`
+ * * `"zpnClientTypeIpAnchoring" = "ZIA Service Edge"`
+ * * `"zpnClientTypeMachineTunnel" = "Machine Tunnel"`
+ * * `"zpnClientTypeSlogger" = "ZPA LSS"`
+ * * `"zpnClientTypeZapp" = "Client Connector"`
+ *
+ * To learn more see the [Getting Details of All LSS Status Codes](https://help.zscaler.com/zpa/log-streaming-service-configuration-use-cases#GettingLSSClientTypes)
  */
 export function getLSSClientTypes(opts?: pulumi.InvokeOptions): Promise<GetLSSClientTypesResult> {
 
@@ -43,6 +59,9 @@ export interface GetLSSClientTypesResult {
     readonly zpnClientTypeZapp: string;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-log-streaming-service)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
+ *
  * Use the **zpa_lss_config_client_types** data source to get information about all LSS client types in the Zscaler Private Access cloud. This data source is required when the defining a policy rule resource for an object type as `CLIENT_TYPE` parameter in the LSS Config Controller resource is set. To learn more see the To learn more see the [Getting Details of All LSS Status Codes](https://help.zscaler.com/zpa/log-streaming-service-configuration-use-cases#GettingLSSClientTypes)
  *
  * > **NOTE** By Default the ZPA provider will return all client types
@@ -57,6 +76,19 @@ export interface GetLSSClientTypesResult {
  * const example = zpa.getLSSClientTypes({});
  * ```
  * <!--End PulumiCodeChooser -->
+ *
+ * ### Read-Only
+ *
+ * The following arguments are supported:
+ *
+ * * `"zpnClientTypeEdgeConnector" = "Cloud Connector"`
+ * * `"zpnClientTypeExporter" = "Web Browser`
+ * * `"zpnClientTypeIpAnchoring" = "ZIA Service Edge"`
+ * * `"zpnClientTypeMachineTunnel" = "Machine Tunnel"`
+ * * `"zpnClientTypeSlogger" = "ZPA LSS"`
+ * * `"zpnClientTypeZapp" = "Client Connector"`
+ *
+ * To learn more see the [Getting Details of All LSS Status Codes](https://help.zscaler.com/zpa/log-streaming-service-configuration-use-cases#GettingLSSClientTypes)
  */
 export function getLSSClientTypesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetLSSClientTypesResult> {
     return pulumi.output(getLSSClientTypes(opts))

@@ -47,19 +47,67 @@ __all__ = [
     'LSSConfigControllerPolicyRuleResourceConditionOperand',
     'LSSConfigControllerPolicyRuleResourceConditionOperandEntryValue',
     'MicrotenantUser',
+    'PRAApprovalApplication',
+    'PRAApprovalWorkingHour',
+    'PRAConsolePraApplication',
+    'PRAConsolePraPortal',
     'PolicyAccessForwardingRuleCondition',
     'PolicyAccessForwardingRuleConditionOperand',
+    'PolicyAccessForwardingRuleV2Condition',
+    'PolicyAccessForwardingRuleV2ConditionOperand',
+    'PolicyAccessForwardingRuleV2ConditionOperandEntryValue',
     'PolicyAccessInspectionRuleCondition',
     'PolicyAccessInspectionRuleConditionOperand',
+    'PolicyAccessInspectionRuleV2Condition',
+    'PolicyAccessInspectionRuleV2ConditionOperand',
+    'PolicyAccessInspectionRuleV2ConditionOperandEntryValue',
     'PolicyAccessIsolationRuleCondition',
     'PolicyAccessIsolationRuleConditionOperand',
+    'PolicyAccessIsolationRuleV2Condition',
+    'PolicyAccessIsolationRuleV2ConditionOperand',
+    'PolicyAccessIsolationRuleV2ConditionOperandEntryValue',
     'PolicyAccessReorderRuleRule',
     'PolicyAccessRuleAppConnectorGroup',
     'PolicyAccessRuleAppServerGroup',
     'PolicyAccessRuleCondition',
     'PolicyAccessRuleConditionOperand',
+    'PolicyAccessRuleV2AppConnectorGroup',
+    'PolicyAccessRuleV2AppServerGroup',
+    'PolicyAccessRuleV2Condition',
+    'PolicyAccessRuleV2ConditionOperand',
+    'PolicyAccessRuleV2ConditionOperandEntryValue',
     'PolicyAccessTimeOutRuleCondition',
     'PolicyAccessTimeOutRuleConditionOperand',
+    'PolicyAccessTimeOutRuleV2Condition',
+    'PolicyAccessTimeOutRuleV2ConditionOperand',
+    'PolicyAccessTimeOutRuleV2ConditionOperandEntryValue',
+    'PolicyCapabilitiesRuleCondition',
+    'PolicyCapabilitiesRuleConditionOperand',
+    'PolicyCapabilitiesRuleConditionOperandEntryValue',
+    'PolicyCapabilitiesRulePrivilegedCapabilities',
+    'PolicyCredentialRuleCondition',
+    'PolicyCredentialRuleConditionOperand',
+    'PolicyCredentialRuleConditionOperandEntryValue',
+    'PolicyCredentialRuleCredential',
+    'PolicyForwardingRuleV2Condition',
+    'PolicyForwardingRuleV2ConditionOperand',
+    'PolicyForwardingRuleV2ConditionOperandEntryValue',
+    'PolicyInspectionRuleV2Condition',
+    'PolicyInspectionRuleV2ConditionOperand',
+    'PolicyInspectionRuleV2ConditionOperandEntryValue',
+    'PolicyIsolationRuleV2Condition',
+    'PolicyIsolationRuleV2ConditionOperand',
+    'PolicyIsolationRuleV2ConditionOperandEntryValue',
+    'PolicyRedirectionRuleCondition',
+    'PolicyRedirectionRuleConditionOperand',
+    'PolicyRedirectionRuleServiceEdgeGroup',
+    'PolicyTimeoutRuleV2Condition',
+    'PolicyTimeoutRuleV2ConditionOperand',
+    'PolicyTimeoutRuleV2ConditionOperandEntryValue',
+    'PraApprovalControllerApplication',
+    'PraApprovalControllerWorkingHour',
+    'PraConsoleControllerPraApplication',
+    'PraConsoleControllerPraPortal',
     'SegmentGroupApplication',
     'ServerGroupAppConnectorGroup',
     'ServerGroupApplication',
@@ -113,9 +161,17 @@ __all__ = [
     'GetMachineGroupMachineResult',
     'GetMicrotenantRoleResult',
     'GetMicrotenantUserResult',
+    'GetPRAApprovalApplicationResult',
+    'GetPRAApprovalWorkingHourResult',
+    'GetPRAConsolePraApplicationResult',
+    'GetPRAConsolePraPortalResult',
     'GetPolicyTypeRuleResult',
     'GetPolicyTypeRuleConditionResult',
     'GetPolicyTypeRuleConditionOperandResult',
+    'GetPraApprovalControllerApplicationResult',
+    'GetPraApprovalControllerWorkingHourResult',
+    'GetPraConsoleControllerPraApplicationResult',
+    'GetPraConsoleControllerPraPortalResult',
     'GetSegmentGroupApplicationResult',
     'GetSegmentGroupApplicationServerGroupResult',
     'GetServerGroupAppConnectorGroupResult',
@@ -175,18 +231,11 @@ class ApplicationSegmentBrowserAccessClientlessApp(dict):
                  trust_untrusted_cert: Optional[bool] = None):
         """
         :param str application_port: Port for the BA app.
-        :param str application_protocol: Protocol for the BA app. Supported values: `HTTP` and `HTTPS`
-        :param str certificate_id: ID of the BA certificate. Refer to the data source documentation for `BrowserCertificate`
-        :param str name: Name of BA app.
-        :param bool allow_options: If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.. Supported values: `true` and `false`
-        :param str cname: (Optional)
-        :param str description: (Optional) Description of the application.
+        :param str application_protocol: Protocol for the BA app.
+        :param str certificate_id: ID of the BA certificate.
+        :param bool allow_options: If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.
         :param str domain: Domain name or IP address of the BA app.
-        :param bool enabled: (Optional) - Whether this app is enabled or not.
-        :param bool hidden: (Optional)
-        :param str local_domain: (Optional)
-        :param str path: (Optional)
-        :param bool trust_untrusted_cert: (Optional)
+        :param bool trust_untrusted_cert: Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
         """
         pulumi.set(__self__, "application_port", application_port)
         pulumi.set(__self__, "application_protocol", application_protocol)
@@ -225,7 +274,7 @@ class ApplicationSegmentBrowserAccessClientlessApp(dict):
     @pulumi.getter(name="applicationProtocol")
     def application_protocol(self) -> str:
         """
-        Protocol for the BA app. Supported values: `HTTP` and `HTTPS`
+        Protocol for the BA app.
         """
         return pulumi.get(self, "application_protocol")
 
@@ -233,40 +282,31 @@ class ApplicationSegmentBrowserAccessClientlessApp(dict):
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> str:
         """
-        ID of the BA certificate. Refer to the data source documentation for `BrowserCertificate`
+        ID of the BA certificate.
         """
         return pulumi.get(self, "certificate_id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Name of BA app.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="allowOptions")
     def allow_options(self) -> Optional[bool]:
         """
-        If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.. Supported values: `true` and `false`
+        If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.
         """
         return pulumi.get(self, "allow_options")
 
     @property
     @pulumi.getter
     def cname(self) -> Optional[str]:
-        """
-        (Optional)
-        """
         return pulumi.get(self, "cname")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
-        """
-        (Optional) Description of the application.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -280,17 +320,11 @@ class ApplicationSegmentBrowserAccessClientlessApp(dict):
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
-        """
-        (Optional) - Whether this app is enabled or not.
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def hidden(self) -> Optional[bool]:
-        """
-        (Optional)
-        """
         return pulumi.get(self, "hidden")
 
     @property
@@ -301,24 +335,18 @@ class ApplicationSegmentBrowserAccessClientlessApp(dict):
     @property
     @pulumi.getter(name="localDomain")
     def local_domain(self) -> Optional[str]:
-        """
-        (Optional)
-        """
         return pulumi.get(self, "local_domain")
 
     @property
     @pulumi.getter
     def path(self) -> Optional[str]:
-        """
-        (Optional)
-        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter(name="trustUntrustedCert")
     def trust_untrusted_cert(self) -> Optional[bool]:
         """
-        (Optional)
+        Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
         """
         return pulumi.get(self, "trust_untrusted_cert")
 
@@ -479,16 +507,6 @@ class ApplicationSegmentInspectionCommonAppsDtoAppsConfig(dict):
                  enabled: Optional[bool] = None,
                  name: Optional[str] = None,
                  trust_untrusted_cert: Optional[bool] = None):
-        """
-        :param Sequence[str] app_types: Indicates the type of application as inspection. Supported value: `INSPECT`
-        :param str application_port: Port for the Inspection Application Segment.
-        :param str application_protocol: Protocol for the Inspection Application Segment.. Supported values: `HTTP` and `HTTPS`
-        :param str certificate_id: ID of the signing certificate. This field is required if the ``application_protocol`` is set to `HTTPS`. The ``certificate_id`` is **NOT** supported if the application_protocol is set to `HTTP`.
-        :param str description: (Optional) Description of the application.
-        :param str domain: Domain name of the Inspection Application Segment.
-        :param bool enabled: Whether this application is enabled or not
-        :param str name: Name of the Inspection Application Segment.
-        """
         if app_types is not None:
             pulumi.set(__self__, "app_types", app_types)
         if application_port is not None:
@@ -511,65 +529,41 @@ class ApplicationSegmentInspectionCommonAppsDtoAppsConfig(dict):
     @property
     @pulumi.getter(name="appTypes")
     def app_types(self) -> Optional[Sequence[str]]:
-        """
-        Indicates the type of application as inspection. Supported value: `INSPECT`
-        """
         return pulumi.get(self, "app_types")
 
     @property
     @pulumi.getter(name="applicationPort")
     def application_port(self) -> Optional[str]:
-        """
-        Port for the Inspection Application Segment.
-        """
         return pulumi.get(self, "application_port")
 
     @property
     @pulumi.getter(name="applicationProtocol")
     def application_protocol(self) -> Optional[str]:
-        """
-        Protocol for the Inspection Application Segment.. Supported values: `HTTP` and `HTTPS`
-        """
         return pulumi.get(self, "application_protocol")
 
     @property
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> Optional[str]:
-        """
-        ID of the signing certificate. This field is required if the ``application_protocol`` is set to `HTTPS`. The ``certificate_id`` is **NOT** supported if the application_protocol is set to `HTTP`.
-        """
         return pulumi.get(self, "certificate_id")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
-        """
-        (Optional) Description of the application.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def domain(self) -> Optional[str]:
-        """
-        Domain name of the Inspection Application Segment.
-        """
         return pulumi.get(self, "domain")
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
-        """
-        Whether this application is enabled or not
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        Name of the Inspection Application Segment.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -733,17 +727,8 @@ class ApplicationSegmentPRACommonAppsDtoAppsConfig(dict):
                  description: Optional[str] = None,
                  domain: Optional[str] = None,
                  enabled: Optional[bool] = None,
+                 id: Optional[str] = None,
                  name: Optional[str] = None):
-        """
-        :param Sequence[str] app_types: Indicates the type of application as Privileged Remote Access. Supported value: `SECURE_REMOTE_ACCESS`
-        :param str application_port: Port for the Privileged Remote Access
-        :param str application_protocol: Protocol for the Privileged Remote Access. Supported values: `RDP` and `SSH`
-        :param str connection_security: Parameter required when `application_protocol` is of type `RDP`
-        :param str description: (Optional) Description of the application.
-        :param str domain: Domain name of the Privileged Remote Access
-        :param bool enabled: Whether this application is enabled or not
-        :param str name: Name of the Privileged Remote Access
-        """
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
         if app_types is not None:
@@ -760,6 +745,8 @@ class ApplicationSegmentPRACommonAppsDtoAppsConfig(dict):
             pulumi.set(__self__, "domain", domain)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -771,65 +758,46 @@ class ApplicationSegmentPRACommonAppsDtoAppsConfig(dict):
     @property
     @pulumi.getter(name="appTypes")
     def app_types(self) -> Optional[Sequence[str]]:
-        """
-        Indicates the type of application as Privileged Remote Access. Supported value: `SECURE_REMOTE_ACCESS`
-        """
         return pulumi.get(self, "app_types")
 
     @property
     @pulumi.getter(name="applicationPort")
     def application_port(self) -> Optional[str]:
-        """
-        Port for the Privileged Remote Access
-        """
         return pulumi.get(self, "application_port")
 
     @property
     @pulumi.getter(name="applicationProtocol")
     def application_protocol(self) -> Optional[str]:
-        """
-        Protocol for the Privileged Remote Access. Supported values: `RDP` and `SSH`
-        """
         return pulumi.get(self, "application_protocol")
 
     @property
     @pulumi.getter(name="connectionSecurity")
     def connection_security(self) -> Optional[str]:
-        """
-        Parameter required when `application_protocol` is of type `RDP`
-        """
         return pulumi.get(self, "connection_security")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
-        """
-        (Optional) Description of the application.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def domain(self) -> Optional[str]:
-        """
-        Domain name of the Privileged Remote Access
-        """
         return pulumi.get(self, "domain")
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
-        """
-        Whether this application is enabled or not
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        Name of the Privileged Remote Access
-        """
         return pulumi.get(self, "name")
 
 
@@ -1057,18 +1025,11 @@ class BrowserAccessClientlessApp(dict):
                  trust_untrusted_cert: Optional[bool] = None):
         """
         :param str application_port: Port for the BA app.
-        :param str application_protocol: Protocol for the BA app. Supported values: `HTTP` and `HTTPS`
-        :param str certificate_id: ID of the BA certificate. Refer to the data source documentation for `BrowserCertificate`
-        :param str name: Name of BA app.
-        :param bool allow_options: If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.. Supported values: `true` and `false`
-        :param str cname: (Optional)
-        :param str description: (Optional) Description of the application.
+        :param str application_protocol: Protocol for the BA app.
+        :param str certificate_id: ID of the BA certificate.
+        :param bool allow_options: If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.
         :param str domain: Domain name or IP address of the BA app.
-        :param bool enabled: (Optional) - Whether this app is enabled or not.
-        :param bool hidden: (Optional)
-        :param str local_domain: (Optional)
-        :param str path: (Optional)
-        :param bool trust_untrusted_cert: (Optional)
+        :param bool trust_untrusted_cert: Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
         """
         pulumi.set(__self__, "application_port", application_port)
         pulumi.set(__self__, "application_protocol", application_protocol)
@@ -1107,7 +1068,7 @@ class BrowserAccessClientlessApp(dict):
     @pulumi.getter(name="applicationProtocol")
     def application_protocol(self) -> str:
         """
-        Protocol for the BA app. Supported values: `HTTP` and `HTTPS`
+        Protocol for the BA app.
         """
         return pulumi.get(self, "application_protocol")
 
@@ -1115,40 +1076,31 @@ class BrowserAccessClientlessApp(dict):
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> str:
         """
-        ID of the BA certificate. Refer to the data source documentation for `BrowserCertificate`
+        ID of the BA certificate.
         """
         return pulumi.get(self, "certificate_id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Name of BA app.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="allowOptions")
     def allow_options(self) -> Optional[bool]:
         """
-        If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.. Supported values: `true` and `false`
+        If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.
         """
         return pulumi.get(self, "allow_options")
 
     @property
     @pulumi.getter
     def cname(self) -> Optional[str]:
-        """
-        (Optional)
-        """
         return pulumi.get(self, "cname")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
-        """
-        (Optional) Description of the application.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -1162,17 +1114,11 @@ class BrowserAccessClientlessApp(dict):
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
-        """
-        (Optional) - Whether this app is enabled or not.
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def hidden(self) -> Optional[bool]:
-        """
-        (Optional)
-        """
         return pulumi.get(self, "hidden")
 
     @property
@@ -1183,24 +1129,18 @@ class BrowserAccessClientlessApp(dict):
     @property
     @pulumi.getter(name="localDomain")
     def local_domain(self) -> Optional[str]:
-        """
-        (Optional)
-        """
         return pulumi.get(self, "local_domain")
 
     @property
     @pulumi.getter
     def path(self) -> Optional[str]:
-        """
-        (Optional)
-        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter(name="trustUntrustedCert")
     def trust_untrusted_cert(self) -> Optional[bool]:
         """
-        (Optional)
+        Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
         """
         return pulumi.get(self, "trust_untrusted_cert")
 
@@ -1530,18 +1470,12 @@ class InspectionProfileControlsInfo(dict):
 
     def __init__(__self__, *,
                  control_type: Optional[str] = None):
-        """
-        :param str control_type: (string) Control types. Supported Values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `CUSTOM`, `PREDEFINED`, `ZSCALER`
-        """
         if control_type is not None:
             pulumi.set(__self__, "control_type", control_type)
 
     @property
     @pulumi.getter(name="controlType")
     def control_type(self) -> Optional[str]:
-        """
-        (string) Control types. Supported Values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `CUSTOM`, `PREDEFINED`, `ZSCALER`
-        """
         return pulumi.get(self, "control_type")
 
 
@@ -1569,9 +1503,9 @@ class InspectionProfileCustomControl(dict):
                  action: Optional[str] = None,
                  action_value: Optional[str] = None):
         """
-        :param str id: ID of the predefined control
-        :param str action: The action of the predefined control. Supported values: `PASS`, `BLOCK` and `REDIRECT`
-        :param str action_value: Value for the predefined controls action. This field is only required if the action is set to REDIRECT. This field is only required if the action is set to `REDIRECT`.
+        :param str id: The unique identifier of the custom control
+        :param str action: The action of the custom control
+        :param str action_value: Denotes the action. Supports any string
         """
         pulumi.set(__self__, "id", id)
         if action is not None:
@@ -1583,7 +1517,7 @@ class InspectionProfileCustomControl(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the predefined control
+        The unique identifier of the custom control
         """
         return pulumi.get(self, "id")
 
@@ -1591,7 +1525,7 @@ class InspectionProfileCustomControl(dict):
     @pulumi.getter
     def action(self) -> Optional[str]:
         """
-        The action of the predefined control. Supported values: `PASS`, `BLOCK` and `REDIRECT`
+        The action of the custom control
         """
         return pulumi.get(self, "action")
 
@@ -1599,7 +1533,7 @@ class InspectionProfileCustomControl(dict):
     @pulumi.getter(name="actionValue")
     def action_value(self) -> Optional[str]:
         """
-        Value for the predefined controls action. This field is only required if the action is set to REDIRECT. This field is only required if the action is set to `REDIRECT`.
+        Denotes the action. Supports any string
         """
         return pulumi.get(self, "action_value")
 
@@ -1634,10 +1568,10 @@ class InspectionProfilePredefinedControl(dict):
                  id: Optional[str] = None,
                  protocol_type: Optional[str] = None):
         """
-        :param str action: The action of the predefined control. Supported values: `PASS`, `BLOCK` and `REDIRECT`
-        :param str action_value: Value for the predefined controls action. This field is only required if the action is set to REDIRECT. This field is only required if the action is set to `REDIRECT`.
-        :param str control_type: (string) Control types. Supported Values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `CUSTOM`, `PREDEFINED`, `ZSCALER`
-        :param str id: ID of the predefined control
+        :param str action: The action of the predefined control
+        :param str action_value: The value for the predefined controls action. This field is only required if the action is set to REDIRECT
+        :param str control_type: The control type of the custom control
+        :param str id: The unique identifier of the predefined control
         :param str protocol_type: The protocol type of the predefined control
         """
         if action is not None:
@@ -1655,7 +1589,7 @@ class InspectionProfilePredefinedControl(dict):
     @pulumi.getter
     def action(self) -> Optional[str]:
         """
-        The action of the predefined control. Supported values: `PASS`, `BLOCK` and `REDIRECT`
+        The action of the predefined control
         """
         return pulumi.get(self, "action")
 
@@ -1663,7 +1597,7 @@ class InspectionProfilePredefinedControl(dict):
     @pulumi.getter(name="actionValue")
     def action_value(self) -> Optional[str]:
         """
-        Value for the predefined controls action. This field is only required if the action is set to REDIRECT. This field is only required if the action is set to `REDIRECT`.
+        The value for the predefined controls action. This field is only required if the action is set to REDIRECT
         """
         return pulumi.get(self, "action_value")
 
@@ -1671,7 +1605,7 @@ class InspectionProfilePredefinedControl(dict):
     @pulumi.getter(name="controlType")
     def control_type(self) -> Optional[str]:
         """
-        (string) Control types. Supported Values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `CUSTOM`, `PREDEFINED`, `ZSCALER`
+        The control type of the custom control
         """
         return pulumi.get(self, "control_type")
 
@@ -1679,7 +1613,7 @@ class InspectionProfilePredefinedControl(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        ID of the predefined control
+        The unique identifier of the predefined control
         """
         return pulumi.get(self, "id")
 
@@ -2114,14 +2048,11 @@ class LSSConfigControllerPolicyRuleResource(dict):
 class LSSConfigControllerPolicyRuleResourceCondition(dict):
     def __init__(__self__, *,
                  operator: str,
-                 negated: Optional[bool] = None,
                  operands: Optional[Sequence['outputs.LSSConfigControllerPolicyRuleResourceConditionOperand']] = None):
         """
         :param Sequence['LSSConfigControllerPolicyRuleResourceConditionOperandArgs'] operands: This signifies the various policy criteria.
         """
         pulumi.set(__self__, "operator", operator)
-        if negated is not None:
-            pulumi.set(__self__, "negated", negated)
         if operands is not None:
             pulumi.set(__self__, "operands", operands)
 
@@ -2129,11 +2060,6 @@ class LSSConfigControllerPolicyRuleResourceCondition(dict):
     @pulumi.getter
     def operator(self) -> str:
         return pulumi.get(self, "operator")
-
-    @property
-    @pulumi.getter
-    def negated(self) -> Optional[bool]:
-        return pulumi.get(self, "negated")
 
     @property
     @pulumi.getter
@@ -2279,6 +2205,164 @@ class MicrotenantUser(dict):
 
 
 @pulumi.output_type
+class PRAApprovalApplication(dict):
+    def __init__(__self__, *,
+                 ids: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] ids: The unique identifier of the pra application segment
+        """
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[str]]:
+        """
+        The unique identifier of the pra application segment
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class PRAApprovalWorkingHour(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "endTimeCron":
+            suggest = "end_time_cron"
+        elif key == "startTime":
+            suggest = "start_time"
+        elif key == "startTimeCron":
+            suggest = "start_time_cron"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PRAApprovalWorkingHour. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PRAApprovalWorkingHour.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PRAApprovalWorkingHour.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 days: Optional[Sequence[str]] = None,
+                 end_time: Optional[str] = None,
+                 end_time_cron: Optional[str] = None,
+                 start_time: Optional[str] = None,
+                 start_time_cron: Optional[str] = None,
+                 timezone: Optional[str] = None):
+        """
+        :param Sequence[str] days: The days of the week that you want to enable the privileged approval
+        :param str end_time: The end time that the user no longer has access to the privileged approval
+        :param str end_time_cron: The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+        :param str start_time: The start time that the user has access to the privileged approval
+        :param str start_time_cron: The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+        :param str timezone: The time zone for the time window of a privileged approval
+        """
+        if days is not None:
+            pulumi.set(__self__, "days", days)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if end_time_cron is not None:
+            pulumi.set(__self__, "end_time_cron", end_time_cron)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if start_time_cron is not None:
+            pulumi.set(__self__, "start_time_cron", start_time_cron)
+        if timezone is not None:
+            pulumi.set(__self__, "timezone", timezone)
+
+    @property
+    @pulumi.getter
+    def days(self) -> Optional[Sequence[str]]:
+        """
+        The days of the week that you want to enable the privileged approval
+        """
+        return pulumi.get(self, "days")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[str]:
+        """
+        The end time that the user no longer has access to the privileged approval
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="endTimeCron")
+    def end_time_cron(self) -> Optional[str]:
+        """
+        The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+        """
+        return pulumi.get(self, "end_time_cron")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[str]:
+        """
+        The start time that the user has access to the privileged approval
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter(name="startTimeCron")
+    def start_time_cron(self) -> Optional[str]:
+        """
+        The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+        """
+        return pulumi.get(self, "start_time_cron")
+
+    @property
+    @pulumi.getter
+    def timezone(self) -> Optional[str]:
+        """
+        The time zone for the time window of a privileged approval
+        """
+        return pulumi.get(self, "timezone")
+
+
+@pulumi.output_type
+class PRAConsolePraApplication(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The unique identifier of the Privileged Remote Access-enabled application
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier of the Privileged Remote Access-enabled application
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class PRAConsolePraPortal(dict):
+    def __init__(__self__, *,
+                 ids: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] ids: The unique identifier of the privileged portal
+        """
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[str]]:
+        """
+        The unique identifier of the privileged portal
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
 class PolicyAccessForwardingRuleCondition(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2301,7 +2385,6 @@ class PolicyAccessForwardingRuleCondition(dict):
                  operator: str,
                  id: Optional[str] = None,
                  microtenant_id: Optional[str] = None,
-                 negated: Optional[bool] = None,
                  operands: Optional[Sequence['outputs.PolicyAccessForwardingRuleConditionOperand']] = None):
         """
         :param Sequence['PolicyAccessForwardingRuleConditionOperandArgs'] operands: This signifies the various policy criteria.
@@ -2311,8 +2394,6 @@ class PolicyAccessForwardingRuleCondition(dict):
             pulumi.set(__self__, "id", id)
         if microtenant_id is not None:
             pulumi.set(__self__, "microtenant_id", microtenant_id)
-        if negated is not None:
-            pulumi.set(__self__, "negated", negated)
         if operands is not None:
             pulumi.set(__self__, "operands", operands)
 
@@ -2330,11 +2411,6 @@ class PolicyAccessForwardingRuleCondition(dict):
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[str]:
         return pulumi.get(self, "microtenant_id")
-
-    @property
-    @pulumi.getter
-    def negated(self) -> Optional[bool]:
-        return pulumi.get(self, "negated")
 
     @property
     @pulumi.getter
@@ -2458,6 +2534,120 @@ class PolicyAccessForwardingRuleConditionOperand(dict):
 
 
 @pulumi.output_type
+class PolicyAccessForwardingRuleV2Condition(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 operands: Optional[Sequence['outputs.PolicyAccessForwardingRuleV2ConditionOperand']] = None,
+                 operator: Optional[str] = None):
+        """
+        :param Sequence['PolicyAccessForwardingRuleV2ConditionOperandArgs'] operands: This signifies the various policy criteria.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if operands is not None:
+            pulumi.set(__self__, "operands", operands)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def operands(self) -> Optional[Sequence['outputs.PolicyAccessForwardingRuleV2ConditionOperand']]:
+        """
+        This signifies the various policy criteria.
+        """
+        return pulumi.get(self, "operands")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+
+@pulumi.output_type
+class PolicyAccessForwardingRuleV2ConditionOperand(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entryValues":
+            suggest = "entry_values"
+        elif key == "objectType":
+            suggest = "object_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyAccessForwardingRuleV2ConditionOperand. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyAccessForwardingRuleV2ConditionOperand.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyAccessForwardingRuleV2ConditionOperand.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entry_values: Optional[Sequence['outputs.PolicyAccessForwardingRuleV2ConditionOperandEntryValue']] = None,
+                 object_type: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str object_type: This is for specifying the policy critiera.
+        :param Sequence[str] values: This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        if entry_values is not None:
+            pulumi.set(__self__, "entry_values", entry_values)
+        if object_type is not None:
+            pulumi.set(__self__, "object_type", object_type)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="entryValues")
+    def entry_values(self) -> Optional[Sequence['outputs.PolicyAccessForwardingRuleV2ConditionOperandEntryValue']]:
+        return pulumi.get(self, "entry_values")
+
+    @property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> Optional[str]:
+        """
+        This is for specifying the policy critiera.
+        """
+        return pulumi.get(self, "object_type")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class PolicyAccessForwardingRuleV2ConditionOperandEntryValue(dict):
+    def __init__(__self__, *,
+                 lhs: Optional[str] = None,
+                 rhs: Optional[str] = None):
+        if lhs is not None:
+            pulumi.set(__self__, "lhs", lhs)
+        if rhs is not None:
+            pulumi.set(__self__, "rhs", rhs)
+
+    @property
+    @pulumi.getter
+    def lhs(self) -> Optional[str]:
+        return pulumi.get(self, "lhs")
+
+    @property
+    @pulumi.getter
+    def rhs(self) -> Optional[str]:
+        return pulumi.get(self, "rhs")
+
+
+@pulumi.output_type
 class PolicyAccessInspectionRuleCondition(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2480,7 +2670,6 @@ class PolicyAccessInspectionRuleCondition(dict):
                  operator: str,
                  id: Optional[str] = None,
                  microtenant_id: Optional[str] = None,
-                 negated: Optional[bool] = None,
                  operands: Optional[Sequence['outputs.PolicyAccessInspectionRuleConditionOperand']] = None):
         """
         :param Sequence['PolicyAccessInspectionRuleConditionOperandArgs'] operands: This signifies the various policy criteria.
@@ -2490,8 +2679,6 @@ class PolicyAccessInspectionRuleCondition(dict):
             pulumi.set(__self__, "id", id)
         if microtenant_id is not None:
             pulumi.set(__self__, "microtenant_id", microtenant_id)
-        if negated is not None:
-            pulumi.set(__self__, "negated", negated)
         if operands is not None:
             pulumi.set(__self__, "operands", operands)
 
@@ -2509,11 +2696,6 @@ class PolicyAccessInspectionRuleCondition(dict):
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[str]:
         return pulumi.get(self, "microtenant_id")
-
-    @property
-    @pulumi.getter
-    def negated(self) -> Optional[bool]:
-        return pulumi.get(self, "negated")
 
     @property
     @pulumi.getter
@@ -2637,6 +2819,120 @@ class PolicyAccessInspectionRuleConditionOperand(dict):
 
 
 @pulumi.output_type
+class PolicyAccessInspectionRuleV2Condition(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 operands: Optional[Sequence['outputs.PolicyAccessInspectionRuleV2ConditionOperand']] = None,
+                 operator: Optional[str] = None):
+        """
+        :param Sequence['PolicyAccessInspectionRuleV2ConditionOperandArgs'] operands: This signifies the various policy criteria.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if operands is not None:
+            pulumi.set(__self__, "operands", operands)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def operands(self) -> Optional[Sequence['outputs.PolicyAccessInspectionRuleV2ConditionOperand']]:
+        """
+        This signifies the various policy criteria.
+        """
+        return pulumi.get(self, "operands")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+
+@pulumi.output_type
+class PolicyAccessInspectionRuleV2ConditionOperand(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entryValues":
+            suggest = "entry_values"
+        elif key == "objectType":
+            suggest = "object_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyAccessInspectionRuleV2ConditionOperand. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyAccessInspectionRuleV2ConditionOperand.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyAccessInspectionRuleV2ConditionOperand.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entry_values: Optional[Sequence['outputs.PolicyAccessInspectionRuleV2ConditionOperandEntryValue']] = None,
+                 object_type: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str object_type: This is for specifying the policy critiera.
+        :param Sequence[str] values: This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        if entry_values is not None:
+            pulumi.set(__self__, "entry_values", entry_values)
+        if object_type is not None:
+            pulumi.set(__self__, "object_type", object_type)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="entryValues")
+    def entry_values(self) -> Optional[Sequence['outputs.PolicyAccessInspectionRuleV2ConditionOperandEntryValue']]:
+        return pulumi.get(self, "entry_values")
+
+    @property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> Optional[str]:
+        """
+        This is for specifying the policy critiera.
+        """
+        return pulumi.get(self, "object_type")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class PolicyAccessInspectionRuleV2ConditionOperandEntryValue(dict):
+    def __init__(__self__, *,
+                 lhs: Optional[str] = None,
+                 rhs: Optional[str] = None):
+        if lhs is not None:
+            pulumi.set(__self__, "lhs", lhs)
+        if rhs is not None:
+            pulumi.set(__self__, "rhs", rhs)
+
+    @property
+    @pulumi.getter
+    def lhs(self) -> Optional[str]:
+        return pulumi.get(self, "lhs")
+
+    @property
+    @pulumi.getter
+    def rhs(self) -> Optional[str]:
+        return pulumi.get(self, "rhs")
+
+
+@pulumi.output_type
 class PolicyAccessIsolationRuleCondition(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2659,7 +2955,6 @@ class PolicyAccessIsolationRuleCondition(dict):
                  operator: str,
                  id: Optional[str] = None,
                  microtenant_id: Optional[str] = None,
-                 negated: Optional[bool] = None,
                  operands: Optional[Sequence['outputs.PolicyAccessIsolationRuleConditionOperand']] = None):
         """
         :param Sequence['PolicyAccessIsolationRuleConditionOperandArgs'] operands: This signifies the various policy criteria.
@@ -2669,8 +2964,6 @@ class PolicyAccessIsolationRuleCondition(dict):
             pulumi.set(__self__, "id", id)
         if microtenant_id is not None:
             pulumi.set(__self__, "microtenant_id", microtenant_id)
-        if negated is not None:
-            pulumi.set(__self__, "negated", negated)
         if operands is not None:
             pulumi.set(__self__, "operands", operands)
 
@@ -2688,11 +2981,6 @@ class PolicyAccessIsolationRuleCondition(dict):
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[str]:
         return pulumi.get(self, "microtenant_id")
-
-    @property
-    @pulumi.getter
-    def negated(self) -> Optional[bool]:
-        return pulumi.get(self, "negated")
 
     @property
     @pulumi.getter
@@ -2816,31 +3104,135 @@ class PolicyAccessIsolationRuleConditionOperand(dict):
 
 
 @pulumi.output_type
+class PolicyAccessIsolationRuleV2Condition(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 operands: Optional[Sequence['outputs.PolicyAccessIsolationRuleV2ConditionOperand']] = None,
+                 operator: Optional[str] = None):
+        """
+        :param Sequence['PolicyAccessIsolationRuleV2ConditionOperandArgs'] operands: This signifies the various policy criteria.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if operands is not None:
+            pulumi.set(__self__, "operands", operands)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def operands(self) -> Optional[Sequence['outputs.PolicyAccessIsolationRuleV2ConditionOperand']]:
+        """
+        This signifies the various policy criteria.
+        """
+        return pulumi.get(self, "operands")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+
+@pulumi.output_type
+class PolicyAccessIsolationRuleV2ConditionOperand(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entryValues":
+            suggest = "entry_values"
+        elif key == "objectType":
+            suggest = "object_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyAccessIsolationRuleV2ConditionOperand. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyAccessIsolationRuleV2ConditionOperand.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyAccessIsolationRuleV2ConditionOperand.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entry_values: Optional[Sequence['outputs.PolicyAccessIsolationRuleV2ConditionOperandEntryValue']] = None,
+                 object_type: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str object_type: This is for specifying the policy critiera.
+        :param Sequence[str] values: This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        if entry_values is not None:
+            pulumi.set(__self__, "entry_values", entry_values)
+        if object_type is not None:
+            pulumi.set(__self__, "object_type", object_type)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="entryValues")
+    def entry_values(self) -> Optional[Sequence['outputs.PolicyAccessIsolationRuleV2ConditionOperandEntryValue']]:
+        return pulumi.get(self, "entry_values")
+
+    @property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> Optional[str]:
+        """
+        This is for specifying the policy critiera.
+        """
+        return pulumi.get(self, "object_type")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class PolicyAccessIsolationRuleV2ConditionOperandEntryValue(dict):
+    def __init__(__self__, *,
+                 lhs: Optional[str] = None,
+                 rhs: Optional[str] = None):
+        if lhs is not None:
+            pulumi.set(__self__, "lhs", lhs)
+        if rhs is not None:
+            pulumi.set(__self__, "rhs", rhs)
+
+    @property
+    @pulumi.getter
+    def lhs(self) -> Optional[str]:
+        return pulumi.get(self, "lhs")
+
+    @property
+    @pulumi.getter
+    def rhs(self) -> Optional[str]:
+        return pulumi.get(self, "rhs")
+
+
+@pulumi.output_type
 class PolicyAccessReorderRuleRule(dict):
     def __init__(__self__, *,
                  id: str,
                  order: str):
-        """
-        :param str id: (Required) - The ID of the rule to which the order number will be applied.
-        :param str order: (Required) - The order number that should be applied to the respective rule ID.
-        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "order", order)
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        (Required) - The ID of the rule to which the order number will be applied.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def order(self) -> str:
-        """
-        (Required) - The order number that should be applied to the respective rule ID.
-        """
         return pulumi.get(self, "order")
 
 
@@ -2848,18 +3240,12 @@ class PolicyAccessReorderRuleRule(dict):
 class PolicyAccessRuleAppConnectorGroup(dict):
     def __init__(__self__, *,
                  ids: Optional[Sequence[str]] = None):
-        """
-        :param Sequence[str] ids: (Optional) The ID of a server group resource
-        """
         if ids is not None:
             pulumi.set(__self__, "ids", ids)
 
     @property
     @pulumi.getter
     def ids(self) -> Optional[Sequence[str]]:
-        """
-        (Optional) The ID of a server group resource
-        """
         return pulumi.get(self, "ids")
 
 
@@ -2867,18 +3253,12 @@ class PolicyAccessRuleAppConnectorGroup(dict):
 class PolicyAccessRuleAppServerGroup(dict):
     def __init__(__self__, *,
                  ids: Optional[Sequence[str]] = None):
-        """
-        :param Sequence[str] ids: (Optional) The ID of a server group resource
-        """
         if ids is not None:
             pulumi.set(__self__, "ids", ids)
 
     @property
     @pulumi.getter
     def ids(self) -> Optional[Sequence[str]]:
-        """
-        (Optional) The ID of a server group resource
-        """
         return pulumi.get(self, "ids")
 
 
@@ -2905,22 +3285,16 @@ class PolicyAccessRuleCondition(dict):
                  operator: str,
                  id: Optional[str] = None,
                  microtenant_id: Optional[str] = None,
-                 negated: Optional[bool] = None,
                  operands: Optional[Sequence['outputs.PolicyAccessRuleConditionOperand']] = None):
         """
-        :param str operator: (Optional) Supported values: ``AND``, and ``OR``
-        :param str id: (Optional) The ID of a server group resource
-        :param str microtenant_id: (Optional) The ID of the microtenant the resource is to be associated with.
-        :param bool negated: (Optional) Supported values: ``true`` or ``false``
-        :param Sequence['PolicyAccessRuleConditionOperandArgs'] operands: (Optional) - Operands block must be repeated if multiple per `object_type` conditions are to be added to the rule.
+        :param str operator: Supported values: `AND`, `OR`
+        :param Sequence['PolicyAccessRuleConditionOperandArgs'] operands: This signifies the various policy criteria.
         """
         pulumi.set(__self__, "operator", operator)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if microtenant_id is not None:
             pulumi.set(__self__, "microtenant_id", microtenant_id)
-        if negated is not None:
-            pulumi.set(__self__, "negated", negated)
         if operands is not None:
             pulumi.set(__self__, "operands", operands)
 
@@ -2928,39 +3302,25 @@ class PolicyAccessRuleCondition(dict):
     @pulumi.getter
     def operator(self) -> str:
         """
-        (Optional) Supported values: ``AND``, and ``OR``
+        Supported values: `AND`, `OR`
         """
         return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        (Optional) The ID of a server group resource
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[str]:
-        """
-        (Optional) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
-
-    @property
-    @pulumi.getter
-    def negated(self) -> Optional[bool]:
-        """
-        (Optional) Supported values: ``true`` or ``false``
-        """
-        return pulumi.get(self, "negated")
 
     @property
     @pulumi.getter
     def operands(self) -> Optional[Sequence['outputs.PolicyAccessRuleConditionOperand']]:
         """
-        (Optional) - Operands block must be repeated if multiple per `object_type` conditions are to be added to the rule.
+        This signifies the various policy criteria.
         """
         return pulumi.get(self, "operands")
 
@@ -3000,13 +3360,11 @@ class PolicyAccessRuleConditionOperand(dict):
                  rhs: Optional[str] = None,
                  rhs_lists: Optional[Sequence[str]] = None):
         """
-        :param str lhs: (Optional) LHS must always carry the string value ``id`` or the attribute ID of the resource being associated with the rule.
-        :param str object_type: (Optional) This is for specifying the policy critiera. Supported values: `APP`, `APP_GROUP`, `SAML`, `IDP`, `CLIENT_TYPE`, `TRUSTED_NETWORK`, `POSTURE`, `SCIM`, `SCIM_GROUP`, and `CLOUD_CONNECTOR_GROUP`. `TRUSTED_NETWORK`, `CLIENT_TYPE`, `PLATFORM`, `COUNTRY_CODE`.
-        :param str id: (Optional) The ID of a server group resource
-        :param str idp_id: (Optional)
-        :param str microtenant_id: (Optional) The ID of the microtenant the resource is to be associated with.
-        :param str name: (Optional)
-        :param str rhs: (Optional) RHS is either the ID attribute of a resource or fixed string value. Refer to the chart below for further details.
+        :param str lhs: This signifies the key for the object type. String ID example: id
+        :param str object_type: This is for specifying the policy critiera.
+        :param str microtenant_id: This denotes the value for the given object type. Its value depends upon the key.
+        :param str name: This is the name of the policy rule.
+        :param str rhs: This denotes the value for the given object type. Its value depends upon the key.
         :param Sequence[str] rhs_lists: This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
         """
         pulumi.set(__self__, "lhs", lhs)
@@ -3028,7 +3386,7 @@ class PolicyAccessRuleConditionOperand(dict):
     @pulumi.getter
     def lhs(self) -> str:
         """
-        (Optional) LHS must always carry the string value ``id`` or the attribute ID of the resource being associated with the rule.
+        This signifies the key for the object type. String ID example: id
         """
         return pulumi.get(self, "lhs")
 
@@ -3036,31 +3394,25 @@ class PolicyAccessRuleConditionOperand(dict):
     @pulumi.getter(name="objectType")
     def object_type(self) -> str:
         """
-        (Optional) This is for specifying the policy critiera. Supported values: `APP`, `APP_GROUP`, `SAML`, `IDP`, `CLIENT_TYPE`, `TRUSTED_NETWORK`, `POSTURE`, `SCIM`, `SCIM_GROUP`, and `CLOUD_CONNECTOR_GROUP`. `TRUSTED_NETWORK`, `CLIENT_TYPE`, `PLATFORM`, `COUNTRY_CODE`.
+        This is for specifying the policy critiera.
         """
         return pulumi.get(self, "object_type")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        (Optional) The ID of a server group resource
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="idpId")
     def idp_id(self) -> Optional[str]:
-        """
-        (Optional)
-        """
         return pulumi.get(self, "idp_id")
 
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[str]:
         """
-        (Optional) The ID of the microtenant the resource is to be associated with.
+        This denotes the value for the given object type. Its value depends upon the key.
         """
         return pulumi.get(self, "microtenant_id")
 
@@ -3068,7 +3420,7 @@ class PolicyAccessRuleConditionOperand(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        (Optional)
+        This is the name of the policy rule.
         """
         return pulumi.get(self, "name")
 
@@ -3076,7 +3428,7 @@ class PolicyAccessRuleConditionOperand(dict):
     @pulumi.getter
     def rhs(self) -> Optional[str]:
         """
-        (Optional) RHS is either the ID attribute of a resource or fixed string value. Refer to the chart below for further details.
+        This denotes the value for the given object type. Its value depends upon the key.
         """
         return pulumi.get(self, "rhs")
 
@@ -3087,6 +3439,146 @@ class PolicyAccessRuleConditionOperand(dict):
         This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
         """
         return pulumi.get(self, "rhs_lists")
+
+
+@pulumi.output_type
+class PolicyAccessRuleV2AppConnectorGroup(dict):
+    def __init__(__self__, *,
+                 ids: Optional[Sequence[str]] = None):
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class PolicyAccessRuleV2AppServerGroup(dict):
+    def __init__(__self__, *,
+                 ids: Optional[Sequence[str]] = None):
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class PolicyAccessRuleV2Condition(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 operands: Optional[Sequence['outputs.PolicyAccessRuleV2ConditionOperand']] = None,
+                 operator: Optional[str] = None):
+        """
+        :param Sequence['PolicyAccessRuleV2ConditionOperandArgs'] operands: This signifies the various policy criteria.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if operands is not None:
+            pulumi.set(__self__, "operands", operands)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def operands(self) -> Optional[Sequence['outputs.PolicyAccessRuleV2ConditionOperand']]:
+        """
+        This signifies the various policy criteria.
+        """
+        return pulumi.get(self, "operands")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+
+@pulumi.output_type
+class PolicyAccessRuleV2ConditionOperand(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entryValues":
+            suggest = "entry_values"
+        elif key == "objectType":
+            suggest = "object_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyAccessRuleV2ConditionOperand. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyAccessRuleV2ConditionOperand.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyAccessRuleV2ConditionOperand.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entry_values: Optional[Sequence['outputs.PolicyAccessRuleV2ConditionOperandEntryValue']] = None,
+                 object_type: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str object_type: This is for specifying the policy critiera.
+        :param Sequence[str] values: This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        if entry_values is not None:
+            pulumi.set(__self__, "entry_values", entry_values)
+        if object_type is not None:
+            pulumi.set(__self__, "object_type", object_type)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="entryValues")
+    def entry_values(self) -> Optional[Sequence['outputs.PolicyAccessRuleV2ConditionOperandEntryValue']]:
+        return pulumi.get(self, "entry_values")
+
+    @property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> Optional[str]:
+        """
+        This is for specifying the policy critiera.
+        """
+        return pulumi.get(self, "object_type")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class PolicyAccessRuleV2ConditionOperandEntryValue(dict):
+    def __init__(__self__, *,
+                 lhs: Optional[str] = None,
+                 rhs: Optional[str] = None):
+        if lhs is not None:
+            pulumi.set(__self__, "lhs", lhs)
+        if rhs is not None:
+            pulumi.set(__self__, "rhs", rhs)
+
+    @property
+    @pulumi.getter
+    def lhs(self) -> Optional[str]:
+        return pulumi.get(self, "lhs")
+
+    @property
+    @pulumi.getter
+    def rhs(self) -> Optional[str]:
+        return pulumi.get(self, "rhs")
 
 
 @pulumi.output_type
@@ -3112,7 +3604,6 @@ class PolicyAccessTimeOutRuleCondition(dict):
                  operator: str,
                  id: Optional[str] = None,
                  microtenant_id: Optional[str] = None,
-                 negated: Optional[bool] = None,
                  operands: Optional[Sequence['outputs.PolicyAccessTimeOutRuleConditionOperand']] = None):
         """
         :param Sequence['PolicyAccessTimeOutRuleConditionOperandArgs'] operands: This signifies the various policy criteria.
@@ -3122,8 +3613,6 @@ class PolicyAccessTimeOutRuleCondition(dict):
             pulumi.set(__self__, "id", id)
         if microtenant_id is not None:
             pulumi.set(__self__, "microtenant_id", microtenant_id)
-        if negated is not None:
-            pulumi.set(__self__, "negated", negated)
         if operands is not None:
             pulumi.set(__self__, "operands", operands)
 
@@ -3141,11 +3630,6 @@ class PolicyAccessTimeOutRuleCondition(dict):
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[str]:
         return pulumi.get(self, "microtenant_id")
-
-    @property
-    @pulumi.getter
-    def negated(self) -> Optional[bool]:
-        return pulumi.get(self, "negated")
 
     @property
     @pulumi.getter
@@ -3269,6 +3753,1306 @@ class PolicyAccessTimeOutRuleConditionOperand(dict):
 
 
 @pulumi.output_type
+class PolicyAccessTimeOutRuleV2Condition(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 operands: Optional[Sequence['outputs.PolicyAccessTimeOutRuleV2ConditionOperand']] = None,
+                 operator: Optional[str] = None):
+        """
+        :param Sequence['PolicyAccessTimeOutRuleV2ConditionOperandArgs'] operands: This signifies the various policy criteria.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if operands is not None:
+            pulumi.set(__self__, "operands", operands)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def operands(self) -> Optional[Sequence['outputs.PolicyAccessTimeOutRuleV2ConditionOperand']]:
+        """
+        This signifies the various policy criteria.
+        """
+        return pulumi.get(self, "operands")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+
+@pulumi.output_type
+class PolicyAccessTimeOutRuleV2ConditionOperand(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entryValues":
+            suggest = "entry_values"
+        elif key == "objectType":
+            suggest = "object_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyAccessTimeOutRuleV2ConditionOperand. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyAccessTimeOutRuleV2ConditionOperand.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyAccessTimeOutRuleV2ConditionOperand.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entry_values: Optional[Sequence['outputs.PolicyAccessTimeOutRuleV2ConditionOperandEntryValue']] = None,
+                 object_type: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str object_type: This is for specifying the policy critiera.
+        :param Sequence[str] values: This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        if entry_values is not None:
+            pulumi.set(__self__, "entry_values", entry_values)
+        if object_type is not None:
+            pulumi.set(__self__, "object_type", object_type)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="entryValues")
+    def entry_values(self) -> Optional[Sequence['outputs.PolicyAccessTimeOutRuleV2ConditionOperandEntryValue']]:
+        return pulumi.get(self, "entry_values")
+
+    @property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> Optional[str]:
+        """
+        This is for specifying the policy critiera.
+        """
+        return pulumi.get(self, "object_type")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class PolicyAccessTimeOutRuleV2ConditionOperandEntryValue(dict):
+    def __init__(__self__, *,
+                 lhs: Optional[str] = None,
+                 rhs: Optional[str] = None):
+        if lhs is not None:
+            pulumi.set(__self__, "lhs", lhs)
+        if rhs is not None:
+            pulumi.set(__self__, "rhs", rhs)
+
+    @property
+    @pulumi.getter
+    def lhs(self) -> Optional[str]:
+        return pulumi.get(self, "lhs")
+
+    @property
+    @pulumi.getter
+    def rhs(self) -> Optional[str]:
+        return pulumi.get(self, "rhs")
+
+
+@pulumi.output_type
+class PolicyCapabilitiesRuleCondition(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 operands: Optional[Sequence['outputs.PolicyCapabilitiesRuleConditionOperand']] = None,
+                 operator: Optional[str] = None):
+        """
+        :param Sequence['PolicyCapabilitiesRuleConditionOperandArgs'] operands: This signifies the various policy criteria.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if operands is not None:
+            pulumi.set(__self__, "operands", operands)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def operands(self) -> Optional[Sequence['outputs.PolicyCapabilitiesRuleConditionOperand']]:
+        """
+        This signifies the various policy criteria.
+        """
+        return pulumi.get(self, "operands")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+
+@pulumi.output_type
+class PolicyCapabilitiesRuleConditionOperand(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entryValues":
+            suggest = "entry_values"
+        elif key == "objectType":
+            suggest = "object_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyCapabilitiesRuleConditionOperand. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyCapabilitiesRuleConditionOperand.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyCapabilitiesRuleConditionOperand.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entry_values: Optional[Sequence['outputs.PolicyCapabilitiesRuleConditionOperandEntryValue']] = None,
+                 object_type: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str object_type: This is for specifying the policy critiera.
+        :param Sequence[str] values: This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        if entry_values is not None:
+            pulumi.set(__self__, "entry_values", entry_values)
+        if object_type is not None:
+            pulumi.set(__self__, "object_type", object_type)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="entryValues")
+    def entry_values(self) -> Optional[Sequence['outputs.PolicyCapabilitiesRuleConditionOperandEntryValue']]:
+        return pulumi.get(self, "entry_values")
+
+    @property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> Optional[str]:
+        """
+        This is for specifying the policy critiera.
+        """
+        return pulumi.get(self, "object_type")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class PolicyCapabilitiesRuleConditionOperandEntryValue(dict):
+    def __init__(__self__, *,
+                 lhs: Optional[str] = None,
+                 rhs: Optional[str] = None):
+        if lhs is not None:
+            pulumi.set(__self__, "lhs", lhs)
+        if rhs is not None:
+            pulumi.set(__self__, "rhs", rhs)
+
+    @property
+    @pulumi.getter
+    def lhs(self) -> Optional[str]:
+        return pulumi.get(self, "lhs")
+
+    @property
+    @pulumi.getter
+    def rhs(self) -> Optional[str]:
+        return pulumi.get(self, "rhs")
+
+
+@pulumi.output_type
+class PolicyCapabilitiesRulePrivilegedCapabilities(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clipboardCopy":
+            suggest = "clipboard_copy"
+        elif key == "clipboardPaste":
+            suggest = "clipboard_paste"
+        elif key == "fileDownload":
+            suggest = "file_download"
+        elif key == "fileUpload":
+            suggest = "file_upload"
+        elif key == "inspectFileDownload":
+            suggest = "inspect_file_download"
+        elif key == "inspectFileUpload":
+            suggest = "inspect_file_upload"
+        elif key == "monitorSession":
+            suggest = "monitor_session"
+        elif key == "recordSession":
+            suggest = "record_session"
+        elif key == "shareSession":
+            suggest = "share_session"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyCapabilitiesRulePrivilegedCapabilities. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyCapabilitiesRulePrivilegedCapabilities.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyCapabilitiesRulePrivilegedCapabilities.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 clipboard_copy: Optional[bool] = None,
+                 clipboard_paste: Optional[bool] = None,
+                 file_download: Optional[bool] = None,
+                 file_upload: Optional[bool] = None,
+                 inspect_file_download: Optional[bool] = None,
+                 inspect_file_upload: Optional[bool] = None,
+                 monitor_session: Optional[bool] = None,
+                 record_session: Optional[bool] = None,
+                 share_session: Optional[bool] = None):
+        """
+        :param bool clipboard_copy: Indicates the PRA Clipboard Copy function
+        :param bool clipboard_paste: Indicates the PRA Clipboard Paste function
+        :param bool file_download: Indicates the PRA File Transfer capabilities that enables the File Download function
+        :param bool file_upload: Indicates the PRA File Transfer capabilities that enables the File Upload function
+        :param bool inspect_file_download: Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and downloads the file following the inspection
+        :param bool inspect_file_upload: Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and uploads the file following the inspection
+        :param bool monitor_session: Indicates the PRA Monitoring Capabilities to enable the PRA Session Monitoring function
+        :param bool record_session: Indicates the PRA Session Recording capabilities to enable PRA Session Recording
+        :param bool share_session: Indicates the PRA Session Control and Monitoring capabilities to enable PRA Session Monitoring
+        """
+        if clipboard_copy is not None:
+            pulumi.set(__self__, "clipboard_copy", clipboard_copy)
+        if clipboard_paste is not None:
+            pulumi.set(__self__, "clipboard_paste", clipboard_paste)
+        if file_download is not None:
+            pulumi.set(__self__, "file_download", file_download)
+        if file_upload is not None:
+            pulumi.set(__self__, "file_upload", file_upload)
+        if inspect_file_download is not None:
+            pulumi.set(__self__, "inspect_file_download", inspect_file_download)
+        if inspect_file_upload is not None:
+            pulumi.set(__self__, "inspect_file_upload", inspect_file_upload)
+        if monitor_session is not None:
+            pulumi.set(__self__, "monitor_session", monitor_session)
+        if record_session is not None:
+            pulumi.set(__self__, "record_session", record_session)
+        if share_session is not None:
+            pulumi.set(__self__, "share_session", share_session)
+
+    @property
+    @pulumi.getter(name="clipboardCopy")
+    def clipboard_copy(self) -> Optional[bool]:
+        """
+        Indicates the PRA Clipboard Copy function
+        """
+        return pulumi.get(self, "clipboard_copy")
+
+    @property
+    @pulumi.getter(name="clipboardPaste")
+    def clipboard_paste(self) -> Optional[bool]:
+        """
+        Indicates the PRA Clipboard Paste function
+        """
+        return pulumi.get(self, "clipboard_paste")
+
+    @property
+    @pulumi.getter(name="fileDownload")
+    def file_download(self) -> Optional[bool]:
+        """
+        Indicates the PRA File Transfer capabilities that enables the File Download function
+        """
+        return pulumi.get(self, "file_download")
+
+    @property
+    @pulumi.getter(name="fileUpload")
+    def file_upload(self) -> Optional[bool]:
+        """
+        Indicates the PRA File Transfer capabilities that enables the File Upload function
+        """
+        return pulumi.get(self, "file_upload")
+
+    @property
+    @pulumi.getter(name="inspectFileDownload")
+    def inspect_file_download(self) -> Optional[bool]:
+        """
+        Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and downloads the file following the inspection
+        """
+        return pulumi.get(self, "inspect_file_download")
+
+    @property
+    @pulumi.getter(name="inspectFileUpload")
+    def inspect_file_upload(self) -> Optional[bool]:
+        """
+        Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and uploads the file following the inspection
+        """
+        return pulumi.get(self, "inspect_file_upload")
+
+    @property
+    @pulumi.getter(name="monitorSession")
+    def monitor_session(self) -> Optional[bool]:
+        """
+        Indicates the PRA Monitoring Capabilities to enable the PRA Session Monitoring function
+        """
+        return pulumi.get(self, "monitor_session")
+
+    @property
+    @pulumi.getter(name="recordSession")
+    def record_session(self) -> Optional[bool]:
+        """
+        Indicates the PRA Session Recording capabilities to enable PRA Session Recording
+        """
+        return pulumi.get(self, "record_session")
+
+    @property
+    @pulumi.getter(name="shareSession")
+    def share_session(self) -> Optional[bool]:
+        """
+        Indicates the PRA Session Control and Monitoring capabilities to enable PRA Session Monitoring
+        """
+        return pulumi.get(self, "share_session")
+
+
+@pulumi.output_type
+class PolicyCredentialRuleCondition(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 operands: Optional[Sequence['outputs.PolicyCredentialRuleConditionOperand']] = None,
+                 operator: Optional[str] = None):
+        """
+        :param Sequence['PolicyCredentialRuleConditionOperandArgs'] operands: This signifies the various policy criteria.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if operands is not None:
+            pulumi.set(__self__, "operands", operands)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def operands(self) -> Optional[Sequence['outputs.PolicyCredentialRuleConditionOperand']]:
+        """
+        This signifies the various policy criteria.
+        """
+        return pulumi.get(self, "operands")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+
+@pulumi.output_type
+class PolicyCredentialRuleConditionOperand(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entryValues":
+            suggest = "entry_values"
+        elif key == "objectType":
+            suggest = "object_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyCredentialRuleConditionOperand. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyCredentialRuleConditionOperand.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyCredentialRuleConditionOperand.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entry_values: Optional[Sequence['outputs.PolicyCredentialRuleConditionOperandEntryValue']] = None,
+                 object_type: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str object_type: This is for specifying the policy critiera.
+        :param Sequence[str] values: This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        if entry_values is not None:
+            pulumi.set(__self__, "entry_values", entry_values)
+        if object_type is not None:
+            pulumi.set(__self__, "object_type", object_type)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="entryValues")
+    def entry_values(self) -> Optional[Sequence['outputs.PolicyCredentialRuleConditionOperandEntryValue']]:
+        return pulumi.get(self, "entry_values")
+
+    @property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> Optional[str]:
+        """
+        This is for specifying the policy critiera.
+        """
+        return pulumi.get(self, "object_type")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class PolicyCredentialRuleConditionOperandEntryValue(dict):
+    def __init__(__self__, *,
+                 lhs: Optional[str] = None,
+                 rhs: Optional[str] = None):
+        if lhs is not None:
+            pulumi.set(__self__, "lhs", lhs)
+        if rhs is not None:
+            pulumi.set(__self__, "rhs", rhs)
+
+    @property
+    @pulumi.getter
+    def lhs(self) -> Optional[str]:
+        return pulumi.get(self, "lhs")
+
+    @property
+    @pulumi.getter
+    def rhs(self) -> Optional[str]:
+        return pulumi.get(self, "rhs")
+
+
+@pulumi.output_type
+class PolicyCredentialRuleCredential(dict):
+    def __init__(__self__, *,
+                 id: str):
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class PolicyForwardingRuleV2Condition(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 operands: Optional[Sequence['outputs.PolicyForwardingRuleV2ConditionOperand']] = None,
+                 operator: Optional[str] = None):
+        """
+        :param Sequence['PolicyForwardingRuleV2ConditionOperandArgs'] operands: This signifies the various policy criteria.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if operands is not None:
+            pulumi.set(__self__, "operands", operands)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def operands(self) -> Optional[Sequence['outputs.PolicyForwardingRuleV2ConditionOperand']]:
+        """
+        This signifies the various policy criteria.
+        """
+        return pulumi.get(self, "operands")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+
+@pulumi.output_type
+class PolicyForwardingRuleV2ConditionOperand(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entryValues":
+            suggest = "entry_values"
+        elif key == "objectType":
+            suggest = "object_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyForwardingRuleV2ConditionOperand. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyForwardingRuleV2ConditionOperand.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyForwardingRuleV2ConditionOperand.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entry_values: Optional[Sequence['outputs.PolicyForwardingRuleV2ConditionOperandEntryValue']] = None,
+                 object_type: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str object_type: This is for specifying the policy critiera.
+        :param Sequence[str] values: This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        if entry_values is not None:
+            pulumi.set(__self__, "entry_values", entry_values)
+        if object_type is not None:
+            pulumi.set(__self__, "object_type", object_type)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="entryValues")
+    def entry_values(self) -> Optional[Sequence['outputs.PolicyForwardingRuleV2ConditionOperandEntryValue']]:
+        return pulumi.get(self, "entry_values")
+
+    @property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> Optional[str]:
+        """
+        This is for specifying the policy critiera.
+        """
+        return pulumi.get(self, "object_type")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class PolicyForwardingRuleV2ConditionOperandEntryValue(dict):
+    def __init__(__self__, *,
+                 lhs: Optional[str] = None,
+                 rhs: Optional[str] = None):
+        if lhs is not None:
+            pulumi.set(__self__, "lhs", lhs)
+        if rhs is not None:
+            pulumi.set(__self__, "rhs", rhs)
+
+    @property
+    @pulumi.getter
+    def lhs(self) -> Optional[str]:
+        return pulumi.get(self, "lhs")
+
+    @property
+    @pulumi.getter
+    def rhs(self) -> Optional[str]:
+        return pulumi.get(self, "rhs")
+
+
+@pulumi.output_type
+class PolicyInspectionRuleV2Condition(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 operands: Optional[Sequence['outputs.PolicyInspectionRuleV2ConditionOperand']] = None,
+                 operator: Optional[str] = None):
+        """
+        :param Sequence['PolicyInspectionRuleV2ConditionOperandArgs'] operands: This signifies the various policy criteria.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if operands is not None:
+            pulumi.set(__self__, "operands", operands)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def operands(self) -> Optional[Sequence['outputs.PolicyInspectionRuleV2ConditionOperand']]:
+        """
+        This signifies the various policy criteria.
+        """
+        return pulumi.get(self, "operands")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+
+@pulumi.output_type
+class PolicyInspectionRuleV2ConditionOperand(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entryValues":
+            suggest = "entry_values"
+        elif key == "objectType":
+            suggest = "object_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyInspectionRuleV2ConditionOperand. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyInspectionRuleV2ConditionOperand.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyInspectionRuleV2ConditionOperand.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entry_values: Optional[Sequence['outputs.PolicyInspectionRuleV2ConditionOperandEntryValue']] = None,
+                 object_type: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str object_type: This is for specifying the policy critiera.
+        :param Sequence[str] values: This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        if entry_values is not None:
+            pulumi.set(__self__, "entry_values", entry_values)
+        if object_type is not None:
+            pulumi.set(__self__, "object_type", object_type)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="entryValues")
+    def entry_values(self) -> Optional[Sequence['outputs.PolicyInspectionRuleV2ConditionOperandEntryValue']]:
+        return pulumi.get(self, "entry_values")
+
+    @property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> Optional[str]:
+        """
+        This is for specifying the policy critiera.
+        """
+        return pulumi.get(self, "object_type")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class PolicyInspectionRuleV2ConditionOperandEntryValue(dict):
+    def __init__(__self__, *,
+                 lhs: Optional[str] = None,
+                 rhs: Optional[str] = None):
+        if lhs is not None:
+            pulumi.set(__self__, "lhs", lhs)
+        if rhs is not None:
+            pulumi.set(__self__, "rhs", rhs)
+
+    @property
+    @pulumi.getter
+    def lhs(self) -> Optional[str]:
+        return pulumi.get(self, "lhs")
+
+    @property
+    @pulumi.getter
+    def rhs(self) -> Optional[str]:
+        return pulumi.get(self, "rhs")
+
+
+@pulumi.output_type
+class PolicyIsolationRuleV2Condition(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 operands: Optional[Sequence['outputs.PolicyIsolationRuleV2ConditionOperand']] = None,
+                 operator: Optional[str] = None):
+        """
+        :param Sequence['PolicyIsolationRuleV2ConditionOperandArgs'] operands: This signifies the various policy criteria.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if operands is not None:
+            pulumi.set(__self__, "operands", operands)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def operands(self) -> Optional[Sequence['outputs.PolicyIsolationRuleV2ConditionOperand']]:
+        """
+        This signifies the various policy criteria.
+        """
+        return pulumi.get(self, "operands")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+
+@pulumi.output_type
+class PolicyIsolationRuleV2ConditionOperand(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entryValues":
+            suggest = "entry_values"
+        elif key == "objectType":
+            suggest = "object_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyIsolationRuleV2ConditionOperand. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyIsolationRuleV2ConditionOperand.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyIsolationRuleV2ConditionOperand.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entry_values: Optional[Sequence['outputs.PolicyIsolationRuleV2ConditionOperandEntryValue']] = None,
+                 object_type: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str object_type: This is for specifying the policy critiera.
+        :param Sequence[str] values: This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        if entry_values is not None:
+            pulumi.set(__self__, "entry_values", entry_values)
+        if object_type is not None:
+            pulumi.set(__self__, "object_type", object_type)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="entryValues")
+    def entry_values(self) -> Optional[Sequence['outputs.PolicyIsolationRuleV2ConditionOperandEntryValue']]:
+        return pulumi.get(self, "entry_values")
+
+    @property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> Optional[str]:
+        """
+        This is for specifying the policy critiera.
+        """
+        return pulumi.get(self, "object_type")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class PolicyIsolationRuleV2ConditionOperandEntryValue(dict):
+    def __init__(__self__, *,
+                 lhs: Optional[str] = None,
+                 rhs: Optional[str] = None):
+        if lhs is not None:
+            pulumi.set(__self__, "lhs", lhs)
+        if rhs is not None:
+            pulumi.set(__self__, "rhs", rhs)
+
+    @property
+    @pulumi.getter
+    def lhs(self) -> Optional[str]:
+        return pulumi.get(self, "lhs")
+
+    @property
+    @pulumi.getter
+    def rhs(self) -> Optional[str]:
+        return pulumi.get(self, "rhs")
+
+
+@pulumi.output_type
+class PolicyRedirectionRuleCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "microtenantId":
+            suggest = "microtenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyRedirectionRuleCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyRedirectionRuleCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyRedirectionRuleCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 operator: str,
+                 id: Optional[str] = None,
+                 microtenant_id: Optional[str] = None,
+                 operands: Optional[Sequence['outputs.PolicyRedirectionRuleConditionOperand']] = None):
+        """
+        :param Sequence['PolicyRedirectionRuleConditionOperandArgs'] operands: This signifies the various policy criteria.
+        """
+        pulumi.set(__self__, "operator", operator)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if microtenant_id is not None:
+            pulumi.set(__self__, "microtenant_id", microtenant_id)
+        if operands is not None:
+            pulumi.set(__self__, "operands", operands)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="microtenantId")
+    def microtenant_id(self) -> Optional[str]:
+        return pulumi.get(self, "microtenant_id")
+
+    @property
+    @pulumi.getter
+    def operands(self) -> Optional[Sequence['outputs.PolicyRedirectionRuleConditionOperand']]:
+        """
+        This signifies the various policy criteria.
+        """
+        return pulumi.get(self, "operands")
+
+
+@pulumi.output_type
+class PolicyRedirectionRuleConditionOperand(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectType":
+            suggest = "object_type"
+        elif key == "idpId":
+            suggest = "idp_id"
+        elif key == "microtenantId":
+            suggest = "microtenant_id"
+        elif key == "rhsLists":
+            suggest = "rhs_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyRedirectionRuleConditionOperand. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyRedirectionRuleConditionOperand.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyRedirectionRuleConditionOperand.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 lhs: str,
+                 object_type: str,
+                 id: Optional[str] = None,
+                 idp_id: Optional[str] = None,
+                 microtenant_id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 rhs: Optional[str] = None,
+                 rhs_lists: Optional[Sequence[str]] = None):
+        """
+        :param str lhs: This signifies the key for the object type. String ID example: id
+        :param str object_type: This is for specifying the policy critiera.
+        :param str microtenant_id: This denotes the value for the given object type. Its value depends upon the key.
+        :param str rhs: This denotes the value for the given object type. Its value depends upon the key.
+        :param Sequence[str] rhs_lists: This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        pulumi.set(__self__, "lhs", lhs)
+        pulumi.set(__self__, "object_type", object_type)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if idp_id is not None:
+            pulumi.set(__self__, "idp_id", idp_id)
+        if microtenant_id is not None:
+            pulumi.set(__self__, "microtenant_id", microtenant_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if rhs is not None:
+            pulumi.set(__self__, "rhs", rhs)
+        if rhs_lists is not None:
+            pulumi.set(__self__, "rhs_lists", rhs_lists)
+
+    @property
+    @pulumi.getter
+    def lhs(self) -> str:
+        """
+        This signifies the key for the object type. String ID example: id
+        """
+        return pulumi.get(self, "lhs")
+
+    @property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> str:
+        """
+        This is for specifying the policy critiera.
+        """
+        return pulumi.get(self, "object_type")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="idpId")
+    def idp_id(self) -> Optional[str]:
+        return pulumi.get(self, "idp_id")
+
+    @property
+    @pulumi.getter(name="microtenantId")
+    def microtenant_id(self) -> Optional[str]:
+        """
+        This denotes the value for the given object type. Its value depends upon the key.
+        """
+        return pulumi.get(self, "microtenant_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def rhs(self) -> Optional[str]:
+        """
+        This denotes the value for the given object type. Its value depends upon the key.
+        """
+        return pulumi.get(self, "rhs")
+
+    @property
+    @pulumi.getter(name="rhsLists")
+    def rhs_lists(self) -> Optional[Sequence[str]]:
+        """
+        This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        return pulumi.get(self, "rhs_lists")
+
+
+@pulumi.output_type
+class PolicyRedirectionRuleServiceEdgeGroup(dict):
+    def __init__(__self__, *,
+                 ids: Optional[Sequence[str]] = None):
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class PolicyTimeoutRuleV2Condition(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 operands: Optional[Sequence['outputs.PolicyTimeoutRuleV2ConditionOperand']] = None,
+                 operator: Optional[str] = None):
+        """
+        :param Sequence['PolicyTimeoutRuleV2ConditionOperandArgs'] operands: This signifies the various policy criteria.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if operands is not None:
+            pulumi.set(__self__, "operands", operands)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def operands(self) -> Optional[Sequence['outputs.PolicyTimeoutRuleV2ConditionOperand']]:
+        """
+        This signifies the various policy criteria.
+        """
+        return pulumi.get(self, "operands")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+
+@pulumi.output_type
+class PolicyTimeoutRuleV2ConditionOperand(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entryValues":
+            suggest = "entry_values"
+        elif key == "objectType":
+            suggest = "object_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyTimeoutRuleV2ConditionOperand. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyTimeoutRuleV2ConditionOperand.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyTimeoutRuleV2ConditionOperand.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entry_values: Optional[Sequence['outputs.PolicyTimeoutRuleV2ConditionOperandEntryValue']] = None,
+                 object_type: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str object_type: This is for specifying the policy critiera.
+        :param Sequence[str] values: This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        if entry_values is not None:
+            pulumi.set(__self__, "entry_values", entry_values)
+        if object_type is not None:
+            pulumi.set(__self__, "object_type", object_type)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="entryValues")
+    def entry_values(self) -> Optional[Sequence['outputs.PolicyTimeoutRuleV2ConditionOperandEntryValue']]:
+        return pulumi.get(self, "entry_values")
+
+    @property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> Optional[str]:
+        """
+        This is for specifying the policy critiera.
+        """
+        return pulumi.get(self, "object_type")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class PolicyTimeoutRuleV2ConditionOperandEntryValue(dict):
+    def __init__(__self__, *,
+                 lhs: Optional[str] = None,
+                 rhs: Optional[str] = None):
+        if lhs is not None:
+            pulumi.set(__self__, "lhs", lhs)
+        if rhs is not None:
+            pulumi.set(__self__, "rhs", rhs)
+
+    @property
+    @pulumi.getter
+    def lhs(self) -> Optional[str]:
+        return pulumi.get(self, "lhs")
+
+    @property
+    @pulumi.getter
+    def rhs(self) -> Optional[str]:
+        return pulumi.get(self, "rhs")
+
+
+@pulumi.output_type
+class PraApprovalControllerApplication(dict):
+    def __init__(__self__, *,
+                 ids: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] ids: The unique identifier of the pra application segment
+        """
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[str]]:
+        """
+        The unique identifier of the pra application segment
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class PraApprovalControllerWorkingHour(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "endTimeCron":
+            suggest = "end_time_cron"
+        elif key == "startTime":
+            suggest = "start_time"
+        elif key == "startTimeCron":
+            suggest = "start_time_cron"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PraApprovalControllerWorkingHour. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PraApprovalControllerWorkingHour.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PraApprovalControllerWorkingHour.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 days: Optional[Sequence[str]] = None,
+                 end_time: Optional[str] = None,
+                 end_time_cron: Optional[str] = None,
+                 start_time: Optional[str] = None,
+                 start_time_cron: Optional[str] = None,
+                 timezone: Optional[str] = None):
+        """
+        :param Sequence[str] days: The days of the week that you want to enable the privileged approval
+        :param str end_time: The end time that the user no longer has access to the privileged approval
+        :param str end_time_cron: The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+        :param str start_time: The start time that the user has access to the privileged approval
+        :param str start_time_cron: The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+        :param str timezone: The time zone for the time window of a privileged approval
+        """
+        if days is not None:
+            pulumi.set(__self__, "days", days)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if end_time_cron is not None:
+            pulumi.set(__self__, "end_time_cron", end_time_cron)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if start_time_cron is not None:
+            pulumi.set(__self__, "start_time_cron", start_time_cron)
+        if timezone is not None:
+            pulumi.set(__self__, "timezone", timezone)
+
+    @property
+    @pulumi.getter
+    def days(self) -> Optional[Sequence[str]]:
+        """
+        The days of the week that you want to enable the privileged approval
+        """
+        return pulumi.get(self, "days")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[str]:
+        """
+        The end time that the user no longer has access to the privileged approval
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="endTimeCron")
+    def end_time_cron(self) -> Optional[str]:
+        """
+        The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+        """
+        return pulumi.get(self, "end_time_cron")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[str]:
+        """
+        The start time that the user has access to the privileged approval
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter(name="startTimeCron")
+    def start_time_cron(self) -> Optional[str]:
+        """
+        The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+        """
+        return pulumi.get(self, "start_time_cron")
+
+    @property
+    @pulumi.getter
+    def timezone(self) -> Optional[str]:
+        """
+        The time zone for the time window of a privileged approval
+        """
+        return pulumi.get(self, "timezone")
+
+
+@pulumi.output_type
+class PraConsoleControllerPraApplication(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The unique identifier of the Privileged Remote Access-enabled application
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier of the Privileged Remote Access-enabled application
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class PraConsoleControllerPraPortal(dict):
+    def __init__(__self__, *,
+                 ids: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] ids: The unique identifier of the privileged portal
+        """
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[str]]:
+        """
+        The unique identifier of the privileged portal
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
 class SegmentGroupApplication(dict):
     def __init__(__self__, *,
                  id: Optional[str] = None):
@@ -3385,15 +5169,6 @@ class GetAppConnectorGroupConnectorResult(dict):
                  sarge_version: str,
                  upgrade_attempt: str,
                  upgrade_status: str):
-        """
-        :param str description: (String) Description of the App Connector Group.
-        :param bool enabled: (String) Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
-        :param str id: ID of the App Connector Group.
-        :param str latitude: (String) Latitude of the App Connector Group. Integer or decimal. With values in the range of `-90` to `90`
-        :param str location: (String) Location of the App Connector Group.
-        :param str longitude: (String) Longitude of the App Connector Group. Integer or decimal. With values in the range of `-180` to `180`
-        :param str name: Name of the App Connector Group.
-        """
         pulumi.set(__self__, "appconnector_group_id", appconnector_group_id)
         pulumi.set(__self__, "appconnector_group_name", appconnector_group_name)
         pulumi.set(__self__, "application_start_time", application_start_time)
@@ -3469,17 +5244,11 @@ class GetAppConnectorGroupConnectorResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (String) Description of the App Connector Group.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (String) Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
-        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -3505,9 +5274,6 @@ class GetAppConnectorGroupConnectorResult(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        ID of the App Connector Group.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -3548,25 +5314,16 @@ class GetAppConnectorGroupConnectorResult(dict):
     @property
     @pulumi.getter
     def latitude(self) -> str:
-        """
-        (String) Latitude of the App Connector Group. Integer or decimal. With values in the range of `-90` to `90`
-        """
         return pulumi.get(self, "latitude")
 
     @property
     @pulumi.getter
     def location(self) -> str:
-        """
-        (String) Location of the App Connector Group.
-        """
         return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
     def longitude(self) -> str:
-        """
-        (String) Longitude of the App Connector Group. Integer or decimal. With values in the range of `-180` to `180`
-        """
         return pulumi.get(self, "longitude")
 
     @property
@@ -3582,9 +5339,6 @@ class GetAppConnectorGroupConnectorResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Name of the App Connector Group.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -3645,12 +5399,6 @@ class GetAppConnectorGroupServerGroupResult(dict):
                  modified_time: str,
                  modifiedby: str,
                  name: str):
-        """
-        :param str description: (String) Description of the App Connector Group.
-        :param bool enabled: (String) Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
-        :param str id: ID of the App Connector Group.
-        :param str name: Name of the App Connector Group.
-        """
         pulumi.set(__self__, "config_space", config_space)
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "description", description)
@@ -3674,9 +5422,6 @@ class GetAppConnectorGroupServerGroupResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (String) Description of the App Connector Group.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -3687,17 +5432,11 @@ class GetAppConnectorGroupServerGroupResult(dict):
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (String) Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        ID of the App Connector Group.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -3713,9 +5452,6 @@ class GetAppConnectorGroupServerGroupResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Name of the App Connector Group.
-        """
         return pulumi.get(self, "name")
 
 
@@ -3739,21 +5475,8 @@ class GetApplicationSegmentBrowserAccessClientlessAppResult(dict):
                  path: str,
                  trust_untrusted_cert: bool):
         """
-        :param bool allow_options: (bool)
-        :param str application_port: (string)
-        :param str application_protocol: (string)
-        :param str certificate_id: (string)
-        :param str certificate_name: (string)
-        :param str cname: (string)
-        :param str description: (string)
-        :param str domain: (string)
-        :param bool enabled: (bool)
-        :param bool hidden: (bool)
-        :param str id: This field defines the id of the application server.
-        :param str local_domain: (string)
-        :param str name: This field defines the name of the server.
-        :param str path: (string)
-        :param bool trust_untrusted_cert: (bool)
+        :param str id: - (String) This field defines the id of the application server.
+        :param str name: - (String) This field defines the name of the server.
         """
         pulumi.set(__self__, "allow_options", allow_options)
         pulumi.set(__self__, "app_id", app_id)
@@ -3775,9 +5498,6 @@ class GetApplicationSegmentBrowserAccessClientlessAppResult(dict):
     @property
     @pulumi.getter(name="allowOptions")
     def allow_options(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "allow_options")
 
     @property
@@ -3788,113 +5508,77 @@ class GetApplicationSegmentBrowserAccessClientlessAppResult(dict):
     @property
     @pulumi.getter(name="applicationPort")
     def application_port(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "application_port")
 
     @property
     @pulumi.getter(name="applicationProtocol")
     def application_protocol(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "application_protocol")
 
     @property
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "certificate_id")
 
     @property
     @pulumi.getter(name="certificateName")
     def certificate_name(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "certificate_name")
 
     @property
     @pulumi.getter
     def cname(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "cname")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def domain(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "domain")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def hidden(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "hidden")
 
     @property
     @pulumi.getter
     def id(self) -> str:
         """
-        This field defines the id of the application server.
+        - (String) This field defines the id of the application server.
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="localDomain")
     def local_domain(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "local_domain")
 
     @property
     @pulumi.getter
     def name(self) -> str:
         """
-        This field defines the name of the server.
+        - (String) This field defines the name of the server.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def path(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter(name="trustUntrustedCert")
     def trust_untrusted_cert(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "trust_untrusted_cert")
 
 
@@ -3903,7 +5587,7 @@ class GetApplicationSegmentBrowserAccessServerGroupResult(dict):
     def __init__(__self__, *,
                  ids: Sequence[str]):
         """
-        :param Sequence[str] ids: This field defines the id of the application server.
+        :param Sequence[str] ids: - (String) This field defines the id of the application server.
         """
         pulumi.set(__self__, "ids", ids)
 
@@ -3911,7 +5595,7 @@ class GetApplicationSegmentBrowserAccessServerGroupResult(dict):
     @pulumi.getter
     def ids(self) -> Sequence[str]:
         """
-        This field defines the id of the application server.
+        - (String) This field defines the id of the application server.
         """
         return pulumi.get(self, "ids")
 
@@ -3971,16 +5655,6 @@ class GetApplicationSegmentInspectionInspectionAppResult(dict):
                  enabled: bool,
                  id: str,
                  name: str):
-        """
-        :param str application_port: (string) TCP/UDP Port for ZPA Inspection.
-        :param str application_protocol: (string) Protocol for the Inspection Application. Supported values: `HTTP` and `HTTPS`
-        :param str certificate_id: (string) - ID of the signing certificate. This field is required if the applicationProtocol is set to `HTTPS`. The certificateId is not supported if the applicationProtocol is set to `HTTP`.
-        :param str certificate_name: (string) - Parameter required when `application_protocol` is of type `HTTPS`
-        :param str description: (string) Description of the application.
-        :param bool enabled: (bool) Whether this application is enabled or not
-        :param str id: The ID of the Inspection Application Segment to be exported.
-        :param str name: The name of the Inspection Application Segment to be exported.
-        """
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "application_port", application_port)
         pulumi.set(__self__, "application_protocol", application_protocol)
@@ -4000,41 +5674,26 @@ class GetApplicationSegmentInspectionInspectionAppResult(dict):
     @property
     @pulumi.getter(name="applicationPort")
     def application_port(self) -> str:
-        """
-        (string) TCP/UDP Port for ZPA Inspection.
-        """
         return pulumi.get(self, "application_port")
 
     @property
     @pulumi.getter(name="applicationProtocol")
     def application_protocol(self) -> str:
-        """
-        (string) Protocol for the Inspection Application. Supported values: `HTTP` and `HTTPS`
-        """
         return pulumi.get(self, "application_protocol")
 
     @property
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> str:
-        """
-        (string) - ID of the signing certificate. This field is required if the applicationProtocol is set to `HTTPS`. The certificateId is not supported if the applicationProtocol is set to `HTTP`.
-        """
         return pulumi.get(self, "certificate_id")
 
     @property
     @pulumi.getter(name="certificateName")
     def certificate_name(self) -> str:
-        """
-        (string) - Parameter required when `application_protocol` is of type `HTTPS`
-        """
         return pulumi.get(self, "certificate_name")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string) Description of the application.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -4045,25 +5704,16 @@ class GetApplicationSegmentInspectionInspectionAppResult(dict):
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool) Whether this application is enabled or not
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of the Inspection Application Segment to be exported.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the Inspection Application Segment to be exported.
-        """
         return pulumi.get(self, "name")
 
 
@@ -4071,17 +5721,11 @@ class GetApplicationSegmentInspectionInspectionAppResult(dict):
 class GetApplicationSegmentInspectionServerGroupResult(dict):
     def __init__(__self__, *,
                  ids: Sequence[str]):
-        """
-        :param Sequence[str] ids: The ID of the Inspection Application Segment to be exported.
-        """
         pulumi.set(__self__, "ids", ids)
 
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
-        """
-        The ID of the Inspection Application Segment to be exported.
-        """
         return pulumi.get(self, "ids")
 
 
@@ -4157,16 +5801,6 @@ class GetApplicationSegmentPRASraAppResult(dict):
                  microtenant_name: str,
                  name: str,
                  portal: bool):
-        """
-        :param str application_port: (string) Port for the Privileged Remote Accessvalues: `RDP` and `SSH`
-        :param str application_protocol: (string) Protocol for the Privileged Remote Access. Supported values: `RDP` and `SSH`
-        :param str connection_security: (string) - Parameter required when `application_protocol` is of type `RDP`
-        :param str description: (string) Description of the application.
-        :param bool enabled: (bool) Whether this application is enabled or not
-        :param str microtenant_id: (string) The ID of the microtenant the resource is to be associated with.
-        :param str microtenant_name: (string) The name of the microtenant the resource is to be associated with.
-        :param str name: The name of the PRA Application Segment to be exported.
-        """
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "application_port", application_port)
         pulumi.set(__self__, "application_protocol", application_protocol)
@@ -4191,17 +5825,11 @@ class GetApplicationSegmentPRASraAppResult(dict):
     @property
     @pulumi.getter(name="applicationPort")
     def application_port(self) -> str:
-        """
-        (string) Port for the Privileged Remote Accessvalues: `RDP` and `SSH`
-        """
         return pulumi.get(self, "application_port")
 
     @property
     @pulumi.getter(name="applicationProtocol")
     def application_protocol(self) -> str:
-        """
-        (string) Protocol for the Privileged Remote Access. Supported values: `RDP` and `SSH`
-        """
         return pulumi.get(self, "application_protocol")
 
     @property
@@ -4217,17 +5845,11 @@ class GetApplicationSegmentPRASraAppResult(dict):
     @property
     @pulumi.getter(name="connectionSecurity")
     def connection_security(self) -> str:
-        """
-        (string) - Parameter required when `application_protocol` is of type `RDP`
-        """
         return pulumi.get(self, "connection_security")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string) Description of the application.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -4238,9 +5860,6 @@ class GetApplicationSegmentPRASraAppResult(dict):
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool) Whether this application is enabled or not
-        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -4256,25 +5875,16 @@ class GetApplicationSegmentPRASraAppResult(dict):
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> str:
-        """
-        (string) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @property
     @pulumi.getter(name="microtenantName")
     def microtenant_name(self) -> str:
-        """
-        (string) The name of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_name")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the PRA Application Segment to be exported.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -4337,12 +5947,6 @@ class GetApplicationSegmentServerGroupResult(dict):
                  modified_time: str,
                  modifiedby: str,
                  name: str):
-        """
-        :param str config_space: Supported values: `DEFAULT`, `SIEM`.
-        :param str description: Description of the application.
-        :param bool enabled: Whether this application is enabled or not. Default: false. Supported values: `true`, `false`.
-        :param str name: Name of the application.
-        """
         pulumi.set(__self__, "config_space", config_space)
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "description", description)
@@ -4356,9 +5960,6 @@ class GetApplicationSegmentServerGroupResult(dict):
     @property
     @pulumi.getter(name="configSpace")
     def config_space(self) -> str:
-        """
-        Supported values: `DEFAULT`, `SIEM`.
-        """
         return pulumi.get(self, "config_space")
 
     @property
@@ -4369,9 +5970,6 @@ class GetApplicationSegmentServerGroupResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        Description of the application.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -4382,9 +5980,6 @@ class GetApplicationSegmentServerGroupResult(dict):
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        Whether this application is enabled or not. Default: false. Supported values: `true`, `false`.
-        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -4405,9 +6000,6 @@ class GetApplicationSegmentServerGroupResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Name of the application.
-        """
         return pulumi.get(self, "name")
 
 
@@ -4458,9 +6050,6 @@ class GetCloudBrowserIsolationExternalProfileRegionResult(dict):
     def __init__(__self__, *,
                  id: str,
                  name: str):
-        """
-        :param str name: The name of the CBI banner to be exported.
-        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
 
@@ -4472,9 +6061,6 @@ class GetCloudBrowserIsolationExternalProfileRegionResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the CBI banner to be exported.
-        """
         return pulumi.get(self, "name")
 
 
@@ -4558,15 +6144,6 @@ class GetCloudConnectorGroupCloudConnectorResult(dict):
                  modifiedby: str,
                  name: str,
                  signing_cert: Mapping[str, Any]):
-        """
-        :param str creation_time: (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        :param str description: (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        :param bool enabled: (bool) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        :param str id: This field defines the id of the cloud connector group.
-        :param str issued_cert_id: (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        :param str modified_time: (string)- Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        :param str name: This field defines the name of the cloud connector group.
-        """
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "enabled", enabled)
@@ -4582,25 +6159,16 @@ class GetCloudConnectorGroupCloudConnectorResult(dict):
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -4611,9 +6179,6 @@ class GetCloudConnectorGroupCloudConnectorResult(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        This field defines the id of the cloud connector group.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -4624,17 +6189,11 @@ class GetCloudConnectorGroupCloudConnectorResult(dict):
     @property
     @pulumi.getter(name="issuedCertId")
     def issued_cert_id(self) -> str:
-        """
-        (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        """
         return pulumi.get(self, "issued_cert_id")
 
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)- Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -4645,9 +6204,6 @@ class GetCloudConnectorGroupCloudConnectorResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        This field defines the name of the cloud connector group.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -4662,9 +6218,6 @@ class GetCustomerVersionProfileCustomScopeCustomerIdResult(dict):
                  customer_id: str,
                  exclude_constellation: bool,
                  name: str):
-        """
-        :param str name: The name of the enrollment certificate to be exported.
-        """
         pulumi.set(__self__, "customer_id", customer_id)
         pulumi.set(__self__, "exclude_constellation", exclude_constellation)
         pulumi.set(__self__, "name", name)
@@ -4682,9 +6235,6 @@ class GetCustomerVersionProfileCustomScopeCustomerIdResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the enrollment certificate to be exported.
-        """
         return pulumi.get(self, "name")
 
 
@@ -4701,12 +6251,6 @@ class GetCustomerVersionProfileVersionResult(dict):
                  role: str,
                  version: str,
                  version_profile_gid: str):
-        """
-        :param str creation_time: (string)
-        :param str id: The id of the enrollment certificate to be exported.
-        :param str modified_by: (string)
-        :param str modified_time: (string)
-        """
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "customer_id", customer_id)
         pulumi.set(__self__, "id", id)
@@ -4721,9 +6265,6 @@ class GetCustomerVersionProfileVersionResult(dict):
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
@@ -4734,25 +6275,16 @@ class GetCustomerVersionProfileVersionResult(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The id of the enrollment certificate to be exported.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="modifiedBy")
     def modified_by(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_by")
 
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -4789,12 +6321,6 @@ class GetIdPControllerAdminMetadataResult(dict):
                  sp_entity_id: str,
                  sp_metadata_url: str,
                  sp_post_url: str):
-        """
-        :param str certificate_url: (string)
-        :param str sp_entity_id: (string)
-        :param str sp_metadata_url: (string)
-        :param str sp_post_url: (string)
-        """
         pulumi.set(__self__, "certificate_url", certificate_url)
         pulumi.set(__self__, "sp_base_url", sp_base_url)
         pulumi.set(__self__, "sp_entity_id", sp_entity_id)
@@ -4804,9 +6330,6 @@ class GetIdPControllerAdminMetadataResult(dict):
     @property
     @pulumi.getter(name="certificateUrl")
     def certificate_url(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "certificate_url")
 
     @property
@@ -4817,25 +6340,16 @@ class GetIdPControllerAdminMetadataResult(dict):
     @property
     @pulumi.getter(name="spEntityId")
     def sp_entity_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "sp_entity_id")
 
     @property
     @pulumi.getter(name="spMetadataUrl")
     def sp_metadata_url(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "sp_metadata_url")
 
     @property
     @pulumi.getter(name="spPostUrl")
     def sp_post_url(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "sp_post_url")
 
 
@@ -4847,12 +6361,6 @@ class GetIdPControllerUserMetadataResult(dict):
                  sp_entity_id: str,
                  sp_metadata_url: str,
                  sp_post_url: str):
-        """
-        :param str certificate_url: (string)
-        :param str sp_entity_id: (string)
-        :param str sp_metadata_url: (string)
-        :param str sp_post_url: (string)
-        """
         pulumi.set(__self__, "certificate_url", certificate_url)
         pulumi.set(__self__, "sp_base_url", sp_base_url)
         pulumi.set(__self__, "sp_entity_id", sp_entity_id)
@@ -4862,9 +6370,6 @@ class GetIdPControllerUserMetadataResult(dict):
     @property
     @pulumi.getter(name="certificateUrl")
     def certificate_url(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "certificate_url")
 
     @property
@@ -4875,25 +6380,16 @@ class GetIdPControllerUserMetadataResult(dict):
     @property
     @pulumi.getter(name="spEntityId")
     def sp_entity_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "sp_entity_id")
 
     @property
     @pulumi.getter(name="spMetadataUrl")
     def sp_metadata_url(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "sp_metadata_url")
 
     @property
     @pulumi.getter(name="spPostUrl")
     def sp_post_url(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "sp_post_url")
 
 
@@ -4919,26 +6415,6 @@ class GetInspectionAllPredefinedControlsListResult(dict):
                  protocol_type: str,
                  severity: str,
                  version: str):
-        """
-        :param str action: (string)
-        :param str action_value: (string)
-        :param Sequence['GetInspectionAllPredefinedControlsListAssociatedInspectionProfileNameArgs'] associated_inspection_profile_names: (string)
-        :param str attachment: (string)
-        :param str control_group: (string)
-        :param str control_number: (string)
-        :param str control_type: (string) Returned values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `ZSCALER`, `CUSTOM`, `PREDEFINED`
-        :param str creation_time: (string)
-        :param str default_action: (string)
-        :param str default_action_value: (string)
-        :param str description: (string)
-        :param str id: (string)
-        :param str modified_time: (string)
-        :param str name: (string)
-        :param str paranoia_level: (string)
-        :param str protocol_type: (string) Returned values: `HTTP`, `HTTPS`, `FTP`, `RDP`, `SSH`, `WEBSOCKET`
-        :param str severity: (string)
-        :param str version: The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
-        """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "action_value", action_value)
         pulumi.set(__self__, "associated_inspection_profile_names", associated_inspection_profile_names)
@@ -4962,105 +6438,66 @@ class GetInspectionAllPredefinedControlsListResult(dict):
     @property
     @pulumi.getter
     def action(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter(name="actionValue")
     def action_value(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "action_value")
 
     @property
     @pulumi.getter(name="associatedInspectionProfileNames")
     def associated_inspection_profile_names(self) -> Sequence['outputs.GetInspectionAllPredefinedControlsListAssociatedInspectionProfileNameResult']:
-        """
-        (string)
-        """
         return pulumi.get(self, "associated_inspection_profile_names")
 
     @property
     @pulumi.getter
     def attachment(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "attachment")
 
     @property
     @pulumi.getter(name="controlGroup")
     def control_group(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "control_group")
 
     @property
     @pulumi.getter(name="controlNumber")
     def control_number(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "control_number")
 
     @property
     @pulumi.getter(name="controlType")
     def control_type(self) -> str:
-        """
-        (string) Returned values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `ZSCALER`, `CUSTOM`, `PREDEFINED`
-        """
         return pulumi.get(self, "control_type")
 
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter(name="defaultAction")
     def default_action(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "default_action")
 
     @property
     @pulumi.getter(name="defaultActionValue")
     def default_action_value(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "default_action_value")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -5071,41 +6508,26 @@ class GetInspectionAllPredefinedControlsListResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="paranoiaLevel")
     def paranoia_level(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "paranoia_level")
 
     @property
     @pulumi.getter(name="protocolType")
     def protocol_type(self) -> str:
-        """
-        (string) Returned values: `HTTP`, `HTTPS`, `FTP`, `RDP`, `SSH`, `WEBSOCKET`
-        """
         return pulumi.get(self, "protocol_type")
 
     @property
     @pulumi.getter
     def severity(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "severity")
 
     @property
     @pulumi.getter
     def version(self) -> str:
-        """
-        The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
-        """
         return pulumi.get(self, "version")
 
 
@@ -5114,27 +6536,17 @@ class GetInspectionAllPredefinedControlsListAssociatedInspectionProfileNameResul
     def __init__(__self__, *,
                  id: str,
                  name: str):
-        """
-        :param str id: (string)
-        :param str name: (string)
-        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "name")
 
 
@@ -5201,27 +6613,17 @@ class GetInspectionPredefinedControlsAssociatedInspectionProfileNameResult(dict)
     def __init__(__self__, *,
                  id: str,
                  name: str):
-        """
-        :param str id: (Computed)
-        :param str name: The name of the predefined control.
-        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        (Computed)
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the predefined control.
-        """
         return pulumi.get(self, "name")
 
 
@@ -5230,27 +6632,17 @@ class GetInspectionProfileControlsInfoResult(dict):
     def __init__(__self__, *,
                  control_type: str,
                  count: str):
-        """
-        :param str control_type: (string) Control types. Supported Values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `CUSTOM`, `PREDEFINED`, `ZSCALER`
-        :param str count: (string) Control information counts `Long`
-        """
         pulumi.set(__self__, "control_type", control_type)
         pulumi.set(__self__, "count", count)
 
     @property
     @pulumi.getter(name="controlType")
     def control_type(self) -> str:
-        """
-        (string) Control types. Supported Values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `CUSTOM`, `PREDEFINED`, `ZSCALER`
-        """
         return pulumi.get(self, "control_type")
 
     @property
     @pulumi.getter
     def count(self) -> str:
-        """
-        (string) Control information counts `Long`
-        """
         return pulumi.get(self, "count")
 
 
@@ -5276,17 +6668,7 @@ class GetInspectionProfileCustomControlResult(dict):
                  type: str,
                  version: str):
         """
-        :param str action: (string) The action of the predefined control. Supported values: `PASS`, `BLOCK` and `REDIRECT`
-        :param str action_value: (string) Value for the predefined controls action. This field is only required if the action is set to REDIRECT. This field is only required if the action is set to `REDIRECT`.
-        :param Sequence['GetInspectionProfileCustomControlAssociatedInspectionProfileNameArgs'] associated_inspection_profile_names: (string) Name of the inspection profile
-        :param str control_rule_json: (string) Custom controls string in JSON format
-        :param str description: (string) Description of the inspection profile.
-        :param str id: This field defines the id of the inspection profile.
-        :param str name: This field defines the name of the inspection profile.
-        :param str paranoia_level: (string) OWASP Predefined Paranoia Level. Range: [1-4], inclusive
-        :param Sequence['GetInspectionProfileCustomControlRuleArgs'] rules: (string) Rules of the custom controls applied as conditions `JSON`
-        :param str type: (string) Type value for the rules
-        :param str version: (string) The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
+        :param str name: - (String) This field defines the name of the inspection profile.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "action_value", action_value)
@@ -5310,25 +6692,16 @@ class GetInspectionProfileCustomControlResult(dict):
     @property
     @pulumi.getter
     def action(self) -> str:
-        """
-        (string) The action of the predefined control. Supported values: `PASS`, `BLOCK` and `REDIRECT`
-        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter(name="actionValue")
     def action_value(self) -> str:
-        """
-        (string) Value for the predefined controls action. This field is only required if the action is set to REDIRECT. This field is only required if the action is set to `REDIRECT`.
-        """
         return pulumi.get(self, "action_value")
 
     @property
     @pulumi.getter(name="associatedInspectionProfileNames")
     def associated_inspection_profile_names(self) -> Sequence['outputs.GetInspectionProfileCustomControlAssociatedInspectionProfileNameResult']:
-        """
-        (string) Name of the inspection profile
-        """
         return pulumi.get(self, "associated_inspection_profile_names")
 
     @property
@@ -5339,9 +6712,6 @@ class GetInspectionProfileCustomControlResult(dict):
     @property
     @pulumi.getter(name="controlRuleJson")
     def control_rule_json(self) -> str:
-        """
-        (string) Custom controls string in JSON format
-        """
         return pulumi.get(self, "control_rule_json")
 
     @property
@@ -5362,17 +6732,11 @@ class GetInspectionProfileCustomControlResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string) Description of the inspection profile.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        This field defines the id of the inspection profile.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -5389,24 +6753,18 @@ class GetInspectionProfileCustomControlResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        This field defines the name of the inspection profile.
+        - (String) This field defines the name of the inspection profile.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="paranoiaLevel")
     def paranoia_level(self) -> str:
-        """
-        (string) OWASP Predefined Paranoia Level. Range: [1-4], inclusive
-        """
         return pulumi.get(self, "paranoia_level")
 
     @property
     @pulumi.getter
     def rules(self) -> Sequence['outputs.GetInspectionProfileCustomControlRuleResult']:
-        """
-        (string) Rules of the custom controls applied as conditions `JSON`
-        """
         return pulumi.get(self, "rules")
 
     @property
@@ -5417,17 +6775,11 @@ class GetInspectionProfileCustomControlResult(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        (string) Type value for the rules
-        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def version(self) -> str:
-        """
-        (string) The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
-        """
         return pulumi.get(self, "version")
 
 
@@ -5437,8 +6789,7 @@ class GetInspectionProfileCustomControlAssociatedInspectionProfileNameResult(dic
                  id: str,
                  name: str):
         """
-        :param str id: This field defines the id of the inspection profile.
-        :param str name: This field defines the name of the inspection profile.
+        :param str name: - (String) This field defines the name of the inspection profile.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -5446,16 +6797,13 @@ class GetInspectionProfileCustomControlAssociatedInspectionProfileNameResult(dic
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        This field defines the id of the inspection profile.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
         """
-        This field defines the name of the inspection profile.
+        - (String) This field defines the name of the inspection profile.
         """
         return pulumi.get(self, "name")
 
@@ -5466,11 +6814,6 @@ class GetInspectionProfileCustomControlRuleResult(dict):
                  conditions: Sequence['outputs.GetInspectionProfileCustomControlRuleConditionResult'],
                  names: str,
                  type: str):
-        """
-        :param Sequence['GetInspectionProfileCustomControlRuleConditionArgs'] conditions: (string)
-        :param str names: (string) Name of the rules. If rules.type is set to `REQUEST_HEADERS`, `REQUEST_COOKIES`, or `RESPONSE_HEADERS`, the rules.name field is required.
-        :param str type: (string) Type value for the rules
-        """
         pulumi.set(__self__, "conditions", conditions)
         pulumi.set(__self__, "names", names)
         pulumi.set(__self__, "type", type)
@@ -5478,25 +6821,16 @@ class GetInspectionProfileCustomControlRuleResult(dict):
     @property
     @pulumi.getter
     def conditions(self) -> Sequence['outputs.GetInspectionProfileCustomControlRuleConditionResult']:
-        """
-        (string)
-        """
         return pulumi.get(self, "conditions")
 
     @property
     @pulumi.getter
     def names(self) -> str:
-        """
-        (string) Name of the rules. If rules.type is set to `REQUEST_HEADERS`, `REQUEST_COOKIES`, or `RESPONSE_HEADERS`, the rules.name field is required.
-        """
         return pulumi.get(self, "names")
 
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        (string) Type value for the rules
-        """
         return pulumi.get(self, "type")
 
 
@@ -5506,11 +6840,6 @@ class GetInspectionProfileCustomControlRuleConditionResult(dict):
                  lhs: str,
                  op: str,
                  rhs: str):
-        """
-        :param str lhs: (string) Signifies the key for the object type Supported values: `SIZE`, `VALUE`
-        :param str op: (string) If lhs is set to SIZE, then the user may pass one of the following: `EQ: Equals`, `LE: Less than or equal to`, `GE: Greater than or equal to`. If the lhs is set to `VALUE`, then the user may pass one of the following: `CONTAINS`, `STARTS_WITH`, `ENDS_WITH`, `RX`.
-        :param str rhs: (string) Denotes the value for the given object type. Its value depends on the key. If rules.type is set to REQUEST_METHOD, the conditions.rhs field must have one of the following values: `GET`,`HEAD`, `POST`, `OPTIONS`, `PUT`, `DELETE`, `TRACE`
-        """
         pulumi.set(__self__, "lhs", lhs)
         pulumi.set(__self__, "op", op)
         pulumi.set(__self__, "rhs", rhs)
@@ -5518,25 +6847,16 @@ class GetInspectionProfileCustomControlRuleConditionResult(dict):
     @property
     @pulumi.getter
     def lhs(self) -> str:
-        """
-        (string) Signifies the key for the object type Supported values: `SIZE`, `VALUE`
-        """
         return pulumi.get(self, "lhs")
 
     @property
     @pulumi.getter
     def op(self) -> str:
-        """
-        (string) If lhs is set to SIZE, then the user may pass one of the following: `EQ: Equals`, `LE: Less than or equal to`, `GE: Greater than or equal to`. If the lhs is set to `VALUE`, then the user may pass one of the following: `CONTAINS`, `STARTS_WITH`, `ENDS_WITH`, `RX`.
-        """
         return pulumi.get(self, "op")
 
     @property
     @pulumi.getter
     def rhs(self) -> str:
-        """
-        (string) Denotes the value for the given object type. Its value depends on the key. If rules.type is set to REQUEST_METHOD, the conditions.rhs field must have one of the following values: `GET`,`HEAD`, `POST`, `OPTIONS`, `PUT`, `DELETE`, `TRACE`
-        """
         return pulumi.get(self, "rhs")
 
 
@@ -5562,17 +6882,7 @@ class GetInspectionProfilePredefinedControlResult(dict):
                  severity: str,
                  version: str):
         """
-        :param str action: (string) The action of the predefined control. Supported values: `PASS`, `BLOCK` and `REDIRECT`
-        :param str action_value: (string) Value for the predefined controls action. This field is only required if the action is set to REDIRECT. This field is only required if the action is set to `REDIRECT`.
-        :param Sequence['GetInspectionProfilePredefinedControlAssociatedInspectionProfileNameArgs'] associated_inspection_profile_names: (string) Name of the inspection profile
-        :param str attachment: (string) Control attachment
-        :param str control_group: (string) Control group
-        :param str control_type: (string) Control types. Supported Values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `CUSTOM`, `PREDEFINED`, `ZSCALER`
-        :param str description: (string) Description of the inspection profile.
-        :param str id: This field defines the id of the inspection profile.
-        :param str name: This field defines the name of the inspection profile.
-        :param str paranoia_level: (string) OWASP Predefined Paranoia Level. Range: [1-4], inclusive
-        :param str version: (string) The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
+        :param str name: - (String) This field defines the name of the inspection profile.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "action_value", action_value)
@@ -5596,41 +6906,26 @@ class GetInspectionProfilePredefinedControlResult(dict):
     @property
     @pulumi.getter
     def action(self) -> str:
-        """
-        (string) The action of the predefined control. Supported values: `PASS`, `BLOCK` and `REDIRECT`
-        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter(name="actionValue")
     def action_value(self) -> str:
-        """
-        (string) Value for the predefined controls action. This field is only required if the action is set to REDIRECT. This field is only required if the action is set to `REDIRECT`.
-        """
         return pulumi.get(self, "action_value")
 
     @property
     @pulumi.getter(name="associatedInspectionProfileNames")
     def associated_inspection_profile_names(self) -> Sequence['outputs.GetInspectionProfilePredefinedControlAssociatedInspectionProfileNameResult']:
-        """
-        (string) Name of the inspection profile
-        """
         return pulumi.get(self, "associated_inspection_profile_names")
 
     @property
     @pulumi.getter
     def attachment(self) -> str:
-        """
-        (string) Control attachment
-        """
         return pulumi.get(self, "attachment")
 
     @property
     @pulumi.getter(name="controlGroup")
     def control_group(self) -> str:
-        """
-        (string) Control group
-        """
         return pulumi.get(self, "control_group")
 
     @property
@@ -5641,9 +6936,6 @@ class GetInspectionProfilePredefinedControlResult(dict):
     @property
     @pulumi.getter(name="controlType")
     def control_type(self) -> str:
-        """
-        (string) Control types. Supported Values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `CUSTOM`, `PREDEFINED`, `ZSCALER`
-        """
         return pulumi.get(self, "control_type")
 
     @property
@@ -5664,17 +6956,11 @@ class GetInspectionProfilePredefinedControlResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string) Description of the inspection profile.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        This field defines the id of the inspection profile.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -5691,16 +6977,13 @@ class GetInspectionProfilePredefinedControlResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        This field defines the name of the inspection profile.
+        - (String) This field defines the name of the inspection profile.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="paranoiaLevel")
     def paranoia_level(self) -> str:
-        """
-        (string) OWASP Predefined Paranoia Level. Range: [1-4], inclusive
-        """
         return pulumi.get(self, "paranoia_level")
 
     @property
@@ -5711,9 +6994,6 @@ class GetInspectionProfilePredefinedControlResult(dict):
     @property
     @pulumi.getter
     def version(self) -> str:
-        """
-        (string) The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
-        """
         return pulumi.get(self, "version")
 
 
@@ -5723,8 +7003,7 @@ class GetInspectionProfilePredefinedControlAssociatedInspectionProfileNameResult
                  id: str,
                  name: str):
         """
-        :param str id: This field defines the id of the inspection profile.
-        :param str name: This field defines the name of the inspection profile.
+        :param str name: - (String) This field defines the name of the inspection profile.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -5732,16 +7011,13 @@ class GetInspectionProfilePredefinedControlAssociatedInspectionProfileNameResult
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        This field defines the id of the inspection profile.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
         """
-        This field defines the name of the inspection profile.
+        - (String) This field defines the name of the inspection profile.
         """
         return pulumi.get(self, "name")
 
@@ -5769,17 +7045,7 @@ class GetInspectionProfileWebSocketControlResult(dict):
                  severity: str,
                  version: str):
         """
-        :param str action: (string) The action of the predefined control. Supported values: `PASS`, `BLOCK` and `REDIRECT`
-        :param str action_value: (string) Value for the predefined controls action. This field is only required if the action is set to REDIRECT. This field is only required if the action is set to `REDIRECT`.
-        :param Sequence['GetInspectionProfileWebSocketControlAssociatedInspectionProfileNameArgs'] associated_inspection_profile_names: (string) Name of the inspection profile
-        :param str attachment: (string) Control attachment
-        :param str control_group: (string) Control group
-        :param str control_type: (string) Control types. Supported Values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `CUSTOM`, `PREDEFINED`, `ZSCALER`
-        :param str description: (string) Description of the inspection profile.
-        :param str id: This field defines the id of the inspection profile.
-        :param str name: This field defines the name of the inspection profile.
-        :param str paranoia_level: (string) OWASP Predefined Paranoia Level. Range: [1-4], inclusive
-        :param str version: (string) The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
+        :param str name: - (String) This field defines the name of the inspection profile.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "action_value", action_value)
@@ -5804,41 +7070,26 @@ class GetInspectionProfileWebSocketControlResult(dict):
     @property
     @pulumi.getter
     def action(self) -> str:
-        """
-        (string) The action of the predefined control. Supported values: `PASS`, `BLOCK` and `REDIRECT`
-        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter(name="actionValue")
     def action_value(self) -> str:
-        """
-        (string) Value for the predefined controls action. This field is only required if the action is set to REDIRECT. This field is only required if the action is set to `REDIRECT`.
-        """
         return pulumi.get(self, "action_value")
 
     @property
     @pulumi.getter(name="associatedInspectionProfileNames")
     def associated_inspection_profile_names(self) -> Sequence['outputs.GetInspectionProfileWebSocketControlAssociatedInspectionProfileNameResult']:
-        """
-        (string) Name of the inspection profile
-        """
         return pulumi.get(self, "associated_inspection_profile_names")
 
     @property
     @pulumi.getter
     def attachment(self) -> str:
-        """
-        (string) Control attachment
-        """
         return pulumi.get(self, "attachment")
 
     @property
     @pulumi.getter(name="controlGroup")
     def control_group(self) -> str:
-        """
-        (string) Control group
-        """
         return pulumi.get(self, "control_group")
 
     @property
@@ -5849,9 +7100,6 @@ class GetInspectionProfileWebSocketControlResult(dict):
     @property
     @pulumi.getter(name="controlType")
     def control_type(self) -> str:
-        """
-        (string) Control types. Supported Values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `CUSTOM`, `PREDEFINED`, `ZSCALER`
-        """
         return pulumi.get(self, "control_type")
 
     @property
@@ -5872,17 +7120,11 @@ class GetInspectionProfileWebSocketControlResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string) Description of the inspection profile.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        This field defines the id of the inspection profile.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -5899,16 +7141,13 @@ class GetInspectionProfileWebSocketControlResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        This field defines the name of the inspection profile.
+        - (String) This field defines the name of the inspection profile.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="paranoiaLevel")
     def paranoia_level(self) -> str:
-        """
-        (string) OWASP Predefined Paranoia Level. Range: [1-4], inclusive
-        """
         return pulumi.get(self, "paranoia_level")
 
     @property
@@ -5924,9 +7163,6 @@ class GetInspectionProfileWebSocketControlResult(dict):
     @property
     @pulumi.getter
     def version(self) -> str:
-        """
-        (string) The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
-        """
         return pulumi.get(self, "version")
 
 
@@ -5936,8 +7172,7 @@ class GetInspectionProfileWebSocketControlAssociatedInspectionProfileNameResult(
                  id: str,
                  name: str):
         """
-        :param str id: This field defines the id of the inspection profile.
-        :param str name: This field defines the name of the inspection profile.
+        :param str name: - (String) This field defines the name of the inspection profile.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -5945,16 +7180,13 @@ class GetInspectionProfileWebSocketControlAssociatedInspectionProfileNameResult(
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        This field defines the id of the inspection profile.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
         """
-        This field defines the name of the inspection profile.
+        - (String) This field defines the name of the inspection profile.
         """
         return pulumi.get(self, "name")
 
@@ -5973,18 +7205,6 @@ class GetLSSConfigControllerConfigResult(dict):
                  name: str,
                  source_log_type: str,
                  use_tls: bool):
-        """
-        :param str audit_message: (string)
-        :param str description: (string)
-        :param bool enabled: (bool)
-        :param Sequence[str] filters: (string)
-        :param str format: (string)
-        :param str id: This field defines the name of the log streaming resource.
-        :param str lss_host: (string)
-        :param str lss_port: (string)
-        :param str name: This field defines the name of the log streaming resource.
-        :param str source_log_type: (string)
-        """
         pulumi.set(__self__, "audit_message", audit_message)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "enabled", enabled)
@@ -6000,81 +7220,51 @@ class GetLSSConfigControllerConfigResult(dict):
     @property
     @pulumi.getter(name="auditMessage")
     def audit_message(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "audit_message")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def filters(self) -> Sequence[str]:
-        """
-        (string)
-        """
         return pulumi.get(self, "filters")
 
     @property
     @pulumi.getter
     def format(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "format")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        This field defines the name of the log streaming resource.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="lssHost")
     def lss_host(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "lss_host")
 
     @property
     @pulumi.getter(name="lssPort")
     def lss_port(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "lss_port")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        This field defines the name of the log streaming resource.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="sourceLogType")
     def source_log_type(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "source_log_type")
 
     @property
@@ -6087,17 +7277,11 @@ class GetLSSConfigControllerConfigResult(dict):
 class GetLSSConfigControllerConnectorGroupResult(dict):
     def __init__(__self__, *,
                  id: str):
-        """
-        :param str id: This field defines the name of the log streaming resource.
-        """
         pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        This field defines the name of the log streaming resource.
-        """
         return pulumi.get(self, "id")
 
 
@@ -6129,13 +7313,6 @@ class GetLSSConfigControllerPolicyRuleResult(dict):
                  zpn_cbi_profile_id: str,
                  zpn_inspection_profile_id: str,
                  zpn_inspection_profile_name: str):
-        """
-        :param str creation_time: (string)
-        :param str description: (string)
-        :param str id: This field defines the name of the log streaming resource.
-        :param str modified_time: (string)
-        :param str name: This field defines the name of the log streaming resource.
-        """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "action_id", action_id)
         pulumi.set(__self__, "bypass_default_rule", bypass_default_rule)
@@ -6185,9 +7362,6 @@ class GetLSSConfigControllerPolicyRuleResult(dict):
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
@@ -6203,17 +7377,11 @@ class GetLSSConfigControllerPolicyRuleResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        This field defines the name of the log streaming resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -6229,9 +7397,6 @@ class GetLSSConfigControllerPolicyRuleResult(dict):
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -6242,9 +7407,6 @@ class GetLSSConfigControllerPolicyRuleResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        This field defines the name of the log streaming resource.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -6310,55 +7472,34 @@ class GetLSSConfigControllerPolicyRuleConditionResult(dict):
                  id: str,
                  modified_time: str,
                  modifiedby: str,
-                 negated: bool,
                  operands: Sequence['outputs.GetLSSConfigControllerPolicyRuleConditionOperandResult'],
                  operator: str):
-        """
-        :param str creation_time: (string)
-        :param str id: This field defines the name of the log streaming resource.
-        :param str modified_time: (string)
-        """
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "modified_time", modified_time)
         pulumi.set(__self__, "modifiedby", modifiedby)
-        pulumi.set(__self__, "negated", negated)
         pulumi.set(__self__, "operands", operands)
         pulumi.set(__self__, "operator", operator)
 
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        This field defines the name of the log streaming resource.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
     @pulumi.getter
     def modifiedby(self) -> str:
         return pulumi.get(self, "modifiedby")
-
-    @property
-    @pulumi.getter
-    def negated(self) -> bool:
-        return pulumi.get(self, "negated")
 
     @property
     @pulumi.getter
@@ -6384,12 +7525,6 @@ class GetLSSConfigControllerPolicyRuleConditionOperandResult(dict):
                  object_type: str,
                  operator: str,
                  rhs: str):
-        """
-        :param str creation_time: (string)
-        :param str id: This field defines the name of the log streaming resource.
-        :param str modified_time: (string)
-        :param str name: This field defines the name of the log streaming resource.
-        """
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "idp_id", idp_id)
@@ -6404,17 +7539,11 @@ class GetLSSConfigControllerPolicyRuleConditionOperandResult(dict):
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        This field defines the name of the log streaming resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -6430,9 +7559,6 @@ class GetLSSConfigControllerPolicyRuleConditionOperandResult(dict):
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -6443,9 +7569,6 @@ class GetLSSConfigControllerPolicyRuleConditionOperandResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        This field defines the name of the log streaming resource.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -6481,22 +7604,6 @@ class GetMachineGroupMachineResult(dict):
                  signing_cert: Mapping[str, str],
                  microtenant_id: Optional[str] = None,
                  microtenant_name: Optional[str] = None):
-        """
-        :param str creation_time: (string)
-        :param str description: (string)
-        :param str fingerprint: (string)
-        :param str id: The ID of the machine group to be exported.
-        :param str issued_cert_id: (string)
-        :param str machine_group_id: (string)
-        :param str machine_group_name: (string)
-        :param str machine_token_id: (string)
-        :param str modified_by: (string)
-        :param str modified_time: (string)
-        :param str name: The name of the machine group to be exported.
-        :param Mapping[str, str] signing_cert: (string)
-        :param str microtenant_id: (string) The ID of the microtenant the resource is to be associated with.
-        :param str microtenant_name: (string) The name of the microtenant the resource is to be associated with.
-        """
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "fingerprint", fingerprint)
@@ -6517,113 +7624,71 @@ class GetMachineGroupMachineResult(dict):
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def fingerprint(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "fingerprint")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of the machine group to be exported.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="issuedCertId")
     def issued_cert_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "issued_cert_id")
 
     @property
     @pulumi.getter(name="machineGroupId")
     def machine_group_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "machine_group_id")
 
     @property
     @pulumi.getter(name="machineGroupName")
     def machine_group_name(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "machine_group_name")
 
     @property
     @pulumi.getter(name="machineTokenId")
     def machine_token_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "machine_token_id")
 
     @property
     @pulumi.getter(name="modifiedBy")
     def modified_by(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_by")
 
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the machine group to be exported.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="signingCert")
     def signing_cert(self) -> Mapping[str, str]:
-        """
-        (string)
-        """
         return pulumi.get(self, "signing_cert")
 
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[str]:
-        """
-        (string) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @property
     @pulumi.getter(name="microtenantName")
     def microtenant_name(self) -> Optional[str]:
-        """
-        (string) The name of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_name")
 
 
@@ -6634,7 +7699,7 @@ class GetMicrotenantRoleResult(dict):
                  id: str,
                  name: str):
         """
-        :param str name: (Required) Name of the microtenant controller.
+        :param str name: - (Required) Name of the microtenant controller.
         """
         pulumi.set(__self__, "custom_role", custom_role)
         pulumi.set(__self__, "id", id)
@@ -6654,7 +7719,7 @@ class GetMicrotenantRoleResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        (Required) Name of the microtenant controller.
+        - (Required) Name of the microtenant controller.
         """
         return pulumi.get(self, "name")
 
@@ -6693,9 +7758,7 @@ class GetMicrotenantUserResult(dict):
                  two_factor_auth_type: str,
                  username: str):
         """
-        :param str description: (string) Description of the microtenant controller.
-        :param bool enabled: (bool) Whether this microtenant resource is enabled or not.
-        :param str name: (Required) Name of the microtenant controller.
+        :param str name: - (Required) Name of the microtenant controller.
         """
         pulumi.set(__self__, "comments", comments)
         pulumi.set(__self__, "creation_time", creation_time)
@@ -6746,9 +7809,6 @@ class GetMicrotenantUserResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string) Description of the microtenant controller.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -6764,9 +7824,6 @@ class GetMicrotenantUserResult(dict):
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool) Whether this microtenant resource is enabled or not.
-        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -6833,7 +7890,7 @@ class GetMicrotenantUserResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        (Required) Name of the microtenant controller.
+        - (Required) Name of the microtenant controller.
         """
         return pulumi.get(self, "name")
 
@@ -6889,6 +7946,166 @@ class GetMicrotenantUserResult(dict):
 
 
 @pulumi.output_type
+class GetPRAApprovalApplicationResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: The unique identifier of the pra application segment
+        :param str name: The name of the pra application segment
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier of the pra application segment
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the pra application segment
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetPRAApprovalWorkingHourResult(dict):
+    def __init__(__self__, *,
+                 days: Sequence[str],
+                 end_time: str,
+                 end_time_cron: str,
+                 start_time: str,
+                 start_time_cron: str,
+                 timezone: str):
+        """
+        :param Sequence[str] days: The days of the week that you want to enable the privileged approval
+        :param str end_time: The end time that the user no longer has access to the privileged approval
+        :param str end_time_cron: The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+        :param str start_time: The start time that the user has access to the privileged approval
+        :param str start_time_cron: The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+        :param str timezone: The time zone for the time window of a privileged approval
+        """
+        pulumi.set(__self__, "days", days)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "end_time_cron", end_time_cron)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "start_time_cron", start_time_cron)
+        pulumi.set(__self__, "timezone", timezone)
+
+    @property
+    @pulumi.getter
+    def days(self) -> Sequence[str]:
+        """
+        The days of the week that you want to enable the privileged approval
+        """
+        return pulumi.get(self, "days")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The end time that the user no longer has access to the privileged approval
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="endTimeCron")
+    def end_time_cron(self) -> str:
+        """
+        The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+        """
+        return pulumi.get(self, "end_time_cron")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The start time that the user has access to the privileged approval
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter(name="startTimeCron")
+    def start_time_cron(self) -> str:
+        """
+        The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+        """
+        return pulumi.get(self, "start_time_cron")
+
+    @property
+    @pulumi.getter
+    def timezone(self) -> str:
+        """
+        The time zone for the time window of a privileged approval
+        """
+        return pulumi.get(self, "timezone")
+
+
+@pulumi.output_type
+class GetPRAConsolePraApplicationResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: The unique identifier of the Privileged Remote Access-enabled application
+        :param str name: - (Required) The name of the privileged console.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier of the Privileged Remote Access-enabled application
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        - (Required) The name of the privileged console.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetPRAConsolePraPortalResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: The unique identifier of the privileged portal
+        :param str name: - (Required) The name of the privileged console.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier of the privileged portal
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        - (Required) The name of the privileged console.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class GetPolicyTypeRuleResult(dict):
     def __init__(__self__, *,
                  action: str,
@@ -6913,10 +8130,6 @@ class GetPolicyTypeRuleResult(dict):
                  rule_order: str,
                  zpn_cbi_profile_id: str,
                  zpn_inspection_profile_id: str):
-        """
-        :param str policy_set_id: The ID of the global policy set.
-        :param str policy_type: The value for differentiating the policy types.
-        """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "action_id", action_id)
         pulumi.set(__self__, "bypass_default_rule", bypass_default_rule)
@@ -7008,17 +8221,11 @@ class GetPolicyTypeRuleResult(dict):
     @property
     @pulumi.getter(name="policySetId")
     def policy_set_id(self) -> str:
-        """
-        The ID of the global policy set.
-        """
         return pulumi.get(self, "policy_set_id")
 
     @property
     @pulumi.getter(name="policyType")
     def policy_type(self) -> str:
-        """
-        The value for differentiating the policy types.
-        """
         return pulumi.get(self, "policy_type")
 
     @property
@@ -7064,14 +8271,12 @@ class GetPolicyTypeRuleConditionResult(dict):
                  id: str,
                  modified_by: str,
                  modified_time: str,
-                 negated: bool,
                  operands: Sequence['outputs.GetPolicyTypeRuleConditionOperandResult'],
                  operator: str):
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "modified_by", modified_by)
         pulumi.set(__self__, "modified_time", modified_time)
-        pulumi.set(__self__, "negated", negated)
         pulumi.set(__self__, "operands", operands)
         pulumi.set(__self__, "operator", operator)
 
@@ -7094,11 +8299,6 @@ class GetPolicyTypeRuleConditionResult(dict):
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
         return pulumi.get(self, "modified_time")
-
-    @property
-    @pulumi.getter
-    def negated(self) -> bool:
-        return pulumi.get(self, "negated")
 
     @property
     @pulumi.getter
@@ -7187,6 +8387,166 @@ class GetPolicyTypeRuleConditionOperandResult(dict):
 
 
 @pulumi.output_type
+class GetPraApprovalControllerApplicationResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: The unique identifier of the pra application segment
+        :param str name: The name of the pra application segment
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier of the pra application segment
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the pra application segment
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetPraApprovalControllerWorkingHourResult(dict):
+    def __init__(__self__, *,
+                 days: Sequence[str],
+                 end_time: str,
+                 end_time_cron: str,
+                 start_time: str,
+                 start_time_cron: str,
+                 timezone: str):
+        """
+        :param Sequence[str] days: The days of the week that you want to enable the privileged approval
+        :param str end_time: The end time that the user no longer has access to the privileged approval
+        :param str end_time_cron: The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+        :param str start_time: The start time that the user has access to the privileged approval
+        :param str start_time_cron: The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+        :param str timezone: The time zone for the time window of a privileged approval
+        """
+        pulumi.set(__self__, "days", days)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "end_time_cron", end_time_cron)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "start_time_cron", start_time_cron)
+        pulumi.set(__self__, "timezone", timezone)
+
+    @property
+    @pulumi.getter
+    def days(self) -> Sequence[str]:
+        """
+        The days of the week that you want to enable the privileged approval
+        """
+        return pulumi.get(self, "days")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The end time that the user no longer has access to the privileged approval
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="endTimeCron")
+    def end_time_cron(self) -> str:
+        """
+        The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+        """
+        return pulumi.get(self, "end_time_cron")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The start time that the user has access to the privileged approval
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter(name="startTimeCron")
+    def start_time_cron(self) -> str:
+        """
+        The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+        """
+        return pulumi.get(self, "start_time_cron")
+
+    @property
+    @pulumi.getter
+    def timezone(self) -> str:
+        """
+        The time zone for the time window of a privileged approval
+        """
+        return pulumi.get(self, "timezone")
+
+
+@pulumi.output_type
+class GetPraConsoleControllerPraApplicationResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: The unique identifier of the Privileged Remote Access-enabled application
+        :param str name: The name of the Privileged Remote Access-enabled application
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier of the Privileged Remote Access-enabled application
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Privileged Remote Access-enabled application
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetPraConsoleControllerPraPortalResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: The unique identifier of the privileged portal
+        :param str name: The name of the privileged portal
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier of the privileged portal
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the privileged portal
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class GetSegmentGroupApplicationResult(dict):
     def __init__(__self__, *,
                  bypass_type: str,
@@ -7212,29 +8572,6 @@ class GetSegmentGroupApplicationResult(dict):
                  tcp_ports_ins: Sequence[str],
                  tcp_ports_outs: Sequence[str],
                  udp_port_ranges: Sequence[str]):
-        """
-        :param str bypass_type: (string)
-        :param str config_space: (string)
-        :param str creation_time: (string)
-        :param str default_idle_timeout: (string)
-        :param str default_max_age: (string)
-        :param str description: (string)
-        :param str domain_name: (string)
-        :param Sequence[str] domain_names: (string)
-        :param bool double_encrypt: (string)
-        :param bool enabled: (bool)
-        :param str health_check_type: (string)
-        :param str id: The ID of the segment group to be exported.
-        :param bool ip_anchored: (bool)
-        :param str modified_by: (string)
-        :param str modified_time: (string)
-        :param str name: The name of the segment group to be exported.
-        :param bool passive_health_enabled: (bool)
-        :param Sequence['GetSegmentGroupApplicationServerGroupArgs'] server_groups: (Computed)
-        :param Sequence[str] tcp_port_ranges: (string)
-        :param Sequence[str] tcp_ports_ins: (string)
-        :param Sequence[str] udp_port_ranges: (string)
-        """
         pulumi.set(__self__, "bypass_type", bypass_type)
         pulumi.set(__self__, "config_space", config_space)
         pulumi.set(__self__, "creation_time", creation_time)
@@ -7262,105 +8599,66 @@ class GetSegmentGroupApplicationResult(dict):
     @property
     @pulumi.getter(name="bypassType")
     def bypass_type(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "bypass_type")
 
     @property
     @pulumi.getter(name="configSpace")
     def config_space(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "config_space")
 
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter(name="defaultIdleTimeout")
     def default_idle_timeout(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "default_idle_timeout")
 
     @property
     @pulumi.getter(name="defaultMaxAge")
     def default_max_age(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "default_max_age")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "domain_name")
 
     @property
     @pulumi.getter(name="domainNames")
     def domain_names(self) -> Sequence[str]:
-        """
-        (string)
-        """
         return pulumi.get(self, "domain_names")
 
     @property
     @pulumi.getter(name="doubleEncrypt")
     def double_encrypt(self) -> bool:
-        """
-        (string)
-        """
         return pulumi.get(self, "double_encrypt")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "health_check_type")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of the segment group to be exported.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="ipAnchored")
     def ip_anchored(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "ip_anchored")
 
     @property
@@ -7371,57 +8669,36 @@ class GetSegmentGroupApplicationResult(dict):
     @property
     @pulumi.getter(name="modifiedBy")
     def modified_by(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_by")
 
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the segment group to be exported.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="passiveHealthEnabled")
     def passive_health_enabled(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "passive_health_enabled")
 
     @property
     @pulumi.getter(name="serverGroups")
     def server_groups(self) -> Sequence['outputs.GetSegmentGroupApplicationServerGroupResult']:
-        """
-        (Computed)
-        """
         return pulumi.get(self, "server_groups")
 
     @property
     @pulumi.getter(name="tcpPortRanges")
     def tcp_port_ranges(self) -> Sequence[str]:
-        """
-        (string)
-        """
         return pulumi.get(self, "tcp_port_ranges")
 
     @property
     @pulumi.getter(name="tcpPortsIns")
     def tcp_ports_ins(self) -> Sequence[str]:
-        """
-        (string)
-        """
         return pulumi.get(self, "tcp_ports_ins")
 
     @property
@@ -7432,9 +8709,6 @@ class GetSegmentGroupApplicationResult(dict):
     @property
     @pulumi.getter(name="udpPortRanges")
     def udp_port_ranges(self) -> Sequence[str]:
-        """
-        (string)
-        """
         return pulumi.get(self, "udp_port_ranges")
 
 
@@ -7450,17 +8724,6 @@ class GetSegmentGroupApplicationServerGroupResult(dict):
                  modified_by: str,
                  modified_time: str,
                  name: str):
-        """
-        :param str config_space: (string)
-        :param str creation_time: (string)
-        :param str description: (string)
-        :param bool dynamic_discovery: (bool)
-        :param bool enabled: (bool)
-        :param str id: The ID of the segment group to be exported.
-        :param str modified_by: (string)
-        :param str modified_time: (string)
-        :param str name: The name of the segment group to be exported.
-        """
         pulumi.set(__self__, "config_space", config_space)
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "description", description)
@@ -7474,73 +8737,46 @@ class GetSegmentGroupApplicationServerGroupResult(dict):
     @property
     @pulumi.getter(name="configSpace")
     def config_space(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "config_space")
 
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="dynamicDiscovery")
     def dynamic_discovery(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "dynamic_discovery")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of the segment group to be exported.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="modifiedBy")
     def modified_by(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_by")
 
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the segment group to be exported.
-        """
         return pulumi.get(self, "name")
 
 
@@ -7567,12 +8803,6 @@ class GetServerGroupAppConnectorGroupResult(dict):
                  upgrade_day: str,
                  upgrade_time_in_secs: str,
                  version_profile_id: str):
-        """
-        :param str description: (string) This field is the description of the server group.
-        :param bool enabled: (bool) This field defines if the server group is enabled or disabled.
-        :param str id: The ID of the server group to be exported.
-        :param str name: The name of the server group to be exported.
-        """
         pulumi.set(__self__, "city_country", city_country)
         pulumi.set(__self__, "connectors", connectors)
         pulumi.set(__self__, "country_code", country_code)
@@ -7617,9 +8847,6 @@ class GetServerGroupAppConnectorGroupResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string) This field is the description of the server group.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -7630,9 +8857,6 @@ class GetServerGroupAppConnectorGroupResult(dict):
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool) This field defines if the server group is enabled or disabled.
-        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -7643,9 +8867,6 @@ class GetServerGroupAppConnectorGroupResult(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of the server group to be exported.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -7676,9 +8897,6 @@ class GetServerGroupAppConnectorGroupResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the server group to be exported.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -7720,12 +8938,6 @@ class GetServerGroupAppConnectorGroupConnectorResult(dict):
                  modifiedby: str,
                  upgrade_attempt: str,
                  name: Optional[str] = None):
-        """
-        :param str description: (string) This field is the description of the server group.
-        :param bool enabled: (bool) This field defines if the server group is enabled or disabled.
-        :param str id: The ID of the server group to be exported.
-        :param str name: The name of the server group to be exported.
-        """
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "enabled", enabled)
@@ -7746,17 +8958,11 @@ class GetServerGroupAppConnectorGroupConnectorResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string) This field is the description of the server group.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool) This field defines if the server group is enabled or disabled.
-        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -7767,9 +8973,6 @@ class GetServerGroupAppConnectorGroupConnectorResult(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of the server group to be exported.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -7795,9 +8998,6 @@ class GetServerGroupAppConnectorGroupConnectorResult(dict):
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        The name of the server group to be exported.
-        """
         return pulumi.get(self, "name")
 
 
@@ -7813,14 +9013,6 @@ class GetServerGroupAppConnectorGroupServerGroupResult(dict):
                  modified_time: str,
                  modifiedby: str,
                  name: Optional[str] = None):
-        """
-        :param str config_space: (string)
-        :param str description: (string) This field is the description of the server group.
-        :param bool dynamic_discovery: (bool) This field controls dynamic discovery of the servers.
-        :param bool enabled: (bool) This field defines if the server group is enabled or disabled.
-        :param str id: The ID of the server group to be exported.
-        :param str name: The name of the server group to be exported.
-        """
         pulumi.set(__self__, "config_space", config_space)
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "description", description)
@@ -7835,9 +9027,6 @@ class GetServerGroupAppConnectorGroupServerGroupResult(dict):
     @property
     @pulumi.getter(name="configSpace")
     def config_space(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "config_space")
 
     @property
@@ -7848,33 +9037,21 @@ class GetServerGroupAppConnectorGroupServerGroupResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string) This field is the description of the server group.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="dynamicDiscovery")
     def dynamic_discovery(self) -> bool:
-        """
-        (bool) This field controls dynamic discovery of the servers.
-        """
         return pulumi.get(self, "dynamic_discovery")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool) This field defines if the server group is enabled or disabled.
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of the server group to be exported.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -7890,9 +9067,6 @@ class GetServerGroupAppConnectorGroupServerGroupResult(dict):
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        The name of the server group to be exported.
-        """
         return pulumi.get(self, "name")
 
 
@@ -7901,27 +9075,17 @@ class GetServerGroupApplicationResult(dict):
     def __init__(__self__, *,
                  id: str,
                  name: str):
-        """
-        :param str id: The ID of the server group to be exported.
-        :param str name: The name of the server group to be exported.
-        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of the server group to be exported.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the server group to be exported.
-        """
         return pulumi.get(self, "name")
 
 
@@ -7938,13 +9102,6 @@ class GetServerGroupServerResult(dict):
                  modified_time: str,
                  modifiedby: str,
                  name: str):
-        """
-        :param str config_space: (string)
-        :param str description: (string) This field is the description of the server group.
-        :param bool enabled: (bool) This field defines if the server group is enabled or disabled.
-        :param str id: The ID of the server group to be exported.
-        :param str name: The name of the server group to be exported.
-        """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "app_server_group_ids", app_server_group_ids)
         pulumi.set(__self__, "config_space", config_space)
@@ -7969,9 +9126,6 @@ class GetServerGroupServerResult(dict):
     @property
     @pulumi.getter(name="configSpace")
     def config_space(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "config_space")
 
     @property
@@ -7982,25 +9136,16 @@ class GetServerGroupServerResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string) This field is the description of the server group.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool) This field defines if the server group is enabled or disabled.
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of the server group to be exported.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -8016,9 +9161,6 @@ class GetServerGroupServerResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the server group to be exported.
-        """
         return pulumi.get(self, "name")
 
 
@@ -8035,15 +9177,6 @@ class GetServiceEdgeControllerZpnSubModuleUpgradeListResult(dict):
                  role: str,
                  upgrade_status: str,
                  upgrade_time: str):
-        """
-        :param str creation_time: (string)
-        :param str current_version: (string)
-        :param str expected_version: (string)
-        :param str id: The ID of the service edge controllerto be exported.
-        :param str modified_by: (string)
-        :param str modified_time: (string)
-        :param str upgrade_status: (string)
-        """
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "current_version", current_version)
         pulumi.set(__self__, "entity_gid", entity_gid)
@@ -8058,17 +9191,11 @@ class GetServiceEdgeControllerZpnSubModuleUpgradeListResult(dict):
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter(name="currentVersion")
     def current_version(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "current_version")
 
     @property
@@ -8079,33 +9206,21 @@ class GetServiceEdgeControllerZpnSubModuleUpgradeListResult(dict):
     @property
     @pulumi.getter(name="expectedVersion")
     def expected_version(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "expected_version")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of the service edge controllerto be exported.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="modifiedBy")
     def modified_by(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_by")
 
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -8116,9 +9231,6 @@ class GetServiceEdgeControllerZpnSubModuleUpgradeListResult(dict):
     @property
     @pulumi.getter(name="upgradeStatus")
     def upgrade_status(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "upgrade_status")
 
     @property
@@ -8169,43 +9281,6 @@ class GetServiceEdgeGroupServiceEdgeResult(dict):
                  upgrade_attempt: str,
                  upgrade_status: str,
                  zpn_sub_module_upgrade_lists: Sequence['outputs.GetServiceEdgeGroupServiceEdgeZpnSubModuleUpgradeListResult']):
-        """
-        :param str application_start_time: (string)
-        :param str control_channel_status: (string)
-        :param str creation_time: (string)
-        :param str ctrl_broker_name: (string)
-        :param str current_version: (string)
-        :param str description: (string) Description of the Service Edge Group.
-        :param bool enabled: (bool) Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
-        :param Mapping[str, Any] enrollment_cert: (string)
-        :param str expected_upgrade_time: (string)
-        :param str expected_version: (string)
-        :param str id: The ID of the service edge group to be exported.
-        :param str issued_cert_id: (string)
-        :param str last_broker_connect_time: (string)
-        :param str last_broker_connect_time_duration: (string)
-        :param str last_broker_disconnect_time: (string)
-        :param str last_broker_disconnect_time_duration: (string)
-        :param str last_upgrade_time: (string)
-        :param str latitude: (string)
-        :param str listen_ips: (string)
-        :param str location: (string)
-        :param str longitude: (string)
-        :param str modified_time: (string)
-        :param str name: The name of the service edge group to be exported.
-        :param str platform: (string)
-        :param str previous_version: (string)
-        :param str private_ip: (string)
-        :param str provisioning_key_id: (string)
-        :param str provisioning_key_name: (string)
-        :param str public_ip: (string)
-        :param Sequence[str] publish_ips: (string)
-        :param str sarge_version: (string)
-        :param str service_edge_group_id: (string)
-        :param str service_edge_group_name: (string)
-        :param str upgrade_attempt: (string)
-        :param str upgrade_status: (string)
-        """
         pulumi.set(__self__, "application_start_time", application_start_time)
         pulumi.set(__self__, "control_channel_status", control_channel_status)
         pulumi.set(__self__, "creation_time", creation_time)
@@ -8249,81 +9324,51 @@ class GetServiceEdgeGroupServiceEdgeResult(dict):
     @property
     @pulumi.getter(name="applicationStartTime")
     def application_start_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "application_start_time")
 
     @property
     @pulumi.getter(name="controlChannelStatus")
     def control_channel_status(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "control_channel_status")
 
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter(name="ctrlBrokerName")
     def ctrl_broker_name(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "ctrl_broker_name")
 
     @property
     @pulumi.getter(name="currentVersion")
     def current_version(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "current_version")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string) Description of the Service Edge Group.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool) Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="enrollmentCert")
     def enrollment_cert(self) -> Mapping[str, Any]:
-        """
-        (string)
-        """
         return pulumi.get(self, "enrollment_cert")
 
     @property
     @pulumi.getter(name="expectedUpgradeTime")
     def expected_upgrade_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "expected_upgrade_time")
 
     @property
     @pulumi.getter(name="expectedVersion")
     def expected_version(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "expected_version")
 
     @property
@@ -8334,9 +9379,6 @@ class GetServiceEdgeGroupServiceEdgeResult(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of the service edge group to be exported.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -8347,89 +9389,56 @@ class GetServiceEdgeGroupServiceEdgeResult(dict):
     @property
     @pulumi.getter(name="issuedCertId")
     def issued_cert_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "issued_cert_id")
 
     @property
     @pulumi.getter(name="lastBrokerConnectTime")
     def last_broker_connect_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "last_broker_connect_time")
 
     @property
     @pulumi.getter(name="lastBrokerConnectTimeDuration")
     def last_broker_connect_time_duration(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "last_broker_connect_time_duration")
 
     @property
     @pulumi.getter(name="lastBrokerDisconnectTime")
     def last_broker_disconnect_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "last_broker_disconnect_time")
 
     @property
     @pulumi.getter(name="lastBrokerDisconnectTimeDuration")
     def last_broker_disconnect_time_duration(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "last_broker_disconnect_time_duration")
 
     @property
     @pulumi.getter(name="lastUpgradeTime")
     def last_upgrade_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "last_upgrade_time")
 
     @property
     @pulumi.getter
     def latitude(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "latitude")
 
     @property
     @pulumi.getter(name="listenIps")
     def listen_ips(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "listen_ips")
 
     @property
     @pulumi.getter
     def location(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
     def longitude(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "longitude")
 
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -8440,105 +9449,66 @@ class GetServiceEdgeGroupServiceEdgeResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the service edge group to be exported.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def platform(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "platform")
 
     @property
     @pulumi.getter(name="previousVersion")
     def previous_version(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "previous_version")
 
     @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "private_ip")
 
     @property
     @pulumi.getter(name="provisioningKeyId")
     def provisioning_key_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "provisioning_key_id")
 
     @property
     @pulumi.getter(name="provisioningKeyName")
     def provisioning_key_name(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "provisioning_key_name")
 
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "public_ip")
 
     @property
     @pulumi.getter(name="publishIps")
     def publish_ips(self) -> Sequence[str]:
-        """
-        (string)
-        """
         return pulumi.get(self, "publish_ips")
 
     @property
     @pulumi.getter(name="sargeVersion")
     def sarge_version(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "sarge_version")
 
     @property
     @pulumi.getter(name="serviceEdgeGroupId")
     def service_edge_group_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "service_edge_group_id")
 
     @property
     @pulumi.getter(name="serviceEdgeGroupName")
     def service_edge_group_name(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "service_edge_group_name")
 
     @property
     @pulumi.getter(name="upgradeAttempt")
     def upgrade_attempt(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "upgrade_attempt")
 
     @property
     @pulumi.getter(name="upgradeStatus")
     def upgrade_status(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "upgrade_status")
 
     @property
@@ -8560,14 +9530,6 @@ class GetServiceEdgeGroupServiceEdgeZpnSubModuleUpgradeListResult(dict):
                  role: str,
                  upgrade_status: str,
                  upgrade_time: str):
-        """
-        :param str creation_time: (string)
-        :param str current_version: (string)
-        :param str expected_version: (string)
-        :param str id: The ID of the service edge group to be exported.
-        :param str modified_time: (string)
-        :param str upgrade_status: (string)
-        """
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "current_version", current_version)
         pulumi.set(__self__, "entity_gid", entity_gid)
@@ -8582,17 +9544,11 @@ class GetServiceEdgeGroupServiceEdgeZpnSubModuleUpgradeListResult(dict):
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter(name="currentVersion")
     def current_version(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "current_version")
 
     @property
@@ -8603,25 +9559,16 @@ class GetServiceEdgeGroupServiceEdgeZpnSubModuleUpgradeListResult(dict):
     @property
     @pulumi.getter(name="expectedVersion")
     def expected_version(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "expected_version")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of the service edge group to be exported.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -8637,9 +9584,6 @@ class GetServiceEdgeGroupServiceEdgeZpnSubModuleUpgradeListResult(dict):
     @property
     @pulumi.getter(name="upgradeStatus")
     def upgrade_status(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "upgrade_status")
 
     @property
@@ -8660,16 +9604,6 @@ class GetServiceEdgeGroupTrustedNetworkResult(dict):
                  name: str,
                  network_id: str,
                  zscaler_cloud: str):
-        """
-        :param str creation_time: (string)
-        :param str domain: (string)
-        :param str id: The ID of the service edge group to be exported.
-        :param str master_customer_id: (string)
-        :param str modified_time: (string)
-        :param str name: The name of the service edge group to be exported.
-        :param str network_id: (string)
-        :param str zscaler_cloud: (string)
-        """
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "id", id)
@@ -8683,41 +9617,26 @@ class GetServiceEdgeGroupTrustedNetworkResult(dict):
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter
     def domain(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "domain")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of the service edge group to be exported.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="masterCustomerId")
     def master_customer_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "master_customer_id")
 
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -8728,25 +9647,16 @@ class GetServiceEdgeGroupTrustedNetworkResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the service edge group to be exported.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="networkId")
     def network_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "network_id")
 
     @property
     @pulumi.getter(name="zscalerCloud")
     def zscaler_cloud(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "zscaler_cloud")
 
 

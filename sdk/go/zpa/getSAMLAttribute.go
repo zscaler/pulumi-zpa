@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-saml-attributes)
+// * [API documentation](https://help.zscaler.com/zpa/obtaining-saml-attribute-details-using-api)
+//
 // Use the **zpa_saml_attribute** data source to get information about a SAML Attributes from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
 //
 // ## Example Usage
@@ -80,33 +83,22 @@ func GetSAMLAttribute(ctx *pulumi.Context, args *GetSAMLAttributeArgs, opts ...p
 
 // A collection of arguments for invoking getSAMLAttribute.
 type GetSAMLAttributeArgs struct {
-	// The ID of the machine group to be exported.
-	Id *string `pulumi:"id"`
-	// The name of the IdP corresponding to the SAML attribute.
-	//
-	// > **NOTE** When multiple Identity Providers (IdP) are onboarded in ZPA, the parameter ``idpName`` is required in order to reture the attribute from the correct IdP.
+	Id      *string `pulumi:"id"`
 	IdpName *string `pulumi:"idpName"`
-	// The name of the saml attribute to be exported.
-	Name *string `pulumi:"name"`
+	Name    *string `pulumi:"name"`
 }
 
 // A collection of values returned by getSAMLAttribute.
 type GetSAMLAttributeResult struct {
-	// (string)
-	CreationTime string `pulumi:"creationTime"`
-	Id           string `pulumi:"id"`
-	// (string) The ID of the IdP corresponding to the SAML attribute.
-	IdpId   string  `pulumi:"idpId"`
-	IdpName *string `pulumi:"idpName"`
-	// (string)
-	ModifiedTime string `pulumi:"modifiedTime"`
-	Modifiedby   string `pulumi:"modifiedby"`
-	// (string)
-	Name string `pulumi:"name"`
-	// (string)
-	SamlName string `pulumi:"samlName"`
-	// (string)
-	UserAttribute bool `pulumi:"userAttribute"`
+	CreationTime  string  `pulumi:"creationTime"`
+	Id            string  `pulumi:"id"`
+	IdpId         string  `pulumi:"idpId"`
+	IdpName       *string `pulumi:"idpName"`
+	ModifiedTime  string  `pulumi:"modifiedTime"`
+	Modifiedby    string  `pulumi:"modifiedby"`
+	Name          string  `pulumi:"name"`
+	SamlName      string  `pulumi:"samlName"`
+	UserAttribute bool    `pulumi:"userAttribute"`
 }
 
 func GetSAMLAttributeOutput(ctx *pulumi.Context, args GetSAMLAttributeOutputArgs, opts ...pulumi.InvokeOption) GetSAMLAttributeResultOutput {
@@ -124,14 +116,9 @@ func GetSAMLAttributeOutput(ctx *pulumi.Context, args GetSAMLAttributeOutputArgs
 
 // A collection of arguments for invoking getSAMLAttribute.
 type GetSAMLAttributeOutputArgs struct {
-	// The ID of the machine group to be exported.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The name of the IdP corresponding to the SAML attribute.
-	//
-	// > **NOTE** When multiple Identity Providers (IdP) are onboarded in ZPA, the parameter ``idpName`` is required in order to reture the attribute from the correct IdP.
+	Id      pulumi.StringPtrInput `pulumi:"id"`
 	IdpName pulumi.StringPtrInput `pulumi:"idpName"`
-	// The name of the saml attribute to be exported.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name    pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (GetSAMLAttributeOutputArgs) ElementType() reflect.Type {
@@ -153,7 +140,6 @@ func (o GetSAMLAttributeResultOutput) ToGetSAMLAttributeResultOutputWithContext(
 	return o
 }
 
-// (string)
 func (o GetSAMLAttributeResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSAMLAttributeResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
@@ -162,7 +148,6 @@ func (o GetSAMLAttributeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSAMLAttributeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (string) The ID of the IdP corresponding to the SAML attribute.
 func (o GetSAMLAttributeResultOutput) IdpId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSAMLAttributeResult) string { return v.IdpId }).(pulumi.StringOutput)
 }
@@ -171,7 +156,6 @@ func (o GetSAMLAttributeResultOutput) IdpName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSAMLAttributeResult) *string { return v.IdpName }).(pulumi.StringPtrOutput)
 }
 
-// (string)
 func (o GetSAMLAttributeResultOutput) ModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSAMLAttributeResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
@@ -180,17 +164,14 @@ func (o GetSAMLAttributeResultOutput) Modifiedby() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSAMLAttributeResult) string { return v.Modifiedby }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetSAMLAttributeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSAMLAttributeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetSAMLAttributeResultOutput) SamlName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSAMLAttributeResult) string { return v.SamlName }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetSAMLAttributeResultOutput) UserAttribute() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSAMLAttributeResult) bool { return v.UserAttribute }).(pulumi.BoolOutput)
 }

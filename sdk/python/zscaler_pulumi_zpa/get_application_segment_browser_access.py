@@ -91,9 +91,6 @@ class GetApplicationSegmentBrowserAccessResult:
     @property
     @pulumi.getter(name="bypassType")
     def bypass_type(self) -> str:
-        """
-        (string) Indicates whether users can bypass ZPA to access applications. Default: `NEVER`. Supported values: `ALWAYS`, `NEVER`, `ON_NET`. The value `NEVER` indicates the use of the client forwarding policy.
-        """
         return pulumi.get(self, "bypass_type")
 
     @property
@@ -104,41 +101,26 @@ class GetApplicationSegmentBrowserAccessResult:
     @property
     @pulumi.getter(name="configSpace")
     def config_space(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "config_space")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="domainNames")
     def domain_names(self) -> Sequence[str]:
-        """
-        List of domains and IPs.
-        """
         return pulumi.get(self, "domain_names")
 
     @property
     @pulumi.getter(name="doubleEncrypt")
     def double_encrypt(self) -> bool:
-        """
-        (string) Whether Double Encryption is enabled or disabled for the app. Default: false. Boolean: `true`, `false`.
-        """
         return pulumi.get(self, "double_encrypt")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -149,62 +131,47 @@ class GetApplicationSegmentBrowserAccessResult:
     @property
     @pulumi.getter(name="healthReporting")
     def health_reporting(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "health_reporting")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        - (String) This field defines the id of the application server.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="ipAnchored")
     def ip_anchored(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "ip_anchored")
 
     @property
     @pulumi.getter(name="isCnameEnabled")
     def is_cname_enabled(self) -> bool:
-        """
-        (bool) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors. Default: true. Boolean: `true`, `false`.
-        """
         return pulumi.get(self, "is_cname_enabled")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        (string)
+        - (String) This field defines the name of the server.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="passiveHealthEnabled")
     def passive_health_enabled(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "passive_health_enabled")
 
     @property
     @pulumi.getter(name="segmentGroupId")
     def segment_group_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "segment_group_id")
 
     @property
     @pulumi.getter(name="segmentGroupName")
     def segment_group_name(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "segment_group_name")
 
     @property
@@ -215,37 +182,21 @@ class GetApplicationSegmentBrowserAccessResult:
     @property
     @pulumi.getter(name="tcpPortRange")
     def tcp_port_range(self) -> Sequence['outputs.GetApplicationSegmentBrowserAccessTcpPortRangeResult']:
-        """
-        (string) TCP port ranges used to access the app.
-        * `from:`
-        * `to:`
-        """
         return pulumi.get(self, "tcp_port_range")
 
     @property
     @pulumi.getter(name="tcpPortRanges")
     def tcp_port_ranges(self) -> Sequence[str]:
-        """
-        (string) TCP port ranges used to access the app.
-        """
         return pulumi.get(self, "tcp_port_ranges")
 
     @property
     @pulumi.getter(name="udpPortRange")
     def udp_port_range(self) -> Sequence['outputs.GetApplicationSegmentBrowserAccessUdpPortRangeResult']:
-        """
-        (string) UDP port ranges used to access the app.
-        * `from:`
-        * `to:`
-        """
         return pulumi.get(self, "udp_port_range")
 
     @property
     @pulumi.getter(name="udpPortRanges")
     def udp_port_ranges(self) -> Sequence[str]:
-        """
-        (string) UDP port ranges used to access the app.
-        """
         return pulumi.get(self, "udp_port_ranges")
 
 
@@ -305,14 +256,8 @@ def get_application_segment_browser_access(id: Optional[str] = None,
     <!--End PulumiCodeChooser -->
 
 
-    :param str id: This field defines the id of the application server.
-    :param str name: This field defines the name of the server.
-    :param Sequence[pulumi.InputType['GetApplicationSegmentBrowserAccessTcpPortRangeArgs']] tcp_port_range: (string) TCP port ranges used to access the app.
-           * `from:`
-           * `to:`
-    :param Sequence[pulumi.InputType['GetApplicationSegmentBrowserAccessUdpPortRangeArgs']] udp_port_range: (string) UDP port ranges used to access the app.
-           * `from:`
-           * `to:`
+    :param str id: - (String) This field defines the id of the application server.
+    :param str name: - (String) This field defines the name of the server.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -374,13 +319,7 @@ def get_application_segment_browser_access_output(id: Optional[pulumi.Input[Opti
     <!--End PulumiCodeChooser -->
 
 
-    :param str id: This field defines the id of the application server.
-    :param str name: This field defines the name of the server.
-    :param Sequence[pulumi.InputType['GetApplicationSegmentBrowserAccessTcpPortRangeArgs']] tcp_port_range: (string) TCP port ranges used to access the app.
-           * `from:`
-           * `to:`
-    :param Sequence[pulumi.InputType['GetApplicationSegmentBrowserAccessUdpPortRangeArgs']] udp_port_range: (string) UDP port ranges used to access the app.
-           * `from:`
-           * `to:`
+    :param str id: - (String) This field defines the id of the application server.
+    :param str name: - (String) This field defines the name of the server.
     """
     ...

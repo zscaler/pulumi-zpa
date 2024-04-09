@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-connectors)
+ * * [API documentation](https://help.zscaler.com/zpa/managing-app-connectors-using-api)
+ *
  * Use the **zpa_app_connector_controller** data source to get information about a app connector created in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group.
  *
  * ## Example Usage
@@ -35,17 +38,8 @@ export function getAppConnectorController(args?: GetAppConnectorControllerArgs, 
  * A collection of arguments for invoking getAppConnectorController.
  */
 export interface GetAppConnectorControllerArgs {
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: string;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     microtenantName?: string;
-    /**
-     * Name of the App Connector Group.
-     */
     name?: string;
 }
 
@@ -53,148 +47,49 @@ export interface GetAppConnectorControllerArgs {
  * A collection of values returned by getAppConnectorController.
  */
 export interface GetAppConnectorControllerResult {
-    /**
-     * (Computed)
-     */
     readonly appConnectorGroupId: string;
-    /**
-     * (Computed) - Expected values: UNKNOWN/ZPN_STATUS_AUTHENTICATED(1)/ZPN_STATUS_DISCONNECTED
-     */
     readonly appConnectorGroupName: string;
-    /**
-     * (Computed)
-     */
     readonly applicationStartTime: string;
-    /**
-     * (Computed)
-     */
     readonly controlChannelStatus: string;
-    /**
-     * (Computed)
-     */
     readonly creationTime: string;
-    /**
-     * (Computed)
-     */
     readonly ctrlBrokerName: string;
-    /**
-     * (Computed)
-     */
     readonly currentVersion: string;
-    /**
-     * (Computed) - Description of the App Connector.
-     */
     readonly description: string;
-    /**
-     * (Computed) - Whether this App Connector is enabled or not. Default value: `true`. Supported values: `true`, `false`
-     */
     readonly enabled: boolean;
-    /**
-     * (Computed)
-     */
     readonly enrollmentCert: {[key: string]: any};
-    /**
-     * (Computed)
-     */
     readonly expectedUpgradeTime: string;
-    /**
-     * (Computed)
-     */
     readonly expectedVersion: string;
     readonly fingerprint: string;
     readonly id: string;
-    /**
-     * (Computed)
-     */
     readonly ipAcl: string;
-    /**
-     * (Computed)
-     */
     readonly issuedCertId: string;
-    /**
-     * (Computed)
-     */
     readonly lastBrokerConnectTime: string;
-    /**
-     * (Computed)
-     */
     readonly lastBrokerConnectTimeDuration: string;
-    /**
-     * (Computed)
-     */
     readonly lastBrokerDisconnectTime: string;
-    /**
-     * (Computed)
-     */
     readonly lastBrokerDisconnectTimeDuration: string;
-    /**
-     * (Computed)
-     */
     readonly lastUpgradeTime: string;
-    /**
-     * (Computed) - Latitude of the App Connector. Integer or decimal. With values in the range of `-90` to `90`
-     */
     readonly latitude: string;
-    /**
-     * (Computed) - Location of the App Connector.
-     */
     readonly location: string;
-    /**
-     * (Computed) - Longitude of the App Connector. Integer or decimal. With values in the range of `-180` to `180`
-     */
     readonly longitude: string;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     readonly microtenantId?: string;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     readonly microtenantName?: string;
-    /**
-     * (Computed)
-     */
     readonly modifiedTime: string;
     readonly modifiedby: string;
     readonly name?: string;
-    /**
-     * (Computed)
-     */
     readonly platform: string;
-    /**
-     * (Computed)
-     */
     readonly previousVersion: string;
-    /**
-     * (Computed)
-     */
     readonly privateIp: string;
-    /**
-     * (Computed)
-     */
     readonly provisioningKeyId: string;
-    /**
-     * (Computed)
-     */
     readonly provisioningKeyName: string;
-    /**
-     * (Computed)
-     */
     readonly publicIp: string;
-    /**
-     * (Computed)
-     */
     readonly sargeVersion: string;
-    /**
-     * (Computed)
-     */
     readonly upgradeAttempt: string;
-    /**
-     * (Computed)
-     */
     readonly upgradeStatus: string;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-connectors)
+ * * [API documentation](https://help.zscaler.com/zpa/managing-app-connectors-using-api)
+ *
  * Use the **zpa_app_connector_controller** data source to get information about a app connector created in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group.
  *
  * ## Example Usage
@@ -218,16 +113,7 @@ export function getAppConnectorControllerOutput(args?: GetAppConnectorController
  * A collection of arguments for invoking getAppConnectorController.
  */
 export interface GetAppConnectorControllerOutputArgs {
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: pulumi.Input<string>;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     microtenantName?: pulumi.Input<string>;
-    /**
-     * Name of the App Connector Group.
-     */
     name?: pulumi.Input<string>;
 }

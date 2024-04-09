@@ -14,56 +14,26 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetInspectionProfileCustomControlResult
     {
-        /// <summary>
-        /// (string) The action of the predefined control. Supported values: `PASS`, `BLOCK` and `REDIRECT`
-        /// </summary>
         public readonly string Action;
-        /// <summary>
-        /// (string) Value for the predefined controls action. This field is only required if the action is set to REDIRECT. This field is only required if the action is set to `REDIRECT`.
-        /// </summary>
         public readonly string ActionValue;
-        /// <summary>
-        /// (string) Name of the inspection profile
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetInspectionProfileCustomControlAssociatedInspectionProfileNameResult> AssociatedInspectionProfileNames;
         public readonly string ControlNumber;
-        /// <summary>
-        /// (string) Custom controls string in JSON format
-        /// </summary>
         public readonly string ControlRuleJson;
         public readonly string CreationTime;
         public readonly string DefaultAction;
         public readonly string DefaultActionValue;
-        /// <summary>
-        /// (string) Description of the inspection profile.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// This field defines the id of the inspection profile.
-        /// </summary>
         public readonly string Id;
         public readonly string ModifiedBy;
         public readonly string ModifiedTime;
         /// <summary>
-        /// This field defines the name of the inspection profile.
+        /// - (String) This field defines the name of the inspection profile.
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// (string) OWASP Predefined Paranoia Level. Range: [1-4], inclusive
-        /// </summary>
         public readonly string ParanoiaLevel;
-        /// <summary>
-        /// (string) Rules of the custom controls applied as conditions `JSON`
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetInspectionProfileCustomControlRuleResult> Rules;
         public readonly string Severity;
-        /// <summary>
-        /// (string) Type value for the rules
-        /// </summary>
         public readonly string Type;
-        /// <summary>
-        /// (string) The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
-        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]

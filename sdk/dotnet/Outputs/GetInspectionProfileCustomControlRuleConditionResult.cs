@@ -14,17 +14,8 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetInspectionProfileCustomControlRuleConditionResult
     {
-        /// <summary>
-        /// (string) Signifies the key for the object type Supported values: `SIZE`, `VALUE`
-        /// </summary>
         public readonly string Lhs;
-        /// <summary>
-        /// (string) If lhs is set to SIZE, then the user may pass one of the following: `EQ: Equals`, `LE: Less than or equal to`, `GE: Greater than or equal to`. If the lhs is set to `VALUE`, then the user may pass one of the following: `CONTAINS`, `STARTS_WITH`, `ENDS_WITH`, `RX`.
-        /// </summary>
         public readonly string Op;
-        /// <summary>
-        /// (string) Denotes the value for the given object type. Its value depends on the key. If rules.type is set to REQUEST_METHOD, the conditions.rhs field must have one of the following values: `GET`,`HEAD`, `POST`, `OPTIONS`, `PUT`, `DELETE`, `TRACE`
-        /// </summary>
         public readonly string Rhs;
 
         [OutputConstructor]

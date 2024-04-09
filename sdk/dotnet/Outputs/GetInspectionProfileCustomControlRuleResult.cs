@@ -14,17 +14,8 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetInspectionProfileCustomControlRuleResult
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetInspectionProfileCustomControlRuleConditionResult> Conditions;
-        /// <summary>
-        /// (string) Name of the rules. If rules.type is set to `REQUEST_HEADERS`, `REQUEST_COOKIES`, or `RESPONSE_HEADERS`, the rules.name field is required.
-        /// </summary>
         public readonly string Names;
-        /// <summary>
-        /// (string) Type value for the rules
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

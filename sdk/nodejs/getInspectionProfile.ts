@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-browser-protection-profiles)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-profiles-using-api)
+ *
  * Use the **zpa_inspection_profile** data source to get information about an inspection profile in the Zscaler Private Access cloud. This resource can then be referenced in an inspection custom control resource.
  *
  * ## Example Usage
@@ -36,12 +39,9 @@ export function getInspectionProfile(args?: GetInspectionProfileArgs, opts?: pul
  * A collection of arguments for invoking getInspectionProfile.
  */
 export interface GetInspectionProfileArgs {
-    /**
-     * This field defines the id of the inspection profile.
-     */
     id?: string;
     /**
-     * This field defines the name of the inspection profile.
+     * - (String) This field defines the name of the inspection profile.
      */
     name?: string;
 }
@@ -50,50 +50,29 @@ export interface GetInspectionProfileArgs {
  * A collection of values returned by getInspectionProfile.
  */
 export interface GetInspectionProfileResult {
-    /**
-     * (string)
-     */
     readonly commonGlobalOverrideActionsConfig: {[key: string]: string};
-    /**
-     * (string) Types for custom controls
-     */
     readonly controlsInfos: outputs.GetInspectionProfileControlsInfo[];
     readonly creationTime: string;
-    /**
-     * (string) Types for custom controls
-     */
     readonly customControls: outputs.GetInspectionProfileCustomControl[];
-    /**
-     * (string) Description of the inspection profile.
-     */
     readonly description: string;
     readonly globalControlActions: string[];
-    /**
-     * (string) ID of the predefined control
-     */
     readonly id: string;
     readonly incarnationNumber: string;
     readonly modifiedBy: string;
     readonly modifiedTime: string;
     /**
-     * (string)
+     * - (String) This field defines the name of the inspection profile.
      */
     readonly name: string;
-    /**
-     * (string) OWASP Predefined Paranoia Level. Range: [1-4], inclusive
-     */
     readonly paranoiaLevel: string;
-    /**
-     * (string) The predefined controls
-     */
     readonly predefinedControls: outputs.GetInspectionProfilePredefinedControl[];
     readonly predefinedControlsVersion: string;
-    /**
-     * (string)
-     */
     readonly webSocketControls: outputs.GetInspectionProfileWebSocketControl[];
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-browser-protection-profiles)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-profiles-using-api)
+ *
  * Use the **zpa_inspection_profile** data source to get information about an inspection profile in the Zscaler Private Access cloud. This resource can then be referenced in an inspection custom control resource.
  *
  * ## Example Usage
@@ -117,12 +96,9 @@ export function getInspectionProfileOutput(args?: GetInspectionProfileOutputArgs
  * A collection of arguments for invoking getInspectionProfile.
  */
 export interface GetInspectionProfileOutputArgs {
-    /**
-     * This field defines the id of the inspection profile.
-     */
     id?: pulumi.Input<string>;
     /**
-     * This field defines the name of the inspection profile.
+     * - (String) This field defines the name of the inspection profile.
      */
     name?: pulumi.Input<string>;
 }

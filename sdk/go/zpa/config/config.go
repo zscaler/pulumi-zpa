@@ -37,7 +37,7 @@ func GetZpaClientSecret(ctx *pulumi.Context) string {
 	return value
 }
 
-// Cloud to use PRODUCTION, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
+// Cloud to use PRODUCTION, ZPATWO, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
 func GetZpaCloud(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "zpa:zpaCloud")
 	if err == nil {

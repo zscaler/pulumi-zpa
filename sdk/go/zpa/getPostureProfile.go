@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/client-connector/about-device-posture-profiles)
+// * [API documentation](https://help.zscaler.com/zpa/obtaining-posture-profile-details-using-api)
+//
 // Use the **zpa_posture_profile** data source to get information about a posture profile created in the Zscaler Private Access Mobile Portal. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
 //
 // ## Example Usage
@@ -161,29 +164,21 @@ func GetPostureProfile(ctx *pulumi.Context, args *GetPostureProfileArgs, opts ..
 
 // A collection of arguments for invoking getPostureProfile.
 type GetPostureProfileArgs struct {
-	// The name of the posture profile to be exported.
 	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getPostureProfile.
 type GetPostureProfileResult struct {
-	// (string)
-	CreationTime string `pulumi:"creationTime"`
-	// (string)
-	Domain string `pulumi:"domain"`
-	Id     string `pulumi:"id"`
-	// (string)
-	MasterCustomerId string `pulumi:"masterCustomerId"`
-	// (string)
-	ModifiedTime string  `pulumi:"modifiedTime"`
-	Modifiedby   string  `pulumi:"modifiedby"`
-	Name         *string `pulumi:"name"`
-	// (string)
-	PostureUdid string `pulumi:"postureUdid"`
-	// (string)
-	ZscalerCloud string `pulumi:"zscalerCloud"`
-	// (string)
-	ZscalerCustomerId string `pulumi:"zscalerCustomerId"`
+	CreationTime      string  `pulumi:"creationTime"`
+	Domain            string  `pulumi:"domain"`
+	Id                string  `pulumi:"id"`
+	MasterCustomerId  string  `pulumi:"masterCustomerId"`
+	ModifiedTime      string  `pulumi:"modifiedTime"`
+	Modifiedby        string  `pulumi:"modifiedby"`
+	Name              *string `pulumi:"name"`
+	PostureUdid       string  `pulumi:"postureUdid"`
+	ZscalerCloud      string  `pulumi:"zscalerCloud"`
+	ZscalerCustomerId string  `pulumi:"zscalerCustomerId"`
 }
 
 func GetPostureProfileOutput(ctx *pulumi.Context, args GetPostureProfileOutputArgs, opts ...pulumi.InvokeOption) GetPostureProfileResultOutput {
@@ -201,7 +196,6 @@ func GetPostureProfileOutput(ctx *pulumi.Context, args GetPostureProfileOutputAr
 
 // A collection of arguments for invoking getPostureProfile.
 type GetPostureProfileOutputArgs struct {
-	// The name of the posture profile to be exported.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -224,12 +218,10 @@ func (o GetPostureProfileResultOutput) ToGetPostureProfileResultOutputWithContex
 	return o
 }
 
-// (string)
 func (o GetPostureProfileResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostureProfileResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetPostureProfileResultOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostureProfileResult) string { return v.Domain }).(pulumi.StringOutput)
 }
@@ -238,12 +230,10 @@ func (o GetPostureProfileResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostureProfileResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetPostureProfileResultOutput) MasterCustomerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostureProfileResult) string { return v.MasterCustomerId }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetPostureProfileResultOutput) ModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostureProfileResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
@@ -256,17 +246,14 @@ func (o GetPostureProfileResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPostureProfileResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// (string)
 func (o GetPostureProfileResultOutput) PostureUdid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostureProfileResult) string { return v.PostureUdid }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetPostureProfileResultOutput) ZscalerCloud() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostureProfileResult) string { return v.ZscalerCloud }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetPostureProfileResultOutput) ZscalerCustomerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostureProfileResult) string { return v.ZscalerCustomerId }).(pulumi.StringOutput)
 }

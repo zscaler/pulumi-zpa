@@ -63,7 +63,8 @@ export class ProvisioningKey extends pulumi.CustomResource {
      */
     public /*out*/ readonly appConnectorGroupName!: pulumi.Output<string>;
     /**
-     * Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are `CONNECTOR_GRP` and `SERVICE_EDGE_GRP`
+     * Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
+     * CONNECTOR_GRP and SERVICE_EDGE_GRP.
      */
     public readonly associationType!: pulumi.Output<string>;
     /**
@@ -71,7 +72,7 @@ export class ProvisioningKey extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * ID of the enrollment certificate that can be used for this provisioning key. `ID` of the existing enrollment certificate that has the private key
+     * ID of the enrollment certificate that can be used for this provisioning key.
      */
     public readonly enrollmentCertId!: pulumi.Output<string>;
     public readonly ipAcls!: pulumi.Output<string[] | undefined>;
@@ -79,11 +80,6 @@ export class ProvisioningKey extends pulumi.CustomResource {
      * The maximum number of instances where this provisioning key can be used for enrolling an App Connector or Service Edge.
      */
     public readonly maxUsage!: pulumi.Output<string>;
-    /**
-     * The ID of the microtenant the resource is to be associated with.
-     *
-     * ⚠️ **WARNING:**: The attribute ``microtenantId`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-     */
     public readonly microtenantId!: pulumi.Output<string | undefined>;
     /**
      * Name of the provisioning key.
@@ -180,7 +176,8 @@ export interface ProvisioningKeyState {
      */
     appConnectorGroupName?: pulumi.Input<string>;
     /**
-     * Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are `CONNECTOR_GRP` and `SERVICE_EDGE_GRP`
+     * Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
+     * CONNECTOR_GRP and SERVICE_EDGE_GRP.
      */
     associationType?: pulumi.Input<string>;
     /**
@@ -188,7 +185,7 @@ export interface ProvisioningKeyState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * ID of the enrollment certificate that can be used for this provisioning key. `ID` of the existing enrollment certificate that has the private key
+     * ID of the enrollment certificate that can be used for this provisioning key.
      */
     enrollmentCertId?: pulumi.Input<string>;
     ipAcls?: pulumi.Input<pulumi.Input<string>[]>;
@@ -196,11 +193,6 @@ export interface ProvisioningKeyState {
      * The maximum number of instances where this provisioning key can be used for enrolling an App Connector or Service Edge.
      */
     maxUsage?: pulumi.Input<string>;
-    /**
-     * The ID of the microtenant the resource is to be associated with.
-     *
-     * ⚠️ **WARNING:**: The attribute ``microtenantId`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-     */
     microtenantId?: pulumi.Input<string>;
     /**
      * Name of the provisioning key.
@@ -227,7 +219,8 @@ export interface ProvisioningKeyState {
 export interface ProvisioningKeyArgs {
     appConnectorGroupId?: pulumi.Input<string>;
     /**
-     * Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are `CONNECTOR_GRP` and `SERVICE_EDGE_GRP`
+     * Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
+     * CONNECTOR_GRP and SERVICE_EDGE_GRP.
      */
     associationType: pulumi.Input<string>;
     /**
@@ -235,7 +228,7 @@ export interface ProvisioningKeyArgs {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * ID of the enrollment certificate that can be used for this provisioning key. `ID` of the existing enrollment certificate that has the private key
+     * ID of the enrollment certificate that can be used for this provisioning key.
      */
     enrollmentCertId: pulumi.Input<string>;
     ipAcls?: pulumi.Input<pulumi.Input<string>[]>;
@@ -243,11 +236,6 @@ export interface ProvisioningKeyArgs {
      * The maximum number of instances where this provisioning key can be used for enrolling an App Connector or Service Edge.
      */
     maxUsage: pulumi.Input<string>;
-    /**
-     * The ID of the microtenant the resource is to be associated with.
-     *
-     * ⚠️ **WARNING:**: The attribute ``microtenantId`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-     */
     microtenantId?: pulumi.Input<string>;
     /**
      * Name of the provisioning key.
