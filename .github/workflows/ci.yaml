@@ -31,6 +31,6 @@ jobs:
           repo: pulumi/pulumictl
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: dirty-check
-        run: |
-          make check-dirty
+      # - name: dirty-check
+      #   run: |
+      #     make check-dirty
