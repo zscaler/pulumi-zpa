@@ -34,8 +34,8 @@ namespace Zscaler.Zpa.Inputs
         /// <summary>
         /// ID of the BA certificate.
         /// </summary>
-        [Input("certificateId", required: true)]
-        public Input<string> CertificateId { get; set; } = null!;
+        [Input("certificateId")]
+        public Input<string>? CertificateId { get; set; }
 
         [Input("cname")]
         public Input<string>? Cname { get; set; }

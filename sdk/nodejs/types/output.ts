@@ -21,7 +21,7 @@ export interface ApplicationSegmentBrowserAccessClientlessApp {
     /**
      * ID of the BA certificate.
      */
-    certificateId: string;
+    certificateId?: string;
     cname: string;
     description?: string;
     /**
@@ -145,7 +145,7 @@ export interface BrowserAccessClientlessApp {
     /**
      * ID of the BA certificate.
      */
-    certificateId: string;
+    certificateId?: string;
     cname: string;
     description?: string;
     /**

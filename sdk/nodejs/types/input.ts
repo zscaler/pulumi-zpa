@@ -21,7 +21,7 @@ export interface ApplicationSegmentBrowserAccessClientlessApp {
     /**
      * ID of the BA certificate.
      */
-    certificateId: pulumi.Input<string>;
+    certificateId?: pulumi.Input<string>;
     cname?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
     /**
@@ -145,7 +145,7 @@ export interface BrowserAccessClientlessApp {
     /**
      * ID of the BA certificate.
      */
-    certificateId: pulumi.Input<string>;
+    certificateId?: pulumi.Input<string>;
     cname?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
     /**

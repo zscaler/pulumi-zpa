@@ -194,10 +194,10 @@ class ApplicationSegmentBrowserAccessClientlessApp(dict):
             suggest = "application_port"
         elif key == "applicationProtocol":
             suggest = "application_protocol"
-        elif key == "certificateId":
-            suggest = "certificate_id"
         elif key == "allowOptions":
             suggest = "allow_options"
+        elif key == "certificateId":
+            suggest = "certificate_id"
         elif key == "localDomain":
             suggest = "local_domain"
         elif key == "trustUntrustedCert":
@@ -217,9 +217,9 @@ class ApplicationSegmentBrowserAccessClientlessApp(dict):
     def __init__(__self__, *,
                  application_port: str,
                  application_protocol: str,
-                 certificate_id: str,
                  name: str,
                  allow_options: Optional[bool] = None,
+                 certificate_id: Optional[str] = None,
                  cname: Optional[str] = None,
                  description: Optional[str] = None,
                  domain: Optional[str] = None,
@@ -232,17 +232,18 @@ class ApplicationSegmentBrowserAccessClientlessApp(dict):
         """
         :param str application_port: Port for the BA app.
         :param str application_protocol: Protocol for the BA app.
-        :param str certificate_id: ID of the BA certificate.
         :param bool allow_options: If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.
+        :param str certificate_id: ID of the BA certificate.
         :param str domain: Domain name or IP address of the BA app.
         :param bool trust_untrusted_cert: Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
         """
         pulumi.set(__self__, "application_port", application_port)
         pulumi.set(__self__, "application_protocol", application_protocol)
-        pulumi.set(__self__, "certificate_id", certificate_id)
         pulumi.set(__self__, "name", name)
         if allow_options is not None:
             pulumi.set(__self__, "allow_options", allow_options)
+        if certificate_id is not None:
+            pulumi.set(__self__, "certificate_id", certificate_id)
         if cname is not None:
             pulumi.set(__self__, "cname", cname)
         if description is not None:
@@ -279,14 +280,6 @@ class ApplicationSegmentBrowserAccessClientlessApp(dict):
         return pulumi.get(self, "application_protocol")
 
     @property
-    @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> str:
-        """
-        ID of the BA certificate.
-        """
-        return pulumi.get(self, "certificate_id")
-
-    @property
     @pulumi.getter
     def name(self) -> str:
         return pulumi.get(self, "name")
@@ -298,6 +291,14 @@ class ApplicationSegmentBrowserAccessClientlessApp(dict):
         If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.
         """
         return pulumi.get(self, "allow_options")
+
+    @property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> Optional[str]:
+        """
+        ID of the BA certificate.
+        """
+        return pulumi.get(self, "certificate_id")
 
     @property
     @pulumi.getter
@@ -988,10 +989,10 @@ class BrowserAccessClientlessApp(dict):
             suggest = "application_port"
         elif key == "applicationProtocol":
             suggest = "application_protocol"
-        elif key == "certificateId":
-            suggest = "certificate_id"
         elif key == "allowOptions":
             suggest = "allow_options"
+        elif key == "certificateId":
+            suggest = "certificate_id"
         elif key == "localDomain":
             suggest = "local_domain"
         elif key == "trustUntrustedCert":
@@ -1011,9 +1012,9 @@ class BrowserAccessClientlessApp(dict):
     def __init__(__self__, *,
                  application_port: str,
                  application_protocol: str,
-                 certificate_id: str,
                  name: str,
                  allow_options: Optional[bool] = None,
+                 certificate_id: Optional[str] = None,
                  cname: Optional[str] = None,
                  description: Optional[str] = None,
                  domain: Optional[str] = None,
@@ -1026,17 +1027,18 @@ class BrowserAccessClientlessApp(dict):
         """
         :param str application_port: Port for the BA app.
         :param str application_protocol: Protocol for the BA app.
-        :param str certificate_id: ID of the BA certificate.
         :param bool allow_options: If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.
+        :param str certificate_id: ID of the BA certificate.
         :param str domain: Domain name or IP address of the BA app.
         :param bool trust_untrusted_cert: Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
         """
         pulumi.set(__self__, "application_port", application_port)
         pulumi.set(__self__, "application_protocol", application_protocol)
-        pulumi.set(__self__, "certificate_id", certificate_id)
         pulumi.set(__self__, "name", name)
         if allow_options is not None:
             pulumi.set(__self__, "allow_options", allow_options)
+        if certificate_id is not None:
+            pulumi.set(__self__, "certificate_id", certificate_id)
         if cname is not None:
             pulumi.set(__self__, "cname", cname)
         if description is not None:
@@ -1073,14 +1075,6 @@ class BrowserAccessClientlessApp(dict):
         return pulumi.get(self, "application_protocol")
 
     @property
-    @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> str:
-        """
-        ID of the BA certificate.
-        """
-        return pulumi.get(self, "certificate_id")
-
-    @property
     @pulumi.getter
     def name(self) -> str:
         return pulumi.get(self, "name")
@@ -1092,6 +1086,14 @@ class BrowserAccessClientlessApp(dict):
         If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.
         """
         return pulumi.get(self, "allow_options")
+
+    @property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> Optional[str]:
+        """
+        ID of the BA certificate.
+        """
+        return pulumi.get(self, "certificate_id")
 
     @property
     @pulumi.getter

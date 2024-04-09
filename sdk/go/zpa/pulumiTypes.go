@@ -21,7 +21,7 @@ type ApplicationSegmentBrowserAccessClientlessApp struct {
 	// Protocol for the BA app.
 	ApplicationProtocol string `pulumi:"applicationProtocol"`
 	// ID of the BA certificate.
-	CertificateId string  `pulumi:"certificateId"`
+	CertificateId *string `pulumi:"certificateId"`
 	Cname         *string `pulumi:"cname"`
 	Description   *string `pulumi:"description"`
 	// Domain name or IP address of the BA app.
@@ -55,7 +55,7 @@ type ApplicationSegmentBrowserAccessClientlessAppArgs struct {
 	// Protocol for the BA app.
 	ApplicationProtocol pulumi.StringInput `pulumi:"applicationProtocol"`
 	// ID of the BA certificate.
-	CertificateId pulumi.StringInput    `pulumi:"certificateId"`
+	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
 	Cname         pulumi.StringPtrInput `pulumi:"cname"`
 	Description   pulumi.StringPtrInput `pulumi:"description"`
 	// Domain name or IP address of the BA app.
@@ -137,8 +137,8 @@ func (o ApplicationSegmentBrowserAccessClientlessAppOutput) ApplicationProtocol(
 }
 
 // ID of the BA certificate.
-func (o ApplicationSegmentBrowserAccessClientlessAppOutput) CertificateId() pulumi.StringOutput {
-	return o.ApplyT(func(v ApplicationSegmentBrowserAccessClientlessApp) string { return v.CertificateId }).(pulumi.StringOutput)
+func (o ApplicationSegmentBrowserAccessClientlessAppOutput) CertificateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationSegmentBrowserAccessClientlessApp) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
 
 func (o ApplicationSegmentBrowserAccessClientlessAppOutput) Cname() pulumi.StringPtrOutput {
@@ -1947,7 +1947,7 @@ type BrowserAccessClientlessApp struct {
 	// Protocol for the BA app.
 	ApplicationProtocol string `pulumi:"applicationProtocol"`
 	// ID of the BA certificate.
-	CertificateId string  `pulumi:"certificateId"`
+	CertificateId *string `pulumi:"certificateId"`
 	Cname         *string `pulumi:"cname"`
 	Description   *string `pulumi:"description"`
 	// Domain name or IP address of the BA app.
@@ -1981,7 +1981,7 @@ type BrowserAccessClientlessAppArgs struct {
 	// Protocol for the BA app.
 	ApplicationProtocol pulumi.StringInput `pulumi:"applicationProtocol"`
 	// ID of the BA certificate.
-	CertificateId pulumi.StringInput    `pulumi:"certificateId"`
+	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
 	Cname         pulumi.StringPtrInput `pulumi:"cname"`
 	Description   pulumi.StringPtrInput `pulumi:"description"`
 	// Domain name or IP address of the BA app.
@@ -2063,8 +2063,8 @@ func (o BrowserAccessClientlessAppOutput) ApplicationProtocol() pulumi.StringOut
 }
 
 // ID of the BA certificate.
-func (o BrowserAccessClientlessAppOutput) CertificateId() pulumi.StringOutput {
-	return o.ApplyT(func(v BrowserAccessClientlessApp) string { return v.CertificateId }).(pulumi.StringOutput)
+func (o BrowserAccessClientlessAppOutput) CertificateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrowserAccessClientlessApp) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
 
 func (o BrowserAccessClientlessAppOutput) Cname() pulumi.StringPtrOutput {

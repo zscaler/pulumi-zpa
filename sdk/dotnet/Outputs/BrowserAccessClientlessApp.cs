@@ -29,7 +29,7 @@ namespace Zscaler.Zpa.Outputs
         /// <summary>
         /// ID of the BA certificate.
         /// </summary>
-        public readonly string CertificateId;
+        public readonly string? CertificateId;
         public readonly string? Cname;
         public readonly string? Description;
         /// <summary>
@@ -55,7 +55,7 @@ namespace Zscaler.Zpa.Outputs
 
             string applicationProtocol,
 
-            string certificateId,
+            string? certificateId,
 
             string? cname,
 

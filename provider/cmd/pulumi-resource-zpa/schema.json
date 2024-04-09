@@ -116,7 +116,8 @@
                 },
                 "certificateId": {
                     "type": "string",
-                    "description": "ID of the BA certificate.\n"
+                    "description": "ID of the BA certificate.\n",
+                    "willReplaceOnChanges": true
                 },
                 "cname": {
                     "type": "string"
@@ -155,7 +156,6 @@
             "required": [
                 "applicationPort",
                 "applicationProtocol",
-                "certificateId",
                 "name"
             ],
             "language": {
@@ -163,7 +163,6 @@
                     "requiredOutputs": [
                         "applicationPort",
                         "applicationProtocol",
-                        "certificateId",
                         "cname",
                         "enabled",
                         "hidden",
@@ -446,7 +445,8 @@
                 },
                 "certificateId": {
                     "type": "string",
-                    "description": "ID of the BA certificate.\n"
+                    "description": "ID of the BA certificate.\n",
+                    "willReplaceOnChanges": true
                 },
                 "cname": {
                     "type": "string"
@@ -485,7 +485,6 @@
             "required": [
                 "applicationPort",
                 "applicationProtocol",
-                "certificateId",
                 "name"
             ],
             "language": {
@@ -493,7 +492,6 @@
                     "requiredOutputs": [
                         "applicationPort",
                         "applicationProtocol",
-                        "certificateId",
                         "cname",
                         "enabled",
                         "hidden",

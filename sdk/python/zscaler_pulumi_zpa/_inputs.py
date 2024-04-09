@@ -129,9 +129,9 @@ class ApplicationSegmentBrowserAccessClientlessAppArgs:
     def __init__(__self__, *,
                  application_port: pulumi.Input[str],
                  application_protocol: pulumi.Input[str],
-                 certificate_id: pulumi.Input[str],
                  name: pulumi.Input[str],
                  allow_options: Optional[pulumi.Input[bool]] = None,
+                 certificate_id: Optional[pulumi.Input[str]] = None,
                  cname: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
@@ -144,17 +144,18 @@ class ApplicationSegmentBrowserAccessClientlessAppArgs:
         """
         :param pulumi.Input[str] application_port: Port for the BA app.
         :param pulumi.Input[str] application_protocol: Protocol for the BA app.
-        :param pulumi.Input[str] certificate_id: ID of the BA certificate.
         :param pulumi.Input[bool] allow_options: If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.
+        :param pulumi.Input[str] certificate_id: ID of the BA certificate.
         :param pulumi.Input[str] domain: Domain name or IP address of the BA app.
         :param pulumi.Input[bool] trust_untrusted_cert: Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
         """
         pulumi.set(__self__, "application_port", application_port)
         pulumi.set(__self__, "application_protocol", application_protocol)
-        pulumi.set(__self__, "certificate_id", certificate_id)
         pulumi.set(__self__, "name", name)
         if allow_options is not None:
             pulumi.set(__self__, "allow_options", allow_options)
+        if certificate_id is not None:
+            pulumi.set(__self__, "certificate_id", certificate_id)
         if cname is not None:
             pulumi.set(__self__, "cname", cname)
         if description is not None:
@@ -199,18 +200,6 @@ class ApplicationSegmentBrowserAccessClientlessAppArgs:
         pulumi.set(self, "application_protocol", value)
 
     @property
-    @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> pulumi.Input[str]:
-        """
-        ID of the BA certificate.
-        """
-        return pulumi.get(self, "certificate_id")
-
-    @certificate_id.setter
-    def certificate_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "certificate_id", value)
-
-    @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "name")
@@ -230,6 +219,18 @@ class ApplicationSegmentBrowserAccessClientlessAppArgs:
     @allow_options.setter
     def allow_options(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_options", value)
+
+    @property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the BA certificate.
+        """
+        return pulumi.get(self, "certificate_id")
+
+    @certificate_id.setter
+    def certificate_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_id", value)
 
     @property
     @pulumi.getter
@@ -896,9 +897,9 @@ class BrowserAccessClientlessAppArgs:
     def __init__(__self__, *,
                  application_port: pulumi.Input[str],
                  application_protocol: pulumi.Input[str],
-                 certificate_id: pulumi.Input[str],
                  name: pulumi.Input[str],
                  allow_options: Optional[pulumi.Input[bool]] = None,
+                 certificate_id: Optional[pulumi.Input[str]] = None,
                  cname: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
@@ -911,17 +912,18 @@ class BrowserAccessClientlessAppArgs:
         """
         :param pulumi.Input[str] application_port: Port for the BA app.
         :param pulumi.Input[str] application_protocol: Protocol for the BA app.
-        :param pulumi.Input[str] certificate_id: ID of the BA certificate.
         :param pulumi.Input[bool] allow_options: If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.
+        :param pulumi.Input[str] certificate_id: ID of the BA certificate.
         :param pulumi.Input[str] domain: Domain name or IP address of the BA app.
         :param pulumi.Input[bool] trust_untrusted_cert: Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
         """
         pulumi.set(__self__, "application_port", application_port)
         pulumi.set(__self__, "application_protocol", application_protocol)
-        pulumi.set(__self__, "certificate_id", certificate_id)
         pulumi.set(__self__, "name", name)
         if allow_options is not None:
             pulumi.set(__self__, "allow_options", allow_options)
+        if certificate_id is not None:
+            pulumi.set(__self__, "certificate_id", certificate_id)
         if cname is not None:
             pulumi.set(__self__, "cname", cname)
         if description is not None:
@@ -966,18 +968,6 @@ class BrowserAccessClientlessAppArgs:
         pulumi.set(self, "application_protocol", value)
 
     @property
-    @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> pulumi.Input[str]:
-        """
-        ID of the BA certificate.
-        """
-        return pulumi.get(self, "certificate_id")
-
-    @certificate_id.setter
-    def certificate_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "certificate_id", value)
-
-    @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "name")
@@ -997,6 +987,18 @@ class BrowserAccessClientlessAppArgs:
     @allow_options.setter
     def allow_options(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_options", value)
+
+    @property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the BA certificate.
+        """
+        return pulumi.get(self, "certificate_id")
+
+    @certificate_id.setter
+    def certificate_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_id", value)
 
     @property
     @pulumi.getter
