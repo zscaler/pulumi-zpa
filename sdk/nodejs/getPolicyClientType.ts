@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api#getClientTypes)
+ *
  * Use the **zpa_access_policy_client_types** data source to get information about all client types for the specified customer in the Zscaler Private Access cloud. This data source can be optionally used when defining the following policy types:
  *     - ``zpa.PolicyAccessRule``
  *     - ``zpa.PolicyAccessTimeOutRule``
@@ -55,6 +58,9 @@ export interface GetPolicyClientTypeResult {
     readonly zpnClientTypeZapp: string;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api#getClientTypes)
+ *
  * Use the **zpa_access_policy_client_types** data source to get information about all client types for the specified customer in the Zscaler Private Access cloud. This data source can be optionally used when defining the following policy types:
  *     - ``zpa.PolicyAccessRule``
  *     - ``zpa.PolicyAccessTimeOutRule``

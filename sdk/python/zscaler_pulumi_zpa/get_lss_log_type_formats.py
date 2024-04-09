@@ -83,6 +83,9 @@ class AwaitableGetLSSLogTypeFormatsResult(GetLSSLogTypeFormatsResult):
 def get_lss_log_type_formats(log_type: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLSSLogTypeFormatsResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-log-streaming-service)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
+
     Use the **zpa_lss_config_log_type_formats** data source to get information about all LSS log type formats in the Zscaler Private Access cloud. This data source is required when creating an LSS Config Controller resource.
 
     ## Example Usage
@@ -104,8 +107,20 @@ def get_lss_log_type_formats(log_type: Optional[str] = None,
     ```
     <!--End PulumiCodeChooser -->
 
+    ### Read-Only
 
-    :param str log_type: The type of log to be exported.
+    The following arguments are supported:
+
+    * `log_type` - (Required) The type of log to be exported.
+      * `zpn_trans_log`
+      * `zpn_auth_log`
+      * `zpn_ast_auth_log`
+      * `zpn_http_trans_log`
+      * `zpn_audit_log`
+      * `zpn_sys_auth_log`
+      * `zpn_ast_comprehensive_stats`
+      * `zpn_waf_http_exchanges_log`
+      * `zpn_pbroker_comprehensive_stats`
     """
     __args__ = dict()
     __args__['logType'] = log_type
@@ -124,6 +139,9 @@ def get_lss_log_type_formats(log_type: Optional[str] = None,
 def get_lss_log_type_formats_output(log_type: Optional[pulumi.Input[str]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLSSLogTypeFormatsResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-log-streaming-service)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
+
     Use the **zpa_lss_config_log_type_formats** data source to get information about all LSS log type formats in the Zscaler Private Access cloud. This data source is required when creating an LSS Config Controller resource.
 
     ## Example Usage
@@ -145,7 +163,19 @@ def get_lss_log_type_formats_output(log_type: Optional[pulumi.Input[str]] = None
     ```
     <!--End PulumiCodeChooser -->
 
+    ### Read-Only
 
-    :param str log_type: The type of log to be exported.
+    The following arguments are supported:
+
+    * `log_type` - (Required) The type of log to be exported.
+      * `zpn_trans_log`
+      * `zpn_auth_log`
+      * `zpn_ast_auth_log`
+      * `zpn_http_trans_log`
+      * `zpn_audit_log`
+      * `zpn_sys_auth_log`
+      * `zpn_ast_comprehensive_stats`
+      * `zpn_waf_http_exchanges_log`
+      * `zpn_pbroker_comprehensive_stats`
     """
     ...

@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
+ *
  * The **zpa_cloud_browser_isolation_certificate** resource creates a Cloud Browser Isolation certificate. This resource can then be used when creating a CBI External Profile `zpa.CloudBrowserIsolationExternalProfile`.`
  *
  * ## Example Usage
@@ -51,13 +53,7 @@ export class CloudBrowserIsolationCertificate extends pulumi.CustomResource {
         return obj['__pulumiType'] === CloudBrowserIsolationCertificate.__pulumiType;
     }
 
-    /**
-     * The name of the CBI certificate.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The certificate in PEM format.
-     */
     public readonly pem!: pulumi.Output<string | undefined>;
 
     /**
@@ -89,13 +85,7 @@ export class CloudBrowserIsolationCertificate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CloudBrowserIsolationCertificate resources.
  */
 export interface CloudBrowserIsolationCertificateState {
-    /**
-     * The name of the CBI certificate.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The certificate in PEM format.
-     */
     pem?: pulumi.Input<string>;
 }
 
@@ -103,12 +93,6 @@ export interface CloudBrowserIsolationCertificateState {
  * The set of arguments for constructing a CloudBrowserIsolationCertificate resource.
  */
 export interface CloudBrowserIsolationCertificateArgs {
-    /**
-     * The name of the CBI certificate.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The certificate in PEM format.
-     */
     pem?: pulumi.Input<string>;
 }

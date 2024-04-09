@@ -18,55 +18,33 @@ namespace Zscaler.Zpa.Inputs
 
         [Input("appTypes")]
         private InputList<string>? _appTypes;
-
-        /// <summary>
-        /// Indicates the type of application as Privileged Remote Access. Supported value: `SECURE_REMOTE_ACCESS`
-        /// </summary>
         public InputList<string> AppTypes
         {
             get => _appTypes ?? (_appTypes = new InputList<string>());
             set => _appTypes = value;
         }
 
-        /// <summary>
-        /// Port for the Privileged Remote Access
-        /// </summary>
         [Input("applicationPort")]
         public Input<string>? ApplicationPort { get; set; }
 
-        /// <summary>
-        /// Protocol for the Privileged Remote Access. Supported values: `RDP` and `SSH`
-        /// </summary>
         [Input("applicationProtocol")]
         public Input<string>? ApplicationProtocol { get; set; }
 
-        /// <summary>
-        /// Parameter required when `application_protocol` is of type `RDP`
-        /// </summary>
         [Input("connectionSecurity")]
         public Input<string>? ConnectionSecurity { get; set; }
 
-        /// <summary>
-        /// (Optional) Description of the application.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Domain name of the Privileged Remote Access
-        /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
-        /// <summary>
-        /// Whether this application is enabled or not
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// Name of the Privileged Remote Access
-        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
         [Input("name")]
         public Input<string>? Name { get; set; }
 

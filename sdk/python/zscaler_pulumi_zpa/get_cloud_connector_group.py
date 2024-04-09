@@ -60,41 +60,26 @@ class GetCloudConnectorGroupResult:
     @property
     @pulumi.getter(name="cloudConnectors")
     def cloud_connectors(self) -> Sequence['outputs.GetCloudConnectorGroupCloudConnectorResult']:
-        """
-        (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        """
         return pulumi.get(self, "cloud_connectors")
 
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="geolocationId")
     def geolocation_id(self) -> str:
-        """
-        (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        """
         return pulumi.get(self, "geolocation_id")
 
     @property
@@ -105,9 +90,6 @@ class GetCloudConnectorGroupResult:
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)- Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -118,25 +100,16 @@ class GetCloudConnectorGroupResult:
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        (string) - This field defines the name of the cloud connector group.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="ziaCloud")
     def zia_cloud(self) -> str:
-        """
-        (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        """
         return pulumi.get(self, "zia_cloud")
 
     @property
     @pulumi.getter(name="ziaOrgId")
     def zia_org_id(self) -> str:
-        """
-        (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-        """
         return pulumi.get(self, "zia_org_id")
 
 
@@ -163,6 +136,9 @@ def get_cloud_connector_group(id: Optional[str] = None,
                               name: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCloudConnectorGroupResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-web-server-certificates)
+    * [API documentation](https://help.zscaler.com/zpa/obtaining-cloud-connector-group-details-using-api)
+
     Use the **zpa_cloud_connector_group** data source to get information about a cloud connector group created from the Zscaler Private Access cloud. This data source can then be referenced within an Access Policy rule
 
     > **NOTE:** A Cloud Connector Group resource is created in the Zscaler Cloud Connector cloud and replicated to the ZPA cloud. This resource can then be referenced in a Access Policy Rule where the Object Type = `CLOUD_CONNECTOR_GROUP` is being used.
@@ -186,10 +162,6 @@ def get_cloud_connector_group(id: Optional[str] = None,
     foo = zpa.get_cloud_connector_group(id="1234567890")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: This field defines the id of the cloud connector group.
-    :param str name: This field defines the name of the cloud connector group.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -216,6 +188,9 @@ def get_cloud_connector_group_output(id: Optional[pulumi.Input[Optional[str]]] =
                                      name: Optional[pulumi.Input[Optional[str]]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCloudConnectorGroupResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-web-server-certificates)
+    * [API documentation](https://help.zscaler.com/zpa/obtaining-cloud-connector-group-details-using-api)
+
     Use the **zpa_cloud_connector_group** data source to get information about a cloud connector group created from the Zscaler Private Access cloud. This data source can then be referenced within an Access Policy rule
 
     > **NOTE:** A Cloud Connector Group resource is created in the Zscaler Cloud Connector cloud and replicated to the ZPA cloud. This resource can then be referenced in a Access Policy Rule where the Object Type = `CLOUD_CONNECTOR_GROUP` is being used.
@@ -239,9 +214,5 @@ def get_cloud_connector_group_output(id: Optional[pulumi.Input[Optional[str]]] =
     foo = zpa.get_cloud_connector_group(id="1234567890")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: This field defines the id of the cloud connector group.
-    :param str name: This field defines the name of the cloud connector group.
     """
     ...

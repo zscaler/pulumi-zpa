@@ -34,7 +34,7 @@ export function getCloudBrowserIsolationZPAProfile(args?: GetCloudBrowserIsolati
  */
 export interface GetCloudBrowserIsolationZPAProfileArgs {
     /**
-     * This field defines the name of the isolation profile.
+     * - (String) This field defines the name of the isolation profile.
      */
     name?: string;
 }
@@ -43,36 +43,18 @@ export interface GetCloudBrowserIsolationZPAProfileArgs {
  * A collection of values returned by getCloudBrowserIsolationZPAProfile.
  */
 export interface GetCloudBrowserIsolationZPAProfileResult {
-    /**
-     * (string)
-     */
     readonly cbiProfileId: string;
-    /**
-     * (string)
-     */
     readonly cbiTenantId: string;
-    /**
-     * (string)
-     */
     readonly cbiUrl: string;
-    /**
-     * (string)
-     */
     readonly creationTime: string;
-    /**
-     * (string)
-     */
     readonly description: string;
-    /**
-     * (string)
-     */
     readonly enabled: boolean;
     readonly id: string;
-    /**
-     * (string)
-     */
     readonly modifiedTime: string;
     readonly modifiedby: string;
+    /**
+     * - (String) This field defines the name of the isolation profile.
+     */
     readonly name?: string;
 }
 /**
@@ -100,7 +82,7 @@ export function getCloudBrowserIsolationZPAProfileOutput(args?: GetCloudBrowserI
  */
 export interface GetCloudBrowserIsolationZPAProfileOutputArgs {
     /**
-     * This field defines the name of the isolation profile.
+     * - (String) This field defines the name of the isolation profile.
      */
     name?: pulumi.Input<string>;
 }

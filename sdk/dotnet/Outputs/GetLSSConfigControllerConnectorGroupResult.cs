@@ -14,9 +14,6 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetLSSConfigControllerConnectorGroupResult
     {
-        /// <summary>
-        /// This field defines the name of the log streaming resource.
-        /// </summary>
         public readonly string Id;
 
         [OutputConstructor]

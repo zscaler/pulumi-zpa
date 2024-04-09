@@ -14,9 +14,6 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetApplicationSegmentInspectionServerGroupResult
     {
-        /// <summary>
-        /// The ID of the Inspection Application Segment to be exported.
-        /// </summary>
         public readonly ImmutableArray<string> Ids;
 
         [OutputConstructor]

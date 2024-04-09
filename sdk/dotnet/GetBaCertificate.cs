@@ -13,6 +13,9 @@ namespace Zscaler.Zpa
     public static class GetBaCertificate
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-web-server-certificates)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-certificates-using-api)
+        /// 
         /// Use the **zpa_ba_certificate** data source to get information about a browser access certificate created in the Zscaler Private Access cloud. This data source is required when creating a browser access application segment resource.
         /// 
         /// ## Example Usage
@@ -57,6 +60,9 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBaCertificateResult>("zpa:index/getBaCertificate:getBaCertificate", args ?? new GetBaCertificateArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-web-server-certificates)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-certificates-using-api)
+        /// 
         /// Use the **zpa_ba_certificate** data source to get information about a browser access certificate created in the Zscaler Private Access cloud. This data source is required when creating a browser access application segment resource.
         /// 
         /// ## Example Usage
@@ -104,15 +110,9 @@ namespace Zscaler.Zpa
 
     public sealed class GetBaCertificateArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The id of the browser access certificate to be exported.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// The name of the browser access certificate to be exported.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -124,15 +124,9 @@ namespace Zscaler.Zpa
 
     public sealed class GetBaCertificateInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The id of the browser access certificate to be exported.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// The name of the browser access certificate to be exported.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -146,65 +140,23 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetBaCertificateResult
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CertChain;
-        /// <summary>
-        /// (string) The certificate text is in PEM format.
-        /// </summary>
         public readonly string Certificate;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Cname;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Description;
         public readonly string? Id;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string IssuedBy;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string IssuedTo;
         public readonly string MicrotenantId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Modifiedby;
         public readonly string? Name;
         public readonly string PublicKey;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly ImmutableArray<string> Sans;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string SerialNo;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Status;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ValidFromInEpochsec;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ValidToInEpochsec;
 
         [OutputConstructor]

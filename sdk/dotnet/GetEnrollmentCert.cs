@@ -13,6 +13,9 @@ namespace Zscaler.Zpa
     public static class GetEnrollmentCert
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-enrollment-ca-certificates)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-enrollment-certificate-details-using-api)
+        /// 
         /// Use the **zpa_enrollment_cert** data source to get information about all configured enrollment certificate details created in the Zscaler Private Access cloud. This data source is required when creating provisioning key resources.
         /// 
         /// ## Example Usage
@@ -59,6 +62,9 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnrollmentCertResult>("zpa:index/getEnrollmentCert:getEnrollmentCert", args ?? new GetEnrollmentCertArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-enrollment-ca-certificates)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-enrollment-certificate-details-using-api)
+        /// 
         /// Use the **zpa_enrollment_cert** data source to get information about all configured enrollment certificate details created in the Zscaler Private Access cloud. This data source is required when creating provisioning key resources.
         /// 
         /// ## Example Usage
@@ -108,18 +114,12 @@ namespace Zscaler.Zpa
 
     public sealed class GetEnrollmentCertArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The id of the enrollment certificate to be exported.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
         [Input("microtenantId")]
         public string? MicrotenantId { get; set; }
 
-        /// <summary>
-        /// The name of the enrollment certificate to be exported.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -131,18 +131,12 @@ namespace Zscaler.Zpa
 
     public sealed class GetEnrollmentCertInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The id of the enrollment certificate to be exported.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
-        /// <summary>
-        /// The name of the enrollment certificate to be exported.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -156,70 +150,25 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetEnrollmentCertResult
     {
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool AllowSigning;
-        /// <summary>
-        /// (string) The certificate text is in PEM format.
-        /// </summary>
         public readonly string Certificate;
-        /// <summary>
-        /// (string) Returned values are:
-        /// </summary>
         public readonly string ClientCertType;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Cname;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Csr;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Description;
         public readonly string? Id;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string IssuedBy;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string IssuedTo;
         public readonly string? MicrotenantId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedBy;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string? Name;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ParentCertId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ParentCertName;
         public readonly string PrivateKey;
         public readonly bool PrivateKeyPresent;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string SerialNo;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ValidFromInEpochSec;
         public readonly string ValidToInEpochSec;
         public readonly string ZrsaEncryptedPrivateKey;

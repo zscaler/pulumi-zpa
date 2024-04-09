@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-enrollment-ca-certificates)
+// * [API documentation](https://help.zscaler.com/zpa/obtaining-enrollment-certificate-details-using-api)
+//
 // Use the **zpa_enrollment_cert** data source to get information about all configured enrollment certificate details created in the Zscaler Private Access cloud. This data source is required when creating provisioning key resources.
 //
 // ## Example Usage
@@ -76,53 +79,36 @@ func GetEnrollmentCert(ctx *pulumi.Context, args *GetEnrollmentCertArgs, opts ..
 
 // A collection of arguments for invoking getEnrollmentCert.
 type GetEnrollmentCertArgs struct {
-	// The id of the enrollment certificate to be exported.
 	Id            *string `pulumi:"id"`
 	MicrotenantId *string `pulumi:"microtenantId"`
-	// The name of the enrollment certificate to be exported.
-	Name *string `pulumi:"name"`
+	Name          *string `pulumi:"name"`
 }
 
 // A collection of values returned by getEnrollmentCert.
 type GetEnrollmentCertResult struct {
-	// (bool)
-	AllowSigning bool `pulumi:"allowSigning"`
-	// (string) The certificate text is in PEM format.
-	Certificate string `pulumi:"certificate"`
-	// (string) Returned values are:
-	ClientCertType string `pulumi:"clientCertType"`
-	// (string)
-	Cname string `pulumi:"cname"`
-	// (string)
-	CreationTime string `pulumi:"creationTime"`
-	// (string)
-	Csr string `pulumi:"csr"`
-	// (string)
-	Description string  `pulumi:"description"`
-	Id          *string `pulumi:"id"`
-	// (string)
-	IssuedBy string `pulumi:"issuedBy"`
-	// (string)
-	IssuedTo      string  `pulumi:"issuedTo"`
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// (string)
-	ModifiedBy string `pulumi:"modifiedBy"`
-	// (string)
-	ModifiedTime string  `pulumi:"modifiedTime"`
-	Name         *string `pulumi:"name"`
-	// (string)
-	ParentCertId string `pulumi:"parentCertId"`
-	// (string)
-	ParentCertName    string `pulumi:"parentCertName"`
-	PrivateKey        string `pulumi:"privateKey"`
-	PrivateKeyPresent bool   `pulumi:"privateKeyPresent"`
-	// (string)
-	SerialNo string `pulumi:"serialNo"`
-	// (string)
-	ValidFromInEpochSec     string `pulumi:"validFromInEpochSec"`
-	ValidToInEpochSec       string `pulumi:"validToInEpochSec"`
-	ZrsaEncryptedPrivateKey string `pulumi:"zrsaEncryptedPrivateKey"`
-	ZrsaEncryptedSessionKey string `pulumi:"zrsaEncryptedSessionKey"`
+	AllowSigning            bool    `pulumi:"allowSigning"`
+	Certificate             string  `pulumi:"certificate"`
+	ClientCertType          string  `pulumi:"clientCertType"`
+	Cname                   string  `pulumi:"cname"`
+	CreationTime            string  `pulumi:"creationTime"`
+	Csr                     string  `pulumi:"csr"`
+	Description             string  `pulumi:"description"`
+	Id                      *string `pulumi:"id"`
+	IssuedBy                string  `pulumi:"issuedBy"`
+	IssuedTo                string  `pulumi:"issuedTo"`
+	MicrotenantId           *string `pulumi:"microtenantId"`
+	ModifiedBy              string  `pulumi:"modifiedBy"`
+	ModifiedTime            string  `pulumi:"modifiedTime"`
+	Name                    *string `pulumi:"name"`
+	ParentCertId            string  `pulumi:"parentCertId"`
+	ParentCertName          string  `pulumi:"parentCertName"`
+	PrivateKey              string  `pulumi:"privateKey"`
+	PrivateKeyPresent       bool    `pulumi:"privateKeyPresent"`
+	SerialNo                string  `pulumi:"serialNo"`
+	ValidFromInEpochSec     string  `pulumi:"validFromInEpochSec"`
+	ValidToInEpochSec       string  `pulumi:"validToInEpochSec"`
+	ZrsaEncryptedPrivateKey string  `pulumi:"zrsaEncryptedPrivateKey"`
+	ZrsaEncryptedSessionKey string  `pulumi:"zrsaEncryptedSessionKey"`
 }
 
 func GetEnrollmentCertOutput(ctx *pulumi.Context, args GetEnrollmentCertOutputArgs, opts ...pulumi.InvokeOption) GetEnrollmentCertResultOutput {
@@ -140,11 +126,9 @@ func GetEnrollmentCertOutput(ctx *pulumi.Context, args GetEnrollmentCertOutputAr
 
 // A collection of arguments for invoking getEnrollmentCert.
 type GetEnrollmentCertOutputArgs struct {
-	// The id of the enrollment certificate to be exported.
 	Id            pulumi.StringPtrInput `pulumi:"id"`
 	MicrotenantId pulumi.StringPtrInput `pulumi:"microtenantId"`
-	// The name of the enrollment certificate to be exported.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name          pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (GetEnrollmentCertOutputArgs) ElementType() reflect.Type {
@@ -166,37 +150,30 @@ func (o GetEnrollmentCertResultOutput) ToGetEnrollmentCertResultOutputWithContex
 	return o
 }
 
-// (bool)
 func (o GetEnrollmentCertResultOutput) AllowSigning() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEnrollmentCertResult) bool { return v.AllowSigning }).(pulumi.BoolOutput)
 }
 
-// (string) The certificate text is in PEM format.
 func (o GetEnrollmentCertResultOutput) Certificate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnrollmentCertResult) string { return v.Certificate }).(pulumi.StringOutput)
 }
 
-// (string) Returned values are:
 func (o GetEnrollmentCertResultOutput) ClientCertType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnrollmentCertResult) string { return v.ClientCertType }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetEnrollmentCertResultOutput) Cname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnrollmentCertResult) string { return v.Cname }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetEnrollmentCertResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnrollmentCertResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetEnrollmentCertResultOutput) Csr() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnrollmentCertResult) string { return v.Csr }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetEnrollmentCertResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnrollmentCertResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -205,12 +182,10 @@ func (o GetEnrollmentCertResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEnrollmentCertResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// (string)
 func (o GetEnrollmentCertResultOutput) IssuedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnrollmentCertResult) string { return v.IssuedBy }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetEnrollmentCertResultOutput) IssuedTo() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnrollmentCertResult) string { return v.IssuedTo }).(pulumi.StringOutput)
 }
@@ -219,12 +194,10 @@ func (o GetEnrollmentCertResultOutput) MicrotenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEnrollmentCertResult) *string { return v.MicrotenantId }).(pulumi.StringPtrOutput)
 }
 
-// (string)
 func (o GetEnrollmentCertResultOutput) ModifiedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnrollmentCertResult) string { return v.ModifiedBy }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetEnrollmentCertResultOutput) ModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnrollmentCertResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
@@ -233,12 +206,10 @@ func (o GetEnrollmentCertResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEnrollmentCertResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// (string)
 func (o GetEnrollmentCertResultOutput) ParentCertId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnrollmentCertResult) string { return v.ParentCertId }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetEnrollmentCertResultOutput) ParentCertName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnrollmentCertResult) string { return v.ParentCertName }).(pulumi.StringOutput)
 }
@@ -251,12 +222,10 @@ func (o GetEnrollmentCertResultOutput) PrivateKeyPresent() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEnrollmentCertResult) bool { return v.PrivateKeyPresent }).(pulumi.BoolOutput)
 }
 
-// (string)
 func (o GetEnrollmentCertResultOutput) SerialNo() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnrollmentCertResult) string { return v.SerialNo }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetEnrollmentCertResultOutput) ValidFromInEpochSec() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnrollmentCertResult) string { return v.ValidFromInEpochSec }).(pulumi.StringOutput)
 }

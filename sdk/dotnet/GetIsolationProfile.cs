@@ -13,6 +13,9 @@ namespace Zscaler.Zpa
     public static class GetIsolationProfile
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/isolation/creating-isolation-profiles-zpa)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-isolation-profile-details-using-api)
+        /// 
         /// Use the **zpa_isolation_profile** data source to get information about an isolation profile in the Zscaler Private Access cloud. This data source is required when configuring an isolation policy rule resource
         /// 
         /// ## Example Usage
@@ -39,6 +42,9 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIsolationProfileResult>("zpa:index/getIsolationProfile:getIsolationProfile", args ?? new GetIsolationProfileArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/isolation/creating-isolation-profiles-zpa)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-isolation-profile-details-using-api)
+        /// 
         /// Use the **zpa_isolation_profile** data source to get information about an isolation profile in the Zscaler Private Access cloud. This data source is required when configuring an isolation policy rule resource
         /// 
         /// ## Example Usage
@@ -69,7 +75,7 @@ namespace Zscaler.Zpa
     public sealed class GetIsolationProfileArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// This field defines the name of the isolation profile.
+        /// - (Required) This field defines the name of the isolation profile.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -83,7 +89,7 @@ namespace Zscaler.Zpa
     public sealed class GetIsolationProfileInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// This field defines the name of the isolation profile.
+        /// - (Required) This field defines the name of the isolation profile.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -98,36 +104,18 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetIsolationProfileResult
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly bool Enabled;
         public readonly string Id;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string IsolationProfileId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string IsolationTenantId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string IsolationUrl;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
+        /// <summary>
+        /// - (Required) This field defines the name of the isolation profile.
+        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

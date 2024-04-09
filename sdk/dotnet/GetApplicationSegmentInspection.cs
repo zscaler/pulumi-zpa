@@ -104,38 +104,20 @@ namespace Zscaler.Zpa
 
     public sealed class GetApplicationSegmentInspectionArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the Inspection Application Segment to be exported.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public string? MicrotenantId { get; set; }
 
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantName")]
         public string? MicrotenantName { get; set; }
 
-        /// <summary>
-        /// The name of the Inspection Application Segment to be exported.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
         [Input("tcpPortRange")]
         private List<Inputs.GetApplicationSegmentInspectionTcpPortRangeArgs>? _tcpPortRange;
-
-        /// <summary>
-        /// (string) TCP port ranges used to access the app.
-        /// * `from:`
-        /// * `to:`
-        /// </summary>
         public List<Inputs.GetApplicationSegmentInspectionTcpPortRangeArgs> TcpPortRange
         {
             get => _tcpPortRange ?? (_tcpPortRange = new List<Inputs.GetApplicationSegmentInspectionTcpPortRangeArgs>());
@@ -144,12 +126,6 @@ namespace Zscaler.Zpa
 
         [Input("udpPortRange")]
         private List<Inputs.GetApplicationSegmentInspectionUdpPortRangeArgs>? _udpPortRange;
-
-        /// <summary>
-        /// (string) UDP port ranges used to access the app.
-        /// * `from:`
-        /// * `to:`
-        /// </summary>
         public List<Inputs.GetApplicationSegmentInspectionUdpPortRangeArgs> UdpPortRange
         {
             get => _udpPortRange ?? (_udpPortRange = new List<Inputs.GetApplicationSegmentInspectionUdpPortRangeArgs>());
@@ -164,38 +140,20 @@ namespace Zscaler.Zpa
 
     public sealed class GetApplicationSegmentInspectionInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the Inspection Application Segment to be exported.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantName")]
         public Input<string>? MicrotenantName { get; set; }
 
-        /// <summary>
-        /// The name of the Inspection Application Segment to be exported.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tcpPortRange")]
         private InputList<Inputs.GetApplicationSegmentInspectionTcpPortRangeInputArgs>? _tcpPortRange;
-
-        /// <summary>
-        /// (string) TCP port ranges used to access the app.
-        /// * `from:`
-        /// * `to:`
-        /// </summary>
         public InputList<Inputs.GetApplicationSegmentInspectionTcpPortRangeInputArgs> TcpPortRange
         {
             get => _tcpPortRange ?? (_tcpPortRange = new InputList<Inputs.GetApplicationSegmentInspectionTcpPortRangeInputArgs>());
@@ -204,12 +162,6 @@ namespace Zscaler.Zpa
 
         [Input("udpPortRange")]
         private InputList<Inputs.GetApplicationSegmentInspectionUdpPortRangeInputArgs>? _udpPortRange;
-
-        /// <summary>
-        /// (string) UDP port ranges used to access the app.
-        /// * `from:`
-        /// * `to:`
-        /// </summary>
         public InputList<Inputs.GetApplicationSegmentInspectionUdpPortRangeInputArgs> UdpPortRange
         {
             get => _udpPortRange ?? (_udpPortRange = new InputList<Inputs.GetApplicationSegmentInspectionUdpPortRangeInputArgs>());
@@ -226,110 +178,32 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetApplicationSegmentInspectionResult
     {
-        /// <summary>
-        /// (string) Indicates whether users can bypass ZPA to access applications.
-        /// </summary>
         public readonly string BypassType;
-        /// <summary>
-        /// (String)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (string) Description of the application.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (string) List of domains and IPs.
-        /// </summary>
         public readonly ImmutableArray<string> DomainNames;
-        /// <summary>
-        /// (bool) Whether Double Encryption is enabled or disabled for the app.
-        /// </summary>
         public readonly bool DoubleEncrypt;
-        /// <summary>
-        /// (bool) Whether this application is enabled or not
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string HealthCheckType;
-        /// <summary>
-        /// (string) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
-        /// </summary>
         public readonly string HealthReporting;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string IcmpAccessType;
         public readonly string? Id;
-        /// <summary>
-        /// (string) TCP port ranges used to access the app.
-        /// * `app_id:` - (string)
-        /// * `name:` - (string) Name of the Inspection Application
-        /// * `description:` - (string) Description of the Inspection Application
-        /// * `domain:` - (string) Domain name of the inspection application
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationSegmentInspectionInspectionAppResult> InspectionApps;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool IpAnchored;
-        /// <summary>
-        /// (bool) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
-        /// </summary>
         public readonly bool IsCnameEnabled;
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         public readonly string? MicrotenantId;
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         public readonly string? MicrotenantName;
         public readonly string ModifiedBy;
-        /// <summary>
-        /// (String)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string? Name;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool PassiveHealthEnabled;
-        /// <summary>
-        /// (String) Segment Group IDs
-        /// </summary>
         public readonly string SegmentGroupId;
         public readonly string SegmentGroupName;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool SelectConnectorCloseToApp;
-        /// <summary>
-        /// (string) List of Server Group IDs
-        /// * `id:` - (string) List of Server Group IDs
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationSegmentInspectionServerGroupResult> ServerGroups;
-        /// <summary>
-        /// (string) TCP port ranges used to access the app.
-        /// * `from:`
-        /// * `to:`
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationSegmentInspectionTcpPortRangeResult> TcpPortRange;
-        /// <summary>
-        /// (string) TCP port ranges used to access the app.
-        /// </summary>
         public readonly ImmutableArray<string> TcpPortRanges;
-        /// <summary>
-        /// (string) UDP port ranges used to access the app.
-        /// * `from:`
-        /// * `to:`
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationSegmentInspectionUdpPortRangeResult> UdpPortRange;
-        /// <summary>
-        /// (string) UDP port ranges used to access the app.
-        /// </summary>
         public readonly ImmutableArray<string> UdpPortRanges;
 
         [OutputConstructor]

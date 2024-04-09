@@ -14,13 +14,7 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetServerGroupApplicationResult
     {
-        /// <summary>
-        /// The ID of the server group to be exported.
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The name of the server group to be exported.
-        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

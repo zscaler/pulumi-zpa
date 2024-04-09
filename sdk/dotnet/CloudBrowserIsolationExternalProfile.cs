@@ -11,6 +11,8 @@ using Pulumi;
 namespace Zscaler.Zpa
 {
     /// <summary>
+    /// * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
+    /// 
     /// The **zpa_cloud_browser_isolation_external_profile** resource creates a Cloud Browser Isolation external profile. This resource can then be used in as part of `zpa.PolicyAccessIsolationRule` when the `action` attribute is set to `ISOLATE`.
     /// 
     /// ## Example Usage
@@ -86,55 +88,30 @@ namespace Zscaler.Zpa
     [ZpaResourceType("zpa:index/cloudBrowserIsolationExternalProfile:CloudBrowserIsolationExternalProfile")]
     public partial class CloudBrowserIsolationExternalProfile : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ID of the CBI banner to be exported.
-        /// </summary>
         [Output("bannerId")]
         public Output<string> BannerId { get; private set; } = null!;
 
         /// <summary>
-        /// The CBI security controls enabled for the profile
-        /// * `id:` - (Optional) The ID of the CBI Certificate to be associated with the profile.
+        /// This field defines the list of server groups IDs.
         /// </summary>
         [Output("certificateIds")]
         public Output<ImmutableArray<string>> CertificateIds { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional) - The description of the CBI profile
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the CBI banner to be exported.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The CBI region
-        /// * `id:` - (Optional) The ID of CBI region where the profile must be deployed. At least 2 regions are required.
+        /// This field defines the list of server groups IDs.
         /// </summary>
         [Output("regionIds")]
         public Output<ImmutableArray<string>> RegionIds { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional) The CBI security controls enabled for the profile
-        /// * `copy_paste:` - (Optional) Enable or disable copy &amp; paste for local computer to isolation. Supported values are: `none` or `all`
-        /// * `document_viewer:` - (Optional) Enable or disable to view Microsoft Office files in isolation.
-        /// * `local_render:` - (Optional) Enables non-isolated hyperlinks to be opened on the user's native browser.
-        /// * `upload_download:` - (Optional) Enable or disable file transfer from local computer to isolation. Supported values are: `none` or `all`
-        /// * `allow_printing:` - (Optional) Enables the user to print web pages and documents rendered within the isolation browser. Supported values are: `true` or `false`
-        /// * `restrict_keystrokes:` - (Optional) Prevents keyboard and text input to isolated web pages. Supported values are: `true` or `false`
-        /// </summary>
         [Output("securityControls")]
         public Output<ImmutableArray<Outputs.CloudBrowserIsolationExternalProfileSecurityControl>> SecurityControls { get; private set; } = null!;
 
-        /// <summary>
-        /// The CBI security controls enabled for the profile
-        /// * `session_persistence:` - (Optional) Save user cookies between sessions. If disabled, all cookies will be discarded when isolation session ends. Supported values are: `true` or `false`
-        /// * `browser_in_browser:` - (Optional) Enable or disable browser-in-browser or native browser experience. Supported values are: `true` or `false`
-        /// </summary>
         [Output("userExperiences")]
         public Output<ImmutableArray<Outputs.CloudBrowserIsolationExternalProfileUserExperience>> UserExperiences { get; private set; } = null!;
 
@@ -185,9 +162,6 @@ namespace Zscaler.Zpa
 
     public sealed class CloudBrowserIsolationExternalProfileArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the CBI banner to be exported.
-        /// </summary>
         [Input("bannerId", required: true)]
         public Input<string> BannerId { get; set; } = null!;
 
@@ -195,8 +169,7 @@ namespace Zscaler.Zpa
         private InputList<string>? _certificateIds;
 
         /// <summary>
-        /// The CBI security controls enabled for the profile
-        /// * `id:` - (Optional) The ID of the CBI Certificate to be associated with the profile.
+        /// This field defines the list of server groups IDs.
         /// </summary>
         public InputList<string> CertificateIds
         {
@@ -204,15 +177,9 @@ namespace Zscaler.Zpa
             set => _certificateIds = value;
         }
 
-        /// <summary>
-        /// (Optional) - The description of the CBI profile
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the CBI banner to be exported.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -220,8 +187,7 @@ namespace Zscaler.Zpa
         private InputList<string>? _regionIds;
 
         /// <summary>
-        /// The CBI region
-        /// * `id:` - (Optional) The ID of CBI region where the profile must be deployed. At least 2 regions are required.
+        /// This field defines the list of server groups IDs.
         /// </summary>
         public InputList<string> RegionIds
         {
@@ -231,16 +197,6 @@ namespace Zscaler.Zpa
 
         [Input("securityControls")]
         private InputList<Inputs.CloudBrowserIsolationExternalProfileSecurityControlArgs>? _securityControls;
-
-        /// <summary>
-        /// (Optional) The CBI security controls enabled for the profile
-        /// * `copy_paste:` - (Optional) Enable or disable copy &amp; paste for local computer to isolation. Supported values are: `none` or `all`
-        /// * `document_viewer:` - (Optional) Enable or disable to view Microsoft Office files in isolation.
-        /// * `local_render:` - (Optional) Enables non-isolated hyperlinks to be opened on the user's native browser.
-        /// * `upload_download:` - (Optional) Enable or disable file transfer from local computer to isolation. Supported values are: `none` or `all`
-        /// * `allow_printing:` - (Optional) Enables the user to print web pages and documents rendered within the isolation browser. Supported values are: `true` or `false`
-        /// * `restrict_keystrokes:` - (Optional) Prevents keyboard and text input to isolated web pages. Supported values are: `true` or `false`
-        /// </summary>
         public InputList<Inputs.CloudBrowserIsolationExternalProfileSecurityControlArgs> SecurityControls
         {
             get => _securityControls ?? (_securityControls = new InputList<Inputs.CloudBrowserIsolationExternalProfileSecurityControlArgs>());
@@ -249,12 +205,6 @@ namespace Zscaler.Zpa
 
         [Input("userExperiences")]
         private InputList<Inputs.CloudBrowserIsolationExternalProfileUserExperienceArgs>? _userExperiences;
-
-        /// <summary>
-        /// The CBI security controls enabled for the profile
-        /// * `session_persistence:` - (Optional) Save user cookies between sessions. If disabled, all cookies will be discarded when isolation session ends. Supported values are: `true` or `false`
-        /// * `browser_in_browser:` - (Optional) Enable or disable browser-in-browser or native browser experience. Supported values are: `true` or `false`
-        /// </summary>
         public InputList<Inputs.CloudBrowserIsolationExternalProfileUserExperienceArgs> UserExperiences
         {
             get => _userExperiences ?? (_userExperiences = new InputList<Inputs.CloudBrowserIsolationExternalProfileUserExperienceArgs>());
@@ -269,9 +219,6 @@ namespace Zscaler.Zpa
 
     public sealed class CloudBrowserIsolationExternalProfileState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the CBI banner to be exported.
-        /// </summary>
         [Input("bannerId")]
         public Input<string>? BannerId { get; set; }
 
@@ -279,8 +226,7 @@ namespace Zscaler.Zpa
         private InputList<string>? _certificateIds;
 
         /// <summary>
-        /// The CBI security controls enabled for the profile
-        /// * `id:` - (Optional) The ID of the CBI Certificate to be associated with the profile.
+        /// This field defines the list of server groups IDs.
         /// </summary>
         public InputList<string> CertificateIds
         {
@@ -288,15 +234,9 @@ namespace Zscaler.Zpa
             set => _certificateIds = value;
         }
 
-        /// <summary>
-        /// (Optional) - The description of the CBI profile
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the CBI banner to be exported.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -304,8 +244,7 @@ namespace Zscaler.Zpa
         private InputList<string>? _regionIds;
 
         /// <summary>
-        /// The CBI region
-        /// * `id:` - (Optional) The ID of CBI region where the profile must be deployed. At least 2 regions are required.
+        /// This field defines the list of server groups IDs.
         /// </summary>
         public InputList<string> RegionIds
         {
@@ -315,16 +254,6 @@ namespace Zscaler.Zpa
 
         [Input("securityControls")]
         private InputList<Inputs.CloudBrowserIsolationExternalProfileSecurityControlGetArgs>? _securityControls;
-
-        /// <summary>
-        /// (Optional) The CBI security controls enabled for the profile
-        /// * `copy_paste:` - (Optional) Enable or disable copy &amp; paste for local computer to isolation. Supported values are: `none` or `all`
-        /// * `document_viewer:` - (Optional) Enable or disable to view Microsoft Office files in isolation.
-        /// * `local_render:` - (Optional) Enables non-isolated hyperlinks to be opened on the user's native browser.
-        /// * `upload_download:` - (Optional) Enable or disable file transfer from local computer to isolation. Supported values are: `none` or `all`
-        /// * `allow_printing:` - (Optional) Enables the user to print web pages and documents rendered within the isolation browser. Supported values are: `true` or `false`
-        /// * `restrict_keystrokes:` - (Optional) Prevents keyboard and text input to isolated web pages. Supported values are: `true` or `false`
-        /// </summary>
         public InputList<Inputs.CloudBrowserIsolationExternalProfileSecurityControlGetArgs> SecurityControls
         {
             get => _securityControls ?? (_securityControls = new InputList<Inputs.CloudBrowserIsolationExternalProfileSecurityControlGetArgs>());
@@ -333,12 +262,6 @@ namespace Zscaler.Zpa
 
         [Input("userExperiences")]
         private InputList<Inputs.CloudBrowserIsolationExternalProfileUserExperienceGetArgs>? _userExperiences;
-
-        /// <summary>
-        /// The CBI security controls enabled for the profile
-        /// * `session_persistence:` - (Optional) Save user cookies between sessions. If disabled, all cookies will be discarded when isolation session ends. Supported values are: `true` or `false`
-        /// * `browser_in_browser:` - (Optional) Enable or disable browser-in-browser or native browser experience. Supported values are: `true` or `false`
-        /// </summary>
         public InputList<Inputs.CloudBrowserIsolationExternalProfileUserExperienceGetArgs> UserExperiences
         {
             get => _userExperiences ?? (_userExperiences = new InputList<Inputs.CloudBrowserIsolationExternalProfileUserExperienceGetArgs>());

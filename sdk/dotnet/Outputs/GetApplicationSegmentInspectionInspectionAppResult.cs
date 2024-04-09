@@ -15,38 +15,14 @@ namespace Zscaler.Zpa.Outputs
     public sealed class GetApplicationSegmentInspectionInspectionAppResult
     {
         public readonly string AppId;
-        /// <summary>
-        /// (string) TCP/UDP Port for ZPA Inspection.
-        /// </summary>
         public readonly string ApplicationPort;
-        /// <summary>
-        /// (string) Protocol for the Inspection Application. Supported values: `HTTP` and `HTTPS`
-        /// </summary>
         public readonly string ApplicationProtocol;
-        /// <summary>
-        /// (string) - ID of the signing certificate. This field is required if the applicationProtocol is set to `HTTPS`. The certificateId is not supported if the applicationProtocol is set to `HTTP`.
-        /// </summary>
         public readonly string CertificateId;
-        /// <summary>
-        /// (string) - Parameter required when `application_protocol` is of type `HTTPS`
-        /// </summary>
         public readonly string CertificateName;
-        /// <summary>
-        /// (string) Description of the application.
-        /// </summary>
         public readonly string Description;
         public readonly string Domain;
-        /// <summary>
-        /// (bool) Whether this application is enabled or not
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// The ID of the Inspection Application Segment to be exported.
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The name of the Inspection Application Segment to be exported.
-        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

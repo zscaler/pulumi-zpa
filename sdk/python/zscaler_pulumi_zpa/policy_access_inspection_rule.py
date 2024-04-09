@@ -629,7 +629,98 @@ class PolicyAccessInspectionRule(pulumi.CustomResource):
                  zpn_isolation_profile_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a PolicyAccessInspectionRule resource with the given unique name, props, and options.
+        * [Official documentation](https://help.zscaler.com/zpa/about-security-policy)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-policies-using-api)
+
+        The **zpa_policy_inspection_rule** resource creates a policy inspection access rule in the Zscaler Private Access cloud.
+
+          ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource ``PolicyAccessReorderRule`` policy_access_rule_reorder
+
+        ## Example Usage
+
+        ### 1
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import zscaler_pulumi_zpa as zpa
+
+        #Create Inspection Access Rule
+        this = zpa.PolicyAccessInspectionRule("this",
+            description="Example",
+            action="INSPECT",
+            operator="AND",
+            policy_set_id=data["zpa_policy_type"]["inspection_policy"]["id"],
+            zpn_inspection_profile_id=zpa_inspection_profile["this"]["id"],
+            conditions=[zpa.PolicyAccessInspectionRuleConditionArgs(
+                operator="OR",
+                operands=[zpa.PolicyAccessInspectionRuleConditionOperandArgs(
+                    object_type="APP",
+                    lhs="id",
+                    rhs=zpa_application_segment_inspection["this"]["id"],
+                )],
+            )])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ### 2
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        inspection_policy = zpa.get_policy_type(policy_type="INSPECTION_POLICY")
+        #Create Inspection Access Rule
+        this = zpa.PolicyAccessInspectionRule("this",
+            description="Example",
+            action="BYPASS_INSPECT",
+            rule_order="1",
+            operator="AND",
+            policy_set_id=inspection_policy.id,
+            conditions=[zpa.PolicyAccessInspectionRuleConditionArgs(
+                operator="OR",
+                operands=[zpa.PolicyAccessInspectionRuleConditionOperandArgs(
+                    object_type="APP",
+                    lhs="id",
+                    rhs=zpa_application_segment_inspection["this"]["id"],
+                )],
+            )])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## LHS and RHS Values
+
+        | Object Type | LHS| RHS
+        |----------|-----------|----------
+        | APP | ``"id"`` | ``application_segment_id`` |
+        | APP_GROUP | ``"id"`` | ``segment_group_id``|
+        | CLIENT_TYPE | ``"id"`` | ``zpn_client_type_zappl``, ``zpn_client_type_exporter``, ``zpn_client_type_browser_isolation``, ``zpn_client_type_ip_anchoring``, ``zpn_client_type_edge_connector``, ``zpn_client_type_branch_connector``,  ``zpn_client_type_zapp_partner``, ``zpn_client_type_zapp``  |
+        | EDGE_CONNECTOR_GROUP | ``"id"`` | ``edge_connector_id`` |
+        | IDP | ``"id"`` | ``identity_provider_id`` |
+        | SAML | ``saml_attribute_id``  | ``attribute_value_to_match`` |
+        | SCIM | ``scim_attribute_id``  | ``attribute_value_to_match``  |
+        | SCIM_GROUP | ``scim_group_attribute_id``  | ``attribute_value_to_match``  |
+        | PLATFORM | ``mac``, ``ios``, ``windows``, ``android``, ``linux`` | ``"true"`` / ``"false"`` |
+        | MACHINE_GRP | ``"id"`` | ``machine_group_id`` |
+        | POSTURE | ``posture_udid``  | ``"true"`` / ``"false"`` |
+        | TRUSTED_NETWORK | ``network_id``  | ``"true"`` |
+
+        ## Import
+
+        Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+
+        Visit
+
+        Policy Access Inspection Rule can be imported by using `<POLICY INSPECTION RULE ID>` as the import ID.
+
+        For example:
+
+        ```sh
+        $ pulumi import zpa:index/policyAccessInspectionRule:PolicyAccessInspectionRule example <policy_inspection_rule_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: This is for providing the rule action.
@@ -647,7 +738,98 @@ class PolicyAccessInspectionRule(pulumi.CustomResource):
                  args: Optional[PolicyAccessInspectionRuleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a PolicyAccessInspectionRule resource with the given unique name, props, and options.
+        * [Official documentation](https://help.zscaler.com/zpa/about-security-policy)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-policies-using-api)
+
+        The **zpa_policy_inspection_rule** resource creates a policy inspection access rule in the Zscaler Private Access cloud.
+
+          ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource ``PolicyAccessReorderRule`` policy_access_rule_reorder
+
+        ## Example Usage
+
+        ### 1
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import zscaler_pulumi_zpa as zpa
+
+        #Create Inspection Access Rule
+        this = zpa.PolicyAccessInspectionRule("this",
+            description="Example",
+            action="INSPECT",
+            operator="AND",
+            policy_set_id=data["zpa_policy_type"]["inspection_policy"]["id"],
+            zpn_inspection_profile_id=zpa_inspection_profile["this"]["id"],
+            conditions=[zpa.PolicyAccessInspectionRuleConditionArgs(
+                operator="OR",
+                operands=[zpa.PolicyAccessInspectionRuleConditionOperandArgs(
+                    object_type="APP",
+                    lhs="id",
+                    rhs=zpa_application_segment_inspection["this"]["id"],
+                )],
+            )])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ### 2
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        inspection_policy = zpa.get_policy_type(policy_type="INSPECTION_POLICY")
+        #Create Inspection Access Rule
+        this = zpa.PolicyAccessInspectionRule("this",
+            description="Example",
+            action="BYPASS_INSPECT",
+            rule_order="1",
+            operator="AND",
+            policy_set_id=inspection_policy.id,
+            conditions=[zpa.PolicyAccessInspectionRuleConditionArgs(
+                operator="OR",
+                operands=[zpa.PolicyAccessInspectionRuleConditionOperandArgs(
+                    object_type="APP",
+                    lhs="id",
+                    rhs=zpa_application_segment_inspection["this"]["id"],
+                )],
+            )])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## LHS and RHS Values
+
+        | Object Type | LHS| RHS
+        |----------|-----------|----------
+        | APP | ``"id"`` | ``application_segment_id`` |
+        | APP_GROUP | ``"id"`` | ``segment_group_id``|
+        | CLIENT_TYPE | ``"id"`` | ``zpn_client_type_zappl``, ``zpn_client_type_exporter``, ``zpn_client_type_browser_isolation``, ``zpn_client_type_ip_anchoring``, ``zpn_client_type_edge_connector``, ``zpn_client_type_branch_connector``,  ``zpn_client_type_zapp_partner``, ``zpn_client_type_zapp``  |
+        | EDGE_CONNECTOR_GROUP | ``"id"`` | ``edge_connector_id`` |
+        | IDP | ``"id"`` | ``identity_provider_id`` |
+        | SAML | ``saml_attribute_id``  | ``attribute_value_to_match`` |
+        | SCIM | ``scim_attribute_id``  | ``attribute_value_to_match``  |
+        | SCIM_GROUP | ``scim_group_attribute_id``  | ``attribute_value_to_match``  |
+        | PLATFORM | ``mac``, ``ios``, ``windows``, ``android``, ``linux`` | ``"true"`` / ``"false"`` |
+        | MACHINE_GRP | ``"id"`` | ``machine_group_id`` |
+        | POSTURE | ``posture_udid``  | ``"true"`` / ``"false"`` |
+        | TRUSTED_NETWORK | ``network_id``  | ``"true"`` |
+
+        ## Import
+
+        Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+
+        Visit
+
+        Policy Access Inspection Rule can be imported by using `<POLICY INSPECTION RULE ID>` as the import ID.
+
+        For example:
+
+        ```sh
+        $ pulumi import zpa:index/policyAccessInspectionRule:PolicyAccessInspectionRule example <policy_inspection_rule_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param PolicyAccessInspectionRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

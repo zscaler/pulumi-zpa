@@ -14,12 +14,9 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetInspectionProfileWebSocketControlAssociatedInspectionProfileNameResult
     {
-        /// <summary>
-        /// This field defines the id of the inspection profile.
-        /// </summary>
         public readonly string Id;
         /// <summary>
-        /// This field defines the name of the inspection profile.
+        /// - (String) This field defines the name of the inspection profile.
         /// </summary>
         public readonly string Name;
 

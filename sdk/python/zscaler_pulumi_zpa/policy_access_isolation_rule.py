@@ -629,7 +629,72 @@ class PolicyAccessIsolationRule(pulumi.CustomResource):
                  zpn_isolation_profile_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a PolicyAccessIsolationRule resource with the given unique name, props, and options.
+        * [Official documentation](https://help.zscaler.com/zpa/about-isolation-policy)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-isolation-policies-using-api)
+
+        The **zpa_policy_isolation_rule** resource creates a policy isolation access rule in the Zscaler Private Access cloud.
+
+          ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        isolation_profile = zpa.get_isolation_profile(name="zpa_isolation_profile")
+        #Create Client Isolation Access Rule
+        this = zpa.PolicyAccessIsolationRule("this",
+            description="Example_Isolation_Policy",
+            action="ISOLATE",
+            operator="AND",
+            zpn_isolation_profile_id=isolation_profile.id,
+            conditions=[zpa.PolicyAccessIsolationRuleConditionArgs(
+                operator="OR",
+                operands=[zpa.PolicyAccessIsolationRuleConditionOperandArgs(
+                    object_type="CLIENT_TYPE",
+                    lhs="id",
+                    rhs="zpn_client_type_exporter",
+                )],
+            )])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## LHS and RHS Values
+
+        LHS and RHS values differ based on object types. Refer to the following table:
+
+        | Object Type | LHS| RHS
+        |----------|-----------|----------
+        | APP | ``"id"`` | ``application_segment_id`` |
+        | APP_GROUP | ``"id"`` | ``segment_group_id``|
+        | CLIENT_TYPE | ``"id"`` | ``zpn_client_type_exporter`` |
+        | PLATFORM | ``mac``, ``ios``, ``windows``, ``android``, ``linux`` | ``"true"`` / ``"false"`` |
+        | EDGE_CONNECTOR_GROUP | ``"id"`` | ``edge_connector_id`` |
+        | IDP | ``"id"`` | ``identity_provider_id`` |
+        | SAML | ``saml_attribute_id``  | <Attribute_value_to_match> |
+        | SCIM | ``scim_attribute_id``  | <Attribute_value_to_match>  |
+        | SCIM_GROUP | ``scim_group_attribute_id``  | <Attribute_value_to_match>  |
+        | MACHINE_GRP | ``"id"`` | ``machine_group_id`` |
+        | POSTURE | ``posture_udid``  | ``"true"`` / ``"false"`` |
+        | TRUSTED_NETWORK | ``network_id``  | ``"true"`` |
+
+        ## Import
+
+        Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+
+        Visit
+
+        Policy Access Isolation Rule can be imported by using `<POLICY ISOLATION RULE ID>` as the import ID.
+
+        For example:
+
+        ```sh
+        $ pulumi import zpa:index/policyAccessIsolationRule:PolicyAccessIsolationRule example <policy_isolation_rule_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: This is for providing the rule action.
@@ -647,7 +712,72 @@ class PolicyAccessIsolationRule(pulumi.CustomResource):
                  args: Optional[PolicyAccessIsolationRuleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a PolicyAccessIsolationRule resource with the given unique name, props, and options.
+        * [Official documentation](https://help.zscaler.com/zpa/about-isolation-policy)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-isolation-policies-using-api)
+
+        The **zpa_policy_isolation_rule** resource creates a policy isolation access rule in the Zscaler Private Access cloud.
+
+          ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        isolation_profile = zpa.get_isolation_profile(name="zpa_isolation_profile")
+        #Create Client Isolation Access Rule
+        this = zpa.PolicyAccessIsolationRule("this",
+            description="Example_Isolation_Policy",
+            action="ISOLATE",
+            operator="AND",
+            zpn_isolation_profile_id=isolation_profile.id,
+            conditions=[zpa.PolicyAccessIsolationRuleConditionArgs(
+                operator="OR",
+                operands=[zpa.PolicyAccessIsolationRuleConditionOperandArgs(
+                    object_type="CLIENT_TYPE",
+                    lhs="id",
+                    rhs="zpn_client_type_exporter",
+                )],
+            )])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## LHS and RHS Values
+
+        LHS and RHS values differ based on object types. Refer to the following table:
+
+        | Object Type | LHS| RHS
+        |----------|-----------|----------
+        | APP | ``"id"`` | ``application_segment_id`` |
+        | APP_GROUP | ``"id"`` | ``segment_group_id``|
+        | CLIENT_TYPE | ``"id"`` | ``zpn_client_type_exporter`` |
+        | PLATFORM | ``mac``, ``ios``, ``windows``, ``android``, ``linux`` | ``"true"`` / ``"false"`` |
+        | EDGE_CONNECTOR_GROUP | ``"id"`` | ``edge_connector_id`` |
+        | IDP | ``"id"`` | ``identity_provider_id`` |
+        | SAML | ``saml_attribute_id``  | <Attribute_value_to_match> |
+        | SCIM | ``scim_attribute_id``  | <Attribute_value_to_match>  |
+        | SCIM_GROUP | ``scim_group_attribute_id``  | <Attribute_value_to_match>  |
+        | MACHINE_GRP | ``"id"`` | ``machine_group_id`` |
+        | POSTURE | ``posture_udid``  | ``"true"`` / ``"false"`` |
+        | TRUSTED_NETWORK | ``network_id``  | ``"true"`` |
+
+        ## Import
+
+        Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+
+        Visit
+
+        Policy Access Isolation Rule can be imported by using `<POLICY ISOLATION RULE ID>` as the import ID.
+
+        For example:
+
+        ```sh
+        $ pulumi import zpa:index/policyAccessIsolationRule:PolicyAccessIsolationRule example <policy_isolation_rule_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param PolicyAccessIsolationRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -56,17 +56,11 @@ class GetPostureProfileResult:
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter
     def domain(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "domain")
 
     @property
@@ -77,17 +71,11 @@ class GetPostureProfileResult:
     @property
     @pulumi.getter(name="masterCustomerId")
     def master_customer_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "master_customer_id")
 
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -103,25 +91,16 @@ class GetPostureProfileResult:
     @property
     @pulumi.getter(name="postureUdid")
     def posture_udid(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "posture_udid")
 
     @property
     @pulumi.getter(name="zscalerCloud")
     def zscaler_cloud(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "zscaler_cloud")
 
     @property
     @pulumi.getter(name="zscalerCustomerId")
     def zscaler_customer_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "zscaler_customer_id")
 
 
@@ -146,6 +125,9 @@ class AwaitableGetPostureProfileResult(GetPostureProfileResult):
 def get_posture_profile(name: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostureProfileResult:
     """
+    * [Official documentation](https://help.zscaler.com/client-connector/about-device-posture-profiles)
+    * [API documentation](https://help.zscaler.com/zpa/obtaining-posture-profile-details-using-api)
+
     Use the **zpa_posture_profile** data source to get information about a posture profile created in the Zscaler Private Access Mobile Portal. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
 
     ## Example Usage
@@ -199,9 +181,6 @@ def get_posture_profile(name: Optional[str] = None,
     pulumi.export("zpaPostureProfile", example1.posture_udid)
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str name: The name of the posture profile to be exported.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -225,6 +204,9 @@ def get_posture_profile(name: Optional[str] = None,
 def get_posture_profile_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPostureProfileResult]:
     """
+    * [Official documentation](https://help.zscaler.com/client-connector/about-device-posture-profiles)
+    * [API documentation](https://help.zscaler.com/zpa/obtaining-posture-profile-details-using-api)
+
     Use the **zpa_posture_profile** data source to get information about a posture profile created in the Zscaler Private Access Mobile Portal. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
 
     ## Example Usage
@@ -278,8 +260,5 @@ def get_posture_profile_output(name: Optional[pulumi.Input[Optional[str]]] = Non
     pulumi.export("zpaPostureProfile", example1.posture_udid)
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str name: The name of the posture profile to be exported.
     """
     ...

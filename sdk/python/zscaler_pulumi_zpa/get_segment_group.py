@@ -22,7 +22,7 @@ class GetSegmentGroupResult:
     """
     A collection of values returned by getSegmentGroup.
     """
-    def __init__(__self__, applications=None, config_space=None, creation_time=None, description=None, enabled=None, id=None, microtenant_id=None, microtenant_name=None, modified_by=None, modified_time=None, name=None, policy_migrated=None, tcp_keep_alive_enabled=None):
+    def __init__(__self__, applications=None, config_space=None, creation_time=None, description=None, enabled=None, id=None, microtenant_id=None, microtenant_name=None, modified_by=None, modified_time=None, name=None):
         if applications and not isinstance(applications, list):
             raise TypeError("Expected argument 'applications' to be a list")
         pulumi.set(__self__, "applications", applications)
@@ -56,116 +56,61 @@ class GetSegmentGroupResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if policy_migrated and not isinstance(policy_migrated, bool):
-            raise TypeError("Expected argument 'policy_migrated' to be a bool")
-        pulumi.set(__self__, "policy_migrated", policy_migrated)
-        if tcp_keep_alive_enabled and not isinstance(tcp_keep_alive_enabled, str):
-            raise TypeError("Expected argument 'tcp_keep_alive_enabled' to be a str")
-        pulumi.set(__self__, "tcp_keep_alive_enabled", tcp_keep_alive_enabled)
 
     @property
     @pulumi.getter
     def applications(self) -> Sequence['outputs.GetSegmentGroupApplicationResult']:
-        """
-        (Computed)
-        """
         return pulumi.get(self, "applications")
 
     @property
     @pulumi.getter(name="configSpace")
     def config_space(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "config_space")
 
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        (string)
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[str]:
-        """
-        (string) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @property
     @pulumi.getter(name="microtenantName")
     def microtenant_name(self) -> Optional[str]:
-        """
-        (string) The name of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_name")
 
     @property
     @pulumi.getter(name="modifiedBy")
     def modified_by(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_by")
 
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        (string)
-        """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="policyMigrated")
-    def policy_migrated(self) -> bool:
-        """
-        (bool)
-        """
-        return pulumi.get(self, "policy_migrated")
-
-    @property
-    @pulumi.getter(name="tcpKeepAliveEnabled")
-    def tcp_keep_alive_enabled(self) -> str:
-        """
-        (string)
-        """
-        return pulumi.get(self, "tcp_keep_alive_enabled")
 
 
 class AwaitableGetSegmentGroupResult(GetSegmentGroupResult):
@@ -184,16 +129,13 @@ class AwaitableGetSegmentGroupResult(GetSegmentGroupResult):
             microtenant_name=self.microtenant_name,
             modified_by=self.modified_by,
             modified_time=self.modified_time,
-            name=self.name,
-            policy_migrated=self.policy_migrated,
-            tcp_keep_alive_enabled=self.tcp_keep_alive_enabled)
+            name=self.name)
 
 
 def get_segment_group(id: Optional[str] = None,
                       microtenant_id: Optional[str] = None,
                       microtenant_name: Optional[str] = None,
                       name: Optional[str] = None,
-                      policy_migrated: Optional[bool] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSegmentGroupResult:
     """
     ## Example Usage
@@ -206,20 +148,12 @@ def get_segment_group(id: Optional[str] = None,
     example = zpa.get_segment_group(name="segment_group_name")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: The ID of the segment group to be exported.
-    :param str microtenant_id: (string) The ID of the microtenant the resource is to be associated with.
-    :param str microtenant_name: (string) The name of the microtenant the resource is to be associated with.
-    :param str name: The name of the segment group to be exported.
-    :param bool policy_migrated: (bool)
     """
     __args__ = dict()
     __args__['id'] = id
     __args__['microtenantId'] = microtenant_id
     __args__['microtenantName'] = microtenant_name
     __args__['name'] = name
-    __args__['policyMigrated'] = policy_migrated
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('zpa:index/getSegmentGroup:getSegmentGroup', __args__, opts=opts, typ=GetSegmentGroupResult).value
 
@@ -234,9 +168,7 @@ def get_segment_group(id: Optional[str] = None,
         microtenant_name=pulumi.get(__ret__, 'microtenant_name'),
         modified_by=pulumi.get(__ret__, 'modified_by'),
         modified_time=pulumi.get(__ret__, 'modified_time'),
-        name=pulumi.get(__ret__, 'name'),
-        policy_migrated=pulumi.get(__ret__, 'policy_migrated'),
-        tcp_keep_alive_enabled=pulumi.get(__ret__, 'tcp_keep_alive_enabled'))
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_segment_group)
@@ -244,7 +176,6 @@ def get_segment_group_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                              microtenant_id: Optional[pulumi.Input[Optional[str]]] = None,
                              microtenant_name: Optional[pulumi.Input[Optional[str]]] = None,
                              name: Optional[pulumi.Input[Optional[str]]] = None,
-                             policy_migrated: Optional[pulumi.Input[Optional[bool]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSegmentGroupResult]:
     """
     ## Example Usage
@@ -257,12 +188,5 @@ def get_segment_group_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     example = zpa.get_segment_group(name="segment_group_name")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: The ID of the segment group to be exported.
-    :param str microtenant_id: (string) The ID of the microtenant the resource is to be associated with.
-    :param str microtenant_name: (string) The name of the microtenant the resource is to be associated with.
-    :param str name: The name of the segment group to be exported.
-    :param bool policy_migrated: (bool)
     """
     ...

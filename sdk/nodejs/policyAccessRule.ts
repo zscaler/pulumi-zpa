@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-access-policy)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api)
+ *
  * The **zpa_policy_access_rule** resource creates and manages policy access rule in the Zscaler Private Access cloud.
  *
  *   ⚠️ **WARNING:**: The attribute ``ruleOrder`` is now deprecated in favor of the new resource  ``policyAccessRuleReorder``
@@ -19,9 +22,6 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  * import * as zpa from "@pulumi/zpa";
  *
- * const accessPolicy = zpa.getPolicyType({
- *     policyType: "ACCESS_POLICY",
- * });
  * const idpName = zpa.getIdPController({
  *     name: "IdP_Name",
  * });
@@ -34,10 +34,8 @@ import * as utilities from "./utilities";
  *     description: "Example",
  *     action: "ALLOW",
  *     operator: "AND",
- *     policySetId: accessPolicy.then(accessPolicy => accessPolicy.id),
  *     conditions: [
  *         {
- *             negated: false,
  *             operator: "OR",
  *             operands: [{
  *                 objectType: "APP",
@@ -46,7 +44,6 @@ import * as utilities from "./utilities";
  *             }],
  *         },
  *         {
- *             negated: false,
  *             operator: "OR",
  *             operands: [{
  *                 objectType: "SCIM_GROUP",
@@ -58,11 +55,6 @@ import * as utilities from "./utilities";
  * });
  * ```
  * <!--End PulumiCodeChooser -->
- *
- * ### Required
- *
- * * `name` - (Required) This is the name of the policy rule.
- * * `policySetId` - (Required) Use zpa.getPolicyType data source to retrieve the necessary policy Set ID ``policySetId``
  *
  * ## LHS and RHS Values
  *
@@ -125,7 +117,7 @@ export class PolicyAccessRule extends pulumi.CustomResource {
     }
 
     /**
-     * (Optional) This is for providing the rule action. Supported values: ``ALLOW``, ``DENY``, and ``REQUIRE_APPROVAL``
+     * This is for providing the rule action. Supported values: `ALLOW`, `DENY`, and `REQUIRE_APPROVAL`
      */
     public readonly action!: pulumi.Output<string | undefined>;
     /**
@@ -142,11 +134,11 @@ export class PolicyAccessRule extends pulumi.CustomResource {
     public readonly appServerGroups!: pulumi.Output<outputs.PolicyAccessRuleAppServerGroup[]>;
     public readonly bypassDefaultRule!: pulumi.Output<boolean | undefined>;
     /**
-     * (Optional)
+     * This is for proviidng the set of conditions for the policy.
      */
     public readonly conditions!: pulumi.Output<outputs.PolicyAccessRuleCondition[] | undefined>;
     /**
-     * (Optional) This is for providing a customer message for the user.
+     * This is for providing a customer message for the user.
      */
     public readonly customMsg!: pulumi.Output<string | undefined>;
     /**
@@ -154,34 +146,30 @@ export class PolicyAccessRule extends pulumi.CustomResource {
      */
     public readonly defaultRule!: pulumi.Output<boolean | undefined>;
     /**
-     * (Optional) This is the description of the access policy rule.
+     * This is the description of the access policy rule.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly lssDefaultRule!: pulumi.Output<boolean | undefined>;
-    /**
-     * (Optional) The ID of the microtenant the resource is to be associated with.
-     */
     public readonly microtenantId!: pulumi.Output<string>;
     /**
-     * (Optional)
+     * This is the name of the policy rule.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * (Optional) Supported values: ``AND``, and ``OR``
+     * Supported values: `AND`, `OR`
      */
     public readonly operator!: pulumi.Output<string>;
-    public readonly policySetId!: pulumi.Output<string>;
     /**
-     * (Optional) Supported values: ``ACCESS_POLICY`` or ``GLOBAL_POLICY``
+     * - (String) Use zpa*policy*type data source to retrieve the necessary policy Set ID `policySetId`
+     * > **NOTE** As of v3.2.0 the `policySetId` attribute is now optional, and will be automatically determined based on the policy type being configured. The attribute is being kept for backwards compatibility, but can be safely removed from existing configurations.
      */
+    public readonly policySetId!: pulumi.Output<string>;
     public readonly policyType!: pulumi.Output<string>;
     public readonly priority!: pulumi.Output<string>;
     public readonly reauthDefaultRule!: pulumi.Output<boolean | undefined>;
     public readonly reauthIdleTimeout!: pulumi.Output<string | undefined>;
     public readonly reauthTimeout!: pulumi.Output<string | undefined>;
     /**
-     * (Deprecated)
-     *
      * @deprecated The `ruleOrder` field is now deprecated for all zpa access policy resources in favor of the resource `zpa.PolicyAccessReorderRule`
      */
     public readonly ruleOrder!: pulumi.Output<string>;
@@ -261,7 +249,7 @@ export class PolicyAccessRule extends pulumi.CustomResource {
  */
 export interface PolicyAccessRuleState {
     /**
-     * (Optional) This is for providing the rule action. Supported values: ``ALLOW``, ``DENY``, and ``REQUIRE_APPROVAL``
+     * This is for providing the rule action. Supported values: `ALLOW`, `DENY`, and `REQUIRE_APPROVAL`
      */
     action?: pulumi.Input<string>;
     /**
@@ -278,11 +266,11 @@ export interface PolicyAccessRuleState {
     appServerGroups?: pulumi.Input<pulumi.Input<inputs.PolicyAccessRuleAppServerGroup>[]>;
     bypassDefaultRule?: pulumi.Input<boolean>;
     /**
-     * (Optional)
+     * This is for proviidng the set of conditions for the policy.
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.PolicyAccessRuleCondition>[]>;
     /**
-     * (Optional) This is for providing a customer message for the user.
+     * This is for providing a customer message for the user.
      */
     customMsg?: pulumi.Input<string>;
     /**
@@ -290,34 +278,30 @@ export interface PolicyAccessRuleState {
      */
     defaultRule?: pulumi.Input<boolean>;
     /**
-     * (Optional) This is the description of the access policy rule.
+     * This is the description of the access policy rule.
      */
     description?: pulumi.Input<string>;
     lssDefaultRule?: pulumi.Input<boolean>;
-    /**
-     * (Optional) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: pulumi.Input<string>;
     /**
-     * (Optional)
+     * This is the name of the policy rule.
      */
     name?: pulumi.Input<string>;
     /**
-     * (Optional) Supported values: ``AND``, and ``OR``
+     * Supported values: `AND`, `OR`
      */
     operator?: pulumi.Input<string>;
-    policySetId?: pulumi.Input<string>;
     /**
-     * (Optional) Supported values: ``ACCESS_POLICY`` or ``GLOBAL_POLICY``
+     * - (String) Use zpa*policy*type data source to retrieve the necessary policy Set ID `policySetId`
+     * > **NOTE** As of v3.2.0 the `policySetId` attribute is now optional, and will be automatically determined based on the policy type being configured. The attribute is being kept for backwards compatibility, but can be safely removed from existing configurations.
      */
+    policySetId?: pulumi.Input<string>;
     policyType?: pulumi.Input<string>;
     priority?: pulumi.Input<string>;
     reauthDefaultRule?: pulumi.Input<boolean>;
     reauthIdleTimeout?: pulumi.Input<string>;
     reauthTimeout?: pulumi.Input<string>;
     /**
-     * (Deprecated)
-     *
      * @deprecated The `ruleOrder` field is now deprecated for all zpa access policy resources in favor of the resource `zpa.PolicyAccessReorderRule`
      */
     ruleOrder?: pulumi.Input<string>;
@@ -331,7 +315,7 @@ export interface PolicyAccessRuleState {
  */
 export interface PolicyAccessRuleArgs {
     /**
-     * (Optional) This is for providing the rule action. Supported values: ``ALLOW``, ``DENY``, and ``REQUIRE_APPROVAL``
+     * This is for providing the rule action. Supported values: `ALLOW`, `DENY`, and `REQUIRE_APPROVAL`
      */
     action?: pulumi.Input<string>;
     /**
@@ -348,11 +332,11 @@ export interface PolicyAccessRuleArgs {
     appServerGroups?: pulumi.Input<pulumi.Input<inputs.PolicyAccessRuleAppServerGroup>[]>;
     bypassDefaultRule?: pulumi.Input<boolean>;
     /**
-     * (Optional)
+     * This is for proviidng the set of conditions for the policy.
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.PolicyAccessRuleCondition>[]>;
     /**
-     * (Optional) This is for providing a customer message for the user.
+     * This is for providing a customer message for the user.
      */
     customMsg?: pulumi.Input<string>;
     /**
@@ -360,34 +344,30 @@ export interface PolicyAccessRuleArgs {
      */
     defaultRule?: pulumi.Input<boolean>;
     /**
-     * (Optional) This is the description of the access policy rule.
+     * This is the description of the access policy rule.
      */
     description?: pulumi.Input<string>;
     lssDefaultRule?: pulumi.Input<boolean>;
-    /**
-     * (Optional) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: pulumi.Input<string>;
     /**
-     * (Optional)
+     * This is the name of the policy rule.
      */
     name?: pulumi.Input<string>;
     /**
-     * (Optional) Supported values: ``AND``, and ``OR``
+     * Supported values: `AND`, `OR`
      */
     operator?: pulumi.Input<string>;
-    policySetId?: pulumi.Input<string>;
     /**
-     * (Optional) Supported values: ``ACCESS_POLICY`` or ``GLOBAL_POLICY``
+     * - (String) Use zpa*policy*type data source to retrieve the necessary policy Set ID `policySetId`
+     * > **NOTE** As of v3.2.0 the `policySetId` attribute is now optional, and will be automatically determined based on the policy type being configured. The attribute is being kept for backwards compatibility, but can be safely removed from existing configurations.
      */
+    policySetId?: pulumi.Input<string>;
     policyType?: pulumi.Input<string>;
     priority?: pulumi.Input<string>;
     reauthDefaultRule?: pulumi.Input<boolean>;
     reauthIdleTimeout?: pulumi.Input<string>;
     reauthTimeout?: pulumi.Input<string>;
     /**
-     * (Deprecated)
-     *
      * @deprecated The `ruleOrder` field is now deprecated for all zpa access policy resources in favor of the resource `zpa.PolicyAccessReorderRule`
      */
     ruleOrder?: pulumi.Input<string>;

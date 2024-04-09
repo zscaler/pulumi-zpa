@@ -78,56 +78,36 @@ func LookupProvisioningKey(ctx *pulumi.Context, args *LookupProvisioningKeyArgs,
 
 // A collection of arguments for invoking getProvisioningKey.
 type LookupProvisioningKeyArgs struct {
-	// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are `CONNECTOR_GRP` and `SERVICE_EDGE_GRP`
-	AssociationType string `pulumi:"associationType"`
-	// The ID of the provisioning key to be exported.
-	Id *string `pulumi:"id"`
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
+	AssociationType string  `pulumi:"associationType"`
+	Id              *string `pulumi:"id"`
+	MicrotenantId   *string `pulumi:"microtenantId"`
 	MicrotenantName *string `pulumi:"microtenantName"`
-	// Name of the provisioning key.
-	Name *string `pulumi:"name"`
+	Name            *string `pulumi:"name"`
 }
 
 // A collection of values returned by getProvisioningKey.
 type LookupProvisioningKeyResult struct {
-	AppConnectorGroupId   string `pulumi:"appConnectorGroupId"`
-	AppConnectorGroupName string `pulumi:"appConnectorGroupName"`
-	AssociationType       string `pulumi:"associationType"`
-	// (string)
-	CreationTime string `pulumi:"creationTime"`
-	// (bool)
-	Enabled bool `pulumi:"enabled"`
-	// (string)
-	EnrollmentCertId string `pulumi:"enrollmentCertId"`
-	// (string) Applicable only for GET calls, ignored in PUT/POST calls.
-	EnrollmentCertName string `pulumi:"enrollmentCertName"`
-	// (string)
-	ExpirationInEpochSec string  `pulumi:"expirationInEpochSec"`
-	Id                   *string `pulumi:"id"`
-	// (string)
-	IpAcls []string `pulumi:"ipAcls"`
-	// (string)
-	MaxUsage string `pulumi:"maxUsage"`
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
-	MicrotenantName *string `pulumi:"microtenantName"`
-	// (string)
-	ModifiedTime string  `pulumi:"modifiedTime"`
-	Modifiedby   string  `pulumi:"modifiedby"`
-	Name         *string `pulumi:"name"`
-	// (string) Ignored in PUT/POST calls.
-	ProvisioningKey string `pulumi:"provisioningKey"`
-	// (string)
-	UiConfig string `pulumi:"uiConfig"`
-	// (string)
-	UsageCount string `pulumi:"usageCount"`
-	// (string)
-	ZcomponentId string `pulumi:"zcomponentId"`
-	// (string) Applicable only for GET calls, ignored in PUT/POST calls.
-	ZcomponentName string `pulumi:"zcomponentName"`
+	AppConnectorGroupId   string   `pulumi:"appConnectorGroupId"`
+	AppConnectorGroupName string   `pulumi:"appConnectorGroupName"`
+	AssociationType       string   `pulumi:"associationType"`
+	CreationTime          string   `pulumi:"creationTime"`
+	Enabled               bool     `pulumi:"enabled"`
+	EnrollmentCertId      string   `pulumi:"enrollmentCertId"`
+	EnrollmentCertName    string   `pulumi:"enrollmentCertName"`
+	ExpirationInEpochSec  string   `pulumi:"expirationInEpochSec"`
+	Id                    *string  `pulumi:"id"`
+	IpAcls                []string `pulumi:"ipAcls"`
+	MaxUsage              string   `pulumi:"maxUsage"`
+	MicrotenantId         *string  `pulumi:"microtenantId"`
+	MicrotenantName       *string  `pulumi:"microtenantName"`
+	ModifiedTime          string   `pulumi:"modifiedTime"`
+	Modifiedby            string   `pulumi:"modifiedby"`
+	Name                  *string  `pulumi:"name"`
+	ProvisioningKey       string   `pulumi:"provisioningKey"`
+	UiConfig              string   `pulumi:"uiConfig"`
+	UsageCount            string   `pulumi:"usageCount"`
+	ZcomponentId          string   `pulumi:"zcomponentId"`
+	ZcomponentName        string   `pulumi:"zcomponentName"`
 }
 
 func LookupProvisioningKeyOutput(ctx *pulumi.Context, args LookupProvisioningKeyOutputArgs, opts ...pulumi.InvokeOption) LookupProvisioningKeyResultOutput {
@@ -145,16 +125,11 @@ func LookupProvisioningKeyOutput(ctx *pulumi.Context, args LookupProvisioningKey
 
 // A collection of arguments for invoking getProvisioningKey.
 type LookupProvisioningKeyOutputArgs struct {
-	// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are `CONNECTOR_GRP` and `SERVICE_EDGE_GRP`
-	AssociationType pulumi.StringInput `pulumi:"associationType"`
-	// The ID of the provisioning key to be exported.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId pulumi.StringPtrInput `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
+	AssociationType pulumi.StringInput    `pulumi:"associationType"`
+	Id              pulumi.StringPtrInput `pulumi:"id"`
+	MicrotenantId   pulumi.StringPtrInput `pulumi:"microtenantId"`
 	MicrotenantName pulumi.StringPtrInput `pulumi:"microtenantName"`
-	// Name of the provisioning key.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name            pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (LookupProvisioningKeyOutputArgs) ElementType() reflect.Type {
@@ -188,27 +163,22 @@ func (o LookupProvisioningKeyResultOutput) AssociationType() pulumi.StringOutput
 	return o.ApplyT(func(v LookupProvisioningKeyResult) string { return v.AssociationType }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o LookupProvisioningKeyResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProvisioningKeyResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// (bool)
 func (o LookupProvisioningKeyResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProvisioningKeyResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// (string)
 func (o LookupProvisioningKeyResultOutput) EnrollmentCertId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProvisioningKeyResult) string { return v.EnrollmentCertId }).(pulumi.StringOutput)
 }
 
-// (string) Applicable only for GET calls, ignored in PUT/POST calls.
 func (o LookupProvisioningKeyResultOutput) EnrollmentCertName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProvisioningKeyResult) string { return v.EnrollmentCertName }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o LookupProvisioningKeyResultOutput) ExpirationInEpochSec() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProvisioningKeyResult) string { return v.ExpirationInEpochSec }).(pulumi.StringOutput)
 }
@@ -217,27 +187,22 @@ func (o LookupProvisioningKeyResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProvisioningKeyResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// (string)
 func (o LookupProvisioningKeyResultOutput) IpAcls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupProvisioningKeyResult) []string { return v.IpAcls }).(pulumi.StringArrayOutput)
 }
 
-// (string)
 func (o LookupProvisioningKeyResultOutput) MaxUsage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProvisioningKeyResult) string { return v.MaxUsage }).(pulumi.StringOutput)
 }
 
-// (string) The ID of the microtenant the resource is to be associated with.
 func (o LookupProvisioningKeyResultOutput) MicrotenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProvisioningKeyResult) *string { return v.MicrotenantId }).(pulumi.StringPtrOutput)
 }
 
-// (string) The name of the microtenant the resource is to be associated with.
 func (o LookupProvisioningKeyResultOutput) MicrotenantName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProvisioningKeyResult) *string { return v.MicrotenantName }).(pulumi.StringPtrOutput)
 }
 
-// (string)
 func (o LookupProvisioningKeyResultOutput) ModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProvisioningKeyResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
@@ -250,27 +215,22 @@ func (o LookupProvisioningKeyResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProvisioningKeyResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// (string) Ignored in PUT/POST calls.
 func (o LookupProvisioningKeyResultOutput) ProvisioningKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProvisioningKeyResult) string { return v.ProvisioningKey }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o LookupProvisioningKeyResultOutput) UiConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProvisioningKeyResult) string { return v.UiConfig }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o LookupProvisioningKeyResultOutput) UsageCount() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProvisioningKeyResult) string { return v.UsageCount }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o LookupProvisioningKeyResultOutput) ZcomponentId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProvisioningKeyResult) string { return v.ZcomponentId }).(pulumi.StringOutput)
 }
 
-// (string) Applicable only for GET calls, ignored in PUT/POST calls.
 func (o LookupProvisioningKeyResultOutput) ZcomponentName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProvisioningKeyResult) string { return v.ZcomponentName }).(pulumi.StringOutput)
 }

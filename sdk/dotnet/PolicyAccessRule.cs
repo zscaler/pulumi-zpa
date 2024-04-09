@@ -11,6 +11,9 @@ using Pulumi;
 namespace Zscaler.Zpa
 {
     /// <summary>
+    /// * [Official documentation](https://help.zscaler.com/zpa/about-access-policy)
+    /// * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api)
+    /// 
     /// The **zpa_policy_access_rule** resource creates and manages policy access rule in the Zscaler Private Access cloud.
     /// 
     ///   ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
@@ -27,11 +30,6 @@ namespace Zscaler.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var accessPolicy = Zpa.GetPolicyType.Invoke(new()
-    ///     {
-    ///         PolicyType = "ACCESS_POLICY",
-    ///     });
-    /// 
     ///     var idpName = Zpa.GetIdPController.Invoke(new()
     ///     {
     ///         Name = "IdP_Name",
@@ -49,12 +47,10 @@ namespace Zscaler.Zpa
     ///         Description = "Example",
     ///         Action = "ALLOW",
     ///         Operator = "AND",
-    ///         PolicySetId = accessPolicy.Apply(getPolicyTypeResult =&gt; getPolicyTypeResult.Id),
     ///         Conditions = new[]
     ///         {
     ///             new Zpa.Inputs.PolicyAccessRuleConditionArgs
     ///             {
-    ///                 Negated = false,
     ///                 Operator = "OR",
     ///                 Operands = new[]
     ///                 {
@@ -68,7 +64,6 @@ namespace Zscaler.Zpa
     ///             },
     ///             new Zpa.Inputs.PolicyAccessRuleConditionArgs
     ///             {
-    ///                 Negated = false,
     ///                 Operator = "OR",
     ///                 Operands = new[]
     ///                 {
@@ -86,11 +81,6 @@ namespace Zscaler.Zpa
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
-    /// ### Required
-    /// 
-    /// * `name` - (Required) This is the name of the policy rule.
-    /// * `policy_set_id` - (Required) Use zpa.getPolicyType data source to retrieve the necessary policy Set ID ``policy_set_id``
     /// 
     /// ## LHS and RHS Values
     /// 
@@ -128,7 +118,7 @@ namespace Zscaler.Zpa
     public partial class PolicyAccessRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (Optional) This is for providing the rule action. Supported values: ``ALLOW``, ``DENY``, and ``REQUIRE_APPROVAL``
+        /// This is for providing the rule action. Supported values: `ALLOW`, `DENY`, and `REQUIRE_APPROVAL`
         /// </summary>
         [Output("action")]
         public Output<string?> Action { get; private set; } = null!;
@@ -155,13 +145,13 @@ namespace Zscaler.Zpa
         public Output<bool?> BypassDefaultRule { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional)
+        /// This is for proviidng the set of conditions for the policy.
         /// </summary>
         [Output("conditions")]
         public Output<ImmutableArray<Outputs.PolicyAccessRuleCondition>> Conditions { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) This is for providing a customer message for the user.
+        /// This is for providing a customer message for the user.
         /// </summary>
         [Output("customMsg")]
         public Output<string?> CustomMsg { get; private set; } = null!;
@@ -173,7 +163,7 @@ namespace Zscaler.Zpa
         public Output<bool?> DefaultRule { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) This is the description of the access policy rule.
+        /// This is the description of the access policy rule.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -181,30 +171,28 @@ namespace Zscaler.Zpa
         [Output("lssDefaultRule")]
         public Output<bool?> LssDefaultRule { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Output("microtenantId")]
         public Output<string> MicrotenantId { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional)
+        /// This is the name of the policy rule.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Supported values: ``AND``, and ``OR``
+        /// Supported values: `AND`, `OR`
         /// </summary>
         [Output("operator")]
         public Output<string> Operator { get; private set; } = null!;
 
+        /// <summary>
+        /// - (String) Use zpa*policy*type data source to retrieve the necessary policy Set ID `policy_set_id`
+        /// &gt; **NOTE** As of v3.2.0 the `policy_set_id` attribute is now optional, and will be automatically determined based on the policy type being configured. The attribute is being kept for backwards compatibility, but can be safely removed from existing configurations.
+        /// </summary>
         [Output("policySetId")]
         public Output<string> PolicySetId { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional) Supported values: ``ACCESS_POLICY`` or ``GLOBAL_POLICY``
-        /// </summary>
         [Output("policyType")]
         public Output<string> PolicyType { get; private set; } = null!;
 
@@ -220,9 +208,6 @@ namespace Zscaler.Zpa
         [Output("reauthTimeout")]
         public Output<string?> ReauthTimeout { get; private set; } = null!;
 
-        /// <summary>
-        /// (Deprecated)
-        /// </summary>
         [Output("ruleOrder")]
         public Output<string> RuleOrder { get; private set; } = null!;
 
@@ -283,7 +268,7 @@ namespace Zscaler.Zpa
     public sealed class PolicyAccessRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional) This is for providing the rule action. Supported values: ``ALLOW``, ``DENY``, and ``REQUIRE_APPROVAL``
+        /// This is for providing the rule action. Supported values: `ALLOW`, `DENY`, and `REQUIRE_APPROVAL`
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -325,7 +310,7 @@ namespace Zscaler.Zpa
         private InputList<Inputs.PolicyAccessRuleConditionArgs>? _conditions;
 
         /// <summary>
-        /// (Optional)
+        /// This is for proviidng the set of conditions for the policy.
         /// </summary>
         public InputList<Inputs.PolicyAccessRuleConditionArgs> Conditions
         {
@@ -334,7 +319,7 @@ namespace Zscaler.Zpa
         }
 
         /// <summary>
-        /// (Optional) This is for providing a customer message for the user.
+        /// This is for providing a customer message for the user.
         /// </summary>
         [Input("customMsg")]
         public Input<string>? CustomMsg { get; set; }
@@ -346,7 +331,7 @@ namespace Zscaler.Zpa
         public Input<bool>? DefaultRule { get; set; }
 
         /// <summary>
-        /// (Optional) This is the description of the access policy rule.
+        /// This is the description of the access policy rule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -354,30 +339,28 @@ namespace Zscaler.Zpa
         [Input("lssDefaultRule")]
         public Input<bool>? LssDefaultRule { get; set; }
 
-        /// <summary>
-        /// (Optional) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
         /// <summary>
-        /// (Optional)
+        /// This is the name of the policy rule.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Optional) Supported values: ``AND``, and ``OR``
+        /// Supported values: `AND`, `OR`
         /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }
 
+        /// <summary>
+        /// - (String) Use zpa*policy*type data source to retrieve the necessary policy Set ID `policy_set_id`
+        /// &gt; **NOTE** As of v3.2.0 the `policy_set_id` attribute is now optional, and will be automatically determined based on the policy type being configured. The attribute is being kept for backwards compatibility, but can be safely removed from existing configurations.
+        /// </summary>
         [Input("policySetId")]
         public Input<string>? PolicySetId { get; set; }
 
-        /// <summary>
-        /// (Optional) Supported values: ``ACCESS_POLICY`` or ``GLOBAL_POLICY``
-        /// </summary>
         [Input("policyType")]
         public Input<string>? PolicyType { get; set; }
 
@@ -393,9 +376,6 @@ namespace Zscaler.Zpa
         [Input("reauthTimeout")]
         public Input<string>? ReauthTimeout { get; set; }
 
-        /// <summary>
-        /// (Deprecated)
-        /// </summary>
         [Input("ruleOrder")]
         public Input<string>? RuleOrder { get; set; }
 
@@ -417,7 +397,7 @@ namespace Zscaler.Zpa
     public sealed class PolicyAccessRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional) This is for providing the rule action. Supported values: ``ALLOW``, ``DENY``, and ``REQUIRE_APPROVAL``
+        /// This is for providing the rule action. Supported values: `ALLOW`, `DENY`, and `REQUIRE_APPROVAL`
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -459,7 +439,7 @@ namespace Zscaler.Zpa
         private InputList<Inputs.PolicyAccessRuleConditionGetArgs>? _conditions;
 
         /// <summary>
-        /// (Optional)
+        /// This is for proviidng the set of conditions for the policy.
         /// </summary>
         public InputList<Inputs.PolicyAccessRuleConditionGetArgs> Conditions
         {
@@ -468,7 +448,7 @@ namespace Zscaler.Zpa
         }
 
         /// <summary>
-        /// (Optional) This is for providing a customer message for the user.
+        /// This is for providing a customer message for the user.
         /// </summary>
         [Input("customMsg")]
         public Input<string>? CustomMsg { get; set; }
@@ -480,7 +460,7 @@ namespace Zscaler.Zpa
         public Input<bool>? DefaultRule { get; set; }
 
         /// <summary>
-        /// (Optional) This is the description of the access policy rule.
+        /// This is the description of the access policy rule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -488,30 +468,28 @@ namespace Zscaler.Zpa
         [Input("lssDefaultRule")]
         public Input<bool>? LssDefaultRule { get; set; }
 
-        /// <summary>
-        /// (Optional) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
         /// <summary>
-        /// (Optional)
+        /// This is the name of the policy rule.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Optional) Supported values: ``AND``, and ``OR``
+        /// Supported values: `AND`, `OR`
         /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }
 
+        /// <summary>
+        /// - (String) Use zpa*policy*type data source to retrieve the necessary policy Set ID `policy_set_id`
+        /// &gt; **NOTE** As of v3.2.0 the `policy_set_id` attribute is now optional, and will be automatically determined based on the policy type being configured. The attribute is being kept for backwards compatibility, but can be safely removed from existing configurations.
+        /// </summary>
         [Input("policySetId")]
         public Input<string>? PolicySetId { get; set; }
 
-        /// <summary>
-        /// (Optional) Supported values: ``ACCESS_POLICY`` or ``GLOBAL_POLICY``
-        /// </summary>
         [Input("policyType")]
         public Input<string>? PolicyType { get; set; }
 
@@ -527,9 +505,6 @@ namespace Zscaler.Zpa
         [Input("reauthTimeout")]
         public Input<string>? ReauthTimeout { get; set; }
 
-        /// <summary>
-        /// (Deprecated)
-        /// </summary>
         [Input("ruleOrder")]
         public Input<string>? RuleOrder { get; set; }
 

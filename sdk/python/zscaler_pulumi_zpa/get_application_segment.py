@@ -332,12 +332,6 @@ def get_application_segment(id: Optional[str] = None,
     this = zpa.get_application_segment(id="123456789")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param bool is_incomplete_dr_config: Default: false. Boolean: `true`, `false`.
-    :param str microtenant_id: The ID of the microtenant the resource is to be associated with.
-    :param str microtenant_name: The name of the microtenant the resource is to be associated with.
-    :param str name: Name of the application.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -412,11 +406,5 @@ def get_application_segment_output(id: Optional[pulumi.Input[Optional[str]]] = N
     this = zpa.get_application_segment(id="123456789")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param bool is_incomplete_dr_config: Default: false. Boolean: `true`, `false`.
-    :param str microtenant_id: The ID of the microtenant the resource is to be associated with.
-    :param str microtenant_name: The name of the microtenant the resource is to be associated with.
-    :param str name: Name of the application.
     """
     ...

@@ -49,33 +49,21 @@ class GetAssistantScheduleResult:
     @property
     @pulumi.getter(name="deleteDisabled")
     def delete_disabled(self) -> bool:
-        """
-        (Boolean) - Indicates if the App Connectors are included for deletion if they are in a disconnected state based on frequencyInterval and frequency values.
-        """
         return pulumi.get(self, "delete_disabled")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (Boolean) - Indicates if the setting for deleting App Connectors is enabled or disabled.
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def frequency(self) -> str:
-        """
-        (String) - The scheduled frequency at which the disconnected App Connectors are deleted. Supported value is: `days`
-        """
         return pulumi.get(self, "frequency")
 
     @property
     @pulumi.getter(name="frequencyInterval")
     def frequency_interval(self) -> str:
-        """
-        (String) - The interval for the configured frequency value. The minimum supported value is 5. Supported values are: `5`, `7`, `14`, `30`, `60` and `90`
-        """
         return pulumi.get(self, "frequency_interval")
 
     @property
@@ -102,6 +90,9 @@ def get_assistant_schedule(customer_id: Optional[str] = None,
                            id: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAssistantScheduleResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/deleting-disconnected-app-connectors)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-auto-delete-disconnected-app-connectors-using-api)
+
     Use the **zpa_app_connector_assistant_schedule** data source to get information about Auto Delete frequency of the App Connector for the specified customer in the Zscaler Private Access cloud.
 
     > **NOTE** - The `customer_id` attribute is optional and not required during the configuration.
@@ -116,10 +107,6 @@ def get_assistant_schedule(customer_id: Optional[str] = None,
     this = zpa.get_assistant_schedule(customer_id="1234567891012")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str customer_id: The unique identifier of the ZPA tenant.
-    :param str id: The unique identifier for the App Connector auto deletion configuration for a customer. This field is only required for the PUT request to update the frequency of the App Connector Settings.
     """
     __args__ = dict()
     __args__['customerId'] = customer_id
@@ -141,6 +128,9 @@ def get_assistant_schedule_output(customer_id: Optional[pulumi.Input[Optional[st
                                   id: Optional[pulumi.Input[Optional[str]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAssistantScheduleResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/deleting-disconnected-app-connectors)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-auto-delete-disconnected-app-connectors-using-api)
+
     Use the **zpa_app_connector_assistant_schedule** data source to get information about Auto Delete frequency of the App Connector for the specified customer in the Zscaler Private Access cloud.
 
     > **NOTE** - The `customer_id` attribute is optional and not required during the configuration.
@@ -155,9 +145,5 @@ def get_assistant_schedule_output(customer_id: Optional[pulumi.Input[Optional[st
     this = zpa.get_assistant_schedule(customer_id="1234567891012")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str customer_id: The unique identifier of the ZPA tenant.
-    :param str id: The unique identifier for the App Connector auto deletion configuration for a customer. This field is only required for the PUT request to update the frequency of the App Connector Settings.
     """
     ...

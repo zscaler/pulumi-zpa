@@ -16,24 +16,12 @@ namespace Zscaler.Zpa.Outputs
     {
         public readonly string ConfigSpace;
         public readonly string CreationTime;
-        /// <summary>
-        /// (String) Description of the App Connector Group.
-        /// </summary>
         public readonly string Description;
         public readonly bool DynamicDiscovery;
-        /// <summary>
-        /// (String) Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// ID of the App Connector Group.
-        /// </summary>
         public readonly string Id;
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
-        /// <summary>
-        /// Name of the App Connector Group.
-        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

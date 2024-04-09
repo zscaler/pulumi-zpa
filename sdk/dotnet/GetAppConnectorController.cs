@@ -13,6 +13,9 @@ namespace Zscaler.Zpa
     public static class GetAppConnectorController
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-connectors)
+        /// * [API documentation](https://help.zscaler.com/zpa/managing-app-connectors-using-api)
+        /// 
         /// Use the **zpa_app_connector_controller** data source to get information about a app connector created in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group.
         /// 
         /// ## Example Usage
@@ -39,6 +42,9 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppConnectorControllerResult>("zpa:index/getAppConnectorController:getAppConnectorController", args ?? new GetAppConnectorControllerArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-connectors)
+        /// * [API documentation](https://help.zscaler.com/zpa/managing-app-connectors-using-api)
+        /// 
         /// Use the **zpa_app_connector_controller** data source to get information about a app connector created in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group.
         /// 
         /// ## Example Usage
@@ -68,21 +74,12 @@ namespace Zscaler.Zpa
 
     public sealed class GetAppConnectorControllerArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public string? MicrotenantId { get; set; }
 
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantName")]
         public string? MicrotenantName { get; set; }
 
-        /// <summary>
-        /// Name of the App Connector Group.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -94,21 +91,12 @@ namespace Zscaler.Zpa
 
     public sealed class GetAppConnectorControllerInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantName")]
         public Input<string>? MicrotenantName { get; set; }
 
-        /// <summary>
-        /// Name of the App Connector Group.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -122,145 +110,43 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetAppConnectorControllerResult
     {
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string AppConnectorGroupId;
-        /// <summary>
-        /// (Computed) - Expected values: UNKNOWN/ZPN_STATUS_AUTHENTICATED(1)/ZPN_STATUS_DISCONNECTED
-        /// </summary>
         public readonly string AppConnectorGroupName;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string ApplicationStartTime;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string ControlChannelStatus;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string CtrlBrokerName;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string CurrentVersion;
-        /// <summary>
-        /// (Computed) - Description of the App Connector.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (Computed) - Whether this App Connector is enabled or not. Default value: `true`. Supported values: `true`, `false`
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly ImmutableDictionary<string, object> EnrollmentCert;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string ExpectedUpgradeTime;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string ExpectedVersion;
         public readonly string Fingerprint;
         public readonly string Id;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string IpAcl;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string IssuedCertId;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string LastBrokerConnectTime;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string LastBrokerConnectTimeDuration;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string LastBrokerDisconnectTime;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string LastBrokerDisconnectTimeDuration;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string LastUpgradeTime;
-        /// <summary>
-        /// (Computed) - Latitude of the App Connector. Integer or decimal. With values in the range of `-90` to `90`
-        /// </summary>
         public readonly string Latitude;
-        /// <summary>
-        /// (Computed) - Location of the App Connector.
-        /// </summary>
         public readonly string Location;
-        /// <summary>
-        /// (Computed) - Longitude of the App Connector. Integer or decimal. With values in the range of `-180` to `180`
-        /// </summary>
         public readonly string Longitude;
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         public readonly string? MicrotenantId;
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         public readonly string? MicrotenantName;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
         public readonly string? Name;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string Platform;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string PreviousVersion;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string PrivateIp;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string ProvisioningKeyId;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string ProvisioningKeyName;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string PublicIp;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string SargeVersion;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string UpgradeAttempt;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly string UpgradeStatus;
 
         [OutputConstructor]

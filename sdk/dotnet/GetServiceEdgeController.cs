@@ -13,6 +13,9 @@ namespace Zscaler.Zpa
     public static class GetServiceEdgeController
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-zpa-private-service-edges)
+        /// * [API documentation](https://help.zscaler.com/zpa/managing-zpa-private-service-edges-using-api)
+        /// 
         /// Use the **zpa_service_edge_controller** data source to get information about a service edge controller in the Zscaler Private Access cloud. This data source can then be referenced in a Service Edge Group and Provisioning Key.
         /// 
         /// ## Example Usage
@@ -39,6 +42,9 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceEdgeControllerResult>("zpa:index/getServiceEdgeController:getServiceEdgeController", args ?? new GetServiceEdgeControllerArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-zpa-private-service-edges)
+        /// * [API documentation](https://help.zscaler.com/zpa/managing-zpa-private-service-edges-using-api)
+        /// 
         /// Use the **zpa_service_edge_controller** data source to get information about a service edge controller in the Zscaler Private Access cloud. This data source can then be referenced in a Service Edge Group and Provisioning Key.
         /// 
         /// ## Example Usage
@@ -68,9 +74,6 @@ namespace Zscaler.Zpa
 
     public sealed class GetServiceEdgeControllerArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the service edge controller to be exported.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -82,9 +85,6 @@ namespace Zscaler.Zpa
 
     public sealed class GetServiceEdgeControllerInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the service edge controller to be exported.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -98,136 +98,43 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetServiceEdgeControllerResult
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ApplicationStartTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ControlChannelStatus;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CtrlBrokerName;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CurrentVersion;
-        /// <summary>
-        /// (string) - Description of the App Connector.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (bool) Whether this Service Edge Controller is enabled or not. Default value: `true`. Supported values: `true`, `false`
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly ImmutableDictionary<string, object> EnrollmentCert;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ExpectedUpgradeTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ExpectedVersion;
         public readonly string Fingerprint;
         public readonly string Id;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string IpAcl;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string IssuedCertId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string LastBrokerConnectTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string LastBrokerConnectTimeDuration;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string LastBrokerDisconnectTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string LastBrokerDisconnectTimeDuration;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string LastUpgradeTime;
-        /// <summary>
-        /// (string) Latitude of the Service Edge Controller. Integer or decimal. With values in the range of `-90` to `90`
-        /// </summary>
         public readonly string Latitude;
         public readonly string ListenIps;
-        /// <summary>
-        /// (string) Location of the Service Edge Controller.
-        /// </summary>
         public readonly string Location;
-        /// <summary>
-        /// (string) Longitude of the Service Edge Controller. Integer or decimal. With values in the range of `-180` to `180`
-        /// </summary>
         public readonly string Longitude;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedBy;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string? Name;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Platform;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string PreviousVersion;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string PrivateIp;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ProvisioningKeyId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ProvisioningKeyName;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string PublicIp;
         public readonly ImmutableArray<string> PublishIps;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string SargeVersion;
         public readonly string ServiceEdgeGroupId;
         public readonly string ServiceEdgeGroupName;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string UpgradeAttempt;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string UpgradeStatus;
         public readonly ImmutableArray<Outputs.GetServiceEdgeControllerZpnSubModuleUpgradeListResult> ZpnSubModuleUpgradeLists;
 

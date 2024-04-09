@@ -15,9 +15,6 @@ namespace Zscaler.Zpa.Outputs
     public sealed class GetCloudBrowserIsolationExternalProfileRegionResult
     {
         public readonly string Id;
-        /// <summary>
-        /// The name of the CBI banner to be exported.
-        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

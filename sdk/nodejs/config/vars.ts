@@ -30,7 +30,7 @@ Object.defineProperty(exports, "zpaClientSecret", {
 });
 
 /**
- * Cloud to use PRODUCTION, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
+ * Cloud to use PRODUCTION, ZPATWO, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
  */
 export declare const zpaCloud: string | undefined;
 Object.defineProperty(exports, "zpaCloud", {

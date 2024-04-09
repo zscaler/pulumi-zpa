@@ -14,13 +14,7 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetInspectionProfileControlsInfoResult
     {
-        /// <summary>
-        /// (string) Control types. Supported Values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `CUSTOM`, `PREDEFINED`, `ZSCALER`
-        /// </summary>
         public readonly string ControlType;
-        /// <summary>
-        /// (string) Control information counts `Long`
-        /// </summary>
         public readonly string Count;
 
         [OutputConstructor]

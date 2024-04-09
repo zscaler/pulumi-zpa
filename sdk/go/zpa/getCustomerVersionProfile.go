@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-connectors)
+// * [API documentation](https://help.zscaler.com/zpa/obtaining-version-profile-details-using-api)
+//
 // Use the **zpa_customer_version_profile** data source to get information about all customer version profiles from the Zscaler Private Access cloud. This data source can be associated with an App Connector Group within the parameter `versionProfileId` or `versionProfileName`
 //
 // The customer version profile IDs are:
@@ -70,27 +73,22 @@ func GetCustomerVersionProfile(ctx *pulumi.Context, args *GetCustomerVersionProf
 
 // A collection of arguments for invoking getCustomerVersionProfile.
 type GetCustomerVersionProfileArgs struct {
-	// The name of the enrollment certificate to be exported.
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getCustomerVersionProfile.
 type GetCustomerVersionProfileResult struct {
-	// (string)
 	CreationTime           string                                           `pulumi:"creationTime"`
 	CustomScopeCustomerIds []GetCustomerVersionProfileCustomScopeCustomerId `pulumi:"customScopeCustomerIds"`
 	CustomerId             string                                           `pulumi:"customerId"`
-	// (string)
-	Description string `pulumi:"description"`
-	Id          string `pulumi:"id"`
-	// (string)
-	ModifiedBy string `pulumi:"modifiedBy"`
-	// (string)
-	ModifiedTime    string                             `pulumi:"modifiedTime"`
-	Name            string                             `pulumi:"name"`
-	UpgradePriority string                             `pulumi:"upgradePriority"`
-	Versions        []GetCustomerVersionProfileVersion `pulumi:"versions"`
-	VisibilityScope string                             `pulumi:"visibilityScope"`
+	Description            string                                           `pulumi:"description"`
+	Id                     string                                           `pulumi:"id"`
+	ModifiedBy             string                                           `pulumi:"modifiedBy"`
+	ModifiedTime           string                                           `pulumi:"modifiedTime"`
+	Name                   string                                           `pulumi:"name"`
+	UpgradePriority        string                                           `pulumi:"upgradePriority"`
+	Versions               []GetCustomerVersionProfileVersion               `pulumi:"versions"`
+	VisibilityScope        string                                           `pulumi:"visibilityScope"`
 }
 
 func GetCustomerVersionProfileOutput(ctx *pulumi.Context, args GetCustomerVersionProfileOutputArgs, opts ...pulumi.InvokeOption) GetCustomerVersionProfileResultOutput {
@@ -108,7 +106,6 @@ func GetCustomerVersionProfileOutput(ctx *pulumi.Context, args GetCustomerVersio
 
 // A collection of arguments for invoking getCustomerVersionProfile.
 type GetCustomerVersionProfileOutputArgs struct {
-	// The name of the enrollment certificate to be exported.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -131,7 +128,6 @@ func (o GetCustomerVersionProfileResultOutput) ToGetCustomerVersionProfileResult
 	return o
 }
 
-// (string)
 func (o GetCustomerVersionProfileResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCustomerVersionProfileResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
@@ -146,7 +142,6 @@ func (o GetCustomerVersionProfileResultOutput) CustomerId() pulumi.StringOutput 
 	return o.ApplyT(func(v GetCustomerVersionProfileResult) string { return v.CustomerId }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetCustomerVersionProfileResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCustomerVersionProfileResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -155,12 +150,10 @@ func (o GetCustomerVersionProfileResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCustomerVersionProfileResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetCustomerVersionProfileResultOutput) ModifiedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCustomerVersionProfileResult) string { return v.ModifiedBy }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetCustomerVersionProfileResultOutput) ModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCustomerVersionProfileResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }

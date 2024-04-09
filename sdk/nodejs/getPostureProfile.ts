@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/client-connector/about-device-posture-profiles)
+ * * [API documentation](https://help.zscaler.com/zpa/obtaining-posture-profile-details-using-api)
+ *
  * Use the **zpa_posture_profile** data source to get information about a posture profile created in the Zscaler Private Access Mobile Portal. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
  *
  * ## Example Usage
@@ -82,9 +85,6 @@ export function getPostureProfile(args?: GetPostureProfileArgs, opts?: pulumi.In
  * A collection of arguments for invoking getPostureProfile.
  */
 export interface GetPostureProfileArgs {
-    /**
-     * The name of the posture profile to be exported.
-     */
     name?: string;
 }
 
@@ -92,39 +92,21 @@ export interface GetPostureProfileArgs {
  * A collection of values returned by getPostureProfile.
  */
 export interface GetPostureProfileResult {
-    /**
-     * (string)
-     */
     readonly creationTime: string;
-    /**
-     * (string)
-     */
     readonly domain: string;
     readonly id: string;
-    /**
-     * (string)
-     */
     readonly masterCustomerId: string;
-    /**
-     * (string)
-     */
     readonly modifiedTime: string;
     readonly modifiedby: string;
     readonly name?: string;
-    /**
-     * (string)
-     */
     readonly postureUdid: string;
-    /**
-     * (string)
-     */
     readonly zscalerCloud: string;
-    /**
-     * (string)
-     */
     readonly zscalerCustomerId: string;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/client-connector/about-device-posture-profiles)
+ * * [API documentation](https://help.zscaler.com/zpa/obtaining-posture-profile-details-using-api)
+ *
  * Use the **zpa_posture_profile** data source to get information about a posture profile created in the Zscaler Private Access Mobile Portal. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
  *
  * ## Example Usage
@@ -197,8 +179,5 @@ export function getPostureProfileOutput(args?: GetPostureProfileOutputArgs, opts
  * A collection of arguments for invoking getPostureProfile.
  */
 export interface GetPostureProfileOutputArgs {
-    /**
-     * The name of the posture profile to be exported.
-     */
     name?: pulumi.Input<string>;
 }

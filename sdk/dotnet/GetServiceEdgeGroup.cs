@@ -13,6 +13,9 @@ namespace Zscaler.Zpa
     public static class GetServiceEdgeGroup
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-zpa-private-service-edge-groups)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-zpa-private-service-edge-groups-using-api)
+        /// 
         /// Use the **zpa_service_edge_group** data source to get information about a service edge group in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group. This data source can then be referenced in the following resources:
         /// 
         /// * Create a server group
@@ -61,6 +64,9 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceEdgeGroupResult>("zpa:index/getServiceEdgeGroup:getServiceEdgeGroup", args ?? new GetServiceEdgeGroupArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-zpa-private-service-edge-groups)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-zpa-private-service-edge-groups-using-api)
+        /// 
         /// Use the **zpa_service_edge_group** data source to get information about a service edge group in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group. This data source can then be referenced in the following resources:
         /// 
         /// * Create a server group
@@ -112,15 +118,9 @@ namespace Zscaler.Zpa
 
     public sealed class GetServiceEdgeGroupArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the service edge group to be exported.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// The name of the service edge group to be exported.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -132,15 +132,9 @@ namespace Zscaler.Zpa
 
     public sealed class GetServiceEdgeGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the service edge group to be exported.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// The name of the service edge group to be exported.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -154,93 +148,27 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetServiceEdgeGroupResult
     {
-        /// <summary>
-        /// (string) Whether Double Encryption is enabled or disabled for the app.
-        /// </summary>
         public readonly string CityCountry;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CountryCode;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (string) Description of the Service Edge Group.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (bool) Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string GeoLocationId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string IsPublic;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Latitude;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Location;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Longitude;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// (bool) Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
-        /// </summary>
         public readonly bool OverrideVersionProfile;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceEdgeGroupServiceEdgeResult> ServiceEdges;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceEdgeGroupTrustedNetworkResult> TrustedNetworks;
-        /// <summary>
-        /// (string) App Connectors in this group will attempt to update to a newer version of the software during this specified day
-        /// </summary>
         public readonly string UpgradeDay;
-        /// <summary>
-        /// (string) App Connectors in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600`. Integer in seconds (i.e., `-66600`). The integer should be greater than or equal to `0` and less than `86400`, in `15` minute intervals
-        /// </summary>
         public readonly string UpgradeTimeInSecs;
-        /// <summary>
-        /// (String) ID of the version profile.
-        /// Exported values are:
-        /// </summary>
         public readonly string VersionProfileId;
-        /// <summary>
-        /// (String)
-        /// Exported values are:
-        /// </summary>
         public readonly string VersionProfileName;
-        /// <summary>
-        /// (string)
-        /// Exported values are:
-        /// </summary>
         public readonly string VersionProfileVisibilityScope;
 
         [OutputConstructor]

@@ -65,6 +65,11 @@ export type ConnectorGroup = import("./connectorGroup").ConnectorGroup;
 export const ConnectorGroup: typeof import("./connectorGroup").ConnectorGroup = null as any;
 utilities.lazyLoad(exports, ["ConnectorGroup"], () => require("./connectorGroup"));
 
+export { EmergencyAccessUserArgs, EmergencyAccessUserState } from "./emergencyAccessUser";
+export type EmergencyAccessUser = import("./emergencyAccessUser").EmergencyAccessUser;
+export const EmergencyAccessUser: typeof import("./emergencyAccessUser").EmergencyAccessUser = null as any;
+utilities.lazyLoad(exports, ["EmergencyAccessUser"], () => require("./emergencyAccessUser"));
+
 export { GetAppConnectorControllerArgs, GetAppConnectorControllerResult, GetAppConnectorControllerOutputArgs } from "./getAppConnectorController";
 export const getAppConnectorController: typeof import("./getAppConnectorController").getAppConnectorController = null as any;
 export const getAppConnectorControllerOutput: typeof import("./getAppConnectorController").getAppConnectorControllerOutput = null as any;
@@ -210,6 +215,26 @@ export const getMicrotenant: typeof import("./getMicrotenant").getMicrotenant = 
 export const getMicrotenantOutput: typeof import("./getMicrotenant").getMicrotenantOutput = null as any;
 utilities.lazyLoad(exports, ["getMicrotenant","getMicrotenantOutput"], () => require("./getMicrotenant"));
 
+export { GetPRAApprovalArgs, GetPRAApprovalResult, GetPRAApprovalOutputArgs } from "./getPRAApproval";
+export const getPRAApproval: typeof import("./getPRAApproval").getPRAApproval = null as any;
+export const getPRAApprovalOutput: typeof import("./getPRAApproval").getPRAApprovalOutput = null as any;
+utilities.lazyLoad(exports, ["getPRAApproval","getPRAApprovalOutput"], () => require("./getPRAApproval"));
+
+export { GetPRAConsoleArgs, GetPRAConsoleResult, GetPRAConsoleOutputArgs } from "./getPRAConsole";
+export const getPRAConsole: typeof import("./getPRAConsole").getPRAConsole = null as any;
+export const getPRAConsoleOutput: typeof import("./getPRAConsole").getPRAConsoleOutput = null as any;
+utilities.lazyLoad(exports, ["getPRAConsole","getPRAConsoleOutput"], () => require("./getPRAConsole"));
+
+export { GetPRACredentialArgs, GetPRACredentialResult, GetPRACredentialOutputArgs } from "./getPRACredential";
+export const getPRACredential: typeof import("./getPRACredential").getPRACredential = null as any;
+export const getPRACredentialOutput: typeof import("./getPRACredential").getPRACredentialOutput = null as any;
+utilities.lazyLoad(exports, ["getPRACredential","getPRACredentialOutput"], () => require("./getPRACredential"));
+
+export { GetPRAPortalArgs, GetPRAPortalResult, GetPRAPortalOutputArgs } from "./getPRAPortal";
+export const getPRAPortal: typeof import("./getPRAPortal").getPRAPortal = null as any;
+export const getPRAPortalOutput: typeof import("./getPRAPortal").getPRAPortalOutput = null as any;
+utilities.lazyLoad(exports, ["getPRAPortal","getPRAPortalOutput"], () => require("./getPRAPortal"));
+
 export { GetPolicyClientTypeResult } from "./getPolicyClientType";
 export const getPolicyClientType: typeof import("./getPolicyClientType").getPolicyClientType = null as any;
 export const getPolicyClientTypeOutput: typeof import("./getPolicyClientType").getPolicyClientTypeOutput = null as any;
@@ -229,6 +254,26 @@ export { GetPostureProfileArgs, GetPostureProfileResult, GetPostureProfileOutput
 export const getPostureProfile: typeof import("./getPostureProfile").getPostureProfile = null as any;
 export const getPostureProfileOutput: typeof import("./getPostureProfile").getPostureProfileOutput = null as any;
 utilities.lazyLoad(exports, ["getPostureProfile","getPostureProfileOutput"], () => require("./getPostureProfile"));
+
+export { GetPraApprovalControllerArgs, GetPraApprovalControllerResult, GetPraApprovalControllerOutputArgs } from "./getPraApprovalController";
+export const getPraApprovalController: typeof import("./getPraApprovalController").getPraApprovalController = null as any;
+export const getPraApprovalControllerOutput: typeof import("./getPraApprovalController").getPraApprovalControllerOutput = null as any;
+utilities.lazyLoad(exports, ["getPraApprovalController","getPraApprovalControllerOutput"], () => require("./getPraApprovalController"));
+
+export { GetPraConsoleControllerArgs, GetPraConsoleControllerResult, GetPraConsoleControllerOutputArgs } from "./getPraConsoleController";
+export const getPraConsoleController: typeof import("./getPraConsoleController").getPraConsoleController = null as any;
+export const getPraConsoleControllerOutput: typeof import("./getPraConsoleController").getPraConsoleControllerOutput = null as any;
+utilities.lazyLoad(exports, ["getPraConsoleController","getPraConsoleControllerOutput"], () => require("./getPraConsoleController"));
+
+export { GetPraCredentialControllerArgs, GetPraCredentialControllerResult, GetPraCredentialControllerOutputArgs } from "./getPraCredentialController";
+export const getPraCredentialController: typeof import("./getPraCredentialController").getPraCredentialController = null as any;
+export const getPraCredentialControllerOutput: typeof import("./getPraCredentialController").getPraCredentialControllerOutput = null as any;
+utilities.lazyLoad(exports, ["getPraCredentialController","getPraCredentialControllerOutput"], () => require("./getPraCredentialController"));
+
+export { GetPraPortalControllerArgs, GetPraPortalControllerResult, GetPraPortalControllerOutputArgs } from "./getPraPortalController";
+export const getPraPortalController: typeof import("./getPraPortalController").getPraPortalController = null as any;
+export const getPraPortalControllerOutput: typeof import("./getPraPortalController").getPraPortalControllerOutput = null as any;
+utilities.lazyLoad(exports, ["getPraPortalController","getPraPortalControllerOutput"], () => require("./getPraPortalController"));
 
 export { GetProvisioningKeyArgs, GetProvisioningKeyResult, GetProvisioningKeyOutputArgs } from "./getProvisioningKey";
 export const getProvisioningKey: typeof import("./getProvisioningKey").getProvisioningKey = null as any;
@@ -300,15 +345,30 @@ export type PolicyAccessForwardingRule = import("./policyAccessForwardingRule").
 export const PolicyAccessForwardingRule: typeof import("./policyAccessForwardingRule").PolicyAccessForwardingRule = null as any;
 utilities.lazyLoad(exports, ["PolicyAccessForwardingRule"], () => require("./policyAccessForwardingRule"));
 
+export { PolicyAccessForwardingRuleV2Args, PolicyAccessForwardingRuleV2State } from "./policyAccessForwardingRuleV2";
+export type PolicyAccessForwardingRuleV2 = import("./policyAccessForwardingRuleV2").PolicyAccessForwardingRuleV2;
+export const PolicyAccessForwardingRuleV2: typeof import("./policyAccessForwardingRuleV2").PolicyAccessForwardingRuleV2 = null as any;
+utilities.lazyLoad(exports, ["PolicyAccessForwardingRuleV2"], () => require("./policyAccessForwardingRuleV2"));
+
 export { PolicyAccessInspectionRuleArgs, PolicyAccessInspectionRuleState } from "./policyAccessInspectionRule";
 export type PolicyAccessInspectionRule = import("./policyAccessInspectionRule").PolicyAccessInspectionRule;
 export const PolicyAccessInspectionRule: typeof import("./policyAccessInspectionRule").PolicyAccessInspectionRule = null as any;
 utilities.lazyLoad(exports, ["PolicyAccessInspectionRule"], () => require("./policyAccessInspectionRule"));
 
+export { PolicyAccessInspectionRuleV2Args, PolicyAccessInspectionRuleV2State } from "./policyAccessInspectionRuleV2";
+export type PolicyAccessInspectionRuleV2 = import("./policyAccessInspectionRuleV2").PolicyAccessInspectionRuleV2;
+export const PolicyAccessInspectionRuleV2: typeof import("./policyAccessInspectionRuleV2").PolicyAccessInspectionRuleV2 = null as any;
+utilities.lazyLoad(exports, ["PolicyAccessInspectionRuleV2"], () => require("./policyAccessInspectionRuleV2"));
+
 export { PolicyAccessIsolationRuleArgs, PolicyAccessIsolationRuleState } from "./policyAccessIsolationRule";
 export type PolicyAccessIsolationRule = import("./policyAccessIsolationRule").PolicyAccessIsolationRule;
 export const PolicyAccessIsolationRule: typeof import("./policyAccessIsolationRule").PolicyAccessIsolationRule = null as any;
 utilities.lazyLoad(exports, ["PolicyAccessIsolationRule"], () => require("./policyAccessIsolationRule"));
+
+export { PolicyAccessIsolationRuleV2Args, PolicyAccessIsolationRuleV2State } from "./policyAccessIsolationRuleV2";
+export type PolicyAccessIsolationRuleV2 = import("./policyAccessIsolationRuleV2").PolicyAccessIsolationRuleV2;
+export const PolicyAccessIsolationRuleV2: typeof import("./policyAccessIsolationRuleV2").PolicyAccessIsolationRuleV2 = null as any;
+utilities.lazyLoad(exports, ["PolicyAccessIsolationRuleV2"], () => require("./policyAccessIsolationRuleV2"));
 
 export { PolicyAccessReorderRuleArgs, PolicyAccessReorderRuleState } from "./policyAccessReorderRule";
 export type PolicyAccessReorderRule = import("./policyAccessReorderRule").PolicyAccessReorderRule;
@@ -320,10 +380,95 @@ export type PolicyAccessRule = import("./policyAccessRule").PolicyAccessRule;
 export const PolicyAccessRule: typeof import("./policyAccessRule").PolicyAccessRule = null as any;
 utilities.lazyLoad(exports, ["PolicyAccessRule"], () => require("./policyAccessRule"));
 
+export { PolicyAccessRuleV2Args, PolicyAccessRuleV2State } from "./policyAccessRuleV2";
+export type PolicyAccessRuleV2 = import("./policyAccessRuleV2").PolicyAccessRuleV2;
+export const PolicyAccessRuleV2: typeof import("./policyAccessRuleV2").PolicyAccessRuleV2 = null as any;
+utilities.lazyLoad(exports, ["PolicyAccessRuleV2"], () => require("./policyAccessRuleV2"));
+
 export { PolicyAccessTimeOutRuleArgs, PolicyAccessTimeOutRuleState } from "./policyAccessTimeOutRule";
 export type PolicyAccessTimeOutRule = import("./policyAccessTimeOutRule").PolicyAccessTimeOutRule;
 export const PolicyAccessTimeOutRule: typeof import("./policyAccessTimeOutRule").PolicyAccessTimeOutRule = null as any;
 utilities.lazyLoad(exports, ["PolicyAccessTimeOutRule"], () => require("./policyAccessTimeOutRule"));
+
+export { PolicyAccessTimeOutRuleV2Args, PolicyAccessTimeOutRuleV2State } from "./policyAccessTimeOutRuleV2";
+export type PolicyAccessTimeOutRuleV2 = import("./policyAccessTimeOutRuleV2").PolicyAccessTimeOutRuleV2;
+export const PolicyAccessTimeOutRuleV2: typeof import("./policyAccessTimeOutRuleV2").PolicyAccessTimeOutRuleV2 = null as any;
+utilities.lazyLoad(exports, ["PolicyAccessTimeOutRuleV2"], () => require("./policyAccessTimeOutRuleV2"));
+
+export { PolicyCapabilitiesRuleArgs, PolicyCapabilitiesRuleState } from "./policyCapabilitiesRule";
+export type PolicyCapabilitiesRule = import("./policyCapabilitiesRule").PolicyCapabilitiesRule;
+export const PolicyCapabilitiesRule: typeof import("./policyCapabilitiesRule").PolicyCapabilitiesRule = null as any;
+utilities.lazyLoad(exports, ["PolicyCapabilitiesRule"], () => require("./policyCapabilitiesRule"));
+
+export { PolicyCredentialRuleArgs, PolicyCredentialRuleState } from "./policyCredentialRule";
+export type PolicyCredentialRule = import("./policyCredentialRule").PolicyCredentialRule;
+export const PolicyCredentialRule: typeof import("./policyCredentialRule").PolicyCredentialRule = null as any;
+utilities.lazyLoad(exports, ["PolicyCredentialRule"], () => require("./policyCredentialRule"));
+
+export { PolicyForwardingRuleV2Args, PolicyForwardingRuleV2State } from "./policyForwardingRuleV2";
+export type PolicyForwardingRuleV2 = import("./policyForwardingRuleV2").PolicyForwardingRuleV2;
+export const PolicyForwardingRuleV2: typeof import("./policyForwardingRuleV2").PolicyForwardingRuleV2 = null as any;
+utilities.lazyLoad(exports, ["PolicyForwardingRuleV2"], () => require("./policyForwardingRuleV2"));
+
+export { PolicyInspectionRuleV2Args, PolicyInspectionRuleV2State } from "./policyInspectionRuleV2";
+export type PolicyInspectionRuleV2 = import("./policyInspectionRuleV2").PolicyInspectionRuleV2;
+export const PolicyInspectionRuleV2: typeof import("./policyInspectionRuleV2").PolicyInspectionRuleV2 = null as any;
+utilities.lazyLoad(exports, ["PolicyInspectionRuleV2"], () => require("./policyInspectionRuleV2"));
+
+export { PolicyIsolationRuleV2Args, PolicyIsolationRuleV2State } from "./policyIsolationRuleV2";
+export type PolicyIsolationRuleV2 = import("./policyIsolationRuleV2").PolicyIsolationRuleV2;
+export const PolicyIsolationRuleV2: typeof import("./policyIsolationRuleV2").PolicyIsolationRuleV2 = null as any;
+utilities.lazyLoad(exports, ["PolicyIsolationRuleV2"], () => require("./policyIsolationRuleV2"));
+
+export { PolicyRedirectionRuleArgs, PolicyRedirectionRuleState } from "./policyRedirectionRule";
+export type PolicyRedirectionRule = import("./policyRedirectionRule").PolicyRedirectionRule;
+export const PolicyRedirectionRule: typeof import("./policyRedirectionRule").PolicyRedirectionRule = null as any;
+utilities.lazyLoad(exports, ["PolicyRedirectionRule"], () => require("./policyRedirectionRule"));
+
+export { PolicyTimeoutRuleV2Args, PolicyTimeoutRuleV2State } from "./policyTimeoutRuleV2";
+export type PolicyTimeoutRuleV2 = import("./policyTimeoutRuleV2").PolicyTimeoutRuleV2;
+export const PolicyTimeoutRuleV2: typeof import("./policyTimeoutRuleV2").PolicyTimeoutRuleV2 = null as any;
+utilities.lazyLoad(exports, ["PolicyTimeoutRuleV2"], () => require("./policyTimeoutRuleV2"));
+
+export { PraApprovalControllerArgs, PraApprovalControllerState } from "./praApprovalController";
+export type PraApprovalController = import("./praApprovalController").PraApprovalController;
+export const PraApprovalController: typeof import("./praApprovalController").PraApprovalController = null as any;
+utilities.lazyLoad(exports, ["PraApprovalController"], () => require("./praApprovalController"));
+
+export { PraConsoleControllerArgs, PraConsoleControllerState } from "./praConsoleController";
+export type PraConsoleController = import("./praConsoleController").PraConsoleController;
+export const PraConsoleController: typeof import("./praConsoleController").PraConsoleController = null as any;
+utilities.lazyLoad(exports, ["PraConsoleController"], () => require("./praConsoleController"));
+
+export { PraCredentialControllerArgs, PraCredentialControllerState } from "./praCredentialController";
+export type PraCredentialController = import("./praCredentialController").PraCredentialController;
+export const PraCredentialController: typeof import("./praCredentialController").PraCredentialController = null as any;
+utilities.lazyLoad(exports, ["PraCredentialController"], () => require("./praCredentialController"));
+
+export { PraPortalControllerArgs, PraPortalControllerState } from "./praPortalController";
+export type PraPortalController = import("./praPortalController").PraPortalController;
+export const PraPortalController: typeof import("./praPortalController").PraPortalController = null as any;
+utilities.lazyLoad(exports, ["PraPortalController"], () => require("./praPortalController"));
+
+export { PRAApprovalArgs, PRAApprovalState } from "./praapproval";
+export type PRAApproval = import("./praapproval").PRAApproval;
+export const PRAApproval: typeof import("./praapproval").PRAApproval = null as any;
+utilities.lazyLoad(exports, ["PRAApproval"], () => require("./praapproval"));
+
+export { PRAConsoleArgs, PRAConsoleState } from "./praconsole";
+export type PRAConsole = import("./praconsole").PRAConsole;
+export const PRAConsole: typeof import("./praconsole").PRAConsole = null as any;
+utilities.lazyLoad(exports, ["PRAConsole"], () => require("./praconsole"));
+
+export { PRACredentialArgs, PRACredentialState } from "./pracredential";
+export type PRACredential = import("./pracredential").PRACredential;
+export const PRACredential: typeof import("./pracredential").PRACredential = null as any;
+utilities.lazyLoad(exports, ["PRACredential"], () => require("./pracredential"));
+
+export { PRAPortalArgs, PRAPortalState } from "./praportal";
+export type PRAPortal = import("./praportal").PRAPortal;
+export const PRAPortal: typeof import("./praportal").PRAPortal = null as any;
+utilities.lazyLoad(exports, ["PRAPortal"], () => require("./praportal"));
 
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
@@ -388,6 +533,8 @@ const _module = {
                 return new CloudBrowserIsolationExternalProfile(name, <any>undefined, { urn })
             case "zpa:index/connectorGroup:ConnectorGroup":
                 return new ConnectorGroup(name, <any>undefined, { urn })
+            case "zpa:index/emergencyAccessUser:EmergencyAccessUser":
+                return new EmergencyAccessUser(name, <any>undefined, { urn })
             case "zpa:index/inspectionCustomControls:InspectionCustomControls":
                 return new InspectionCustomControls(name, <any>undefined, { urn })
             case "zpa:index/inspectionProfile:InspectionProfile":
@@ -396,18 +543,58 @@ const _module = {
                 return new LSSConfigController(name, <any>undefined, { urn })
             case "zpa:index/microtenant:Microtenant":
                 return new Microtenant(name, <any>undefined, { urn })
+            case "zpa:index/pRAApproval:PRAApproval":
+                return new PRAApproval(name, <any>undefined, { urn })
+            case "zpa:index/pRAConsole:PRAConsole":
+                return new PRAConsole(name, <any>undefined, { urn })
+            case "zpa:index/pRACredential:PRACredential":
+                return new PRACredential(name, <any>undefined, { urn })
+            case "zpa:index/pRAPortal:PRAPortal":
+                return new PRAPortal(name, <any>undefined, { urn })
             case "zpa:index/policyAccessForwardingRule:PolicyAccessForwardingRule":
                 return new PolicyAccessForwardingRule(name, <any>undefined, { urn })
+            case "zpa:index/policyAccessForwardingRuleV2:PolicyAccessForwardingRuleV2":
+                return new PolicyAccessForwardingRuleV2(name, <any>undefined, { urn })
             case "zpa:index/policyAccessInspectionRule:PolicyAccessInspectionRule":
                 return new PolicyAccessInspectionRule(name, <any>undefined, { urn })
+            case "zpa:index/policyAccessInspectionRuleV2:PolicyAccessInspectionRuleV2":
+                return new PolicyAccessInspectionRuleV2(name, <any>undefined, { urn })
             case "zpa:index/policyAccessIsolationRule:PolicyAccessIsolationRule":
                 return new PolicyAccessIsolationRule(name, <any>undefined, { urn })
+            case "zpa:index/policyAccessIsolationRuleV2:PolicyAccessIsolationRuleV2":
+                return new PolicyAccessIsolationRuleV2(name, <any>undefined, { urn })
             case "zpa:index/policyAccessReorderRule:PolicyAccessReorderRule":
                 return new PolicyAccessReorderRule(name, <any>undefined, { urn })
             case "zpa:index/policyAccessRule:PolicyAccessRule":
                 return new PolicyAccessRule(name, <any>undefined, { urn })
+            case "zpa:index/policyAccessRuleV2:PolicyAccessRuleV2":
+                return new PolicyAccessRuleV2(name, <any>undefined, { urn })
             case "zpa:index/policyAccessTimeOutRule:PolicyAccessTimeOutRule":
                 return new PolicyAccessTimeOutRule(name, <any>undefined, { urn })
+            case "zpa:index/policyAccessTimeOutRuleV2:PolicyAccessTimeOutRuleV2":
+                return new PolicyAccessTimeOutRuleV2(name, <any>undefined, { urn })
+            case "zpa:index/policyCapabilitiesRule:PolicyCapabilitiesRule":
+                return new PolicyCapabilitiesRule(name, <any>undefined, { urn })
+            case "zpa:index/policyCredentialRule:PolicyCredentialRule":
+                return new PolicyCredentialRule(name, <any>undefined, { urn })
+            case "zpa:index/policyForwardingRuleV2:PolicyForwardingRuleV2":
+                return new PolicyForwardingRuleV2(name, <any>undefined, { urn })
+            case "zpa:index/policyInspectionRuleV2:PolicyInspectionRuleV2":
+                return new PolicyInspectionRuleV2(name, <any>undefined, { urn })
+            case "zpa:index/policyIsolationRuleV2:PolicyIsolationRuleV2":
+                return new PolicyIsolationRuleV2(name, <any>undefined, { urn })
+            case "zpa:index/policyRedirectionRule:PolicyRedirectionRule":
+                return new PolicyRedirectionRule(name, <any>undefined, { urn })
+            case "zpa:index/policyTimeoutRuleV2:PolicyTimeoutRuleV2":
+                return new PolicyTimeoutRuleV2(name, <any>undefined, { urn })
+            case "zpa:index/praApprovalController:PraApprovalController":
+                return new PraApprovalController(name, <any>undefined, { urn })
+            case "zpa:index/praConsoleController:PraConsoleController":
+                return new PraConsoleController(name, <any>undefined, { urn })
+            case "zpa:index/praCredentialController:PraCredentialController":
+                return new PraCredentialController(name, <any>undefined, { urn })
+            case "zpa:index/praPortalController:PraPortalController":
+                return new PraPortalController(name, <any>undefined, { urn })
             case "zpa:index/provisioningKey:ProvisioningKey":
                 return new ProvisioningKey(name, <any>undefined, { urn })
             case "zpa:index/segmentGroup:SegmentGroup":
@@ -433,16 +620,37 @@ pulumi.runtime.registerResourceModule("zpa", "index/cloudBrowserIsolationBanner"
 pulumi.runtime.registerResourceModule("zpa", "index/cloudBrowserIsolationCertificate", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/cloudBrowserIsolationExternalProfile", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/connectorGroup", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/emergencyAccessUser", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/inspectionCustomControls", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/inspectionProfile", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/lSSConfigController", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/microtenant", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/pRAApproval", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/pRAConsole", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/pRACredential", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/pRAPortal", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/policyAccessForwardingRule", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/policyAccessForwardingRuleV2", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/policyAccessInspectionRule", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/policyAccessInspectionRuleV2", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/policyAccessIsolationRule", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/policyAccessIsolationRuleV2", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/policyAccessReorderRule", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/policyAccessRule", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/policyAccessRuleV2", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/policyAccessTimeOutRule", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/policyAccessTimeOutRuleV2", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/policyCapabilitiesRule", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/policyCredentialRule", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/policyForwardingRuleV2", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/policyInspectionRuleV2", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/policyIsolationRuleV2", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/policyRedirectionRule", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/policyTimeoutRuleV2", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/praApprovalController", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/praConsoleController", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/praCredentialController", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/praPortalController", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/provisioningKey", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/segmentGroup", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/serverGroup", _module)

@@ -52,29 +52,23 @@ func GetCloudBrowserIsolationZPAProfile(ctx *pulumi.Context, args *GetCloudBrows
 
 // A collection of arguments for invoking getCloudBrowserIsolationZPAProfile.
 type GetCloudBrowserIsolationZPAProfileArgs struct {
-	// This field defines the name of the isolation profile.
+	// - (String) This field defines the name of the isolation profile.
 	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getCloudBrowserIsolationZPAProfile.
 type GetCloudBrowserIsolationZPAProfileResult struct {
-	// (string)
 	CbiProfileId string `pulumi:"cbiProfileId"`
-	// (string)
-	CbiTenantId string `pulumi:"cbiTenantId"`
-	// (string)
-	CbiUrl string `pulumi:"cbiUrl"`
-	// (string)
+	CbiTenantId  string `pulumi:"cbiTenantId"`
+	CbiUrl       string `pulumi:"cbiUrl"`
 	CreationTime string `pulumi:"creationTime"`
-	// (string)
-	Description string `pulumi:"description"`
-	// (string)
-	Enabled bool   `pulumi:"enabled"`
-	Id      string `pulumi:"id"`
-	// (string)
-	ModifiedTime string  `pulumi:"modifiedTime"`
-	Modifiedby   string  `pulumi:"modifiedby"`
-	Name         *string `pulumi:"name"`
+	Description  string `pulumi:"description"`
+	Enabled      bool   `pulumi:"enabled"`
+	Id           string `pulumi:"id"`
+	ModifiedTime string `pulumi:"modifiedTime"`
+	Modifiedby   string `pulumi:"modifiedby"`
+	// - (String) This field defines the name of the isolation profile.
+	Name *string `pulumi:"name"`
 }
 
 func GetCloudBrowserIsolationZPAProfileOutput(ctx *pulumi.Context, args GetCloudBrowserIsolationZPAProfileOutputArgs, opts ...pulumi.InvokeOption) GetCloudBrowserIsolationZPAProfileResultOutput {
@@ -92,7 +86,7 @@ func GetCloudBrowserIsolationZPAProfileOutput(ctx *pulumi.Context, args GetCloud
 
 // A collection of arguments for invoking getCloudBrowserIsolationZPAProfile.
 type GetCloudBrowserIsolationZPAProfileOutputArgs struct {
-	// This field defines the name of the isolation profile.
+	// - (String) This field defines the name of the isolation profile.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -115,32 +109,26 @@ func (o GetCloudBrowserIsolationZPAProfileResultOutput) ToGetCloudBrowserIsolati
 	return o
 }
 
-// (string)
 func (o GetCloudBrowserIsolationZPAProfileResultOutput) CbiProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudBrowserIsolationZPAProfileResult) string { return v.CbiProfileId }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetCloudBrowserIsolationZPAProfileResultOutput) CbiTenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudBrowserIsolationZPAProfileResult) string { return v.CbiTenantId }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetCloudBrowserIsolationZPAProfileResultOutput) CbiUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudBrowserIsolationZPAProfileResult) string { return v.CbiUrl }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetCloudBrowserIsolationZPAProfileResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudBrowserIsolationZPAProfileResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetCloudBrowserIsolationZPAProfileResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudBrowserIsolationZPAProfileResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetCloudBrowserIsolationZPAProfileResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCloudBrowserIsolationZPAProfileResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -149,7 +137,6 @@ func (o GetCloudBrowserIsolationZPAProfileResultOutput) Id() pulumi.StringOutput
 	return o.ApplyT(func(v GetCloudBrowserIsolationZPAProfileResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetCloudBrowserIsolationZPAProfileResultOutput) ModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudBrowserIsolationZPAProfileResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
@@ -158,6 +145,7 @@ func (o GetCloudBrowserIsolationZPAProfileResultOutput) Modifiedby() pulumi.Stri
 	return o.ApplyT(func(v GetCloudBrowserIsolationZPAProfileResult) string { return v.Modifiedby }).(pulumi.StringOutput)
 }
 
+// - (String) This field defines the name of the isolation profile.
 func (o GetCloudBrowserIsolationZPAProfileResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCloudBrowserIsolationZPAProfileResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

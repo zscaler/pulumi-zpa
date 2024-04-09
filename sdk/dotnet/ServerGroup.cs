@@ -57,9 +57,9 @@ namespace Zscaler.Zpa
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
-    ///         DependsOn = new[]
+    ///         DependsOn =
     ///         {
-    ///             exampleConnectorGroup,
+    ///             exampleConnectorGroup, 
     ///         },
     ///     });
     /// 
@@ -129,22 +129,16 @@ namespace Zscaler.Zpa
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
-    ///         DependsOn = new[]
+    ///         DependsOn =
     ///         {
-    ///             exampleConnectorGroup,
-    ///             zpa_application_server.Server,
+    ///             exampleConnectorGroup, 
+    ///             zpa_application_server.Server, 
     ///         },
     ///     });
     /// 
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
-    /// ### Required
-    /// 
-    /// * `name` - (Required) This field defines the name of the server group.
-    /// * `app_connector_groups` - (Required)
-    ///   * `id` - (Required) The ID of this resource.
     /// 
     /// ## Import
     /// 
@@ -185,19 +179,19 @@ namespace Zscaler.Zpa
         public Output<string?> ConfigSpace { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) This field is the description of the server group.
+        /// This field is the description of the server group.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) This field controls dynamic discovery of the servers.
+        /// This field controls dynamic discovery of the servers.
         /// </summary>
         [Output("dynamicDiscovery")]
         public Output<bool?> DynamicDiscovery { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) This field defines if the server group is enabled or disabled.
+        /// This field defines if the server group is enabled or disabled.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -205,9 +199,6 @@ namespace Zscaler.Zpa
         [Output("ipAnchored")]
         public Output<bool?> IpAnchored { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Output("microtenantId")]
         public Output<string> MicrotenantId { get; private set; } = null!;
 
@@ -218,7 +209,8 @@ namespace Zscaler.Zpa
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// (Block List) This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API.
+        /// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
+        /// only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
         /// </summary>
         [Output("servers")]
         public Output<ImmutableArray<Outputs.ServerGroupServer>> Servers { get; private set; } = null!;
@@ -298,19 +290,19 @@ namespace Zscaler.Zpa
         public Input<string>? ConfigSpace { get; set; }
 
         /// <summary>
-        /// (Optional) This field is the description of the server group.
+        /// This field is the description of the server group.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// (Optional) This field controls dynamic discovery of the servers.
+        /// This field controls dynamic discovery of the servers.
         /// </summary>
         [Input("dynamicDiscovery")]
         public Input<bool>? DynamicDiscovery { get; set; }
 
         /// <summary>
-        /// (Optional) This field defines if the server group is enabled or disabled.
+        /// This field defines if the server group is enabled or disabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -318,9 +310,6 @@ namespace Zscaler.Zpa
         [Input("ipAnchored")]
         public Input<bool>? IpAnchored { get; set; }
 
-        /// <summary>
-        /// (Optional) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
@@ -334,7 +323,8 @@ namespace Zscaler.Zpa
         private InputList<Inputs.ServerGroupServerArgs>? _servers;
 
         /// <summary>
-        /// (Block List) This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API.
+        /// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
+        /// only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
         /// </summary>
         public InputList<Inputs.ServerGroupServerArgs> Servers
         {
@@ -378,19 +368,19 @@ namespace Zscaler.Zpa
         public Input<string>? ConfigSpace { get; set; }
 
         /// <summary>
-        /// (Optional) This field is the description of the server group.
+        /// This field is the description of the server group.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// (Optional) This field controls dynamic discovery of the servers.
+        /// This field controls dynamic discovery of the servers.
         /// </summary>
         [Input("dynamicDiscovery")]
         public Input<bool>? DynamicDiscovery { get; set; }
 
         /// <summary>
-        /// (Optional) This field defines if the server group is enabled or disabled.
+        /// This field defines if the server group is enabled or disabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -398,9 +388,6 @@ namespace Zscaler.Zpa
         [Input("ipAnchored")]
         public Input<bool>? IpAnchored { get; set; }
 
-        /// <summary>
-        /// (Optional) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
@@ -414,7 +401,8 @@ namespace Zscaler.Zpa
         private InputList<Inputs.ServerGroupServerGetArgs>? _servers;
 
         /// <summary>
-        /// (Block List) This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API.
+        /// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
+        /// only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
         /// </summary>
         public InputList<Inputs.ServerGroupServerGetArgs> Servers
         {

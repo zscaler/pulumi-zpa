@@ -109,73 +109,46 @@ class GetApplicationSegmentInspectionResult:
     @property
     @pulumi.getter(name="bypassType")
     def bypass_type(self) -> str:
-        """
-        (string) Indicates whether users can bypass ZPA to access applications.
-        """
         return pulumi.get(self, "bypass_type")
 
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (String)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string) Description of the application.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="domainNames")
     def domain_names(self) -> Sequence[str]:
-        """
-        (string) List of domains and IPs.
-        """
         return pulumi.get(self, "domain_names")
 
     @property
     @pulumi.getter(name="doubleEncrypt")
     def double_encrypt(self) -> bool:
-        """
-        (bool) Whether Double Encryption is enabled or disabled for the app.
-        """
         return pulumi.get(self, "double_encrypt")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool) Whether this application is enabled or not
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "health_check_type")
 
     @property
     @pulumi.getter(name="healthReporting")
     def health_reporting(self) -> str:
-        """
-        (string) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
-        """
         return pulumi.get(self, "health_reporting")
 
     @property
     @pulumi.getter(name="icmpAccessType")
     def icmp_access_type(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "icmp_access_type")
 
     @property
@@ -186,45 +159,26 @@ class GetApplicationSegmentInspectionResult:
     @property
     @pulumi.getter(name="inspectionApps")
     def inspection_apps(self) -> Sequence['outputs.GetApplicationSegmentInspectionInspectionAppResult']:
-        """
-        (string) TCP port ranges used to access the app.
-        * `app_id:` - (string)
-        * `name:` - (string) Name of the Inspection Application
-        * `description:` - (string) Description of the Inspection Application
-        * `domain:` - (string) Domain name of the inspection application
-        """
         return pulumi.get(self, "inspection_apps")
 
     @property
     @pulumi.getter(name="ipAnchored")
     def ip_anchored(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "ip_anchored")
 
     @property
     @pulumi.getter(name="isCnameEnabled")
     def is_cname_enabled(self) -> bool:
-        """
-        (bool) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
-        """
         return pulumi.get(self, "is_cname_enabled")
 
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[str]:
-        """
-        (string) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @property
     @pulumi.getter(name="microtenantName")
     def microtenant_name(self) -> Optional[str]:
-        """
-        (string) The name of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_name")
 
     @property
@@ -235,9 +189,6 @@ class GetApplicationSegmentInspectionResult:
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (String)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -248,17 +199,11 @@ class GetApplicationSegmentInspectionResult:
     @property
     @pulumi.getter(name="passiveHealthEnabled")
     def passive_health_enabled(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "passive_health_enabled")
 
     @property
     @pulumi.getter(name="segmentGroupId")
     def segment_group_id(self) -> str:
-        """
-        (String) Segment Group IDs
-        """
         return pulumi.get(self, "segment_group_id")
 
     @property
@@ -269,54 +214,31 @@ class GetApplicationSegmentInspectionResult:
     @property
     @pulumi.getter(name="selectConnectorCloseToApp")
     def select_connector_close_to_app(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "select_connector_close_to_app")
 
     @property
     @pulumi.getter(name="serverGroups")
     def server_groups(self) -> Sequence['outputs.GetApplicationSegmentInspectionServerGroupResult']:
-        """
-        (string) List of Server Group IDs
-        * `id:` - (string) List of Server Group IDs
-        """
         return pulumi.get(self, "server_groups")
 
     @property
     @pulumi.getter(name="tcpPortRange")
     def tcp_port_range(self) -> Sequence['outputs.GetApplicationSegmentInspectionTcpPortRangeResult']:
-        """
-        (string) TCP port ranges used to access the app.
-        * `from:`
-        * `to:`
-        """
         return pulumi.get(self, "tcp_port_range")
 
     @property
     @pulumi.getter(name="tcpPortRanges")
     def tcp_port_ranges(self) -> Sequence[str]:
-        """
-        (string) TCP port ranges used to access the app.
-        """
         return pulumi.get(self, "tcp_port_ranges")
 
     @property
     @pulumi.getter(name="udpPortRange")
     def udp_port_range(self) -> Sequence['outputs.GetApplicationSegmentInspectionUdpPortRangeResult']:
-        """
-        (string) UDP port ranges used to access the app.
-        * `from:`
-        * `to:`
-        """
         return pulumi.get(self, "udp_port_range")
 
     @property
     @pulumi.getter(name="udpPortRanges")
     def udp_port_ranges(self) -> Sequence[str]:
-        """
-        (string) UDP port ranges used to access the app.
-        """
         return pulumi.get(self, "udp_port_ranges")
 
 
@@ -384,18 +306,6 @@ def get_application_segment_inspection(id: Optional[str] = None,
     this = zpa.get_application_segment_inspection(id="123456789")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: The ID of the Inspection Application Segment to be exported.
-    :param str microtenant_id: (string) The ID of the microtenant the resource is to be associated with.
-    :param str microtenant_name: (string) The name of the microtenant the resource is to be associated with.
-    :param str name: The name of the Inspection Application Segment to be exported.
-    :param Sequence[pulumi.InputType['GetApplicationSegmentInspectionTcpPortRangeArgs']] tcp_port_range: (string) TCP port ranges used to access the app.
-           * `from:`
-           * `to:`
-    :param Sequence[pulumi.InputType['GetApplicationSegmentInspectionUdpPortRangeArgs']] udp_port_range: (string) UDP port ranges used to access the app.
-           * `from:`
-           * `to:`
     """
     __args__ = dict()
     __args__['id'] = id
@@ -467,17 +377,5 @@ def get_application_segment_inspection_output(id: Optional[pulumi.Input[Optional
     this = zpa.get_application_segment_inspection(id="123456789")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: The ID of the Inspection Application Segment to be exported.
-    :param str microtenant_id: (string) The ID of the microtenant the resource is to be associated with.
-    :param str microtenant_name: (string) The name of the microtenant the resource is to be associated with.
-    :param str name: The name of the Inspection Application Segment to be exported.
-    :param Sequence[pulumi.InputType['GetApplicationSegmentInspectionTcpPortRangeArgs']] tcp_port_range: (string) TCP port ranges used to access the app.
-           * `from:`
-           * `to:`
-    :param Sequence[pulumi.InputType['GetApplicationSegmentInspectionUdpPortRangeArgs']] udp_port_range: (string) UDP port ranges used to access the app.
-           * `from:`
-           * `to:`
     """
     ...

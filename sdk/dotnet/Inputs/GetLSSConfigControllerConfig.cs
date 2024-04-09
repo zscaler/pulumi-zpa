@@ -13,69 +13,38 @@ namespace Zscaler.Zpa.Inputs
 
     public sealed class GetLSSConfigControllerConfigArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         [Input("auditMessage", required: true)]
         public string AuditMessage { get; set; } = null!;
 
-        /// <summary>
-        /// (string)
-        /// </summary>
         [Input("description", required: true)]
         public string Description { get; set; } = null!;
 
-        /// <summary>
-        /// (bool)
-        /// </summary>
         [Input("enabled", required: true)]
         public bool Enabled { get; set; }
 
         [Input("filters", required: true)]
         private List<string>? _filters;
-
-        /// <summary>
-        /// (string)
-        /// </summary>
         public List<string> Filters
         {
             get => _filters ?? (_filters = new List<string>());
             set => _filters = value;
         }
 
-        /// <summary>
-        /// (string)
-        /// </summary>
         [Input("format", required: true)]
         public string Format { get; set; } = null!;
 
-        /// <summary>
-        /// This field defines the name of the log streaming resource.
-        /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
-        /// <summary>
-        /// (string)
-        /// </summary>
         [Input("lssHost", required: true)]
         public string LssHost { get; set; } = null!;
 
-        /// <summary>
-        /// (string)
-        /// </summary>
         [Input("lssPort", required: true)]
         public string LssPort { get; set; } = null!;
 
-        /// <summary>
-        /// This field defines the name of the log streaming resource.
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
-        /// <summary>
-        /// (string)
-        /// </summary>
         [Input("sourceLogType", required: true)]
         public string SourceLogType { get; set; } = null!;
 

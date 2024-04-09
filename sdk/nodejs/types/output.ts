@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 
 export interface ApplicationSegmentBrowserAccessClientlessApp {
     /**
-     * If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.. Supported values: `true` and `false`
+     * If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.
      */
     allowOptions?: boolean;
     /**
@@ -15,48 +15,27 @@ export interface ApplicationSegmentBrowserAccessClientlessApp {
      */
     applicationPort: string;
     /**
-     * Protocol for the BA app. Supported values: `HTTP` and `HTTPS`
+     * Protocol for the BA app.
      */
     applicationProtocol: string;
     /**
-     * ID of the BA certificate. Refer to the data source documentation for `zpa.BrowserCertificate`
+     * ID of the BA certificate.
      */
-    certificateId: string;
-    /**
-     * (Optional)
-     */
+    certificateId?: string;
     cname: string;
-    /**
-     * (Optional) Description of the application.
-     */
     description?: string;
     /**
      * Domain name or IP address of the BA app.
      */
     domain?: string;
-    /**
-     * (Optional) - Whether this app is enabled or not.
-     */
     enabled: boolean;
-    /**
-     * (Optional)
-     */
     hidden: boolean;
     id: string;
-    /**
-     * (Optional)
-     */
     localDomain?: string;
-    /**
-     * Name of BA app.
-     */
     name: string;
-    /**
-     * (Optional)
-     */
     path?: string;
     /**
-     * (Optional)
+     * Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
      */
     trustUntrustedCert: boolean;
 }
@@ -80,37 +59,13 @@ export interface ApplicationSegmentInspectionCommonAppsDto {
 }
 
 export interface ApplicationSegmentInspectionCommonAppsDtoAppsConfig {
-    /**
-     * Indicates the type of application as inspection. Supported value: `INSPECT`
-     */
     appTypes?: string[];
-    /**
-     * Port for the Inspection Application Segment.
-     */
     applicationPort?: string;
-    /**
-     * Protocol for the Inspection Application Segment.. Supported values: `HTTP` and `HTTPS`
-     */
     applicationProtocol?: string;
-    /**
-     * ID of the signing certificate. This field is required if the ``applicationProtocol`` is set to `HTTPS`. The ``certificateId`` is **NOT** supported if the applicationProtocol is set to `HTTP`.
-     */
     certificateId?: string;
-    /**
-     * (Optional) Description of the application.
-     */
     description?: string;
-    /**
-     * Domain name of the Inspection Application Segment.
-     */
     domain?: string;
-    /**
-     * Whether this application is enabled or not
-     */
     enabled?: boolean;
-    /**
-     * Name of the Inspection Application Segment.
-     */
     name?: string;
     trustUntrustedCert?: boolean;
 }
@@ -135,37 +90,14 @@ export interface ApplicationSegmentPRACommonAppsDto {
 
 export interface ApplicationSegmentPRACommonAppsDtoAppsConfig {
     appId: string;
-    /**
-     * Indicates the type of application as Privileged Remote Access. Supported value: `SECURE_REMOTE_ACCESS`
-     */
     appTypes?: string[];
-    /**
-     * Port for the Privileged Remote Access
-     */
     applicationPort?: string;
-    /**
-     * Protocol for the Privileged Remote Access. Supported values: `RDP` and `SSH`
-     */
     applicationProtocol?: string;
-    /**
-     * Parameter required when `applicationProtocol` is of type `RDP`
-     */
     connectionSecurity?: string;
-    /**
-     * (Optional) Description of the application.
-     */
     description?: string;
-    /**
-     * Domain name of the Privileged Remote Access
-     */
     domain?: string;
-    /**
-     * Whether this application is enabled or not
-     */
     enabled?: boolean;
-    /**
-     * Name of the Privileged Remote Access
-     */
+    id: string;
     name?: string;
 }
 
@@ -199,7 +131,7 @@ export interface ApplicationSegmentUdpPortRange {
 
 export interface BrowserAccessClientlessApp {
     /**
-     * If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.. Supported values: `true` and `false`
+     * If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.
      */
     allowOptions?: boolean;
     /**
@@ -207,48 +139,27 @@ export interface BrowserAccessClientlessApp {
      */
     applicationPort: string;
     /**
-     * Protocol for the BA app. Supported values: `HTTP` and `HTTPS`
+     * Protocol for the BA app.
      */
     applicationProtocol: string;
     /**
-     * ID of the BA certificate. Refer to the data source documentation for `zpa.BrowserCertificate`
+     * ID of the BA certificate.
      */
-    certificateId: string;
-    /**
-     * (Optional)
-     */
+    certificateId?: string;
     cname: string;
-    /**
-     * (Optional) Description of the application.
-     */
     description?: string;
     /**
      * Domain name or IP address of the BA app.
      */
     domain?: string;
-    /**
-     * (Optional) - Whether this app is enabled or not.
-     */
     enabled: boolean;
-    /**
-     * (Optional)
-     */
     hidden: boolean;
     id: string;
-    /**
-     * (Optional)
-     */
     localDomain?: string;
-    /**
-     * Name of BA app.
-     */
     name: string;
-    /**
-     * (Optional)
-     */
     path?: string;
     /**
-     * (Optional)
+     * Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
      */
     trustUntrustedCert: boolean;
 }
@@ -289,21 +200,12 @@ export interface GetAppConnectorGroupConnector {
     creationTime: string;
     ctrlBrokerName: string;
     currentVersion: string;
-    /**
-     * (String) Description of the App Connector Group.
-     */
     description: string;
-    /**
-     * (String) Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
-     */
     enabled: boolean;
     enrollmentCert: {[key: string]: any};
     expectedUpgradeTime: string;
     expectedVersion: string;
     fingerprint: string;
-    /**
-     * ID of the App Connector Group.
-     */
     id: string;
     ipacl: string;
     issuedCertId: string;
@@ -312,23 +214,11 @@ export interface GetAppConnectorGroupConnector {
     lastBrokerDisconnectTime: string;
     lastBrokerDisconnectTimeDuration: string;
     lastUpgradeTime: string;
-    /**
-     * (String) Latitude of the App Connector Group. Integer or decimal. With values in the range of `-90` to `90`
-     */
     latitude: string;
-    /**
-     * (String) Location of the App Connector Group.
-     */
     location: string;
-    /**
-     * (String) Longitude of the App Connector Group. Integer or decimal. With values in the range of `-180` to `180`
-     */
     longitude: string;
     modifiedTime: string;
     modifiedby: string;
-    /**
-     * Name of the App Connector Group.
-     */
     name: string;
     platform: string;
     previousVersion: string;
@@ -344,94 +234,43 @@ export interface GetAppConnectorGroupConnector {
 export interface GetAppConnectorGroupServerGroup {
     configSpace: string;
     creationTime: string;
-    /**
-     * (String) Description of the App Connector Group.
-     */
     description: string;
     dynamicDiscovery: boolean;
-    /**
-     * (String) Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
-     */
     enabled: boolean;
-    /**
-     * ID of the App Connector Group.
-     */
     id: string;
     modifiedTime: string;
     modifiedby: string;
-    /**
-     * Name of the App Connector Group.
-     */
     name: string;
 }
 
 export interface GetApplicationSegmentBrowserAccessClientlessApp {
-    /**
-     * (bool)
-     */
     allowOptions: boolean;
     appId: string;
-    /**
-     * (string)
-     */
     applicationPort: string;
-    /**
-     * (string)
-     */
     applicationProtocol: string;
-    /**
-     * (string)
-     */
     certificateId: string;
-    /**
-     * (string)
-     */
     certificateName: string;
-    /**
-     * (string)
-     */
     cname: string;
-    /**
-     * (string)
-     */
     description: string;
-    /**
-     * (string)
-     */
     domain: string;
-    /**
-     * (bool)
-     */
     enabled: boolean;
-    /**
-     * (bool)
-     */
     hidden: boolean;
     /**
-     * This field defines the id of the application server.
+     * - (String) This field defines the id of the application server.
      */
     id: string;
-    /**
-     * (string)
-     */
     localDomain: string;
     /**
-     * This field defines the name of the server.
+     * - (String) This field defines the name of the server.
      */
     name: string;
-    /**
-     * (string)
-     */
     path: string;
-    /**
-     * (bool)
-     */
     trustUntrustedCert: boolean;
 }
 
 export interface GetApplicationSegmentBrowserAccessServerGroup {
     /**
-     * This field defines the id of the application server.
+     * - (String) This field defines the id of the application server.
      */
     ids: string[];
 }
@@ -448,45 +287,18 @@ export interface GetApplicationSegmentBrowserAccessUdpPortRange {
 
 export interface GetApplicationSegmentInspectionInspectionApp {
     appId: string;
-    /**
-     * (string) TCP/UDP Port for ZPA Inspection.
-     */
     applicationPort: string;
-    /**
-     * (string) Protocol for the Inspection Application. Supported values: `HTTP` and `HTTPS`
-     */
     applicationProtocol: string;
-    /**
-     * (string) - ID of the signing certificate. This field is required if the applicationProtocol is set to `HTTPS`. The certificateId is not supported if the applicationProtocol is set to `HTTP`.
-     */
     certificateId: string;
-    /**
-     * (string) - Parameter required when `applicationProtocol` is of type `HTTPS`
-     */
     certificateName: string;
-    /**
-     * (string) Description of the application.
-     */
     description: string;
     domain: string;
-    /**
-     * (bool) Whether this application is enabled or not
-     */
     enabled: boolean;
-    /**
-     * The ID of the Inspection Application Segment to be exported.
-     */
     id: string;
-    /**
-     * The name of the Inspection Application Segment to be exported.
-     */
     name: string;
 }
 
 export interface GetApplicationSegmentInspectionServerGroup {
-    /**
-     * The ID of the Inspection Application Segment to be exported.
-     */
     ids: string[];
 }
 
@@ -506,42 +318,18 @@ export interface GetApplicationSegmentPRAServerGroup {
 
 export interface GetApplicationSegmentPRASraApp {
     appId: string;
-    /**
-     * (string) Port for the Privileged Remote Accessvalues: `RDP` and `SSH`
-     */
     applicationPort: string;
-    /**
-     * (string) Protocol for the Privileged Remote Access. Supported values: `RDP` and `SSH`
-     */
     applicationProtocol: string;
     certificateId: string;
     certificateName: string;
-    /**
-     * (string) - Parameter required when `applicationProtocol` is of type `RDP`
-     */
     connectionSecurity: string;
-    /**
-     * (string) Description of the application.
-     */
     description: string;
     domain: string;
-    /**
-     * (bool) Whether this application is enabled or not
-     */
     enabled: boolean;
     hidden: boolean;
     id: string;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId: string;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     microtenantName: string;
-    /**
-     * The name of the PRA Application Segment to be exported.
-     */
     name: string;
     portal: boolean;
 }
@@ -557,26 +345,14 @@ export interface GetApplicationSegmentPRAUdpPortRange {
 }
 
 export interface GetApplicationSegmentServerGroup {
-    /**
-     * Supported values: `DEFAULT`, `SIEM`.
-     */
     configSpace: string;
     creationTime: string;
-    /**
-     * Description of the application.
-     */
     description: string;
     dynamicDiscovery: boolean;
-    /**
-     * Whether this application is enabled or not. Default: false. Supported values: `true`, `false`.
-     */
     enabled: boolean;
     id: string;
     modifiedTime: string;
     modifiedby: string;
-    /**
-     * Name of the application.
-     */
     name: string;
 }
 
@@ -592,9 +368,6 @@ export interface GetApplicationSegmentUdpPortRange {
 
 export interface GetCloudBrowserIsolationExternalProfileRegion {
     id: string;
-    /**
-     * The name of the CBI banner to be exported.
-     */
     name: string;
 }
 
@@ -613,36 +386,15 @@ export interface GetCloudBrowserIsolationExternalProfileUserExperience {
 }
 
 export interface GetCloudConnectorGroupCloudConnector {
-    /**
-     * (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-     */
     creationTime: string;
-    /**
-     * (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-     */
     description: string;
-    /**
-     * (bool) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-     */
     enabled: boolean;
     fingerprint: string;
-    /**
-     * This field defines the id of the cloud connector group.
-     */
     id: string;
     ipacls: any[];
-    /**
-     * (string) - Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-     */
     issuedCertId: string;
-    /**
-     * (string)- Only applicable for a GET request. Ignored in PUT/POST/DELETE requests.
-     */
     modifiedTime: string;
     modifiedby: string;
-    /**
-     * This field defines the name of the cloud connector group.
-     */
     name: string;
     signingCert: {[key: string]: any};
 }
@@ -650,29 +402,14 @@ export interface GetCloudConnectorGroupCloudConnector {
 export interface GetCustomerVersionProfileCustomScopeCustomerId {
     customerId: string;
     excludeConstellation: boolean;
-    /**
-     * The name of the enrollment certificate to be exported.
-     */
     name: string;
 }
 
 export interface GetCustomerVersionProfileVersion {
-    /**
-     * (string)
-     */
     creationTime: string;
     customerId: string;
-    /**
-     * The id of the enrollment certificate to be exported.
-     */
     id: string;
-    /**
-     * (string)
-     */
     modifiedBy: string;
-    /**
-     * (string)
-     */
     modifiedTime: string;
     platform: string;
     restartAfterUptimeInDays: string;
@@ -682,129 +419,45 @@ export interface GetCustomerVersionProfileVersion {
 }
 
 export interface GetIdPControllerAdminMetadata {
-    /**
-     * (string)
-     */
     certificateUrl: string;
     spBaseUrl: string;
-    /**
-     * (string)
-     */
     spEntityId: string;
-    /**
-     * (string)
-     */
     spMetadataUrl: string;
-    /**
-     * (string)
-     */
     spPostUrl: string;
 }
 
 export interface GetIdPControllerUserMetadata {
-    /**
-     * (string)
-     */
     certificateUrl: string;
     spBaseUrl: string;
-    /**
-     * (string)
-     */
     spEntityId: string;
-    /**
-     * (string)
-     */
     spMetadataUrl: string;
-    /**
-     * (string)
-     */
     spPostUrl: string;
 }
 
 export interface GetInspectionAllPredefinedControlsList {
-    /**
-     * (string)
-     */
     action: string;
-    /**
-     * (string)
-     */
     actionValue: string;
-    /**
-     * (string)
-     */
     associatedInspectionProfileNames: outputs.GetInspectionAllPredefinedControlsListAssociatedInspectionProfileName[];
-    /**
-     * (string)
-     */
     attachment: string;
-    /**
-     * (string)
-     */
     controlGroup: string;
-    /**
-     * (string)
-     */
     controlNumber: string;
-    /**
-     * (string) Returned values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `ZSCALER`, `CUSTOM`, `PREDEFINED`
-     */
     controlType: string;
-    /**
-     * (string)
-     */
     creationTime: string;
-    /**
-     * (string)
-     */
     defaultAction: string;
-    /**
-     * (string)
-     */
     defaultActionValue: string;
-    /**
-     * (string)
-     */
     description: string;
-    /**
-     * (string)
-     */
     id: string;
-    /**
-     * (string)
-     */
     modifiedTime: string;
     modifiedby: string;
-    /**
-     * (string)
-     */
     name: string;
-    /**
-     * (string)
-     */
     paranoiaLevel: string;
-    /**
-     * (string) Returned values: `HTTP`, `HTTPS`, `FTP`, `RDP`, `SSH`, `WEBSOCKET`
-     */
     protocolType: string;
-    /**
-     * (string)
-     */
     severity: string;
-    /**
-     * The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
-     */
     version: string;
 }
 
 export interface GetInspectionAllPredefinedControlsListAssociatedInspectionProfileName {
-    /**
-     * (string)
-     */
     id: string;
-    /**
-     * (string)
-     */
     name: string;
 }
 
@@ -824,301 +477,139 @@ export interface GetInspectionCustomControlsRuleCondition {
 }
 
 export interface GetInspectionPredefinedControlsAssociatedInspectionProfileName {
-    /**
-     * (Computed)
-     */
     id: string;
-    /**
-     * The name of the predefined control.
-     */
     name: string;
 }
 
 export interface GetInspectionProfileControlsInfo {
-    /**
-     * (string) Control types. Supported Values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `CUSTOM`, `PREDEFINED`, `ZSCALER`
-     */
     controlType: string;
-    /**
-     * (string) Control information counts `Long`
-     */
     count: string;
 }
 
 export interface GetInspectionProfileCustomControl {
-    /**
-     * (string) The action of the predefined control. Supported values: `PASS`, `BLOCK` and `REDIRECT`
-     */
     action: string;
-    /**
-     * (string) Value for the predefined controls action. This field is only required if the action is set to REDIRECT. This field is only required if the action is set to `REDIRECT`.
-     */
     actionValue: string;
-    /**
-     * (string) Name of the inspection profile
-     */
     associatedInspectionProfileNames: outputs.GetInspectionProfileCustomControlAssociatedInspectionProfileName[];
     controlNumber: string;
-    /**
-     * (string) Custom controls string in JSON format
-     */
     controlRuleJson: string;
     creationTime: string;
     defaultAction: string;
     defaultActionValue: string;
-    /**
-     * (string) Description of the inspection profile.
-     */
     description: string;
-    /**
-     * This field defines the id of the inspection profile.
-     */
     id: string;
     modifiedBy: string;
     modifiedTime: string;
     /**
-     * This field defines the name of the inspection profile.
+     * - (String) This field defines the name of the inspection profile.
      */
     name: string;
-    /**
-     * (string) OWASP Predefined Paranoia Level. Range: [1-4], inclusive
-     */
     paranoiaLevel: string;
-    /**
-     * (string) Rules of the custom controls applied as conditions `JSON`
-     */
     rules: outputs.GetInspectionProfileCustomControlRule[];
     severity: string;
-    /**
-     * (string) Type value for the rules
-     */
     type: string;
-    /**
-     * (string) The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
-     */
     version: string;
 }
 
 export interface GetInspectionProfileCustomControlAssociatedInspectionProfileName {
-    /**
-     * This field defines the id of the inspection profile.
-     */
     id: string;
     /**
-     * This field defines the name of the inspection profile.
+     * - (String) This field defines the name of the inspection profile.
      */
     name: string;
 }
 
 export interface GetInspectionProfileCustomControlRule {
-    /**
-     * (string)
-     */
     conditions: outputs.GetInspectionProfileCustomControlRuleCondition[];
-    /**
-     * (string) Name of the rules. If rules.type is set to `REQUEST_HEADERS`, `REQUEST_COOKIES`, or `RESPONSE_HEADERS`, the rules.name field is required.
-     */
     names: string;
-    /**
-     * (string) Type value for the rules
-     */
     type: string;
 }
 
 export interface GetInspectionProfileCustomControlRuleCondition {
-    /**
-     * (string) Signifies the key for the object type Supported values: `SIZE`, `VALUE`
-     */
     lhs: string;
-    /**
-     * (string) If lhs is set to SIZE, then the user may pass one of the following: `EQ: Equals`, `LE: Less than or equal to`, `GE: Greater than or equal to`. If the lhs is set to `VALUE`, then the user may pass one of the following: `CONTAINS`, `STARTS_WITH`, `ENDS_WITH`, `RX`.
-     */
     op: string;
-    /**
-     * (string) Denotes the value for the given object type. Its value depends on the key. If rules.type is set to REQUEST_METHOD, the conditions.rhs field must have one of the following values: `GET`,`HEAD`, `POST`, `OPTIONS`, `PUT`, `DELETE`, `TRACE`
-     */
     rhs: string;
 }
 
 export interface GetInspectionProfilePredefinedControl {
-    /**
-     * (string) The action of the predefined control. Supported values: `PASS`, `BLOCK` and `REDIRECT`
-     */
     action: string;
-    /**
-     * (string) Value for the predefined controls action. This field is only required if the action is set to REDIRECT. This field is only required if the action is set to `REDIRECT`.
-     */
     actionValue: string;
-    /**
-     * (string) Name of the inspection profile
-     */
     associatedInspectionProfileNames: outputs.GetInspectionProfilePredefinedControlAssociatedInspectionProfileName[];
-    /**
-     * (string) Control attachment
-     */
     attachment: string;
-    /**
-     * (string) Control group
-     */
     controlGroup: string;
     controlNumber: string;
-    /**
-     * (string) Control types. Supported Values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `CUSTOM`, `PREDEFINED`, `ZSCALER`
-     */
     controlType: string;
     creationTime: string;
     defaultAction: string;
     defaultActionValue: string;
-    /**
-     * (string) Description of the inspection profile.
-     */
     description: string;
-    /**
-     * This field defines the id of the inspection profile.
-     */
     id: string;
     modifiedBy: string;
     modifiedTime: string;
     /**
-     * This field defines the name of the inspection profile.
+     * - (String) This field defines the name of the inspection profile.
      */
     name: string;
-    /**
-     * (string) OWASP Predefined Paranoia Level. Range: [1-4], inclusive
-     */
     paranoiaLevel: string;
     severity: string;
-    /**
-     * (string) The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
-     */
     version: string;
 }
 
 export interface GetInspectionProfilePredefinedControlAssociatedInspectionProfileName {
-    /**
-     * This field defines the id of the inspection profile.
-     */
     id: string;
     /**
-     * This field defines the name of the inspection profile.
+     * - (String) This field defines the name of the inspection profile.
      */
     name: string;
 }
 
 export interface GetInspectionProfileWebSocketControl {
-    /**
-     * (string) The action of the predefined control. Supported values: `PASS`, `BLOCK` and `REDIRECT`
-     */
     action: string;
-    /**
-     * (string) Value for the predefined controls action. This field is only required if the action is set to REDIRECT. This field is only required if the action is set to `REDIRECT`.
-     */
     actionValue: string;
-    /**
-     * (string) Name of the inspection profile
-     */
     associatedInspectionProfileNames: outputs.GetInspectionProfileWebSocketControlAssociatedInspectionProfileName[];
-    /**
-     * (string) Control attachment
-     */
     attachment: string;
-    /**
-     * (string) Control group
-     */
     controlGroup: string;
     controlNumber: string;
-    /**
-     * (string) Control types. Supported Values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `CUSTOM`, `PREDEFINED`, `ZSCALER`
-     */
     controlType: string;
     creationTime: string;
     defaultAction: string;
     defaultActionValue: string;
-    /**
-     * (string) Description of the inspection profile.
-     */
     description: string;
-    /**
-     * This field defines the id of the inspection profile.
-     */
     id: string;
     modifiedBy: string;
     modifiedTime: string;
     /**
-     * This field defines the name of the inspection profile.
+     * - (String) This field defines the name of the inspection profile.
      */
     name: string;
-    /**
-     * (string) OWASP Predefined Paranoia Level. Range: [1-4], inclusive
-     */
     paranoiaLevel: string;
     protocolType: string;
     severity: string;
-    /**
-     * (string) The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
-     */
     version: string;
 }
 
 export interface GetInspectionProfileWebSocketControlAssociatedInspectionProfileName {
-    /**
-     * This field defines the id of the inspection profile.
-     */
     id: string;
     /**
-     * This field defines the name of the inspection profile.
+     * - (String) This field defines the name of the inspection profile.
      */
     name: string;
 }
 
 export interface GetLSSConfigControllerConfig {
-    /**
-     * (string)
-     */
     auditMessage: string;
-    /**
-     * (string)
-     */
     description: string;
-    /**
-     * (bool)
-     */
     enabled: boolean;
-    /**
-     * (string)
-     */
     filters: string[];
-    /**
-     * (string)
-     */
     format: string;
-    /**
-     * This field defines the name of the log streaming resource.
-     */
     id: string;
-    /**
-     * (string)
-     */
     lssHost: string;
-    /**
-     * (string)
-     */
     lssPort: string;
-    /**
-     * This field defines the name of the log streaming resource.
-     */
     name: string;
-    /**
-     * (string)
-     */
     sourceLogType: string;
     useTls: boolean;
 }
 
 export interface GetLSSConfigControllerConnectorGroup {
-    /**
-     * This field defines the name of the log streaming resource.
-     */
     id: string;
 }
 
@@ -1127,30 +618,15 @@ export interface GetLSSConfigControllerPolicyRule {
     actionId: string;
     bypassDefaultRule: boolean;
     conditions: outputs.GetLSSConfigControllerPolicyRuleCondition[];
-    /**
-     * (string)
-     */
     creationTime: string;
     customMsg: string;
     defaultRule: boolean;
-    /**
-     * (string)
-     */
     description: string;
-    /**
-     * This field defines the name of the log streaming resource.
-     */
     id: string;
     isolationDefaultRule: boolean;
     lssDefaultRule: boolean;
-    /**
-     * (string)
-     */
     modifiedTime: string;
     modifiedby: string;
-    /**
-     * This field defines the name of the log streaming resource.
-     */
     name: string;
     operator: string;
     policySetId: string;
@@ -1166,43 +642,21 @@ export interface GetLSSConfigControllerPolicyRule {
 }
 
 export interface GetLSSConfigControllerPolicyRuleCondition {
-    /**
-     * (string)
-     */
     creationTime: string;
-    /**
-     * This field defines the name of the log streaming resource.
-     */
     id: string;
-    /**
-     * (string)
-     */
     modifiedTime: string;
     modifiedby: string;
-    negated: boolean;
     operands: outputs.GetLSSConfigControllerPolicyRuleConditionOperand[];
     operator: string;
 }
 
 export interface GetLSSConfigControllerPolicyRuleConditionOperand {
-    /**
-     * (string)
-     */
     creationTime: string;
-    /**
-     * This field defines the name of the log streaming resource.
-     */
     id: string;
     idpId: string;
     lhs: string;
-    /**
-     * (string)
-     */
     modifiedTime: string;
     modifiedby: string;
-    /**
-     * This field defines the name of the log streaming resource.
-     */
     name: string;
     objectType: string;
     operator: string;
@@ -1210,61 +664,19 @@ export interface GetLSSConfigControllerPolicyRuleConditionOperand {
 }
 
 export interface GetMachineGroupMachine {
-    /**
-     * (string)
-     */
     creationTime: string;
-    /**
-     * (string)
-     */
     description: string;
-    /**
-     * (string)
-     */
     fingerprint: string;
-    /**
-     * The ID of the machine group to be exported.
-     */
     id: string;
-    /**
-     * (string)
-     */
     issuedCertId: string;
-    /**
-     * (string)
-     */
     machineGroupId: string;
-    /**
-     * (string)
-     */
     machineGroupName: string;
-    /**
-     * (string)
-     */
     machineTokenId: string;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: string;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     microtenantName?: string;
-    /**
-     * (string)
-     */
     modifiedBy: string;
-    /**
-     * (string)
-     */
     modifiedTime: string;
-    /**
-     * The name of the machine group to be exported.
-     */
     name: string;
-    /**
-     * (string)
-     */
     signingCert: {[key: string]: string};
 }
 
@@ -1272,7 +684,7 @@ export interface GetMicrotenantRole {
     customRole: boolean;
     id: string;
     /**
-     * (Required) Name of the microtenant controller.
+     * - (Required) Name of the microtenant controller.
      */
     name: string;
 }
@@ -1281,15 +693,9 @@ export interface GetMicrotenantUser {
     comments: string;
     creationTime: string;
     customerId: string;
-    /**
-     * (string) Description of the microtenant controller.
-     */
     description: string;
     displayName: string;
     email: string;
-    /**
-     * (bool) Whether this microtenant resource is enabled or not.
-     */
     enabled: boolean;
     eula: string;
     forcePwdChange: boolean;
@@ -1304,7 +710,7 @@ export interface GetMicrotenantUser {
     modifiedTime: number;
     modifiedby: number;
     /**
-     * (Required) Name of the microtenant controller.
+     * - (Required) Name of the microtenant controller.
      */
     name: string;
     password: string;
@@ -1317,6 +723,66 @@ export interface GetMicrotenantUser {
     twoFactorAuthEnabled: boolean;
     twoFactorAuthType: string;
     username: string;
+}
+
+export interface GetPRAApprovalApplication {
+    /**
+     * The unique identifier of the pra application segment
+     */
+    id: string;
+    /**
+     * The name of the pra application segment
+     */
+    name: string;
+}
+
+export interface GetPRAApprovalWorkingHour {
+    /**
+     * The days of the week that you want to enable the privileged approval
+     */
+    days: string[];
+    /**
+     * The end time that the user no longer has access to the privileged approval
+     */
+    endTime: string;
+    /**
+     * The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+     */
+    endTimeCron: string;
+    /**
+     * The start time that the user has access to the privileged approval
+     */
+    startTime: string;
+    /**
+     * The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+     */
+    startTimeCron: string;
+    /**
+     * The time zone for the time window of a privileged approval
+     */
+    timezone: string;
+}
+
+export interface GetPRAConsolePraApplication {
+    /**
+     * The unique identifier of the Privileged Remote Access-enabled application
+     */
+    id: string;
+    /**
+     * - (Required) The name of the privileged console.
+     */
+    name: string;
+}
+
+export interface GetPRAConsolePraPortal {
+    /**
+     * The unique identifier of the privileged portal
+     */
+    id: string;
+    /**
+     * - (Required) The name of the privileged console.
+     */
+    name: string;
 }
 
 export interface GetPolicyTypeRule {
@@ -1333,13 +799,7 @@ export interface GetPolicyTypeRule {
     modifiedTime: string;
     name: string;
     operator: string;
-    /**
-     * The ID of the global policy set.
-     */
     policySetId: string;
-    /**
-     * The value for differentiating the policy types.
-     */
     policyType: string;
     priority: string;
     reauthDefaultRule: boolean;
@@ -1355,7 +815,6 @@ export interface GetPolicyTypeRuleCondition {
     id: string;
     modifiedBy: string;
     modifiedTime: string;
-    negated: boolean;
     operands: outputs.GetPolicyTypeRuleConditionOperand[];
     operator: string;
 }
@@ -1373,131 +832,101 @@ export interface GetPolicyTypeRuleConditionOperand {
     rhs: string;
 }
 
-export interface GetSegmentGroupApplication {
+export interface GetPraApprovalControllerApplication {
     /**
-     * (string)
-     */
-    bypassType: string;
-    /**
-     * (string)
-     */
-    configSpace: string;
-    /**
-     * (string)
-     */
-    creationTime: string;
-    /**
-     * (string)
-     */
-    defaultIdleTimeout: string;
-    /**
-     * (string)
-     */
-    defaultMaxAge: string;
-    /**
-     * (string)
-     */
-    description: string;
-    /**
-     * (string)
-     */
-    domainName: string;
-    /**
-     * (string)
-     */
-    domainNames: string[];
-    /**
-     * (string)
-     */
-    doubleEncrypt: boolean;
-    /**
-     * (bool)
-     */
-    enabled: boolean;
-    /**
-     * (string)
-     */
-    healthCheckType: string;
-    /**
-     * The ID of the segment group to be exported.
+     * The unique identifier of the pra application segment
      */
     id: string;
     /**
-     * (bool)
-     */
-    ipAnchored: boolean;
-    logFeatures: string[];
-    /**
-     * (string)
-     */
-    modifiedBy: string;
-    /**
-     * (string)
-     */
-    modifiedTime: string;
-    /**
-     * The name of the segment group to be exported.
+     * The name of the pra application segment
      */
     name: string;
+}
+
+export interface GetPraApprovalControllerWorkingHour {
     /**
-     * (bool)
+     * The days of the week that you want to enable the privileged approval
      */
+    days: string[];
+    /**
+     * The end time that the user no longer has access to the privileged approval
+     */
+    endTime: string;
+    /**
+     * The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+     */
+    endTimeCron: string;
+    /**
+     * The start time that the user has access to the privileged approval
+     */
+    startTime: string;
+    /**
+     * The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+     */
+    startTimeCron: string;
+    /**
+     * The time zone for the time window of a privileged approval
+     */
+    timezone: string;
+}
+
+export interface GetPraConsoleControllerPraApplication {
+    /**
+     * The unique identifier of the Privileged Remote Access-enabled application
+     */
+    id: string;
+    /**
+     * The name of the Privileged Remote Access-enabled application
+     */
+    name: string;
+}
+
+export interface GetPraConsoleControllerPraPortal {
+    /**
+     * The unique identifier of the privileged portal
+     */
+    id: string;
+    /**
+     * The name of the privileged portal
+     */
+    name: string;
+}
+
+export interface GetSegmentGroupApplication {
+    bypassType: string;
+    configSpace: string;
+    creationTime: string;
+    defaultIdleTimeout: string;
+    defaultMaxAge: string;
+    description: string;
+    domainName: string;
+    domainNames: string[];
+    doubleEncrypt: boolean;
+    enabled: boolean;
+    healthCheckType: string;
+    id: string;
+    ipAnchored: boolean;
+    logFeatures: string[];
+    modifiedBy: string;
+    modifiedTime: string;
+    name: string;
     passiveHealthEnabled: boolean;
-    /**
-     * (Computed)
-     */
     serverGroups: outputs.GetSegmentGroupApplicationServerGroup[];
-    /**
-     * (string)
-     */
     tcpPortRanges: string[];
-    /**
-     * (string)
-     */
     tcpPortsIns: string[];
     tcpPortsOuts: string[];
-    /**
-     * (string)
-     */
     udpPortRanges: string[];
 }
 
 export interface GetSegmentGroupApplicationServerGroup {
-    /**
-     * (string)
-     */
     configSpace: string;
-    /**
-     * (string)
-     */
     creationTime: string;
-    /**
-     * (string)
-     */
     description: string;
-    /**
-     * (bool)
-     */
     dynamicDiscovery: boolean;
-    /**
-     * (bool)
-     */
     enabled: boolean;
-    /**
-     * The ID of the segment group to be exported.
-     */
     id: string;
-    /**
-     * (string)
-     */
     modifiedBy: string;
-    /**
-     * (string)
-     */
     modifiedTime: string;
-    /**
-     * The name of the segment group to be exported.
-     */
     name: string;
 }
 
@@ -1506,28 +935,16 @@ export interface GetServerGroupAppConnectorGroup {
     connectors: outputs.GetServerGroupAppConnectorGroupConnector[];
     countryCode: string;
     creationTime: string;
-    /**
-     * (string) This field is the description of the server group.
-     */
     description: string;
     dnsQueryType: string;
-    /**
-     * (bool) This field defines if the server group is enabled or disabled.
-     */
     enabled: boolean;
     geolocationId: string;
-    /**
-     * The ID of the server group to be exported.
-     */
     id: string;
     latitude: string;
     location: string;
     longitude: string;
     modifiedTime: string;
     modifiedby: string;
-    /**
-     * The name of the server group to be exported.
-     */
     name: string;
     serverGroups: outputs.GetServerGroupAppConnectorGroupServerGroup[];
     siemAppConnectorGroup: boolean;
@@ -1538,343 +955,124 @@ export interface GetServerGroupAppConnectorGroup {
 
 export interface GetServerGroupAppConnectorGroupConnector {
     creationTime: string;
-    /**
-     * (string) This field is the description of the server group.
-     */
     description: string;
-    /**
-     * (bool) This field defines if the server group is enabled or disabled.
-     */
     enabled: boolean;
     fingerprint: string;
-    /**
-     * The ID of the server group to be exported.
-     */
     id: string;
     issuedCertId: string;
     modifiedTime: string;
     modifiedby: string;
-    /**
-     * The name of the server group to be exported.
-     */
     name?: string;
     upgradeAttempt: string;
 }
 
 export interface GetServerGroupAppConnectorGroupServerGroup {
-    /**
-     * (string)
-     */
     configSpace: string;
     creationTime: string;
-    /**
-     * (string) This field is the description of the server group.
-     */
     description: string;
-    /**
-     * (bool) This field controls dynamic discovery of the servers.
-     */
     dynamicDiscovery: boolean;
-    /**
-     * (bool) This field defines if the server group is enabled or disabled.
-     */
     enabled: boolean;
-    /**
-     * The ID of the server group to be exported.
-     */
     id: string;
     modifiedTime: string;
     modifiedby: string;
-    /**
-     * The name of the server group to be exported.
-     */
     name?: string;
 }
 
 export interface GetServerGroupApplication {
-    /**
-     * The ID of the server group to be exported.
-     */
     id: string;
-    /**
-     * The name of the server group to be exported.
-     */
     name: string;
 }
 
 export interface GetServerGroupServer {
     address: string;
     appServerGroupIds: string[];
-    /**
-     * (string)
-     */
     configSpace: string;
     creationTime: string;
-    /**
-     * (string) This field is the description of the server group.
-     */
     description: string;
-    /**
-     * (bool) This field defines if the server group is enabled or disabled.
-     */
     enabled: boolean;
-    /**
-     * The ID of the server group to be exported.
-     */
     id: string;
     modifiedTime: string;
     modifiedby: string;
-    /**
-     * The name of the server group to be exported.
-     */
     name: string;
 }
 
 export interface GetServiceEdgeControllerZpnSubModuleUpgradeList {
-    /**
-     * (string)
-     */
     creationTime: string;
-    /**
-     * (string)
-     */
     currentVersion: string;
     entityGid: string;
-    /**
-     * (string)
-     */
     expectedVersion: string;
-    /**
-     * The ID of the service edge controllerto be exported.
-     */
     id: string;
-    /**
-     * (string)
-     */
     modifiedBy: string;
-    /**
-     * (string)
-     */
     modifiedTime: string;
     role: string;
-    /**
-     * (string)
-     */
     upgradeStatus: string;
     upgradeTime: string;
 }
 
 export interface GetServiceEdgeGroupServiceEdge {
-    /**
-     * (string)
-     */
     applicationStartTime: string;
-    /**
-     * (string)
-     */
     controlChannelStatus: string;
-    /**
-     * (string)
-     */
     creationTime: string;
-    /**
-     * (string)
-     */
     ctrlBrokerName: string;
-    /**
-     * (string)
-     */
     currentVersion: string;
-    /**
-     * (string) Description of the Service Edge Group.
-     */
     description: string;
-    /**
-     * (bool) Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
-     */
     enabled: boolean;
-    /**
-     * (string)
-     */
     enrollmentCert: {[key: string]: any};
-    /**
-     * (string)
-     */
     expectedUpgradeTime: string;
-    /**
-     * (string)
-     */
     expectedVersion: string;
     fingerprint: string;
-    /**
-     * The ID of the service edge group to be exported.
-     */
     id: string;
     ipacl: string;
-    /**
-     * (string)
-     */
     issuedCertId: string;
-    /**
-     * (string)
-     */
     lastBrokerConnectTime: string;
-    /**
-     * (string)
-     */
     lastBrokerConnectTimeDuration: string;
-    /**
-     * (string)
-     */
     lastBrokerDisconnectTime: string;
-    /**
-     * (string)
-     */
     lastBrokerDisconnectTimeDuration: string;
-    /**
-     * (string)
-     */
     lastUpgradeTime: string;
-    /**
-     * (string)
-     */
     latitude: string;
-    /**
-     * (string)
-     */
     listenIps: string;
-    /**
-     * (string)
-     */
     location: string;
-    /**
-     * (string)
-     */
     longitude: string;
-    /**
-     * (string)
-     */
     modifiedTime: string;
     modifiedby: string;
-    /**
-     * The name of the service edge group to be exported.
-     */
     name: string;
-    /**
-     * (string)
-     */
     platform: string;
-    /**
-     * (string)
-     */
     previousVersion: string;
-    /**
-     * (string)
-     */
     privateIp: string;
-    /**
-     * (string)
-     */
     provisioningKeyId: string;
-    /**
-     * (string)
-     */
     provisioningKeyName: string;
-    /**
-     * (string)
-     */
     publicIp: string;
-    /**
-     * (string)
-     */
     publishIps: string[];
-    /**
-     * (string)
-     */
     sargeVersion: string;
-    /**
-     * (string)
-     */
     serviceEdgeGroupId: string;
-    /**
-     * (string)
-     */
     serviceEdgeGroupName: string;
-    /**
-     * (string)
-     */
     upgradeAttempt: string;
-    /**
-     * (string)
-     */
     upgradeStatus: string;
     zpnSubModuleUpgradeLists: outputs.GetServiceEdgeGroupServiceEdgeZpnSubModuleUpgradeList[];
 }
 
 export interface GetServiceEdgeGroupServiceEdgeZpnSubModuleUpgradeList {
-    /**
-     * (string)
-     */
     creationTime: string;
-    /**
-     * (string)
-     */
     currentVersion: string;
     entityGid: string;
-    /**
-     * (string)
-     */
     expectedVersion: string;
-    /**
-     * The ID of the service edge group to be exported.
-     */
     id: string;
-    /**
-     * (string)
-     */
     modifiedTime: string;
     modifiedby: string;
     role: string;
-    /**
-     * (string)
-     */
     upgradeStatus: string;
     upgradeTime: string;
 }
 
 export interface GetServiceEdgeGroupTrustedNetwork {
-    /**
-     * (string)
-     */
     creationTime: string;
-    /**
-     * (string)
-     */
     domain: string;
-    /**
-     * The ID of the service edge group to be exported.
-     */
     id: string;
-    /**
-     * (string)
-     */
     masterCustomerId: string;
-    /**
-     * (string)
-     */
     modifiedTime: string;
     modifiedby: string;
-    /**
-     * The name of the service edge group to be exported.
-     */
     name: string;
-    /**
-     * (string)
-     */
     networkId: string;
-    /**
-     * (string)
-     */
     zscalerCloud: string;
 }
 
@@ -1910,42 +1108,39 @@ export interface InspectionCustomControlsRuleConditions {
 }
 
 export interface InspectionProfileControlsInfo {
-    /**
-     * (string) Control types. Supported Values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `CUSTOM`, `PREDEFINED`, `ZSCALER`
-     */
     controlType: string;
 }
 
 export interface InspectionProfileCustomControl {
     /**
-     * The action of the predefined control. Supported values: `PASS`, `BLOCK` and `REDIRECT`
+     * The action of the custom control
      */
     action?: string;
     /**
-     * Value for the predefined controls action. This field is only required if the action is set to REDIRECT. This field is only required if the action is set to `REDIRECT`.
+     * Denotes the action. Supports any string
      */
     actionValue?: string;
     /**
-     * ID of the predefined control
+     * The unique identifier of the custom control
      */
     id: string;
 }
 
 export interface InspectionProfilePredefinedControl {
     /**
-     * The action of the predefined control. Supported values: `PASS`, `BLOCK` and `REDIRECT`
+     * The action of the predefined control
      */
     action: string;
     /**
-     * Value for the predefined controls action. This field is only required if the action is set to REDIRECT. This field is only required if the action is set to `REDIRECT`.
+     * The value for the predefined controls action. This field is only required if the action is set to REDIRECT
      */
     actionValue?: string;
     /**
-     * (string) Control types. Supported Values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `CUSTOM`, `PREDEFINED`, `ZSCALER`
+     * The control type of the custom control
      */
     controlType?: string;
     /**
-     * ID of the predefined control
+     * The unique identifier of the predefined control
      */
     id: string;
     /**
@@ -2046,7 +1241,6 @@ export interface LSSConfigControllerPolicyRuleResource {
 }
 
 export interface LSSConfigControllerPolicyRuleResourceCondition {
-    negated?: boolean;
     /**
      * This signifies the various policy criteria.
      */
@@ -2078,10 +1272,57 @@ export interface MicrotenantUser {
     username: string;
 }
 
+export interface PRAApprovalApplication {
+    /**
+     * The unique identifier of the pra application segment
+     */
+    ids?: string[];
+}
+
+export interface PRAApprovalWorkingHour {
+    /**
+     * The days of the week that you want to enable the privileged approval
+     */
+    days: string[];
+    /**
+     * The end time that the user no longer has access to the privileged approval
+     */
+    endTime: string;
+    /**
+     * The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+     */
+    endTimeCron: string;
+    /**
+     * The start time that the user has access to the privileged approval
+     */
+    startTime: string;
+    /**
+     * The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+     */
+    startTimeCron: string;
+    /**
+     * The time zone for the time window of a privileged approval
+     */
+    timezone: string;
+}
+
+export interface PRAConsolePraApplication {
+    /**
+     * The unique identifier of the Privileged Remote Access-enabled application
+     */
+    id: string;
+}
+
+export interface PRAConsolePraPortal {
+    /**
+     * The unique identifier of the privileged portal
+     */
+    ids: string[];
+}
+
 export interface PolicyAccessForwardingRuleCondition {
     id: string;
     microtenantId: string;
-    negated: boolean;
     /**
      * This signifies the various policy criteria.
      */
@@ -2115,10 +1356,35 @@ export interface PolicyAccessForwardingRuleConditionOperand {
     rhsLists: string[];
 }
 
+export interface PolicyAccessForwardingRuleV2Condition {
+    id: string;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands: outputs.PolicyAccessForwardingRuleV2ConditionOperand[];
+    operator: string;
+}
+
+export interface PolicyAccessForwardingRuleV2ConditionOperand {
+    entryValues: outputs.PolicyAccessForwardingRuleV2ConditionOperandEntryValue[];
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: string;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: string[];
+}
+
+export interface PolicyAccessForwardingRuleV2ConditionOperandEntryValue {
+    lhs?: string;
+    rhs?: string;
+}
+
 export interface PolicyAccessInspectionRuleCondition {
     id: string;
     microtenantId: string;
-    negated: boolean;
     /**
      * This signifies the various policy criteria.
      */
@@ -2152,10 +1418,35 @@ export interface PolicyAccessInspectionRuleConditionOperand {
     rhsLists: string[];
 }
 
+export interface PolicyAccessInspectionRuleV2Condition {
+    id: string;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands: outputs.PolicyAccessInspectionRuleV2ConditionOperand[];
+    operator: string;
+}
+
+export interface PolicyAccessInspectionRuleV2ConditionOperand {
+    entryValues: outputs.PolicyAccessInspectionRuleV2ConditionOperandEntryValue[];
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: string;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: string[];
+}
+
+export interface PolicyAccessInspectionRuleV2ConditionOperandEntryValue {
+    lhs?: string;
+    rhs?: string;
+}
+
 export interface PolicyAccessIsolationRuleCondition {
     id: string;
     microtenantId: string;
-    negated: boolean;
     /**
      * This signifies the various policy criteria.
      */
@@ -2189,81 +1480,79 @@ export interface PolicyAccessIsolationRuleConditionOperand {
     rhsLists: string[];
 }
 
-export interface PolicyAccessReorderRuleRule {
-    /**
-     * (Required) - The ID of the rule to which the order number will be applied.
-     */
+export interface PolicyAccessIsolationRuleV2Condition {
     id: string;
     /**
-     * (Required) - The order number that should be applied to the respective rule ID.
+     * This signifies the various policy criteria.
      */
+    operands: outputs.PolicyAccessIsolationRuleV2ConditionOperand[];
+    operator: string;
+}
+
+export interface PolicyAccessIsolationRuleV2ConditionOperand {
+    entryValues: outputs.PolicyAccessIsolationRuleV2ConditionOperandEntryValue[];
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: string;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: string[];
+}
+
+export interface PolicyAccessIsolationRuleV2ConditionOperandEntryValue {
+    lhs?: string;
+    rhs?: string;
+}
+
+export interface PolicyAccessReorderRuleRule {
+    id: string;
     order: string;
 }
 
 export interface PolicyAccessRuleAppConnectorGroup {
-    /**
-     * (Optional) The ID of a server group resource
-     */
     ids?: string[];
 }
 
 export interface PolicyAccessRuleAppServerGroup {
-    /**
-     * (Optional) The ID of a server group resource
-     */
     ids?: string[];
 }
 
 export interface PolicyAccessRuleCondition {
-    /**
-     * (Optional) The ID of a server group resource
-     */
     id: string;
-    /**
-     * (Optional) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId: string;
     /**
-     * (Optional) Supported values: ``true`` or ``false``
-     */
-    negated: boolean;
-    /**
-     * (Optional) - Operands block must be repeated if multiple per `objectType` conditions are to be added to the rule.
+     * This signifies the various policy criteria.
      */
     operands?: outputs.PolicyAccessRuleConditionOperand[];
     /**
-     * (Optional) Supported values: ``AND``, and ``OR``
+     * Supported values: `AND`, `OR`
      */
     operator: string;
 }
 
 export interface PolicyAccessRuleConditionOperand {
-    /**
-     * (Optional) The ID of a server group resource
-     */
     id: string;
-    /**
-     * (Optional)
-     */
     idpId: string;
     /**
-     * (Optional) LHS must always carry the string value ``id`` or the attribute ID of the resource being associated with the rule.
+     * This signifies the key for the object type. String ID example: id
      */
     lhs: string;
     /**
-     * (Optional) The ID of the microtenant the resource is to be associated with.
+     * This denotes the value for the given object type. Its value depends upon the key.
      */
     microtenantId: string;
     /**
-     * (Optional)
+     * This is the name of the policy rule.
      */
     name: string;
     /**
-     * (Optional) This is for specifying the policy critiera. Supported values: `APP`, `APP_GROUP`, `SAML`, `IDP`, `CLIENT_TYPE`, `TRUSTED_NETWORK`, `POSTURE`, `SCIM`, `SCIM_GROUP`, and `CLOUD_CONNECTOR_GROUP`. `TRUSTED_NETWORK`, `CLIENT_TYPE`, `PLATFORM`, `COUNTRY_CODE`.
+     * This is for specifying the policy critiera.
      */
     objectType: string;
     /**
-     * (Optional) RHS is either the ID attribute of a resource or fixed string value. Refer to the chart below for further details.
+     * This denotes the value for the given object type. Its value depends upon the key.
      */
     rhs: string;
     /**
@@ -2272,10 +1561,43 @@ export interface PolicyAccessRuleConditionOperand {
     rhsLists: string[];
 }
 
+export interface PolicyAccessRuleV2AppConnectorGroup {
+    ids: string[];
+}
+
+export interface PolicyAccessRuleV2AppServerGroup {
+    ids?: string[];
+}
+
+export interface PolicyAccessRuleV2Condition {
+    id: string;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands: outputs.PolicyAccessRuleV2ConditionOperand[];
+    operator: string;
+}
+
+export interface PolicyAccessRuleV2ConditionOperand {
+    entryValues: outputs.PolicyAccessRuleV2ConditionOperandEntryValue[];
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: string;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: string[];
+}
+
+export interface PolicyAccessRuleV2ConditionOperandEntryValue {
+    lhs?: string;
+    rhs?: string;
+}
+
 export interface PolicyAccessTimeOutRuleCondition {
     id: string;
     microtenantId: string;
-    negated: boolean;
     /**
      * This signifies the various policy criteria.
      */
@@ -2307,6 +1629,319 @@ export interface PolicyAccessTimeOutRuleConditionOperand {
      * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
      */
     rhsLists: string[];
+}
+
+export interface PolicyAccessTimeOutRuleV2Condition {
+    id: string;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands: outputs.PolicyAccessTimeOutRuleV2ConditionOperand[];
+    operator: string;
+}
+
+export interface PolicyAccessTimeOutRuleV2ConditionOperand {
+    entryValues: outputs.PolicyAccessTimeOutRuleV2ConditionOperandEntryValue[];
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: string;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: string[];
+}
+
+export interface PolicyAccessTimeOutRuleV2ConditionOperandEntryValue {
+    lhs?: string;
+    rhs?: string;
+}
+
+export interface PolicyCapabilitiesRuleCondition {
+    id: string;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands: outputs.PolicyCapabilitiesRuleConditionOperand[];
+    operator: string;
+}
+
+export interface PolicyCapabilitiesRuleConditionOperand {
+    entryValues: outputs.PolicyCapabilitiesRuleConditionOperandEntryValue[];
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: string;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: string[];
+}
+
+export interface PolicyCapabilitiesRuleConditionOperandEntryValue {
+    lhs?: string;
+    rhs?: string;
+}
+
+export interface PolicyCapabilitiesRulePrivilegedCapabilities {
+    /**
+     * Indicates the PRA Clipboard Copy function
+     */
+    clipboardCopy?: boolean;
+    /**
+     * Indicates the PRA Clipboard Paste function
+     */
+    clipboardPaste?: boolean;
+    /**
+     * Indicates the PRA File Transfer capabilities that enables the File Download function
+     */
+    fileDownload?: boolean;
+    /**
+     * Indicates the PRA File Transfer capabilities that enables the File Upload function
+     */
+    fileUpload?: boolean;
+    /**
+     * Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and downloads the file following the inspection
+     */
+    inspectFileDownload?: boolean;
+    /**
+     * Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and uploads the file following the inspection
+     */
+    inspectFileUpload?: boolean;
+    /**
+     * Indicates the PRA Monitoring Capabilities to enable the PRA Session Monitoring function
+     */
+    monitorSession?: boolean;
+    /**
+     * Indicates the PRA Session Recording capabilities to enable PRA Session Recording
+     */
+    recordSession?: boolean;
+    /**
+     * Indicates the PRA Session Control and Monitoring capabilities to enable PRA Session Monitoring
+     */
+    shareSession?: boolean;
+}
+
+export interface PolicyCredentialRuleCondition {
+    id: string;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands: outputs.PolicyCredentialRuleConditionOperand[];
+    operator: string;
+}
+
+export interface PolicyCredentialRuleConditionOperand {
+    entryValues: outputs.PolicyCredentialRuleConditionOperandEntryValue[];
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: string;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: string[];
+}
+
+export interface PolicyCredentialRuleConditionOperandEntryValue {
+    lhs?: string;
+    rhs?: string;
+}
+
+export interface PolicyCredentialRuleCredential {
+    id: string;
+}
+
+export interface PolicyForwardingRuleV2Condition {
+    id: string;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands: outputs.PolicyForwardingRuleV2ConditionOperand[];
+    operator: string;
+}
+
+export interface PolicyForwardingRuleV2ConditionOperand {
+    entryValues: outputs.PolicyForwardingRuleV2ConditionOperandEntryValue[];
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: string;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: string[];
+}
+
+export interface PolicyForwardingRuleV2ConditionOperandEntryValue {
+    lhs?: string;
+    rhs?: string;
+}
+
+export interface PolicyInspectionRuleV2Condition {
+    id: string;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands: outputs.PolicyInspectionRuleV2ConditionOperand[];
+    operator: string;
+}
+
+export interface PolicyInspectionRuleV2ConditionOperand {
+    entryValues: outputs.PolicyInspectionRuleV2ConditionOperandEntryValue[];
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: string;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: string[];
+}
+
+export interface PolicyInspectionRuleV2ConditionOperandEntryValue {
+    lhs?: string;
+    rhs?: string;
+}
+
+export interface PolicyIsolationRuleV2Condition {
+    id: string;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands: outputs.PolicyIsolationRuleV2ConditionOperand[];
+    operator: string;
+}
+
+export interface PolicyIsolationRuleV2ConditionOperand {
+    entryValues: outputs.PolicyIsolationRuleV2ConditionOperandEntryValue[];
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: string;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: string[];
+}
+
+export interface PolicyIsolationRuleV2ConditionOperandEntryValue {
+    lhs?: string;
+    rhs?: string;
+}
+
+export interface PolicyRedirectionRuleCondition {
+    id: string;
+    microtenantId: string;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands?: outputs.PolicyRedirectionRuleConditionOperand[];
+    operator: string;
+}
+
+export interface PolicyRedirectionRuleConditionOperand {
+    id: string;
+    idpId: string;
+    /**
+     * This signifies the key for the object type. String ID example: id
+     */
+    lhs: string;
+    /**
+     * This denotes the value for the given object type. Its value depends upon the key.
+     */
+    microtenantId: string;
+    name: string;
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: string;
+    /**
+     * This denotes the value for the given object type. Its value depends upon the key.
+     */
+    rhs: string;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    rhsLists: string[];
+}
+
+export interface PolicyRedirectionRuleServiceEdgeGroup {
+    ids?: string[];
+}
+
+export interface PolicyTimeoutRuleV2Condition {
+    id: string;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands: outputs.PolicyTimeoutRuleV2ConditionOperand[];
+    operator: string;
+}
+
+export interface PolicyTimeoutRuleV2ConditionOperand {
+    entryValues: outputs.PolicyTimeoutRuleV2ConditionOperandEntryValue[];
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: string;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: string[];
+}
+
+export interface PolicyTimeoutRuleV2ConditionOperandEntryValue {
+    lhs?: string;
+    rhs?: string;
+}
+
+export interface PraApprovalControllerApplication {
+    /**
+     * The unique identifier of the pra application segment
+     */
+    ids?: string[];
+}
+
+export interface PraApprovalControllerWorkingHour {
+    /**
+     * The days of the week that you want to enable the privileged approval
+     */
+    days: string[];
+    /**
+     * The end time that the user no longer has access to the privileged approval
+     */
+    endTime: string;
+    /**
+     * The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+     */
+    endTimeCron: string;
+    /**
+     * The start time that the user has access to the privileged approval
+     */
+    startTime: string;
+    /**
+     * The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+     */
+    startTimeCron: string;
+    /**
+     * The time zone for the time window of a privileged approval
+     */
+    timezone: string;
+}
+
+export interface PraConsoleControllerPraApplication {
+    /**
+     * The unique identifier of the Privileged Remote Access-enabled application
+     */
+    id: string;
+}
+
+export interface PraConsoleControllerPraPortal {
+    /**
+     * The unique identifier of the privileged portal
+     */
+    ids: string[];
 }
 
 export interface SegmentGroupApplication {

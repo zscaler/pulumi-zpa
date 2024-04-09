@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-web-server-certificates)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-certificates-using-api)
+//
 // Use the **zpa_ba_certificate** data source to get information about a browser access certificate created in the Zscaler Private Access cloud. This data source is required when creating a browser access application segment resource.
 //
 // ## Example Usage
@@ -78,46 +81,30 @@ func GetBaCertificate(ctx *pulumi.Context, args *GetBaCertificateArgs, opts ...p
 
 // A collection of arguments for invoking getBaCertificate.
 type GetBaCertificateArgs struct {
-	// The id of the browser access certificate to be exported.
-	Id *string `pulumi:"id"`
-	// The name of the browser access certificate to be exported.
+	Id   *string `pulumi:"id"`
 	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getBaCertificate.
 type GetBaCertificateResult struct {
-	// (string)
-	CertChain string `pulumi:"certChain"`
-	// (string) The certificate text is in PEM format.
-	Certificate string `pulumi:"certificate"`
-	// (string)
-	Cname string `pulumi:"cname"`
-	// (string)
-	CreationTime string `pulumi:"creationTime"`
-	// (string)
-	Description string  `pulumi:"description"`
-	Id          *string `pulumi:"id"`
-	// (string)
-	IssuedBy string `pulumi:"issuedBy"`
-	// (string)
-	IssuedTo      string `pulumi:"issuedTo"`
-	MicrotenantId string `pulumi:"microtenantId"`
-	// (string)
-	ModifiedTime string `pulumi:"modifiedTime"`
-	// (string)
-	Modifiedby string  `pulumi:"modifiedby"`
-	Name       *string `pulumi:"name"`
-	PublicKey  string  `pulumi:"publicKey"`
-	// (string)
-	Sans []string `pulumi:"sans"`
-	// (string)
-	SerialNo string `pulumi:"serialNo"`
-	// (string)
-	Status string `pulumi:"status"`
-	// (string)
-	ValidFromInEpochsec string `pulumi:"validFromInEpochsec"`
-	// (string)
-	ValidToInEpochsec string `pulumi:"validToInEpochsec"`
+	CertChain           string   `pulumi:"certChain"`
+	Certificate         string   `pulumi:"certificate"`
+	Cname               string   `pulumi:"cname"`
+	CreationTime        string   `pulumi:"creationTime"`
+	Description         string   `pulumi:"description"`
+	Id                  *string  `pulumi:"id"`
+	IssuedBy            string   `pulumi:"issuedBy"`
+	IssuedTo            string   `pulumi:"issuedTo"`
+	MicrotenantId       string   `pulumi:"microtenantId"`
+	ModifiedTime        string   `pulumi:"modifiedTime"`
+	Modifiedby          string   `pulumi:"modifiedby"`
+	Name                *string  `pulumi:"name"`
+	PublicKey           string   `pulumi:"publicKey"`
+	Sans                []string `pulumi:"sans"`
+	SerialNo            string   `pulumi:"serialNo"`
+	Status              string   `pulumi:"status"`
+	ValidFromInEpochsec string   `pulumi:"validFromInEpochsec"`
+	ValidToInEpochsec   string   `pulumi:"validToInEpochsec"`
 }
 
 func GetBaCertificateOutput(ctx *pulumi.Context, args GetBaCertificateOutputArgs, opts ...pulumi.InvokeOption) GetBaCertificateResultOutput {
@@ -135,9 +122,7 @@ func GetBaCertificateOutput(ctx *pulumi.Context, args GetBaCertificateOutputArgs
 
 // A collection of arguments for invoking getBaCertificate.
 type GetBaCertificateOutputArgs struct {
-	// The id of the browser access certificate to be exported.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The name of the browser access certificate to be exported.
+	Id   pulumi.StringPtrInput `pulumi:"id"`
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -160,27 +145,22 @@ func (o GetBaCertificateResultOutput) ToGetBaCertificateResultOutputWithContext(
 	return o
 }
 
-// (string)
 func (o GetBaCertificateResultOutput) CertChain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBaCertificateResult) string { return v.CertChain }).(pulumi.StringOutput)
 }
 
-// (string) The certificate text is in PEM format.
 func (o GetBaCertificateResultOutput) Certificate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBaCertificateResult) string { return v.Certificate }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetBaCertificateResultOutput) Cname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBaCertificateResult) string { return v.Cname }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetBaCertificateResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBaCertificateResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetBaCertificateResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBaCertificateResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -189,12 +169,10 @@ func (o GetBaCertificateResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBaCertificateResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// (string)
 func (o GetBaCertificateResultOutput) IssuedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBaCertificateResult) string { return v.IssuedBy }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetBaCertificateResultOutput) IssuedTo() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBaCertificateResult) string { return v.IssuedTo }).(pulumi.StringOutput)
 }
@@ -203,12 +181,10 @@ func (o GetBaCertificateResultOutput) MicrotenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBaCertificateResult) string { return v.MicrotenantId }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetBaCertificateResultOutput) ModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBaCertificateResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetBaCertificateResultOutput) Modifiedby() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBaCertificateResult) string { return v.Modifiedby }).(pulumi.StringOutput)
 }
@@ -221,27 +197,22 @@ func (o GetBaCertificateResultOutput) PublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBaCertificateResult) string { return v.PublicKey }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetBaCertificateResultOutput) Sans() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBaCertificateResult) []string { return v.Sans }).(pulumi.StringArrayOutput)
 }
 
-// (string)
 func (o GetBaCertificateResultOutput) SerialNo() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBaCertificateResult) string { return v.SerialNo }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetBaCertificateResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBaCertificateResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetBaCertificateResultOutput) ValidFromInEpochsec() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBaCertificateResult) string { return v.ValidFromInEpochsec }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetBaCertificateResultOutput) ValidToInEpochsec() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBaCertificateResult) string { return v.ValidToInEpochsec }).(pulumi.StringOutput)
 }

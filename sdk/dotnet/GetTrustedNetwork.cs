@@ -13,6 +13,9 @@ namespace Zscaler.Zpa
     public static class GetTrustedNetwork
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/client-connector/about-trusted-networks)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-trusted-network-details-using-api)
+        /// 
         /// The **zpa_trusted_network** data source to get information about a trusted network created in the Zscaler Private Access Mobile Portal. This data source can then be referenced within the following resources:
         /// 
         /// 1. Access Policy
@@ -69,6 +72,9 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTrustedNetworkResult>("zpa:index/getTrustedNetwork:getTrustedNetwork", args ?? new GetTrustedNetworkArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/client-connector/about-trusted-networks)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-trusted-network-details-using-api)
+        /// 
         /// The **zpa_trusted_network** data source to get information about a trusted network created in the Zscaler Private Access Mobile Portal. This data source can then be referenced within the following resources:
         /// 
         /// 1. Access Policy
@@ -128,15 +134,9 @@ namespace Zscaler.Zpa
 
     public sealed class GetTrustedNetworkArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the posture profile to be exported.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// The name of the posture profile to be exported.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -148,15 +148,9 @@ namespace Zscaler.Zpa
 
     public sealed class GetTrustedNetworkInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the posture profile to be exported.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// The name of the posture profile to be exported.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -170,28 +164,13 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetTrustedNetworkResult
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Domain;
         public readonly string? Id;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
         public readonly string? Name;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string NetworkId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ZscalerCloud;
 
         [OutputConstructor]

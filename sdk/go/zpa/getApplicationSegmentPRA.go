@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-privileged-remote-access-applications)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
+//
 // Use the **zpa_application_segment_pra** data source to get information about an application segment for Privileged Remote Access in the Zscaler Private Access cloud. This resource can then be referenced in an access policy rule, access policy timeout rule, access policy client forwarding rule and inspection policy. This resource supports Privileged Remote Access for both `RDP` and `SSH`.
 //
 // ## Example Usage
@@ -78,77 +81,39 @@ func LookupApplicationSegmentPRA(ctx *pulumi.Context, args *LookupApplicationSeg
 
 // A collection of arguments for invoking getApplicationSegmentPRA.
 type LookupApplicationSegmentPRAArgs struct {
-	Id *string `pulumi:"id"`
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
-	MicrotenantName *string `pulumi:"microtenantName"`
-	// The name of the PRA Application Segment to be exported.
-	Name *string `pulumi:"name"`
-	// (string) TCP port ranges used to access the app.
-	// * `from:`
-	// * `to:`
-	TcpPortRange []GetApplicationSegmentPRATcpPortRange `pulumi:"tcpPortRange"`
-	// (string) UDP port ranges used to access the app.
-	// * `from:`
-	// * `to:`
-	UdpPortRange []GetApplicationSegmentPRAUdpPortRange `pulumi:"udpPortRange"`
+	Id              *string                                `pulumi:"id"`
+	MicrotenantId   *string                                `pulumi:"microtenantId"`
+	MicrotenantName *string                                `pulumi:"microtenantName"`
+	Name            *string                                `pulumi:"name"`
+	TcpPortRange    []GetApplicationSegmentPRATcpPortRange `pulumi:"tcpPortRange"`
+	UdpPortRange    []GetApplicationSegmentPRAUdpPortRange `pulumi:"udpPortRange"`
 }
 
 // A collection of values returned by getApplicationSegmentPRA.
 type LookupApplicationSegmentPRAResult struct {
-	// (string) Indicates whether users can bypass ZPA to access applications.
-	BypassType string `pulumi:"bypassType"`
-	// (string)
-	ConfigSpace string `pulumi:"configSpace"`
-	// (string) Description of the application.
-	Description string `pulumi:"description"`
-	// (string) List of domains and IPs.
-	DomainNames []string `pulumi:"domainNames"`
-	// (bool) Whether Double Encryption is enabled or disabled for the app.
-	DoubleEncrypt bool `pulumi:"doubleEncrypt"`
-	// (bool) Whether this application is enabled or not
-	Enabled bool `pulumi:"enabled"`
-	// (string)
-	HealthCheckType string `pulumi:"healthCheckType"`
-	// (string) Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
-	HealthReporting string  `pulumi:"healthReporting"`
-	Id              *string `pulumi:"id"`
-	// (bool)
-	IpAnchored bool `pulumi:"ipAnchored"`
-	// (bool) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
-	IsCnameEnabled bool `pulumi:"isCnameEnabled"`
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
-	MicrotenantName *string `pulumi:"microtenantName"`
-	Name            *string `pulumi:"name"`
-	// (bool)
-	PassiveHealthEnabled bool `pulumi:"passiveHealthEnabled"`
-	// (String) Segment Group IDs
-	SegmentGroupId   string `pulumi:"segmentGroupId"`
-	SegmentGroupName string `pulumi:"segmentGroupName"`
-	// (string) List of Server Group IDs
-	// * `id:` - (string) List of Server Group IDs
-	ServerGroups []GetApplicationSegmentPRAServerGroup `pulumi:"serverGroups"`
-	// (string) TCP port ranges used to access the app.
-	// * `app_id:` - (string)
-	// * `name:` - (string) Name of the Privileged Remote Access
-	// * `description:` - (string) Description of the Privileged Remote Access
-	// * `domain:` - (string) Domain name of the Privileged Remote Access
-	SraApps []GetApplicationSegmentPRASraApp `pulumi:"sraApps"`
-	// (string) TCP port ranges used to access the app.
-	// * `from:`
-	// * `to:`
-	TcpPortRange []GetApplicationSegmentPRATcpPortRange `pulumi:"tcpPortRange"`
-	// (string) TCP port ranges used to access the app.
-	TcpPortRanges []string `pulumi:"tcpPortRanges"`
-	// (string) UDP port ranges used to access the app.
-	// * `from:`
-	// * `to:`
-	UdpPortRange []GetApplicationSegmentPRAUdpPortRange `pulumi:"udpPortRange"`
-	// (string) UDP port ranges used to access the app.
-	UdpPortRanges []string `pulumi:"udpPortRanges"`
+	BypassType           string                                 `pulumi:"bypassType"`
+	ConfigSpace          string                                 `pulumi:"configSpace"`
+	Description          string                                 `pulumi:"description"`
+	DomainNames          []string                               `pulumi:"domainNames"`
+	DoubleEncrypt        bool                                   `pulumi:"doubleEncrypt"`
+	Enabled              bool                                   `pulumi:"enabled"`
+	HealthCheckType      string                                 `pulumi:"healthCheckType"`
+	HealthReporting      string                                 `pulumi:"healthReporting"`
+	Id                   *string                                `pulumi:"id"`
+	IpAnchored           bool                                   `pulumi:"ipAnchored"`
+	IsCnameEnabled       bool                                   `pulumi:"isCnameEnabled"`
+	MicrotenantId        *string                                `pulumi:"microtenantId"`
+	MicrotenantName      *string                                `pulumi:"microtenantName"`
+	Name                 *string                                `pulumi:"name"`
+	PassiveHealthEnabled bool                                   `pulumi:"passiveHealthEnabled"`
+	SegmentGroupId       string                                 `pulumi:"segmentGroupId"`
+	SegmentGroupName     string                                 `pulumi:"segmentGroupName"`
+	ServerGroups         []GetApplicationSegmentPRAServerGroup  `pulumi:"serverGroups"`
+	SraApps              []GetApplicationSegmentPRASraApp       `pulumi:"sraApps"`
+	TcpPortRange         []GetApplicationSegmentPRATcpPortRange `pulumi:"tcpPortRange"`
+	TcpPortRanges        []string                               `pulumi:"tcpPortRanges"`
+	UdpPortRange         []GetApplicationSegmentPRAUdpPortRange `pulumi:"udpPortRange"`
+	UdpPortRanges        []string                               `pulumi:"udpPortRanges"`
 }
 
 func LookupApplicationSegmentPRAOutput(ctx *pulumi.Context, args LookupApplicationSegmentPRAOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationSegmentPRAResultOutput {
@@ -166,21 +131,12 @@ func LookupApplicationSegmentPRAOutput(ctx *pulumi.Context, args LookupApplicati
 
 // A collection of arguments for invoking getApplicationSegmentPRA.
 type LookupApplicationSegmentPRAOutputArgs struct {
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId pulumi.StringPtrInput `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
-	MicrotenantName pulumi.StringPtrInput `pulumi:"microtenantName"`
-	// The name of the PRA Application Segment to be exported.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// (string) TCP port ranges used to access the app.
-	// * `from:`
-	// * `to:`
-	TcpPortRange GetApplicationSegmentPRATcpPortRangeArrayInput `pulumi:"tcpPortRange"`
-	// (string) UDP port ranges used to access the app.
-	// * `from:`
-	// * `to:`
-	UdpPortRange GetApplicationSegmentPRAUdpPortRangeArrayInput `pulumi:"udpPortRange"`
+	Id              pulumi.StringPtrInput                          `pulumi:"id"`
+	MicrotenantId   pulumi.StringPtrInput                          `pulumi:"microtenantId"`
+	MicrotenantName pulumi.StringPtrInput                          `pulumi:"microtenantName"`
+	Name            pulumi.StringPtrInput                          `pulumi:"name"`
+	TcpPortRange    GetApplicationSegmentPRATcpPortRangeArrayInput `pulumi:"tcpPortRange"`
+	UdpPortRange    GetApplicationSegmentPRAUdpPortRangeArrayInput `pulumi:"udpPortRange"`
 }
 
 func (LookupApplicationSegmentPRAOutputArgs) ElementType() reflect.Type {
@@ -202,42 +158,34 @@ func (o LookupApplicationSegmentPRAResultOutput) ToLookupApplicationSegmentPRARe
 	return o
 }
 
-// (string) Indicates whether users can bypass ZPA to access applications.
 func (o LookupApplicationSegmentPRAResultOutput) BypassType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) string { return v.BypassType }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o LookupApplicationSegmentPRAResultOutput) ConfigSpace() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) string { return v.ConfigSpace }).(pulumi.StringOutput)
 }
 
-// (string) Description of the application.
 func (o LookupApplicationSegmentPRAResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (string) List of domains and IPs.
 func (o LookupApplicationSegmentPRAResultOutput) DomainNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) []string { return v.DomainNames }).(pulumi.StringArrayOutput)
 }
 
-// (bool) Whether Double Encryption is enabled or disabled for the app.
 func (o LookupApplicationSegmentPRAResultOutput) DoubleEncrypt() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) bool { return v.DoubleEncrypt }).(pulumi.BoolOutput)
 }
 
-// (bool) Whether this application is enabled or not
 func (o LookupApplicationSegmentPRAResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// (string)
 func (o LookupApplicationSegmentPRAResultOutput) HealthCheckType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) string { return v.HealthCheckType }).(pulumi.StringOutput)
 }
 
-// (string) Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 func (o LookupApplicationSegmentPRAResultOutput) HealthReporting() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) string { return v.HealthReporting }).(pulumi.StringOutput)
 }
@@ -246,22 +194,18 @@ func (o LookupApplicationSegmentPRAResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// (bool)
 func (o LookupApplicationSegmentPRAResultOutput) IpAnchored() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) bool { return v.IpAnchored }).(pulumi.BoolOutput)
 }
 
-// (bool) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
 func (o LookupApplicationSegmentPRAResultOutput) IsCnameEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) bool { return v.IsCnameEnabled }).(pulumi.BoolOutput)
 }
 
-// (string) The ID of the microtenant the resource is to be associated with.
 func (o LookupApplicationSegmentPRAResultOutput) MicrotenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) *string { return v.MicrotenantId }).(pulumi.StringPtrOutput)
 }
 
-// (string) The name of the microtenant the resource is to be associated with.
 func (o LookupApplicationSegmentPRAResultOutput) MicrotenantName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) *string { return v.MicrotenantName }).(pulumi.StringPtrOutput)
 }
@@ -270,12 +214,10 @@ func (o LookupApplicationSegmentPRAResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// (bool)
 func (o LookupApplicationSegmentPRAResultOutput) PassiveHealthEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) bool { return v.PassiveHealthEnabled }).(pulumi.BoolOutput)
 }
 
-// (String) Segment Group IDs
 func (o LookupApplicationSegmentPRAResultOutput) SegmentGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) string { return v.SegmentGroupId }).(pulumi.StringOutput)
 }
@@ -284,45 +226,30 @@ func (o LookupApplicationSegmentPRAResultOutput) SegmentGroupName() pulumi.Strin
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) string { return v.SegmentGroupName }).(pulumi.StringOutput)
 }
 
-// (string) List of Server Group IDs
-// * `id:` - (string) List of Server Group IDs
 func (o LookupApplicationSegmentPRAResultOutput) ServerGroups() GetApplicationSegmentPRAServerGroupArrayOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) []GetApplicationSegmentPRAServerGroup { return v.ServerGroups }).(GetApplicationSegmentPRAServerGroupArrayOutput)
 }
 
-// (string) TCP port ranges used to access the app.
-// * `app_id:` - (string)
-// * `name:` - (string) Name of the Privileged Remote Access
-// * `description:` - (string) Description of the Privileged Remote Access
-// * `domain:` - (string) Domain name of the Privileged Remote Access
 func (o LookupApplicationSegmentPRAResultOutput) SraApps() GetApplicationSegmentPRASraAppArrayOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) []GetApplicationSegmentPRASraApp { return v.SraApps }).(GetApplicationSegmentPRASraAppArrayOutput)
 }
 
-// (string) TCP port ranges used to access the app.
-// * `from:`
-// * `to:`
 func (o LookupApplicationSegmentPRAResultOutput) TcpPortRange() GetApplicationSegmentPRATcpPortRangeArrayOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) []GetApplicationSegmentPRATcpPortRange {
 		return v.TcpPortRange
 	}).(GetApplicationSegmentPRATcpPortRangeArrayOutput)
 }
 
-// (string) TCP port ranges used to access the app.
 func (o LookupApplicationSegmentPRAResultOutput) TcpPortRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) []string { return v.TcpPortRanges }).(pulumi.StringArrayOutput)
 }
 
-// (string) UDP port ranges used to access the app.
-// * `from:`
-// * `to:`
 func (o LookupApplicationSegmentPRAResultOutput) UdpPortRange() GetApplicationSegmentPRAUdpPortRangeArrayOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) []GetApplicationSegmentPRAUdpPortRange {
 		return v.UdpPortRange
 	}).(GetApplicationSegmentPRAUdpPortRangeArrayOutput)
 }
 
-// (string) UDP port ranges used to access the app.
 func (o LookupApplicationSegmentPRAResultOutput) UdpPortRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentPRAResult) []string { return v.UdpPortRanges }).(pulumi.StringArrayOutput)
 }

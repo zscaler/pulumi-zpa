@@ -14,18 +14,19 @@ __all__ = ['BrowserCertificateArgs', 'BrowserCertificate']
 @pulumi.input_type
 class BrowserCertificateArgs:
     def __init__(__self__, *,
-                 cert_blob: pulumi.Input[str],
+                 cert_blob: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  microtenant_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a BrowserCertificate resource.
-        :param pulumi.Input[str] cert_blob: The content of the certificate in PEM format.
-        :param pulumi.Input[str] description: (string) - The description of the certificate.
+        :param pulumi.Input[str] cert_blob: The description of the certificate
+        :param pulumi.Input[str] description: The description of the certificate
         :param pulumi.Input[str] microtenant_id: The unique identifier of the Microtenant
-        :param pulumi.Input[str] name: The name of the browser access certificate to be created.
+        :param pulumi.Input[str] name: The name of the certificate.
         """
-        pulumi.set(__self__, "cert_blob", cert_blob)
+        if cert_blob is not None:
+            pulumi.set(__self__, "cert_blob", cert_blob)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if microtenant_id is not None:
@@ -35,21 +36,21 @@ class BrowserCertificateArgs:
 
     @property
     @pulumi.getter(name="certBlob")
-    def cert_blob(self) -> pulumi.Input[str]:
+    def cert_blob(self) -> Optional[pulumi.Input[str]]:
         """
-        The content of the certificate in PEM format.
+        The description of the certificate
         """
         return pulumi.get(self, "cert_blob")
 
     @cert_blob.setter
-    def cert_blob(self, value: pulumi.Input[str]):
+    def cert_blob(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cert_blob", value)
 
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        (string) - The description of the certificate.
+        The description of the certificate
         """
         return pulumi.get(self, "description")
 
@@ -73,7 +74,7 @@ class BrowserCertificateArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the browser access certificate to be created.
+        The name of the certificate.
         """
         return pulumi.get(self, "name")
 
@@ -92,11 +93,11 @@ class _BrowserCertificateState:
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering BrowserCertificate resources.
-        :param pulumi.Input[str] cert_blob: The content of the certificate in PEM format.
+        :param pulumi.Input[str] cert_blob: The description of the certificate
         :param pulumi.Input[str] certificate: The certificate text in PEM format
-        :param pulumi.Input[str] description: (string) - The description of the certificate.
+        :param pulumi.Input[str] description: The description of the certificate
         :param pulumi.Input[str] microtenant_id: The unique identifier of the Microtenant
-        :param pulumi.Input[str] name: The name of the browser access certificate to be created.
+        :param pulumi.Input[str] name: The name of the certificate.
         """
         if cert_blob is not None:
             pulumi.set(__self__, "cert_blob", cert_blob)
@@ -113,7 +114,7 @@ class _BrowserCertificateState:
     @pulumi.getter(name="certBlob")
     def cert_blob(self) -> Optional[pulumi.Input[str]]:
         """
-        The content of the certificate in PEM format.
+        The description of the certificate
         """
         return pulumi.get(self, "cert_blob")
 
@@ -137,7 +138,7 @@ class _BrowserCertificateState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        (string) - The description of the certificate.
+        The description of the certificate
         """
         return pulumi.get(self, "description")
 
@@ -161,7 +162,7 @@ class _BrowserCertificateState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the browser access certificate to be created.
+        The name of the certificate.
         """
         return pulumi.get(self, "name")
 
@@ -181,6 +182,9 @@ class BrowserCertificate(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        * [Official documentation](https://help.zscaler.com/zpa/about-web-server-certificates)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-certificates-using-api)
+
         Use the **zpa_ba_certificate** creates a browser access certificate with a private key in the Zscaler Private Access cloud. This resource is required when creating a browser access application segment resource.
 
         ## Example Usage
@@ -212,20 +216,41 @@ class BrowserCertificate(pulumi.CustomResource):
         ```
         <!--End PulumiCodeChooser -->
 
+        ## Let's Encrypt Certbot
+
+        This example demonstrates generatoring a domain certificate with letsencrypt
+        certbot https://letsencrypt.org/getting-started/
+
+        Use letsencrypt's certbot to generate domain certificates in RSA output mode.
+        The generator's output corresponds to `BrowserCertificate` fields in the
+        following manner.
+
+        Zscaler Field          | Certbot file
+        --------------------|--------------
+        `certblob`          | `cert.pem`
+        `certblob`          | `privkey.pem`
+
+        ## Import
+
+        This resource does not support importing.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cert_blob: The content of the certificate in PEM format.
-        :param pulumi.Input[str] description: (string) - The description of the certificate.
+        :param pulumi.Input[str] cert_blob: The description of the certificate
+        :param pulumi.Input[str] description: The description of the certificate
         :param pulumi.Input[str] microtenant_id: The unique identifier of the Microtenant
-        :param pulumi.Input[str] name: The name of the browser access certificate to be created.
+        :param pulumi.Input[str] name: The name of the certificate.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: BrowserCertificateArgs,
+                 args: Optional[BrowserCertificateArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        * [Official documentation](https://help.zscaler.com/zpa/about-web-server-certificates)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-certificates-using-api)
+
         Use the **zpa_ba_certificate** creates a browser access certificate with a private key in the Zscaler Private Access cloud. This resource is required when creating a browser access application segment resource.
 
         ## Example Usage
@@ -256,6 +281,24 @@ class BrowserCertificate(pulumi.CustomResource):
             description="server.example.com")
         ```
         <!--End PulumiCodeChooser -->
+
+        ## Let's Encrypt Certbot
+
+        This example demonstrates generatoring a domain certificate with letsencrypt
+        certbot https://letsencrypt.org/getting-started/
+
+        Use letsencrypt's certbot to generate domain certificates in RSA output mode.
+        The generator's output corresponds to `BrowserCertificate` fields in the
+        following manner.
+
+        Zscaler Field          | Certbot file
+        --------------------|--------------
+        `certblob`          | `cert.pem`
+        `certblob`          | `privkey.pem`
+
+        ## Import
+
+        This resource does not support importing.
 
         :param str resource_name: The name of the resource.
         :param BrowserCertificateArgs args: The arguments to use to populate this resource's properties.
@@ -285,8 +328,6 @@ class BrowserCertificate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BrowserCertificateArgs.__new__(BrowserCertificateArgs)
 
-            if cert_blob is None and not opts.urn:
-                raise TypeError("Missing required property 'cert_blob'")
             __props__.__dict__["cert_blob"] = cert_blob
             __props__.__dict__["description"] = description
             __props__.__dict__["microtenant_id"] = microtenant_id
@@ -314,11 +355,11 @@ class BrowserCertificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cert_blob: The content of the certificate in PEM format.
+        :param pulumi.Input[str] cert_blob: The description of the certificate
         :param pulumi.Input[str] certificate: The certificate text in PEM format
-        :param pulumi.Input[str] description: (string) - The description of the certificate.
+        :param pulumi.Input[str] description: The description of the certificate
         :param pulumi.Input[str] microtenant_id: The unique identifier of the Microtenant
-        :param pulumi.Input[str] name: The name of the browser access certificate to be created.
+        :param pulumi.Input[str] name: The name of the certificate.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -333,9 +374,9 @@ class BrowserCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="certBlob")
-    def cert_blob(self) -> pulumi.Output[str]:
+    def cert_blob(self) -> pulumi.Output[Optional[str]]:
         """
-        The content of the certificate in PEM format.
+        The description of the certificate
         """
         return pulumi.get(self, "cert_blob")
 
@@ -351,7 +392,7 @@ class BrowserCertificate(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        (string) - The description of the certificate.
+        The description of the certificate
         """
         return pulumi.get(self, "description")
 
@@ -367,7 +408,7 @@ class BrowserCertificate(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the browser access certificate to be created.
+        The name of the certificate.
         """
         return pulumi.get(self, "name")
 

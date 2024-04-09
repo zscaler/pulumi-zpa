@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-microtenants)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-microtenants-using-api)
+//
 // The **zpa_microtenant_controller** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source allows administrators to retrieve a specific microtenant ID, which can be passed to other supported resources via the `microtenantId` attribute.
 //
 // ⚠️ **WARNING:**: This feature is in limited availability and requires additional license. To learn more, contact Zscaler Support or your local account team.
@@ -55,25 +58,21 @@ func LookupMicrotenant(ctx *pulumi.Context, args *LookupMicrotenantArgs, opts ..
 // A collection of arguments for invoking getMicrotenant.
 type LookupMicrotenantArgs struct {
 	Id *string `pulumi:"id"`
-	// (Required) Name of the microtenant controller.
+	// - (Required) Name of the microtenant controller.
 	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getMicrotenant.
 type LookupMicrotenantResult struct {
-	CreationTime string `pulumi:"creationTime"`
-	// (string) Type of authentication criteria for the microtenant
-	CriteriaAttribute string `pulumi:"criteriaAttribute"`
-	// (string) The domain associated with the respective microtenant controller resource
+	CreationTime            string   `pulumi:"creationTime"`
+	CriteriaAttribute       string   `pulumi:"criteriaAttribute"`
 	CriteriaAttributeValues []string `pulumi:"criteriaAttributeValues"`
-	// (string) Description of the microtenant controller.
-	Description string `pulumi:"description"`
-	// (bool) Whether this microtenant resource is enabled or not.
-	Enabled      bool    `pulumi:"enabled"`
-	Id           *string `pulumi:"id"`
-	ModifiedBy   string  `pulumi:"modifiedBy"`
-	ModifiedTime string  `pulumi:"modifiedTime"`
-	// (Required) Name of the microtenant controller.
+	Description             string   `pulumi:"description"`
+	Enabled                 bool     `pulumi:"enabled"`
+	Id                      *string  `pulumi:"id"`
+	ModifiedBy              string   `pulumi:"modifiedBy"`
+	ModifiedTime            string   `pulumi:"modifiedTime"`
+	// - (Required) Name of the microtenant controller.
 	Name     *string              `pulumi:"name"`
 	Operator string               `pulumi:"operator"`
 	Priority string               `pulumi:"priority"`
@@ -97,7 +96,7 @@ func LookupMicrotenantOutput(ctx *pulumi.Context, args LookupMicrotenantOutputAr
 // A collection of arguments for invoking getMicrotenant.
 type LookupMicrotenantOutputArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// (Required) Name of the microtenant controller.
+	// - (Required) Name of the microtenant controller.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -124,22 +123,18 @@ func (o LookupMicrotenantResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMicrotenantResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// (string) Type of authentication criteria for the microtenant
 func (o LookupMicrotenantResultOutput) CriteriaAttribute() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMicrotenantResult) string { return v.CriteriaAttribute }).(pulumi.StringOutput)
 }
 
-// (string) The domain associated with the respective microtenant controller resource
 func (o LookupMicrotenantResultOutput) CriteriaAttributeValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupMicrotenantResult) []string { return v.CriteriaAttributeValues }).(pulumi.StringArrayOutput)
 }
 
-// (string) Description of the microtenant controller.
 func (o LookupMicrotenantResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMicrotenantResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (bool) Whether this microtenant resource is enabled or not.
 func (o LookupMicrotenantResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupMicrotenantResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -156,7 +151,7 @@ func (o LookupMicrotenantResultOutput) ModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMicrotenantResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
 
-// (Required) Name of the microtenant controller.
+// - (Required) Name of the microtenant controller.
 func (o LookupMicrotenantResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMicrotenantResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

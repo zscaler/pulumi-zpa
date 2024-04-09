@@ -15,7 +15,7 @@ namespace Zscaler.Zpa.Outputs
     public sealed class BrowserAccessClientlessApp
     {
         /// <summary>
-        /// If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.. Supported values: `true` and `false`
+        /// If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.
         /// </summary>
         public readonly bool? AllowOptions;
         /// <summary>
@@ -23,48 +23,27 @@ namespace Zscaler.Zpa.Outputs
         /// </summary>
         public readonly string ApplicationPort;
         /// <summary>
-        /// Protocol for the BA app. Supported values: `HTTP` and `HTTPS`
+        /// Protocol for the BA app.
         /// </summary>
         public readonly string ApplicationProtocol;
         /// <summary>
-        /// ID of the BA certificate. Refer to the data source documentation for `zpa.BrowserCertificate`
+        /// ID of the BA certificate.
         /// </summary>
-        public readonly string CertificateId;
-        /// <summary>
-        /// (Optional)
-        /// </summary>
+        public readonly string? CertificateId;
         public readonly string? Cname;
-        /// <summary>
-        /// (Optional) Description of the application.
-        /// </summary>
         public readonly string? Description;
         /// <summary>
         /// Domain name or IP address of the BA app.
         /// </summary>
         public readonly string? Domain;
-        /// <summary>
-        /// (Optional) - Whether this app is enabled or not.
-        /// </summary>
         public readonly bool? Enabled;
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         public readonly bool? Hidden;
         public readonly string? Id;
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         public readonly string? LocalDomain;
-        /// <summary>
-        /// Name of BA app.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         public readonly string? Path;
         /// <summary>
-        /// (Optional)
+        /// Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
         /// </summary>
         public readonly bool? TrustUntrustedCert;
 
@@ -76,7 +55,7 @@ namespace Zscaler.Zpa.Outputs
 
             string applicationProtocol,
 
-            string certificateId,
+            string? certificateId,
 
             string? cname,
 

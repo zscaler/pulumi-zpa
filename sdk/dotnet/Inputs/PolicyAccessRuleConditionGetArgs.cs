@@ -13,29 +13,17 @@ namespace Zscaler.Zpa.Inputs
 
     public sealed class PolicyAccessRuleConditionGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// (Optional) The ID of a server group resource
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// (Optional) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
-
-        /// <summary>
-        /// (Optional) Supported values: ``true`` or ``false``
-        /// </summary>
-        [Input("negated")]
-        public Input<bool>? Negated { get; set; }
 
         [Input("operands")]
         private InputList<Inputs.PolicyAccessRuleConditionOperandGetArgs>? _operands;
 
         /// <summary>
-        /// (Optional) - Operands block must be repeated if multiple per `object_type` conditions are to be added to the rule.
+        /// This signifies the various policy criteria.
         /// </summary>
         public InputList<Inputs.PolicyAccessRuleConditionOperandGetArgs> Operands
         {
@@ -44,7 +32,7 @@ namespace Zscaler.Zpa.Inputs
         }
 
         /// <summary>
-        /// (Optional) Supported values: ``AND``, and ``OR``
+        /// Supported values: `AND`, `OR`
         /// </summary>
         [Input("operator", required: true)]
         public Input<string> Operator { get; set; } = null!;

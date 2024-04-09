@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-access-policy)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api)
+ *
  * Use the **zpa_policy_type** data source to get information about an a ``policySetId`` and ``policyType``. This data source is required when creating:
  *
  * 1. Access policy Rules
@@ -112,17 +115,8 @@ export function getPolicyType(args?: GetPolicyTypeArgs, opts?: pulumi.InvokeOpti
  */
 export interface GetPolicyTypeArgs {
     id?: string;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: string;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     microtenantName?: string;
-    /**
-     * The value for differentiating the policy types.
-     */
     policyType?: string;
 }
 
@@ -134,13 +128,7 @@ export interface GetPolicyTypeResult {
     readonly description: string;
     readonly enabled: boolean;
     readonly id?: string;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     readonly microtenantId?: string;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     readonly microtenantName?: string;
     readonly modifiedBy: string;
     readonly modifiedTime: string;
@@ -150,6 +138,9 @@ export interface GetPolicyTypeResult {
     readonly sorted: boolean;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-access-policy)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api)
+ *
  * Use the **zpa_policy_type** data source to get information about an a ``policySetId`` and ``policyType``. This data source is required when creating:
  *
  * 1. Access policy Rules
@@ -247,16 +238,7 @@ export function getPolicyTypeOutput(args?: GetPolicyTypeOutputArgs, opts?: pulum
  */
 export interface GetPolicyTypeOutputArgs {
     id?: pulumi.Input<string>;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: pulumi.Input<string>;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     microtenantName?: pulumi.Input<string>;
-    /**
-     * The value for differentiating the policy types.
-     */
     policyType?: pulumi.Input<string>;
 }

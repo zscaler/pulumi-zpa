@@ -27,13 +27,7 @@ namespace Zscaler.Zpa.Outputs
         public readonly string ModifiedTime;
         public readonly string Name;
         public readonly string Operator;
-        /// <summary>
-        /// The ID of the global policy set.
-        /// </summary>
         public readonly string PolicySetId;
-        /// <summary>
-        /// The value for differentiating the policy types.
-        /// </summary>
         public readonly string PolicyType;
         public readonly string Priority;
         public readonly bool ReauthDefaultRule;

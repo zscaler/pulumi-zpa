@@ -14,22 +14,10 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetCustomerVersionProfileVersionResult
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
         public readonly string CustomerId;
-        /// <summary>
-        /// The id of the enrollment certificate to be exported.
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedBy;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string Platform;
         public readonly string RestartAfterUptimeInDays;

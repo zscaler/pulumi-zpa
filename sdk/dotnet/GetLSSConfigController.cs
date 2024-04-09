@@ -13,12 +13,18 @@ namespace Zscaler.Zpa
     public static class GetLSSConfigController
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-log-streaming-service)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
+        /// 
         /// Use the **zpa_lss_config_controller** data source to get information about a Log Streaming (LSS) configuration resource created in the Zscaler Private Access.
         /// </summary>
         public static Task<GetLSSConfigControllerResult> InvokeAsync(GetLSSConfigControllerArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLSSConfigControllerResult>("zpa:index/getLSSConfigController:getLSSConfigController", args ?? new GetLSSConfigControllerArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-log-streaming-service)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
+        /// 
         /// Use the **zpa_lss_config_controller** data source to get information about a Log Streaming (LSS) configuration resource created in the Zscaler Private Access.
         /// </summary>
         public static Output<GetLSSConfigControllerResult> Invoke(GetLSSConfigControllerInvokeArgs? args = null, InvokeOptions? options = null)
@@ -30,19 +36,12 @@ namespace Zscaler.Zpa
     {
         [Input("configs")]
         private List<Inputs.GetLSSConfigControllerConfigArgs>? _configs;
-
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public List<Inputs.GetLSSConfigControllerConfigArgs> Configs
         {
             get => _configs ?? (_configs = new List<Inputs.GetLSSConfigControllerConfigArgs>());
             set => _configs = value;
         }
 
-        /// <summary>
-        /// This field defines the name of the log streaming resource.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
@@ -56,19 +55,12 @@ namespace Zscaler.Zpa
     {
         [Input("configs")]
         private InputList<Inputs.GetLSSConfigControllerConfigInputArgs>? _configs;
-
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public InputList<Inputs.GetLSSConfigControllerConfigInputArgs> Configs
         {
             get => _configs ?? (_configs = new InputList<Inputs.GetLSSConfigControllerConfigInputArgs>());
             set => _configs = value;
         }
 
-        /// <summary>
-        /// This field defines the name of the log streaming resource.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
@@ -82,17 +74,8 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetLSSConfigControllerResult
     {
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetLSSConfigControllerConfigResult> Configs;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetLSSConfigControllerConnectorGroupResult> ConnectorGroups;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? Id;
         public readonly ImmutableArray<Outputs.GetLSSConfigControllerPolicyRuleResult> PolicyRules;
 

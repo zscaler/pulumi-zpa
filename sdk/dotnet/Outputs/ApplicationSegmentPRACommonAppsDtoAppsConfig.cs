@@ -15,37 +15,14 @@ namespace Zscaler.Zpa.Outputs
     public sealed class ApplicationSegmentPRACommonAppsDtoAppsConfig
     {
         public readonly string? AppId;
-        /// <summary>
-        /// Indicates the type of application as Privileged Remote Access. Supported value: `SECURE_REMOTE_ACCESS`
-        /// </summary>
         public readonly ImmutableArray<string> AppTypes;
-        /// <summary>
-        /// Port for the Privileged Remote Access
-        /// </summary>
         public readonly string? ApplicationPort;
-        /// <summary>
-        /// Protocol for the Privileged Remote Access. Supported values: `RDP` and `SSH`
-        /// </summary>
         public readonly string? ApplicationProtocol;
-        /// <summary>
-        /// Parameter required when `application_protocol` is of type `RDP`
-        /// </summary>
         public readonly string? ConnectionSecurity;
-        /// <summary>
-        /// (Optional) Description of the application.
-        /// </summary>
         public readonly string? Description;
-        /// <summary>
-        /// Domain name of the Privileged Remote Access
-        /// </summary>
         public readonly string? Domain;
-        /// <summary>
-        /// Whether this application is enabled or not
-        /// </summary>
         public readonly bool? Enabled;
-        /// <summary>
-        /// Name of the Privileged Remote Access
-        /// </summary>
+        public readonly string? Id;
         public readonly string? Name;
 
         [OutputConstructor]
@@ -66,6 +43,8 @@ namespace Zscaler.Zpa.Outputs
 
             bool? enabled,
 
+            string? id,
+
             string? name)
         {
             AppId = appId;
@@ -76,6 +55,7 @@ namespace Zscaler.Zpa.Outputs
             Description = description;
             Domain = domain;
             Enabled = enabled;
+            Id = id;
             Name = name;
         }
     }

@@ -103,27 +103,15 @@ namespace Zscaler.Zpa
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// Default: false. Boolean: `true`, `false`.
-        /// </summary>
         [Input("isIncompleteDrConfig")]
         public bool? IsIncompleteDrConfig { get; set; }
 
-        /// <summary>
-        /// The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public string? MicrotenantId { get; set; }
 
-        /// <summary>
-        /// The name of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantName")]
         public string? MicrotenantName { get; set; }
 
-        /// <summary>
-        /// Name of the application.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -154,27 +142,15 @@ namespace Zscaler.Zpa
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// Default: false. Boolean: `true`, `false`.
-        /// </summary>
         [Input("isIncompleteDrConfig")]
         public Input<bool>? IsIncompleteDrConfig { get; set; }
 
-        /// <summary>
-        /// The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
-        /// <summary>
-        /// The name of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantName")]
         public Input<string>? MicrotenantName { get; set; }
 
-        /// <summary>
-        /// Name of the application.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

@@ -11,6 +11,8 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
+//
 // The **zpa_cloud_browser_isolation_certificate** resource creates a Cloud Browser Isolation certificate. This resource can then be used when creating a CBI External Profile `CloudBrowserIsolationExternalProfile`.`
 //
 // ## Example Usage
@@ -60,10 +62,8 @@ import (
 type CloudBrowserIsolationCertificate struct {
 	pulumi.CustomResourceState
 
-	// The name of the CBI certificate.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The certificate in PEM format.
-	Pem pulumi.StringPtrOutput `pulumi:"pem"`
+	Name pulumi.StringOutput    `pulumi:"name"`
+	Pem  pulumi.StringPtrOutput `pulumi:"pem"`
 }
 
 // NewCloudBrowserIsolationCertificate registers a new resource with the given unique name, arguments, and options.
@@ -96,17 +96,13 @@ func GetCloudBrowserIsolationCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CloudBrowserIsolationCertificate resources.
 type cloudBrowserIsolationCertificateState struct {
-	// The name of the CBI certificate.
 	Name *string `pulumi:"name"`
-	// The certificate in PEM format.
-	Pem *string `pulumi:"pem"`
+	Pem  *string `pulumi:"pem"`
 }
 
 type CloudBrowserIsolationCertificateState struct {
-	// The name of the CBI certificate.
 	Name pulumi.StringPtrInput
-	// The certificate in PEM format.
-	Pem pulumi.StringPtrInput
+	Pem  pulumi.StringPtrInput
 }
 
 func (CloudBrowserIsolationCertificateState) ElementType() reflect.Type {
@@ -114,18 +110,14 @@ func (CloudBrowserIsolationCertificateState) ElementType() reflect.Type {
 }
 
 type cloudBrowserIsolationCertificateArgs struct {
-	// The name of the CBI certificate.
 	Name *string `pulumi:"name"`
-	// The certificate in PEM format.
-	Pem *string `pulumi:"pem"`
+	Pem  *string `pulumi:"pem"`
 }
 
 // The set of arguments for constructing a CloudBrowserIsolationCertificate resource.
 type CloudBrowserIsolationCertificateArgs struct {
-	// The name of the CBI certificate.
 	Name pulumi.StringPtrInput
-	// The certificate in PEM format.
-	Pem pulumi.StringPtrInput
+	Pem  pulumi.StringPtrInput
 }
 
 func (CloudBrowserIsolationCertificateArgs) ElementType() reflect.Type {
@@ -215,12 +207,10 @@ func (o CloudBrowserIsolationCertificateOutput) ToCloudBrowserIsolationCertifica
 	return o
 }
 
-// The name of the CBI certificate.
 func (o CloudBrowserIsolationCertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudBrowserIsolationCertificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The certificate in PEM format.
 func (o CloudBrowserIsolationCertificateOutput) Pem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudBrowserIsolationCertificate) pulumi.StringPtrOutput { return v.Pem }).(pulumi.StringPtrOutput)
 }

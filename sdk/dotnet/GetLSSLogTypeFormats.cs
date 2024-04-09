@@ -13,6 +13,9 @@ namespace Zscaler.Zpa
     public static class GetLSSLogTypeFormats
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-log-streaming-service)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
+        /// 
         /// Use the **zpa_lss_config_log_type_formats** data source to get information about all LSS log type formats in the Zscaler Private Access cloud. This data source is required when creating an LSS Config Controller resource.
         /// 
         /// ## Example Usage
@@ -74,11 +77,29 @@ namespace Zscaler.Zpa
         /// });
         /// ```
         /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
+        /// ### Read-Only
+        /// 
+        /// The following arguments are supported:
+        /// 
+        /// * `log_type` - (Required) The type of log to be exported.
+        ///   * `zpn_trans_log`
+        ///   * `zpn_auth_log`
+        ///   * `zpn_ast_auth_log`
+        ///   * `zpn_http_trans_log`
+        ///   * `zpn_audit_log`
+        ///   * `zpn_sys_auth_log`
+        ///   * `zpn_ast_comprehensive_stats`
+        ///   * `zpn_waf_http_exchanges_log`
+        ///   * `zpn_pbroker_comprehensive_stats`
         /// </summary>
         public static Task<GetLSSLogTypeFormatsResult> InvokeAsync(GetLSSLogTypeFormatsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLSSLogTypeFormatsResult>("zpa:index/getLSSLogTypeFormats:getLSSLogTypeFormats", args ?? new GetLSSLogTypeFormatsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-log-streaming-service)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
+        /// 
         /// Use the **zpa_lss_config_log_type_formats** data source to get information about all LSS log type formats in the Zscaler Private Access cloud. This data source is required when creating an LSS Config Controller resource.
         /// 
         /// ## Example Usage
@@ -140,6 +161,21 @@ namespace Zscaler.Zpa
         /// });
         /// ```
         /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
+        /// ### Read-Only
+        /// 
+        /// The following arguments are supported:
+        /// 
+        /// * `log_type` - (Required) The type of log to be exported.
+        ///   * `zpn_trans_log`
+        ///   * `zpn_auth_log`
+        ///   * `zpn_ast_auth_log`
+        ///   * `zpn_http_trans_log`
+        ///   * `zpn_audit_log`
+        ///   * `zpn_sys_auth_log`
+        ///   * `zpn_ast_comprehensive_stats`
+        ///   * `zpn_waf_http_exchanges_log`
+        ///   * `zpn_pbroker_comprehensive_stats`
         /// </summary>
         public static Output<GetLSSLogTypeFormatsResult> Invoke(GetLSSLogTypeFormatsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLSSLogTypeFormatsResult>("zpa:index/getLSSLogTypeFormats:getLSSLogTypeFormats", args ?? new GetLSSLogTypeFormatsInvokeArgs(), options.WithDefaults());
@@ -148,9 +184,6 @@ namespace Zscaler.Zpa
 
     public sealed class GetLSSLogTypeFormatsArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The type of log to be exported.
-        /// </summary>
         [Input("logType", required: true)]
         public string LogType { get; set; } = null!;
 
@@ -162,9 +195,6 @@ namespace Zscaler.Zpa
 
     public sealed class GetLSSLogTypeFormatsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The type of log to be exported.
-        /// </summary>
         [Input("logType", required: true)]
         public Input<string> LogType { get; set; } = null!;
 

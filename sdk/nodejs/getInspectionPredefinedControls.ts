@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+ *
  * Use the **zpa_inspection_predefined_controls** data source to get information about an OWASP predefined control and prefedined control version. This data source is required when creating an inspection profile.
  *
  * ## Example Usage
@@ -39,17 +42,8 @@ export function getInspectionPredefinedControls(args?: GetInspectionPredefinedCo
  * A collection of arguments for invoking getInspectionPredefinedControls.
  */
 export interface GetInspectionPredefinedControlsArgs {
-    /**
-     * (Computed)
-     */
     id?: string;
-    /**
-     * The name of the predefined control.
-     */
     name?: string;
-    /**
-     * The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
-     */
     version?: string;
 }
 
@@ -57,78 +51,30 @@ export interface GetInspectionPredefinedControlsArgs {
  * A collection of values returned by getInspectionPredefinedControls.
  */
 export interface GetInspectionPredefinedControlsResult {
-    /**
-     * (Computed)
-     */
     readonly action: string;
-    /**
-     * (Computed)
-     */
     readonly actionValue: string;
-    /**
-     * (Computed)
-     */
     readonly associatedInspectionProfileNames: outputs.GetInspectionPredefinedControlsAssociatedInspectionProfileName[];
-    /**
-     * (Computed)
-     */
     readonly attachment: string;
-    /**
-     * (Computed)
-     */
     readonly controlGroup: string;
-    /**
-     * (Computed)
-     */
     readonly controlNumber: string;
-    /**
-     * (Computed)
-     */
     readonly controlType: string;
-    /**
-     * (Computed)
-     */
     readonly creationTime: string;
-    /**
-     * (Computed)
-     */
     readonly defaultAction: string;
-    /**
-     * (Computed)
-     */
     readonly defaultActionValue: string;
-    /**
-     * (Computed)
-     */
     readonly description: string;
-    /**
-     * (Computed)
-     */
     readonly id: string;
-    /**
-     * (Computed)
-     */
     readonly modifiedTime: string;
     readonly modifiedby: string;
-    /**
-     * (Computed)
-     */
     readonly name: string;
-    /**
-     * (Computed)
-     */
     readonly paranoiaLevel: string;
-    /**
-     * (Computed)
-     */
     readonly protocolType: string;
-    /**
-     * (Computed)
-     */
     readonly severity: string;
     readonly version?: string;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+ *
  * Use the **zpa_inspection_predefined_controls** data source to get information about an OWASP predefined control and prefedined control version. This data source is required when creating an inspection profile.
  *
  * ## Example Usage
@@ -154,16 +100,7 @@ export function getInspectionPredefinedControlsOutput(args?: GetInspectionPredef
  * A collection of arguments for invoking getInspectionPredefinedControls.
  */
 export interface GetInspectionPredefinedControlsOutputArgs {
-    /**
-     * (Computed)
-     */
     id?: pulumi.Input<string>;
-    /**
-     * The name of the predefined control.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
-     */
     version?: pulumi.Input<string>;
 }

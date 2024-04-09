@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-microtenants)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-microtenants-using-api)
+//
 // The **zpa_microtenant_controller** resource creates a microtenant controller in the Zscaler Private Access cloud. This resource allows organizations to delegate responsibilities of admins directly to the acquired or merged company admins so that they can manage their configurations independently
 //
 // ⚠️ **WARNING:**: This feature is in limited availability and requires additional license. To learn more, contact Zscaler Support or your local account team.
@@ -72,15 +75,13 @@ import (
 type Microtenant struct {
 	pulumi.CustomResourceState
 
-	// (Required) Type of authentication criteria for the microtenant
+	// - (Required) Type of authentication criteria for the microtenant
 	CriteriaAttribute pulumi.StringPtrOutput `pulumi:"criteriaAttribute"`
-	// (Required) The domain associated with the respective microtenant controller resource
+	// - (Required) The domain associated with the respective microtenant controller resource
 	CriteriaAttributeValues pulumi.StringArrayOutput `pulumi:"criteriaAttributeValues"`
-	// (Optional) Description of the microtenant controller.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// (Optional) Whether this microtenant resource is enabled or not.
-	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// (Required) Name of the microtenant controller.
+	Description             pulumi.StringPtrOutput   `pulumi:"description"`
+	Enabled                 pulumi.BoolOutput        `pulumi:"enabled"`
+	// - (Required) Name of the microtenant controller.
 	Name  pulumi.StringOutput        `pulumi:"name"`
 	Users MicrotenantUserArrayOutput `pulumi:"users"`
 }
@@ -115,29 +116,25 @@ func GetMicrotenant(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Microtenant resources.
 type microtenantState struct {
-	// (Required) Type of authentication criteria for the microtenant
+	// - (Required) Type of authentication criteria for the microtenant
 	CriteriaAttribute *string `pulumi:"criteriaAttribute"`
-	// (Required) The domain associated with the respective microtenant controller resource
+	// - (Required) The domain associated with the respective microtenant controller resource
 	CriteriaAttributeValues []string `pulumi:"criteriaAttributeValues"`
-	// (Optional) Description of the microtenant controller.
-	Description *string `pulumi:"description"`
-	// (Optional) Whether this microtenant resource is enabled or not.
-	Enabled *bool `pulumi:"enabled"`
-	// (Required) Name of the microtenant controller.
+	Description             *string  `pulumi:"description"`
+	Enabled                 *bool    `pulumi:"enabled"`
+	// - (Required) Name of the microtenant controller.
 	Name  *string           `pulumi:"name"`
 	Users []MicrotenantUser `pulumi:"users"`
 }
 
 type MicrotenantState struct {
-	// (Required) Type of authentication criteria for the microtenant
+	// - (Required) Type of authentication criteria for the microtenant
 	CriteriaAttribute pulumi.StringPtrInput
-	// (Required) The domain associated with the respective microtenant controller resource
+	// - (Required) The domain associated with the respective microtenant controller resource
 	CriteriaAttributeValues pulumi.StringArrayInput
-	// (Optional) Description of the microtenant controller.
-	Description pulumi.StringPtrInput
-	// (Optional) Whether this microtenant resource is enabled or not.
-	Enabled pulumi.BoolPtrInput
-	// (Required) Name of the microtenant controller.
+	Description             pulumi.StringPtrInput
+	Enabled                 pulumi.BoolPtrInput
+	// - (Required) Name of the microtenant controller.
 	Name  pulumi.StringPtrInput
 	Users MicrotenantUserArrayInput
 }
@@ -147,30 +144,26 @@ func (MicrotenantState) ElementType() reflect.Type {
 }
 
 type microtenantArgs struct {
-	// (Required) Type of authentication criteria for the microtenant
+	// - (Required) Type of authentication criteria for the microtenant
 	CriteriaAttribute *string `pulumi:"criteriaAttribute"`
-	// (Required) The domain associated with the respective microtenant controller resource
+	// - (Required) The domain associated with the respective microtenant controller resource
 	CriteriaAttributeValues []string `pulumi:"criteriaAttributeValues"`
-	// (Optional) Description of the microtenant controller.
-	Description *string `pulumi:"description"`
-	// (Optional) Whether this microtenant resource is enabled or not.
-	Enabled *bool `pulumi:"enabled"`
-	// (Required) Name of the microtenant controller.
+	Description             *string  `pulumi:"description"`
+	Enabled                 *bool    `pulumi:"enabled"`
+	// - (Required) Name of the microtenant controller.
 	Name  *string           `pulumi:"name"`
 	Users []MicrotenantUser `pulumi:"users"`
 }
 
 // The set of arguments for constructing a Microtenant resource.
 type MicrotenantArgs struct {
-	// (Required) Type of authentication criteria for the microtenant
+	// - (Required) Type of authentication criteria for the microtenant
 	CriteriaAttribute pulumi.StringPtrInput
-	// (Required) The domain associated with the respective microtenant controller resource
+	// - (Required) The domain associated with the respective microtenant controller resource
 	CriteriaAttributeValues pulumi.StringArrayInput
-	// (Optional) Description of the microtenant controller.
-	Description pulumi.StringPtrInput
-	// (Optional) Whether this microtenant resource is enabled or not.
-	Enabled pulumi.BoolPtrInput
-	// (Required) Name of the microtenant controller.
+	Description             pulumi.StringPtrInput
+	Enabled                 pulumi.BoolPtrInput
+	// - (Required) Name of the microtenant controller.
 	Name  pulumi.StringPtrInput
 	Users MicrotenantUserArrayInput
 }
@@ -262,27 +255,25 @@ func (o MicrotenantOutput) ToMicrotenantOutputWithContext(ctx context.Context) M
 	return o
 }
 
-// (Required) Type of authentication criteria for the microtenant
+// - (Required) Type of authentication criteria for the microtenant
 func (o MicrotenantOutput) CriteriaAttribute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Microtenant) pulumi.StringPtrOutput { return v.CriteriaAttribute }).(pulumi.StringPtrOutput)
 }
 
-// (Required) The domain associated with the respective microtenant controller resource
+// - (Required) The domain associated with the respective microtenant controller resource
 func (o MicrotenantOutput) CriteriaAttributeValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Microtenant) pulumi.StringArrayOutput { return v.CriteriaAttributeValues }).(pulumi.StringArrayOutput)
 }
 
-// (Optional) Description of the microtenant controller.
 func (o MicrotenantOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Microtenant) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Whether this microtenant resource is enabled or not.
 func (o MicrotenantOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Microtenant) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// (Required) Name of the microtenant controller.
+// - (Required) Name of the microtenant controller.
 func (o MicrotenantOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Microtenant) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

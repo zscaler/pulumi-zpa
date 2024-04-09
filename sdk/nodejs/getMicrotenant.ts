@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-microtenants)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-microtenants-using-api)
+ *
  * The **zpa_microtenant_controller** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source allows administrators to retrieve a specific microtenant ID, which can be passed to other supported resources via the `microtenantId` attribute.
  *
  * ⚠️ **WARNING:**: This feature is in limited availability and requires additional license. To learn more, contact Zscaler Support or your local account team.
@@ -40,7 +43,7 @@ export function getMicrotenant(args?: GetMicrotenantArgs, opts?: pulumi.InvokeOp
 export interface GetMicrotenantArgs {
     id?: string;
     /**
-     * (Required) Name of the microtenant controller.
+     * - (Required) Name of the microtenant controller.
      */
     name?: string;
 }
@@ -50,27 +53,15 @@ export interface GetMicrotenantArgs {
  */
 export interface GetMicrotenantResult {
     readonly creationTime: string;
-    /**
-     * (string) Type of authentication criteria for the microtenant
-     */
     readonly criteriaAttribute: string;
-    /**
-     * (string) The domain associated with the respective microtenant controller resource
-     */
     readonly criteriaAttributeValues: string[];
-    /**
-     * (string) Description of the microtenant controller.
-     */
     readonly description: string;
-    /**
-     * (bool) Whether this microtenant resource is enabled or not.
-     */
     readonly enabled: boolean;
     readonly id?: string;
     readonly modifiedBy: string;
     readonly modifiedTime: string;
     /**
-     * (Required) Name of the microtenant controller.
+     * - (Required) Name of the microtenant controller.
      */
     readonly name?: string;
     readonly operator: string;
@@ -79,6 +70,9 @@ export interface GetMicrotenantResult {
     readonly users: outputs.GetMicrotenantUser[];
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-microtenants)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-microtenants-using-api)
+ *
  * The **zpa_microtenant_controller** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source allows administrators to retrieve a specific microtenant ID, which can be passed to other supported resources via the `microtenantId` attribute.
  *
  * ⚠️ **WARNING:**: This feature is in limited availability and requires additional license. To learn more, contact Zscaler Support or your local account team.
@@ -106,7 +100,7 @@ export function getMicrotenantOutput(args?: GetMicrotenantOutputArgs, opts?: pul
 export interface GetMicrotenantOutputArgs {
     id?: pulumi.Input<string>;
     /**
-     * (Required) Name of the microtenant controller.
+     * - (Required) Name of the microtenant controller.
      */
     name?: pulumi.Input<string>;
 }

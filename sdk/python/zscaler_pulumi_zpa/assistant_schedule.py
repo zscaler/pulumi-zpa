@@ -21,11 +21,6 @@ class AssistantScheduleArgs:
                  frequency_interval: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AssistantSchedule resource.
-        :param pulumi.Input[str] customer_id: When enabling the Assistant Schedule for the first time, you must provide the `customer_id` information. If you authenticated using environment variables and used `ZPA_CUSTOMER_ID` environment variable, you don't have to define the customer_id attribute in the HCL configuration, and the provider will automatically use the value from the environment variable `ZPA_CUSTOMER_ID`
-        :param pulumi.Input[bool] delete_disabled: (Optional) - Indicates if the App Connectors are included for deletion if they are in a disconnected state based on frequencyInterval and frequency values. Supported values are: `true` or `false`
-        :param pulumi.Input[bool] enabled: (Optional) - Indicates if the setting for deleting App Connectors is enabled or disabled. Supported values are: `true` or `false`
-        :param pulumi.Input[str] frequency: The scheduled frequency at which the disconnected App Connectors are deleted. Supported value is: `days`
-        :param pulumi.Input[str] frequency_interval: The interval for the configured frequency value. The minimum supported value is 5. Supported values are: `5`, `7`, `14`, `30`, `60` and `90`
         """
         if customer_id is not None:
             pulumi.set(__self__, "customer_id", customer_id)
@@ -41,9 +36,6 @@ class AssistantScheduleArgs:
     @property
     @pulumi.getter(name="customerId")
     def customer_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        When enabling the Assistant Schedule for the first time, you must provide the `customer_id` information. If you authenticated using environment variables and used `ZPA_CUSTOMER_ID` environment variable, you don't have to define the customer_id attribute in the HCL configuration, and the provider will automatically use the value from the environment variable `ZPA_CUSTOMER_ID`
-        """
         return pulumi.get(self, "customer_id")
 
     @customer_id.setter
@@ -53,9 +45,6 @@ class AssistantScheduleArgs:
     @property
     @pulumi.getter(name="deleteDisabled")
     def delete_disabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        (Optional) - Indicates if the App Connectors are included for deletion if they are in a disconnected state based on frequencyInterval and frequency values. Supported values are: `true` or `false`
-        """
         return pulumi.get(self, "delete_disabled")
 
     @delete_disabled.setter
@@ -65,9 +54,6 @@ class AssistantScheduleArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        (Optional) - Indicates if the setting for deleting App Connectors is enabled or disabled. Supported values are: `true` or `false`
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -77,9 +63,6 @@ class AssistantScheduleArgs:
     @property
     @pulumi.getter
     def frequency(self) -> Optional[pulumi.Input[str]]:
-        """
-        The scheduled frequency at which the disconnected App Connectors are deleted. Supported value is: `days`
-        """
         return pulumi.get(self, "frequency")
 
     @frequency.setter
@@ -89,9 +72,6 @@ class AssistantScheduleArgs:
     @property
     @pulumi.getter(name="frequencyInterval")
     def frequency_interval(self) -> Optional[pulumi.Input[str]]:
-        """
-        The interval for the configured frequency value. The minimum supported value is 5. Supported values are: `5`, `7`, `14`, `30`, `60` and `90`
-        """
         return pulumi.get(self, "frequency_interval")
 
     @frequency_interval.setter
@@ -109,11 +89,6 @@ class _AssistantScheduleState:
                  frequency_interval: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AssistantSchedule resources.
-        :param pulumi.Input[str] customer_id: When enabling the Assistant Schedule for the first time, you must provide the `customer_id` information. If you authenticated using environment variables and used `ZPA_CUSTOMER_ID` environment variable, you don't have to define the customer_id attribute in the HCL configuration, and the provider will automatically use the value from the environment variable `ZPA_CUSTOMER_ID`
-        :param pulumi.Input[bool] delete_disabled: (Optional) - Indicates if the App Connectors are included for deletion if they are in a disconnected state based on frequencyInterval and frequency values. Supported values are: `true` or `false`
-        :param pulumi.Input[bool] enabled: (Optional) - Indicates if the setting for deleting App Connectors is enabled or disabled. Supported values are: `true` or `false`
-        :param pulumi.Input[str] frequency: The scheduled frequency at which the disconnected App Connectors are deleted. Supported value is: `days`
-        :param pulumi.Input[str] frequency_interval: The interval for the configured frequency value. The minimum supported value is 5. Supported values are: `5`, `7`, `14`, `30`, `60` and `90`
         """
         if customer_id is not None:
             pulumi.set(__self__, "customer_id", customer_id)
@@ -129,9 +104,6 @@ class _AssistantScheduleState:
     @property
     @pulumi.getter(name="customerId")
     def customer_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        When enabling the Assistant Schedule for the first time, you must provide the `customer_id` information. If you authenticated using environment variables and used `ZPA_CUSTOMER_ID` environment variable, you don't have to define the customer_id attribute in the HCL configuration, and the provider will automatically use the value from the environment variable `ZPA_CUSTOMER_ID`
-        """
         return pulumi.get(self, "customer_id")
 
     @customer_id.setter
@@ -141,9 +113,6 @@ class _AssistantScheduleState:
     @property
     @pulumi.getter(name="deleteDisabled")
     def delete_disabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        (Optional) - Indicates if the App Connectors are included for deletion if they are in a disconnected state based on frequencyInterval and frequency values. Supported values are: `true` or `false`
-        """
         return pulumi.get(self, "delete_disabled")
 
     @delete_disabled.setter
@@ -153,9 +122,6 @@ class _AssistantScheduleState:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        (Optional) - Indicates if the setting for deleting App Connectors is enabled or disabled. Supported values are: `true` or `false`
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -165,9 +131,6 @@ class _AssistantScheduleState:
     @property
     @pulumi.getter
     def frequency(self) -> Optional[pulumi.Input[str]]:
-        """
-        The scheduled frequency at which the disconnected App Connectors are deleted. Supported value is: `days`
-        """
         return pulumi.get(self, "frequency")
 
     @frequency.setter
@@ -177,9 +140,6 @@ class _AssistantScheduleState:
     @property
     @pulumi.getter(name="frequencyInterval")
     def frequency_interval(self) -> Optional[pulumi.Input[str]]:
-        """
-        The interval for the configured frequency value. The minimum supported value is 5. Supported values are: `5`, `7`, `14`, `30`, `60` and `90`
-        """
         return pulumi.get(self, "frequency_interval")
 
     @frequency_interval.setter
@@ -199,6 +159,9 @@ class AssistantSchedule(pulumi.CustomResource):
                  frequency_interval: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        * [Official documentation](https://help.zscaler.com/zpa/configuring-app-connectors-settings)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-auto-delete-disconnected-app-connectors-using-api)
+
         Use the **zpa_app_connector_assistant_schedule** resource sets the scheduled frequency at which the disconnected App Connectors are eligible for deletion. The supported value for frequency is days. The frequencyInterval field is the number of days after an App Connector disconnects for it to become eligible for deletion. The minimum supported value for frequencyInterval is 5.
 
         > **NOTE** - When enabling the Assistant Schedule for the first time, you must provide the `customer_id` information. If you authenticated using environment variables and used `ZPA_CUSTOMER_ID` environment variable, you don't have to define the customer_id attribute in the HCL configuration, and the provider will automatically use the value from the environment variable `ZPA_CUSTOMER_ID`
@@ -236,13 +199,12 @@ class AssistantSchedule(pulumi.CustomResource):
         ```
         <!--End PulumiCodeChooser -->
 
+        ## Import
+
+        Import is not currently supported for this resource.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] customer_id: When enabling the Assistant Schedule for the first time, you must provide the `customer_id` information. If you authenticated using environment variables and used `ZPA_CUSTOMER_ID` environment variable, you don't have to define the customer_id attribute in the HCL configuration, and the provider will automatically use the value from the environment variable `ZPA_CUSTOMER_ID`
-        :param pulumi.Input[bool] delete_disabled: (Optional) - Indicates if the App Connectors are included for deletion if they are in a disconnected state based on frequencyInterval and frequency values. Supported values are: `true` or `false`
-        :param pulumi.Input[bool] enabled: (Optional) - Indicates if the setting for deleting App Connectors is enabled or disabled. Supported values are: `true` or `false`
-        :param pulumi.Input[str] frequency: The scheduled frequency at which the disconnected App Connectors are deleted. Supported value is: `days`
-        :param pulumi.Input[str] frequency_interval: The interval for the configured frequency value. The minimum supported value is 5. Supported values are: `5`, `7`, `14`, `30`, `60` and `90`
         """
         ...
     @overload
@@ -251,6 +213,9 @@ class AssistantSchedule(pulumi.CustomResource):
                  args: Optional[AssistantScheduleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        * [Official documentation](https://help.zscaler.com/zpa/configuring-app-connectors-settings)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-auto-delete-disconnected-app-connectors-using-api)
+
         Use the **zpa_app_connector_assistant_schedule** resource sets the scheduled frequency at which the disconnected App Connectors are eligible for deletion. The supported value for frequency is days. The frequencyInterval field is the number of days after an App Connector disconnects for it to become eligible for deletion. The minimum supported value for frequencyInterval is 5.
 
         > **NOTE** - When enabling the Assistant Schedule for the first time, you must provide the `customer_id` information. If you authenticated using environment variables and used `ZPA_CUSTOMER_ID` environment variable, you don't have to define the customer_id attribute in the HCL configuration, and the provider will automatically use the value from the environment variable `ZPA_CUSTOMER_ID`
@@ -287,6 +252,10 @@ class AssistantSchedule(pulumi.CustomResource):
             frequency_interval="5")
         ```
         <!--End PulumiCodeChooser -->
+
+        ## Import
+
+        Import is not currently supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param AssistantScheduleArgs args: The arguments to use to populate this resource's properties.
@@ -344,11 +313,6 @@ class AssistantSchedule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] customer_id: When enabling the Assistant Schedule for the first time, you must provide the `customer_id` information. If you authenticated using environment variables and used `ZPA_CUSTOMER_ID` environment variable, you don't have to define the customer_id attribute in the HCL configuration, and the provider will automatically use the value from the environment variable `ZPA_CUSTOMER_ID`
-        :param pulumi.Input[bool] delete_disabled: (Optional) - Indicates if the App Connectors are included for deletion if they are in a disconnected state based on frequencyInterval and frequency values. Supported values are: `true` or `false`
-        :param pulumi.Input[bool] enabled: (Optional) - Indicates if the setting for deleting App Connectors is enabled or disabled. Supported values are: `true` or `false`
-        :param pulumi.Input[str] frequency: The scheduled frequency at which the disconnected App Connectors are deleted. Supported value is: `days`
-        :param pulumi.Input[str] frequency_interval: The interval for the configured frequency value. The minimum supported value is 5. Supported values are: `5`, `7`, `14`, `30`, `60` and `90`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -364,40 +328,25 @@ class AssistantSchedule(pulumi.CustomResource):
     @property
     @pulumi.getter(name="customerId")
     def customer_id(self) -> pulumi.Output[str]:
-        """
-        When enabling the Assistant Schedule for the first time, you must provide the `customer_id` information. If you authenticated using environment variables and used `ZPA_CUSTOMER_ID` environment variable, you don't have to define the customer_id attribute in the HCL configuration, and the provider will automatically use the value from the environment variable `ZPA_CUSTOMER_ID`
-        """
         return pulumi.get(self, "customer_id")
 
     @property
     @pulumi.getter(name="deleteDisabled")
     def delete_disabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        (Optional) - Indicates if the App Connectors are included for deletion if they are in a disconnected state based on frequencyInterval and frequency values. Supported values are: `true` or `false`
-        """
         return pulumi.get(self, "delete_disabled")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        (Optional) - Indicates if the setting for deleting App Connectors is enabled or disabled. Supported values are: `true` or `false`
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def frequency(self) -> pulumi.Output[Optional[str]]:
-        """
-        The scheduled frequency at which the disconnected App Connectors are deleted. Supported value is: `days`
-        """
         return pulumi.get(self, "frequency")
 
     @property
     @pulumi.getter(name="frequencyInterval")
     def frequency_interval(self) -> pulumi.Output[Optional[str]]:
-        """
-        The interval for the configured frequency value. The minimum supported value is 5. Supported values are: `5`, `7`, `14`, `30`, `60` and `90`
-        """
         return pulumi.get(self, "frequency_interval")
 

@@ -13,6 +13,9 @@ namespace Zscaler.Zpa
     public static class GetPolicyType
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-access-policy)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api)
+        /// 
         /// Use the **zpa_policy_type** data source to get information about an a ``policy_set_id`` and ``policy_type``. This data source is required when creating:
         /// 
         /// 1. Access policy Rules
@@ -165,6 +168,9 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPolicyTypeResult>("zpa:index/getPolicyType:getPolicyType", args ?? new GetPolicyTypeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-access-policy)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api)
+        /// 
         /// Use the **zpa_policy_type** data source to get information about an a ``policy_set_id`` and ``policy_type``. This data source is required when creating:
         /// 
         /// 1. Access policy Rules
@@ -323,21 +329,12 @@ namespace Zscaler.Zpa
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public string? MicrotenantId { get; set; }
 
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantName")]
         public string? MicrotenantName { get; set; }
 
-        /// <summary>
-        /// The value for differentiating the policy types.
-        /// </summary>
         [Input("policyType")]
         public string? PolicyType { get; set; }
 
@@ -352,21 +349,12 @@ namespace Zscaler.Zpa
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantName")]
         public Input<string>? MicrotenantName { get; set; }
 
-        /// <summary>
-        /// The value for differentiating the policy types.
-        /// </summary>
         [Input("policyType")]
         public Input<string>? PolicyType { get; set; }
 
@@ -384,13 +372,7 @@ namespace Zscaler.Zpa
         public readonly string Description;
         public readonly bool Enabled;
         public readonly string? Id;
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         public readonly string? MicrotenantId;
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         public readonly string? MicrotenantName;
         public readonly string ModifiedBy;
         public readonly string ModifiedTime;

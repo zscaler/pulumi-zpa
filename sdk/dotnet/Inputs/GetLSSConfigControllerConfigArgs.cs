@@ -13,69 +13,38 @@ namespace Zscaler.Zpa.Inputs
 
     public sealed class GetLSSConfigControllerConfigInputArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         [Input("auditMessage", required: true)]
         public Input<string> AuditMessage { get; set; } = null!;
 
-        /// <summary>
-        /// (string)
-        /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
-        /// <summary>
-        /// (bool)
-        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
         [Input("filters", required: true)]
         private InputList<string>? _filters;
-
-        /// <summary>
-        /// (string)
-        /// </summary>
         public InputList<string> Filters
         {
             get => _filters ?? (_filters = new InputList<string>());
             set => _filters = value;
         }
 
-        /// <summary>
-        /// (string)
-        /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
 
-        /// <summary>
-        /// This field defines the name of the log streaming resource.
-        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
-        /// <summary>
-        /// (string)
-        /// </summary>
         [Input("lssHost", required: true)]
         public Input<string> LssHost { get; set; } = null!;
 
-        /// <summary>
-        /// (string)
-        /// </summary>
         [Input("lssPort", required: true)]
         public Input<string> LssPort { get; set; } = null!;
 
-        /// <summary>
-        /// This field defines the name of the log streaming resource.
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// (string)
-        /// </summary>
         [Input("sourceLogType", required: true)]
         public Input<string> SourceLogType { get; set; } = null!;
 

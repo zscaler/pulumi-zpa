@@ -20,7 +20,7 @@ class PolicyAccessReorderRuleArgs:
                  rules: pulumi.Input[Sequence[pulumi.Input['PolicyAccessReorderRuleRuleArgs']]]):
         """
         The set of arguments for constructing a PolicyAccessReorderRule resource.
-        :param pulumi.Input[Sequence[pulumi.Input['PolicyAccessReorderRuleRuleArgs']]] rules: (Required)
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyAccessReorderRuleRuleArgs']]] rules: List of rules and their orders
         """
         pulumi.set(__self__, "policy_type", policy_type)
         pulumi.set(__self__, "rules", rules)
@@ -38,7 +38,7 @@ class PolicyAccessReorderRuleArgs:
     @pulumi.getter
     def rules(self) -> pulumi.Input[Sequence[pulumi.Input['PolicyAccessReorderRuleRuleArgs']]]:
         """
-        (Required)
+        List of rules and their orders
         """
         return pulumi.get(self, "rules")
 
@@ -54,7 +54,7 @@ class _PolicyAccessReorderRuleState:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAccessReorderRuleRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering PolicyAccessReorderRule resources.
-        :param pulumi.Input[Sequence[pulumi.Input['PolicyAccessReorderRuleRuleArgs']]] rules: (Required)
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyAccessReorderRuleRuleArgs']]] rules: List of rules and their orders
         """
         if policy_type is not None:
             pulumi.set(__self__, "policy_type", policy_type)
@@ -74,7 +74,7 @@ class _PolicyAccessReorderRuleState:
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAccessReorderRuleRuleArgs']]]]:
         """
-        (Required)
+        List of rules and their orders
         """
         return pulumi.get(self, "rules")
 
@@ -92,7 +92,10 @@ class PolicyAccessReorderRule(pulumi.CustomResource):
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyAccessReorderRuleRuleArgs']]]]] = None,
                  __props__=None):
         """
-        The **zpa_policy_access_rule_reorder** is a dedicated resource to manage and update rule_orders in any of the supported ZPA Policy Access types Zscaler Private Access cloud.
+        * [Official documentation](https://help.zscaler.com/zpa/about-access-policy)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api)
+
+        The **zpa_policy_access_rule_reorder** is a dedicated resource to manage and update `rule_orders` in any of the supported ZPA Policy Access types Zscaler Private Access cloud.
 
         ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of this resource for all ZPA policy types.
 
@@ -100,7 +103,7 @@ class PolicyAccessReorderRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyAccessReorderRuleRuleArgs']]]] rules: (Required)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyAccessReorderRuleRuleArgs']]]] rules: List of rules and their orders
         """
         ...
     @overload
@@ -109,7 +112,10 @@ class PolicyAccessReorderRule(pulumi.CustomResource):
                  args: PolicyAccessReorderRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The **zpa_policy_access_rule_reorder** is a dedicated resource to manage and update rule_orders in any of the supported ZPA Policy Access types Zscaler Private Access cloud.
+        * [Official documentation](https://help.zscaler.com/zpa/about-access-policy)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api)
+
+        The **zpa_policy_access_rule_reorder** is a dedicated resource to manage and update `rule_orders` in any of the supported ZPA Policy Access types Zscaler Private Access cloud.
 
         ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of this resource for all ZPA policy types.
 
@@ -166,7 +172,7 @@ class PolicyAccessReorderRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyAccessReorderRuleRuleArgs']]]] rules: (Required)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyAccessReorderRuleRuleArgs']]]] rules: List of rules and their orders
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -185,7 +191,7 @@ class PolicyAccessReorderRule(pulumi.CustomResource):
     @pulumi.getter
     def rules(self) -> pulumi.Output[Sequence['outputs.PolicyAccessReorderRuleRule']]:
         """
-        (Required)
+        List of rules and their orders
         """
         return pulumi.get(self, "rules")
 

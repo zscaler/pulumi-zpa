@@ -22,7 +22,7 @@ type Provider struct {
 	ZpaClientId pulumi.StringPtrOutput `pulumi:"zpaClientId"`
 	// zpa client secret
 	ZpaClientSecret pulumi.StringPtrOutput `pulumi:"zpaClientSecret"`
-	// Cloud to use PRODUCTION, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
+	// Cloud to use PRODUCTION, ZPATWO, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
 	ZpaCloud pulumi.StringPtrOutput `pulumi:"zpaCloud"`
 	// zpa customer id
 	ZpaCustomerId pulumi.StringPtrOutput `pulumi:"zpaCustomerId"`
@@ -80,7 +80,7 @@ type providerArgs struct {
 	ZpaClientId *string `pulumi:"zpaClientId"`
 	// zpa client secret
 	ZpaClientSecret *string `pulumi:"zpaClientSecret"`
-	// Cloud to use PRODUCTION, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
+	// Cloud to use PRODUCTION, ZPATWO, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
 	ZpaCloud *string `pulumi:"zpaCloud"`
 	// zpa customer id
 	ZpaCustomerId *string `pulumi:"zpaCustomerId"`
@@ -92,7 +92,7 @@ type ProviderArgs struct {
 	ZpaClientId pulumi.StringPtrInput
 	// zpa client secret
 	ZpaClientSecret pulumi.StringPtrInput
-	// Cloud to use PRODUCTION, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
+	// Cloud to use PRODUCTION, ZPATWO, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
 	ZpaCloud pulumi.StringPtrInput
 	// zpa customer id
 	ZpaCustomerId pulumi.StringPtrInput
@@ -145,7 +145,7 @@ func (o ProviderOutput) ZpaClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ZpaClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// Cloud to use PRODUCTION, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
+// Cloud to use PRODUCTION, ZPATWO, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
 func (o ProviderOutput) ZpaCloud() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ZpaCloud }).(pulumi.StringPtrOutput)
 }

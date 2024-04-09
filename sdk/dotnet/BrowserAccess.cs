@@ -10,125 +10,12 @@ using Pulumi;
 
 namespace Zscaler.Zpa
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Zpa = Pulumi.Zpa;
-    /// using Zpa = Zscaler.Zpa;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var testCert = Zpa.GetBaCertificate.Invoke(new()
-    ///     {
-    ///         Name = "sales.acme.com",
-    ///     });
-    /// 
-    ///     // ZPA Segment Group resource
-    ///     var exampleSegmentGroup = new Zpa.SegmentGroup("exampleSegmentGroup", new()
-    ///     {
-    ///         Description = "Example",
-    ///         Enabled = true,
-    ///     });
-    /// 
-    ///     var exampleAppConnectorGroup = Zpa.GetAppConnectorGroup.Invoke(new()
-    ///     {
-    ///         Name = "AWS-Connector",
-    ///     });
-    /// 
-    ///     // ZPA Server Group resource
-    ///     var exampleServerGroup = new Zpa.ServerGroup("exampleServerGroup", new()
-    ///     {
-    ///         Description = "Example",
-    ///         Enabled = true,
-    ///         DynamicDiscovery = true,
-    ///         AppConnectorGroups = new[]
-    ///         {
-    ///             new Zpa.Inputs.ServerGroupAppConnectorGroupArgs
-    ///             {
-    ///                 Ids = new[]
-    ///                 {
-    ///                     exampleAppConnectorGroup.Apply(getAppConnectorGroupResult =&gt; getAppConnectorGroupResult.Id),
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     // Create Browser Access Application
-    ///     var browserAccessApps = new Zpa.BrowserAccess("browserAccessApps", new()
-    ///     {
-    ///         Description = "Browser Access Apps",
-    ///         Enabled = true,
-    ///         HealthReporting = "ON_ACCESS",
-    ///         BypassType = "NEVER",
-    ///         TcpPortRanges = new[]
-    ///         {
-    ///             "80",
-    ///             "80",
-    ///         },
-    ///         DomainNames = new[]
-    ///         {
-    ///             "sales.acme.com",
-    ///         },
-    ///         SegmentGroupId = exampleSegmentGroup.Id,
-    ///         ClientlessApps = new[]
-    ///         {
-    ///             new Zpa.Inputs.BrowserAccessClientlessAppArgs
-    ///             {
-    ///                 Name = "sales.acme.com",
-    ///                 ApplicationProtocol = "HTTP",
-    ///                 ApplicationPort = "80",
-    ///                 CertificateId = testCert.Apply(getBaCertificateResult =&gt; getBaCertificateResult.Id),
-    ///                 TrustUntrustedCert = true,
-    ///                 Enabled = true,
-    ///                 Domain = "sales.acme.com",
-    ///             },
-    ///         },
-    ///         ServerGroups = new[]
-    ///         {
-    ///             new Zpa.Inputs.BrowserAccessServerGroupArgs
-    ///             {
-    ///                 Ids = new[]
-    ///                 {
-    ///                     exampleServerGroup.Id,
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
-    /// ## Import
-    /// 
-    /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-    /// 
-    /// Visit
-    /// 
-    /// **zpa_application_segment_browser_access** Application Segment Browser Access can be imported by using &lt;`BROWSER ACCESS ID`&gt; or `&lt;&lt;BROWSER ACCESS NAME&gt;` as the import ID.
-    /// 
-    /// For example:
-    /// 
-    /// ```sh
-    /// $ pulumi import zpa:index/browserAccess:BrowserAccess example &lt;browser_access_id&gt;.
-    /// ```
-    /// 
-    /// or
-    /// 
-    /// ```sh
-    /// $ pulumi import zpa:index/browserAccess:BrowserAccess example &lt;browser_access_name&gt;
-    /// ```
-    /// </summary>
     [ZpaResourceType("zpa:index/browserAccess:BrowserAccess")]
     public partial class BrowserAccess : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (Optional) Indicates whether users can bypass ZPA to access applications. Default value is: `NEVER` and supported values are: `ALWAYS`, `NEVER` and `ON_NET`. The value `NEVER` indicates the use of the client forwarding policy.
+        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
+        /// The value NEVER indicates the use of the client forwarding policy.
         /// </summary>
         [Output("bypassType")]
         public Output<string?> BypassType { get; private set; } = null!;
@@ -136,14 +23,11 @@ namespace Zscaler.Zpa
         [Output("clientlessApps")]
         public Output<ImmutableArray<Outputs.BrowserAccessClientlessApp>> ClientlessApps { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `SIEM`
-        /// </summary>
         [Output("configSpace")]
         public Output<string?> ConfigSpace { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Description of the application.
+        /// Description of the application.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -155,40 +39,32 @@ namespace Zscaler.Zpa
         public Output<ImmutableArray<string>> DomainNames { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Whether Double Encryption is enabled or disabled for the app.
+        /// Whether Double Encryption is enabled or disabled for the app.
         /// </summary>
         [Output("doubleEncrypt")]
         public Output<bool?> DoubleEncrypt { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional) - Whether this app is enabled or not.
-        /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `NONE`
-        /// </summary>
         [Output("healthCheckType")]
-        public Output<string> HealthCheckType { get; private set; } = null!;
+        public Output<string?> HealthCheckType { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
+        /// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
         /// </summary>
         [Output("healthReporting")]
-        public Output<string> HealthReporting { get; private set; } = null!;
+        public Output<string?> HealthReporting { get; private set; } = null!;
 
         [Output("icmpAccessType")]
         public Output<string?> IcmpAccessType { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional) - If Source IP Anchoring for use with ZIA, is enabled or disabled for the app. Supported values are `true` and `false`
-        /// </summary>
         [Output("ipAnchored")]
         public Output<bool?> IpAnchored { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
+        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+        /// connectors.
         /// </summary>
         [Output("isCnameEnabled")]
         public Output<bool?> IsCnameEnabled { get; private set; } = null!;
@@ -196,8 +72,11 @@ namespace Zscaler.Zpa
         [Output("isIncompleteDrConfig")]
         public Output<bool?> IsIncompleteDrConfig { get; private set; } = null!;
 
+        [Output("matchStyle")]
+        public Output<string> MatchStyle { get; private set; } = null!;
+
         /// <summary>
-        /// Name of BA app.
+        /// Name of the application.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -205,9 +84,6 @@ namespace Zscaler.Zpa
         [Output("passiveHealthEnabled")]
         public Output<bool> PassiveHealthEnabled { get; private set; } = null!;
 
-        /// <summary>
-        /// List of Segment Group IDs
-        /// </summary>
         [Output("segmentGroupId")]
         public Output<string> SegmentGroupId { get; private set; } = null!;
 
@@ -218,7 +94,7 @@ namespace Zscaler.Zpa
         public Output<bool?> SelectConnectorCloseToApp { get; private set; } = null!;
 
         /// <summary>
-        /// List of Server Group IDs
+        /// List of the server group IDs.
         /// </summary>
         [Output("serverGroups")]
         public Output<ImmutableArray<Outputs.BrowserAccessServerGroup>> ServerGroups { get; private set; } = null!;
@@ -301,7 +177,8 @@ namespace Zscaler.Zpa
     public sealed class BrowserAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional) Indicates whether users can bypass ZPA to access applications. Default value is: `NEVER` and supported values are: `ALWAYS`, `NEVER` and `ON_NET`. The value `NEVER` indicates the use of the client forwarding policy.
+        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
+        /// The value NEVER indicates the use of the client forwarding policy.
         /// </summary>
         [Input("bypassType")]
         public Input<string>? BypassType { get; set; }
@@ -314,14 +191,11 @@ namespace Zscaler.Zpa
             set => _clientlessApps = value;
         }
 
-        /// <summary>
-        /// (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `SIEM`
-        /// </summary>
         [Input("configSpace")]
         public Input<string>? ConfigSpace { get; set; }
 
         /// <summary>
-        /// (Optional) Description of the application.
+        /// Description of the application.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -339,25 +213,19 @@ namespace Zscaler.Zpa
         }
 
         /// <summary>
-        /// (Optional) Whether Double Encryption is enabled or disabled for the app.
+        /// Whether Double Encryption is enabled or disabled for the app.
         /// </summary>
         [Input("doubleEncrypt")]
         public Input<bool>? DoubleEncrypt { get; set; }
 
-        /// <summary>
-        /// (Optional) - Whether this app is enabled or not.
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `NONE`
-        /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
         /// <summary>
-        /// (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
+        /// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
         /// </summary>
         [Input("healthReporting")]
         public Input<string>? HealthReporting { get; set; }
@@ -365,14 +233,12 @@ namespace Zscaler.Zpa
         [Input("icmpAccessType")]
         public Input<string>? IcmpAccessType { get; set; }
 
-        /// <summary>
-        /// (Optional) - If Source IP Anchoring for use with ZIA, is enabled or disabled for the app. Supported values are `true` and `false`
-        /// </summary>
         [Input("ipAnchored")]
         public Input<bool>? IpAnchored { get; set; }
 
         /// <summary>
-        /// (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
+        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+        /// connectors.
         /// </summary>
         [Input("isCnameEnabled")]
         public Input<bool>? IsCnameEnabled { get; set; }
@@ -380,8 +246,11 @@ namespace Zscaler.Zpa
         [Input("isIncompleteDrConfig")]
         public Input<bool>? IsIncompleteDrConfig { get; set; }
 
+        [Input("matchStyle")]
+        public Input<string>? MatchStyle { get; set; }
+
         /// <summary>
-        /// Name of BA app.
+        /// Name of the application.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -389,9 +258,6 @@ namespace Zscaler.Zpa
         [Input("passiveHealthEnabled")]
         public Input<bool>? PassiveHealthEnabled { get; set; }
 
-        /// <summary>
-        /// List of Segment Group IDs
-        /// </summary>
         [Input("segmentGroupId", required: true)]
         public Input<string> SegmentGroupId { get; set; } = null!;
 
@@ -405,7 +271,7 @@ namespace Zscaler.Zpa
         private InputList<Inputs.BrowserAccessServerGroupArgs>? _serverGroups;
 
         /// <summary>
-        /// List of Server Group IDs
+        /// List of the server group IDs.
         /// </summary>
         public InputList<Inputs.BrowserAccessServerGroupArgs> ServerGroups
         {
@@ -476,7 +342,8 @@ namespace Zscaler.Zpa
     public sealed class BrowserAccessState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional) Indicates whether users can bypass ZPA to access applications. Default value is: `NEVER` and supported values are: `ALWAYS`, `NEVER` and `ON_NET`. The value `NEVER` indicates the use of the client forwarding policy.
+        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
+        /// The value NEVER indicates the use of the client forwarding policy.
         /// </summary>
         [Input("bypassType")]
         public Input<string>? BypassType { get; set; }
@@ -489,14 +356,11 @@ namespace Zscaler.Zpa
             set => _clientlessApps = value;
         }
 
-        /// <summary>
-        /// (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `SIEM`
-        /// </summary>
         [Input("configSpace")]
         public Input<string>? ConfigSpace { get; set; }
 
         /// <summary>
-        /// (Optional) Description of the application.
+        /// Description of the application.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -514,25 +378,19 @@ namespace Zscaler.Zpa
         }
 
         /// <summary>
-        /// (Optional) Whether Double Encryption is enabled or disabled for the app.
+        /// Whether Double Encryption is enabled or disabled for the app.
         /// </summary>
         [Input("doubleEncrypt")]
         public Input<bool>? DoubleEncrypt { get; set; }
 
-        /// <summary>
-        /// (Optional) - Whether this app is enabled or not.
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `NONE`
-        /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
         /// <summary>
-        /// (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
+        /// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
         /// </summary>
         [Input("healthReporting")]
         public Input<string>? HealthReporting { get; set; }
@@ -540,14 +398,12 @@ namespace Zscaler.Zpa
         [Input("icmpAccessType")]
         public Input<string>? IcmpAccessType { get; set; }
 
-        /// <summary>
-        /// (Optional) - If Source IP Anchoring for use with ZIA, is enabled or disabled for the app. Supported values are `true` and `false`
-        /// </summary>
         [Input("ipAnchored")]
         public Input<bool>? IpAnchored { get; set; }
 
         /// <summary>
-        /// (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
+        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+        /// connectors.
         /// </summary>
         [Input("isCnameEnabled")]
         public Input<bool>? IsCnameEnabled { get; set; }
@@ -555,8 +411,11 @@ namespace Zscaler.Zpa
         [Input("isIncompleteDrConfig")]
         public Input<bool>? IsIncompleteDrConfig { get; set; }
 
+        [Input("matchStyle")]
+        public Input<string>? MatchStyle { get; set; }
+
         /// <summary>
-        /// Name of BA app.
+        /// Name of the application.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -564,9 +423,6 @@ namespace Zscaler.Zpa
         [Input("passiveHealthEnabled")]
         public Input<bool>? PassiveHealthEnabled { get; set; }
 
-        /// <summary>
-        /// List of Segment Group IDs
-        /// </summary>
         [Input("segmentGroupId")]
         public Input<string>? SegmentGroupId { get; set; }
 
@@ -580,7 +436,7 @@ namespace Zscaler.Zpa
         private InputList<Inputs.BrowserAccessServerGroupGetArgs>? _serverGroups;
 
         /// <summary>
-        /// List of Server Group IDs
+        /// List of the server group IDs.
         /// </summary>
         public InputList<Inputs.BrowserAccessServerGroupGetArgs> ServerGroups
         {

@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-web-server-certificates)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-certificates-using-api)
+ *
  * Use the **zpa_ba_certificate** creates a browser access certificate with a private key in the Zscaler Private Access cloud. This resource is required when creating a browser access application segment resource.
  *
  * ## Example Usage
@@ -38,6 +41,24 @@ import * as utilities from "./utilities";
  * });
  * ```
  * <!--End PulumiCodeChooser -->
+ *
+ * ## Let's Encrypt Certbot
+ *
+ * This example demonstrates generatoring a domain certificate with letsencrypt
+ * certbot https://letsencrypt.org/getting-started/
+ *
+ * Use letsencrypt's certbot to generate domain certificates in RSA output mode.
+ * The generator's output corresponds to `zpa.BrowserCertificate` fields in the
+ * following manner.
+ *
+ * Zscaler Field          | Certbot file
+ * --------------------|--------------
+ * `certblob`          | `cert.pem`
+ * `certblob`          | `privkey.pem`
+ *
+ * ## Import
+ *
+ * This resource does not support importing.
  */
 export class BrowserCertificate extends pulumi.CustomResource {
     /**
@@ -68,15 +89,15 @@ export class BrowserCertificate extends pulumi.CustomResource {
     }
 
     /**
-     * The content of the certificate in PEM format.
+     * The description of the certificate
      */
-    public readonly certBlob!: pulumi.Output<string>;
+    public readonly certBlob!: pulumi.Output<string | undefined>;
     /**
      * The certificate text in PEM format
      */
     public /*out*/ readonly certificate!: pulumi.Output<string>;
     /**
-     * (string) - The description of the certificate.
+     * The description of the certificate
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -84,7 +105,7 @@ export class BrowserCertificate extends pulumi.CustomResource {
      */
     public readonly microtenantId!: pulumi.Output<string>;
     /**
-     * The name of the browser access certificate to be created.
+     * The name of the certificate.
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -95,7 +116,7 @@ export class BrowserCertificate extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: BrowserCertificateArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: BrowserCertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BrowserCertificateArgs | BrowserCertificateState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -108,9 +129,6 @@ export class BrowserCertificate extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as BrowserCertificateArgs | undefined;
-            if ((!args || args.certBlob === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'certBlob'");
-            }
             resourceInputs["certBlob"] = args ? args.certBlob : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
@@ -127,7 +145,7 @@ export class BrowserCertificate extends pulumi.CustomResource {
  */
 export interface BrowserCertificateState {
     /**
-     * The content of the certificate in PEM format.
+     * The description of the certificate
      */
     certBlob?: pulumi.Input<string>;
     /**
@@ -135,7 +153,7 @@ export interface BrowserCertificateState {
      */
     certificate?: pulumi.Input<string>;
     /**
-     * (string) - The description of the certificate.
+     * The description of the certificate
      */
     description?: pulumi.Input<string>;
     /**
@@ -143,7 +161,7 @@ export interface BrowserCertificateState {
      */
     microtenantId?: pulumi.Input<string>;
     /**
-     * The name of the browser access certificate to be created.
+     * The name of the certificate.
      */
     name?: pulumi.Input<string>;
 }
@@ -153,11 +171,11 @@ export interface BrowserCertificateState {
  */
 export interface BrowserCertificateArgs {
     /**
-     * The content of the certificate in PEM format.
+     * The description of the certificate
      */
-    certBlob: pulumi.Input<string>;
+    certBlob?: pulumi.Input<string>;
     /**
-     * (string) - The description of the certificate.
+     * The description of the certificate
      */
     description?: pulumi.Input<string>;
     /**
@@ -165,7 +183,7 @@ export interface BrowserCertificateArgs {
      */
     microtenantId?: pulumi.Input<string>;
     /**
-     * The name of the browser access certificate to be created.
+     * The name of the certificate.
      */
     name?: pulumi.Input<string>;
 }

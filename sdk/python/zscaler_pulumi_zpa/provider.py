@@ -22,7 +22,7 @@ class ProviderArgs:
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] zpa_client_id: zpa client id
         :param pulumi.Input[str] zpa_client_secret: zpa client secret
-        :param pulumi.Input[str] zpa_cloud: Cloud to use PRODUCTION, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
+        :param pulumi.Input[str] zpa_cloud: Cloud to use PRODUCTION, ZPATWO, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
         :param pulumi.Input[str] zpa_customer_id: zpa customer id
         """
         if zpa_client_id is None:
@@ -70,7 +70,7 @@ class ProviderArgs:
     @pulumi.getter(name="zpaCloud")
     def zpa_cloud(self) -> Optional[pulumi.Input[str]]:
         """
-        Cloud to use PRODUCTION, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
+        Cloud to use PRODUCTION, ZPATWO, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
         """
         return pulumi.get(self, "zpa_cloud")
 
@@ -111,7 +111,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] zpa_client_id: zpa client id
         :param pulumi.Input[str] zpa_client_secret: zpa client secret
-        :param pulumi.Input[str] zpa_cloud: Cloud to use PRODUCTION, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
+        :param pulumi.Input[str] zpa_cloud: Cloud to use PRODUCTION, ZPATWO, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
         :param pulumi.Input[str] zpa_customer_id: zpa customer id
         """
         ...
@@ -194,7 +194,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="zpaCloud")
     def zpa_cloud(self) -> pulumi.Output[Optional[str]]:
         """
-        Cloud to use PRODUCTION, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
+        Cloud to use PRODUCTION, ZPATWO, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
         """
         return pulumi.get(self, "zpa_cloud")
 

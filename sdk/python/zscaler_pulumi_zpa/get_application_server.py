@@ -62,17 +62,11 @@ class GetApplicationServerResult:
     @property
     @pulumi.getter
     def address(self) -> str:
-        """
-        (string) This field defines the domain or IP address of the server.
-        """
         return pulumi.get(self, "address")
 
     @property
     @pulumi.getter(name="appServerGroupIds")
     def app_server_group_ids(self) -> Sequence[str]:
-        """
-        (Set of String) This field defines the list of server groups IDs.
-        """
         return pulumi.get(self, "app_server_group_ids")
 
     @property
@@ -88,17 +82,11 @@ class GetApplicationServerResult:
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string) This field defines the description of the server.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool) This field defines the status of the server.
-        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -109,17 +97,11 @@ class GetApplicationServerResult:
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[str]:
-        """
-        (string) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @property
     @pulumi.getter(name="microtenantName")
     def microtenant_name(self) -> Optional[str]:
-        """
-        (string) The name of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_name")
 
     @property
@@ -183,12 +165,6 @@ def get_application_server(id: Optional[str] = None,
     example = zpa.get_application_server(id="1234567890")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: This field defines the id of the application server.
-    :param str microtenant_id: (string) The ID of the microtenant the resource is to be associated with.
-    :param str microtenant_name: (string) The name of the microtenant the resource is to be associated with.
-    :param str name: This field defines the name of the server.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -239,11 +215,5 @@ def get_application_server_output(id: Optional[pulumi.Input[Optional[str]]] = No
     example = zpa.get_application_server(id="1234567890")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: This field defines the id of the application server.
-    :param str microtenant_id: (string) The ID of the microtenant the resource is to be associated with.
-    :param str microtenant_name: (string) The name of the microtenant the resource is to be associated with.
-    :param str name: This field defines the name of the server.
     """
     ...

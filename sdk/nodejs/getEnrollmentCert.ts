@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-enrollment-ca-certificates)
+ * * [API documentation](https://help.zscaler.com/zpa/obtaining-enrollment-certificate-details-using-api)
+ *
  * Use the **zpa_enrollment_cert** data source to get information about all configured enrollment certificate details created in the Zscaler Private Access cloud. This data source is required when creating provisioning key resources.
  *
  * ## Example Usage
@@ -47,14 +50,8 @@ export function getEnrollmentCert(args?: GetEnrollmentCertArgs, opts?: pulumi.In
  * A collection of arguments for invoking getEnrollmentCert.
  */
 export interface GetEnrollmentCertArgs {
-    /**
-     * The id of the enrollment certificate to be exported.
-     */
     id?: string;
     microtenantId?: string;
-    /**
-     * The name of the enrollment certificate to be exported.
-     */
     name?: string;
 }
 
@@ -62,76 +59,34 @@ export interface GetEnrollmentCertArgs {
  * A collection of values returned by getEnrollmentCert.
  */
 export interface GetEnrollmentCertResult {
-    /**
-     * (bool)
-     */
     readonly allowSigning: boolean;
-    /**
-     * (string) The certificate text is in PEM format.
-     */
     readonly certificate: string;
-    /**
-     * (string) Returned values are:
-     */
     readonly clientCertType: string;
-    /**
-     * (string)
-     */
     readonly cname: string;
-    /**
-     * (string)
-     */
     readonly creationTime: string;
-    /**
-     * (string)
-     */
     readonly csr: string;
-    /**
-     * (string)
-     */
     readonly description: string;
     readonly id?: string;
-    /**
-     * (string)
-     */
     readonly issuedBy: string;
-    /**
-     * (string)
-     */
     readonly issuedTo: string;
     readonly microtenantId?: string;
-    /**
-     * (string)
-     */
     readonly modifiedBy: string;
-    /**
-     * (string)
-     */
     readonly modifiedTime: string;
     readonly name?: string;
-    /**
-     * (string)
-     */
     readonly parentCertId: string;
-    /**
-     * (string)
-     */
     readonly parentCertName: string;
     readonly privateKey: string;
     readonly privateKeyPresent: boolean;
-    /**
-     * (string)
-     */
     readonly serialNo: string;
-    /**
-     * (string)
-     */
     readonly validFromInEpochSec: string;
     readonly validToInEpochSec: string;
     readonly zrsaEncryptedPrivateKey: string;
     readonly zrsaEncryptedSessionKey: string;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-enrollment-ca-certificates)
+ * * [API documentation](https://help.zscaler.com/zpa/obtaining-enrollment-certificate-details-using-api)
+ *
  * Use the **zpa_enrollment_cert** data source to get information about all configured enrollment certificate details created in the Zscaler Private Access cloud. This data source is required when creating provisioning key resources.
  *
  * ## Example Usage
@@ -167,13 +122,7 @@ export function getEnrollmentCertOutput(args?: GetEnrollmentCertOutputArgs, opts
  * A collection of arguments for invoking getEnrollmentCert.
  */
 export interface GetEnrollmentCertOutputArgs {
-    /**
-     * The id of the enrollment certificate to be exported.
-     */
     id?: pulumi.Input<string>;
     microtenantId?: pulumi.Input<string>;
-    /**
-     * The name of the enrollment certificate to be exported.
-     */
     name?: pulumi.Input<string>;
 }

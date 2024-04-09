@@ -56,49 +56,31 @@ class GetCloudBrowserIsolationZPAProfileResult:
     @property
     @pulumi.getter(name="cbiProfileId")
     def cbi_profile_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "cbi_profile_id")
 
     @property
     @pulumi.getter(name="cbiTenantId")
     def cbi_tenant_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "cbi_tenant_id")
 
     @property
     @pulumi.getter(name="cbiUrl")
     def cbi_url(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "cbi_url")
 
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (string)
-        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -109,9 +91,6 @@ class GetCloudBrowserIsolationZPAProfileResult:
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -122,6 +101,9 @@ class GetCloudBrowserIsolationZPAProfileResult:
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        - (String) This field defines the name of the isolation profile.
+        """
         return pulumi.get(self, "name")
 
 
@@ -160,7 +142,7 @@ def get_cloud_browser_isolation_zpa_profile(name: Optional[str] = None,
     <!--End PulumiCodeChooser -->
 
 
-    :param str name: This field defines the name of the isolation profile.
+    :param str name: - (String) This field defines the name of the isolation profile.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -198,6 +180,6 @@ def get_cloud_browser_isolation_zpa_profile_output(name: Optional[pulumi.Input[O
     <!--End PulumiCodeChooser -->
 
 
-    :param str name: This field defines the name of the isolation profile.
+    :param str name: - (String) This field defines the name of the isolation profile.
     """
     ...

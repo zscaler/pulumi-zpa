@@ -65,50 +65,44 @@ namespace Zscaler.Zpa
     [ZpaResourceType("zpa:index/connectorGroup:ConnectorGroup")]
     public partial class ConnectorGroup : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Whether Double Encryption is enabled or disabled for the app. i.e ``"San Jose, US"``
-        /// </summary>
         [Output("cityCountry")]
         public Output<string> CityCountry { get; private set; } = null!;
 
-        /// <summary>
-        /// i.e ``"US"``, ``"CA"``
-        /// </summary>
         [Output("countryCode")]
         public Output<string> CountryCode { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the App Connector Group.
+        /// Description of the App Connector Group
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Supported values are:
+        /// Whether to enable IPv4 or IPv6, or both, for DNS resolution of all applications in the App Connector Group
         /// </summary>
         [Output("dnsQueryType")]
         public Output<string?> DnsQueryType { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
+        /// Whether this App Connector Group is enabled or not
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Latitude of the App Connector Group. Integer or decimal. With values in the range of `-90` to `90`
+        /// Latitude of the App Connector Group. Integer or decimal. With values in the range of -90 to 90
         /// </summary>
         [Output("latitude")]
         public Output<string> Latitude { get; private set; } = null!;
 
         /// <summary>
-        /// Location of the App Connector Group. i.e ``"San Jose, CA, USA"``
+        /// Location of the App Connector Group
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Longitude of the App Connector Group. Integer or decimal. With values in the range of `-180` to `180`
+        /// Longitude of the App Connector Group. Integer or decimal. With values in the range of -180 to 180
         /// </summary>
         [Output("longitude")]
         public Output<string> Longitude { get; private set; } = null!;
@@ -116,70 +110,66 @@ namespace Zscaler.Zpa
         [Output("lssAppConnectorGroup")]
         public Output<bool> LssAppConnectorGroup { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the microtenant the resource is to be associated with.
-        /// 
-        /// ⚠️ **WARNING:**: The attribute ``microtenant_id`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-        /// </summary>
         [Output("microtenantId")]
         public Output<string> MicrotenantId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the App Connector Group.
+        /// Name of the App Connector Group
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
+        /// Whether the default version profile of the App Connector Group is applied or overridden. Supported values: true, false
         /// </summary>
         [Output("overrideVersionProfile")]
         public Output<bool> OverrideVersionProfile { get; private set; } = null!;
 
-        /// <summary>
-        /// Supported values: `true`, `false`
-        /// </summary>
         [Output("praEnabled")]
         public Output<bool> PraEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+        /// and tcpQuickAckReadAssistant fields must all share the same value.
         /// </summary>
         [Output("tcpQuickAckApp")]
         public Output<bool> TcpQuickAckApp { get; private set; } = null!;
 
         /// <summary>
-        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+        /// and tcpQuickAckReadAssistant fields must all share the same value.
         /// </summary>
         [Output("tcpQuickAckAssistant")]
         public Output<bool> TcpQuickAckAssistant { get; private set; } = null!;
 
         /// <summary>
-        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+        /// and tcpQuickAckReadAssistant fields must all share the same value.
         /// </summary>
         [Output("tcpQuickAckReadAssistant")]
         public Output<bool> TcpQuickAckReadAssistant { get; private set; } = null!;
 
         /// <summary>
-        /// App Connectors in this group will attempt to update to a newer version of the software during this specified day i.e ``SUNDAY``
+        /// App Connectors in this group will attempt to update to a newer version of the software during this specified day. List
+        /// of valid days (i.e., Sunday, Monday)
         /// </summary>
         [Output("upgradeDay")]
         public Output<string?> UpgradeDay { get; private set; } = null!;
 
         /// <summary>
-        /// App Connectors in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600`. Integer in seconds (i.e., `-66600`). The integer should be greater than or equal to `0` and less than `86400`, in `15` minute intervals
+        /// App Connectors in this group will attempt to update to a newer version of the software during this specified time.
+        /// Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute
+        /// intervals
         /// </summary>
         [Output("upgradeTimeInSecs")]
         public Output<string?> UpgradeTimeInSecs { get; private set; } = null!;
 
-        /// <summary>
-        /// Supported values: `true`, `false`
-        /// </summary>
         [Output("useInDrMode")]
         public Output<bool> UseInDrMode { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the version profile. To learn more, see Version Profile Use Cases. Supported values are:
+        /// ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
+        /// overrideVersionProfile is set to true
         /// </summary>
         [Output("versionProfileId")]
         public Output<string> VersionProfileId { get; private set; } = null!;
@@ -191,9 +181,6 @@ namespace Zscaler.Zpa
         [Output("versionProfileName")]
         public Output<string> VersionProfileName { get; private set; } = null!;
 
-        /// <summary>
-        /// Supported values: `true`, `false`
-        /// </summary>
         [Output("wafDisabled")]
         public Output<bool> WafDisabled { get; private set; } = null!;
 
@@ -244,50 +231,44 @@ namespace Zscaler.Zpa
 
     public sealed class ConnectorGroupArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether Double Encryption is enabled or disabled for the app. i.e ``"San Jose, US"``
-        /// </summary>
         [Input("cityCountry")]
         public Input<string>? CityCountry { get; set; }
 
-        /// <summary>
-        /// i.e ``"US"``, ``"CA"``
-        /// </summary>
         [Input("countryCode")]
         public Input<string>? CountryCode { get; set; }
 
         /// <summary>
-        /// Description of the App Connector Group.
+        /// Description of the App Connector Group
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Supported values are:
+        /// Whether to enable IPv4 or IPv6, or both, for DNS resolution of all applications in the App Connector Group
         /// </summary>
         [Input("dnsQueryType")]
         public Input<string>? DnsQueryType { get; set; }
 
         /// <summary>
-        /// Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
+        /// Whether this App Connector Group is enabled or not
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Latitude of the App Connector Group. Integer or decimal. With values in the range of `-90` to `90`
+        /// Latitude of the App Connector Group. Integer or decimal. With values in the range of -90 to 90
         /// </summary>
         [Input("latitude", required: true)]
         public Input<string> Latitude { get; set; } = null!;
 
         /// <summary>
-        /// Location of the App Connector Group. i.e ``"San Jose, CA, USA"``
+        /// Location of the App Connector Group
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Longitude of the App Connector Group. Integer or decimal. With values in the range of `-180` to `180`
+        /// Longitude of the App Connector Group. Integer or decimal. With values in the range of -180 to 180
         /// </summary>
         [Input("longitude", required: true)]
         public Input<string> Longitude { get; set; } = null!;
@@ -295,70 +276,66 @@ namespace Zscaler.Zpa
         [Input("lssAppConnectorGroup")]
         public Input<bool>? LssAppConnectorGroup { get; set; }
 
-        /// <summary>
-        /// The ID of the microtenant the resource is to be associated with.
-        /// 
-        /// ⚠️ **WARNING:**: The attribute ``microtenant_id`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-        /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
         /// <summary>
-        /// Name of the App Connector Group.
+        /// Name of the App Connector Group
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
+        /// Whether the default version profile of the App Connector Group is applied or overridden. Supported values: true, false
         /// </summary>
         [Input("overrideVersionProfile")]
         public Input<bool>? OverrideVersionProfile { get; set; }
 
-        /// <summary>
-        /// Supported values: `true`, `false`
-        /// </summary>
         [Input("praEnabled")]
         public Input<bool>? PraEnabled { get; set; }
 
         /// <summary>
-        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+        /// and tcpQuickAckReadAssistant fields must all share the same value.
         /// </summary>
         [Input("tcpQuickAckApp")]
         public Input<bool>? TcpQuickAckApp { get; set; }
 
         /// <summary>
-        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+        /// and tcpQuickAckReadAssistant fields must all share the same value.
         /// </summary>
         [Input("tcpQuickAckAssistant")]
         public Input<bool>? TcpQuickAckAssistant { get; set; }
 
         /// <summary>
-        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+        /// and tcpQuickAckReadAssistant fields must all share the same value.
         /// </summary>
         [Input("tcpQuickAckReadAssistant")]
         public Input<bool>? TcpQuickAckReadAssistant { get; set; }
 
         /// <summary>
-        /// App Connectors in this group will attempt to update to a newer version of the software during this specified day i.e ``SUNDAY``
+        /// App Connectors in this group will attempt to update to a newer version of the software during this specified day. List
+        /// of valid days (i.e., Sunday, Monday)
         /// </summary>
         [Input("upgradeDay")]
         public Input<string>? UpgradeDay { get; set; }
 
         /// <summary>
-        /// App Connectors in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600`. Integer in seconds (i.e., `-66600`). The integer should be greater than or equal to `0` and less than `86400`, in `15` minute intervals
+        /// App Connectors in this group will attempt to update to a newer version of the software during this specified time.
+        /// Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute
+        /// intervals
         /// </summary>
         [Input("upgradeTimeInSecs")]
         public Input<string>? UpgradeTimeInSecs { get; set; }
 
-        /// <summary>
-        /// Supported values: `true`, `false`
-        /// </summary>
         [Input("useInDrMode")]
         public Input<bool>? UseInDrMode { get; set; }
 
         /// <summary>
-        /// ID of the version profile. To learn more, see Version Profile Use Cases. Supported values are:
+        /// ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
+        /// overrideVersionProfile is set to true
         /// </summary>
         [Input("versionProfileId")]
         public Input<string>? VersionProfileId { get; set; }
@@ -370,9 +347,6 @@ namespace Zscaler.Zpa
         [Input("versionProfileName")]
         public Input<string>? VersionProfileName { get; set; }
 
-        /// <summary>
-        /// Supported values: `true`, `false`
-        /// </summary>
         [Input("wafDisabled")]
         public Input<bool>? WafDisabled { get; set; }
 
@@ -384,50 +358,44 @@ namespace Zscaler.Zpa
 
     public sealed class ConnectorGroupState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether Double Encryption is enabled or disabled for the app. i.e ``"San Jose, US"``
-        /// </summary>
         [Input("cityCountry")]
         public Input<string>? CityCountry { get; set; }
 
-        /// <summary>
-        /// i.e ``"US"``, ``"CA"``
-        /// </summary>
         [Input("countryCode")]
         public Input<string>? CountryCode { get; set; }
 
         /// <summary>
-        /// Description of the App Connector Group.
+        /// Description of the App Connector Group
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Supported values are:
+        /// Whether to enable IPv4 or IPv6, or both, for DNS resolution of all applications in the App Connector Group
         /// </summary>
         [Input("dnsQueryType")]
         public Input<string>? DnsQueryType { get; set; }
 
         /// <summary>
-        /// Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
+        /// Whether this App Connector Group is enabled or not
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Latitude of the App Connector Group. Integer or decimal. With values in the range of `-90` to `90`
+        /// Latitude of the App Connector Group. Integer or decimal. With values in the range of -90 to 90
         /// </summary>
         [Input("latitude")]
         public Input<string>? Latitude { get; set; }
 
         /// <summary>
-        /// Location of the App Connector Group. i.e ``"San Jose, CA, USA"``
+        /// Location of the App Connector Group
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Longitude of the App Connector Group. Integer or decimal. With values in the range of `-180` to `180`
+        /// Longitude of the App Connector Group. Integer or decimal. With values in the range of -180 to 180
         /// </summary>
         [Input("longitude")]
         public Input<string>? Longitude { get; set; }
@@ -435,70 +403,66 @@ namespace Zscaler.Zpa
         [Input("lssAppConnectorGroup")]
         public Input<bool>? LssAppConnectorGroup { get; set; }
 
-        /// <summary>
-        /// The ID of the microtenant the resource is to be associated with.
-        /// 
-        /// ⚠️ **WARNING:**: The attribute ``microtenant_id`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-        /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
         /// <summary>
-        /// Name of the App Connector Group.
+        /// Name of the App Connector Group
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
+        /// Whether the default version profile of the App Connector Group is applied or overridden. Supported values: true, false
         /// </summary>
         [Input("overrideVersionProfile")]
         public Input<bool>? OverrideVersionProfile { get; set; }
 
-        /// <summary>
-        /// Supported values: `true`, `false`
-        /// </summary>
         [Input("praEnabled")]
         public Input<bool>? PraEnabled { get; set; }
 
         /// <summary>
-        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+        /// and tcpQuickAckReadAssistant fields must all share the same value.
         /// </summary>
         [Input("tcpQuickAckApp")]
         public Input<bool>? TcpQuickAckApp { get; set; }
 
         /// <summary>
-        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+        /// and tcpQuickAckReadAssistant fields must all share the same value.
         /// </summary>
         [Input("tcpQuickAckAssistant")]
         public Input<bool>? TcpQuickAckAssistant { get; set; }
 
         /// <summary>
-        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value. Supported values: `true`, `false`
+        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
+        /// and tcpQuickAckReadAssistant fields must all share the same value.
         /// </summary>
         [Input("tcpQuickAckReadAssistant")]
         public Input<bool>? TcpQuickAckReadAssistant { get; set; }
 
         /// <summary>
-        /// App Connectors in this group will attempt to update to a newer version of the software during this specified day i.e ``SUNDAY``
+        /// App Connectors in this group will attempt to update to a newer version of the software during this specified day. List
+        /// of valid days (i.e., Sunday, Monday)
         /// </summary>
         [Input("upgradeDay")]
         public Input<string>? UpgradeDay { get; set; }
 
         /// <summary>
-        /// App Connectors in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600`. Integer in seconds (i.e., `-66600`). The integer should be greater than or equal to `0` and less than `86400`, in `15` minute intervals
+        /// App Connectors in this group will attempt to update to a newer version of the software during this specified time.
+        /// Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute
+        /// intervals
         /// </summary>
         [Input("upgradeTimeInSecs")]
         public Input<string>? UpgradeTimeInSecs { get; set; }
 
-        /// <summary>
-        /// Supported values: `true`, `false`
-        /// </summary>
         [Input("useInDrMode")]
         public Input<bool>? UseInDrMode { get; set; }
 
         /// <summary>
-        /// ID of the version profile. To learn more, see Version Profile Use Cases. Supported values are:
+        /// ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
+        /// overrideVersionProfile is set to true
         /// </summary>
         [Input("versionProfileId")]
         public Input<string>? VersionProfileId { get; set; }
@@ -510,9 +474,6 @@ namespace Zscaler.Zpa
         [Input("versionProfileName")]
         public Input<string>? VersionProfileName { get; set; }
 
-        /// <summary>
-        /// Supported values: `true`, `false`
-        /// </summary>
         [Input("wafDisabled")]
         public Input<bool>? WafDisabled { get; set; }
 

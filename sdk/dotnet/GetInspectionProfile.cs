@@ -13,6 +13,9 @@ namespace Zscaler.Zpa
     public static class GetInspectionProfile
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-browser-protection-profiles)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-profiles-using-api)
+        /// 
         /// Use the **zpa_inspection_profile** data source to get information about an inspection profile in the Zscaler Private Access cloud. This resource can then be referenced in an inspection custom control resource.
         /// 
         /// ## Example Usage
@@ -39,6 +42,9 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInspectionProfileResult>("zpa:index/getInspectionProfile:getInspectionProfile", args ?? new GetInspectionProfileArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-browser-protection-profiles)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-profiles-using-api)
+        /// 
         /// Use the **zpa_inspection_profile** data source to get information about an inspection profile in the Zscaler Private Access cloud. This resource can then be referenced in an inspection custom control resource.
         /// 
         /// ## Example Usage
@@ -68,14 +74,11 @@ namespace Zscaler.Zpa
 
     public sealed class GetInspectionProfileArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// This field defines the id of the inspection profile.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// This field defines the name of the inspection profile.
+        /// - (String) This field defines the name of the inspection profile.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -88,14 +91,11 @@ namespace Zscaler.Zpa
 
     public sealed class GetInspectionProfileInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// This field defines the id of the inspection profile.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// This field defines the name of the inspection profile.
+        /// - (String) This field defines the name of the inspection profile.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -110,47 +110,23 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetInspectionProfileResult
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly ImmutableDictionary<string, string> CommonGlobalOverrideActionsConfig;
-        /// <summary>
-        /// (string) Types for custom controls
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetInspectionProfileControlsInfoResult> ControlsInfos;
         public readonly string CreationTime;
-        /// <summary>
-        /// (string) Types for custom controls
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetInspectionProfileCustomControlResult> CustomControls;
-        /// <summary>
-        /// (string) Description of the inspection profile.
-        /// </summary>
         public readonly string Description;
         public readonly ImmutableArray<string> GlobalControlActions;
-        /// <summary>
-        /// (string) ID of the predefined control
-        /// </summary>
         public readonly string Id;
         public readonly string IncarnationNumber;
         public readonly string ModifiedBy;
         public readonly string ModifiedTime;
         /// <summary>
-        /// (string)
+        /// - (String) This field defines the name of the inspection profile.
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// (string) OWASP Predefined Paranoia Level. Range: [1-4], inclusive
-        /// </summary>
         public readonly string ParanoiaLevel;
-        /// <summary>
-        /// (string) The predefined controls
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetInspectionProfilePredefinedControlResult> PredefinedControls;
         public readonly string PredefinedControlsVersion;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetInspectionProfileWebSocketControlResult> WebSocketControls;
 
         [OutputConstructor]

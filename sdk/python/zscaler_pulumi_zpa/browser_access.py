@@ -30,6 +30,7 @@ class BrowserAccessArgs:
                  ip_anchored: Optional[pulumi.Input[bool]] = None,
                  is_cname_enabled: Optional[pulumi.Input[bool]] = None,
                  is_incomplete_dr_config: Optional[pulumi.Input[bool]] = None,
+                 match_style: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  passive_health_enabled: Optional[pulumi.Input[bool]] = None,
                  segment_group_name: Optional[pulumi.Input[str]] = None,
@@ -44,18 +45,15 @@ class BrowserAccessArgs:
         """
         The set of arguments for constructing a BrowserAccess resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_names: List of domains and IPs.
-        :param pulumi.Input[str] segment_group_id: List of Segment Group IDs
-        :param pulumi.Input[str] bypass_type: (Optional) Indicates whether users can bypass ZPA to access applications. Default value is: `NEVER` and supported values are: `ALWAYS`, `NEVER` and `ON_NET`. The value `NEVER` indicates the use of the client forwarding policy.
-        :param pulumi.Input[str] config_space: (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `SIEM`
-        :param pulumi.Input[str] description: (Optional) Description of the application.
-        :param pulumi.Input[bool] double_encrypt: (Optional) Whether Double Encryption is enabled or disabled for the app.
-        :param pulumi.Input[bool] enabled: (Optional) - Whether this app is enabled or not.
-        :param pulumi.Input[str] health_check_type: (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `NONE`
-        :param pulumi.Input[str] health_reporting: (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
-        :param pulumi.Input[bool] ip_anchored: (Optional) - If Source IP Anchoring for use with ZIA, is enabled or disabled for the app. Supported values are `true` and `false`
-        :param pulumi.Input[bool] is_cname_enabled: (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
-        :param pulumi.Input[str] name: Name of BA app.
-        :param pulumi.Input[Sequence[pulumi.Input['BrowserAccessServerGroupArgs']]] server_groups: List of Server Group IDs
+        :param pulumi.Input[str] bypass_type: Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
+               The value NEVER indicates the use of the client forwarding policy.
+        :param pulumi.Input[str] description: Description of the application.
+        :param pulumi.Input[bool] double_encrypt: Whether Double Encryption is enabled or disabled for the app.
+        :param pulumi.Input[str] health_reporting: Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
+        :param pulumi.Input[bool] is_cname_enabled: Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+               connectors.
+        :param pulumi.Input[str] name: Name of the application.
+        :param pulumi.Input[Sequence[pulumi.Input['BrowserAccessServerGroupArgs']]] server_groups: List of the server group IDs.
         :param pulumi.Input[Sequence[pulumi.Input['BrowserAccessTcpPortRangeArgs']]] tcp_port_range: tcp port range
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tcp_port_ranges: TCP port ranges used to access the app.
         :param pulumi.Input[Sequence[pulumi.Input['BrowserAccessUdpPortRangeArgs']]] udp_port_range: udp port range
@@ -86,6 +84,8 @@ class BrowserAccessArgs:
             pulumi.set(__self__, "is_cname_enabled", is_cname_enabled)
         if is_incomplete_dr_config is not None:
             pulumi.set(__self__, "is_incomplete_dr_config", is_incomplete_dr_config)
+        if match_style is not None:
+            pulumi.set(__self__, "match_style", match_style)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if passive_health_enabled is not None:
@@ -133,9 +133,6 @@ class BrowserAccessArgs:
     @property
     @pulumi.getter(name="segmentGroupId")
     def segment_group_id(self) -> pulumi.Input[str]:
-        """
-        List of Segment Group IDs
-        """
         return pulumi.get(self, "segment_group_id")
 
     @segment_group_id.setter
@@ -146,7 +143,8 @@ class BrowserAccessArgs:
     @pulumi.getter(name="bypassType")
     def bypass_type(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional) Indicates whether users can bypass ZPA to access applications. Default value is: `NEVER` and supported values are: `ALWAYS`, `NEVER` and `ON_NET`. The value `NEVER` indicates the use of the client forwarding policy.
+        Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
+        The value NEVER indicates the use of the client forwarding policy.
         """
         return pulumi.get(self, "bypass_type")
 
@@ -157,9 +155,6 @@ class BrowserAccessArgs:
     @property
     @pulumi.getter(name="configSpace")
     def config_space(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `SIEM`
-        """
         return pulumi.get(self, "config_space")
 
     @config_space.setter
@@ -170,7 +165,7 @@ class BrowserAccessArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional) Description of the application.
+        Description of the application.
         """
         return pulumi.get(self, "description")
 
@@ -182,7 +177,7 @@ class BrowserAccessArgs:
     @pulumi.getter(name="doubleEncrypt")
     def double_encrypt(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional) Whether Double Encryption is enabled or disabled for the app.
+        Whether Double Encryption is enabled or disabled for the app.
         """
         return pulumi.get(self, "double_encrypt")
 
@@ -193,9 +188,6 @@ class BrowserAccessArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        (Optional) - Whether this app is enabled or not.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -205,9 +197,6 @@ class BrowserAccessArgs:
     @property
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `NONE`
-        """
         return pulumi.get(self, "health_check_type")
 
     @health_check_type.setter
@@ -218,7 +207,7 @@ class BrowserAccessArgs:
     @pulumi.getter(name="healthReporting")
     def health_reporting(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
+        Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
         """
         return pulumi.get(self, "health_reporting")
 
@@ -238,9 +227,6 @@ class BrowserAccessArgs:
     @property
     @pulumi.getter(name="ipAnchored")
     def ip_anchored(self) -> Optional[pulumi.Input[bool]]:
-        """
-        (Optional) - If Source IP Anchoring for use with ZIA, is enabled or disabled for the app. Supported values are `true` and `false`
-        """
         return pulumi.get(self, "ip_anchored")
 
     @ip_anchored.setter
@@ -251,7 +237,8 @@ class BrowserAccessArgs:
     @pulumi.getter(name="isCnameEnabled")
     def is_cname_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
+        Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+        connectors.
         """
         return pulumi.get(self, "is_cname_enabled")
 
@@ -269,10 +256,19 @@ class BrowserAccessArgs:
         pulumi.set(self, "is_incomplete_dr_config", value)
 
     @property
+    @pulumi.getter(name="matchStyle")
+    def match_style(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "match_style")
+
+    @match_style.setter
+    def match_style(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "match_style", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of BA app.
+        Name of the application.
         """
         return pulumi.get(self, "name")
 
@@ -311,7 +307,7 @@ class BrowserAccessArgs:
     @pulumi.getter(name="serverGroups")
     def server_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BrowserAccessServerGroupArgs']]]]:
         """
-        List of Server Group IDs
+        List of the server group IDs.
         """
         return pulumi.get(self, "server_groups")
 
@@ -402,6 +398,7 @@ class _BrowserAccessState:
                  ip_anchored: Optional[pulumi.Input[bool]] = None,
                  is_cname_enabled: Optional[pulumi.Input[bool]] = None,
                  is_incomplete_dr_config: Optional[pulumi.Input[bool]] = None,
+                 match_style: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  passive_health_enabled: Optional[pulumi.Input[bool]] = None,
                  segment_group_id: Optional[pulumi.Input[str]] = None,
@@ -416,19 +413,16 @@ class _BrowserAccessState:
                  use_in_dr_mode: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering BrowserAccess resources.
-        :param pulumi.Input[str] bypass_type: (Optional) Indicates whether users can bypass ZPA to access applications. Default value is: `NEVER` and supported values are: `ALWAYS`, `NEVER` and `ON_NET`. The value `NEVER` indicates the use of the client forwarding policy.
-        :param pulumi.Input[str] config_space: (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `SIEM`
-        :param pulumi.Input[str] description: (Optional) Description of the application.
+        :param pulumi.Input[str] bypass_type: Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
+               The value NEVER indicates the use of the client forwarding policy.
+        :param pulumi.Input[str] description: Description of the application.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_names: List of domains and IPs.
-        :param pulumi.Input[bool] double_encrypt: (Optional) Whether Double Encryption is enabled or disabled for the app.
-        :param pulumi.Input[bool] enabled: (Optional) - Whether this app is enabled or not.
-        :param pulumi.Input[str] health_check_type: (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `NONE`
-        :param pulumi.Input[str] health_reporting: (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
-        :param pulumi.Input[bool] ip_anchored: (Optional) - If Source IP Anchoring for use with ZIA, is enabled or disabled for the app. Supported values are `true` and `false`
-        :param pulumi.Input[bool] is_cname_enabled: (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
-        :param pulumi.Input[str] name: Name of BA app.
-        :param pulumi.Input[str] segment_group_id: List of Segment Group IDs
-        :param pulumi.Input[Sequence[pulumi.Input['BrowserAccessServerGroupArgs']]] server_groups: List of Server Group IDs
+        :param pulumi.Input[bool] double_encrypt: Whether Double Encryption is enabled or disabled for the app.
+        :param pulumi.Input[str] health_reporting: Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
+        :param pulumi.Input[bool] is_cname_enabled: Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+               connectors.
+        :param pulumi.Input[str] name: Name of the application.
+        :param pulumi.Input[Sequence[pulumi.Input['BrowserAccessServerGroupArgs']]] server_groups: List of the server group IDs.
         :param pulumi.Input[Sequence[pulumi.Input['BrowserAccessTcpPortRangeArgs']]] tcp_port_range: tcp port range
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tcp_port_ranges: TCP port ranges used to access the app.
         :param pulumi.Input[Sequence[pulumi.Input['BrowserAccessUdpPortRangeArgs']]] udp_port_range: udp port range
@@ -460,6 +454,8 @@ class _BrowserAccessState:
             pulumi.set(__self__, "is_cname_enabled", is_cname_enabled)
         if is_incomplete_dr_config is not None:
             pulumi.set(__self__, "is_incomplete_dr_config", is_incomplete_dr_config)
+        if match_style is not None:
+            pulumi.set(__self__, "match_style", match_style)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if passive_health_enabled is not None:
@@ -489,7 +485,8 @@ class _BrowserAccessState:
     @pulumi.getter(name="bypassType")
     def bypass_type(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional) Indicates whether users can bypass ZPA to access applications. Default value is: `NEVER` and supported values are: `ALWAYS`, `NEVER` and `ON_NET`. The value `NEVER` indicates the use of the client forwarding policy.
+        Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
+        The value NEVER indicates the use of the client forwarding policy.
         """
         return pulumi.get(self, "bypass_type")
 
@@ -509,9 +506,6 @@ class _BrowserAccessState:
     @property
     @pulumi.getter(name="configSpace")
     def config_space(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `SIEM`
-        """
         return pulumi.get(self, "config_space")
 
     @config_space.setter
@@ -522,7 +516,7 @@ class _BrowserAccessState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional) Description of the application.
+        Description of the application.
         """
         return pulumi.get(self, "description")
 
@@ -546,7 +540,7 @@ class _BrowserAccessState:
     @pulumi.getter(name="doubleEncrypt")
     def double_encrypt(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional) Whether Double Encryption is enabled or disabled for the app.
+        Whether Double Encryption is enabled or disabled for the app.
         """
         return pulumi.get(self, "double_encrypt")
 
@@ -557,9 +551,6 @@ class _BrowserAccessState:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        (Optional) - Whether this app is enabled or not.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -569,9 +560,6 @@ class _BrowserAccessState:
     @property
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `NONE`
-        """
         return pulumi.get(self, "health_check_type")
 
     @health_check_type.setter
@@ -582,7 +570,7 @@ class _BrowserAccessState:
     @pulumi.getter(name="healthReporting")
     def health_reporting(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
+        Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
         """
         return pulumi.get(self, "health_reporting")
 
@@ -602,9 +590,6 @@ class _BrowserAccessState:
     @property
     @pulumi.getter(name="ipAnchored")
     def ip_anchored(self) -> Optional[pulumi.Input[bool]]:
-        """
-        (Optional) - If Source IP Anchoring for use with ZIA, is enabled or disabled for the app. Supported values are `true` and `false`
-        """
         return pulumi.get(self, "ip_anchored")
 
     @ip_anchored.setter
@@ -615,7 +600,8 @@ class _BrowserAccessState:
     @pulumi.getter(name="isCnameEnabled")
     def is_cname_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
+        Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+        connectors.
         """
         return pulumi.get(self, "is_cname_enabled")
 
@@ -633,10 +619,19 @@ class _BrowserAccessState:
         pulumi.set(self, "is_incomplete_dr_config", value)
 
     @property
+    @pulumi.getter(name="matchStyle")
+    def match_style(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "match_style")
+
+    @match_style.setter
+    def match_style(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "match_style", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of BA app.
+        Name of the application.
         """
         return pulumi.get(self, "name")
 
@@ -656,9 +651,6 @@ class _BrowserAccessState:
     @property
     @pulumi.getter(name="segmentGroupId")
     def segment_group_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        List of Segment Group IDs
-        """
         return pulumi.get(self, "segment_group_id")
 
     @segment_group_id.setter
@@ -687,7 +679,7 @@ class _BrowserAccessState:
     @pulumi.getter(name="serverGroups")
     def server_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BrowserAccessServerGroupArgs']]]]:
         """
-        List of Server Group IDs
+        List of the server group IDs.
         """
         return pulumi.get(self, "server_groups")
 
@@ -780,6 +772,7 @@ class BrowserAccess(pulumi.CustomResource):
                  ip_anchored: Optional[pulumi.Input[bool]] = None,
                  is_cname_enabled: Optional[pulumi.Input[bool]] = None,
                  is_incomplete_dr_config: Optional[pulumi.Input[bool]] = None,
+                 match_style: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  passive_health_enabled: Optional[pulumi.Input[bool]] = None,
                  segment_group_id: Optional[pulumi.Input[str]] = None,
@@ -794,90 +787,19 @@ class BrowserAccess(pulumi.CustomResource):
                  use_in_dr_mode: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_zpa as zpa
-        import zscaler_pulumi_zpa as zpa
-
-        test_cert = zpa.get_ba_certificate(name="sales.acme.com")
-        # ZPA Segment Group resource
-        example_segment_group = zpa.SegmentGroup("exampleSegmentGroup",
-            description="Example",
-            enabled=True)
-        example_app_connector_group = zpa.get_app_connector_group(name="AWS-Connector")
-        # ZPA Server Group resource
-        example_server_group = zpa.ServerGroup("exampleServerGroup",
-            description="Example",
-            enabled=True,
-            dynamic_discovery=True,
-            app_connector_groups=[zpa.ServerGroupAppConnectorGroupArgs(
-                ids=[example_app_connector_group.id],
-            )])
-        # Create Browser Access Application
-        browser_access_apps = zpa.BrowserAccess("browserAccessApps",
-            description="Browser Access Apps",
-            enabled=True,
-            health_reporting="ON_ACCESS",
-            bypass_type="NEVER",
-            tcp_port_ranges=[
-                "80",
-                "80",
-            ],
-            domain_names=["sales.acme.com"],
-            segment_group_id=example_segment_group.id,
-            clientless_apps=[zpa.BrowserAccessClientlessAppArgs(
-                name="sales.acme.com",
-                application_protocol="HTTP",
-                application_port="80",
-                certificate_id=test_cert.id,
-                trust_untrusted_cert=True,
-                enabled=True,
-                domain="sales.acme.com",
-            )],
-            server_groups=[zpa.BrowserAccessServerGroupArgs(
-                ids=[example_server_group.id],
-            )])
-        ```
-        <!--End PulumiCodeChooser -->
-
-        ## Import
-
-        Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
-        Visit
-
-        **zpa_application_segment_browser_access** Application Segment Browser Access can be imported by using <`BROWSER ACCESS ID`> or `<<BROWSER ACCESS NAME>` as the import ID.
-
-        For example:
-
-        ```sh
-        $ pulumi import zpa:index/browserAccess:BrowserAccess example <browser_access_id>.
-        ```
-
-        or
-
-        ```sh
-        $ pulumi import zpa:index/browserAccess:BrowserAccess example <browser_access_name>
-        ```
-
+        Create a BrowserAccess resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bypass_type: (Optional) Indicates whether users can bypass ZPA to access applications. Default value is: `NEVER` and supported values are: `ALWAYS`, `NEVER` and `ON_NET`. The value `NEVER` indicates the use of the client forwarding policy.
-        :param pulumi.Input[str] config_space: (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `SIEM`
-        :param pulumi.Input[str] description: (Optional) Description of the application.
+        :param pulumi.Input[str] bypass_type: Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
+               The value NEVER indicates the use of the client forwarding policy.
+        :param pulumi.Input[str] description: Description of the application.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_names: List of domains and IPs.
-        :param pulumi.Input[bool] double_encrypt: (Optional) Whether Double Encryption is enabled or disabled for the app.
-        :param pulumi.Input[bool] enabled: (Optional) - Whether this app is enabled or not.
-        :param pulumi.Input[str] health_check_type: (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `NONE`
-        :param pulumi.Input[str] health_reporting: (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
-        :param pulumi.Input[bool] ip_anchored: (Optional) - If Source IP Anchoring for use with ZIA, is enabled or disabled for the app. Supported values are `true` and `false`
-        :param pulumi.Input[bool] is_cname_enabled: (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
-        :param pulumi.Input[str] name: Name of BA app.
-        :param pulumi.Input[str] segment_group_id: List of Segment Group IDs
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BrowserAccessServerGroupArgs']]]] server_groups: List of Server Group IDs
+        :param pulumi.Input[bool] double_encrypt: Whether Double Encryption is enabled or disabled for the app.
+        :param pulumi.Input[str] health_reporting: Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
+        :param pulumi.Input[bool] is_cname_enabled: Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+               connectors.
+        :param pulumi.Input[str] name: Name of the application.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BrowserAccessServerGroupArgs']]]] server_groups: List of the server group IDs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BrowserAccessTcpPortRangeArgs']]]] tcp_port_range: tcp port range
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tcp_port_ranges: TCP port ranges used to access the app.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BrowserAccessUdpPortRangeArgs']]]] udp_port_range: udp port range
@@ -890,75 +812,7 @@ class BrowserAccess(pulumi.CustomResource):
                  args: BrowserAccessArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_zpa as zpa
-        import zscaler_pulumi_zpa as zpa
-
-        test_cert = zpa.get_ba_certificate(name="sales.acme.com")
-        # ZPA Segment Group resource
-        example_segment_group = zpa.SegmentGroup("exampleSegmentGroup",
-            description="Example",
-            enabled=True)
-        example_app_connector_group = zpa.get_app_connector_group(name="AWS-Connector")
-        # ZPA Server Group resource
-        example_server_group = zpa.ServerGroup("exampleServerGroup",
-            description="Example",
-            enabled=True,
-            dynamic_discovery=True,
-            app_connector_groups=[zpa.ServerGroupAppConnectorGroupArgs(
-                ids=[example_app_connector_group.id],
-            )])
-        # Create Browser Access Application
-        browser_access_apps = zpa.BrowserAccess("browserAccessApps",
-            description="Browser Access Apps",
-            enabled=True,
-            health_reporting="ON_ACCESS",
-            bypass_type="NEVER",
-            tcp_port_ranges=[
-                "80",
-                "80",
-            ],
-            domain_names=["sales.acme.com"],
-            segment_group_id=example_segment_group.id,
-            clientless_apps=[zpa.BrowserAccessClientlessAppArgs(
-                name="sales.acme.com",
-                application_protocol="HTTP",
-                application_port="80",
-                certificate_id=test_cert.id,
-                trust_untrusted_cert=True,
-                enabled=True,
-                domain="sales.acme.com",
-            )],
-            server_groups=[zpa.BrowserAccessServerGroupArgs(
-                ids=[example_server_group.id],
-            )])
-        ```
-        <!--End PulumiCodeChooser -->
-
-        ## Import
-
-        Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
-        Visit
-
-        **zpa_application_segment_browser_access** Application Segment Browser Access can be imported by using <`BROWSER ACCESS ID`> or `<<BROWSER ACCESS NAME>` as the import ID.
-
-        For example:
-
-        ```sh
-        $ pulumi import zpa:index/browserAccess:BrowserAccess example <browser_access_id>.
-        ```
-
-        or
-
-        ```sh
-        $ pulumi import zpa:index/browserAccess:BrowserAccess example <browser_access_name>
-        ```
-
+        Create a BrowserAccess resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param BrowserAccessArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -987,6 +841,7 @@ class BrowserAccess(pulumi.CustomResource):
                  ip_anchored: Optional[pulumi.Input[bool]] = None,
                  is_cname_enabled: Optional[pulumi.Input[bool]] = None,
                  is_incomplete_dr_config: Optional[pulumi.Input[bool]] = None,
+                 match_style: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  passive_health_enabled: Optional[pulumi.Input[bool]] = None,
                  segment_group_id: Optional[pulumi.Input[str]] = None,
@@ -1025,6 +880,7 @@ class BrowserAccess(pulumi.CustomResource):
             __props__.__dict__["ip_anchored"] = ip_anchored
             __props__.__dict__["is_cname_enabled"] = is_cname_enabled
             __props__.__dict__["is_incomplete_dr_config"] = is_incomplete_dr_config
+            __props__.__dict__["match_style"] = match_style
             __props__.__dict__["name"] = name
             __props__.__dict__["passive_health_enabled"] = passive_health_enabled
             if segment_group_id is None and not opts.urn:
@@ -1062,6 +918,7 @@ class BrowserAccess(pulumi.CustomResource):
             ip_anchored: Optional[pulumi.Input[bool]] = None,
             is_cname_enabled: Optional[pulumi.Input[bool]] = None,
             is_incomplete_dr_config: Optional[pulumi.Input[bool]] = None,
+            match_style: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             passive_health_enabled: Optional[pulumi.Input[bool]] = None,
             segment_group_id: Optional[pulumi.Input[str]] = None,
@@ -1081,19 +938,16 @@ class BrowserAccess(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bypass_type: (Optional) Indicates whether users can bypass ZPA to access applications. Default value is: `NEVER` and supported values are: `ALWAYS`, `NEVER` and `ON_NET`. The value `NEVER` indicates the use of the client forwarding policy.
-        :param pulumi.Input[str] config_space: (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `SIEM`
-        :param pulumi.Input[str] description: (Optional) Description of the application.
+        :param pulumi.Input[str] bypass_type: Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
+               The value NEVER indicates the use of the client forwarding policy.
+        :param pulumi.Input[str] description: Description of the application.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_names: List of domains and IPs.
-        :param pulumi.Input[bool] double_encrypt: (Optional) Whether Double Encryption is enabled or disabled for the app.
-        :param pulumi.Input[bool] enabled: (Optional) - Whether this app is enabled or not.
-        :param pulumi.Input[str] health_check_type: (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `NONE`
-        :param pulumi.Input[str] health_reporting: (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
-        :param pulumi.Input[bool] ip_anchored: (Optional) - If Source IP Anchoring for use with ZIA, is enabled or disabled for the app. Supported values are `true` and `false`
-        :param pulumi.Input[bool] is_cname_enabled: (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
-        :param pulumi.Input[str] name: Name of BA app.
-        :param pulumi.Input[str] segment_group_id: List of Segment Group IDs
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BrowserAccessServerGroupArgs']]]] server_groups: List of Server Group IDs
+        :param pulumi.Input[bool] double_encrypt: Whether Double Encryption is enabled or disabled for the app.
+        :param pulumi.Input[str] health_reporting: Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
+        :param pulumi.Input[bool] is_cname_enabled: Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+               connectors.
+        :param pulumi.Input[str] name: Name of the application.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BrowserAccessServerGroupArgs']]]] server_groups: List of the server group IDs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BrowserAccessTcpPortRangeArgs']]]] tcp_port_range: tcp port range
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tcp_port_ranges: TCP port ranges used to access the app.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BrowserAccessUdpPortRangeArgs']]]] udp_port_range: udp port range
@@ -1116,6 +970,7 @@ class BrowserAccess(pulumi.CustomResource):
         __props__.__dict__["ip_anchored"] = ip_anchored
         __props__.__dict__["is_cname_enabled"] = is_cname_enabled
         __props__.__dict__["is_incomplete_dr_config"] = is_incomplete_dr_config
+        __props__.__dict__["match_style"] = match_style
         __props__.__dict__["name"] = name
         __props__.__dict__["passive_health_enabled"] = passive_health_enabled
         __props__.__dict__["segment_group_id"] = segment_group_id
@@ -1134,7 +989,8 @@ class BrowserAccess(pulumi.CustomResource):
     @pulumi.getter(name="bypassType")
     def bypass_type(self) -> pulumi.Output[Optional[str]]:
         """
-        (Optional) Indicates whether users can bypass ZPA to access applications. Default value is: `NEVER` and supported values are: `ALWAYS`, `NEVER` and `ON_NET`. The value `NEVER` indicates the use of the client forwarding policy.
+        Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
+        The value NEVER indicates the use of the client forwarding policy.
         """
         return pulumi.get(self, "bypass_type")
 
@@ -1146,16 +1002,13 @@ class BrowserAccess(pulumi.CustomResource):
     @property
     @pulumi.getter(name="configSpace")
     def config_space(self) -> pulumi.Output[Optional[str]]:
-        """
-        (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `SIEM`
-        """
         return pulumi.get(self, "config_space")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        (Optional) Description of the application.
+        Description of the application.
         """
         return pulumi.get(self, "description")
 
@@ -1171,31 +1024,25 @@ class BrowserAccess(pulumi.CustomResource):
     @pulumi.getter(name="doubleEncrypt")
     def double_encrypt(self) -> pulumi.Output[Optional[bool]]:
         """
-        (Optional) Whether Double Encryption is enabled or disabled for the app.
+        Whether Double Encryption is enabled or disabled for the app.
         """
         return pulumi.get(self, "double_encrypt")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
-        """
-        (Optional) - Whether this app is enabled or not.
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="healthCheckType")
-    def health_check_type(self) -> pulumi.Output[str]:
-        """
-        (Optional) Default: `DEFAULT`. Supported values: `DEFAULT`, `NONE`
-        """
+    def health_check_type(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "health_check_type")
 
     @property
     @pulumi.getter(name="healthReporting")
-    def health_reporting(self) -> pulumi.Output[str]:
+    def health_reporting(self) -> pulumi.Output[Optional[str]]:
         """
-        (Optional) Whether health reporting for the app is Continuous or On Access. Supported values: `NONE`, `ON_ACCESS`, `CONTINUOUS`.
+        Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
         """
         return pulumi.get(self, "health_reporting")
 
@@ -1207,16 +1054,14 @@ class BrowserAccess(pulumi.CustomResource):
     @property
     @pulumi.getter(name="ipAnchored")
     def ip_anchored(self) -> pulumi.Output[Optional[bool]]:
-        """
-        (Optional) - If Source IP Anchoring for use with ZIA, is enabled or disabled for the app. Supported values are `true` and `false`
-        """
         return pulumi.get(self, "ip_anchored")
 
     @property
     @pulumi.getter(name="isCnameEnabled")
     def is_cname_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        (Optional) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
+        Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
+        connectors.
         """
         return pulumi.get(self, "is_cname_enabled")
 
@@ -1226,10 +1071,15 @@ class BrowserAccess(pulumi.CustomResource):
         return pulumi.get(self, "is_incomplete_dr_config")
 
     @property
+    @pulumi.getter(name="matchStyle")
+    def match_style(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "match_style")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of BA app.
+        Name of the application.
         """
         return pulumi.get(self, "name")
 
@@ -1241,9 +1091,6 @@ class BrowserAccess(pulumi.CustomResource):
     @property
     @pulumi.getter(name="segmentGroupId")
     def segment_group_id(self) -> pulumi.Output[str]:
-        """
-        List of Segment Group IDs
-        """
         return pulumi.get(self, "segment_group_id")
 
     @property
@@ -1260,7 +1107,7 @@ class BrowserAccess(pulumi.CustomResource):
     @pulumi.getter(name="serverGroups")
     def server_groups(self) -> pulumi.Output[Sequence['outputs.BrowserAccessServerGroup']]:
         """
-        List of Server Group IDs
+        List of the server group IDs.
         """
         return pulumi.get(self, "server_groups")
 

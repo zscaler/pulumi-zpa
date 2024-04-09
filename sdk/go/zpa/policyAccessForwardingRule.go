@@ -11,6 +11,26 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-client-forwarding-policy)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-client-forwarding-policies-using-api)
+//
+// The **zpa_policy_forwarding_rule** resource creates a policy forwarding access rule in the Zscaler Private Access cloud.
+//
+//	⚠️ **WARNING:**: The attribute ``ruleOrder`` is now deprecated in favor of the new resource ``PolicyAccessReorderRule`` policyAccessRuleReorder
+//
+// ## Import
+//
+// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+//
+// # Visit
+//
+// Policy Access Forwarding Rule can be imported by using `<POLICY FORWARDING RULE ID>` as the import ID.
+//
+// For example:
+//
+// ```sh
+// $ pulumi import zpa:index/policyAccessForwardingRule:PolicyAccessForwardingRule example <policy_forwarding_rule_id>
+// ```
 type PolicyAccessForwardingRule struct {
 	pulumi.CustomResourceState
 

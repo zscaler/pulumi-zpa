@@ -14,78 +14,24 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetInspectionAllPredefinedControlsListResult
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Action;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ActionValue;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetInspectionAllPredefinedControlsListAssociatedInspectionProfileNameResult> AssociatedInspectionProfileNames;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Attachment;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ControlGroup;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ControlNumber;
-        /// <summary>
-        /// (string) Returned values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `ZSCALER`, `CUSTOM`, `PREDEFINED`
-        /// </summary>
         public readonly string ControlType;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string DefaultAction;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string DefaultActionValue;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ParanoiaLevel;
-        /// <summary>
-        /// (string) Returned values: `HTTP`, `HTTPS`, `FTP`, `RDP`, `SSH`, `WEBSOCKET`
-        /// </summary>
         public readonly string ProtocolType;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Severity;
-        /// <summary>
-        /// The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
-        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]

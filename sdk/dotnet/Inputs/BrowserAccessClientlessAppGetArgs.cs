@@ -14,7 +14,7 @@ namespace Zscaler.Zpa.Inputs
     public sealed class BrowserAccessClientlessAppGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.. Supported values: `true` and `false`
+        /// If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.
         /// </summary>
         [Input("allowOptions")]
         public Input<bool>? AllowOptions { get; set; }
@@ -26,26 +26,20 @@ namespace Zscaler.Zpa.Inputs
         public Input<string> ApplicationPort { get; set; } = null!;
 
         /// <summary>
-        /// Protocol for the BA app. Supported values: `HTTP` and `HTTPS`
+        /// Protocol for the BA app.
         /// </summary>
         [Input("applicationProtocol", required: true)]
         public Input<string> ApplicationProtocol { get; set; } = null!;
 
         /// <summary>
-        /// ID of the BA certificate. Refer to the data source documentation for `zpa.BrowserCertificate`
+        /// ID of the BA certificate.
         /// </summary>
-        [Input("certificateId", required: true)]
-        public Input<string> CertificateId { get; set; } = null!;
+        [Input("certificateId")]
+        public Input<string>? CertificateId { get; set; }
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Input("cname")]
         public Input<string>? Cname { get; set; }
 
-        /// <summary>
-        /// (Optional) Description of the application.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -55,41 +49,26 @@ namespace Zscaler.Zpa.Inputs
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
-        /// <summary>
-        /// (Optional) - Whether this app is enabled or not.
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Input("hidden")]
         public Input<bool>? Hidden { get; set; }
 
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Input("localDomain")]
         public Input<string>? LocalDomain { get; set; }
 
-        /// <summary>
-        /// Name of BA app.
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// (Optional)
+        /// Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
         /// </summary>
         [Input("trustUntrustedCert")]
         public Input<bool>? TrustUntrustedCert { get; set; }

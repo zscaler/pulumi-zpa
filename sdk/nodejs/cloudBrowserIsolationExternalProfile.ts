@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
+ *
  * The **zpa_cloud_browser_isolation_external_profile** resource creates a Cloud Browser Isolation external profile. This resource can then be used in as part of `zpa.PolicyAccessIsolationRule` when the `action` attribute is set to `ISOLATE`.
  *
  * ## Example Usage
@@ -78,43 +80,18 @@ export class CloudBrowserIsolationExternalProfile extends pulumi.CustomResource 
         return obj['__pulumiType'] === CloudBrowserIsolationExternalProfile.__pulumiType;
     }
 
-    /**
-     * The ID of the CBI banner to be exported.
-     */
     public readonly bannerId!: pulumi.Output<string>;
     /**
-     * The CBI security controls enabled for the profile
-     * * `id:` - (Optional) The ID of the CBI Certificate to be associated with the profile.
+     * This field defines the list of server groups IDs.
      */
     public readonly certificateIds!: pulumi.Output<string[]>;
-    /**
-     * (Optional) - The description of the CBI profile
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The name of the CBI banner to be exported.
-     */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The CBI region
-     * * `id:` - (Optional) The ID of CBI region where the profile must be deployed. At least 2 regions are required.
+     * This field defines the list of server groups IDs.
      */
     public readonly regionIds!: pulumi.Output<string[]>;
-    /**
-     * (Optional) The CBI security controls enabled for the profile
-     * * `copy_paste:` - (Optional) Enable or disable copy & paste for local computer to isolation. Supported values are: `none` or `all`
-     * * `document_viewer:` - (Optional) Enable or disable to view Microsoft Office files in isolation.
-     * * `local_render:` - (Optional) Enables non-isolated hyperlinks to be opened on the user's native browser.
-     * * `upload_download:` - (Optional) Enable or disable file transfer from local computer to isolation. Supported values are: `none` or `all`
-     * * `allow_printing:` - (Optional) Enables the user to print web pages and documents rendered within the isolation browser. Supported values are: `true` or `false`
-     * * `restrict_keystrokes:` - (Optional) Prevents keyboard and text input to isolated web pages. Supported values are: `true` or `false`
-     */
     public readonly securityControls!: pulumi.Output<outputs.CloudBrowserIsolationExternalProfileSecurityControl[] | undefined>;
-    /**
-     * The CBI security controls enabled for the profile
-     * * `session_persistence:` - (Optional) Save user cookies between sessions. If disabled, all cookies will be discarded when isolation session ends. Supported values are: `true` or `false`
-     * * `browser_in_browser:` - (Optional) Enable or disable browser-in-browser or native browser experience. Supported values are: `true` or `false`
-     */
     public readonly userExperiences!: pulumi.Output<outputs.CloudBrowserIsolationExternalProfileUserExperience[] | undefined>;
 
     /**
@@ -159,43 +136,18 @@ export class CloudBrowserIsolationExternalProfile extends pulumi.CustomResource 
  * Input properties used for looking up and filtering CloudBrowserIsolationExternalProfile resources.
  */
 export interface CloudBrowserIsolationExternalProfileState {
-    /**
-     * The ID of the CBI banner to be exported.
-     */
     bannerId?: pulumi.Input<string>;
     /**
-     * The CBI security controls enabled for the profile
-     * * `id:` - (Optional) The ID of the CBI Certificate to be associated with the profile.
+     * This field defines the list of server groups IDs.
      */
     certificateIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (Optional) - The description of the CBI profile
-     */
     description?: pulumi.Input<string>;
-    /**
-     * The name of the CBI banner to be exported.
-     */
     name?: pulumi.Input<string>;
     /**
-     * The CBI region
-     * * `id:` - (Optional) The ID of CBI region where the profile must be deployed. At least 2 regions are required.
+     * This field defines the list of server groups IDs.
      */
     regionIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (Optional) The CBI security controls enabled for the profile
-     * * `copy_paste:` - (Optional) Enable or disable copy & paste for local computer to isolation. Supported values are: `none` or `all`
-     * * `document_viewer:` - (Optional) Enable or disable to view Microsoft Office files in isolation.
-     * * `local_render:` - (Optional) Enables non-isolated hyperlinks to be opened on the user's native browser.
-     * * `upload_download:` - (Optional) Enable or disable file transfer from local computer to isolation. Supported values are: `none` or `all`
-     * * `allow_printing:` - (Optional) Enables the user to print web pages and documents rendered within the isolation browser. Supported values are: `true` or `false`
-     * * `restrict_keystrokes:` - (Optional) Prevents keyboard and text input to isolated web pages. Supported values are: `true` or `false`
-     */
     securityControls?: pulumi.Input<pulumi.Input<inputs.CloudBrowserIsolationExternalProfileSecurityControl>[]>;
-    /**
-     * The CBI security controls enabled for the profile
-     * * `session_persistence:` - (Optional) Save user cookies between sessions. If disabled, all cookies will be discarded when isolation session ends. Supported values are: `true` or `false`
-     * * `browser_in_browser:` - (Optional) Enable or disable browser-in-browser or native browser experience. Supported values are: `true` or `false`
-     */
     userExperiences?: pulumi.Input<pulumi.Input<inputs.CloudBrowserIsolationExternalProfileUserExperience>[]>;
 }
 
@@ -203,42 +155,17 @@ export interface CloudBrowserIsolationExternalProfileState {
  * The set of arguments for constructing a CloudBrowserIsolationExternalProfile resource.
  */
 export interface CloudBrowserIsolationExternalProfileArgs {
-    /**
-     * The ID of the CBI banner to be exported.
-     */
     bannerId: pulumi.Input<string>;
     /**
-     * The CBI security controls enabled for the profile
-     * * `id:` - (Optional) The ID of the CBI Certificate to be associated with the profile.
+     * This field defines the list of server groups IDs.
      */
     certificateIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (Optional) - The description of the CBI profile
-     */
     description?: pulumi.Input<string>;
-    /**
-     * The name of the CBI banner to be exported.
-     */
     name?: pulumi.Input<string>;
     /**
-     * The CBI region
-     * * `id:` - (Optional) The ID of CBI region where the profile must be deployed. At least 2 regions are required.
+     * This field defines the list of server groups IDs.
      */
     regionIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (Optional) The CBI security controls enabled for the profile
-     * * `copy_paste:` - (Optional) Enable or disable copy & paste for local computer to isolation. Supported values are: `none` or `all`
-     * * `document_viewer:` - (Optional) Enable or disable to view Microsoft Office files in isolation.
-     * * `local_render:` - (Optional) Enables non-isolated hyperlinks to be opened on the user's native browser.
-     * * `upload_download:` - (Optional) Enable or disable file transfer from local computer to isolation. Supported values are: `none` or `all`
-     * * `allow_printing:` - (Optional) Enables the user to print web pages and documents rendered within the isolation browser. Supported values are: `true` or `false`
-     * * `restrict_keystrokes:` - (Optional) Prevents keyboard and text input to isolated web pages. Supported values are: `true` or `false`
-     */
     securityControls?: pulumi.Input<pulumi.Input<inputs.CloudBrowserIsolationExternalProfileSecurityControl>[]>;
-    /**
-     * The CBI security controls enabled for the profile
-     * * `session_persistence:` - (Optional) Save user cookies between sessions. If disabled, all cookies will be discarded when isolation session ends. Supported values are: `true` or `false`
-     * * `browser_in_browser:` - (Optional) Enable or disable browser-in-browser or native browser experience. Supported values are: `true` or `false`
-     */
     userExperiences?: pulumi.Input<pulumi.Input<inputs.CloudBrowserIsolationExternalProfileUserExperience>[]>;
 }

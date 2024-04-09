@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-scim)
+ * * [API documentation](https://help.zscaler.com/zpa/obtaining-scim-attribute-details-using-api)
+ *
  * Use the **zpa_scim_attribute_header** data source to get information about a SCIM attribute from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Inspection Policy.
  *
  * ## Example Usage
@@ -40,17 +43,8 @@ export function getSCIMAttributeHeader(args?: GetSCIMAttributeHeaderArgs, opts?:
  * A collection of arguments for invoking getSCIMAttributeHeader.
  */
 export interface GetSCIMAttributeHeaderArgs {
-    /**
-     * (string) The ID of the IdP corresponding to the SAML attribute.
-     */
     idpId?: string;
-    /**
-     * The name of the scim attribute header that must be exported.
-     */
     idpName?: string;
-    /**
-     * The name of the scim attribute header to be exported.
-     */
     name?: string;
 }
 
@@ -58,68 +52,29 @@ export interface GetSCIMAttributeHeaderArgs {
  * A collection of values returned by getSCIMAttributeHeader.
  */
 export interface GetSCIMAttributeHeaderResult {
-    /**
-     * (string)
-     */
     readonly canonicalValues: string[];
-    /**
-     * (bool)
-     */
     readonly caseSensitive: boolean;
-    /**
-     * (string)
-     */
     readonly creationTime: string;
-    /**
-     * (string)
-     */
     readonly dataType: string;
-    /**
-     * (string)
-     */
     readonly description: string;
-    /**
-     * (string)
-     */
     readonly id: string;
-    /**
-     * (string) The ID of the IdP corresponding to the SAML attribute.
-     */
     readonly idpId?: string;
     readonly idpName?: string;
-    /**
-     * (string)
-     */
     readonly modifiedTime: string;
     readonly modifiedby: string;
-    /**
-     * (bool)
-     */
     readonly multivalued: boolean;
-    /**
-     * (string)
-     */
     readonly mutability: string;
     readonly name?: string;
-    /**
-     * (bool)
-     */
     readonly required: boolean;
-    /**
-     * (string)
-     */
     readonly returned: string;
-    /**
-     * (string)
-     */
     readonly schemaUri: string;
-    /**
-     * (bool)
-     */
     readonly uniqueness: boolean;
     readonly values: string[];
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-scim)
+ * * [API documentation](https://help.zscaler.com/zpa/obtaining-scim-attribute-details-using-api)
+ *
  * Use the **zpa_scim_attribute_header** data source to get information about a SCIM attribute from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Inspection Policy.
  *
  * ## Example Usage
@@ -148,16 +103,7 @@ export function getSCIMAttributeHeaderOutput(args?: GetSCIMAttributeHeaderOutput
  * A collection of arguments for invoking getSCIMAttributeHeader.
  */
 export interface GetSCIMAttributeHeaderOutputArgs {
-    /**
-     * (string) The ID of the IdP corresponding to the SAML attribute.
-     */
     idpId?: pulumi.Input<string>;
-    /**
-     * The name of the scim attribute header that must be exported.
-     */
     idpName?: pulumi.Input<string>;
-    /**
-     * The name of the scim attribute header to be exported.
-     */
     name?: pulumi.Input<string>;
 }

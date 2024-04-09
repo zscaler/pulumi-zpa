@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+ *
  * Use the **zpa_inspection_all_predefined_controls** data source to get information about all OWASP predefined control and prefedined control version by group name. The `Preprocessors` predefined control is the default predefined control, This data source is always required, when creating an inspection profile.
  *
  * ## Example Usage
@@ -36,13 +39,7 @@ export function getInspectionAllPredefinedControls(args: GetInspectionAllPredefi
  * A collection of arguments for invoking getInspectionAllPredefinedControls.
  */
 export interface GetInspectionAllPredefinedControlsArgs {
-    /**
-     * The name of the predefined control.
-     */
     groupName?: string;
-    /**
-     * The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
-     */
     version: string;
 }
 
@@ -59,6 +56,9 @@ export interface GetInspectionAllPredefinedControlsResult {
     readonly version: string;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+ *
  * Use the **zpa_inspection_all_predefined_controls** data source to get information about all OWASP predefined control and prefedined control version by group name. The `Preprocessors` predefined control is the default predefined control, This data source is always required, when creating an inspection profile.
  *
  * ## Example Usage
@@ -83,12 +83,6 @@ export function getInspectionAllPredefinedControlsOutput(args: GetInspectionAllP
  * A collection of arguments for invoking getInspectionAllPredefinedControls.
  */
 export interface GetInspectionAllPredefinedControlsOutputArgs {
-    /**
-     * The name of the predefined control.
-     */
     groupName?: pulumi.Input<string>;
-    /**
-     * The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
-     */
     version: pulumi.Input<string>;
 }

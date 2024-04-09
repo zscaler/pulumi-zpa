@@ -83,17 +83,11 @@ class GetPolicyTypeResult:
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[str]:
-        """
-        (string) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @property
     @pulumi.getter(name="microtenantName")
     def microtenant_name(self) -> Optional[str]:
-        """
-        (string) The name of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_name")
 
     @property
@@ -153,6 +147,9 @@ def get_policy_type(id: Optional[str] = None,
                     policy_type: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicyTypeResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-access-policy)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api)
+
     Use the **zpa_policy_type** data source to get information about an a ``policy_set_id`` and ``policy_type``. This data source is required when creating:
 
     1. Access policy Rules
@@ -228,11 +225,6 @@ def get_policy_type(id: Optional[str] = None,
     pulumi.export("zpaPolicyTypeInspectionPolicy", inspection_policy.id)
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str microtenant_id: (string) The ID of the microtenant the resource is to be associated with.
-    :param str microtenant_name: (string) The name of the microtenant the resource is to be associated with.
-    :param str policy_type: The value for differentiating the policy types.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -264,6 +256,9 @@ def get_policy_type_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                            policy_type: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyTypeResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-access-policy)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api)
+
     Use the **zpa_policy_type** data source to get information about an a ``policy_set_id`` and ``policy_type``. This data source is required when creating:
 
     1. Access policy Rules
@@ -339,10 +334,5 @@ def get_policy_type_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     pulumi.export("zpaPolicyTypeInspectionPolicy", inspection_policy.id)
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str microtenant_id: (string) The ID of the microtenant the resource is to be associated with.
-    :param str microtenant_name: (string) The name of the microtenant the resource is to be associated with.
-    :param str policy_type: The value for differentiating the policy types.
     """
     ...

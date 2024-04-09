@@ -13,6 +13,9 @@ namespace Zscaler.Zpa
     public static class GetSCIMAttributeHeader
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-scim)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-scim-attribute-details-using-api)
+        /// 
         /// Use the **zpa_scim_attribute_header** data source to get information about a SCIM attribute from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Inspection Policy.
         /// 
         /// ## Example Usage
@@ -46,6 +49,9 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSCIMAttributeHeaderResult>("zpa:index/getSCIMAttributeHeader:getSCIMAttributeHeader", args ?? new GetSCIMAttributeHeaderArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-scim)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-scim-attribute-details-using-api)
+        /// 
         /// Use the **zpa_scim_attribute_header** data source to get information about a SCIM attribute from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Inspection Policy.
         /// 
         /// ## Example Usage
@@ -82,21 +88,12 @@ namespace Zscaler.Zpa
 
     public sealed class GetSCIMAttributeHeaderArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// (string) The ID of the IdP corresponding to the SAML attribute.
-        /// </summary>
         [Input("idpId")]
         public string? IdpId { get; set; }
 
-        /// <summary>
-        /// The name of the scim attribute header that must be exported.
-        /// </summary>
         [Input("idpName")]
         public string? IdpName { get; set; }
 
-        /// <summary>
-        /// The name of the scim attribute header to be exported.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -108,21 +105,12 @@ namespace Zscaler.Zpa
 
     public sealed class GetSCIMAttributeHeaderInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// (string) The ID of the IdP corresponding to the SAML attribute.
-        /// </summary>
         [Input("idpId")]
         public Input<string>? IdpId { get; set; }
 
-        /// <summary>
-        /// The name of the scim attribute header that must be exported.
-        /// </summary>
         [Input("idpName")]
         public Input<string>? IdpName { get; set; }
 
-        /// <summary>
-        /// The name of the scim attribute header to be exported.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -136,64 +124,22 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetSCIMAttributeHeaderResult
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly ImmutableArray<string> CanonicalValues;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool CaseSensitive;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string DataType;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (string) The ID of the IdP corresponding to the SAML attribute.
-        /// </summary>
         public readonly string? IdpId;
         public readonly string? IdpName;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool Multivalued;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Mutability;
         public readonly string? Name;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool Required;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Returned;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string SchemaUri;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool Uniqueness;
         public readonly ImmutableArray<string> Values;
 

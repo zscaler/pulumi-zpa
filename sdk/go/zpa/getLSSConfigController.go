@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-log-streaming-service)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
+//
 // Use the **zpa_lss_config_controller** data source to get information about a Log Streaming (LSS) configuration resource created in the Zscaler Private Access.
 func LookupLSSConfigController(ctx *pulumi.Context, args *LookupLSSConfigControllerArgs, opts ...pulumi.InvokeOption) (*LookupLSSConfigControllerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
@@ -24,21 +27,16 @@ func LookupLSSConfigController(ctx *pulumi.Context, args *LookupLSSConfigControl
 
 // A collection of arguments for invoking getLSSConfigController.
 type LookupLSSConfigControllerArgs struct {
-	// (Computed)
 	Configs []GetLSSConfigControllerConfig `pulumi:"configs"`
-	// This field defines the name of the log streaming resource.
-	Id *string `pulumi:"id"`
+	Id      *string                        `pulumi:"id"`
 }
 
 // A collection of values returned by getLSSConfigController.
 type LookupLSSConfigControllerResult struct {
-	// (Computed)
-	Configs []GetLSSConfigControllerConfig `pulumi:"configs"`
-	// (Computed)
+	Configs         []GetLSSConfigControllerConfig         `pulumi:"configs"`
 	ConnectorGroups []GetLSSConfigControllerConnectorGroup `pulumi:"connectorGroups"`
-	// (string)
-	Id          *string                            `pulumi:"id"`
-	PolicyRules []GetLSSConfigControllerPolicyRule `pulumi:"policyRules"`
+	Id              *string                                `pulumi:"id"`
+	PolicyRules     []GetLSSConfigControllerPolicyRule     `pulumi:"policyRules"`
 }
 
 func LookupLSSConfigControllerOutput(ctx *pulumi.Context, args LookupLSSConfigControllerOutputArgs, opts ...pulumi.InvokeOption) LookupLSSConfigControllerResultOutput {
@@ -56,10 +54,8 @@ func LookupLSSConfigControllerOutput(ctx *pulumi.Context, args LookupLSSConfigCo
 
 // A collection of arguments for invoking getLSSConfigController.
 type LookupLSSConfigControllerOutputArgs struct {
-	// (Computed)
 	Configs GetLSSConfigControllerConfigArrayInput `pulumi:"configs"`
-	// This field defines the name of the log streaming resource.
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	Id      pulumi.StringPtrInput                  `pulumi:"id"`
 }
 
 func (LookupLSSConfigControllerOutputArgs) ElementType() reflect.Type {
@@ -81,19 +77,16 @@ func (o LookupLSSConfigControllerResultOutput) ToLookupLSSConfigControllerResult
 	return o
 }
 
-// (Computed)
 func (o LookupLSSConfigControllerResultOutput) Configs() GetLSSConfigControllerConfigArrayOutput {
 	return o.ApplyT(func(v LookupLSSConfigControllerResult) []GetLSSConfigControllerConfig { return v.Configs }).(GetLSSConfigControllerConfigArrayOutput)
 }
 
-// (Computed)
 func (o LookupLSSConfigControllerResultOutput) ConnectorGroups() GetLSSConfigControllerConnectorGroupArrayOutput {
 	return o.ApplyT(func(v LookupLSSConfigControllerResult) []GetLSSConfigControllerConnectorGroup {
 		return v.ConnectorGroups
 	}).(GetLSSConfigControllerConnectorGroupArrayOutput)
 }
 
-// (string)
 func (o LookupLSSConfigControllerResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLSSConfigControllerResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }

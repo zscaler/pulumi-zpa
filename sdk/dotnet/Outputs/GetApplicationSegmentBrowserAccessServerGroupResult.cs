@@ -15,7 +15,7 @@ namespace Zscaler.Zpa.Outputs
     public sealed class GetApplicationSegmentBrowserAccessServerGroupResult
     {
         /// <summary>
-        /// This field defines the id of the application server.
+        /// - (String) This field defines the id of the application server.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
 

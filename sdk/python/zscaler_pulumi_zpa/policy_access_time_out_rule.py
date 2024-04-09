@@ -629,7 +629,27 @@ class PolicyAccessTimeOutRule(pulumi.CustomResource):
                  zpn_isolation_profile_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a PolicyAccessTimeOutRule resource with the given unique name, props, and options.
+        * [Official documentation](https://help.zscaler.com/zpa/about-timeout-policy)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-timeout-policies-using-api)
+
+        The **zpa_policy_timeout_rule** resource creates a policy timeout rule in the Zscaler Private Access cloud.
+
+          ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+
+        ## Import
+
+        Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+
+        Visit
+
+        Policy access timeout can be imported by using `<POLICY TIMEOUT RULE ID>` as the import ID.
+
+        For example:
+
+        ```sh
+        $ pulumi import zpa:index/policyAccessTimeOutRule:PolicyAccessTimeOutRule example <policy_timeout_rule_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: This is for providing the rule action.
@@ -647,7 +667,27 @@ class PolicyAccessTimeOutRule(pulumi.CustomResource):
                  args: Optional[PolicyAccessTimeOutRuleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a PolicyAccessTimeOutRule resource with the given unique name, props, and options.
+        * [Official documentation](https://help.zscaler.com/zpa/about-timeout-policy)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-timeout-policies-using-api)
+
+        The **zpa_policy_timeout_rule** resource creates a policy timeout rule in the Zscaler Private Access cloud.
+
+          ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+
+        ## Import
+
+        Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+
+        Visit
+
+        Policy access timeout can be imported by using `<POLICY TIMEOUT RULE ID>` as the import ID.
+
+        For example:
+
+        ```sh
+        $ pulumi import zpa:index/policyAccessTimeOutRule:PolicyAccessTimeOutRule example <policy_timeout_rule_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param PolicyAccessTimeOutRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

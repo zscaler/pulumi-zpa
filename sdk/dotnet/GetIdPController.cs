@@ -13,13 +13,18 @@ namespace Zscaler.Zpa
     public static class GetIdPController
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/identity-management)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-idp-configuration-details-using-api)
+        /// 
         /// Use the **zpa_idp_controller** data source to get information about an Identity Provider created in the Zscaler Private Access cloud. This data source is required when creating:
         /// 
-        /// 1. Access policy Rules
-        /// 2. Access policy timeout rules
-        /// 3. Access policy forwarding rules
-        /// 4. Access policy inspection rules
-        /// 5. Access policy isolation rules
+        /// * Access policy Rules
+        /// * Access policy timeout rules
+        /// * Access policy forwarding rules
+        /// * Access policy inspection rules
+        /// * Access policy isolation rules
+        /// * Access policy privileged credentials rules
+        /// * Access policy privileged capabilities rules
         /// 
         /// ## Example Usage
         /// 
@@ -63,13 +68,18 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIdPControllerResult>("zpa:index/getIdPController:getIdPController", args ?? new GetIdPControllerArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/identity-management)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-idp-configuration-details-using-api)
+        /// 
         /// Use the **zpa_idp_controller** data source to get information about an Identity Provider created in the Zscaler Private Access cloud. This data source is required when creating:
         /// 
-        /// 1. Access policy Rules
-        /// 2. Access policy timeout rules
-        /// 3. Access policy forwarding rules
-        /// 4. Access policy inspection rules
-        /// 5. Access policy isolation rules
+        /// * Access policy Rules
+        /// * Access policy timeout rules
+        /// * Access policy forwarding rules
+        /// * Access policy inspection rules
+        /// * Access policy isolation rules
+        /// * Access policy privileged credentials rules
+        /// * Access policy privileged capabilities rules
         /// 
         /// ## Example Usage
         /// 
@@ -116,15 +126,9 @@ namespace Zscaler.Zpa
 
     public sealed class GetIdPControllerArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the Identity Provider (IdP) to be exported.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// The name of the Identity Provider (IdP) to be exported.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -136,15 +140,9 @@ namespace Zscaler.Zpa
 
     public sealed class GetIdPControllerInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the Identity Provider (IdP) to be exported.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// The name of the Identity Provider (IdP) to be exported.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -158,105 +156,33 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetIdPControllerResult
     {
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetIdPControllerAdminMetadataResult> AdminMetadatas;
         public readonly string AdminSpSigningCertId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string AutoProvision;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool DisableSamlBasedPolicy;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly ImmutableArray<string> DomainLists;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string EnableArbitraryAuthDomains;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool EnableScimBasedPolicy;
-        /// <summary>
-        /// (bool) Default value if null is True
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool ForceAuth;
         public readonly string Id;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string IdpEntityId;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool LoginHint;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string LoginNameAttribute;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string LoginUrl;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
         public readonly string Name;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool ReauthOnUserUpdate;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool RedirectBinding;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool ScimEnabled;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ScimServiceProviderEndpoint;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool ScimSharedSecretExists;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string SignSamlRequest;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly ImmutableArray<string> SsoTypes;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool UseCustomSpMetadata;
-        /// <summary>
-        /// (Computed)
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetIdPControllerUserMetadataResult> UserMetadatas;
         public readonly string UserSpSigningCertId;
 

@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/isolation/adding-banner-theme-isolation-end-user-notification-zpa)
+ *
  * Use the **zpa_cloud_browser_isolation_certificate** data source to get information about Cloud Browser Isolation Certificate. This data source information is required as part of the attribute `certificateIds` when creating an Cloud Browser Isolation External Profile ``zpa.CloudBrowserIsolationExternalProfile``
  *
  * ## Example Usage
@@ -34,13 +36,7 @@ export function getCloudBrowserIsolationCertificate(args?: GetCloudBrowserIsolat
  * A collection of arguments for invoking getCloudBrowserIsolationCertificate.
  */
 export interface GetCloudBrowserIsolationCertificateArgs {
-    /**
-     * The id of the CBI certificate to be exported.
-     */
     id?: string;
-    /**
-     * The name of the CBI certificate to be exported.
-     */
     name?: string;
 }
 
@@ -54,6 +50,8 @@ export interface GetCloudBrowserIsolationCertificateResult {
     readonly pem: string;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/isolation/adding-banner-theme-isolation-end-user-notification-zpa)
+ *
  * Use the **zpa_cloud_browser_isolation_certificate** data source to get information about Cloud Browser Isolation Certificate. This data source information is required as part of the attribute `certificateIds` when creating an Cloud Browser Isolation External Profile ``zpa.CloudBrowserIsolationExternalProfile``
  *
  * ## Example Usage
@@ -77,12 +75,6 @@ export function getCloudBrowserIsolationCertificateOutput(args?: GetCloudBrowser
  * A collection of arguments for invoking getCloudBrowserIsolationCertificate.
  */
 export interface GetCloudBrowserIsolationCertificateOutputArgs {
-    /**
-     * The id of the CBI certificate to be exported.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * The name of the CBI certificate to be exported.
-     */
     name?: pulumi.Input<string>;
 }

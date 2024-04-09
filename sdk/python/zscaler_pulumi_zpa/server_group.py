@@ -30,12 +30,12 @@ class ServerGroupArgs:
         The set of arguments for constructing a ServerGroup resource.
         :param pulumi.Input[Sequence[pulumi.Input['ServerGroupAppConnectorGroupArgs']]] app_connector_groups: List of app-connector IDs.
         :param pulumi.Input[Sequence[pulumi.Input['ServerGroupApplicationArgs']]] applications: This field is a json array of app-connector-id only.
-        :param pulumi.Input[str] description: (Optional) This field is the description of the server group.
-        :param pulumi.Input[bool] dynamic_discovery: (Optional) This field controls dynamic discovery of the servers.
-        :param pulumi.Input[bool] enabled: (Optional) This field defines if the server group is enabled or disabled.
-        :param pulumi.Input[str] microtenant_id: (Optional) The ID of the microtenant the resource is to be associated with.
+        :param pulumi.Input[str] description: This field is the description of the server group.
+        :param pulumi.Input[bool] dynamic_discovery: This field controls dynamic discovery of the servers.
+        :param pulumi.Input[bool] enabled: This field defines if the server group is enabled or disabled.
         :param pulumi.Input[str] name: This field defines the name of the server group.
-        :param pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]] servers: (Block List) This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API.
+        :param pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]] servers: This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
+               only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
         """
         if app_connector_groups is not None:
             pulumi.set(__self__, "app_connector_groups", app_connector_groups)
@@ -95,7 +95,7 @@ class ServerGroupArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional) This field is the description of the server group.
+        This field is the description of the server group.
         """
         return pulumi.get(self, "description")
 
@@ -107,7 +107,7 @@ class ServerGroupArgs:
     @pulumi.getter(name="dynamicDiscovery")
     def dynamic_discovery(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional) This field controls dynamic discovery of the servers.
+        This field controls dynamic discovery of the servers.
         """
         return pulumi.get(self, "dynamic_discovery")
 
@@ -119,7 +119,7 @@ class ServerGroupArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional) This field defines if the server group is enabled or disabled.
+        This field defines if the server group is enabled or disabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -139,9 +139,6 @@ class ServerGroupArgs:
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @microtenant_id.setter
@@ -164,7 +161,8 @@ class ServerGroupArgs:
     @pulumi.getter
     def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]]:
         """
-        (Block List) This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API.
+        This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
+        only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
         """
         return pulumi.get(self, "servers")
 
@@ -190,12 +188,12 @@ class _ServerGroupState:
         Input properties used for looking up and filtering ServerGroup resources.
         :param pulumi.Input[Sequence[pulumi.Input['ServerGroupAppConnectorGroupArgs']]] app_connector_groups: List of app-connector IDs.
         :param pulumi.Input[Sequence[pulumi.Input['ServerGroupApplicationArgs']]] applications: This field is a json array of app-connector-id only.
-        :param pulumi.Input[str] description: (Optional) This field is the description of the server group.
-        :param pulumi.Input[bool] dynamic_discovery: (Optional) This field controls dynamic discovery of the servers.
-        :param pulumi.Input[bool] enabled: (Optional) This field defines if the server group is enabled or disabled.
-        :param pulumi.Input[str] microtenant_id: (Optional) The ID of the microtenant the resource is to be associated with.
+        :param pulumi.Input[str] description: This field is the description of the server group.
+        :param pulumi.Input[bool] dynamic_discovery: This field controls dynamic discovery of the servers.
+        :param pulumi.Input[bool] enabled: This field defines if the server group is enabled or disabled.
         :param pulumi.Input[str] name: This field defines the name of the server group.
-        :param pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]] servers: (Block List) This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API.
+        :param pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]] servers: This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
+               only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
         """
         if app_connector_groups is not None:
             pulumi.set(__self__, "app_connector_groups", app_connector_groups)
@@ -255,7 +253,7 @@ class _ServerGroupState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional) This field is the description of the server group.
+        This field is the description of the server group.
         """
         return pulumi.get(self, "description")
 
@@ -267,7 +265,7 @@ class _ServerGroupState:
     @pulumi.getter(name="dynamicDiscovery")
     def dynamic_discovery(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional) This field controls dynamic discovery of the servers.
+        This field controls dynamic discovery of the servers.
         """
         return pulumi.get(self, "dynamic_discovery")
 
@@ -279,7 +277,7 @@ class _ServerGroupState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional) This field defines if the server group is enabled or disabled.
+        This field defines if the server group is enabled or disabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -299,9 +297,6 @@ class _ServerGroupState:
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @microtenant_id.setter
@@ -324,7 +319,8 @@ class _ServerGroupState:
     @pulumi.getter
     def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]]:
         """
-        (Block List) This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API.
+        This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
+        only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
         """
         return pulumi.get(self, "servers")
 
@@ -425,12 +421,6 @@ class ServerGroup(pulumi.CustomResource):
         ```
         <!--End PulumiCodeChooser -->
 
-        ### Required
-
-        * `name` - (Required) This field defines the name of the server group.
-        * `app_connector_groups` - (Required)
-          * `id` - (Required) The ID of this resource.
-
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
@@ -455,12 +445,12 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupAppConnectorGroupArgs']]]] app_connector_groups: List of app-connector IDs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupApplicationArgs']]]] applications: This field is a json array of app-connector-id only.
-        :param pulumi.Input[str] description: (Optional) This field is the description of the server group.
-        :param pulumi.Input[bool] dynamic_discovery: (Optional) This field controls dynamic discovery of the servers.
-        :param pulumi.Input[bool] enabled: (Optional) This field defines if the server group is enabled or disabled.
-        :param pulumi.Input[str] microtenant_id: (Optional) The ID of the microtenant the resource is to be associated with.
+        :param pulumi.Input[str] description: This field is the description of the server group.
+        :param pulumi.Input[bool] dynamic_discovery: This field controls dynamic discovery of the servers.
+        :param pulumi.Input[bool] enabled: This field defines if the server group is enabled or disabled.
         :param pulumi.Input[str] name: This field defines the name of the server group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]] servers: (Block List) This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]] servers: This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
+               only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
         """
         ...
     @overload
@@ -543,12 +533,6 @@ class ServerGroup(pulumi.CustomResource):
                 ]))
         ```
         <!--End PulumiCodeChooser -->
-
-        ### Required
-
-        * `name` - (Required) This field defines the name of the server group.
-        * `app_connector_groups` - (Required)
-          * `id` - (Required) The ID of this resource.
 
         ## Import
 
@@ -643,12 +627,12 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupAppConnectorGroupArgs']]]] app_connector_groups: List of app-connector IDs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupApplicationArgs']]]] applications: This field is a json array of app-connector-id only.
-        :param pulumi.Input[str] description: (Optional) This field is the description of the server group.
-        :param pulumi.Input[bool] dynamic_discovery: (Optional) This field controls dynamic discovery of the servers.
-        :param pulumi.Input[bool] enabled: (Optional) This field defines if the server group is enabled or disabled.
-        :param pulumi.Input[str] microtenant_id: (Optional) The ID of the microtenant the resource is to be associated with.
+        :param pulumi.Input[str] description: This field is the description of the server group.
+        :param pulumi.Input[bool] dynamic_discovery: This field controls dynamic discovery of the servers.
+        :param pulumi.Input[bool] enabled: This field defines if the server group is enabled or disabled.
         :param pulumi.Input[str] name: This field defines the name of the server group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]] servers: (Block List) This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]] servers: This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
+               only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -691,7 +675,7 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        (Optional) This field is the description of the server group.
+        This field is the description of the server group.
         """
         return pulumi.get(self, "description")
 
@@ -699,7 +683,7 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter(name="dynamicDiscovery")
     def dynamic_discovery(self) -> pulumi.Output[Optional[bool]]:
         """
-        (Optional) This field controls dynamic discovery of the servers.
+        This field controls dynamic discovery of the servers.
         """
         return pulumi.get(self, "dynamic_discovery")
 
@@ -707,7 +691,7 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        (Optional) This field defines if the server group is enabled or disabled.
+        This field defines if the server group is enabled or disabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -719,9 +703,6 @@ class ServerGroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> pulumi.Output[str]:
-        """
-        (Optional) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @property
@@ -736,7 +717,8 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter
     def servers(self) -> pulumi.Output[Sequence['outputs.ServerGroupServer']]:
         """
-        (Block List) This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API.
+        This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
+        only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
         """
         return pulumi.get(self, "servers")
 

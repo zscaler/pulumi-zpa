@@ -13,44 +13,38 @@ namespace Zscaler.Zpa.Inputs
 
     public sealed class PolicyAccessRuleConditionOperandGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// (Optional) The ID of a server group resource
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Input("idpId")]
         public Input<string>? IdpId { get; set; }
 
         /// <summary>
-        /// (Optional) LHS must always carry the string value ``id`` or the attribute ID of the resource being associated with the rule.
+        /// This signifies the key for the object type. String ID example: id
         /// </summary>
         [Input("lhs", required: true)]
         public Input<string> Lhs { get; set; } = null!;
 
         /// <summary>
-        /// (Optional) The ID of the microtenant the resource is to be associated with.
+        /// This denotes the value for the given object type. Its value depends upon the key.
         /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
         /// <summary>
-        /// (Optional)
+        /// This is the name of the policy rule.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Optional) This is for specifying the policy critiera. Supported values: `APP`, `APP_GROUP`, `SAML`, `IDP`, `CLIENT_TYPE`, `TRUSTED_NETWORK`, `POSTURE`, `SCIM`, `SCIM_GROUP`, and `CLOUD_CONNECTOR_GROUP`. `TRUSTED_NETWORK`, `CLIENT_TYPE`, `PLATFORM`, `COUNTRY_CODE`.
+        /// This is for specifying the policy critiera.
         /// </summary>
         [Input("objectType", required: true)]
         public Input<string> ObjectType { get; set; } = null!;
 
         /// <summary>
-        /// (Optional) RHS is either the ID attribute of a resource or fixed string value. Refer to the chart below for further details.
+        /// This denotes the value for the given object type. Its value depends upon the key.
         /// </summary>
         [Input("rhs")]
         public Input<string>? Rhs { get; set; }

@@ -14,66 +14,27 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetApplicationSegmentBrowserAccessClientlessAppResult
     {
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool AllowOptions;
         public readonly string AppId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ApplicationPort;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ApplicationProtocol;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CertificateId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CertificateName;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Cname;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Domain;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool Hidden;
         /// <summary>
-        /// This field defines the id of the application server.
+        /// - (String) This field defines the id of the application server.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string LocalDomain;
         /// <summary>
-        /// This field defines the name of the server.
+        /// - (String) This field defines the name of the server.
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Path;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool TrustUntrustedCert;
 
         [OutputConstructor]

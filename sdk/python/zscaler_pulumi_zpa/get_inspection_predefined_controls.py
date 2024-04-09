@@ -84,105 +84,66 @@ class GetInspectionPredefinedControlsResult:
     @property
     @pulumi.getter
     def action(self) -> str:
-        """
-        (Computed)
-        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter(name="actionValue")
     def action_value(self) -> str:
-        """
-        (Computed)
-        """
         return pulumi.get(self, "action_value")
 
     @property
     @pulumi.getter(name="associatedInspectionProfileNames")
     def associated_inspection_profile_names(self) -> Sequence['outputs.GetInspectionPredefinedControlsAssociatedInspectionProfileNameResult']:
-        """
-        (Computed)
-        """
         return pulumi.get(self, "associated_inspection_profile_names")
 
     @property
     @pulumi.getter
     def attachment(self) -> str:
-        """
-        (Computed)
-        """
         return pulumi.get(self, "attachment")
 
     @property
     @pulumi.getter(name="controlGroup")
     def control_group(self) -> str:
-        """
-        (Computed)
-        """
         return pulumi.get(self, "control_group")
 
     @property
     @pulumi.getter(name="controlNumber")
     def control_number(self) -> str:
-        """
-        (Computed)
-        """
         return pulumi.get(self, "control_number")
 
     @property
     @pulumi.getter(name="controlType")
     def control_type(self) -> str:
-        """
-        (Computed)
-        """
         return pulumi.get(self, "control_type")
 
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (Computed)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter(name="defaultAction")
     def default_action(self) -> str:
-        """
-        (Computed)
-        """
         return pulumi.get(self, "default_action")
 
     @property
     @pulumi.getter(name="defaultActionValue")
     def default_action_value(self) -> str:
-        """
-        (Computed)
-        """
         return pulumi.get(self, "default_action_value")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (Computed)
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        (Computed)
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (Computed)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -193,33 +154,21 @@ class GetInspectionPredefinedControlsResult:
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        (Computed)
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="paranoiaLevel")
     def paranoia_level(self) -> str:
-        """
-        (Computed)
-        """
         return pulumi.get(self, "paranoia_level")
 
     @property
     @pulumi.getter(name="protocolType")
     def protocol_type(self) -> str:
-        """
-        (Computed)
-        """
         return pulumi.get(self, "protocol_type")
 
     @property
     @pulumi.getter
     def severity(self) -> str:
-        """
-        (Computed)
-        """
         return pulumi.get(self, "severity")
 
     @property
@@ -260,6 +209,9 @@ def get_inspection_predefined_controls(id: Optional[str] = None,
                                        version: Optional[str] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInspectionPredefinedControlsResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+
     Use the **zpa_inspection_predefined_controls** data source to get information about an OWASP predefined control and prefedined control version. This data source is required when creating an inspection profile.
 
     ## Example Usage
@@ -274,11 +226,6 @@ def get_inspection_predefined_controls(id: Optional[str] = None,
     pulumi.export("zpaInspectionPredefinedControls", example)
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: (Computed)
-    :param str name: The name of the predefined control.
-    :param str version: The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
     """
     __args__ = dict()
     __args__['id'] = id
@@ -315,6 +262,9 @@ def get_inspection_predefined_controls_output(id: Optional[pulumi.Input[Optional
                                               version: Optional[pulumi.Input[Optional[str]]] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInspectionPredefinedControlsResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+
     Use the **zpa_inspection_predefined_controls** data source to get information about an OWASP predefined control and prefedined control version. This data source is required when creating an inspection profile.
 
     ## Example Usage
@@ -329,10 +279,5 @@ def get_inspection_predefined_controls_output(id: Optional[pulumi.Input[Optional
     pulumi.export("zpaInspectionPredefinedControls", example)
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: (Computed)
-    :param str name: The name of the predefined control.
-    :param str version: The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
     """
     ...

@@ -104,33 +104,18 @@ namespace Zscaler.Zpa
 
     public sealed class GetProvisioningKeyArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are `CONNECTOR_GRP` and `SERVICE_EDGE_GRP`
-        /// </summary>
         [Input("associationType", required: true)]
         public string AssociationType { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the provisioning key to be exported.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public string? MicrotenantId { get; set; }
 
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantName")]
         public string? MicrotenantName { get; set; }
 
-        /// <summary>
-        /// Name of the provisioning key.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -142,33 +127,18 @@ namespace Zscaler.Zpa
 
     public sealed class GetProvisioningKeyInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are `CONNECTOR_GRP` and `SERVICE_EDGE_GRP`
-        /// </summary>
         [Input("associationType", required: true)]
         public Input<string> AssociationType { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the provisioning key to be exported.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantName")]
         public Input<string>? MicrotenantName { get; set; }
 
-        /// <summary>
-        /// Name of the provisioning key.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -185,68 +155,23 @@ namespace Zscaler.Zpa
         public readonly string AppConnectorGroupId;
         public readonly string AppConnectorGroupName;
         public readonly string AssociationType;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string EnrollmentCertId;
-        /// <summary>
-        /// (string) Applicable only for GET calls, ignored in PUT/POST calls.
-        /// </summary>
         public readonly string EnrollmentCertName;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ExpirationInEpochSec;
         public readonly string? Id;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly ImmutableArray<string> IpAcls;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string MaxUsage;
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         public readonly string? MicrotenantId;
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         public readonly string? MicrotenantName;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
         public readonly string? Name;
-        /// <summary>
-        /// (string) Ignored in PUT/POST calls.
-        /// </summary>
         public readonly string ProvisioningKey;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string UiConfig;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string UsageCount;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ZcomponentId;
-        /// <summary>
-        /// (string) Applicable only for GET calls, ignored in PUT/POST calls.
-        /// </summary>
         public readonly string ZcomponentName;
 
         [OutputConstructor]

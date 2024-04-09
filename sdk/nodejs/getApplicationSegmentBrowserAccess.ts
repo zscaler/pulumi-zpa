@@ -48,24 +48,14 @@ export function getApplicationSegmentBrowserAccess(args?: GetApplicationSegmentB
  */
 export interface GetApplicationSegmentBrowserAccessArgs {
     /**
-     * This field defines the id of the application server.
+     * - (String) This field defines the id of the application server.
      */
     id?: string;
     /**
-     * This field defines the name of the server.
+     * - (String) This field defines the name of the server.
      */
     name?: string;
-    /**
-     * (string) TCP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
-     */
     tcpPortRange?: inputs.GetApplicationSegmentBrowserAccessTcpPortRange[];
-    /**
-     * (string) UDP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
-     */
     udpPortRange?: inputs.GetApplicationSegmentBrowserAccessUdpPortRange[];
 }
 
@@ -73,81 +63,32 @@ export interface GetApplicationSegmentBrowserAccessArgs {
  * A collection of values returned by getApplicationSegmentBrowserAccess.
  */
 export interface GetApplicationSegmentBrowserAccessResult {
-    /**
-     * (string) Indicates whether users can bypass ZPA to access applications. Default: `NEVER`. Supported values: `ALWAYS`, `NEVER`, `ON_NET`. The value `NEVER` indicates the use of the client forwarding policy.
-     */
     readonly bypassType: string;
     readonly clientlessApps: outputs.GetApplicationSegmentBrowserAccessClientlessApp[];
-    /**
-     * (string)
-     */
     readonly configSpace: string;
-    /**
-     * (string)
-     */
     readonly description: string;
-    /**
-     * List of domains and IPs.
-     */
     readonly domainNames: string[];
-    /**
-     * (string) Whether Double Encryption is enabled or disabled for the app. Default: false. Boolean: `true`, `false`.
-     */
     readonly doubleEncrypt: boolean;
-    /**
-     * (bool)
-     */
     readonly enabled: boolean;
     readonly healthCheckType: string;
-    /**
-     * (string)
-     */
     readonly healthReporting: string;
+    /**
+     * - (String) This field defines the id of the application server.
+     */
     readonly id?: string;
-    /**
-     * (bool)
-     */
     readonly ipAnchored: boolean;
-    /**
-     * (bool) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors. Default: true. Boolean: `true`, `false`.
-     */
     readonly isCnameEnabled: boolean;
     /**
-     * (string)
+     * - (String) This field defines the name of the server.
      */
     readonly name?: string;
-    /**
-     * (bool)
-     */
     readonly passiveHealthEnabled: boolean;
-    /**
-     * (string)
-     */
     readonly segmentGroupId: string;
-    /**
-     * (string)
-     */
     readonly segmentGroupName: string;
     readonly serverGroups: outputs.GetApplicationSegmentBrowserAccessServerGroup[];
-    /**
-     * (string) TCP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
-     */
     readonly tcpPortRange: outputs.GetApplicationSegmentBrowserAccessTcpPortRange[];
-    /**
-     * (string) TCP port ranges used to access the app.
-     */
     readonly tcpPortRanges: string[];
-    /**
-     * (string) UDP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
-     */
     readonly udpPortRange: outputs.GetApplicationSegmentBrowserAccessUdpPortRange[];
-    /**
-     * (string) UDP port ranges used to access the app.
-     */
     readonly udpPortRanges: string[];
 }
 /**
@@ -184,23 +125,13 @@ export function getApplicationSegmentBrowserAccessOutput(args?: GetApplicationSe
  */
 export interface GetApplicationSegmentBrowserAccessOutputArgs {
     /**
-     * This field defines the id of the application server.
+     * - (String) This field defines the id of the application server.
      */
     id?: pulumi.Input<string>;
     /**
-     * This field defines the name of the server.
+     * - (String) This field defines the name of the server.
      */
     name?: pulumi.Input<string>;
-    /**
-     * (string) TCP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
-     */
     tcpPortRange?: pulumi.Input<pulumi.Input<inputs.GetApplicationSegmentBrowserAccessTcpPortRangeArgs>[]>;
-    /**
-     * (string) UDP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
-     */
     udpPortRange?: pulumi.Input<pulumi.Input<inputs.GetApplicationSegmentBrowserAccessUdpPortRangeArgs>[]>;
 }

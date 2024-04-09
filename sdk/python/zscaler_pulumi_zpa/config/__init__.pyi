@@ -21,7 +21,7 @@ zpa client secret
 
 zpaCloud: Optional[str]
 """
-Cloud to use PRODUCTION, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
+Cloud to use PRODUCTION, ZPATWO, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
 """
 
 zpaCustomerId: Optional[str]

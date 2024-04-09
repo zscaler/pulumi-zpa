@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/isolation/creating-isolation-profiles-zpa)
+// * [API documentation](https://help.zscaler.com/zpa/obtaining-isolation-profile-details-using-api)
+//
 // Use the **zpa_isolation_profile** data source to get information about an isolation profile in the Zscaler Private Access cloud. This data source is required when configuring an isolation policy rule resource
 //
 // ## Example Usage
@@ -52,29 +55,23 @@ func GetIsolationProfile(ctx *pulumi.Context, args *GetIsolationProfileArgs, opt
 
 // A collection of arguments for invoking getIsolationProfile.
 type GetIsolationProfileArgs struct {
-	// This field defines the name of the isolation profile.
+	// - (Required) This field defines the name of the isolation profile.
 	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getIsolationProfile.
 type GetIsolationProfileResult struct {
-	// (string)
-	CreationTime string `pulumi:"creationTime"`
-	// (string)
-	Description string `pulumi:"description"`
-	// (string)
-	Enabled bool   `pulumi:"enabled"`
-	Id      string `pulumi:"id"`
-	// (string)
+	CreationTime       string `pulumi:"creationTime"`
+	Description        string `pulumi:"description"`
+	Enabled            bool   `pulumi:"enabled"`
+	Id                 string `pulumi:"id"`
 	IsolationProfileId string `pulumi:"isolationProfileId"`
-	// (string)
-	IsolationTenantId string `pulumi:"isolationTenantId"`
-	// (string)
-	IsolationUrl string `pulumi:"isolationUrl"`
-	// (string)
-	ModifiedTime string  `pulumi:"modifiedTime"`
-	Modifiedby   string  `pulumi:"modifiedby"`
-	Name         *string `pulumi:"name"`
+	IsolationTenantId  string `pulumi:"isolationTenantId"`
+	IsolationUrl       string `pulumi:"isolationUrl"`
+	ModifiedTime       string `pulumi:"modifiedTime"`
+	Modifiedby         string `pulumi:"modifiedby"`
+	// - (Required) This field defines the name of the isolation profile.
+	Name *string `pulumi:"name"`
 }
 
 func GetIsolationProfileOutput(ctx *pulumi.Context, args GetIsolationProfileOutputArgs, opts ...pulumi.InvokeOption) GetIsolationProfileResultOutput {
@@ -92,7 +89,7 @@ func GetIsolationProfileOutput(ctx *pulumi.Context, args GetIsolationProfileOutp
 
 // A collection of arguments for invoking getIsolationProfile.
 type GetIsolationProfileOutputArgs struct {
-	// This field defines the name of the isolation profile.
+	// - (Required) This field defines the name of the isolation profile.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -115,17 +112,14 @@ func (o GetIsolationProfileResultOutput) ToGetIsolationProfileResultOutputWithCo
 	return o
 }
 
-// (string)
 func (o GetIsolationProfileResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIsolationProfileResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetIsolationProfileResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIsolationProfileResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetIsolationProfileResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetIsolationProfileResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -134,22 +128,18 @@ func (o GetIsolationProfileResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIsolationProfileResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetIsolationProfileResultOutput) IsolationProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIsolationProfileResult) string { return v.IsolationProfileId }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetIsolationProfileResultOutput) IsolationTenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIsolationProfileResult) string { return v.IsolationTenantId }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetIsolationProfileResultOutput) IsolationUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIsolationProfileResult) string { return v.IsolationUrl }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetIsolationProfileResultOutput) ModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIsolationProfileResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
@@ -158,6 +148,7 @@ func (o GetIsolationProfileResultOutput) Modifiedby() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIsolationProfileResult) string { return v.Modifiedby }).(pulumi.StringOutput)
 }
 
+// - (Required) This field defines the name of the isolation profile.
 func (o GetIsolationProfileResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIsolationProfileResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

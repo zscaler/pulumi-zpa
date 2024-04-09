@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-browser-protection-profiles)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-profiles-using-api)
+ *
  * The  **zpa_inspection_profile** resource creates an inspection profile in the Zscaler Private Access cloud. This resource can then be referenced in an inspection custom control resource.
  */
 export class InspectionProfile extends pulumi.CustomResource {
@@ -38,16 +41,13 @@ export class InspectionProfile extends pulumi.CustomResource {
     }
 
     public readonly associateAllControls!: pulumi.Output<boolean | undefined>;
-    /**
-     * (Optional) Types for custom controls
-     */
     public readonly controlsInfos!: pulumi.Output<outputs.InspectionProfileControlsInfo[]>;
     /**
-     * (Optional) Types for custom controls
+     * The set of AppProtection controls used to define how inspections are managed
      */
     public readonly customControls!: pulumi.Output<outputs.InspectionProfileCustomControl[] | undefined>;
     /**
-     * Description of the inspection profile.
+     * The description of the AppProtection profile
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -55,16 +55,13 @@ export class InspectionProfile extends pulumi.CustomResource {
      */
     public readonly globalControlActions!: pulumi.Output<string[] | undefined>;
     public readonly incarnationNumber!: pulumi.Output<string | undefined>;
-    /**
-     * The name of the inspection profile.
-     */
     public readonly name!: pulumi.Output<string>;
     /**
-     * OWASP Predefined Paranoia Level. Range: [1-4], inclusive
+     * The OWASP Predefined Paranoia Level
      */
     public readonly paranoiaLevel!: pulumi.Output<string | undefined>;
     /**
-     * The predefined controls. The default predefined control `Preprocessors` are mandatory and injected in the request by default. Individual `predefinedControls` can be set by using the data source `dataSourceZpaPredefinedControls` or by group using the data source `zpa.getInspectionAllPredefinedControls`.
+     * The predefined controls
      */
     public readonly predefinedControls!: pulumi.Output<outputs.InspectionProfilePredefinedControl[]>;
     /**
@@ -124,16 +121,13 @@ export class InspectionProfile extends pulumi.CustomResource {
  */
 export interface InspectionProfileState {
     associateAllControls?: pulumi.Input<boolean>;
-    /**
-     * (Optional) Types for custom controls
-     */
     controlsInfos?: pulumi.Input<pulumi.Input<inputs.InspectionProfileControlsInfo>[]>;
     /**
-     * (Optional) Types for custom controls
+     * The set of AppProtection controls used to define how inspections are managed
      */
     customControls?: pulumi.Input<pulumi.Input<inputs.InspectionProfileCustomControl>[]>;
     /**
-     * Description of the inspection profile.
+     * The description of the AppProtection profile
      */
     description?: pulumi.Input<string>;
     /**
@@ -141,16 +135,13 @@ export interface InspectionProfileState {
      */
     globalControlActions?: pulumi.Input<pulumi.Input<string>[]>;
     incarnationNumber?: pulumi.Input<string>;
-    /**
-     * The name of the inspection profile.
-     */
     name?: pulumi.Input<string>;
     /**
-     * OWASP Predefined Paranoia Level. Range: [1-4], inclusive
+     * The OWASP Predefined Paranoia Level
      */
     paranoiaLevel?: pulumi.Input<string>;
     /**
-     * The predefined controls. The default predefined control `Preprocessors` are mandatory and injected in the request by default. Individual `predefinedControls` can be set by using the data source `dataSourceZpaPredefinedControls` or by group using the data source `zpa.getInspectionAllPredefinedControls`.
+     * The predefined controls
      */
     predefinedControls?: pulumi.Input<pulumi.Input<inputs.InspectionProfilePredefinedControl>[]>;
     /**
@@ -168,16 +159,13 @@ export interface InspectionProfileState {
  */
 export interface InspectionProfileArgs {
     associateAllControls?: pulumi.Input<boolean>;
-    /**
-     * (Optional) Types for custom controls
-     */
     controlsInfos?: pulumi.Input<pulumi.Input<inputs.InspectionProfileControlsInfo>[]>;
     /**
-     * (Optional) Types for custom controls
+     * The set of AppProtection controls used to define how inspections are managed
      */
     customControls?: pulumi.Input<pulumi.Input<inputs.InspectionProfileCustomControl>[]>;
     /**
-     * Description of the inspection profile.
+     * The description of the AppProtection profile
      */
     description?: pulumi.Input<string>;
     /**
@@ -185,16 +173,13 @@ export interface InspectionProfileArgs {
      */
     globalControlActions?: pulumi.Input<pulumi.Input<string>[]>;
     incarnationNumber?: pulumi.Input<string>;
-    /**
-     * The name of the inspection profile.
-     */
     name?: pulumi.Input<string>;
     /**
-     * OWASP Predefined Paranoia Level. Range: [1-4], inclusive
+     * The OWASP Predefined Paranoia Level
      */
     paranoiaLevel?: pulumi.Input<string>;
     /**
-     * The predefined controls. The default predefined control `Preprocessors` are mandatory and injected in the request by default. Individual `predefinedControls` can be set by using the data source `dataSourceZpaPredefinedControls` or by group using the data source `zpa.getInspectionAllPredefinedControls`.
+     * The predefined controls
      */
     predefinedControls?: pulumi.Input<pulumi.Input<inputs.InspectionProfilePredefinedControl>[]>;
     /**

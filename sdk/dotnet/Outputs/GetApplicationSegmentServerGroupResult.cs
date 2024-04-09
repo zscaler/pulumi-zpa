@@ -14,26 +14,14 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetApplicationSegmentServerGroupResult
     {
-        /// <summary>
-        /// Supported values: `DEFAULT`, `SIEM`.
-        /// </summary>
         public readonly string ConfigSpace;
         public readonly string CreationTime;
-        /// <summary>
-        /// Description of the application.
-        /// </summary>
         public readonly string Description;
         public readonly bool DynamicDiscovery;
-        /// <summary>
-        /// Whether this application is enabled or not. Default: false. Supported values: `true`, `false`.
-        /// </summary>
         public readonly bool Enabled;
         public readonly string Id;
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
-        /// <summary>
-        /// Name of the application.
-        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

@@ -18,8 +18,6 @@ class CloudBrowserIsolationCertificateArgs:
                  pem: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CloudBrowserIsolationCertificate resource.
-        :param pulumi.Input[str] name: The name of the CBI certificate.
-        :param pulumi.Input[str] pem: The certificate in PEM format.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -29,9 +27,6 @@ class CloudBrowserIsolationCertificateArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the CBI certificate.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -41,9 +36,6 @@ class CloudBrowserIsolationCertificateArgs:
     @property
     @pulumi.getter
     def pem(self) -> Optional[pulumi.Input[str]]:
-        """
-        The certificate in PEM format.
-        """
         return pulumi.get(self, "pem")
 
     @pem.setter
@@ -58,8 +50,6 @@ class _CloudBrowserIsolationCertificateState:
                  pem: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CloudBrowserIsolationCertificate resources.
-        :param pulumi.Input[str] name: The name of the CBI certificate.
-        :param pulumi.Input[str] pem: The certificate in PEM format.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -69,9 +59,6 @@ class _CloudBrowserIsolationCertificateState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the CBI certificate.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -81,9 +68,6 @@ class _CloudBrowserIsolationCertificateState:
     @property
     @pulumi.getter
     def pem(self) -> Optional[pulumi.Input[str]]:
-        """
-        The certificate in PEM format.
-        """
         return pulumi.get(self, "pem")
 
     @pem.setter
@@ -100,6 +84,8 @@ class CloudBrowserIsolationCertificate(pulumi.CustomResource):
                  pem: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
+
         The **zpa_cloud_browser_isolation_certificate** resource creates a Cloud Browser Isolation certificate. This resource can then be used when creating a CBI External Profile `CloudBrowserIsolationExternalProfile`.`
 
         ## Example Usage
@@ -119,8 +105,6 @@ class CloudBrowserIsolationCertificate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The name of the CBI certificate.
-        :param pulumi.Input[str] pem: The certificate in PEM format.
         """
         ...
     @overload
@@ -129,6 +113,8 @@ class CloudBrowserIsolationCertificate(pulumi.CustomResource):
                  args: Optional[CloudBrowserIsolationCertificateArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
+
         The **zpa_cloud_browser_isolation_certificate** resource creates a Cloud Browser Isolation certificate. This resource can then be used when creating a CBI External Profile `CloudBrowserIsolationExternalProfile`.`
 
         ## Example Usage
@@ -193,8 +179,6 @@ class CloudBrowserIsolationCertificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The name of the CBI certificate.
-        :param pulumi.Input[str] pem: The certificate in PEM format.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -207,16 +191,10 @@ class CloudBrowserIsolationCertificate(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the CBI certificate.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def pem(self) -> pulumi.Output[Optional[str]]:
-        """
-        The certificate in PEM format.
-        """
         return pulumi.get(self, "pem")
 

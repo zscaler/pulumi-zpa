@@ -76,70 +76,44 @@ func GetAppConnectorGroup(ctx *pulumi.Context, args *GetAppConnectorGroupArgs, o
 
 // A collection of arguments for invoking getAppConnectorGroup.
 type GetAppConnectorGroupArgs struct {
-	// ID of the App Connector Group.
-	Id *string `pulumi:"id"`
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
-	MicrotenantName *string `pulumi:"microtenantName"`
-	// Name of the App Connector Group.
-	Name *string `pulumi:"name"`
-	// (bool) Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
-	OverrideVersionProfile *bool `pulumi:"overrideVersionProfile"`
+	Id                     *string `pulumi:"id"`
+	MicrotenantId          *string `pulumi:"microtenantId"`
+	MicrotenantName        *string `pulumi:"microtenantName"`
+	Name                   *string `pulumi:"name"`
+	OverrideVersionProfile *bool   `pulumi:"overrideVersionProfile"`
 }
 
 // A collection of values returned by getAppConnectorGroup.
 type GetAppConnectorGroupResult struct {
-	// (String) Whether Double Encryption is enabled or disabled for the app.
-	CityCountry string                          `pulumi:"cityCountry"`
-	Connectors  []GetAppConnectorGroupConnector `pulumi:"connectors"`
-	// (String)
-	CountryCode  string `pulumi:"countryCode"`
-	CreationTime string `pulumi:"creationTime"`
-	// (String) Description of the App Connector Group.
-	Description string `pulumi:"description"`
-	// (String)
-	DnsQueryType string `pulumi:"dnsQueryType"`
-	// (String) Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
-	Enabled bool `pulumi:"enabled"`
-	// (String)
-	GeoLocationId string  `pulumi:"geoLocationId"`
-	Id            *string `pulumi:"id"`
-	// (String) Latitude of the App Connector Group. Integer or decimal. With values in the range of `-90` to `90`
-	Latitude string `pulumi:"latitude"`
-	// (String) Location of the App Connector Group.
-	Location string `pulumi:"location"`
-	// (String) Longitude of the App Connector Group. Integer or decimal. With values in the range of `-180` to `180`
-	Longitude            string `pulumi:"longitude"`
-	LssAppConnectorGroup bool   `pulumi:"lssAppConnectorGroup"`
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
-	MicrotenantName *string `pulumi:"microtenantName"`
-	ModifiedTime    string  `pulumi:"modifiedTime"`
-	Modifiedby      string  `pulumi:"modifiedby"`
-	Name            *string `pulumi:"name"`
-	// (bool) Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
-	OverrideVersionProfile   *bool                             `pulumi:"overrideVersionProfile"`
-	ServerGroups             []GetAppConnectorGroupServerGroup `pulumi:"serverGroups"`
-	TcpQuickAckApp           bool                              `pulumi:"tcpQuickAckApp"`
-	TcpQuickAckAssistant     bool                              `pulumi:"tcpQuickAckAssistant"`
-	TcpQuickAckReadAssistant bool                              `pulumi:"tcpQuickAckReadAssistant"`
-	// (String) App Connectors in this group will attempt to update to a newer version of the software during this specified day
-	UpgradeDay string `pulumi:"upgradeDay"`
-	// (String) App Connectors in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600`. Integer in seconds (i.e., `-66600`). The integer should be greater than or equal to `0` and less than `86400`, in `15` minute intervals
-	UpgradeTimeInSecs string `pulumi:"upgradeTimeInSecs"`
-	// (Optional) Supported values: `true`, `false`
-	UseInDrMode bool `pulumi:"useInDrMode"`
-	// (String) ID of the version profile.
-	// Exported values are:
-	VersionProfileId string `pulumi:"versionProfileId"`
-	// (String)
-	// Exported values are:
-	VersionProfileName string `pulumi:"versionProfileName"`
-	// (String)
-	// Exported values are:
-	VersionProfileVisibilityScope string `pulumi:"versionProfileVisibilityScope"`
+	CityCountry                   string                            `pulumi:"cityCountry"`
+	Connectors                    []GetAppConnectorGroupConnector   `pulumi:"connectors"`
+	CountryCode                   string                            `pulumi:"countryCode"`
+	CreationTime                  string                            `pulumi:"creationTime"`
+	Description                   string                            `pulumi:"description"`
+	DnsQueryType                  string                            `pulumi:"dnsQueryType"`
+	Enabled                       bool                              `pulumi:"enabled"`
+	GeoLocationId                 string                            `pulumi:"geoLocationId"`
+	Id                            *string                           `pulumi:"id"`
+	Latitude                      string                            `pulumi:"latitude"`
+	Location                      string                            `pulumi:"location"`
+	Longitude                     string                            `pulumi:"longitude"`
+	LssAppConnectorGroup          bool                              `pulumi:"lssAppConnectorGroup"`
+	MicrotenantId                 *string                           `pulumi:"microtenantId"`
+	MicrotenantName               *string                           `pulumi:"microtenantName"`
+	ModifiedTime                  string                            `pulumi:"modifiedTime"`
+	Modifiedby                    string                            `pulumi:"modifiedby"`
+	Name                          *string                           `pulumi:"name"`
+	OverrideVersionProfile        *bool                             `pulumi:"overrideVersionProfile"`
+	ServerGroups                  []GetAppConnectorGroupServerGroup `pulumi:"serverGroups"`
+	TcpQuickAckApp                bool                              `pulumi:"tcpQuickAckApp"`
+	TcpQuickAckAssistant          bool                              `pulumi:"tcpQuickAckAssistant"`
+	TcpQuickAckReadAssistant      bool                              `pulumi:"tcpQuickAckReadAssistant"`
+	UpgradeDay                    string                            `pulumi:"upgradeDay"`
+	UpgradeTimeInSecs             string                            `pulumi:"upgradeTimeInSecs"`
+	UseInDrMode                   bool                              `pulumi:"useInDrMode"`
+	VersionProfileId              string                            `pulumi:"versionProfileId"`
+	VersionProfileName            string                            `pulumi:"versionProfileName"`
+	VersionProfileVisibilityScope string                            `pulumi:"versionProfileVisibilityScope"`
 }
 
 func GetAppConnectorGroupOutput(ctx *pulumi.Context, args GetAppConnectorGroupOutputArgs, opts ...pulumi.InvokeOption) GetAppConnectorGroupResultOutput {
@@ -157,16 +131,11 @@ func GetAppConnectorGroupOutput(ctx *pulumi.Context, args GetAppConnectorGroupOu
 
 // A collection of arguments for invoking getAppConnectorGroup.
 type GetAppConnectorGroupOutputArgs struct {
-	// ID of the App Connector Group.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId pulumi.StringPtrInput `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
-	MicrotenantName pulumi.StringPtrInput `pulumi:"microtenantName"`
-	// Name of the App Connector Group.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// (bool) Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
-	OverrideVersionProfile pulumi.BoolPtrInput `pulumi:"overrideVersionProfile"`
+	Id                     pulumi.StringPtrInput `pulumi:"id"`
+	MicrotenantId          pulumi.StringPtrInput `pulumi:"microtenantId"`
+	MicrotenantName        pulumi.StringPtrInput `pulumi:"microtenantName"`
+	Name                   pulumi.StringPtrInput `pulumi:"name"`
+	OverrideVersionProfile pulumi.BoolPtrInput   `pulumi:"overrideVersionProfile"`
 }
 
 func (GetAppConnectorGroupOutputArgs) ElementType() reflect.Type {
@@ -188,7 +157,6 @@ func (o GetAppConnectorGroupResultOutput) ToGetAppConnectorGroupResultOutputWith
 	return o
 }
 
-// (String) Whether Double Encryption is enabled or disabled for the app.
 func (o GetAppConnectorGroupResultOutput) CityCountry() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorGroupResult) string { return v.CityCountry }).(pulumi.StringOutput)
 }
@@ -197,7 +165,6 @@ func (o GetAppConnectorGroupResultOutput) Connectors() GetAppConnectorGroupConne
 	return o.ApplyT(func(v GetAppConnectorGroupResult) []GetAppConnectorGroupConnector { return v.Connectors }).(GetAppConnectorGroupConnectorArrayOutput)
 }
 
-// (String)
 func (o GetAppConnectorGroupResultOutput) CountryCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorGroupResult) string { return v.CountryCode }).(pulumi.StringOutput)
 }
@@ -206,22 +173,18 @@ func (o GetAppConnectorGroupResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorGroupResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// (String) Description of the App Connector Group.
 func (o GetAppConnectorGroupResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorGroupResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (String)
 func (o GetAppConnectorGroupResultOutput) DnsQueryType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorGroupResult) string { return v.DnsQueryType }).(pulumi.StringOutput)
 }
 
-// (String) Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
 func (o GetAppConnectorGroupResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAppConnectorGroupResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// (String)
 func (o GetAppConnectorGroupResultOutput) GeoLocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorGroupResult) string { return v.GeoLocationId }).(pulumi.StringOutput)
 }
@@ -230,17 +193,14 @@ func (o GetAppConnectorGroupResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppConnectorGroupResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// (String) Latitude of the App Connector Group. Integer or decimal. With values in the range of `-90` to `90`
 func (o GetAppConnectorGroupResultOutput) Latitude() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorGroupResult) string { return v.Latitude }).(pulumi.StringOutput)
 }
 
-// (String) Location of the App Connector Group.
 func (o GetAppConnectorGroupResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorGroupResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// (String) Longitude of the App Connector Group. Integer or decimal. With values in the range of `-180` to `180`
 func (o GetAppConnectorGroupResultOutput) Longitude() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorGroupResult) string { return v.Longitude }).(pulumi.StringOutput)
 }
@@ -249,12 +209,10 @@ func (o GetAppConnectorGroupResultOutput) LssAppConnectorGroup() pulumi.BoolOutp
 	return o.ApplyT(func(v GetAppConnectorGroupResult) bool { return v.LssAppConnectorGroup }).(pulumi.BoolOutput)
 }
 
-// (string) The ID of the microtenant the resource is to be associated with.
 func (o GetAppConnectorGroupResultOutput) MicrotenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppConnectorGroupResult) *string { return v.MicrotenantId }).(pulumi.StringPtrOutput)
 }
 
-// (string) The name of the microtenant the resource is to be associated with.
 func (o GetAppConnectorGroupResultOutput) MicrotenantName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppConnectorGroupResult) *string { return v.MicrotenantName }).(pulumi.StringPtrOutput)
 }
@@ -271,7 +229,6 @@ func (o GetAppConnectorGroupResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppConnectorGroupResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// (bool) Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
 func (o GetAppConnectorGroupResultOutput) OverrideVersionProfile() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetAppConnectorGroupResult) *bool { return v.OverrideVersionProfile }).(pulumi.BoolPtrOutput)
 }
@@ -292,35 +249,26 @@ func (o GetAppConnectorGroupResultOutput) TcpQuickAckReadAssistant() pulumi.Bool
 	return o.ApplyT(func(v GetAppConnectorGroupResult) bool { return v.TcpQuickAckReadAssistant }).(pulumi.BoolOutput)
 }
 
-// (String) App Connectors in this group will attempt to update to a newer version of the software during this specified day
 func (o GetAppConnectorGroupResultOutput) UpgradeDay() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorGroupResult) string { return v.UpgradeDay }).(pulumi.StringOutput)
 }
 
-// (String) App Connectors in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600`. Integer in seconds (i.e., `-66600`). The integer should be greater than or equal to `0` and less than `86400`, in `15` minute intervals
 func (o GetAppConnectorGroupResultOutput) UpgradeTimeInSecs() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorGroupResult) string { return v.UpgradeTimeInSecs }).(pulumi.StringOutput)
 }
 
-// (Optional) Supported values: `true`, `false`
 func (o GetAppConnectorGroupResultOutput) UseInDrMode() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAppConnectorGroupResult) bool { return v.UseInDrMode }).(pulumi.BoolOutput)
 }
 
-// (String) ID of the version profile.
-// Exported values are:
 func (o GetAppConnectorGroupResultOutput) VersionProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorGroupResult) string { return v.VersionProfileId }).(pulumi.StringOutput)
 }
 
-// (String)
-// Exported values are:
 func (o GetAppConnectorGroupResultOutput) VersionProfileName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorGroupResult) string { return v.VersionProfileName }).(pulumi.StringOutput)
 }
 
-// (String)
-// Exported values are:
 func (o GetAppConnectorGroupResultOutput) VersionProfileVisibilityScope() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorGroupResult) string { return v.VersionProfileVisibilityScope }).(pulumi.StringOutput)
 }

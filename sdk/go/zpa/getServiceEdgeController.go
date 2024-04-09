@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-zpa-private-service-edges)
+// * [API documentation](https://help.zscaler.com/zpa/managing-zpa-private-service-edges-using-api)
+//
 // Use the **zpa_service_edge_controller** data source to get information about a service edge controller in the Zscaler Private Access cloud. This data source can then be referenced in a Service Edge Group and Provisioning Key.
 //
 // ## Example Usage
@@ -52,82 +55,50 @@ func GetServiceEdgeController(ctx *pulumi.Context, args *GetServiceEdgeControlle
 
 // A collection of arguments for invoking getServiceEdgeController.
 type GetServiceEdgeControllerArgs struct {
-	// The name of the service edge controller to be exported.
 	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getServiceEdgeController.
 type GetServiceEdgeControllerResult struct {
-	// (string)
-	ApplicationStartTime string `pulumi:"applicationStartTime"`
-	// (string)
-	ControlChannelStatus string `pulumi:"controlChannelStatus"`
-	// (string)
-	CreationTime string `pulumi:"creationTime"`
-	// (string)
-	CtrlBrokerName string `pulumi:"ctrlBrokerName"`
-	// (string)
-	CurrentVersion string `pulumi:"currentVersion"`
-	// (string) - Description of the App Connector.
-	Description string `pulumi:"description"`
-	// (bool) Whether this Service Edge Controller is enabled or not. Default value: `true`. Supported values: `true`, `false`
-	Enabled bool `pulumi:"enabled"`
-	// (string)
-	EnrollmentCert map[string]interface{} `pulumi:"enrollmentCert"`
-	// (string)
-	ExpectedUpgradeTime string `pulumi:"expectedUpgradeTime"`
-	// (string)
-	ExpectedVersion string `pulumi:"expectedVersion"`
-	Fingerprint     string `pulumi:"fingerprint"`
-	Id              string `pulumi:"id"`
-	// (string)
-	IpAcl string `pulumi:"ipAcl"`
-	// (string)
-	IssuedCertId string `pulumi:"issuedCertId"`
-	// (string)
-	LastBrokerConnectTime string `pulumi:"lastBrokerConnectTime"`
-	// (string)
-	LastBrokerConnectTimeDuration string `pulumi:"lastBrokerConnectTimeDuration"`
-	// (string)
-	LastBrokerDisconnectTime string `pulumi:"lastBrokerDisconnectTime"`
-	// (string)
-	LastBrokerDisconnectTimeDuration string `pulumi:"lastBrokerDisconnectTimeDuration"`
-	// (string)
-	LastUpgradeTime string `pulumi:"lastUpgradeTime"`
-	// (string) Latitude of the Service Edge Controller. Integer or decimal. With values in the range of `-90` to `90`
-	Latitude  string `pulumi:"latitude"`
-	ListenIps string `pulumi:"listenIps"`
-	// (string) Location of the Service Edge Controller.
-	Location string `pulumi:"location"`
-	// (string) Longitude of the Service Edge Controller. Integer or decimal. With values in the range of `-180` to `180`
-	Longitude string `pulumi:"longitude"`
-	// (string)
-	ModifiedBy string `pulumi:"modifiedBy"`
-	// (string)
-	ModifiedTime string  `pulumi:"modifiedTime"`
-	Name         *string `pulumi:"name"`
-	// (string)
-	Platform string `pulumi:"platform"`
-	// (string)
-	PreviousVersion string `pulumi:"previousVersion"`
-	// (string)
-	PrivateIp string `pulumi:"privateIp"`
-	// (string)
-	ProvisioningKeyId string `pulumi:"provisioningKeyId"`
-	// (string)
-	ProvisioningKeyName string `pulumi:"provisioningKeyName"`
-	// (string)
-	PublicIp   string   `pulumi:"publicIp"`
-	PublishIps []string `pulumi:"publishIps"`
-	// (string)
-	SargeVersion         string `pulumi:"sargeVersion"`
-	ServiceEdgeGroupId   string `pulumi:"serviceEdgeGroupId"`
-	ServiceEdgeGroupName string `pulumi:"serviceEdgeGroupName"`
-	// (string)
-	UpgradeAttempt string `pulumi:"upgradeAttempt"`
-	// (string)
-	UpgradeStatus            string                                            `pulumi:"upgradeStatus"`
-	ZpnSubModuleUpgradeLists []GetServiceEdgeControllerZpnSubModuleUpgradeList `pulumi:"zpnSubModuleUpgradeLists"`
+	ApplicationStartTime             string                                            `pulumi:"applicationStartTime"`
+	ControlChannelStatus             string                                            `pulumi:"controlChannelStatus"`
+	CreationTime                     string                                            `pulumi:"creationTime"`
+	CtrlBrokerName                   string                                            `pulumi:"ctrlBrokerName"`
+	CurrentVersion                   string                                            `pulumi:"currentVersion"`
+	Description                      string                                            `pulumi:"description"`
+	Enabled                          bool                                              `pulumi:"enabled"`
+	EnrollmentCert                   map[string]interface{}                            `pulumi:"enrollmentCert"`
+	ExpectedUpgradeTime              string                                            `pulumi:"expectedUpgradeTime"`
+	ExpectedVersion                  string                                            `pulumi:"expectedVersion"`
+	Fingerprint                      string                                            `pulumi:"fingerprint"`
+	Id                               string                                            `pulumi:"id"`
+	IpAcl                            string                                            `pulumi:"ipAcl"`
+	IssuedCertId                     string                                            `pulumi:"issuedCertId"`
+	LastBrokerConnectTime            string                                            `pulumi:"lastBrokerConnectTime"`
+	LastBrokerConnectTimeDuration    string                                            `pulumi:"lastBrokerConnectTimeDuration"`
+	LastBrokerDisconnectTime         string                                            `pulumi:"lastBrokerDisconnectTime"`
+	LastBrokerDisconnectTimeDuration string                                            `pulumi:"lastBrokerDisconnectTimeDuration"`
+	LastUpgradeTime                  string                                            `pulumi:"lastUpgradeTime"`
+	Latitude                         string                                            `pulumi:"latitude"`
+	ListenIps                        string                                            `pulumi:"listenIps"`
+	Location                         string                                            `pulumi:"location"`
+	Longitude                        string                                            `pulumi:"longitude"`
+	ModifiedBy                       string                                            `pulumi:"modifiedBy"`
+	ModifiedTime                     string                                            `pulumi:"modifiedTime"`
+	Name                             *string                                           `pulumi:"name"`
+	Platform                         string                                            `pulumi:"platform"`
+	PreviousVersion                  string                                            `pulumi:"previousVersion"`
+	PrivateIp                        string                                            `pulumi:"privateIp"`
+	ProvisioningKeyId                string                                            `pulumi:"provisioningKeyId"`
+	ProvisioningKeyName              string                                            `pulumi:"provisioningKeyName"`
+	PublicIp                         string                                            `pulumi:"publicIp"`
+	PublishIps                       []string                                          `pulumi:"publishIps"`
+	SargeVersion                     string                                            `pulumi:"sargeVersion"`
+	ServiceEdgeGroupId               string                                            `pulumi:"serviceEdgeGroupId"`
+	ServiceEdgeGroupName             string                                            `pulumi:"serviceEdgeGroupName"`
+	UpgradeAttempt                   string                                            `pulumi:"upgradeAttempt"`
+	UpgradeStatus                    string                                            `pulumi:"upgradeStatus"`
+	ZpnSubModuleUpgradeLists         []GetServiceEdgeControllerZpnSubModuleUpgradeList `pulumi:"zpnSubModuleUpgradeLists"`
 }
 
 func GetServiceEdgeControllerOutput(ctx *pulumi.Context, args GetServiceEdgeControllerOutputArgs, opts ...pulumi.InvokeOption) GetServiceEdgeControllerResultOutput {
@@ -145,7 +116,6 @@ func GetServiceEdgeControllerOutput(ctx *pulumi.Context, args GetServiceEdgeCont
 
 // A collection of arguments for invoking getServiceEdgeController.
 type GetServiceEdgeControllerOutputArgs struct {
-	// The name of the service edge controller to be exported.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -168,52 +138,42 @@ func (o GetServiceEdgeControllerResultOutput) ToGetServiceEdgeControllerResultOu
 	return o
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) ApplicationStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.ApplicationStartTime }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) ControlChannelStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.ControlChannelStatus }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) CtrlBrokerName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.CtrlBrokerName }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) CurrentVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.CurrentVersion }).(pulumi.StringOutput)
 }
 
-// (string) - Description of the App Connector.
 func (o GetServiceEdgeControllerResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (bool) Whether this Service Edge Controller is enabled or not. Default value: `true`. Supported values: `true`, `false`
 func (o GetServiceEdgeControllerResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) EnrollmentCert() pulumi.MapOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) map[string]interface{} { return v.EnrollmentCert }).(pulumi.MapOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) ExpectedUpgradeTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.ExpectedUpgradeTime }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) ExpectedVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.ExpectedVersion }).(pulumi.StringOutput)
 }
@@ -226,42 +186,34 @@ func (o GetServiceEdgeControllerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) IpAcl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.IpAcl }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) IssuedCertId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.IssuedCertId }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) LastBrokerConnectTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.LastBrokerConnectTime }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) LastBrokerConnectTimeDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.LastBrokerConnectTimeDuration }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) LastBrokerDisconnectTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.LastBrokerDisconnectTime }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) LastBrokerDisconnectTimeDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.LastBrokerDisconnectTimeDuration }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) LastUpgradeTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.LastUpgradeTime }).(pulumi.StringOutput)
 }
 
-// (string) Latitude of the Service Edge Controller. Integer or decimal. With values in the range of `-90` to `90`
 func (o GetServiceEdgeControllerResultOutput) Latitude() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.Latitude }).(pulumi.StringOutput)
 }
@@ -270,22 +222,18 @@ func (o GetServiceEdgeControllerResultOutput) ListenIps() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.ListenIps }).(pulumi.StringOutput)
 }
 
-// (string) Location of the Service Edge Controller.
 func (o GetServiceEdgeControllerResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// (string) Longitude of the Service Edge Controller. Integer or decimal. With values in the range of `-180` to `180`
 func (o GetServiceEdgeControllerResultOutput) Longitude() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.Longitude }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) ModifiedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.ModifiedBy }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) ModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
@@ -294,32 +242,26 @@ func (o GetServiceEdgeControllerResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) Platform() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.Platform }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) PreviousVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.PreviousVersion }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) PrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.PrivateIp }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) ProvisioningKeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.ProvisioningKeyId }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) ProvisioningKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.ProvisioningKeyName }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.PublicIp }).(pulumi.StringOutput)
 }
@@ -328,7 +270,6 @@ func (o GetServiceEdgeControllerResultOutput) PublishIps() pulumi.StringArrayOut
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) []string { return v.PublishIps }).(pulumi.StringArrayOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) SargeVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.SargeVersion }).(pulumi.StringOutput)
 }
@@ -341,12 +282,10 @@ func (o GetServiceEdgeControllerResultOutput) ServiceEdgeGroupName() pulumi.Stri
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.ServiceEdgeGroupName }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) UpgradeAttempt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.UpgradeAttempt }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o GetServiceEdgeControllerResultOutput) UpgradeStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceEdgeControllerResult) string { return v.UpgradeStatus }).(pulumi.StringOutput)
 }

@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/isolation/adding-banner-theme-isolation-end-user-notification-zpa)
+ *
  * Use the **zpa_cloud_browser_isolation_banner** data source to get information about Cloud Browser Isolation banner. This data source information is required as part of the attribute `bannerId` when creating an Cloud Browser Isolation External Profile ``zpa.CloudBrowserIsolationExternalProfile``
  *
  * ## Example Usage
@@ -34,13 +36,7 @@ export function getCloudBrowserIsolationBanner(args?: GetCloudBrowserIsolationBa
  * A collection of arguments for invoking getCloudBrowserIsolationBanner.
  */
 export interface GetCloudBrowserIsolationBannerArgs {
-    /**
-     * The id of the CBI banner to be exported.
-     */
     id?: string;
-    /**
-     * The name of the CBI banner to be exported.
-     */
     name?: string;
 }
 
@@ -48,38 +44,19 @@ export interface GetCloudBrowserIsolationBannerArgs {
  * A collection of values returned by getCloudBrowserIsolationBanner.
  */
 export interface GetCloudBrowserIsolationBannerResult {
-    /**
-     * (bool) - Show Welcome Notification
-     */
     readonly banner: boolean;
     readonly id?: string;
-    /**
-     * (bool) - Use the default banner
-     */
     readonly isDefault: boolean;
-    /**
-     * (string) - The Logo Image (.jpeg or .png; Maximum file size is 100KB.)
-     */
     readonly logo: string;
     readonly name?: string;
-    /**
-     * (string) The Banner Notification Text
-     */
     readonly notificationText: string;
-    /**
-     * (string) The Banner Notification Title
-     */
     readonly notificationTitle: string;
-    /**
-     * (string) - The Banner Primary Color code in hexadecimal way to represent the color of the banner in RGB format
-     */
     readonly primaryColor: string;
-    /**
-     * (string) - The Banner Text Color code in hexadecimal way to represent the color of the text in RGB format
-     */
     readonly textColor: string;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/isolation/adding-banner-theme-isolation-end-user-notification-zpa)
+ *
  * Use the **zpa_cloud_browser_isolation_banner** data source to get information about Cloud Browser Isolation banner. This data source information is required as part of the attribute `bannerId` when creating an Cloud Browser Isolation External Profile ``zpa.CloudBrowserIsolationExternalProfile``
  *
  * ## Example Usage
@@ -103,12 +80,6 @@ export function getCloudBrowserIsolationBannerOutput(args?: GetCloudBrowserIsola
  * A collection of arguments for invoking getCloudBrowserIsolationBanner.
  */
 export interface GetCloudBrowserIsolationBannerOutputArgs {
-    /**
-     * The id of the CBI banner to be exported.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * The name of the CBI banner to be exported.
-     */
     name?: pulumi.Input<string>;
 }

@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-zpa-private-service-edge-groups)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-zpa-private-service-edge-groups-using-api)
+//
 // Use the **zpa_service_edge_group** data source to get information about a service edge group in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group. This data source can then be referenced in the following resources:
 //
 // * Create a server group
@@ -82,60 +85,34 @@ func LookupServiceEdgeGroup(ctx *pulumi.Context, args *LookupServiceEdgeGroupArg
 
 // A collection of arguments for invoking getServiceEdgeGroup.
 type LookupServiceEdgeGroupArgs struct {
-	// The ID of the service edge group to be exported.
-	Id *string `pulumi:"id"`
-	// The name of the service edge group to be exported.
+	Id   *string `pulumi:"id"`
 	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getServiceEdgeGroup.
 type LookupServiceEdgeGroupResult struct {
-	// (string) Whether Double Encryption is enabled or disabled for the app.
-	CityCountry string `pulumi:"cityCountry"`
-	// (string)
-	CountryCode string `pulumi:"countryCode"`
-	// (string)
-	CreationTime string `pulumi:"creationTime"`
-	// (string) Description of the Service Edge Group.
-	Description string `pulumi:"description"`
-	// (bool) Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
-	Enabled bool `pulumi:"enabled"`
-	// (string)
-	GeoLocationId string `pulumi:"geoLocationId"`
-	// (string)
-	Id string `pulumi:"id"`
-	// (string)
-	IsPublic string `pulumi:"isPublic"`
-	// (string)
-	Latitude string `pulumi:"latitude"`
-	// (string)
-	Location string `pulumi:"location"`
-	// (string)
-	Longitude string `pulumi:"longitude"`
-	// (string)
-	ModifiedTime string `pulumi:"modifiedTime"`
-	Modifiedby   string `pulumi:"modifiedby"`
-	// (string)
-	Name string `pulumi:"name"`
-	// (bool) Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
-	OverrideVersionProfile bool `pulumi:"overrideVersionProfile"`
-	// (string)
-	ServiceEdges []GetServiceEdgeGroupServiceEdge `pulumi:"serviceEdges"`
-	// (string)
-	TrustedNetworks []GetServiceEdgeGroupTrustedNetwork `pulumi:"trustedNetworks"`
-	// (string) App Connectors in this group will attempt to update to a newer version of the software during this specified day
-	UpgradeDay string `pulumi:"upgradeDay"`
-	// (string) App Connectors in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600`. Integer in seconds (i.e., `-66600`). The integer should be greater than or equal to `0` and less than `86400`, in `15` minute intervals
-	UpgradeTimeInSecs string `pulumi:"upgradeTimeInSecs"`
-	// (String) ID of the version profile.
-	// Exported values are:
-	VersionProfileId string `pulumi:"versionProfileId"`
-	// (String)
-	// Exported values are:
-	VersionProfileName string `pulumi:"versionProfileName"`
-	// (string)
-	// Exported values are:
-	VersionProfileVisibilityScope string `pulumi:"versionProfileVisibilityScope"`
+	CityCountry                   string                              `pulumi:"cityCountry"`
+	CountryCode                   string                              `pulumi:"countryCode"`
+	CreationTime                  string                              `pulumi:"creationTime"`
+	Description                   string                              `pulumi:"description"`
+	Enabled                       bool                                `pulumi:"enabled"`
+	GeoLocationId                 string                              `pulumi:"geoLocationId"`
+	Id                            string                              `pulumi:"id"`
+	IsPublic                      string                              `pulumi:"isPublic"`
+	Latitude                      string                              `pulumi:"latitude"`
+	Location                      string                              `pulumi:"location"`
+	Longitude                     string                              `pulumi:"longitude"`
+	ModifiedTime                  string                              `pulumi:"modifiedTime"`
+	Modifiedby                    string                              `pulumi:"modifiedby"`
+	Name                          string                              `pulumi:"name"`
+	OverrideVersionProfile        bool                                `pulumi:"overrideVersionProfile"`
+	ServiceEdges                  []GetServiceEdgeGroupServiceEdge    `pulumi:"serviceEdges"`
+	TrustedNetworks               []GetServiceEdgeGroupTrustedNetwork `pulumi:"trustedNetworks"`
+	UpgradeDay                    string                              `pulumi:"upgradeDay"`
+	UpgradeTimeInSecs             string                              `pulumi:"upgradeTimeInSecs"`
+	VersionProfileId              string                              `pulumi:"versionProfileId"`
+	VersionProfileName            string                              `pulumi:"versionProfileName"`
+	VersionProfileVisibilityScope string                              `pulumi:"versionProfileVisibilityScope"`
 }
 
 func LookupServiceEdgeGroupOutput(ctx *pulumi.Context, args LookupServiceEdgeGroupOutputArgs, opts ...pulumi.InvokeOption) LookupServiceEdgeGroupResultOutput {
@@ -153,9 +130,7 @@ func LookupServiceEdgeGroupOutput(ctx *pulumi.Context, args LookupServiceEdgeGro
 
 // A collection of arguments for invoking getServiceEdgeGroup.
 type LookupServiceEdgeGroupOutputArgs struct {
-	// The ID of the service edge group to be exported.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The name of the service edge group to be exported.
+	Id   pulumi.StringPtrInput `pulumi:"id"`
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -178,62 +153,50 @@ func (o LookupServiceEdgeGroupResultOutput) ToLookupServiceEdgeGroupResultOutput
 	return o
 }
 
-// (string) Whether Double Encryption is enabled or disabled for the app.
 func (o LookupServiceEdgeGroupResultOutput) CityCountry() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.CityCountry }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o LookupServiceEdgeGroupResultOutput) CountryCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.CountryCode }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o LookupServiceEdgeGroupResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// (string) Description of the Service Edge Group.
 func (o LookupServiceEdgeGroupResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (bool) Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
 func (o LookupServiceEdgeGroupResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// (string)
 func (o LookupServiceEdgeGroupResultOutput) GeoLocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.GeoLocationId }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o LookupServiceEdgeGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o LookupServiceEdgeGroupResultOutput) IsPublic() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.IsPublic }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o LookupServiceEdgeGroupResultOutput) Latitude() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.Latitude }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o LookupServiceEdgeGroupResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o LookupServiceEdgeGroupResultOutput) Longitude() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.Longitude }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o LookupServiceEdgeGroupResultOutput) ModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
@@ -242,50 +205,38 @@ func (o LookupServiceEdgeGroupResultOutput) Modifiedby() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.Modifiedby }).(pulumi.StringOutput)
 }
 
-// (string)
 func (o LookupServiceEdgeGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (bool) Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
 func (o LookupServiceEdgeGroupResultOutput) OverrideVersionProfile() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) bool { return v.OverrideVersionProfile }).(pulumi.BoolOutput)
 }
 
-// (string)
 func (o LookupServiceEdgeGroupResultOutput) ServiceEdges() GetServiceEdgeGroupServiceEdgeArrayOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) []GetServiceEdgeGroupServiceEdge { return v.ServiceEdges }).(GetServiceEdgeGroupServiceEdgeArrayOutput)
 }
 
-// (string)
 func (o LookupServiceEdgeGroupResultOutput) TrustedNetworks() GetServiceEdgeGroupTrustedNetworkArrayOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) []GetServiceEdgeGroupTrustedNetwork { return v.TrustedNetworks }).(GetServiceEdgeGroupTrustedNetworkArrayOutput)
 }
 
-// (string) App Connectors in this group will attempt to update to a newer version of the software during this specified day
 func (o LookupServiceEdgeGroupResultOutput) UpgradeDay() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.UpgradeDay }).(pulumi.StringOutput)
 }
 
-// (string) App Connectors in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600`. Integer in seconds (i.e., `-66600`). The integer should be greater than or equal to `0` and less than `86400`, in `15` minute intervals
 func (o LookupServiceEdgeGroupResultOutput) UpgradeTimeInSecs() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.UpgradeTimeInSecs }).(pulumi.StringOutput)
 }
 
-// (String) ID of the version profile.
-// Exported values are:
 func (o LookupServiceEdgeGroupResultOutput) VersionProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.VersionProfileId }).(pulumi.StringOutput)
 }
 
-// (String)
-// Exported values are:
 func (o LookupServiceEdgeGroupResultOutput) VersionProfileName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.VersionProfileName }).(pulumi.StringOutput)
 }
 
-// (string)
-// Exported values are:
 func (o LookupServiceEdgeGroupResultOutput) VersionProfileVisibilityScope() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.VersionProfileVisibilityScope }).(pulumi.StringOutput)
 }

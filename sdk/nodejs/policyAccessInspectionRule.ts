@@ -6,6 +6,103 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-security-policy)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-policies-using-api)
+ *
+ * The **zpa_policy_inspection_rule** resource creates a policy inspection access rule in the Zscaler Private Access cloud.
+ *
+ *   ⚠️ **WARNING:**: The attribute ``ruleOrder`` is now deprecated in favor of the new resource ``zpa.PolicyAccessReorderRule`` policyAccessRuleReorder
+ *
+ * ## Example Usage
+ *
+ * ### 1
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * //Create Inspection Access Rule
+ * const _this = new zpa.PolicyAccessInspectionRule("this", {
+ *     description: "Example",
+ *     action: "INSPECT",
+ *     operator: "AND",
+ *     policySetId: data.zpa_policy_type.inspection_policy.id,
+ *     zpnInspectionProfileId: zpa_inspection_profile["this"].id,
+ *     conditions: [{
+ *         operator: "OR",
+ *         operands: [{
+ *             objectType: "APP",
+ *             lhs: "id",
+ *             rhs: zpa_application_segment_inspection["this"].id,
+ *         }],
+ *     }],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ### 2
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ * import * as zpa from "@pulumi/zpa";
+ *
+ * const inspectionPolicy = zpa.getPolicyType({
+ *     policyType: "INSPECTION_POLICY",
+ * });
+ * //Create Inspection Access Rule
+ * const _this = new zpa.PolicyAccessInspectionRule("this", {
+ *     description: "Example",
+ *     action: "BYPASS_INSPECT",
+ *     ruleOrder: "1",
+ *     operator: "AND",
+ *     policySetId: inspectionPolicy.then(inspectionPolicy => inspectionPolicy.id),
+ *     conditions: [{
+ *         operator: "OR",
+ *         operands: [{
+ *             objectType: "APP",
+ *             lhs: "id",
+ *             rhs: zpa_application_segment_inspection["this"].id,
+ *         }],
+ *     }],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## LHS and RHS Values
+ *
+ * | Object Type | LHS| RHS
+ * |----------|-----------|----------
+ * | APP | ``"id"`` | ``applicationSegmentId`` |
+ * | APP_GROUP | ``"id"`` | ``segmentGroupId``|
+ * | CLIENT_TYPE | ``"id"`` | ``zpnClientTypeZappl``, ``zpnClientTypeExporter``, ``zpnClientTypeBrowserIsolation``, ``zpnClientTypeIpAnchoring``, ``zpnClientTypeEdgeConnector``, ``zpnClientTypeBranchConnector``,  ``zpnClientTypeZappPartner``, ``zpnClientTypeZapp``  |
+ * | EDGE_CONNECTOR_GROUP | ``"id"`` | ``edgeConnectorId`` |
+ * | IDP | ``"id"`` | ``identityProviderId`` |
+ * | SAML | ``samlAttributeId``  | ``attributeValueToMatch`` |
+ * | SCIM | ``scimAttributeId``  | ``attributeValueToMatch``  |
+ * | SCIM_GROUP | ``scimGroupAttributeId``  | ``attributeValueToMatch``  |
+ * | PLATFORM | ``mac``, ``ios``, ``windows``, ``android``, ``linux`` | ``"true"`` / ``"false"`` |
+ * | MACHINE_GRP | ``"id"`` | ``machineGroupId`` |
+ * | POSTURE | ``postureUdid``  | ``"true"`` / ``"false"`` |
+ * | TRUSTED_NETWORK | ``networkId``  | ``"true"`` |
+ *
+ * ## Import
+ *
+ * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+ *
+ * Visit
+ *
+ * Policy Access Inspection Rule can be imported by using `<POLICY INSPECTION RULE ID>` as the import ID.
+ *
+ * For example:
+ *
+ * ```sh
+ * $ pulumi import zpa:index/policyAccessInspectionRule:PolicyAccessInspectionRule example <policy_inspection_rule_id>
+ * ```
+ */
 export class PolicyAccessInspectionRule extends pulumi.CustomResource {
     /**
      * Get an existing PolicyAccessInspectionRule resource's state with the given name, ID, and optional extra

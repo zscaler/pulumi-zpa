@@ -104,41 +104,26 @@ class GetProvisioningKeyResult:
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="enrollmentCertId")
     def enrollment_cert_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "enrollment_cert_id")
 
     @property
     @pulumi.getter(name="enrollmentCertName")
     def enrollment_cert_name(self) -> str:
-        """
-        (string) Applicable only for GET calls, ignored in PUT/POST calls.
-        """
         return pulumi.get(self, "enrollment_cert_name")
 
     @property
     @pulumi.getter(name="expirationInEpochSec")
     def expiration_in_epoch_sec(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "expiration_in_epoch_sec")
 
     @property
@@ -149,41 +134,26 @@ class GetProvisioningKeyResult:
     @property
     @pulumi.getter(name="ipAcls")
     def ip_acls(self) -> Sequence[str]:
-        """
-        (string)
-        """
         return pulumi.get(self, "ip_acls")
 
     @property
     @pulumi.getter(name="maxUsage")
     def max_usage(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "max_usage")
 
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[str]:
-        """
-        (string) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @property
     @pulumi.getter(name="microtenantName")
     def microtenant_name(self) -> Optional[str]:
-        """
-        (string) The name of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_name")
 
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -199,41 +169,26 @@ class GetProvisioningKeyResult:
     @property
     @pulumi.getter(name="provisioningKey")
     def provisioning_key(self) -> str:
-        """
-        (string) Ignored in PUT/POST calls.
-        """
         return pulumi.get(self, "provisioning_key")
 
     @property
     @pulumi.getter(name="uiConfig")
     def ui_config(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "ui_config")
 
     @property
     @pulumi.getter(name="usageCount")
     def usage_count(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "usage_count")
 
     @property
     @pulumi.getter(name="zcomponentId")
     def zcomponent_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "zcomponent_id")
 
     @property
     @pulumi.getter(name="zcomponentName")
     def zcomponent_name(self) -> str:
-        """
-        (string) Applicable only for GET calls, ignored in PUT/POST calls.
-        """
         return pulumi.get(self, "zcomponent_name")
 
 
@@ -294,13 +249,6 @@ def get_provisioning_key(association_type: Optional[str] = None,
         name="Provisioning_Key")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str association_type: Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are `CONNECTOR_GRP` and `SERVICE_EDGE_GRP`
-    :param str id: The ID of the provisioning key to be exported.
-    :param str microtenant_id: (string) The ID of the microtenant the resource is to be associated with.
-    :param str microtenant_name: (string) The name of the microtenant the resource is to be associated with.
-    :param str name: Name of the provisioning key.
     """
     __args__ = dict()
     __args__['associationType'] = association_type
@@ -364,12 +312,5 @@ def get_provisioning_key_output(association_type: Optional[pulumi.Input[str]] = 
         name="Provisioning_Key")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str association_type: Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are `CONNECTOR_GRP` and `SERVICE_EDGE_GRP`
-    :param str id: The ID of the provisioning key to be exported.
-    :param str microtenant_id: (string) The ID of the microtenant the resource is to be associated with.
-    :param str microtenant_name: (string) The name of the microtenant the resource is to be associated with.
-    :param str name: Name of the provisioning key.
     """
     ...

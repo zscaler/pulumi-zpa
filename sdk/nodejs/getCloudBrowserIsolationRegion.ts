@@ -34,13 +34,7 @@ export function getCloudBrowserIsolationRegion(args?: GetCloudBrowserIsolationRe
  * A collection of arguments for invoking getCloudBrowserIsolationRegion.
  */
 export interface GetCloudBrowserIsolationRegionArgs {
-    /**
-     * The id of the CBI region to be exported.
-     */
     id?: string;
-    /**
-     * The name of the CBI region to be exported.
-     */
     name?: string;
 }
 
@@ -48,13 +42,7 @@ export interface GetCloudBrowserIsolationRegionArgs {
  * A collection of values returned by getCloudBrowserIsolationRegion.
  */
 export interface GetCloudBrowserIsolationRegionResult {
-    /**
-     * (string) - ID information of the CBI region
-     */
     readonly id: string;
-    /**
-     * (string) - Name of the CBI region
-     */
     readonly name: string;
 }
 /**
@@ -81,12 +69,6 @@ export function getCloudBrowserIsolationRegionOutput(args?: GetCloudBrowserIsola
  * A collection of arguments for invoking getCloudBrowserIsolationRegion.
  */
 export interface GetCloudBrowserIsolationRegionOutputArgs {
-    /**
-     * The id of the CBI region to be exported.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * The name of the CBI region to be exported.
-     */
     name?: pulumi.Input<string>;
 }

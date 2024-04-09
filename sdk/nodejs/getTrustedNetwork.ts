@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/client-connector/about-trusted-networks)
+ * * [API documentation](https://help.zscaler.com/zpa/obtaining-trusted-network-details-using-api)
+ *
  * The **zpa_trusted_network** data source to get information about a trusted network created in the Zscaler Private Access Mobile Portal. This data source can then be referenced within the following resources:
  *
  * 1. Access Policy
@@ -54,13 +57,7 @@ export function getTrustedNetwork(args?: GetTrustedNetworkArgs, opts?: pulumi.In
  * A collection of arguments for invoking getTrustedNetwork.
  */
 export interface GetTrustedNetworkArgs {
-    /**
-     * The ID of the posture profile to be exported.
-     */
     id?: string;
-    /**
-     * The name of the posture profile to be exported.
-     */
     name?: string;
 }
 
@@ -68,31 +65,19 @@ export interface GetTrustedNetworkArgs {
  * A collection of values returned by getTrustedNetwork.
  */
 export interface GetTrustedNetworkResult {
-    /**
-     * (string)
-     */
     readonly creationTime: string;
-    /**
-     * (string)
-     */
     readonly domain: string;
     readonly id?: string;
-    /**
-     * (string)
-     */
     readonly modifiedTime: string;
     readonly modifiedby: string;
     readonly name?: string;
-    /**
-     * (string)
-     */
     readonly networkId: string;
-    /**
-     * (string)
-     */
     readonly zscalerCloud: string;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/client-connector/about-trusted-networks)
+ * * [API documentation](https://help.zscaler.com/zpa/obtaining-trusted-network-details-using-api)
+ *
  * The **zpa_trusted_network** data source to get information about a trusted network created in the Zscaler Private Access Mobile Portal. This data source can then be referenced within the following resources:
  *
  * 1. Access Policy
@@ -136,12 +121,6 @@ export function getTrustedNetworkOutput(args?: GetTrustedNetworkOutputArgs, opts
  * A collection of arguments for invoking getTrustedNetwork.
  */
 export interface GetTrustedNetworkOutputArgs {
-    /**
-     * The ID of the posture profile to be exported.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * The name of the posture profile to be exported.
-     */
     name?: pulumi.Input<string>;
 }

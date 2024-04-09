@@ -35,23 +35,18 @@ class ServiceEdgeGroupArgs:
                  version_profile_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServiceEdgeGroup resource.
-        :param pulumi.Input[str] latitude: Latitude for the Service Edge Group. Integer or decimal with values in the range of `-90` to `90`
+        :param pulumi.Input[str] latitude: Latitude for the Service Edge Group.
         :param pulumi.Input[str] location: Location for the Service Edge Group.
-        :param pulumi.Input[str] longitude: Longitude for the Service Edge Group. Integer or decimal with values in the range of `-180` to `180`
-        :param pulumi.Input[str] city_country: This field controls dynamic discovery of the servers.
-        :param pulumi.Input[str] country_code: This field is an array of app-connector-id only.
+        :param pulumi.Input[str] longitude: Longitude for the Service Edge Group.
         :param pulumi.Input[str] description: Description of the Service Edge Group.
-        :param pulumi.Input[bool] enabled: Whether this Service Edge Group is enabled or not. Default value: `true` Supported values: `true`, `false`
-        :param pulumi.Input[bool] is_public: Enable or disable public access for the Service Edge Group. Default value: `false` Supported values: `true`, `false`
-        :param pulumi.Input[str] microtenant_id: The ID of the microtenant the resource is to be associated with.
-               
-               ⚠️ **WARNING:**: The attribute ``microtenant_id`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
+        :param pulumi.Input[bool] enabled: Whether this Service Edge Group is enabled or not.
+        :param pulumi.Input[bool] is_public: Enable or disable public access for the Service Edge Group.
         :param pulumi.Input[str] name: Name of the Service Edge Group.
-        :param pulumi.Input[bool] override_version_profile: Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceEdgeGroupTrustedNetworkArgs']]] trusted_networks: Trusted networks for this Service Edge Group. List of trusted network objects
-        :param pulumi.Input[str] upgrade_day: Service Edges in this group will attempt to update to a newer version of the software during this specified day. Default value: `SUNDAY` List of valid days (i.e., Sunday, Monday)
-        :param pulumi.Input[str] upgrade_time_in_secs: Service Edges in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600` Integer in seconds (i..e, 66600). The integer must be greater than or equal to 0 and less than `86400`, in `15` minute intervals
-        :param pulumi.Input[str] version_profile_id: ID of the version profile. To learn more, see Version Profile Use Cases. Supported values are:
+        :param pulumi.Input[bool] override_version_profile: Whether the default version profile of the App Connector Group is applied or overridden.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceEdgeGroupTrustedNetworkArgs']]] trusted_networks: List of trusted network IDs.
+        :param pulumi.Input[str] upgrade_day: Service Edges in this group will attempt to update to a newer version of the software during this specified day.
+        :param pulumi.Input[str] upgrade_time_in_secs: Service Edges in this group will attempt to update to a newer version of the software during this specified time.
+        :param pulumi.Input[str] version_profile_id: ID of the version profile.
         :param pulumi.Input[str] version_profile_name: ID of the version profile.
         """
         pulumi.set(__self__, "latitude", latitude)
@@ -90,7 +85,7 @@ class ServiceEdgeGroupArgs:
     @pulumi.getter
     def latitude(self) -> pulumi.Input[str]:
         """
-        Latitude for the Service Edge Group. Integer or decimal with values in the range of `-90` to `90`
+        Latitude for the Service Edge Group.
         """
         return pulumi.get(self, "latitude")
 
@@ -114,7 +109,7 @@ class ServiceEdgeGroupArgs:
     @pulumi.getter
     def longitude(self) -> pulumi.Input[str]:
         """
-        Longitude for the Service Edge Group. Integer or decimal with values in the range of `-180` to `180`
+        Longitude for the Service Edge Group.
         """
         return pulumi.get(self, "longitude")
 
@@ -125,9 +120,6 @@ class ServiceEdgeGroupArgs:
     @property
     @pulumi.getter(name="cityCountry")
     def city_country(self) -> Optional[pulumi.Input[str]]:
-        """
-        This field controls dynamic discovery of the servers.
-        """
         return pulumi.get(self, "city_country")
 
     @city_country.setter
@@ -137,9 +129,6 @@ class ServiceEdgeGroupArgs:
     @property
     @pulumi.getter(name="countryCode")
     def country_code(self) -> Optional[pulumi.Input[str]]:
-        """
-        This field is an array of app-connector-id only.
-        """
         return pulumi.get(self, "country_code")
 
     @country_code.setter
@@ -162,7 +151,7 @@ class ServiceEdgeGroupArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this Service Edge Group is enabled or not. Default value: `true` Supported values: `true`, `false`
+        Whether this Service Edge Group is enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -174,7 +163,7 @@ class ServiceEdgeGroupArgs:
     @pulumi.getter(name="isPublic")
     def is_public(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable or disable public access for the Service Edge Group. Default value: `false` Supported values: `true`, `false`
+        Enable or disable public access for the Service Edge Group.
         """
         return pulumi.get(self, "is_public")
 
@@ -185,11 +174,6 @@ class ServiceEdgeGroupArgs:
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the microtenant the resource is to be associated with.
-
-        ⚠️ **WARNING:**: The attribute ``microtenant_id`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @microtenant_id.setter
@@ -212,7 +196,7 @@ class ServiceEdgeGroupArgs:
     @pulumi.getter(name="overrideVersionProfile")
     def override_version_profile(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
+        Whether the default version profile of the App Connector Group is applied or overridden.
         """
         return pulumi.get(self, "override_version_profile")
 
@@ -233,7 +217,7 @@ class ServiceEdgeGroupArgs:
     @pulumi.getter(name="trustedNetworks")
     def trusted_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceEdgeGroupTrustedNetworkArgs']]]]:
         """
-        Trusted networks for this Service Edge Group. List of trusted network objects
+        List of trusted network IDs.
         """
         return pulumi.get(self, "trusted_networks")
 
@@ -245,7 +229,7 @@ class ServiceEdgeGroupArgs:
     @pulumi.getter(name="upgradeDay")
     def upgrade_day(self) -> Optional[pulumi.Input[str]]:
         """
-        Service Edges in this group will attempt to update to a newer version of the software during this specified day. Default value: `SUNDAY` List of valid days (i.e., Sunday, Monday)
+        Service Edges in this group will attempt to update to a newer version of the software during this specified day.
         """
         return pulumi.get(self, "upgrade_day")
 
@@ -257,7 +241,7 @@ class ServiceEdgeGroupArgs:
     @pulumi.getter(name="upgradeTimeInSecs")
     def upgrade_time_in_secs(self) -> Optional[pulumi.Input[str]]:
         """
-        Service Edges in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600` Integer in seconds (i..e, 66600). The integer must be greater than or equal to 0 and less than `86400`, in `15` minute intervals
+        Service Edges in this group will attempt to update to a newer version of the software during this specified time.
         """
         return pulumi.get(self, "upgrade_time_in_secs")
 
@@ -269,7 +253,7 @@ class ServiceEdgeGroupArgs:
     @pulumi.getter(name="versionProfileId")
     def version_profile_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the version profile. To learn more, see Version Profile Use Cases. Supported values are:
+        ID of the version profile.
         """
         return pulumi.get(self, "version_profile_id")
 
@@ -313,23 +297,18 @@ class _ServiceEdgeGroupState:
                  version_profile_visibility_scope: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServiceEdgeGroup resources.
-        :param pulumi.Input[str] city_country: This field controls dynamic discovery of the servers.
-        :param pulumi.Input[str] country_code: This field is an array of app-connector-id only.
         :param pulumi.Input[str] description: Description of the Service Edge Group.
-        :param pulumi.Input[bool] enabled: Whether this Service Edge Group is enabled or not. Default value: `true` Supported values: `true`, `false`
-        :param pulumi.Input[bool] is_public: Enable or disable public access for the Service Edge Group. Default value: `false` Supported values: `true`, `false`
-        :param pulumi.Input[str] latitude: Latitude for the Service Edge Group. Integer or decimal with values in the range of `-90` to `90`
+        :param pulumi.Input[bool] enabled: Whether this Service Edge Group is enabled or not.
+        :param pulumi.Input[bool] is_public: Enable or disable public access for the Service Edge Group.
+        :param pulumi.Input[str] latitude: Latitude for the Service Edge Group.
         :param pulumi.Input[str] location: Location for the Service Edge Group.
-        :param pulumi.Input[str] longitude: Longitude for the Service Edge Group. Integer or decimal with values in the range of `-180` to `180`
-        :param pulumi.Input[str] microtenant_id: The ID of the microtenant the resource is to be associated with.
-               
-               ⚠️ **WARNING:**: The attribute ``microtenant_id`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
+        :param pulumi.Input[str] longitude: Longitude for the Service Edge Group.
         :param pulumi.Input[str] name: Name of the Service Edge Group.
-        :param pulumi.Input[bool] override_version_profile: Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceEdgeGroupTrustedNetworkArgs']]] trusted_networks: Trusted networks for this Service Edge Group. List of trusted network objects
-        :param pulumi.Input[str] upgrade_day: Service Edges in this group will attempt to update to a newer version of the software during this specified day. Default value: `SUNDAY` List of valid days (i.e., Sunday, Monday)
-        :param pulumi.Input[str] upgrade_time_in_secs: Service Edges in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600` Integer in seconds (i..e, 66600). The integer must be greater than or equal to 0 and less than `86400`, in `15` minute intervals
-        :param pulumi.Input[str] version_profile_id: ID of the version profile. To learn more, see Version Profile Use Cases. Supported values are:
+        :param pulumi.Input[bool] override_version_profile: Whether the default version profile of the App Connector Group is applied or overridden.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceEdgeGroupTrustedNetworkArgs']]] trusted_networks: List of trusted network IDs.
+        :param pulumi.Input[str] upgrade_day: Service Edges in this group will attempt to update to a newer version of the software during this specified day.
+        :param pulumi.Input[str] upgrade_time_in_secs: Service Edges in this group will attempt to update to a newer version of the software during this specified time.
+        :param pulumi.Input[str] version_profile_id: ID of the version profile.
         :param pulumi.Input[str] version_profile_name: ID of the version profile.
         :param pulumi.Input[str] version_profile_visibility_scope: ID of the version profile.
         """
@@ -373,9 +352,6 @@ class _ServiceEdgeGroupState:
     @property
     @pulumi.getter(name="cityCountry")
     def city_country(self) -> Optional[pulumi.Input[str]]:
-        """
-        This field controls dynamic discovery of the servers.
-        """
         return pulumi.get(self, "city_country")
 
     @city_country.setter
@@ -385,9 +361,6 @@ class _ServiceEdgeGroupState:
     @property
     @pulumi.getter(name="countryCode")
     def country_code(self) -> Optional[pulumi.Input[str]]:
-        """
-        This field is an array of app-connector-id only.
-        """
         return pulumi.get(self, "country_code")
 
     @country_code.setter
@@ -410,7 +383,7 @@ class _ServiceEdgeGroupState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this Service Edge Group is enabled or not. Default value: `true` Supported values: `true`, `false`
+        Whether this Service Edge Group is enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -422,7 +395,7 @@ class _ServiceEdgeGroupState:
     @pulumi.getter(name="isPublic")
     def is_public(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable or disable public access for the Service Edge Group. Default value: `false` Supported values: `true`, `false`
+        Enable or disable public access for the Service Edge Group.
         """
         return pulumi.get(self, "is_public")
 
@@ -434,7 +407,7 @@ class _ServiceEdgeGroupState:
     @pulumi.getter
     def latitude(self) -> Optional[pulumi.Input[str]]:
         """
-        Latitude for the Service Edge Group. Integer or decimal with values in the range of `-90` to `90`
+        Latitude for the Service Edge Group.
         """
         return pulumi.get(self, "latitude")
 
@@ -458,7 +431,7 @@ class _ServiceEdgeGroupState:
     @pulumi.getter
     def longitude(self) -> Optional[pulumi.Input[str]]:
         """
-        Longitude for the Service Edge Group. Integer or decimal with values in the range of `-180` to `180`
+        Longitude for the Service Edge Group.
         """
         return pulumi.get(self, "longitude")
 
@@ -469,11 +442,6 @@ class _ServiceEdgeGroupState:
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the microtenant the resource is to be associated with.
-
-        ⚠️ **WARNING:**: The attribute ``microtenant_id`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @microtenant_id.setter
@@ -496,7 +464,7 @@ class _ServiceEdgeGroupState:
     @pulumi.getter(name="overrideVersionProfile")
     def override_version_profile(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
+        Whether the default version profile of the App Connector Group is applied or overridden.
         """
         return pulumi.get(self, "override_version_profile")
 
@@ -517,7 +485,7 @@ class _ServiceEdgeGroupState:
     @pulumi.getter(name="trustedNetworks")
     def trusted_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceEdgeGroupTrustedNetworkArgs']]]]:
         """
-        Trusted networks for this Service Edge Group. List of trusted network objects
+        List of trusted network IDs.
         """
         return pulumi.get(self, "trusted_networks")
 
@@ -529,7 +497,7 @@ class _ServiceEdgeGroupState:
     @pulumi.getter(name="upgradeDay")
     def upgrade_day(self) -> Optional[pulumi.Input[str]]:
         """
-        Service Edges in this group will attempt to update to a newer version of the software during this specified day. Default value: `SUNDAY` List of valid days (i.e., Sunday, Monday)
+        Service Edges in this group will attempt to update to a newer version of the software during this specified day.
         """
         return pulumi.get(self, "upgrade_day")
 
@@ -541,7 +509,7 @@ class _ServiceEdgeGroupState:
     @pulumi.getter(name="upgradeTimeInSecs")
     def upgrade_time_in_secs(self) -> Optional[pulumi.Input[str]]:
         """
-        Service Edges in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600` Integer in seconds (i..e, 66600). The integer must be greater than or equal to 0 and less than `86400`, in `15` minute intervals
+        Service Edges in this group will attempt to update to a newer version of the software during this specified time.
         """
         return pulumi.get(self, "upgrade_time_in_secs")
 
@@ -553,7 +521,7 @@ class _ServiceEdgeGroupState:
     @pulumi.getter(name="versionProfileId")
     def version_profile_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the version profile. To learn more, see Version Profile Use Cases. Supported values are:
+        ID of the version profile.
         """
         return pulumi.get(self, "version_profile_id")
 
@@ -610,6 +578,9 @@ class ServiceEdgeGroup(pulumi.CustomResource):
                  version_profile_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        * [Official documentation](https://help.zscaler.com/zpa/about-zpa-private-service-edge-groups)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-zpa-private-service-edge-groups-using-api)
+
         The **zpa_service_edge_group** resource creates a service edge group in the Zscaler Private Access cloud. This resource can then be referenced in a service edge connector.
 
         ## Example Usage
@@ -677,23 +648,18 @@ class ServiceEdgeGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] city_country: This field controls dynamic discovery of the servers.
-        :param pulumi.Input[str] country_code: This field is an array of app-connector-id only.
         :param pulumi.Input[str] description: Description of the Service Edge Group.
-        :param pulumi.Input[bool] enabled: Whether this Service Edge Group is enabled or not. Default value: `true` Supported values: `true`, `false`
-        :param pulumi.Input[bool] is_public: Enable or disable public access for the Service Edge Group. Default value: `false` Supported values: `true`, `false`
-        :param pulumi.Input[str] latitude: Latitude for the Service Edge Group. Integer or decimal with values in the range of `-90` to `90`
+        :param pulumi.Input[bool] enabled: Whether this Service Edge Group is enabled or not.
+        :param pulumi.Input[bool] is_public: Enable or disable public access for the Service Edge Group.
+        :param pulumi.Input[str] latitude: Latitude for the Service Edge Group.
         :param pulumi.Input[str] location: Location for the Service Edge Group.
-        :param pulumi.Input[str] longitude: Longitude for the Service Edge Group. Integer or decimal with values in the range of `-180` to `180`
-        :param pulumi.Input[str] microtenant_id: The ID of the microtenant the resource is to be associated with.
-               
-               ⚠️ **WARNING:**: The attribute ``microtenant_id`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
+        :param pulumi.Input[str] longitude: Longitude for the Service Edge Group.
         :param pulumi.Input[str] name: Name of the Service Edge Group.
-        :param pulumi.Input[bool] override_version_profile: Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceEdgeGroupTrustedNetworkArgs']]]] trusted_networks: Trusted networks for this Service Edge Group. List of trusted network objects
-        :param pulumi.Input[str] upgrade_day: Service Edges in this group will attempt to update to a newer version of the software during this specified day. Default value: `SUNDAY` List of valid days (i.e., Sunday, Monday)
-        :param pulumi.Input[str] upgrade_time_in_secs: Service Edges in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600` Integer in seconds (i..e, 66600). The integer must be greater than or equal to 0 and less than `86400`, in `15` minute intervals
-        :param pulumi.Input[str] version_profile_id: ID of the version profile. To learn more, see Version Profile Use Cases. Supported values are:
+        :param pulumi.Input[bool] override_version_profile: Whether the default version profile of the App Connector Group is applied or overridden.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceEdgeGroupTrustedNetworkArgs']]]] trusted_networks: List of trusted network IDs.
+        :param pulumi.Input[str] upgrade_day: Service Edges in this group will attempt to update to a newer version of the software during this specified day.
+        :param pulumi.Input[str] upgrade_time_in_secs: Service Edges in this group will attempt to update to a newer version of the software during this specified time.
+        :param pulumi.Input[str] version_profile_id: ID of the version profile.
         :param pulumi.Input[str] version_profile_name: ID of the version profile.
         """
         ...
@@ -703,6 +669,9 @@ class ServiceEdgeGroup(pulumi.CustomResource):
                  args: ServiceEdgeGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        * [Official documentation](https://help.zscaler.com/zpa/about-zpa-private-service-edge-groups)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-zpa-private-service-edge-groups-using-api)
+
         The **zpa_service_edge_group** resource creates a service edge group in the Zscaler Private Access cloud. This resource can then be referenced in a service edge connector.
 
         ## Example Usage
@@ -868,23 +837,18 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] city_country: This field controls dynamic discovery of the servers.
-        :param pulumi.Input[str] country_code: This field is an array of app-connector-id only.
         :param pulumi.Input[str] description: Description of the Service Edge Group.
-        :param pulumi.Input[bool] enabled: Whether this Service Edge Group is enabled or not. Default value: `true` Supported values: `true`, `false`
-        :param pulumi.Input[bool] is_public: Enable or disable public access for the Service Edge Group. Default value: `false` Supported values: `true`, `false`
-        :param pulumi.Input[str] latitude: Latitude for the Service Edge Group. Integer or decimal with values in the range of `-90` to `90`
+        :param pulumi.Input[bool] enabled: Whether this Service Edge Group is enabled or not.
+        :param pulumi.Input[bool] is_public: Enable or disable public access for the Service Edge Group.
+        :param pulumi.Input[str] latitude: Latitude for the Service Edge Group.
         :param pulumi.Input[str] location: Location for the Service Edge Group.
-        :param pulumi.Input[str] longitude: Longitude for the Service Edge Group. Integer or decimal with values in the range of `-180` to `180`
-        :param pulumi.Input[str] microtenant_id: The ID of the microtenant the resource is to be associated with.
-               
-               ⚠️ **WARNING:**: The attribute ``microtenant_id`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
+        :param pulumi.Input[str] longitude: Longitude for the Service Edge Group.
         :param pulumi.Input[str] name: Name of the Service Edge Group.
-        :param pulumi.Input[bool] override_version_profile: Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceEdgeGroupTrustedNetworkArgs']]]] trusted_networks: Trusted networks for this Service Edge Group. List of trusted network objects
-        :param pulumi.Input[str] upgrade_day: Service Edges in this group will attempt to update to a newer version of the software during this specified day. Default value: `SUNDAY` List of valid days (i.e., Sunday, Monday)
-        :param pulumi.Input[str] upgrade_time_in_secs: Service Edges in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600` Integer in seconds (i..e, 66600). The integer must be greater than or equal to 0 and less than `86400`, in `15` minute intervals
-        :param pulumi.Input[str] version_profile_id: ID of the version profile. To learn more, see Version Profile Use Cases. Supported values are:
+        :param pulumi.Input[bool] override_version_profile: Whether the default version profile of the App Connector Group is applied or overridden.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceEdgeGroupTrustedNetworkArgs']]]] trusted_networks: List of trusted network IDs.
+        :param pulumi.Input[str] upgrade_day: Service Edges in this group will attempt to update to a newer version of the software during this specified day.
+        :param pulumi.Input[str] upgrade_time_in_secs: Service Edges in this group will attempt to update to a newer version of the software during this specified time.
+        :param pulumi.Input[str] version_profile_id: ID of the version profile.
         :param pulumi.Input[str] version_profile_name: ID of the version profile.
         :param pulumi.Input[str] version_profile_visibility_scope: ID of the version profile.
         """
@@ -915,17 +879,11 @@ class ServiceEdgeGroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="cityCountry")
     def city_country(self) -> pulumi.Output[str]:
-        """
-        This field controls dynamic discovery of the servers.
-        """
         return pulumi.get(self, "city_country")
 
     @property
     @pulumi.getter(name="countryCode")
     def country_code(self) -> pulumi.Output[str]:
-        """
-        This field is an array of app-connector-id only.
-        """
         return pulumi.get(self, "country_code")
 
     @property
@@ -940,7 +898,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether this Service Edge Group is enabled or not. Default value: `true` Supported values: `true`, `false`
+        Whether this Service Edge Group is enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -948,7 +906,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
     @pulumi.getter(name="isPublic")
     def is_public(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enable or disable public access for the Service Edge Group. Default value: `false` Supported values: `true`, `false`
+        Enable or disable public access for the Service Edge Group.
         """
         return pulumi.get(self, "is_public")
 
@@ -956,7 +914,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
     @pulumi.getter
     def latitude(self) -> pulumi.Output[str]:
         """
-        Latitude for the Service Edge Group. Integer or decimal with values in the range of `-90` to `90`
+        Latitude for the Service Edge Group.
         """
         return pulumi.get(self, "latitude")
 
@@ -972,18 +930,13 @@ class ServiceEdgeGroup(pulumi.CustomResource):
     @pulumi.getter
     def longitude(self) -> pulumi.Output[str]:
         """
-        Longitude for the Service Edge Group. Integer or decimal with values in the range of `-180` to `180`
+        Longitude for the Service Edge Group.
         """
         return pulumi.get(self, "longitude")
 
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the microtenant the resource is to be associated with.
-
-        ⚠️ **WARNING:**: The attribute ``microtenant_id`` is optional and requires the microtenant license and feature flag enabled for the respective tenant. The provider also supports the microtenant ID configuration via the environment variable `ZPA_MICROTENANT_ID` which is the recommended method.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @property
@@ -998,7 +951,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
     @pulumi.getter(name="overrideVersionProfile")
     def override_version_profile(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether the default version profile of the App Connector Group is applied or overridden. Default: `false` Supported values: `true`, `false`
+        Whether the default version profile of the App Connector Group is applied or overridden.
         """
         return pulumi.get(self, "override_version_profile")
 
@@ -1011,7 +964,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
     @pulumi.getter(name="trustedNetworks")
     def trusted_networks(self) -> pulumi.Output[Sequence['outputs.ServiceEdgeGroupTrustedNetwork']]:
         """
-        Trusted networks for this Service Edge Group. List of trusted network objects
+        List of trusted network IDs.
         """
         return pulumi.get(self, "trusted_networks")
 
@@ -1019,7 +972,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
     @pulumi.getter(name="upgradeDay")
     def upgrade_day(self) -> pulumi.Output[Optional[str]]:
         """
-        Service Edges in this group will attempt to update to a newer version of the software during this specified day. Default value: `SUNDAY` List of valid days (i.e., Sunday, Monday)
+        Service Edges in this group will attempt to update to a newer version of the software during this specified day.
         """
         return pulumi.get(self, "upgrade_day")
 
@@ -1027,7 +980,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
     @pulumi.getter(name="upgradeTimeInSecs")
     def upgrade_time_in_secs(self) -> pulumi.Output[Optional[str]]:
         """
-        Service Edges in this group will attempt to update to a newer version of the software during this specified time. Default value: `66600` Integer in seconds (i..e, 66600). The integer must be greater than or equal to 0 and less than `86400`, in `15` minute intervals
+        Service Edges in this group will attempt to update to a newer version of the software during this specified time.
         """
         return pulumi.get(self, "upgrade_time_in_secs")
 
@@ -1035,7 +988,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
     @pulumi.getter(name="versionProfileId")
     def version_profile_id(self) -> pulumi.Output[str]:
         """
-        ID of the version profile. To learn more, see Version Profile Use Cases. Supported values are:
+        ID of the version profile.
         """
         return pulumi.get(self, "version_profile_id")
 

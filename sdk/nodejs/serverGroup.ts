@@ -89,12 +89,6 @@ import * as utilities from "./utilities";
  * ```
  * <!--End PulumiCodeChooser -->
  *
- * ### Required
- *
- * * `name` - (Required) This field defines the name of the server group.
- * * `appConnectorGroups` - (Required)
- *   * `id` - (Required) The ID of this resource.
- *
  * ## Import
  *
  * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
@@ -153,28 +147,26 @@ export class ServerGroup extends pulumi.CustomResource {
     public readonly applications!: pulumi.Output<outputs.ServerGroupApplication[]>;
     public readonly configSpace!: pulumi.Output<string | undefined>;
     /**
-     * (Optional) This field is the description of the server group.
+     * This field is the description of the server group.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * (Optional) This field controls dynamic discovery of the servers.
+     * This field controls dynamic discovery of the servers.
      */
     public readonly dynamicDiscovery!: pulumi.Output<boolean | undefined>;
     /**
-     * (Optional) This field defines if the server group is enabled or disabled.
+     * This field defines if the server group is enabled or disabled.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     public readonly ipAnchored!: pulumi.Output<boolean | undefined>;
-    /**
-     * (Optional) The ID of the microtenant the resource is to be associated with.
-     */
     public readonly microtenantId!: pulumi.Output<string>;
     /**
      * This field defines the name of the server group.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * (Block List) This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API.
+     * This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
+     * only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
      */
     public readonly servers!: pulumi.Output<outputs.ServerGroupServer[]>;
 
@@ -233,28 +225,26 @@ export interface ServerGroupState {
     applications?: pulumi.Input<pulumi.Input<inputs.ServerGroupApplication>[]>;
     configSpace?: pulumi.Input<string>;
     /**
-     * (Optional) This field is the description of the server group.
+     * This field is the description of the server group.
      */
     description?: pulumi.Input<string>;
     /**
-     * (Optional) This field controls dynamic discovery of the servers.
+     * This field controls dynamic discovery of the servers.
      */
     dynamicDiscovery?: pulumi.Input<boolean>;
     /**
-     * (Optional) This field defines if the server group is enabled or disabled.
+     * This field defines if the server group is enabled or disabled.
      */
     enabled?: pulumi.Input<boolean>;
     ipAnchored?: pulumi.Input<boolean>;
-    /**
-     * (Optional) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: pulumi.Input<string>;
     /**
      * This field defines the name of the server group.
      */
     name?: pulumi.Input<string>;
     /**
-     * (Block List) This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API.
+     * This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
+     * only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
      */
     servers?: pulumi.Input<pulumi.Input<inputs.ServerGroupServer>[]>;
 }
@@ -273,28 +263,26 @@ export interface ServerGroupArgs {
     applications?: pulumi.Input<pulumi.Input<inputs.ServerGroupApplication>[]>;
     configSpace?: pulumi.Input<string>;
     /**
-     * (Optional) This field is the description of the server group.
+     * This field is the description of the server group.
      */
     description?: pulumi.Input<string>;
     /**
-     * (Optional) This field controls dynamic discovery of the servers.
+     * This field controls dynamic discovery of the servers.
      */
     dynamicDiscovery?: pulumi.Input<boolean>;
     /**
-     * (Optional) This field defines if the server group is enabled or disabled.
+     * This field defines if the server group is enabled or disabled.
      */
     enabled?: pulumi.Input<boolean>;
     ipAnchored?: pulumi.Input<boolean>;
-    /**
-     * (Optional) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: pulumi.Input<string>;
     /**
      * This field defines the name of the server group.
      */
     name?: pulumi.Input<string>;
     /**
-     * (Block List) This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API.
+     * This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
+     * only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
      */
     servers?: pulumi.Input<pulumi.Input<inputs.ServerGroupServer>[]>;
 }

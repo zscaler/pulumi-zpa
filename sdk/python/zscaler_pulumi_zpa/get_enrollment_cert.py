@@ -95,57 +95,36 @@ class GetEnrollmentCertResult:
     @property
     @pulumi.getter(name="allowSigning")
     def allow_signing(self) -> bool:
-        """
-        (bool)
-        """
         return pulumi.get(self, "allow_signing")
 
     @property
     @pulumi.getter
     def certificate(self) -> str:
-        """
-        (string) The certificate text is in PEM format.
-        """
         return pulumi.get(self, "certificate")
 
     @property
     @pulumi.getter(name="clientCertType")
     def client_cert_type(self) -> str:
-        """
-        (string) Returned values are:
-        """
         return pulumi.get(self, "client_cert_type")
 
     @property
     @pulumi.getter
     def cname(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "cname")
 
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter
     def csr(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "csr")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -156,17 +135,11 @@ class GetEnrollmentCertResult:
     @property
     @pulumi.getter(name="issuedBy")
     def issued_by(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "issued_by")
 
     @property
     @pulumi.getter(name="issuedTo")
     def issued_to(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "issued_to")
 
     @property
@@ -177,17 +150,11 @@ class GetEnrollmentCertResult:
     @property
     @pulumi.getter(name="modifiedBy")
     def modified_by(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_by")
 
     @property
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -198,17 +165,11 @@ class GetEnrollmentCertResult:
     @property
     @pulumi.getter(name="parentCertId")
     def parent_cert_id(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "parent_cert_id")
 
     @property
     @pulumi.getter(name="parentCertName")
     def parent_cert_name(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "parent_cert_name")
 
     @property
@@ -224,17 +185,11 @@ class GetEnrollmentCertResult:
     @property
     @pulumi.getter(name="serialNo")
     def serial_no(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "serial_no")
 
     @property
     @pulumi.getter(name="validFromInEpochSec")
     def valid_from_in_epoch_sec(self) -> str:
-        """
-        (string)
-        """
         return pulumi.get(self, "valid_from_in_epoch_sec")
 
     @property
@@ -289,6 +244,9 @@ def get_enrollment_cert(id: Optional[str] = None,
                         name: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEnrollmentCertResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-enrollment-ca-certificates)
+    * [API documentation](https://help.zscaler.com/zpa/obtaining-enrollment-certificate-details-using-api)
+
     Use the **zpa_enrollment_cert** data source to get information about all configured enrollment certificate details created in the Zscaler Private Access cloud. This data source is required when creating provisioning key resources.
 
     ## Example Usage
@@ -305,10 +263,6 @@ def get_enrollment_cert(id: Optional[str] = None,
     isolation_client = zpa.get_enrollment_cert(name="Isolation Client")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: The id of the enrollment certificate to be exported.
-    :param str name: The name of the enrollment certificate to be exported.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -349,6 +303,9 @@ def get_enrollment_cert_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                                name: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnrollmentCertResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-enrollment-ca-certificates)
+    * [API documentation](https://help.zscaler.com/zpa/obtaining-enrollment-certificate-details-using-api)
+
     Use the **zpa_enrollment_cert** data source to get information about all configured enrollment certificate details created in the Zscaler Private Access cloud. This data source is required when creating provisioning key resources.
 
     ## Example Usage
@@ -365,9 +322,5 @@ def get_enrollment_cert_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     isolation_client = zpa.get_enrollment_cert(name="Isolation Client")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str id: The id of the enrollment certificate to be exported.
-    :param str name: The name of the enrollment certificate to be exported.
     """
     ...

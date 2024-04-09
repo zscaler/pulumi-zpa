@@ -18,28 +18,16 @@ namespace Zscaler.Zpa.Outputs
         public readonly ImmutableArray<Outputs.GetServerGroupAppConnectorGroupConnectorResult> Connectors;
         public readonly string CountryCode;
         public readonly string CreationTime;
-        /// <summary>
-        /// (string) This field is the description of the server group.
-        /// </summary>
         public readonly string Description;
         public readonly string DnsQueryType;
-        /// <summary>
-        /// (bool) This field defines if the server group is enabled or disabled.
-        /// </summary>
         public readonly bool Enabled;
         public readonly string GeolocationId;
-        /// <summary>
-        /// The ID of the server group to be exported.
-        /// </summary>
         public readonly string Id;
         public readonly string Latitude;
         public readonly string Location;
         public readonly string Longitude;
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
-        /// <summary>
-        /// The name of the server group to be exported.
-        /// </summary>
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetServerGroupAppConnectorGroupServerGroupResult> ServerGroups;
         public readonly bool SiemAppConnectorGroup;

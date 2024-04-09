@@ -100,27 +100,15 @@ namespace Zscaler.Zpa
 
     public sealed class GetApplicationServerArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// This field defines the id of the application server.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public string? MicrotenantId { get; set; }
 
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantName")]
         public string? MicrotenantName { get; set; }
 
-        /// <summary>
-        /// This field defines the name of the server.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -132,27 +120,15 @@ namespace Zscaler.Zpa
 
     public sealed class GetApplicationServerInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// This field defines the id of the application server.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantName")]
         public Input<string>? MicrotenantName { get; set; }
 
-        /// <summary>
-        /// This field defines the name of the server.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -166,32 +142,14 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetApplicationServerResult
     {
-        /// <summary>
-        /// (string) This field defines the domain or IP address of the server.
-        /// </summary>
         public readonly string Address;
-        /// <summary>
-        /// (Set of String) This field defines the list of server groups IDs.
-        /// </summary>
         public readonly ImmutableArray<string> AppServerGroupIds;
         public readonly string ConfigSpace;
         public readonly string CreationTime;
-        /// <summary>
-        /// (string) This field defines the description of the server.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (bool) This field defines the status of the server.
-        /// </summary>
         public readonly bool Enabled;
         public readonly string? Id;
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         public readonly string? MicrotenantId;
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         public readonly string? MicrotenantName;
         public readonly string ModifiedTime;
         public readonly string Modifiedby;

@@ -28,9 +28,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Segment Group resource
 //			_, err := zpa.NewSegmentGroup(ctx, "testSegmentGroup", &zpa.SegmentGroupArgs{
-//				Description:         pulumi.String("test1-segment-group"),
-//				Enabled:             pulumi.Bool(true),
-//				TcpKeepAliveEnabled: pulumi.String("1"),
+//				Description: pulumi.String("test1-segment-group"),
+//				Enabled:     pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -65,20 +64,13 @@ type SegmentGroup struct {
 	pulumi.CustomResourceState
 
 	Applications SegmentGroupApplicationArrayOutput `pulumi:"applications"`
-	// (Optional) Description of the segment group.
+	// Description of the app group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// (Optional) Whether this segment group is enabled or not.
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// (Optional) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId pulumi.StringOutput `pulumi:"microtenantId"`
-	// (Required) Name of the segment group.
+	// Whether this app group is enabled or not.
+	Enabled       pulumi.BoolPtrOutput `pulumi:"enabled"`
+	MicrotenantId pulumi.StringOutput  `pulumi:"microtenantId"`
+	// Name of the app group.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Deprecated: The `policyMigrated` field is now deprecated for the resource `SegmentGroup`, please remove this attribute to prevent configuration drifts
-	PolicyMigrated pulumi.BoolPtrOutput `pulumi:"policyMigrated"`
-	// (Deprecated)
-	//
-	// Deprecated: The `tcpKeepAliveEnabled` field is now deprecated for the resource `SegmentGroup`, please replace all uses of this within the `ApplicationSegment`resources with the attribute `tcpKeepAlive`
-	TcpKeepAliveEnabled pulumi.StringPtrOutput `pulumi:"tcpKeepAliveEnabled"`
 }
 
 // NewSegmentGroup registers a new resource with the given unique name, arguments, and options.
@@ -112,38 +104,24 @@ func GetSegmentGroup(ctx *pulumi.Context,
 // Input properties used for looking up and filtering SegmentGroup resources.
 type segmentGroupState struct {
 	Applications []SegmentGroupApplication `pulumi:"applications"`
-	// (Optional) Description of the segment group.
+	// Description of the app group.
 	Description *string `pulumi:"description"`
-	// (Optional) Whether this segment group is enabled or not.
-	Enabled *bool `pulumi:"enabled"`
-	// (Optional) The ID of the microtenant the resource is to be associated with.
+	// Whether this app group is enabled or not.
+	Enabled       *bool   `pulumi:"enabled"`
 	MicrotenantId *string `pulumi:"microtenantId"`
-	// (Required) Name of the segment group.
+	// Name of the app group.
 	Name *string `pulumi:"name"`
-	// Deprecated: The `policyMigrated` field is now deprecated for the resource `SegmentGroup`, please remove this attribute to prevent configuration drifts
-	PolicyMigrated *bool `pulumi:"policyMigrated"`
-	// (Deprecated)
-	//
-	// Deprecated: The `tcpKeepAliveEnabled` field is now deprecated for the resource `SegmentGroup`, please replace all uses of this within the `ApplicationSegment`resources with the attribute `tcpKeepAlive`
-	TcpKeepAliveEnabled *string `pulumi:"tcpKeepAliveEnabled"`
 }
 
 type SegmentGroupState struct {
 	Applications SegmentGroupApplicationArrayInput
-	// (Optional) Description of the segment group.
+	// Description of the app group.
 	Description pulumi.StringPtrInput
-	// (Optional) Whether this segment group is enabled or not.
-	Enabled pulumi.BoolPtrInput
-	// (Optional) The ID of the microtenant the resource is to be associated with.
+	// Whether this app group is enabled or not.
+	Enabled       pulumi.BoolPtrInput
 	MicrotenantId pulumi.StringPtrInput
-	// (Required) Name of the segment group.
+	// Name of the app group.
 	Name pulumi.StringPtrInput
-	// Deprecated: The `policyMigrated` field is now deprecated for the resource `SegmentGroup`, please remove this attribute to prevent configuration drifts
-	PolicyMigrated pulumi.BoolPtrInput
-	// (Deprecated)
-	//
-	// Deprecated: The `tcpKeepAliveEnabled` field is now deprecated for the resource `SegmentGroup`, please replace all uses of this within the `ApplicationSegment`resources with the attribute `tcpKeepAlive`
-	TcpKeepAliveEnabled pulumi.StringPtrInput
 }
 
 func (SegmentGroupState) ElementType() reflect.Type {
@@ -152,39 +130,25 @@ func (SegmentGroupState) ElementType() reflect.Type {
 
 type segmentGroupArgs struct {
 	Applications []SegmentGroupApplication `pulumi:"applications"`
-	// (Optional) Description of the segment group.
+	// Description of the app group.
 	Description *string `pulumi:"description"`
-	// (Optional) Whether this segment group is enabled or not.
-	Enabled *bool `pulumi:"enabled"`
-	// (Optional) The ID of the microtenant the resource is to be associated with.
+	// Whether this app group is enabled or not.
+	Enabled       *bool   `pulumi:"enabled"`
 	MicrotenantId *string `pulumi:"microtenantId"`
-	// (Required) Name of the segment group.
+	// Name of the app group.
 	Name *string `pulumi:"name"`
-	// Deprecated: The `policyMigrated` field is now deprecated for the resource `SegmentGroup`, please remove this attribute to prevent configuration drifts
-	PolicyMigrated *bool `pulumi:"policyMigrated"`
-	// (Deprecated)
-	//
-	// Deprecated: The `tcpKeepAliveEnabled` field is now deprecated for the resource `SegmentGroup`, please replace all uses of this within the `ApplicationSegment`resources with the attribute `tcpKeepAlive`
-	TcpKeepAliveEnabled *string `pulumi:"tcpKeepAliveEnabled"`
 }
 
 // The set of arguments for constructing a SegmentGroup resource.
 type SegmentGroupArgs struct {
 	Applications SegmentGroupApplicationArrayInput
-	// (Optional) Description of the segment group.
+	// Description of the app group.
 	Description pulumi.StringPtrInput
-	// (Optional) Whether this segment group is enabled or not.
-	Enabled pulumi.BoolPtrInput
-	// (Optional) The ID of the microtenant the resource is to be associated with.
+	// Whether this app group is enabled or not.
+	Enabled       pulumi.BoolPtrInput
 	MicrotenantId pulumi.StringPtrInput
-	// (Required) Name of the segment group.
+	// Name of the app group.
 	Name pulumi.StringPtrInput
-	// Deprecated: The `policyMigrated` field is now deprecated for the resource `SegmentGroup`, please remove this attribute to prevent configuration drifts
-	PolicyMigrated pulumi.BoolPtrInput
-	// (Deprecated)
-	//
-	// Deprecated: The `tcpKeepAliveEnabled` field is now deprecated for the resource `SegmentGroup`, please replace all uses of this within the `ApplicationSegment`resources with the attribute `tcpKeepAlive`
-	TcpKeepAliveEnabled pulumi.StringPtrInput
 }
 
 func (SegmentGroupArgs) ElementType() reflect.Type {
@@ -278,36 +242,23 @@ func (o SegmentGroupOutput) Applications() SegmentGroupApplicationArrayOutput {
 	return o.ApplyT(func(v *SegmentGroup) SegmentGroupApplicationArrayOutput { return v.Applications }).(SegmentGroupApplicationArrayOutput)
 }
 
-// (Optional) Description of the segment group.
+// Description of the app group.
 func (o SegmentGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SegmentGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Whether this segment group is enabled or not.
+// Whether this app group is enabled or not.
 func (o SegmentGroupOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SegmentGroup) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// (Optional) The ID of the microtenant the resource is to be associated with.
 func (o SegmentGroupOutput) MicrotenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SegmentGroup) pulumi.StringOutput { return v.MicrotenantId }).(pulumi.StringOutput)
 }
 
-// (Required) Name of the segment group.
+// Name of the app group.
 func (o SegmentGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SegmentGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// Deprecated: The `policyMigrated` field is now deprecated for the resource `SegmentGroup`, please remove this attribute to prevent configuration drifts
-func (o SegmentGroupOutput) PolicyMigrated() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SegmentGroup) pulumi.BoolPtrOutput { return v.PolicyMigrated }).(pulumi.BoolPtrOutput)
-}
-
-// (Deprecated)
-//
-// Deprecated: The `tcpKeepAliveEnabled` field is now deprecated for the resource `SegmentGroup`, please replace all uses of this within the `ApplicationSegment`resources with the attribute `tcpKeepAlive`
-func (o SegmentGroupOutput) TcpKeepAliveEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SegmentGroup) pulumi.StringPtrOutput { return v.TcpKeepAliveEnabled }).(pulumi.StringPtrOutput)
 }
 
 type SegmentGroupArrayOutput struct{ *pulumi.OutputState }

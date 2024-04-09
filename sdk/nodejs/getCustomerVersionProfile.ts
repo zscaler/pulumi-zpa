@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-connectors)
+ * * [API documentation](https://help.zscaler.com/zpa/obtaining-version-profile-details-using-api)
+ *
  * Use the **zpa_customer_version_profile** data source to get information about all customer version profiles from the Zscaler Private Access cloud. This data source can be associated with an App Connector Group within the parameter `versionProfileId` or `versionProfileName`
  *
  * The customer version profile IDs are:
@@ -46,9 +49,6 @@ export function getCustomerVersionProfile(args: GetCustomerVersionProfileArgs, o
  * A collection of arguments for invoking getCustomerVersionProfile.
  */
 export interface GetCustomerVersionProfileArgs {
-    /**
-     * The name of the enrollment certificate to be exported.
-     */
     name: string;
 }
 
@@ -56,24 +56,12 @@ export interface GetCustomerVersionProfileArgs {
  * A collection of values returned by getCustomerVersionProfile.
  */
 export interface GetCustomerVersionProfileResult {
-    /**
-     * (string)
-     */
     readonly creationTime: string;
     readonly customScopeCustomerIds: outputs.GetCustomerVersionProfileCustomScopeCustomerId[];
     readonly customerId: string;
-    /**
-     * (string)
-     */
     readonly description: string;
     readonly id: string;
-    /**
-     * (string)
-     */
     readonly modifiedBy: string;
-    /**
-     * (string)
-     */
     readonly modifiedTime: string;
     readonly name: string;
     readonly upgradePriority: string;
@@ -81,6 +69,9 @@ export interface GetCustomerVersionProfileResult {
     readonly visibilityScope: string;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-connectors)
+ * * [API documentation](https://help.zscaler.com/zpa/obtaining-version-profile-details-using-api)
+ *
  * Use the **zpa_customer_version_profile** data source to get information about all customer version profiles from the Zscaler Private Access cloud. This data source can be associated with an App Connector Group within the parameter `versionProfileId` or `versionProfileName`
  *
  * The customer version profile IDs are:
@@ -116,8 +107,5 @@ export function getCustomerVersionProfileOutput(args: GetCustomerVersionProfileO
  * A collection of arguments for invoking getCustomerVersionProfile.
  */
 export interface GetCustomerVersionProfileOutputArgs {
-    /**
-     * The name of the enrollment certificate to be exported.
-     */
     name: pulumi.Input<string>;
 }

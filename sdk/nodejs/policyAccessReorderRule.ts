@@ -7,7 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The **zpa_policy_access_rule_reorder** is a dedicated resource to manage and update ruleOrders in any of the supported ZPA Policy Access types Zscaler Private Access cloud.
+ * * [Official documentation](https://help.zscaler.com/zpa/about-access-policy)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api)
+ *
+ * The **zpa_policy_access_rule_reorder** is a dedicated resource to manage and update `ruleOrders` in any of the supported ZPA Policy Access types Zscaler Private Access cloud.
  *
  * ⚠️ **WARNING:**: The attribute ``ruleOrder`` is now deprecated in favor of this resource for all ZPA policy types.
  *
@@ -43,7 +46,7 @@ export class PolicyAccessReorderRule extends pulumi.CustomResource {
 
     public readonly policyType!: pulumi.Output<string>;
     /**
-     * (Required)
+     * List of rules and their orders
      */
     public readonly rules!: pulumi.Output<outputs.PolicyAccessReorderRuleRule[]>;
 
@@ -84,7 +87,7 @@ export class PolicyAccessReorderRule extends pulumi.CustomResource {
 export interface PolicyAccessReorderRuleState {
     policyType?: pulumi.Input<string>;
     /**
-     * (Required)
+     * List of rules and their orders
      */
     rules?: pulumi.Input<pulumi.Input<inputs.PolicyAccessReorderRuleRule>[]>;
 }
@@ -95,7 +98,7 @@ export interface PolicyAccessReorderRuleState {
 export interface PolicyAccessReorderRuleArgs {
     policyType: pulumi.Input<string>;
     /**
-     * (Required)
+     * List of rules and their orders
      */
     rules: pulumi.Input<pulumi.Input<inputs.PolicyAccessReorderRuleRule>[]>;
 }

@@ -34,7 +34,7 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly zpaClientSecret!: pulumi.Output<string | undefined>;
     /**
-     * Cloud to use PRODUCTION, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
+     * Cloud to use PRODUCTION, ZPATWO, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
      */
     public readonly zpaCloud!: pulumi.Output<string | undefined>;
     /**
@@ -78,7 +78,7 @@ export interface ProviderArgs {
      */
     zpaClientSecret?: pulumi.Input<string>;
     /**
-     * Cloud to use PRODUCTION, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
+     * Cloud to use PRODUCTION, ZPATWO, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
      */
     zpaCloud?: pulumi.Input<string>;
     /**

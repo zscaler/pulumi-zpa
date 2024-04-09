@@ -50,41 +50,29 @@ func LookupServerGroup(ctx *pulumi.Context, args *LookupServerGroupArgs, opts ..
 
 // A collection of arguments for invoking getServerGroup.
 type LookupServerGroupArgs struct {
-	// The ID of the server group to be exported.
-	Id *string `pulumi:"id"`
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
+	Id              *string `pulumi:"id"`
+	MicrotenantId   *string `pulumi:"microtenantId"`
 	MicrotenantName *string `pulumi:"microtenantName"`
-	// The name of the server group to be exported.
-	Name *string `pulumi:"name"`
+	Name            *string `pulumi:"name"`
 }
 
 // A collection of values returned by getServerGroup.
 type LookupServerGroupResult struct {
-	// (string)This field is a json array of app-connector-id only.
 	AppConnectorGroups []GetServerGroupAppConnectorGroup `pulumi:"appConnectorGroups"`
 	Applications       []GetServerGroupApplication       `pulumi:"applications"`
-	// (string)
-	ConfigSpace  string `pulumi:"configSpace"`
-	CreationTime string `pulumi:"creationTime"`
-	// (string) This field is the description of the server group.
-	Description string `pulumi:"description"`
-	// (bool) This field controls dynamic discovery of the servers.
-	DynamicDiscovery bool `pulumi:"dynamicDiscovery"`
-	// (bool) This field defines if the server group is enabled or disabled.
-	Enabled bool    `pulumi:"enabled"`
-	Id      *string `pulumi:"id"`
-	// (bool)
-	IpAnchored bool `pulumi:"ipAnchored"`
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
-	MicrotenantName *string                `pulumi:"microtenantName"`
-	ModifiedTime    string                 `pulumi:"modifiedTime"`
-	Modifiedby      string                 `pulumi:"modifiedby"`
-	Name            *string                `pulumi:"name"`
-	Servers         []GetServerGroupServer `pulumi:"servers"`
+	ConfigSpace        string                            `pulumi:"configSpace"`
+	CreationTime       string                            `pulumi:"creationTime"`
+	Description        string                            `pulumi:"description"`
+	DynamicDiscovery   bool                              `pulumi:"dynamicDiscovery"`
+	Enabled            bool                              `pulumi:"enabled"`
+	Id                 *string                           `pulumi:"id"`
+	IpAnchored         bool                              `pulumi:"ipAnchored"`
+	MicrotenantId      *string                           `pulumi:"microtenantId"`
+	MicrotenantName    *string                           `pulumi:"microtenantName"`
+	ModifiedTime       string                            `pulumi:"modifiedTime"`
+	Modifiedby         string                            `pulumi:"modifiedby"`
+	Name               *string                           `pulumi:"name"`
+	Servers            []GetServerGroupServer            `pulumi:"servers"`
 }
 
 func LookupServerGroupOutput(ctx *pulumi.Context, args LookupServerGroupOutputArgs, opts ...pulumi.InvokeOption) LookupServerGroupResultOutput {
@@ -102,14 +90,10 @@ func LookupServerGroupOutput(ctx *pulumi.Context, args LookupServerGroupOutputAr
 
 // A collection of arguments for invoking getServerGroup.
 type LookupServerGroupOutputArgs struct {
-	// The ID of the server group to be exported.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// (string) The ID of the microtenant the resource is to be associated with.
-	MicrotenantId pulumi.StringPtrInput `pulumi:"microtenantId"`
-	// (string) The name of the microtenant the resource is to be associated with.
+	Id              pulumi.StringPtrInput `pulumi:"id"`
+	MicrotenantId   pulumi.StringPtrInput `pulumi:"microtenantId"`
 	MicrotenantName pulumi.StringPtrInput `pulumi:"microtenantName"`
-	// The name of the server group to be exported.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name            pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (LookupServerGroupOutputArgs) ElementType() reflect.Type {
@@ -131,7 +115,6 @@ func (o LookupServerGroupResultOutput) ToLookupServerGroupResultOutputWithContex
 	return o
 }
 
-// (string)This field is a json array of app-connector-id only.
 func (o LookupServerGroupResultOutput) AppConnectorGroups() GetServerGroupAppConnectorGroupArrayOutput {
 	return o.ApplyT(func(v LookupServerGroupResult) []GetServerGroupAppConnectorGroup { return v.AppConnectorGroups }).(GetServerGroupAppConnectorGroupArrayOutput)
 }
@@ -140,7 +123,6 @@ func (o LookupServerGroupResultOutput) Applications() GetServerGroupApplicationA
 	return o.ApplyT(func(v LookupServerGroupResult) []GetServerGroupApplication { return v.Applications }).(GetServerGroupApplicationArrayOutput)
 }
 
-// (string)
 func (o LookupServerGroupResultOutput) ConfigSpace() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerGroupResult) string { return v.ConfigSpace }).(pulumi.StringOutput)
 }
@@ -149,17 +131,14 @@ func (o LookupServerGroupResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerGroupResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// (string) This field is the description of the server group.
 func (o LookupServerGroupResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerGroupResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (bool) This field controls dynamic discovery of the servers.
 func (o LookupServerGroupResultOutput) DynamicDiscovery() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServerGroupResult) bool { return v.DynamicDiscovery }).(pulumi.BoolOutput)
 }
 
-// (bool) This field defines if the server group is enabled or disabled.
 func (o LookupServerGroupResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServerGroupResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -168,17 +147,14 @@ func (o LookupServerGroupResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerGroupResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// (bool)
 func (o LookupServerGroupResultOutput) IpAnchored() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServerGroupResult) bool { return v.IpAnchored }).(pulumi.BoolOutput)
 }
 
-// (string) The ID of the microtenant the resource is to be associated with.
 func (o LookupServerGroupResultOutput) MicrotenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerGroupResult) *string { return v.MicrotenantId }).(pulumi.StringPtrOutput)
 }
 
-// (string) The name of the microtenant the resource is to be associated with.
 func (o LookupServerGroupResultOutput) MicrotenantName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerGroupResult) *string { return v.MicrotenantName }).(pulumi.StringPtrOutput)
 }

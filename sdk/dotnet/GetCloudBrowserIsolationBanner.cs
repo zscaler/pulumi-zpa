@@ -13,6 +13,8 @@ namespace Zscaler.Zpa
     public static class GetCloudBrowserIsolationBanner
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/isolation/adding-banner-theme-isolation-end-user-notification-zpa)
+        /// 
         /// Use the **zpa_cloud_browser_isolation_banner** data source to get information about Cloud Browser Isolation banner. This data source information is required as part of the attribute `banner_id` when creating an Cloud Browser Isolation External Profile ``zpa.CloudBrowserIsolationExternalProfile``
         /// 
         /// ## Example Usage
@@ -39,6 +41,8 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCloudBrowserIsolationBannerResult>("zpa:index/getCloudBrowserIsolationBanner:getCloudBrowserIsolationBanner", args ?? new GetCloudBrowserIsolationBannerArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/isolation/adding-banner-theme-isolation-end-user-notification-zpa)
+        /// 
         /// Use the **zpa_cloud_browser_isolation_banner** data source to get information about Cloud Browser Isolation banner. This data source information is required as part of the attribute `banner_id` when creating an Cloud Browser Isolation External Profile ``zpa.CloudBrowserIsolationExternalProfile``
         /// 
         /// ## Example Usage
@@ -68,15 +72,9 @@ namespace Zscaler.Zpa
 
     public sealed class GetCloudBrowserIsolationBannerArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The id of the CBI banner to be exported.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// The name of the CBI banner to be exported.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -88,15 +86,9 @@ namespace Zscaler.Zpa
 
     public sealed class GetCloudBrowserIsolationBannerInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The id of the CBI banner to be exported.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// The name of the CBI banner to be exported.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -110,35 +102,14 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetCloudBrowserIsolationBannerResult
     {
-        /// <summary>
-        /// (bool) - Show Welcome Notification
-        /// </summary>
         public readonly bool Banner;
         public readonly string? Id;
-        /// <summary>
-        /// (bool) - Use the default banner
-        /// </summary>
         public readonly bool IsDefault;
-        /// <summary>
-        /// (string) - The Logo Image (.jpeg or .png; Maximum file size is 100KB.)
-        /// </summary>
         public readonly string Logo;
         public readonly string? Name;
-        /// <summary>
-        /// (string) The Banner Notification Text
-        /// </summary>
         public readonly string NotificationText;
-        /// <summary>
-        /// (string) The Banner Notification Title
-        /// </summary>
         public readonly string NotificationTitle;
-        /// <summary>
-        /// (string) - The Banner Primary Color code in hexadecimal way to represent the color of the banner in RGB format
-        /// </summary>
         public readonly string PrimaryColor;
-        /// <summary>
-        /// (string) - The Banner Text Color code in hexadecimal way to represent the color of the text in RGB format
-        /// </summary>
         public readonly string TextColor;
 
         [OutputConstructor]

@@ -76,6 +76,9 @@ def get_inspection_all_predefined_controls(group_name: Optional[str] = None,
                                            version: Optional[str] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInspectionAllPredefinedControlsResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+
     Use the **zpa_inspection_all_predefined_controls** data source to get information about all OWASP predefined control and prefedined control version by group name. The `Preprocessors` predefined control is the default predefined control, This data source is always required, when creating an inspection profile.
 
     ## Example Usage
@@ -89,10 +92,6 @@ def get_inspection_all_predefined_controls(group_name: Optional[str] = None,
         version="OWASP_CRS/3.3.0")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str group_name: The name of the predefined control.
-    :param str version: The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
     """
     __args__ = dict()
     __args__['groupName'] = group_name
@@ -112,6 +111,9 @@ def get_inspection_all_predefined_controls_output(group_name: Optional[pulumi.In
                                                   version: Optional[pulumi.Input[str]] = None,
                                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInspectionAllPredefinedControlsResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+
     Use the **zpa_inspection_all_predefined_controls** data source to get information about all OWASP predefined control and prefedined control version by group name. The `Preprocessors` predefined control is the default predefined control, This data source is always required, when creating an inspection profile.
 
     ## Example Usage
@@ -125,9 +127,5 @@ def get_inspection_all_predefined_controls_output(group_name: Optional[pulumi.In
         version="OWASP_CRS/3.3.0")
     ```
     <!--End PulumiCodeChooser -->
-
-
-    :param str group_name: The name of the predefined control.
-    :param str version: The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
     """
     ...

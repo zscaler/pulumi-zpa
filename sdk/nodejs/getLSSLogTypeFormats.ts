@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-log-streaming-service)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
+ *
  * Use the **zpa_lss_config_log_type_formats** data source to get information about all LSS log type formats in the Zscaler Private Access cloud. This data source is required when creating an LSS Config Controller resource.
  *
  * ## Example Usage
@@ -43,6 +46,21 @@ import * as utilities from "./utilities";
  * });
  * ```
  * <!--End PulumiCodeChooser -->
+ *
+ * ### Read-Only
+ *
+ * The following arguments are supported:
+ *
+ * * `logType` - (Required) The type of log to be exported.
+ *   * `zpnTransLog`
+ *   * `zpnAuthLog`
+ *   * `zpnAstAuthLog`
+ *   * `zpnHttpTransLog`
+ *   * `zpnAuditLog`
+ *   * `zpnSysAuthLog`
+ *   * `zpnAstComprehensiveStats`
+ *   * `zpnWafHttpExchangesLog`
+ *   * `zpnPbrokerComprehensiveStats`
  */
 export function getLSSLogTypeFormats(args: GetLSSLogTypeFormatsArgs, opts?: pulumi.InvokeOptions): Promise<GetLSSLogTypeFormatsResult> {
 
@@ -56,9 +74,6 @@ export function getLSSLogTypeFormats(args: GetLSSLogTypeFormatsArgs, opts?: pulu
  * A collection of arguments for invoking getLSSLogTypeFormats.
  */
 export interface GetLSSLogTypeFormatsArgs {
-    /**
-     * The type of log to be exported.
-     */
     logType: string;
 }
 
@@ -76,6 +91,9 @@ export interface GetLSSLogTypeFormatsResult {
     readonly tsv: string;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-log-streaming-service)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
+ *
  * Use the **zpa_lss_config_log_type_formats** data source to get information about all LSS log type formats in the Zscaler Private Access cloud. This data source is required when creating an LSS Config Controller resource.
  *
  * ## Example Usage
@@ -114,6 +132,21 @@ export interface GetLSSLogTypeFormatsResult {
  * });
  * ```
  * <!--End PulumiCodeChooser -->
+ *
+ * ### Read-Only
+ *
+ * The following arguments are supported:
+ *
+ * * `logType` - (Required) The type of log to be exported.
+ *   * `zpnTransLog`
+ *   * `zpnAuthLog`
+ *   * `zpnAstAuthLog`
+ *   * `zpnHttpTransLog`
+ *   * `zpnAuditLog`
+ *   * `zpnSysAuthLog`
+ *   * `zpnAstComprehensiveStats`
+ *   * `zpnWafHttpExchangesLog`
+ *   * `zpnPbrokerComprehensiveStats`
  */
 export function getLSSLogTypeFormatsOutput(args: GetLSSLogTypeFormatsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLSSLogTypeFormatsResult> {
     return pulumi.output(args).apply((a: any) => getLSSLogTypeFormats(a, opts))
@@ -123,8 +156,5 @@ export function getLSSLogTypeFormatsOutput(args: GetLSSLogTypeFormatsOutputArgs,
  * A collection of arguments for invoking getLSSLogTypeFormats.
  */
 export interface GetLSSLogTypeFormatsOutputArgs {
-    /**
-     * The type of log to be exported.
-     */
     logType: pulumi.Input<string>;
 }

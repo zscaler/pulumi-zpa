@@ -27,7 +27,6 @@ namespace Zscaler.Zpa
     ///     {
     ///         Description = "test1-segment-group",
     ///         Enabled = true,
-    ///         TcpKeepAliveEnabled = "1",
     ///     });
     /// 
     /// });
@@ -61,37 +60,25 @@ namespace Zscaler.Zpa
         public Output<ImmutableArray<Outputs.SegmentGroupApplication>> Applications { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Description of the segment group.
+        /// Description of the app group.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Whether this segment group is enabled or not.
+        /// Whether this app group is enabled or not.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Output("microtenantId")]
         public Output<string> MicrotenantId { get; private set; } = null!;
 
         /// <summary>
-        /// (Required) Name of the segment group.
+        /// Name of the app group.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
-
-        [Output("policyMigrated")]
-        public Output<bool?> PolicyMigrated { get; private set; } = null!;
-
-        /// <summary>
-        /// (Deprecated)
-        /// </summary>
-        [Output("tcpKeepAliveEnabled")]
-        public Output<string?> TcpKeepAliveEnabled { get; private set; } = null!;
 
 
         /// <summary>
@@ -149,37 +136,25 @@ namespace Zscaler.Zpa
         }
 
         /// <summary>
-        /// (Optional) Description of the segment group.
+        /// Description of the app group.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// (Optional) Whether this segment group is enabled or not.
+        /// Whether this app group is enabled or not.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// (Optional) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
         /// <summary>
-        /// (Required) Name of the segment group.
+        /// Name of the app group.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        [Input("policyMigrated")]
-        public Input<bool>? PolicyMigrated { get; set; }
-
-        /// <summary>
-        /// (Deprecated)
-        /// </summary>
-        [Input("tcpKeepAliveEnabled")]
-        public Input<string>? TcpKeepAliveEnabled { get; set; }
 
         public SegmentGroupArgs()
         {
@@ -198,37 +173,25 @@ namespace Zscaler.Zpa
         }
 
         /// <summary>
-        /// (Optional) Description of the segment group.
+        /// Description of the app group.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// (Optional) Whether this segment group is enabled or not.
+        /// Whether this app group is enabled or not.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// (Optional) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
         /// <summary>
-        /// (Required) Name of the segment group.
+        /// Name of the app group.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        [Input("policyMigrated")]
-        public Input<bool>? PolicyMigrated { get; set; }
-
-        /// <summary>
-        /// (Deprecated)
-        /// </summary>
-        [Input("tcpKeepAliveEnabled")]
-        public Input<string>? TcpKeepAliveEnabled { get; set; }
 
         public SegmentGroupState()
         {

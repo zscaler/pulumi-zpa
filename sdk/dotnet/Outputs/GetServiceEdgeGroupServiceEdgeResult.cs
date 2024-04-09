@@ -14,148 +14,43 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetServiceEdgeGroupServiceEdgeResult
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ApplicationStartTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ControlChannelStatus;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CtrlBrokerName;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CurrentVersion;
-        /// <summary>
-        /// (string) Description of the Service Edge Group.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (bool) Whether this App Connector Group is enabled or not. Default value: `true`. Supported values: `true`, `false`
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly ImmutableDictionary<string, object> EnrollmentCert;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ExpectedUpgradeTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ExpectedVersion;
         public readonly string Fingerprint;
-        /// <summary>
-        /// The ID of the service edge group to be exported.
-        /// </summary>
         public readonly string Id;
         public readonly string Ipacl;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string IssuedCertId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string LastBrokerConnectTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string LastBrokerConnectTimeDuration;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string LastBrokerDisconnectTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string LastBrokerDisconnectTimeDuration;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string LastUpgradeTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Latitude;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ListenIps;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Location;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Longitude;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
-        /// <summary>
-        /// The name of the service edge group to be exported.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Platform;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string PreviousVersion;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string PrivateIp;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ProvisioningKeyId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ProvisioningKeyName;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string PublicIp;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly ImmutableArray<string> PublishIps;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string SargeVersion;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ServiceEdgeGroupId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ServiceEdgeGroupName;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string UpgradeAttempt;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string UpgradeStatus;
         public readonly ImmutableArray<Outputs.GetServiceEdgeGroupServiceEdgeZpnSubModuleUpgradeListResult> ZpnSubModuleUpgradeLists;
 

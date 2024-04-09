@@ -11,6 +11,9 @@ using Pulumi;
 namespace Zscaler.Zpa
 {
     /// <summary>
+    /// * [Official documentation](https://help.zscaler.com/zpa/configuring-app-connectors-settings)
+    /// * [API documentation](https://help.zscaler.com/zpa/configuring-auto-delete-disconnected-app-connectors-using-api)
+    /// 
     /// Use the **zpa_app_connector_assistant_schedule** resource sets the scheduled frequency at which the disconnected App Connectors are eligible for deletion. The supported value for frequency is days. The frequencyInterval field is the number of days after an App Connector disconnects for it to become eligible for deletion. The minimum supported value for frequencyInterval is 5.
     /// 
     /// &gt; **NOTE** - When enabling the Assistant Schedule for the first time, you must provide the `customer_id` information. If you authenticated using environment variables and used `ZPA_CUSTOMER_ID` environment variable, you don't have to define the customer_id attribute in the HCL configuration, and the provider will automatically use the value from the environment variable `ZPA_CUSTOMER_ID`
@@ -63,37 +66,26 @@ namespace Zscaler.Zpa
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## Import
+    /// 
+    /// Import is not currently supported for this resource.
     /// </summary>
     [ZpaResourceType("zpa:index/assistantSchedule:AssistantSchedule")]
     public partial class AssistantSchedule : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// When enabling the Assistant Schedule for the first time, you must provide the `customer_id` information. If you authenticated using environment variables and used `ZPA_CUSTOMER_ID` environment variable, you don't have to define the customer_id attribute in the HCL configuration, and the provider will automatically use the value from the environment variable `ZPA_CUSTOMER_ID`
-        /// </summary>
         [Output("customerId")]
         public Output<string> CustomerId { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional) - Indicates if the App Connectors are included for deletion if they are in a disconnected state based on frequencyInterval and frequency values. Supported values are: `true` or `false`
-        /// </summary>
         [Output("deleteDisabled")]
         public Output<bool?> DeleteDisabled { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional) - Indicates if the setting for deleting App Connectors is enabled or disabled. Supported values are: `true` or `false`
-        /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
-        /// <summary>
-        /// The scheduled frequency at which the disconnected App Connectors are deleted. Supported value is: `days`
-        /// </summary>
         [Output("frequency")]
         public Output<string?> Frequency { get; private set; } = null!;
 
-        /// <summary>
-        /// The interval for the configured frequency value. The minimum supported value is 5. Supported values are: `5`, `7`, `14`, `30`, `60` and `90`
-        /// </summary>
         [Output("frequencyInterval")]
         public Output<string?> FrequencyInterval { get; private set; } = null!;
 
@@ -144,33 +136,18 @@ namespace Zscaler.Zpa
 
     public sealed class AssistantScheduleArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// When enabling the Assistant Schedule for the first time, you must provide the `customer_id` information. If you authenticated using environment variables and used `ZPA_CUSTOMER_ID` environment variable, you don't have to define the customer_id attribute in the HCL configuration, and the provider will automatically use the value from the environment variable `ZPA_CUSTOMER_ID`
-        /// </summary>
         [Input("customerId")]
         public Input<string>? CustomerId { get; set; }
 
-        /// <summary>
-        /// (Optional) - Indicates if the App Connectors are included for deletion if they are in a disconnected state based on frequencyInterval and frequency values. Supported values are: `true` or `false`
-        /// </summary>
         [Input("deleteDisabled")]
         public Input<bool>? DeleteDisabled { get; set; }
 
-        /// <summary>
-        /// (Optional) - Indicates if the setting for deleting App Connectors is enabled or disabled. Supported values are: `true` or `false`
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// The scheduled frequency at which the disconnected App Connectors are deleted. Supported value is: `days`
-        /// </summary>
         [Input("frequency")]
         public Input<string>? Frequency { get; set; }
 
-        /// <summary>
-        /// The interval for the configured frequency value. The minimum supported value is 5. Supported values are: `5`, `7`, `14`, `30`, `60` and `90`
-        /// </summary>
         [Input("frequencyInterval")]
         public Input<string>? FrequencyInterval { get; set; }
 
@@ -182,33 +159,18 @@ namespace Zscaler.Zpa
 
     public sealed class AssistantScheduleState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// When enabling the Assistant Schedule for the first time, you must provide the `customer_id` information. If you authenticated using environment variables and used `ZPA_CUSTOMER_ID` environment variable, you don't have to define the customer_id attribute in the HCL configuration, and the provider will automatically use the value from the environment variable `ZPA_CUSTOMER_ID`
-        /// </summary>
         [Input("customerId")]
         public Input<string>? CustomerId { get; set; }
 
-        /// <summary>
-        /// (Optional) - Indicates if the App Connectors are included for deletion if they are in a disconnected state based on frequencyInterval and frequency values. Supported values are: `true` or `false`
-        /// </summary>
         [Input("deleteDisabled")]
         public Input<bool>? DeleteDisabled { get; set; }
 
-        /// <summary>
-        /// (Optional) - Indicates if the setting for deleting App Connectors is enabled or disabled. Supported values are: `true` or `false`
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// The scheduled frequency at which the disconnected App Connectors are deleted. Supported value is: `days`
-        /// </summary>
         [Input("frequency")]
         public Input<string>? Frequency { get; set; }
 
-        /// <summary>
-        /// The interval for the configured frequency value. The minimum supported value is 5. Supported values are: `5`, `7`, `14`, `30`, `60` and `90`
-        /// </summary>
         [Input("frequencyInterval")]
         public Input<string>? FrequencyInterval { get; set; }
 

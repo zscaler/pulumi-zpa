@@ -13,6 +13,9 @@ namespace Zscaler.Zpa
     public static class GetInspectionAllPredefinedControls
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+        /// 
         /// Use the **zpa_inspection_all_predefined_controls** data source to get information about all OWASP predefined control and prefedined control version by group name. The `Preprocessors` predefined control is the default predefined control, This data source is always required, when creating an inspection profile.
         /// 
         /// ## Example Usage
@@ -40,6 +43,9 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInspectionAllPredefinedControlsResult>("zpa:index/getInspectionAllPredefinedControls:getInspectionAllPredefinedControls", args ?? new GetInspectionAllPredefinedControlsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+        /// 
         /// Use the **zpa_inspection_all_predefined_controls** data source to get information about all OWASP predefined control and prefedined control version by group name. The `Preprocessors` predefined control is the default predefined control, This data source is always required, when creating an inspection profile.
         /// 
         /// ## Example Usage
@@ -70,15 +76,9 @@ namespace Zscaler.Zpa
 
     public sealed class GetInspectionAllPredefinedControlsArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the predefined control.
-        /// </summary>
         [Input("groupName")]
         public string? GroupName { get; set; }
 
-        /// <summary>
-        /// The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
-        /// </summary>
         [Input("version", required: true)]
         public string Version { get; set; } = null!;
 
@@ -90,15 +90,9 @@ namespace Zscaler.Zpa
 
     public sealed class GetInspectionAllPredefinedControlsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the predefined control.
-        /// </summary>
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }
 
-        /// <summary>
-        /// The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
-        /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
 

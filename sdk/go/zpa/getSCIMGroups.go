@@ -11,6 +11,9 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-scim-groups)
+// * [API documentation](https://help.zscaler.com/zpa/obtaining-scim-group-details-using-api)
+//
 // Use the **zpa_scim_groups** data source to get information about a SCIM Group from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
 //
 // ## Example Usage
@@ -53,26 +56,19 @@ func GetSCIMGroups(ctx *pulumi.Context, args *GetSCIMGroupsArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getSCIMGroups.
 type GetSCIMGroupsArgs struct {
-	Id *string `pulumi:"id"`
-	// (string) The ID of the IdP corresponding to the SAML attribute.
-	IdpId *int `pulumi:"idpId"`
-	// Name. The name of the IdP where the scim group must be exported from.
+	Id      *string `pulumi:"id"`
+	IdpId   *int    `pulumi:"idpId"`
 	IdpName *string `pulumi:"idpName"`
-	// Name. The name of the scim group to be exported.
-	Name *string `pulumi:"name"`
+	Name    *string `pulumi:"name"`
 }
 
 // A collection of values returned by getSCIMGroups.
 type GetSCIMGroupsResult struct {
-	// (string)
 	CreationTime int     `pulumi:"creationTime"`
 	Id           *string `pulumi:"id"`
-	// (string)
-	IdpGroupId string `pulumi:"idpGroupId"`
-	// (string) The ID of the IdP corresponding to the SAML attribute.
-	IdpId   *int    `pulumi:"idpId"`
-	IdpName *string `pulumi:"idpName"`
-	// (string)
+	IdpGroupId   string  `pulumi:"idpGroupId"`
+	IdpId        *int    `pulumi:"idpId"`
+	IdpName      *string `pulumi:"idpName"`
 	ModifiedTime int     `pulumi:"modifiedTime"`
 	Name         *string `pulumi:"name"`
 }
@@ -92,13 +88,10 @@ func GetSCIMGroupsOutput(ctx *pulumi.Context, args GetSCIMGroupsOutputArgs, opts
 
 // A collection of arguments for invoking getSCIMGroups.
 type GetSCIMGroupsOutputArgs struct {
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// (string) The ID of the IdP corresponding to the SAML attribute.
-	IdpId pulumi.IntPtrInput `pulumi:"idpId"`
-	// Name. The name of the IdP where the scim group must be exported from.
+	Id      pulumi.StringPtrInput `pulumi:"id"`
+	IdpId   pulumi.IntPtrInput    `pulumi:"idpId"`
 	IdpName pulumi.StringPtrInput `pulumi:"idpName"`
-	// Name. The name of the scim group to be exported.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name    pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (GetSCIMGroupsOutputArgs) ElementType() reflect.Type {
@@ -120,7 +113,6 @@ func (o GetSCIMGroupsResultOutput) ToGetSCIMGroupsResultOutputWithContext(ctx co
 	return o
 }
 
-// (string)
 func (o GetSCIMGroupsResultOutput) CreationTime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSCIMGroupsResult) int { return v.CreationTime }).(pulumi.IntOutput)
 }
@@ -129,12 +121,10 @@ func (o GetSCIMGroupsResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSCIMGroupsResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// (string)
 func (o GetSCIMGroupsResultOutput) IdpGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSCIMGroupsResult) string { return v.IdpGroupId }).(pulumi.StringOutput)
 }
 
-// (string) The ID of the IdP corresponding to the SAML attribute.
 func (o GetSCIMGroupsResultOutput) IdpId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetSCIMGroupsResult) *int { return v.IdpId }).(pulumi.IntPtrOutput)
 }
@@ -143,7 +133,6 @@ func (o GetSCIMGroupsResultOutput) IdpName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSCIMGroupsResult) *string { return v.IdpName }).(pulumi.StringPtrOutput)
 }
 
-// (string)
 func (o GetSCIMGroupsResultOutput) ModifiedTime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSCIMGroupsResult) int { return v.ModifiedTime }).(pulumi.IntOutput)
 }

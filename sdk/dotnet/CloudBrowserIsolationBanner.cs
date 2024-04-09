@@ -11,6 +11,8 @@ using Pulumi;
 namespace Zscaler.Zpa
 {
     /// <summary>
+    /// * [Official documentation](https://help.zscaler.com/isolation/adding-banner-theme-isolation-end-user-notification-zpa)
+    /// 
     /// The **zpa_cloud_browser_isolation_banner** resource creates a Cloud Browser Isolation banner. This resource is required as part of the attribute `banner_id` when creating an Cloud Browser Isolation External Profile ``zpa.CloudBrowserIsolationExternalProfile``
     /// 
     /// ## Import
@@ -34,48 +36,27 @@ namespace Zscaler.Zpa
     [ZpaResourceType("zpa:index/cloudBrowserIsolationBanner:CloudBrowserIsolationBanner")]
     public partial class CloudBrowserIsolationBanner : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// (Optional) - Show Welcome Notification
-        /// </summary>
         [Output("banner")]
         public Output<bool> Banner { get; private set; } = null!;
 
-        /// <summary>
-        /// The Logo Image (.jpeg or .png; Maximum file size is 100KB.)
-        /// </summary>
         [Output("logo")]
         public Output<string> Logo { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the CBI banner to be exported.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The Banner Notification Text
-        /// </summary>
         [Output("notificationText")]
         public Output<string?> NotificationText { get; private set; } = null!;
 
-        /// <summary>
-        /// The Banner Notification Title
-        /// </summary>
         [Output("notificationTitle")]
         public Output<string?> NotificationTitle { get; private set; } = null!;
 
         [Output("persist")]
         public Output<bool> Persist { get; private set; } = null!;
 
-        /// <summary>
-        /// The Banner Primary Color code in hexadecimal way to represent the color of the banner in RGB format
-        /// </summary>
         [Output("primaryColor")]
         public Output<string?> PrimaryColor { get; private set; } = null!;
 
-        /// <summary>
-        /// The Banner Text Color code in hexadecimal way to represent the color of the text in RGB format
-        /// </summary>
         [Output("textColor")]
         public Output<string?> TextColor { get; private set; } = null!;
 
@@ -126,48 +107,27 @@ namespace Zscaler.Zpa
 
     public sealed class CloudBrowserIsolationBannerArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// (Optional) - Show Welcome Notification
-        /// </summary>
         [Input("banner")]
         public Input<bool>? Banner { get; set; }
 
-        /// <summary>
-        /// The Logo Image (.jpeg or .png; Maximum file size is 100KB.)
-        /// </summary>
         [Input("logo")]
         public Input<string>? Logo { get; set; }
 
-        /// <summary>
-        /// The name of the CBI banner to be exported.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The Banner Notification Text
-        /// </summary>
         [Input("notificationText")]
         public Input<string>? NotificationText { get; set; }
 
-        /// <summary>
-        /// The Banner Notification Title
-        /// </summary>
         [Input("notificationTitle")]
         public Input<string>? NotificationTitle { get; set; }
 
         [Input("persist")]
         public Input<bool>? Persist { get; set; }
 
-        /// <summary>
-        /// The Banner Primary Color code in hexadecimal way to represent the color of the banner in RGB format
-        /// </summary>
         [Input("primaryColor")]
         public Input<string>? PrimaryColor { get; set; }
 
-        /// <summary>
-        /// The Banner Text Color code in hexadecimal way to represent the color of the text in RGB format
-        /// </summary>
         [Input("textColor")]
         public Input<string>? TextColor { get; set; }
 
@@ -179,48 +139,27 @@ namespace Zscaler.Zpa
 
     public sealed class CloudBrowserIsolationBannerState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// (Optional) - Show Welcome Notification
-        /// </summary>
         [Input("banner")]
         public Input<bool>? Banner { get; set; }
 
-        /// <summary>
-        /// The Logo Image (.jpeg or .png; Maximum file size is 100KB.)
-        /// </summary>
         [Input("logo")]
         public Input<string>? Logo { get; set; }
 
-        /// <summary>
-        /// The name of the CBI banner to be exported.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The Banner Notification Text
-        /// </summary>
         [Input("notificationText")]
         public Input<string>? NotificationText { get; set; }
 
-        /// <summary>
-        /// The Banner Notification Title
-        /// </summary>
         [Input("notificationTitle")]
         public Input<string>? NotificationTitle { get; set; }
 
         [Input("persist")]
         public Input<bool>? Persist { get; set; }
 
-        /// <summary>
-        /// The Banner Primary Color code in hexadecimal way to represent the color of the banner in RGB format
-        /// </summary>
         [Input("primaryColor")]
         public Input<string>? PrimaryColor { get; set; }
 
-        /// <summary>
-        /// The Banner Text Color code in hexadecimal way to represent the color of the text in RGB format
-        /// </summary>
         [Input("textColor")]
         public Input<string>? TextColor { get; set; }
 

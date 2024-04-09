@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-privileged-remote-access-applications)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
+ *
  * Use the **zpa_application_segment_pra** data source to get information about an application segment for Privileged Remote Access in the Zscaler Private Access cloud. This resource can then be referenced in an access policy rule, access policy timeout rule, access policy client forwarding rule and inspection policy. This resource supports Privileged Remote Access for both `RDP` and `SSH`.
  *
  * ## Example Usage
@@ -52,29 +55,10 @@ export function getApplicationSegmentPRA(args?: GetApplicationSegmentPRAArgs, op
  */
 export interface GetApplicationSegmentPRAArgs {
     id?: string;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: string;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     microtenantName?: string;
-    /**
-     * The name of the PRA Application Segment to be exported.
-     */
     name?: string;
-    /**
-     * (string) TCP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
-     */
     tcpPortRange?: inputs.GetApplicationSegmentPRATcpPortRange[];
-    /**
-     * (string) UDP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
-     */
     udpPortRange?: inputs.GetApplicationSegmentPRAUdpPortRange[];
 }
 
@@ -82,100 +66,34 @@ export interface GetApplicationSegmentPRAArgs {
  * A collection of values returned by getApplicationSegmentPRA.
  */
 export interface GetApplicationSegmentPRAResult {
-    /**
-     * (string) Indicates whether users can bypass ZPA to access applications.
-     */
     readonly bypassType: string;
-    /**
-     * (string)
-     */
     readonly configSpace: string;
-    /**
-     * (string) Description of the application.
-     */
     readonly description: string;
-    /**
-     * (string) List of domains and IPs.
-     */
     readonly domainNames: string[];
-    /**
-     * (bool) Whether Double Encryption is enabled or disabled for the app.
-     */
     readonly doubleEncrypt: boolean;
-    /**
-     * (bool) Whether this application is enabled or not
-     */
     readonly enabled: boolean;
-    /**
-     * (string)
-     */
     readonly healthCheckType: string;
-    /**
-     * (string) Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
-     */
     readonly healthReporting: string;
     readonly id?: string;
-    /**
-     * (bool)
-     */
     readonly ipAnchored: boolean;
-    /**
-     * (bool) Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
-     */
     readonly isCnameEnabled: boolean;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     readonly microtenantId?: string;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     readonly microtenantName?: string;
     readonly name?: string;
-    /**
-     * (bool)
-     */
     readonly passiveHealthEnabled: boolean;
-    /**
-     * (String) Segment Group IDs
-     */
     readonly segmentGroupId: string;
     readonly segmentGroupName: string;
-    /**
-     * (string) List of Server Group IDs
-     * * `id:` - (string) List of Server Group IDs
-     */
     readonly serverGroups: outputs.GetApplicationSegmentPRAServerGroup[];
-    /**
-     * (string) TCP port ranges used to access the app.
-     * * `app_id:` - (string)
-     * * `name:` - (string) Name of the Privileged Remote Access
-     * * `description:` - (string) Description of the Privileged Remote Access
-     * * `domain:` - (string) Domain name of the Privileged Remote Access
-     */
     readonly sraApps: outputs.GetApplicationSegmentPRASraApp[];
-    /**
-     * (string) TCP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
-     */
     readonly tcpPortRange: outputs.GetApplicationSegmentPRATcpPortRange[];
-    /**
-     * (string) TCP port ranges used to access the app.
-     */
     readonly tcpPortRanges: string[];
-    /**
-     * (string) UDP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
-     */
     readonly udpPortRange: outputs.GetApplicationSegmentPRAUdpPortRange[];
-    /**
-     * (string) UDP port ranges used to access the app.
-     */
     readonly udpPortRanges: string[];
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-privileged-remote-access-applications)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
+ *
  * Use the **zpa_application_segment_pra** data source to get information about an application segment for Privileged Remote Access in the Zscaler Private Access cloud. This resource can then be referenced in an access policy rule, access policy timeout rule, access policy client forwarding rule and inspection policy. This resource supports Privileged Remote Access for both `RDP` and `SSH`.
  *
  * ## Example Usage
@@ -211,28 +129,9 @@ export function getApplicationSegmentPRAOutput(args?: GetApplicationSegmentPRAOu
  */
 export interface GetApplicationSegmentPRAOutputArgs {
     id?: pulumi.Input<string>;
-    /**
-     * (string) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: pulumi.Input<string>;
-    /**
-     * (string) The name of the microtenant the resource is to be associated with.
-     */
     microtenantName?: pulumi.Input<string>;
-    /**
-     * The name of the PRA Application Segment to be exported.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * (string) TCP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
-     */
     tcpPortRange?: pulumi.Input<pulumi.Input<inputs.GetApplicationSegmentPRATcpPortRangeArgs>[]>;
-    /**
-     * (string) UDP port ranges used to access the app.
-     * * `from:`
-     * * `to:`
-     */
     udpPortRange?: pulumi.Input<pulumi.Input<inputs.GetApplicationSegmentPRAUdpPortRangeArgs>[]>;
 }

@@ -14,57 +14,27 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetInspectionProfileWebSocketControlResult
     {
-        /// <summary>
-        /// (string) The action of the predefined control. Supported values: `PASS`, `BLOCK` and `REDIRECT`
-        /// </summary>
         public readonly string Action;
-        /// <summary>
-        /// (string) Value for the predefined controls action. This field is only required if the action is set to REDIRECT. This field is only required if the action is set to `REDIRECT`.
-        /// </summary>
         public readonly string ActionValue;
-        /// <summary>
-        /// (string) Name of the inspection profile
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetInspectionProfileWebSocketControlAssociatedInspectionProfileNameResult> AssociatedInspectionProfileNames;
-        /// <summary>
-        /// (string) Control attachment
-        /// </summary>
         public readonly string Attachment;
-        /// <summary>
-        /// (string) Control group
-        /// </summary>
         public readonly string ControlGroup;
         public readonly string ControlNumber;
-        /// <summary>
-        /// (string) Control types. Supported Values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `CUSTOM`, `PREDEFINED`, `ZSCALER`
-        /// </summary>
         public readonly string ControlType;
         public readonly string CreationTime;
         public readonly string DefaultAction;
         public readonly string DefaultActionValue;
-        /// <summary>
-        /// (string) Description of the inspection profile.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// This field defines the id of the inspection profile.
-        /// </summary>
         public readonly string Id;
         public readonly string ModifiedBy;
         public readonly string ModifiedTime;
         /// <summary>
-        /// This field defines the name of the inspection profile.
+        /// - (String) This field defines the name of the inspection profile.
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// (string) OWASP Predefined Paranoia Level. Range: [1-4], inclusive
-        /// </summary>
         public readonly string ParanoiaLevel;
         public readonly string ProtocolType;
         public readonly string Severity;
-        /// <summary>
-        /// (string) The version of the predefined control, the default is: `OWASP_CRS/3.3.0`
-        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]

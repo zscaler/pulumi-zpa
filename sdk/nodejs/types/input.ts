@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 
 export interface ApplicationSegmentBrowserAccessClientlessApp {
     /**
-     * If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.. Supported values: `true` and `false`
+     * If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.
      */
     allowOptions?: pulumi.Input<boolean>;
     /**
@@ -15,48 +15,27 @@ export interface ApplicationSegmentBrowserAccessClientlessApp {
      */
     applicationPort: pulumi.Input<string>;
     /**
-     * Protocol for the BA app. Supported values: `HTTP` and `HTTPS`
+     * Protocol for the BA app.
      */
     applicationProtocol: pulumi.Input<string>;
     /**
-     * ID of the BA certificate. Refer to the data source documentation for `zpa.BrowserCertificate`
+     * ID of the BA certificate.
      */
-    certificateId: pulumi.Input<string>;
-    /**
-     * (Optional)
-     */
+    certificateId?: pulumi.Input<string>;
     cname?: pulumi.Input<string>;
-    /**
-     * (Optional) Description of the application.
-     */
     description?: pulumi.Input<string>;
     /**
      * Domain name or IP address of the BA app.
      */
     domain?: pulumi.Input<string>;
-    /**
-     * (Optional) - Whether this app is enabled or not.
-     */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * (Optional)
-     */
     hidden?: pulumi.Input<boolean>;
     id?: pulumi.Input<string>;
-    /**
-     * (Optional)
-     */
     localDomain?: pulumi.Input<string>;
-    /**
-     * Name of BA app.
-     */
     name: pulumi.Input<string>;
-    /**
-     * (Optional)
-     */
     path?: pulumi.Input<string>;
     /**
-     * (Optional)
+     * Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
      */
     trustUntrustedCert?: pulumi.Input<boolean>;
 }
@@ -80,37 +59,13 @@ export interface ApplicationSegmentInspectionCommonAppsDto {
 }
 
 export interface ApplicationSegmentInspectionCommonAppsDtoAppsConfig {
-    /**
-     * Indicates the type of application as inspection. Supported value: `INSPECT`
-     */
     appTypes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Port for the Inspection Application Segment.
-     */
     applicationPort?: pulumi.Input<string>;
-    /**
-     * Protocol for the Inspection Application Segment.. Supported values: `HTTP` and `HTTPS`
-     */
     applicationProtocol?: pulumi.Input<string>;
-    /**
-     * ID of the signing certificate. This field is required if the ``applicationProtocol`` is set to `HTTPS`. The ``certificateId`` is **NOT** supported if the applicationProtocol is set to `HTTP`.
-     */
     certificateId?: pulumi.Input<string>;
-    /**
-     * (Optional) Description of the application.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Domain name of the Inspection Application Segment.
-     */
     domain?: pulumi.Input<string>;
-    /**
-     * Whether this application is enabled or not
-     */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * Name of the Inspection Application Segment.
-     */
     name?: pulumi.Input<string>;
     trustUntrustedCert?: pulumi.Input<boolean>;
 }
@@ -135,37 +90,14 @@ export interface ApplicationSegmentPRACommonAppsDto {
 
 export interface ApplicationSegmentPRACommonAppsDtoAppsConfig {
     appId?: pulumi.Input<string>;
-    /**
-     * Indicates the type of application as Privileged Remote Access. Supported value: `SECURE_REMOTE_ACCESS`
-     */
     appTypes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Port for the Privileged Remote Access
-     */
     applicationPort?: pulumi.Input<string>;
-    /**
-     * Protocol for the Privileged Remote Access. Supported values: `RDP` and `SSH`
-     */
     applicationProtocol?: pulumi.Input<string>;
-    /**
-     * Parameter required when `applicationProtocol` is of type `RDP`
-     */
     connectionSecurity?: pulumi.Input<string>;
-    /**
-     * (Optional) Description of the application.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Domain name of the Privileged Remote Access
-     */
     domain?: pulumi.Input<string>;
-    /**
-     * Whether this application is enabled or not
-     */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * Name of the Privileged Remote Access
-     */
+    id?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
 }
 
@@ -199,7 +131,7 @@ export interface ApplicationSegmentUdpPortRange {
 
 export interface BrowserAccessClientlessApp {
     /**
-     * If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.. Supported values: `true` and `false`
+     * If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.
      */
     allowOptions?: pulumi.Input<boolean>;
     /**
@@ -207,48 +139,27 @@ export interface BrowserAccessClientlessApp {
      */
     applicationPort: pulumi.Input<string>;
     /**
-     * Protocol for the BA app. Supported values: `HTTP` and `HTTPS`
+     * Protocol for the BA app.
      */
     applicationProtocol: pulumi.Input<string>;
     /**
-     * ID of the BA certificate. Refer to the data source documentation for `zpa.BrowserCertificate`
+     * ID of the BA certificate.
      */
-    certificateId: pulumi.Input<string>;
-    /**
-     * (Optional)
-     */
+    certificateId?: pulumi.Input<string>;
     cname?: pulumi.Input<string>;
-    /**
-     * (Optional) Description of the application.
-     */
     description?: pulumi.Input<string>;
     /**
      * Domain name or IP address of the BA app.
      */
     domain?: pulumi.Input<string>;
-    /**
-     * (Optional) - Whether this app is enabled or not.
-     */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * (Optional)
-     */
     hidden?: pulumi.Input<boolean>;
     id?: pulumi.Input<string>;
-    /**
-     * (Optional)
-     */
     localDomain?: pulumi.Input<string>;
-    /**
-     * Name of BA app.
-     */
     name: pulumi.Input<string>;
-    /**
-     * (Optional)
-     */
     path?: pulumi.Input<string>;
     /**
-     * (Optional)
+     * Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
      */
     trustUntrustedCert?: pulumi.Input<boolean>;
 }
@@ -362,89 +273,29 @@ export interface GetApplicationSegmentUdpPortRangeArgs {
 }
 
 export interface GetLSSConfigControllerConfig {
-    /**
-     * (string)
-     */
     auditMessage?: string;
-    /**
-     * (string)
-     */
     description?: string;
-    /**
-     * (bool)
-     */
     enabled?: boolean;
-    /**
-     * (string)
-     */
     filters?: string[];
-    /**
-     * (string)
-     */
     format?: string;
-    /**
-     * This field defines the name of the log streaming resource.
-     */
     id?: string;
-    /**
-     * (string)
-     */
     lssHost?: string;
-    /**
-     * (string)
-     */
     lssPort?: string;
-    /**
-     * This field defines the name of the log streaming resource.
-     */
     name?: string;
-    /**
-     * (string)
-     */
     sourceLogType?: string;
     useTls?: boolean;
 }
 
 export interface GetLSSConfigControllerConfigArgs {
-    /**
-     * (string)
-     */
     auditMessage?: pulumi.Input<string>;
-    /**
-     * (string)
-     */
     description?: pulumi.Input<string>;
-    /**
-     * (bool)
-     */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * (string)
-     */
     filters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (string)
-     */
     format?: pulumi.Input<string>;
-    /**
-     * This field defines the name of the log streaming resource.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * (string)
-     */
     lssHost?: pulumi.Input<string>;
-    /**
-     * (string)
-     */
     lssPort?: pulumi.Input<string>;
-    /**
-     * This field defines the name of the log streaming resource.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * (string)
-     */
     sourceLogType?: pulumi.Input<string>;
     useTls?: pulumi.Input<boolean>;
 }
@@ -481,42 +332,39 @@ export interface InspectionCustomControlsRuleConditions {
 }
 
 export interface InspectionProfileControlsInfo {
-    /**
-     * (string) Control types. Supported Values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `CUSTOM`, `PREDEFINED`, `ZSCALER`
-     */
     controlType?: pulumi.Input<string>;
 }
 
 export interface InspectionProfileCustomControl {
     /**
-     * The action of the predefined control. Supported values: `PASS`, `BLOCK` and `REDIRECT`
+     * The action of the custom control
      */
     action?: pulumi.Input<string>;
     /**
-     * Value for the predefined controls action. This field is only required if the action is set to REDIRECT. This field is only required if the action is set to `REDIRECT`.
+     * Denotes the action. Supports any string
      */
     actionValue?: pulumi.Input<string>;
     /**
-     * ID of the predefined control
+     * The unique identifier of the custom control
      */
     id: pulumi.Input<string>;
 }
 
 export interface InspectionProfilePredefinedControl {
     /**
-     * The action of the predefined control. Supported values: `PASS`, `BLOCK` and `REDIRECT`
+     * The action of the predefined control
      */
     action?: pulumi.Input<string>;
     /**
-     * Value for the predefined controls action. This field is only required if the action is set to REDIRECT. This field is only required if the action is set to `REDIRECT`.
+     * The value for the predefined controls action. This field is only required if the action is set to REDIRECT
      */
     actionValue?: pulumi.Input<string>;
     /**
-     * (string) Control types. Supported Values: `WEBSOCKET_PREDEFINED`, `WEBSOCKET_CUSTOM`, `CUSTOM`, `PREDEFINED`, `ZSCALER`
+     * The control type of the custom control
      */
     controlType?: pulumi.Input<string>;
     /**
-     * ID of the predefined control
+     * The unique identifier of the predefined control
      */
     id?: pulumi.Input<string>;
     /**
@@ -617,7 +465,6 @@ export interface LSSConfigControllerPolicyRuleResource {
 }
 
 export interface LSSConfigControllerPolicyRuleResourceCondition {
-    negated?: pulumi.Input<boolean>;
     /**
      * This signifies the various policy criteria.
      */
@@ -649,10 +496,57 @@ export interface MicrotenantUser {
     username?: pulumi.Input<string>;
 }
 
+export interface PRAApprovalApplication {
+    /**
+     * The unique identifier of the pra application segment
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PRAApprovalWorkingHour {
+    /**
+     * The days of the week that you want to enable the privileged approval
+     */
+    days?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The end time that the user no longer has access to the privileged approval
+     */
+    endTime?: pulumi.Input<string>;
+    /**
+     * The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+     */
+    endTimeCron?: pulumi.Input<string>;
+    /**
+     * The start time that the user has access to the privileged approval
+     */
+    startTime?: pulumi.Input<string>;
+    /**
+     * The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+     */
+    startTimeCron?: pulumi.Input<string>;
+    /**
+     * The time zone for the time window of a privileged approval
+     */
+    timezone?: pulumi.Input<string>;
+}
+
+export interface PRAConsolePraApplication {
+    /**
+     * The unique identifier of the Privileged Remote Access-enabled application
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface PRAConsolePraPortal {
+    /**
+     * The unique identifier of the privileged portal
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface PolicyAccessForwardingRuleCondition {
     id?: pulumi.Input<string>;
     microtenantId?: pulumi.Input<string>;
-    negated?: pulumi.Input<boolean>;
     /**
      * This signifies the various policy criteria.
      */
@@ -686,10 +580,35 @@ export interface PolicyAccessForwardingRuleConditionOperand {
     rhsLists?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface PolicyAccessForwardingRuleV2Condition {
+    id?: pulumi.Input<string>;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands?: pulumi.Input<pulumi.Input<inputs.PolicyAccessForwardingRuleV2ConditionOperand>[]>;
+    operator?: pulumi.Input<string>;
+}
+
+export interface PolicyAccessForwardingRuleV2ConditionOperand {
+    entryValues?: pulumi.Input<pulumi.Input<inputs.PolicyAccessForwardingRuleV2ConditionOperandEntryValue>[]>;
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType?: pulumi.Input<string>;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PolicyAccessForwardingRuleV2ConditionOperandEntryValue {
+    lhs?: pulumi.Input<string>;
+    rhs?: pulumi.Input<string>;
+}
+
 export interface PolicyAccessInspectionRuleCondition {
     id?: pulumi.Input<string>;
     microtenantId?: pulumi.Input<string>;
-    negated?: pulumi.Input<boolean>;
     /**
      * This signifies the various policy criteria.
      */
@@ -723,10 +642,35 @@ export interface PolicyAccessInspectionRuleConditionOperand {
     rhsLists?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface PolicyAccessInspectionRuleV2Condition {
+    id?: pulumi.Input<string>;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands?: pulumi.Input<pulumi.Input<inputs.PolicyAccessInspectionRuleV2ConditionOperand>[]>;
+    operator?: pulumi.Input<string>;
+}
+
+export interface PolicyAccessInspectionRuleV2ConditionOperand {
+    entryValues?: pulumi.Input<pulumi.Input<inputs.PolicyAccessInspectionRuleV2ConditionOperandEntryValue>[]>;
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType?: pulumi.Input<string>;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PolicyAccessInspectionRuleV2ConditionOperandEntryValue {
+    lhs?: pulumi.Input<string>;
+    rhs?: pulumi.Input<string>;
+}
+
 export interface PolicyAccessIsolationRuleCondition {
     id?: pulumi.Input<string>;
     microtenantId?: pulumi.Input<string>;
-    negated?: pulumi.Input<boolean>;
     /**
      * This signifies the various policy criteria.
      */
@@ -760,81 +704,79 @@ export interface PolicyAccessIsolationRuleConditionOperand {
     rhsLists?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface PolicyAccessIsolationRuleV2Condition {
+    id?: pulumi.Input<string>;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands?: pulumi.Input<pulumi.Input<inputs.PolicyAccessIsolationRuleV2ConditionOperand>[]>;
+    operator?: pulumi.Input<string>;
+}
+
+export interface PolicyAccessIsolationRuleV2ConditionOperand {
+    entryValues?: pulumi.Input<pulumi.Input<inputs.PolicyAccessIsolationRuleV2ConditionOperandEntryValue>[]>;
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType?: pulumi.Input<string>;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PolicyAccessIsolationRuleV2ConditionOperandEntryValue {
+    lhs?: pulumi.Input<string>;
+    rhs?: pulumi.Input<string>;
+}
+
 export interface PolicyAccessReorderRuleRule {
-    /**
-     * (Required) - The ID of the rule to which the order number will be applied.
-     */
     id: pulumi.Input<string>;
-    /**
-     * (Required) - The order number that should be applied to the respective rule ID.
-     */
     order: pulumi.Input<string>;
 }
 
 export interface PolicyAccessRuleAppConnectorGroup {
-    /**
-     * (Optional) The ID of a server group resource
-     */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface PolicyAccessRuleAppServerGroup {
-    /**
-     * (Optional) The ID of a server group resource
-     */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface PolicyAccessRuleCondition {
-    /**
-     * (Optional) The ID of a server group resource
-     */
     id?: pulumi.Input<string>;
-    /**
-     * (Optional) The ID of the microtenant the resource is to be associated with.
-     */
     microtenantId?: pulumi.Input<string>;
     /**
-     * (Optional) Supported values: ``true`` or ``false``
-     */
-    negated?: pulumi.Input<boolean>;
-    /**
-     * (Optional) - Operands block must be repeated if multiple per `objectType` conditions are to be added to the rule.
+     * This signifies the various policy criteria.
      */
     operands?: pulumi.Input<pulumi.Input<inputs.PolicyAccessRuleConditionOperand>[]>;
     /**
-     * (Optional) Supported values: ``AND``, and ``OR``
+     * Supported values: `AND`, `OR`
      */
     operator: pulumi.Input<string>;
 }
 
 export interface PolicyAccessRuleConditionOperand {
-    /**
-     * (Optional) The ID of a server group resource
-     */
     id?: pulumi.Input<string>;
-    /**
-     * (Optional)
-     */
     idpId?: pulumi.Input<string>;
     /**
-     * (Optional) LHS must always carry the string value ``id`` or the attribute ID of the resource being associated with the rule.
+     * This signifies the key for the object type. String ID example: id
      */
     lhs: pulumi.Input<string>;
     /**
-     * (Optional) The ID of the microtenant the resource is to be associated with.
+     * This denotes the value for the given object type. Its value depends upon the key.
      */
     microtenantId?: pulumi.Input<string>;
     /**
-     * (Optional)
+     * This is the name of the policy rule.
      */
     name?: pulumi.Input<string>;
     /**
-     * (Optional) This is for specifying the policy critiera. Supported values: `APP`, `APP_GROUP`, `SAML`, `IDP`, `CLIENT_TYPE`, `TRUSTED_NETWORK`, `POSTURE`, `SCIM`, `SCIM_GROUP`, and `CLOUD_CONNECTOR_GROUP`. `TRUSTED_NETWORK`, `CLIENT_TYPE`, `PLATFORM`, `COUNTRY_CODE`.
+     * This is for specifying the policy critiera.
      */
     objectType: pulumi.Input<string>;
     /**
-     * (Optional) RHS is either the ID attribute of a resource or fixed string value. Refer to the chart below for further details.
+     * This denotes the value for the given object type. Its value depends upon the key.
      */
     rhs?: pulumi.Input<string>;
     /**
@@ -843,10 +785,43 @@ export interface PolicyAccessRuleConditionOperand {
     rhsLists?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface PolicyAccessRuleV2AppConnectorGroup {
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PolicyAccessRuleV2AppServerGroup {
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PolicyAccessRuleV2Condition {
+    id?: pulumi.Input<string>;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands?: pulumi.Input<pulumi.Input<inputs.PolicyAccessRuleV2ConditionOperand>[]>;
+    operator?: pulumi.Input<string>;
+}
+
+export interface PolicyAccessRuleV2ConditionOperand {
+    entryValues?: pulumi.Input<pulumi.Input<inputs.PolicyAccessRuleV2ConditionOperandEntryValue>[]>;
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType?: pulumi.Input<string>;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PolicyAccessRuleV2ConditionOperandEntryValue {
+    lhs?: pulumi.Input<string>;
+    rhs?: pulumi.Input<string>;
+}
+
 export interface PolicyAccessTimeOutRuleCondition {
     id?: pulumi.Input<string>;
     microtenantId?: pulumi.Input<string>;
-    negated?: pulumi.Input<boolean>;
     /**
      * This signifies the various policy criteria.
      */
@@ -878,6 +853,319 @@ export interface PolicyAccessTimeOutRuleConditionOperand {
      * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
      */
     rhsLists?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PolicyAccessTimeOutRuleV2Condition {
+    id?: pulumi.Input<string>;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands?: pulumi.Input<pulumi.Input<inputs.PolicyAccessTimeOutRuleV2ConditionOperand>[]>;
+    operator?: pulumi.Input<string>;
+}
+
+export interface PolicyAccessTimeOutRuleV2ConditionOperand {
+    entryValues?: pulumi.Input<pulumi.Input<inputs.PolicyAccessTimeOutRuleV2ConditionOperandEntryValue>[]>;
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType?: pulumi.Input<string>;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PolicyAccessTimeOutRuleV2ConditionOperandEntryValue {
+    lhs?: pulumi.Input<string>;
+    rhs?: pulumi.Input<string>;
+}
+
+export interface PolicyCapabilitiesRuleCondition {
+    id?: pulumi.Input<string>;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands?: pulumi.Input<pulumi.Input<inputs.PolicyCapabilitiesRuleConditionOperand>[]>;
+    operator?: pulumi.Input<string>;
+}
+
+export interface PolicyCapabilitiesRuleConditionOperand {
+    entryValues?: pulumi.Input<pulumi.Input<inputs.PolicyCapabilitiesRuleConditionOperandEntryValue>[]>;
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType?: pulumi.Input<string>;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PolicyCapabilitiesRuleConditionOperandEntryValue {
+    lhs?: pulumi.Input<string>;
+    rhs?: pulumi.Input<string>;
+}
+
+export interface PolicyCapabilitiesRulePrivilegedCapabilities {
+    /**
+     * Indicates the PRA Clipboard Copy function
+     */
+    clipboardCopy?: pulumi.Input<boolean>;
+    /**
+     * Indicates the PRA Clipboard Paste function
+     */
+    clipboardPaste?: pulumi.Input<boolean>;
+    /**
+     * Indicates the PRA File Transfer capabilities that enables the File Download function
+     */
+    fileDownload?: pulumi.Input<boolean>;
+    /**
+     * Indicates the PRA File Transfer capabilities that enables the File Upload function
+     */
+    fileUpload?: pulumi.Input<boolean>;
+    /**
+     * Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and downloads the file following the inspection
+     */
+    inspectFileDownload?: pulumi.Input<boolean>;
+    /**
+     * Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and uploads the file following the inspection
+     */
+    inspectFileUpload?: pulumi.Input<boolean>;
+    /**
+     * Indicates the PRA Monitoring Capabilities to enable the PRA Session Monitoring function
+     */
+    monitorSession?: pulumi.Input<boolean>;
+    /**
+     * Indicates the PRA Session Recording capabilities to enable PRA Session Recording
+     */
+    recordSession?: pulumi.Input<boolean>;
+    /**
+     * Indicates the PRA Session Control and Monitoring capabilities to enable PRA Session Monitoring
+     */
+    shareSession?: pulumi.Input<boolean>;
+}
+
+export interface PolicyCredentialRuleCondition {
+    id?: pulumi.Input<string>;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands?: pulumi.Input<pulumi.Input<inputs.PolicyCredentialRuleConditionOperand>[]>;
+    operator?: pulumi.Input<string>;
+}
+
+export interface PolicyCredentialRuleConditionOperand {
+    entryValues?: pulumi.Input<pulumi.Input<inputs.PolicyCredentialRuleConditionOperandEntryValue>[]>;
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType?: pulumi.Input<string>;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PolicyCredentialRuleConditionOperandEntryValue {
+    lhs?: pulumi.Input<string>;
+    rhs?: pulumi.Input<string>;
+}
+
+export interface PolicyCredentialRuleCredential {
+    id: pulumi.Input<string>;
+}
+
+export interface PolicyForwardingRuleV2Condition {
+    id?: pulumi.Input<string>;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands?: pulumi.Input<pulumi.Input<inputs.PolicyForwardingRuleV2ConditionOperand>[]>;
+    operator?: pulumi.Input<string>;
+}
+
+export interface PolicyForwardingRuleV2ConditionOperand {
+    entryValues?: pulumi.Input<pulumi.Input<inputs.PolicyForwardingRuleV2ConditionOperandEntryValue>[]>;
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType?: pulumi.Input<string>;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PolicyForwardingRuleV2ConditionOperandEntryValue {
+    lhs?: pulumi.Input<string>;
+    rhs?: pulumi.Input<string>;
+}
+
+export interface PolicyInspectionRuleV2Condition {
+    id?: pulumi.Input<string>;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands?: pulumi.Input<pulumi.Input<inputs.PolicyInspectionRuleV2ConditionOperand>[]>;
+    operator?: pulumi.Input<string>;
+}
+
+export interface PolicyInspectionRuleV2ConditionOperand {
+    entryValues?: pulumi.Input<pulumi.Input<inputs.PolicyInspectionRuleV2ConditionOperandEntryValue>[]>;
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType?: pulumi.Input<string>;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PolicyInspectionRuleV2ConditionOperandEntryValue {
+    lhs?: pulumi.Input<string>;
+    rhs?: pulumi.Input<string>;
+}
+
+export interface PolicyIsolationRuleV2Condition {
+    id?: pulumi.Input<string>;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands?: pulumi.Input<pulumi.Input<inputs.PolicyIsolationRuleV2ConditionOperand>[]>;
+    operator?: pulumi.Input<string>;
+}
+
+export interface PolicyIsolationRuleV2ConditionOperand {
+    entryValues?: pulumi.Input<pulumi.Input<inputs.PolicyIsolationRuleV2ConditionOperandEntryValue>[]>;
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType?: pulumi.Input<string>;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PolicyIsolationRuleV2ConditionOperandEntryValue {
+    lhs?: pulumi.Input<string>;
+    rhs?: pulumi.Input<string>;
+}
+
+export interface PolicyRedirectionRuleCondition {
+    id?: pulumi.Input<string>;
+    microtenantId?: pulumi.Input<string>;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands?: pulumi.Input<pulumi.Input<inputs.PolicyRedirectionRuleConditionOperand>[]>;
+    operator: pulumi.Input<string>;
+}
+
+export interface PolicyRedirectionRuleConditionOperand {
+    id?: pulumi.Input<string>;
+    idpId?: pulumi.Input<string>;
+    /**
+     * This signifies the key for the object type. String ID example: id
+     */
+    lhs: pulumi.Input<string>;
+    /**
+     * This denotes the value for the given object type. Its value depends upon the key.
+     */
+    microtenantId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: pulumi.Input<string>;
+    /**
+     * This denotes the value for the given object type. Its value depends upon the key.
+     */
+    rhs?: pulumi.Input<string>;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    rhsLists?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PolicyRedirectionRuleServiceEdgeGroup {
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PolicyTimeoutRuleV2Condition {
+    id?: pulumi.Input<string>;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands?: pulumi.Input<pulumi.Input<inputs.PolicyTimeoutRuleV2ConditionOperand>[]>;
+    operator?: pulumi.Input<string>;
+}
+
+export interface PolicyTimeoutRuleV2ConditionOperand {
+    entryValues?: pulumi.Input<pulumi.Input<inputs.PolicyTimeoutRuleV2ConditionOperandEntryValue>[]>;
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType?: pulumi.Input<string>;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PolicyTimeoutRuleV2ConditionOperandEntryValue {
+    lhs?: pulumi.Input<string>;
+    rhs?: pulumi.Input<string>;
+}
+
+export interface PraApprovalControllerApplication {
+    /**
+     * The unique identifier of the pra application segment
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PraApprovalControllerWorkingHour {
+    /**
+     * The days of the week that you want to enable the privileged approval
+     */
+    days?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The end time that the user no longer has access to the privileged approval
+     */
+    endTime?: pulumi.Input<string>;
+    /**
+     * The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+     */
+    endTimeCron?: pulumi.Input<string>;
+    /**
+     * The start time that the user has access to the privileged approval
+     */
+    startTime?: pulumi.Input<string>;
+    /**
+     * The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+     */
+    startTimeCron?: pulumi.Input<string>;
+    /**
+     * The time zone for the time window of a privileged approval
+     */
+    timezone?: pulumi.Input<string>;
+}
+
+export interface PraConsoleControllerPraApplication {
+    /**
+     * The unique identifier of the Privileged Remote Access-enabled application
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface PraConsoleControllerPraPortal {
+    /**
+     * The unique identifier of the privileged portal
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface SegmentGroupApplication {

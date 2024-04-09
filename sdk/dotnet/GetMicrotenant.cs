@@ -13,6 +13,9 @@ namespace Zscaler.Zpa
     public static class GetMicrotenant
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-microtenants)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-microtenants-using-api)
+        /// 
         /// The **zpa_microtenant_controller** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source allows administrators to retrieve a specific microtenant ID, which can be passed to other supported resources via the `microtenant_id` attribute.
         /// 
         /// ⚠️ **WARNING:**: This feature is in limited availability and requires additional license. To learn more, contact Zscaler Support or your local account team.
@@ -41,6 +44,9 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMicrotenantResult>("zpa:index/getMicrotenant:getMicrotenant", args ?? new GetMicrotenantArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-microtenants)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-microtenants-using-api)
+        /// 
         /// The **zpa_microtenant_controller** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source allows administrators to retrieve a specific microtenant ID, which can be passed to other supported resources via the `microtenant_id` attribute.
         /// 
         /// ⚠️ **WARNING:**: This feature is in limited availability and requires additional license. To learn more, contact Zscaler Support or your local account team.
@@ -76,7 +82,7 @@ namespace Zscaler.Zpa
         public string? Id { get; set; }
 
         /// <summary>
-        /// (Required) Name of the microtenant controller.
+        /// - (Required) Name of the microtenant controller.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -93,7 +99,7 @@ namespace Zscaler.Zpa
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// (Required) Name of the microtenant controller.
+        /// - (Required) Name of the microtenant controller.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -109,27 +115,15 @@ namespace Zscaler.Zpa
     public sealed class GetMicrotenantResult
     {
         public readonly string CreationTime;
-        /// <summary>
-        /// (string) Type of authentication criteria for the microtenant
-        /// </summary>
         public readonly string CriteriaAttribute;
-        /// <summary>
-        /// (string) The domain associated with the respective microtenant controller resource
-        /// </summary>
         public readonly ImmutableArray<string> CriteriaAttributeValues;
-        /// <summary>
-        /// (string) Description of the microtenant controller.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (bool) Whether this microtenant resource is enabled or not.
-        /// </summary>
         public readonly bool Enabled;
         public readonly string? Id;
         public readonly string ModifiedBy;
         public readonly string ModifiedTime;
         /// <summary>
-        /// (Required) Name of the microtenant controller.
+        /// - (Required) Name of the microtenant controller.
         /// </summary>
         public readonly string? Name;
         public readonly string Operator;

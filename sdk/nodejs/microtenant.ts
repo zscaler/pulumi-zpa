@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-microtenants)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-microtenants-using-api)
+ *
  * The **zpa_microtenant_controller** resource creates a microtenant controller in the Zscaler Private Access cloud. This resource allows organizations to delegate responsibilities of admins directly to the acquired or merged company admins so that they can manage their configurations independently
  *
  * ⚠️ **WARNING:**: This feature is in limited availability and requires additional license. To learn more, contact Zscaler Support or your local account team.
@@ -82,23 +85,17 @@ export class Microtenant extends pulumi.CustomResource {
     }
 
     /**
-     * (Required) Type of authentication criteria for the microtenant
+     * - (Required) Type of authentication criteria for the microtenant
      */
     public readonly criteriaAttribute!: pulumi.Output<string | undefined>;
     /**
-     * (Required) The domain associated with the respective microtenant controller resource
+     * - (Required) The domain associated with the respective microtenant controller resource
      */
     public readonly criteriaAttributeValues!: pulumi.Output<string[]>;
-    /**
-     * (Optional) Description of the microtenant controller.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * (Optional) Whether this microtenant resource is enabled or not.
-     */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * (Required) Name of the microtenant controller.
+     * - (Required) Name of the microtenant controller.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly users!: pulumi.Output<outputs.MicrotenantUser[]>;
@@ -141,23 +138,17 @@ export class Microtenant extends pulumi.CustomResource {
  */
 export interface MicrotenantState {
     /**
-     * (Required) Type of authentication criteria for the microtenant
+     * - (Required) Type of authentication criteria for the microtenant
      */
     criteriaAttribute?: pulumi.Input<string>;
     /**
-     * (Required) The domain associated with the respective microtenant controller resource
+     * - (Required) The domain associated with the respective microtenant controller resource
      */
     criteriaAttributeValues?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (Optional) Description of the microtenant controller.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * (Optional) Whether this microtenant resource is enabled or not.
-     */
     enabled?: pulumi.Input<boolean>;
     /**
-     * (Required) Name of the microtenant controller.
+     * - (Required) Name of the microtenant controller.
      */
     name?: pulumi.Input<string>;
     users?: pulumi.Input<pulumi.Input<inputs.MicrotenantUser>[]>;
@@ -168,23 +159,17 @@ export interface MicrotenantState {
  */
 export interface MicrotenantArgs {
     /**
-     * (Required) Type of authentication criteria for the microtenant
+     * - (Required) Type of authentication criteria for the microtenant
      */
     criteriaAttribute?: pulumi.Input<string>;
     /**
-     * (Required) The domain associated with the respective microtenant controller resource
+     * - (Required) The domain associated with the respective microtenant controller resource
      */
     criteriaAttributeValues?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (Optional) Description of the microtenant controller.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * (Optional) Whether this microtenant resource is enabled or not.
-     */
     enabled?: pulumi.Input<boolean>;
     /**
-     * (Required) Name of the microtenant controller.
+     * - (Required) Name of the microtenant controller.
      */
     name?: pulumi.Input<string>;
     users?: pulumi.Input<pulumi.Input<inputs.MicrotenantUser>[]>;

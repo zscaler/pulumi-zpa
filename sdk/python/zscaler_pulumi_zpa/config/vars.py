@@ -32,7 +32,7 @@ class _ExportableConfig(types.ModuleType):
     @property
     def zpa_cloud(self) -> Optional[str]:
         """
-        Cloud to use PRODUCTION, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
+        Cloud to use PRODUCTION, ZPATWO, BETA, GOV, GOVUS, PREVIEW, DEV, QA, QA2
         """
         return __config__.get('zpaCloud') or _utilities.get_env('ZPA_CLOUD')
 

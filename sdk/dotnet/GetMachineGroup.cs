@@ -13,6 +13,9 @@ namespace Zscaler.Zpa
     public static class GetMachineGroup
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-machine-groups)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-machine-group-details-using-api)
+        /// 
         /// Use the **zpa_machine_group** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
         /// 
         /// ## Example Usage
@@ -57,6 +60,9 @@ namespace Zscaler.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMachineGroupResult>("zpa:index/getMachineGroup:getMachineGroup", args ?? new GetMachineGroupArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-machine-groups)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-machine-group-details-using-api)
+        /// 
         /// Use the **zpa_machine_group** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
         /// 
         /// ## Example Usage
@@ -104,27 +110,15 @@ namespace Zscaler.Zpa
 
     public sealed class GetMachineGroupArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the machine group to be exported.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public string? MicrotenantId { get; set; }
 
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantName")]
         public string? MicrotenantName { get; set; }
 
-        /// <summary>
-        /// The name of the machine group to be exported.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -136,27 +130,15 @@ namespace Zscaler.Zpa
 
     public sealed class GetMachineGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the machine group to be exported.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         [Input("microtenantName")]
         public Input<string>? MicrotenantName { get; set; }
 
-        /// <summary>
-        /// The name of the machine group to be exported.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -170,45 +152,15 @@ namespace Zscaler.Zpa
     [OutputType]
     public sealed class GetMachineGroupResult
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? Id;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetMachineGroupMachineResult> Machines;
-        /// <summary>
-        /// (string) The ID of the microtenant the resource is to be associated with.
-        /// </summary>
         public readonly string? MicrotenantId;
-        /// <summary>
-        /// (string) The name of the microtenant the resource is to be associated with.
-        /// </summary>
         public readonly string? MicrotenantName;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedBy;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

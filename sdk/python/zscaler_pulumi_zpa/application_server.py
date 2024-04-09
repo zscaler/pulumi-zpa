@@ -23,13 +23,11 @@ class ApplicationServerArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ApplicationServer resource.
-        :param pulumi.Input[str] address: Address. The address of the application server to be exported.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] app_server_group_ids: (Optional) This field defines the list of server group IDs.
-        :param pulumi.Input[str] config_space: (Optional)
-        :param pulumi.Input[str] description: (Optional) This field defines the description of the server.
-        :param pulumi.Input[bool] enabled: (Optional) This field defines the status of the server.
-        :param pulumi.Input[str] microtenant_id: (Optional) The ID of the microtenant the resource is to be associated with.
-        :param pulumi.Input[str] name: Name. The name of the application server to be exported.
+        :param pulumi.Input[str] address: This field defines the domain or IP address of the server.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] app_server_group_ids: This field defines the list of server groups IDs.
+        :param pulumi.Input[str] description: This field defines the description of the server.
+        :param pulumi.Input[bool] enabled: This field defines the status of the server.
+        :param pulumi.Input[str] name: This field defines the name of the server.
         """
         pulumi.set(__self__, "address", address)
         if app_server_group_ids is not None:
@@ -49,7 +47,7 @@ class ApplicationServerArgs:
     @pulumi.getter
     def address(self) -> pulumi.Input[str]:
         """
-        Address. The address of the application server to be exported.
+        This field defines the domain or IP address of the server.
         """
         return pulumi.get(self, "address")
 
@@ -61,7 +59,7 @@ class ApplicationServerArgs:
     @pulumi.getter(name="appServerGroupIds")
     def app_server_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        (Optional) This field defines the list of server group IDs.
+        This field defines the list of server groups IDs.
         """
         return pulumi.get(self, "app_server_group_ids")
 
@@ -72,9 +70,6 @@ class ApplicationServerArgs:
     @property
     @pulumi.getter(name="configSpace")
     def config_space(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional)
-        """
         return pulumi.get(self, "config_space")
 
     @config_space.setter
@@ -85,7 +80,7 @@ class ApplicationServerArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional) This field defines the description of the server.
+        This field defines the description of the server.
         """
         return pulumi.get(self, "description")
 
@@ -97,7 +92,7 @@ class ApplicationServerArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional) This field defines the status of the server.
+        This field defines the status of the server.
         """
         return pulumi.get(self, "enabled")
 
@@ -108,9 +103,6 @@ class ApplicationServerArgs:
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @microtenant_id.setter
@@ -121,7 +113,7 @@ class ApplicationServerArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name. The name of the application server to be exported.
+        This field defines the name of the server.
         """
         return pulumi.get(self, "name")
 
@@ -142,13 +134,11 @@ class _ApplicationServerState:
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ApplicationServer resources.
-        :param pulumi.Input[str] address: Address. The address of the application server to be exported.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] app_server_group_ids: (Optional) This field defines the list of server group IDs.
-        :param pulumi.Input[str] config_space: (Optional)
-        :param pulumi.Input[str] description: (Optional) This field defines the description of the server.
-        :param pulumi.Input[bool] enabled: (Optional) This field defines the status of the server.
-        :param pulumi.Input[str] microtenant_id: (Optional) The ID of the microtenant the resource is to be associated with.
-        :param pulumi.Input[str] name: Name. The name of the application server to be exported.
+        :param pulumi.Input[str] address: This field defines the domain or IP address of the server.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] app_server_group_ids: This field defines the list of server groups IDs.
+        :param pulumi.Input[str] description: This field defines the description of the server.
+        :param pulumi.Input[bool] enabled: This field defines the status of the server.
+        :param pulumi.Input[str] name: This field defines the name of the server.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -169,7 +159,7 @@ class _ApplicationServerState:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
         """
-        Address. The address of the application server to be exported.
+        This field defines the domain or IP address of the server.
         """
         return pulumi.get(self, "address")
 
@@ -181,7 +171,7 @@ class _ApplicationServerState:
     @pulumi.getter(name="appServerGroupIds")
     def app_server_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        (Optional) This field defines the list of server group IDs.
+        This field defines the list of server groups IDs.
         """
         return pulumi.get(self, "app_server_group_ids")
 
@@ -192,9 +182,6 @@ class _ApplicationServerState:
     @property
     @pulumi.getter(name="configSpace")
     def config_space(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional)
-        """
         return pulumi.get(self, "config_space")
 
     @config_space.setter
@@ -205,7 +192,7 @@ class _ApplicationServerState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional) This field defines the description of the server.
+        This field defines the description of the server.
         """
         return pulumi.get(self, "description")
 
@@ -217,7 +204,7 @@ class _ApplicationServerState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional) This field defines the status of the server.
+        This field defines the status of the server.
         """
         return pulumi.get(self, "enabled")
 
@@ -228,9 +215,6 @@ class _ApplicationServerState:
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @microtenant_id.setter
@@ -241,7 +225,7 @@ class _ApplicationServerState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name. The name of the application server to be exported.
+        This field defines the name of the server.
         """
         return pulumi.get(self, "name")
 
@@ -314,13 +298,11 @@ class ApplicationServer(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: Address. The address of the application server to be exported.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] app_server_group_ids: (Optional) This field defines the list of server group IDs.
-        :param pulumi.Input[str] config_space: (Optional)
-        :param pulumi.Input[str] description: (Optional) This field defines the description of the server.
-        :param pulumi.Input[bool] enabled: (Optional) This field defines the status of the server.
-        :param pulumi.Input[str] microtenant_id: (Optional) The ID of the microtenant the resource is to be associated with.
-        :param pulumi.Input[str] name: Name. The name of the application server to be exported.
+        :param pulumi.Input[str] address: This field defines the domain or IP address of the server.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] app_server_group_ids: This field defines the list of server groups IDs.
+        :param pulumi.Input[str] description: This field defines the description of the server.
+        :param pulumi.Input[bool] enabled: This field defines the status of the server.
+        :param pulumi.Input[str] name: This field defines the name of the server.
         """
         ...
     @overload
@@ -441,13 +423,11 @@ class ApplicationServer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: Address. The address of the application server to be exported.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] app_server_group_ids: (Optional) This field defines the list of server group IDs.
-        :param pulumi.Input[str] config_space: (Optional)
-        :param pulumi.Input[str] description: (Optional) This field defines the description of the server.
-        :param pulumi.Input[bool] enabled: (Optional) This field defines the status of the server.
-        :param pulumi.Input[str] microtenant_id: (Optional) The ID of the microtenant the resource is to be associated with.
-        :param pulumi.Input[str] name: Name. The name of the application server to be exported.
+        :param pulumi.Input[str] address: This field defines the domain or IP address of the server.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] app_server_group_ids: This field defines the list of server groups IDs.
+        :param pulumi.Input[str] description: This field defines the description of the server.
+        :param pulumi.Input[bool] enabled: This field defines the status of the server.
+        :param pulumi.Input[str] name: This field defines the name of the server.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -466,7 +446,7 @@ class ApplicationServer(pulumi.CustomResource):
     @pulumi.getter
     def address(self) -> pulumi.Output[str]:
         """
-        Address. The address of the application server to be exported.
+        This field defines the domain or IP address of the server.
         """
         return pulumi.get(self, "address")
 
@@ -474,23 +454,20 @@ class ApplicationServer(pulumi.CustomResource):
     @pulumi.getter(name="appServerGroupIds")
     def app_server_group_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        (Optional) This field defines the list of server group IDs.
+        This field defines the list of server groups IDs.
         """
         return pulumi.get(self, "app_server_group_ids")
 
     @property
     @pulumi.getter(name="configSpace")
     def config_space(self) -> pulumi.Output[Optional[str]]:
-        """
-        (Optional)
-        """
         return pulumi.get(self, "config_space")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        (Optional) This field defines the description of the server.
+        This field defines the description of the server.
         """
         return pulumi.get(self, "description")
 
@@ -498,23 +475,20 @@ class ApplicationServer(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
         """
-        (Optional) This field defines the status of the server.
+        This field defines the status of the server.
         """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> pulumi.Output[str]:
-        """
-        (Optional) The ID of the microtenant the resource is to be associated with.
-        """
         return pulumi.get(self, "microtenant_id")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name. The name of the application server to be exported.
+        This field defines the name of the server.
         """
         return pulumi.get(self, "name")
 

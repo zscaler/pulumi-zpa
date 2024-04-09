@@ -29,13 +29,11 @@ class InspectionProfileArgs:
                  zs_defined_control_choice: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a InspectionProfile resource.
-        :param pulumi.Input[Sequence[pulumi.Input['InspectionProfileControlsInfoArgs']]] controls_infos: (Optional) Types for custom controls
-        :param pulumi.Input[Sequence[pulumi.Input['InspectionProfileCustomControlArgs']]] custom_controls: (Optional) Types for custom controls
-        :param pulumi.Input[str] description: Description of the inspection profile.
+        :param pulumi.Input[Sequence[pulumi.Input['InspectionProfileCustomControlArgs']]] custom_controls: The set of AppProtection controls used to define how inspections are managed
+        :param pulumi.Input[str] description: The description of the AppProtection profile
         :param pulumi.Input[Sequence[pulumi.Input[str]]] global_control_actions: The actions of the predefined, custom, or override controls
-        :param pulumi.Input[str] name: The name of the inspection profile.
-        :param pulumi.Input[str] paranoia_level: OWASP Predefined Paranoia Level. Range: [1-4], inclusive
-        :param pulumi.Input[Sequence[pulumi.Input['InspectionProfilePredefinedControlArgs']]] predefined_controls: The predefined controls. The default predefined control `Preprocessors` are mandatory and injected in the request by default. Individual `predefined_controls` can be set by using the data source `data_source_zpa_predefined_controls` or by group using the data source `get_inspection_all_predefined_controls`.
+        :param pulumi.Input[str] paranoia_level: The OWASP Predefined Paranoia Level
+        :param pulumi.Input[Sequence[pulumi.Input['InspectionProfilePredefinedControlArgs']]] predefined_controls: The predefined controls
         :param pulumi.Input[str] predefined_controls_version: The protocol for the AppProtection application
         :param pulumi.Input[str] zs_defined_control_choice: Indicates the user's choice for the ThreatLabZ Controls. Supported values: ALL and SPECIFIC
         """
@@ -74,9 +72,6 @@ class InspectionProfileArgs:
     @property
     @pulumi.getter(name="controlsInfos")
     def controls_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfileControlsInfoArgs']]]]:
-        """
-        (Optional) Types for custom controls
-        """
         return pulumi.get(self, "controls_infos")
 
     @controls_infos.setter
@@ -87,7 +82,7 @@ class InspectionProfileArgs:
     @pulumi.getter(name="customControls")
     def custom_controls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfileCustomControlArgs']]]]:
         """
-        (Optional) Types for custom controls
+        The set of AppProtection controls used to define how inspections are managed
         """
         return pulumi.get(self, "custom_controls")
 
@@ -99,7 +94,7 @@ class InspectionProfileArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the inspection profile.
+        The description of the AppProtection profile
         """
         return pulumi.get(self, "description")
 
@@ -131,9 +126,6 @@ class InspectionProfileArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the inspection profile.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -144,7 +136,7 @@ class InspectionProfileArgs:
     @pulumi.getter(name="paranoiaLevel")
     def paranoia_level(self) -> Optional[pulumi.Input[str]]:
         """
-        OWASP Predefined Paranoia Level. Range: [1-4], inclusive
+        The OWASP Predefined Paranoia Level
         """
         return pulumi.get(self, "paranoia_level")
 
@@ -156,7 +148,7 @@ class InspectionProfileArgs:
     @pulumi.getter(name="predefinedControls")
     def predefined_controls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfilePredefinedControlArgs']]]]:
         """
-        The predefined controls. The default predefined control `Preprocessors` are mandatory and injected in the request by default. Individual `predefined_controls` can be set by using the data source `data_source_zpa_predefined_controls` or by group using the data source `get_inspection_all_predefined_controls`.
+        The predefined controls
         """
         return pulumi.get(self, "predefined_controls")
 
@@ -205,13 +197,11 @@ class _InspectionProfileState:
                  zs_defined_control_choice: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InspectionProfile resources.
-        :param pulumi.Input[Sequence[pulumi.Input['InspectionProfileControlsInfoArgs']]] controls_infos: (Optional) Types for custom controls
-        :param pulumi.Input[Sequence[pulumi.Input['InspectionProfileCustomControlArgs']]] custom_controls: (Optional) Types for custom controls
-        :param pulumi.Input[str] description: Description of the inspection profile.
+        :param pulumi.Input[Sequence[pulumi.Input['InspectionProfileCustomControlArgs']]] custom_controls: The set of AppProtection controls used to define how inspections are managed
+        :param pulumi.Input[str] description: The description of the AppProtection profile
         :param pulumi.Input[Sequence[pulumi.Input[str]]] global_control_actions: The actions of the predefined, custom, or override controls
-        :param pulumi.Input[str] name: The name of the inspection profile.
-        :param pulumi.Input[str] paranoia_level: OWASP Predefined Paranoia Level. Range: [1-4], inclusive
-        :param pulumi.Input[Sequence[pulumi.Input['InspectionProfilePredefinedControlArgs']]] predefined_controls: The predefined controls. The default predefined control `Preprocessors` are mandatory and injected in the request by default. Individual `predefined_controls` can be set by using the data source `data_source_zpa_predefined_controls` or by group using the data source `get_inspection_all_predefined_controls`.
+        :param pulumi.Input[str] paranoia_level: The OWASP Predefined Paranoia Level
+        :param pulumi.Input[Sequence[pulumi.Input['InspectionProfilePredefinedControlArgs']]] predefined_controls: The predefined controls
         :param pulumi.Input[str] predefined_controls_version: The protocol for the AppProtection application
         :param pulumi.Input[str] zs_defined_control_choice: Indicates the user's choice for the ThreatLabZ Controls. Supported values: ALL and SPECIFIC
         """
@@ -250,9 +240,6 @@ class _InspectionProfileState:
     @property
     @pulumi.getter(name="controlsInfos")
     def controls_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfileControlsInfoArgs']]]]:
-        """
-        (Optional) Types for custom controls
-        """
         return pulumi.get(self, "controls_infos")
 
     @controls_infos.setter
@@ -263,7 +250,7 @@ class _InspectionProfileState:
     @pulumi.getter(name="customControls")
     def custom_controls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfileCustomControlArgs']]]]:
         """
-        (Optional) Types for custom controls
+        The set of AppProtection controls used to define how inspections are managed
         """
         return pulumi.get(self, "custom_controls")
 
@@ -275,7 +262,7 @@ class _InspectionProfileState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the inspection profile.
+        The description of the AppProtection profile
         """
         return pulumi.get(self, "description")
 
@@ -307,9 +294,6 @@ class _InspectionProfileState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the inspection profile.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -320,7 +304,7 @@ class _InspectionProfileState:
     @pulumi.getter(name="paranoiaLevel")
     def paranoia_level(self) -> Optional[pulumi.Input[str]]:
         """
-        OWASP Predefined Paranoia Level. Range: [1-4], inclusive
+        The OWASP Predefined Paranoia Level
         """
         return pulumi.get(self, "paranoia_level")
 
@@ -332,7 +316,7 @@ class _InspectionProfileState:
     @pulumi.getter(name="predefinedControls")
     def predefined_controls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfilePredefinedControlArgs']]]]:
         """
-        The predefined controls. The default predefined control `Preprocessors` are mandatory and injected in the request by default. Individual `predefined_controls` can be set by using the data source `data_source_zpa_predefined_controls` or by group using the data source `get_inspection_all_predefined_controls`.
+        The predefined controls
         """
         return pulumi.get(self, "predefined_controls")
 
@@ -383,17 +367,18 @@ class InspectionProfile(pulumi.CustomResource):
                  zs_defined_control_choice: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        * [Official documentation](https://help.zscaler.com/zpa/about-browser-protection-profiles)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-profiles-using-api)
+
         The  **zpa_inspection_profile** resource creates an inspection profile in the Zscaler Private Access cloud. This resource can then be referenced in an inspection custom control resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileControlsInfoArgs']]]] controls_infos: (Optional) Types for custom controls
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileCustomControlArgs']]]] custom_controls: (Optional) Types for custom controls
-        :param pulumi.Input[str] description: Description of the inspection profile.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileCustomControlArgs']]]] custom_controls: The set of AppProtection controls used to define how inspections are managed
+        :param pulumi.Input[str] description: The description of the AppProtection profile
         :param pulumi.Input[Sequence[pulumi.Input[str]]] global_control_actions: The actions of the predefined, custom, or override controls
-        :param pulumi.Input[str] name: The name of the inspection profile.
-        :param pulumi.Input[str] paranoia_level: OWASP Predefined Paranoia Level. Range: [1-4], inclusive
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfilePredefinedControlArgs']]]] predefined_controls: The predefined controls. The default predefined control `Preprocessors` are mandatory and injected in the request by default. Individual `predefined_controls` can be set by using the data source `data_source_zpa_predefined_controls` or by group using the data source `get_inspection_all_predefined_controls`.
+        :param pulumi.Input[str] paranoia_level: The OWASP Predefined Paranoia Level
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfilePredefinedControlArgs']]]] predefined_controls: The predefined controls
         :param pulumi.Input[str] predefined_controls_version: The protocol for the AppProtection application
         :param pulumi.Input[str] zs_defined_control_choice: Indicates the user's choice for the ThreatLabZ Controls. Supported values: ALL and SPECIFIC
         """
@@ -404,6 +389,9 @@ class InspectionProfile(pulumi.CustomResource):
                  args: Optional[InspectionProfileArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        * [Official documentation](https://help.zscaler.com/zpa/about-browser-protection-profiles)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-profiles-using-api)
+
         The  **zpa_inspection_profile** resource creates an inspection profile in the Zscaler Private Access cloud. This resource can then be referenced in an inspection custom control resource.
 
         :param str resource_name: The name of the resource.
@@ -480,13 +468,11 @@ class InspectionProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileControlsInfoArgs']]]] controls_infos: (Optional) Types for custom controls
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileCustomControlArgs']]]] custom_controls: (Optional) Types for custom controls
-        :param pulumi.Input[str] description: Description of the inspection profile.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileCustomControlArgs']]]] custom_controls: The set of AppProtection controls used to define how inspections are managed
+        :param pulumi.Input[str] description: The description of the AppProtection profile
         :param pulumi.Input[Sequence[pulumi.Input[str]]] global_control_actions: The actions of the predefined, custom, or override controls
-        :param pulumi.Input[str] name: The name of the inspection profile.
-        :param pulumi.Input[str] paranoia_level: OWASP Predefined Paranoia Level. Range: [1-4], inclusive
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfilePredefinedControlArgs']]]] predefined_controls: The predefined controls. The default predefined control `Preprocessors` are mandatory and injected in the request by default. Individual `predefined_controls` can be set by using the data source `data_source_zpa_predefined_controls` or by group using the data source `get_inspection_all_predefined_controls`.
+        :param pulumi.Input[str] paranoia_level: The OWASP Predefined Paranoia Level
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfilePredefinedControlArgs']]]] predefined_controls: The predefined controls
         :param pulumi.Input[str] predefined_controls_version: The protocol for the AppProtection application
         :param pulumi.Input[str] zs_defined_control_choice: Indicates the user's choice for the ThreatLabZ Controls. Supported values: ALL and SPECIFIC
         """
@@ -515,16 +501,13 @@ class InspectionProfile(pulumi.CustomResource):
     @property
     @pulumi.getter(name="controlsInfos")
     def controls_infos(self) -> pulumi.Output[Sequence['outputs.InspectionProfileControlsInfo']]:
-        """
-        (Optional) Types for custom controls
-        """
         return pulumi.get(self, "controls_infos")
 
     @property
     @pulumi.getter(name="customControls")
     def custom_controls(self) -> pulumi.Output[Optional[Sequence['outputs.InspectionProfileCustomControl']]]:
         """
-        (Optional) Types for custom controls
+        The set of AppProtection controls used to define how inspections are managed
         """
         return pulumi.get(self, "custom_controls")
 
@@ -532,7 +515,7 @@ class InspectionProfile(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the inspection profile.
+        The description of the AppProtection profile
         """
         return pulumi.get(self, "description")
 
@@ -552,16 +535,13 @@ class InspectionProfile(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the inspection profile.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="paranoiaLevel")
     def paranoia_level(self) -> pulumi.Output[Optional[str]]:
         """
-        OWASP Predefined Paranoia Level. Range: [1-4], inclusive
+        The OWASP Predefined Paranoia Level
         """
         return pulumi.get(self, "paranoia_level")
 
@@ -569,7 +549,7 @@ class InspectionProfile(pulumi.CustomResource):
     @pulumi.getter(name="predefinedControls")
     def predefined_controls(self) -> pulumi.Output[Sequence['outputs.InspectionProfilePredefinedControl']]:
         """
-        The predefined controls. The default predefined control `Preprocessors` are mandatory and injected in the request by default. Individual `predefined_controls` can be set by using the data source `data_source_zpa_predefined_controls` or by group using the data source `get_inspection_all_predefined_controls`.
+        The predefined controls
         """
         return pulumi.get(self, "predefined_controls")
 

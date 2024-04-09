@@ -7,13 +7,18 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/identity-management)
+ * * [API documentation](https://help.zscaler.com/zpa/obtaining-idp-configuration-details-using-api)
+ *
  * Use the **zpa_idp_controller** data source to get information about an Identity Provider created in the Zscaler Private Access cloud. This data source is required when creating:
  *
- * 1. Access policy Rules
- * 2. Access policy timeout rules
- * 3. Access policy forwarding rules
- * 4. Access policy inspection rules
- * 5. Access policy isolation rules
+ * * Access policy Rules
+ * * Access policy timeout rules
+ * * Access policy forwarding rules
+ * * Access policy inspection rules
+ * * Access policy isolation rules
+ * * Access policy privileged credentials rules
+ * * Access policy privileged capabilities rules
  *
  * ## Example Usage
  *
@@ -53,13 +58,7 @@ export function getIdPController(args?: GetIdPControllerArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getIdPController.
  */
 export interface GetIdPControllerArgs {
-    /**
-     * The name of the Identity Provider (IdP) to be exported.
-     */
     id?: string;
-    /**
-     * The name of the Identity Provider (IdP) to be exported.
-     */
     name?: string;
 }
 
@@ -67,116 +66,49 @@ export interface GetIdPControllerArgs {
  * A collection of values returned by getIdPController.
  */
 export interface GetIdPControllerResult {
-    /**
-     * (Computed)
-     */
     readonly adminMetadatas: outputs.GetIdPControllerAdminMetadata[];
     readonly adminSpSigningCertId: string;
-    /**
-     * (string)
-     */
     readonly autoProvision: string;
-    /**
-     * (string)
-     */
     readonly creationTime: string;
-    /**
-     * (string)
-     */
     readonly description: string;
-    /**
-     * (bool)
-     */
     readonly disableSamlBasedPolicy: boolean;
-    /**
-     * (string)
-     */
     readonly domainLists: string[];
-    /**
-     * (string)
-     */
     readonly enableArbitraryAuthDomains: string;
-    /**
-     * (bool)
-     */
     readonly enableScimBasedPolicy: boolean;
-    /**
-     * (bool) Default value if null is True
-     */
     readonly enabled: boolean;
-    /**
-     * (bool)
-     */
     readonly forceAuth: boolean;
     readonly id: string;
-    /**
-     * (string)
-     */
     readonly idpEntityId: string;
-    /**
-     * (bool)
-     */
     readonly loginHint: boolean;
-    /**
-     * (string)
-     */
     readonly loginNameAttribute: string;
-    /**
-     * (string)
-     */
     readonly loginUrl: string;
-    /**
-     * (string)
-     */
     readonly modifiedTime: string;
     readonly modifiedby: string;
     readonly name: string;
-    /**
-     * (bool)
-     */
     readonly reauthOnUserUpdate: boolean;
-    /**
-     * (bool)
-     */
     readonly redirectBinding: boolean;
-    /**
-     * (bool)
-     */
     readonly scimEnabled: boolean;
-    /**
-     * (string)
-     */
     readonly scimServiceProviderEndpoint: string;
-    /**
-     * (bool)
-     */
     readonly scimSharedSecretExists: boolean;
-    /**
-     * (string)
-     */
     readonly signSamlRequest: string;
-    /**
-     * (string)
-     */
     readonly ssoTypes: string[];
-    /**
-     * (bool)
-     */
     readonly useCustomSpMetadata: boolean;
-    /**
-     * (Computed)
-     */
     readonly userMetadatas: outputs.GetIdPControllerUserMetadata[];
     readonly userSpSigningCertId: string;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/identity-management)
+ * * [API documentation](https://help.zscaler.com/zpa/obtaining-idp-configuration-details-using-api)
+ *
  * Use the **zpa_idp_controller** data source to get information about an Identity Provider created in the Zscaler Private Access cloud. This data source is required when creating:
  *
- * 1. Access policy Rules
- * 2. Access policy timeout rules
- * 3. Access policy forwarding rules
- * 4. Access policy inspection rules
- * 5. Access policy isolation rules
+ * * Access policy Rules
+ * * Access policy timeout rules
+ * * Access policy forwarding rules
+ * * Access policy inspection rules
+ * * Access policy isolation rules
+ * * Access policy privileged credentials rules
+ * * Access policy privileged capabilities rules
  *
  * ## Example Usage
  *
@@ -210,12 +142,6 @@ export function getIdPControllerOutput(args?: GetIdPControllerOutputArgs, opts?:
  * A collection of arguments for invoking getIdPController.
  */
 export interface GetIdPControllerOutputArgs {
-    /**
-     * The name of the Identity Provider (IdP) to be exported.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * The name of the Identity Provider (IdP) to be exported.
-     */
     name?: pulumi.Input<string>;
 }

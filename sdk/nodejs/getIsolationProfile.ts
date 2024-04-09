@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/isolation/creating-isolation-profiles-zpa)
+ * * [API documentation](https://help.zscaler.com/zpa/obtaining-isolation-profile-details-using-api)
+ *
  * Use the **zpa_isolation_profile** data source to get information about an isolation profile in the Zscaler Private Access cloud. This data source is required when configuring an isolation policy rule resource
  *
  * ## Example Usage
@@ -34,7 +37,7 @@ export function getIsolationProfile(args?: GetIsolationProfileArgs, opts?: pulum
  */
 export interface GetIsolationProfileArgs {
     /**
-     * This field defines the name of the isolation profile.
+     * - (Required) This field defines the name of the isolation profile.
      */
     name?: string;
 }
@@ -43,39 +46,24 @@ export interface GetIsolationProfileArgs {
  * A collection of values returned by getIsolationProfile.
  */
 export interface GetIsolationProfileResult {
-    /**
-     * (string)
-     */
     readonly creationTime: string;
-    /**
-     * (string)
-     */
     readonly description: string;
-    /**
-     * (string)
-     */
     readonly enabled: boolean;
     readonly id: string;
-    /**
-     * (string)
-     */
     readonly isolationProfileId: string;
-    /**
-     * (string)
-     */
     readonly isolationTenantId: string;
-    /**
-     * (string)
-     */
     readonly isolationUrl: string;
-    /**
-     * (string)
-     */
     readonly modifiedTime: string;
     readonly modifiedby: string;
+    /**
+     * - (Required) This field defines the name of the isolation profile.
+     */
     readonly name?: string;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/isolation/creating-isolation-profiles-zpa)
+ * * [API documentation](https://help.zscaler.com/zpa/obtaining-isolation-profile-details-using-api)
+ *
  * Use the **zpa_isolation_profile** data source to get information about an isolation profile in the Zscaler Private Access cloud. This data source is required when configuring an isolation policy rule resource
  *
  * ## Example Usage
@@ -100,7 +88,7 @@ export function getIsolationProfileOutput(args?: GetIsolationProfileOutputArgs, 
  */
 export interface GetIsolationProfileOutputArgs {
     /**
-     * This field defines the name of the isolation profile.
+     * - (Required) This field defines the name of the isolation profile.
      */
     name?: pulumi.Input<string>;
 }

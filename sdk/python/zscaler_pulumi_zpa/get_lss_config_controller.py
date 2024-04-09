@@ -40,25 +40,16 @@ class GetLSSConfigControllerResult:
     @property
     @pulumi.getter
     def configs(self) -> Sequence['outputs.GetLSSConfigControllerConfigResult']:
-        """
-        (Computed)
-        """
         return pulumi.get(self, "configs")
 
     @property
     @pulumi.getter(name="connectorGroups")
     def connector_groups(self) -> Sequence['outputs.GetLSSConfigControllerConnectorGroupResult']:
-        """
-        (Computed)
-        """
         return pulumi.get(self, "connector_groups")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        (string)
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -83,11 +74,10 @@ def get_lss_config_controller(configs: Optional[Sequence[pulumi.InputType['GetLS
                               id: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLSSConfigControllerResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-log-streaming-service)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
+
     Use the **zpa_lss_config_controller** data source to get information about a Log Streaming (LSS) configuration resource created in the Zscaler Private Access.
-
-
-    :param Sequence[pulumi.InputType['GetLSSConfigControllerConfigArgs']] configs: (Computed)
-    :param str id: This field defines the name of the log streaming resource.
     """
     __args__ = dict()
     __args__['configs'] = configs
@@ -107,10 +97,9 @@ def get_lss_config_controller_output(configs: Optional[pulumi.Input[Optional[Seq
                                      id: Optional[pulumi.Input[Optional[str]]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLSSConfigControllerResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-log-streaming-service)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
+
     Use the **zpa_lss_config_controller** data source to get information about a Log Streaming (LSS) configuration resource created in the Zscaler Private Access.
-
-
-    :param Sequence[pulumi.InputType['GetLSSConfigControllerConfigArgs']] configs: (Computed)
-    :param str id: This field defines the name of the log streaming resource.
     """
     ...

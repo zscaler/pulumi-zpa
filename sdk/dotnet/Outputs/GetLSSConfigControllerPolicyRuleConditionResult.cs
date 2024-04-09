@@ -14,20 +14,10 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetLSSConfigControllerPolicyRuleConditionResult
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string CreationTime;
-        /// <summary>
-        /// This field defines the name of the log streaming resource.
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
-        public readonly bool Negated;
         public readonly ImmutableArray<Outputs.GetLSSConfigControllerPolicyRuleConditionOperandResult> Operands;
         public readonly string Operator;
 
@@ -41,8 +31,6 @@ namespace Zscaler.Zpa.Outputs
 
             string modifiedby,
 
-            bool negated,
-
             ImmutableArray<Outputs.GetLSSConfigControllerPolicyRuleConditionOperandResult> operands,
 
             string @operator)
@@ -51,7 +39,6 @@ namespace Zscaler.Zpa.Outputs
             Id = id;
             ModifiedTime = modifiedTime;
             Modifiedby = modifiedby;
-            Negated = negated;
             Operands = operands;
             Operator = @operator;
         }
