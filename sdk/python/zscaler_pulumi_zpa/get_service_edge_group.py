@@ -22,7 +22,7 @@ class GetServiceEdgeGroupResult:
     """
     A collection of values returned by getServiceEdgeGroup.
     """
-    def __init__(__self__, city_country=None, country_code=None, creation_time=None, description=None, enabled=None, geo_location_id=None, id=None, is_public=None, latitude=None, location=None, longitude=None, modified_time=None, modifiedby=None, name=None, override_version_profile=None, service_edges=None, trusted_networks=None, upgrade_day=None, upgrade_time_in_secs=None, version_profile_id=None, version_profile_name=None, version_profile_visibility_scope=None):
+    def __init__(__self__, city_country=None, country_code=None, creation_time=None, description=None, enabled=None, geo_location_id=None, grace_distance_enabled=None, grace_distance_value=None, grace_distance_value_unit=None, id=None, is_public=None, latitude=None, location=None, longitude=None, modified_time=None, modifiedby=None, name=None, override_version_profile=None, service_edges=None, trusted_networks=None, upgrade_day=None, upgrade_time_in_secs=None, version_profile_id=None, version_profile_name=None, version_profile_visibility_scope=None):
         if city_country and not isinstance(city_country, str):
             raise TypeError("Expected argument 'city_country' to be a str")
         pulumi.set(__self__, "city_country", city_country)
@@ -41,6 +41,15 @@ class GetServiceEdgeGroupResult:
         if geo_location_id and not isinstance(geo_location_id, str):
             raise TypeError("Expected argument 'geo_location_id' to be a str")
         pulumi.set(__self__, "geo_location_id", geo_location_id)
+        if grace_distance_enabled and not isinstance(grace_distance_enabled, bool):
+            raise TypeError("Expected argument 'grace_distance_enabled' to be a bool")
+        pulumi.set(__self__, "grace_distance_enabled", grace_distance_enabled)
+        if grace_distance_value and not isinstance(grace_distance_value, str):
+            raise TypeError("Expected argument 'grace_distance_value' to be a str")
+        pulumi.set(__self__, "grace_distance_value", grace_distance_value)
+        if grace_distance_value_unit and not isinstance(grace_distance_value_unit, str):
+            raise TypeError("Expected argument 'grace_distance_value_unit' to be a str")
+        pulumi.set(__self__, "grace_distance_value_unit", grace_distance_value_unit)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -119,6 +128,21 @@ class GetServiceEdgeGroupResult:
     @pulumi.getter(name="geoLocationId")
     def geo_location_id(self) -> str:
         return pulumi.get(self, "geo_location_id")
+
+    @property
+    @pulumi.getter(name="graceDistanceEnabled")
+    def grace_distance_enabled(self) -> bool:
+        return pulumi.get(self, "grace_distance_enabled")
+
+    @property
+    @pulumi.getter(name="graceDistanceValue")
+    def grace_distance_value(self) -> str:
+        return pulumi.get(self, "grace_distance_value")
+
+    @property
+    @pulumi.getter(name="graceDistanceValueUnit")
+    def grace_distance_value_unit(self) -> str:
+        return pulumi.get(self, "grace_distance_value_unit")
 
     @property
     @pulumi.getter
@@ -213,6 +237,9 @@ class AwaitableGetServiceEdgeGroupResult(GetServiceEdgeGroupResult):
             description=self.description,
             enabled=self.enabled,
             geo_location_id=self.geo_location_id,
+            grace_distance_enabled=self.grace_distance_enabled,
+            grace_distance_value=self.grace_distance_value,
+            grace_distance_value_unit=self.grace_distance_value_unit,
             id=self.id,
             is_public=self.is_public,
             latitude=self.latitude,
@@ -246,23 +273,19 @@ def get_service_edge_group(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     foo = zpa.get_service_edge_group(name="DataCenter")
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     foo = zpa.get_service_edge_group(id="123456789")
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['id'] = id
@@ -277,6 +300,9 @@ def get_service_edge_group(id: Optional[str] = None,
         description=pulumi.get(__ret__, 'description'),
         enabled=pulumi.get(__ret__, 'enabled'),
         geo_location_id=pulumi.get(__ret__, 'geo_location_id'),
+        grace_distance_enabled=pulumi.get(__ret__, 'grace_distance_enabled'),
+        grace_distance_value=pulumi.get(__ret__, 'grace_distance_value'),
+        grace_distance_value_unit=pulumi.get(__ret__, 'grace_distance_value_unit'),
         id=pulumi.get(__ret__, 'id'),
         is_public=pulumi.get(__ret__, 'is_public'),
         latitude=pulumi.get(__ret__, 'latitude'),
@@ -311,22 +337,18 @@ def get_service_edge_group_output(id: Optional[pulumi.Input[Optional[str]]] = No
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     foo = zpa.get_service_edge_group(name="DataCenter")
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     foo = zpa.get_service_edge_group(id="123456789")
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

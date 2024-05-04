@@ -108,7 +108,6 @@ def get_scim_groups(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -116,7 +115,6 @@ def get_scim_groups(id: Optional[str] = None,
     engineering = zpa.get_scim_groups(idp_name="idp_name",
         name="Engineering")
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['id'] = id
@@ -150,7 +148,6 @@ def get_scim_groups_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -158,6 +155,5 @@ def get_scim_groups_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     engineering = zpa.get_scim_groups(idp_name="idp_name",
         name="Engineering")
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

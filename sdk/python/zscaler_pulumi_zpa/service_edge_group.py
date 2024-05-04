@@ -23,6 +23,9 @@ class ServiceEdgeGroupArgs:
                  country_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 grace_distance_enabled: Optional[pulumi.Input[bool]] = None,
+                 grace_distance_value: Optional[pulumi.Input[str]] = None,
+                 grace_distance_value_unit: Optional[pulumi.Input[str]] = None,
                  is_public: Optional[pulumi.Input[bool]] = None,
                  microtenant_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -40,6 +43,12 @@ class ServiceEdgeGroupArgs:
         :param pulumi.Input[str] longitude: Longitude for the Service Edge Group.
         :param pulumi.Input[str] description: Description of the Service Edge Group.
         :param pulumi.Input[bool] enabled: Whether this Service Edge Group is enabled or not.
+        :param pulumi.Input[bool] grace_distance_enabled: If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
+               Public Service Edge.
+        :param pulumi.Input[str] grace_distance_value: Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
+               Public Service Edge
+        :param pulumi.Input[str] grace_distance_value_unit: Indicates the grace distance unit of measure in miles or kilometers. This value is only required if grace_distance_value
+               is set to true
         :param pulumi.Input[bool] is_public: Enable or disable public access for the Service Edge Group.
         :param pulumi.Input[str] name: Name of the Service Edge Group.
         :param pulumi.Input[bool] override_version_profile: Whether the default version profile of the App Connector Group is applied or overridden.
@@ -60,6 +69,12 @@ class ServiceEdgeGroupArgs:
             pulumi.set(__self__, "description", description)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if grace_distance_enabled is not None:
+            pulumi.set(__self__, "grace_distance_enabled", grace_distance_enabled)
+        if grace_distance_value is not None:
+            pulumi.set(__self__, "grace_distance_value", grace_distance_value)
+        if grace_distance_value_unit is not None:
+            pulumi.set(__self__, "grace_distance_value_unit", grace_distance_value_unit)
         if is_public is not None:
             pulumi.set(__self__, "is_public", is_public)
         if microtenant_id is not None:
@@ -158,6 +173,45 @@ class ServiceEdgeGroupArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="graceDistanceEnabled")
+    def grace_distance_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
+        Public Service Edge.
+        """
+        return pulumi.get(self, "grace_distance_enabled")
+
+    @grace_distance_enabled.setter
+    def grace_distance_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "grace_distance_enabled", value)
+
+    @property
+    @pulumi.getter(name="graceDistanceValue")
+    def grace_distance_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
+        Public Service Edge
+        """
+        return pulumi.get(self, "grace_distance_value")
+
+    @grace_distance_value.setter
+    def grace_distance_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "grace_distance_value", value)
+
+    @property
+    @pulumi.getter(name="graceDistanceValueUnit")
+    def grace_distance_value_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates the grace distance unit of measure in miles or kilometers. This value is only required if grace_distance_value
+        is set to true
+        """
+        return pulumi.get(self, "grace_distance_value_unit")
+
+    @grace_distance_value_unit.setter
+    def grace_distance_value_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "grace_distance_value_unit", value)
 
     @property
     @pulumi.getter(name="isPublic")
@@ -281,6 +335,9 @@ class _ServiceEdgeGroupState:
                  country_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 grace_distance_enabled: Optional[pulumi.Input[bool]] = None,
+                 grace_distance_value: Optional[pulumi.Input[str]] = None,
+                 grace_distance_value_unit: Optional[pulumi.Input[str]] = None,
                  is_public: Optional[pulumi.Input[bool]] = None,
                  latitude: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -299,6 +356,12 @@ class _ServiceEdgeGroupState:
         Input properties used for looking up and filtering ServiceEdgeGroup resources.
         :param pulumi.Input[str] description: Description of the Service Edge Group.
         :param pulumi.Input[bool] enabled: Whether this Service Edge Group is enabled or not.
+        :param pulumi.Input[bool] grace_distance_enabled: If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
+               Public Service Edge.
+        :param pulumi.Input[str] grace_distance_value: Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
+               Public Service Edge
+        :param pulumi.Input[str] grace_distance_value_unit: Indicates the grace distance unit of measure in miles or kilometers. This value is only required if grace_distance_value
+               is set to true
         :param pulumi.Input[bool] is_public: Enable or disable public access for the Service Edge Group.
         :param pulumi.Input[str] latitude: Latitude for the Service Edge Group.
         :param pulumi.Input[str] location: Location for the Service Edge Group.
@@ -320,6 +383,12 @@ class _ServiceEdgeGroupState:
             pulumi.set(__self__, "description", description)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if grace_distance_enabled is not None:
+            pulumi.set(__self__, "grace_distance_enabled", grace_distance_enabled)
+        if grace_distance_value is not None:
+            pulumi.set(__self__, "grace_distance_value", grace_distance_value)
+        if grace_distance_value_unit is not None:
+            pulumi.set(__self__, "grace_distance_value_unit", grace_distance_value_unit)
         if is_public is not None:
             pulumi.set(__self__, "is_public", is_public)
         if latitude is not None:
@@ -390,6 +459,45 @@ class _ServiceEdgeGroupState:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="graceDistanceEnabled")
+    def grace_distance_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
+        Public Service Edge.
+        """
+        return pulumi.get(self, "grace_distance_enabled")
+
+    @grace_distance_enabled.setter
+    def grace_distance_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "grace_distance_enabled", value)
+
+    @property
+    @pulumi.getter(name="graceDistanceValue")
+    def grace_distance_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
+        Public Service Edge
+        """
+        return pulumi.get(self, "grace_distance_value")
+
+    @grace_distance_value.setter
+    def grace_distance_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "grace_distance_value", value)
+
+    @property
+    @pulumi.getter(name="graceDistanceValueUnit")
+    def grace_distance_value_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates the grace distance unit of measure in miles or kilometers. This value is only required if grace_distance_value
+        is set to true
+        """
+        return pulumi.get(self, "grace_distance_value_unit")
+
+    @grace_distance_value_unit.setter
+    def grace_distance_value_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "grace_distance_value_unit", value)
 
     @property
     @pulumi.getter(name="isPublic")
@@ -563,6 +671,9 @@ class ServiceEdgeGroup(pulumi.CustomResource):
                  country_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 grace_distance_enabled: Optional[pulumi.Input[bool]] = None,
+                 grace_distance_value: Optional[pulumi.Input[str]] = None,
+                 grace_distance_value_unit: Optional[pulumi.Input[str]] = None,
                  is_public: Optional[pulumi.Input[bool]] = None,
                  latitude: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -585,7 +696,6 @@ class ServiceEdgeGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -605,9 +715,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
                 ids=[data["zpa_trusted_network"]["example"]["id"]],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -624,7 +732,6 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             upgrade_time_in_secs="66600",
             version_profile_name="New Release")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -650,6 +757,12 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the Service Edge Group.
         :param pulumi.Input[bool] enabled: Whether this Service Edge Group is enabled or not.
+        :param pulumi.Input[bool] grace_distance_enabled: If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
+               Public Service Edge.
+        :param pulumi.Input[str] grace_distance_value: Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
+               Public Service Edge
+        :param pulumi.Input[str] grace_distance_value_unit: Indicates the grace distance unit of measure in miles or kilometers. This value is only required if grace_distance_value
+               is set to true
         :param pulumi.Input[bool] is_public: Enable or disable public access for the Service Edge Group.
         :param pulumi.Input[str] latitude: Latitude for the Service Edge Group.
         :param pulumi.Input[str] location: Location for the Service Edge Group.
@@ -676,7 +789,6 @@ class ServiceEdgeGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -696,9 +808,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
                 ids=[data["zpa_trusted_network"]["example"]["id"]],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -715,7 +825,6 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             upgrade_time_in_secs="66600",
             version_profile_name="New Release")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -756,6 +865,9 @@ class ServiceEdgeGroup(pulumi.CustomResource):
                  country_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 grace_distance_enabled: Optional[pulumi.Input[bool]] = None,
+                 grace_distance_value: Optional[pulumi.Input[str]] = None,
+                 grace_distance_value_unit: Optional[pulumi.Input[str]] = None,
                  is_public: Optional[pulumi.Input[bool]] = None,
                  latitude: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -782,6 +894,9 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             __props__.__dict__["country_code"] = country_code
             __props__.__dict__["description"] = description
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["grace_distance_enabled"] = grace_distance_enabled
+            __props__.__dict__["grace_distance_value"] = grace_distance_value
+            __props__.__dict__["grace_distance_value_unit"] = grace_distance_value_unit
             __props__.__dict__["is_public"] = is_public
             if latitude is None and not opts.urn:
                 raise TypeError("Missing required property 'latitude'")
@@ -816,6 +931,9 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             country_code: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
+            grace_distance_enabled: Optional[pulumi.Input[bool]] = None,
+            grace_distance_value: Optional[pulumi.Input[str]] = None,
+            grace_distance_value_unit: Optional[pulumi.Input[str]] = None,
             is_public: Optional[pulumi.Input[bool]] = None,
             latitude: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -839,6 +957,12 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the Service Edge Group.
         :param pulumi.Input[bool] enabled: Whether this Service Edge Group is enabled or not.
+        :param pulumi.Input[bool] grace_distance_enabled: If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
+               Public Service Edge.
+        :param pulumi.Input[str] grace_distance_value: Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
+               Public Service Edge
+        :param pulumi.Input[str] grace_distance_value_unit: Indicates the grace distance unit of measure in miles or kilometers. This value is only required if grace_distance_value
+               is set to true
         :param pulumi.Input[bool] is_public: Enable or disable public access for the Service Edge Group.
         :param pulumi.Input[str] latitude: Latitude for the Service Edge Group.
         :param pulumi.Input[str] location: Location for the Service Edge Group.
@@ -860,6 +984,9 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         __props__.__dict__["country_code"] = country_code
         __props__.__dict__["description"] = description
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["grace_distance_enabled"] = grace_distance_enabled
+        __props__.__dict__["grace_distance_value"] = grace_distance_value
+        __props__.__dict__["grace_distance_value_unit"] = grace_distance_value_unit
         __props__.__dict__["is_public"] = is_public
         __props__.__dict__["latitude"] = latitude
         __props__.__dict__["location"] = location
@@ -901,6 +1028,33 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         Whether this Service Edge Group is enabled or not.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="graceDistanceEnabled")
+    def grace_distance_enabled(self) -> pulumi.Output[bool]:
+        """
+        If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
+        Public Service Edge.
+        """
+        return pulumi.get(self, "grace_distance_enabled")
+
+    @property
+    @pulumi.getter(name="graceDistanceValue")
+    def grace_distance_value(self) -> pulumi.Output[str]:
+        """
+        Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
+        Public Service Edge
+        """
+        return pulumi.get(self, "grace_distance_value")
+
+    @property
+    @pulumi.getter(name="graceDistanceValueUnit")
+    def grace_distance_value_unit(self) -> pulumi.Output[str]:
+        """
+        Indicates the grace distance unit of measure in miles or kilometers. This value is only required if grace_distance_value
+        is set to true
+        """
+        return pulumi.get(self, "grace_distance_value_unit")
 
     @property
     @pulumi.getter(name="isPublic")

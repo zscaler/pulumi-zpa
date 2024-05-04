@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  * // Retrieves PRA Credential By ID
  * const _this = new zpa.PRACredential("this", {});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPRACredential(args?: GetPRACredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetPRACredentialResult> {
     args = args || {};
@@ -71,7 +69,6 @@ export interface GetPRACredentialResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
@@ -79,7 +76,6 @@ export interface GetPRACredentialResult {
  * // Retrieves PRA Credential By ID
  * const _this = new zpa.PRACredential("this", {});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPRACredentialOutput(args?: GetPRACredentialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPRACredentialResult> {
     return pulumi.output(args).apply((a: any) => getPRACredential(a, opts))

@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  *     name: "zpa_isolation_profile",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getIsolationProfile(args?: GetIsolationProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetIsolationProfileResult> {
     args = args || {};
@@ -68,7 +66,6 @@ export interface GetIsolationProfileResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -77,7 +74,6 @@ export interface GetIsolationProfileResult {
  *     name: "zpa_isolation_profile",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getIsolationProfileOutput(args?: GetIsolationProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIsolationProfileResult> {
     return pulumi.output(args).apply((a: any) => getIsolationProfile(a, opts))

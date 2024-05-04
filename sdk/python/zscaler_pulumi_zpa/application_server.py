@@ -250,7 +250,6 @@ class ApplicationServer(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -261,9 +260,7 @@ class ApplicationServer(pulumi.CustomResource):
             description="test1-app-server",
             enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -274,7 +271,6 @@ class ApplicationServer(pulumi.CustomResource):
             description="test1-app-server",
             enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -313,7 +309,6 @@ class ApplicationServer(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -324,9 +319,7 @@ class ApplicationServer(pulumi.CustomResource):
             description="test1-app-server",
             enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -337,7 +330,6 @@ class ApplicationServer(pulumi.CustomResource):
             description="test1-app-server",
             enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

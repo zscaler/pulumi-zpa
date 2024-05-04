@@ -7,7 +7,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -17,9 +16,7 @@ import * as utilities from "./utilities";
  *     name: "Provisioning_Key",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -29,7 +26,6 @@ import * as utilities from "./utilities";
  *     name: "Provisioning_Key",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProvisioningKey(args: GetProvisioningKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetProvisioningKeyResult> {
 
@@ -83,7 +79,6 @@ export interface GetProvisioningKeyResult {
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -93,9 +88,7 @@ export interface GetProvisioningKeyResult {
  *     name: "Provisioning_Key",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -105,7 +98,6 @@ export interface GetProvisioningKeyResult {
  *     name: "Provisioning_Key",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProvisioningKeyOutput(args: GetProvisioningKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProvisioningKeyResult> {
     return pulumi.output(args).apply((a: any) => getProvisioningKey(a, opts))

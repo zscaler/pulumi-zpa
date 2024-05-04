@@ -109,14 +109,12 @@ def get_lss_client_types(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitab
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example = zpa.get_lss_client_types()
     ```
-    <!--End PulumiCodeChooser -->
 
     ### Read-Only
 
@@ -157,14 +155,12 @@ def get_lss_client_types_output(opts: Optional[pulumi.InvokeOptions] = None) -> 
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example = zpa.get_lss_client_types()
     ```
-    <!--End PulumiCodeChooser -->
 
     ### Read-Only
 

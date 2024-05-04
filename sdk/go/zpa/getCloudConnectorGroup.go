@@ -20,7 +20,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,9 +43,7 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -70,7 +67,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetCloudConnectorGroup(ctx *pulumi.Context, args *GetCloudConnectorGroupArgs, opts ...pulumi.InvokeOption) (*GetCloudConnectorGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCloudConnectorGroupResult

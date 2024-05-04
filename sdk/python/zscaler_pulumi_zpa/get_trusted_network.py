@@ -121,18 +121,15 @@ def get_trusted_network(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example = zpa.get_trusted_network(name="trusted_network_name")
     ```
-    <!--End PulumiCodeChooser -->
 
     > **NOTE** To query trusted network that are associated with a specific Zscaler cloud, it is required to append the cloud name to the name of the trusted network as the below example:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -140,7 +137,6 @@ def get_trusted_network(id: Optional[str] = None,
     example1 = zpa.get_trusted_network(name="Corporate-Network (zscalertwo.net)")
     pulumi.export("zpaTrustedNetwork", example1.network_id)
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['id'] = id
@@ -177,18 +173,15 @@ def get_trusted_network_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example = zpa.get_trusted_network(name="trusted_network_name")
     ```
-    <!--End PulumiCodeChooser -->
 
     > **NOTE** To query trusted network that are associated with a specific Zscaler cloud, it is required to append the cloud name to the name of the trusted network as the below example:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -196,6 +189,5 @@ def get_trusted_network_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     example1 = zpa.get_trusted_network(name="Corporate-Network (zscalertwo.net)")
     pulumi.export("zpaTrustedNetwork", example1.network_id)
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

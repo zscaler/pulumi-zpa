@@ -206,7 +206,6 @@ def get_scim_attribute_header(idp_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -216,7 +215,6 @@ def get_scim_attribute_header(idp_id: Optional[str] = None,
     family_name = zpa.get_scim_attribute_header(idp_name="IdP_Name",
         name="name.familyName")
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['idpId'] = idp_id
@@ -259,7 +257,6 @@ def get_scim_attribute_header_output(idp_id: Optional[pulumi.Input[Optional[str]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -269,6 +266,5 @@ def get_scim_attribute_header_output(idp_id: Optional[pulumi.Input[Optional[str]
     family_name = zpa.get_scim_attribute_header(idp_name="IdP_Name",
         name="name.familyName")
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

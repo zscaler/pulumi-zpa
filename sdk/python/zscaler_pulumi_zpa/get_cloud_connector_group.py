@@ -145,23 +145,19 @@ def get_cloud_connector_group(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     foo = zpa.get_cloud_connector_group(name="AWS-Cloud")
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     foo = zpa.get_cloud_connector_group(id="1234567890")
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['id'] = id
@@ -197,22 +193,18 @@ def get_cloud_connector_group_output(id: Optional[pulumi.Input[Optional[str]]] =
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     foo = zpa.get_cloud_connector_group(name="AWS-Cloud")
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     foo = zpa.get_cloud_connector_group(id="1234567890")
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

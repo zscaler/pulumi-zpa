@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     name: "Default",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCloudBrowserIsolationBanner(args?: GetCloudBrowserIsolationBannerArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudBrowserIsolationBannerResult> {
     args = args || {};
@@ -61,7 +59,6 @@ export interface GetCloudBrowserIsolationBannerResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -70,7 +67,6 @@ export interface GetCloudBrowserIsolationBannerResult {
  *     name: "Default",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCloudBrowserIsolationBannerOutput(args?: GetCloudBrowserIsolationBannerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudBrowserIsolationBannerResult> {
     return pulumi.output(args).apply((a: any) => getCloudBrowserIsolationBanner(a, opts))

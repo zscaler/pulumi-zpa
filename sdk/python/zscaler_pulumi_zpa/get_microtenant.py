@@ -166,14 +166,12 @@ def get_microtenant(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     this = zpa.get_microtenant(name="Microtenant_A")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: - (Required) Name of the microtenant controller.
@@ -214,14 +212,12 @@ def get_microtenant_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     this = zpa.get_microtenant(name="Microtenant_A")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: - (Required) Name of the microtenant controller.

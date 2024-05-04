@@ -22,7 +22,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,9 +45,7 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -72,7 +69,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupServiceEdgeGroup(ctx *pulumi.Context, args *LookupServiceEdgeGroupArgs, opts ...pulumi.InvokeOption) (*LookupServiceEdgeGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceEdgeGroupResult
@@ -97,6 +93,9 @@ type LookupServiceEdgeGroupResult struct {
 	Description                   string                              `pulumi:"description"`
 	Enabled                       bool                                `pulumi:"enabled"`
 	GeoLocationId                 string                              `pulumi:"geoLocationId"`
+	GraceDistanceEnabled          bool                                `pulumi:"graceDistanceEnabled"`
+	GraceDistanceValue            string                              `pulumi:"graceDistanceValue"`
+	GraceDistanceValueUnit        string                              `pulumi:"graceDistanceValueUnit"`
 	Id                            string                              `pulumi:"id"`
 	IsPublic                      string                              `pulumi:"isPublic"`
 	Latitude                      string                              `pulumi:"latitude"`
@@ -175,6 +174,18 @@ func (o LookupServiceEdgeGroupResultOutput) Enabled() pulumi.BoolOutput {
 
 func (o LookupServiceEdgeGroupResultOutput) GeoLocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.GeoLocationId }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceEdgeGroupResultOutput) GraceDistanceEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupServiceEdgeGroupResult) bool { return v.GraceDistanceEnabled }).(pulumi.BoolOutput)
+}
+
+func (o LookupServiceEdgeGroupResultOutput) GraceDistanceValue() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.GraceDistanceValue }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceEdgeGroupResultOutput) GraceDistanceValueUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.GraceDistanceValueUnit }).(pulumi.StringOutput)
 }
 
 func (o LookupServiceEdgeGroupResultOutput) Id() pulumi.StringOutput {

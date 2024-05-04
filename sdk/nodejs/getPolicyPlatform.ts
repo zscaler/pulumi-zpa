@@ -18,14 +18,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
  * const this = zpa.getPolicyPlatform({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPolicyPlatform(opts?: pulumi.InvokeOptions): Promise<GetPolicyPlatformResult> {
 
@@ -62,14 +60,12 @@ export interface GetPolicyPlatformResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
  * const this = zpa.getPolicyPlatform({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPolicyPlatformOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyPlatformResult> {
     return pulumi.output(getPolicyPlatform(opts))

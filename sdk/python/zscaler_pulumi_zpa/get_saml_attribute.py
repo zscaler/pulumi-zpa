@@ -125,7 +125,6 @@ def get_saml_attribute(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -133,9 +132,7 @@ def get_saml_attribute(id: Optional[str] = None,
     email_user_sso = zpa.get_saml_attribute(idp_name="idp_name",
         name="Email_User SSO")
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -143,7 +140,6 @@ def get_saml_attribute(id: Optional[str] = None,
     department = zpa.get_saml_attribute(idp_name="idp_name",
         name="DepartmentName_IdP_Name_Users")
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['id'] = id
@@ -177,7 +173,6 @@ def get_saml_attribute_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -185,9 +180,7 @@ def get_saml_attribute_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     email_user_sso = zpa.get_saml_attribute(idp_name="idp_name",
         name="Email_User SSO")
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -195,6 +188,5 @@ def get_saml_attribute_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     department = zpa.get_saml_attribute(idp_name="idp_name",
         name="DepartmentName_IdP_Name_Users")
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

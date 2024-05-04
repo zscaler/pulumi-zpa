@@ -18,7 +18,6 @@ namespace Zscaler.Zpa
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -53,9 +52,7 @@ namespace Zscaler.Zpa
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -80,7 +77,6 @@ namespace Zscaler.Zpa
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -122,6 +118,27 @@ namespace Zscaler.Zpa
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
+
+        /// <summary>
+        /// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
+        /// Public Service Edge.
+        /// </summary>
+        [Output("graceDistanceEnabled")]
+        public Output<bool> GraceDistanceEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
+        /// Public Service Edge
+        /// </summary>
+        [Output("graceDistanceValue")]
+        public Output<string> GraceDistanceValue { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates the grace distance unit of measure in miles or kilometers. This value is only required if grace_distance_value
+        /// is set to true
+        /// </summary>
+        [Output("graceDistanceValueUnit")]
+        public Output<string> GraceDistanceValueUnit { get; private set; } = null!;
 
         /// <summary>
         /// Enable or disable public access for the Service Edge Group.
@@ -267,6 +284,27 @@ namespace Zscaler.Zpa
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
+        /// Public Service Edge.
+        /// </summary>
+        [Input("graceDistanceEnabled")]
+        public Input<bool>? GraceDistanceEnabled { get; set; }
+
+        /// <summary>
+        /// Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
+        /// Public Service Edge
+        /// </summary>
+        [Input("graceDistanceValue")]
+        public Input<string>? GraceDistanceValue { get; set; }
+
+        /// <summary>
+        /// Indicates the grace distance unit of measure in miles or kilometers. This value is only required if grace_distance_value
+        /// is set to true
+        /// </summary>
+        [Input("graceDistanceValueUnit")]
+        public Input<string>? GraceDistanceValueUnit { get; set; }
+
+        /// <summary>
         /// Enable or disable public access for the Service Edge Group.
         /// </summary>
         [Input("isPublic")]
@@ -374,6 +412,27 @@ namespace Zscaler.Zpa
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
+        /// Public Service Edge.
+        /// </summary>
+        [Input("graceDistanceEnabled")]
+        public Input<bool>? GraceDistanceEnabled { get; set; }
+
+        /// <summary>
+        /// Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
+        /// Public Service Edge
+        /// </summary>
+        [Input("graceDistanceValue")]
+        public Input<string>? GraceDistanceValue { get; set; }
+
+        /// <summary>
+        /// Indicates the grace distance unit of measure in miles or kilometers. This value is only required if grace_distance_value
+        /// is set to true
+        /// </summary>
+        [Input("graceDistanceValueUnit")]
+        public Input<string>? GraceDistanceValueUnit { get; set; }
 
         /// <summary>
         /// Enable or disable public access for the Service Edge Group.

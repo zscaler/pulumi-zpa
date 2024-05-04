@@ -173,7 +173,6 @@ class EmergencyAccessUser(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -184,7 +183,6 @@ class EmergencyAccessUser(pulumi.CustomResource):
             last_name="Test",
             user_id="usertest")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -211,7 +209,6 @@ class EmergencyAccessUser(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -222,7 +219,6 @@ class EmergencyAccessUser(pulumi.CustomResource):
             last_name="Test",
             user_id="usertest")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

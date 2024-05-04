@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.0.11 (May 4, 2024)
+
+### Notes
+
+- Release date: **(May 4, 2024)**
+
+* Upgraded to Pulumi terraform bridge `3.81.0`
+* Upgraded to ZPA Terraform provider `v3.2.11`
+
 ## 0.0.10 (April 9, 2024)
 
 ### Notes

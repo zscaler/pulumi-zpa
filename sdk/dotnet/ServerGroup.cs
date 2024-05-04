@@ -13,7 +13,6 @@ namespace Zscaler.Zpa
     /// <summary>
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -59,15 +58,13 @@ namespace Zscaler.Zpa
     ///     {
     ///         DependsOn =
     ///         {
-    ///             exampleConnectorGroup, 
+    ///             exampleConnectorGroup,
     ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -131,14 +128,13 @@ namespace Zscaler.Zpa
     ///     {
     ///         DependsOn =
     ///         {
-    ///             exampleConnectorGroup, 
-    ///             zpa_application_server.Server, 
+    ///             exampleConnectorGroup,
+    ///             zpa_application_server.Server,
     ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
