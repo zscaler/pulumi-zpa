@@ -14,12 +14,14 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
  * const example = zpa.getLSSClientTypes({});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ### Read-Only
  *
@@ -66,12 +68,14 @@ export interface GetLSSClientTypesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
  * const example = zpa.getLSSClientTypes({});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ### Read-Only
  *

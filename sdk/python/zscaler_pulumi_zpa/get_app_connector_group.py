@@ -303,19 +303,23 @@ def get_app_connector_group(id: Optional[str] = None,
     """
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     foo = zpa.get_app_connector_group(name="DataCenter")
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     foo = zpa.get_app_connector_group(id="123456789")
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['id'] = id
@@ -368,18 +372,22 @@ def get_app_connector_group_output(id: Optional[pulumi.Input[Optional[str]]] = N
     """
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     foo = zpa.get_app_connector_group(name="DataCenter")
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     foo = zpa.get_app_connector_group(id="123456789")
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

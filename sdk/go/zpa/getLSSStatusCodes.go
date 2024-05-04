@@ -20,6 +20,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetLSSStatusCodes(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetLSSStatusCodesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLSSStatusCodesResult

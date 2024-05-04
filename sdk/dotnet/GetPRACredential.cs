@@ -20,6 +20,7 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,6 +34,7 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPRACredentialResult> InvokeAsync(GetPRACredentialArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPRACredentialResult>("zpa:index/getPRACredential:getPRACredential", args ?? new GetPRACredentialArgs(), options.WithDefaults());
@@ -45,6 +47,7 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,6 +61,7 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPRACredentialResult> Invoke(GetPRACredentialInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPRACredentialResult>("zpa:index/getPRACredential:getPRACredential", args ?? new GetPRACredentialInvokeArgs(), options.WithDefaults());

@@ -273,19 +273,23 @@ def get_service_edge_group(id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     foo = zpa.get_service_edge_group(name="DataCenter")
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     foo = zpa.get_service_edge_group(id="123456789")
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['id'] = id
@@ -337,18 +341,22 @@ def get_service_edge_group_output(id: Optional[pulumi.Input[Optional[str]]] = No
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     foo = zpa.get_service_edge_group(name="DataCenter")
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     foo = zpa.get_service_edge_group(id="123456789")
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

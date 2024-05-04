@@ -132,12 +132,14 @@ def get_cloud_browser_isolation_zpa_profile(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     this = zpa.get_cloud_browser_isolation_zpa_profile(name="ZPA_Profile")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: - (String) This field defines the name of the isolation profile.
@@ -168,12 +170,14 @@ def get_cloud_browser_isolation_zpa_profile_output(name: Optional[pulumi.Input[O
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     this = zpa.get_cloud_browser_isolation_zpa_profile(name="ZPA_Profile")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: - (String) This field defines the name of the isolation profile.

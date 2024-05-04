@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -17,6 +18,7 @@ import * as utilities from "./utilities";
  *     name: "segment_group_name",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSegmentGroup(args?: GetSegmentGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetSegmentGroupResult> {
     args = args || {};
@@ -59,6 +61,7 @@ export interface GetSegmentGroupResult {
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -67,6 +70,7 @@ export interface GetSegmentGroupResult {
  *     name: "segment_group_name",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSegmentGroupOutput(args?: GetSegmentGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSegmentGroupResult> {
     return pulumi.output(args).apply((a: any) => getSegmentGroup(a, opts))

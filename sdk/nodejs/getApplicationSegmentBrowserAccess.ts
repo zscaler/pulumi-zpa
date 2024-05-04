@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -17,7 +18,9 @@ import * as utilities from "./utilities";
  *     name: "example",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -26,6 +29,7 @@ import * as utilities from "./utilities";
  *     id: "123456789",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getApplicationSegmentBrowserAccess(args?: GetApplicationSegmentBrowserAccessArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationSegmentBrowserAccessResult> {
     args = args || {};
@@ -90,6 +94,7 @@ export interface GetApplicationSegmentBrowserAccessResult {
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -98,7 +103,9 @@ export interface GetApplicationSegmentBrowserAccessResult {
  *     name: "example",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -107,6 +114,7 @@ export interface GetApplicationSegmentBrowserAccessResult {
  *     id: "123456789",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getApplicationSegmentBrowserAccessOutput(args?: GetApplicationSegmentBrowserAccessOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationSegmentBrowserAccessResult> {
     return pulumi.output(args).apply((a: any) => getApplicationSegmentBrowserAccess(a, opts))

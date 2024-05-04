@@ -289,19 +289,23 @@ def get_application_segment_inspection(id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     this = zpa.get_application_segment_inspection(name="ZPA_Inspection_Example")
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     this = zpa.get_application_segment_inspection(id="123456789")
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['id'] = id
@@ -356,18 +360,22 @@ def get_application_segment_inspection_output(id: Optional[pulumi.Input[Optional
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     this = zpa.get_application_segment_inspection(name="ZPA_Inspection_Example")
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     this = zpa.get_application_segment_inspection(id="123456789")
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

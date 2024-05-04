@@ -148,6 +148,7 @@ def get_customer_version_profile(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -156,6 +157,7 @@ def get_customer_version_profile(name: Optional[str] = None,
     previous_default = zpa.get_customer_version_profile(name="Previous Default")
     new_release = zpa.get_customer_version_profile(name="New Release")
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['name'] = name
@@ -193,6 +195,7 @@ def get_customer_version_profile_output(name: Optional[pulumi.Input[str]] = None
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -201,5 +204,6 @@ def get_customer_version_profile_output(name: Optional[pulumi.Input[str]] = None
     previous_default = zpa.get_customer_version_profile(name="Previous Default")
     new_release = zpa.get_customer_version_profile(name="New Release")
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

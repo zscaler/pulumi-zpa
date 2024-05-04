@@ -256,19 +256,23 @@ def get_application_segment_pra(id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     this = zpa.get_application_segment_pra(name="PRA_Example")
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     this = zpa.get_application_segment_pra(id="123456789")
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['id'] = id
@@ -322,18 +326,22 @@ def get_application_segment_pra_output(id: Optional[pulumi.Input[Optional[str]]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     this = zpa.get_application_segment_pra(name="PRA_Example")
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     this = zpa.get_application_segment_pra(id="123456789")
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

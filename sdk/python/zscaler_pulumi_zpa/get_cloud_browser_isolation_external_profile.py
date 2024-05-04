@@ -115,12 +115,14 @@ def get_cloud_browser_isolation_external_profile(id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     this = zpa.get_cloud_browser_isolation_external_profile(name="Example")
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['id'] = id
@@ -150,11 +152,13 @@ def get_cloud_browser_isolation_external_profile_output(id: Optional[pulumi.Inpu
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     this = zpa.get_cloud_browser_isolation_external_profile(name="Example")
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

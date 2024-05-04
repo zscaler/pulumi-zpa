@@ -189,13 +189,16 @@ class BrowserCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_zpa as zpa
 
         foo = zpa.get_ba_certificate(name="example.acme.com")
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -211,6 +214,7 @@ class BrowserCertificate(pulumi.CustomResource):
         \"\"\",
             description="server.example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Let's Encrypt Certbot
 
@@ -251,13 +255,16 @@ class BrowserCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_zpa as zpa
 
         foo = zpa.get_ba_certificate(name="example.acme.com")
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -273,6 +280,7 @@ class BrowserCertificate(pulumi.CustomResource):
         \"\"\",
             description="server.example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Let's Encrypt Certbot
 

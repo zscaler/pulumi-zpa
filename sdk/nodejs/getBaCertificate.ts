@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -20,7 +21,9 @@ import * as utilities from "./utilities";
  *     name: "example.acme.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -29,6 +32,7 @@ import * as utilities from "./utilities";
  *     id: "1234567890",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getBaCertificate(args?: GetBaCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetBaCertificateResult> {
     args = args || {};
@@ -79,6 +83,7 @@ export interface GetBaCertificateResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -87,7 +92,9 @@ export interface GetBaCertificateResult {
  *     name: "example.acme.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -96,6 +103,7 @@ export interface GetBaCertificateResult {
  *     id: "1234567890",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getBaCertificateOutput(args?: GetBaCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBaCertificateResult> {
     return pulumi.output(args).apply((a: any) => getBaCertificate(a, opts))

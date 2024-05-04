@@ -15,6 +15,7 @@ namespace Zscaler.Zpa
         /// <summary>
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -30,6 +31,7 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServerGroupResult> InvokeAsync(GetServerGroupArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerGroupResult>("zpa:index/getServerGroup:getServerGroup", args ?? new GetServerGroupArgs(), options.WithDefaults());
@@ -37,6 +39,7 @@ namespace Zscaler.Zpa
         /// <summary>
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -52,6 +55,7 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServerGroupResult> Invoke(GetServerGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerGroupResult>("zpa:index/getServerGroup:getServerGroup", args ?? new GetServerGroupInvokeArgs(), options.WithDefaults());

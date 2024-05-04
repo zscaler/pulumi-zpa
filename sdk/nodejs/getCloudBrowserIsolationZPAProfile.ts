@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -17,6 +18,7 @@ import * as utilities from "./utilities";
  *     name: "ZPA_Profile",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCloudBrowserIsolationZPAProfile(args?: GetCloudBrowserIsolationZPAProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudBrowserIsolationZPAProfileResult> {
     args = args || {};
@@ -60,6 +62,7 @@ export interface GetCloudBrowserIsolationZPAProfileResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -68,6 +71,7 @@ export interface GetCloudBrowserIsolationZPAProfileResult {
  *     name: "ZPA_Profile",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCloudBrowserIsolationZPAProfileOutput(args?: GetCloudBrowserIsolationZPAProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudBrowserIsolationZPAProfileResult> {
     return pulumi.output(args).apply((a: any) => getCloudBrowserIsolationZPAProfile(a, opts))

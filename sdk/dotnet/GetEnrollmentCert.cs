@@ -20,6 +20,7 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -55,6 +56,7 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetEnrollmentCertResult> InvokeAsync(GetEnrollmentCertArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnrollmentCertResult>("zpa:index/getEnrollmentCert:getEnrollmentCert", args ?? new GetEnrollmentCertArgs(), options.WithDefaults());
@@ -67,6 +69,7 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -102,6 +105,7 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetEnrollmentCertResult> Invoke(GetEnrollmentCertInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnrollmentCertResult>("zpa:index/getEnrollmentCert:getEnrollmentCert", args ?? new GetEnrollmentCertInvokeArgs(), options.WithDefaults());

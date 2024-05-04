@@ -315,6 +315,7 @@ class PolicyAccessRuleV2(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_zpa as zpa
@@ -410,6 +411,7 @@ class PolicyAccessRuleV2(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## LHS and RHS Values
 
@@ -472,6 +474,7 @@ class PolicyAccessRuleV2(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_zpa as zpa
@@ -567,6 +570,7 @@ class PolicyAccessRuleV2(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## LHS and RHS Values
 

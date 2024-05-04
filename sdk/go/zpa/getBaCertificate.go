@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +42,9 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -65,6 +68,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetBaCertificate(ctx *pulumi.Context, args *GetBaCertificateArgs, opts ...pulumi.InvokeOption) (*GetBaCertificateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBaCertificateResult

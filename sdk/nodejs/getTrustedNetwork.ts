@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -26,9 +27,11 @@ import * as utilities from "./utilities";
  *     name: "trusted_network_name",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * > **NOTE** To query trusted network that are associated with a specific Zscaler cloud, it is required to append the cloud name to the name of the trusted network as the below example:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -38,6 +41,7 @@ import * as utilities from "./utilities";
  * });
  * export const zpaTrustedNetwork = example1.then(example1 => example1.networkId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTrustedNetwork(args?: GetTrustedNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetTrustedNetworkResult> {
     args = args || {};
@@ -84,6 +88,7 @@ export interface GetTrustedNetworkResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -92,9 +97,11 @@ export interface GetTrustedNetworkResult {
  *     name: "trusted_network_name",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * > **NOTE** To query trusted network that are associated with a specific Zscaler cloud, it is required to append the cloud name to the name of the trusted network as the below example:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -104,6 +111,7 @@ export interface GetTrustedNetworkResult {
  * });
  * export const zpaTrustedNetwork = example1.then(example1 => example1.networkId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTrustedNetworkOutput(args?: GetTrustedNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrustedNetworkResult> {
     return pulumi.output(args).apply((a: any) => getTrustedNetwork(a, opts))

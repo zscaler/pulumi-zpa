@@ -386,12 +386,14 @@ def get_app_connector_controller(microtenant_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example = zpa.get_app_connector_controller(name="AWS-VPC100-App-Connector")
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['microtenantId'] = microtenant_id
@@ -454,11 +456,13 @@ def get_app_connector_controller_output(microtenant_id: Optional[pulumi.Input[Op
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example = zpa.get_app_connector_controller(name="AWS-VPC100-App-Connector")
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

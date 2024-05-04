@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupPRAPortal(ctx *pulumi.Context, args *LookupPRAPortalArgs, opts ...pulumi.InvokeOption) (*LookupPRAPortalResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPRAPortalResult

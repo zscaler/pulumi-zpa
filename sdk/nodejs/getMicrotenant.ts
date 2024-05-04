@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -24,6 +25,7 @@ import * as utilities from "./utilities";
  *     name: "Microtenant_A",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMicrotenant(args?: GetMicrotenantArgs, opts?: pulumi.InvokeOptions): Promise<GetMicrotenantResult> {
     args = args || {};
@@ -77,6 +79,7 @@ export interface GetMicrotenantResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -85,6 +88,7 @@ export interface GetMicrotenantResult {
  *     name: "Microtenant_A",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMicrotenantOutput(args?: GetMicrotenantOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMicrotenantResult> {
     return pulumi.output(args).apply((a: any) => getMicrotenant(a, opts))

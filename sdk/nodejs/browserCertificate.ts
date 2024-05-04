@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -20,7 +21,9 @@ import * as utilities from "./utilities";
  *     name: "example.acme.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
@@ -37,6 +40,7 @@ import * as utilities from "./utilities";
  *     description: "server.example.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Let's Encrypt Certbot
  *

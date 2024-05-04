@@ -31,6 +31,7 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,6 +44,7 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPolicyClientTypeResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPolicyClientTypeResult>("zpa:index/getPolicyClientType:getPolicyClientType", InvokeArgs.Empty, options.WithDefaults());
@@ -66,6 +68,7 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -78,6 +81,7 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPolicyClientTypeResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyClientTypeResult>("zpa:index/getPolicyClientType:getPolicyClientType", InvokeArgs.Empty, options.WithDefaults());

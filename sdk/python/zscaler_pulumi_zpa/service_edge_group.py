@@ -696,6 +696,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -715,7 +716,9 @@ class ServiceEdgeGroup(pulumi.CustomResource):
                 ids=[data["zpa_trusted_network"]["example"]["id"]],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -732,6 +735,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             upgrade_time_in_secs="66600",
             version_profile_name="New Release")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -789,6 +793,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -808,7 +813,9 @@ class ServiceEdgeGroup(pulumi.CustomResource):
                 ids=[data["zpa_trusted_network"]["example"]["id"]],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -825,6 +832,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             upgrade_time_in_secs="66600",
             version_profile_name="New Release")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

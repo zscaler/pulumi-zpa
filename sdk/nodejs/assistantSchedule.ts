@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  *
  * ### Defined Customer ID Value
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
@@ -28,9 +29,11 @@ import * as utilities from "./utilities";
  *     frequencyInterval: "5",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ### Customer ID Via Environment Variable
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
@@ -42,6 +45,7 @@ import * as utilities from "./utilities";
  *     frequencyInterval: "5",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

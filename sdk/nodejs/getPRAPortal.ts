@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  *     name: "Example",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPRAPortal(args?: GetPRAPortalArgs, opts?: pulumi.InvokeOptions): Promise<GetPRAPortalResult> {
     args = args || {};
@@ -67,6 +69,7 @@ export interface GetPRAPortalResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -75,6 +78,7 @@ export interface GetPRAPortalResult {
  *     name: "Example",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPRAPortalOutput(args?: GetPRAPortalOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPRAPortalResult> {
     return pulumi.output(args).apply((a: any) => getPRAPortal(a, opts))

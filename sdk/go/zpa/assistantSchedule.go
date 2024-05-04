@@ -22,6 +22,7 @@ import (
 //
 // ### Defined Customer ID Value
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,9 +50,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ### Customer ID Via Environment Variable
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -78,6 +81,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

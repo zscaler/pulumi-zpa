@@ -20,6 +20,7 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,6 +36,7 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPRAPortalResult> InvokeAsync(GetPRAPortalArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPRAPortalResult>("zpa:index/getPRAPortal:getPRAPortal", args ?? new GetPRAPortalArgs(), options.WithDefaults());
@@ -47,6 +49,7 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,6 +65,7 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPRAPortalResult> Invoke(GetPRAPortalInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPRAPortalResult>("zpa:index/getPRAPortal:getPRAPortal", args ?? new GetPRAPortalInvokeArgs(), options.WithDefaults());

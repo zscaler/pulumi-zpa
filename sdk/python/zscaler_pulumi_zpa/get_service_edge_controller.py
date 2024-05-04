@@ -394,12 +394,14 @@ def get_service_edge_controller(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example = zpa.get_service_edge_controller(name="On-Prem-PSE")
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['name'] = name
@@ -459,11 +461,13 @@ def get_service_edge_controller_output(name: Optional[pulumi.Input[Optional[str]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example = zpa.get_service_edge_controller(name="On-Prem-PSE")
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -25,6 +26,7 @@ import * as utilities from "./utilities";
  *     name: "name.familyName",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSCIMAttributeHeader(args?: GetSCIMAttributeHeaderArgs, opts?: pulumi.InvokeOptions): Promise<GetSCIMAttributeHeaderResult> {
     args = args || {};
@@ -77,6 +79,7 @@ export interface GetSCIMAttributeHeaderResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -90,6 +93,7 @@ export interface GetSCIMAttributeHeaderResult {
  *     name: "name.familyName",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSCIMAttributeHeaderOutput(args?: GetSCIMAttributeHeaderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSCIMAttributeHeaderResult> {
     return pulumi.output(args).apply((a: any) => getSCIMAttributeHeader(a, opts))

@@ -182,12 +182,14 @@ def get_inspection_profile(id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     this = zpa.get_inspection_profile(name="Example")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: - (String) This field defines the name of the inspection profile.
@@ -228,12 +230,14 @@ def get_inspection_profile_output(id: Optional[pulumi.Input[Optional[str]]] = No
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     this = zpa.get_inspection_profile(name="Example")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: - (String) This field defines the name of the inspection profile.

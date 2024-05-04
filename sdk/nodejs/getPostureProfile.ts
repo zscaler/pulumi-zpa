@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -20,7 +21,9 @@ import * as utilities from "./utilities";
  *     name: "CrowdStrike_ZPA_ZTA_40",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -29,7 +32,9 @@ import * as utilities from "./utilities";
  *     name: "Detect SentinelOne",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -38,9 +43,11 @@ import * as utilities from "./utilities";
  *     name: "domain_joined",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * > **NOTE** To query posture profiles that are associated with a specific Zscaler cloud, it is required to append the cloud name to the name of the posture profile as the below example:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -49,9 +56,11 @@ import * as utilities from "./utilities";
  *     name: "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * > **NOTE** When associating a posture profile with one of supported resources, the following parameter must be exported: ``postureUdid`` instead of the ``id`` of the resource.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -61,6 +70,7 @@ import * as utilities from "./utilities";
  * });
  * export const zpaPostureProfile = example1.then(example1 => example1.postureUdid);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPostureProfile(args?: GetPostureProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetPostureProfileResult> {
     args = args || {};
@@ -101,6 +111,7 @@ export interface GetPostureProfileResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -109,7 +120,9 @@ export interface GetPostureProfileResult {
  *     name: "CrowdStrike_ZPA_ZTA_40",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -118,7 +131,9 @@ export interface GetPostureProfileResult {
  *     name: "Detect SentinelOne",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -127,9 +142,11 @@ export interface GetPostureProfileResult {
  *     name: "domain_joined",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * > **NOTE** To query posture profiles that are associated with a specific Zscaler cloud, it is required to append the cloud name to the name of the posture profile as the below example:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -138,9 +155,11 @@ export interface GetPostureProfileResult {
  *     name: "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * > **NOTE** When associating a posture profile with one of supported resources, the following parameter must be exported: ``postureUdid`` instead of the ``id`` of the resource.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -150,6 +169,7 @@ export interface GetPostureProfileResult {
  * });
  * export const zpaPostureProfile = example1.then(example1 => example1.postureUdid);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPostureProfileOutput(args?: GetPostureProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPostureProfileResult> {
     return pulumi.output(args).apply((a: any) => getPostureProfile(a, opts))

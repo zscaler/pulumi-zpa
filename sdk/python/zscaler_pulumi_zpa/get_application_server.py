@@ -148,19 +148,23 @@ def get_application_server(id: Optional[str] = None,
     """
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example = zpa.get_application_server(name="server.example.com")
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example = zpa.get_application_server(id="1234567890")
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['id'] = id
@@ -194,18 +198,22 @@ def get_application_server_output(id: Optional[pulumi.Input[Optional[str]]] = No
     """
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example = zpa.get_application_server(name="server.example.com")
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example = zpa.get_application_server(id="1234567890")
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

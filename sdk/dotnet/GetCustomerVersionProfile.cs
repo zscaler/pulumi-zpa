@@ -26,6 +26,7 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -51,6 +52,7 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCustomerVersionProfileResult> InvokeAsync(GetCustomerVersionProfileArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomerVersionProfileResult>("zpa:index/getCustomerVersionProfile:getCustomerVersionProfile", args ?? new GetCustomerVersionProfileArgs(), options.WithDefaults());
@@ -69,6 +71,7 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -94,6 +97,7 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCustomerVersionProfileResult> Invoke(GetCustomerVersionProfileInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomerVersionProfileResult>("zpa:index/getCustomerVersionProfile:getCustomerVersionProfile", args ?? new GetCustomerVersionProfileInvokeArgs(), options.WithDefaults());

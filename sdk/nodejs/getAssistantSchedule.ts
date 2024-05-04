@@ -14,6 +14,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -22,6 +23,7 @@ import * as utilities from "./utilities";
  *     customerId: "1234567891012",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAssistantSchedule(args?: GetAssistantScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetAssistantScheduleResult> {
     args = args || {};
@@ -62,6 +64,7 @@ export interface GetAssistantScheduleResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -70,6 +73,7 @@ export interface GetAssistantScheduleResult {
  *     customerId: "1234567891012",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAssistantScheduleOutput(args?: GetAssistantScheduleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAssistantScheduleResult> {
     return pulumi.output(args).apply((a: any) => getAssistantSchedule(a, opts))

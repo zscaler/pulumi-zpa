@@ -22,6 +22,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -30,7 +31,9 @@ import * as utilities from "./utilities";
  *     name: "idp_name",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -39,6 +42,7 @@ import * as utilities from "./utilities";
  *     id: "1234567890",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getIdPController(args?: GetIdPControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetIdPControllerResult> {
     args = args || {};
@@ -108,6 +112,7 @@ export interface GetIdPControllerResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -116,7 +121,9 @@ export interface GetIdPControllerResult {
  *     name: "idp_name",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -125,6 +132,7 @@ export interface GetIdPControllerResult {
  *     id: "1234567890",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getIdPControllerOutput(args?: GetIdPControllerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIdPControllerResult> {
     return pulumi.output(args).apply((a: any) => getIdPController(a, opts))

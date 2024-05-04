@@ -15,6 +15,7 @@ namespace Zscaler.Zpa
         /// <summary>
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -30,6 +31,7 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSegmentGroupResult> InvokeAsync(GetSegmentGroupArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSegmentGroupResult>("zpa:index/getSegmentGroup:getSegmentGroup", args ?? new GetSegmentGroupArgs(), options.WithDefaults());
@@ -37,6 +39,7 @@ namespace Zscaler.Zpa
         /// <summary>
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -52,6 +55,7 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSegmentGroupResult> Invoke(GetSegmentGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSegmentGroupResult>("zpa:index/getSegmentGroup:getSegmentGroup", args ?? new GetSegmentGroupInvokeArgs(), options.WithDefaults());

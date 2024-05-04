@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -65,6 +66,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetEnrollmentCert(ctx *pulumi.Context, args *GetEnrollmentCertArgs, opts ...pulumi.InvokeOption) (*GetEnrollmentCertResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEnrollmentCertResult

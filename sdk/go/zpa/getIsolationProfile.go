@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetIsolationProfile(ctx *pulumi.Context, args *GetIsolationProfileArgs, opts ...pulumi.InvokeOption) (*GetIsolationProfileResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIsolationProfileResult

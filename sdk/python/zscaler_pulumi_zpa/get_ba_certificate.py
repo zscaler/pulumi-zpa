@@ -205,19 +205,23 @@ def get_ba_certificate(id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     foo = zpa.get_ba_certificate(name="example.acme.com")
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     foo = zpa.get_ba_certificate(id="1234567890")
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['id'] = id
@@ -258,18 +262,22 @@ def get_ba_certificate_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     foo = zpa.get_ba_certificate(name="example.acme.com")
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     foo = zpa.get_ba_certificate(id="1234567890")
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

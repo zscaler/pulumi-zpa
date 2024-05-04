@@ -219,6 +219,7 @@ class Microtenant(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -235,6 +236,7 @@ class Microtenant(pulumi.CustomResource):
             "password": u.password,
         } for u in users]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -278,6 +280,7 @@ class Microtenant(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -294,6 +297,7 @@ class Microtenant(pulumi.CustomResource):
             "password": u.password,
         } for u in users]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -83,6 +83,7 @@ def get_inspection_all_predefined_controls(group_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -90,6 +91,7 @@ def get_inspection_all_predefined_controls(group_name: Optional[str] = None,
     this = zpa.get_inspection_all_predefined_controls(group_name="Preprocessors",
         version="OWASP_CRS/3.3.0")
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['groupName'] = group_name
@@ -116,6 +118,7 @@ def get_inspection_all_predefined_controls_output(group_name: Optional[pulumi.In
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -123,5 +126,6 @@ def get_inspection_all_predefined_controls_output(group_name: Optional[pulumi.In
     this = zpa.get_inspection_all_predefined_controls(group_name="Preprocessors",
         version="OWASP_CRS/3.3.0")
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

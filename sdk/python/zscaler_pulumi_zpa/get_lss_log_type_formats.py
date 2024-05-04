@@ -90,6 +90,7 @@ def get_lss_log_type_formats(log_type: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -104,6 +105,7 @@ def get_lss_log_type_formats(log_type: Optional[str] = None,
     zpn_waf_http_exchanges_log = zpa.get_lss_log_type_formats(log_type="zpn_waf_http_exchanges_log")
     zpn_pbroker_comprehensive_stats = zpa.get_lss_log_type_formats(log_type="zpn_pbroker_comprehensive_stats")
     ```
+    <!--End PulumiCodeChooser -->
 
     ### Read-Only
 
@@ -144,6 +146,7 @@ def get_lss_log_type_formats_output(log_type: Optional[pulumi.Input[str]] = None
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -158,6 +161,7 @@ def get_lss_log_type_formats_output(log_type: Optional[pulumi.Input[str]] = None
     zpn_waf_http_exchanges_log = zpa.get_lss_log_type_formats(log_type="zpn_waf_http_exchanges_log")
     zpn_pbroker_comprehensive_stats = zpa.get_lss_log_type_formats(log_type="zpn_pbroker_comprehensive_stats")
     ```
+    <!--End PulumiCodeChooser -->
 
     ### Read-Only
 

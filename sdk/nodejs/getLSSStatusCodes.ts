@@ -14,12 +14,14 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
  * const this = zpa.getLSSStatusCodes({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getLSSStatusCodes(opts?: pulumi.InvokeOptions): Promise<GetLSSStatusCodesResult> {
 
@@ -51,12 +53,14 @@ export interface GetLSSStatusCodesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
  * const this = zpa.getLSSStatusCodes({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getLSSStatusCodesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetLSSStatusCodesResult> {
     return pulumi.output(getLSSStatusCodes(opts))

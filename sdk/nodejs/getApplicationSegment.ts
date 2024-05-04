@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -17,7 +18,9 @@ import * as utilities from "./utilities";
  *     name: "example",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -26,6 +29,7 @@ import * as utilities from "./utilities";
  *     id: "123456789",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getApplicationSegment(args?: GetApplicationSegmentArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationSegmentResult> {
     args = args || {};
@@ -93,6 +97,7 @@ export interface GetApplicationSegmentResult {
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -101,7 +106,9 @@ export interface GetApplicationSegmentResult {
  *     name: "example",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -110,6 +117,7 @@ export interface GetApplicationSegmentResult {
  *     id: "123456789",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getApplicationSegmentOutput(args?: GetApplicationSegmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationSegmentResult> {
     return pulumi.output(args).apply((a: any) => getApplicationSegment(a, opts))

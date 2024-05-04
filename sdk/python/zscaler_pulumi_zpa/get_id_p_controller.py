@@ -313,19 +313,23 @@ def get_id_p_controller(id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example = zpa.get_id_p_controller(name="idp_name")
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example = zpa.get_id_p_controller(id="1234567890")
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['id'] = id
@@ -385,18 +389,22 @@ def get_id_p_controller_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example = zpa.get_id_p_controller(name="idp_name")
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example = zpa.get_id_p_controller(id="1234567890")
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

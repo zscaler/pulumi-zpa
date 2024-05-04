@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -17,7 +18,9 @@ import * as utilities from "./utilities";
  *     name: "DataCenter",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -26,6 +29,7 @@ import * as utilities from "./utilities";
  *     id: "123456789",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAppConnectorGroup(args?: GetAppConnectorGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetAppConnectorGroupResult> {
     args = args || {};
@@ -88,6 +92,7 @@ export interface GetAppConnectorGroupResult {
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -96,7 +101,9 @@ export interface GetAppConnectorGroupResult {
  *     name: "DataCenter",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -105,6 +112,7 @@ export interface GetAppConnectorGroupResult {
  *     id: "123456789",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAppConnectorGroupOutput(args?: GetAppConnectorGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppConnectorGroupResult> {
     return pulumi.output(args).apply((a: any) => getAppConnectorGroup(a, opts))

@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
@@ -22,6 +23,7 @@ import * as utilities from "./utilities";
  *     MIIFYDCCBEigAwIBAgIQQAF3ITfU6UK47naqPGQKtzANBgkqhkiG9w0BAQsFADA/
  * `});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class CloudBrowserIsolationCertificate extends pulumi.CustomResource {
     /**

@@ -24,6 +24,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,6 +46,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetPolicyPlatform(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetPolicyPlatformResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPolicyPlatformResult

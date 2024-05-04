@@ -251,6 +251,7 @@ def get_enrollment_cert(id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -261,6 +262,7 @@ def get_enrollment_cert(id: Optional[str] = None,
     service_edge = zpa.get_enrollment_cert(name="Service Edge")
     isolation_client = zpa.get_enrollment_cert(name="Isolation Client")
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['id'] = id
@@ -308,6 +310,7 @@ def get_enrollment_cert_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -318,5 +321,6 @@ def get_enrollment_cert_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     service_edge = zpa.get_enrollment_cert(name="Service Edge")
     isolation_client = zpa.get_enrollment_cert(name="Isolation Client")
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

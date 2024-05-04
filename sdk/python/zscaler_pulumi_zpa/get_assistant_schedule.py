@@ -99,12 +99,14 @@ def get_assistant_schedule(customer_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     this = zpa.get_assistant_schedule(customer_id="1234567891012")
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['customerId'] = customer_id
@@ -135,11 +137,13 @@ def get_assistant_schedule_output(customer_id: Optional[pulumi.Input[Optional[st
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     this = zpa.get_assistant_schedule(customer_id="1234567891012")
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

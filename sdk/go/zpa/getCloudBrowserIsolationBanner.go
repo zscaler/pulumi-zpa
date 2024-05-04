@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,6 +41,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupCloudBrowserIsolationBanner(ctx *pulumi.Context, args *LookupCloudBrowserIsolationBannerArgs, opts ...pulumi.InvokeOption) (*LookupCloudBrowserIsolationBannerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudBrowserIsolationBannerResult

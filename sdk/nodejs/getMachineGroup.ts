@@ -14,6 +14,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -22,7 +23,9 @@ import * as utilities from "./utilities";
  *     name: "MGR01",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -31,6 +34,7 @@ import * as utilities from "./utilities";
  *     id: "1234567890",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMachineGroup(args?: GetMachineGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetMachineGroupResult> {
     args = args || {};
@@ -77,6 +81,7 @@ export interface GetMachineGroupResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -85,7 +90,9 @@ export interface GetMachineGroupResult {
  *     name: "MGR01",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -94,6 +101,7 @@ export interface GetMachineGroupResult {
  *     id: "1234567890",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMachineGroupOutput(args?: GetMachineGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMachineGroupResult> {
     return pulumi.output(args).apply((a: any) => getMachineGroup(a, opts))

@@ -232,6 +232,7 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_zpa as zpa
@@ -259,6 +260,7 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
                 restrict_keystrokes=False,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -278,6 +280,7 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_zpa as zpa
@@ -305,6 +308,7 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
                 restrict_keystrokes=False,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param CloudBrowserIsolationExternalProfileArgs args: The arguments to use to populate this resource's properties.

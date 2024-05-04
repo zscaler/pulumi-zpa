@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetAppConnectorController(ctx *pulumi.Context, args *GetAppConnectorControllerArgs, opts ...pulumi.InvokeOption) (*GetAppConnectorControllerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAppConnectorControllerResult

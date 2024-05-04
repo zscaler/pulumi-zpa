@@ -350,6 +350,7 @@ class PRACredential(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -362,7 +363,9 @@ class PRACredential(pulumi.CustomResource):
             user_domain="acme.com",
             username="jdoe")
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -380,6 +383,7 @@ class PRACredential(pulumi.CustomResource):
             user_domain="acme.com",
             username="jdoe")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -430,6 +434,7 @@ class PRACredential(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -442,7 +447,9 @@ class PRACredential(pulumi.CustomResource):
             user_domain="acme.com",
             username="jdoe")
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -460,6 +467,7 @@ class PRACredential(pulumi.CustomResource):
             user_domain="acme.com",
             username="jdoe")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

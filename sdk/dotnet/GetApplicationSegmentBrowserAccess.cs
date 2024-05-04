@@ -15,6 +15,7 @@ namespace Zscaler.Zpa
         /// <summary>
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -30,7 +31,9 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -46,6 +49,7 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetApplicationSegmentBrowserAccessResult> InvokeAsync(GetApplicationSegmentBrowserAccessArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationSegmentBrowserAccessResult>("zpa:index/getApplicationSegmentBrowserAccess:getApplicationSegmentBrowserAccess", args ?? new GetApplicationSegmentBrowserAccessArgs(), options.WithDefaults());
@@ -53,6 +57,7 @@ namespace Zscaler.Zpa
         /// <summary>
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -68,7 +73,9 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -84,6 +91,7 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetApplicationSegmentBrowserAccessResult> Invoke(GetApplicationSegmentBrowserAccessInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationSegmentBrowserAccessResult>("zpa:index/getApplicationSegmentBrowserAccess:getApplicationSegmentBrowserAccess", args ?? new GetApplicationSegmentBrowserAccessInvokeArgs(), options.WithDefaults());

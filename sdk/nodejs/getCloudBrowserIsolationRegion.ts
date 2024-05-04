@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -17,6 +18,7 @@ import * as utilities from "./utilities";
  *     name: "Singapore",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCloudBrowserIsolationRegion(args?: GetCloudBrowserIsolationRegionArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudBrowserIsolationRegionResult> {
     args = args || {};
@@ -48,6 +50,7 @@ export interface GetCloudBrowserIsolationRegionResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -56,6 +59,7 @@ export interface GetCloudBrowserIsolationRegionResult {
  *     name: "Singapore",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCloudBrowserIsolationRegionOutput(args?: GetCloudBrowserIsolationRegionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudBrowserIsolationRegionResult> {
     return pulumi.output(args).apply((a: any) => getCloudBrowserIsolationRegion(a, opts))

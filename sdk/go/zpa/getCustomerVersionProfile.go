@@ -24,6 +24,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -59,6 +60,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetCustomerVersionProfile(ctx *pulumi.Context, args *GetCustomerVersionProfileArgs, opts ...pulumi.InvokeOption) (*GetCustomerVersionProfileResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCustomerVersionProfileResult

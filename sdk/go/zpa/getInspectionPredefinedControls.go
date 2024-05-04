@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,6 +44,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetInspectionPredefinedControls(ctx *pulumi.Context, args *GetInspectionPredefinedControlsArgs, opts ...pulumi.InvokeOption) (*GetInspectionPredefinedControlsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInspectionPredefinedControlsResult

@@ -735,6 +735,7 @@ class ConnectorGroup(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -755,6 +756,7 @@ class ConnectorGroup(pulumi.CustomResource):
             use_in_dr_mode=True,
             version_profile_name="New Release")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -809,6 +811,7 @@ class ConnectorGroup(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -829,6 +832,7 @@ class ConnectorGroup(pulumi.CustomResource):
             use_in_dr_mode=True,
             version_profile_name="New Release")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

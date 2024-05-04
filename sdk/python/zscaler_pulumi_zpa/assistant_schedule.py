@@ -170,6 +170,7 @@ class AssistantSchedule(pulumi.CustomResource):
 
         ### Defined Customer ID Value
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -181,9 +182,11 @@ class AssistantSchedule(pulumi.CustomResource):
             frequency="days",
             frequency_interval="5")
         ```
+        <!--End PulumiCodeChooser -->
 
         ### Customer ID Via Environment Variable
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -194,6 +197,7 @@ class AssistantSchedule(pulumi.CustomResource):
             frequency="days",
             frequency_interval="5")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -220,6 +224,7 @@ class AssistantSchedule(pulumi.CustomResource):
 
         ### Defined Customer ID Value
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -231,9 +236,11 @@ class AssistantSchedule(pulumi.CustomResource):
             frequency="days",
             frequency_interval="5")
         ```
+        <!--End PulumiCodeChooser -->
 
         ### Customer ID Via Environment Variable
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -244,6 +251,7 @@ class AssistantSchedule(pulumi.CustomResource):
             frequency="days",
             frequency_interval="5")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

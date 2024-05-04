@@ -640,6 +640,7 @@ class PolicyAccessInspectionRule(pulumi.CustomResource):
 
         ### 1
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -660,9 +661,11 @@ class PolicyAccessInspectionRule(pulumi.CustomResource):
                 )],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ### 2
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_zpa as zpa
@@ -685,6 +688,7 @@ class PolicyAccessInspectionRule(pulumi.CustomResource):
                 )],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## LHS and RHS Values
 
@@ -745,6 +749,7 @@ class PolicyAccessInspectionRule(pulumi.CustomResource):
 
         ### 1
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -765,9 +770,11 @@ class PolicyAccessInspectionRule(pulumi.CustomResource):
                 )],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ### 2
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_zpa as zpa
@@ -790,6 +797,7 @@ class PolicyAccessInspectionRule(pulumi.CustomResource):
                 )],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## LHS and RHS Values
 

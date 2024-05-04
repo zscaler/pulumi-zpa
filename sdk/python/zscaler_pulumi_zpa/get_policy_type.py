@@ -166,6 +166,7 @@ def get_policy_type(id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -173,7 +174,9 @@ def get_policy_type(id: Optional[str] = None,
     access_policy = zpa.get_policy_type(policy_type="ACCESS_POLICY")
     pulumi.export("zpaPolicyTypeAccessPolicy", access_policy.id)
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -181,7 +184,9 @@ def get_policy_type(id: Optional[str] = None,
     global_policy = zpa.get_policy_type(policy_type="GLOBAL_POLICY")
     pulumi.export("zpaPolicyTypeAccessPolicy", global_policy.id)
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -189,7 +194,9 @@ def get_policy_type(id: Optional[str] = None,
     timeout_policy = zpa.get_policy_type(policy_type="TIMEOUT_POLICY")
     pulumi.export("zpaPolicyTypeTimeoutPolicy", timeout_policy.id)
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -197,7 +204,9 @@ def get_policy_type(id: Optional[str] = None,
     reauth_policy = zpa.get_policy_type(policy_type="REAUTH_POLICY")
     pulumi.export("zpaPolicyTypeReauthPolicy", reauth_policy.id)
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -205,7 +214,9 @@ def get_policy_type(id: Optional[str] = None,
     client_forwarding_policy = zpa.get_policy_type(policy_type="CLIENT_FORWARDING_POLICY")
     pulumi.export("zpaPolicyTypeClientForwardingPolicy", client_forwarding_policy.id)
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -213,6 +224,7 @@ def get_policy_type(id: Optional[str] = None,
     inspection_policy = zpa.get_policy_type(policy_type="INSPECTION_POLICY")
     pulumi.export("zpaPolicyTypeInspectionPolicy", inspection_policy.id)
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['id'] = id
@@ -263,6 +275,7 @@ def get_policy_type_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -270,7 +283,9 @@ def get_policy_type_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     access_policy = zpa.get_policy_type(policy_type="ACCESS_POLICY")
     pulumi.export("zpaPolicyTypeAccessPolicy", access_policy.id)
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -278,7 +293,9 @@ def get_policy_type_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     global_policy = zpa.get_policy_type(policy_type="GLOBAL_POLICY")
     pulumi.export("zpaPolicyTypeAccessPolicy", global_policy.id)
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -286,7 +303,9 @@ def get_policy_type_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     timeout_policy = zpa.get_policy_type(policy_type="TIMEOUT_POLICY")
     pulumi.export("zpaPolicyTypeTimeoutPolicy", timeout_policy.id)
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -294,7 +313,9 @@ def get_policy_type_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     reauth_policy = zpa.get_policy_type(policy_type="REAUTH_POLICY")
     pulumi.export("zpaPolicyTypeReauthPolicy", reauth_policy.id)
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -302,7 +323,9 @@ def get_policy_type_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     client_forwarding_policy = zpa.get_policy_type(policy_type="CLIENT_FORWARDING_POLICY")
     pulumi.export("zpaPolicyTypeClientForwardingPolicy", client_forwarding_policy.id)
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -310,5 +333,6 @@ def get_policy_type_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     inspection_policy = zpa.get_policy_type(policy_type="INSPECTION_POLICY")
     pulumi.export("zpaPolicyTypeInspectionPolicy", inspection_policy.id)
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

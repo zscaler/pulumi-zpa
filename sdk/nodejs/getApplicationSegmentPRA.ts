@@ -14,6 +14,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -22,7 +23,9 @@ import * as utilities from "./utilities";
  *     name: "PRA_Example",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -31,6 +34,7 @@ import * as utilities from "./utilities";
  *     id: "123456789",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getApplicationSegmentPRA(args?: GetApplicationSegmentPRAArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationSegmentPRAResult> {
     args = args || {};
@@ -94,6 +98,7 @@ export interface GetApplicationSegmentPRAResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -102,7 +107,9 @@ export interface GetApplicationSegmentPRAResult {
  *     name: "PRA_Example",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -111,6 +118,7 @@ export interface GetApplicationSegmentPRAResult {
  *     id: "123456789",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getApplicationSegmentPRAOutput(args?: GetApplicationSegmentPRAOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationSegmentPRAResult> {
     return pulumi.output(args).apply((a: any) => getApplicationSegmentPRA(a, opts))

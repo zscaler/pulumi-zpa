@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     name: "Zscaler Root Certificate",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCloudBrowserIsolationCertificate(args?: GetCloudBrowserIsolationCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudBrowserIsolationCertificateResult> {
     args = args || {};
@@ -54,6 +56,7 @@ export interface GetCloudBrowserIsolationCertificateResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -62,6 +65,7 @@ export interface GetCloudBrowserIsolationCertificateResult {
  *     name: "Zscaler Root Certificate",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCloudBrowserIsolationCertificateOutput(args?: GetCloudBrowserIsolationCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudBrowserIsolationCertificateResult> {
     return pulumi.output(args).apply((a: any) => getCloudBrowserIsolationCertificate(a, opts))

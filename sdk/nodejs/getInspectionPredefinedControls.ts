@@ -14,6 +14,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -24,6 +25,7 @@ import * as utilities from "./utilities";
  * });
  * export const zpaInspectionPredefinedControls = example;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInspectionPredefinedControls(args?: GetInspectionPredefinedControlsArgs, opts?: pulumi.InvokeOptions): Promise<GetInspectionPredefinedControlsResult> {
     args = args || {};
@@ -77,6 +79,7 @@ export interface GetInspectionPredefinedControlsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -87,6 +90,7 @@ export interface GetInspectionPredefinedControlsResult {
  * });
  * export const zpaInspectionPredefinedControls = example;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInspectionPredefinedControlsOutput(args?: GetInspectionPredefinedControlsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInspectionPredefinedControlsResult> {
     return pulumi.output(args).apply((a: any) => getInspectionPredefinedControls(a, opts))

@@ -26,6 +26,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,7 +50,9 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -73,6 +76,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetIdPController(ctx *pulumi.Context, args *GetIdPControllerArgs, opts ...pulumi.InvokeOption) (*GetIdPControllerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIdPControllerResult

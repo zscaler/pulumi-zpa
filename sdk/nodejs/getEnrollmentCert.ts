@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -32,6 +33,7 @@ import * as utilities from "./utilities";
  *     name: "Isolation Client",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEnrollmentCert(args?: GetEnrollmentCertArgs, opts?: pulumi.InvokeOptions): Promise<GetEnrollmentCertResult> {
     args = args || {};
@@ -89,6 +91,7 @@ export interface GetEnrollmentCertResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -109,6 +112,7 @@ export interface GetEnrollmentCertResult {
  *     name: "Isolation Client",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEnrollmentCertOutput(args?: GetEnrollmentCertOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnrollmentCertResult> {
     return pulumi.output(args).apply((a: any) => getEnrollmentCert(a, opts))

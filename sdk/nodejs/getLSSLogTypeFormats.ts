@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -44,6 +45,7 @@ import * as utilities from "./utilities";
  *     logType: "zpn_pbroker_comprehensive_stats",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ### Read-Only
  *
@@ -96,6 +98,7 @@ export interface GetLSSLogTypeFormatsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -128,6 +131,7 @@ export interface GetLSSLogTypeFormatsResult {
  *     logType: "zpn_pbroker_comprehensive_stats",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ### Read-Only
  *

@@ -20,6 +20,7 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,6 +43,7 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSCIMAttributeHeaderResult> InvokeAsync(GetSCIMAttributeHeaderArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSCIMAttributeHeaderResult>("zpa:index/getSCIMAttributeHeader:getSCIMAttributeHeader", args ?? new GetSCIMAttributeHeaderArgs(), options.WithDefaults());
@@ -54,6 +56,7 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,6 +79,7 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSCIMAttributeHeaderResult> Invoke(GetSCIMAttributeHeaderInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSCIMAttributeHeaderResult>("zpa:index/getSCIMAttributeHeader:getSCIMAttributeHeader", args ?? new GetSCIMAttributeHeaderInvokeArgs(), options.WithDefaults());
