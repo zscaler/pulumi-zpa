@@ -18,7 +18,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,9 +42,7 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -70,7 +67,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetSAMLAttribute(ctx *pulumi.Context, args *GetSAMLAttributeArgs, opts ...pulumi.InvokeOption) (*GetSAMLAttributeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSAMLAttributeResult

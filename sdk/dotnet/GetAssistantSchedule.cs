@@ -22,7 +22,6 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAssistantScheduleResult> InvokeAsync(GetAssistantScheduleArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAssistantScheduleResult>("zpa:index/getAssistantSchedule:getAssistantSchedule", args ?? new GetAssistantScheduleArgs(), options.WithDefaults());
@@ -53,7 +51,6 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -69,7 +66,6 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAssistantScheduleResult> Invoke(GetAssistantScheduleInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAssistantScheduleResult>("zpa:index/getAssistantSchedule:getAssistantSchedule", args ?? new GetAssistantScheduleInvokeArgs(), options.WithDefaults());

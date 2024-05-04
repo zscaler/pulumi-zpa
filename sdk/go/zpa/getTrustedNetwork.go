@@ -24,7 +24,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,11 +47,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // > **NOTE** To query trusted network that are associated with a specific Zscaler cloud, it is required to append the cloud name to the name of the trusted network as the below example:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -77,7 +74,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetTrustedNetwork(ctx *pulumi.Context, args *GetTrustedNetworkArgs, opts ...pulumi.InvokeOption) (*GetTrustedNetworkResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTrustedNetworkResult

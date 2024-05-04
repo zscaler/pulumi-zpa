@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupCloudBrowserIsolationCertificate(ctx *pulumi.Context, args *LookupCloudBrowserIsolationCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCloudBrowserIsolationCertificateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudBrowserIsolationCertificateResult

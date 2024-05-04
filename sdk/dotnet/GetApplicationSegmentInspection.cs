@@ -17,7 +17,6 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,9 +32,7 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -51,7 +48,6 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetApplicationSegmentInspectionResult> InvokeAsync(GetApplicationSegmentInspectionArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationSegmentInspectionResult>("zpa:index/getApplicationSegmentInspection:getApplicationSegmentInspection", args ?? new GetApplicationSegmentInspectionArgs(), options.WithDefaults());
@@ -61,7 +57,6 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -77,9 +72,7 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -95,7 +88,6 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetApplicationSegmentInspectionResult> Invoke(GetApplicationSegmentInspectionInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationSegmentInspectionResult>("zpa:index/getApplicationSegmentInspection:getApplicationSegmentInspection", args ?? new GetApplicationSegmentInspectionInvokeArgs(), options.WithDefaults());

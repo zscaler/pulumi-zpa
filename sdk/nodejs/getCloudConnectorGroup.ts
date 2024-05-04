@@ -16,7 +16,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -25,9 +24,7 @@ import * as utilities from "./utilities";
  *     name: "AWS-Cloud",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -36,7 +33,6 @@ import * as utilities from "./utilities";
  *     id: "1234567890",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCloudConnectorGroup(args?: GetCloudConnectorGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudConnectorGroupResult> {
     args = args || {};
@@ -82,7 +78,6 @@ export interface GetCloudConnectorGroupResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -91,9 +86,7 @@ export interface GetCloudConnectorGroupResult {
  *     name: "AWS-Cloud",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -102,7 +95,6 @@ export interface GetCloudConnectorGroupResult {
  *     id: "1234567890",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCloudConnectorGroupOutput(args?: GetCloudConnectorGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudConnectorGroupResult> {
     return pulumi.output(args).apply((a: any) => getCloudConnectorGroup(a, opts))

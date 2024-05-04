@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  *     name: "AWS-VPC100-App-Connector",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAppConnectorController(args?: GetAppConnectorControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetAppConnectorControllerResult> {
     args = args || {};
@@ -94,7 +92,6 @@ export interface GetAppConnectorControllerResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -103,7 +100,6 @@ export interface GetAppConnectorControllerResult {
  *     name: "AWS-VPC100-App-Connector",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAppConnectorControllerOutput(args?: GetAppConnectorControllerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppConnectorControllerResult> {
     return pulumi.output(args).apply((a: any) => getAppConnectorController(a, opts))

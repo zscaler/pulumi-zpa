@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupCloudBrowserIsolationExternalProfile(ctx *pulumi.Context, args *LookupCloudBrowserIsolationExternalProfileArgs, opts ...pulumi.InvokeOption) (*LookupCloudBrowserIsolationExternalProfileResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudBrowserIsolationExternalProfileResult

@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -22,9 +21,7 @@ import * as utilities from "./utilities";
  *     name: "Email_User SSO",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -34,7 +31,6 @@ import * as utilities from "./utilities";
  *     name: "DepartmentName_IdP_Name_Users",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSAMLAttribute(args?: GetSAMLAttributeArgs, opts?: pulumi.InvokeOptions): Promise<GetSAMLAttributeResult> {
     args = args || {};
@@ -78,7 +74,6 @@ export interface GetSAMLAttributeResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -88,9 +83,7 @@ export interface GetSAMLAttributeResult {
  *     name: "Email_User SSO",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -100,7 +93,6 @@ export interface GetSAMLAttributeResult {
  *     name: "DepartmentName_IdP_Name_Users",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSAMLAttributeOutput(args?: GetSAMLAttributeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSAMLAttributeResult> {
     return pulumi.output(args).apply((a: any) => getSAMLAttribute(a, opts))

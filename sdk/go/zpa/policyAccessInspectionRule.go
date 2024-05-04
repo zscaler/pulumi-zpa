@@ -22,7 +22,6 @@ import (
 //
 // ### 1
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -63,11 +62,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### 2
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -114,7 +111,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## LHS and RHS Values
 //

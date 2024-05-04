@@ -17,7 +17,6 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCloudBrowserIsolationRegionResult> InvokeAsync(GetCloudBrowserIsolationRegionArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCloudBrowserIsolationRegionResult>("zpa:index/getCloudBrowserIsolationRegion:getCloudBrowserIsolationRegion", args ?? new GetCloudBrowserIsolationRegionArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,7 +56,6 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCloudBrowserIsolationRegionResult> Invoke(GetCloudBrowserIsolationRegionInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCloudBrowserIsolationRegionResult>("zpa:index/getCloudBrowserIsolationRegion:getCloudBrowserIsolationRegion", args ?? new GetCloudBrowserIsolationRegionInvokeArgs(), options.WithDefaults());

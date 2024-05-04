@@ -20,7 +20,6 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,7 +35,6 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServiceEdgeControllerResult> InvokeAsync(GetServiceEdgeControllerArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceEdgeControllerResult>("zpa:index/getServiceEdgeController:getServiceEdgeController", args ?? new GetServiceEdgeControllerArgs(), options.WithDefaults());
@@ -49,7 +47,6 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -65,7 +62,6 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServiceEdgeControllerResult> Invoke(GetServiceEdgeControllerInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceEdgeControllerResult>("zpa:index/getServiceEdgeController:getServiceEdgeController", args ?? new GetServiceEdgeControllerInvokeArgs(), options.WithDefaults());

@@ -23,14 +23,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
  * const this = zpa.getPolicyClientType({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPolicyClientType(opts?: pulumi.InvokeOptions): Promise<GetPolicyClientTypeResult> {
 
@@ -76,14 +74,12 @@ export interface GetPolicyClientTypeResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
  * const this = zpa.getPolicyClientType({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPolicyClientTypeOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyClientTypeResult> {
     return pulumi.output(getPolicyClientType(opts))

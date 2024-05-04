@@ -313,7 +313,6 @@ class PRAPortal(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_zpa as zpa
@@ -328,7 +327,6 @@ class PRAPortal(pulumi.CustomResource):
             user_notification="Created with Terraform",
             user_notification_enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -377,7 +375,6 @@ class PRAPortal(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_zpa as zpa
@@ -392,7 +389,6 @@ class PRAPortal(pulumi.CustomResource):
             user_notification="Created with Terraform",
             user_notification_enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -14,7 +14,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
@@ -35,9 +34,7 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
@@ -55,7 +52,6 @@ import * as utilities from "./utilities";
  *     versionProfileName: "New Release",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -115,6 +111,21 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
      * Whether this Service Edge Group is enabled or not.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
+     * Public Service Edge.
+     */
+    public readonly graceDistanceEnabled!: pulumi.Output<boolean>;
+    /**
+     * Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
+     * Public Service Edge
+     */
+    public readonly graceDistanceValue!: pulumi.Output<string>;
+    /**
+     * Indicates the grace distance unit of measure in miles or kilometers. This value is only required if grace_distance_value
+     * is set to true
+     */
+    public readonly graceDistanceValueUnit!: pulumi.Output<string>;
     /**
      * Enable or disable public access for the Service Edge Group.
      */
@@ -183,6 +194,9 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
             resourceInputs["countryCode"] = state ? state.countryCode : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["graceDistanceEnabled"] = state ? state.graceDistanceEnabled : undefined;
+            resourceInputs["graceDistanceValue"] = state ? state.graceDistanceValue : undefined;
+            resourceInputs["graceDistanceValueUnit"] = state ? state.graceDistanceValueUnit : undefined;
             resourceInputs["isPublic"] = state ? state.isPublic : undefined;
             resourceInputs["latitude"] = state ? state.latitude : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -212,6 +226,9 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
             resourceInputs["countryCode"] = args ? args.countryCode : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["graceDistanceEnabled"] = args ? args.graceDistanceEnabled : undefined;
+            resourceInputs["graceDistanceValue"] = args ? args.graceDistanceValue : undefined;
+            resourceInputs["graceDistanceValueUnit"] = args ? args.graceDistanceValueUnit : undefined;
             resourceInputs["isPublic"] = args ? args.isPublic : undefined;
             resourceInputs["latitude"] = args ? args.latitude : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -246,6 +263,21 @@ export interface ServiceEdgeGroupState {
      * Whether this Service Edge Group is enabled or not.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
+     * Public Service Edge.
+     */
+    graceDistanceEnabled?: pulumi.Input<boolean>;
+    /**
+     * Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
+     * Public Service Edge
+     */
+    graceDistanceValue?: pulumi.Input<string>;
+    /**
+     * Indicates the grace distance unit of measure in miles or kilometers. This value is only required if grace_distance_value
+     * is set to true
+     */
+    graceDistanceValueUnit?: pulumi.Input<string>;
     /**
      * Enable or disable public access for the Service Edge Group.
      */
@@ -312,6 +344,21 @@ export interface ServiceEdgeGroupArgs {
      * Whether this Service Edge Group is enabled or not.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
+     * Public Service Edge.
+     */
+    graceDistanceEnabled?: pulumi.Input<boolean>;
+    /**
+     * Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
+     * Public Service Edge
+     */
+    graceDistanceValue?: pulumi.Input<string>;
+    /**
+     * Indicates the grace distance unit of measure in miles or kilometers. This value is only required if grace_distance_value
+     * is set to true
+     */
+    graceDistanceValueUnit?: pulumi.Input<string>;
     /**
      * Enable or disable public access for the Service Edge Group.
      */

@@ -154,7 +154,6 @@ def get_pra_credential(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import zscaler_pulumi_zpa as zpa
@@ -162,7 +161,6 @@ def get_pra_credential(id: Optional[str] = None,
     # Retrieves PRA Credential By ID
     this = zpa.PRACredential("this")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: - (String) The name of the privileged credential.
@@ -200,7 +198,6 @@ def get_pra_credential_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import zscaler_pulumi_zpa as zpa
@@ -208,7 +205,6 @@ def get_pra_credential_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     # Retrieves PRA Credential By ID
     this = zpa.PRACredential("this")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: - (String) The name of the privileged credential.

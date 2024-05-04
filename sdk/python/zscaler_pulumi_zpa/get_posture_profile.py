@@ -132,47 +132,38 @@ def get_posture_profile(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example1 = zpa.get_posture_profile(name="CrowdStrike_ZPA_ZTA_40")
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example2 = zpa.get_posture_profile(name="Detect SentinelOne")
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example3 = zpa.get_posture_profile(name="domain_joined")
     ```
-    <!--End PulumiCodeChooser -->
 
     > **NOTE** To query posture profiles that are associated with a specific Zscaler cloud, it is required to append the cloud name to the name of the posture profile as the below example:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example1 = zpa.get_posture_profile(name="CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)")
     ```
-    <!--End PulumiCodeChooser -->
 
     > **NOTE** When associating a posture profile with one of supported resources, the following parameter must be exported: ``posture_udid`` instead of the ``id`` of the resource.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -180,7 +171,6 @@ def get_posture_profile(name: Optional[str] = None,
     example1 = zpa.get_posture_profile(name="CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)")
     pulumi.export("zpaPostureProfile", example1.posture_udid)
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['name'] = name
@@ -211,47 +201,38 @@ def get_posture_profile_output(name: Optional[pulumi.Input[Optional[str]]] = Non
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example1 = zpa.get_posture_profile(name="CrowdStrike_ZPA_ZTA_40")
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example2 = zpa.get_posture_profile(name="Detect SentinelOne")
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example3 = zpa.get_posture_profile(name="domain_joined")
     ```
-    <!--End PulumiCodeChooser -->
 
     > **NOTE** To query posture profiles that are associated with a specific Zscaler cloud, it is required to append the cloud name to the name of the posture profile as the below example:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example1 = zpa.get_posture_profile(name="CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)")
     ```
-    <!--End PulumiCodeChooser -->
 
     > **NOTE** When associating a posture profile with one of supported resources, the following parameter must be exported: ``posture_udid`` instead of the ``id`` of the resource.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -259,6 +240,5 @@ def get_posture_profile_output(name: Optional[pulumi.Input[Optional[str]]] = Non
     example1 = zpa.get_posture_profile(name="CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)")
     pulumi.export("zpaPostureProfile", example1.posture_udid)
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

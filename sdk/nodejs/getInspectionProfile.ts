@@ -14,7 +14,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -23,7 +22,6 @@ import * as utilities from "./utilities";
  *     name: "Example",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInspectionProfile(args?: GetInspectionProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetInspectionProfileResult> {
     args = args || {};
@@ -77,7 +75,6 @@ export interface GetInspectionProfileResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -86,7 +83,6 @@ export interface GetInspectionProfileResult {
  *     name: "Example",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInspectionProfileOutput(args?: GetInspectionProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInspectionProfileResult> {
     return pulumi.output(args).apply((a: any) => getInspectionProfile(a, opts))
