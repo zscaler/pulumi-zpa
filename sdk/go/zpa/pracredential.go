@@ -59,7 +59,7 @@ import (
 //	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
 //
 // )
-//
+// ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS #########
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Creates Credential of Type "SSH_KEY"

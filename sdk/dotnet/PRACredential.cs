@@ -47,7 +47,7 @@ namespace Zscaler.Zpa
     /// using System.Linq;
     /// using Pulumi;
     /// using Zpa = Zscaler.Zpa;
-    /// 
+    /// ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS #########
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Creates Credential of Type "SSH_KEY"

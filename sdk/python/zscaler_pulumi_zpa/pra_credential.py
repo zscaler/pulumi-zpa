@@ -369,7 +369,7 @@ class PRACredential(pulumi.CustomResource):
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
-
+        ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS #########
         # Creates Credential of Type "SSH_KEY"
         this = zpa.PRACredential("this",
             credential_type="SSH_KEY",
@@ -453,7 +453,7 @@ class PRACredential(pulumi.CustomResource):
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
-
+        ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS #########
         # Creates Credential of Type "SSH_KEY"
         this = zpa.PRACredential("this",
             credential_type="SSH_KEY",

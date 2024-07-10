@@ -2,7 +2,7 @@
 
 import zscaler_pulumi_zpa as zpa
 
-appConnectorGroup = zpa.connector.ConnectorGroup("app-connector-group-example",
+appConnectorGroup = zpa.connector_group.ConnectorGroup("app-connector-group-example",
     name = "Pulumi App Connector Group",
     description = "Pulumi App Connector Group",
     enabled = True,
