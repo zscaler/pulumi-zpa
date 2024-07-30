@@ -11,6 +11,8 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// Use the **zpa_pra_approval_controller** data source to get information about a privileged remote access approval created in the Zscaler Private Access cloud.
+//
 // Deprecated: zpa.index/getpraapprovalcontroller.getPraApprovalController has been deprecated in favor of zpa.index/getpraapproval.getPRAApproval
 func LookupPraApprovalController(ctx *pulumi.Context, args *LookupPraApprovalControllerArgs, opts ...pulumi.InvokeOption) (*LookupPraApprovalControllerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
@@ -30,17 +32,23 @@ type LookupPraApprovalControllerArgs struct {
 
 // A collection of values returned by getPraApprovalController.
 type LookupPraApprovalControllerResult struct {
-	Applications  []GetPraApprovalControllerApplication `pulumi:"applications"`
-	CreationTime  string                                `pulumi:"creationTime"`
-	EmailIds      []string                              `pulumi:"emailIds"`
-	EndTime       string                                `pulumi:"endTime"`
-	Id            *string                               `pulumi:"id"`
-	MicrotenantId string                                `pulumi:"microtenantId"`
-	ModifiedBy    string                                `pulumi:"modifiedBy"`
-	ModifiedTime  string                                `pulumi:"modifiedTime"`
-	StartTime     string                                `pulumi:"startTime"`
-	Status        string                                `pulumi:"status"`
-	WorkingHours  []GetPraApprovalControllerWorkingHour `pulumi:"workingHours"`
+	Applications []GetPraApprovalControllerApplication `pulumi:"applications"`
+	CreationTime string                                `pulumi:"creationTime"`
+	EmailIds     []string                              `pulumi:"emailIds"`
+	EndTime      string                                `pulumi:"endTime"`
+	Id           *string                               `pulumi:"id"`
+	// (string)  The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to retrieve data from all customers associated with the tenant.
+	MicrotenantId string `pulumi:"microtenantId"`
+	ModifiedBy    string `pulumi:"modifiedBy"`
+	ModifiedTime  string `pulumi:"modifiedTime"`
+	StartTime     string `pulumi:"startTime"`
+	// (string) The status of the privileged approval. The supported values are:
+	// - `INVALID`: The privileged approval is invalid.
+	// - `ACTIVE`: The privileged approval is currently available for the user.
+	// - `FUTURE`: The privileged approval is available for a user at a set time in the future.
+	// - `EXPIRED`: The privileged approval is no longer available for the user.
+	Status       string                                `pulumi:"status"`
+	WorkingHours []GetPraApprovalControllerWorkingHour `pulumi:"workingHours"`
 }
 
 func LookupPraApprovalControllerOutput(ctx *pulumi.Context, args LookupPraApprovalControllerOutputArgs, opts ...pulumi.InvokeOption) LookupPraApprovalControllerResultOutput {
@@ -101,6 +109,7 @@ func (o LookupPraApprovalControllerResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPraApprovalControllerResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// (string)  The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to retrieve data from all customers associated with the tenant.
 func (o LookupPraApprovalControllerResultOutput) MicrotenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPraApprovalControllerResult) string { return v.MicrotenantId }).(pulumi.StringOutput)
 }
@@ -117,6 +126,11 @@ func (o LookupPraApprovalControllerResultOutput) StartTime() pulumi.StringOutput
 	return o.ApplyT(func(v LookupPraApprovalControllerResult) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
+// (string) The status of the privileged approval. The supported values are:
+// - `INVALID`: The privileged approval is invalid.
+// - `ACTIVE`: The privileged approval is currently available for the user.
+// - `FUTURE`: The privileged approval is available for a user at a set time in the future.
+// - `EXPIRED`: The privileged approval is no longer available for the user.
 func (o LookupPraApprovalControllerResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPraApprovalControllerResult) string { return v.Status }).(pulumi.StringOutput)
 }

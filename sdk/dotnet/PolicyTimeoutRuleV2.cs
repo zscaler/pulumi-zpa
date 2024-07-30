@@ -10,6 +10,185 @@ using Pulumi;
 
 namespace Zscaler.Zpa
 {
+    /// <summary>
+    /// * [Official documentation](https://help.zscaler.com/zpa/about-timeout-policy)
+    /// * [API documentation](https://help.zscaler.com/zpa/configuring-timeout-policies-using-api)
+    /// 
+    /// The **zpa_policy_timeout_rule_v2** resource creates and manages policy access timeout rule in the Zscaler Private Access cloud using a new v2 API endpoint.
+    /// 
+    ///   ⚠️ **NOTE**: This resource is recommended if your configuration requires the association of more than 1000 resource criteria per rule.
+    /// 
+    ///   ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Pulumi.Zpa;
+    /// using Zpa = Zscaler.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var thisIdPController = Zpa.GetIdPController.Invoke(new()
+    ///     {
+    ///         Name = "Idp_Name",
+    ///     });
+    /// 
+    ///     var emailUserSso = Zpa.GetSAMLAttribute.Invoke(new()
+    ///     {
+    ///         Name = "Email_Users",
+    ///         IdpName = "Idp_Name",
+    ///     });
+    /// 
+    ///     var groupUser = Zpa.GetSAMLAttribute.Invoke(new()
+    ///     {
+    ///         Name = "GroupName_Users",
+    ///         IdpName = "Idp_Name",
+    ///     });
+    /// 
+    ///     var a000 = Zpa.GetSCIMGroups.Invoke(new()
+    ///     {
+    ///         Name = "A000",
+    ///         IdpName = "Idp_Name",
+    ///     });
+    /// 
+    ///     var b000 = Zpa.GetSCIMGroups.Invoke(new()
+    ///     {
+    ///         Name = "B000",
+    ///         IdpName = "Idp_Name",
+    ///     });
+    /// 
+    ///     // Create Segment Group
+    ///     var thisSegmentGroup = new Zpa.SegmentGroup("thisSegmentGroup", new()
+    ///     {
+    ///         Description = "Example",
+    ///         Enabled = true,
+    ///     });
+    /// 
+    ///     // Create Policy Access Rule V2
+    ///     var thisPolicyAccessTimeOutRuleV2 = new Zpa.PolicyAccessTimeOutRuleV2("thisPolicyAccessTimeOutRuleV2", new()
+    ///     {
+    ///         Description = "Example",
+    ///         Action = "RE_AUTH",
+    ///         ReauthIdleTimeout = "10 Days",
+    ///         ReauthTimeout = "10 Days",
+    ///         Conditions = new[]
+    ///         {
+    ///             new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionArgs
+    ///             {
+    ///                 Operator = "OR",
+    ///                 Operands = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "APP_GROUP",
+    ///                         Values = new[]
+    ///                         {
+    ///                             thisSegmentGroup.Id,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionArgs
+    ///             {
+    ///                 Operator = "OR",
+    ///                 Operands = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "SAML",
+    ///                         EntryValues = new[]
+    ///                         {
+    ///                             new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Rhs = "user1@acme.com",
+    ///                                 Lhs = emailUserSso.Apply(getSAMLAttributeResult =&gt; getSAMLAttributeResult.Id),
+    ///                             },
+    ///                             new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Rhs = "A000",
+    ///                                 Lhs = groupUser.Apply(getSAMLAttributeResult =&gt; getSAMLAttributeResult.Id),
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "SCIM_GROUP",
+    ///                         EntryValues = new[]
+    ///                         {
+    ///                             new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Rhs = a000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
+    ///                                 Lhs = thisIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                             },
+    ///                             new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Rhs = b000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
+    ///                                 Lhs = thisIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionArgs
+    ///             {
+    ///                 Operator = "OR",
+    ///                 Operands = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "PLATFORM",
+    ///                         EntryValues = new[]
+    ///                         {
+    ///                             new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Rhs = "true",
+    ///                                 Lhs = "linux",
+    ///                             },
+    ///                             new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Rhs = "true",
+    ///                                 Lhs = "android",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## LHS and RHS Values
+    /// 
+    /// | Object Type | LHS| RHS| VALUES
+    /// |----------|-----------|----------|----------
+    /// | APP  |   |  | ``application_segment_id`` |
+    /// | APP_GROUP  |   |  | ``segment_group_id``|
+    /// | CLIENT_TYPE  |   |  |  ``zpn_client_type_zappl``, ``zpn_client_type_exporter``, ``zpn_client_type_browser_isolation``, ``zpn_client_type_ip_anchoring``, ``zpn_client_type_edge_connector``, ``zpn_client_type_branch_connector``,  ``zpn_client_type_zapp_partner``, ``zpn_client_type_zapp``  |
+    /// | SAML | ``saml_attribute_id``  | ``attribute_value_to_match`` |
+    /// | SCIM | ``scim_attribute_id``  | ``attribute_value_to_match``  |
+    /// | SCIM_GROUP | ``scim_group_attribute_id``  | ``attribute_value_to_match``  |
+    /// | PLATFORM | ``mac``, ``ios``, ``windows``, ``android``, ``linux`` | ``"true"`` / ``"false"`` |
+    /// | POSTURE | ``posture_udid``  | ``"true"`` / ``"false"`` |
+    /// 
+    /// ## Import
+    /// 
+    /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+    /// 
+    /// Visit
+    /// 
+    /// Policy access timeout rule can be imported by using `&lt;RULE ID&gt;` as the import ID.
+    /// 
+    /// For example:
+    /// 
+    /// ```sh
+    /// $ pulumi import zpa:index/policyTimeoutRuleV2:PolicyTimeoutRuleV2 example &lt;rule_id&gt;
+    /// ```
+    /// </summary>
     [Obsolete(@"zpa.index/policytimeoutrulev2.PolicyTimeoutRuleV2 has been deprecated in favor of zpa.index/policyaccesstimeoutrulev2.PolicyAccessTimeOutRuleV2")]
     [ZpaResourceType("zpa:index/policyTimeoutRuleV2:PolicyTimeoutRuleV2")]
     public partial class PolicyTimeoutRuleV2 : global::Pulumi.CustomResource

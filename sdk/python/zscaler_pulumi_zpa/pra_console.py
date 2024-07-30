@@ -258,6 +258,63 @@ class PRAConsole(pulumi.CustomResource):
 
         The **zpa_pra_console_controller** resource creates a privileged remote access console in the Zscaler Private Access cloud. This resource can then be referenced in an privileged access policy resource and a privileged access portal.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        # Creates Segment Group for Application Segment"
+        this_segment_group = zpa.SegmentGroup("thisSegmentGroup",
+            description="Example",
+            enabled=True)
+        # Creates Privileged Remote Access Application Segment"
+        this_application_segment_pra = zpa.ApplicationSegmentPRA("thisApplicationSegmentPRA",
+            description="Example",
+            enabled=True,
+            health_reporting="ON_ACCESS",
+            bypass_type="NEVER",
+            is_cname_enabled=True,
+            tcp_port_ranges=[
+                "3389",
+                "3389",
+            ],
+            domain_names=["rdp_pra.example.com"],
+            segment_group_id=this_segment_group.id,
+            common_apps_dto=zpa.ApplicationSegmentPRACommonAppsDtoArgs(
+                apps_configs=[zpa.ApplicationSegmentPRACommonAppsDtoAppsConfigArgs(
+                    name="rdp_pra",
+                    domain="rdp_pra.example.com",
+                    application_protocol="RDP",
+                    connection_security="ANY",
+                    application_port="3389",
+                    enabled=True,
+                    app_types=["SECURE_REMOTE_ACCESS"],
+                )],
+            ))
+        this_application_segment_by_type = zpa.get_application_segment_by_type(application_type="SECURE_REMOTE_ACCESS",
+            name="rdp_pra")
+        this_ba_certificate = zpa.get_ba_certificate(name="pra01.example.com")
+        # Creates PRA Portal"
+        this1 = zpa.PRAPortal("this1",
+            description="pra01.example.com",
+            enabled=True,
+            domain="pra01.example.com",
+            certificate_id=this_ba_certificate.id,
+            user_notification="Created with Terraform",
+            user_notification_enabled=True)
+        ssh_pra = zpa.PRAConsole("sshPra",
+            description="Created with Terraform",
+            enabled=True,
+            pra_application=zpa.PRAConsolePraApplicationArgs(
+                id=this_application_segment_by_type.id,
+            ),
+            pra_portals=[zpa.PRAConsolePraPortalArgs(
+                ids=[zpa_pra_portal_controller["this"]["id"]],
+            )])
+        ```
+
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
@@ -298,6 +355,63 @@ class PRAConsole(pulumi.CustomResource):
         * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-consoles-using-api)
 
         The **zpa_pra_console_controller** resource creates a privileged remote access console in the Zscaler Private Access cloud. This resource can then be referenced in an privileged access policy resource and a privileged access portal.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        # Creates Segment Group for Application Segment"
+        this_segment_group = zpa.SegmentGroup("thisSegmentGroup",
+            description="Example",
+            enabled=True)
+        # Creates Privileged Remote Access Application Segment"
+        this_application_segment_pra = zpa.ApplicationSegmentPRA("thisApplicationSegmentPRA",
+            description="Example",
+            enabled=True,
+            health_reporting="ON_ACCESS",
+            bypass_type="NEVER",
+            is_cname_enabled=True,
+            tcp_port_ranges=[
+                "3389",
+                "3389",
+            ],
+            domain_names=["rdp_pra.example.com"],
+            segment_group_id=this_segment_group.id,
+            common_apps_dto=zpa.ApplicationSegmentPRACommonAppsDtoArgs(
+                apps_configs=[zpa.ApplicationSegmentPRACommonAppsDtoAppsConfigArgs(
+                    name="rdp_pra",
+                    domain="rdp_pra.example.com",
+                    application_protocol="RDP",
+                    connection_security="ANY",
+                    application_port="3389",
+                    enabled=True,
+                    app_types=["SECURE_REMOTE_ACCESS"],
+                )],
+            ))
+        this_application_segment_by_type = zpa.get_application_segment_by_type(application_type="SECURE_REMOTE_ACCESS",
+            name="rdp_pra")
+        this_ba_certificate = zpa.get_ba_certificate(name="pra01.example.com")
+        # Creates PRA Portal"
+        this1 = zpa.PRAPortal("this1",
+            description="pra01.example.com",
+            enabled=True,
+            domain="pra01.example.com",
+            certificate_id=this_ba_certificate.id,
+            user_notification="Created with Terraform",
+            user_notification_enabled=True)
+        ssh_pra = zpa.PRAConsole("sshPra",
+            description="Created with Terraform",
+            enabled=True,
+            pra_application=zpa.PRAConsolePraApplicationArgs(
+                id=this_application_segment_by_type.id,
+            ),
+            pra_portals=[zpa.PRAConsolePraPortalArgs(
+                ids=[zpa_pra_portal_controller["this"]["id"]],
+            )])
+        ```
 
         ## Import
 

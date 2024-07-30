@@ -2,7 +2,14 @@
     "auto-aliasing": {
         "resources": {
             "zpa_app_connector_assistant_schedule": {
-                "current": "zpa:index/assistantSchedule:AssistantSchedule"
+                "current": "zpa:index/appConnectorAssistantSchedule:AppConnectorAssistantSchedule",
+                "past": [
+                    {
+                        "name": "zpa:index/assistantSchedule:AssistantSchedule",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ]
             },
             "zpa_app_connector_group": {
                 "current": "zpa:index/connectorGroup:ConnectorGroup"
@@ -220,14 +227,41 @@
                     "certificate_ids": {
                         "maxItemsOne": false
                     },
+                    "debug_mode": {
+                        "maxItemsOne": true
+                    },
                     "region_ids": {
                         "maxItemsOne": false
                     },
                     "security_controls": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "deep_link": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "applications": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "watermark": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     },
                     "user_experience": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "forward_to_zia": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -237,16 +271,6 @@
             "zpa_inspection_custom_controls": {
                 "current": "zpa:index/inspectionCustomControls:InspectionCustomControls",
                 "fields": {
-                    "associated_inspection_profile_names": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "id": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
                     "rules": {
                         "maxItemsOne": false,
                         "elem": {
@@ -274,7 +298,16 @@
                     "global_control_actions": {
                         "maxItemsOne": false
                     },
+                    "predefined_api_controls": {
+                        "maxItemsOne": false
+                    },
                     "predefined_controls": {
+                        "maxItemsOne": false
+                    },
+                    "threat_labz_controls": {
+                        "maxItemsOne": false
+                    },
+                    "websocket_controls": {
                         "maxItemsOne": false
                     }
                 }
@@ -466,7 +499,14 @@
                 }
             },
             "zpa_policy_credential_rule": {
-                "current": "zpa:index/policyCredentialRule:PolicyCredentialRule",
+                "current": "zpa:index/policyAccessCredentialRule:PolicyAccessCredentialRule",
+                "past": [
+                    {
+                        "name": "zpa:index/policyCredentialRule:PolicyCredentialRule",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
                 "fields": {
                     "conditions": {
                         "maxItemsOne": false,
@@ -872,6 +912,9 @@
                     }
                 }
             },
+            "zpa_service_edge_assistant_schedule": {
+                "current": "zpa:index/serviceEdgeAssistantSchedule:ServiceEdgeAssistantSchedule"
+            },
             "zpa_service_edge_group": {
                 "current": "zpa:index/serviceEdgeGroup:ServiceEdgeGroup",
                 "fields": {
@@ -906,7 +949,14 @@
                 "current": "zpa:index/getPolicyPlatform:getPolicyPlatform"
             },
             "zpa_app_connector_assistant_schedule": {
-                "current": "zpa:index/getAssistantSchedule:getAssistantSchedule"
+                "current": "zpa:index/getAppConnectorAssistantSchedule:getAppConnectorAssistantSchedule",
+                "past": [
+                    {
+                        "name": "zpa:index/getAssistantSchedule:getAssistantSchedule",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ]
             },
             "zpa_app_connector_controller": {
                 "current": "zpa:index/getAppConnectorController:getAppConnectorController"
@@ -977,6 +1027,9 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "zpa_application_segment_by_type": {
+                "current": "zpa:index/getApplicationSegmentByType:getApplicationSegmentByType"
             },
             "zpa_application_segment_inspection": {
                 "current": "zpa:index/getApplicationSegmentInspection:getApplicationSegmentInspection",
@@ -1069,14 +1122,44 @@
             "zpa_cloud_browser_isolation_external_profile": {
                 "current": "zpa:index/getCloudBrowserIsolationExternalProfile:getCloudBrowserIsolationExternalProfile",
                 "fields": {
+                    "certificate_ids": {
+                        "maxItemsOne": false
+                    },
+                    "debug_mode": {
+                        "maxItemsOne": false
+                    },
                     "regions": {
                         "maxItemsOne": false
                     },
                     "security_controls": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "deep_link": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "applications": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "watermark": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "user_experience": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "forward_to_zia": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1473,6 +1556,9 @@
                     }
                 }
             },
+            "zpa_service_edge_assistant_schedule": {
+                "current": "zpa:index/getServiceEdgeAssistantSchedule:getServiceEdgeAssistantSchedule"
+            },
             "zpa_service_edge_controller": {
                 "current": "zpa:index/getServiceEdgeController:getServiceEdgeController",
                 "fields": {
@@ -1512,6 +1598,37 @@
     },
     "auto-settings": {
         "resources": {
+            "zpa_app_connector_assistant_schedule": {
+                "aliases": [
+                    "zpa:index/assistantSchedule:AssistantSchedule"
+                ]
+            },
+            "zpa_application_segment_inspection": {
+                "maxItemsOneOverrides": {
+                    "common_apps_dto": true
+                }
+            },
+            "zpa_application_segment_pra": {
+                "maxItemsOneOverrides": {
+                    "common_apps_dto": true
+                }
+            },
+            "zpa_cloud_browser_isolation_external_profile": {
+                "maxItemsOneOverrides": {
+                    "security_controls": false,
+                    "user_experience": false
+                }
+            },
+            "zpa_inspection_custom_controls": {
+                "maxItemsOneOverrides": {
+                    "rules.$.conditions": true
+                }
+            },
+            "zpa_policy_credential_rule": {
+                "aliases": [
+                    "zpa:index/policyCredentialRule:PolicyCredentialRule"
+                ]
+            },
             "zpa_policy_forwarding_rule_v2": {
                 "aliases": [
                     "zpa:index/policyForwardingRuleV2:PolicyForwardingRuleV2"
@@ -1535,12 +1652,18 @@
             "zpa_pra_approval_controller": {
                 "aliases": [
                     "zpa:index/praApprovalController:PraApprovalController"
-                ]
+                ],
+                "maxItemsOneOverrides": {
+                    "email_ids": true
+                }
             },
             "zpa_pra_console_controller": {
                 "aliases": [
                     "zpa:index/praConsoleController:PraConsoleController"
-                ]
+                ],
+                "maxItemsOneOverrides": {
+                    "pra_application": true
+                }
             },
             "zpa_pra_credential_controller": {
                 "aliases": [
@@ -1554,6 +1677,11 @@
             }
         },
         "datasources": {
+            "zpa_app_connector_assistant_schedule": {
+                "renames": [
+                    "zpa:index/getAssistantSchedule:getAssistantSchedule"
+                ]
+            },
             "zpa_pra_approval_controller": {
                 "renames": [
                     "zpa:index/getPraApprovalController:getPraApprovalController"

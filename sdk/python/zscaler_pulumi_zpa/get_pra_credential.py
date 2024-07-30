@@ -21,7 +21,7 @@ class GetPRACredentialResult:
     """
     A collection of values returned by getPRACredential.
     """
-    def __init__(__self__, creation_time=None, credential_type=None, description=None, id=None, last_credential_reset_time=None, microtenant_id=None, microtenant_name=None, modified_by=None, modified_time=None, name=None, user_domain=None, username=None):
+    def __init__(__self__, creation_time=None, credential_type=None, description=None, id=None, last_credential_reset_time=None, microtenant_id=None, microtenant_name=None, modified_by=None, modified_time=None, name=None, password=None, user_domain=None, username=None):
         if creation_time and not isinstance(creation_time, str):
             raise TypeError("Expected argument 'creation_time' to be a str")
         pulumi.set(__self__, "creation_time", creation_time)
@@ -52,6 +52,9 @@ class GetPRACredentialResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if password and not isinstance(password, str):
+            raise TypeError("Expected argument 'password' to be a str")
+        pulumi.set(__self__, "password", password)
         if user_domain and not isinstance(user_domain, str):
             raise TypeError("Expected argument 'user_domain' to be a str")
         pulumi.set(__self__, "user_domain", user_domain)
@@ -113,6 +116,11 @@ class GetPRACredentialResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def password(self) -> str:
+        return pulumi.get(self, "password")
+
+    @property
     @pulumi.getter(name="userDomain")
     def user_domain(self) -> str:
         return pulumi.get(self, "user_domain")
@@ -139,6 +147,7 @@ class AwaitableGetPRACredentialResult(GetPRACredentialResult):
             modified_by=self.modified_by,
             modified_time=self.modified_time,
             name=self.name,
+            password=self.password,
             user_domain=self.user_domain,
             username=self.username)
 
@@ -154,7 +163,6 @@ def get_pra_credential(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import zscaler_pulumi_zpa as zpa
@@ -162,7 +170,6 @@ def get_pra_credential(id: Optional[str] = None,
     # Retrieves PRA Credential By ID
     this = zpa.PRACredential("this")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: - (String) The name of the privileged credential.
@@ -184,6 +191,7 @@ def get_pra_credential(id: Optional[str] = None,
         modified_by=pulumi.get(__ret__, 'modified_by'),
         modified_time=pulumi.get(__ret__, 'modified_time'),
         name=pulumi.get(__ret__, 'name'),
+        password=pulumi.get(__ret__, 'password'),
         user_domain=pulumi.get(__ret__, 'user_domain'),
         username=pulumi.get(__ret__, 'username'))
 
@@ -200,7 +208,6 @@ def get_pra_credential_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import zscaler_pulumi_zpa as zpa
@@ -208,7 +215,6 @@ def get_pra_credential_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     # Retrieves PRA Credential By ID
     this = zpa.PRACredential("this")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: - (String) The name of the privileged credential.

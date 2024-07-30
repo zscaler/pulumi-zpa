@@ -14,7 +14,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -24,9 +23,9 @@ import * as utilities from "./utilities";
  *     version: "OWASP_CRS/3.3.0",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
-export function getInspectionAllPredefinedControls(args: GetInspectionAllPredefinedControlsArgs, opts?: pulumi.InvokeOptions): Promise<GetInspectionAllPredefinedControlsResult> {
+export function getInspectionAllPredefinedControls(args?: GetInspectionAllPredefinedControlsArgs, opts?: pulumi.InvokeOptions): Promise<GetInspectionAllPredefinedControlsResult> {
+    args = args || {};
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getInspectionAllPredefinedControls:getInspectionAllPredefinedControls", {
@@ -40,7 +39,7 @@ export function getInspectionAllPredefinedControls(args: GetInspectionAllPredefi
  */
 export interface GetInspectionAllPredefinedControlsArgs {
     groupName?: string;
-    version: string;
+    version?: string;
 }
 
 /**
@@ -53,7 +52,7 @@ export interface GetInspectionAllPredefinedControlsResult {
      */
     readonly id: string;
     readonly lists: outputs.GetInspectionAllPredefinedControlsList[];
-    readonly version: string;
+    readonly version?: string;
 }
 /**
  * * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
@@ -63,7 +62,6 @@ export interface GetInspectionAllPredefinedControlsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -73,9 +71,8 @@ export interface GetInspectionAllPredefinedControlsResult {
  *     version: "OWASP_CRS/3.3.0",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
-export function getInspectionAllPredefinedControlsOutput(args: GetInspectionAllPredefinedControlsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInspectionAllPredefinedControlsResult> {
+export function getInspectionAllPredefinedControlsOutput(args?: GetInspectionAllPredefinedControlsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInspectionAllPredefinedControlsResult> {
     return pulumi.output(args).apply((a: any) => getInspectionAllPredefinedControls(a, opts))
 }
 
@@ -84,5 +81,5 @@ export function getInspectionAllPredefinedControlsOutput(args: GetInspectionAllP
  */
 export interface GetInspectionAllPredefinedControlsOutputArgs {
     groupName?: pulumi.Input<string>;
-    version: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
 }

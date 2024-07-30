@@ -7,6 +7,121 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-isolation-policy)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-isolation-policies-using-api)
+ *
+ * The **zpa_policy_isolation_rule_v2** resource creates and manages policy access isolation rule in the Zscaler Private Access cloud using a new v2 API endpoint.
+ *
+ *   ⚠️ **NOTE**: This resource is recommended if your configuration requires the association of more than 1000 resource criteria per rule.
+ *
+ *   ⚠️ **WARNING:**: The attribute ``ruleOrder`` is now deprecated in favor of the new resource  ``policyAccessRuleReorder``
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ * import * as zpa from "@pulumi/zpa";
+ *
+ * const thisIsolationProfile = zpa.getIsolationProfile({
+ *     name: "zpa_isolation_profile",
+ * });
+ * const thisIdPController = zpa.getIdPController({
+ *     name: "Idp_Name",
+ * });
+ * const emailUserSso = zpa.getSAMLAttribute({
+ *     name: "Email_Users",
+ *     idpName: "Idp_Name",
+ * });
+ * const groupUser = zpa.getSAMLAttribute({
+ *     name: "GroupName_Users",
+ *     idpName: "Idp_Name",
+ * });
+ * const a000 = zpa.getSCIMGroups({
+ *     name: "A000",
+ *     idpName: "Idp_Name",
+ * });
+ * const b000 = zpa.getSCIMGroups({
+ *     name: "B000",
+ *     idpName: "Idp_Name",
+ * });
+ * // Create Policy Access Isolation Rule V2
+ * const thisPolicyAccessIsolationRuleV2 = new zpa.PolicyAccessIsolationRuleV2("thisPolicyAccessIsolationRuleV2", {
+ *     description: "Example",
+ *     action: "ISOLATE",
+ *     zpnIsolationProfileId: thisIsolationProfile.then(thisIsolationProfile => thisIsolationProfile.id),
+ *     conditions: [
+ *         {
+ *             operator: "OR",
+ *             operands: [{
+ *                 objectType: "CLIENT_TYPE",
+ *                 values: ["zpn_client_type_exporter"],
+ *             }],
+ *         },
+ *         {
+ *             operator: "OR",
+ *             operands: [
+ *                 {
+ *                     objectType: "SAML",
+ *                     entryValues: [
+ *                         {
+ *                             rhs: "user1@acme.com",
+ *                             lhs: emailUserSso.then(emailUserSso => emailUserSso.id),
+ *                         },
+ *                         {
+ *                             rhs: "A000",
+ *                             lhs: groupUser.then(groupUser => groupUser.id),
+ *                         },
+ *                     ],
+ *                 },
+ *                 {
+ *                     objectType: "SCIM_GROUP",
+ *                     entryValues: [
+ *                         {
+ *                             rhs: a000.then(a000 => a000.id),
+ *                             lhs: thisIdPController.then(thisIdPController => thisIdPController.id),
+ *                         },
+ *                         {
+ *                             rhs: b000.then(b000 => b000.id),
+ *                             lhs: thisIdPController.then(thisIdPController => thisIdPController.id),
+ *                         },
+ *                     ],
+ *                 },
+ *             ],
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## LHS and RHS Values
+ *
+ * | Object Type | LHS| RHS| VALUES
+ * |----------|-----------|----------|----------
+ * | APP  |   |  | ``applicationSegmentId`` |
+ * | APP_GROUP  |   |  | ``segmentGroupId``|
+ * | CLIENT_TYPE  |   |  |  ``zpnClientTypeZappl``, ``zpnClientTypeExporter``, ``zpnClientTypeBrowserIsolation``, ``zpnClientTypeIpAnchoring``, ``zpnClientTypeEdgeConnector``, ``zpnClientTypeBranchConnector``,  ``zpnClientTypeZappPartner``, ``zpnClientTypeZapp``  |
+ * | EDGE_CONNECTOR_GROUP  |   |  |  ``<edge_connector_id>`` |
+ * | MACHINE_GRP   |   |  | ``machineGroupId`` |
+ * | SAML | ``samlAttributeId``  | ``attributeValueToMatch`` |
+ * | SCIM | ``scimAttributeId``  | ``attributeValueToMatch``  |
+ * | SCIM_GROUP | ``scimGroupAttributeId``  | ``attributeValueToMatch``  |
+ * | PLATFORM | ``mac``, ``ios``, ``windows``, ``android``, ``linux`` | ``"true"`` / ``"false"`` |
+ * | POSTURE | ``postureUdid``  | ``"true"`` / ``"false"`` |
+ *
+ * ## Import
+ *
+ * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+ *
+ * Visit
+ *
+ * Policy access isolation rule can be imported by using `<RULE ID>` as the import ID.
+ *
+ * For example:
+ *
+ * ```sh
+ * $ pulumi import zpa:index/policyIsolationRuleV2:PolicyIsolationRuleV2 example <rule_id>
+ * ```
+ *
  * @deprecated zpa.index/policyisolationrulev2.PolicyIsolationRuleV2 has been deprecated in favor of zpa.index/policyaccessisolationrulev2.PolicyAccessIsolationRuleV2
  */
 export class PolicyIsolationRuleV2 extends pulumi.CustomResource {
@@ -39,7 +154,7 @@ export class PolicyIsolationRuleV2 extends pulumi.CustomResource {
     }
 
     /**
-     * This is for providing the rule action.
+     * This is for providing the rule action. Supported values: `ISOLATE` Default.
      */
     public readonly action!: pulumi.Output<string | undefined>;
     /**
@@ -47,15 +162,18 @@ export class PolicyIsolationRuleV2 extends pulumi.CustomResource {
      */
     public readonly conditions!: pulumi.Output<outputs.PolicyIsolationRuleV2Condition[]>;
     /**
-     * This is the description of the access policy.
+     * This is the description of the access policy rule.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly microtenantId!: pulumi.Output<string>;
     /**
-     * This is the name of the policy.
+     * This is the name of the policy rule.
      */
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly policySetId!: pulumi.Output<string>;
+    /**
+     * Use zpa*isolation*profile data source to retrieve the necessary Isolation profile ID `zpnIsolationProfileId`
+     */
     public readonly zpnIsolationProfileId!: pulumi.Output<string>;
 
     /**
@@ -101,7 +219,7 @@ export class PolicyIsolationRuleV2 extends pulumi.CustomResource {
  */
 export interface PolicyIsolationRuleV2State {
     /**
-     * This is for providing the rule action.
+     * This is for providing the rule action. Supported values: `ISOLATE` Default.
      */
     action?: pulumi.Input<string>;
     /**
@@ -109,15 +227,18 @@ export interface PolicyIsolationRuleV2State {
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.PolicyIsolationRuleV2Condition>[]>;
     /**
-     * This is the description of the access policy.
+     * This is the description of the access policy rule.
      */
     description?: pulumi.Input<string>;
     microtenantId?: pulumi.Input<string>;
     /**
-     * This is the name of the policy.
+     * This is the name of the policy rule.
      */
     name?: pulumi.Input<string>;
     policySetId?: pulumi.Input<string>;
+    /**
+     * Use zpa*isolation*profile data source to retrieve the necessary Isolation profile ID `zpnIsolationProfileId`
+     */
     zpnIsolationProfileId?: pulumi.Input<string>;
 }
 
@@ -126,7 +247,7 @@ export interface PolicyIsolationRuleV2State {
  */
 export interface PolicyIsolationRuleV2Args {
     /**
-     * This is for providing the rule action.
+     * This is for providing the rule action. Supported values: `ISOLATE` Default.
      */
     action?: pulumi.Input<string>;
     /**
@@ -134,13 +255,16 @@ export interface PolicyIsolationRuleV2Args {
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.PolicyIsolationRuleV2Condition>[]>;
     /**
-     * This is the description of the access policy.
+     * This is the description of the access policy rule.
      */
     description?: pulumi.Input<string>;
     microtenantId?: pulumi.Input<string>;
     /**
-     * This is the name of the policy.
+     * This is the name of the policy rule.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Use zpa*isolation*profile data source to retrieve the necessary Isolation profile ID `zpnIsolationProfileId`
+     */
     zpnIsolationProfileId?: pulumi.Input<string>;
 }

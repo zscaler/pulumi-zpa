@@ -6,6 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Use the **zpa_pra_approval_controller** data source to get information about a privileged remote access approval created in the Zscaler Private Access cloud.
+ */
 /** @deprecated zpa.index/getpraapprovalcontroller.getPraApprovalController has been deprecated in favor of zpa.index/getpraapproval.getPRAApproval */
 export function getPraApprovalController(args?: GetPraApprovalControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetPraApprovalControllerResult> {
     pulumi.log.warn("getPraApprovalController is deprecated: zpa.index/getpraapprovalcontroller.getPraApprovalController has been deprecated in favor of zpa.index/getpraapproval.getPRAApproval")
@@ -35,13 +38,26 @@ export interface GetPraApprovalControllerResult {
     readonly emailIds?: string[];
     readonly endTime: string;
     readonly id?: string;
+    /**
+     * (string)  The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to retrieve data from all customers associated with the tenant.
+     */
     readonly microtenantId: string;
     readonly modifiedBy: string;
     readonly modifiedTime: string;
     readonly startTime: string;
+    /**
+     * (string) The status of the privileged approval. The supported values are:
+     * - `INVALID`: The privileged approval is invalid.
+     * - `ACTIVE`: The privileged approval is currently available for the user.
+     * - `FUTURE`: The privileged approval is available for a user at a set time in the future.
+     * - `EXPIRED`: The privileged approval is no longer available for the user.
+     */
     readonly status: string;
     readonly workingHours: outputs.GetPraApprovalControllerWorkingHour[];
 }
+/**
+ * Use the **zpa_pra_approval_controller** data source to get information about a privileged remote access approval created in the Zscaler Private Access cloud.
+ */
 /** @deprecated zpa.index/getpraapprovalcontroller.getPraApprovalController has been deprecated in favor of zpa.index/getpraapproval.getPRAApproval */
 export function getPraApprovalControllerOutput(args?: GetPraApprovalControllerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPraApprovalControllerResult> {
     return pulumi.output(args).apply((a: any) => getPraApprovalController(a, opts))

@@ -311,7 +311,48 @@ class PraPortalController(pulumi.CustomResource):
                  user_notification_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a PraPortalController resource with the given unique name, props, and options.
+        * [Official documentation](https://help.zscaler.com/zpa/about-privileged-portals)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-portals-using-api)
+
+        The **zpa_pra_portal_controller** resource creates a privileged remote access portal in the Zscaler Private Access cloud. This resource can then be referenced in an privileged remote access console resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        this_ba_certificate = zpa.get_ba_certificate(name="portal.acme.com")
+        this_pra_portal = zpa.PRAPortal("thisPRAPortal",
+            description="portal.acme.com",
+            enabled=True,
+            domain="portal.acme.com",
+            certificate_id=this_ba_certificate.id,
+            user_notification="Created with Terraform",
+            user_notification_enabled=True)
+        ```
+
+        ## Import
+
+        Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+
+        Visit
+
+        **pra_portal_controller** can be imported by using `<PORTAL ID>` or `<PORTAL NAME>` as the import ID.
+
+        For example:
+
+        ```sh
+        $ pulumi import zpa:index/praPortalController:PraPortalController this <portal_id>
+        ```
+
+        or
+
+        ```sh
+        $ pulumi import zpa:index/praPortalController:PraPortalController this <portal_name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_id: The unique identifier of the certificate
@@ -332,7 +373,48 @@ class PraPortalController(pulumi.CustomResource):
                  args: Optional[PraPortalControllerArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a PraPortalController resource with the given unique name, props, and options.
+        * [Official documentation](https://help.zscaler.com/zpa/about-privileged-portals)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-portals-using-api)
+
+        The **zpa_pra_portal_controller** resource creates a privileged remote access portal in the Zscaler Private Access cloud. This resource can then be referenced in an privileged remote access console resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        this_ba_certificate = zpa.get_ba_certificate(name="portal.acme.com")
+        this_pra_portal = zpa.PRAPortal("thisPRAPortal",
+            description="portal.acme.com",
+            enabled=True,
+            domain="portal.acme.com",
+            certificate_id=this_ba_certificate.id,
+            user_notification="Created with Terraform",
+            user_notification_enabled=True)
+        ```
+
+        ## Import
+
+        Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+
+        Visit
+
+        **pra_portal_controller** can be imported by using `<PORTAL ID>` or `<PORTAL NAME>` as the import ID.
+
+        For example:
+
+        ```sh
+        $ pulumi import zpa:index/praPortalController:PraPortalController this <portal_id>
+        ```
+
+        or
+
+        ```sh
+        $ pulumi import zpa:index/praPortalController:PraPortalController this <portal_name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param PraPortalControllerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

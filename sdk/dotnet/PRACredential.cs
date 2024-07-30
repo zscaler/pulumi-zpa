@@ -18,7 +18,6 @@ namespace Zscaler.Zpa
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,15 +38,15 @@ namespace Zscaler.Zpa
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE #########\
+    /// ######### ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ##########
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
     /// using Zpa = Zscaler.Zpa;
-    /// ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS #########
+    /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Creates Credential of Type "SSH_KEY"
@@ -57,7 +56,6 @@ namespace Zscaler.Zpa
     ///         Description = "Created with Terraform",
     ///         PrivateKey = @"-----BEGIN PRIVATE KEY-----
     /// MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEjc8pPoobS0l6
-    /// KjldVtViVwqCTXZZOjHnmEIMn+XKU3sEYlqDKLp6TByIsBlITKd3Ju8qMBNwXcfi
     /// -----END PRIVATE KEY-----
     /// 
     /// ",
@@ -67,7 +65,6 @@ namespace Zscaler.Zpa
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

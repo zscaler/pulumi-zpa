@@ -173,7 +173,19 @@ def get_pra_portal_controller(id: Optional[str] = None,
                               name: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPraPortalControllerResult:
     """
-    Use this data source to access information about an existing resource.
+    * [Official documentation](https://help.zscaler.com/zpa/about-privileged-portals)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-portals-using-api)
+
+    Use the **zpa_pra_portal_controller** data source to get information about a privileged remote access portal created in the Zscaler Private Access cloud. This data source can then be referenced in an privileged remote access console resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_zpa as zpa
+
+    this = zpa.get_pra_portal(name="Example")
+    ```
     """
     pulumi.log.warn("""get_pra_portal_controller is deprecated: zpa.index/getpraportalcontroller.getPraPortalController has been deprecated in favor of zpa.index/getpraportal.getPRAPortal""")
     __args__ = dict()
@@ -205,7 +217,19 @@ def get_pra_portal_controller_output(id: Optional[pulumi.Input[Optional[str]]] =
                                      name: Optional[pulumi.Input[Optional[str]]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPraPortalControllerResult]:
     """
-    Use this data source to access information about an existing resource.
+    * [Official documentation](https://help.zscaler.com/zpa/about-privileged-portals)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-portals-using-api)
+
+    Use the **zpa_pra_portal_controller** data source to get information about a privileged remote access portal created in the Zscaler Private Access cloud. This data source can then be referenced in an privileged remote access console resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_zpa as zpa
+
+    this = zpa.get_pra_portal(name="Example")
+    ```
     """
     pulumi.log.warn("""get_pra_portal_controller is deprecated: zpa.index/getpraportalcontroller.getPraPortalController has been deprecated in favor of zpa.index/getpraportal.getPRAPortal""")
     ...

@@ -10,6 +10,32 @@ using Pulumi;
 
 namespace Zscaler.Zpa
 {
+    /// <summary>
+    /// * [Official documentation](https://help.zscaler.com/zpa/about-privileged-approvals)
+    /// * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-approvals-using-api)
+    /// 
+    /// The **zpa_pra_approval_controller** resource creates a privileged remote access approval in the Zscaler Private Access cloud. This resource allows third-party users and contractors to be able to log in to a Privileged Remote Access (PRA) portal.
+    /// 
+    /// ## Import
+    /// 
+    /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+    /// 
+    /// Visit
+    /// 
+    /// **zpa_pra_approval_controller** can be imported by using `&lt;APPROVAL ID&gt;` or `&lt;APPROVAL NAME&gt;` as the import ID.
+    /// 
+    /// For example:
+    /// 
+    /// ```sh
+    /// $ pulumi import zpa:index/praApprovalController:PraApprovalController this &lt;approval_id&gt;
+    /// ```
+    /// 
+    /// or
+    /// 
+    /// ```sh
+    /// $ pulumi import zpa:index/praApprovalController:PraApprovalController this &lt;approval_name&gt;
+    /// ```
+    /// </summary>
     [Obsolete(@"zpa.index/praapprovalcontroller.PraApprovalController has been deprecated in favor of zpa.index/praapproval.PRAApproval")]
     [ZpaResourceType("zpa:index/praApprovalController:PraApprovalController")]
     public partial class PraApprovalController : global::Pulumi.CustomResource
@@ -21,7 +47,7 @@ namespace Zscaler.Zpa
         /// The email address of the user that you are assigning the privileged approval to
         /// </summary>
         [Output("emailIds")]
-        public Output<string> EmailIds { get; private set; } = null!;
+        public Output<ImmutableArray<string>> EmailIds { get; private set; } = null!;
 
         /// <summary>
         /// The end date that the user no longer has access to the privileged approval
@@ -106,11 +132,17 @@ namespace Zscaler.Zpa
             set => _applications = value;
         }
 
+        [Input("emailIds")]
+        private InputList<string>? _emailIds;
+
         /// <summary>
         /// The email address of the user that you are assigning the privileged approval to
         /// </summary>
-        [Input("emailIds")]
-        public Input<string>? EmailIds { get; set; }
+        public InputList<string> EmailIds
+        {
+            get => _emailIds ?? (_emailIds = new InputList<string>());
+            set => _emailIds = value;
+        }
 
         /// <summary>
         /// The end date that the user no longer has access to the privileged approval
@@ -161,11 +193,17 @@ namespace Zscaler.Zpa
             set => _applications = value;
         }
 
+        [Input("emailIds")]
+        private InputList<string>? _emailIds;
+
         /// <summary>
         /// The email address of the user that you are assigning the privileged approval to
         /// </summary>
-        [Input("emailIds")]
-        public Input<string>? EmailIds { get; set; }
+        public InputList<string> EmailIds
+        {
+            get => _emailIds ?? (_emailIds = new InputList<string>());
+            set => _emailIds = value;
+        }
 
         /// <summary>
         /// The end date that the user no longer has access to the privileged approval

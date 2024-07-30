@@ -16,16 +16,21 @@ __all__ = ['InspectionProfileArgs', 'InspectionProfile']
 @pulumi.input_type
 class InspectionProfileArgs:
     def __init__(__self__, *,
+                 api_profile: Optional[pulumi.Input[bool]] = None,
                  associate_all_controls: Optional[pulumi.Input[bool]] = None,
+                 common_global_override_actions_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  controls_infos: Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfileControlsInfoArgs']]]] = None,
                  custom_controls: Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfileCustomControlArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  global_control_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 incarnation_number: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 override_action: Optional[pulumi.Input[str]] = None,
                  paranoia_level: Optional[pulumi.Input[str]] = None,
+                 predefined_api_controls: Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfilePredefinedApiControlArgs']]]] = None,
                  predefined_controls: Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfilePredefinedControlArgs']]]] = None,
                  predefined_controls_version: Optional[pulumi.Input[str]] = None,
+                 threat_labz_controls: Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfileThreatLabzControlArgs']]]] = None,
+                 websocket_controls: Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfileWebsocketControlArgs']]]] = None,
                  zs_defined_control_choice: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a InspectionProfile resource.
@@ -33,12 +38,19 @@ class InspectionProfileArgs:
         :param pulumi.Input[str] description: The description of the AppProtection profile
         :param pulumi.Input[Sequence[pulumi.Input[str]]] global_control_actions: The actions of the predefined, custom, or override controls
         :param pulumi.Input[str] paranoia_level: The OWASP Predefined Paranoia Level
+        :param pulumi.Input[Sequence[pulumi.Input['InspectionProfilePredefinedApiControlArgs']]] predefined_api_controls: The predefined controls
         :param pulumi.Input[Sequence[pulumi.Input['InspectionProfilePredefinedControlArgs']]] predefined_controls: The predefined controls
         :param pulumi.Input[str] predefined_controls_version: The protocol for the AppProtection application
+        :param pulumi.Input[Sequence[pulumi.Input['InspectionProfileThreatLabzControlArgs']]] threat_labz_controls: The ThreatLabZ predefined controls
+        :param pulumi.Input[Sequence[pulumi.Input['InspectionProfileWebsocketControlArgs']]] websocket_controls: The WebSocket predefined controls
         :param pulumi.Input[str] zs_defined_control_choice: Indicates the user's choice for the ThreatLabZ Controls. Supported values: ALL and SPECIFIC
         """
+        if api_profile is not None:
+            pulumi.set(__self__, "api_profile", api_profile)
         if associate_all_controls is not None:
             pulumi.set(__self__, "associate_all_controls", associate_all_controls)
+        if common_global_override_actions_config is not None:
+            pulumi.set(__self__, "common_global_override_actions_config", common_global_override_actions_config)
         if controls_infos is not None:
             pulumi.set(__self__, "controls_infos", controls_infos)
         if custom_controls is not None:
@@ -47,18 +59,33 @@ class InspectionProfileArgs:
             pulumi.set(__self__, "description", description)
         if global_control_actions is not None:
             pulumi.set(__self__, "global_control_actions", global_control_actions)
-        if incarnation_number is not None:
-            pulumi.set(__self__, "incarnation_number", incarnation_number)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if override_action is not None:
+            pulumi.set(__self__, "override_action", override_action)
         if paranoia_level is not None:
             pulumi.set(__self__, "paranoia_level", paranoia_level)
+        if predefined_api_controls is not None:
+            pulumi.set(__self__, "predefined_api_controls", predefined_api_controls)
         if predefined_controls is not None:
             pulumi.set(__self__, "predefined_controls", predefined_controls)
         if predefined_controls_version is not None:
             pulumi.set(__self__, "predefined_controls_version", predefined_controls_version)
+        if threat_labz_controls is not None:
+            pulumi.set(__self__, "threat_labz_controls", threat_labz_controls)
+        if websocket_controls is not None:
+            pulumi.set(__self__, "websocket_controls", websocket_controls)
         if zs_defined_control_choice is not None:
             pulumi.set(__self__, "zs_defined_control_choice", zs_defined_control_choice)
+
+    @property
+    @pulumi.getter(name="apiProfile")
+    def api_profile(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "api_profile")
+
+    @api_profile.setter
+    def api_profile(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "api_profile", value)
 
     @property
     @pulumi.getter(name="associateAllControls")
@@ -68,6 +95,15 @@ class InspectionProfileArgs:
     @associate_all_controls.setter
     def associate_all_controls(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "associate_all_controls", value)
+
+    @property
+    @pulumi.getter(name="commonGlobalOverrideActionsConfig")
+    def common_global_override_actions_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "common_global_override_actions_config")
+
+    @common_global_override_actions_config.setter
+    def common_global_override_actions_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "common_global_override_actions_config", value)
 
     @property
     @pulumi.getter(name="controlsInfos")
@@ -115,15 +151,6 @@ class InspectionProfileArgs:
         pulumi.set(self, "global_control_actions", value)
 
     @property
-    @pulumi.getter(name="incarnationNumber")
-    def incarnation_number(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "incarnation_number")
-
-    @incarnation_number.setter
-    def incarnation_number(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "incarnation_number", value)
-
-    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "name")
@@ -131,6 +158,15 @@ class InspectionProfileArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="overrideAction")
+    def override_action(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "override_action")
+
+    @override_action.setter
+    def override_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "override_action", value)
 
     @property
     @pulumi.getter(name="paranoiaLevel")
@@ -143,6 +179,18 @@ class InspectionProfileArgs:
     @paranoia_level.setter
     def paranoia_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "paranoia_level", value)
+
+    @property
+    @pulumi.getter(name="predefinedApiControls")
+    def predefined_api_controls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfilePredefinedApiControlArgs']]]]:
+        """
+        The predefined controls
+        """
+        return pulumi.get(self, "predefined_api_controls")
+
+    @predefined_api_controls.setter
+    def predefined_api_controls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfilePredefinedApiControlArgs']]]]):
+        pulumi.set(self, "predefined_api_controls", value)
 
     @property
     @pulumi.getter(name="predefinedControls")
@@ -167,6 +215,30 @@ class InspectionProfileArgs:
     @predefined_controls_version.setter
     def predefined_controls_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "predefined_controls_version", value)
+
+    @property
+    @pulumi.getter(name="threatLabzControls")
+    def threat_labz_controls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfileThreatLabzControlArgs']]]]:
+        """
+        The ThreatLabZ predefined controls
+        """
+        return pulumi.get(self, "threat_labz_controls")
+
+    @threat_labz_controls.setter
+    def threat_labz_controls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfileThreatLabzControlArgs']]]]):
+        pulumi.set(self, "threat_labz_controls", value)
+
+    @property
+    @pulumi.getter(name="websocketControls")
+    def websocket_controls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfileWebsocketControlArgs']]]]:
+        """
+        The WebSocket predefined controls
+        """
+        return pulumi.get(self, "websocket_controls")
+
+    @websocket_controls.setter
+    def websocket_controls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfileWebsocketControlArgs']]]]):
+        pulumi.set(self, "websocket_controls", value)
 
     @property
     @pulumi.getter(name="zsDefinedControlChoice")
@@ -184,16 +256,21 @@ class InspectionProfileArgs:
 @pulumi.input_type
 class _InspectionProfileState:
     def __init__(__self__, *,
+                 api_profile: Optional[pulumi.Input[bool]] = None,
                  associate_all_controls: Optional[pulumi.Input[bool]] = None,
+                 common_global_override_actions_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  controls_infos: Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfileControlsInfoArgs']]]] = None,
                  custom_controls: Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfileCustomControlArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  global_control_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 incarnation_number: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 override_action: Optional[pulumi.Input[str]] = None,
                  paranoia_level: Optional[pulumi.Input[str]] = None,
+                 predefined_api_controls: Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfilePredefinedApiControlArgs']]]] = None,
                  predefined_controls: Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfilePredefinedControlArgs']]]] = None,
                  predefined_controls_version: Optional[pulumi.Input[str]] = None,
+                 threat_labz_controls: Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfileThreatLabzControlArgs']]]] = None,
+                 websocket_controls: Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfileWebsocketControlArgs']]]] = None,
                  zs_defined_control_choice: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InspectionProfile resources.
@@ -201,12 +278,19 @@ class _InspectionProfileState:
         :param pulumi.Input[str] description: The description of the AppProtection profile
         :param pulumi.Input[Sequence[pulumi.Input[str]]] global_control_actions: The actions of the predefined, custom, or override controls
         :param pulumi.Input[str] paranoia_level: The OWASP Predefined Paranoia Level
+        :param pulumi.Input[Sequence[pulumi.Input['InspectionProfilePredefinedApiControlArgs']]] predefined_api_controls: The predefined controls
         :param pulumi.Input[Sequence[pulumi.Input['InspectionProfilePredefinedControlArgs']]] predefined_controls: The predefined controls
         :param pulumi.Input[str] predefined_controls_version: The protocol for the AppProtection application
+        :param pulumi.Input[Sequence[pulumi.Input['InspectionProfileThreatLabzControlArgs']]] threat_labz_controls: The ThreatLabZ predefined controls
+        :param pulumi.Input[Sequence[pulumi.Input['InspectionProfileWebsocketControlArgs']]] websocket_controls: The WebSocket predefined controls
         :param pulumi.Input[str] zs_defined_control_choice: Indicates the user's choice for the ThreatLabZ Controls. Supported values: ALL and SPECIFIC
         """
+        if api_profile is not None:
+            pulumi.set(__self__, "api_profile", api_profile)
         if associate_all_controls is not None:
             pulumi.set(__self__, "associate_all_controls", associate_all_controls)
+        if common_global_override_actions_config is not None:
+            pulumi.set(__self__, "common_global_override_actions_config", common_global_override_actions_config)
         if controls_infos is not None:
             pulumi.set(__self__, "controls_infos", controls_infos)
         if custom_controls is not None:
@@ -215,18 +299,33 @@ class _InspectionProfileState:
             pulumi.set(__self__, "description", description)
         if global_control_actions is not None:
             pulumi.set(__self__, "global_control_actions", global_control_actions)
-        if incarnation_number is not None:
-            pulumi.set(__self__, "incarnation_number", incarnation_number)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if override_action is not None:
+            pulumi.set(__self__, "override_action", override_action)
         if paranoia_level is not None:
             pulumi.set(__self__, "paranoia_level", paranoia_level)
+        if predefined_api_controls is not None:
+            pulumi.set(__self__, "predefined_api_controls", predefined_api_controls)
         if predefined_controls is not None:
             pulumi.set(__self__, "predefined_controls", predefined_controls)
         if predefined_controls_version is not None:
             pulumi.set(__self__, "predefined_controls_version", predefined_controls_version)
+        if threat_labz_controls is not None:
+            pulumi.set(__self__, "threat_labz_controls", threat_labz_controls)
+        if websocket_controls is not None:
+            pulumi.set(__self__, "websocket_controls", websocket_controls)
         if zs_defined_control_choice is not None:
             pulumi.set(__self__, "zs_defined_control_choice", zs_defined_control_choice)
+
+    @property
+    @pulumi.getter(name="apiProfile")
+    def api_profile(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "api_profile")
+
+    @api_profile.setter
+    def api_profile(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "api_profile", value)
 
     @property
     @pulumi.getter(name="associateAllControls")
@@ -236,6 +335,15 @@ class _InspectionProfileState:
     @associate_all_controls.setter
     def associate_all_controls(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "associate_all_controls", value)
+
+    @property
+    @pulumi.getter(name="commonGlobalOverrideActionsConfig")
+    def common_global_override_actions_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "common_global_override_actions_config")
+
+    @common_global_override_actions_config.setter
+    def common_global_override_actions_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "common_global_override_actions_config", value)
 
     @property
     @pulumi.getter(name="controlsInfos")
@@ -283,15 +391,6 @@ class _InspectionProfileState:
         pulumi.set(self, "global_control_actions", value)
 
     @property
-    @pulumi.getter(name="incarnationNumber")
-    def incarnation_number(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "incarnation_number")
-
-    @incarnation_number.setter
-    def incarnation_number(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "incarnation_number", value)
-
-    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "name")
@@ -299,6 +398,15 @@ class _InspectionProfileState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="overrideAction")
+    def override_action(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "override_action")
+
+    @override_action.setter
+    def override_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "override_action", value)
 
     @property
     @pulumi.getter(name="paranoiaLevel")
@@ -311,6 +419,18 @@ class _InspectionProfileState:
     @paranoia_level.setter
     def paranoia_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "paranoia_level", value)
+
+    @property
+    @pulumi.getter(name="predefinedApiControls")
+    def predefined_api_controls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfilePredefinedApiControlArgs']]]]:
+        """
+        The predefined controls
+        """
+        return pulumi.get(self, "predefined_api_controls")
+
+    @predefined_api_controls.setter
+    def predefined_api_controls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfilePredefinedApiControlArgs']]]]):
+        pulumi.set(self, "predefined_api_controls", value)
 
     @property
     @pulumi.getter(name="predefinedControls")
@@ -335,6 +455,30 @@ class _InspectionProfileState:
     @predefined_controls_version.setter
     def predefined_controls_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "predefined_controls_version", value)
+
+    @property
+    @pulumi.getter(name="threatLabzControls")
+    def threat_labz_controls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfileThreatLabzControlArgs']]]]:
+        """
+        The ThreatLabZ predefined controls
+        """
+        return pulumi.get(self, "threat_labz_controls")
+
+    @threat_labz_controls.setter
+    def threat_labz_controls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfileThreatLabzControlArgs']]]]):
+        pulumi.set(self, "threat_labz_controls", value)
+
+    @property
+    @pulumi.getter(name="websocketControls")
+    def websocket_controls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfileWebsocketControlArgs']]]]:
+        """
+        The WebSocket predefined controls
+        """
+        return pulumi.get(self, "websocket_controls")
+
+    @websocket_controls.setter
+    def websocket_controls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InspectionProfileWebsocketControlArgs']]]]):
+        pulumi.set(self, "websocket_controls", value)
 
     @property
     @pulumi.getter(name="zsDefinedControlChoice")
@@ -354,16 +498,21 @@ class InspectionProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_profile: Optional[pulumi.Input[bool]] = None,
                  associate_all_controls: Optional[pulumi.Input[bool]] = None,
+                 common_global_override_actions_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  controls_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileControlsInfoArgs']]]]] = None,
                  custom_controls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileCustomControlArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  global_control_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 incarnation_number: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 override_action: Optional[pulumi.Input[str]] = None,
                  paranoia_level: Optional[pulumi.Input[str]] = None,
+                 predefined_api_controls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfilePredefinedApiControlArgs']]]]] = None,
                  predefined_controls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfilePredefinedControlArgs']]]]] = None,
                  predefined_controls_version: Optional[pulumi.Input[str]] = None,
+                 threat_labz_controls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileThreatLabzControlArgs']]]]] = None,
+                 websocket_controls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileWebsocketControlArgs']]]]] = None,
                  zs_defined_control_choice: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -372,14 +521,21 @@ class InspectionProfile(pulumi.CustomResource):
 
         The  **zpa_inspection_profile** resource creates an inspection profile in the Zscaler Private Access cloud. This resource can then be referenced in an inspection custom control resource.
 
+        **NOTE** There are several ways to set up the Inspection Profile due to its complex data structure
+
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileCustomControlArgs']]]] custom_controls: The set of AppProtection controls used to define how inspections are managed
         :param pulumi.Input[str] description: The description of the AppProtection profile
         :param pulumi.Input[Sequence[pulumi.Input[str]]] global_control_actions: The actions of the predefined, custom, or override controls
         :param pulumi.Input[str] paranoia_level: The OWASP Predefined Paranoia Level
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfilePredefinedApiControlArgs']]]] predefined_api_controls: The predefined controls
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfilePredefinedControlArgs']]]] predefined_controls: The predefined controls
         :param pulumi.Input[str] predefined_controls_version: The protocol for the AppProtection application
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileThreatLabzControlArgs']]]] threat_labz_controls: The ThreatLabZ predefined controls
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileWebsocketControlArgs']]]] websocket_controls: The WebSocket predefined controls
         :param pulumi.Input[str] zs_defined_control_choice: Indicates the user's choice for the ThreatLabZ Controls. Supported values: ALL and SPECIFIC
         """
         ...
@@ -393,6 +549,10 @@ class InspectionProfile(pulumi.CustomResource):
         * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-profiles-using-api)
 
         The  **zpa_inspection_profile** resource creates an inspection profile in the Zscaler Private Access cloud. This resource can then be referenced in an inspection custom control resource.
+
+        **NOTE** There are several ways to set up the Inspection Profile due to its complex data structure
+
+        ## Example Usage
 
         :param str resource_name: The name of the resource.
         :param InspectionProfileArgs args: The arguments to use to populate this resource's properties.
@@ -409,16 +569,21 @@ class InspectionProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_profile: Optional[pulumi.Input[bool]] = None,
                  associate_all_controls: Optional[pulumi.Input[bool]] = None,
+                 common_global_override_actions_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  controls_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileControlsInfoArgs']]]]] = None,
                  custom_controls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileCustomControlArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  global_control_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 incarnation_number: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 override_action: Optional[pulumi.Input[str]] = None,
                  paranoia_level: Optional[pulumi.Input[str]] = None,
+                 predefined_api_controls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfilePredefinedApiControlArgs']]]]] = None,
                  predefined_controls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfilePredefinedControlArgs']]]]] = None,
                  predefined_controls_version: Optional[pulumi.Input[str]] = None,
+                 threat_labz_controls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileThreatLabzControlArgs']]]]] = None,
+                 websocket_controls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileWebsocketControlArgs']]]]] = None,
                  zs_defined_control_choice: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -429,16 +594,21 @@ class InspectionProfile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InspectionProfileArgs.__new__(InspectionProfileArgs)
 
+            __props__.__dict__["api_profile"] = api_profile
             __props__.__dict__["associate_all_controls"] = associate_all_controls
+            __props__.__dict__["common_global_override_actions_config"] = common_global_override_actions_config
             __props__.__dict__["controls_infos"] = controls_infos
             __props__.__dict__["custom_controls"] = custom_controls
             __props__.__dict__["description"] = description
             __props__.__dict__["global_control_actions"] = global_control_actions
-            __props__.__dict__["incarnation_number"] = incarnation_number
             __props__.__dict__["name"] = name
+            __props__.__dict__["override_action"] = override_action
             __props__.__dict__["paranoia_level"] = paranoia_level
+            __props__.__dict__["predefined_api_controls"] = predefined_api_controls
             __props__.__dict__["predefined_controls"] = predefined_controls
             __props__.__dict__["predefined_controls_version"] = predefined_controls_version
+            __props__.__dict__["threat_labz_controls"] = threat_labz_controls
+            __props__.__dict__["websocket_controls"] = websocket_controls
             __props__.__dict__["zs_defined_control_choice"] = zs_defined_control_choice
         super(InspectionProfile, __self__).__init__(
             'zpa:index/inspectionProfile:InspectionProfile',
@@ -450,16 +620,21 @@ class InspectionProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            api_profile: Optional[pulumi.Input[bool]] = None,
             associate_all_controls: Optional[pulumi.Input[bool]] = None,
+            common_global_override_actions_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             controls_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileControlsInfoArgs']]]]] = None,
             custom_controls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileCustomControlArgs']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             global_control_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            incarnation_number: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            override_action: Optional[pulumi.Input[str]] = None,
             paranoia_level: Optional[pulumi.Input[str]] = None,
+            predefined_api_controls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfilePredefinedApiControlArgs']]]]] = None,
             predefined_controls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfilePredefinedControlArgs']]]]] = None,
             predefined_controls_version: Optional[pulumi.Input[str]] = None,
+            threat_labz_controls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileThreatLabzControlArgs']]]]] = None,
+            websocket_controls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileWebsocketControlArgs']]]]] = None,
             zs_defined_control_choice: Optional[pulumi.Input[str]] = None) -> 'InspectionProfile':
         """
         Get an existing InspectionProfile resource's state with the given name, id, and optional extra
@@ -472,31 +647,49 @@ class InspectionProfile(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the AppProtection profile
         :param pulumi.Input[Sequence[pulumi.Input[str]]] global_control_actions: The actions of the predefined, custom, or override controls
         :param pulumi.Input[str] paranoia_level: The OWASP Predefined Paranoia Level
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfilePredefinedApiControlArgs']]]] predefined_api_controls: The predefined controls
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfilePredefinedControlArgs']]]] predefined_controls: The predefined controls
         :param pulumi.Input[str] predefined_controls_version: The protocol for the AppProtection application
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileThreatLabzControlArgs']]]] threat_labz_controls: The ThreatLabZ predefined controls
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InspectionProfileWebsocketControlArgs']]]] websocket_controls: The WebSocket predefined controls
         :param pulumi.Input[str] zs_defined_control_choice: Indicates the user's choice for the ThreatLabZ Controls. Supported values: ALL and SPECIFIC
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _InspectionProfileState.__new__(_InspectionProfileState)
 
+        __props__.__dict__["api_profile"] = api_profile
         __props__.__dict__["associate_all_controls"] = associate_all_controls
+        __props__.__dict__["common_global_override_actions_config"] = common_global_override_actions_config
         __props__.__dict__["controls_infos"] = controls_infos
         __props__.__dict__["custom_controls"] = custom_controls
         __props__.__dict__["description"] = description
         __props__.__dict__["global_control_actions"] = global_control_actions
-        __props__.__dict__["incarnation_number"] = incarnation_number
         __props__.__dict__["name"] = name
+        __props__.__dict__["override_action"] = override_action
         __props__.__dict__["paranoia_level"] = paranoia_level
+        __props__.__dict__["predefined_api_controls"] = predefined_api_controls
         __props__.__dict__["predefined_controls"] = predefined_controls
         __props__.__dict__["predefined_controls_version"] = predefined_controls_version
+        __props__.__dict__["threat_labz_controls"] = threat_labz_controls
+        __props__.__dict__["websocket_controls"] = websocket_controls
         __props__.__dict__["zs_defined_control_choice"] = zs_defined_control_choice
         return InspectionProfile(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="apiProfile")
+    def api_profile(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "api_profile")
 
     @property
     @pulumi.getter(name="associateAllControls")
     def associate_all_controls(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "associate_all_controls")
+
+    @property
+    @pulumi.getter(name="commonGlobalOverrideActionsConfig")
+    def common_global_override_actions_config(self) -> pulumi.Output[Mapping[str, str]]:
+        return pulumi.get(self, "common_global_override_actions_config")
 
     @property
     @pulumi.getter(name="controlsInfos")
@@ -528,14 +721,14 @@ class InspectionProfile(pulumi.CustomResource):
         return pulumi.get(self, "global_control_actions")
 
     @property
-    @pulumi.getter(name="incarnationNumber")
-    def incarnation_number(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "incarnation_number")
-
-    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="overrideAction")
+    def override_action(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "override_action")
 
     @property
     @pulumi.getter(name="paranoiaLevel")
@@ -546,8 +739,16 @@ class InspectionProfile(pulumi.CustomResource):
         return pulumi.get(self, "paranoia_level")
 
     @property
+    @pulumi.getter(name="predefinedApiControls")
+    def predefined_api_controls(self) -> pulumi.Output[Optional[Sequence['outputs.InspectionProfilePredefinedApiControl']]]:
+        """
+        The predefined controls
+        """
+        return pulumi.get(self, "predefined_api_controls")
+
+    @property
     @pulumi.getter(name="predefinedControls")
-    def predefined_controls(self) -> pulumi.Output[Sequence['outputs.InspectionProfilePredefinedControl']]:
+    def predefined_controls(self) -> pulumi.Output[Optional[Sequence['outputs.InspectionProfilePredefinedControl']]]:
         """
         The predefined controls
         """
@@ -560,6 +761,22 @@ class InspectionProfile(pulumi.CustomResource):
         The protocol for the AppProtection application
         """
         return pulumi.get(self, "predefined_controls_version")
+
+    @property
+    @pulumi.getter(name="threatLabzControls")
+    def threat_labz_controls(self) -> pulumi.Output[Optional[Sequence['outputs.InspectionProfileThreatLabzControl']]]:
+        """
+        The ThreatLabZ predefined controls
+        """
+        return pulumi.get(self, "threat_labz_controls")
+
+    @property
+    @pulumi.getter(name="websocketControls")
+    def websocket_controls(self) -> pulumi.Output[Optional[Sequence['outputs.InspectionProfileWebsocketControl']]]:
+        """
+        The WebSocket predefined controls
+        """
+        return pulumi.get(self, "websocket_controls")
 
     @property
     @pulumi.getter(name="zsDefinedControlChoice")

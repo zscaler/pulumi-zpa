@@ -18,9 +18,9 @@ namespace Zscaler.Zpa.Outputs
         public readonly string? ApplicationPort;
         public readonly string? ApplicationProtocol;
         public readonly string? CertificateId;
-        public readonly string? Description;
         public readonly string? Domain;
         public readonly bool? Enabled;
+        public readonly string? Id;
         public readonly string? Name;
         public readonly bool? TrustUntrustedCert;
 
@@ -34,11 +34,11 @@ namespace Zscaler.Zpa.Outputs
 
             string? certificateId,
 
-            string? description,
-
             string? domain,
 
             bool? enabled,
+
+            string? id,
 
             string? name,
 
@@ -48,9 +48,9 @@ namespace Zscaler.Zpa.Outputs
             ApplicationPort = applicationPort;
             ApplicationProtocol = applicationProtocol;
             CertificateId = certificateId;
-            Description = description;
             Domain = domain;
             Enabled = enabled;
+            Id = id;
             Name = name;
             TrustUntrustedCert = trustUntrustedCert;
         }

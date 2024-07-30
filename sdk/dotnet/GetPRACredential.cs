@@ -20,7 +20,6 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPRACredentialResult> InvokeAsync(GetPRACredentialArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPRACredentialResult>("zpa:index/getPRACredential:getPRACredential", args ?? new GetPRACredentialArgs(), options.WithDefaults());
@@ -47,7 +45,6 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,7 +58,6 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPRACredentialResult> Invoke(GetPRACredentialInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPRACredentialResult>("zpa:index/getPRACredential:getPRACredential", args ?? new GetPRACredentialInvokeArgs(), options.WithDefaults());
@@ -119,6 +115,7 @@ namespace Zscaler.Zpa
         /// - (String) The name of the privileged credential.
         /// </summary>
         public readonly string? Name;
+        public readonly string Password;
         public readonly string UserDomain;
         public readonly string Username;
 
@@ -144,6 +141,8 @@ namespace Zscaler.Zpa
 
             string? name,
 
+            string password,
+
             string userDomain,
 
             string username)
@@ -158,6 +157,7 @@ namespace Zscaler.Zpa
             ModifiedBy = modifiedBy;
             ModifiedTime = modifiedTime;
             Name = name;
+            Password = password;
             UserDomain = userDomain;
             Username = username;
         }

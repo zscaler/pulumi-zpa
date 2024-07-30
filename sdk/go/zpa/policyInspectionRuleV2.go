@@ -11,20 +11,44 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-security-policy)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-policies-using-api)
+//
+// The **zpa_policy_inspection_rule_v2** resource creates and manages policy access inspection rule in the Zscaler Private Access cloud using a new v2 API endpoint.
+//
+//	⚠️ **NOTE**: This resource is recommended if your configuration requires the association of more than 1000 resource criteria per rule.
+//
+//	⚠️ **WARNING:**: The attribute ``ruleOrder`` is now deprecated in favor of the new resource  ``policyAccessRuleReorder``
+//
+// ## Import
+//
+// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+//
+// # Visit
+//
+// Policy access inspection rule can be imported by using `<RULE ID>` as the import ID.
+//
+// For example:
+//
+// ```sh
+// $ pulumi import zpa:index/policyInspectionRuleV2:PolicyInspectionRuleV2 example <rule_id>
+// ```
+//
 // Deprecated: zpa.index/policyinspectionrulev2.PolicyInspectionRuleV2 has been deprecated in favor of zpa.index/policyaccessinspectionrulev2.PolicyAccessInspectionRuleV2
 type PolicyInspectionRuleV2 struct {
 	pulumi.CustomResourceState
 
-	// This is for providing the rule action.
+	// This is for providing the rule action. Supported values: `INSPECT` and `BYPASS_INSPECT`.
 	Action pulumi.StringPtrOutput `pulumi:"action"`
 	// This is for proviidng the set of conditions for the policy.
 	Conditions PolicyInspectionRuleV2ConditionArrayOutput `pulumi:"conditions"`
-	// This is the description of the access policy.
+	// This is the description of the access policy rule.
 	Description   pulumi.StringPtrOutput `pulumi:"description"`
 	MicrotenantId pulumi.StringOutput    `pulumi:"microtenantId"`
-	// This is the name of the policy.
-	Name                   pulumi.StringOutput `pulumi:"name"`
-	PolicySetId            pulumi.StringOutput `pulumi:"policySetId"`
+	// - (String) This is the name of the policy rule.
+	Name        pulumi.StringOutput `pulumi:"name"`
+	PolicySetId pulumi.StringOutput `pulumi:"policySetId"`
+	// An inspection profile is required if the `action` is set to `INSPECT`
 	ZpnInspectionProfileId pulumi.StringOutput `pulumi:"zpnInspectionProfileId"`
 }
 
@@ -58,30 +82,32 @@ func GetPolicyInspectionRuleV2(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PolicyInspectionRuleV2 resources.
 type policyInspectionRuleV2State struct {
-	// This is for providing the rule action.
+	// This is for providing the rule action. Supported values: `INSPECT` and `BYPASS_INSPECT`.
 	Action *string `pulumi:"action"`
 	// This is for proviidng the set of conditions for the policy.
 	Conditions []PolicyInspectionRuleV2Condition `pulumi:"conditions"`
-	// This is the description of the access policy.
+	// This is the description of the access policy rule.
 	Description   *string `pulumi:"description"`
 	MicrotenantId *string `pulumi:"microtenantId"`
-	// This is the name of the policy.
-	Name                   *string `pulumi:"name"`
-	PolicySetId            *string `pulumi:"policySetId"`
+	// - (String) This is the name of the policy rule.
+	Name        *string `pulumi:"name"`
+	PolicySetId *string `pulumi:"policySetId"`
+	// An inspection profile is required if the `action` is set to `INSPECT`
 	ZpnInspectionProfileId *string `pulumi:"zpnInspectionProfileId"`
 }
 
 type PolicyInspectionRuleV2State struct {
-	// This is for providing the rule action.
+	// This is for providing the rule action. Supported values: `INSPECT` and `BYPASS_INSPECT`.
 	Action pulumi.StringPtrInput
 	// This is for proviidng the set of conditions for the policy.
 	Conditions PolicyInspectionRuleV2ConditionArrayInput
-	// This is the description of the access policy.
+	// This is the description of the access policy rule.
 	Description   pulumi.StringPtrInput
 	MicrotenantId pulumi.StringPtrInput
-	// This is the name of the policy.
-	Name                   pulumi.StringPtrInput
-	PolicySetId            pulumi.StringPtrInput
+	// - (String) This is the name of the policy rule.
+	Name        pulumi.StringPtrInput
+	PolicySetId pulumi.StringPtrInput
+	// An inspection profile is required if the `action` is set to `INSPECT`
 	ZpnInspectionProfileId pulumi.StringPtrInput
 }
 
@@ -90,29 +116,31 @@ func (PolicyInspectionRuleV2State) ElementType() reflect.Type {
 }
 
 type policyInspectionRuleV2Args struct {
-	// This is for providing the rule action.
+	// This is for providing the rule action. Supported values: `INSPECT` and `BYPASS_INSPECT`.
 	Action *string `pulumi:"action"`
 	// This is for proviidng the set of conditions for the policy.
 	Conditions []PolicyInspectionRuleV2Condition `pulumi:"conditions"`
-	// This is the description of the access policy.
+	// This is the description of the access policy rule.
 	Description   *string `pulumi:"description"`
 	MicrotenantId *string `pulumi:"microtenantId"`
-	// This is the name of the policy.
-	Name                   *string `pulumi:"name"`
+	// - (String) This is the name of the policy rule.
+	Name *string `pulumi:"name"`
+	// An inspection profile is required if the `action` is set to `INSPECT`
 	ZpnInspectionProfileId *string `pulumi:"zpnInspectionProfileId"`
 }
 
 // The set of arguments for constructing a PolicyInspectionRuleV2 resource.
 type PolicyInspectionRuleV2Args struct {
-	// This is for providing the rule action.
+	// This is for providing the rule action. Supported values: `INSPECT` and `BYPASS_INSPECT`.
 	Action pulumi.StringPtrInput
 	// This is for proviidng the set of conditions for the policy.
 	Conditions PolicyInspectionRuleV2ConditionArrayInput
-	// This is the description of the access policy.
+	// This is the description of the access policy rule.
 	Description   pulumi.StringPtrInput
 	MicrotenantId pulumi.StringPtrInput
-	// This is the name of the policy.
-	Name                   pulumi.StringPtrInput
+	// - (String) This is the name of the policy rule.
+	Name pulumi.StringPtrInput
+	// An inspection profile is required if the `action` is set to `INSPECT`
 	ZpnInspectionProfileId pulumi.StringPtrInput
 }
 
@@ -203,7 +231,7 @@ func (o PolicyInspectionRuleV2Output) ToPolicyInspectionRuleV2OutputWithContext(
 	return o
 }
 
-// This is for providing the rule action.
+// This is for providing the rule action. Supported values: `INSPECT` and `BYPASS_INSPECT`.
 func (o PolicyInspectionRuleV2Output) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyInspectionRuleV2) pulumi.StringPtrOutput { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -213,7 +241,7 @@ func (o PolicyInspectionRuleV2Output) Conditions() PolicyInspectionRuleV2Conditi
 	return o.ApplyT(func(v *PolicyInspectionRuleV2) PolicyInspectionRuleV2ConditionArrayOutput { return v.Conditions }).(PolicyInspectionRuleV2ConditionArrayOutput)
 }
 
-// This is the description of the access policy.
+// This is the description of the access policy rule.
 func (o PolicyInspectionRuleV2Output) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyInspectionRuleV2) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -222,7 +250,7 @@ func (o PolicyInspectionRuleV2Output) MicrotenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyInspectionRuleV2) pulumi.StringOutput { return v.MicrotenantId }).(pulumi.StringOutput)
 }
 
-// This is the name of the policy.
+// - (String) This is the name of the policy rule.
 func (o PolicyInspectionRuleV2Output) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyInspectionRuleV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -231,6 +259,7 @@ func (o PolicyInspectionRuleV2Output) PolicySetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyInspectionRuleV2) pulumi.StringOutput { return v.PolicySetId }).(pulumi.StringOutput)
 }
 
+// An inspection profile is required if the `action` is set to `INSPECT`
 func (o PolicyInspectionRuleV2Output) ZpnInspectionProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyInspectionRuleV2) pulumi.StringOutput { return v.ZpnInspectionProfileId }).(pulumi.StringOutput)
 }

@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -22,7 +21,6 @@ import * as utilities from "./utilities";
  *     name: "Example",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCloudBrowserIsolationExternalProfile(args?: GetCloudBrowserIsolationExternalProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudBrowserIsolationExternalProfileResult> {
     args = args || {};
@@ -46,6 +44,9 @@ export interface GetCloudBrowserIsolationExternalProfileArgs {
  * A collection of values returned by getCloudBrowserIsolationExternalProfile.
  */
 export interface GetCloudBrowserIsolationExternalProfileResult {
+    readonly bannerId: string;
+    readonly certificateIds: string[];
+    readonly debugModes: outputs.GetCloudBrowserIsolationExternalProfileDebugMode[];
     readonly description: string;
     readonly href: string;
     readonly id?: string;
@@ -62,7 +63,6 @@ export interface GetCloudBrowserIsolationExternalProfileResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -71,7 +71,6 @@ export interface GetCloudBrowserIsolationExternalProfileResult {
  *     name: "Example",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCloudBrowserIsolationExternalProfileOutput(args?: GetCloudBrowserIsolationExternalProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudBrowserIsolationExternalProfileResult> {
     return pulumi.output(args).apply((a: any) => getCloudBrowserIsolationExternalProfile(a, opts))

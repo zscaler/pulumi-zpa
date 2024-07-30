@@ -18,7 +18,6 @@ namespace Zscaler.Zpa
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -34,9 +33,9 @@ namespace Zscaler.Zpa
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE #########\
+    /// ######### ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ##########
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -48,10 +47,11 @@ namespace Zscaler.Zpa
     ///     // ZPA Browser Access resource
     ///     var @this = new Zpa.BrowserCertificate("this", new()
     ///     {
-    ///         CertBlob = @"-----BEGIN CERTIFICATE-----
+    ///         CertBlob = @"-----BEGIN PRIVATE KEY-----
+    /// MIIDyzCCArOgA
+    /// -----END PRIVATE KEY-----
+    /// -----BEGIN CERTIFICATE-----
     /// MIIDyzCCArOgAwIBAgIUekBD+iu64583B3u5ew7Bqj2O5cQwDQYJKoZIhvcNAQEL
-    /// BQAwgY0xCzAJBgNVBAYTAkNBMRkwFwYDVQQIDBBCcml0aXNoIENvbHVtYmlhMRIw
-    /// EAYDVQQHDAlWYW5jb3V2ZXIxFTATBgNVBAoMDEJELUhhc2hpQ29ycDEVMBMGA1UE
     /// -----END CERTIFICATE-----
     /// 
     /// ",
@@ -60,7 +60,6 @@ namespace Zscaler.Zpa
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Let's Encrypt Certbot
     /// 

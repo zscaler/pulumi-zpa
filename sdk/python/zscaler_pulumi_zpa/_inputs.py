@@ -31,14 +31,20 @@ __all__ = [
     'BrowserAccessServerGroupArgs',
     'BrowserAccessTcpPortRangeArgs',
     'BrowserAccessUdpPortRangeArgs',
+    'CloudBrowserIsolationExternalProfileDebugModeArgs',
     'CloudBrowserIsolationExternalProfileSecurityControlArgs',
+    'CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs',
+    'CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs',
     'CloudBrowserIsolationExternalProfileUserExperienceArgs',
-    'InspectionCustomControlsAssociatedInspectionProfileNameArgs',
+    'CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs',
     'InspectionCustomControlsRuleArgs',
     'InspectionCustomControlsRuleConditionsArgs',
     'InspectionProfileControlsInfoArgs',
     'InspectionProfileCustomControlArgs',
+    'InspectionProfilePredefinedApiControlArgs',
     'InspectionProfilePredefinedControlArgs',
+    'InspectionProfileThreatLabzControlArgs',
+    'InspectionProfileWebsocketControlArgs',
     'LSSConfigControllerConfigArgs',
     'LSSConfigControllerConnectorGroupArgs',
     'LSSConfigControllerPolicyRuleResourceArgs',
@@ -50,6 +56,10 @@ __all__ = [
     'PRAApprovalWorkingHourArgs',
     'PRAConsolePraApplicationArgs',
     'PRAConsolePraPortalArgs',
+    'PolicyAccessCredentialRuleConditionArgs',
+    'PolicyAccessCredentialRuleConditionOperandArgs',
+    'PolicyAccessCredentialRuleConditionOperandEntryValueArgs',
+    'PolicyAccessCredentialRuleCredentialArgs',
     'PolicyAccessForwardingRuleConditionArgs',
     'PolicyAccessForwardingRuleConditionOperandArgs',
     'PolicyAccessForwardingRuleV2ConditionArgs',
@@ -132,14 +142,10 @@ class ApplicationSegmentBrowserAccessClientlessAppArgs:
                  name: pulumi.Input[str],
                  allow_options: Optional[pulumi.Input[bool]] = None,
                  certificate_id: Optional[pulumi.Input[str]] = None,
-                 cname: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 hidden: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 local_domain: Optional[pulumi.Input[str]] = None,
-                 path: Optional[pulumi.Input[str]] = None,
                  trust_untrusted_cert: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] application_port: Port for the BA app.
@@ -156,22 +162,14 @@ class ApplicationSegmentBrowserAccessClientlessAppArgs:
             pulumi.set(__self__, "allow_options", allow_options)
         if certificate_id is not None:
             pulumi.set(__self__, "certificate_id", certificate_id)
-        if cname is not None:
-            pulumi.set(__self__, "cname", cname)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if hidden is not None:
-            pulumi.set(__self__, "hidden", hidden)
         if id is not None:
             pulumi.set(__self__, "id", id)
-        if local_domain is not None:
-            pulumi.set(__self__, "local_domain", local_domain)
-        if path is not None:
-            pulumi.set(__self__, "path", path)
         if trust_untrusted_cert is not None:
             pulumi.set(__self__, "trust_untrusted_cert", trust_untrusted_cert)
 
@@ -234,15 +232,6 @@ class ApplicationSegmentBrowserAccessClientlessAppArgs:
 
     @property
     @pulumi.getter
-    def cname(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "cname")
-
-    @cname.setter
-    def cname(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "cname", value)
-
-    @property
-    @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "description")
 
@@ -273,39 +262,12 @@ class ApplicationSegmentBrowserAccessClientlessAppArgs:
 
     @property
     @pulumi.getter
-    def hidden(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "hidden")
-
-    @hidden.setter
-    def hidden(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "hidden", value)
-
-    @property
-    @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "id")
 
     @id.setter
     def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter(name="localDomain")
-    def local_domain(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "local_domain")
-
-    @local_domain.setter
-    def local_domain(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "local_domain", value)
-
-    @property
-    @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "path")
-
-    @path.setter
-    def path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "path", value)
 
     @property
     @pulumi.getter(name="trustUntrustedCert")
@@ -419,9 +381,9 @@ class ApplicationSegmentInspectionCommonAppsDtoAppsConfigArgs:
                  application_port: Optional[pulumi.Input[str]] = None,
                  application_protocol: Optional[pulumi.Input[str]] = None,
                  certificate_id: Optional[pulumi.Input[str]] = None,
-                 description: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  trust_untrusted_cert: Optional[pulumi.Input[bool]] = None):
         if app_types is not None:
@@ -432,12 +394,12 @@ class ApplicationSegmentInspectionCommonAppsDtoAppsConfigArgs:
             pulumi.set(__self__, "application_protocol", application_protocol)
         if certificate_id is not None:
             pulumi.set(__self__, "certificate_id", certificate_id)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if trust_untrusted_cert is not None:
@@ -481,15 +443,6 @@ class ApplicationSegmentInspectionCommonAppsDtoAppsConfigArgs:
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "domain")
 
@@ -505,6 +458,15 @@ class ApplicationSegmentInspectionCommonAppsDtoAppsConfigArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
@@ -620,18 +582,14 @@ class ApplicationSegmentPRACommonAppsDtoArgs:
 @pulumi.input_type
 class ApplicationSegmentPRACommonAppsDtoAppsConfigArgs:
     def __init__(__self__, *,
-                 app_id: Optional[pulumi.Input[str]] = None,
                  app_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  application_port: Optional[pulumi.Input[str]] = None,
                  application_protocol: Optional[pulumi.Input[str]] = None,
                  connection_security: Optional[pulumi.Input[str]] = None,
-                 description: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
-        if app_id is not None:
-            pulumi.set(__self__, "app_id", app_id)
         if app_types is not None:
             pulumi.set(__self__, "app_types", app_types)
         if application_port is not None:
@@ -640,8 +598,6 @@ class ApplicationSegmentPRACommonAppsDtoAppsConfigArgs:
             pulumi.set(__self__, "application_protocol", application_protocol)
         if connection_security is not None:
             pulumi.set(__self__, "connection_security", connection_security)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if enabled is not None:
@@ -650,15 +606,6 @@ class ApplicationSegmentPRACommonAppsDtoAppsConfigArgs:
             pulumi.set(__self__, "id", id)
         if name is not None:
             pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="appId")
-    def app_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "app_id")
-
-    @app_id.setter
-    def app_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "app_id", value)
 
     @property
     @pulumi.getter(name="appTypes")
@@ -695,15 +642,6 @@ class ApplicationSegmentPRACommonAppsDtoAppsConfigArgs:
     @connection_security.setter
     def connection_security(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "connection_security", value)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter
@@ -900,14 +838,10 @@ class BrowserAccessClientlessAppArgs:
                  name: pulumi.Input[str],
                  allow_options: Optional[pulumi.Input[bool]] = None,
                  certificate_id: Optional[pulumi.Input[str]] = None,
-                 cname: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 hidden: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 local_domain: Optional[pulumi.Input[str]] = None,
-                 path: Optional[pulumi.Input[str]] = None,
                  trust_untrusted_cert: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] application_port: Port for the BA app.
@@ -924,22 +858,14 @@ class BrowserAccessClientlessAppArgs:
             pulumi.set(__self__, "allow_options", allow_options)
         if certificate_id is not None:
             pulumi.set(__self__, "certificate_id", certificate_id)
-        if cname is not None:
-            pulumi.set(__self__, "cname", cname)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if hidden is not None:
-            pulumi.set(__self__, "hidden", hidden)
         if id is not None:
             pulumi.set(__self__, "id", id)
-        if local_domain is not None:
-            pulumi.set(__self__, "local_domain", local_domain)
-        if path is not None:
-            pulumi.set(__self__, "path", path)
         if trust_untrusted_cert is not None:
             pulumi.set(__self__, "trust_untrusted_cert", trust_untrusted_cert)
 
@@ -1002,15 +928,6 @@ class BrowserAccessClientlessAppArgs:
 
     @property
     @pulumi.getter
-    def cname(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "cname")
-
-    @cname.setter
-    def cname(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "cname", value)
-
-    @property
-    @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "description")
 
@@ -1041,39 +958,12 @@ class BrowserAccessClientlessAppArgs:
 
     @property
     @pulumi.getter
-    def hidden(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "hidden")
-
-    @hidden.setter
-    def hidden(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "hidden", value)
-
-    @property
-    @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "id")
 
     @id.setter
     def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter(name="localDomain")
-    def local_domain(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "local_domain")
-
-    @local_domain.setter
-    def local_domain(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "local_domain", value)
-
-    @property
-    @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "path")
-
-    @path.setter
-    def path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "path", value)
 
     @property
     @pulumi.getter(name="trustUntrustedCert")
@@ -1164,26 +1054,64 @@ class BrowserAccessUdpPortRangeArgs:
 
 
 @pulumi.input_type
+class CloudBrowserIsolationExternalProfileDebugModeArgs:
+    def __init__(__self__, *,
+                 allowed: Optional[pulumi.Input[bool]] = None,
+                 file_password: Optional[pulumi.Input[str]] = None):
+        if allowed is not None:
+            pulumi.set(__self__, "allowed", allowed)
+        if file_password is not None:
+            pulumi.set(__self__, "file_password", file_password)
+
+    @property
+    @pulumi.getter
+    def allowed(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "allowed")
+
+    @allowed.setter
+    def allowed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allowed", value)
+
+    @property
+    @pulumi.getter(name="filePassword")
+    def file_password(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "file_password")
+
+    @file_password.setter
+    def file_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_password", value)
+
+
+@pulumi.input_type
 class CloudBrowserIsolationExternalProfileSecurityControlArgs:
     def __init__(__self__, *,
                  allow_printing: Optional[pulumi.Input[bool]] = None,
                  copy_paste: Optional[pulumi.Input[str]] = None,
+                 deep_link: Optional[pulumi.Input['CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs']] = None,
                  document_viewer: Optional[pulumi.Input[bool]] = None,
+                 flattened_pdf: Optional[pulumi.Input[bool]] = None,
                  local_render: Optional[pulumi.Input[bool]] = None,
                  restrict_keystrokes: Optional[pulumi.Input[bool]] = None,
-                 upload_download: Optional[pulumi.Input[str]] = None):
+                 upload_download: Optional[pulumi.Input[str]] = None,
+                 watermark: Optional[pulumi.Input['CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs']] = None):
         if allow_printing is not None:
             pulumi.set(__self__, "allow_printing", allow_printing)
         if copy_paste is not None:
             pulumi.set(__self__, "copy_paste", copy_paste)
+        if deep_link is not None:
+            pulumi.set(__self__, "deep_link", deep_link)
         if document_viewer is not None:
             pulumi.set(__self__, "document_viewer", document_viewer)
+        if flattened_pdf is not None:
+            pulumi.set(__self__, "flattened_pdf", flattened_pdf)
         if local_render is not None:
             pulumi.set(__self__, "local_render", local_render)
         if restrict_keystrokes is not None:
             pulumi.set(__self__, "restrict_keystrokes", restrict_keystrokes)
         if upload_download is not None:
             pulumi.set(__self__, "upload_download", upload_download)
+        if watermark is not None:
+            pulumi.set(__self__, "watermark", watermark)
 
     @property
     @pulumi.getter(name="allowPrinting")
@@ -1204,6 +1132,15 @@ class CloudBrowserIsolationExternalProfileSecurityControlArgs:
         pulumi.set(self, "copy_paste", value)
 
     @property
+    @pulumi.getter(name="deepLink")
+    def deep_link(self) -> Optional[pulumi.Input['CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs']]:
+        return pulumi.get(self, "deep_link")
+
+    @deep_link.setter
+    def deep_link(self, value: Optional[pulumi.Input['CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs']]):
+        pulumi.set(self, "deep_link", value)
+
+    @property
     @pulumi.getter(name="documentViewer")
     def document_viewer(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "document_viewer")
@@ -1211,6 +1148,15 @@ class CloudBrowserIsolationExternalProfileSecurityControlArgs:
     @document_viewer.setter
     def document_viewer(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "document_viewer", value)
+
+    @property
+    @pulumi.getter(name="flattenedPdf")
+    def flattened_pdf(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "flattened_pdf")
+
+    @flattened_pdf.setter
+    def flattened_pdf(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "flattened_pdf", value)
 
     @property
     @pulumi.getter(name="localRender")
@@ -1239,16 +1185,131 @@ class CloudBrowserIsolationExternalProfileSecurityControlArgs:
     def upload_download(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "upload_download", value)
 
+    @property
+    @pulumi.getter
+    def watermark(self) -> Optional[pulumi.Input['CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs']]:
+        return pulumi.get(self, "watermark")
+
+    @watermark.setter
+    def watermark(self, value: Optional[pulumi.Input['CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs']]):
+        pulumi.set(self, "watermark", value)
+
+
+@pulumi.input_type
+class CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs:
+    def __init__(__self__, *,
+                 applications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        if applications is not None:
+            pulumi.set(__self__, "applications", applications)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def applications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "applications")
+
+    @applications.setter
+    def applications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "applications", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 message: Optional[pulumi.Input[str]] = None,
+                 show_message: Optional[pulumi.Input[bool]] = None,
+                 show_timestamp: Optional[pulumi.Input[bool]] = None,
+                 show_user_id: Optional[pulumi.Input[bool]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if show_message is not None:
+            pulumi.set(__self__, "show_message", show_message)
+        if show_timestamp is not None:
+            pulumi.set(__self__, "show_timestamp", show_timestamp)
+        if show_user_id is not None:
+            pulumi.set(__self__, "show_user_id", show_user_id)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+    @property
+    @pulumi.getter(name="showMessage")
+    def show_message(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "show_message")
+
+    @show_message.setter
+    def show_message(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "show_message", value)
+
+    @property
+    @pulumi.getter(name="showTimestamp")
+    def show_timestamp(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "show_timestamp")
+
+    @show_timestamp.setter
+    def show_timestamp(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "show_timestamp", value)
+
+    @property
+    @pulumi.getter(name="showUserId")
+    def show_user_id(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "show_user_id")
+
+    @show_user_id.setter
+    def show_user_id(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "show_user_id", value)
+
 
 @pulumi.input_type
 class CloudBrowserIsolationExternalProfileUserExperienceArgs:
     def __init__(__self__, *,
                  browser_in_browser: Optional[pulumi.Input[bool]] = None,
-                 session_persistence: Optional[pulumi.Input[bool]] = None):
+                 forward_to_zia: Optional[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs']] = None,
+                 persist_isolation_bar: Optional[pulumi.Input[bool]] = None,
+                 session_persistence: Optional[pulumi.Input[bool]] = None,
+                 translate: Optional[pulumi.Input[bool]] = None,
+                 zgpu: Optional[pulumi.Input[bool]] = None):
         if browser_in_browser is not None:
             pulumi.set(__self__, "browser_in_browser", browser_in_browser)
+        if forward_to_zia is not None:
+            pulumi.set(__self__, "forward_to_zia", forward_to_zia)
+        if persist_isolation_bar is not None:
+            pulumi.set(__self__, "persist_isolation_bar", persist_isolation_bar)
         if session_persistence is not None:
             pulumi.set(__self__, "session_persistence", session_persistence)
+        if translate is not None:
+            pulumi.set(__self__, "translate", translate)
+        if zgpu is not None:
+            pulumi.set(__self__, "zgpu", zgpu)
 
     @property
     @pulumi.getter(name="browserInBrowser")
@@ -1260,6 +1321,24 @@ class CloudBrowserIsolationExternalProfileUserExperienceArgs:
         pulumi.set(self, "browser_in_browser", value)
 
     @property
+    @pulumi.getter(name="forwardToZia")
+    def forward_to_zia(self) -> Optional[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs']]:
+        return pulumi.get(self, "forward_to_zia")
+
+    @forward_to_zia.setter
+    def forward_to_zia(self, value: Optional[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs']]):
+        pulumi.set(self, "forward_to_zia", value)
+
+    @property
+    @pulumi.getter(name="persistIsolationBar")
+    def persist_isolation_bar(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "persist_isolation_bar")
+
+    @persist_isolation_bar.setter
+    def persist_isolation_bar(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "persist_isolation_bar", value)
+
+    @property
     @pulumi.getter(name="sessionPersistence")
     def session_persistence(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "session_persistence")
@@ -1268,22 +1347,76 @@ class CloudBrowserIsolationExternalProfileUserExperienceArgs:
     def session_persistence(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "session_persistence", value)
 
+    @property
+    @pulumi.getter
+    def translate(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "translate")
 
-@pulumi.input_type
-class InspectionCustomControlsAssociatedInspectionProfileNameArgs:
-    def __init__(__self__, *,
-                 ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        if ids is not None:
-            pulumi.set(__self__, "ids", ids)
+    @translate.setter
+    def translate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "translate", value)
 
     @property
     @pulumi.getter
-    def ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        return pulumi.get(self, "ids")
+    def zgpu(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "zgpu")
 
-    @ids.setter
-    def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "ids", value)
+    @zgpu.setter
+    def zgpu(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "zgpu", value)
+
+
+@pulumi.input_type
+class CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs:
+    def __init__(__self__, *,
+                 cloud_name: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
+                 pac_file_url: Optional[pulumi.Input[str]] = None):
+        if cloud_name is not None:
+            pulumi.set(__self__, "cloud_name", cloud_name)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if organization_id is not None:
+            pulumi.set(__self__, "organization_id", organization_id)
+        if pac_file_url is not None:
+            pulumi.set(__self__, "pac_file_url", pac_file_url)
+
+    @property
+    @pulumi.getter(name="cloudName")
+    def cloud_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cloud_name")
+
+    @cloud_name.setter
+    def cloud_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_name", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "organization_id")
+
+    @organization_id.setter
+    def organization_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organization_id", value)
+
+    @property
+    @pulumi.getter(name="pacFileUrl")
+    def pac_file_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "pac_file_url")
+
+    @pac_file_url.setter
+    def pac_file_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pac_file_url", value)
 
 
 @pulumi.input_type
@@ -1464,37 +1597,21 @@ class InspectionProfileCustomControlArgs:
 
 
 @pulumi.input_type
-class InspectionProfilePredefinedControlArgs:
+class InspectionProfilePredefinedApiControlArgs:
     def __init__(__self__, *,
                  action: Optional[pulumi.Input[str]] = None,
                  action_value: Optional[pulumi.Input[str]] = None,
-                 control_type: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 protocol_type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] action: The action of the predefined control
-        :param pulumi.Input[str] action_value: The value for the predefined controls action. This field is only required if the action is set to REDIRECT
-        :param pulumi.Input[str] control_type: The control type of the custom control
-        :param pulumi.Input[str] id: The unique identifier of the predefined control
-        :param pulumi.Input[str] protocol_type: The protocol type of the predefined control
-        """
+                 id: Optional[pulumi.Input[str]] = None):
         if action is not None:
             pulumi.set(__self__, "action", action)
         if action_value is not None:
             pulumi.set(__self__, "action_value", action_value)
-        if control_type is not None:
-            pulumi.set(__self__, "control_type", control_type)
         if id is not None:
             pulumi.set(__self__, "id", id)
-        if protocol_type is not None:
-            pulumi.set(__self__, "protocol_type", protocol_type)
 
     @property
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
-        """
-        The action of the predefined control
-        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -1504,9 +1621,6 @@ class InspectionProfilePredefinedControlArgs:
     @property
     @pulumi.getter(name="actionValue")
     def action_value(self) -> Optional[pulumi.Input[str]]:
-        """
-        The value for the predefined controls action. This field is only required if the action is set to REDIRECT
-        """
         return pulumi.get(self, "action_value")
 
     @action_value.setter
@@ -1514,40 +1628,136 @@ class InspectionProfilePredefinedControlArgs:
         pulumi.set(self, "action_value", value)
 
     @property
-    @pulumi.getter(name="controlType")
-    def control_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The control type of the custom control
-        """
-        return pulumi.get(self, "control_type")
-
-    @control_type.setter
-    def control_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "control_type", value)
-
-    @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The unique identifier of the predefined control
-        """
         return pulumi.get(self, "id")
 
     @id.setter
     def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
 
-    @property
-    @pulumi.getter(name="protocolType")
-    def protocol_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The protocol type of the predefined control
-        """
-        return pulumi.get(self, "protocol_type")
 
-    @protocol_type.setter
-    def protocol_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "protocol_type", value)
+@pulumi.input_type
+class InspectionProfilePredefinedControlArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[str]] = None,
+                 action_value: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None):
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if action_value is not None:
+            pulumi.set(__self__, "action_value", action_value)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter(name="actionValue")
+    def action_value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "action_value")
+
+    @action_value.setter
+    def action_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action_value", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class InspectionProfileThreatLabzControlArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[str]] = None,
+                 action_value: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None):
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if action_value is not None:
+            pulumi.set(__self__, "action_value", action_value)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter(name="actionValue")
+    def action_value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "action_value")
+
+    @action_value.setter
+    def action_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action_value", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class InspectionProfileWebsocketControlArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[str]] = None,
+                 action_value: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None):
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if action_value is not None:
+            pulumi.set(__self__, "action_value", action_value)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter(name="actionValue")
+    def action_value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "action_value")
+
+    @action_value.setter
+    def action_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action_value", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
@@ -1999,10 +2209,8 @@ class LSSConfigControllerPolicyRuleResourceArgs:
 
     @property
     @pulumi.getter(name="ruleOrder")
+    @_utilities.deprecated("""The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""")
     def rule_order(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""", DeprecationWarning)
-        pulumi.log.warn("""rule_order is deprecated: The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""")
-
         return pulumi.get(self, "rule_order")
 
     @rule_order.setter
@@ -2372,6 +2580,149 @@ class PRAConsolePraPortalArgs:
     @ids.setter
     def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ids", value)
+
+
+@pulumi.input_type
+class PolicyAccessCredentialRuleConditionArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[str]] = None,
+                 operands: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAccessCredentialRuleConditionOperandArgs']]]] = None,
+                 operator: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyAccessCredentialRuleConditionOperandArgs']]] operands: This signifies the various policy criteria.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if operands is not None:
+            pulumi.set(__self__, "operands", operands)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def operands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAccessCredentialRuleConditionOperandArgs']]]]:
+        """
+        This signifies the various policy criteria.
+        """
+        return pulumi.get(self, "operands")
+
+    @operands.setter
+    def operands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAccessCredentialRuleConditionOperandArgs']]]]):
+        pulumi.set(self, "operands", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+
+@pulumi.input_type
+class PolicyAccessCredentialRuleConditionOperandArgs:
+    def __init__(__self__, *,
+                 entry_values: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAccessCredentialRuleConditionOperandEntryValueArgs']]]] = None,
+                 object_type: Optional[pulumi.Input[str]] = None,
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] object_type: This is for specifying the policy critiera.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        if entry_values is not None:
+            pulumi.set(__self__, "entry_values", entry_values)
+        if object_type is not None:
+            pulumi.set(__self__, "object_type", object_type)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="entryValues")
+    def entry_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAccessCredentialRuleConditionOperandEntryValueArgs']]]]:
+        return pulumi.get(self, "entry_values")
+
+    @entry_values.setter
+    def entry_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAccessCredentialRuleConditionOperandEntryValueArgs']]]]):
+        pulumi.set(self, "entry_values", value)
+
+    @property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is for specifying the policy critiera.
+        """
+        return pulumi.get(self, "object_type")
+
+    @object_type.setter
+    def object_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "object_type", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class PolicyAccessCredentialRuleConditionOperandEntryValueArgs:
+    def __init__(__self__, *,
+                 lhs: Optional[pulumi.Input[str]] = None,
+                 rhs: Optional[pulumi.Input[str]] = None):
+        if lhs is not None:
+            pulumi.set(__self__, "lhs", lhs)
+        if rhs is not None:
+            pulumi.set(__self__, "rhs", rhs)
+
+    @property
+    @pulumi.getter
+    def lhs(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "lhs")
+
+    @lhs.setter
+    def lhs(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lhs", value)
+
+    @property
+    @pulumi.getter
+    def rhs(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "rhs")
+
+    @rhs.setter
+    def rhs(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rhs", value)
+
+
+@pulumi.input_type
+class PolicyAccessCredentialRuleCredentialArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
 
 
 @pulumi.input_type

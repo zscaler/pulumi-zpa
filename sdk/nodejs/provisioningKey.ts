@@ -56,7 +56,7 @@ export class ProvisioningKey extends pulumi.CustomResource {
     /**
      * read only field. Ignored in PUT/POST calls.
      */
-    public /*out*/ readonly ProvisioningKeyValue!: pulumi.Output<string>;
+    public readonly ProvisioningKeyValue!: pulumi.Output<string>;
     public readonly appConnectorGroupId!: pulumi.Output<string | undefined>;
     /**
      * Read only property. Applicable only for GET calls, ignored in PUT/POST calls.
@@ -140,6 +140,7 @@ export class ProvisioningKey extends pulumi.CustomResource {
             if ((!args || args.zcomponentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zcomponentId'");
             }
+            resourceInputs["ProvisioningKeyValue"] = args ? args.ProvisioningKeyValue : undefined;
             resourceInputs["appConnectorGroupId"] = args ? args.appConnectorGroupId : undefined;
             resourceInputs["associationType"] = args ? args.associationType : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
@@ -152,12 +153,9 @@ export class ProvisioningKey extends pulumi.CustomResource {
             resourceInputs["usageCount"] = args ? args.usageCount : undefined;
             resourceInputs["zcomponentId"] = args ? args.zcomponentId : undefined;
             resourceInputs["zcomponentName"] = args ? args.zcomponentName : undefined;
-            resourceInputs["ProvisioningKeyValue"] = undefined /*out*/;
             resourceInputs["appConnectorGroupName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["ProvisioningKeyValue"] };
-        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ProvisioningKey.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -217,6 +215,10 @@ export interface ProvisioningKeyState {
  * The set of arguments for constructing a ProvisioningKey resource.
  */
 export interface ProvisioningKeyArgs {
+    /**
+     * read only field. Ignored in PUT/POST calls.
+     */
+    ProvisioningKeyValue?: pulumi.Input<string>;
     appConnectorGroupId?: pulumi.Input<string>;
     /**
      * Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are

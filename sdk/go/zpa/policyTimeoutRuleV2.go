@@ -11,6 +11,176 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-timeout-policy)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-timeout-policies-using-api)
+//
+// The **zpa_policy_timeout_rule_v2** resource creates and manages policy access timeout rule in the Zscaler Private Access cloud using a new v2 API endpoint.
+//
+//	⚠️ **NOTE**: This resource is recommended if your configuration requires the association of more than 1000 resource criteria per rule.
+//
+//	⚠️ **WARNING:**: The attribute ``ruleOrder`` is now deprecated in favor of the new resource  ``policyAccessRuleReorder``
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			thisIdPController, err := zpa.GetIdPController(ctx, &zpa.GetIdPControllerArgs{
+//				Name: pulumi.StringRef("Idp_Name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			emailUserSso, err := zpa.GetSAMLAttribute(ctx, &zpa.GetSAMLAttributeArgs{
+//				Name:    pulumi.StringRef("Email_Users"),
+//				IdpName: pulumi.StringRef("Idp_Name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			groupUser, err := zpa.GetSAMLAttribute(ctx, &zpa.GetSAMLAttributeArgs{
+//				Name:    pulumi.StringRef("GroupName_Users"),
+//				IdpName: pulumi.StringRef("Idp_Name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			a000, err := zpa.GetSCIMGroups(ctx, &zpa.GetSCIMGroupsArgs{
+//				Name:    pulumi.StringRef("A000"),
+//				IdpName: pulumi.StringRef("Idp_Name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			b000, err := zpa.GetSCIMGroups(ctx, &zpa.GetSCIMGroupsArgs{
+//				Name:    pulumi.StringRef("B000"),
+//				IdpName: pulumi.StringRef("Idp_Name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Create Segment Group
+//			thisSegmentGroup, err := zpa.NewSegmentGroup(ctx, "thisSegmentGroup", &zpa.SegmentGroupArgs{
+//				Description: pulumi.String("Example"),
+//				Enabled:     pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create Policy Access Rule V2
+//			_, err = zpa.NewPolicyAccessTimeOutRuleV2(ctx, "thisPolicyAccessTimeOutRuleV2", &zpa.PolicyAccessTimeOutRuleV2Args{
+//				Description:       pulumi.String("Example"),
+//				Action:            pulumi.String("RE_AUTH"),
+//				ReauthIdleTimeout: pulumi.String("10 Days"),
+//				ReauthTimeout:     pulumi.String("10 Days"),
+//				Conditions: zpa.PolicyAccessTimeOutRuleV2ConditionArray{
+//					&zpa.PolicyAccessTimeOutRuleV2ConditionArgs{
+//						Operator: pulumi.String("OR"),
+//						Operands: zpa.PolicyAccessTimeOutRuleV2ConditionOperandArray{
+//							&zpa.PolicyAccessTimeOutRuleV2ConditionOperandArgs{
+//								ObjectType: pulumi.String("APP_GROUP"),
+//								Values: pulumi.StringArray{
+//									thisSegmentGroup.ID(),
+//								},
+//							},
+//						},
+//					},
+//					&zpa.PolicyAccessTimeOutRuleV2ConditionArgs{
+//						Operator: pulumi.String("OR"),
+//						Operands: zpa.PolicyAccessTimeOutRuleV2ConditionOperandArray{
+//							&zpa.PolicyAccessTimeOutRuleV2ConditionOperandArgs{
+//								ObjectType: pulumi.String("SAML"),
+//								EntryValues: zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArray{
+//									&zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs{
+//										Rhs: pulumi.String("user1@acme.com"),
+//										Lhs: pulumi.String(emailUserSso.Id),
+//									},
+//									&zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs{
+//										Rhs: pulumi.String("A000"),
+//										Lhs: pulumi.String(groupUser.Id),
+//									},
+//								},
+//							},
+//							&zpa.PolicyAccessTimeOutRuleV2ConditionOperandArgs{
+//								ObjectType: pulumi.String("SCIM_GROUP"),
+//								EntryValues: zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArray{
+//									&zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs{
+//										Rhs: pulumi.String(a000.Id),
+//										Lhs: pulumi.String(thisIdPController.Id),
+//									},
+//									&zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs{
+//										Rhs: pulumi.String(b000.Id),
+//										Lhs: pulumi.String(thisIdPController.Id),
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&zpa.PolicyAccessTimeOutRuleV2ConditionArgs{
+//						Operator: pulumi.String("OR"),
+//						Operands: zpa.PolicyAccessTimeOutRuleV2ConditionOperandArray{
+//							&zpa.PolicyAccessTimeOutRuleV2ConditionOperandArgs{
+//								ObjectType: pulumi.String("PLATFORM"),
+//								EntryValues: zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArray{
+//									&zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs{
+//										Rhs: pulumi.String("true"),
+//										Lhs: pulumi.String("linux"),
+//									},
+//									&zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs{
+//										Rhs: pulumi.String("true"),
+//										Lhs: pulumi.String("android"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## LHS and RHS Values
+//
+// | Object Type | LHS| RHS| VALUES
+// |----------|-----------|----------|----------
+// | APP  |   |  | “applicationSegmentId“ |
+// | APP_GROUP  |   |  | “segmentGroupId“|
+// | CLIENT_TYPE  |   |  |  “zpnClientTypeZappl“, “zpnClientTypeExporter“, “zpnClientTypeBrowserIsolation“, “zpnClientTypeIpAnchoring“, “zpnClientTypeEdgeConnector“, “zpnClientTypeBranchConnector“,  “zpnClientTypeZappPartner“, “zpnClientTypeZapp“  |
+// | SAML | “samlAttributeId“  | “attributeValueToMatch“ |
+// | SCIM | “scimAttributeId“  | “attributeValueToMatch“  |
+// | SCIM_GROUP | “scimGroupAttributeId“  | “attributeValueToMatch“  |
+// | PLATFORM | “mac“, “ios“, “windows“, “android“, “linux“ | “"true"“ / “"false"“ |
+// | POSTURE | “postureUdid“  | “"true"“ / “"false"“ |
+//
+// ## Import
+//
+// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+//
+// # Visit
+//
+// Policy access timeout rule can be imported by using `<RULE ID>` as the import ID.
+//
+// For example:
+//
+// ```sh
+// $ pulumi import zpa:index/policyTimeoutRuleV2:PolicyTimeoutRuleV2 example <rule_id>
+// ```
+//
 // Deprecated: zpa.index/policytimeoutrulev2.PolicyTimeoutRuleV2 has been deprecated in favor of zpa.index/policyaccesstimeoutrulev2.PolicyAccessTimeOutRuleV2
 type PolicyTimeoutRuleV2 struct {
 	pulumi.CustomResourceState

@@ -17,7 +17,6 @@ namespace Zscaler.Zpa
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -63,8 +62,17 @@ namespace Zscaler.Zpa
     ///         {
     ///             new Zpa.Inputs.CloudBrowserIsolationExternalProfileUserExperienceArgs
     ///             {
-    ///                 SessionPersistence = true,
+    ///                 ForwardToZia = new Zpa.Inputs.CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs
+    ///                 {
+    ///                     Enabled = true,
+    ///                     OrganizationId = "***********",
+    ///                     CloudName = "&lt;cloud_name&gt;",
+    ///                     PacFileUrl = "https://pac.&lt;cloud_name&gt;/&lt;cloud_name&gt;/proxy.pac",
+    ///                 },
     ///                 BrowserInBrowser = true,
+    ///                 PersistIsolationBar = true,
+    ///                 Translate = true,
+    ///                 SessionPersistence = true,
     ///             },
     ///         },
     ///         SecurityControls = new[]
@@ -72,18 +80,40 @@ namespace Zscaler.Zpa
     ///             new Zpa.Inputs.CloudBrowserIsolationExternalProfileSecurityControlArgs
     ///             {
     ///                 CopyPaste = "all",
-    ///                 UploadDownload = "all",
+    ///                 UploadDownload = "upstream",
     ///                 DocumentViewer = true,
     ///                 LocalRender = true,
     ///                 AllowPrinting = true,
-    ///                 RestrictKeystrokes = false,
+    ///                 RestrictKeystrokes = true,
+    ///                 FlattenedPdf = true,
+    ///                 DeepLink = new Zpa.Inputs.CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs
+    ///                 {
+    ///                     Enabled = true,
+    ///                     Applications = new[]
+    ///                     {
+    ///                         "test1",
+    ///                         "test",
+    ///                     },
+    ///                 },
+    ///                 Watermark = new Zpa.Inputs.CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs
+    ///                 {
+    ///                     Enabled = true,
+    ///                     ShowUserId = true,
+    ///                     ShowTimestamp = true,
+    ///                     ShowMessage = true,
+    ///                     Message = "Zscaler CBI",
+    ///                 },
     ///             },
+    ///         },
+    ///         DebugMode = new Zpa.Inputs.CloudBrowserIsolationExternalProfileDebugModeArgs
+    ///         {
+    ///             Allowed = true,
+    ///             FilePassword = "***********",
     ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [ZpaResourceType("zpa:index/cloudBrowserIsolationExternalProfile:CloudBrowserIsolationExternalProfile")]
     public partial class CloudBrowserIsolationExternalProfile : global::Pulumi.CustomResource
@@ -92,10 +122,13 @@ namespace Zscaler.Zpa
         public Output<string> BannerId { get; private set; } = null!;
 
         /// <summary>
-        /// This field defines the list of server groups IDs.
+        /// This field defines the list of certificate IDs.
         /// </summary>
         [Output("certificateIds")]
         public Output<ImmutableArray<string>> CertificateIds { get; private set; } = null!;
+
+        [Output("debugMode")]
+        public Output<Outputs.CloudBrowserIsolationExternalProfileDebugMode?> DebugMode { get; private set; } = null!;
 
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -104,7 +137,7 @@ namespace Zscaler.Zpa
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// This field defines the list of server groups IDs.
+        /// This field defines the list of region IDs.
         /// </summary>
         [Output("regionIds")]
         public Output<ImmutableArray<string>> RegionIds { get; private set; } = null!;
@@ -169,13 +202,16 @@ namespace Zscaler.Zpa
         private InputList<string>? _certificateIds;
 
         /// <summary>
-        /// This field defines the list of server groups IDs.
+        /// This field defines the list of certificate IDs.
         /// </summary>
         public InputList<string> CertificateIds
         {
             get => _certificateIds ?? (_certificateIds = new InputList<string>());
             set => _certificateIds = value;
         }
+
+        [Input("debugMode")]
+        public Input<Inputs.CloudBrowserIsolationExternalProfileDebugModeArgs>? DebugMode { get; set; }
 
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -187,7 +223,7 @@ namespace Zscaler.Zpa
         private InputList<string>? _regionIds;
 
         /// <summary>
-        /// This field defines the list of server groups IDs.
+        /// This field defines the list of region IDs.
         /// </summary>
         public InputList<string> RegionIds
         {
@@ -226,13 +262,16 @@ namespace Zscaler.Zpa
         private InputList<string>? _certificateIds;
 
         /// <summary>
-        /// This field defines the list of server groups IDs.
+        /// This field defines the list of certificate IDs.
         /// </summary>
         public InputList<string> CertificateIds
         {
             get => _certificateIds ?? (_certificateIds = new InputList<string>());
             set => _certificateIds = value;
         }
+
+        [Input("debugMode")]
+        public Input<Inputs.CloudBrowserIsolationExternalProfileDebugModeGetArgs>? DebugMode { get; set; }
 
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -244,7 +283,7 @@ namespace Zscaler.Zpa
         private InputList<string>? _regionIds;
 
         /// <summary>
-        /// This field defines the list of server groups IDs.
+        /// This field defines the list of region IDs.
         /// </summary>
         public InputList<string> RegionIds
         {

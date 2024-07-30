@@ -22,7 +22,6 @@ namespace Zscaler.Zpa
     /// 
     /// ### Defined Customer ID Value
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -31,7 +30,7 @@ namespace Zscaler.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Zpa.AssistantSchedule("this", new()
+    ///     var @this = new Zpa.AppConnectorAssistantSchedule("this", new()
     ///     {
     ///         CustomerId = "123456789101112",
     ///         DeleteDisabled = true,
@@ -42,11 +41,9 @@ namespace Zscaler.Zpa
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Customer ID Via Environment Variable
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -55,7 +52,7 @@ namespace Zscaler.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Zpa.AssistantSchedule("this", new()
+    ///     var @this = new Zpa.AppConnectorAssistantSchedule("this", new()
     ///     {
     ///         DeleteDisabled = true,
     ///         Enabled = true,
@@ -65,12 +62,12 @@ namespace Zscaler.Zpa
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Import is not currently supported for this resource.
     /// </summary>
+    [Obsolete(@"zpa.index/assistantschedule.AssistantSchedule has been deprecated in favor of zpa.index/appconnectorassistantschedule.AppConnectorAssistantSchedule")]
     [ZpaResourceType("zpa:index/assistantSchedule:AssistantSchedule")]
     public partial class AssistantSchedule : global::Pulumi.CustomResource
     {

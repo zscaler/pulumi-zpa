@@ -18,7 +18,6 @@ namespace Zscaler.Zpa
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -83,7 +82,6 @@ namespace Zscaler.Zpa
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -179,9 +177,6 @@ namespace Zscaler.Zpa
 
         [Output("segmentGroupId")]
         public Output<string> SegmentGroupId { get; private set; } = null!;
-
-        [Output("segmentGroupName")]
-        public Output<string> SegmentGroupName { get; private set; } = null!;
 
         [Output("selectConnectorCloseToApp")]
         public Output<bool?> SelectConnectorCloseToApp { get; private set; } = null!;
@@ -349,9 +344,6 @@ namespace Zscaler.Zpa
         [Input("segmentGroupId", required: true)]
         public Input<string> SegmentGroupId { get; set; } = null!;
 
-        [Input("segmentGroupName")]
-        public Input<string>? SegmentGroupName { get; set; }
-
         [Input("selectConnectorCloseToApp")]
         public Input<bool>? SelectConnectorCloseToApp { get; set; }
 
@@ -508,9 +500,6 @@ namespace Zscaler.Zpa
 
         [Input("segmentGroupId")]
         public Input<string>? SegmentGroupId { get; set; }
-
-        [Input("segmentGroupName")]
-        public Input<string>? SegmentGroupName { get; set; }
 
         [Input("selectConnectorCloseToApp")]
         public Input<bool>? SelectConnectorCloseToApp { get; set; }

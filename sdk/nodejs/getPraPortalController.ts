@@ -4,6 +4,23 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-privileged-portals)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-portals-using-api)
+ *
+ * Use the **zpa_pra_portal_controller** data source to get information about a privileged remote access portal created in the Zscaler Private Access cloud. This data source can then be referenced in an privileged remote access console resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@pulumi/zpa";
+ *
+ * const this = zpa.getPRAPortal({
+ *     name: "Example",
+ * });
+ * ```
+ */
 /** @deprecated zpa.index/getpraportalcontroller.getPraPortalController has been deprecated in favor of zpa.index/getpraportal.getPRAPortal */
 export function getPraPortalController(args?: GetPraPortalControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetPraPortalControllerResult> {
     pulumi.log.warn("getPraPortalController is deprecated: zpa.index/getpraportalcontroller.getPraPortalController has been deprecated in favor of zpa.index/getpraportal.getPRAPortal")
@@ -44,6 +61,23 @@ export interface GetPraPortalControllerResult {
     readonly userNotification: string;
     readonly userNotificationEnabled: boolean;
 }
+/**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-privileged-portals)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-portals-using-api)
+ *
+ * Use the **zpa_pra_portal_controller** data source to get information about a privileged remote access portal created in the Zscaler Private Access cloud. This data source can then be referenced in an privileged remote access console resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@pulumi/zpa";
+ *
+ * const this = zpa.getPRAPortal({
+ *     name: "Example",
+ * });
+ * ```
+ */
 /** @deprecated zpa.index/getpraportalcontroller.getPraPortalController has been deprecated in favor of zpa.index/getpraportal.getPRAPortal */
 export function getPraPortalControllerOutput(args?: GetPraPortalControllerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPraPortalControllerResult> {
     return pulumi.output(args).apply((a: any) => getPraPortalController(a, opts))

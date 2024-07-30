@@ -19,7 +19,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -83,7 +82,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -131,7 +129,6 @@ type ApplicationSegmentInspection struct {
 	Name                      pulumi.StringOutput  `pulumi:"name"`
 	PassiveHealthEnabled      pulumi.BoolOutput    `pulumi:"passiveHealthEnabled"`
 	SegmentGroupId            pulumi.StringOutput  `pulumi:"segmentGroupId"`
-	SegmentGroupName          pulumi.StringOutput  `pulumi:"segmentGroupName"`
 	SelectConnectorCloseToApp pulumi.BoolPtrOutput `pulumi:"selectConnectorCloseToApp"`
 	// List of the server group IDs.
 	ServerGroups ApplicationSegmentInspectionServerGroupArrayOutput `pulumi:"serverGroups"`
@@ -206,7 +203,6 @@ type applicationSegmentInspectionState struct {
 	Name                      *string `pulumi:"name"`
 	PassiveHealthEnabled      *bool   `pulumi:"passiveHealthEnabled"`
 	SegmentGroupId            *string `pulumi:"segmentGroupId"`
-	SegmentGroupName          *string `pulumi:"segmentGroupName"`
 	SelectConnectorCloseToApp *bool   `pulumi:"selectConnectorCloseToApp"`
 	// List of the server group IDs.
 	ServerGroups []ApplicationSegmentInspectionServerGroup `pulumi:"serverGroups"`
@@ -249,7 +245,6 @@ type ApplicationSegmentInspectionState struct {
 	Name                      pulumi.StringPtrInput
 	PassiveHealthEnabled      pulumi.BoolPtrInput
 	SegmentGroupId            pulumi.StringPtrInput
-	SegmentGroupName          pulumi.StringPtrInput
 	SelectConnectorCloseToApp pulumi.BoolPtrInput
 	// List of the server group IDs.
 	ServerGroups ApplicationSegmentInspectionServerGroupArrayInput
@@ -296,7 +291,6 @@ type applicationSegmentInspectionArgs struct {
 	Name                      *string `pulumi:"name"`
 	PassiveHealthEnabled      *bool   `pulumi:"passiveHealthEnabled"`
 	SegmentGroupId            string  `pulumi:"segmentGroupId"`
-	SegmentGroupName          *string `pulumi:"segmentGroupName"`
 	SelectConnectorCloseToApp *bool   `pulumi:"selectConnectorCloseToApp"`
 	// List of the server group IDs.
 	ServerGroups []ApplicationSegmentInspectionServerGroup `pulumi:"serverGroups"`
@@ -340,7 +334,6 @@ type ApplicationSegmentInspectionArgs struct {
 	Name                      pulumi.StringPtrInput
 	PassiveHealthEnabled      pulumi.BoolPtrInput
 	SegmentGroupId            pulumi.StringInput
-	SegmentGroupName          pulumi.StringPtrInput
 	SelectConnectorCloseToApp pulumi.BoolPtrInput
 	// List of the server group IDs.
 	ServerGroups ApplicationSegmentInspectionServerGroupArrayInput
@@ -520,10 +513,6 @@ func (o ApplicationSegmentInspectionOutput) PassiveHealthEnabled() pulumi.BoolOu
 
 func (o ApplicationSegmentInspectionOutput) SegmentGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.StringOutput { return v.SegmentGroupId }).(pulumi.StringOutput)
-}
-
-func (o ApplicationSegmentInspectionOutput) SegmentGroupName() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.StringOutput { return v.SegmentGroupName }).(pulumi.StringOutput)
 }
 
 func (o ApplicationSegmentInspectionOutput) SelectConnectorCloseToApp() pulumi.BoolPtrOutput {

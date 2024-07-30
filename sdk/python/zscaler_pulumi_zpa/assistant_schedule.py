@@ -147,7 +147,12 @@ class _AssistantScheduleState:
         pulumi.set(self, "frequency_interval", value)
 
 
+warnings.warn("""zpa.index/assistantschedule.AssistantSchedule has been deprecated in favor of zpa.index/appconnectorassistantschedule.AppConnectorAssistantSchedule""", DeprecationWarning)
+
+
 class AssistantSchedule(pulumi.CustomResource):
+    warnings.warn("""zpa.index/assistantschedule.AssistantSchedule has been deprecated in favor of zpa.index/appconnectorassistantschedule.AppConnectorAssistantSchedule""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -170,34 +175,30 @@ class AssistantSchedule(pulumi.CustomResource):
 
         ### Defined Customer ID Value
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
 
-        this = zpa.AssistantSchedule("this",
+        this = zpa.AppConnectorAssistantSchedule("this",
             customer_id="123456789101112",
             delete_disabled=True,
             enabled=True,
             frequency="days",
             frequency_interval="5")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Customer ID Via Environment Variable
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
 
-        this = zpa.AssistantSchedule("this",
+        this = zpa.AppConnectorAssistantSchedule("this",
             delete_disabled=True,
             enabled=True,
             frequency="days",
             frequency_interval="5")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -224,34 +225,30 @@ class AssistantSchedule(pulumi.CustomResource):
 
         ### Defined Customer ID Value
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
 
-        this = zpa.AssistantSchedule("this",
+        this = zpa.AppConnectorAssistantSchedule("this",
             customer_id="123456789101112",
             delete_disabled=True,
             enabled=True,
             frequency="days",
             frequency_interval="5")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Customer ID Via Environment Variable
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
 
-        this = zpa.AssistantSchedule("this",
+        this = zpa.AppConnectorAssistantSchedule("this",
             delete_disabled=True,
             enabled=True,
             frequency="days",
             frequency_interval="5")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -278,6 +275,7 @@ class AssistantSchedule(pulumi.CustomResource):
                  frequency: Optional[pulumi.Input[str]] = None,
                  frequency_interval: Optional[pulumi.Input[str]] = None,
                  __props__=None):
+        pulumi.log.warn("""AssistantSchedule is deprecated: zpa.index/assistantschedule.AssistantSchedule has been deprecated in favor of zpa.index/appconnectorassistantschedule.AppConnectorAssistantSchedule""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

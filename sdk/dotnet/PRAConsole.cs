@@ -16,6 +16,108 @@ namespace Zscaler.Zpa
     /// 
     /// The **zpa_pra_console_controller** resource creates a privileged remote access console in the Zscaler Private Access cloud. This resource can then be referenced in an privileged access policy resource and a privileged access portal.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Pulumi.Zpa;
+    /// using Zpa = Zscaler.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Creates Segment Group for Application Segment"
+    ///     var thisSegmentGroup = new Zpa.SegmentGroup("thisSegmentGroup", new()
+    ///     {
+    ///         Description = "Example",
+    ///         Enabled = true,
+    ///     });
+    /// 
+    ///     // Creates Privileged Remote Access Application Segment"
+    ///     var thisApplicationSegmentPRA = new Zpa.ApplicationSegmentPRA("thisApplicationSegmentPRA", new()
+    ///     {
+    ///         Description = "Example",
+    ///         Enabled = true,
+    ///         HealthReporting = "ON_ACCESS",
+    ///         BypassType = "NEVER",
+    ///         IsCnameEnabled = true,
+    ///         TcpPortRanges = new[]
+    ///         {
+    ///             "3389",
+    ///             "3389",
+    ///         },
+    ///         DomainNames = new[]
+    ///         {
+    ///             "rdp_pra.example.com",
+    ///         },
+    ///         SegmentGroupId = thisSegmentGroup.Id,
+    ///         CommonAppsDto = new Zpa.Inputs.ApplicationSegmentPRACommonAppsDtoArgs
+    ///         {
+    ///             AppsConfigs = new[]
+    ///             {
+    ///                 new Zpa.Inputs.ApplicationSegmentPRACommonAppsDtoAppsConfigArgs
+    ///                 {
+    ///                     Name = "rdp_pra",
+    ///                     Domain = "rdp_pra.example.com",
+    ///                     ApplicationProtocol = "RDP",
+    ///                     ConnectionSecurity = "ANY",
+    ///                     ApplicationPort = "3389",
+    ///                     Enabled = true,
+    ///                     AppTypes = new[]
+    ///                     {
+    ///                         "SECURE_REMOTE_ACCESS",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var thisApplicationSegmentByType = Zpa.GetApplicationSegmentByType.Invoke(new()
+    ///     {
+    ///         ApplicationType = "SECURE_REMOTE_ACCESS",
+    ///         Name = "rdp_pra",
+    ///     });
+    /// 
+    ///     var thisBaCertificate = Zpa.GetBaCertificate.Invoke(new()
+    ///     {
+    ///         Name = "pra01.example.com",
+    ///     });
+    /// 
+    ///     // Creates PRA Portal"
+    ///     var this1 = new Zpa.PRAPortal("this1", new()
+    ///     {
+    ///         Description = "pra01.example.com",
+    ///         Enabled = true,
+    ///         Domain = "pra01.example.com",
+    ///         CertificateId = thisBaCertificate.Apply(getBaCertificateResult =&gt; getBaCertificateResult.Id),
+    ///         UserNotification = "Created with Terraform",
+    ///         UserNotificationEnabled = true,
+    ///     });
+    /// 
+    ///     var sshPra = new Zpa.PRAConsole("sshPra", new()
+    ///     {
+    ///         Description = "Created with Terraform",
+    ///         Enabled = true,
+    ///         PraApplication = new Zpa.Inputs.PRAConsolePraApplicationArgs
+    ///         {
+    ///             Id = thisApplicationSegmentByType.Apply(getApplicationSegmentByTypeResult =&gt; getApplicationSegmentByTypeResult.Id),
+    ///         },
+    ///         PraPortals = new[]
+    ///         {
+    ///             new Zpa.Inputs.PRAConsolePraPortalArgs
+    ///             {
+    ///                 Ids = new[]
+    ///                 {
+    ///                     zpa_pra_portal_controller.This.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.

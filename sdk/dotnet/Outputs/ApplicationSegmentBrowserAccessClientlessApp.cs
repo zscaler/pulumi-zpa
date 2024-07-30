@@ -30,18 +30,14 @@ namespace Zscaler.Zpa.Outputs
         /// ID of the BA certificate.
         /// </summary>
         public readonly string? CertificateId;
-        public readonly string? Cname;
         public readonly string? Description;
         /// <summary>
         /// Domain name or IP address of the BA app.
         /// </summary>
         public readonly string? Domain;
         public readonly bool? Enabled;
-        public readonly bool? Hidden;
         public readonly string? Id;
-        public readonly string? LocalDomain;
         public readonly string Name;
-        public readonly string? Path;
         /// <summary>
         /// Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
         /// </summary>
@@ -57,23 +53,15 @@ namespace Zscaler.Zpa.Outputs
 
             string? certificateId,
 
-            string? cname,
-
             string? description,
 
             string? domain,
 
             bool? enabled,
 
-            bool? hidden,
-
             string? id,
 
-            string? localDomain,
-
             string name,
-
-            string? path,
 
             bool? trustUntrustedCert)
         {
@@ -81,15 +69,11 @@ namespace Zscaler.Zpa.Outputs
             ApplicationPort = applicationPort;
             ApplicationProtocol = applicationProtocol;
             CertificateId = certificateId;
-            Cname = cname;
             Description = description;
             Domain = domain;
             Enabled = enabled;
-            Hidden = hidden;
             Id = id;
-            LocalDomain = localDomain;
             Name = name;
-            Path = path;
             TrustUntrustedCert = trustUntrustedCert;
         }
     }

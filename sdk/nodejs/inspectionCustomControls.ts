@@ -34,25 +34,11 @@ export class InspectionCustomControls extends pulumi.CustomResource {
         return obj['__pulumiType'] === InspectionCustomControls.__pulumiType;
     }
 
-    /**
-     * The performed action
-     */
-    public readonly action!: pulumi.Output<string>;
-    public readonly actionValue!: pulumi.Output<string>;
-    /**
-     * Name of the inspection profile
-     */
-    public readonly associatedInspectionProfileNames!: pulumi.Output<outputs.InspectionCustomControlsAssociatedInspectionProfileName[]>;
-    public readonly controlNumber!: pulumi.Output<string>;
-    /**
-     * The control rule in JSON format that has the conditions and type of control for the inspection control
-     */
-    public readonly controlRuleJson!: pulumi.Output<string>;
     public readonly controlType!: pulumi.Output<string>;
     /**
      * The performed action
      */
-    public readonly defaultAction!: pulumi.Output<string>;
+    public readonly defaultAction!: pulumi.Output<string | undefined>;
     /**
      * This is used to provide the redirect URL if the default action is set to REDIRECT
      */
@@ -94,11 +80,6 @@ export class InspectionCustomControls extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InspectionCustomControlsState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["actionValue"] = state ? state.actionValue : undefined;
-            resourceInputs["associatedInspectionProfileNames"] = state ? state.associatedInspectionProfileNames : undefined;
-            resourceInputs["controlNumber"] = state ? state.controlNumber : undefined;
-            resourceInputs["controlRuleJson"] = state ? state.controlRuleJson : undefined;
             resourceInputs["controlType"] = state ? state.controlType : undefined;
             resourceInputs["defaultAction"] = state ? state.defaultAction : undefined;
             resourceInputs["defaultActionValue"] = state ? state.defaultActionValue : undefined;
@@ -112,20 +93,12 @@ export class InspectionCustomControls extends pulumi.CustomResource {
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as InspectionCustomControlsArgs | undefined;
-            if ((!args || args.defaultAction === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'defaultAction'");
-            }
             if ((!args || args.severity === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'severity'");
             }
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["actionValue"] = args ? args.actionValue : undefined;
-            resourceInputs["associatedInspectionProfileNames"] = args ? args.associatedInspectionProfileNames : undefined;
-            resourceInputs["controlNumber"] = args ? args.controlNumber : undefined;
-            resourceInputs["controlRuleJson"] = args ? args.controlRuleJson : undefined;
             resourceInputs["controlType"] = args ? args.controlType : undefined;
             resourceInputs["defaultAction"] = args ? args.defaultAction : undefined;
             resourceInputs["defaultActionValue"] = args ? args.defaultActionValue : undefined;
@@ -147,20 +120,6 @@ export class InspectionCustomControls extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InspectionCustomControls resources.
  */
 export interface InspectionCustomControlsState {
-    /**
-     * The performed action
-     */
-    action?: pulumi.Input<string>;
-    actionValue?: pulumi.Input<string>;
-    /**
-     * Name of the inspection profile
-     */
-    associatedInspectionProfileNames?: pulumi.Input<pulumi.Input<inputs.InspectionCustomControlsAssociatedInspectionProfileName>[]>;
-    controlNumber?: pulumi.Input<string>;
-    /**
-     * The control rule in JSON format that has the conditions and type of control for the inspection control
-     */
-    controlRuleJson?: pulumi.Input<string>;
     controlType?: pulumi.Input<string>;
     /**
      * The performed action
@@ -199,25 +158,11 @@ export interface InspectionCustomControlsState {
  * The set of arguments for constructing a InspectionCustomControls resource.
  */
 export interface InspectionCustomControlsArgs {
-    /**
-     * The performed action
-     */
-    action?: pulumi.Input<string>;
-    actionValue?: pulumi.Input<string>;
-    /**
-     * Name of the inspection profile
-     */
-    associatedInspectionProfileNames?: pulumi.Input<pulumi.Input<inputs.InspectionCustomControlsAssociatedInspectionProfileName>[]>;
-    controlNumber?: pulumi.Input<string>;
-    /**
-     * The control rule in JSON format that has the conditions and type of control for the inspection control
-     */
-    controlRuleJson?: pulumi.Input<string>;
     controlType?: pulumi.Input<string>;
     /**
      * The performed action
      */
-    defaultAction: pulumi.Input<string>;
+    defaultAction?: pulumi.Input<string>;
     /**
      * This is used to provide the redirect URL if the default action is set to REDIRECT
      */

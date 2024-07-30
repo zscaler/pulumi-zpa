@@ -20,7 +20,6 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,7 +40,6 @@ namespace Zscaler.Zpa
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInspectionPredefinedControlsResult> InvokeAsync(GetInspectionPredefinedControlsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInspectionPredefinedControlsResult>("zpa:index/getInspectionPredefinedControls:getInspectionPredefinedControls", args ?? new GetInspectionPredefinedControlsArgs(), options.WithDefaults());
@@ -54,7 +52,6 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -75,7 +72,6 @@ namespace Zscaler.Zpa
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInspectionPredefinedControlsResult> Invoke(GetInspectionPredefinedControlsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInspectionPredefinedControlsResult>("zpa:index/getInspectionPredefinedControls:getInspectionPredefinedControls", args ?? new GetInspectionPredefinedControlsInvokeArgs(), options.WithDefaults());

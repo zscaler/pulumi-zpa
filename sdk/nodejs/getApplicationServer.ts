@@ -7,7 +7,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -16,9 +15,7 @@ import * as utilities from "./utilities";
  *     name: "server.example.com",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -27,7 +24,6 @@ import * as utilities from "./utilities";
  *     id: "1234567890",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getApplicationServer(args?: GetApplicationServerArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationServerResult> {
     args = args || {};
@@ -71,7 +67,6 @@ export interface GetApplicationServerResult {
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -80,9 +75,7 @@ export interface GetApplicationServerResult {
  *     name: "server.example.com",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -91,7 +84,6 @@ export interface GetApplicationServerResult {
  *     id: "1234567890",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getApplicationServerOutput(args?: GetApplicationServerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationServerResult> {
     return pulumi.output(args).apply((a: any) => getApplicationServer(a, opts))

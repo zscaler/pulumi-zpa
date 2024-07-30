@@ -7,6 +7,29 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-security-policy)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-policies-using-api)
+ *
+ * The **zpa_policy_inspection_rule_v2** resource creates and manages policy access inspection rule in the Zscaler Private Access cloud using a new v2 API endpoint.
+ *
+ *   ⚠️ **NOTE**: This resource is recommended if your configuration requires the association of more than 1000 resource criteria per rule.
+ *
+ *   ⚠️ **WARNING:**: The attribute ``ruleOrder`` is now deprecated in favor of the new resource  ``policyAccessRuleReorder``
+ *
+ * ## Import
+ *
+ * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+ *
+ * Visit
+ *
+ * Policy access inspection rule can be imported by using `<RULE ID>` as the import ID.
+ *
+ * For example:
+ *
+ * ```sh
+ * $ pulumi import zpa:index/policyInspectionRuleV2:PolicyInspectionRuleV2 example <rule_id>
+ * ```
+ *
  * @deprecated zpa.index/policyinspectionrulev2.PolicyInspectionRuleV2 has been deprecated in favor of zpa.index/policyaccessinspectionrulev2.PolicyAccessInspectionRuleV2
  */
 export class PolicyInspectionRuleV2 extends pulumi.CustomResource {
@@ -39,7 +62,7 @@ export class PolicyInspectionRuleV2 extends pulumi.CustomResource {
     }
 
     /**
-     * This is for providing the rule action.
+     * This is for providing the rule action. Supported values: `INSPECT` and `BYPASS_INSPECT`.
      */
     public readonly action!: pulumi.Output<string | undefined>;
     /**
@@ -47,15 +70,18 @@ export class PolicyInspectionRuleV2 extends pulumi.CustomResource {
      */
     public readonly conditions!: pulumi.Output<outputs.PolicyInspectionRuleV2Condition[]>;
     /**
-     * This is the description of the access policy.
+     * This is the description of the access policy rule.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly microtenantId!: pulumi.Output<string>;
     /**
-     * This is the name of the policy.
+     * - (String) This is the name of the policy rule.
      */
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly policySetId!: pulumi.Output<string>;
+    /**
+     * An inspection profile is required if the `action` is set to `INSPECT`
+     */
     public readonly zpnInspectionProfileId!: pulumi.Output<string>;
 
     /**
@@ -101,7 +127,7 @@ export class PolicyInspectionRuleV2 extends pulumi.CustomResource {
  */
 export interface PolicyInspectionRuleV2State {
     /**
-     * This is for providing the rule action.
+     * This is for providing the rule action. Supported values: `INSPECT` and `BYPASS_INSPECT`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -109,15 +135,18 @@ export interface PolicyInspectionRuleV2State {
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.PolicyInspectionRuleV2Condition>[]>;
     /**
-     * This is the description of the access policy.
+     * This is the description of the access policy rule.
      */
     description?: pulumi.Input<string>;
     microtenantId?: pulumi.Input<string>;
     /**
-     * This is the name of the policy.
+     * - (String) This is the name of the policy rule.
      */
     name?: pulumi.Input<string>;
     policySetId?: pulumi.Input<string>;
+    /**
+     * An inspection profile is required if the `action` is set to `INSPECT`
+     */
     zpnInspectionProfileId?: pulumi.Input<string>;
 }
 
@@ -126,7 +155,7 @@ export interface PolicyInspectionRuleV2State {
  */
 export interface PolicyInspectionRuleV2Args {
     /**
-     * This is for providing the rule action.
+     * This is for providing the rule action. Supported values: `INSPECT` and `BYPASS_INSPECT`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -134,13 +163,16 @@ export interface PolicyInspectionRuleV2Args {
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.PolicyInspectionRuleV2Condition>[]>;
     /**
-     * This is the description of the access policy.
+     * This is the description of the access policy rule.
      */
     description?: pulumi.Input<string>;
     microtenantId?: pulumi.Input<string>;
     /**
-     * This is the name of the policy.
+     * - (String) This is the name of the policy rule.
      */
     name?: pulumi.Input<string>;
+    /**
+     * An inspection profile is required if the `action` is set to `INSPECT`
+     */
     zpnInspectionProfileId?: pulumi.Input<string>;
 }

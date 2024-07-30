@@ -18,7 +18,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,19 +65,46 @@ import (
 //				},
 //				UserExperiences: zpa.CloudBrowserIsolationExternalProfileUserExperienceArray{
 //					&zpa.CloudBrowserIsolationExternalProfileUserExperienceArgs{
-//						SessionPersistence: pulumi.Bool(true),
-//						BrowserInBrowser:   pulumi.Bool(true),
+//						ForwardToZia: &zpa.CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs{
+//							Enabled:        pulumi.Bool(true),
+//							OrganizationId: pulumi.String("***********"),
+//							CloudName:      pulumi.String("<cloud_name>"),
+//							PacFileUrl:     pulumi.String("https://pac.<cloud_name>/<cloud_name>/proxy.pac"),
+//						},
+//						BrowserInBrowser:    pulumi.Bool(true),
+//						PersistIsolationBar: pulumi.Bool(true),
+//						Translate:           pulumi.Bool(true),
+//						SessionPersistence:  pulumi.Bool(true),
 //					},
 //				},
 //				SecurityControls: zpa.CloudBrowserIsolationExternalProfileSecurityControlArray{
 //					&zpa.CloudBrowserIsolationExternalProfileSecurityControlArgs{
 //						CopyPaste:          pulumi.String("all"),
-//						UploadDownload:     pulumi.String("all"),
+//						UploadDownload:     pulumi.String("upstream"),
 //						DocumentViewer:     pulumi.Bool(true),
 //						LocalRender:        pulumi.Bool(true),
 //						AllowPrinting:      pulumi.Bool(true),
-//						RestrictKeystrokes: pulumi.Bool(false),
+//						RestrictKeystrokes: pulumi.Bool(true),
+//						FlattenedPdf:       pulumi.Bool(true),
+//						DeepLink: &zpa.CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs{
+//							Enabled: pulumi.Bool(true),
+//							Applications: pulumi.StringArray{
+//								pulumi.String("test1"),
+//								pulumi.String("test"),
+//							},
+//						},
+//						Watermark: &zpa.CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs{
+//							Enabled:       pulumi.Bool(true),
+//							ShowUserId:    pulumi.Bool(true),
+//							ShowTimestamp: pulumi.Bool(true),
+//							ShowMessage:   pulumi.Bool(true),
+//							Message:       pulumi.String("Zscaler CBI"),
+//						},
 //					},
+//				},
+//				DebugMode: &zpa.CloudBrowserIsolationExternalProfileDebugModeArgs{
+//					Allowed:      pulumi.Bool(true),
+//					FilePassword: pulumi.String("***********"),
 //				},
 //			})
 //			if err != nil {
@@ -89,16 +115,16 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type CloudBrowserIsolationExternalProfile struct {
 	pulumi.CustomResourceState
 
 	BannerId pulumi.StringOutput `pulumi:"bannerId"`
-	// This field defines the list of server groups IDs.
-	CertificateIds pulumi.StringArrayOutput `pulumi:"certificateIds"`
-	Description    pulumi.StringPtrOutput   `pulumi:"description"`
-	Name           pulumi.StringOutput      `pulumi:"name"`
-	// This field defines the list of server groups IDs.
+	// This field defines the list of certificate IDs.
+	CertificateIds pulumi.StringArrayOutput                               `pulumi:"certificateIds"`
+	DebugMode      CloudBrowserIsolationExternalProfileDebugModePtrOutput `pulumi:"debugMode"`
+	Description    pulumi.StringPtrOutput                                 `pulumi:"description"`
+	Name           pulumi.StringOutput                                    `pulumi:"name"`
+	// This field defines the list of region IDs.
 	RegionIds        pulumi.StringArrayOutput                                       `pulumi:"regionIds"`
 	SecurityControls CloudBrowserIsolationExternalProfileSecurityControlArrayOutput `pulumi:"securityControls"`
 	UserExperiences  CloudBrowserIsolationExternalProfileUserExperienceArrayOutput  `pulumi:"userExperiences"`
@@ -138,11 +164,12 @@ func GetCloudBrowserIsolationExternalProfile(ctx *pulumi.Context,
 // Input properties used for looking up and filtering CloudBrowserIsolationExternalProfile resources.
 type cloudBrowserIsolationExternalProfileState struct {
 	BannerId *string `pulumi:"bannerId"`
-	// This field defines the list of server groups IDs.
-	CertificateIds []string `pulumi:"certificateIds"`
-	Description    *string  `pulumi:"description"`
-	Name           *string  `pulumi:"name"`
-	// This field defines the list of server groups IDs.
+	// This field defines the list of certificate IDs.
+	CertificateIds []string                                       `pulumi:"certificateIds"`
+	DebugMode      *CloudBrowserIsolationExternalProfileDebugMode `pulumi:"debugMode"`
+	Description    *string                                        `pulumi:"description"`
+	Name           *string                                        `pulumi:"name"`
+	// This field defines the list of region IDs.
 	RegionIds        []string                                              `pulumi:"regionIds"`
 	SecurityControls []CloudBrowserIsolationExternalProfileSecurityControl `pulumi:"securityControls"`
 	UserExperiences  []CloudBrowserIsolationExternalProfileUserExperience  `pulumi:"userExperiences"`
@@ -150,11 +177,12 @@ type cloudBrowserIsolationExternalProfileState struct {
 
 type CloudBrowserIsolationExternalProfileState struct {
 	BannerId pulumi.StringPtrInput
-	// This field defines the list of server groups IDs.
+	// This field defines the list of certificate IDs.
 	CertificateIds pulumi.StringArrayInput
+	DebugMode      CloudBrowserIsolationExternalProfileDebugModePtrInput
 	Description    pulumi.StringPtrInput
 	Name           pulumi.StringPtrInput
-	// This field defines the list of server groups IDs.
+	// This field defines the list of region IDs.
 	RegionIds        pulumi.StringArrayInput
 	SecurityControls CloudBrowserIsolationExternalProfileSecurityControlArrayInput
 	UserExperiences  CloudBrowserIsolationExternalProfileUserExperienceArrayInput
@@ -166,11 +194,12 @@ func (CloudBrowserIsolationExternalProfileState) ElementType() reflect.Type {
 
 type cloudBrowserIsolationExternalProfileArgs struct {
 	BannerId string `pulumi:"bannerId"`
-	// This field defines the list of server groups IDs.
-	CertificateIds []string `pulumi:"certificateIds"`
-	Description    *string  `pulumi:"description"`
-	Name           *string  `pulumi:"name"`
-	// This field defines the list of server groups IDs.
+	// This field defines the list of certificate IDs.
+	CertificateIds []string                                       `pulumi:"certificateIds"`
+	DebugMode      *CloudBrowserIsolationExternalProfileDebugMode `pulumi:"debugMode"`
+	Description    *string                                        `pulumi:"description"`
+	Name           *string                                        `pulumi:"name"`
+	// This field defines the list of region IDs.
 	RegionIds        []string                                              `pulumi:"regionIds"`
 	SecurityControls []CloudBrowserIsolationExternalProfileSecurityControl `pulumi:"securityControls"`
 	UserExperiences  []CloudBrowserIsolationExternalProfileUserExperience  `pulumi:"userExperiences"`
@@ -179,11 +208,12 @@ type cloudBrowserIsolationExternalProfileArgs struct {
 // The set of arguments for constructing a CloudBrowserIsolationExternalProfile resource.
 type CloudBrowserIsolationExternalProfileArgs struct {
 	BannerId pulumi.StringInput
-	// This field defines the list of server groups IDs.
+	// This field defines the list of certificate IDs.
 	CertificateIds pulumi.StringArrayInput
+	DebugMode      CloudBrowserIsolationExternalProfileDebugModePtrInput
 	Description    pulumi.StringPtrInput
 	Name           pulumi.StringPtrInput
-	// This field defines the list of server groups IDs.
+	// This field defines the list of region IDs.
 	RegionIds        pulumi.StringArrayInput
 	SecurityControls CloudBrowserIsolationExternalProfileSecurityControlArrayInput
 	UserExperiences  CloudBrowserIsolationExternalProfileUserExperienceArrayInput
@@ -280,9 +310,15 @@ func (o CloudBrowserIsolationExternalProfileOutput) BannerId() pulumi.StringOutp
 	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfile) pulumi.StringOutput { return v.BannerId }).(pulumi.StringOutput)
 }
 
-// This field defines the list of server groups IDs.
+// This field defines the list of certificate IDs.
 func (o CloudBrowserIsolationExternalProfileOutput) CertificateIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfile) pulumi.StringArrayOutput { return v.CertificateIds }).(pulumi.StringArrayOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileOutput) DebugMode() CloudBrowserIsolationExternalProfileDebugModePtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfile) CloudBrowserIsolationExternalProfileDebugModePtrOutput {
+		return v.DebugMode
+	}).(CloudBrowserIsolationExternalProfileDebugModePtrOutput)
 }
 
 func (o CloudBrowserIsolationExternalProfileOutput) Description() pulumi.StringPtrOutput {
@@ -293,7 +329,7 @@ func (o CloudBrowserIsolationExternalProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// This field defines the list of server groups IDs.
+// This field defines the list of region IDs.
 func (o CloudBrowserIsolationExternalProfileOutput) RegionIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfile) pulumi.StringArrayOutput { return v.RegionIds }).(pulumi.StringArrayOutput)
 }

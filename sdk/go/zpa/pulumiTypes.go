@@ -22,16 +22,12 @@ type ApplicationSegmentBrowserAccessClientlessApp struct {
 	ApplicationProtocol string `pulumi:"applicationProtocol"`
 	// ID of the BA certificate.
 	CertificateId *string `pulumi:"certificateId"`
-	Cname         *string `pulumi:"cname"`
 	Description   *string `pulumi:"description"`
 	// Domain name or IP address of the BA app.
-	Domain      *string `pulumi:"domain"`
-	Enabled     *bool   `pulumi:"enabled"`
-	Hidden      *bool   `pulumi:"hidden"`
-	Id          *string `pulumi:"id"`
-	LocalDomain *string `pulumi:"localDomain"`
-	Name        string  `pulumi:"name"`
-	Path        *string `pulumi:"path"`
+	Domain  *string `pulumi:"domain"`
+	Enabled *bool   `pulumi:"enabled"`
+	Id      *string `pulumi:"id"`
+	Name    string  `pulumi:"name"`
 	// Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
 	TrustUntrustedCert *bool `pulumi:"trustUntrustedCert"`
 }
@@ -56,16 +52,12 @@ type ApplicationSegmentBrowserAccessClientlessAppArgs struct {
 	ApplicationProtocol pulumi.StringInput `pulumi:"applicationProtocol"`
 	// ID of the BA certificate.
 	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
-	Cname         pulumi.StringPtrInput `pulumi:"cname"`
 	Description   pulumi.StringPtrInput `pulumi:"description"`
 	// Domain name or IP address of the BA app.
-	Domain      pulumi.StringPtrInput `pulumi:"domain"`
-	Enabled     pulumi.BoolPtrInput   `pulumi:"enabled"`
-	Hidden      pulumi.BoolPtrInput   `pulumi:"hidden"`
-	Id          pulumi.StringPtrInput `pulumi:"id"`
-	LocalDomain pulumi.StringPtrInput `pulumi:"localDomain"`
-	Name        pulumi.StringInput    `pulumi:"name"`
-	Path        pulumi.StringPtrInput `pulumi:"path"`
+	Domain  pulumi.StringPtrInput `pulumi:"domain"`
+	Enabled pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Id      pulumi.StringPtrInput `pulumi:"id"`
+	Name    pulumi.StringInput    `pulumi:"name"`
 	// Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
 	TrustUntrustedCert pulumi.BoolPtrInput `pulumi:"trustUntrustedCert"`
 }
@@ -141,10 +133,6 @@ func (o ApplicationSegmentBrowserAccessClientlessAppOutput) CertificateId() pulu
 	return o.ApplyT(func(v ApplicationSegmentBrowserAccessClientlessApp) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
 
-func (o ApplicationSegmentBrowserAccessClientlessAppOutput) Cname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationSegmentBrowserAccessClientlessApp) *string { return v.Cname }).(pulumi.StringPtrOutput)
-}
-
 func (o ApplicationSegmentBrowserAccessClientlessAppOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationSegmentBrowserAccessClientlessApp) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -158,24 +146,12 @@ func (o ApplicationSegmentBrowserAccessClientlessAppOutput) Enabled() pulumi.Boo
 	return o.ApplyT(func(v ApplicationSegmentBrowserAccessClientlessApp) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-func (o ApplicationSegmentBrowserAccessClientlessAppOutput) Hidden() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ApplicationSegmentBrowserAccessClientlessApp) *bool { return v.Hidden }).(pulumi.BoolPtrOutput)
-}
-
 func (o ApplicationSegmentBrowserAccessClientlessAppOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationSegmentBrowserAccessClientlessApp) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-func (o ApplicationSegmentBrowserAccessClientlessAppOutput) LocalDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationSegmentBrowserAccessClientlessApp) *string { return v.LocalDomain }).(pulumi.StringPtrOutput)
-}
-
 func (o ApplicationSegmentBrowserAccessClientlessAppOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationSegmentBrowserAccessClientlessApp) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o ApplicationSegmentBrowserAccessClientlessAppOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationSegmentBrowserAccessClientlessApp) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
 // Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
@@ -637,9 +613,9 @@ type ApplicationSegmentInspectionCommonAppsDtoAppsConfig struct {
 	ApplicationPort     *string  `pulumi:"applicationPort"`
 	ApplicationProtocol *string  `pulumi:"applicationProtocol"`
 	CertificateId       *string  `pulumi:"certificateId"`
-	Description         *string  `pulumi:"description"`
 	Domain              *string  `pulumi:"domain"`
 	Enabled             *bool    `pulumi:"enabled"`
+	Id                  *string  `pulumi:"id"`
 	Name                *string  `pulumi:"name"`
 	TrustUntrustedCert  *bool    `pulumi:"trustUntrustedCert"`
 }
@@ -660,9 +636,9 @@ type ApplicationSegmentInspectionCommonAppsDtoAppsConfigArgs struct {
 	ApplicationPort     pulumi.StringPtrInput   `pulumi:"applicationPort"`
 	ApplicationProtocol pulumi.StringPtrInput   `pulumi:"applicationProtocol"`
 	CertificateId       pulumi.StringPtrInput   `pulumi:"certificateId"`
-	Description         pulumi.StringPtrInput   `pulumi:"description"`
 	Domain              pulumi.StringPtrInput   `pulumi:"domain"`
 	Enabled             pulumi.BoolPtrInput     `pulumi:"enabled"`
+	Id                  pulumi.StringPtrInput   `pulumi:"id"`
 	Name                pulumi.StringPtrInput   `pulumi:"name"`
 	TrustUntrustedCert  pulumi.BoolPtrInput     `pulumi:"trustUntrustedCert"`
 }
@@ -734,16 +710,16 @@ func (o ApplicationSegmentInspectionCommonAppsDtoAppsConfigOutput) CertificateId
 	return o.ApplyT(func(v ApplicationSegmentInspectionCommonAppsDtoAppsConfig) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
 
-func (o ApplicationSegmentInspectionCommonAppsDtoAppsConfigOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationSegmentInspectionCommonAppsDtoAppsConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
 func (o ApplicationSegmentInspectionCommonAppsDtoAppsConfigOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationSegmentInspectionCommonAppsDtoAppsConfig) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
 func (o ApplicationSegmentInspectionCommonAppsDtoAppsConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationSegmentInspectionCommonAppsDtoAppsConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o ApplicationSegmentInspectionCommonAppsDtoAppsConfigOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationSegmentInspectionCommonAppsDtoAppsConfig) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 func (o ApplicationSegmentInspectionCommonAppsDtoAppsConfigOutput) Name() pulumi.StringPtrOutput {
@@ -1204,12 +1180,10 @@ func (o ApplicationSegmentPRACommonAppsDtoPtrOutput) AppsConfigs() ApplicationSe
 }
 
 type ApplicationSegmentPRACommonAppsDtoAppsConfig struct {
-	AppId               *string  `pulumi:"appId"`
 	AppTypes            []string `pulumi:"appTypes"`
 	ApplicationPort     *string  `pulumi:"applicationPort"`
 	ApplicationProtocol *string  `pulumi:"applicationProtocol"`
 	ConnectionSecurity  *string  `pulumi:"connectionSecurity"`
-	Description         *string  `pulumi:"description"`
 	Domain              *string  `pulumi:"domain"`
 	Enabled             *bool    `pulumi:"enabled"`
 	Id                  *string  `pulumi:"id"`
@@ -1228,12 +1202,10 @@ type ApplicationSegmentPRACommonAppsDtoAppsConfigInput interface {
 }
 
 type ApplicationSegmentPRACommonAppsDtoAppsConfigArgs struct {
-	AppId               pulumi.StringPtrInput   `pulumi:"appId"`
 	AppTypes            pulumi.StringArrayInput `pulumi:"appTypes"`
 	ApplicationPort     pulumi.StringPtrInput   `pulumi:"applicationPort"`
 	ApplicationProtocol pulumi.StringPtrInput   `pulumi:"applicationProtocol"`
 	ConnectionSecurity  pulumi.StringPtrInput   `pulumi:"connectionSecurity"`
-	Description         pulumi.StringPtrInput   `pulumi:"description"`
 	Domain              pulumi.StringPtrInput   `pulumi:"domain"`
 	Enabled             pulumi.BoolPtrInput     `pulumi:"enabled"`
 	Id                  pulumi.StringPtrInput   `pulumi:"id"`
@@ -1291,10 +1263,6 @@ func (o ApplicationSegmentPRACommonAppsDtoAppsConfigOutput) ToApplicationSegment
 	return o
 }
 
-func (o ApplicationSegmentPRACommonAppsDtoAppsConfigOutput) AppId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationSegmentPRACommonAppsDtoAppsConfig) *string { return v.AppId }).(pulumi.StringPtrOutput)
-}
-
 func (o ApplicationSegmentPRACommonAppsDtoAppsConfigOutput) AppTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApplicationSegmentPRACommonAppsDtoAppsConfig) []string { return v.AppTypes }).(pulumi.StringArrayOutput)
 }
@@ -1309,10 +1277,6 @@ func (o ApplicationSegmentPRACommonAppsDtoAppsConfigOutput) ApplicationProtocol(
 
 func (o ApplicationSegmentPRACommonAppsDtoAppsConfigOutput) ConnectionSecurity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationSegmentPRACommonAppsDtoAppsConfig) *string { return v.ConnectionSecurity }).(pulumi.StringPtrOutput)
-}
-
-func (o ApplicationSegmentPRACommonAppsDtoAppsConfigOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationSegmentPRACommonAppsDtoAppsConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o ApplicationSegmentPRACommonAppsDtoAppsConfigOutput) Domain() pulumi.StringPtrOutput {
@@ -1948,16 +1912,12 @@ type BrowserAccessClientlessApp struct {
 	ApplicationProtocol string `pulumi:"applicationProtocol"`
 	// ID of the BA certificate.
 	CertificateId *string `pulumi:"certificateId"`
-	Cname         *string `pulumi:"cname"`
 	Description   *string `pulumi:"description"`
 	// Domain name or IP address of the BA app.
-	Domain      *string `pulumi:"domain"`
-	Enabled     *bool   `pulumi:"enabled"`
-	Hidden      *bool   `pulumi:"hidden"`
-	Id          *string `pulumi:"id"`
-	LocalDomain *string `pulumi:"localDomain"`
-	Name        string  `pulumi:"name"`
-	Path        *string `pulumi:"path"`
+	Domain  *string `pulumi:"domain"`
+	Enabled *bool   `pulumi:"enabled"`
+	Id      *string `pulumi:"id"`
+	Name    string  `pulumi:"name"`
 	// Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
 	TrustUntrustedCert *bool `pulumi:"trustUntrustedCert"`
 }
@@ -1982,16 +1942,12 @@ type BrowserAccessClientlessAppArgs struct {
 	ApplicationProtocol pulumi.StringInput `pulumi:"applicationProtocol"`
 	// ID of the BA certificate.
 	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
-	Cname         pulumi.StringPtrInput `pulumi:"cname"`
 	Description   pulumi.StringPtrInput `pulumi:"description"`
 	// Domain name or IP address of the BA app.
-	Domain      pulumi.StringPtrInput `pulumi:"domain"`
-	Enabled     pulumi.BoolPtrInput   `pulumi:"enabled"`
-	Hidden      pulumi.BoolPtrInput   `pulumi:"hidden"`
-	Id          pulumi.StringPtrInput `pulumi:"id"`
-	LocalDomain pulumi.StringPtrInput `pulumi:"localDomain"`
-	Name        pulumi.StringInput    `pulumi:"name"`
-	Path        pulumi.StringPtrInput `pulumi:"path"`
+	Domain  pulumi.StringPtrInput `pulumi:"domain"`
+	Enabled pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Id      pulumi.StringPtrInput `pulumi:"id"`
+	Name    pulumi.StringInput    `pulumi:"name"`
 	// Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
 	TrustUntrustedCert pulumi.BoolPtrInput `pulumi:"trustUntrustedCert"`
 }
@@ -2067,10 +2023,6 @@ func (o BrowserAccessClientlessAppOutput) CertificateId() pulumi.StringPtrOutput
 	return o.ApplyT(func(v BrowserAccessClientlessApp) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
 
-func (o BrowserAccessClientlessAppOutput) Cname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BrowserAccessClientlessApp) *string { return v.Cname }).(pulumi.StringPtrOutput)
-}
-
 func (o BrowserAccessClientlessAppOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BrowserAccessClientlessApp) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -2084,24 +2036,12 @@ func (o BrowserAccessClientlessAppOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BrowserAccessClientlessApp) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-func (o BrowserAccessClientlessAppOutput) Hidden() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v BrowserAccessClientlessApp) *bool { return v.Hidden }).(pulumi.BoolPtrOutput)
-}
-
 func (o BrowserAccessClientlessAppOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BrowserAccessClientlessApp) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-func (o BrowserAccessClientlessAppOutput) LocalDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BrowserAccessClientlessApp) *string { return v.LocalDomain }).(pulumi.StringPtrOutput)
-}
-
 func (o BrowserAccessClientlessAppOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v BrowserAccessClientlessApp) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o BrowserAccessClientlessAppOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BrowserAccessClientlessApp) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
 // Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
@@ -2423,13 +2363,164 @@ func (o BrowserAccessUdpPortRangeArrayOutput) Index(i pulumi.IntInput) BrowserAc
 	}).(BrowserAccessUdpPortRangeOutput)
 }
 
+type CloudBrowserIsolationExternalProfileDebugMode struct {
+	Allowed      *bool   `pulumi:"allowed"`
+	FilePassword *string `pulumi:"filePassword"`
+}
+
+// CloudBrowserIsolationExternalProfileDebugModeInput is an input type that accepts CloudBrowserIsolationExternalProfileDebugModeArgs and CloudBrowserIsolationExternalProfileDebugModeOutput values.
+// You can construct a concrete instance of `CloudBrowserIsolationExternalProfileDebugModeInput` via:
+//
+//	CloudBrowserIsolationExternalProfileDebugModeArgs{...}
+type CloudBrowserIsolationExternalProfileDebugModeInput interface {
+	pulumi.Input
+
+	ToCloudBrowserIsolationExternalProfileDebugModeOutput() CloudBrowserIsolationExternalProfileDebugModeOutput
+	ToCloudBrowserIsolationExternalProfileDebugModeOutputWithContext(context.Context) CloudBrowserIsolationExternalProfileDebugModeOutput
+}
+
+type CloudBrowserIsolationExternalProfileDebugModeArgs struct {
+	Allowed      pulumi.BoolPtrInput   `pulumi:"allowed"`
+	FilePassword pulumi.StringPtrInput `pulumi:"filePassword"`
+}
+
+func (CloudBrowserIsolationExternalProfileDebugModeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudBrowserIsolationExternalProfileDebugMode)(nil)).Elem()
+}
+
+func (i CloudBrowserIsolationExternalProfileDebugModeArgs) ToCloudBrowserIsolationExternalProfileDebugModeOutput() CloudBrowserIsolationExternalProfileDebugModeOutput {
+	return i.ToCloudBrowserIsolationExternalProfileDebugModeOutputWithContext(context.Background())
+}
+
+func (i CloudBrowserIsolationExternalProfileDebugModeArgs) ToCloudBrowserIsolationExternalProfileDebugModeOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileDebugModeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileDebugModeOutput)
+}
+
+func (i CloudBrowserIsolationExternalProfileDebugModeArgs) ToCloudBrowserIsolationExternalProfileDebugModePtrOutput() CloudBrowserIsolationExternalProfileDebugModePtrOutput {
+	return i.ToCloudBrowserIsolationExternalProfileDebugModePtrOutputWithContext(context.Background())
+}
+
+func (i CloudBrowserIsolationExternalProfileDebugModeArgs) ToCloudBrowserIsolationExternalProfileDebugModePtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileDebugModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileDebugModeOutput).ToCloudBrowserIsolationExternalProfileDebugModePtrOutputWithContext(ctx)
+}
+
+// CloudBrowserIsolationExternalProfileDebugModePtrInput is an input type that accepts CloudBrowserIsolationExternalProfileDebugModeArgs, CloudBrowserIsolationExternalProfileDebugModePtr and CloudBrowserIsolationExternalProfileDebugModePtrOutput values.
+// You can construct a concrete instance of `CloudBrowserIsolationExternalProfileDebugModePtrInput` via:
+//
+//	        CloudBrowserIsolationExternalProfileDebugModeArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudBrowserIsolationExternalProfileDebugModePtrInput interface {
+	pulumi.Input
+
+	ToCloudBrowserIsolationExternalProfileDebugModePtrOutput() CloudBrowserIsolationExternalProfileDebugModePtrOutput
+	ToCloudBrowserIsolationExternalProfileDebugModePtrOutputWithContext(context.Context) CloudBrowserIsolationExternalProfileDebugModePtrOutput
+}
+
+type cloudBrowserIsolationExternalProfileDebugModePtrType CloudBrowserIsolationExternalProfileDebugModeArgs
+
+func CloudBrowserIsolationExternalProfileDebugModePtr(v *CloudBrowserIsolationExternalProfileDebugModeArgs) CloudBrowserIsolationExternalProfileDebugModePtrInput {
+	return (*cloudBrowserIsolationExternalProfileDebugModePtrType)(v)
+}
+
+func (*cloudBrowserIsolationExternalProfileDebugModePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudBrowserIsolationExternalProfileDebugMode)(nil)).Elem()
+}
+
+func (i *cloudBrowserIsolationExternalProfileDebugModePtrType) ToCloudBrowserIsolationExternalProfileDebugModePtrOutput() CloudBrowserIsolationExternalProfileDebugModePtrOutput {
+	return i.ToCloudBrowserIsolationExternalProfileDebugModePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudBrowserIsolationExternalProfileDebugModePtrType) ToCloudBrowserIsolationExternalProfileDebugModePtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileDebugModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileDebugModePtrOutput)
+}
+
+type CloudBrowserIsolationExternalProfileDebugModeOutput struct{ *pulumi.OutputState }
+
+func (CloudBrowserIsolationExternalProfileDebugModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudBrowserIsolationExternalProfileDebugMode)(nil)).Elem()
+}
+
+func (o CloudBrowserIsolationExternalProfileDebugModeOutput) ToCloudBrowserIsolationExternalProfileDebugModeOutput() CloudBrowserIsolationExternalProfileDebugModeOutput {
+	return o
+}
+
+func (o CloudBrowserIsolationExternalProfileDebugModeOutput) ToCloudBrowserIsolationExternalProfileDebugModeOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileDebugModeOutput {
+	return o
+}
+
+func (o CloudBrowserIsolationExternalProfileDebugModeOutput) ToCloudBrowserIsolationExternalProfileDebugModePtrOutput() CloudBrowserIsolationExternalProfileDebugModePtrOutput {
+	return o.ToCloudBrowserIsolationExternalProfileDebugModePtrOutputWithContext(context.Background())
+}
+
+func (o CloudBrowserIsolationExternalProfileDebugModeOutput) ToCloudBrowserIsolationExternalProfileDebugModePtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileDebugModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudBrowserIsolationExternalProfileDebugMode) *CloudBrowserIsolationExternalProfileDebugMode {
+		return &v
+	}).(CloudBrowserIsolationExternalProfileDebugModePtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileDebugModeOutput) Allowed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileDebugMode) *bool { return v.Allowed }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileDebugModeOutput) FilePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileDebugMode) *string { return v.FilePassword }).(pulumi.StringPtrOutput)
+}
+
+type CloudBrowserIsolationExternalProfileDebugModePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudBrowserIsolationExternalProfileDebugModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudBrowserIsolationExternalProfileDebugMode)(nil)).Elem()
+}
+
+func (o CloudBrowserIsolationExternalProfileDebugModePtrOutput) ToCloudBrowserIsolationExternalProfileDebugModePtrOutput() CloudBrowserIsolationExternalProfileDebugModePtrOutput {
+	return o
+}
+
+func (o CloudBrowserIsolationExternalProfileDebugModePtrOutput) ToCloudBrowserIsolationExternalProfileDebugModePtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileDebugModePtrOutput {
+	return o
+}
+
+func (o CloudBrowserIsolationExternalProfileDebugModePtrOutput) Elem() CloudBrowserIsolationExternalProfileDebugModeOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileDebugMode) CloudBrowserIsolationExternalProfileDebugMode {
+		if v != nil {
+			return *v
+		}
+		var ret CloudBrowserIsolationExternalProfileDebugMode
+		return ret
+	}).(CloudBrowserIsolationExternalProfileDebugModeOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileDebugModePtrOutput) Allowed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileDebugMode) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Allowed
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileDebugModePtrOutput) FilePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileDebugMode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilePassword
+	}).(pulumi.StringPtrOutput)
+}
+
 type CloudBrowserIsolationExternalProfileSecurityControl struct {
-	AllowPrinting      *bool   `pulumi:"allowPrinting"`
-	CopyPaste          *string `pulumi:"copyPaste"`
-	DocumentViewer     *bool   `pulumi:"documentViewer"`
-	LocalRender        *bool   `pulumi:"localRender"`
-	RestrictKeystrokes *bool   `pulumi:"restrictKeystrokes"`
-	UploadDownload     *string `pulumi:"uploadDownload"`
+	AllowPrinting      *bool                                                         `pulumi:"allowPrinting"`
+	CopyPaste          *string                                                       `pulumi:"copyPaste"`
+	DeepLink           *CloudBrowserIsolationExternalProfileSecurityControlDeepLink  `pulumi:"deepLink"`
+	DocumentViewer     *bool                                                         `pulumi:"documentViewer"`
+	FlattenedPdf       *bool                                                         `pulumi:"flattenedPdf"`
+	LocalRender        *bool                                                         `pulumi:"localRender"`
+	RestrictKeystrokes *bool                                                         `pulumi:"restrictKeystrokes"`
+	UploadDownload     *string                                                       `pulumi:"uploadDownload"`
+	Watermark          *CloudBrowserIsolationExternalProfileSecurityControlWatermark `pulumi:"watermark"`
 }
 
 // CloudBrowserIsolationExternalProfileSecurityControlInput is an input type that accepts CloudBrowserIsolationExternalProfileSecurityControlArgs and CloudBrowserIsolationExternalProfileSecurityControlOutput values.
@@ -2444,12 +2535,15 @@ type CloudBrowserIsolationExternalProfileSecurityControlInput interface {
 }
 
 type CloudBrowserIsolationExternalProfileSecurityControlArgs struct {
-	AllowPrinting      pulumi.BoolPtrInput   `pulumi:"allowPrinting"`
-	CopyPaste          pulumi.StringPtrInput `pulumi:"copyPaste"`
-	DocumentViewer     pulumi.BoolPtrInput   `pulumi:"documentViewer"`
-	LocalRender        pulumi.BoolPtrInput   `pulumi:"localRender"`
-	RestrictKeystrokes pulumi.BoolPtrInput   `pulumi:"restrictKeystrokes"`
-	UploadDownload     pulumi.StringPtrInput `pulumi:"uploadDownload"`
+	AllowPrinting      pulumi.BoolPtrInput                                                  `pulumi:"allowPrinting"`
+	CopyPaste          pulumi.StringPtrInput                                                `pulumi:"copyPaste"`
+	DeepLink           CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrInput  `pulumi:"deepLink"`
+	DocumentViewer     pulumi.BoolPtrInput                                                  `pulumi:"documentViewer"`
+	FlattenedPdf       pulumi.BoolPtrInput                                                  `pulumi:"flattenedPdf"`
+	LocalRender        pulumi.BoolPtrInput                                                  `pulumi:"localRender"`
+	RestrictKeystrokes pulumi.BoolPtrInput                                                  `pulumi:"restrictKeystrokes"`
+	UploadDownload     pulumi.StringPtrInput                                                `pulumi:"uploadDownload"`
+	Watermark          CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrInput `pulumi:"watermark"`
 }
 
 func (CloudBrowserIsolationExternalProfileSecurityControlArgs) ElementType() reflect.Type {
@@ -2511,8 +2605,18 @@ func (o CloudBrowserIsolationExternalProfileSecurityControlOutput) CopyPaste() p
 	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControl) *string { return v.CopyPaste }).(pulumi.StringPtrOutput)
 }
 
+func (o CloudBrowserIsolationExternalProfileSecurityControlOutput) DeepLink() CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControl) *CloudBrowserIsolationExternalProfileSecurityControlDeepLink {
+		return v.DeepLink
+	}).(CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput)
+}
+
 func (o CloudBrowserIsolationExternalProfileSecurityControlOutput) DocumentViewer() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControl) *bool { return v.DocumentViewer }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlOutput) FlattenedPdf() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControl) *bool { return v.FlattenedPdf }).(pulumi.BoolPtrOutput)
 }
 
 func (o CloudBrowserIsolationExternalProfileSecurityControlOutput) LocalRender() pulumi.BoolPtrOutput {
@@ -2525,6 +2629,12 @@ func (o CloudBrowserIsolationExternalProfileSecurityControlOutput) RestrictKeyst
 
 func (o CloudBrowserIsolationExternalProfileSecurityControlOutput) UploadDownload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControl) *string { return v.UploadDownload }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlOutput) Watermark() CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControl) *CloudBrowserIsolationExternalProfileSecurityControlWatermark {
+		return v.Watermark
+	}).(CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput)
 }
 
 type CloudBrowserIsolationExternalProfileSecurityControlArrayOutput struct{ *pulumi.OutputState }
@@ -2547,9 +2657,354 @@ func (o CloudBrowserIsolationExternalProfileSecurityControlArrayOutput) Index(i 
 	}).(CloudBrowserIsolationExternalProfileSecurityControlOutput)
 }
 
+type CloudBrowserIsolationExternalProfileSecurityControlDeepLink struct {
+	Applications []string `pulumi:"applications"`
+	Enabled      *bool    `pulumi:"enabled"`
+}
+
+// CloudBrowserIsolationExternalProfileSecurityControlDeepLinkInput is an input type that accepts CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs and CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput values.
+// You can construct a concrete instance of `CloudBrowserIsolationExternalProfileSecurityControlDeepLinkInput` via:
+//
+//	CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs{...}
+type CloudBrowserIsolationExternalProfileSecurityControlDeepLinkInput interface {
+	pulumi.Input
+
+	ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput() CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput
+	ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutputWithContext(context.Context) CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput
+}
+
+type CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs struct {
+	Applications pulumi.StringArrayInput `pulumi:"applications"`
+	Enabled      pulumi.BoolPtrInput     `pulumi:"enabled"`
+}
+
+func (CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlDeepLink)(nil)).Elem()
+}
+
+func (i CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput() CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput {
+	return i.ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutputWithContext(context.Background())
+}
+
+func (i CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput)
+}
+
+func (i CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput {
+	return i.ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutputWithContext(context.Background())
+}
+
+func (i CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput).ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutputWithContext(ctx)
+}
+
+// CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrInput is an input type that accepts CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs, CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtr and CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput values.
+// You can construct a concrete instance of `CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrInput` via:
+//
+//	        CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrInput interface {
+	pulumi.Input
+
+	ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput
+	ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutputWithContext(context.Context) CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput
+}
+
+type cloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrType CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs
+
+func CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtr(v *CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs) CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrInput {
+	return (*cloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrType)(v)
+}
+
+func (*cloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudBrowserIsolationExternalProfileSecurityControlDeepLink)(nil)).Elem()
+}
+
+func (i *cloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrType) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput {
+	return i.ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrType) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput)
+}
+
+type CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput struct{ *pulumi.OutputState }
+
+func (CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlDeepLink)(nil)).Elem()
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput() CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput {
+	return o
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput {
+	return o
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput {
+	return o.ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutputWithContext(context.Background())
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudBrowserIsolationExternalProfileSecurityControlDeepLink) *CloudBrowserIsolationExternalProfileSecurityControlDeepLink {
+		return &v
+	}).(CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput) Applications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControlDeepLink) []string { return v.Applications }).(pulumi.StringArrayOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControlDeepLink) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudBrowserIsolationExternalProfileSecurityControlDeepLink)(nil)).Elem()
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput {
+	return o
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput {
+	return o
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput) Elem() CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlDeepLink) CloudBrowserIsolationExternalProfileSecurityControlDeepLink {
+		if v != nil {
+			return *v
+		}
+		var ret CloudBrowserIsolationExternalProfileSecurityControlDeepLink
+		return ret
+	}).(CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput) Applications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlDeepLink) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Applications
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlDeepLink) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CloudBrowserIsolationExternalProfileSecurityControlWatermark struct {
+	Enabled       *bool   `pulumi:"enabled"`
+	Message       *string `pulumi:"message"`
+	ShowMessage   *bool   `pulumi:"showMessage"`
+	ShowTimestamp *bool   `pulumi:"showTimestamp"`
+	ShowUserId    *bool   `pulumi:"showUserId"`
+}
+
+// CloudBrowserIsolationExternalProfileSecurityControlWatermarkInput is an input type that accepts CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs and CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput values.
+// You can construct a concrete instance of `CloudBrowserIsolationExternalProfileSecurityControlWatermarkInput` via:
+//
+//	CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs{...}
+type CloudBrowserIsolationExternalProfileSecurityControlWatermarkInput interface {
+	pulumi.Input
+
+	ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput() CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput
+	ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutputWithContext(context.Context) CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput
+}
+
+type CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs struct {
+	Enabled       pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Message       pulumi.StringPtrInput `pulumi:"message"`
+	ShowMessage   pulumi.BoolPtrInput   `pulumi:"showMessage"`
+	ShowTimestamp pulumi.BoolPtrInput   `pulumi:"showTimestamp"`
+	ShowUserId    pulumi.BoolPtrInput   `pulumi:"showUserId"`
+}
+
+func (CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlWatermark)(nil)).Elem()
+}
+
+func (i CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput() CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput {
+	return i.ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutputWithContext(context.Background())
+}
+
+func (i CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput)
+}
+
+func (i CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput {
+	return i.ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutputWithContext(context.Background())
+}
+
+func (i CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput).ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutputWithContext(ctx)
+}
+
+// CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrInput is an input type that accepts CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs, CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtr and CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput values.
+// You can construct a concrete instance of `CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrInput` via:
+//
+//	        CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrInput interface {
+	pulumi.Input
+
+	ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput
+	ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutputWithContext(context.Context) CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput
+}
+
+type cloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrType CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs
+
+func CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtr(v *CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs) CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrInput {
+	return (*cloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrType)(v)
+}
+
+func (*cloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudBrowserIsolationExternalProfileSecurityControlWatermark)(nil)).Elem()
+}
+
+func (i *cloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrType) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput {
+	return i.ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrType) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput)
+}
+
+type CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput struct{ *pulumi.OutputState }
+
+func (CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlWatermark)(nil)).Elem()
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput() CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput {
+	return o
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput {
+	return o
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput {
+	return o.ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutputWithContext(context.Background())
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudBrowserIsolationExternalProfileSecurityControlWatermark) *CloudBrowserIsolationExternalProfileSecurityControlWatermark {
+		return &v
+	}).(CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControlWatermark) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControlWatermark) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) ShowMessage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControlWatermark) *bool { return v.ShowMessage }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) ShowTimestamp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControlWatermark) *bool { return v.ShowTimestamp }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) ShowUserId() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControlWatermark) *bool { return v.ShowUserId }).(pulumi.BoolPtrOutput)
+}
+
+type CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudBrowserIsolationExternalProfileSecurityControlWatermark)(nil)).Elem()
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput {
+	return o
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput {
+	return o
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput) Elem() CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlWatermark) CloudBrowserIsolationExternalProfileSecurityControlWatermark {
+		if v != nil {
+			return *v
+		}
+		var ret CloudBrowserIsolationExternalProfileSecurityControlWatermark
+		return ret
+	}).(CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlWatermark) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlWatermark) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput) ShowMessage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlWatermark) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ShowMessage
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput) ShowTimestamp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlWatermark) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ShowTimestamp
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput) ShowUserId() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlWatermark) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ShowUserId
+	}).(pulumi.BoolPtrOutput)
+}
+
 type CloudBrowserIsolationExternalProfileUserExperience struct {
-	BrowserInBrowser   *bool `pulumi:"browserInBrowser"`
-	SessionPersistence *bool `pulumi:"sessionPersistence"`
+	BrowserInBrowser    *bool                                                           `pulumi:"browserInBrowser"`
+	ForwardToZia        *CloudBrowserIsolationExternalProfileUserExperienceForwardToZia `pulumi:"forwardToZia"`
+	PersistIsolationBar *bool                                                           `pulumi:"persistIsolationBar"`
+	SessionPersistence  *bool                                                           `pulumi:"sessionPersistence"`
+	Translate           *bool                                                           `pulumi:"translate"`
+	Zgpu                *bool                                                           `pulumi:"zgpu"`
 }
 
 // CloudBrowserIsolationExternalProfileUserExperienceInput is an input type that accepts CloudBrowserIsolationExternalProfileUserExperienceArgs and CloudBrowserIsolationExternalProfileUserExperienceOutput values.
@@ -2564,8 +3019,12 @@ type CloudBrowserIsolationExternalProfileUserExperienceInput interface {
 }
 
 type CloudBrowserIsolationExternalProfileUserExperienceArgs struct {
-	BrowserInBrowser   pulumi.BoolPtrInput `pulumi:"browserInBrowser"`
-	SessionPersistence pulumi.BoolPtrInput `pulumi:"sessionPersistence"`
+	BrowserInBrowser    pulumi.BoolPtrInput                                                    `pulumi:"browserInBrowser"`
+	ForwardToZia        CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrInput `pulumi:"forwardToZia"`
+	PersistIsolationBar pulumi.BoolPtrInput                                                    `pulumi:"persistIsolationBar"`
+	SessionPersistence  pulumi.BoolPtrInput                                                    `pulumi:"sessionPersistence"`
+	Translate           pulumi.BoolPtrInput                                                    `pulumi:"translate"`
+	Zgpu                pulumi.BoolPtrInput                                                    `pulumi:"zgpu"`
 }
 
 func (CloudBrowserIsolationExternalProfileUserExperienceArgs) ElementType() reflect.Type {
@@ -2623,8 +3082,26 @@ func (o CloudBrowserIsolationExternalProfileUserExperienceOutput) BrowserInBrows
 	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileUserExperience) *bool { return v.BrowserInBrowser }).(pulumi.BoolPtrOutput)
 }
 
+func (o CloudBrowserIsolationExternalProfileUserExperienceOutput) ForwardToZia() CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileUserExperience) *CloudBrowserIsolationExternalProfileUserExperienceForwardToZia {
+		return v.ForwardToZia
+	}).(CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileUserExperienceOutput) PersistIsolationBar() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileUserExperience) *bool { return v.PersistIsolationBar }).(pulumi.BoolPtrOutput)
+}
+
 func (o CloudBrowserIsolationExternalProfileUserExperienceOutput) SessionPersistence() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileUserExperience) *bool { return v.SessionPersistence }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileUserExperienceOutput) Translate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileUserExperience) *bool { return v.Translate }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileUserExperienceOutput) Zgpu() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileUserExperience) *bool { return v.Zgpu }).(pulumi.BoolPtrOutput)
 }
 
 type CloudBrowserIsolationExternalProfileUserExperienceArrayOutput struct{ *pulumi.OutputState }
@@ -2647,98 +3124,184 @@ func (o CloudBrowserIsolationExternalProfileUserExperienceArrayOutput) Index(i p
 	}).(CloudBrowserIsolationExternalProfileUserExperienceOutput)
 }
 
-type InspectionCustomControlsAssociatedInspectionProfileName struct {
-	Ids []string `pulumi:"ids"`
+type CloudBrowserIsolationExternalProfileUserExperienceForwardToZia struct {
+	CloudName      *string `pulumi:"cloudName"`
+	Enabled        *bool   `pulumi:"enabled"`
+	OrganizationId *string `pulumi:"organizationId"`
+	PacFileUrl     *string `pulumi:"pacFileUrl"`
 }
 
-// InspectionCustomControlsAssociatedInspectionProfileNameInput is an input type that accepts InspectionCustomControlsAssociatedInspectionProfileNameArgs and InspectionCustomControlsAssociatedInspectionProfileNameOutput values.
-// You can construct a concrete instance of `InspectionCustomControlsAssociatedInspectionProfileNameInput` via:
+// CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaInput is an input type that accepts CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs and CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput values.
+// You can construct a concrete instance of `CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaInput` via:
 //
-//	InspectionCustomControlsAssociatedInspectionProfileNameArgs{...}
-type InspectionCustomControlsAssociatedInspectionProfileNameInput interface {
+//	CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs{...}
+type CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaInput interface {
 	pulumi.Input
 
-	ToInspectionCustomControlsAssociatedInspectionProfileNameOutput() InspectionCustomControlsAssociatedInspectionProfileNameOutput
-	ToInspectionCustomControlsAssociatedInspectionProfileNameOutputWithContext(context.Context) InspectionCustomControlsAssociatedInspectionProfileNameOutput
+	ToCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput() CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput
+	ToCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutputWithContext(context.Context) CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput
 }
 
-type InspectionCustomControlsAssociatedInspectionProfileNameArgs struct {
-	Ids pulumi.StringArrayInput `pulumi:"ids"`
+type CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs struct {
+	CloudName      pulumi.StringPtrInput `pulumi:"cloudName"`
+	Enabled        pulumi.BoolPtrInput   `pulumi:"enabled"`
+	OrganizationId pulumi.StringPtrInput `pulumi:"organizationId"`
+	PacFileUrl     pulumi.StringPtrInput `pulumi:"pacFileUrl"`
 }
 
-func (InspectionCustomControlsAssociatedInspectionProfileNameArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InspectionCustomControlsAssociatedInspectionProfileName)(nil)).Elem()
+func (CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudBrowserIsolationExternalProfileUserExperienceForwardToZia)(nil)).Elem()
 }
 
-func (i InspectionCustomControlsAssociatedInspectionProfileNameArgs) ToInspectionCustomControlsAssociatedInspectionProfileNameOutput() InspectionCustomControlsAssociatedInspectionProfileNameOutput {
-	return i.ToInspectionCustomControlsAssociatedInspectionProfileNameOutputWithContext(context.Background())
+func (i CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs) ToCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput() CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput {
+	return i.ToCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutputWithContext(context.Background())
 }
 
-func (i InspectionCustomControlsAssociatedInspectionProfileNameArgs) ToInspectionCustomControlsAssociatedInspectionProfileNameOutputWithContext(ctx context.Context) InspectionCustomControlsAssociatedInspectionProfileNameOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InspectionCustomControlsAssociatedInspectionProfileNameOutput)
+func (i CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs) ToCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput)
 }
 
-// InspectionCustomControlsAssociatedInspectionProfileNameArrayInput is an input type that accepts InspectionCustomControlsAssociatedInspectionProfileNameArray and InspectionCustomControlsAssociatedInspectionProfileNameArrayOutput values.
-// You can construct a concrete instance of `InspectionCustomControlsAssociatedInspectionProfileNameArrayInput` via:
+func (i CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs) ToCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput() CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput {
+	return i.ToCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutputWithContext(context.Background())
+}
+
+func (i CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs) ToCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput).ToCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutputWithContext(ctx)
+}
+
+// CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrInput is an input type that accepts CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs, CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtr and CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput values.
+// You can construct a concrete instance of `CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrInput` via:
 //
-//	InspectionCustomControlsAssociatedInspectionProfileNameArray{ InspectionCustomControlsAssociatedInspectionProfileNameArgs{...} }
-type InspectionCustomControlsAssociatedInspectionProfileNameArrayInput interface {
+//	        CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrInput interface {
 	pulumi.Input
 
-	ToInspectionCustomControlsAssociatedInspectionProfileNameArrayOutput() InspectionCustomControlsAssociatedInspectionProfileNameArrayOutput
-	ToInspectionCustomControlsAssociatedInspectionProfileNameArrayOutputWithContext(context.Context) InspectionCustomControlsAssociatedInspectionProfileNameArrayOutput
+	ToCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput() CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput
+	ToCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutputWithContext(context.Context) CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput
 }
 
-type InspectionCustomControlsAssociatedInspectionProfileNameArray []InspectionCustomControlsAssociatedInspectionProfileNameInput
+type cloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrType CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs
 
-func (InspectionCustomControlsAssociatedInspectionProfileNameArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InspectionCustomControlsAssociatedInspectionProfileName)(nil)).Elem()
+func CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtr(v *CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs) CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrInput {
+	return (*cloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrType)(v)
 }
 
-func (i InspectionCustomControlsAssociatedInspectionProfileNameArray) ToInspectionCustomControlsAssociatedInspectionProfileNameArrayOutput() InspectionCustomControlsAssociatedInspectionProfileNameArrayOutput {
-	return i.ToInspectionCustomControlsAssociatedInspectionProfileNameArrayOutputWithContext(context.Background())
+func (*cloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudBrowserIsolationExternalProfileUserExperienceForwardToZia)(nil)).Elem()
 }
 
-func (i InspectionCustomControlsAssociatedInspectionProfileNameArray) ToInspectionCustomControlsAssociatedInspectionProfileNameArrayOutputWithContext(ctx context.Context) InspectionCustomControlsAssociatedInspectionProfileNameArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InspectionCustomControlsAssociatedInspectionProfileNameArrayOutput)
+func (i *cloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrType) ToCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput() CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput {
+	return i.ToCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutputWithContext(context.Background())
 }
 
-type InspectionCustomControlsAssociatedInspectionProfileNameOutput struct{ *pulumi.OutputState }
-
-func (InspectionCustomControlsAssociatedInspectionProfileNameOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InspectionCustomControlsAssociatedInspectionProfileName)(nil)).Elem()
+func (i *cloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrType) ToCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput)
 }
 
-func (o InspectionCustomControlsAssociatedInspectionProfileNameOutput) ToInspectionCustomControlsAssociatedInspectionProfileNameOutput() InspectionCustomControlsAssociatedInspectionProfileNameOutput {
+type CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput struct{ *pulumi.OutputState }
+
+func (CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudBrowserIsolationExternalProfileUserExperienceForwardToZia)(nil)).Elem()
+}
+
+func (o CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput) ToCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput() CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput {
 	return o
 }
 
-func (o InspectionCustomControlsAssociatedInspectionProfileNameOutput) ToInspectionCustomControlsAssociatedInspectionProfileNameOutputWithContext(ctx context.Context) InspectionCustomControlsAssociatedInspectionProfileNameOutput {
+func (o CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput) ToCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput {
 	return o
 }
 
-func (o InspectionCustomControlsAssociatedInspectionProfileNameOutput) Ids() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v InspectionCustomControlsAssociatedInspectionProfileName) []string { return v.Ids }).(pulumi.StringArrayOutput)
+func (o CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput) ToCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput() CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput {
+	return o.ToCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutputWithContext(context.Background())
 }
 
-type InspectionCustomControlsAssociatedInspectionProfileNameArrayOutput struct{ *pulumi.OutputState }
-
-func (InspectionCustomControlsAssociatedInspectionProfileNameArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InspectionCustomControlsAssociatedInspectionProfileName)(nil)).Elem()
+func (o CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput) ToCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudBrowserIsolationExternalProfileUserExperienceForwardToZia) *CloudBrowserIsolationExternalProfileUserExperienceForwardToZia {
+		return &v
+	}).(CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput)
 }
 
-func (o InspectionCustomControlsAssociatedInspectionProfileNameArrayOutput) ToInspectionCustomControlsAssociatedInspectionProfileNameArrayOutput() InspectionCustomControlsAssociatedInspectionProfileNameArrayOutput {
+func (o CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput) CloudName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileUserExperienceForwardToZia) *string { return v.CloudName }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileUserExperienceForwardToZia) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput) OrganizationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileUserExperienceForwardToZia) *string {
+		return v.OrganizationId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput) PacFileUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileUserExperienceForwardToZia) *string { return v.PacFileUrl }).(pulumi.StringPtrOutput)
+}
+
+type CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudBrowserIsolationExternalProfileUserExperienceForwardToZia)(nil)).Elem()
+}
+
+func (o CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput) ToCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput() CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput {
 	return o
 }
 
-func (o InspectionCustomControlsAssociatedInspectionProfileNameArrayOutput) ToInspectionCustomControlsAssociatedInspectionProfileNameArrayOutputWithContext(ctx context.Context) InspectionCustomControlsAssociatedInspectionProfileNameArrayOutput {
+func (o CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput) ToCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput {
 	return o
 }
 
-func (o InspectionCustomControlsAssociatedInspectionProfileNameArrayOutput) Index(i pulumi.IntInput) InspectionCustomControlsAssociatedInspectionProfileNameOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InspectionCustomControlsAssociatedInspectionProfileName {
-		return vs[0].([]InspectionCustomControlsAssociatedInspectionProfileName)[vs[1].(int)]
-	}).(InspectionCustomControlsAssociatedInspectionProfileNameOutput)
+func (o CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput) Elem() CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileUserExperienceForwardToZia) CloudBrowserIsolationExternalProfileUserExperienceForwardToZia {
+		if v != nil {
+			return *v
+		}
+		var ret CloudBrowserIsolationExternalProfileUserExperienceForwardToZia
+		return ret
+	}).(CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput) CloudName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileUserExperienceForwardToZia) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileUserExperienceForwardToZia) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput) OrganizationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileUserExperienceForwardToZia) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrganizationId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput) PacFileUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileUserExperienceForwardToZia) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PacFileUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type InspectionCustomControlsRule struct {
@@ -3237,17 +3800,116 @@ func (o InspectionProfileCustomControlArrayOutput) Index(i pulumi.IntInput) Insp
 	}).(InspectionProfileCustomControlOutput)
 }
 
-type InspectionProfilePredefinedControl struct {
-	// The action of the predefined control
-	Action *string `pulumi:"action"`
-	// The value for the predefined controls action. This field is only required if the action is set to REDIRECT
+type InspectionProfilePredefinedApiControl struct {
+	Action      *string `pulumi:"action"`
 	ActionValue *string `pulumi:"actionValue"`
-	// The control type of the custom control
-	ControlType *string `pulumi:"controlType"`
-	// The unique identifier of the predefined control
-	Id *string `pulumi:"id"`
-	// The protocol type of the predefined control
-	ProtocolType *string `pulumi:"protocolType"`
+	Id          *string `pulumi:"id"`
+}
+
+// InspectionProfilePredefinedApiControlInput is an input type that accepts InspectionProfilePredefinedApiControlArgs and InspectionProfilePredefinedApiControlOutput values.
+// You can construct a concrete instance of `InspectionProfilePredefinedApiControlInput` via:
+//
+//	InspectionProfilePredefinedApiControlArgs{...}
+type InspectionProfilePredefinedApiControlInput interface {
+	pulumi.Input
+
+	ToInspectionProfilePredefinedApiControlOutput() InspectionProfilePredefinedApiControlOutput
+	ToInspectionProfilePredefinedApiControlOutputWithContext(context.Context) InspectionProfilePredefinedApiControlOutput
+}
+
+type InspectionProfilePredefinedApiControlArgs struct {
+	Action      pulumi.StringPtrInput `pulumi:"action"`
+	ActionValue pulumi.StringPtrInput `pulumi:"actionValue"`
+	Id          pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (InspectionProfilePredefinedApiControlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InspectionProfilePredefinedApiControl)(nil)).Elem()
+}
+
+func (i InspectionProfilePredefinedApiControlArgs) ToInspectionProfilePredefinedApiControlOutput() InspectionProfilePredefinedApiControlOutput {
+	return i.ToInspectionProfilePredefinedApiControlOutputWithContext(context.Background())
+}
+
+func (i InspectionProfilePredefinedApiControlArgs) ToInspectionProfilePredefinedApiControlOutputWithContext(ctx context.Context) InspectionProfilePredefinedApiControlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InspectionProfilePredefinedApiControlOutput)
+}
+
+// InspectionProfilePredefinedApiControlArrayInput is an input type that accepts InspectionProfilePredefinedApiControlArray and InspectionProfilePredefinedApiControlArrayOutput values.
+// You can construct a concrete instance of `InspectionProfilePredefinedApiControlArrayInput` via:
+//
+//	InspectionProfilePredefinedApiControlArray{ InspectionProfilePredefinedApiControlArgs{...} }
+type InspectionProfilePredefinedApiControlArrayInput interface {
+	pulumi.Input
+
+	ToInspectionProfilePredefinedApiControlArrayOutput() InspectionProfilePredefinedApiControlArrayOutput
+	ToInspectionProfilePredefinedApiControlArrayOutputWithContext(context.Context) InspectionProfilePredefinedApiControlArrayOutput
+}
+
+type InspectionProfilePredefinedApiControlArray []InspectionProfilePredefinedApiControlInput
+
+func (InspectionProfilePredefinedApiControlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InspectionProfilePredefinedApiControl)(nil)).Elem()
+}
+
+func (i InspectionProfilePredefinedApiControlArray) ToInspectionProfilePredefinedApiControlArrayOutput() InspectionProfilePredefinedApiControlArrayOutput {
+	return i.ToInspectionProfilePredefinedApiControlArrayOutputWithContext(context.Background())
+}
+
+func (i InspectionProfilePredefinedApiControlArray) ToInspectionProfilePredefinedApiControlArrayOutputWithContext(ctx context.Context) InspectionProfilePredefinedApiControlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InspectionProfilePredefinedApiControlArrayOutput)
+}
+
+type InspectionProfilePredefinedApiControlOutput struct{ *pulumi.OutputState }
+
+func (InspectionProfilePredefinedApiControlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InspectionProfilePredefinedApiControl)(nil)).Elem()
+}
+
+func (o InspectionProfilePredefinedApiControlOutput) ToInspectionProfilePredefinedApiControlOutput() InspectionProfilePredefinedApiControlOutput {
+	return o
+}
+
+func (o InspectionProfilePredefinedApiControlOutput) ToInspectionProfilePredefinedApiControlOutputWithContext(ctx context.Context) InspectionProfilePredefinedApiControlOutput {
+	return o
+}
+
+func (o InspectionProfilePredefinedApiControlOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InspectionProfilePredefinedApiControl) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+func (o InspectionProfilePredefinedApiControlOutput) ActionValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InspectionProfilePredefinedApiControl) *string { return v.ActionValue }).(pulumi.StringPtrOutput)
+}
+
+func (o InspectionProfilePredefinedApiControlOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InspectionProfilePredefinedApiControl) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type InspectionProfilePredefinedApiControlArrayOutput struct{ *pulumi.OutputState }
+
+func (InspectionProfilePredefinedApiControlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InspectionProfilePredefinedApiControl)(nil)).Elem()
+}
+
+func (o InspectionProfilePredefinedApiControlArrayOutput) ToInspectionProfilePredefinedApiControlArrayOutput() InspectionProfilePredefinedApiControlArrayOutput {
+	return o
+}
+
+func (o InspectionProfilePredefinedApiControlArrayOutput) ToInspectionProfilePredefinedApiControlArrayOutputWithContext(ctx context.Context) InspectionProfilePredefinedApiControlArrayOutput {
+	return o
+}
+
+func (o InspectionProfilePredefinedApiControlArrayOutput) Index(i pulumi.IntInput) InspectionProfilePredefinedApiControlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InspectionProfilePredefinedApiControl {
+		return vs[0].([]InspectionProfilePredefinedApiControl)[vs[1].(int)]
+	}).(InspectionProfilePredefinedApiControlOutput)
+}
+
+type InspectionProfilePredefinedControl struct {
+	Action      *string `pulumi:"action"`
+	ActionValue *string `pulumi:"actionValue"`
+	Id          *string `pulumi:"id"`
 }
 
 // InspectionProfilePredefinedControlInput is an input type that accepts InspectionProfilePredefinedControlArgs and InspectionProfilePredefinedControlOutput values.
@@ -3262,16 +3924,9 @@ type InspectionProfilePredefinedControlInput interface {
 }
 
 type InspectionProfilePredefinedControlArgs struct {
-	// The action of the predefined control
-	Action pulumi.StringPtrInput `pulumi:"action"`
-	// The value for the predefined controls action. This field is only required if the action is set to REDIRECT
+	Action      pulumi.StringPtrInput `pulumi:"action"`
 	ActionValue pulumi.StringPtrInput `pulumi:"actionValue"`
-	// The control type of the custom control
-	ControlType pulumi.StringPtrInput `pulumi:"controlType"`
-	// The unique identifier of the predefined control
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The protocol type of the predefined control
-	ProtocolType pulumi.StringPtrInput `pulumi:"protocolType"`
+	Id          pulumi.StringPtrInput `pulumi:"id"`
 }
 
 func (InspectionProfilePredefinedControlArgs) ElementType() reflect.Type {
@@ -3325,29 +3980,16 @@ func (o InspectionProfilePredefinedControlOutput) ToInspectionProfilePredefinedC
 	return o
 }
 
-// The action of the predefined control
 func (o InspectionProfilePredefinedControlOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InspectionProfilePredefinedControl) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
-// The value for the predefined controls action. This field is only required if the action is set to REDIRECT
 func (o InspectionProfilePredefinedControlOutput) ActionValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InspectionProfilePredefinedControl) *string { return v.ActionValue }).(pulumi.StringPtrOutput)
 }
 
-// The control type of the custom control
-func (o InspectionProfilePredefinedControlOutput) ControlType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InspectionProfilePredefinedControl) *string { return v.ControlType }).(pulumi.StringPtrOutput)
-}
-
-// The unique identifier of the predefined control
 func (o InspectionProfilePredefinedControlOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InspectionProfilePredefinedControl) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// The protocol type of the predefined control
-func (o InspectionProfilePredefinedControlOutput) ProtocolType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InspectionProfilePredefinedControl) *string { return v.ProtocolType }).(pulumi.StringPtrOutput)
 }
 
 type InspectionProfilePredefinedControlArrayOutput struct{ *pulumi.OutputState }
@@ -3368,6 +4010,218 @@ func (o InspectionProfilePredefinedControlArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InspectionProfilePredefinedControl {
 		return vs[0].([]InspectionProfilePredefinedControl)[vs[1].(int)]
 	}).(InspectionProfilePredefinedControlOutput)
+}
+
+type InspectionProfileThreatLabzControl struct {
+	Action      *string `pulumi:"action"`
+	ActionValue *string `pulumi:"actionValue"`
+	Id          *string `pulumi:"id"`
+}
+
+// InspectionProfileThreatLabzControlInput is an input type that accepts InspectionProfileThreatLabzControlArgs and InspectionProfileThreatLabzControlOutput values.
+// You can construct a concrete instance of `InspectionProfileThreatLabzControlInput` via:
+//
+//	InspectionProfileThreatLabzControlArgs{...}
+type InspectionProfileThreatLabzControlInput interface {
+	pulumi.Input
+
+	ToInspectionProfileThreatLabzControlOutput() InspectionProfileThreatLabzControlOutput
+	ToInspectionProfileThreatLabzControlOutputWithContext(context.Context) InspectionProfileThreatLabzControlOutput
+}
+
+type InspectionProfileThreatLabzControlArgs struct {
+	Action      pulumi.StringPtrInput `pulumi:"action"`
+	ActionValue pulumi.StringPtrInput `pulumi:"actionValue"`
+	Id          pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (InspectionProfileThreatLabzControlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InspectionProfileThreatLabzControl)(nil)).Elem()
+}
+
+func (i InspectionProfileThreatLabzControlArgs) ToInspectionProfileThreatLabzControlOutput() InspectionProfileThreatLabzControlOutput {
+	return i.ToInspectionProfileThreatLabzControlOutputWithContext(context.Background())
+}
+
+func (i InspectionProfileThreatLabzControlArgs) ToInspectionProfileThreatLabzControlOutputWithContext(ctx context.Context) InspectionProfileThreatLabzControlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InspectionProfileThreatLabzControlOutput)
+}
+
+// InspectionProfileThreatLabzControlArrayInput is an input type that accepts InspectionProfileThreatLabzControlArray and InspectionProfileThreatLabzControlArrayOutput values.
+// You can construct a concrete instance of `InspectionProfileThreatLabzControlArrayInput` via:
+//
+//	InspectionProfileThreatLabzControlArray{ InspectionProfileThreatLabzControlArgs{...} }
+type InspectionProfileThreatLabzControlArrayInput interface {
+	pulumi.Input
+
+	ToInspectionProfileThreatLabzControlArrayOutput() InspectionProfileThreatLabzControlArrayOutput
+	ToInspectionProfileThreatLabzControlArrayOutputWithContext(context.Context) InspectionProfileThreatLabzControlArrayOutput
+}
+
+type InspectionProfileThreatLabzControlArray []InspectionProfileThreatLabzControlInput
+
+func (InspectionProfileThreatLabzControlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InspectionProfileThreatLabzControl)(nil)).Elem()
+}
+
+func (i InspectionProfileThreatLabzControlArray) ToInspectionProfileThreatLabzControlArrayOutput() InspectionProfileThreatLabzControlArrayOutput {
+	return i.ToInspectionProfileThreatLabzControlArrayOutputWithContext(context.Background())
+}
+
+func (i InspectionProfileThreatLabzControlArray) ToInspectionProfileThreatLabzControlArrayOutputWithContext(ctx context.Context) InspectionProfileThreatLabzControlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InspectionProfileThreatLabzControlArrayOutput)
+}
+
+type InspectionProfileThreatLabzControlOutput struct{ *pulumi.OutputState }
+
+func (InspectionProfileThreatLabzControlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InspectionProfileThreatLabzControl)(nil)).Elem()
+}
+
+func (o InspectionProfileThreatLabzControlOutput) ToInspectionProfileThreatLabzControlOutput() InspectionProfileThreatLabzControlOutput {
+	return o
+}
+
+func (o InspectionProfileThreatLabzControlOutput) ToInspectionProfileThreatLabzControlOutputWithContext(ctx context.Context) InspectionProfileThreatLabzControlOutput {
+	return o
+}
+
+func (o InspectionProfileThreatLabzControlOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InspectionProfileThreatLabzControl) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+func (o InspectionProfileThreatLabzControlOutput) ActionValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InspectionProfileThreatLabzControl) *string { return v.ActionValue }).(pulumi.StringPtrOutput)
+}
+
+func (o InspectionProfileThreatLabzControlOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InspectionProfileThreatLabzControl) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type InspectionProfileThreatLabzControlArrayOutput struct{ *pulumi.OutputState }
+
+func (InspectionProfileThreatLabzControlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InspectionProfileThreatLabzControl)(nil)).Elem()
+}
+
+func (o InspectionProfileThreatLabzControlArrayOutput) ToInspectionProfileThreatLabzControlArrayOutput() InspectionProfileThreatLabzControlArrayOutput {
+	return o
+}
+
+func (o InspectionProfileThreatLabzControlArrayOutput) ToInspectionProfileThreatLabzControlArrayOutputWithContext(ctx context.Context) InspectionProfileThreatLabzControlArrayOutput {
+	return o
+}
+
+func (o InspectionProfileThreatLabzControlArrayOutput) Index(i pulumi.IntInput) InspectionProfileThreatLabzControlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InspectionProfileThreatLabzControl {
+		return vs[0].([]InspectionProfileThreatLabzControl)[vs[1].(int)]
+	}).(InspectionProfileThreatLabzControlOutput)
+}
+
+type InspectionProfileWebsocketControl struct {
+	Action      *string `pulumi:"action"`
+	ActionValue *string `pulumi:"actionValue"`
+	Id          *string `pulumi:"id"`
+}
+
+// InspectionProfileWebsocketControlInput is an input type that accepts InspectionProfileWebsocketControlArgs and InspectionProfileWebsocketControlOutput values.
+// You can construct a concrete instance of `InspectionProfileWebsocketControlInput` via:
+//
+//	InspectionProfileWebsocketControlArgs{...}
+type InspectionProfileWebsocketControlInput interface {
+	pulumi.Input
+
+	ToInspectionProfileWebsocketControlOutput() InspectionProfileWebsocketControlOutput
+	ToInspectionProfileWebsocketControlOutputWithContext(context.Context) InspectionProfileWebsocketControlOutput
+}
+
+type InspectionProfileWebsocketControlArgs struct {
+	Action      pulumi.StringPtrInput `pulumi:"action"`
+	ActionValue pulumi.StringPtrInput `pulumi:"actionValue"`
+	Id          pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (InspectionProfileWebsocketControlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InspectionProfileWebsocketControl)(nil)).Elem()
+}
+
+func (i InspectionProfileWebsocketControlArgs) ToInspectionProfileWebsocketControlOutput() InspectionProfileWebsocketControlOutput {
+	return i.ToInspectionProfileWebsocketControlOutputWithContext(context.Background())
+}
+
+func (i InspectionProfileWebsocketControlArgs) ToInspectionProfileWebsocketControlOutputWithContext(ctx context.Context) InspectionProfileWebsocketControlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InspectionProfileWebsocketControlOutput)
+}
+
+// InspectionProfileWebsocketControlArrayInput is an input type that accepts InspectionProfileWebsocketControlArray and InspectionProfileWebsocketControlArrayOutput values.
+// You can construct a concrete instance of `InspectionProfileWebsocketControlArrayInput` via:
+//
+//	InspectionProfileWebsocketControlArray{ InspectionProfileWebsocketControlArgs{...} }
+type InspectionProfileWebsocketControlArrayInput interface {
+	pulumi.Input
+
+	ToInspectionProfileWebsocketControlArrayOutput() InspectionProfileWebsocketControlArrayOutput
+	ToInspectionProfileWebsocketControlArrayOutputWithContext(context.Context) InspectionProfileWebsocketControlArrayOutput
+}
+
+type InspectionProfileWebsocketControlArray []InspectionProfileWebsocketControlInput
+
+func (InspectionProfileWebsocketControlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InspectionProfileWebsocketControl)(nil)).Elem()
+}
+
+func (i InspectionProfileWebsocketControlArray) ToInspectionProfileWebsocketControlArrayOutput() InspectionProfileWebsocketControlArrayOutput {
+	return i.ToInspectionProfileWebsocketControlArrayOutputWithContext(context.Background())
+}
+
+func (i InspectionProfileWebsocketControlArray) ToInspectionProfileWebsocketControlArrayOutputWithContext(ctx context.Context) InspectionProfileWebsocketControlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InspectionProfileWebsocketControlArrayOutput)
+}
+
+type InspectionProfileWebsocketControlOutput struct{ *pulumi.OutputState }
+
+func (InspectionProfileWebsocketControlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InspectionProfileWebsocketControl)(nil)).Elem()
+}
+
+func (o InspectionProfileWebsocketControlOutput) ToInspectionProfileWebsocketControlOutput() InspectionProfileWebsocketControlOutput {
+	return o
+}
+
+func (o InspectionProfileWebsocketControlOutput) ToInspectionProfileWebsocketControlOutputWithContext(ctx context.Context) InspectionProfileWebsocketControlOutput {
+	return o
+}
+
+func (o InspectionProfileWebsocketControlOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InspectionProfileWebsocketControl) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+func (o InspectionProfileWebsocketControlOutput) ActionValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InspectionProfileWebsocketControl) *string { return v.ActionValue }).(pulumi.StringPtrOutput)
+}
+
+func (o InspectionProfileWebsocketControlOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InspectionProfileWebsocketControl) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type InspectionProfileWebsocketControlArrayOutput struct{ *pulumi.OutputState }
+
+func (InspectionProfileWebsocketControlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InspectionProfileWebsocketControl)(nil)).Elem()
+}
+
+func (o InspectionProfileWebsocketControlArrayOutput) ToInspectionProfileWebsocketControlArrayOutput() InspectionProfileWebsocketControlArrayOutput {
+	return o
+}
+
+func (o InspectionProfileWebsocketControlArrayOutput) ToInspectionProfileWebsocketControlArrayOutputWithContext(ctx context.Context) InspectionProfileWebsocketControlArrayOutput {
+	return o
+}
+
+func (o InspectionProfileWebsocketControlArrayOutput) Index(i pulumi.IntInput) InspectionProfileWebsocketControlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InspectionProfileWebsocketControl {
+		return vs[0].([]InspectionProfileWebsocketControl)[vs[1].(int)]
+	}).(InspectionProfileWebsocketControlOutput)
 }
 
 type LSSConfigControllerConfig struct {
@@ -5163,6 +6017,425 @@ func (o PRAConsolePraPortalArrayOutput) Index(i pulumi.IntInput) PRAConsolePraPo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PRAConsolePraPortal {
 		return vs[0].([]PRAConsolePraPortal)[vs[1].(int)]
 	}).(PRAConsolePraPortalOutput)
+}
+
+type PolicyAccessCredentialRuleCondition struct {
+	Id *string `pulumi:"id"`
+	// This signifies the various policy criteria.
+	Operands []PolicyAccessCredentialRuleConditionOperand `pulumi:"operands"`
+	Operator *string                                      `pulumi:"operator"`
+}
+
+// PolicyAccessCredentialRuleConditionInput is an input type that accepts PolicyAccessCredentialRuleConditionArgs and PolicyAccessCredentialRuleConditionOutput values.
+// You can construct a concrete instance of `PolicyAccessCredentialRuleConditionInput` via:
+//
+//	PolicyAccessCredentialRuleConditionArgs{...}
+type PolicyAccessCredentialRuleConditionInput interface {
+	pulumi.Input
+
+	ToPolicyAccessCredentialRuleConditionOutput() PolicyAccessCredentialRuleConditionOutput
+	ToPolicyAccessCredentialRuleConditionOutputWithContext(context.Context) PolicyAccessCredentialRuleConditionOutput
+}
+
+type PolicyAccessCredentialRuleConditionArgs struct {
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// This signifies the various policy criteria.
+	Operands PolicyAccessCredentialRuleConditionOperandArrayInput `pulumi:"operands"`
+	Operator pulumi.StringPtrInput                                `pulumi:"operator"`
+}
+
+func (PolicyAccessCredentialRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAccessCredentialRuleCondition)(nil)).Elem()
+}
+
+func (i PolicyAccessCredentialRuleConditionArgs) ToPolicyAccessCredentialRuleConditionOutput() PolicyAccessCredentialRuleConditionOutput {
+	return i.ToPolicyAccessCredentialRuleConditionOutputWithContext(context.Background())
+}
+
+func (i PolicyAccessCredentialRuleConditionArgs) ToPolicyAccessCredentialRuleConditionOutputWithContext(ctx context.Context) PolicyAccessCredentialRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAccessCredentialRuleConditionOutput)
+}
+
+// PolicyAccessCredentialRuleConditionArrayInput is an input type that accepts PolicyAccessCredentialRuleConditionArray and PolicyAccessCredentialRuleConditionArrayOutput values.
+// You can construct a concrete instance of `PolicyAccessCredentialRuleConditionArrayInput` via:
+//
+//	PolicyAccessCredentialRuleConditionArray{ PolicyAccessCredentialRuleConditionArgs{...} }
+type PolicyAccessCredentialRuleConditionArrayInput interface {
+	pulumi.Input
+
+	ToPolicyAccessCredentialRuleConditionArrayOutput() PolicyAccessCredentialRuleConditionArrayOutput
+	ToPolicyAccessCredentialRuleConditionArrayOutputWithContext(context.Context) PolicyAccessCredentialRuleConditionArrayOutput
+}
+
+type PolicyAccessCredentialRuleConditionArray []PolicyAccessCredentialRuleConditionInput
+
+func (PolicyAccessCredentialRuleConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyAccessCredentialRuleCondition)(nil)).Elem()
+}
+
+func (i PolicyAccessCredentialRuleConditionArray) ToPolicyAccessCredentialRuleConditionArrayOutput() PolicyAccessCredentialRuleConditionArrayOutput {
+	return i.ToPolicyAccessCredentialRuleConditionArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyAccessCredentialRuleConditionArray) ToPolicyAccessCredentialRuleConditionArrayOutputWithContext(ctx context.Context) PolicyAccessCredentialRuleConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAccessCredentialRuleConditionArrayOutput)
+}
+
+type PolicyAccessCredentialRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (PolicyAccessCredentialRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAccessCredentialRuleCondition)(nil)).Elem()
+}
+
+func (o PolicyAccessCredentialRuleConditionOutput) ToPolicyAccessCredentialRuleConditionOutput() PolicyAccessCredentialRuleConditionOutput {
+	return o
+}
+
+func (o PolicyAccessCredentialRuleConditionOutput) ToPolicyAccessCredentialRuleConditionOutputWithContext(ctx context.Context) PolicyAccessCredentialRuleConditionOutput {
+	return o
+}
+
+func (o PolicyAccessCredentialRuleConditionOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyAccessCredentialRuleCondition) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// This signifies the various policy criteria.
+func (o PolicyAccessCredentialRuleConditionOutput) Operands() PolicyAccessCredentialRuleConditionOperandArrayOutput {
+	return o.ApplyT(func(v PolicyAccessCredentialRuleCondition) []PolicyAccessCredentialRuleConditionOperand {
+		return v.Operands
+	}).(PolicyAccessCredentialRuleConditionOperandArrayOutput)
+}
+
+func (o PolicyAccessCredentialRuleConditionOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyAccessCredentialRuleCondition) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+type PolicyAccessCredentialRuleConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyAccessCredentialRuleConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyAccessCredentialRuleCondition)(nil)).Elem()
+}
+
+func (o PolicyAccessCredentialRuleConditionArrayOutput) ToPolicyAccessCredentialRuleConditionArrayOutput() PolicyAccessCredentialRuleConditionArrayOutput {
+	return o
+}
+
+func (o PolicyAccessCredentialRuleConditionArrayOutput) ToPolicyAccessCredentialRuleConditionArrayOutputWithContext(ctx context.Context) PolicyAccessCredentialRuleConditionArrayOutput {
+	return o
+}
+
+func (o PolicyAccessCredentialRuleConditionArrayOutput) Index(i pulumi.IntInput) PolicyAccessCredentialRuleConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyAccessCredentialRuleCondition {
+		return vs[0].([]PolicyAccessCredentialRuleCondition)[vs[1].(int)]
+	}).(PolicyAccessCredentialRuleConditionOutput)
+}
+
+type PolicyAccessCredentialRuleConditionOperand struct {
+	EntryValues []PolicyAccessCredentialRuleConditionOperandEntryValue `pulumi:"entryValues"`
+	// This is for specifying the policy critiera.
+	ObjectType *string `pulumi:"objectType"`
+	// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+	Values []string `pulumi:"values"`
+}
+
+// PolicyAccessCredentialRuleConditionOperandInput is an input type that accepts PolicyAccessCredentialRuleConditionOperandArgs and PolicyAccessCredentialRuleConditionOperandOutput values.
+// You can construct a concrete instance of `PolicyAccessCredentialRuleConditionOperandInput` via:
+//
+//	PolicyAccessCredentialRuleConditionOperandArgs{...}
+type PolicyAccessCredentialRuleConditionOperandInput interface {
+	pulumi.Input
+
+	ToPolicyAccessCredentialRuleConditionOperandOutput() PolicyAccessCredentialRuleConditionOperandOutput
+	ToPolicyAccessCredentialRuleConditionOperandOutputWithContext(context.Context) PolicyAccessCredentialRuleConditionOperandOutput
+}
+
+type PolicyAccessCredentialRuleConditionOperandArgs struct {
+	EntryValues PolicyAccessCredentialRuleConditionOperandEntryValueArrayInput `pulumi:"entryValues"`
+	// This is for specifying the policy critiera.
+	ObjectType pulumi.StringPtrInput `pulumi:"objectType"`
+	// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (PolicyAccessCredentialRuleConditionOperandArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAccessCredentialRuleConditionOperand)(nil)).Elem()
+}
+
+func (i PolicyAccessCredentialRuleConditionOperandArgs) ToPolicyAccessCredentialRuleConditionOperandOutput() PolicyAccessCredentialRuleConditionOperandOutput {
+	return i.ToPolicyAccessCredentialRuleConditionOperandOutputWithContext(context.Background())
+}
+
+func (i PolicyAccessCredentialRuleConditionOperandArgs) ToPolicyAccessCredentialRuleConditionOperandOutputWithContext(ctx context.Context) PolicyAccessCredentialRuleConditionOperandOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAccessCredentialRuleConditionOperandOutput)
+}
+
+// PolicyAccessCredentialRuleConditionOperandArrayInput is an input type that accepts PolicyAccessCredentialRuleConditionOperandArray and PolicyAccessCredentialRuleConditionOperandArrayOutput values.
+// You can construct a concrete instance of `PolicyAccessCredentialRuleConditionOperandArrayInput` via:
+//
+//	PolicyAccessCredentialRuleConditionOperandArray{ PolicyAccessCredentialRuleConditionOperandArgs{...} }
+type PolicyAccessCredentialRuleConditionOperandArrayInput interface {
+	pulumi.Input
+
+	ToPolicyAccessCredentialRuleConditionOperandArrayOutput() PolicyAccessCredentialRuleConditionOperandArrayOutput
+	ToPolicyAccessCredentialRuleConditionOperandArrayOutputWithContext(context.Context) PolicyAccessCredentialRuleConditionOperandArrayOutput
+}
+
+type PolicyAccessCredentialRuleConditionOperandArray []PolicyAccessCredentialRuleConditionOperandInput
+
+func (PolicyAccessCredentialRuleConditionOperandArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyAccessCredentialRuleConditionOperand)(nil)).Elem()
+}
+
+func (i PolicyAccessCredentialRuleConditionOperandArray) ToPolicyAccessCredentialRuleConditionOperandArrayOutput() PolicyAccessCredentialRuleConditionOperandArrayOutput {
+	return i.ToPolicyAccessCredentialRuleConditionOperandArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyAccessCredentialRuleConditionOperandArray) ToPolicyAccessCredentialRuleConditionOperandArrayOutputWithContext(ctx context.Context) PolicyAccessCredentialRuleConditionOperandArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAccessCredentialRuleConditionOperandArrayOutput)
+}
+
+type PolicyAccessCredentialRuleConditionOperandOutput struct{ *pulumi.OutputState }
+
+func (PolicyAccessCredentialRuleConditionOperandOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAccessCredentialRuleConditionOperand)(nil)).Elem()
+}
+
+func (o PolicyAccessCredentialRuleConditionOperandOutput) ToPolicyAccessCredentialRuleConditionOperandOutput() PolicyAccessCredentialRuleConditionOperandOutput {
+	return o
+}
+
+func (o PolicyAccessCredentialRuleConditionOperandOutput) ToPolicyAccessCredentialRuleConditionOperandOutputWithContext(ctx context.Context) PolicyAccessCredentialRuleConditionOperandOutput {
+	return o
+}
+
+func (o PolicyAccessCredentialRuleConditionOperandOutput) EntryValues() PolicyAccessCredentialRuleConditionOperandEntryValueArrayOutput {
+	return o.ApplyT(func(v PolicyAccessCredentialRuleConditionOperand) []PolicyAccessCredentialRuleConditionOperandEntryValue {
+		return v.EntryValues
+	}).(PolicyAccessCredentialRuleConditionOperandEntryValueArrayOutput)
+}
+
+// This is for specifying the policy critiera.
+func (o PolicyAccessCredentialRuleConditionOperandOutput) ObjectType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyAccessCredentialRuleConditionOperand) *string { return v.ObjectType }).(pulumi.StringPtrOutput)
+}
+
+// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+func (o PolicyAccessCredentialRuleConditionOperandOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PolicyAccessCredentialRuleConditionOperand) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type PolicyAccessCredentialRuleConditionOperandArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyAccessCredentialRuleConditionOperandArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyAccessCredentialRuleConditionOperand)(nil)).Elem()
+}
+
+func (o PolicyAccessCredentialRuleConditionOperandArrayOutput) ToPolicyAccessCredentialRuleConditionOperandArrayOutput() PolicyAccessCredentialRuleConditionOperandArrayOutput {
+	return o
+}
+
+func (o PolicyAccessCredentialRuleConditionOperandArrayOutput) ToPolicyAccessCredentialRuleConditionOperandArrayOutputWithContext(ctx context.Context) PolicyAccessCredentialRuleConditionOperandArrayOutput {
+	return o
+}
+
+func (o PolicyAccessCredentialRuleConditionOperandArrayOutput) Index(i pulumi.IntInput) PolicyAccessCredentialRuleConditionOperandOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyAccessCredentialRuleConditionOperand {
+		return vs[0].([]PolicyAccessCredentialRuleConditionOperand)[vs[1].(int)]
+	}).(PolicyAccessCredentialRuleConditionOperandOutput)
+}
+
+type PolicyAccessCredentialRuleConditionOperandEntryValue struct {
+	Lhs *string `pulumi:"lhs"`
+	Rhs *string `pulumi:"rhs"`
+}
+
+// PolicyAccessCredentialRuleConditionOperandEntryValueInput is an input type that accepts PolicyAccessCredentialRuleConditionOperandEntryValueArgs and PolicyAccessCredentialRuleConditionOperandEntryValueOutput values.
+// You can construct a concrete instance of `PolicyAccessCredentialRuleConditionOperandEntryValueInput` via:
+//
+//	PolicyAccessCredentialRuleConditionOperandEntryValueArgs{...}
+type PolicyAccessCredentialRuleConditionOperandEntryValueInput interface {
+	pulumi.Input
+
+	ToPolicyAccessCredentialRuleConditionOperandEntryValueOutput() PolicyAccessCredentialRuleConditionOperandEntryValueOutput
+	ToPolicyAccessCredentialRuleConditionOperandEntryValueOutputWithContext(context.Context) PolicyAccessCredentialRuleConditionOperandEntryValueOutput
+}
+
+type PolicyAccessCredentialRuleConditionOperandEntryValueArgs struct {
+	Lhs pulumi.StringPtrInput `pulumi:"lhs"`
+	Rhs pulumi.StringPtrInput `pulumi:"rhs"`
+}
+
+func (PolicyAccessCredentialRuleConditionOperandEntryValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAccessCredentialRuleConditionOperandEntryValue)(nil)).Elem()
+}
+
+func (i PolicyAccessCredentialRuleConditionOperandEntryValueArgs) ToPolicyAccessCredentialRuleConditionOperandEntryValueOutput() PolicyAccessCredentialRuleConditionOperandEntryValueOutput {
+	return i.ToPolicyAccessCredentialRuleConditionOperandEntryValueOutputWithContext(context.Background())
+}
+
+func (i PolicyAccessCredentialRuleConditionOperandEntryValueArgs) ToPolicyAccessCredentialRuleConditionOperandEntryValueOutputWithContext(ctx context.Context) PolicyAccessCredentialRuleConditionOperandEntryValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAccessCredentialRuleConditionOperandEntryValueOutput)
+}
+
+// PolicyAccessCredentialRuleConditionOperandEntryValueArrayInput is an input type that accepts PolicyAccessCredentialRuleConditionOperandEntryValueArray and PolicyAccessCredentialRuleConditionOperandEntryValueArrayOutput values.
+// You can construct a concrete instance of `PolicyAccessCredentialRuleConditionOperandEntryValueArrayInput` via:
+//
+//	PolicyAccessCredentialRuleConditionOperandEntryValueArray{ PolicyAccessCredentialRuleConditionOperandEntryValueArgs{...} }
+type PolicyAccessCredentialRuleConditionOperandEntryValueArrayInput interface {
+	pulumi.Input
+
+	ToPolicyAccessCredentialRuleConditionOperandEntryValueArrayOutput() PolicyAccessCredentialRuleConditionOperandEntryValueArrayOutput
+	ToPolicyAccessCredentialRuleConditionOperandEntryValueArrayOutputWithContext(context.Context) PolicyAccessCredentialRuleConditionOperandEntryValueArrayOutput
+}
+
+type PolicyAccessCredentialRuleConditionOperandEntryValueArray []PolicyAccessCredentialRuleConditionOperandEntryValueInput
+
+func (PolicyAccessCredentialRuleConditionOperandEntryValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyAccessCredentialRuleConditionOperandEntryValue)(nil)).Elem()
+}
+
+func (i PolicyAccessCredentialRuleConditionOperandEntryValueArray) ToPolicyAccessCredentialRuleConditionOperandEntryValueArrayOutput() PolicyAccessCredentialRuleConditionOperandEntryValueArrayOutput {
+	return i.ToPolicyAccessCredentialRuleConditionOperandEntryValueArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyAccessCredentialRuleConditionOperandEntryValueArray) ToPolicyAccessCredentialRuleConditionOperandEntryValueArrayOutputWithContext(ctx context.Context) PolicyAccessCredentialRuleConditionOperandEntryValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAccessCredentialRuleConditionOperandEntryValueArrayOutput)
+}
+
+type PolicyAccessCredentialRuleConditionOperandEntryValueOutput struct{ *pulumi.OutputState }
+
+func (PolicyAccessCredentialRuleConditionOperandEntryValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAccessCredentialRuleConditionOperandEntryValue)(nil)).Elem()
+}
+
+func (o PolicyAccessCredentialRuleConditionOperandEntryValueOutput) ToPolicyAccessCredentialRuleConditionOperandEntryValueOutput() PolicyAccessCredentialRuleConditionOperandEntryValueOutput {
+	return o
+}
+
+func (o PolicyAccessCredentialRuleConditionOperandEntryValueOutput) ToPolicyAccessCredentialRuleConditionOperandEntryValueOutputWithContext(ctx context.Context) PolicyAccessCredentialRuleConditionOperandEntryValueOutput {
+	return o
+}
+
+func (o PolicyAccessCredentialRuleConditionOperandEntryValueOutput) Lhs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyAccessCredentialRuleConditionOperandEntryValue) *string { return v.Lhs }).(pulumi.StringPtrOutput)
+}
+
+func (o PolicyAccessCredentialRuleConditionOperandEntryValueOutput) Rhs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyAccessCredentialRuleConditionOperandEntryValue) *string { return v.Rhs }).(pulumi.StringPtrOutput)
+}
+
+type PolicyAccessCredentialRuleConditionOperandEntryValueArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyAccessCredentialRuleConditionOperandEntryValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyAccessCredentialRuleConditionOperandEntryValue)(nil)).Elem()
+}
+
+func (o PolicyAccessCredentialRuleConditionOperandEntryValueArrayOutput) ToPolicyAccessCredentialRuleConditionOperandEntryValueArrayOutput() PolicyAccessCredentialRuleConditionOperandEntryValueArrayOutput {
+	return o
+}
+
+func (o PolicyAccessCredentialRuleConditionOperandEntryValueArrayOutput) ToPolicyAccessCredentialRuleConditionOperandEntryValueArrayOutputWithContext(ctx context.Context) PolicyAccessCredentialRuleConditionOperandEntryValueArrayOutput {
+	return o
+}
+
+func (o PolicyAccessCredentialRuleConditionOperandEntryValueArrayOutput) Index(i pulumi.IntInput) PolicyAccessCredentialRuleConditionOperandEntryValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyAccessCredentialRuleConditionOperandEntryValue {
+		return vs[0].([]PolicyAccessCredentialRuleConditionOperandEntryValue)[vs[1].(int)]
+	}).(PolicyAccessCredentialRuleConditionOperandEntryValueOutput)
+}
+
+type PolicyAccessCredentialRuleCredential struct {
+	Id string `pulumi:"id"`
+}
+
+// PolicyAccessCredentialRuleCredentialInput is an input type that accepts PolicyAccessCredentialRuleCredentialArgs and PolicyAccessCredentialRuleCredentialOutput values.
+// You can construct a concrete instance of `PolicyAccessCredentialRuleCredentialInput` via:
+//
+//	PolicyAccessCredentialRuleCredentialArgs{...}
+type PolicyAccessCredentialRuleCredentialInput interface {
+	pulumi.Input
+
+	ToPolicyAccessCredentialRuleCredentialOutput() PolicyAccessCredentialRuleCredentialOutput
+	ToPolicyAccessCredentialRuleCredentialOutputWithContext(context.Context) PolicyAccessCredentialRuleCredentialOutput
+}
+
+type PolicyAccessCredentialRuleCredentialArgs struct {
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (PolicyAccessCredentialRuleCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAccessCredentialRuleCredential)(nil)).Elem()
+}
+
+func (i PolicyAccessCredentialRuleCredentialArgs) ToPolicyAccessCredentialRuleCredentialOutput() PolicyAccessCredentialRuleCredentialOutput {
+	return i.ToPolicyAccessCredentialRuleCredentialOutputWithContext(context.Background())
+}
+
+func (i PolicyAccessCredentialRuleCredentialArgs) ToPolicyAccessCredentialRuleCredentialOutputWithContext(ctx context.Context) PolicyAccessCredentialRuleCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAccessCredentialRuleCredentialOutput)
+}
+
+// PolicyAccessCredentialRuleCredentialArrayInput is an input type that accepts PolicyAccessCredentialRuleCredentialArray and PolicyAccessCredentialRuleCredentialArrayOutput values.
+// You can construct a concrete instance of `PolicyAccessCredentialRuleCredentialArrayInput` via:
+//
+//	PolicyAccessCredentialRuleCredentialArray{ PolicyAccessCredentialRuleCredentialArgs{...} }
+type PolicyAccessCredentialRuleCredentialArrayInput interface {
+	pulumi.Input
+
+	ToPolicyAccessCredentialRuleCredentialArrayOutput() PolicyAccessCredentialRuleCredentialArrayOutput
+	ToPolicyAccessCredentialRuleCredentialArrayOutputWithContext(context.Context) PolicyAccessCredentialRuleCredentialArrayOutput
+}
+
+type PolicyAccessCredentialRuleCredentialArray []PolicyAccessCredentialRuleCredentialInput
+
+func (PolicyAccessCredentialRuleCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyAccessCredentialRuleCredential)(nil)).Elem()
+}
+
+func (i PolicyAccessCredentialRuleCredentialArray) ToPolicyAccessCredentialRuleCredentialArrayOutput() PolicyAccessCredentialRuleCredentialArrayOutput {
+	return i.ToPolicyAccessCredentialRuleCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyAccessCredentialRuleCredentialArray) ToPolicyAccessCredentialRuleCredentialArrayOutputWithContext(ctx context.Context) PolicyAccessCredentialRuleCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAccessCredentialRuleCredentialArrayOutput)
+}
+
+type PolicyAccessCredentialRuleCredentialOutput struct{ *pulumi.OutputState }
+
+func (PolicyAccessCredentialRuleCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAccessCredentialRuleCredential)(nil)).Elem()
+}
+
+func (o PolicyAccessCredentialRuleCredentialOutput) ToPolicyAccessCredentialRuleCredentialOutput() PolicyAccessCredentialRuleCredentialOutput {
+	return o
+}
+
+func (o PolicyAccessCredentialRuleCredentialOutput) ToPolicyAccessCredentialRuleCredentialOutputWithContext(ctx context.Context) PolicyAccessCredentialRuleCredentialOutput {
+	return o
+}
+
+func (o PolicyAccessCredentialRuleCredentialOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyAccessCredentialRuleCredential) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type PolicyAccessCredentialRuleCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyAccessCredentialRuleCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyAccessCredentialRuleCredential)(nil)).Elem()
+}
+
+func (o PolicyAccessCredentialRuleCredentialArrayOutput) ToPolicyAccessCredentialRuleCredentialArrayOutput() PolicyAccessCredentialRuleCredentialArrayOutput {
+	return o
+}
+
+func (o PolicyAccessCredentialRuleCredentialArrayOutput) ToPolicyAccessCredentialRuleCredentialArrayOutputWithContext(ctx context.Context) PolicyAccessCredentialRuleCredentialArrayOutput {
+	return o
+}
+
+func (o PolicyAccessCredentialRuleCredentialArrayOutput) Index(i pulumi.IntInput) PolicyAccessCredentialRuleCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyAccessCredentialRuleCredential {
+		return vs[0].([]PolicyAccessCredentialRuleCredential)[vs[1].(int)]
+	}).(PolicyAccessCredentialRuleCredentialOutput)
 }
 
 type PolicyAccessForwardingRuleCondition struct {
@@ -14513,6 +15786,106 @@ func (o GetApplicationSegmentUdpPortRangeArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetApplicationSegmentUdpPortRangeOutput)
 }
 
+type GetCloudBrowserIsolationExternalProfileDebugMode struct {
+	Allowed      bool   `pulumi:"allowed"`
+	FilePassword string `pulumi:"filePassword"`
+}
+
+// GetCloudBrowserIsolationExternalProfileDebugModeInput is an input type that accepts GetCloudBrowserIsolationExternalProfileDebugModeArgs and GetCloudBrowserIsolationExternalProfileDebugModeOutput values.
+// You can construct a concrete instance of `GetCloudBrowserIsolationExternalProfileDebugModeInput` via:
+//
+//	GetCloudBrowserIsolationExternalProfileDebugModeArgs{...}
+type GetCloudBrowserIsolationExternalProfileDebugModeInput interface {
+	pulumi.Input
+
+	ToGetCloudBrowserIsolationExternalProfileDebugModeOutput() GetCloudBrowserIsolationExternalProfileDebugModeOutput
+	ToGetCloudBrowserIsolationExternalProfileDebugModeOutputWithContext(context.Context) GetCloudBrowserIsolationExternalProfileDebugModeOutput
+}
+
+type GetCloudBrowserIsolationExternalProfileDebugModeArgs struct {
+	Allowed      pulumi.BoolInput   `pulumi:"allowed"`
+	FilePassword pulumi.StringInput `pulumi:"filePassword"`
+}
+
+func (GetCloudBrowserIsolationExternalProfileDebugModeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileDebugMode)(nil)).Elem()
+}
+
+func (i GetCloudBrowserIsolationExternalProfileDebugModeArgs) ToGetCloudBrowserIsolationExternalProfileDebugModeOutput() GetCloudBrowserIsolationExternalProfileDebugModeOutput {
+	return i.ToGetCloudBrowserIsolationExternalProfileDebugModeOutputWithContext(context.Background())
+}
+
+func (i GetCloudBrowserIsolationExternalProfileDebugModeArgs) ToGetCloudBrowserIsolationExternalProfileDebugModeOutputWithContext(ctx context.Context) GetCloudBrowserIsolationExternalProfileDebugModeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudBrowserIsolationExternalProfileDebugModeOutput)
+}
+
+// GetCloudBrowserIsolationExternalProfileDebugModeArrayInput is an input type that accepts GetCloudBrowserIsolationExternalProfileDebugModeArray and GetCloudBrowserIsolationExternalProfileDebugModeArrayOutput values.
+// You can construct a concrete instance of `GetCloudBrowserIsolationExternalProfileDebugModeArrayInput` via:
+//
+//	GetCloudBrowserIsolationExternalProfileDebugModeArray{ GetCloudBrowserIsolationExternalProfileDebugModeArgs{...} }
+type GetCloudBrowserIsolationExternalProfileDebugModeArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudBrowserIsolationExternalProfileDebugModeArrayOutput() GetCloudBrowserIsolationExternalProfileDebugModeArrayOutput
+	ToGetCloudBrowserIsolationExternalProfileDebugModeArrayOutputWithContext(context.Context) GetCloudBrowserIsolationExternalProfileDebugModeArrayOutput
+}
+
+type GetCloudBrowserIsolationExternalProfileDebugModeArray []GetCloudBrowserIsolationExternalProfileDebugModeInput
+
+func (GetCloudBrowserIsolationExternalProfileDebugModeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudBrowserIsolationExternalProfileDebugMode)(nil)).Elem()
+}
+
+func (i GetCloudBrowserIsolationExternalProfileDebugModeArray) ToGetCloudBrowserIsolationExternalProfileDebugModeArrayOutput() GetCloudBrowserIsolationExternalProfileDebugModeArrayOutput {
+	return i.ToGetCloudBrowserIsolationExternalProfileDebugModeArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudBrowserIsolationExternalProfileDebugModeArray) ToGetCloudBrowserIsolationExternalProfileDebugModeArrayOutputWithContext(ctx context.Context) GetCloudBrowserIsolationExternalProfileDebugModeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudBrowserIsolationExternalProfileDebugModeArrayOutput)
+}
+
+type GetCloudBrowserIsolationExternalProfileDebugModeOutput struct{ *pulumi.OutputState }
+
+func (GetCloudBrowserIsolationExternalProfileDebugModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileDebugMode)(nil)).Elem()
+}
+
+func (o GetCloudBrowserIsolationExternalProfileDebugModeOutput) ToGetCloudBrowserIsolationExternalProfileDebugModeOutput() GetCloudBrowserIsolationExternalProfileDebugModeOutput {
+	return o
+}
+
+func (o GetCloudBrowserIsolationExternalProfileDebugModeOutput) ToGetCloudBrowserIsolationExternalProfileDebugModeOutputWithContext(ctx context.Context) GetCloudBrowserIsolationExternalProfileDebugModeOutput {
+	return o
+}
+
+func (o GetCloudBrowserIsolationExternalProfileDebugModeOutput) Allowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileDebugMode) bool { return v.Allowed }).(pulumi.BoolOutput)
+}
+
+func (o GetCloudBrowserIsolationExternalProfileDebugModeOutput) FilePassword() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileDebugMode) string { return v.FilePassword }).(pulumi.StringOutput)
+}
+
+type GetCloudBrowserIsolationExternalProfileDebugModeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudBrowserIsolationExternalProfileDebugModeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudBrowserIsolationExternalProfileDebugMode)(nil)).Elem()
+}
+
+func (o GetCloudBrowserIsolationExternalProfileDebugModeArrayOutput) ToGetCloudBrowserIsolationExternalProfileDebugModeArrayOutput() GetCloudBrowserIsolationExternalProfileDebugModeArrayOutput {
+	return o
+}
+
+func (o GetCloudBrowserIsolationExternalProfileDebugModeArrayOutput) ToGetCloudBrowserIsolationExternalProfileDebugModeArrayOutputWithContext(ctx context.Context) GetCloudBrowserIsolationExternalProfileDebugModeArrayOutput {
+	return o
+}
+
+func (o GetCloudBrowserIsolationExternalProfileDebugModeArrayOutput) Index(i pulumi.IntInput) GetCloudBrowserIsolationExternalProfileDebugModeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudBrowserIsolationExternalProfileDebugMode {
+		return vs[0].([]GetCloudBrowserIsolationExternalProfileDebugMode)[vs[1].(int)]
+	}).(GetCloudBrowserIsolationExternalProfileDebugModeOutput)
+}
+
 type GetCloudBrowserIsolationExternalProfileRegion struct {
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
@@ -14614,12 +15987,15 @@ func (o GetCloudBrowserIsolationExternalProfileRegionArrayOutput) Index(i pulumi
 }
 
 type GetCloudBrowserIsolationExternalProfileSecurityControl struct {
-	AllowPrinting      bool   `pulumi:"allowPrinting"`
-	CopyPaste          string `pulumi:"copyPaste"`
-	DocumentViewer     bool   `pulumi:"documentViewer"`
-	LocalRender        bool   `pulumi:"localRender"`
-	RestrictKeystrokes bool   `pulumi:"restrictKeystrokes"`
-	UploadDownload     string `pulumi:"uploadDownload"`
+	AllowPrinting      bool                                                              `pulumi:"allowPrinting"`
+	CopyPaste          string                                                            `pulumi:"copyPaste"`
+	DeepLinks          []GetCloudBrowserIsolationExternalProfileSecurityControlDeepLink  `pulumi:"deepLinks"`
+	DocumentViewer     bool                                                              `pulumi:"documentViewer"`
+	FlattenedPdf       bool                                                              `pulumi:"flattenedPdf"`
+	LocalRender        bool                                                              `pulumi:"localRender"`
+	RestrictKeystrokes bool                                                              `pulumi:"restrictKeystrokes"`
+	UploadDownload     string                                                            `pulumi:"uploadDownload"`
+	Watermarks         []GetCloudBrowserIsolationExternalProfileSecurityControlWatermark `pulumi:"watermarks"`
 }
 
 // GetCloudBrowserIsolationExternalProfileSecurityControlInput is an input type that accepts GetCloudBrowserIsolationExternalProfileSecurityControlArgs and GetCloudBrowserIsolationExternalProfileSecurityControlOutput values.
@@ -14634,12 +16010,15 @@ type GetCloudBrowserIsolationExternalProfileSecurityControlInput interface {
 }
 
 type GetCloudBrowserIsolationExternalProfileSecurityControlArgs struct {
-	AllowPrinting      pulumi.BoolInput   `pulumi:"allowPrinting"`
-	CopyPaste          pulumi.StringInput `pulumi:"copyPaste"`
-	DocumentViewer     pulumi.BoolInput   `pulumi:"documentViewer"`
-	LocalRender        pulumi.BoolInput   `pulumi:"localRender"`
-	RestrictKeystrokes pulumi.BoolInput   `pulumi:"restrictKeystrokes"`
-	UploadDownload     pulumi.StringInput `pulumi:"uploadDownload"`
+	AllowPrinting      pulumi.BoolInput                                                          `pulumi:"allowPrinting"`
+	CopyPaste          pulumi.StringInput                                                        `pulumi:"copyPaste"`
+	DeepLinks          GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayInput  `pulumi:"deepLinks"`
+	DocumentViewer     pulumi.BoolInput                                                          `pulumi:"documentViewer"`
+	FlattenedPdf       pulumi.BoolInput                                                          `pulumi:"flattenedPdf"`
+	LocalRender        pulumi.BoolInput                                                          `pulumi:"localRender"`
+	RestrictKeystrokes pulumi.BoolInput                                                          `pulumi:"restrictKeystrokes"`
+	UploadDownload     pulumi.StringInput                                                        `pulumi:"uploadDownload"`
+	Watermarks         GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayInput `pulumi:"watermarks"`
 }
 
 func (GetCloudBrowserIsolationExternalProfileSecurityControlArgs) ElementType() reflect.Type {
@@ -14701,8 +16080,18 @@ func (o GetCloudBrowserIsolationExternalProfileSecurityControlOutput) CopyPaste(
 	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileSecurityControl) string { return v.CopyPaste }).(pulumi.StringOutput)
 }
 
+func (o GetCloudBrowserIsolationExternalProfileSecurityControlOutput) DeepLinks() GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutput {
+	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileSecurityControl) []GetCloudBrowserIsolationExternalProfileSecurityControlDeepLink {
+		return v.DeepLinks
+	}).(GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutput)
+}
+
 func (o GetCloudBrowserIsolationExternalProfileSecurityControlOutput) DocumentViewer() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileSecurityControl) bool { return v.DocumentViewer }).(pulumi.BoolOutput)
+}
+
+func (o GetCloudBrowserIsolationExternalProfileSecurityControlOutput) FlattenedPdf() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileSecurityControl) bool { return v.FlattenedPdf }).(pulumi.BoolOutput)
 }
 
 func (o GetCloudBrowserIsolationExternalProfileSecurityControlOutput) LocalRender() pulumi.BoolOutput {
@@ -14715,6 +16104,12 @@ func (o GetCloudBrowserIsolationExternalProfileSecurityControlOutput) RestrictKe
 
 func (o GetCloudBrowserIsolationExternalProfileSecurityControlOutput) UploadDownload() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileSecurityControl) string { return v.UploadDownload }).(pulumi.StringOutput)
+}
+
+func (o GetCloudBrowserIsolationExternalProfileSecurityControlOutput) Watermarks() GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutput {
+	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileSecurityControl) []GetCloudBrowserIsolationExternalProfileSecurityControlWatermark {
+		return v.Watermarks
+	}).(GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutput)
 }
 
 type GetCloudBrowserIsolationExternalProfileSecurityControlArrayOutput struct{ *pulumi.OutputState }
@@ -14737,9 +16132,231 @@ func (o GetCloudBrowserIsolationExternalProfileSecurityControlArrayOutput) Index
 	}).(GetCloudBrowserIsolationExternalProfileSecurityControlOutput)
 }
 
+type GetCloudBrowserIsolationExternalProfileSecurityControlDeepLink struct {
+	Applications []string `pulumi:"applications"`
+	Enabled      bool     `pulumi:"enabled"`
+}
+
+// GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkInput is an input type that accepts GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs and GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput values.
+// You can construct a concrete instance of `GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkInput` via:
+//
+//	GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs{...}
+type GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkInput interface {
+	pulumi.Input
+
+	ToGetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput() GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput
+	ToGetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutputWithContext(context.Context) GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput
+}
+
+type GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs struct {
+	Applications pulumi.StringArrayInput `pulumi:"applications"`
+	Enabled      pulumi.BoolInput        `pulumi:"enabled"`
+}
+
+func (GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileSecurityControlDeepLink)(nil)).Elem()
+}
+
+func (i GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs) ToGetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput() GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput {
+	return i.ToGetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutputWithContext(context.Background())
+}
+
+func (i GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs) ToGetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutputWithContext(ctx context.Context) GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput)
+}
+
+// GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayInput is an input type that accepts GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArray and GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutput values.
+// You can construct a concrete instance of `GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayInput` via:
+//
+//	GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArray{ GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs{...} }
+type GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutput() GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutput
+	ToGetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutputWithContext(context.Context) GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutput
+}
+
+type GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArray []GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkInput
+
+func (GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudBrowserIsolationExternalProfileSecurityControlDeepLink)(nil)).Elem()
+}
+
+func (i GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArray) ToGetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutput() GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutput {
+	return i.ToGetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArray) ToGetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutputWithContext(ctx context.Context) GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutput)
+}
+
+type GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput struct{ *pulumi.OutputState }
+
+func (GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileSecurityControlDeepLink)(nil)).Elem()
+}
+
+func (o GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput) ToGetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput() GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput {
+	return o
+}
+
+func (o GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput) ToGetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutputWithContext(ctx context.Context) GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput {
+	return o
+}
+
+func (o GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput) Applications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileSecurityControlDeepLink) []string { return v.Applications }).(pulumi.StringArrayOutput)
+}
+
+func (o GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileSecurityControlDeepLink) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudBrowserIsolationExternalProfileSecurityControlDeepLink)(nil)).Elem()
+}
+
+func (o GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutput) ToGetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutput() GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutput {
+	return o
+}
+
+func (o GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutput) ToGetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutputWithContext(ctx context.Context) GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutput {
+	return o
+}
+
+func (o GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutput) Index(i pulumi.IntInput) GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudBrowserIsolationExternalProfileSecurityControlDeepLink {
+		return vs[0].([]GetCloudBrowserIsolationExternalProfileSecurityControlDeepLink)[vs[1].(int)]
+	}).(GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput)
+}
+
+type GetCloudBrowserIsolationExternalProfileSecurityControlWatermark struct {
+	Enabled       bool   `pulumi:"enabled"`
+	Message       string `pulumi:"message"`
+	ShowMessage   bool   `pulumi:"showMessage"`
+	ShowTimestamp bool   `pulumi:"showTimestamp"`
+	ShowUserId    bool   `pulumi:"showUserId"`
+}
+
+// GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkInput is an input type that accepts GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs and GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput values.
+// You can construct a concrete instance of `GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkInput` via:
+//
+//	GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs{...}
+type GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkInput interface {
+	pulumi.Input
+
+	ToGetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput() GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput
+	ToGetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutputWithContext(context.Context) GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput
+}
+
+type GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs struct {
+	Enabled       pulumi.BoolInput   `pulumi:"enabled"`
+	Message       pulumi.StringInput `pulumi:"message"`
+	ShowMessage   pulumi.BoolInput   `pulumi:"showMessage"`
+	ShowTimestamp pulumi.BoolInput   `pulumi:"showTimestamp"`
+	ShowUserId    pulumi.BoolInput   `pulumi:"showUserId"`
+}
+
+func (GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileSecurityControlWatermark)(nil)).Elem()
+}
+
+func (i GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs) ToGetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput() GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput {
+	return i.ToGetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutputWithContext(context.Background())
+}
+
+func (i GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs) ToGetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutputWithContext(ctx context.Context) GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput)
+}
+
+// GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayInput is an input type that accepts GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArray and GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutput values.
+// You can construct a concrete instance of `GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayInput` via:
+//
+//	GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArray{ GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs{...} }
+type GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutput() GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutput
+	ToGetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutputWithContext(context.Context) GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutput
+}
+
+type GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArray []GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkInput
+
+func (GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudBrowserIsolationExternalProfileSecurityControlWatermark)(nil)).Elem()
+}
+
+func (i GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArray) ToGetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutput() GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutput {
+	return i.ToGetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArray) ToGetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutputWithContext(ctx context.Context) GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutput)
+}
+
+type GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput struct{ *pulumi.OutputState }
+
+func (GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileSecurityControlWatermark)(nil)).Elem()
+}
+
+func (o GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) ToGetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput() GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput {
+	return o
+}
+
+func (o GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) ToGetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutputWithContext(ctx context.Context) GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput {
+	return o
+}
+
+func (o GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileSecurityControlWatermark) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileSecurityControlWatermark) string { return v.Message }).(pulumi.StringOutput)
+}
+
+func (o GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) ShowMessage() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileSecurityControlWatermark) bool { return v.ShowMessage }).(pulumi.BoolOutput)
+}
+
+func (o GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) ShowTimestamp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileSecurityControlWatermark) bool { return v.ShowTimestamp }).(pulumi.BoolOutput)
+}
+
+func (o GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) ShowUserId() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileSecurityControlWatermark) bool { return v.ShowUserId }).(pulumi.BoolOutput)
+}
+
+type GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudBrowserIsolationExternalProfileSecurityControlWatermark)(nil)).Elem()
+}
+
+func (o GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutput) ToGetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutput() GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutput {
+	return o
+}
+
+func (o GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutput) ToGetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutputWithContext(ctx context.Context) GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutput {
+	return o
+}
+
+func (o GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutput) Index(i pulumi.IntInput) GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudBrowserIsolationExternalProfileSecurityControlWatermark {
+		return vs[0].([]GetCloudBrowserIsolationExternalProfileSecurityControlWatermark)[vs[1].(int)]
+	}).(GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput)
+}
+
 type GetCloudBrowserIsolationExternalProfileUserExperience struct {
-	BrowserInBrowser   bool `pulumi:"browserInBrowser"`
-	SessionPersistence bool `pulumi:"sessionPersistence"`
+	BrowserInBrowser    bool                                                                `pulumi:"browserInBrowser"`
+	ForwardToZias       []GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZia `pulumi:"forwardToZias"`
+	PersistIsolationBar bool                                                                `pulumi:"persistIsolationBar"`
+	SessionPersistence  bool                                                                `pulumi:"sessionPersistence"`
+	Translate           bool                                                                `pulumi:"translate"`
+	Zgpu                *bool                                                               `pulumi:"zgpu"`
 }
 
 // GetCloudBrowserIsolationExternalProfileUserExperienceInput is an input type that accepts GetCloudBrowserIsolationExternalProfileUserExperienceArgs and GetCloudBrowserIsolationExternalProfileUserExperienceOutput values.
@@ -14754,8 +16371,12 @@ type GetCloudBrowserIsolationExternalProfileUserExperienceInput interface {
 }
 
 type GetCloudBrowserIsolationExternalProfileUserExperienceArgs struct {
-	BrowserInBrowser   pulumi.BoolInput `pulumi:"browserInBrowser"`
-	SessionPersistence pulumi.BoolInput `pulumi:"sessionPersistence"`
+	BrowserInBrowser    pulumi.BoolInput                                                            `pulumi:"browserInBrowser"`
+	ForwardToZias       GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayInput `pulumi:"forwardToZias"`
+	PersistIsolationBar pulumi.BoolInput                                                            `pulumi:"persistIsolationBar"`
+	SessionPersistence  pulumi.BoolInput                                                            `pulumi:"sessionPersistence"`
+	Translate           pulumi.BoolInput                                                            `pulumi:"translate"`
+	Zgpu                pulumi.BoolPtrInput                                                         `pulumi:"zgpu"`
 }
 
 func (GetCloudBrowserIsolationExternalProfileUserExperienceArgs) ElementType() reflect.Type {
@@ -14813,8 +16434,26 @@ func (o GetCloudBrowserIsolationExternalProfileUserExperienceOutput) BrowserInBr
 	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileUserExperience) bool { return v.BrowserInBrowser }).(pulumi.BoolOutput)
 }
 
+func (o GetCloudBrowserIsolationExternalProfileUserExperienceOutput) ForwardToZias() GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutput {
+	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileUserExperience) []GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZia {
+		return v.ForwardToZias
+	}).(GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutput)
+}
+
+func (o GetCloudBrowserIsolationExternalProfileUserExperienceOutput) PersistIsolationBar() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileUserExperience) bool { return v.PersistIsolationBar }).(pulumi.BoolOutput)
+}
+
 func (o GetCloudBrowserIsolationExternalProfileUserExperienceOutput) SessionPersistence() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileUserExperience) bool { return v.SessionPersistence }).(pulumi.BoolOutput)
+}
+
+func (o GetCloudBrowserIsolationExternalProfileUserExperienceOutput) Translate() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileUserExperience) bool { return v.Translate }).(pulumi.BoolOutput)
+}
+
+func (o GetCloudBrowserIsolationExternalProfileUserExperienceOutput) Zgpu() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileUserExperience) *bool { return v.Zgpu }).(pulumi.BoolPtrOutput)
 }
 
 type GetCloudBrowserIsolationExternalProfileUserExperienceArrayOutput struct{ *pulumi.OutputState }
@@ -14835,6 +16474,120 @@ func (o GetCloudBrowserIsolationExternalProfileUserExperienceArrayOutput) Index(
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudBrowserIsolationExternalProfileUserExperience {
 		return vs[0].([]GetCloudBrowserIsolationExternalProfileUserExperience)[vs[1].(int)]
 	}).(GetCloudBrowserIsolationExternalProfileUserExperienceOutput)
+}
+
+type GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZia struct {
+	CloudName      string `pulumi:"cloudName"`
+	Enabled        bool   `pulumi:"enabled"`
+	OrganizationId string `pulumi:"organizationId"`
+	PacFileUrl     string `pulumi:"pacFileUrl"`
+}
+
+// GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaInput is an input type that accepts GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs and GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput values.
+// You can construct a concrete instance of `GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaInput` via:
+//
+//	GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs{...}
+type GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaInput interface {
+	pulumi.Input
+
+	ToGetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput() GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput
+	ToGetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutputWithContext(context.Context) GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput
+}
+
+type GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs struct {
+	CloudName      pulumi.StringInput `pulumi:"cloudName"`
+	Enabled        pulumi.BoolInput   `pulumi:"enabled"`
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+	PacFileUrl     pulumi.StringInput `pulumi:"pacFileUrl"`
+}
+
+func (GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZia)(nil)).Elem()
+}
+
+func (i GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs) ToGetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput() GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput {
+	return i.ToGetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutputWithContext(context.Background())
+}
+
+func (i GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs) ToGetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutputWithContext(ctx context.Context) GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput)
+}
+
+// GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayInput is an input type that accepts GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArray and GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutput values.
+// You can construct a concrete instance of `GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayInput` via:
+//
+//	GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArray{ GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs{...} }
+type GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutput() GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutput
+	ToGetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutputWithContext(context.Context) GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutput
+}
+
+type GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArray []GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaInput
+
+func (GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZia)(nil)).Elem()
+}
+
+func (i GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArray) ToGetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutput() GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutput {
+	return i.ToGetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArray) ToGetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutputWithContext(ctx context.Context) GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutput)
+}
+
+type GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput struct{ *pulumi.OutputState }
+
+func (GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZia)(nil)).Elem()
+}
+
+func (o GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput) ToGetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput() GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput {
+	return o
+}
+
+func (o GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput) ToGetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutputWithContext(ctx context.Context) GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput {
+	return o
+}
+
+func (o GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput) CloudName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZia) string { return v.CloudName }).(pulumi.StringOutput)
+}
+
+func (o GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZia) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZia) string {
+		return v.OrganizationId
+	}).(pulumi.StringOutput)
+}
+
+func (o GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput) PacFileUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZia) string { return v.PacFileUrl }).(pulumi.StringOutput)
+}
+
+type GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZia)(nil)).Elem()
+}
+
+func (o GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutput) ToGetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutput() GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutput {
+	return o
+}
+
+func (o GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutput) ToGetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutputWithContext(ctx context.Context) GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutput {
+	return o
+}
+
+func (o GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutput) Index(i pulumi.IntInput) GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZia {
+		return vs[0].([]GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZia)[vs[1].(int)]
+	}).(GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput)
 }
 
 type GetCloudConnectorGroupCloudConnector struct {
@@ -19851,7 +21604,7 @@ func (o GetPraApprovalControllerWorkingHourArrayOutput) Index(i pulumi.IntInput)
 type GetPraConsoleControllerPraApplication struct {
 	// The unique identifier of the Privileged Remote Access-enabled application
 	Id string `pulumi:"id"`
-	// The name of the Privileged Remote Access-enabled application
+	// - (Required) The name of the privileged console.
 	Name string `pulumi:"name"`
 }
 
@@ -19869,7 +21622,7 @@ type GetPraConsoleControllerPraApplicationInput interface {
 type GetPraConsoleControllerPraApplicationArgs struct {
 	// The unique identifier of the Privileged Remote Access-enabled application
 	Id pulumi.StringInput `pulumi:"id"`
-	// The name of the Privileged Remote Access-enabled application
+	// - (Required) The name of the privileged console.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -19929,7 +21682,7 @@ func (o GetPraConsoleControllerPraApplicationOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPraConsoleControllerPraApplication) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the Privileged Remote Access-enabled application
+// - (Required) The name of the privileged console.
 func (o GetPraConsoleControllerPraApplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPraConsoleControllerPraApplication) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -19957,7 +21710,7 @@ func (o GetPraConsoleControllerPraApplicationArrayOutput) Index(i pulumi.IntInpu
 type GetPraConsoleControllerPraPortal struct {
 	// The unique identifier of the privileged portal
 	Id string `pulumi:"id"`
-	// The name of the privileged portal
+	// - (Required) The name of the privileged console.
 	Name string `pulumi:"name"`
 }
 
@@ -19975,7 +21728,7 @@ type GetPraConsoleControllerPraPortalInput interface {
 type GetPraConsoleControllerPraPortalArgs struct {
 	// The unique identifier of the privileged portal
 	Id pulumi.StringInput `pulumi:"id"`
-	// The name of the privileged portal
+	// - (Required) The name of the privileged console.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -20035,7 +21788,7 @@ func (o GetPraConsoleControllerPraPortalOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPraConsoleControllerPraPortal) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the privileged portal
+// - (Required) The name of the privileged console.
 func (o GetPraConsoleControllerPraPortalOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPraConsoleControllerPraPortal) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -21983,12 +23736,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BrowserAccessTcpPortRangeArrayInput)(nil)).Elem(), BrowserAccessTcpPortRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BrowserAccessUdpPortRangeInput)(nil)).Elem(), BrowserAccessUdpPortRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BrowserAccessUdpPortRangeArrayInput)(nil)).Elem(), BrowserAccessUdpPortRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileDebugModeInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileDebugModeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileDebugModePtrInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileDebugModeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileSecurityControlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlArrayInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileSecurityControlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlDeepLinkInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlWatermarkInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileUserExperienceInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileUserExperienceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileUserExperienceArrayInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileUserExperienceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InspectionCustomControlsAssociatedInspectionProfileNameInput)(nil)).Elem(), InspectionCustomControlsAssociatedInspectionProfileNameArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InspectionCustomControlsAssociatedInspectionProfileNameArrayInput)(nil)).Elem(), InspectionCustomControlsAssociatedInspectionProfileNameArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InspectionCustomControlsRuleInput)(nil)).Elem(), InspectionCustomControlsRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InspectionCustomControlsRuleArrayInput)(nil)).Elem(), InspectionCustomControlsRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InspectionCustomControlsRuleConditionsInput)(nil)).Elem(), InspectionCustomControlsRuleConditionsArgs{})
@@ -21997,8 +23756,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InspectionProfileControlsInfoArrayInput)(nil)).Elem(), InspectionProfileControlsInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InspectionProfileCustomControlInput)(nil)).Elem(), InspectionProfileCustomControlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InspectionProfileCustomControlArrayInput)(nil)).Elem(), InspectionProfileCustomControlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InspectionProfilePredefinedApiControlInput)(nil)).Elem(), InspectionProfilePredefinedApiControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InspectionProfilePredefinedApiControlArrayInput)(nil)).Elem(), InspectionProfilePredefinedApiControlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InspectionProfilePredefinedControlInput)(nil)).Elem(), InspectionProfilePredefinedControlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InspectionProfilePredefinedControlArrayInput)(nil)).Elem(), InspectionProfilePredefinedControlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InspectionProfileThreatLabzControlInput)(nil)).Elem(), InspectionProfileThreatLabzControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InspectionProfileThreatLabzControlArrayInput)(nil)).Elem(), InspectionProfileThreatLabzControlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InspectionProfileWebsocketControlInput)(nil)).Elem(), InspectionProfileWebsocketControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InspectionProfileWebsocketControlArrayInput)(nil)).Elem(), InspectionProfileWebsocketControlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LSSConfigControllerConfigInput)(nil)).Elem(), LSSConfigControllerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LSSConfigControllerConfigPtrInput)(nil)).Elem(), LSSConfigControllerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LSSConfigControllerConnectorGroupInput)(nil)).Elem(), LSSConfigControllerConnectorGroupArgs{})
@@ -22021,6 +23786,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PRAConsolePraApplicationPtrInput)(nil)).Elem(), PRAConsolePraApplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PRAConsolePraPortalInput)(nil)).Elem(), PRAConsolePraPortalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PRAConsolePraPortalArrayInput)(nil)).Elem(), PRAConsolePraPortalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessCredentialRuleConditionInput)(nil)).Elem(), PolicyAccessCredentialRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessCredentialRuleConditionArrayInput)(nil)).Elem(), PolicyAccessCredentialRuleConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessCredentialRuleConditionOperandInput)(nil)).Elem(), PolicyAccessCredentialRuleConditionOperandArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessCredentialRuleConditionOperandArrayInput)(nil)).Elem(), PolicyAccessCredentialRuleConditionOperandArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessCredentialRuleConditionOperandEntryValueInput)(nil)).Elem(), PolicyAccessCredentialRuleConditionOperandEntryValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessCredentialRuleConditionOperandEntryValueArrayInput)(nil)).Elem(), PolicyAccessCredentialRuleConditionOperandEntryValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessCredentialRuleCredentialInput)(nil)).Elem(), PolicyAccessCredentialRuleCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessCredentialRuleCredentialArrayInput)(nil)).Elem(), PolicyAccessCredentialRuleCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessForwardingRuleConditionInput)(nil)).Elem(), PolicyAccessForwardingRuleConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessForwardingRuleConditionArrayInput)(nil)).Elem(), PolicyAccessForwardingRuleConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessForwardingRuleConditionOperandInput)(nil)).Elem(), PolicyAccessForwardingRuleConditionOperandArgs{})
@@ -22181,12 +23954,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationSegmentTcpPortRangeArrayInput)(nil)).Elem(), GetApplicationSegmentTcpPortRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationSegmentUdpPortRangeInput)(nil)).Elem(), GetApplicationSegmentUdpPortRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationSegmentUdpPortRangeArrayInput)(nil)).Elem(), GetApplicationSegmentUdpPortRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileDebugModeInput)(nil)).Elem(), GetCloudBrowserIsolationExternalProfileDebugModeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileDebugModeArrayInput)(nil)).Elem(), GetCloudBrowserIsolationExternalProfileDebugModeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileRegionInput)(nil)).Elem(), GetCloudBrowserIsolationExternalProfileRegionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileRegionArrayInput)(nil)).Elem(), GetCloudBrowserIsolationExternalProfileRegionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileSecurityControlInput)(nil)).Elem(), GetCloudBrowserIsolationExternalProfileSecurityControlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileSecurityControlArrayInput)(nil)).Elem(), GetCloudBrowserIsolationExternalProfileSecurityControlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkInput)(nil)).Elem(), GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayInput)(nil)).Elem(), GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkInput)(nil)).Elem(), GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayInput)(nil)).Elem(), GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileUserExperienceInput)(nil)).Elem(), GetCloudBrowserIsolationExternalProfileUserExperienceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileUserExperienceArrayInput)(nil)).Elem(), GetCloudBrowserIsolationExternalProfileUserExperienceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaInput)(nil)).Elem(), GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayInput)(nil)).Elem(), GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudConnectorGroupCloudConnectorInput)(nil)).Elem(), GetCloudConnectorGroupCloudConnectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudConnectorGroupCloudConnectorArrayInput)(nil)).Elem(), GetCloudConnectorGroupCloudConnectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomerVersionProfileCustomScopeCustomerIdInput)(nil)).Elem(), GetCustomerVersionProfileCustomScopeCustomerIdArgs{})
@@ -22327,12 +24108,18 @@ func init() {
 	pulumi.RegisterOutputType(BrowserAccessTcpPortRangeArrayOutput{})
 	pulumi.RegisterOutputType(BrowserAccessUdpPortRangeOutput{})
 	pulumi.RegisterOutputType(BrowserAccessUdpPortRangeArrayOutput{})
+	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileDebugModeOutput{})
+	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileDebugModePtrOutput{})
 	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileSecurityControlOutput{})
 	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileSecurityControlArrayOutput{})
+	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput{})
+	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput{})
+	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput{})
+	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput{})
 	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileUserExperienceOutput{})
 	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileUserExperienceArrayOutput{})
-	pulumi.RegisterOutputType(InspectionCustomControlsAssociatedInspectionProfileNameOutput{})
-	pulumi.RegisterOutputType(InspectionCustomControlsAssociatedInspectionProfileNameArrayOutput{})
+	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput{})
+	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput{})
 	pulumi.RegisterOutputType(InspectionCustomControlsRuleOutput{})
 	pulumi.RegisterOutputType(InspectionCustomControlsRuleArrayOutput{})
 	pulumi.RegisterOutputType(InspectionCustomControlsRuleConditionsOutput{})
@@ -22341,8 +24128,14 @@ func init() {
 	pulumi.RegisterOutputType(InspectionProfileControlsInfoArrayOutput{})
 	pulumi.RegisterOutputType(InspectionProfileCustomControlOutput{})
 	pulumi.RegisterOutputType(InspectionProfileCustomControlArrayOutput{})
+	pulumi.RegisterOutputType(InspectionProfilePredefinedApiControlOutput{})
+	pulumi.RegisterOutputType(InspectionProfilePredefinedApiControlArrayOutput{})
 	pulumi.RegisterOutputType(InspectionProfilePredefinedControlOutput{})
 	pulumi.RegisterOutputType(InspectionProfilePredefinedControlArrayOutput{})
+	pulumi.RegisterOutputType(InspectionProfileThreatLabzControlOutput{})
+	pulumi.RegisterOutputType(InspectionProfileThreatLabzControlArrayOutput{})
+	pulumi.RegisterOutputType(InspectionProfileWebsocketControlOutput{})
+	pulumi.RegisterOutputType(InspectionProfileWebsocketControlArrayOutput{})
 	pulumi.RegisterOutputType(LSSConfigControllerConfigOutput{})
 	pulumi.RegisterOutputType(LSSConfigControllerConfigPtrOutput{})
 	pulumi.RegisterOutputType(LSSConfigControllerConnectorGroupOutput{})
@@ -22365,6 +24158,14 @@ func init() {
 	pulumi.RegisterOutputType(PRAConsolePraApplicationPtrOutput{})
 	pulumi.RegisterOutputType(PRAConsolePraPortalOutput{})
 	pulumi.RegisterOutputType(PRAConsolePraPortalArrayOutput{})
+	pulumi.RegisterOutputType(PolicyAccessCredentialRuleConditionOutput{})
+	pulumi.RegisterOutputType(PolicyAccessCredentialRuleConditionArrayOutput{})
+	pulumi.RegisterOutputType(PolicyAccessCredentialRuleConditionOperandOutput{})
+	pulumi.RegisterOutputType(PolicyAccessCredentialRuleConditionOperandArrayOutput{})
+	pulumi.RegisterOutputType(PolicyAccessCredentialRuleConditionOperandEntryValueOutput{})
+	pulumi.RegisterOutputType(PolicyAccessCredentialRuleConditionOperandEntryValueArrayOutput{})
+	pulumi.RegisterOutputType(PolicyAccessCredentialRuleCredentialOutput{})
+	pulumi.RegisterOutputType(PolicyAccessCredentialRuleCredentialArrayOutput{})
 	pulumi.RegisterOutputType(PolicyAccessForwardingRuleConditionOutput{})
 	pulumi.RegisterOutputType(PolicyAccessForwardingRuleConditionArrayOutput{})
 	pulumi.RegisterOutputType(PolicyAccessForwardingRuleConditionOperandOutput{})
@@ -22525,12 +24326,20 @@ func init() {
 	pulumi.RegisterOutputType(GetApplicationSegmentTcpPortRangeArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationSegmentUdpPortRangeOutput{})
 	pulumi.RegisterOutputType(GetApplicationSegmentUdpPortRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudBrowserIsolationExternalProfileDebugModeOutput{})
+	pulumi.RegisterOutputType(GetCloudBrowserIsolationExternalProfileDebugModeArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudBrowserIsolationExternalProfileRegionOutput{})
 	pulumi.RegisterOutputType(GetCloudBrowserIsolationExternalProfileRegionArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudBrowserIsolationExternalProfileSecurityControlOutput{})
 	pulumi.RegisterOutputType(GetCloudBrowserIsolationExternalProfileSecurityControlArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput{})
+	pulumi.RegisterOutputType(GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput{})
+	pulumi.RegisterOutputType(GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudBrowserIsolationExternalProfileUserExperienceOutput{})
 	pulumi.RegisterOutputType(GetCloudBrowserIsolationExternalProfileUserExperienceArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput{})
+	pulumi.RegisterOutputType(GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudConnectorGroupCloudConnectorOutput{})
 	pulumi.RegisterOutputType(GetCloudConnectorGroupCloudConnectorArrayOutput{})
 	pulumi.RegisterOutputType(GetCustomerVersionProfileCustomScopeCustomerIdOutput{})

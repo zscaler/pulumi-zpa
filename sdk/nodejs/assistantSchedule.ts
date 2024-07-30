@@ -16,12 +16,11 @@ import * as utilities from "./utilities";
  *
  * ### Defined Customer ID Value
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * const _this = new zpa.AssistantSchedule("this", {
+ * const _this = new zpa.AppConnectorAssistantSchedule("this", {
  *     customerId: "123456789101112",
  *     deleteDisabled: true,
  *     enabled: true,
@@ -29,27 +28,26 @@ import * as utilities from "./utilities";
  *     frequencyInterval: "5",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Customer ID Via Environment Variable
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * const _this = new zpa.AssistantSchedule("this", {
+ * const _this = new zpa.AppConnectorAssistantSchedule("this", {
  *     deleteDisabled: true,
  *     enabled: true,
  *     frequency: "days",
  *     frequencyInterval: "5",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Import is not currently supported for this resource.
+ *
+ * @deprecated zpa.index/assistantschedule.AssistantSchedule has been deprecated in favor of zpa.index/appconnectorassistantschedule.AppConnectorAssistantSchedule
  */
 export class AssistantSchedule extends pulumi.CustomResource {
     /**
@@ -62,6 +60,7 @@ export class AssistantSchedule extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AssistantScheduleState, opts?: pulumi.CustomResourceOptions): AssistantSchedule {
+        pulumi.log.warn("AssistantSchedule is deprecated: zpa.index/assistantschedule.AssistantSchedule has been deprecated in favor of zpa.index/appconnectorassistantschedule.AppConnectorAssistantSchedule")
         return new AssistantSchedule(name, <any>state, { ...opts, id: id });
     }
 
@@ -92,8 +91,11 @@ export class AssistantSchedule extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated zpa.index/assistantschedule.AssistantSchedule has been deprecated in favor of zpa.index/appconnectorassistantschedule.AppConnectorAssistantSchedule */
     constructor(name: string, args?: AssistantScheduleArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated zpa.index/assistantschedule.AssistantSchedule has been deprecated in favor of zpa.index/appconnectorassistantschedule.AppConnectorAssistantSchedule */
     constructor(name: string, argsOrState?: AssistantScheduleArgs | AssistantScheduleState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("AssistantSchedule is deprecated: zpa.index/assistantschedule.AssistantSchedule has been deprecated in favor of zpa.index/appconnectorassistantschedule.AppConnectorAssistantSchedule")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

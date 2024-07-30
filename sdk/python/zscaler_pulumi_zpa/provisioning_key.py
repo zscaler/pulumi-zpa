@@ -18,6 +18,7 @@ class ProvisioningKeyArgs:
                  enrollment_cert_id: pulumi.Input[str],
                  max_usage: pulumi.Input[str],
                  zcomponent_id: pulumi.Input[str],
+                 provisioning_key_value: Optional[pulumi.Input[str]] = None,
                  app_connector_group_id: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  ip_acls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -33,6 +34,7 @@ class ProvisioningKeyArgs:
         :param pulumi.Input[str] enrollment_cert_id: ID of the enrollment certificate that can be used for this provisioning key.
         :param pulumi.Input[str] max_usage: The maximum number of instances where this provisioning key can be used for enrolling an App Connector or Service Edge.
         :param pulumi.Input[str] zcomponent_id: ID of the existing App Connector or Service Edge Group.
+        :param pulumi.Input[str] provisioning_key_value: read only field. Ignored in PUT/POST calls.
         :param pulumi.Input[bool] enabled: Whether the provisioning key is enabled or not. Supported values: true, false
         :param pulumi.Input[str] name: Name of the provisioning key.
         :param pulumi.Input[str] usage_count: The provisioning key utilization count.
@@ -42,6 +44,8 @@ class ProvisioningKeyArgs:
         pulumi.set(__self__, "enrollment_cert_id", enrollment_cert_id)
         pulumi.set(__self__, "max_usage", max_usage)
         pulumi.set(__self__, "zcomponent_id", zcomponent_id)
+        if provisioning_key_value is not None:
+            pulumi.set(__self__, "provisioning_key_value", provisioning_key_value)
         if app_connector_group_id is not None:
             pulumi.set(__self__, "app_connector_group_id", app_connector_group_id)
         if enabled is not None:
@@ -107,6 +111,18 @@ class ProvisioningKeyArgs:
     @zcomponent_id.setter
     def zcomponent_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "zcomponent_id", value)
+
+    @property
+    @pulumi.getter(name="ProvisioningKeyValue")
+    def provisioning_key_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        read only field. Ignored in PUT/POST calls.
+        """
+        return pulumi.get(self, "provisioning_key_value")
+
+    @provisioning_key_value.setter
+    def provisioning_key_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisioning_key_value", value)
 
     @property
     @pulumi.getter(name="appConnectorGroupId")
@@ -416,6 +432,7 @@ class ProvisioningKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 provisioning_key_value: Optional[pulumi.Input[str]] = None,
                  app_connector_group_id: Optional[pulumi.Input[str]] = None,
                  association_type: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -452,6 +469,7 @@ class ProvisioningKey(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] provisioning_key_value: read only field. Ignored in PUT/POST calls.
         :param pulumi.Input[str] association_type: Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
                CONNECTOR_GRP and SERVICE_EDGE_GRP.
         :param pulumi.Input[bool] enabled: Whether the provisioning key is enabled or not. Supported values: true, false
@@ -504,6 +522,7 @@ class ProvisioningKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 provisioning_key_value: Optional[pulumi.Input[str]] = None,
                  app_connector_group_id: Optional[pulumi.Input[str]] = None,
                  association_type: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -525,6 +544,7 @@ class ProvisioningKey(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProvisioningKeyArgs.__new__(ProvisioningKeyArgs)
 
+            __props__.__dict__["provisioning_key_value"] = provisioning_key_value
             __props__.__dict__["app_connector_group_id"] = app_connector_group_id
             if association_type is None and not opts.urn:
                 raise TypeError("Missing required property 'association_type'")
@@ -545,10 +565,7 @@ class ProvisioningKey(pulumi.CustomResource):
                 raise TypeError("Missing required property 'zcomponent_id'")
             __props__.__dict__["zcomponent_id"] = zcomponent_id
             __props__.__dict__["zcomponent_name"] = zcomponent_name
-            __props__.__dict__["provisioning_key_value"] = None
             __props__.__dict__["app_connector_group_name"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["ProvisioningKeyValue"])
-        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ProvisioningKey, __self__).__init__(
             'zpa:index/provisioningKey:ProvisioningKey',
             resource_name,

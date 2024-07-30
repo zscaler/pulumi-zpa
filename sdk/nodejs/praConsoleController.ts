@@ -7,6 +7,96 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-privileged-consoles)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-consoles-using-api)
+ *
+ * The **zpa_pra_console_controller** resource creates a privileged remote access console in the Zscaler Private Access cloud. This resource can then be referenced in an privileged access policy resource and a privileged access portal.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ * import * as zpa from "@pulumi/zpa";
+ *
+ * // Creates Segment Group for Application Segment"
+ * const thisSegmentGroup = new zpa.SegmentGroup("thisSegmentGroup", {
+ *     description: "Example",
+ *     enabled: true,
+ * });
+ * // Creates Privileged Remote Access Application Segment"
+ * const thisApplicationSegmentPRA = new zpa.ApplicationSegmentPRA("thisApplicationSegmentPRA", {
+ *     description: "Example",
+ *     enabled: true,
+ *     healthReporting: "ON_ACCESS",
+ *     bypassType: "NEVER",
+ *     isCnameEnabled: true,
+ *     tcpPortRanges: [
+ *         "3389",
+ *         "3389",
+ *     ],
+ *     domainNames: ["rdp_pra.example.com"],
+ *     segmentGroupId: thisSegmentGroup.id,
+ *     commonAppsDto: {
+ *         appsConfigs: [{
+ *             name: "rdp_pra",
+ *             domain: "rdp_pra.example.com",
+ *             applicationProtocol: "RDP",
+ *             connectionSecurity: "ANY",
+ *             applicationPort: "3389",
+ *             enabled: true,
+ *             appTypes: ["SECURE_REMOTE_ACCESS"],
+ *         }],
+ *     },
+ * });
+ * const thisApplicationSegmentByType = zpa.getApplicationSegmentByType({
+ *     applicationType: "SECURE_REMOTE_ACCESS",
+ *     name: "rdp_pra",
+ * });
+ * const thisBaCertificate = zpa.getBaCertificate({
+ *     name: "pra01.example.com",
+ * });
+ * // Creates PRA Portal"
+ * const this1 = new zpa.PRAPortal("this1", {
+ *     description: "pra01.example.com",
+ *     enabled: true,
+ *     domain: "pra01.example.com",
+ *     certificateId: thisBaCertificate.then(thisBaCertificate => thisBaCertificate.id),
+ *     userNotification: "Created with Terraform",
+ *     userNotificationEnabled: true,
+ * });
+ * const sshPra = new zpa.PRAConsole("sshPra", {
+ *     description: "Created with Terraform",
+ *     enabled: true,
+ *     praApplication: {
+ *         id: thisApplicationSegmentByType.then(thisApplicationSegmentByType => thisApplicationSegmentByType.id),
+ *     },
+ *     praPortals: [{
+ *         ids: [zpa_pra_portal_controller["this"].id],
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+ *
+ * Visit
+ *
+ * **pra_credential_controller** can be imported by using `<CONSOLE ID>` or `<CONSOLE NAME>` as the import ID.
+ *
+ * For example:
+ *
+ * ```sh
+ * $ pulumi import zpa:index/praConsoleController:PraConsoleController this <console_id>
+ * ```
+ *
+ * or
+ *
+ * ```sh
+ * $ pulumi import zpa:index/praConsoleController:PraConsoleController this <console_name>
+ * ```
+ *
  * @deprecated zpa.index/praconsolecontroller.PraConsoleController has been deprecated in favor of zpa.index/praconsole.PRAConsole
  */
 export class PraConsoleController extends pulumi.CustomResource {

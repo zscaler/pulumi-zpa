@@ -7,6 +7,31 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-privileged-approvals)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-approvals-using-api)
+ *
+ * The **zpa_pra_approval_controller** resource creates a privileged remote access approval in the Zscaler Private Access cloud. This resource allows third-party users and contractors to be able to log in to a Privileged Remote Access (PRA) portal.
+ *
+ * ## Import
+ *
+ * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+ *
+ * Visit
+ *
+ * **zpa_pra_approval_controller** can be imported by using `<APPROVAL ID>` or `<APPROVAL NAME>` as the import ID.
+ *
+ * For example:
+ *
+ * ```sh
+ * $ pulumi import zpa:index/praApprovalController:PraApprovalController this <approval_id>
+ * ```
+ *
+ * or
+ *
+ * ```sh
+ * $ pulumi import zpa:index/praApprovalController:PraApprovalController this <approval_name>
+ * ```
+ *
  * @deprecated zpa.index/praapprovalcontroller.PraApprovalController has been deprecated in favor of zpa.index/praapproval.PRAApproval
  */
 export class PraApprovalController extends pulumi.CustomResource {
@@ -42,7 +67,7 @@ export class PraApprovalController extends pulumi.CustomResource {
     /**
      * The email address of the user that you are assigning the privileged approval to
      */
-    public readonly emailIds!: pulumi.Output<string>;
+    public readonly emailIds!: pulumi.Output<string[]>;
     /**
      * The end date that the user no longer has access to the privileged approval
      */
@@ -111,7 +136,7 @@ export interface PraApprovalControllerState {
     /**
      * The email address of the user that you are assigning the privileged approval to
      */
-    emailIds?: pulumi.Input<string>;
+    emailIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The end date that the user no longer has access to the privileged approval
      */
@@ -140,7 +165,7 @@ export interface PraApprovalControllerArgs {
     /**
      * The email address of the user that you are assigning the privileged approval to
      */
-    emailIds?: pulumi.Input<string>;
+    emailIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The end date that the user no longer has access to the privileged approval
      */

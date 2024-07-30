@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -18,7 +17,6 @@ import * as utilities from "./utilities";
  *     name: "server_group_name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServerGroup(args?: GetServerGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetServerGroupResult> {
     args = args || {};
@@ -65,7 +63,6 @@ export interface GetServerGroupResult {
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -74,7 +71,6 @@ export interface GetServerGroupResult {
  *     name: "server_group_name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServerGroupOutput(args?: GetServerGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerGroupResult> {
     return pulumi.output(args).apply((a: any) => getServerGroup(a, opts))

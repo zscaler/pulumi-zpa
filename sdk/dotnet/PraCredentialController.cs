@@ -10,6 +10,82 @@ using Pulumi;
 
 namespace Zscaler.Zpa
 {
+    /// <summary>
+    /// * [Official documentation](https://help.zscaler.com/zpa/about-privileged-credentials)
+    /// * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-credentials-using-api)
+    /// 
+    /// The **zpa_pra_credential_controller** resource creates a privileged remote access credential in the Zscaler Private Access cloud. This resource can then be referenced in an privileged access policy resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Zscaler.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Creates Credential of Type "USERNAME_PASSWORD"
+    ///     var @this = new Zpa.PRACredential("this", new()
+    ///     {
+    ///         CredentialType = "USERNAME_PASSWORD",
+    ///         Description = "Created with Terraform",
+    ///         Password = "",
+    ///         UserDomain = "acme.com",
+    ///         Username = "jdoe",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE #########\
+    /// ######### ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ##########
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Zscaler.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Creates Credential of Type "SSH_KEY"
+    ///     var @this = new Zpa.PRACredential("this", new()
+    ///     {
+    ///         CredentialType = "SSH_KEY",
+    ///         Description = "Created with Terraform",
+    ///         PrivateKey = @"-----BEGIN PRIVATE KEY-----
+    /// MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEjc8pPoobS0l6
+    /// -----END PRIVATE KEY-----
+    /// 
+    /// ",
+    ///         UserDomain = "acme.com",
+    ///         Username = "jdoe",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+    /// 
+    /// Visit
+    /// 
+    /// **pra_credential_controller** can be imported by using `&lt;CREDENTIAL ID&gt;` or `&lt;CREDENTIAL NAME&gt;` as the import ID.
+    /// 
+    /// For example:
+    /// 
+    /// ```sh
+    /// $ pulumi import zpa:index/praCredentialController:PraCredentialController this &lt;credential_id&gt;
+    /// ```
+    /// 
+    /// or
+    /// 
+    /// ```sh
+    /// $ pulumi import zpa:index/praCredentialController:PraCredentialController this &lt;credential_name&gt;
+    /// ```
+    /// </summary>
     [Obsolete(@"zpa.index/pracredentialcontroller.PraCredentialController has been deprecated in favor of zpa.index/pracredential.PRACredential")]
     [ZpaResourceType("zpa:index/praCredentialController:PraCredentialController")]
     public partial class PraCredentialController : global::Pulumi.CustomResource

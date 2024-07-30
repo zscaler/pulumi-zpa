@@ -16,10 +16,13 @@ namespace Zscaler.Zpa.Outputs
     {
         public readonly bool AllowPrinting;
         public readonly string CopyPaste;
+        public readonly ImmutableArray<Outputs.GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkResult> DeepLinks;
         public readonly bool DocumentViewer;
+        public readonly bool FlattenedPdf;
         public readonly bool LocalRender;
         public readonly bool RestrictKeystrokes;
         public readonly string UploadDownload;
+        public readonly ImmutableArray<Outputs.GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkResult> Watermarks;
 
         [OutputConstructor]
         private GetCloudBrowserIsolationExternalProfileSecurityControlResult(
@@ -27,20 +30,29 @@ namespace Zscaler.Zpa.Outputs
 
             string copyPaste,
 
+            ImmutableArray<Outputs.GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkResult> deepLinks,
+
             bool documentViewer,
+
+            bool flattenedPdf,
 
             bool localRender,
 
             bool restrictKeystrokes,
 
-            string uploadDownload)
+            string uploadDownload,
+
+            ImmutableArray<Outputs.GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkResult> watermarks)
         {
             AllowPrinting = allowPrinting;
             CopyPaste = copyPaste;
+            DeepLinks = deepLinks;
             DocumentViewer = documentViewer;
+            FlattenedPdf = flattenedPdf;
             LocalRender = localRender;
             RestrictKeystrokes = restrictKeystrokes;
             UploadDownload = uploadDownload;
+            Watermarks = watermarks;
         }
     }
 }

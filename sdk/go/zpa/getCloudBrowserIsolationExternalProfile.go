@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupCloudBrowserIsolationExternalProfile(ctx *pulumi.Context, args *LookupCloudBrowserIsolationExternalProfileArgs, opts ...pulumi.InvokeOption) (*LookupCloudBrowserIsolationExternalProfileResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudBrowserIsolationExternalProfileResult
@@ -60,6 +58,9 @@ type LookupCloudBrowserIsolationExternalProfileArgs struct {
 
 // A collection of values returned by getCloudBrowserIsolationExternalProfile.
 type LookupCloudBrowserIsolationExternalProfileResult struct {
+	BannerId         string                                                   `pulumi:"bannerId"`
+	CertificateIds   []string                                                 `pulumi:"certificateIds"`
+	DebugModes       []GetCloudBrowserIsolationExternalProfileDebugMode       `pulumi:"debugModes"`
 	Description      string                                                   `pulumi:"description"`
 	Href             string                                                   `pulumi:"href"`
 	Id               *string                                                  `pulumi:"id"`
@@ -106,6 +107,20 @@ func (o LookupCloudBrowserIsolationExternalProfileResultOutput) ToLookupCloudBro
 
 func (o LookupCloudBrowserIsolationExternalProfileResultOutput) ToLookupCloudBrowserIsolationExternalProfileResultOutputWithContext(ctx context.Context) LookupCloudBrowserIsolationExternalProfileResultOutput {
 	return o
+}
+
+func (o LookupCloudBrowserIsolationExternalProfileResultOutput) BannerId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudBrowserIsolationExternalProfileResult) string { return v.BannerId }).(pulumi.StringOutput)
+}
+
+func (o LookupCloudBrowserIsolationExternalProfileResultOutput) CertificateIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupCloudBrowserIsolationExternalProfileResult) []string { return v.CertificateIds }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupCloudBrowserIsolationExternalProfileResultOutput) DebugModes() GetCloudBrowserIsolationExternalProfileDebugModeArrayOutput {
+	return o.ApplyT(func(v LookupCloudBrowserIsolationExternalProfileResult) []GetCloudBrowserIsolationExternalProfileDebugMode {
+		return v.DebugModes
+	}).(GetCloudBrowserIsolationExternalProfileDebugModeArrayOutput)
 }
 
 func (o LookupCloudBrowserIsolationExternalProfileResultOutput) Description() pulumi.StringOutput {

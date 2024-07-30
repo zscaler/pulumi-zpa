@@ -19,8 +19,14 @@ namespace Zscaler.Zpa.Inputs
         [Input("copyPaste")]
         public Input<string>? CopyPaste { get; set; }
 
+        [Input("deepLink")]
+        public Input<Inputs.CloudBrowserIsolationExternalProfileSecurityControlDeepLinkGetArgs>? DeepLink { get; set; }
+
         [Input("documentViewer")]
         public Input<bool>? DocumentViewer { get; set; }
+
+        [Input("flattenedPdf")]
+        public Input<bool>? FlattenedPdf { get; set; }
 
         [Input("localRender")]
         public Input<bool>? LocalRender { get; set; }
@@ -30,6 +36,9 @@ namespace Zscaler.Zpa.Inputs
 
         [Input("uploadDownload")]
         public Input<string>? UploadDownload { get; set; }
+
+        [Input("watermark")]
+        public Input<Inputs.CloudBrowserIsolationExternalProfileSecurityControlWatermarkGetArgs>? Watermark { get; set; }
 
         public CloudBrowserIsolationExternalProfileSecurityControlGetArgs()
         {

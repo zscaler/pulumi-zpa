@@ -80,10 +80,6 @@ func NewProvisioningKey(ctx *pulumi.Context,
 	if args.ZcomponentId == nil {
 		return nil, errors.New("invalid value for required argument 'ZcomponentId'")
 	}
-	secrets := pulumi.AdditionalSecretOutputs([]string{
-		"ProvisioningKeyValue",
-	})
-	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProvisioningKey
 	err := ctx.RegisterResource("zpa:index/provisioningKey:ProvisioningKey", name, args, &resource, opts...)
@@ -167,7 +163,9 @@ func (ProvisioningKeyState) ElementType() reflect.Type {
 }
 
 type provisioningKeyArgs struct {
-	AppConnectorGroupId *string `pulumi:"appConnectorGroupId"`
+	// read only field. Ignored in PUT/POST calls.
+	ProvisioningKeyValue *string `pulumi:"ProvisioningKeyValue"`
+	AppConnectorGroupId  *string `pulumi:"appConnectorGroupId"`
 	// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
 	// CONNECTOR_GRP and SERVICE_EDGE_GRP.
 	AssociationType string `pulumi:"associationType"`
@@ -192,7 +190,9 @@ type provisioningKeyArgs struct {
 
 // The set of arguments for constructing a ProvisioningKey resource.
 type ProvisioningKeyArgs struct {
-	AppConnectorGroupId pulumi.StringPtrInput
+	// read only field. Ignored in PUT/POST calls.
+	ProvisioningKeyValue pulumi.StringPtrInput
+	AppConnectorGroupId  pulumi.StringPtrInput
 	// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
 	// CONNECTOR_GRP and SERVICE_EDGE_GRP.
 	AssociationType pulumi.StringInput

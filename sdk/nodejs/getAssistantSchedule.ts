@@ -14,18 +14,18 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getAssistantSchedule({
+ * const this = zpa.getAppConnectorAssistantSchedule({
  *     customerId: "1234567891012",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
+/** @deprecated zpa.index/getassistantschedule.getAssistantSchedule has been deprecated in favor of zpa.index/getappconnectorassistantschedule.getAppConnectorAssistantSchedule */
 export function getAssistantSchedule(args?: GetAssistantScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetAssistantScheduleResult> {
+    pulumi.log.warn("getAssistantSchedule is deprecated: zpa.index/getassistantschedule.getAssistantSchedule has been deprecated in favor of zpa.index/getappconnectorassistantschedule.getAppConnectorAssistantSchedule")
     args = args || {};
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -64,17 +64,16 @@ export interface GetAssistantScheduleResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getAssistantSchedule({
+ * const this = zpa.getAppConnectorAssistantSchedule({
  *     customerId: "1234567891012",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
+/** @deprecated zpa.index/getassistantschedule.getAssistantSchedule has been deprecated in favor of zpa.index/getappconnectorassistantschedule.getAppConnectorAssistantSchedule */
 export function getAssistantScheduleOutput(args?: GetAssistantScheduleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAssistantScheduleResult> {
     return pulumi.output(args).apply((a: any) => getAssistantSchedule(a, opts))
 }

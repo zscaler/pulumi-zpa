@@ -13,9 +13,15 @@ namespace Zscaler.Zpa
     [Obsolete(@"zpa.index/getpraapprovalcontroller.getPraApprovalController has been deprecated in favor of zpa.index/getpraapproval.getPRAApproval")]
     public static class GetPraApprovalController
     {
+        /// <summary>
+        /// Use the **zpa_pra_approval_controller** data source to get information about a privileged remote access approval created in the Zscaler Private Access cloud.
+        /// </summary>
         public static Task<GetPraApprovalControllerResult> InvokeAsync(GetPraApprovalControllerArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPraApprovalControllerResult>("zpa:index/getPraApprovalController:getPraApprovalController", args ?? new GetPraApprovalControllerArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use the **zpa_pra_approval_controller** data source to get information about a privileged remote access approval created in the Zscaler Private Access cloud.
+        /// </summary>
         public static Output<GetPraApprovalControllerResult> Invoke(GetPraApprovalControllerInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPraApprovalControllerResult>("zpa:index/getPraApprovalController:getPraApprovalController", args ?? new GetPraApprovalControllerInvokeArgs(), options.WithDefaults());
     }
@@ -68,10 +74,20 @@ namespace Zscaler.Zpa
         public readonly ImmutableArray<string> EmailIds;
         public readonly string EndTime;
         public readonly string? Id;
+        /// <summary>
+        /// (string)  The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to retrieve data from all customers associated with the tenant.
+        /// </summary>
         public readonly string MicrotenantId;
         public readonly string ModifiedBy;
         public readonly string ModifiedTime;
         public readonly string StartTime;
+        /// <summary>
+        /// (string) The status of the privileged approval. The supported values are:
+        /// - `INVALID`: The privileged approval is invalid.
+        /// - `ACTIVE`: The privileged approval is currently available for the user.
+        /// - `FUTURE`: The privileged approval is available for a user at a set time in the future.
+        /// - `EXPIRED`: The privileged approval is no longer available for the user.
+        /// </summary>
         public readonly string Status;
         public readonly ImmutableArray<Outputs.GetPraApprovalControllerWorkingHourResult> WorkingHours;
 

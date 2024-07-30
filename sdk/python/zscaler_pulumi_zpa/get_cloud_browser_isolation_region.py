@@ -58,14 +58,12 @@ def get_cloud_browser_isolation_region(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     this = zpa.get_cloud_browser_isolation_region(name="Singapore")
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['id'] = id
@@ -87,13 +85,11 @@ def get_cloud_browser_isolation_region_output(id: Optional[pulumi.Input[Optional
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     this = zpa.get_cloud_browser_isolation_region(name="Singapore")
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

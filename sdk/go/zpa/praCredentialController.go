@@ -11,6 +11,93 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-privileged-credentials)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-credentials-using-api)
+//
+// The **zpa_pra_credential_controller** resource creates a privileged remote access credential in the Zscaler Private Access cloud. This resource can then be referenced in an privileged access policy resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Creates Credential of Type "USERNAME_PASSWORD"
+//			_, err := zpa.NewPRACredential(ctx, "this", &zpa.PRACredentialArgs{
+//				CredentialType: pulumi.String("USERNAME_PASSWORD"),
+//				Description:    pulumi.String("Created with Terraform"),
+//				Password:       pulumi.String(""),
+//				UserDomain:     pulumi.String("acme.com"),
+//				Username:       pulumi.String("jdoe"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE #########\
+// ######### ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ##########
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Creates Credential of Type "SSH_KEY"
+//			_, err := zpa.NewPRACredential(ctx, "this", &zpa.PRACredentialArgs{
+//				CredentialType: pulumi.String("SSH_KEY"),
+//				Description:    pulumi.String("Created with Terraform"),
+//				PrivateKey:     pulumi.String("-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEjc8pPoobS0l6\n-----END PRIVATE KEY-----\n\n"),
+//				UserDomain:     pulumi.String("acme.com"),
+//				Username:       pulumi.String("jdoe"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+//
+// # Visit
+//
+// **pra_credential_controller** can be imported by using `<CREDENTIAL ID>` or `<CREDENTIAL NAME>` as the import ID.
+//
+// For example:
+//
+// ```sh
+// $ pulumi import zpa:index/praCredentialController:PraCredentialController this <credential_id>
+// ```
+//
+// or
+//
+// ```sh
+// $ pulumi import zpa:index/praCredentialController:PraCredentialController this <credential_name>
+// ```
+//
 // Deprecated: zpa.index/pracredentialcontroller.PraCredentialController has been deprecated in favor of zpa.index/pracredential.PRACredential
 type PraCredentialController struct {
 	pulumi.CustomResourceState

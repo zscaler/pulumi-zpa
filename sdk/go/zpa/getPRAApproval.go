@@ -41,6 +41,10 @@ type LookupPRAApprovalResult struct {
 	ModifiedTime  string `pulumi:"modifiedTime"`
 	StartTime     string `pulumi:"startTime"`
 	// (string) The status of the privileged approval. The supported values are:
+	// - `INVALID`: The privileged approval is invalid.
+	// - `ACTIVE`: The privileged approval is currently available for the user.
+	// - `FUTURE`: The privileged approval is available for a user at a set time in the future.
+	// - `EXPIRED`: The privileged approval is no longer available for the user.
 	Status       string                      `pulumi:"status"`
 	WorkingHours []GetPRAApprovalWorkingHour `pulumi:"workingHours"`
 }
@@ -121,6 +125,10 @@ func (o LookupPRAApprovalResultOutput) StartTime() pulumi.StringOutput {
 }
 
 // (string) The status of the privileged approval. The supported values are:
+// - `INVALID`: The privileged approval is invalid.
+// - `ACTIVE`: The privileged approval is currently available for the user.
+// - `FUTURE`: The privileged approval is available for a user at a set time in the future.
+// - `EXPIRED`: The privileged approval is no longer available for the user.
 func (o LookupPRAApprovalResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPRAApprovalResult) string { return v.Status }).(pulumi.StringOutput)
 }

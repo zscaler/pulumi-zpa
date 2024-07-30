@@ -24,10 +24,11 @@ class PolicyInspectionRuleV2Args:
                  zpn_inspection_profile_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PolicyInspectionRuleV2 resource.
-        :param pulumi.Input[str] action: This is for providing the rule action.
+        :param pulumi.Input[str] action: This is for providing the rule action. Supported values: `INSPECT` and `BYPASS_INSPECT`.
         :param pulumi.Input[Sequence[pulumi.Input['PolicyInspectionRuleV2ConditionArgs']]] conditions: This is for proviidng the set of conditions for the policy.
-        :param pulumi.Input[str] description: This is the description of the access policy.
-        :param pulumi.Input[str] name: This is the name of the policy.
+        :param pulumi.Input[str] description: This is the description of the access policy rule.
+        :param pulumi.Input[str] name: - (String) This is the name of the policy rule.
+        :param pulumi.Input[str] zpn_inspection_profile_id: An inspection profile is required if the `action` is set to `INSPECT`
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -46,7 +47,7 @@ class PolicyInspectionRuleV2Args:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
         """
-        This is for providing the rule action.
+        This is for providing the rule action. Supported values: `INSPECT` and `BYPASS_INSPECT`.
         """
         return pulumi.get(self, "action")
 
@@ -70,7 +71,7 @@ class PolicyInspectionRuleV2Args:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        This is the description of the access policy.
+        This is the description of the access policy rule.
         """
         return pulumi.get(self, "description")
 
@@ -91,7 +92,7 @@ class PolicyInspectionRuleV2Args:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        This is the name of the policy.
+        - (String) This is the name of the policy rule.
         """
         return pulumi.get(self, "name")
 
@@ -102,6 +103,9 @@ class PolicyInspectionRuleV2Args:
     @property
     @pulumi.getter(name="zpnInspectionProfileId")
     def zpn_inspection_profile_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        An inspection profile is required if the `action` is set to `INSPECT`
+        """
         return pulumi.get(self, "zpn_inspection_profile_id")
 
     @zpn_inspection_profile_id.setter
@@ -121,10 +125,11 @@ class _PolicyInspectionRuleV2State:
                  zpn_inspection_profile_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PolicyInspectionRuleV2 resources.
-        :param pulumi.Input[str] action: This is for providing the rule action.
+        :param pulumi.Input[str] action: This is for providing the rule action. Supported values: `INSPECT` and `BYPASS_INSPECT`.
         :param pulumi.Input[Sequence[pulumi.Input['PolicyInspectionRuleV2ConditionArgs']]] conditions: This is for proviidng the set of conditions for the policy.
-        :param pulumi.Input[str] description: This is the description of the access policy.
-        :param pulumi.Input[str] name: This is the name of the policy.
+        :param pulumi.Input[str] description: This is the description of the access policy rule.
+        :param pulumi.Input[str] name: - (String) This is the name of the policy rule.
+        :param pulumi.Input[str] zpn_inspection_profile_id: An inspection profile is required if the `action` is set to `INSPECT`
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -145,7 +150,7 @@ class _PolicyInspectionRuleV2State:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
         """
-        This is for providing the rule action.
+        This is for providing the rule action. Supported values: `INSPECT` and `BYPASS_INSPECT`.
         """
         return pulumi.get(self, "action")
 
@@ -169,7 +174,7 @@ class _PolicyInspectionRuleV2State:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        This is the description of the access policy.
+        This is the description of the access policy rule.
         """
         return pulumi.get(self, "description")
 
@@ -190,7 +195,7 @@ class _PolicyInspectionRuleV2State:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        This is the name of the policy.
+        - (String) This is the name of the policy rule.
         """
         return pulumi.get(self, "name")
 
@@ -210,6 +215,9 @@ class _PolicyInspectionRuleV2State:
     @property
     @pulumi.getter(name="zpnInspectionProfileId")
     def zpn_inspection_profile_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        An inspection profile is required if the `action` is set to `INSPECT`
+        """
         return pulumi.get(self, "zpn_inspection_profile_id")
 
     @zpn_inspection_profile_id.setter
@@ -235,13 +243,36 @@ class PolicyInspectionRuleV2(pulumi.CustomResource):
                  zpn_inspection_profile_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a PolicyInspectionRuleV2 resource with the given unique name, props, and options.
+        * [Official documentation](https://help.zscaler.com/zpa/about-security-policy)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-policies-using-api)
+
+        The **zpa_policy_inspection_rule_v2** resource creates and manages policy access inspection rule in the Zscaler Private Access cloud using a new v2 API endpoint.
+
+          ⚠️ **NOTE**: This resource is recommended if your configuration requires the association of more than 1000 resource criteria per rule.
+
+          ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+
+        ## Import
+
+        Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+
+        Visit
+
+        Policy access inspection rule can be imported by using `<RULE ID>` as the import ID.
+
+        For example:
+
+        ```sh
+        $ pulumi import zpa:index/policyInspectionRuleV2:PolicyInspectionRuleV2 example <rule_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: This is for providing the rule action.
+        :param pulumi.Input[str] action: This is for providing the rule action. Supported values: `INSPECT` and `BYPASS_INSPECT`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyInspectionRuleV2ConditionArgs']]]] conditions: This is for proviidng the set of conditions for the policy.
-        :param pulumi.Input[str] description: This is the description of the access policy.
-        :param pulumi.Input[str] name: This is the name of the policy.
+        :param pulumi.Input[str] description: This is the description of the access policy rule.
+        :param pulumi.Input[str] name: - (String) This is the name of the policy rule.
+        :param pulumi.Input[str] zpn_inspection_profile_id: An inspection profile is required if the `action` is set to `INSPECT`
         """
         ...
     @overload
@@ -250,7 +281,29 @@ class PolicyInspectionRuleV2(pulumi.CustomResource):
                  args: Optional[PolicyInspectionRuleV2Args] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a PolicyInspectionRuleV2 resource with the given unique name, props, and options.
+        * [Official documentation](https://help.zscaler.com/zpa/about-security-policy)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-policies-using-api)
+
+        The **zpa_policy_inspection_rule_v2** resource creates and manages policy access inspection rule in the Zscaler Private Access cloud using a new v2 API endpoint.
+
+          ⚠️ **NOTE**: This resource is recommended if your configuration requires the association of more than 1000 resource criteria per rule.
+
+          ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+
+        ## Import
+
+        Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+
+        Visit
+
+        Policy access inspection rule can be imported by using `<RULE ID>` as the import ID.
+
+        For example:
+
+        ```sh
+        $ pulumi import zpa:index/policyInspectionRuleV2:PolicyInspectionRuleV2 example <rule_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param PolicyInspectionRuleV2Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -313,10 +366,11 @@ class PolicyInspectionRuleV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: This is for providing the rule action.
+        :param pulumi.Input[str] action: This is for providing the rule action. Supported values: `INSPECT` and `BYPASS_INSPECT`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyInspectionRuleV2ConditionArgs']]]] conditions: This is for proviidng the set of conditions for the policy.
-        :param pulumi.Input[str] description: This is the description of the access policy.
-        :param pulumi.Input[str] name: This is the name of the policy.
+        :param pulumi.Input[str] description: This is the description of the access policy rule.
+        :param pulumi.Input[str] name: - (String) This is the name of the policy rule.
+        :param pulumi.Input[str] zpn_inspection_profile_id: An inspection profile is required if the `action` is set to `INSPECT`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -335,7 +389,7 @@ class PolicyInspectionRuleV2(pulumi.CustomResource):
     @pulumi.getter
     def action(self) -> pulumi.Output[Optional[str]]:
         """
-        This is for providing the rule action.
+        This is for providing the rule action. Supported values: `INSPECT` and `BYPASS_INSPECT`.
         """
         return pulumi.get(self, "action")
 
@@ -351,7 +405,7 @@ class PolicyInspectionRuleV2(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        This is the description of the access policy.
+        This is the description of the access policy rule.
         """
         return pulumi.get(self, "description")
 
@@ -364,7 +418,7 @@ class PolicyInspectionRuleV2(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        This is the name of the policy.
+        - (String) This is the name of the policy rule.
         """
         return pulumi.get(self, "name")
 
@@ -376,5 +430,8 @@ class PolicyInspectionRuleV2(pulumi.CustomResource):
     @property
     @pulumi.getter(name="zpnInspectionProfileId")
     def zpn_inspection_profile_id(self) -> pulumi.Output[str]:
+        """
+        An inspection profile is required if the `action` is set to `INSPECT`
+        """
         return pulumi.get(self, "zpn_inspection_profile_id")
 

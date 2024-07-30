@@ -87,6 +87,9 @@ class GetPraApprovalControllerResult:
     @property
     @pulumi.getter(name="microtenantId")
     def microtenant_id(self) -> str:
+        """
+        (string)  The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to retrieve data from all customers associated with the tenant.
+        """
         return pulumi.get(self, "microtenant_id")
 
     @property
@@ -107,6 +110,13 @@ class GetPraApprovalControllerResult:
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        (string) The status of the privileged approval. The supported values are:
+        - `INVALID`: The privileged approval is invalid.
+        - `ACTIVE`: The privileged approval is currently available for the user.
+        - `FUTURE`: The privileged approval is available for a user at a set time in the future.
+        - `EXPIRED`: The privileged approval is no longer available for the user.
+        """
         return pulumi.get(self, "status")
 
     @property
@@ -138,7 +148,7 @@ def get_pra_approval_controller(email_ids: Optional[Sequence[str]] = None,
                                 id: Optional[str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPraApprovalControllerResult:
     """
-    Use this data source to access information about an existing resource.
+    Use the **zpa_pra_approval_controller** data source to get information about a privileged remote access approval created in the Zscaler Private Access cloud.
     """
     pulumi.log.warn("""get_pra_approval_controller is deprecated: zpa.index/getpraapprovalcontroller.getPraApprovalController has been deprecated in favor of zpa.index/getpraapproval.getPRAApproval""")
     __args__ = dict()
@@ -166,7 +176,7 @@ def get_pra_approval_controller_output(email_ids: Optional[pulumi.Input[Optional
                                        id: Optional[pulumi.Input[Optional[str]]] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPraApprovalControllerResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use the **zpa_pra_approval_controller** data source to get information about a privileged remote access approval created in the Zscaler Private Access cloud.
     """
     pulumi.log.warn("""get_pra_approval_controller is deprecated: zpa.index/getpraapprovalcontroller.getPraApprovalController has been deprecated in favor of zpa.index/getpraapproval.getPRAApproval""")
     ...

@@ -20,7 +20,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -33,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := zpa.LookupAssistantSchedule(ctx, &zpa.LookupAssistantScheduleArgs{
+//			_, err := zpa.LookupAppConnectorAssistantSchedule(ctx, &zpa.LookupAppConnectorAssistantScheduleArgs{
 //				CustomerId: pulumi.StringRef("1234567891012"),
 //			}, nil)
 //			if err != nil {
@@ -44,7 +43,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
+//
+// Deprecated: zpa.index/getassistantschedule.getAssistantSchedule has been deprecated in favor of zpa.index/getappconnectorassistantschedule.getAppConnectorAssistantSchedule
 func LookupAssistantSchedule(ctx *pulumi.Context, args *LookupAssistantScheduleArgs, opts ...pulumi.InvokeOption) (*LookupAssistantScheduleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssistantScheduleResult

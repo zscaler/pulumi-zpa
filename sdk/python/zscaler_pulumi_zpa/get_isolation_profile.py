@@ -135,14 +135,12 @@ def get_isolation_profile(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     isolation_profile = zpa.get_isolation_profile(name="zpa_isolation_profile")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: - (Required) This field defines the name of the isolation profile.
@@ -176,14 +174,12 @@ def get_isolation_profile_output(name: Optional[pulumi.Input[Optional[str]]] = N
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     isolation_profile = zpa.get_isolation_profile(name="zpa_isolation_profile")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: - (Required) This field defines the name of the isolation profile.

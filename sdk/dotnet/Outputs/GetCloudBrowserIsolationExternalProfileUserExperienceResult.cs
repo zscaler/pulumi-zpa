@@ -15,16 +15,32 @@ namespace Zscaler.Zpa.Outputs
     public sealed class GetCloudBrowserIsolationExternalProfileUserExperienceResult
     {
         public readonly bool BrowserInBrowser;
+        public readonly ImmutableArray<Outputs.GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaResult> ForwardToZias;
+        public readonly bool PersistIsolationBar;
         public readonly bool SessionPersistence;
+        public readonly bool Translate;
+        public readonly bool? Zgpu;
 
         [OutputConstructor]
         private GetCloudBrowserIsolationExternalProfileUserExperienceResult(
             bool browserInBrowser,
 
-            bool sessionPersistence)
+            ImmutableArray<Outputs.GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaResult> forwardToZias,
+
+            bool persistIsolationBar,
+
+            bool sessionPersistence,
+
+            bool translate,
+
+            bool? zgpu)
         {
             BrowserInBrowser = browserInBrowser;
+            ForwardToZias = forwardToZias;
+            PersistIsolationBar = persistIsolationBar;
             SessionPersistence = sessionPersistence;
+            Translate = translate;
+            Zgpu = zgpu;
         }
     }
 }

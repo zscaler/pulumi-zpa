@@ -348,7 +348,6 @@ class ServerGroup(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -375,11 +374,9 @@ class ServerGroup(pulumi.CustomResource):
             app_connector_groups=[zpa.ServerGroupAppConnectorGroupArgs(
                 ids=[example_connector_group.id],
             )],
-            opts=pulumi.ResourceOptions(depends_on=[example_connector_group]))
+            opts = pulumi.ResourceOptions(depends_on=[example_connector_group]))
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -414,12 +411,11 @@ class ServerGroup(pulumi.CustomResource):
             app_connector_groups=[zpa.ServerGroupAppConnectorGroupArgs(
                 ids=[example_connector_group.id],
             )],
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     example_connector_group,
                     zpa_application_server["server"],
                 ]))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -461,7 +457,6 @@ class ServerGroup(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -488,11 +483,9 @@ class ServerGroup(pulumi.CustomResource):
             app_connector_groups=[zpa.ServerGroupAppConnectorGroupArgs(
                 ids=[example_connector_group.id],
             )],
-            opts=pulumi.ResourceOptions(depends_on=[example_connector_group]))
+            opts = pulumi.ResourceOptions(depends_on=[example_connector_group]))
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -527,12 +520,11 @@ class ServerGroup(pulumi.CustomResource):
             app_connector_groups=[zpa.ServerGroupAppConnectorGroupArgs(
                 ids=[example_connector_group.id],
             )],
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     example_connector_group,
                     zpa_application_server["server"],
                 ]))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

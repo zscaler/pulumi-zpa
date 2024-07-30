@@ -14,7 +14,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
@@ -62,7 +61,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -142,7 +140,7 @@ export class ApplicationSegmentPRA extends pulumi.CustomResource {
      * connectors.
      */
     public readonly isCnameEnabled!: pulumi.Output<boolean>;
-    public readonly isIncompleteDrConfig!: pulumi.Output<boolean | undefined>;
+    public readonly isIncompleteDrConfig!: pulumi.Output<boolean>;
     public readonly matchStyle!: pulumi.Output<string>;
     /**
      * Name of the application.
@@ -150,7 +148,6 @@ export class ApplicationSegmentPRA extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly passiveHealthEnabled!: pulumi.Output<boolean>;
     public readonly segmentGroupId!: pulumi.Output<string>;
-    public readonly segmentGroupName!: pulumi.Output<string>;
     public readonly selectConnectorCloseToApp!: pulumi.Output<boolean | undefined>;
     /**
      * List of the server group IDs.
@@ -173,7 +170,7 @@ export class ApplicationSegmentPRA extends pulumi.CustomResource {
      * UDP port ranges used to access the app.
      */
     public readonly udpPortRanges!: pulumi.Output<string[]>;
-    public readonly useInDrMode!: pulumi.Output<boolean | undefined>;
+    public readonly useInDrMode!: pulumi.Output<boolean>;
 
     /**
      * Create a ApplicationSegmentPRA resource with the given unique name, arguments, and options.
@@ -205,7 +202,6 @@ export class ApplicationSegmentPRA extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["passiveHealthEnabled"] = state ? state.passiveHealthEnabled : undefined;
             resourceInputs["segmentGroupId"] = state ? state.segmentGroupId : undefined;
-            resourceInputs["segmentGroupName"] = state ? state.segmentGroupName : undefined;
             resourceInputs["selectConnectorCloseToApp"] = state ? state.selectConnectorCloseToApp : undefined;
             resourceInputs["serverGroups"] = state ? state.serverGroups : undefined;
             resourceInputs["tcpKeepAlive"] = state ? state.tcpKeepAlive : undefined;
@@ -239,7 +235,6 @@ export class ApplicationSegmentPRA extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["passiveHealthEnabled"] = args ? args.passiveHealthEnabled : undefined;
             resourceInputs["segmentGroupId"] = args ? args.segmentGroupId : undefined;
-            resourceInputs["segmentGroupName"] = args ? args.segmentGroupName : undefined;
             resourceInputs["selectConnectorCloseToApp"] = args ? args.selectConnectorCloseToApp : undefined;
             resourceInputs["serverGroups"] = args ? args.serverGroups : undefined;
             resourceInputs["tcpKeepAlive"] = args ? args.tcpKeepAlive : undefined;
@@ -298,7 +293,6 @@ export interface ApplicationSegmentPRAState {
     name?: pulumi.Input<string>;
     passiveHealthEnabled?: pulumi.Input<boolean>;
     segmentGroupId?: pulumi.Input<string>;
-    segmentGroupName?: pulumi.Input<string>;
     selectConnectorCloseToApp?: pulumi.Input<boolean>;
     /**
      * List of the server group IDs.
@@ -368,7 +362,6 @@ export interface ApplicationSegmentPRAArgs {
     name?: pulumi.Input<string>;
     passiveHealthEnabled?: pulumi.Input<boolean>;
     segmentGroupId: pulumi.Input<string>;
-    segmentGroupName?: pulumi.Input<string>;
     selectConnectorCloseToApp?: pulumi.Input<boolean>;
     /**
      * List of the server group IDs.

@@ -237,23 +237,19 @@ def get_application_segment_browser_access(id: Optional[str] = None,
     """
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example = zpa.get_application_segment_browser_access(name="example")
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example = zpa.get_application_segment_browser_access(id="123456789")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: - (String) This field defines the id of the application server.
@@ -300,23 +296,19 @@ def get_application_segment_browser_access_output(id: Optional[pulumi.Input[Opti
     """
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example = zpa.get_application_segment_browser_access(name="example")
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example = zpa.get_application_segment_browser_access(id="123456789")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: - (String) This field defines the id of the application server.

@@ -11,6 +11,7 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// Deprecated: zpa.index/policycredentialrule.PolicyCredentialRule has been deprecated in favor of zpa.index/policyaccesscredentialrule.PolicyAccessCredentialRule
 type PolicyCredentialRule struct {
 	pulumi.CustomResourceState
 

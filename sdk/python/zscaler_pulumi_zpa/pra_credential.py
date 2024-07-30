@@ -350,7 +350,6 @@ class PRACredential(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -363,27 +362,25 @@ class PRACredential(pulumi.CustomResource):
             user_domain="acme.com",
             username="jdoe")
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
+        ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE #########\\
+        ######### ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ##########
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
-        ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS #########
+
         # Creates Credential of Type "SSH_KEY"
         this = zpa.PRACredential("this",
             credential_type="SSH_KEY",
             description="Created with Terraform",
             private_key=\"\"\"-----BEGIN PRIVATE KEY-----
         MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEjc8pPoobS0l6
-        KjldVtViVwqCTXZZOjHnmEIMn+XKU3sEYlqDKLp6TByIsBlITKd3Ju8qMBNwXcfi
         -----END PRIVATE KEY-----
 
         \"\"\",
             user_domain="acme.com",
             username="jdoe")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -434,7 +431,6 @@ class PRACredential(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -447,27 +443,25 @@ class PRACredential(pulumi.CustomResource):
             user_domain="acme.com",
             username="jdoe")
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
+        ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE #########\\
+        ######### ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ##########
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
-        ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS #########
+
         # Creates Credential of Type "SSH_KEY"
         this = zpa.PRACredential("this",
             credential_type="SSH_KEY",
             description="Created with Terraform",
             private_key=\"\"\"-----BEGIN PRIVATE KEY-----
         MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEjc8pPoobS0l6
-        KjldVtViVwqCTXZZOjHnmEIMn+XKU3sEYlqDKLp6TByIsBlITKd3Ju8qMBNwXcfi
         -----END PRIVATE KEY-----
 
         \"\"\",
             user_domain="acme.com",
             username="jdoe")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

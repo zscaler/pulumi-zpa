@@ -14,7 +14,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -23,7 +22,6 @@ import * as utilities from "./utilities";
  *     name: "On-Prem-PSE",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServiceEdgeController(args?: GetServiceEdgeControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceEdgeControllerResult> {
     args = args || {};
@@ -93,7 +91,6 @@ export interface GetServiceEdgeControllerResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -102,7 +99,6 @@ export interface GetServiceEdgeControllerResult {
  *     name: "On-Prem-PSE",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServiceEdgeControllerOutput(args?: GetServiceEdgeControllerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceEdgeControllerResult> {
     return pulumi.output(args).apply((a: any) => getServiceEdgeController(a, opts))

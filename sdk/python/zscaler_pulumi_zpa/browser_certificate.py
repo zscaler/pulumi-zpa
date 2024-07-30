@@ -189,32 +189,31 @@ class BrowserCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_zpa as zpa
 
         foo = zpa.get_ba_certificate(name="example.acme.com")
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
+        ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE #########\\
+        ######### ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ##########
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
 
         # ZPA Browser Access resource
         this = zpa.BrowserCertificate("this",
-            cert_blob=\"\"\"-----BEGIN CERTIFICATE-----
+            cert_blob=\"\"\"-----BEGIN PRIVATE KEY-----
+        MIIDyzCCArOgA
+        -----END PRIVATE KEY-----
+        -----BEGIN CERTIFICATE-----
         MIIDyzCCArOgAwIBAgIUekBD+iu64583B3u5ew7Bqj2O5cQwDQYJKoZIhvcNAQEL
-        BQAwgY0xCzAJBgNVBAYTAkNBMRkwFwYDVQQIDBBCcml0aXNoIENvbHVtYmlhMRIw
-        EAYDVQQHDAlWYW5jb3V2ZXIxFTATBgNVBAoMDEJELUhhc2hpQ29ycDEVMBMGA1UE
         -----END CERTIFICATE-----
 
         \"\"\",
             description="server.example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Let's Encrypt Certbot
 
@@ -255,32 +254,31 @@ class BrowserCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_zpa as zpa
 
         foo = zpa.get_ba_certificate(name="example.acme.com")
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
+        ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE #########\\
+        ######### ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ##########
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
 
         # ZPA Browser Access resource
         this = zpa.BrowserCertificate("this",
-            cert_blob=\"\"\"-----BEGIN CERTIFICATE-----
+            cert_blob=\"\"\"-----BEGIN PRIVATE KEY-----
+        MIIDyzCCArOgA
+        -----END PRIVATE KEY-----
+        -----BEGIN CERTIFICATE-----
         MIIDyzCCArOgAwIBAgIUekBD+iu64583B3u5ew7Bqj2O5cQwDQYJKoZIhvcNAQEL
-        BQAwgY0xCzAJBgNVBAYTAkNBMRkwFwYDVQQIDBBCcml0aXNoIENvbHVtYmlhMRIw
-        EAYDVQQHDAlWYW5jb3V2ZXIxFTATBgNVBAoMDEJELUhhc2hpQ29ycDEVMBMGA1UE
         -----END CERTIFICATE-----
 
         \"\"\",
             description="server.example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Let's Encrypt Certbot
 

@@ -11,6 +11,12 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-privileged-consoles)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-consoles-using-api)
+//
+// The **zpa_pra_console_controller** data source gets information about a privileged remote access console created in the Zscaler Private Access cloud.
+// This resource can then be referenced in an privileged access policy credential and a privileged access portal resource.
+//
 // Deprecated: zpa.index/getpraconsolecontroller.getPraConsoleController has been deprecated in favor of zpa.index/getpraconsole.getPRAConsole
 func LookupPraConsoleController(ctx *pulumi.Context, args *LookupPraConsoleControllerArgs, opts ...pulumi.InvokeOption) (*LookupPraConsoleControllerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
@@ -29,15 +35,16 @@ type LookupPraConsoleControllerArgs struct {
 
 // A collection of values returned by getPraConsoleController.
 type LookupPraConsoleControllerResult struct {
-	CreationTime    string                                  `pulumi:"creationTime"`
-	Description     string                                  `pulumi:"description"`
-	Enabled         bool                                    `pulumi:"enabled"`
-	IconText        string                                  `pulumi:"iconText"`
-	Id              *string                                 `pulumi:"id"`
-	MicrotenantId   string                                  `pulumi:"microtenantId"`
-	MicrotenantName string                                  `pulumi:"microtenantName"`
-	ModifiedBy      string                                  `pulumi:"modifiedBy"`
-	ModifiedTime    string                                  `pulumi:"modifiedTime"`
+	CreationTime    string  `pulumi:"creationTime"`
+	Description     string  `pulumi:"description"`
+	Enabled         bool    `pulumi:"enabled"`
+	IconText        string  `pulumi:"iconText"`
+	Id              *string `pulumi:"id"`
+	MicrotenantId   string  `pulumi:"microtenantId"`
+	MicrotenantName string  `pulumi:"microtenantName"`
+	ModifiedBy      string  `pulumi:"modifiedBy"`
+	ModifiedTime    string  `pulumi:"modifiedTime"`
+	// - (Required) The name of the privileged console.
 	Name            string                                  `pulumi:"name"`
 	PraApplications []GetPraConsoleControllerPraApplication `pulumi:"praApplications"`
 	PraPortals      []GetPraConsoleControllerPraPortal      `pulumi:"praPortals"`
@@ -116,6 +123,7 @@ func (o LookupPraConsoleControllerResultOutput) ModifiedTime() pulumi.StringOutp
 	return o.ApplyT(func(v LookupPraConsoleControllerResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
 
+// - (Required) The name of the privileged console.
 func (o LookupPraConsoleControllerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPraConsoleControllerResult) string { return v.Name }).(pulumi.StringOutput)
 }

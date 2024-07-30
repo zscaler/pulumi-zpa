@@ -18,7 +18,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,9 +46,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
-// <!--Start PulumiCodeChooser -->
+// ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE #########\
+// ######### ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ##########
 // ```go
 // package main
 //
@@ -59,23 +58,16 @@ import (
 //	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
 //
 // )
-// ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS #########
+//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Creates Credential of Type "SSH_KEY"
 //			_, err := zpa.NewPRACredential(ctx, "this", &zpa.PRACredentialArgs{
 //				CredentialType: pulumi.String("SSH_KEY"),
 //				Description:    pulumi.String("Created with Terraform"),
-//				PrivateKey: pulumi.String(`-----BEGIN PRIVATE KEY-----
-//
-// MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEjc8pPoobS0l6
-// KjldVtViVwqCTXZZOjHnmEIMn+XKU3sEYlqDKLp6TByIsBlITKd3Ju8qMBNwXcfi
-// -----END PRIVATE KEY-----
-//
-// `),
-//
-//				UserDomain: pulumi.String("acme.com"),
-//				Username:   pulumi.String("jdoe"),
+//				PrivateKey:     pulumi.String("-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEjc8pPoobS0l6\n-----END PRIVATE KEY-----\n\n"),
+//				UserDomain:     pulumi.String("acme.com"),
+//				Username:       pulumi.String("jdoe"),
 //			})
 //			if err != nil {
 //				return err
@@ -85,7 +77,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

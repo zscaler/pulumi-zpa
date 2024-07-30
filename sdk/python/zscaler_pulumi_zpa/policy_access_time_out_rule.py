@@ -269,10 +269,8 @@ class PolicyAccessTimeOutRuleArgs:
 
     @property
     @pulumi.getter(name="ruleOrder")
+    @_utilities.deprecated("""The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""")
     def rule_order(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""", DeprecationWarning)
-        pulumi.log.warn("""rule_order is deprecated: The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""")
-
         return pulumi.get(self, "rule_order")
 
     @rule_order.setter
@@ -563,10 +561,8 @@ class _PolicyAccessTimeOutRuleState:
 
     @property
     @pulumi.getter(name="ruleOrder")
+    @_utilities.deprecated("""The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""")
     def rule_order(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""", DeprecationWarning)
-        pulumi.log.warn("""rule_order is deprecated: The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""")
-
         return pulumi.get(self, "rule_order")
 
     @rule_order.setter
@@ -935,10 +931,8 @@ class PolicyAccessTimeOutRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ruleOrder")
+    @_utilities.deprecated("""The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""")
     def rule_order(self) -> pulumi.Output[str]:
-        warnings.warn("""The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""", DeprecationWarning)
-        pulumi.log.warn("""rule_order is deprecated: The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""")
-
         return pulumi.get(self, "rule_order")
 
     @property

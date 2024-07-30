@@ -16,6 +16,8 @@ __all__ = [
     'get_assistant_schedule_output',
 ]
 
+warnings.warn("""zpa.index/getassistantschedule.getAssistantSchedule has been deprecated in favor of zpa.index/getappconnectorassistantschedule.getAppConnectorAssistantSchedule""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAssistantScheduleResult:
     """
@@ -99,15 +101,14 @@ def get_assistant_schedule(customer_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
-    this = zpa.get_assistant_schedule(customer_id="1234567891012")
+    this = zpa.get_app_connector_assistant_schedule(customer_id="1234567891012")
     ```
-    <!--End PulumiCodeChooser -->
     """
+    pulumi.log.warn("""get_assistant_schedule is deprecated: zpa.index/getassistantschedule.getAssistantSchedule has been deprecated in favor of zpa.index/getappconnectorassistantschedule.getAppConnectorAssistantSchedule""")
     __args__ = dict()
     __args__['customerId'] = customer_id
     __args__['id'] = id
@@ -137,13 +138,12 @@ def get_assistant_schedule_output(customer_id: Optional[pulumi.Input[Optional[st
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
-    this = zpa.get_assistant_schedule(customer_id="1234567891012")
+    this = zpa.get_app_connector_assistant_schedule(customer_id="1234567891012")
     ```
-    <!--End PulumiCodeChooser -->
     """
+    pulumi.log.warn("""get_assistant_schedule is deprecated: zpa.index/getassistantschedule.getAssistantSchedule has been deprecated in favor of zpa.index/getappconnectorassistantschedule.getAppConnectorAssistantSchedule""")
     ...

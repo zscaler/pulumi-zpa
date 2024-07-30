@@ -13,9 +13,57 @@ namespace Zscaler.Zpa
     [Obsolete(@"zpa.index/getpraportalcontroller.getPraPortalController has been deprecated in favor of zpa.index/getpraportal.getPRAPortal")]
     public static class GetPraPortalController
     {
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-privileged-portals)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-portals-using-api)
+        /// 
+        /// Use the **zpa_pra_portal_controller** data source to get information about a privileged remote access portal created in the Zscaler Private Access cloud. This data source can then be referenced in an privileged remote access console resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Zpa.GetPRAPortal.Invoke(new()
+        ///     {
+        ///         Name = "Example",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetPraPortalControllerResult> InvokeAsync(GetPraPortalControllerArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPraPortalControllerResult>("zpa:index/getPraPortalController:getPraPortalController", args ?? new GetPraPortalControllerArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-privileged-portals)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-portals-using-api)
+        /// 
+        /// Use the **zpa_pra_portal_controller** data source to get information about a privileged remote access portal created in the Zscaler Private Access cloud. This data source can then be referenced in an privileged remote access console resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Zpa.GetPRAPortal.Invoke(new()
+        ///     {
+        ///         Name = "Example",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetPraPortalControllerResult> Invoke(GetPraPortalControllerInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPraPortalControllerResult>("zpa:index/getPraPortalController:getPraPortalController", args ?? new GetPraPortalControllerInvokeArgs(), options.WithDefaults());
     }
