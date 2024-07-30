@@ -23,8 +23,6 @@ builds:
   - -w
   - -X github.com/zscaler/pulumi-zpa/provider/pkg/version.Version={{.Tag}}
   main: ./cmd/pulumi-resource-zpa/
-changelog:
-  skip: true
 release:
   disable: false
 snapshot:
