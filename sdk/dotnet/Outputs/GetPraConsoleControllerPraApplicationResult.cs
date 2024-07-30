@@ -19,7 +19,7 @@ namespace Zscaler.Zpa.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name of the Privileged Remote Access-enabled application
+        /// - (Required) The name of the privileged console.
         /// </summary>
         public readonly string Name;
 

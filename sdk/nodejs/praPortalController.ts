@@ -5,6 +5,51 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-privileged-portals)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-portals-using-api)
+ *
+ * The **zpa_pra_portal_controller** resource creates a privileged remote access portal in the Zscaler Private Access cloud. This resource can then be referenced in an privileged remote access console resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ * import * as zpa from "@pulumi/zpa";
+ *
+ * const thisBaCertificate = zpa.getBaCertificate({
+ *     name: "portal.acme.com",
+ * });
+ * const thisPRAPortal = new zpa.PRAPortal("thisPRAPortal", {
+ *     description: "portal.acme.com",
+ *     enabled: true,
+ *     domain: "portal.acme.com",
+ *     certificateId: thisBaCertificate.then(thisBaCertificate => thisBaCertificate.id),
+ *     userNotification: "Created with Terraform",
+ *     userNotificationEnabled: true,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+ *
+ * Visit
+ *
+ * **pra_portal_controller** can be imported by using `<PORTAL ID>` or `<PORTAL NAME>` as the import ID.
+ *
+ * For example:
+ *
+ * ```sh
+ * $ pulumi import zpa:index/praPortalController:PraPortalController this <portal_id>
+ * ```
+ *
+ * or
+ *
+ * ```sh
+ * $ pulumi import zpa:index/praPortalController:PraPortalController this <portal_name>
+ * ```
+ *
  * @deprecated zpa.index/praportalcontroller.PraPortalController has been deprecated in favor of zpa.index/praportal.PRAPortal
  */
 export class PraPortalController extends pulumi.CustomResource {

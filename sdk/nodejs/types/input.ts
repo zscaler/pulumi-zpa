@@ -22,18 +22,14 @@ export interface ApplicationSegmentBrowserAccessClientlessApp {
      * ID of the BA certificate.
      */
     certificateId?: pulumi.Input<string>;
-    cname?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
     /**
      * Domain name or IP address of the BA app.
      */
     domain?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
-    hidden?: pulumi.Input<boolean>;
     id?: pulumi.Input<string>;
-    localDomain?: pulumi.Input<string>;
     name: pulumi.Input<string>;
-    path?: pulumi.Input<string>;
     /**
      * Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
      */
@@ -63,9 +59,9 @@ export interface ApplicationSegmentInspectionCommonAppsDtoAppsConfig {
     applicationPort?: pulumi.Input<string>;
     applicationProtocol?: pulumi.Input<string>;
     certificateId?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
     domain?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
+    id?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     trustUntrustedCert?: pulumi.Input<boolean>;
 }
@@ -89,12 +85,10 @@ export interface ApplicationSegmentPRACommonAppsDto {
 }
 
 export interface ApplicationSegmentPRACommonAppsDtoAppsConfig {
-    appId?: pulumi.Input<string>;
     appTypes?: pulumi.Input<pulumi.Input<string>[]>;
     applicationPort?: pulumi.Input<string>;
     applicationProtocol?: pulumi.Input<string>;
     connectionSecurity?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
     domain?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
     id?: pulumi.Input<string>;
@@ -146,18 +140,14 @@ export interface BrowserAccessClientlessApp {
      * ID of the BA certificate.
      */
     certificateId?: pulumi.Input<string>;
-    cname?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
     /**
      * Domain name or IP address of the BA app.
      */
     domain?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
-    hidden?: pulumi.Input<boolean>;
     id?: pulumi.Input<string>;
-    localDomain?: pulumi.Input<string>;
     name: pulumi.Input<string>;
-    path?: pulumi.Input<string>;
     /**
      * Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
      */
@@ -178,18 +168,50 @@ export interface BrowserAccessUdpPortRange {
     to?: pulumi.Input<string>;
 }
 
+export interface CloudBrowserIsolationExternalProfileDebugMode {
+    allowed?: pulumi.Input<boolean>;
+    filePassword?: pulumi.Input<string>;
+}
+
 export interface CloudBrowserIsolationExternalProfileSecurityControl {
     allowPrinting?: pulumi.Input<boolean>;
     copyPaste?: pulumi.Input<string>;
+    deepLink?: pulumi.Input<inputs.CloudBrowserIsolationExternalProfileSecurityControlDeepLink>;
     documentViewer?: pulumi.Input<boolean>;
+    flattenedPdf?: pulumi.Input<boolean>;
     localRender?: pulumi.Input<boolean>;
     restrictKeystrokes?: pulumi.Input<boolean>;
     uploadDownload?: pulumi.Input<string>;
+    watermark?: pulumi.Input<inputs.CloudBrowserIsolationExternalProfileSecurityControlWatermark>;
+}
+
+export interface CloudBrowserIsolationExternalProfileSecurityControlDeepLink {
+    applications?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface CloudBrowserIsolationExternalProfileSecurityControlWatermark {
+    enabled?: pulumi.Input<boolean>;
+    message?: pulumi.Input<string>;
+    showMessage?: pulumi.Input<boolean>;
+    showTimestamp?: pulumi.Input<boolean>;
+    showUserId?: pulumi.Input<boolean>;
 }
 
 export interface CloudBrowserIsolationExternalProfileUserExperience {
     browserInBrowser?: pulumi.Input<boolean>;
+    forwardToZia?: pulumi.Input<inputs.CloudBrowserIsolationExternalProfileUserExperienceForwardToZia>;
+    persistIsolationBar?: pulumi.Input<boolean>;
     sessionPersistence?: pulumi.Input<boolean>;
+    translate?: pulumi.Input<boolean>;
+    zgpu?: pulumi.Input<boolean>;
+}
+
+export interface CloudBrowserIsolationExternalProfileUserExperienceForwardToZia {
+    cloudName?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    organizationId?: pulumi.Input<string>;
+    pacFileUrl?: pulumi.Input<string>;
 }
 
 export interface GetApplicationSegmentBrowserAccessTcpPortRange {
@@ -300,10 +322,6 @@ export interface GetLSSConfigControllerConfigArgs {
     useTls?: pulumi.Input<boolean>;
 }
 
-export interface InspectionCustomControlsAssociatedInspectionProfileName {
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
 export interface InspectionCustomControlsRule {
     conditions?: pulumi.Input<inputs.InspectionCustomControlsRuleConditions>;
     /**
@@ -350,27 +368,28 @@ export interface InspectionProfileCustomControl {
     id: pulumi.Input<string>;
 }
 
-export interface InspectionProfilePredefinedControl {
-    /**
-     * The action of the predefined control
-     */
+export interface InspectionProfilePredefinedApiControl {
     action?: pulumi.Input<string>;
-    /**
-     * The value for the predefined controls action. This field is only required if the action is set to REDIRECT
-     */
     actionValue?: pulumi.Input<string>;
-    /**
-     * The control type of the custom control
-     */
-    controlType?: pulumi.Input<string>;
-    /**
-     * The unique identifier of the predefined control
-     */
     id?: pulumi.Input<string>;
-    /**
-     * The protocol type of the predefined control
-     */
-    protocolType?: pulumi.Input<string>;
+}
+
+export interface InspectionProfilePredefinedControl {
+    action?: pulumi.Input<string>;
+    actionValue?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+}
+
+export interface InspectionProfileThreatLabzControl {
+    action?: pulumi.Input<string>;
+    actionValue?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+}
+
+export interface InspectionProfileWebsocketControl {
+    action?: pulumi.Input<string>;
+    actionValue?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
 }
 
 export interface LSSConfigControllerConfig {
@@ -542,6 +561,36 @@ export interface PRAConsolePraPortal {
      * The unique identifier of the privileged portal
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PolicyAccessCredentialRuleCondition {
+    id?: pulumi.Input<string>;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands?: pulumi.Input<pulumi.Input<inputs.PolicyAccessCredentialRuleConditionOperand>[]>;
+    operator?: pulumi.Input<string>;
+}
+
+export interface PolicyAccessCredentialRuleConditionOperand {
+    entryValues?: pulumi.Input<pulumi.Input<inputs.PolicyAccessCredentialRuleConditionOperandEntryValue>[]>;
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType?: pulumi.Input<string>;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PolicyAccessCredentialRuleConditionOperandEntryValue {
+    lhs?: pulumi.Input<string>;
+    rhs?: pulumi.Input<string>;
+}
+
+export interface PolicyAccessCredentialRuleCredential {
+    id: pulumi.Input<string>;
 }
 
 export interface PolicyAccessForwardingRuleCondition {

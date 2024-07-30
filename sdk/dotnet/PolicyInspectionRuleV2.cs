@@ -10,12 +10,36 @@ using Pulumi;
 
 namespace Zscaler.Zpa
 {
+    /// <summary>
+    /// * [Official documentation](https://help.zscaler.com/zpa/about-security-policy)
+    /// * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-policies-using-api)
+    /// 
+    /// The **zpa_policy_inspection_rule_v2** resource creates and manages policy access inspection rule in the Zscaler Private Access cloud using a new v2 API endpoint.
+    /// 
+    ///   ⚠️ **NOTE**: This resource is recommended if your configuration requires the association of more than 1000 resource criteria per rule.
+    /// 
+    ///   ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+    /// 
+    /// ## Import
+    /// 
+    /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+    /// 
+    /// Visit
+    /// 
+    /// Policy access inspection rule can be imported by using `&lt;RULE ID&gt;` as the import ID.
+    /// 
+    /// For example:
+    /// 
+    /// ```sh
+    /// $ pulumi import zpa:index/policyInspectionRuleV2:PolicyInspectionRuleV2 example &lt;rule_id&gt;
+    /// ```
+    /// </summary>
     [Obsolete(@"zpa.index/policyinspectionrulev2.PolicyInspectionRuleV2 has been deprecated in favor of zpa.index/policyaccessinspectionrulev2.PolicyAccessInspectionRuleV2")]
     [ZpaResourceType("zpa:index/policyInspectionRuleV2:PolicyInspectionRuleV2")]
     public partial class PolicyInspectionRuleV2 : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// This is for providing the rule action.
+        /// This is for providing the rule action. Supported values: `INSPECT` and `BYPASS_INSPECT`.
         /// </summary>
         [Output("action")]
         public Output<string?> Action { get; private set; } = null!;
@@ -27,7 +51,7 @@ namespace Zscaler.Zpa
         public Output<ImmutableArray<Outputs.PolicyInspectionRuleV2Condition>> Conditions { get; private set; } = null!;
 
         /// <summary>
-        /// This is the description of the access policy.
+        /// This is the description of the access policy rule.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -36,7 +60,7 @@ namespace Zscaler.Zpa
         public Output<string> MicrotenantId { get; private set; } = null!;
 
         /// <summary>
-        /// This is the name of the policy.
+        /// - (String) This is the name of the policy rule.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -44,6 +68,9 @@ namespace Zscaler.Zpa
         [Output("policySetId")]
         public Output<string> PolicySetId { get; private set; } = null!;
 
+        /// <summary>
+        /// An inspection profile is required if the `action` is set to `INSPECT`
+        /// </summary>
         [Output("zpnInspectionProfileId")]
         public Output<string> ZpnInspectionProfileId { get; private set; } = null!;
 
@@ -95,7 +122,7 @@ namespace Zscaler.Zpa
     public sealed class PolicyInspectionRuleV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This is for providing the rule action.
+        /// This is for providing the rule action. Supported values: `INSPECT` and `BYPASS_INSPECT`.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -113,7 +140,7 @@ namespace Zscaler.Zpa
         }
 
         /// <summary>
-        /// This is the description of the access policy.
+        /// This is the description of the access policy rule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -122,11 +149,14 @@ namespace Zscaler.Zpa
         public Input<string>? MicrotenantId { get; set; }
 
         /// <summary>
-        /// This is the name of the policy.
+        /// - (String) This is the name of the policy rule.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// An inspection profile is required if the `action` is set to `INSPECT`
+        /// </summary>
         [Input("zpnInspectionProfileId")]
         public Input<string>? ZpnInspectionProfileId { get; set; }
 
@@ -139,7 +169,7 @@ namespace Zscaler.Zpa
     public sealed class PolicyInspectionRuleV2State : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This is for providing the rule action.
+        /// This is for providing the rule action. Supported values: `INSPECT` and `BYPASS_INSPECT`.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -157,7 +187,7 @@ namespace Zscaler.Zpa
         }
 
         /// <summary>
-        /// This is the description of the access policy.
+        /// This is the description of the access policy rule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -166,7 +196,7 @@ namespace Zscaler.Zpa
         public Input<string>? MicrotenantId { get; set; }
 
         /// <summary>
-        /// This is the name of the policy.
+        /// - (String) This is the name of the policy rule.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -174,6 +204,9 @@ namespace Zscaler.Zpa
         [Input("policySetId")]
         public Input<string>? PolicySetId { get; set; }
 
+        /// <summary>
+        /// An inspection profile is required if the `action` is set to `INSPECT`
+        /// </summary>
         [Input("zpnInspectionProfileId")]
         public Input<string>? ZpnInspectionProfileId { get; set; }
 

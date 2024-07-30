@@ -131,10 +131,6 @@ namespace Zscaler.Zpa
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/zscaler",
-                AdditionalSecretOutputs =
-                {
-                    "ProvisioningKeyValue",
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -158,6 +154,12 @@ namespace Zscaler.Zpa
 
     public sealed class ProvisioningKeyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// read only field. Ignored in PUT/POST calls.
+        /// </summary>
+        [Input("ProvisioningKeyValue")]
+        public Input<string>? ProvisioningKeyValue { get; set; }
+
         [Input("appConnectorGroupId")]
         public Input<string>? AppConnectorGroupId { get; set; }
 
@@ -232,21 +234,11 @@ namespace Zscaler.Zpa
 
     public sealed class ProvisioningKeyState : global::Pulumi.ResourceArgs
     {
-        [Input("ProvisioningKeyValue")]
-        private Input<string>? _ProvisioningKeyValue;
-
         /// <summary>
         /// read only field. Ignored in PUT/POST calls.
         /// </summary>
-        public Input<string>? ProvisioningKeyValue
-        {
-            get => _ProvisioningKeyValue;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _ProvisioningKeyValue = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("ProvisioningKeyValue")]
+        public Input<string>? ProvisioningKeyValue { get; set; }
 
         [Input("appConnectorGroupId")]
         public Input<string>? AppConnectorGroupId { get; set; }

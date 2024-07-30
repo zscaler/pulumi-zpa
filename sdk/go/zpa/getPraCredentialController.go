@@ -11,6 +11,36 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-privileged-credentials)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-credentials-using-api)
+//
+// The **zpa_pra_credential_controller** resource creates a privileged remote access credential in the Zscaler Private Access cloud. This resource can then be referenced in an privileged access policy resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Retrieves PRA Credential By ID
+//			_, err := zpa.NewPRACredential(ctx, "this", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // Deprecated: zpa.index/getpracredentialcontroller.getPraCredentialController has been deprecated in favor of zpa.index/getpracredential.getPRACredential
 func LookupPraCredentialController(ctx *pulumi.Context, args *LookupPraCredentialControllerArgs, opts ...pulumi.InvokeOption) (*LookupPraCredentialControllerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
@@ -24,7 +54,8 @@ func LookupPraCredentialController(ctx *pulumi.Context, args *LookupPraCredentia
 
 // A collection of arguments for invoking getPraCredentialController.
 type LookupPraCredentialControllerArgs struct {
-	Id   *string `pulumi:"id"`
+	Id *string `pulumi:"id"`
+	// - (String) The name of the privileged credential.
 	Name *string `pulumi:"name"`
 }
 
@@ -39,9 +70,11 @@ type LookupPraCredentialControllerResult struct {
 	MicrotenantName         string  `pulumi:"microtenantName"`
 	ModifiedBy              string  `pulumi:"modifiedBy"`
 	ModifiedTime            string  `pulumi:"modifiedTime"`
-	Name                    *string `pulumi:"name"`
-	UserDomain              string  `pulumi:"userDomain"`
-	Username                string  `pulumi:"username"`
+	// - (String) The name of the privileged credential.
+	Name       *string `pulumi:"name"`
+	Password   string  `pulumi:"password"`
+	UserDomain string  `pulumi:"userDomain"`
+	Username   string  `pulumi:"username"`
 }
 
 func LookupPraCredentialControllerOutput(ctx *pulumi.Context, args LookupPraCredentialControllerOutputArgs, opts ...pulumi.InvokeOption) LookupPraCredentialControllerResultOutput {
@@ -59,7 +92,8 @@ func LookupPraCredentialControllerOutput(ctx *pulumi.Context, args LookupPraCred
 
 // A collection of arguments for invoking getPraCredentialController.
 type LookupPraCredentialControllerOutputArgs struct {
-	Id   pulumi.StringPtrInput `pulumi:"id"`
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// - (String) The name of the privileged credential.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -118,8 +152,13 @@ func (o LookupPraCredentialControllerResultOutput) ModifiedTime() pulumi.StringO
 	return o.ApplyT(func(v LookupPraCredentialControllerResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
 
+// - (String) The name of the privileged credential.
 func (o LookupPraCredentialControllerResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPraCredentialControllerResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupPraCredentialControllerResultOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPraCredentialControllerResult) string { return v.Password }).(pulumi.StringOutput)
 }
 
 func (o LookupPraCredentialControllerResultOutput) UserDomain() pulumi.StringOutput {

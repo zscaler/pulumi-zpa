@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { AppConnectorAssistantScheduleArgs, AppConnectorAssistantScheduleState } from "./appConnectorAssistantSchedule";
+export type AppConnectorAssistantSchedule = import("./appConnectorAssistantSchedule").AppConnectorAssistantSchedule;
+export const AppConnectorAssistantSchedule: typeof import("./appConnectorAssistantSchedule").AppConnectorAssistantSchedule = null as any;
+utilities.lazyLoad(exports, ["AppConnectorAssistantSchedule"], () => require("./appConnectorAssistantSchedule"));
+
 export { ApplicationSegmentArgs, ApplicationSegmentState } from "./applicationSegment";
 export type ApplicationSegment = import("./applicationSegment").ApplicationSegment;
 export const ApplicationSegment: typeof import("./applicationSegment").ApplicationSegment = null as any;
@@ -70,6 +75,11 @@ export type EmergencyAccessUser = import("./emergencyAccessUser").EmergencyAcces
 export const EmergencyAccessUser: typeof import("./emergencyAccessUser").EmergencyAccessUser = null as any;
 utilities.lazyLoad(exports, ["EmergencyAccessUser"], () => require("./emergencyAccessUser"));
 
+export { GetAppConnectorAssistantScheduleArgs, GetAppConnectorAssistantScheduleResult, GetAppConnectorAssistantScheduleOutputArgs } from "./getAppConnectorAssistantSchedule";
+export const getAppConnectorAssistantSchedule: typeof import("./getAppConnectorAssistantSchedule").getAppConnectorAssistantSchedule = null as any;
+export const getAppConnectorAssistantScheduleOutput: typeof import("./getAppConnectorAssistantSchedule").getAppConnectorAssistantScheduleOutput = null as any;
+utilities.lazyLoad(exports, ["getAppConnectorAssistantSchedule","getAppConnectorAssistantScheduleOutput"], () => require("./getAppConnectorAssistantSchedule"));
+
 export { GetAppConnectorControllerArgs, GetAppConnectorControllerResult, GetAppConnectorControllerOutputArgs } from "./getAppConnectorController";
 export const getAppConnectorController: typeof import("./getAppConnectorController").getAppConnectorController = null as any;
 export const getAppConnectorControllerOutput: typeof import("./getAppConnectorController").getAppConnectorControllerOutput = null as any;
@@ -89,6 +99,11 @@ export { GetApplicationSegmentBrowserAccessArgs, GetApplicationSegmentBrowserAcc
 export const getApplicationSegmentBrowserAccess: typeof import("./getApplicationSegmentBrowserAccess").getApplicationSegmentBrowserAccess = null as any;
 export const getApplicationSegmentBrowserAccessOutput: typeof import("./getApplicationSegmentBrowserAccess").getApplicationSegmentBrowserAccessOutput = null as any;
 utilities.lazyLoad(exports, ["getApplicationSegmentBrowserAccess","getApplicationSegmentBrowserAccessOutput"], () => require("./getApplicationSegmentBrowserAccess"));
+
+export { GetApplicationSegmentByTypeArgs, GetApplicationSegmentByTypeResult, GetApplicationSegmentByTypeOutputArgs } from "./getApplicationSegmentByType";
+export const getApplicationSegmentByType: typeof import("./getApplicationSegmentByType").getApplicationSegmentByType = null as any;
+export const getApplicationSegmentByTypeOutput: typeof import("./getApplicationSegmentByType").getApplicationSegmentByTypeOutput = null as any;
+utilities.lazyLoad(exports, ["getApplicationSegmentByType","getApplicationSegmentByTypeOutput"], () => require("./getApplicationSegmentByType"));
 
 export { GetApplicationSegmentInspectionArgs, GetApplicationSegmentInspectionResult, GetApplicationSegmentInspectionOutputArgs } from "./getApplicationSegmentInspection";
 export const getApplicationSegmentInspection: typeof import("./getApplicationSegmentInspection").getApplicationSegmentInspection = null as any;
@@ -305,6 +320,11 @@ export const getServerGroup: typeof import("./getServerGroup").getServerGroup = 
 export const getServerGroupOutput: typeof import("./getServerGroup").getServerGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getServerGroup","getServerGroupOutput"], () => require("./getServerGroup"));
 
+export { GetServiceEdgeAssistantScheduleArgs, GetServiceEdgeAssistantScheduleResult, GetServiceEdgeAssistantScheduleOutputArgs } from "./getServiceEdgeAssistantSchedule";
+export const getServiceEdgeAssistantSchedule: typeof import("./getServiceEdgeAssistantSchedule").getServiceEdgeAssistantSchedule = null as any;
+export const getServiceEdgeAssistantScheduleOutput: typeof import("./getServiceEdgeAssistantSchedule").getServiceEdgeAssistantScheduleOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceEdgeAssistantSchedule","getServiceEdgeAssistantScheduleOutput"], () => require("./getServiceEdgeAssistantSchedule"));
+
 export { GetServiceEdgeControllerArgs, GetServiceEdgeControllerResult, GetServiceEdgeControllerOutputArgs } from "./getServiceEdgeController";
 export const getServiceEdgeController: typeof import("./getServiceEdgeController").getServiceEdgeController = null as any;
 export const getServiceEdgeControllerOutput: typeof import("./getServiceEdgeController").getServiceEdgeControllerOutput = null as any;
@@ -339,6 +359,11 @@ export { MicrotenantArgs, MicrotenantState } from "./microtenant";
 export type Microtenant = import("./microtenant").Microtenant;
 export const Microtenant: typeof import("./microtenant").Microtenant = null as any;
 utilities.lazyLoad(exports, ["Microtenant"], () => require("./microtenant"));
+
+export { PolicyAccessCredentialRuleArgs, PolicyAccessCredentialRuleState } from "./policyAccessCredentialRule";
+export type PolicyAccessCredentialRule = import("./policyAccessCredentialRule").PolicyAccessCredentialRule;
+export const PolicyAccessCredentialRule: typeof import("./policyAccessCredentialRule").PolicyAccessCredentialRule = null as any;
+utilities.lazyLoad(exports, ["PolicyAccessCredentialRule"], () => require("./policyAccessCredentialRule"));
 
 export { PolicyAccessForwardingRuleArgs, PolicyAccessForwardingRuleState } from "./policyAccessForwardingRule";
 export type PolicyAccessForwardingRule = import("./policyAccessForwardingRule").PolicyAccessForwardingRule;
@@ -490,6 +515,11 @@ export type ServerGroup = import("./serverGroup").ServerGroup;
 export const ServerGroup: typeof import("./serverGroup").ServerGroup = null as any;
 utilities.lazyLoad(exports, ["ServerGroup"], () => require("./serverGroup"));
 
+export { ServiceEdgeAssistantScheduleArgs, ServiceEdgeAssistantScheduleState } from "./serviceEdgeAssistantSchedule";
+export type ServiceEdgeAssistantSchedule = import("./serviceEdgeAssistantSchedule").ServiceEdgeAssistantSchedule;
+export const ServiceEdgeAssistantSchedule: typeof import("./serviceEdgeAssistantSchedule").ServiceEdgeAssistantSchedule = null as any;
+utilities.lazyLoad(exports, ["ServiceEdgeAssistantSchedule"], () => require("./serviceEdgeAssistantSchedule"));
+
 export { ServiceEdgeGroupArgs, ServiceEdgeGroupState } from "./serviceEdgeGroup";
 export type ServiceEdgeGroup = import("./serviceEdgeGroup").ServiceEdgeGroup;
 export const ServiceEdgeGroup: typeof import("./serviceEdgeGroup").ServiceEdgeGroup = null as any;
@@ -509,6 +539,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "zpa:index/appConnectorAssistantSchedule:AppConnectorAssistantSchedule":
+                return new AppConnectorAssistantSchedule(name, <any>undefined, { urn })
             case "zpa:index/applicationSegment:ApplicationSegment":
                 return new ApplicationSegment(name, <any>undefined, { urn })
             case "zpa:index/applicationSegmentBrowserAccess:ApplicationSegmentBrowserAccess":
@@ -551,6 +583,8 @@ const _module = {
                 return new PRACredential(name, <any>undefined, { urn })
             case "zpa:index/pRAPortal:PRAPortal":
                 return new PRAPortal(name, <any>undefined, { urn })
+            case "zpa:index/policyAccessCredentialRule:PolicyAccessCredentialRule":
+                return new PolicyAccessCredentialRule(name, <any>undefined, { urn })
             case "zpa:index/policyAccessForwardingRule:PolicyAccessForwardingRule":
                 return new PolicyAccessForwardingRule(name, <any>undefined, { urn })
             case "zpa:index/policyAccessForwardingRuleV2:PolicyAccessForwardingRuleV2":
@@ -601,6 +635,8 @@ const _module = {
                 return new SegmentGroup(name, <any>undefined, { urn })
             case "zpa:index/serverGroup:ServerGroup":
                 return new ServerGroup(name, <any>undefined, { urn })
+            case "zpa:index/serviceEdgeAssistantSchedule:ServiceEdgeAssistantSchedule":
+                return new ServiceEdgeAssistantSchedule(name, <any>undefined, { urn })
             case "zpa:index/serviceEdgeGroup:ServiceEdgeGroup":
                 return new ServiceEdgeGroup(name, <any>undefined, { urn })
             default:
@@ -608,6 +644,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("zpa", "index/appConnectorAssistantSchedule", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/applicationSegment", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/applicationSegmentBrowserAccess", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/applicationSegmentInspection", _module)
@@ -629,6 +666,7 @@ pulumi.runtime.registerResourceModule("zpa", "index/pRAApproval", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/pRAConsole", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/pRACredential", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/pRAPortal", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/policyAccessCredentialRule", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/policyAccessForwardingRule", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/policyAccessForwardingRuleV2", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/policyAccessInspectionRule", _module)
@@ -654,6 +692,7 @@ pulumi.runtime.registerResourceModule("zpa", "index/praPortalController", _modul
 pulumi.runtime.registerResourceModule("zpa", "index/provisioningKey", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/segmentGroup", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/serverGroup", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/serviceEdgeAssistantSchedule", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/serviceEdgeGroup", _module)
 pulumi.runtime.registerResourcePackage("zpa", {
     version: utilities.getVersion(),

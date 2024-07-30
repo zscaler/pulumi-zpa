@@ -4,6 +4,22 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-privileged-credentials)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-credentials-using-api)
+ *
+ * The **zpa_pra_credential_controller** resource creates a privileged remote access credential in the Zscaler Private Access cloud. This resource can then be referenced in an privileged access policy resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * // Retrieves PRA Credential By ID
+ * const _this = new zpa.PRACredential("this", {});
+ * ```
+ */
 /** @deprecated zpa.index/getpracredentialcontroller.getPraCredentialController has been deprecated in favor of zpa.index/getpracredential.getPRACredential */
 export function getPraCredentialController(args?: GetPraCredentialControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetPraCredentialControllerResult> {
     pulumi.log.warn("getPraCredentialController is deprecated: zpa.index/getpracredentialcontroller.getPraCredentialController has been deprecated in favor of zpa.index/getpracredential.getPRACredential")
@@ -21,6 +37,9 @@ export function getPraCredentialController(args?: GetPraCredentialControllerArgs
  */
 export interface GetPraCredentialControllerArgs {
     id?: string;
+    /**
+     * - (String) The name of the privileged credential.
+     */
     name?: string;
 }
 
@@ -37,10 +56,30 @@ export interface GetPraCredentialControllerResult {
     readonly microtenantName: string;
     readonly modifiedBy: string;
     readonly modifiedTime: string;
+    /**
+     * - (String) The name of the privileged credential.
+     */
     readonly name?: string;
+    readonly password: string;
     readonly userDomain: string;
     readonly username: string;
 }
+/**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-privileged-credentials)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-credentials-using-api)
+ *
+ * The **zpa_pra_credential_controller** resource creates a privileged remote access credential in the Zscaler Private Access cloud. This resource can then be referenced in an privileged access policy resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * // Retrieves PRA Credential By ID
+ * const _this = new zpa.PRACredential("this", {});
+ * ```
+ */
 /** @deprecated zpa.index/getpracredentialcontroller.getPraCredentialController has been deprecated in favor of zpa.index/getpracredential.getPRACredential */
 export function getPraCredentialControllerOutput(args?: GetPraCredentialControllerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPraCredentialControllerResult> {
     return pulumi.output(args).apply((a: any) => getPraCredentialController(a, opts))
@@ -51,5 +90,8 @@ export function getPraCredentialControllerOutput(args?: GetPraCredentialControll
  */
 export interface GetPraCredentialControllerOutputArgs {
     id?: pulumi.Input<string>;
+    /**
+     * - (String) The name of the privileged credential.
+     */
     name?: pulumi.Input<string>;
 }

@@ -15,17 +15,9 @@ import (
 type InspectionCustomControls struct {
 	pulumi.CustomResourceState
 
+	ControlType pulumi.StringOutput `pulumi:"controlType"`
 	// The performed action
-	Action      pulumi.StringOutput `pulumi:"action"`
-	ActionValue pulumi.StringOutput `pulumi:"actionValue"`
-	// Name of the inspection profile
-	AssociatedInspectionProfileNames InspectionCustomControlsAssociatedInspectionProfileNameArrayOutput `pulumi:"associatedInspectionProfileNames"`
-	ControlNumber                    pulumi.StringOutput                                                `pulumi:"controlNumber"`
-	// The control rule in JSON format that has the conditions and type of control for the inspection control
-	ControlRuleJson pulumi.StringOutput `pulumi:"controlRuleJson"`
-	ControlType     pulumi.StringOutput `pulumi:"controlType"`
-	// The performed action
-	DefaultAction pulumi.StringOutput `pulumi:"defaultAction"`
+	DefaultAction pulumi.StringPtrOutput `pulumi:"defaultAction"`
 	// This is used to provide the redirect URL if the default action is set to REDIRECT
 	DefaultActionValue pulumi.StringOutput `pulumi:"defaultActionValue"`
 	// Description of the custom control
@@ -50,9 +42,6 @@ func NewInspectionCustomControls(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DefaultAction == nil {
-		return nil, errors.New("invalid value for required argument 'DefaultAction'")
-	}
 	if args.Severity == nil {
 		return nil, errors.New("invalid value for required argument 'Severity'")
 	}
@@ -82,15 +71,7 @@ func GetInspectionCustomControls(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InspectionCustomControls resources.
 type inspectionCustomControlsState struct {
-	// The performed action
-	Action      *string `pulumi:"action"`
-	ActionValue *string `pulumi:"actionValue"`
-	// Name of the inspection profile
-	AssociatedInspectionProfileNames []InspectionCustomControlsAssociatedInspectionProfileName `pulumi:"associatedInspectionProfileNames"`
-	ControlNumber                    *string                                                   `pulumi:"controlNumber"`
-	// The control rule in JSON format that has the conditions and type of control for the inspection control
-	ControlRuleJson *string `pulumi:"controlRuleJson"`
-	ControlType     *string `pulumi:"controlType"`
+	ControlType *string `pulumi:"controlType"`
 	// The performed action
 	DefaultAction *string `pulumi:"defaultAction"`
 	// This is used to provide the redirect URL if the default action is set to REDIRECT
@@ -111,15 +92,7 @@ type inspectionCustomControlsState struct {
 }
 
 type InspectionCustomControlsState struct {
-	// The performed action
-	Action      pulumi.StringPtrInput
-	ActionValue pulumi.StringPtrInput
-	// Name of the inspection profile
-	AssociatedInspectionProfileNames InspectionCustomControlsAssociatedInspectionProfileNameArrayInput
-	ControlNumber                    pulumi.StringPtrInput
-	// The control rule in JSON format that has the conditions and type of control for the inspection control
-	ControlRuleJson pulumi.StringPtrInput
-	ControlType     pulumi.StringPtrInput
+	ControlType pulumi.StringPtrInput
 	// The performed action
 	DefaultAction pulumi.StringPtrInput
 	// This is used to provide the redirect URL if the default action is set to REDIRECT
@@ -144,17 +117,9 @@ func (InspectionCustomControlsState) ElementType() reflect.Type {
 }
 
 type inspectionCustomControlsArgs struct {
+	ControlType *string `pulumi:"controlType"`
 	// The performed action
-	Action      *string `pulumi:"action"`
-	ActionValue *string `pulumi:"actionValue"`
-	// Name of the inspection profile
-	AssociatedInspectionProfileNames []InspectionCustomControlsAssociatedInspectionProfileName `pulumi:"associatedInspectionProfileNames"`
-	ControlNumber                    *string                                                   `pulumi:"controlNumber"`
-	// The control rule in JSON format that has the conditions and type of control for the inspection control
-	ControlRuleJson *string `pulumi:"controlRuleJson"`
-	ControlType     *string `pulumi:"controlType"`
-	// The performed action
-	DefaultAction string `pulumi:"defaultAction"`
+	DefaultAction *string `pulumi:"defaultAction"`
 	// This is used to provide the redirect URL if the default action is set to REDIRECT
 	DefaultActionValue *string `pulumi:"defaultActionValue"`
 	// Description of the custom control
@@ -174,17 +139,9 @@ type inspectionCustomControlsArgs struct {
 
 // The set of arguments for constructing a InspectionCustomControls resource.
 type InspectionCustomControlsArgs struct {
+	ControlType pulumi.StringPtrInput
 	// The performed action
-	Action      pulumi.StringPtrInput
-	ActionValue pulumi.StringPtrInput
-	// Name of the inspection profile
-	AssociatedInspectionProfileNames InspectionCustomControlsAssociatedInspectionProfileNameArrayInput
-	ControlNumber                    pulumi.StringPtrInput
-	// The control rule in JSON format that has the conditions and type of control for the inspection control
-	ControlRuleJson pulumi.StringPtrInput
-	ControlType     pulumi.StringPtrInput
-	// The performed action
-	DefaultAction pulumi.StringInput
+	DefaultAction pulumi.StringPtrInput
 	// This is used to provide the redirect URL if the default action is set to REDIRECT
 	DefaultActionValue pulumi.StringPtrInput
 	// Description of the custom control
@@ -289,38 +246,13 @@ func (o InspectionCustomControlsOutput) ToInspectionCustomControlsOutputWithCont
 	return o
 }
 
-// The performed action
-func (o InspectionCustomControlsOutput) Action() pulumi.StringOutput {
-	return o.ApplyT(func(v *InspectionCustomControls) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
-}
-
-func (o InspectionCustomControlsOutput) ActionValue() pulumi.StringOutput {
-	return o.ApplyT(func(v *InspectionCustomControls) pulumi.StringOutput { return v.ActionValue }).(pulumi.StringOutput)
-}
-
-// Name of the inspection profile
-func (o InspectionCustomControlsOutput) AssociatedInspectionProfileNames() InspectionCustomControlsAssociatedInspectionProfileNameArrayOutput {
-	return o.ApplyT(func(v *InspectionCustomControls) InspectionCustomControlsAssociatedInspectionProfileNameArrayOutput {
-		return v.AssociatedInspectionProfileNames
-	}).(InspectionCustomControlsAssociatedInspectionProfileNameArrayOutput)
-}
-
-func (o InspectionCustomControlsOutput) ControlNumber() pulumi.StringOutput {
-	return o.ApplyT(func(v *InspectionCustomControls) pulumi.StringOutput { return v.ControlNumber }).(pulumi.StringOutput)
-}
-
-// The control rule in JSON format that has the conditions and type of control for the inspection control
-func (o InspectionCustomControlsOutput) ControlRuleJson() pulumi.StringOutput {
-	return o.ApplyT(func(v *InspectionCustomControls) pulumi.StringOutput { return v.ControlRuleJson }).(pulumi.StringOutput)
-}
-
 func (o InspectionCustomControlsOutput) ControlType() pulumi.StringOutput {
 	return o.ApplyT(func(v *InspectionCustomControls) pulumi.StringOutput { return v.ControlType }).(pulumi.StringOutput)
 }
 
 // The performed action
-func (o InspectionCustomControlsOutput) DefaultAction() pulumi.StringOutput {
-	return o.ApplyT(func(v *InspectionCustomControls) pulumi.StringOutput { return v.DefaultAction }).(pulumi.StringOutput)
+func (o InspectionCustomControlsOutput) DefaultAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InspectionCustomControls) pulumi.StringPtrOutput { return v.DefaultAction }).(pulumi.StringPtrOutput)
 }
 
 // This is used to provide the redirect URL if the default action is set to REDIRECT

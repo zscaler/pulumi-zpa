@@ -17,7 +17,6 @@ namespace Zscaler.Zpa
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.IO;
@@ -42,7 +41,6 @@ namespace Zscaler.Zpa
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [ZpaResourceType("zpa:index/cloudBrowserIsolationCertificate:CloudBrowserIsolationCertificate")]
     public partial class CloudBrowserIsolationCertificate : global::Pulumi.CustomResource

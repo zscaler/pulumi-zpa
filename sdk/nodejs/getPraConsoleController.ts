@@ -6,6 +6,13 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-privileged-consoles)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-consoles-using-api)
+ *
+ * The **zpa_pra_console_controller** data source gets information about a privileged remote access console created in the Zscaler Private Access cloud.
+ * This resource can then be referenced in an privileged access policy credential and a privileged access portal resource.
+ */
 /** @deprecated zpa.index/getpraconsolecontroller.getPraConsoleController has been deprecated in favor of zpa.index/getpraconsole.getPRAConsole */
 export function getPraConsoleController(args?: GetPraConsoleControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetPraConsoleControllerResult> {
     pulumi.log.warn("getPraConsoleController is deprecated: zpa.index/getpraconsolecontroller.getPraConsoleController has been deprecated in favor of zpa.index/getpraconsole.getPRAConsole")
@@ -37,10 +44,20 @@ export interface GetPraConsoleControllerResult {
     readonly microtenantName: string;
     readonly modifiedBy: string;
     readonly modifiedTime: string;
+    /**
+     * - (Required) The name of the privileged console.
+     */
     readonly name: string;
     readonly praApplications: outputs.GetPraConsoleControllerPraApplication[];
     readonly praPortals: outputs.GetPraConsoleControllerPraPortal[];
 }
+/**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-privileged-consoles)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-consoles-using-api)
+ *
+ * The **zpa_pra_console_controller** data source gets information about a privileged remote access console created in the Zscaler Private Access cloud.
+ * This resource can then be referenced in an privileged access policy credential and a privileged access portal resource.
+ */
 /** @deprecated zpa.index/getpraconsolecontroller.getPraConsoleController has been deprecated in favor of zpa.index/getpraconsole.getPRAConsole */
 export function getPraConsoleControllerOutput(args?: GetPraConsoleControllerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPraConsoleControllerResult> {
     return pulumi.output(args).apply((a: any) => getPraConsoleController(a, opts))

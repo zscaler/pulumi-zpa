@@ -216,7 +216,6 @@ def get_inspection_predefined_controls(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -225,7 +224,6 @@ def get_inspection_predefined_controls(id: Optional[str] = None,
         version="OWASP_CRS/3.3.0")
     pulumi.export("zpaInspectionPredefinedControls", example)
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['id'] = id
@@ -269,7 +267,6 @@ def get_inspection_predefined_controls_output(id: Optional[pulumi.Input[Optional
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -278,6 +275,5 @@ def get_inspection_predefined_controls_output(id: Optional[pulumi.Input[Optional
         version="OWASP_CRS/3.3.0")
     pulumi.export("zpaInspectionPredefinedControls", example)
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

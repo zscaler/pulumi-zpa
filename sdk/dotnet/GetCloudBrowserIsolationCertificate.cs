@@ -19,7 +19,6 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,7 +34,6 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCloudBrowserIsolationCertificateResult> InvokeAsync(GetCloudBrowserIsolationCertificateArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCloudBrowserIsolationCertificateResult>("zpa:index/getCloudBrowserIsolationCertificate:getCloudBrowserIsolationCertificate", args ?? new GetCloudBrowserIsolationCertificateArgs(), options.WithDefaults());
@@ -47,7 +45,6 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,7 +60,6 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCloudBrowserIsolationCertificateResult> Invoke(GetCloudBrowserIsolationCertificateInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCloudBrowserIsolationCertificateResult>("zpa:index/getCloudBrowserIsolationCertificate:getCloudBrowserIsolationCertificate", args ?? new GetCloudBrowserIsolationCertificateInvokeArgs(), options.WithDefaults());

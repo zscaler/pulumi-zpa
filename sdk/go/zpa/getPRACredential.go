@@ -18,7 +18,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupPRACredential(ctx *pulumi.Context, args *LookupPRACredentialArgs, opts ...pulumi.InvokeOption) (*LookupPRACredentialResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPRACredentialResult
@@ -72,6 +70,7 @@ type LookupPRACredentialResult struct {
 	ModifiedTime            string  `pulumi:"modifiedTime"`
 	// - (String) The name of the privileged credential.
 	Name       *string `pulumi:"name"`
+	Password   string  `pulumi:"password"`
 	UserDomain string  `pulumi:"userDomain"`
 	Username   string  `pulumi:"username"`
 }
@@ -154,6 +153,10 @@ func (o LookupPRACredentialResultOutput) ModifiedTime() pulumi.StringOutput {
 // - (String) The name of the privileged credential.
 func (o LookupPRACredentialResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPRACredentialResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupPRACredentialResultOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPRACredentialResult) string { return v.Password }).(pulumi.StringOutput)
 }
 
 func (o LookupPRACredentialResultOutput) UserDomain() pulumi.StringOutput {

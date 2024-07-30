@@ -6,6 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated zpa.index/policycredentialrule.PolicyCredentialRule has been deprecated in favor of zpa.index/policyaccesscredentialrule.PolicyAccessCredentialRule
+ */
 export class PolicyCredentialRule extends pulumi.CustomResource {
     /**
      * Get an existing PolicyCredentialRule resource's state with the given name, ID, and optional extra
@@ -17,6 +20,7 @@ export class PolicyCredentialRule extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: PolicyCredentialRuleState, opts?: pulumi.CustomResourceOptions): PolicyCredentialRule {
+        pulumi.log.warn("PolicyCredentialRule is deprecated: zpa.index/policycredentialrule.PolicyCredentialRule has been deprecated in favor of zpa.index/policyaccesscredentialrule.PolicyAccessCredentialRule")
         return new PolicyCredentialRule(name, <any>state, { ...opts, id: id });
     }
 
@@ -61,8 +65,11 @@ export class PolicyCredentialRule extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated zpa.index/policycredentialrule.PolicyCredentialRule has been deprecated in favor of zpa.index/policyaccesscredentialrule.PolicyAccessCredentialRule */
     constructor(name: string, args?: PolicyCredentialRuleArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated zpa.index/policycredentialrule.PolicyCredentialRule has been deprecated in favor of zpa.index/policyaccesscredentialrule.PolicyAccessCredentialRule */
     constructor(name: string, argsOrState?: PolicyCredentialRuleArgs | PolicyCredentialRuleState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("PolicyCredentialRule is deprecated: zpa.index/policycredentialrule.PolicyCredentialRule has been deprecated in favor of zpa.index/policyaccesscredentialrule.PolicyAccessCredentialRule")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

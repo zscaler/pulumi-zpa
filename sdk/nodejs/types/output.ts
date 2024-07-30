@@ -22,18 +22,14 @@ export interface ApplicationSegmentBrowserAccessClientlessApp {
      * ID of the BA certificate.
      */
     certificateId?: string;
-    cname: string;
     description?: string;
     /**
      * Domain name or IP address of the BA app.
      */
     domain?: string;
     enabled: boolean;
-    hidden: boolean;
     id: string;
-    localDomain?: string;
     name: string;
-    path?: string;
     /**
      * Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
      */
@@ -63,9 +59,9 @@ export interface ApplicationSegmentInspectionCommonAppsDtoAppsConfig {
     applicationPort?: string;
     applicationProtocol?: string;
     certificateId?: string;
-    description?: string;
     domain?: string;
-    enabled?: boolean;
+    enabled: boolean;
+    id: string;
     name?: string;
     trustUntrustedCert?: boolean;
 }
@@ -89,14 +85,12 @@ export interface ApplicationSegmentPRACommonAppsDto {
 }
 
 export interface ApplicationSegmentPRACommonAppsDtoAppsConfig {
-    appId: string;
     appTypes?: string[];
     applicationPort?: string;
     applicationProtocol?: string;
     connectionSecurity?: string;
-    description?: string;
     domain?: string;
-    enabled?: boolean;
+    enabled: boolean;
     id: string;
     name?: string;
 }
@@ -146,18 +140,14 @@ export interface BrowserAccessClientlessApp {
      * ID of the BA certificate.
      */
     certificateId?: string;
-    cname: string;
     description?: string;
     /**
      * Domain name or IP address of the BA app.
      */
     domain?: string;
     enabled: boolean;
-    hidden: boolean;
     id: string;
-    localDomain?: string;
     name: string;
-    path?: string;
     /**
      * Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
      */
@@ -178,18 +168,50 @@ export interface BrowserAccessUdpPortRange {
     to?: string;
 }
 
+export interface CloudBrowserIsolationExternalProfileDebugMode {
+    allowed: boolean;
+    filePassword?: string;
+}
+
 export interface CloudBrowserIsolationExternalProfileSecurityControl {
     allowPrinting: boolean;
-    copyPaste?: string;
+    copyPaste: string;
+    deepLink: outputs.CloudBrowserIsolationExternalProfileSecurityControlDeepLink;
     documentViewer: boolean;
+    flattenedPdf: boolean;
     localRender: boolean;
     restrictKeystrokes: boolean;
-    uploadDownload?: string;
+    uploadDownload: string;
+    watermark: outputs.CloudBrowserIsolationExternalProfileSecurityControlWatermark;
+}
+
+export interface CloudBrowserIsolationExternalProfileSecurityControlDeepLink {
+    applications: string[];
+    enabled: boolean;
+}
+
+export interface CloudBrowserIsolationExternalProfileSecurityControlWatermark {
+    enabled: boolean;
+    message: string;
+    showMessage: boolean;
+    showTimestamp: boolean;
+    showUserId: boolean;
 }
 
 export interface CloudBrowserIsolationExternalProfileUserExperience {
-    browserInBrowser?: boolean;
-    sessionPersistence?: boolean;
+    browserInBrowser: boolean;
+    forwardToZia: outputs.CloudBrowserIsolationExternalProfileUserExperienceForwardToZia;
+    persistIsolationBar: boolean;
+    sessionPersistence: boolean;
+    translate: boolean;
+    zgpu: boolean;
+}
+
+export interface CloudBrowserIsolationExternalProfileUserExperienceForwardToZia {
+    cloudName: string;
+    enabled: boolean;
+    organizationId: string;
+    pacFileUrl: string;
 }
 
 export interface GetAppConnectorGroupConnector {
@@ -366,6 +388,11 @@ export interface GetApplicationSegmentUdpPortRange {
     to?: string;
 }
 
+export interface GetCloudBrowserIsolationExternalProfileDebugMode {
+    allowed: boolean;
+    filePassword: string;
+}
+
 export interface GetCloudBrowserIsolationExternalProfileRegion {
     id: string;
     name: string;
@@ -374,15 +401,42 @@ export interface GetCloudBrowserIsolationExternalProfileRegion {
 export interface GetCloudBrowserIsolationExternalProfileSecurityControl {
     allowPrinting: boolean;
     copyPaste: string;
+    deepLinks: outputs.GetCloudBrowserIsolationExternalProfileSecurityControlDeepLink[];
     documentViewer: boolean;
+    flattenedPdf: boolean;
     localRender: boolean;
     restrictKeystrokes: boolean;
     uploadDownload: string;
+    watermarks: outputs.GetCloudBrowserIsolationExternalProfileSecurityControlWatermark[];
+}
+
+export interface GetCloudBrowserIsolationExternalProfileSecurityControlDeepLink {
+    applications: string[];
+    enabled: boolean;
+}
+
+export interface GetCloudBrowserIsolationExternalProfileSecurityControlWatermark {
+    enabled: boolean;
+    message: string;
+    showMessage: boolean;
+    showTimestamp: boolean;
+    showUserId: boolean;
 }
 
 export interface GetCloudBrowserIsolationExternalProfileUserExperience {
     browserInBrowser: boolean;
+    forwardToZias: outputs.GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZia[];
+    persistIsolationBar: boolean;
     sessionPersistence: boolean;
+    translate: boolean;
+    zgpu?: boolean;
+}
+
+export interface GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZia {
+    cloudName: string;
+    enabled: boolean;
+    organizationId: string;
+    pacFileUrl: string;
 }
 
 export interface GetCloudConnectorGroupCloudConnector {
@@ -876,7 +930,7 @@ export interface GetPraConsoleControllerPraApplication {
      */
     id: string;
     /**
-     * The name of the Privileged Remote Access-enabled application
+     * - (Required) The name of the privileged console.
      */
     name: string;
 }
@@ -887,7 +941,7 @@ export interface GetPraConsoleControllerPraPortal {
      */
     id: string;
     /**
-     * The name of the privileged portal
+     * - (Required) The name of the privileged console.
      */
     name: string;
 }
@@ -1076,10 +1130,6 @@ export interface GetServiceEdgeGroupTrustedNetwork {
     zscalerCloud: string;
 }
 
-export interface InspectionCustomControlsAssociatedInspectionProfileName {
-    ids: string[];
-}
-
 export interface InspectionCustomControlsRule {
     conditions: outputs.InspectionCustomControlsRuleConditions;
     /**
@@ -1126,27 +1176,28 @@ export interface InspectionProfileCustomControl {
     id: string;
 }
 
-export interface InspectionProfilePredefinedControl {
-    /**
-     * The action of the predefined control
-     */
-    action: string;
-    /**
-     * The value for the predefined controls action. This field is only required if the action is set to REDIRECT
-     */
+export interface InspectionProfilePredefinedApiControl {
+    action?: string;
     actionValue?: string;
-    /**
-     * The control type of the custom control
-     */
-    controlType?: string;
-    /**
-     * The unique identifier of the predefined control
-     */
-    id: string;
-    /**
-     * The protocol type of the predefined control
-     */
-    protocolType?: string;
+    id?: string;
+}
+
+export interface InspectionProfilePredefinedControl {
+    action?: string;
+    actionValue?: string;
+    id?: string;
+}
+
+export interface InspectionProfileThreatLabzControl {
+    action?: string;
+    actionValue?: string;
+    id?: string;
+}
+
+export interface InspectionProfileWebsocketControl {
+    action?: string;
+    actionValue?: string;
+    id?: string;
 }
 
 export interface LSSConfigControllerConfig {
@@ -1318,6 +1369,36 @@ export interface PRAConsolePraPortal {
      * The unique identifier of the privileged portal
      */
     ids: string[];
+}
+
+export interface PolicyAccessCredentialRuleCondition {
+    id: string;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands: outputs.PolicyAccessCredentialRuleConditionOperand[];
+    operator: string;
+}
+
+export interface PolicyAccessCredentialRuleConditionOperand {
+    entryValues: outputs.PolicyAccessCredentialRuleConditionOperandEntryValue[];
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: string;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: string[];
+}
+
+export interface PolicyAccessCredentialRuleConditionOperandEntryValue {
+    lhs?: string;
+    rhs?: string;
+}
+
+export interface PolicyAccessCredentialRuleCredential {
+    id: string;
 }
 
 export interface PolicyAccessForwardingRuleCondition {

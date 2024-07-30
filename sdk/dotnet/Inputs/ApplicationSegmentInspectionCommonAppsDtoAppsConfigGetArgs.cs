@@ -30,14 +30,14 @@ namespace Zscaler.Zpa.Inputs
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }
 
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        [Input("id")]
+        public Input<string>? Id { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }

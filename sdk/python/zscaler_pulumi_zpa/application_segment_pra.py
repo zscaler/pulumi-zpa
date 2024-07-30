@@ -33,7 +33,6 @@ class ApplicationSegmentPRAArgs:
                  match_style: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  passive_health_enabled: Optional[pulumi.Input[bool]] = None,
-                 segment_group_name: Optional[pulumi.Input[str]] = None,
                  select_connector_close_to_app: Optional[pulumi.Input[bool]] = None,
                  server_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentPRAServerGroupArgs']]]] = None,
                  tcp_keep_alive: Optional[pulumi.Input[str]] = None,
@@ -91,8 +90,6 @@ class ApplicationSegmentPRAArgs:
             pulumi.set(__self__, "name", name)
         if passive_health_enabled is not None:
             pulumi.set(__self__, "passive_health_enabled", passive_health_enabled)
-        if segment_group_name is not None:
-            pulumi.set(__self__, "segment_group_name", segment_group_name)
         if select_connector_close_to_app is not None:
             pulumi.set(__self__, "select_connector_close_to_app", select_connector_close_to_app)
         if server_groups is not None:
@@ -287,15 +284,6 @@ class ApplicationSegmentPRAArgs:
         pulumi.set(self, "passive_health_enabled", value)
 
     @property
-    @pulumi.getter(name="segmentGroupName")
-    def segment_group_name(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "segment_group_name")
-
-    @segment_group_name.setter
-    def segment_group_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "segment_group_name", value)
-
-    @property
     @pulumi.getter(name="selectConnectorCloseToApp")
     def select_connector_close_to_app(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "select_connector_close_to_app")
@@ -403,7 +391,6 @@ class _ApplicationSegmentPRAState:
                  name: Optional[pulumi.Input[str]] = None,
                  passive_health_enabled: Optional[pulumi.Input[bool]] = None,
                  segment_group_id: Optional[pulumi.Input[str]] = None,
-                 segment_group_name: Optional[pulumi.Input[str]] = None,
                  select_connector_close_to_app: Optional[pulumi.Input[bool]] = None,
                  server_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentPRAServerGroupArgs']]]] = None,
                  tcp_keep_alive: Optional[pulumi.Input[str]] = None,
@@ -463,8 +450,6 @@ class _ApplicationSegmentPRAState:
             pulumi.set(__self__, "passive_health_enabled", passive_health_enabled)
         if segment_group_id is not None:
             pulumi.set(__self__, "segment_group_id", segment_group_id)
-        if segment_group_name is not None:
-            pulumi.set(__self__, "segment_group_name", segment_group_name)
         if select_connector_close_to_app is not None:
             pulumi.set(__self__, "select_connector_close_to_app", select_connector_close_to_app)
         if server_groups is not None:
@@ -659,15 +644,6 @@ class _ApplicationSegmentPRAState:
         pulumi.set(self, "segment_group_id", value)
 
     @property
-    @pulumi.getter(name="segmentGroupName")
-    def segment_group_name(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "segment_group_name")
-
-    @segment_group_name.setter
-    def segment_group_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "segment_group_name", value)
-
-    @property
     @pulumi.getter(name="selectConnectorCloseToApp")
     def select_connector_close_to_app(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "select_connector_close_to_app")
@@ -777,7 +753,6 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  passive_health_enabled: Optional[pulumi.Input[bool]] = None,
                  segment_group_id: Optional[pulumi.Input[str]] = None,
-                 segment_group_name: Optional[pulumi.Input[str]] = None,
                  select_connector_close_to_app: Optional[pulumi.Input[bool]] = None,
                  server_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationSegmentPRAServerGroupArgs']]]]] = None,
                  tcp_keep_alive: Optional[pulumi.Input[str]] = None,
@@ -795,7 +770,6 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -842,7 +816,6 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -893,7 +866,6 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -940,7 +912,6 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -992,7 +963,6 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  passive_health_enabled: Optional[pulumi.Input[bool]] = None,
                  segment_group_id: Optional[pulumi.Input[str]] = None,
-                 segment_group_name: Optional[pulumi.Input[str]] = None,
                  select_connector_close_to_app: Optional[pulumi.Input[bool]] = None,
                  server_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationSegmentPRAServerGroupArgs']]]]] = None,
                  tcp_keep_alive: Optional[pulumi.Input[str]] = None,
@@ -1031,7 +1001,6 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
             if segment_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'segment_group_id'")
             __props__.__dict__["segment_group_id"] = segment_group_id
-            __props__.__dict__["segment_group_name"] = segment_group_name
             __props__.__dict__["select_connector_close_to_app"] = select_connector_close_to_app
             __props__.__dict__["server_groups"] = server_groups
             __props__.__dict__["tcp_keep_alive"] = tcp_keep_alive
@@ -1067,7 +1036,6 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             passive_health_enabled: Optional[pulumi.Input[bool]] = None,
             segment_group_id: Optional[pulumi.Input[str]] = None,
-            segment_group_name: Optional[pulumi.Input[str]] = None,
             select_connector_close_to_app: Optional[pulumi.Input[bool]] = None,
             server_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationSegmentPRAServerGroupArgs']]]]] = None,
             tcp_keep_alive: Optional[pulumi.Input[str]] = None,
@@ -1119,7 +1087,6 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["passive_health_enabled"] = passive_health_enabled
         __props__.__dict__["segment_group_id"] = segment_group_id
-        __props__.__dict__["segment_group_name"] = segment_group_name
         __props__.__dict__["select_connector_close_to_app"] = select_connector_close_to_app
         __props__.__dict__["server_groups"] = server_groups
         __props__.__dict__["tcp_keep_alive"] = tcp_keep_alive
@@ -1212,7 +1179,7 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isIncompleteDrConfig")
-    def is_incomplete_dr_config(self) -> pulumi.Output[Optional[bool]]:
+    def is_incomplete_dr_config(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "is_incomplete_dr_config")
 
     @property
@@ -1237,11 +1204,6 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
     @pulumi.getter(name="segmentGroupId")
     def segment_group_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "segment_group_id")
-
-    @property
-    @pulumi.getter(name="segmentGroupName")
-    def segment_group_name(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "segment_group_name")
 
     @property
     @pulumi.getter(name="selectConnectorCloseToApp")
@@ -1295,6 +1257,6 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="useInDrMode")
-    def use_in_dr_mode(self) -> pulumi.Output[Optional[bool]]:
+    def use_in_dr_mode(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "use_in_dr_mode")
 

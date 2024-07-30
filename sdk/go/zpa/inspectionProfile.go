@@ -15,25 +15,37 @@ import (
 // * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-profiles-using-api)
 //
 // The  **zpa_inspection_profile** resource creates an inspection profile in the Zscaler Private Access cloud. This resource can then be referenced in an inspection custom control resource.
+//
+// **NOTE** There are several ways to set up the Inspection Profile due to its complex data structure
+//
+// ## Example Usage
 type InspectionProfile struct {
 	pulumi.CustomResourceState
 
-	AssociateAllControls pulumi.BoolPtrOutput                     `pulumi:"associateAllControls"`
-	ControlsInfos        InspectionProfileControlsInfoArrayOutput `pulumi:"controlsInfos"`
+	ApiProfile                        pulumi.BoolPtrOutput                     `pulumi:"apiProfile"`
+	AssociateAllControls              pulumi.BoolPtrOutput                     `pulumi:"associateAllControls"`
+	CommonGlobalOverrideActionsConfig pulumi.StringMapOutput                   `pulumi:"commonGlobalOverrideActionsConfig"`
+	ControlsInfos                     InspectionProfileControlsInfoArrayOutput `pulumi:"controlsInfos"`
 	// The set of AppProtection controls used to define how inspections are managed
 	CustomControls InspectionProfileCustomControlArrayOutput `pulumi:"customControls"`
 	// The description of the AppProtection profile
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The actions of the predefined, custom, or override controls
 	GlobalControlActions pulumi.StringArrayOutput `pulumi:"globalControlActions"`
-	IncarnationNumber    pulumi.StringPtrOutput   `pulumi:"incarnationNumber"`
 	Name                 pulumi.StringOutput      `pulumi:"name"`
+	OverrideAction       pulumi.StringPtrOutput   `pulumi:"overrideAction"`
 	// The OWASP Predefined Paranoia Level
 	ParanoiaLevel pulumi.StringPtrOutput `pulumi:"paranoiaLevel"`
+	// The predefined controls
+	PredefinedApiControls InspectionProfilePredefinedApiControlArrayOutput `pulumi:"predefinedApiControls"`
 	// The predefined controls
 	PredefinedControls InspectionProfilePredefinedControlArrayOutput `pulumi:"predefinedControls"`
 	// The protocol for the AppProtection application
 	PredefinedControlsVersion pulumi.StringPtrOutput `pulumi:"predefinedControlsVersion"`
+	// The ThreatLabZ predefined controls
+	ThreatLabzControls InspectionProfileThreatLabzControlArrayOutput `pulumi:"threatLabzControls"`
+	// The WebSocket predefined controls
+	WebsocketControls InspectionProfileWebsocketControlArrayOutput `pulumi:"websocketControls"`
 	// Indicates the user's choice for the ThreatLabZ Controls. Supported values: ALL and SPECIFIC
 	ZsDefinedControlChoice pulumi.StringPtrOutput `pulumi:"zsDefinedControlChoice"`
 }
@@ -68,43 +80,59 @@ func GetInspectionProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InspectionProfile resources.
 type inspectionProfileState struct {
-	AssociateAllControls *bool                           `pulumi:"associateAllControls"`
-	ControlsInfos        []InspectionProfileControlsInfo `pulumi:"controlsInfos"`
+	ApiProfile                        *bool                           `pulumi:"apiProfile"`
+	AssociateAllControls              *bool                           `pulumi:"associateAllControls"`
+	CommonGlobalOverrideActionsConfig map[string]string               `pulumi:"commonGlobalOverrideActionsConfig"`
+	ControlsInfos                     []InspectionProfileControlsInfo `pulumi:"controlsInfos"`
 	// The set of AppProtection controls used to define how inspections are managed
 	CustomControls []InspectionProfileCustomControl `pulumi:"customControls"`
 	// The description of the AppProtection profile
 	Description *string `pulumi:"description"`
 	// The actions of the predefined, custom, or override controls
 	GlobalControlActions []string `pulumi:"globalControlActions"`
-	IncarnationNumber    *string  `pulumi:"incarnationNumber"`
 	Name                 *string  `pulumi:"name"`
+	OverrideAction       *string  `pulumi:"overrideAction"`
 	// The OWASP Predefined Paranoia Level
 	ParanoiaLevel *string `pulumi:"paranoiaLevel"`
+	// The predefined controls
+	PredefinedApiControls []InspectionProfilePredefinedApiControl `pulumi:"predefinedApiControls"`
 	// The predefined controls
 	PredefinedControls []InspectionProfilePredefinedControl `pulumi:"predefinedControls"`
 	// The protocol for the AppProtection application
 	PredefinedControlsVersion *string `pulumi:"predefinedControlsVersion"`
+	// The ThreatLabZ predefined controls
+	ThreatLabzControls []InspectionProfileThreatLabzControl `pulumi:"threatLabzControls"`
+	// The WebSocket predefined controls
+	WebsocketControls []InspectionProfileWebsocketControl `pulumi:"websocketControls"`
 	// Indicates the user's choice for the ThreatLabZ Controls. Supported values: ALL and SPECIFIC
 	ZsDefinedControlChoice *string `pulumi:"zsDefinedControlChoice"`
 }
 
 type InspectionProfileState struct {
-	AssociateAllControls pulumi.BoolPtrInput
-	ControlsInfos        InspectionProfileControlsInfoArrayInput
+	ApiProfile                        pulumi.BoolPtrInput
+	AssociateAllControls              pulumi.BoolPtrInput
+	CommonGlobalOverrideActionsConfig pulumi.StringMapInput
+	ControlsInfos                     InspectionProfileControlsInfoArrayInput
 	// The set of AppProtection controls used to define how inspections are managed
 	CustomControls InspectionProfileCustomControlArrayInput
 	// The description of the AppProtection profile
 	Description pulumi.StringPtrInput
 	// The actions of the predefined, custom, or override controls
 	GlobalControlActions pulumi.StringArrayInput
-	IncarnationNumber    pulumi.StringPtrInput
 	Name                 pulumi.StringPtrInput
+	OverrideAction       pulumi.StringPtrInput
 	// The OWASP Predefined Paranoia Level
 	ParanoiaLevel pulumi.StringPtrInput
+	// The predefined controls
+	PredefinedApiControls InspectionProfilePredefinedApiControlArrayInput
 	// The predefined controls
 	PredefinedControls InspectionProfilePredefinedControlArrayInput
 	// The protocol for the AppProtection application
 	PredefinedControlsVersion pulumi.StringPtrInput
+	// The ThreatLabZ predefined controls
+	ThreatLabzControls InspectionProfileThreatLabzControlArrayInput
+	// The WebSocket predefined controls
+	WebsocketControls InspectionProfileWebsocketControlArrayInput
 	// Indicates the user's choice for the ThreatLabZ Controls. Supported values: ALL and SPECIFIC
 	ZsDefinedControlChoice pulumi.StringPtrInput
 }
@@ -114,44 +142,60 @@ func (InspectionProfileState) ElementType() reflect.Type {
 }
 
 type inspectionProfileArgs struct {
-	AssociateAllControls *bool                           `pulumi:"associateAllControls"`
-	ControlsInfos        []InspectionProfileControlsInfo `pulumi:"controlsInfos"`
+	ApiProfile                        *bool                           `pulumi:"apiProfile"`
+	AssociateAllControls              *bool                           `pulumi:"associateAllControls"`
+	CommonGlobalOverrideActionsConfig map[string]string               `pulumi:"commonGlobalOverrideActionsConfig"`
+	ControlsInfos                     []InspectionProfileControlsInfo `pulumi:"controlsInfos"`
 	// The set of AppProtection controls used to define how inspections are managed
 	CustomControls []InspectionProfileCustomControl `pulumi:"customControls"`
 	// The description of the AppProtection profile
 	Description *string `pulumi:"description"`
 	// The actions of the predefined, custom, or override controls
 	GlobalControlActions []string `pulumi:"globalControlActions"`
-	IncarnationNumber    *string  `pulumi:"incarnationNumber"`
 	Name                 *string  `pulumi:"name"`
+	OverrideAction       *string  `pulumi:"overrideAction"`
 	// The OWASP Predefined Paranoia Level
 	ParanoiaLevel *string `pulumi:"paranoiaLevel"`
+	// The predefined controls
+	PredefinedApiControls []InspectionProfilePredefinedApiControl `pulumi:"predefinedApiControls"`
 	// The predefined controls
 	PredefinedControls []InspectionProfilePredefinedControl `pulumi:"predefinedControls"`
 	// The protocol for the AppProtection application
 	PredefinedControlsVersion *string `pulumi:"predefinedControlsVersion"`
+	// The ThreatLabZ predefined controls
+	ThreatLabzControls []InspectionProfileThreatLabzControl `pulumi:"threatLabzControls"`
+	// The WebSocket predefined controls
+	WebsocketControls []InspectionProfileWebsocketControl `pulumi:"websocketControls"`
 	// Indicates the user's choice for the ThreatLabZ Controls. Supported values: ALL and SPECIFIC
 	ZsDefinedControlChoice *string `pulumi:"zsDefinedControlChoice"`
 }
 
 // The set of arguments for constructing a InspectionProfile resource.
 type InspectionProfileArgs struct {
-	AssociateAllControls pulumi.BoolPtrInput
-	ControlsInfos        InspectionProfileControlsInfoArrayInput
+	ApiProfile                        pulumi.BoolPtrInput
+	AssociateAllControls              pulumi.BoolPtrInput
+	CommonGlobalOverrideActionsConfig pulumi.StringMapInput
+	ControlsInfos                     InspectionProfileControlsInfoArrayInput
 	// The set of AppProtection controls used to define how inspections are managed
 	CustomControls InspectionProfileCustomControlArrayInput
 	// The description of the AppProtection profile
 	Description pulumi.StringPtrInput
 	// The actions of the predefined, custom, or override controls
 	GlobalControlActions pulumi.StringArrayInput
-	IncarnationNumber    pulumi.StringPtrInput
 	Name                 pulumi.StringPtrInput
+	OverrideAction       pulumi.StringPtrInput
 	// The OWASP Predefined Paranoia Level
 	ParanoiaLevel pulumi.StringPtrInput
+	// The predefined controls
+	PredefinedApiControls InspectionProfilePredefinedApiControlArrayInput
 	// The predefined controls
 	PredefinedControls InspectionProfilePredefinedControlArrayInput
 	// The protocol for the AppProtection application
 	PredefinedControlsVersion pulumi.StringPtrInput
+	// The ThreatLabZ predefined controls
+	ThreatLabzControls InspectionProfileThreatLabzControlArrayInput
+	// The WebSocket predefined controls
+	WebsocketControls InspectionProfileWebsocketControlArrayInput
 	// Indicates the user's choice for the ThreatLabZ Controls. Supported values: ALL and SPECIFIC
 	ZsDefinedControlChoice pulumi.StringPtrInput
 }
@@ -243,8 +287,16 @@ func (o InspectionProfileOutput) ToInspectionProfileOutputWithContext(ctx contex
 	return o
 }
 
+func (o InspectionProfileOutput) ApiProfile() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InspectionProfile) pulumi.BoolPtrOutput { return v.ApiProfile }).(pulumi.BoolPtrOutput)
+}
+
 func (o InspectionProfileOutput) AssociateAllControls() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InspectionProfile) pulumi.BoolPtrOutput { return v.AssociateAllControls }).(pulumi.BoolPtrOutput)
+}
+
+func (o InspectionProfileOutput) CommonGlobalOverrideActionsConfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InspectionProfile) pulumi.StringMapOutput { return v.CommonGlobalOverrideActionsConfig }).(pulumi.StringMapOutput)
 }
 
 func (o InspectionProfileOutput) ControlsInfos() InspectionProfileControlsInfoArrayOutput {
@@ -266,17 +318,24 @@ func (o InspectionProfileOutput) GlobalControlActions() pulumi.StringArrayOutput
 	return o.ApplyT(func(v *InspectionProfile) pulumi.StringArrayOutput { return v.GlobalControlActions }).(pulumi.StringArrayOutput)
 }
 
-func (o InspectionProfileOutput) IncarnationNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InspectionProfile) pulumi.StringPtrOutput { return v.IncarnationNumber }).(pulumi.StringPtrOutput)
-}
-
 func (o InspectionProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InspectionProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o InspectionProfileOutput) OverrideAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InspectionProfile) pulumi.StringPtrOutput { return v.OverrideAction }).(pulumi.StringPtrOutput)
 }
 
 // The OWASP Predefined Paranoia Level
 func (o InspectionProfileOutput) ParanoiaLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InspectionProfile) pulumi.StringPtrOutput { return v.ParanoiaLevel }).(pulumi.StringPtrOutput)
+}
+
+// The predefined controls
+func (o InspectionProfileOutput) PredefinedApiControls() InspectionProfilePredefinedApiControlArrayOutput {
+	return o.ApplyT(func(v *InspectionProfile) InspectionProfilePredefinedApiControlArrayOutput {
+		return v.PredefinedApiControls
+	}).(InspectionProfilePredefinedApiControlArrayOutput)
 }
 
 // The predefined controls
@@ -287,6 +346,16 @@ func (o InspectionProfileOutput) PredefinedControls() InspectionProfilePredefine
 // The protocol for the AppProtection application
 func (o InspectionProfileOutput) PredefinedControlsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InspectionProfile) pulumi.StringPtrOutput { return v.PredefinedControlsVersion }).(pulumi.StringPtrOutput)
+}
+
+// The ThreatLabZ predefined controls
+func (o InspectionProfileOutput) ThreatLabzControls() InspectionProfileThreatLabzControlArrayOutput {
+	return o.ApplyT(func(v *InspectionProfile) InspectionProfileThreatLabzControlArrayOutput { return v.ThreatLabzControls }).(InspectionProfileThreatLabzControlArrayOutput)
+}
+
+// The WebSocket predefined controls
+func (o InspectionProfileOutput) WebsocketControls() InspectionProfileWebsocketControlArrayOutput {
+	return o.ApplyT(func(v *InspectionProfile) InspectionProfileWebsocketControlArrayOutput { return v.WebsocketControls }).(InspectionProfileWebsocketControlArrayOutput)
 }
 
 // Indicates the user's choice for the ThreatLabZ Controls. Supported values: ALL and SPECIFIC

@@ -348,7 +348,65 @@ class PraCredentialController(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a PraCredentialController resource with the given unique name, props, and options.
+        * [Official documentation](https://help.zscaler.com/zpa/about-privileged-credentials)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-credentials-using-api)
+
+        The **zpa_pra_credential_controller** resource creates a privileged remote access credential in the Zscaler Private Access cloud. This resource can then be referenced in an privileged access policy resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import zscaler_pulumi_zpa as zpa
+
+        # Creates Credential of Type "USERNAME_PASSWORD"
+        this = zpa.PRACredential("this",
+            credential_type="USERNAME_PASSWORD",
+            description="Created with Terraform",
+            password="",
+            user_domain="acme.com",
+            username="jdoe")
+        ```
+
+        ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE #########\\
+        ######### ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ##########
+        ```python
+        import pulumi
+        import zscaler_pulumi_zpa as zpa
+
+        # Creates Credential of Type "SSH_KEY"
+        this = zpa.PRACredential("this",
+            credential_type="SSH_KEY",
+            description="Created with Terraform",
+            private_key=\"\"\"-----BEGIN PRIVATE KEY-----
+        MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEjc8pPoobS0l6
+        -----END PRIVATE KEY-----
+
+        \"\"\",
+            user_domain="acme.com",
+            username="jdoe")
+        ```
+
+        ## Import
+
+        Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+
+        Visit
+
+        **pra_credential_controller** can be imported by using `<CREDENTIAL ID>` or `<CREDENTIAL NAME>` as the import ID.
+
+        For example:
+
+        ```sh
+        $ pulumi import zpa:index/praCredentialController:PraCredentialController this <credential_id>
+        ```
+
+        or
+
+        ```sh
+        $ pulumi import zpa:index/praCredentialController:PraCredentialController this <credential_name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] credential_type: The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
@@ -371,7 +429,65 @@ class PraCredentialController(pulumi.CustomResource):
                  args: Optional[PraCredentialControllerArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a PraCredentialController resource with the given unique name, props, and options.
+        * [Official documentation](https://help.zscaler.com/zpa/about-privileged-credentials)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-credentials-using-api)
+
+        The **zpa_pra_credential_controller** resource creates a privileged remote access credential in the Zscaler Private Access cloud. This resource can then be referenced in an privileged access policy resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import zscaler_pulumi_zpa as zpa
+
+        # Creates Credential of Type "USERNAME_PASSWORD"
+        this = zpa.PRACredential("this",
+            credential_type="USERNAME_PASSWORD",
+            description="Created with Terraform",
+            password="",
+            user_domain="acme.com",
+            username="jdoe")
+        ```
+
+        ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE #########\\
+        ######### ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ##########
+        ```python
+        import pulumi
+        import zscaler_pulumi_zpa as zpa
+
+        # Creates Credential of Type "SSH_KEY"
+        this = zpa.PRACredential("this",
+            credential_type="SSH_KEY",
+            description="Created with Terraform",
+            private_key=\"\"\"-----BEGIN PRIVATE KEY-----
+        MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEjc8pPoobS0l6
+        -----END PRIVATE KEY-----
+
+        \"\"\",
+            user_domain="acme.com",
+            username="jdoe")
+        ```
+
+        ## Import
+
+        Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+
+        Visit
+
+        **pra_credential_controller** can be imported by using `<CREDENTIAL ID>` or `<CREDENTIAL NAME>` as the import ID.
+
+        For example:
+
+        ```sh
+        $ pulumi import zpa:index/praCredentialController:PraCredentialController this <credential_id>
+        ```
+
+        or
+
+        ```sh
+        $ pulumi import zpa:index/praCredentialController:PraCredentialController this <credential_name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param PraCredentialControllerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

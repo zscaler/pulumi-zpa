@@ -37,9 +37,6 @@ namespace Zscaler.Zpa.Inputs
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }
 
-        [Input("cname")]
-        public Input<string>? Cname { get; set; }
-
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -52,20 +49,11 @@ namespace Zscaler.Zpa.Inputs
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        [Input("hidden")]
-        public Input<bool>? Hidden { get; set; }
-
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        [Input("localDomain")]
-        public Input<string>? LocalDomain { get; set; }
-
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
-
-        [Input("path")]
-        public Input<string>? Path { get; set; }
 
         /// <summary>
         /// Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.

@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
@@ -37,20 +36,46 @@ import * as utilities from "./utilities";
  *     regionIds: [singapore.then(singapore => singapore.id)],
  *     certificateIds: [thisCloudBrowserIsolationCertificate.then(thisCloudBrowserIsolationCertificate => thisCloudBrowserIsolationCertificate.id)],
  *     userExperiences: [{
- *         sessionPersistence: true,
+ *         forwardToZia: {
+ *             enabled: true,
+ *             organizationId: "***********",
+ *             cloudName: "<cloud_name>",
+ *             pacFileUrl: "https://pac.<cloud_name>/<cloud_name>/proxy.pac",
+ *         },
  *         browserInBrowser: true,
+ *         persistIsolationBar: true,
+ *         translate: true,
+ *         sessionPersistence: true,
  *     }],
  *     securityControls: [{
  *         copyPaste: "all",
- *         uploadDownload: "all",
+ *         uploadDownload: "upstream",
  *         documentViewer: true,
  *         localRender: true,
  *         allowPrinting: true,
- *         restrictKeystrokes: false,
+ *         restrictKeystrokes: true,
+ *         flattenedPdf: true,
+ *         deepLink: {
+ *             enabled: true,
+ *             applications: [
+ *                 "test1",
+ *                 "test",
+ *             ],
+ *         },
+ *         watermark: {
+ *             enabled: true,
+ *             showUserId: true,
+ *             showTimestamp: true,
+ *             showMessage: true,
+ *             message: "Zscaler CBI",
+ *         },
  *     }],
+ *     debugMode: {
+ *         allowed: true,
+ *         filePassword: "***********",
+ *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class CloudBrowserIsolationExternalProfile extends pulumi.CustomResource {
     /**
@@ -82,17 +107,18 @@ export class CloudBrowserIsolationExternalProfile extends pulumi.CustomResource 
 
     public readonly bannerId!: pulumi.Output<string>;
     /**
-     * This field defines the list of server groups IDs.
+     * This field defines the list of certificate IDs.
      */
-    public readonly certificateIds!: pulumi.Output<string[]>;
+    public readonly certificateIds!: pulumi.Output<string[] | undefined>;
+    public readonly debugMode!: pulumi.Output<outputs.CloudBrowserIsolationExternalProfileDebugMode | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly name!: pulumi.Output<string>;
     /**
-     * This field defines the list of server groups IDs.
+     * This field defines the list of region IDs.
      */
-    public readonly regionIds!: pulumi.Output<string[]>;
+    public readonly regionIds!: pulumi.Output<string[] | undefined>;
     public readonly securityControls!: pulumi.Output<outputs.CloudBrowserIsolationExternalProfileSecurityControl[] | undefined>;
-    public readonly userExperiences!: pulumi.Output<outputs.CloudBrowserIsolationExternalProfileUserExperience[] | undefined>;
+    public readonly userExperiences!: pulumi.Output<outputs.CloudBrowserIsolationExternalProfileUserExperience[]>;
 
     /**
      * Create a CloudBrowserIsolationExternalProfile resource with the given unique name, arguments, and options.
@@ -109,6 +135,7 @@ export class CloudBrowserIsolationExternalProfile extends pulumi.CustomResource 
             const state = argsOrState as CloudBrowserIsolationExternalProfileState | undefined;
             resourceInputs["bannerId"] = state ? state.bannerId : undefined;
             resourceInputs["certificateIds"] = state ? state.certificateIds : undefined;
+            resourceInputs["debugMode"] = state ? state.debugMode : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["regionIds"] = state ? state.regionIds : undefined;
@@ -121,6 +148,7 @@ export class CloudBrowserIsolationExternalProfile extends pulumi.CustomResource 
             }
             resourceInputs["bannerId"] = args ? args.bannerId : undefined;
             resourceInputs["certificateIds"] = args ? args.certificateIds : undefined;
+            resourceInputs["debugMode"] = args ? args.debugMode : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["regionIds"] = args ? args.regionIds : undefined;
@@ -138,13 +166,14 @@ export class CloudBrowserIsolationExternalProfile extends pulumi.CustomResource 
 export interface CloudBrowserIsolationExternalProfileState {
     bannerId?: pulumi.Input<string>;
     /**
-     * This field defines the list of server groups IDs.
+     * This field defines the list of certificate IDs.
      */
     certificateIds?: pulumi.Input<pulumi.Input<string>[]>;
+    debugMode?: pulumi.Input<inputs.CloudBrowserIsolationExternalProfileDebugMode>;
     description?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     /**
-     * This field defines the list of server groups IDs.
+     * This field defines the list of region IDs.
      */
     regionIds?: pulumi.Input<pulumi.Input<string>[]>;
     securityControls?: pulumi.Input<pulumi.Input<inputs.CloudBrowserIsolationExternalProfileSecurityControl>[]>;
@@ -157,13 +186,14 @@ export interface CloudBrowserIsolationExternalProfileState {
 export interface CloudBrowserIsolationExternalProfileArgs {
     bannerId: pulumi.Input<string>;
     /**
-     * This field defines the list of server groups IDs.
+     * This field defines the list of certificate IDs.
      */
     certificateIds?: pulumi.Input<pulumi.Input<string>[]>;
+    debugMode?: pulumi.Input<inputs.CloudBrowserIsolationExternalProfileDebugMode>;
     description?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     /**
-     * This field defines the list of server groups IDs.
+     * This field defines the list of region IDs.
      */
     regionIds?: pulumi.Input<pulumi.Input<string>[]>;
     securityControls?: pulumi.Input<pulumi.Input<inputs.CloudBrowserIsolationExternalProfileSecurityControl>[]>;

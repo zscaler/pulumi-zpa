@@ -5,6 +5,7 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .app_connector_assistant_schedule import *
 from .application_segment import *
 from .application_segment_browser_access import *
 from .application_segment_inspection import *
@@ -18,10 +19,12 @@ from .cloud_browser_isolation_certificate import *
 from .cloud_browser_isolation_external_profile import *
 from .connector_group import *
 from .emergency_access_user import *
+from .get_app_connector_assistant_schedule import *
 from .get_app_connector_controller import *
 from .get_app_connector_group import *
 from .get_application_segment import *
 from .get_application_segment_browser_access import *
+from .get_application_segment_by_type import *
 from .get_application_segment_inspection import *
 from .get_application_segment_pra import *
 from .get_application_server import *
@@ -65,6 +68,7 @@ from .get_scim_attribute_header import *
 from .get_scim_groups import *
 from .get_segment_group import *
 from .get_server_group import *
+from .get_service_edge_assistant_schedule import *
 from .get_service_edge_controller import *
 from .get_service_edge_group import *
 from .get_trusted_network import *
@@ -72,6 +76,7 @@ from .inspection_custom_controls import *
 from .inspection_profile import *
 from .lss_config_controller import *
 from .microtenant import *
+from .policy_access_credential_rule import *
 from .policy_access_forwarding_rule import *
 from .policy_access_forwarding_rule_v2 import *
 from .policy_access_inspection_rule import *
@@ -102,6 +107,7 @@ from .provider import *
 from .provisioning_key import *
 from .segment_group import *
 from .server_group import *
+from .service_edge_assistant_schedule import *
 from .service_edge_group import *
 from ._inputs import *
 from . import outputs
@@ -116,6 +122,14 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "zpa",
+  "mod": "index/appConnectorAssistantSchedule",
+  "fqn": "zscaler_pulumi_zpa",
+  "classes": {
+   "zpa:index/appConnectorAssistantSchedule:AppConnectorAssistantSchedule": "AppConnectorAssistantSchedule"
+  }
+ },
  {
   "pkg": "zpa",
   "mod": "index/applicationSegment",
@@ -282,6 +296,14 @@ _utilities.register(
   "fqn": "zscaler_pulumi_zpa",
   "classes": {
    "zpa:index/pRAPortal:PRAPortal": "PRAPortal"
+  }
+ },
+ {
+  "pkg": "zpa",
+  "mod": "index/policyAccessCredentialRule",
+  "fqn": "zscaler_pulumi_zpa",
+  "classes": {
+   "zpa:index/policyAccessCredentialRule:PolicyAccessCredentialRule": "PolicyAccessCredentialRule"
   }
  },
  {
@@ -482,6 +504,14 @@ _utilities.register(
   "fqn": "zscaler_pulumi_zpa",
   "classes": {
    "zpa:index/serverGroup:ServerGroup": "ServerGroup"
+  }
+ },
+ {
+  "pkg": "zpa",
+  "mod": "index/serviceEdgeAssistantSchedule",
+  "fqn": "zscaler_pulumi_zpa",
+  "classes": {
+   "zpa:index/serviceEdgeAssistantSchedule:ServiceEdgeAssistantSchedule": "ServiceEdgeAssistantSchedule"
   }
  },
  {

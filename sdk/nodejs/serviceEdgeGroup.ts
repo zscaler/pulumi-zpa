@@ -14,7 +14,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
@@ -35,9 +34,7 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
@@ -55,7 +52,6 @@ import * as utilities from "./utilities";
  *     versionProfileName: "New Release",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -126,7 +122,7 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
      */
     public readonly graceDistanceValue!: pulumi.Output<string>;
     /**
-     * Indicates the grace distance unit of measure in miles or kilometers. This value is only required if grace_distance_value
+     * Indicates the grace distance unit of measure in miles or kilometers. This value is only required if graceDistanceValue
      * is set to true
      */
     public readonly graceDistanceValueUnit!: pulumi.Output<string>;
@@ -179,7 +175,7 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
     /**
      * ID of the version profile.
      */
-    public /*out*/ readonly versionProfileVisibilityScope!: pulumi.Output<string>;
+    public readonly versionProfileVisibilityScope!: pulumi.Output<string>;
 
     /**
      * Create a ServiceEdgeGroup resource with the given unique name, arguments, and options.
@@ -246,7 +242,7 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
             resourceInputs["upgradeTimeInSecs"] = args ? args.upgradeTimeInSecs : undefined;
             resourceInputs["versionProfileId"] = args ? args.versionProfileId : undefined;
             resourceInputs["versionProfileName"] = args ? args.versionProfileName : undefined;
-            resourceInputs["versionProfileVisibilityScope"] = undefined /*out*/;
+            resourceInputs["versionProfileVisibilityScope"] = args ? args.versionProfileVisibilityScope : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceEdgeGroup.__pulumiType, name, resourceInputs, opts);
@@ -278,7 +274,7 @@ export interface ServiceEdgeGroupState {
      */
     graceDistanceValue?: pulumi.Input<string>;
     /**
-     * Indicates the grace distance unit of measure in miles or kilometers. This value is only required if grace_distance_value
+     * Indicates the grace distance unit of measure in miles or kilometers. This value is only required if graceDistanceValue
      * is set to true
      */
     graceDistanceValueUnit?: pulumi.Input<string>;
@@ -359,7 +355,7 @@ export interface ServiceEdgeGroupArgs {
      */
     graceDistanceValue?: pulumi.Input<string>;
     /**
-     * Indicates the grace distance unit of measure in miles or kilometers. This value is only required if grace_distance_value
+     * Indicates the grace distance unit of measure in miles or kilometers. This value is only required if graceDistanceValue
      * is set to true
      */
     graceDistanceValueUnit?: pulumi.Input<string>;
@@ -409,4 +405,8 @@ export interface ServiceEdgeGroupArgs {
      * ID of the version profile.
      */
     versionProfileName?: pulumi.Input<string>;
+    /**
+     * ID of the version profile.
+     */
+    versionProfileVisibilityScope?: pulumi.Input<string>;
 }

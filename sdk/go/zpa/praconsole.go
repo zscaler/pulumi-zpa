@@ -17,6 +17,110 @@ import (
 //
 // The **zpa_pra_console_controller** resource creates a privileged remote access console in the Zscaler Private Access cloud. This resource can then be referenced in an privileged access policy resource and a privileged access portal.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Creates Segment Group for Application Segment"
+//			thisSegmentGroup, err := zpa.NewSegmentGroup(ctx, "thisSegmentGroup", &zpa.SegmentGroupArgs{
+//				Description: pulumi.String("Example"),
+//				Enabled:     pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Creates Privileged Remote Access Application Segment"
+//			_, err = zpa.NewApplicationSegmentPRA(ctx, "thisApplicationSegmentPRA", &zpa.ApplicationSegmentPRAArgs{
+//				Description:     pulumi.String("Example"),
+//				Enabled:         pulumi.Bool(true),
+//				HealthReporting: pulumi.String("ON_ACCESS"),
+//				BypassType:      pulumi.String("NEVER"),
+//				IsCnameEnabled:  pulumi.Bool(true),
+//				TcpPortRanges: pulumi.StringArray{
+//					pulumi.String("3389"),
+//					pulumi.String("3389"),
+//				},
+//				DomainNames: pulumi.StringArray{
+//					pulumi.String("rdp_pra.example.com"),
+//				},
+//				SegmentGroupId: thisSegmentGroup.ID(),
+//				CommonAppsDto: &zpa.ApplicationSegmentPRACommonAppsDtoArgs{
+//					AppsConfigs: zpa.ApplicationSegmentPRACommonAppsDtoAppsConfigArray{
+//						&zpa.ApplicationSegmentPRACommonAppsDtoAppsConfigArgs{
+//							Name:                pulumi.String("rdp_pra"),
+//							Domain:              pulumi.String("rdp_pra.example.com"),
+//							ApplicationProtocol: pulumi.String("RDP"),
+//							ConnectionSecurity:  pulumi.String("ANY"),
+//							ApplicationPort:     pulumi.String("3389"),
+//							Enabled:             pulumi.Bool(true),
+//							AppTypes: pulumi.StringArray{
+//								pulumi.String("SECURE_REMOTE_ACCESS"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thisApplicationSegmentByType, err := zpa.GetApplicationSegmentByType(ctx, &zpa.GetApplicationSegmentByTypeArgs{
+//				ApplicationType: "SECURE_REMOTE_ACCESS",
+//				Name:            pulumi.StringRef("rdp_pra"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			thisBaCertificate, err := zpa.GetBaCertificate(ctx, &zpa.GetBaCertificateArgs{
+//				Name: pulumi.StringRef("pra01.example.com"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Creates PRA Portal"
+//			_, err = zpa.NewPRAPortal(ctx, "this1", &zpa.PRAPortalArgs{
+//				Description:             pulumi.String("pra01.example.com"),
+//				Enabled:                 pulumi.Bool(true),
+//				Domain:                  pulumi.String("pra01.example.com"),
+//				CertificateId:           pulumi.String(thisBaCertificate.Id),
+//				UserNotification:        pulumi.String("Created with Terraform"),
+//				UserNotificationEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = zpa.NewPRAConsole(ctx, "sshPra", &zpa.PRAConsoleArgs{
+//				Description: pulumi.String("Created with Terraform"),
+//				Enabled:     pulumi.Bool(true),
+//				PraApplication: &zpa.PRAConsolePraApplicationArgs{
+//					Id: pulumi.String(thisApplicationSegmentByType.Id),
+//				},
+//				PraPortals: zpa.PRAConsolePraPortalArray{
+//					&zpa.PRAConsolePraPortalArgs{
+//						Ids: pulumi.StringArray{
+//							zpa_pra_portal_controller.This.Id,
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.

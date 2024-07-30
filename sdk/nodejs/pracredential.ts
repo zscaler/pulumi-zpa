@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
@@ -26,10 +25,9 @@ import * as utilities from "./utilities";
  *     username: "jdoe",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS #########
- * <!--Start PulumiCodeChooser -->
+ * ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE #########\
+ * ######### ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ##########
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
@@ -40,7 +38,6 @@ import * as utilities from "./utilities";
  *     description: "Created with Terraform",
  *     privateKey: `-----BEGIN PRIVATE KEY-----
  * MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEjc8pPoobS0l6
- * KjldVtViVwqCTXZZOjHnmEIMn+XKU3sEYlqDKLp6TByIsBlITKd3Ju8qMBNwXcfi
  * -----END PRIVATE KEY-----
  *
  * `,
@@ -48,7 +45,6 @@ import * as utilities from "./utilities";
  *     username: "jdoe",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

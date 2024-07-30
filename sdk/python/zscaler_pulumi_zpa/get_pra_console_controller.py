@@ -110,6 +110,9 @@ class GetPraConsoleControllerResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        - (Required) The name of the privileged console.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -146,7 +149,11 @@ class AwaitableGetPraConsoleControllerResult(GetPraConsoleControllerResult):
 def get_pra_console_controller(id: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPraConsoleControllerResult:
     """
-    Use this data source to access information about an existing resource.
+    * [Official documentation](https://help.zscaler.com/zpa/about-privileged-consoles)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-consoles-using-api)
+
+    The **zpa_pra_console_controller** data source gets information about a privileged remote access console created in the Zscaler Private Access cloud.
+    This resource can then be referenced in an privileged access policy credential and a privileged access portal resource.
     """
     pulumi.log.warn("""get_pra_console_controller is deprecated: zpa.index/getpraconsolecontroller.getPraConsoleController has been deprecated in favor of zpa.index/getpraconsole.getPRAConsole""")
     __args__ = dict()
@@ -173,7 +180,11 @@ def get_pra_console_controller(id: Optional[str] = None,
 def get_pra_console_controller_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPraConsoleControllerResult]:
     """
-    Use this data source to access information about an existing resource.
+    * [Official documentation](https://help.zscaler.com/zpa/about-privileged-consoles)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-consoles-using-api)
+
+    The **zpa_pra_console_controller** data source gets information about a privileged remote access console created in the Zscaler Private Access cloud.
+    This resource can then be referenced in an privileged access policy credential and a privileged access portal resource.
     """
     pulumi.log.warn("""get_pra_console_controller is deprecated: zpa.index/getpraconsolecontroller.getPraConsoleController has been deprecated in favor of zpa.index/getpraconsole.getPRAConsole""")
     ...

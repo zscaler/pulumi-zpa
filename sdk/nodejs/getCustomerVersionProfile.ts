@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -35,7 +34,6 @@ import * as utilities from "./utilities";
  *     name: "New Release",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCustomerVersionProfile(args: GetCustomerVersionProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomerVersionProfileResult> {
 
@@ -82,7 +80,6 @@ export interface GetCustomerVersionProfileResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -97,7 +94,6 @@ export interface GetCustomerVersionProfileResult {
  *     name: "New Release",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCustomerVersionProfileOutput(args: GetCustomerVersionProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomerVersionProfileResult> {
     return pulumi.output(args).apply((a: any) => getCustomerVersionProfile(a, opts))

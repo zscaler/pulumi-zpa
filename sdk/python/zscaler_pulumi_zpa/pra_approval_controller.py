@@ -17,7 +17,7 @@ __all__ = ['PraApprovalControllerArgs', 'PraApprovalController']
 class PraApprovalControllerArgs:
     def __init__(__self__, *,
                  applications: pulumi.Input[Sequence[pulumi.Input['PraApprovalControllerApplicationArgs']]],
-                 email_ids: Optional[pulumi.Input[str]] = None,
+                 email_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  microtenant_id: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
@@ -25,7 +25,7 @@ class PraApprovalControllerArgs:
                  working_hours: Optional[pulumi.Input[Sequence[pulumi.Input['PraApprovalControllerWorkingHourArgs']]]] = None):
         """
         The set of arguments for constructing a PraApprovalController resource.
-        :param pulumi.Input[str] email_ids: The email address of the user that you are assigning the privileged approval to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_ids: The email address of the user that you are assigning the privileged approval to
         :param pulumi.Input[str] end_time: The end date that the user no longer has access to the privileged approval
         :param pulumi.Input[str] microtenant_id: The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
                microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
@@ -57,14 +57,14 @@ class PraApprovalControllerArgs:
 
     @property
     @pulumi.getter(name="emailIds")
-    def email_ids(self) -> Optional[pulumi.Input[str]]:
+    def email_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The email address of the user that you are assigning the privileged approval to
         """
         return pulumi.get(self, "email_ids")
 
     @email_ids.setter
-    def email_ids(self, value: Optional[pulumi.Input[str]]):
+    def email_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "email_ids", value)
 
     @property
@@ -130,7 +130,7 @@ class PraApprovalControllerArgs:
 class _PraApprovalControllerState:
     def __init__(__self__, *,
                  applications: Optional[pulumi.Input[Sequence[pulumi.Input['PraApprovalControllerApplicationArgs']]]] = None,
-                 email_ids: Optional[pulumi.Input[str]] = None,
+                 email_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  microtenant_id: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
@@ -138,7 +138,7 @@ class _PraApprovalControllerState:
                  working_hours: Optional[pulumi.Input[Sequence[pulumi.Input['PraApprovalControllerWorkingHourArgs']]]] = None):
         """
         Input properties used for looking up and filtering PraApprovalController resources.
-        :param pulumi.Input[str] email_ids: The email address of the user that you are assigning the privileged approval to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_ids: The email address of the user that you are assigning the privileged approval to
         :param pulumi.Input[str] end_time: The end date that the user no longer has access to the privileged approval
         :param pulumi.Input[str] microtenant_id: The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
                microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
@@ -171,14 +171,14 @@ class _PraApprovalControllerState:
 
     @property
     @pulumi.getter(name="emailIds")
-    def email_ids(self) -> Optional[pulumi.Input[str]]:
+    def email_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The email address of the user that you are assigning the privileged approval to
         """
         return pulumi.get(self, "email_ids")
 
     @email_ids.setter
-    def email_ids(self, value: Optional[pulumi.Input[str]]):
+    def email_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "email_ids", value)
 
     @property
@@ -251,7 +251,7 @@ class PraApprovalController(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  applications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PraApprovalControllerApplicationArgs']]]]] = None,
-                 email_ids: Optional[pulumi.Input[str]] = None,
+                 email_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  microtenant_id: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
@@ -259,10 +259,34 @@ class PraApprovalController(pulumi.CustomResource):
                  working_hours: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PraApprovalControllerWorkingHourArgs']]]]] = None,
                  __props__=None):
         """
-        Create a PraApprovalController resource with the given unique name, props, and options.
+        * [Official documentation](https://help.zscaler.com/zpa/about-privileged-approvals)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-approvals-using-api)
+
+        The **zpa_pra_approval_controller** resource creates a privileged remote access approval in the Zscaler Private Access cloud. This resource allows third-party users and contractors to be able to log in to a Privileged Remote Access (PRA) portal.
+
+        ## Import
+
+        Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+
+        Visit
+
+        **zpa_pra_approval_controller** can be imported by using `<APPROVAL ID>` or `<APPROVAL NAME>` as the import ID.
+
+        For example:
+
+        ```sh
+        $ pulumi import zpa:index/praApprovalController:PraApprovalController this <approval_id>
+        ```
+
+        or
+
+        ```sh
+        $ pulumi import zpa:index/praApprovalController:PraApprovalController this <approval_name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] email_ids: The email address of the user that you are assigning the privileged approval to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_ids: The email address of the user that you are assigning the privileged approval to
         :param pulumi.Input[str] end_time: The end date that the user no longer has access to the privileged approval
         :param pulumi.Input[str] microtenant_id: The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
                microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
@@ -276,7 +300,31 @@ class PraApprovalController(pulumi.CustomResource):
                  args: PraApprovalControllerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a PraApprovalController resource with the given unique name, props, and options.
+        * [Official documentation](https://help.zscaler.com/zpa/about-privileged-approvals)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-approvals-using-api)
+
+        The **zpa_pra_approval_controller** resource creates a privileged remote access approval in the Zscaler Private Access cloud. This resource allows third-party users and contractors to be able to log in to a Privileged Remote Access (PRA) portal.
+
+        ## Import
+
+        Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+
+        Visit
+
+        **zpa_pra_approval_controller** can be imported by using `<APPROVAL ID>` or `<APPROVAL NAME>` as the import ID.
+
+        For example:
+
+        ```sh
+        $ pulumi import zpa:index/praApprovalController:PraApprovalController this <approval_id>
+        ```
+
+        or
+
+        ```sh
+        $ pulumi import zpa:index/praApprovalController:PraApprovalController this <approval_name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param PraApprovalControllerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -293,7 +341,7 @@ class PraApprovalController(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  applications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PraApprovalControllerApplicationArgs']]]]] = None,
-                 email_ids: Optional[pulumi.Input[str]] = None,
+                 email_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  microtenant_id: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
@@ -329,7 +377,7 @@ class PraApprovalController(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             applications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PraApprovalControllerApplicationArgs']]]]] = None,
-            email_ids: Optional[pulumi.Input[str]] = None,
+            email_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             end_time: Optional[pulumi.Input[str]] = None,
             microtenant_id: Optional[pulumi.Input[str]] = None,
             start_time: Optional[pulumi.Input[str]] = None,
@@ -342,7 +390,7 @@ class PraApprovalController(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] email_ids: The email address of the user that you are assigning the privileged approval to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_ids: The email address of the user that you are assigning the privileged approval to
         :param pulumi.Input[str] end_time: The end date that the user no longer has access to the privileged approval
         :param pulumi.Input[str] microtenant_id: The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
                microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
@@ -369,7 +417,7 @@ class PraApprovalController(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="emailIds")
-    def email_ids(self) -> pulumi.Output[str]:
+    def email_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         The email address of the user that you are assigning the privileged approval to
         """

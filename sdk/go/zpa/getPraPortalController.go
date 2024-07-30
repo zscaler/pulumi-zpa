@@ -11,6 +11,37 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-privileged-portals)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-portals-using-api)
+//
+// Use the **zpa_pra_portal_controller** data source to get information about a privileged remote access portal created in the Zscaler Private Access cloud. This data source can then be referenced in an privileged remote access console resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := zpa.LookupPRAPortal(ctx, &zpa.LookupPRAPortalArgs{
+//				Name: pulumi.StringRef("Example"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // Deprecated: zpa.index/getpraportalcontroller.getPraPortalController has been deprecated in favor of zpa.index/getpraportal.getPRAPortal
 func LookupPraPortalController(ctx *pulumi.Context, args *LookupPraPortalControllerArgs, opts ...pulumi.InvokeOption) (*LookupPraPortalControllerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

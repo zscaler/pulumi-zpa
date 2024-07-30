@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,7 +41,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Retrieve CBI Banner ID
 //			_, err := zpa.NewCloudBrowserIsolationCertificate(ctx, "thisCloudBrowserIsolationCertificate", &zpa.CloudBrowserIsolationCertificateArgs{
-//				Pem: readFileOrPanic("cert.pem"),
+//				Pem: pulumi.String(readFileOrPanic("cert.pem")),
 //			})
 //			if err != nil {
 //				return err
@@ -58,7 +57,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type CloudBrowserIsolationCertificate struct {
 	pulumi.CustomResourceState
 

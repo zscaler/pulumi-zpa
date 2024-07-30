@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetCloudBrowserIsolationRegion(ctx *pulumi.Context, args *GetCloudBrowserIsolationRegionArgs, opts ...pulumi.InvokeOption) (*GetCloudBrowserIsolationRegionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCloudBrowserIsolationRegionResult

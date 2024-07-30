@@ -11,6 +11,10 @@ import * as utilities from "./utilities";
  * * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-profiles-using-api)
  *
  * The  **zpa_inspection_profile** resource creates an inspection profile in the Zscaler Private Access cloud. This resource can then be referenced in an inspection custom control resource.
+ *
+ * **NOTE** There are several ways to set up the Inspection Profile due to its complex data structure
+ *
+ * ## Example Usage
  */
 export class InspectionProfile extends pulumi.CustomResource {
     /**
@@ -40,7 +44,9 @@ export class InspectionProfile extends pulumi.CustomResource {
         return obj['__pulumiType'] === InspectionProfile.__pulumiType;
     }
 
+    public readonly apiProfile!: pulumi.Output<boolean | undefined>;
     public readonly associateAllControls!: pulumi.Output<boolean | undefined>;
+    public readonly commonGlobalOverrideActionsConfig!: pulumi.Output<{[key: string]: string}>;
     public readonly controlsInfos!: pulumi.Output<outputs.InspectionProfileControlsInfo[]>;
     /**
      * The set of AppProtection controls used to define how inspections are managed
@@ -54,8 +60,8 @@ export class InspectionProfile extends pulumi.CustomResource {
      * The actions of the predefined, custom, or override controls
      */
     public readonly globalControlActions!: pulumi.Output<string[] | undefined>;
-    public readonly incarnationNumber!: pulumi.Output<string | undefined>;
     public readonly name!: pulumi.Output<string>;
+    public readonly overrideAction!: pulumi.Output<string | undefined>;
     /**
      * The OWASP Predefined Paranoia Level
      */
@@ -63,11 +69,23 @@ export class InspectionProfile extends pulumi.CustomResource {
     /**
      * The predefined controls
      */
-    public readonly predefinedControls!: pulumi.Output<outputs.InspectionProfilePredefinedControl[]>;
+    public readonly predefinedApiControls!: pulumi.Output<outputs.InspectionProfilePredefinedApiControl[] | undefined>;
+    /**
+     * The predefined controls
+     */
+    public readonly predefinedControls!: pulumi.Output<outputs.InspectionProfilePredefinedControl[] | undefined>;
     /**
      * The protocol for the AppProtection application
      */
     public readonly predefinedControlsVersion!: pulumi.Output<string | undefined>;
+    /**
+     * The ThreatLabZ predefined controls
+     */
+    public readonly threatLabzControls!: pulumi.Output<outputs.InspectionProfileThreatLabzControl[] | undefined>;
+    /**
+     * The WebSocket predefined controls
+     */
+    public readonly websocketControls!: pulumi.Output<outputs.InspectionProfileWebsocketControl[] | undefined>;
     /**
      * Indicates the user's choice for the ThreatLabZ Controls. Supported values: ALL and SPECIFIC
      */
@@ -86,29 +104,39 @@ export class InspectionProfile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InspectionProfileState | undefined;
+            resourceInputs["apiProfile"] = state ? state.apiProfile : undefined;
             resourceInputs["associateAllControls"] = state ? state.associateAllControls : undefined;
+            resourceInputs["commonGlobalOverrideActionsConfig"] = state ? state.commonGlobalOverrideActionsConfig : undefined;
             resourceInputs["controlsInfos"] = state ? state.controlsInfos : undefined;
             resourceInputs["customControls"] = state ? state.customControls : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["globalControlActions"] = state ? state.globalControlActions : undefined;
-            resourceInputs["incarnationNumber"] = state ? state.incarnationNumber : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["overrideAction"] = state ? state.overrideAction : undefined;
             resourceInputs["paranoiaLevel"] = state ? state.paranoiaLevel : undefined;
+            resourceInputs["predefinedApiControls"] = state ? state.predefinedApiControls : undefined;
             resourceInputs["predefinedControls"] = state ? state.predefinedControls : undefined;
             resourceInputs["predefinedControlsVersion"] = state ? state.predefinedControlsVersion : undefined;
+            resourceInputs["threatLabzControls"] = state ? state.threatLabzControls : undefined;
+            resourceInputs["websocketControls"] = state ? state.websocketControls : undefined;
             resourceInputs["zsDefinedControlChoice"] = state ? state.zsDefinedControlChoice : undefined;
         } else {
             const args = argsOrState as InspectionProfileArgs | undefined;
+            resourceInputs["apiProfile"] = args ? args.apiProfile : undefined;
             resourceInputs["associateAllControls"] = args ? args.associateAllControls : undefined;
+            resourceInputs["commonGlobalOverrideActionsConfig"] = args ? args.commonGlobalOverrideActionsConfig : undefined;
             resourceInputs["controlsInfos"] = args ? args.controlsInfos : undefined;
             resourceInputs["customControls"] = args ? args.customControls : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["globalControlActions"] = args ? args.globalControlActions : undefined;
-            resourceInputs["incarnationNumber"] = args ? args.incarnationNumber : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["overrideAction"] = args ? args.overrideAction : undefined;
             resourceInputs["paranoiaLevel"] = args ? args.paranoiaLevel : undefined;
+            resourceInputs["predefinedApiControls"] = args ? args.predefinedApiControls : undefined;
             resourceInputs["predefinedControls"] = args ? args.predefinedControls : undefined;
             resourceInputs["predefinedControlsVersion"] = args ? args.predefinedControlsVersion : undefined;
+            resourceInputs["threatLabzControls"] = args ? args.threatLabzControls : undefined;
+            resourceInputs["websocketControls"] = args ? args.websocketControls : undefined;
             resourceInputs["zsDefinedControlChoice"] = args ? args.zsDefinedControlChoice : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -120,7 +148,9 @@ export class InspectionProfile extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InspectionProfile resources.
  */
 export interface InspectionProfileState {
+    apiProfile?: pulumi.Input<boolean>;
     associateAllControls?: pulumi.Input<boolean>;
+    commonGlobalOverrideActionsConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     controlsInfos?: pulumi.Input<pulumi.Input<inputs.InspectionProfileControlsInfo>[]>;
     /**
      * The set of AppProtection controls used to define how inspections are managed
@@ -134,12 +164,16 @@ export interface InspectionProfileState {
      * The actions of the predefined, custom, or override controls
      */
     globalControlActions?: pulumi.Input<pulumi.Input<string>[]>;
-    incarnationNumber?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
+    overrideAction?: pulumi.Input<string>;
     /**
      * The OWASP Predefined Paranoia Level
      */
     paranoiaLevel?: pulumi.Input<string>;
+    /**
+     * The predefined controls
+     */
+    predefinedApiControls?: pulumi.Input<pulumi.Input<inputs.InspectionProfilePredefinedApiControl>[]>;
     /**
      * The predefined controls
      */
@@ -148,6 +182,14 @@ export interface InspectionProfileState {
      * The protocol for the AppProtection application
      */
     predefinedControlsVersion?: pulumi.Input<string>;
+    /**
+     * The ThreatLabZ predefined controls
+     */
+    threatLabzControls?: pulumi.Input<pulumi.Input<inputs.InspectionProfileThreatLabzControl>[]>;
+    /**
+     * The WebSocket predefined controls
+     */
+    websocketControls?: pulumi.Input<pulumi.Input<inputs.InspectionProfileWebsocketControl>[]>;
     /**
      * Indicates the user's choice for the ThreatLabZ Controls. Supported values: ALL and SPECIFIC
      */
@@ -158,7 +200,9 @@ export interface InspectionProfileState {
  * The set of arguments for constructing a InspectionProfile resource.
  */
 export interface InspectionProfileArgs {
+    apiProfile?: pulumi.Input<boolean>;
     associateAllControls?: pulumi.Input<boolean>;
+    commonGlobalOverrideActionsConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     controlsInfos?: pulumi.Input<pulumi.Input<inputs.InspectionProfileControlsInfo>[]>;
     /**
      * The set of AppProtection controls used to define how inspections are managed
@@ -172,12 +216,16 @@ export interface InspectionProfileArgs {
      * The actions of the predefined, custom, or override controls
      */
     globalControlActions?: pulumi.Input<pulumi.Input<string>[]>;
-    incarnationNumber?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
+    overrideAction?: pulumi.Input<string>;
     /**
      * The OWASP Predefined Paranoia Level
      */
     paranoiaLevel?: pulumi.Input<string>;
+    /**
+     * The predefined controls
+     */
+    predefinedApiControls?: pulumi.Input<pulumi.Input<inputs.InspectionProfilePredefinedApiControl>[]>;
     /**
      * The predefined controls
      */
@@ -186,6 +234,14 @@ export interface InspectionProfileArgs {
      * The protocol for the AppProtection application
      */
     predefinedControlsVersion?: pulumi.Input<string>;
+    /**
+     * The ThreatLabZ predefined controls
+     */
+    threatLabzControls?: pulumi.Input<pulumi.Input<inputs.InspectionProfileThreatLabzControl>[]>;
+    /**
+     * The WebSocket predefined controls
+     */
+    websocketControls?: pulumi.Input<pulumi.Input<inputs.InspectionProfileWebsocketControl>[]>;
     /**
      * Indicates the user's choice for the ThreatLabZ Controls. Supported values: ALL and SPECIFIC
      */

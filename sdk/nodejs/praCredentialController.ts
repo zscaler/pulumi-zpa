@@ -5,6 +5,67 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-privileged-credentials)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-credentials-using-api)
+ *
+ * The **zpa_pra_credential_controller** resource creates a privileged remote access credential in the Zscaler Private Access cloud. This resource can then be referenced in an privileged access policy resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * // Creates Credential of Type "USERNAME_PASSWORD"
+ * const _this = new zpa.PRACredential("this", {
+ *     credentialType: "USERNAME_PASSWORD",
+ *     description: "Created with Terraform",
+ *     password: "",
+ *     userDomain: "acme.com",
+ *     username: "jdoe",
+ * });
+ * ```
+ *
+ * ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE #########\
+ * ######### ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ##########
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * // Creates Credential of Type "SSH_KEY"
+ * const _this = new zpa.PRACredential("this", {
+ *     credentialType: "SSH_KEY",
+ *     description: "Created with Terraform",
+ *     privateKey: `-----BEGIN PRIVATE KEY-----
+ * MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEjc8pPoobS0l6
+ * -----END PRIVATE KEY-----
+ *
+ * `,
+ *     userDomain: "acme.com",
+ *     username: "jdoe",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+ *
+ * Visit
+ *
+ * **pra_credential_controller** can be imported by using `<CREDENTIAL ID>` or `<CREDENTIAL NAME>` as the import ID.
+ *
+ * For example:
+ *
+ * ```sh
+ * $ pulumi import zpa:index/praCredentialController:PraCredentialController this <credential_id>
+ * ```
+ *
+ * or
+ *
+ * ```sh
+ * $ pulumi import zpa:index/praCredentialController:PraCredentialController this <credential_name>
+ * ```
+ *
  * @deprecated zpa.index/pracredentialcontroller.PraCredentialController has been deprecated in favor of zpa.index/pracredential.PRACredential
  */
 export class PraCredentialController extends pulumi.CustomResource {

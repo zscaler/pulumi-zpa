@@ -35,7 +35,8 @@ class ServiceEdgeGroupArgs:
                  upgrade_day: Optional[pulumi.Input[str]] = None,
                  upgrade_time_in_secs: Optional[pulumi.Input[str]] = None,
                  version_profile_id: Optional[pulumi.Input[str]] = None,
-                 version_profile_name: Optional[pulumi.Input[str]] = None):
+                 version_profile_name: Optional[pulumi.Input[str]] = None,
+                 version_profile_visibility_scope: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServiceEdgeGroup resource.
         :param pulumi.Input[str] latitude: Latitude for the Service Edge Group.
@@ -57,6 +58,7 @@ class ServiceEdgeGroupArgs:
         :param pulumi.Input[str] upgrade_time_in_secs: Service Edges in this group will attempt to update to a newer version of the software during this specified time.
         :param pulumi.Input[str] version_profile_id: ID of the version profile.
         :param pulumi.Input[str] version_profile_name: ID of the version profile.
+        :param pulumi.Input[str] version_profile_visibility_scope: ID of the version profile.
         """
         pulumi.set(__self__, "latitude", latitude)
         pulumi.set(__self__, "location", location)
@@ -95,6 +97,8 @@ class ServiceEdgeGroupArgs:
             pulumi.set(__self__, "version_profile_id", version_profile_id)
         if version_profile_name is not None:
             pulumi.set(__self__, "version_profile_name", version_profile_name)
+        if version_profile_visibility_scope is not None:
+            pulumi.set(__self__, "version_profile_visibility_scope", version_profile_visibility_scope)
 
     @property
     @pulumi.getter
@@ -326,6 +330,18 @@ class ServiceEdgeGroupArgs:
     @version_profile_name.setter
     def version_profile_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version_profile_name", value)
+
+    @property
+    @pulumi.getter(name="versionProfileVisibilityScope")
+    def version_profile_visibility_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the version profile.
+        """
+        return pulumi.get(self, "version_profile_visibility_scope")
+
+    @version_profile_visibility_scope.setter
+    def version_profile_visibility_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_profile_visibility_scope", value)
 
 
 @pulumi.input_type
@@ -687,6 +703,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
                  upgrade_time_in_secs: Optional[pulumi.Input[str]] = None,
                  version_profile_id: Optional[pulumi.Input[str]] = None,
                  version_profile_name: Optional[pulumi.Input[str]] = None,
+                 version_profile_visibility_scope: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         * [Official documentation](https://help.zscaler.com/zpa/about-zpa-private-service-edge-groups)
@@ -696,7 +713,6 @@ class ServiceEdgeGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -716,9 +732,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
                 ids=[data["zpa_trusted_network"]["example"]["id"]],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -735,7 +749,6 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             upgrade_time_in_secs="66600",
             version_profile_name="New Release")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -778,6 +791,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         :param pulumi.Input[str] upgrade_time_in_secs: Service Edges in this group will attempt to update to a newer version of the software during this specified time.
         :param pulumi.Input[str] version_profile_id: ID of the version profile.
         :param pulumi.Input[str] version_profile_name: ID of the version profile.
+        :param pulumi.Input[str] version_profile_visibility_scope: ID of the version profile.
         """
         ...
     @overload
@@ -793,7 +807,6 @@ class ServiceEdgeGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -813,9 +826,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
                 ids=[data["zpa_trusted_network"]["example"]["id"]],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -832,7 +843,6 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             upgrade_time_in_secs="66600",
             version_profile_name="New Release")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -889,6 +899,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
                  upgrade_time_in_secs: Optional[pulumi.Input[str]] = None,
                  version_profile_id: Optional[pulumi.Input[str]] = None,
                  version_profile_name: Optional[pulumi.Input[str]] = None,
+                 version_profile_visibility_scope: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -924,7 +935,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             __props__.__dict__["upgrade_time_in_secs"] = upgrade_time_in_secs
             __props__.__dict__["version_profile_id"] = version_profile_id
             __props__.__dict__["version_profile_name"] = version_profile_name
-            __props__.__dict__["version_profile_visibility_scope"] = None
+            __props__.__dict__["version_profile_visibility_scope"] = version_profile_visibility_scope
         super(ServiceEdgeGroup, __self__).__init__(
             'zpa:index/serviceEdgeGroup:ServiceEdgeGroup',
             resource_name,

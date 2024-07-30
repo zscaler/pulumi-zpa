@@ -18,7 +18,6 @@ namespace Zscaler.Zpa
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -53,9 +52,7 @@ namespace Zscaler.Zpa
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -80,7 +77,6 @@ namespace Zscaler.Zpa
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -390,6 +386,12 @@ namespace Zscaler.Zpa
         /// </summary>
         [Input("versionProfileName")]
         public Input<string>? VersionProfileName { get; set; }
+
+        /// <summary>
+        /// ID of the version profile.
+        /// </summary>
+        [Input("versionProfileVisibilityScope")]
+        public Input<string>? VersionProfileVisibilityScope { get; set; }
 
         public ServiceEdgeGroupArgs()
         {

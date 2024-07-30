@@ -22,7 +22,6 @@ import (
 //
 // ### Defined Customer ID Value
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -35,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := zpa.NewAssistantSchedule(ctx, "this", &zpa.AssistantScheduleArgs{
+//			_, err := zpa.NewAppConnectorAssistantSchedule(ctx, "this", &zpa.AppConnectorAssistantScheduleArgs{
 //				CustomerId:        pulumi.String("123456789101112"),
 //				DeleteDisabled:    pulumi.Bool(true),
 //				Enabled:           pulumi.Bool(true),
@@ -50,11 +49,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Customer ID Via Environment Variable
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -67,7 +64,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := zpa.NewAssistantSchedule(ctx, "this", &zpa.AssistantScheduleArgs{
+//			_, err := zpa.NewAppConnectorAssistantSchedule(ctx, "this", &zpa.AppConnectorAssistantScheduleArgs{
 //				DeleteDisabled:    pulumi.Bool(true),
 //				Enabled:           pulumi.Bool(true),
 //				Frequency:         pulumi.String("days"),
@@ -81,11 +78,12 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Import is not currently supported for this resource.
+//
+// Deprecated: zpa.index/assistantschedule.AssistantSchedule has been deprecated in favor of zpa.index/appconnectorassistantschedule.AppConnectorAssistantSchedule
 type AssistantSchedule struct {
 	pulumi.CustomResourceState
 

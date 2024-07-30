@@ -7,6 +7,136 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-client-forwarding-policy)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-client-forwarding-policies-using-api)
+ *
+ * The **zpa_policy_forwarding_rule_v2** resource creates and manages policy access forwarding rule in the Zscaler Private Access cloud using a new v2 API endpoint.
+ *
+ *   ⚠️ **NOTE**: This resource is recommended if your configuration requires the association of more than 1000 resource criteria per rule.
+ *
+ *   ⚠️ **WARNING:**: The attribute ``ruleOrder`` is now deprecated in favor of the new resource  ``policyAccessRuleReorder``
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ * import * as zpa from "@pulumi/zpa";
+ *
+ * const thisIdPController = zpa.getIdPController({
+ *     name: "Idp_Name",
+ * });
+ * const emailUserSso = zpa.getSAMLAttribute({
+ *     name: "Email_Users",
+ *     idpName: "Idp_Name",
+ * });
+ * const groupUser = zpa.getSAMLAttribute({
+ *     name: "GroupName_Users",
+ *     idpName: "Idp_Name",
+ * });
+ * const a000 = zpa.getSCIMGroups({
+ *     name: "A000",
+ *     idpName: "Idp_Name",
+ * });
+ * const b000 = zpa.getSCIMGroups({
+ *     name: "B000",
+ *     idpName: "Idp_Name",
+ * });
+ * // Create Segment Group
+ * const thisSegmentGroup = new zpa.SegmentGroup("thisSegmentGroup", {
+ *     description: "Example",
+ *     enabled: true,
+ * });
+ * // Create Policy Access Rule V2
+ * const thisPolicyAccessForwardingRuleV2 = new zpa.PolicyAccessForwardingRuleV2("thisPolicyAccessForwardingRuleV2", {
+ *     description: "Example",
+ *     action: "BYPASS",
+ *     conditions: [
+ *         {
+ *             operator: "OR",
+ *             operands: [{
+ *                 objectType: "APP_GROUP",
+ *                 values: [thisSegmentGroup.id],
+ *             }],
+ *         },
+ *         {
+ *             operator: "OR",
+ *             operands: [
+ *                 {
+ *                     objectType: "SAML",
+ *                     entryValues: [
+ *                         {
+ *                             rhs: "user1@acme.com",
+ *                             lhs: emailUserSso.then(emailUserSso => emailUserSso.id),
+ *                         },
+ *                         {
+ *                             rhs: "A000",
+ *                             lhs: groupUser.then(groupUser => groupUser.id),
+ *                         },
+ *                     ],
+ *                 },
+ *                 {
+ *                     objectType: "SCIM_GROUP",
+ *                     entryValues: [
+ *                         {
+ *                             rhs: a000.then(a000 => a000.id),
+ *                             lhs: thisIdPController.then(thisIdPController => thisIdPController.id),
+ *                         },
+ *                         {
+ *                             rhs: b000.then(b000 => b000.id),
+ *                             lhs: thisIdPController.then(thisIdPController => thisIdPController.id),
+ *                         },
+ *                     ],
+ *                 },
+ *             ],
+ *         },
+ *         {
+ *             operator: "OR",
+ *             operands: [{
+ *                 objectType: "PLATFORM",
+ *                 entryValues: [
+ *                     {
+ *                         rhs: "true",
+ *                         lhs: "linux",
+ *                     },
+ *                     {
+ *                         rhs: "true",
+ *                         lhs: "android",
+ *                     },
+ *                 ],
+ *             }],
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## LHS and RHS Values
+ *
+ * | Object Type | LHS| RHS| VALUES
+ * |----------|-----------|----------|----------
+ * | APP  |   |  | ``applicationSegmentId`` |
+ * | APP_GROUP  |   |  | ``segmentGroupId``|
+ * | CLIENT_TYPE  |   |  |  ``zpnClientTypeZappl``, ``zpnClientTypeExporter``, ``zpnClientTypeBrowserIsolation``, ``zpnClientTypeIpAnchoring``, ``zpnClientTypeEdgeConnector``, ``zpnClientTypeBranchConnector``,  ``zpnClientTypeZappPartner``, ``zpnClientTypeZapp``  |
+ * | SAML | ``samlAttributeId``  | ``attributeValueToMatch`` |
+ * | SCIM | ``scimAttributeId``  | ``attributeValueToMatch``  |
+ * | SCIM_GROUP | ``scimGroupAttributeId``  | ``attributeValueToMatch``  |
+ * | PLATFORM | ``mac``, ``ios``, ``windows``, ``android``, ``linux`` | ``"true"`` / ``"false"`` |
+ * | POSTURE | ``postureUdid``  | ``"true"`` / ``"false"`` |
+ *
+ * ## Import
+ *
+ * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+ *
+ * Visit
+ *
+ * Policy access timeout rule can be imported by using `<RULE ID>` as the import ID.
+ *
+ * For example:
+ *
+ * ```sh
+ * $ pulumi import zpa:index/policyForwardingRuleV2:PolicyForwardingRuleV2 example <rule_id>
+ * ```
+ *
  * @deprecated zpa.index/policyforwardingrulev2.PolicyForwardingRuleV2 has been deprecated in favor of zpa.index/policyaccessforwardingrulev2.PolicyAccessForwardingRuleV2
  */
 export class PolicyForwardingRuleV2 extends pulumi.CustomResource {
@@ -39,7 +169,7 @@ export class PolicyForwardingRuleV2 extends pulumi.CustomResource {
     }
 
     /**
-     * This is for providing the rule action.
+     * This is for providing the rule action. Supported values: `BYPASS`, `INTERCEPT`, and `INTERCEPT_ACCESSIBLE`
      */
     public readonly action!: pulumi.Output<string | undefined>;
     /**
@@ -47,12 +177,12 @@ export class PolicyForwardingRuleV2 extends pulumi.CustomResource {
      */
     public readonly conditions!: pulumi.Output<outputs.PolicyForwardingRuleV2Condition[]>;
     /**
-     * This is the description of the access policy.
+     * This is the description of the access policy rule.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly microtenantId!: pulumi.Output<string>;
     /**
-     * This is the name of the policy.
+     * This is the name of the policy rule.
      */
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly policySetId!: pulumi.Output<string>;
@@ -98,7 +228,7 @@ export class PolicyForwardingRuleV2 extends pulumi.CustomResource {
  */
 export interface PolicyForwardingRuleV2State {
     /**
-     * This is for providing the rule action.
+     * This is for providing the rule action. Supported values: `BYPASS`, `INTERCEPT`, and `INTERCEPT_ACCESSIBLE`
      */
     action?: pulumi.Input<string>;
     /**
@@ -106,12 +236,12 @@ export interface PolicyForwardingRuleV2State {
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.PolicyForwardingRuleV2Condition>[]>;
     /**
-     * This is the description of the access policy.
+     * This is the description of the access policy rule.
      */
     description?: pulumi.Input<string>;
     microtenantId?: pulumi.Input<string>;
     /**
-     * This is the name of the policy.
+     * This is the name of the policy rule.
      */
     name?: pulumi.Input<string>;
     policySetId?: pulumi.Input<string>;
@@ -122,7 +252,7 @@ export interface PolicyForwardingRuleV2State {
  */
 export interface PolicyForwardingRuleV2Args {
     /**
-     * This is for providing the rule action.
+     * This is for providing the rule action. Supported values: `BYPASS`, `INTERCEPT`, and `INTERCEPT_ACCESSIBLE`
      */
     action?: pulumi.Input<string>;
     /**
@@ -130,12 +260,12 @@ export interface PolicyForwardingRuleV2Args {
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.PolicyForwardingRuleV2Condition>[]>;
     /**
-     * This is the description of the access policy.
+     * This is the description of the access policy rule.
      */
     description?: pulumi.Input<string>;
     microtenantId?: pulumi.Input<string>;
     /**
-     * This is the name of the policy.
+     * This is the name of the policy rule.
      */
     name?: pulumi.Input<string>;
 }

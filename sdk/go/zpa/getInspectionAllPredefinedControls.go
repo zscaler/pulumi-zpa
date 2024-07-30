@@ -18,7 +18,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -33,7 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := zpa.GetInspectionAllPredefinedControls(ctx, &zpa.GetInspectionAllPredefinedControlsArgs{
 //				GroupName: pulumi.StringRef("Preprocessors"),
-//				Version:   "OWASP_CRS/3.3.0",
+//				Version:   pulumi.StringRef("OWASP_CRS/3.3.0"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -43,7 +42,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetInspectionAllPredefinedControls(ctx *pulumi.Context, args *GetInspectionAllPredefinedControlsArgs, opts ...pulumi.InvokeOption) (*GetInspectionAllPredefinedControlsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInspectionAllPredefinedControlsResult
@@ -57,7 +55,7 @@ func GetInspectionAllPredefinedControls(ctx *pulumi.Context, args *GetInspection
 // A collection of arguments for invoking getInspectionAllPredefinedControls.
 type GetInspectionAllPredefinedControlsArgs struct {
 	GroupName *string `pulumi:"groupName"`
-	Version   string  `pulumi:"version"`
+	Version   *string `pulumi:"version"`
 }
 
 // A collection of values returned by getInspectionAllPredefinedControls.
@@ -66,7 +64,7 @@ type GetInspectionAllPredefinedControlsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id      string                                   `pulumi:"id"`
 	Lists   []GetInspectionAllPredefinedControlsList `pulumi:"lists"`
-	Version string                                   `pulumi:"version"`
+	Version *string                                  `pulumi:"version"`
 }
 
 func GetInspectionAllPredefinedControlsOutput(ctx *pulumi.Context, args GetInspectionAllPredefinedControlsOutputArgs, opts ...pulumi.InvokeOption) GetInspectionAllPredefinedControlsResultOutput {
@@ -85,7 +83,7 @@ func GetInspectionAllPredefinedControlsOutput(ctx *pulumi.Context, args GetInspe
 // A collection of arguments for invoking getInspectionAllPredefinedControls.
 type GetInspectionAllPredefinedControlsOutputArgs struct {
 	GroupName pulumi.StringPtrInput `pulumi:"groupName"`
-	Version   pulumi.StringInput    `pulumi:"version"`
+	Version   pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (GetInspectionAllPredefinedControlsOutputArgs) ElementType() reflect.Type {
@@ -122,8 +120,8 @@ func (o GetInspectionAllPredefinedControlsResultOutput) Lists() GetInspectionAll
 	}).(GetInspectionAllPredefinedControlsListArrayOutput)
 }
 
-func (o GetInspectionAllPredefinedControlsResultOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInspectionAllPredefinedControlsResult) string { return v.Version }).(pulumi.StringOutput)
+func (o GetInspectionAllPredefinedControlsResultOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInspectionAllPredefinedControlsResult) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 func init() {

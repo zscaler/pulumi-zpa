@@ -13,9 +13,53 @@ namespace Zscaler.Zpa
     [Obsolete(@"zpa.index/getpracredentialcontroller.getPraCredentialController has been deprecated in favor of zpa.index/getpracredential.getPRACredential")]
     public static class GetPraCredentialController
     {
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-privileged-credentials)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-credentials-using-api)
+        /// 
+        /// The **zpa_pra_credential_controller** resource creates a privileged remote access credential in the Zscaler Private Access cloud. This resource can then be referenced in an privileged access policy resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Zscaler.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Retrieves PRA Credential By ID
+        ///     var @this = new Zpa.PRACredential("this");
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetPraCredentialControllerResult> InvokeAsync(GetPraCredentialControllerArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPraCredentialControllerResult>("zpa:index/getPraCredentialController:getPraCredentialController", args ?? new GetPraCredentialControllerArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-privileged-credentials)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-credentials-using-api)
+        /// 
+        /// The **zpa_pra_credential_controller** resource creates a privileged remote access credential in the Zscaler Private Access cloud. This resource can then be referenced in an privileged access policy resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Zscaler.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Retrieves PRA Credential By ID
+        ///     var @this = new Zpa.PRACredential("this");
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetPraCredentialControllerResult> Invoke(GetPraCredentialControllerInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPraCredentialControllerResult>("zpa:index/getPraCredentialController:getPraCredentialController", args ?? new GetPraCredentialControllerInvokeArgs(), options.WithDefaults());
     }
@@ -26,6 +70,9 @@ namespace Zscaler.Zpa
         [Input("id")]
         public string? Id { get; set; }
 
+        /// <summary>
+        /// - (String) The name of the privileged credential.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -40,6 +87,9 @@ namespace Zscaler.Zpa
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// - (String) The name of the privileged credential.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -62,7 +112,11 @@ namespace Zscaler.Zpa
         public readonly string MicrotenantName;
         public readonly string ModifiedBy;
         public readonly string ModifiedTime;
+        /// <summary>
+        /// - (String) The name of the privileged credential.
+        /// </summary>
         public readonly string? Name;
+        public readonly string Password;
         public readonly string UserDomain;
         public readonly string Username;
 
@@ -88,6 +142,8 @@ namespace Zscaler.Zpa
 
             string? name,
 
+            string password,
+
             string userDomain,
 
             string username)
@@ -102,6 +158,7 @@ namespace Zscaler.Zpa
             ModifiedBy = modifiedBy;
             ModifiedTime = modifiedTime;
             Name = name;
+            Password = password;
             UserDomain = userDomain;
             Username = username;
         }

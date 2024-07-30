@@ -12,14 +12,19 @@ namespace Zscaler.Zpa.Outputs
 {
 
     [OutputType]
-    public sealed class InspectionCustomControlsAssociatedInspectionProfileName
+    public sealed class PolicyAccessCredentialRuleConditionOperandEntryValue
     {
-        public readonly ImmutableArray<string> Ids;
+        public readonly string? Lhs;
+        public readonly string? Rhs;
 
         [OutputConstructor]
-        private InspectionCustomControlsAssociatedInspectionProfileName(ImmutableArray<string> ids)
+        private PolicyAccessCredentialRuleConditionOperandEntryValue(
+            string? lhs,
+
+            string? rhs)
         {
-            Ids = ids;
+            Lhs = lhs;
+            Rhs = rhs;
         }
     }
 }

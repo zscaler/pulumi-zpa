@@ -7,6 +7,138 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-timeout-policy)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-timeout-policies-using-api)
+ *
+ * The **zpa_policy_timeout_rule_v2** resource creates and manages policy access timeout rule in the Zscaler Private Access cloud using a new v2 API endpoint.
+ *
+ *   ⚠️ **NOTE**: This resource is recommended if your configuration requires the association of more than 1000 resource criteria per rule.
+ *
+ *   ⚠️ **WARNING:**: The attribute ``ruleOrder`` is now deprecated in favor of the new resource  ``policyAccessRuleReorder``
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ * import * as zpa from "@pulumi/zpa";
+ *
+ * const thisIdPController = zpa.getIdPController({
+ *     name: "Idp_Name",
+ * });
+ * const emailUserSso = zpa.getSAMLAttribute({
+ *     name: "Email_Users",
+ *     idpName: "Idp_Name",
+ * });
+ * const groupUser = zpa.getSAMLAttribute({
+ *     name: "GroupName_Users",
+ *     idpName: "Idp_Name",
+ * });
+ * const a000 = zpa.getSCIMGroups({
+ *     name: "A000",
+ *     idpName: "Idp_Name",
+ * });
+ * const b000 = zpa.getSCIMGroups({
+ *     name: "B000",
+ *     idpName: "Idp_Name",
+ * });
+ * // Create Segment Group
+ * const thisSegmentGroup = new zpa.SegmentGroup("thisSegmentGroup", {
+ *     description: "Example",
+ *     enabled: true,
+ * });
+ * // Create Policy Access Rule V2
+ * const thisPolicyAccessTimeOutRuleV2 = new zpa.PolicyAccessTimeOutRuleV2("thisPolicyAccessTimeOutRuleV2", {
+ *     description: "Example",
+ *     action: "RE_AUTH",
+ *     reauthIdleTimeout: "10 Days",
+ *     reauthTimeout: "10 Days",
+ *     conditions: [
+ *         {
+ *             operator: "OR",
+ *             operands: [{
+ *                 objectType: "APP_GROUP",
+ *                 values: [thisSegmentGroup.id],
+ *             }],
+ *         },
+ *         {
+ *             operator: "OR",
+ *             operands: [
+ *                 {
+ *                     objectType: "SAML",
+ *                     entryValues: [
+ *                         {
+ *                             rhs: "user1@acme.com",
+ *                             lhs: emailUserSso.then(emailUserSso => emailUserSso.id),
+ *                         },
+ *                         {
+ *                             rhs: "A000",
+ *                             lhs: groupUser.then(groupUser => groupUser.id),
+ *                         },
+ *                     ],
+ *                 },
+ *                 {
+ *                     objectType: "SCIM_GROUP",
+ *                     entryValues: [
+ *                         {
+ *                             rhs: a000.then(a000 => a000.id),
+ *                             lhs: thisIdPController.then(thisIdPController => thisIdPController.id),
+ *                         },
+ *                         {
+ *                             rhs: b000.then(b000 => b000.id),
+ *                             lhs: thisIdPController.then(thisIdPController => thisIdPController.id),
+ *                         },
+ *                     ],
+ *                 },
+ *             ],
+ *         },
+ *         {
+ *             operator: "OR",
+ *             operands: [{
+ *                 objectType: "PLATFORM",
+ *                 entryValues: [
+ *                     {
+ *                         rhs: "true",
+ *                         lhs: "linux",
+ *                     },
+ *                     {
+ *                         rhs: "true",
+ *                         lhs: "android",
+ *                     },
+ *                 ],
+ *             }],
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## LHS and RHS Values
+ *
+ * | Object Type | LHS| RHS| VALUES
+ * |----------|-----------|----------|----------
+ * | APP  |   |  | ``applicationSegmentId`` |
+ * | APP_GROUP  |   |  | ``segmentGroupId``|
+ * | CLIENT_TYPE  |   |  |  ``zpnClientTypeZappl``, ``zpnClientTypeExporter``, ``zpnClientTypeBrowserIsolation``, ``zpnClientTypeIpAnchoring``, ``zpnClientTypeEdgeConnector``, ``zpnClientTypeBranchConnector``,  ``zpnClientTypeZappPartner``, ``zpnClientTypeZapp``  |
+ * | SAML | ``samlAttributeId``  | ``attributeValueToMatch`` |
+ * | SCIM | ``scimAttributeId``  | ``attributeValueToMatch``  |
+ * | SCIM_GROUP | ``scimGroupAttributeId``  | ``attributeValueToMatch``  |
+ * | PLATFORM | ``mac``, ``ios``, ``windows``, ``android``, ``linux`` | ``"true"`` / ``"false"`` |
+ * | POSTURE | ``postureUdid``  | ``"true"`` / ``"false"`` |
+ *
+ * ## Import
+ *
+ * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+ *
+ * Visit
+ *
+ * Policy access timeout rule can be imported by using `<RULE ID>` as the import ID.
+ *
+ * For example:
+ *
+ * ```sh
+ * $ pulumi import zpa:index/policyTimeoutRuleV2:PolicyTimeoutRuleV2 example <rule_id>
+ * ```
+ *
  * @deprecated zpa.index/policytimeoutrulev2.PolicyTimeoutRuleV2 has been deprecated in favor of zpa.index/policyaccesstimeoutrulev2.PolicyAccessTimeOutRuleV2
  */
 export class PolicyTimeoutRuleV2 extends pulumi.CustomResource {

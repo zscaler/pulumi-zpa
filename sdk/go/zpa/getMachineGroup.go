@@ -18,7 +18,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,9 +41,7 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,7 +65,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetMachineGroup(ctx *pulumi.Context, args *GetMachineGroupArgs, opts ...pulumi.InvokeOption) (*GetMachineGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMachineGroupResult

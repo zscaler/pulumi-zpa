@@ -14,26 +14,9 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class InspectionProfilePredefinedControl
     {
-        /// <summary>
-        /// The action of the predefined control
-        /// </summary>
         public readonly string? Action;
-        /// <summary>
-        /// The value for the predefined controls action. This field is only required if the action is set to REDIRECT
-        /// </summary>
         public readonly string? ActionValue;
-        /// <summary>
-        /// The control type of the custom control
-        /// </summary>
-        public readonly string? ControlType;
-        /// <summary>
-        /// The unique identifier of the predefined control
-        /// </summary>
         public readonly string? Id;
-        /// <summary>
-        /// The protocol type of the predefined control
-        /// </summary>
-        public readonly string? ProtocolType;
 
         [OutputConstructor]
         private InspectionProfilePredefinedControl(
@@ -41,17 +24,11 @@ namespace Zscaler.Zpa.Outputs
 
             string? actionValue,
 
-            string? controlType,
-
-            string? id,
-
-            string? protocolType)
+            string? id)
         {
             Action = action;
             ActionValue = actionValue;
-            ControlType = controlType;
             Id = id;
-            ProtocolType = protocolType;
         }
     }
 }

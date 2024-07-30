@@ -23,7 +23,7 @@ class GetPraCredentialControllerResult:
     """
     A collection of values returned by getPraCredentialController.
     """
-    def __init__(__self__, creation_time=None, credential_type=None, description=None, id=None, last_credential_reset_time=None, microtenant_id=None, microtenant_name=None, modified_by=None, modified_time=None, name=None, user_domain=None, username=None):
+    def __init__(__self__, creation_time=None, credential_type=None, description=None, id=None, last_credential_reset_time=None, microtenant_id=None, microtenant_name=None, modified_by=None, modified_time=None, name=None, password=None, user_domain=None, username=None):
         if creation_time and not isinstance(creation_time, str):
             raise TypeError("Expected argument 'creation_time' to be a str")
         pulumi.set(__self__, "creation_time", creation_time)
@@ -54,6 +54,9 @@ class GetPraCredentialControllerResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if password and not isinstance(password, str):
+            raise TypeError("Expected argument 'password' to be a str")
+        pulumi.set(__self__, "password", password)
         if user_domain and not isinstance(user_domain, str):
             raise TypeError("Expected argument 'user_domain' to be a str")
         pulumi.set(__self__, "user_domain", user_domain)
@@ -109,7 +112,15 @@ class GetPraCredentialControllerResult:
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        - (String) The name of the privileged credential.
+        """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="userDomain")
@@ -138,6 +149,7 @@ class AwaitableGetPraCredentialControllerResult(GetPraCredentialControllerResult
             modified_by=self.modified_by,
             modified_time=self.modified_time,
             name=self.name,
+            password=self.password,
             user_domain=self.user_domain,
             username=self.username)
 
@@ -146,7 +158,23 @@ def get_pra_credential_controller(id: Optional[str] = None,
                                   name: Optional[str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPraCredentialControllerResult:
     """
-    Use this data source to access information about an existing resource.
+    * [Official documentation](https://help.zscaler.com/zpa/about-privileged-credentials)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-credentials-using-api)
+
+    The **zpa_pra_credential_controller** resource creates a privileged remote access credential in the Zscaler Private Access cloud. This resource can then be referenced in an privileged access policy resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import zscaler_pulumi_zpa as zpa
+
+    # Retrieves PRA Credential By ID
+    this = zpa.PRACredential("this")
+    ```
+
+
+    :param str name: - (String) The name of the privileged credential.
     """
     pulumi.log.warn("""get_pra_credential_controller is deprecated: zpa.index/getpracredentialcontroller.getPraCredentialController has been deprecated in favor of zpa.index/getpracredential.getPRACredential""")
     __args__ = dict()
@@ -166,6 +194,7 @@ def get_pra_credential_controller(id: Optional[str] = None,
         modified_by=pulumi.get(__ret__, 'modified_by'),
         modified_time=pulumi.get(__ret__, 'modified_time'),
         name=pulumi.get(__ret__, 'name'),
+        password=pulumi.get(__ret__, 'password'),
         user_domain=pulumi.get(__ret__, 'user_domain'),
         username=pulumi.get(__ret__, 'username'))
 
@@ -175,7 +204,23 @@ def get_pra_credential_controller_output(id: Optional[pulumi.Input[Optional[str]
                                          name: Optional[pulumi.Input[Optional[str]]] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPraCredentialControllerResult]:
     """
-    Use this data source to access information about an existing resource.
+    * [Official documentation](https://help.zscaler.com/zpa/about-privileged-credentials)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-credentials-using-api)
+
+    The **zpa_pra_credential_controller** resource creates a privileged remote access credential in the Zscaler Private Access cloud. This resource can then be referenced in an privileged access policy resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import zscaler_pulumi_zpa as zpa
+
+    # Retrieves PRA Credential By ID
+    this = zpa.PRACredential("this")
+    ```
+
+
+    :param str name: - (String) The name of the privileged credential.
     """
     pulumi.log.warn("""get_pra_credential_controller is deprecated: zpa.index/getpracredentialcontroller.getPraCredentialController has been deprecated in favor of zpa.index/getpracredential.getPRACredential""")
     ...

@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "zpa:index/appConnectorAssistantSchedule:AppConnectorAssistantSchedule":
+		r = &AppConnectorAssistantSchedule{}
 	case "zpa:index/applicationSegment:ApplicationSegment":
 		r = &ApplicationSegment{}
 	case "zpa:index/applicationSegmentBrowserAccess:ApplicationSegmentBrowserAccess":
@@ -63,6 +65,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PRACredential{}
 	case "zpa:index/pRAPortal:PRAPortal":
 		r = &PRAPortal{}
+	case "zpa:index/policyAccessCredentialRule:PolicyAccessCredentialRule":
+		r = &PolicyAccessCredentialRule{}
 	case "zpa:index/policyAccessForwardingRule:PolicyAccessForwardingRule":
 		r = &PolicyAccessForwardingRule{}
 	case "zpa:index/policyAccessForwardingRuleV2:PolicyAccessForwardingRuleV2":
@@ -113,6 +117,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SegmentGroup{}
 	case "zpa:index/serverGroup:ServerGroup":
 		r = &ServerGroup{}
+	case "zpa:index/serviceEdgeAssistantSchedule:ServiceEdgeAssistantSchedule":
+		r = &ServiceEdgeAssistantSchedule{}
 	case "zpa:index/serviceEdgeGroup:ServiceEdgeGroup":
 		r = &ServiceEdgeGroup{}
 	default:
@@ -146,6 +152,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/appConnectorAssistantSchedule",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"zpa",
 		"index/applicationSegment",
@@ -249,6 +260,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"zpa",
 		"index/pRAPortal",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/policyAccessCredentialRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -374,6 +390,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"zpa",
 		"index/serverGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/serviceEdgeAssistantSchedule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

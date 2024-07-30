@@ -19,7 +19,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -90,7 +89,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -131,14 +129,13 @@ type ApplicationSegmentPRA struct {
 	IpAnchored      pulumi.BoolOutput      `pulumi:"ipAnchored"`
 	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
 	// connectors.
-	IsCnameEnabled       pulumi.BoolOutput    `pulumi:"isCnameEnabled"`
-	IsIncompleteDrConfig pulumi.BoolPtrOutput `pulumi:"isIncompleteDrConfig"`
-	MatchStyle           pulumi.StringOutput  `pulumi:"matchStyle"`
+	IsCnameEnabled       pulumi.BoolOutput   `pulumi:"isCnameEnabled"`
+	IsIncompleteDrConfig pulumi.BoolOutput   `pulumi:"isIncompleteDrConfig"`
+	MatchStyle           pulumi.StringOutput `pulumi:"matchStyle"`
 	// Name of the application.
 	Name                      pulumi.StringOutput  `pulumi:"name"`
 	PassiveHealthEnabled      pulumi.BoolOutput    `pulumi:"passiveHealthEnabled"`
 	SegmentGroupId            pulumi.StringOutput  `pulumi:"segmentGroupId"`
-	SegmentGroupName          pulumi.StringOutput  `pulumi:"segmentGroupName"`
 	SelectConnectorCloseToApp pulumi.BoolPtrOutput `pulumi:"selectConnectorCloseToApp"`
 	// List of the server group IDs.
 	ServerGroups ApplicationSegmentPRAServerGroupArrayOutput `pulumi:"serverGroups"`
@@ -151,7 +148,7 @@ type ApplicationSegmentPRA struct {
 	UdpPortRange ApplicationSegmentPRAUdpPortRangeArrayOutput `pulumi:"udpPortRange"`
 	// UDP port ranges used to access the app.
 	UdpPortRanges pulumi.StringArrayOutput `pulumi:"udpPortRanges"`
-	UseInDrMode   pulumi.BoolPtrOutput     `pulumi:"useInDrMode"`
+	UseInDrMode   pulumi.BoolOutput        `pulumi:"useInDrMode"`
 }
 
 // NewApplicationSegmentPRA registers a new resource with the given unique name, arguments, and options.
@@ -216,7 +213,6 @@ type applicationSegmentPRAState struct {
 	Name                      *string `pulumi:"name"`
 	PassiveHealthEnabled      *bool   `pulumi:"passiveHealthEnabled"`
 	SegmentGroupId            *string `pulumi:"segmentGroupId"`
-	SegmentGroupName          *string `pulumi:"segmentGroupName"`
 	SelectConnectorCloseToApp *bool   `pulumi:"selectConnectorCloseToApp"`
 	// List of the server group IDs.
 	ServerGroups []ApplicationSegmentPRAServerGroup `pulumi:"serverGroups"`
@@ -259,7 +255,6 @@ type ApplicationSegmentPRAState struct {
 	Name                      pulumi.StringPtrInput
 	PassiveHealthEnabled      pulumi.BoolPtrInput
 	SegmentGroupId            pulumi.StringPtrInput
-	SegmentGroupName          pulumi.StringPtrInput
 	SelectConnectorCloseToApp pulumi.BoolPtrInput
 	// List of the server group IDs.
 	ServerGroups ApplicationSegmentPRAServerGroupArrayInput
@@ -306,7 +301,6 @@ type applicationSegmentPRAArgs struct {
 	Name                      *string `pulumi:"name"`
 	PassiveHealthEnabled      *bool   `pulumi:"passiveHealthEnabled"`
 	SegmentGroupId            string  `pulumi:"segmentGroupId"`
-	SegmentGroupName          *string `pulumi:"segmentGroupName"`
 	SelectConnectorCloseToApp *bool   `pulumi:"selectConnectorCloseToApp"`
 	// List of the server group IDs.
 	ServerGroups []ApplicationSegmentPRAServerGroup `pulumi:"serverGroups"`
@@ -350,7 +344,6 @@ type ApplicationSegmentPRAArgs struct {
 	Name                      pulumi.StringPtrInput
 	PassiveHealthEnabled      pulumi.BoolPtrInput
 	SegmentGroupId            pulumi.StringInput
-	SegmentGroupName          pulumi.StringPtrInput
 	SelectConnectorCloseToApp pulumi.BoolPtrInput
 	// List of the server group IDs.
 	ServerGroups ApplicationSegmentPRAServerGroupArrayInput
@@ -509,8 +502,8 @@ func (o ApplicationSegmentPRAOutput) IsCnameEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSegmentPRA) pulumi.BoolOutput { return v.IsCnameEnabled }).(pulumi.BoolOutput)
 }
 
-func (o ApplicationSegmentPRAOutput) IsIncompleteDrConfig() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ApplicationSegmentPRA) pulumi.BoolPtrOutput { return v.IsIncompleteDrConfig }).(pulumi.BoolPtrOutput)
+func (o ApplicationSegmentPRAOutput) IsIncompleteDrConfig() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSegmentPRA) pulumi.BoolOutput { return v.IsIncompleteDrConfig }).(pulumi.BoolOutput)
 }
 
 func (o ApplicationSegmentPRAOutput) MatchStyle() pulumi.StringOutput {
@@ -528,10 +521,6 @@ func (o ApplicationSegmentPRAOutput) PassiveHealthEnabled() pulumi.BoolOutput {
 
 func (o ApplicationSegmentPRAOutput) SegmentGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSegmentPRA) pulumi.StringOutput { return v.SegmentGroupId }).(pulumi.StringOutput)
-}
-
-func (o ApplicationSegmentPRAOutput) SegmentGroupName() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApplicationSegmentPRA) pulumi.StringOutput { return v.SegmentGroupName }).(pulumi.StringOutput)
 }
 
 func (o ApplicationSegmentPRAOutput) SelectConnectorCloseToApp() pulumi.BoolPtrOutput {
@@ -567,8 +556,8 @@ func (o ApplicationSegmentPRAOutput) UdpPortRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApplicationSegmentPRA) pulumi.StringArrayOutput { return v.UdpPortRanges }).(pulumi.StringArrayOutput)
 }
 
-func (o ApplicationSegmentPRAOutput) UseInDrMode() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ApplicationSegmentPRA) pulumi.BoolPtrOutput { return v.UseInDrMode }).(pulumi.BoolPtrOutput)
+func (o ApplicationSegmentPRAOutput) UseInDrMode() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSegmentPRA) pulumi.BoolOutput { return v.UseInDrMode }).(pulumi.BoolOutput)
 }
 
 type ApplicationSegmentPRAArrayOutput struct{ *pulumi.OutputState }

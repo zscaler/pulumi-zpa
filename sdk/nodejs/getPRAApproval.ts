@@ -45,6 +45,10 @@ export interface GetPRAApprovalResult {
     readonly startTime: string;
     /**
      * (string) The status of the privileged approval. The supported values are:
+     * - `INVALID`: The privileged approval is invalid.
+     * - `ACTIVE`: The privileged approval is currently available for the user.
+     * - `FUTURE`: The privileged approval is available for a user at a set time in the future.
+     * - `EXPIRED`: The privileged approval is no longer available for the user.
      */
     readonly status: string;
     readonly workingHours: outputs.GetPRAApprovalWorkingHour[];

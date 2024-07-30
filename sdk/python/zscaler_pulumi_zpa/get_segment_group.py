@@ -140,14 +140,12 @@ def get_segment_group(id: Optional[str] = None,
     """
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example = zpa.get_segment_group(name="segment_group_name")
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['id'] = id
@@ -180,13 +178,11 @@ def get_segment_group_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     """
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     example = zpa.get_segment_group(name="segment_group_name")
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

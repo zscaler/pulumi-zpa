@@ -10,6 +10,7 @@ using Pulumi;
 
 namespace Zscaler.Zpa
 {
+    [Obsolete(@"zpa.index/getassistantschedule.getAssistantSchedule has been deprecated in favor of zpa.index/getappconnectorassistantschedule.getAppConnectorAssistantSchedule")]
     public static class GetAssistantSchedule
     {
         /// <summary>
@@ -22,7 +23,6 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,14 +31,13 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Zpa.GetAssistantSchedule.Invoke(new()
+        ///     var @this = Zpa.GetAppConnectorAssistantSchedule.Invoke(new()
         ///     {
         ///         CustomerId = "1234567891012",
         ///     });
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAssistantScheduleResult> InvokeAsync(GetAssistantScheduleArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAssistantScheduleResult>("zpa:index/getAssistantSchedule:getAssistantSchedule", args ?? new GetAssistantScheduleArgs(), options.WithDefaults());
@@ -53,7 +52,6 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,14 +60,13 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Zpa.GetAssistantSchedule.Invoke(new()
+        ///     var @this = Zpa.GetAppConnectorAssistantSchedule.Invoke(new()
         ///     {
         ///         CustomerId = "1234567891012",
         ///     });
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAssistantScheduleResult> Invoke(GetAssistantScheduleInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAssistantScheduleResult>("zpa:index/getAssistantSchedule:getAssistantSchedule", args ?? new GetAssistantScheduleInvokeArgs(), options.WithDefaults());

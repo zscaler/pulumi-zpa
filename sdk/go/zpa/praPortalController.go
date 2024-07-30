@@ -11,6 +11,68 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-privileged-portals)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-portals-using-api)
+//
+// The **zpa_pra_portal_controller** resource creates a privileged remote access portal in the Zscaler Private Access cloud. This resource can then be referenced in an privileged remote access console resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			thisBaCertificate, err := zpa.GetBaCertificate(ctx, &zpa.GetBaCertificateArgs{
+//				Name: pulumi.StringRef("portal.acme.com"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = zpa.NewPRAPortal(ctx, "thisPRAPortal", &zpa.PRAPortalArgs{
+//				Description:             pulumi.String("portal.acme.com"),
+//				Enabled:                 pulumi.Bool(true),
+//				Domain:                  pulumi.String("portal.acme.com"),
+//				CertificateId:           pulumi.String(thisBaCertificate.Id),
+//				UserNotification:        pulumi.String("Created with Terraform"),
+//				UserNotificationEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+//
+// # Visit
+//
+// **pra_portal_controller** can be imported by using `<PORTAL ID>` or `<PORTAL NAME>` as the import ID.
+//
+// For example:
+//
+// ```sh
+// $ pulumi import zpa:index/praPortalController:PraPortalController this <portal_id>
+// ```
+//
+// or
+//
+// ```sh
+// $ pulumi import zpa:index/praPortalController:PraPortalController this <portal_name>
+// ```
+//
 // Deprecated: zpa.index/praportalcontroller.PraPortalController has been deprecated in favor of zpa.index/praportal.PRAPortal
 type PraPortalController struct {
 	pulumi.CustomResourceState

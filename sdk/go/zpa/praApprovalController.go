@@ -12,13 +12,38 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-privileged-approvals)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-approvals-using-api)
+//
+// The **zpa_pra_approval_controller** resource creates a privileged remote access approval in the Zscaler Private Access cloud. This resource allows third-party users and contractors to be able to log in to a Privileged Remote Access (PRA) portal.
+//
+// ## Import
+//
+// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+//
+// # Visit
+//
+// **zpa_pra_approval_controller** can be imported by using `<APPROVAL ID>` or `<APPROVAL NAME>` as the import ID.
+//
+// For example:
+//
+// ```sh
+// $ pulumi import zpa:index/praApprovalController:PraApprovalController this <approval_id>
+// ```
+//
+// or
+//
+// ```sh
+// $ pulumi import zpa:index/praApprovalController:PraApprovalController this <approval_name>
+// ```
+//
 // Deprecated: zpa.index/praapprovalcontroller.PraApprovalController has been deprecated in favor of zpa.index/praapproval.PRAApproval
 type PraApprovalController struct {
 	pulumi.CustomResourceState
 
 	Applications PraApprovalControllerApplicationArrayOutput `pulumi:"applications"`
 	// The email address of the user that you are assigning the privileged approval to
-	EmailIds pulumi.StringOutput `pulumi:"emailIds"`
+	EmailIds pulumi.StringArrayOutput `pulumi:"emailIds"`
 	// The end date that the user no longer has access to the privileged approval
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
 	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
@@ -66,7 +91,7 @@ func GetPraApprovalController(ctx *pulumi.Context,
 type praApprovalControllerState struct {
 	Applications []PraApprovalControllerApplication `pulumi:"applications"`
 	// The email address of the user that you are assigning the privileged approval to
-	EmailIds *string `pulumi:"emailIds"`
+	EmailIds []string `pulumi:"emailIds"`
 	// The end date that the user no longer has access to the privileged approval
 	EndTime *string `pulumi:"endTime"`
 	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
@@ -82,7 +107,7 @@ type praApprovalControllerState struct {
 type PraApprovalControllerState struct {
 	Applications PraApprovalControllerApplicationArrayInput
 	// The email address of the user that you are assigning the privileged approval to
-	EmailIds pulumi.StringPtrInput
+	EmailIds pulumi.StringArrayInput
 	// The end date that the user no longer has access to the privileged approval
 	EndTime pulumi.StringPtrInput
 	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
@@ -102,7 +127,7 @@ func (PraApprovalControllerState) ElementType() reflect.Type {
 type praApprovalControllerArgs struct {
 	Applications []PraApprovalControllerApplication `pulumi:"applications"`
 	// The email address of the user that you are assigning the privileged approval to
-	EmailIds *string `pulumi:"emailIds"`
+	EmailIds []string `pulumi:"emailIds"`
 	// The end date that the user no longer has access to the privileged approval
 	EndTime *string `pulumi:"endTime"`
 	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
@@ -119,7 +144,7 @@ type praApprovalControllerArgs struct {
 type PraApprovalControllerArgs struct {
 	Applications PraApprovalControllerApplicationArrayInput
 	// The email address of the user that you are assigning the privileged approval to
-	EmailIds pulumi.StringPtrInput
+	EmailIds pulumi.StringArrayInput
 	// The end date that the user no longer has access to the privileged approval
 	EndTime pulumi.StringPtrInput
 	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
@@ -224,8 +249,8 @@ func (o PraApprovalControllerOutput) Applications() PraApprovalControllerApplica
 }
 
 // The email address of the user that you are assigning the privileged approval to
-func (o PraApprovalControllerOutput) EmailIds() pulumi.StringOutput {
-	return o.ApplyT(func(v *PraApprovalController) pulumi.StringOutput { return v.EmailIds }).(pulumi.StringOutput)
+func (o PraApprovalControllerOutput) EmailIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PraApprovalController) pulumi.StringArrayOutput { return v.EmailIds }).(pulumi.StringArrayOutput)
 }
 
 // The end date that the user no longer has access to the privileged approval

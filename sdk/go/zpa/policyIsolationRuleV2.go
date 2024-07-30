@@ -11,20 +11,172 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-isolation-policy)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-isolation-policies-using-api)
+//
+// The **zpa_policy_isolation_rule_v2** resource creates and manages policy access isolation rule in the Zscaler Private Access cloud using a new v2 API endpoint.
+//
+//	⚠️ **NOTE**: This resource is recommended if your configuration requires the association of more than 1000 resource criteria per rule.
+//
+//	⚠️ **WARNING:**: The attribute ``ruleOrder`` is now deprecated in favor of the new resource  ``policyAccessRuleReorder``
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			thisIsolationProfile, err := zpa.GetIsolationProfile(ctx, &zpa.GetIsolationProfileArgs{
+//				Name: pulumi.StringRef("zpa_isolation_profile"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			thisIdPController, err := zpa.GetIdPController(ctx, &zpa.GetIdPControllerArgs{
+//				Name: pulumi.StringRef("Idp_Name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			emailUserSso, err := zpa.GetSAMLAttribute(ctx, &zpa.GetSAMLAttributeArgs{
+//				Name:    pulumi.StringRef("Email_Users"),
+//				IdpName: pulumi.StringRef("Idp_Name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			groupUser, err := zpa.GetSAMLAttribute(ctx, &zpa.GetSAMLAttributeArgs{
+//				Name:    pulumi.StringRef("GroupName_Users"),
+//				IdpName: pulumi.StringRef("Idp_Name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			a000, err := zpa.GetSCIMGroups(ctx, &zpa.GetSCIMGroupsArgs{
+//				Name:    pulumi.StringRef("A000"),
+//				IdpName: pulumi.StringRef("Idp_Name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			b000, err := zpa.GetSCIMGroups(ctx, &zpa.GetSCIMGroupsArgs{
+//				Name:    pulumi.StringRef("B000"),
+//				IdpName: pulumi.StringRef("Idp_Name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Create Policy Access Isolation Rule V2
+//			_, err = zpa.NewPolicyAccessIsolationRuleV2(ctx, "thisPolicyAccessIsolationRuleV2", &zpa.PolicyAccessIsolationRuleV2Args{
+//				Description:           pulumi.String("Example"),
+//				Action:                pulumi.String("ISOLATE"),
+//				ZpnIsolationProfileId: pulumi.String(thisIsolationProfile.Id),
+//				Conditions: zpa.PolicyAccessIsolationRuleV2ConditionArray{
+//					&zpa.PolicyAccessIsolationRuleV2ConditionArgs{
+//						Operator: pulumi.String("OR"),
+//						Operands: zpa.PolicyAccessIsolationRuleV2ConditionOperandArray{
+//							&zpa.PolicyAccessIsolationRuleV2ConditionOperandArgs{
+//								ObjectType: pulumi.String("CLIENT_TYPE"),
+//								Values: pulumi.StringArray{
+//									pulumi.String("zpn_client_type_exporter"),
+//								},
+//							},
+//						},
+//					},
+//					&zpa.PolicyAccessIsolationRuleV2ConditionArgs{
+//						Operator: pulumi.String("OR"),
+//						Operands: zpa.PolicyAccessIsolationRuleV2ConditionOperandArray{
+//							&zpa.PolicyAccessIsolationRuleV2ConditionOperandArgs{
+//								ObjectType: pulumi.String("SAML"),
+//								EntryValues: zpa.PolicyAccessIsolationRuleV2ConditionOperandEntryValueArray{
+//									&zpa.PolicyAccessIsolationRuleV2ConditionOperandEntryValueArgs{
+//										Rhs: pulumi.String("user1@acme.com"),
+//										Lhs: pulumi.String(emailUserSso.Id),
+//									},
+//									&zpa.PolicyAccessIsolationRuleV2ConditionOperandEntryValueArgs{
+//										Rhs: pulumi.String("A000"),
+//										Lhs: pulumi.String(groupUser.Id),
+//									},
+//								},
+//							},
+//							&zpa.PolicyAccessIsolationRuleV2ConditionOperandArgs{
+//								ObjectType: pulumi.String("SCIM_GROUP"),
+//								EntryValues: zpa.PolicyAccessIsolationRuleV2ConditionOperandEntryValueArray{
+//									&zpa.PolicyAccessIsolationRuleV2ConditionOperandEntryValueArgs{
+//										Rhs: pulumi.String(a000.Id),
+//										Lhs: pulumi.String(thisIdPController.Id),
+//									},
+//									&zpa.PolicyAccessIsolationRuleV2ConditionOperandEntryValueArgs{
+//										Rhs: pulumi.String(b000.Id),
+//										Lhs: pulumi.String(thisIdPController.Id),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## LHS and RHS Values
+//
+// | Object Type | LHS| RHS| VALUES
+// |----------|-----------|----------|----------
+// | APP  |   |  | “applicationSegmentId“ |
+// | APP_GROUP  |   |  | “segmentGroupId“|
+// | CLIENT_TYPE  |   |  |  “zpnClientTypeZappl“, “zpnClientTypeExporter“, “zpnClientTypeBrowserIsolation“, “zpnClientTypeIpAnchoring“, “zpnClientTypeEdgeConnector“, “zpnClientTypeBranchConnector“,  “zpnClientTypeZappPartner“, “zpnClientTypeZapp“  |
+// | EDGE_CONNECTOR_GROUP  |   |  |  “<edge_connector_id>“ |
+// | MACHINE_GRP   |   |  | “machineGroupId“ |
+// | SAML | “samlAttributeId“  | “attributeValueToMatch“ |
+// | SCIM | “scimAttributeId“  | “attributeValueToMatch“  |
+// | SCIM_GROUP | “scimGroupAttributeId“  | “attributeValueToMatch“  |
+// | PLATFORM | “mac“, “ios“, “windows“, “android“, “linux“ | “"true"“ / “"false"“ |
+// | POSTURE | “postureUdid“  | “"true"“ / “"false"“ |
+//
+// ## Import
+//
+// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+//
+// # Visit
+//
+// Policy access isolation rule can be imported by using `<RULE ID>` as the import ID.
+//
+// For example:
+//
+// ```sh
+// $ pulumi import zpa:index/policyIsolationRuleV2:PolicyIsolationRuleV2 example <rule_id>
+// ```
+//
 // Deprecated: zpa.index/policyisolationrulev2.PolicyIsolationRuleV2 has been deprecated in favor of zpa.index/policyaccessisolationrulev2.PolicyAccessIsolationRuleV2
 type PolicyIsolationRuleV2 struct {
 	pulumi.CustomResourceState
 
-	// This is for providing the rule action.
+	// This is for providing the rule action. Supported values: `ISOLATE` Default.
 	Action pulumi.StringPtrOutput `pulumi:"action"`
 	// This is for proviidng the set of conditions for the policy.
 	Conditions PolicyIsolationRuleV2ConditionArrayOutput `pulumi:"conditions"`
-	// This is the description of the access policy.
+	// This is the description of the access policy rule.
 	Description   pulumi.StringPtrOutput `pulumi:"description"`
 	MicrotenantId pulumi.StringOutput    `pulumi:"microtenantId"`
-	// This is the name of the policy.
-	Name                  pulumi.StringOutput `pulumi:"name"`
-	PolicySetId           pulumi.StringOutput `pulumi:"policySetId"`
+	// This is the name of the policy rule.
+	Name        pulumi.StringOutput `pulumi:"name"`
+	PolicySetId pulumi.StringOutput `pulumi:"policySetId"`
+	// Use zpa*isolation*profile data source to retrieve the necessary Isolation profile ID `zpnIsolationProfileId`
 	ZpnIsolationProfileId pulumi.StringOutput `pulumi:"zpnIsolationProfileId"`
 }
 
@@ -58,30 +210,32 @@ func GetPolicyIsolationRuleV2(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PolicyIsolationRuleV2 resources.
 type policyIsolationRuleV2State struct {
-	// This is for providing the rule action.
+	// This is for providing the rule action. Supported values: `ISOLATE` Default.
 	Action *string `pulumi:"action"`
 	// This is for proviidng the set of conditions for the policy.
 	Conditions []PolicyIsolationRuleV2Condition `pulumi:"conditions"`
-	// This is the description of the access policy.
+	// This is the description of the access policy rule.
 	Description   *string `pulumi:"description"`
 	MicrotenantId *string `pulumi:"microtenantId"`
-	// This is the name of the policy.
-	Name                  *string `pulumi:"name"`
-	PolicySetId           *string `pulumi:"policySetId"`
+	// This is the name of the policy rule.
+	Name        *string `pulumi:"name"`
+	PolicySetId *string `pulumi:"policySetId"`
+	// Use zpa*isolation*profile data source to retrieve the necessary Isolation profile ID `zpnIsolationProfileId`
 	ZpnIsolationProfileId *string `pulumi:"zpnIsolationProfileId"`
 }
 
 type PolicyIsolationRuleV2State struct {
-	// This is for providing the rule action.
+	// This is for providing the rule action. Supported values: `ISOLATE` Default.
 	Action pulumi.StringPtrInput
 	// This is for proviidng the set of conditions for the policy.
 	Conditions PolicyIsolationRuleV2ConditionArrayInput
-	// This is the description of the access policy.
+	// This is the description of the access policy rule.
 	Description   pulumi.StringPtrInput
 	MicrotenantId pulumi.StringPtrInput
-	// This is the name of the policy.
-	Name                  pulumi.StringPtrInput
-	PolicySetId           pulumi.StringPtrInput
+	// This is the name of the policy rule.
+	Name        pulumi.StringPtrInput
+	PolicySetId pulumi.StringPtrInput
+	// Use zpa*isolation*profile data source to retrieve the necessary Isolation profile ID `zpnIsolationProfileId`
 	ZpnIsolationProfileId pulumi.StringPtrInput
 }
 
@@ -90,29 +244,31 @@ func (PolicyIsolationRuleV2State) ElementType() reflect.Type {
 }
 
 type policyIsolationRuleV2Args struct {
-	// This is for providing the rule action.
+	// This is for providing the rule action. Supported values: `ISOLATE` Default.
 	Action *string `pulumi:"action"`
 	// This is for proviidng the set of conditions for the policy.
 	Conditions []PolicyIsolationRuleV2Condition `pulumi:"conditions"`
-	// This is the description of the access policy.
+	// This is the description of the access policy rule.
 	Description   *string `pulumi:"description"`
 	MicrotenantId *string `pulumi:"microtenantId"`
-	// This is the name of the policy.
-	Name                  *string `pulumi:"name"`
+	// This is the name of the policy rule.
+	Name *string `pulumi:"name"`
+	// Use zpa*isolation*profile data source to retrieve the necessary Isolation profile ID `zpnIsolationProfileId`
 	ZpnIsolationProfileId *string `pulumi:"zpnIsolationProfileId"`
 }
 
 // The set of arguments for constructing a PolicyIsolationRuleV2 resource.
 type PolicyIsolationRuleV2Args struct {
-	// This is for providing the rule action.
+	// This is for providing the rule action. Supported values: `ISOLATE` Default.
 	Action pulumi.StringPtrInput
 	// This is for proviidng the set of conditions for the policy.
 	Conditions PolicyIsolationRuleV2ConditionArrayInput
-	// This is the description of the access policy.
+	// This is the description of the access policy rule.
 	Description   pulumi.StringPtrInput
 	MicrotenantId pulumi.StringPtrInput
-	// This is the name of the policy.
-	Name                  pulumi.StringPtrInput
+	// This is the name of the policy rule.
+	Name pulumi.StringPtrInput
+	// Use zpa*isolation*profile data source to retrieve the necessary Isolation profile ID `zpnIsolationProfileId`
 	ZpnIsolationProfileId pulumi.StringPtrInput
 }
 
@@ -203,7 +359,7 @@ func (o PolicyIsolationRuleV2Output) ToPolicyIsolationRuleV2OutputWithContext(ct
 	return o
 }
 
-// This is for providing the rule action.
+// This is for providing the rule action. Supported values: `ISOLATE` Default.
 func (o PolicyIsolationRuleV2Output) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyIsolationRuleV2) pulumi.StringPtrOutput { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -213,7 +369,7 @@ func (o PolicyIsolationRuleV2Output) Conditions() PolicyIsolationRuleV2Condition
 	return o.ApplyT(func(v *PolicyIsolationRuleV2) PolicyIsolationRuleV2ConditionArrayOutput { return v.Conditions }).(PolicyIsolationRuleV2ConditionArrayOutput)
 }
 
-// This is the description of the access policy.
+// This is the description of the access policy rule.
 func (o PolicyIsolationRuleV2Output) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyIsolationRuleV2) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -222,7 +378,7 @@ func (o PolicyIsolationRuleV2Output) MicrotenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyIsolationRuleV2) pulumi.StringOutput { return v.MicrotenantId }).(pulumi.StringOutput)
 }
 
-// This is the name of the policy.
+// This is the name of the policy rule.
 func (o PolicyIsolationRuleV2Output) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyIsolationRuleV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -231,6 +387,7 @@ func (o PolicyIsolationRuleV2Output) PolicySetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyIsolationRuleV2) pulumi.StringOutput { return v.PolicySetId }).(pulumi.StringOutput)
 }
 
+// Use zpa*isolation*profile data source to retrieve the necessary Isolation profile ID `zpnIsolationProfileId`
 func (o PolicyIsolationRuleV2Output) ZpnIsolationProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyIsolationRuleV2) pulumi.StringOutput { return v.ZpnIsolationProfileId }).(pulumi.StringOutput)
 }

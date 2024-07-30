@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -22,7 +21,6 @@ import * as utilities from "./utilities";
  *     name: "Engineering",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSCIMGroups(args?: GetSCIMGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetSCIMGroupsResult> {
     args = args || {};
@@ -66,7 +64,6 @@ export interface GetSCIMGroupsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -76,7 +73,6 @@ export interface GetSCIMGroupsResult {
  *     name: "Engineering",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSCIMGroupsOutput(args?: GetSCIMGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSCIMGroupsResult> {
     return pulumi.output(args).apply((a: any) => getSCIMGroups(a, opts))

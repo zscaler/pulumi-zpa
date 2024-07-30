@@ -22,7 +22,16 @@ class GetCloudBrowserIsolationExternalProfileResult:
     """
     A collection of values returned by getCloudBrowserIsolationExternalProfile.
     """
-    def __init__(__self__, description=None, href=None, id=None, is_default=None, name=None, regions=None, security_controls=None, user_experiences=None):
+    def __init__(__self__, banner_id=None, certificate_ids=None, debug_modes=None, description=None, href=None, id=None, is_default=None, name=None, regions=None, security_controls=None, user_experiences=None):
+        if banner_id and not isinstance(banner_id, str):
+            raise TypeError("Expected argument 'banner_id' to be a str")
+        pulumi.set(__self__, "banner_id", banner_id)
+        if certificate_ids and not isinstance(certificate_ids, list):
+            raise TypeError("Expected argument 'certificate_ids' to be a list")
+        pulumi.set(__self__, "certificate_ids", certificate_ids)
+        if debug_modes and not isinstance(debug_modes, list):
+            raise TypeError("Expected argument 'debug_modes' to be a list")
+        pulumi.set(__self__, "debug_modes", debug_modes)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -47,6 +56,21 @@ class GetCloudBrowserIsolationExternalProfileResult:
         if user_experiences and not isinstance(user_experiences, list):
             raise TypeError("Expected argument 'user_experiences' to be a list")
         pulumi.set(__self__, "user_experiences", user_experiences)
+
+    @property
+    @pulumi.getter(name="bannerId")
+    def banner_id(self) -> str:
+        return pulumi.get(self, "banner_id")
+
+    @property
+    @pulumi.getter(name="certificateIds")
+    def certificate_ids(self) -> Sequence[str]:
+        return pulumi.get(self, "certificate_ids")
+
+    @property
+    @pulumi.getter(name="debugModes")
+    def debug_modes(self) -> Sequence['outputs.GetCloudBrowserIsolationExternalProfileDebugModeResult']:
+        return pulumi.get(self, "debug_modes")
 
     @property
     @pulumi.getter
@@ -95,6 +119,9 @@ class AwaitableGetCloudBrowserIsolationExternalProfileResult(GetCloudBrowserIsol
         if False:
             yield self
         return GetCloudBrowserIsolationExternalProfileResult(
+            banner_id=self.banner_id,
+            certificate_ids=self.certificate_ids,
+            debug_modes=self.debug_modes,
             description=self.description,
             href=self.href,
             id=self.id,
@@ -115,14 +142,12 @@ def get_cloud_browser_isolation_external_profile(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     this = zpa.get_cloud_browser_isolation_external_profile(name="Example")
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['id'] = id
@@ -131,6 +156,9 @@ def get_cloud_browser_isolation_external_profile(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('zpa:index/getCloudBrowserIsolationExternalProfile:getCloudBrowserIsolationExternalProfile', __args__, opts=opts, typ=GetCloudBrowserIsolationExternalProfileResult).value
 
     return AwaitableGetCloudBrowserIsolationExternalProfileResult(
+        banner_id=pulumi.get(__ret__, 'banner_id'),
+        certificate_ids=pulumi.get(__ret__, 'certificate_ids'),
+        debug_modes=pulumi.get(__ret__, 'debug_modes'),
         description=pulumi.get(__ret__, 'description'),
         href=pulumi.get(__ret__, 'href'),
         id=pulumi.get(__ret__, 'id'),
@@ -152,13 +180,11 @@ def get_cloud_browser_isolation_external_profile_output(id: Optional[pulumi.Inpu
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
     this = zpa.get_cloud_browser_isolation_external_profile(name="Example")
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

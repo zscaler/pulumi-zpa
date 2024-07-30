@@ -273,10 +273,8 @@ class PolicyRedirectionRuleArgs:
 
     @property
     @pulumi.getter(name="ruleOrder")
+    @_utilities.deprecated("""The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""")
     def rule_order(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""", DeprecationWarning)
-        pulumi.log.warn("""rule_order is deprecated: The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""")
-
         return pulumi.get(self, "rule_order")
 
     @rule_order.setter
@@ -583,10 +581,8 @@ class _PolicyRedirectionRuleState:
 
     @property
     @pulumi.getter(name="ruleOrder")
+    @_utilities.deprecated("""The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""")
     def rule_order(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""", DeprecationWarning)
-        pulumi.log.warn("""rule_order is deprecated: The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""")
-
         return pulumi.get(self, "rule_order")
 
     @rule_order.setter
@@ -662,7 +658,29 @@ class PolicyRedirectionRule(pulumi.CustomResource):
                  zpn_isolation_profile_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a PolicyRedirectionRule resource with the given unique name, props, and options.
+        * [Official documentation](https://help.zscaler.com/zpa/about-redirection-policy)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-redirection-policies-using-api)
+
+        The **zpa_policy_redirection_rule** resource creates a policy redirection access rule in the Zscaler Private Access cloud.
+
+          ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+
+        ## Example Usage
+
+        ## Import
+
+        Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+
+        Visit
+
+        Policy Access Isolation Rule can be imported by using `<POLICY REDIRECTION RULE ID>` as the import ID.
+
+        For example:
+
+        ```sh
+        $ pulumi import zpa:index/policyRedirectionRule:PolicyRedirectionRule example <rule_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: This is for providing the rule action.
@@ -681,7 +699,29 @@ class PolicyRedirectionRule(pulumi.CustomResource):
                  args: Optional[PolicyRedirectionRuleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a PolicyRedirectionRule resource with the given unique name, props, and options.
+        * [Official documentation](https://help.zscaler.com/zpa/about-redirection-policy)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-redirection-policies-using-api)
+
+        The **zpa_policy_redirection_rule** resource creates a policy redirection access rule in the Zscaler Private Access cloud.
+
+          ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+
+        ## Example Usage
+
+        ## Import
+
+        Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+
+        Visit
+
+        Policy Access Isolation Rule can be imported by using `<POLICY REDIRECTION RULE ID>` as the import ID.
+
+        For example:
+
+        ```sh
+        $ pulumi import zpa:index/policyRedirectionRule:PolicyRedirectionRule example <rule_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param PolicyRedirectionRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -934,10 +974,8 @@ class PolicyRedirectionRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ruleOrder")
+    @_utilities.deprecated("""The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""")
     def rule_order(self) -> pulumi.Output[str]:
-        warnings.warn("""The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""", DeprecationWarning)
-        pulumi.log.warn("""rule_order is deprecated: The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""")
-
         return pulumi.get(self, "rule_order")
 
     @property

@@ -20,7 +20,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupMicrotenant(ctx *pulumi.Context, args *LookupMicrotenantArgs, opts ...pulumi.InvokeOption) (*LookupMicrotenantResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMicrotenantResult

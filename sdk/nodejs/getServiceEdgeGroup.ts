@@ -18,7 +18,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -27,9 +26,7 @@ import * as utilities from "./utilities";
  *     name: "DataCenter",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -38,7 +35,6 @@ import * as utilities from "./utilities";
  *     id: "123456789",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServiceEdgeGroup(args?: GetServiceEdgeGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceEdgeGroupResult> {
     args = args || {};
@@ -100,7 +96,6 @@ export interface GetServiceEdgeGroupResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -109,9 +104,7 @@ export interface GetServiceEdgeGroupResult {
  *     name: "DataCenter",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -120,7 +113,6 @@ export interface GetServiceEdgeGroupResult {
  *     id: "123456789",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServiceEdgeGroupOutput(args?: GetServiceEdgeGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceEdgeGroupResult> {
     return pulumi.output(args).apply((a: any) => getServiceEdgeGroup(a, opts))

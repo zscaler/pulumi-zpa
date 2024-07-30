@@ -13,9 +13,23 @@ namespace Zscaler.Zpa
     [Obsolete(@"zpa.index/getpraconsolecontroller.getPraConsoleController has been deprecated in favor of zpa.index/getpraconsole.getPRAConsole")]
     public static class GetPraConsoleController
     {
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-privileged-consoles)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-consoles-using-api)
+        /// 
+        /// The **zpa_pra_console_controller** data source gets information about a privileged remote access console created in the Zscaler Private Access cloud.
+        /// This resource can then be referenced in an privileged access policy credential and a privileged access portal resource.
+        /// </summary>
         public static Task<GetPraConsoleControllerResult> InvokeAsync(GetPraConsoleControllerArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPraConsoleControllerResult>("zpa:index/getPraConsoleController:getPraConsoleController", args ?? new GetPraConsoleControllerArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-privileged-consoles)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-consoles-using-api)
+        /// 
+        /// The **zpa_pra_console_controller** data source gets information about a privileged remote access console created in the Zscaler Private Access cloud.
+        /// This resource can then be referenced in an privileged access policy credential and a privileged access portal resource.
+        /// </summary>
         public static Output<GetPraConsoleControllerResult> Invoke(GetPraConsoleControllerInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPraConsoleControllerResult>("zpa:index/getPraConsoleController:getPraConsoleController", args ?? new GetPraConsoleControllerInvokeArgs(), options.WithDefaults());
     }
@@ -56,6 +70,9 @@ namespace Zscaler.Zpa
         public readonly string MicrotenantName;
         public readonly string ModifiedBy;
         public readonly string ModifiedTime;
+        /// <summary>
+        /// - (Required) The name of the privileged console.
+        /// </summary>
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetPraConsoleControllerPraApplicationResult> PraApplications;
         public readonly ImmutableArray<Outputs.GetPraConsoleControllerPraPortalResult> PraPortals;

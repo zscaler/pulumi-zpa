@@ -10,6 +10,30 @@ using Pulumi;
 
 namespace Zscaler.Zpa
 {
+    /// <summary>
+    /// * [Official documentation](https://help.zscaler.com/zpa/about-redirection-policy)
+    /// * [API documentation](https://help.zscaler.com/zpa/configuring-redirection-policies-using-api)
+    /// 
+    /// The **zpa_policy_redirection_rule** resource creates a policy redirection access rule in the Zscaler Private Access cloud.
+    /// 
+    ///   ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+    /// 
+    /// Visit
+    /// 
+    /// Policy Access Isolation Rule can be imported by using `&lt;POLICY REDIRECTION RULE ID&gt;` as the import ID.
+    /// 
+    /// For example:
+    /// 
+    /// ```sh
+    /// $ pulumi import zpa:index/policyRedirectionRule:PolicyRedirectionRule example &lt;rule_id&gt;
+    /// ```
+    /// </summary>
     [ZpaResourceType("zpa:index/policyRedirectionRule:PolicyRedirectionRule")]
     public partial class PolicyRedirectionRule : global::Pulumi.CustomResource
     {

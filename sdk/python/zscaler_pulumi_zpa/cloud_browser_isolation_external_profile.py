@@ -18,6 +18,7 @@ class CloudBrowserIsolationExternalProfileArgs:
     def __init__(__self__, *,
                  banner_id: pulumi.Input[str],
                  certificate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 debug_mode: Optional[pulumi.Input['CloudBrowserIsolationExternalProfileDebugModeArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -25,12 +26,14 @@ class CloudBrowserIsolationExternalProfileArgs:
                  user_experiences: Optional[pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceArgs']]]] = None):
         """
         The set of arguments for constructing a CloudBrowserIsolationExternalProfile resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: This field defines the list of server groups IDs.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: This field defines the list of server groups IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: This field defines the list of certificate IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: This field defines the list of region IDs.
         """
         pulumi.set(__self__, "banner_id", banner_id)
         if certificate_ids is not None:
             pulumi.set(__self__, "certificate_ids", certificate_ids)
+        if debug_mode is not None:
+            pulumi.set(__self__, "debug_mode", debug_mode)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -55,13 +58,22 @@ class CloudBrowserIsolationExternalProfileArgs:
     @pulumi.getter(name="certificateIds")
     def certificate_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        This field defines the list of server groups IDs.
+        This field defines the list of certificate IDs.
         """
         return pulumi.get(self, "certificate_ids")
 
     @certificate_ids.setter
     def certificate_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "certificate_ids", value)
+
+    @property
+    @pulumi.getter(name="debugMode")
+    def debug_mode(self) -> Optional[pulumi.Input['CloudBrowserIsolationExternalProfileDebugModeArgs']]:
+        return pulumi.get(self, "debug_mode")
+
+    @debug_mode.setter
+    def debug_mode(self, value: Optional[pulumi.Input['CloudBrowserIsolationExternalProfileDebugModeArgs']]):
+        pulumi.set(self, "debug_mode", value)
 
     @property
     @pulumi.getter
@@ -85,7 +97,7 @@ class CloudBrowserIsolationExternalProfileArgs:
     @pulumi.getter(name="regionIds")
     def region_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        This field defines the list of server groups IDs.
+        This field defines the list of region IDs.
         """
         return pulumi.get(self, "region_ids")
 
@@ -117,6 +129,7 @@ class _CloudBrowserIsolationExternalProfileState:
     def __init__(__self__, *,
                  banner_id: Optional[pulumi.Input[str]] = None,
                  certificate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 debug_mode: Optional[pulumi.Input['CloudBrowserIsolationExternalProfileDebugModeArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -124,13 +137,15 @@ class _CloudBrowserIsolationExternalProfileState:
                  user_experiences: Optional[pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceArgs']]]] = None):
         """
         Input properties used for looking up and filtering CloudBrowserIsolationExternalProfile resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: This field defines the list of server groups IDs.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: This field defines the list of server groups IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: This field defines the list of certificate IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: This field defines the list of region IDs.
         """
         if banner_id is not None:
             pulumi.set(__self__, "banner_id", banner_id)
         if certificate_ids is not None:
             pulumi.set(__self__, "certificate_ids", certificate_ids)
+        if debug_mode is not None:
+            pulumi.set(__self__, "debug_mode", debug_mode)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -155,13 +170,22 @@ class _CloudBrowserIsolationExternalProfileState:
     @pulumi.getter(name="certificateIds")
     def certificate_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        This field defines the list of server groups IDs.
+        This field defines the list of certificate IDs.
         """
         return pulumi.get(self, "certificate_ids")
 
     @certificate_ids.setter
     def certificate_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "certificate_ids", value)
+
+    @property
+    @pulumi.getter(name="debugMode")
+    def debug_mode(self) -> Optional[pulumi.Input['CloudBrowserIsolationExternalProfileDebugModeArgs']]:
+        return pulumi.get(self, "debug_mode")
+
+    @debug_mode.setter
+    def debug_mode(self, value: Optional[pulumi.Input['CloudBrowserIsolationExternalProfileDebugModeArgs']]):
+        pulumi.set(self, "debug_mode", value)
 
     @property
     @pulumi.getter
@@ -185,7 +209,7 @@ class _CloudBrowserIsolationExternalProfileState:
     @pulumi.getter(name="regionIds")
     def region_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        This field defines the list of server groups IDs.
+        This field defines the list of region IDs.
         """
         return pulumi.get(self, "region_ids")
 
@@ -219,6 +243,7 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  banner_id: Optional[pulumi.Input[str]] = None,
                  certificate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 debug_mode: Optional[pulumi.Input[pulumi.InputType['CloudBrowserIsolationExternalProfileDebugModeArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -232,7 +257,6 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_zpa as zpa
@@ -248,24 +272,50 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
             region_ids=[singapore.id],
             certificate_ids=[this_cloud_browser_isolation_certificate.id],
             user_experiences=[zpa.CloudBrowserIsolationExternalProfileUserExperienceArgs(
-                session_persistence=True,
+                forward_to_zia=zpa.CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs(
+                    enabled=True,
+                    organization_id="***********",
+                    cloud_name="<cloud_name>",
+                    pac_file_url="https://pac.<cloud_name>/<cloud_name>/proxy.pac",
+                ),
                 browser_in_browser=True,
+                persist_isolation_bar=True,
+                translate=True,
+                session_persistence=True,
             )],
             security_controls=[zpa.CloudBrowserIsolationExternalProfileSecurityControlArgs(
                 copy_paste="all",
-                upload_download="all",
+                upload_download="upstream",
                 document_viewer=True,
                 local_render=True,
                 allow_printing=True,
-                restrict_keystrokes=False,
-            )])
+                restrict_keystrokes=True,
+                flattened_pdf=True,
+                deep_link=zpa.CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs(
+                    enabled=True,
+                    applications=[
+                        "test1",
+                        "test",
+                    ],
+                ),
+                watermark=zpa.CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs(
+                    enabled=True,
+                    show_user_id=True,
+                    show_timestamp=True,
+                    show_message=True,
+                    message="Zscaler CBI",
+                ),
+            )],
+            debug_mode=zpa.CloudBrowserIsolationExternalProfileDebugModeArgs(
+                allowed=True,
+                file_password="***********",
+            ))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: This field defines the list of server groups IDs.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: This field defines the list of server groups IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: This field defines the list of certificate IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: This field defines the list of region IDs.
         """
         ...
     @overload
@@ -280,7 +330,6 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_zpa as zpa
@@ -296,19 +345,45 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
             region_ids=[singapore.id],
             certificate_ids=[this_cloud_browser_isolation_certificate.id],
             user_experiences=[zpa.CloudBrowserIsolationExternalProfileUserExperienceArgs(
-                session_persistence=True,
+                forward_to_zia=zpa.CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs(
+                    enabled=True,
+                    organization_id="***********",
+                    cloud_name="<cloud_name>",
+                    pac_file_url="https://pac.<cloud_name>/<cloud_name>/proxy.pac",
+                ),
                 browser_in_browser=True,
+                persist_isolation_bar=True,
+                translate=True,
+                session_persistence=True,
             )],
             security_controls=[zpa.CloudBrowserIsolationExternalProfileSecurityControlArgs(
                 copy_paste="all",
-                upload_download="all",
+                upload_download="upstream",
                 document_viewer=True,
                 local_render=True,
                 allow_printing=True,
-                restrict_keystrokes=False,
-            )])
+                restrict_keystrokes=True,
+                flattened_pdf=True,
+                deep_link=zpa.CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs(
+                    enabled=True,
+                    applications=[
+                        "test1",
+                        "test",
+                    ],
+                ),
+                watermark=zpa.CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs(
+                    enabled=True,
+                    show_user_id=True,
+                    show_timestamp=True,
+                    show_message=True,
+                    message="Zscaler CBI",
+                ),
+            )],
+            debug_mode=zpa.CloudBrowserIsolationExternalProfileDebugModeArgs(
+                allowed=True,
+                file_password="***********",
+            ))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param CloudBrowserIsolationExternalProfileArgs args: The arguments to use to populate this resource's properties.
@@ -327,6 +402,7 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  banner_id: Optional[pulumi.Input[str]] = None,
                  certificate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 debug_mode: Optional[pulumi.Input[pulumi.InputType['CloudBrowserIsolationExternalProfileDebugModeArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -345,6 +421,7 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
                 raise TypeError("Missing required property 'banner_id'")
             __props__.__dict__["banner_id"] = banner_id
             __props__.__dict__["certificate_ids"] = certificate_ids
+            __props__.__dict__["debug_mode"] = debug_mode
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["region_ids"] = region_ids
@@ -362,6 +439,7 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             banner_id: Optional[pulumi.Input[str]] = None,
             certificate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            debug_mode: Optional[pulumi.Input[pulumi.InputType['CloudBrowserIsolationExternalProfileDebugModeArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -374,8 +452,8 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: This field defines the list of server groups IDs.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: This field defines the list of server groups IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: This field defines the list of certificate IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: This field defines the list of region IDs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -383,6 +461,7 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
 
         __props__.__dict__["banner_id"] = banner_id
         __props__.__dict__["certificate_ids"] = certificate_ids
+        __props__.__dict__["debug_mode"] = debug_mode
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
         __props__.__dict__["region_ids"] = region_ids
@@ -397,11 +476,16 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="certificateIds")
-    def certificate_ids(self) -> pulumi.Output[Sequence[str]]:
+    def certificate_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        This field defines the list of server groups IDs.
+        This field defines the list of certificate IDs.
         """
         return pulumi.get(self, "certificate_ids")
+
+    @property
+    @pulumi.getter(name="debugMode")
+    def debug_mode(self) -> pulumi.Output[Optional['outputs.CloudBrowserIsolationExternalProfileDebugMode']]:
+        return pulumi.get(self, "debug_mode")
 
     @property
     @pulumi.getter
@@ -415,9 +499,9 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="regionIds")
-    def region_ids(self) -> pulumi.Output[Sequence[str]]:
+    def region_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        This field defines the list of server groups IDs.
+        This field defines the list of region IDs.
         """
         return pulumi.get(self, "region_ids")
 
@@ -428,6 +512,6 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userExperiences")
-    def user_experiences(self) -> pulumi.Output[Optional[Sequence['outputs.CloudBrowserIsolationExternalProfileUserExperience']]]:
+    def user_experiences(self) -> pulumi.Output[Sequence['outputs.CloudBrowserIsolationExternalProfileUserExperience']]:
         return pulumi.get(self, "user_experiences")
 

@@ -10,6 +10,61 @@ using Pulumi;
 
 namespace Zscaler.Zpa
 {
+    /// <summary>
+    /// * [Official documentation](https://help.zscaler.com/zpa/about-privileged-portals)
+    /// * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-portals-using-api)
+    /// 
+    /// The **zpa_pra_portal_controller** resource creates a privileged remote access portal in the Zscaler Private Access cloud. This resource can then be referenced in an privileged remote access console resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Pulumi.Zpa;
+    /// using Zpa = Zscaler.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var thisBaCertificate = Zpa.GetBaCertificate.Invoke(new()
+    ///     {
+    ///         Name = "portal.acme.com",
+    ///     });
+    /// 
+    ///     var thisPRAPortal = new Zpa.PRAPortal("thisPRAPortal", new()
+    ///     {
+    ///         Description = "portal.acme.com",
+    ///         Enabled = true,
+    ///         Domain = "portal.acme.com",
+    ///         CertificateId = thisBaCertificate.Apply(getBaCertificateResult =&gt; getBaCertificateResult.Id),
+    ///         UserNotification = "Created with Terraform",
+    ///         UserNotificationEnabled = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+    /// 
+    /// Visit
+    /// 
+    /// **pra_portal_controller** can be imported by using `&lt;PORTAL ID&gt;` or `&lt;PORTAL NAME&gt;` as the import ID.
+    /// 
+    /// For example:
+    /// 
+    /// ```sh
+    /// $ pulumi import zpa:index/praPortalController:PraPortalController this &lt;portal_id&gt;
+    /// ```
+    /// 
+    /// or
+    /// 
+    /// ```sh
+    /// $ pulumi import zpa:index/praPortalController:PraPortalController this &lt;portal_name&gt;
+    /// ```
+    /// </summary>
     [Obsolete(@"zpa.index/praportalcontroller.PraPortalController has been deprecated in favor of zpa.index/praportal.PRAPortal")]
     [ZpaResourceType("zpa:index/praPortalController:PraPortalController")]
     public partial class PraPortalController : global::Pulumi.CustomResource

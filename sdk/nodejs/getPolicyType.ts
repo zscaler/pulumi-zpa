@@ -26,7 +26,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -36,9 +35,7 @@ import * as utilities from "./utilities";
  * });
  * export const zpaPolicyTypeAccessPolicy = accessPolicy.then(accessPolicy => accessPolicy.id);
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -48,9 +45,7 @@ import * as utilities from "./utilities";
  * });
  * export const zpaPolicyTypeAccessPolicy = globalPolicy.then(globalPolicy => globalPolicy.id);
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -60,9 +55,7 @@ import * as utilities from "./utilities";
  * });
  * export const zpaPolicyTypeTimeoutPolicy = timeoutPolicy.then(timeoutPolicy => timeoutPolicy.id);
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -72,9 +65,7 @@ import * as utilities from "./utilities";
  * });
  * export const zpaPolicyTypeReauthPolicy = reauthPolicy.then(reauthPolicy => reauthPolicy.id);
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -84,9 +75,7 @@ import * as utilities from "./utilities";
  * });
  * export const zpaPolicyTypeClientForwardingPolicy = clientForwardingPolicy.then(clientForwardingPolicy => clientForwardingPolicy.id);
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -96,7 +85,6 @@ import * as utilities from "./utilities";
  * });
  * export const zpaPolicyTypeInspectionPolicy = inspectionPolicy.then(inspectionPolicy => inspectionPolicy.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPolicyType(args?: GetPolicyTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyTypeResult> {
     args = args || {};
@@ -157,7 +145,6 @@ export interface GetPolicyTypeResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -167,9 +154,7 @@ export interface GetPolicyTypeResult {
  * });
  * export const zpaPolicyTypeAccessPolicy = accessPolicy.then(accessPolicy => accessPolicy.id);
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -179,9 +164,7 @@ export interface GetPolicyTypeResult {
  * });
  * export const zpaPolicyTypeAccessPolicy = globalPolicy.then(globalPolicy => globalPolicy.id);
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -191,9 +174,7 @@ export interface GetPolicyTypeResult {
  * });
  * export const zpaPolicyTypeTimeoutPolicy = timeoutPolicy.then(timeoutPolicy => timeoutPolicy.id);
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -203,9 +184,7 @@ export interface GetPolicyTypeResult {
  * });
  * export const zpaPolicyTypeReauthPolicy = reauthPolicy.then(reauthPolicy => reauthPolicy.id);
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -215,9 +194,7 @@ export interface GetPolicyTypeResult {
  * });
  * export const zpaPolicyTypeClientForwardingPolicy = clientForwardingPolicy.then(clientForwardingPolicy => clientForwardingPolicy.id);
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
@@ -227,7 +204,6 @@ export interface GetPolicyTypeResult {
  * });
  * export const zpaPolicyTypeInspectionPolicy = inspectionPolicy.then(inspectionPolicy => inspectionPolicy.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPolicyTypeOutput(args?: GetPolicyTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyTypeResult> {
     return pulumi.output(args).apply((a: any) => getPolicyType(a, opts))

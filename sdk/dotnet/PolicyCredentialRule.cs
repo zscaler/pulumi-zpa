@@ -10,6 +10,7 @@ using Pulumi;
 
 namespace Zscaler.Zpa
 {
+    [Obsolete(@"zpa.index/policycredentialrule.PolicyCredentialRule has been deprecated in favor of zpa.index/policyaccesscredentialrule.PolicyAccessCredentialRule")]
     [ZpaResourceType("zpa:index/policyCredentialRule:PolicyCredentialRule")]
     public partial class PolicyCredentialRule : global::Pulumi.CustomResource
     {

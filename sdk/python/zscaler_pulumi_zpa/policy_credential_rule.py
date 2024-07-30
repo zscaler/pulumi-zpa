@@ -217,7 +217,12 @@ class _PolicyCredentialRuleState:
         pulumi.set(self, "policy_set_id", value)
 
 
+warnings.warn("""zpa.index/policycredentialrule.PolicyCredentialRule has been deprecated in favor of zpa.index/policyaccesscredentialrule.PolicyAccessCredentialRule""", DeprecationWarning)
+
+
 class PolicyCredentialRule(pulumi.CustomResource):
+    warnings.warn("""zpa.index/policycredentialrule.PolicyCredentialRule has been deprecated in favor of zpa.index/policyaccesscredentialrule.PolicyAccessCredentialRule""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -268,6 +273,7 @@ class PolicyCredentialRule(pulumi.CustomResource):
                  microtenant_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
+        pulumi.log.warn("""PolicyCredentialRule is deprecated: zpa.index/policycredentialrule.PolicyCredentialRule has been deprecated in favor of zpa.index/policyaccesscredentialrule.PolicyAccessCredentialRule""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

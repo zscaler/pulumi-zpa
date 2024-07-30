@@ -32,14 +32,20 @@ __all__ = [
     'BrowserAccessServerGroup',
     'BrowserAccessTcpPortRange',
     'BrowserAccessUdpPortRange',
+    'CloudBrowserIsolationExternalProfileDebugMode',
     'CloudBrowserIsolationExternalProfileSecurityControl',
+    'CloudBrowserIsolationExternalProfileSecurityControlDeepLink',
+    'CloudBrowserIsolationExternalProfileSecurityControlWatermark',
     'CloudBrowserIsolationExternalProfileUserExperience',
-    'InspectionCustomControlsAssociatedInspectionProfileName',
+    'CloudBrowserIsolationExternalProfileUserExperienceForwardToZia',
     'InspectionCustomControlsRule',
     'InspectionCustomControlsRuleConditions',
     'InspectionProfileControlsInfo',
     'InspectionProfileCustomControl',
+    'InspectionProfilePredefinedApiControl',
     'InspectionProfilePredefinedControl',
+    'InspectionProfileThreatLabzControl',
+    'InspectionProfileWebsocketControl',
     'LSSConfigControllerConfig',
     'LSSConfigControllerConnectorGroup',
     'LSSConfigControllerPolicyRuleResource',
@@ -51,6 +57,10 @@ __all__ = [
     'PRAApprovalWorkingHour',
     'PRAConsolePraApplication',
     'PRAConsolePraPortal',
+    'PolicyAccessCredentialRuleCondition',
+    'PolicyAccessCredentialRuleConditionOperand',
+    'PolicyAccessCredentialRuleConditionOperandEntryValue',
+    'PolicyAccessCredentialRuleCredential',
     'PolicyAccessForwardingRuleCondition',
     'PolicyAccessForwardingRuleConditionOperand',
     'PolicyAccessForwardingRuleV2Condition',
@@ -131,9 +141,13 @@ __all__ = [
     'GetApplicationSegmentServerGroupResult',
     'GetApplicationSegmentTcpPortRangeResult',
     'GetApplicationSegmentUdpPortRangeResult',
+    'GetCloudBrowserIsolationExternalProfileDebugModeResult',
     'GetCloudBrowserIsolationExternalProfileRegionResult',
     'GetCloudBrowserIsolationExternalProfileSecurityControlResult',
+    'GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkResult',
+    'GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkResult',
     'GetCloudBrowserIsolationExternalProfileUserExperienceResult',
+    'GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaResult',
     'GetCloudConnectorGroupCloudConnectorResult',
     'GetCustomerVersionProfileCustomScopeCustomerIdResult',
     'GetCustomerVersionProfileVersionResult',
@@ -198,8 +212,6 @@ class ApplicationSegmentBrowserAccessClientlessApp(dict):
             suggest = "allow_options"
         elif key == "certificateId":
             suggest = "certificate_id"
-        elif key == "localDomain":
-            suggest = "local_domain"
         elif key == "trustUntrustedCert":
             suggest = "trust_untrusted_cert"
 
@@ -220,14 +232,10 @@ class ApplicationSegmentBrowserAccessClientlessApp(dict):
                  name: str,
                  allow_options: Optional[bool] = None,
                  certificate_id: Optional[str] = None,
-                 cname: Optional[str] = None,
                  description: Optional[str] = None,
                  domain: Optional[str] = None,
                  enabled: Optional[bool] = None,
-                 hidden: Optional[bool] = None,
                  id: Optional[str] = None,
-                 local_domain: Optional[str] = None,
-                 path: Optional[str] = None,
                  trust_untrusted_cert: Optional[bool] = None):
         """
         :param str application_port: Port for the BA app.
@@ -244,22 +252,14 @@ class ApplicationSegmentBrowserAccessClientlessApp(dict):
             pulumi.set(__self__, "allow_options", allow_options)
         if certificate_id is not None:
             pulumi.set(__self__, "certificate_id", certificate_id)
-        if cname is not None:
-            pulumi.set(__self__, "cname", cname)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if hidden is not None:
-            pulumi.set(__self__, "hidden", hidden)
         if id is not None:
             pulumi.set(__self__, "id", id)
-        if local_domain is not None:
-            pulumi.set(__self__, "local_domain", local_domain)
-        if path is not None:
-            pulumi.set(__self__, "path", path)
         if trust_untrusted_cert is not None:
             pulumi.set(__self__, "trust_untrusted_cert", trust_untrusted_cert)
 
@@ -302,11 +302,6 @@ class ApplicationSegmentBrowserAccessClientlessApp(dict):
 
     @property
     @pulumi.getter
-    def cname(self) -> Optional[str]:
-        return pulumi.get(self, "cname")
-
-    @property
-    @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
@@ -325,23 +320,8 @@ class ApplicationSegmentBrowserAccessClientlessApp(dict):
 
     @property
     @pulumi.getter
-    def hidden(self) -> Optional[bool]:
-        return pulumi.get(self, "hidden")
-
-    @property
-    @pulumi.getter
     def id(self) -> Optional[str]:
         return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="localDomain")
-    def local_domain(self) -> Optional[str]:
-        return pulumi.get(self, "local_domain")
-
-    @property
-    @pulumi.getter
-    def path(self) -> Optional[str]:
-        return pulumi.get(self, "path")
 
     @property
     @pulumi.getter(name="trustUntrustedCert")
@@ -503,9 +483,9 @@ class ApplicationSegmentInspectionCommonAppsDtoAppsConfig(dict):
                  application_port: Optional[str] = None,
                  application_protocol: Optional[str] = None,
                  certificate_id: Optional[str] = None,
-                 description: Optional[str] = None,
                  domain: Optional[str] = None,
                  enabled: Optional[bool] = None,
+                 id: Optional[str] = None,
                  name: Optional[str] = None,
                  trust_untrusted_cert: Optional[bool] = None):
         if app_types is not None:
@@ -516,12 +496,12 @@ class ApplicationSegmentInspectionCommonAppsDtoAppsConfig(dict):
             pulumi.set(__self__, "application_protocol", application_protocol)
         if certificate_id is not None:
             pulumi.set(__self__, "certificate_id", certificate_id)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if trust_untrusted_cert is not None:
@@ -549,11 +529,6 @@ class ApplicationSegmentInspectionCommonAppsDtoAppsConfig(dict):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
-        return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter
     def domain(self) -> Optional[str]:
         return pulumi.get(self, "domain")
 
@@ -561,6 +536,11 @@ class ApplicationSegmentInspectionCommonAppsDtoAppsConfig(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -697,9 +677,7 @@ class ApplicationSegmentPRACommonAppsDtoAppsConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "appId":
-            suggest = "app_id"
-        elif key == "appTypes":
+        if key == "appTypes":
             suggest = "app_types"
         elif key == "applicationPort":
             suggest = "application_port"
@@ -720,18 +698,14 @@ class ApplicationSegmentPRACommonAppsDtoAppsConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 app_id: Optional[str] = None,
                  app_types: Optional[Sequence[str]] = None,
                  application_port: Optional[str] = None,
                  application_protocol: Optional[str] = None,
                  connection_security: Optional[str] = None,
-                 description: Optional[str] = None,
                  domain: Optional[str] = None,
                  enabled: Optional[bool] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None):
-        if app_id is not None:
-            pulumi.set(__self__, "app_id", app_id)
         if app_types is not None:
             pulumi.set(__self__, "app_types", app_types)
         if application_port is not None:
@@ -740,8 +714,6 @@ class ApplicationSegmentPRACommonAppsDtoAppsConfig(dict):
             pulumi.set(__self__, "application_protocol", application_protocol)
         if connection_security is not None:
             pulumi.set(__self__, "connection_security", connection_security)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if enabled is not None:
@@ -750,11 +722,6 @@ class ApplicationSegmentPRACommonAppsDtoAppsConfig(dict):
             pulumi.set(__self__, "id", id)
         if name is not None:
             pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="appId")
-    def app_id(self) -> Optional[str]:
-        return pulumi.get(self, "app_id")
 
     @property
     @pulumi.getter(name="appTypes")
@@ -775,11 +742,6 @@ class ApplicationSegmentPRACommonAppsDtoAppsConfig(dict):
     @pulumi.getter(name="connectionSecurity")
     def connection_security(self) -> Optional[str]:
         return pulumi.get(self, "connection_security")
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[str]:
-        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
@@ -993,8 +955,6 @@ class BrowserAccessClientlessApp(dict):
             suggest = "allow_options"
         elif key == "certificateId":
             suggest = "certificate_id"
-        elif key == "localDomain":
-            suggest = "local_domain"
         elif key == "trustUntrustedCert":
             suggest = "trust_untrusted_cert"
 
@@ -1015,14 +975,10 @@ class BrowserAccessClientlessApp(dict):
                  name: str,
                  allow_options: Optional[bool] = None,
                  certificate_id: Optional[str] = None,
-                 cname: Optional[str] = None,
                  description: Optional[str] = None,
                  domain: Optional[str] = None,
                  enabled: Optional[bool] = None,
-                 hidden: Optional[bool] = None,
                  id: Optional[str] = None,
-                 local_domain: Optional[str] = None,
-                 path: Optional[str] = None,
                  trust_untrusted_cert: Optional[bool] = None):
         """
         :param str application_port: Port for the BA app.
@@ -1039,22 +995,14 @@ class BrowserAccessClientlessApp(dict):
             pulumi.set(__self__, "allow_options", allow_options)
         if certificate_id is not None:
             pulumi.set(__self__, "certificate_id", certificate_id)
-        if cname is not None:
-            pulumi.set(__self__, "cname", cname)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if hidden is not None:
-            pulumi.set(__self__, "hidden", hidden)
         if id is not None:
             pulumi.set(__self__, "id", id)
-        if local_domain is not None:
-            pulumi.set(__self__, "local_domain", local_domain)
-        if path is not None:
-            pulumi.set(__self__, "path", path)
         if trust_untrusted_cert is not None:
             pulumi.set(__self__, "trust_untrusted_cert", trust_untrusted_cert)
 
@@ -1097,11 +1045,6 @@ class BrowserAccessClientlessApp(dict):
 
     @property
     @pulumi.getter
-    def cname(self) -> Optional[str]:
-        return pulumi.get(self, "cname")
-
-    @property
-    @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
@@ -1120,23 +1063,8 @@ class BrowserAccessClientlessApp(dict):
 
     @property
     @pulumi.getter
-    def hidden(self) -> Optional[bool]:
-        return pulumi.get(self, "hidden")
-
-    @property
-    @pulumi.getter
     def id(self) -> Optional[str]:
         return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="localDomain")
-    def local_domain(self) -> Optional[str]:
-        return pulumi.get(self, "local_domain")
-
-    @property
-    @pulumi.getter
-    def path(self) -> Optional[str]:
-        return pulumi.get(self, "path")
 
     @property
     @pulumi.getter(name="trustUntrustedCert")
@@ -1237,6 +1165,44 @@ class BrowserAccessUdpPortRange(dict):
 
 
 @pulumi.output_type
+class CloudBrowserIsolationExternalProfileDebugMode(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filePassword":
+            suggest = "file_password"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudBrowserIsolationExternalProfileDebugMode. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudBrowserIsolationExternalProfileDebugMode.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudBrowserIsolationExternalProfileDebugMode.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed: Optional[bool] = None,
+                 file_password: Optional[str] = None):
+        if allowed is not None:
+            pulumi.set(__self__, "allowed", allowed)
+        if file_password is not None:
+            pulumi.set(__self__, "file_password", file_password)
+
+    @property
+    @pulumi.getter
+    def allowed(self) -> Optional[bool]:
+        return pulumi.get(self, "allowed")
+
+    @property
+    @pulumi.getter(name="filePassword")
+    def file_password(self) -> Optional[str]:
+        return pulumi.get(self, "file_password")
+
+
+@pulumi.output_type
 class CloudBrowserIsolationExternalProfileSecurityControl(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1245,8 +1211,12 @@ class CloudBrowserIsolationExternalProfileSecurityControl(dict):
             suggest = "allow_printing"
         elif key == "copyPaste":
             suggest = "copy_paste"
+        elif key == "deepLink":
+            suggest = "deep_link"
         elif key == "documentViewer":
             suggest = "document_viewer"
+        elif key == "flattenedPdf":
+            suggest = "flattened_pdf"
         elif key == "localRender":
             suggest = "local_render"
         elif key == "restrictKeystrokes":
@@ -1268,22 +1238,31 @@ class CloudBrowserIsolationExternalProfileSecurityControl(dict):
     def __init__(__self__, *,
                  allow_printing: Optional[bool] = None,
                  copy_paste: Optional[str] = None,
+                 deep_link: Optional['outputs.CloudBrowserIsolationExternalProfileSecurityControlDeepLink'] = None,
                  document_viewer: Optional[bool] = None,
+                 flattened_pdf: Optional[bool] = None,
                  local_render: Optional[bool] = None,
                  restrict_keystrokes: Optional[bool] = None,
-                 upload_download: Optional[str] = None):
+                 upload_download: Optional[str] = None,
+                 watermark: Optional['outputs.CloudBrowserIsolationExternalProfileSecurityControlWatermark'] = None):
         if allow_printing is not None:
             pulumi.set(__self__, "allow_printing", allow_printing)
         if copy_paste is not None:
             pulumi.set(__self__, "copy_paste", copy_paste)
+        if deep_link is not None:
+            pulumi.set(__self__, "deep_link", deep_link)
         if document_viewer is not None:
             pulumi.set(__self__, "document_viewer", document_viewer)
+        if flattened_pdf is not None:
+            pulumi.set(__self__, "flattened_pdf", flattened_pdf)
         if local_render is not None:
             pulumi.set(__self__, "local_render", local_render)
         if restrict_keystrokes is not None:
             pulumi.set(__self__, "restrict_keystrokes", restrict_keystrokes)
         if upload_download is not None:
             pulumi.set(__self__, "upload_download", upload_download)
+        if watermark is not None:
+            pulumi.set(__self__, "watermark", watermark)
 
     @property
     @pulumi.getter(name="allowPrinting")
@@ -1296,9 +1275,19 @@ class CloudBrowserIsolationExternalProfileSecurityControl(dict):
         return pulumi.get(self, "copy_paste")
 
     @property
+    @pulumi.getter(name="deepLink")
+    def deep_link(self) -> Optional['outputs.CloudBrowserIsolationExternalProfileSecurityControlDeepLink']:
+        return pulumi.get(self, "deep_link")
+
+    @property
     @pulumi.getter(name="documentViewer")
     def document_viewer(self) -> Optional[bool]:
         return pulumi.get(self, "document_viewer")
+
+    @property
+    @pulumi.getter(name="flattenedPdf")
+    def flattened_pdf(self) -> Optional[bool]:
+        return pulumi.get(self, "flattened_pdf")
 
     @property
     @pulumi.getter(name="localRender")
@@ -1315,6 +1304,98 @@ class CloudBrowserIsolationExternalProfileSecurityControl(dict):
     def upload_download(self) -> Optional[str]:
         return pulumi.get(self, "upload_download")
 
+    @property
+    @pulumi.getter
+    def watermark(self) -> Optional['outputs.CloudBrowserIsolationExternalProfileSecurityControlWatermark']:
+        return pulumi.get(self, "watermark")
+
+
+@pulumi.output_type
+class CloudBrowserIsolationExternalProfileSecurityControlDeepLink(dict):
+    def __init__(__self__, *,
+                 applications: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None):
+        if applications is not None:
+            pulumi.set(__self__, "applications", applications)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def applications(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "applications")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class CloudBrowserIsolationExternalProfileSecurityControlWatermark(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "showMessage":
+            suggest = "show_message"
+        elif key == "showTimestamp":
+            suggest = "show_timestamp"
+        elif key == "showUserId":
+            suggest = "show_user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudBrowserIsolationExternalProfileSecurityControlWatermark. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudBrowserIsolationExternalProfileSecurityControlWatermark.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudBrowserIsolationExternalProfileSecurityControlWatermark.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 message: Optional[str] = None,
+                 show_message: Optional[bool] = None,
+                 show_timestamp: Optional[bool] = None,
+                 show_user_id: Optional[bool] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if show_message is not None:
+            pulumi.set(__self__, "show_message", show_message)
+        if show_timestamp is not None:
+            pulumi.set(__self__, "show_timestamp", show_timestamp)
+        if show_user_id is not None:
+            pulumi.set(__self__, "show_user_id", show_user_id)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter(name="showMessage")
+    def show_message(self) -> Optional[bool]:
+        return pulumi.get(self, "show_message")
+
+    @property
+    @pulumi.getter(name="showTimestamp")
+    def show_timestamp(self) -> Optional[bool]:
+        return pulumi.get(self, "show_timestamp")
+
+    @property
+    @pulumi.getter(name="showUserId")
+    def show_user_id(self) -> Optional[bool]:
+        return pulumi.get(self, "show_user_id")
+
 
 @pulumi.output_type
 class CloudBrowserIsolationExternalProfileUserExperience(dict):
@@ -1323,6 +1404,10 @@ class CloudBrowserIsolationExternalProfileUserExperience(dict):
         suggest = None
         if key == "browserInBrowser":
             suggest = "browser_in_browser"
+        elif key == "forwardToZia":
+            suggest = "forward_to_zia"
+        elif key == "persistIsolationBar":
+            suggest = "persist_isolation_bar"
         elif key == "sessionPersistence":
             suggest = "session_persistence"
 
@@ -1339,11 +1424,23 @@ class CloudBrowserIsolationExternalProfileUserExperience(dict):
 
     def __init__(__self__, *,
                  browser_in_browser: Optional[bool] = None,
-                 session_persistence: Optional[bool] = None):
+                 forward_to_zia: Optional['outputs.CloudBrowserIsolationExternalProfileUserExperienceForwardToZia'] = None,
+                 persist_isolation_bar: Optional[bool] = None,
+                 session_persistence: Optional[bool] = None,
+                 translate: Optional[bool] = None,
+                 zgpu: Optional[bool] = None):
         if browser_in_browser is not None:
             pulumi.set(__self__, "browser_in_browser", browser_in_browser)
+        if forward_to_zia is not None:
+            pulumi.set(__self__, "forward_to_zia", forward_to_zia)
+        if persist_isolation_bar is not None:
+            pulumi.set(__self__, "persist_isolation_bar", persist_isolation_bar)
         if session_persistence is not None:
             pulumi.set(__self__, "session_persistence", session_persistence)
+        if translate is not None:
+            pulumi.set(__self__, "translate", translate)
+        if zgpu is not None:
+            pulumi.set(__self__, "zgpu", zgpu)
 
     @property
     @pulumi.getter(name="browserInBrowser")
@@ -1351,22 +1448,87 @@ class CloudBrowserIsolationExternalProfileUserExperience(dict):
         return pulumi.get(self, "browser_in_browser")
 
     @property
+    @pulumi.getter(name="forwardToZia")
+    def forward_to_zia(self) -> Optional['outputs.CloudBrowserIsolationExternalProfileUserExperienceForwardToZia']:
+        return pulumi.get(self, "forward_to_zia")
+
+    @property
+    @pulumi.getter(name="persistIsolationBar")
+    def persist_isolation_bar(self) -> Optional[bool]:
+        return pulumi.get(self, "persist_isolation_bar")
+
+    @property
     @pulumi.getter(name="sessionPersistence")
     def session_persistence(self) -> Optional[bool]:
         return pulumi.get(self, "session_persistence")
 
-
-@pulumi.output_type
-class InspectionCustomControlsAssociatedInspectionProfileName(dict):
-    def __init__(__self__, *,
-                 ids: Optional[Sequence[str]] = None):
-        if ids is not None:
-            pulumi.set(__self__, "ids", ids)
+    @property
+    @pulumi.getter
+    def translate(self) -> Optional[bool]:
+        return pulumi.get(self, "translate")
 
     @property
     @pulumi.getter
-    def ids(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "ids")
+    def zgpu(self) -> Optional[bool]:
+        return pulumi.get(self, "zgpu")
+
+
+@pulumi.output_type
+class CloudBrowserIsolationExternalProfileUserExperienceForwardToZia(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudName":
+            suggest = "cloud_name"
+        elif key == "organizationId":
+            suggest = "organization_id"
+        elif key == "pacFileUrl":
+            suggest = "pac_file_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudBrowserIsolationExternalProfileUserExperienceForwardToZia. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudBrowserIsolationExternalProfileUserExperienceForwardToZia.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudBrowserIsolationExternalProfileUserExperienceForwardToZia.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cloud_name: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 organization_id: Optional[str] = None,
+                 pac_file_url: Optional[str] = None):
+        if cloud_name is not None:
+            pulumi.set(__self__, "cloud_name", cloud_name)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if organization_id is not None:
+            pulumi.set(__self__, "organization_id", organization_id)
+        if pac_file_url is not None:
+            pulumi.set(__self__, "pac_file_url", pac_file_url)
+
+    @property
+    @pulumi.getter(name="cloudName")
+    def cloud_name(self) -> Optional[str]:
+        return pulumi.get(self, "cloud_name")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> Optional[str]:
+        return pulumi.get(self, "organization_id")
+
+    @property
+    @pulumi.getter(name="pacFileUrl")
+    def pac_file_url(self) -> Optional[str]:
+        return pulumi.get(self, "pac_file_url")
 
 
 @pulumi.output_type
@@ -1541,16 +1703,58 @@ class InspectionProfileCustomControl(dict):
 
 
 @pulumi.output_type
+class InspectionProfilePredefinedApiControl(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionValue":
+            suggest = "action_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InspectionProfilePredefinedApiControl. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InspectionProfilePredefinedApiControl.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InspectionProfilePredefinedApiControl.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: Optional[str] = None,
+                 action_value: Optional[str] = None,
+                 id: Optional[str] = None):
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if action_value is not None:
+            pulumi.set(__self__, "action_value", action_value)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[str]:
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter(name="actionValue")
+    def action_value(self) -> Optional[str]:
+        return pulumi.get(self, "action_value")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class InspectionProfilePredefinedControl(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
         if key == "actionValue":
             suggest = "action_value"
-        elif key == "controlType":
-            suggest = "control_type"
-        elif key == "protocolType":
-            suggest = "protocol_type"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InspectionProfilePredefinedControl. Access the value via the '{suggest}' property getter instead.")
@@ -1566,66 +1770,120 @@ class InspectionProfilePredefinedControl(dict):
     def __init__(__self__, *,
                  action: Optional[str] = None,
                  action_value: Optional[str] = None,
-                 control_type: Optional[str] = None,
-                 id: Optional[str] = None,
-                 protocol_type: Optional[str] = None):
-        """
-        :param str action: The action of the predefined control
-        :param str action_value: The value for the predefined controls action. This field is only required if the action is set to REDIRECT
-        :param str control_type: The control type of the custom control
-        :param str id: The unique identifier of the predefined control
-        :param str protocol_type: The protocol type of the predefined control
-        """
+                 id: Optional[str] = None):
         if action is not None:
             pulumi.set(__self__, "action", action)
         if action_value is not None:
             pulumi.set(__self__, "action_value", action_value)
-        if control_type is not None:
-            pulumi.set(__self__, "control_type", control_type)
         if id is not None:
             pulumi.set(__self__, "id", id)
-        if protocol_type is not None:
-            pulumi.set(__self__, "protocol_type", protocol_type)
 
     @property
     @pulumi.getter
     def action(self) -> Optional[str]:
-        """
-        The action of the predefined control
-        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter(name="actionValue")
     def action_value(self) -> Optional[str]:
-        """
-        The value for the predefined controls action. This field is only required if the action is set to REDIRECT
-        """
         return pulumi.get(self, "action_value")
-
-    @property
-    @pulumi.getter(name="controlType")
-    def control_type(self) -> Optional[str]:
-        """
-        The control type of the custom control
-        """
-        return pulumi.get(self, "control_type")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        The unique identifier of the predefined control
-        """
         return pulumi.get(self, "id")
 
+
+@pulumi.output_type
+class InspectionProfileThreatLabzControl(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionValue":
+            suggest = "action_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InspectionProfileThreatLabzControl. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InspectionProfileThreatLabzControl.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InspectionProfileThreatLabzControl.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: Optional[str] = None,
+                 action_value: Optional[str] = None,
+                 id: Optional[str] = None):
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if action_value is not None:
+            pulumi.set(__self__, "action_value", action_value)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
     @property
-    @pulumi.getter(name="protocolType")
-    def protocol_type(self) -> Optional[str]:
-        """
-        The protocol type of the predefined control
-        """
-        return pulumi.get(self, "protocol_type")
+    @pulumi.getter
+    def action(self) -> Optional[str]:
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter(name="actionValue")
+    def action_value(self) -> Optional[str]:
+        return pulumi.get(self, "action_value")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class InspectionProfileWebsocketControl(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionValue":
+            suggest = "action_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InspectionProfileWebsocketControl. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InspectionProfileWebsocketControl.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InspectionProfileWebsocketControl.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: Optional[str] = None,
+                 action_value: Optional[str] = None,
+                 id: Optional[str] = None):
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if action_value is not None:
+            pulumi.set(__self__, "action_value", action_value)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[str]:
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter(name="actionValue")
+    def action_value(self) -> Optional[str]:
+        return pulumi.get(self, "action_value")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type
@@ -2024,10 +2282,8 @@ class LSSConfigControllerPolicyRuleResource(dict):
 
     @property
     @pulumi.getter(name="ruleOrder")
+    @_utilities.deprecated("""The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""")
     def rule_order(self) -> Optional[str]:
-        warnings.warn("""The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""", DeprecationWarning)
-        pulumi.log.warn("""rule_order is deprecated: The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`""")
-
         return pulumi.get(self, "rule_order")
 
     @property
@@ -2362,6 +2618,132 @@ class PRAConsolePraPortal(dict):
         The unique identifier of the privileged portal
         """
         return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class PolicyAccessCredentialRuleCondition(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 operands: Optional[Sequence['outputs.PolicyAccessCredentialRuleConditionOperand']] = None,
+                 operator: Optional[str] = None):
+        """
+        :param Sequence['PolicyAccessCredentialRuleConditionOperandArgs'] operands: This signifies the various policy criteria.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if operands is not None:
+            pulumi.set(__self__, "operands", operands)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def operands(self) -> Optional[Sequence['outputs.PolicyAccessCredentialRuleConditionOperand']]:
+        """
+        This signifies the various policy criteria.
+        """
+        return pulumi.get(self, "operands")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+
+@pulumi.output_type
+class PolicyAccessCredentialRuleConditionOperand(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entryValues":
+            suggest = "entry_values"
+        elif key == "objectType":
+            suggest = "object_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyAccessCredentialRuleConditionOperand. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyAccessCredentialRuleConditionOperand.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyAccessCredentialRuleConditionOperand.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entry_values: Optional[Sequence['outputs.PolicyAccessCredentialRuleConditionOperandEntryValue']] = None,
+                 object_type: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str object_type: This is for specifying the policy critiera.
+        :param Sequence[str] values: This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        if entry_values is not None:
+            pulumi.set(__self__, "entry_values", entry_values)
+        if object_type is not None:
+            pulumi.set(__self__, "object_type", object_type)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="entryValues")
+    def entry_values(self) -> Optional[Sequence['outputs.PolicyAccessCredentialRuleConditionOperandEntryValue']]:
+        return pulumi.get(self, "entry_values")
+
+    @property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> Optional[str]:
+        """
+        This is for specifying the policy critiera.
+        """
+        return pulumi.get(self, "object_type")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class PolicyAccessCredentialRuleConditionOperandEntryValue(dict):
+    def __init__(__self__, *,
+                 lhs: Optional[str] = None,
+                 rhs: Optional[str] = None):
+        if lhs is not None:
+            pulumi.set(__self__, "lhs", lhs)
+        if rhs is not None:
+            pulumi.set(__self__, "rhs", rhs)
+
+    @property
+    @pulumi.getter
+    def lhs(self) -> Optional[str]:
+        return pulumi.get(self, "lhs")
+
+    @property
+    @pulumi.getter
+    def rhs(self) -> Optional[str]:
+        return pulumi.get(self, "rhs")
+
+
+@pulumi.output_type
+class PolicyAccessCredentialRuleCredential(dict):
+    def __init__(__self__, *,
+                 id: str):
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type
@@ -6048,6 +6430,25 @@ class GetApplicationSegmentUdpPortRangeResult(dict):
 
 
 @pulumi.output_type
+class GetCloudBrowserIsolationExternalProfileDebugModeResult(dict):
+    def __init__(__self__, *,
+                 allowed: bool,
+                 file_password: str):
+        pulumi.set(__self__, "allowed", allowed)
+        pulumi.set(__self__, "file_password", file_password)
+
+    @property
+    @pulumi.getter
+    def allowed(self) -> bool:
+        return pulumi.get(self, "allowed")
+
+    @property
+    @pulumi.getter(name="filePassword")
+    def file_password(self) -> str:
+        return pulumi.get(self, "file_password")
+
+
+@pulumi.output_type
 class GetCloudBrowserIsolationExternalProfileRegionResult(dict):
     def __init__(__self__, *,
                  id: str,
@@ -6071,16 +6472,22 @@ class GetCloudBrowserIsolationExternalProfileSecurityControlResult(dict):
     def __init__(__self__, *,
                  allow_printing: bool,
                  copy_paste: str,
+                 deep_links: Sequence['outputs.GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkResult'],
                  document_viewer: bool,
+                 flattened_pdf: bool,
                  local_render: bool,
                  restrict_keystrokes: bool,
-                 upload_download: str):
+                 upload_download: str,
+                 watermarks: Sequence['outputs.GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkResult']):
         pulumi.set(__self__, "allow_printing", allow_printing)
         pulumi.set(__self__, "copy_paste", copy_paste)
+        pulumi.set(__self__, "deep_links", deep_links)
         pulumi.set(__self__, "document_viewer", document_viewer)
+        pulumi.set(__self__, "flattened_pdf", flattened_pdf)
         pulumi.set(__self__, "local_render", local_render)
         pulumi.set(__self__, "restrict_keystrokes", restrict_keystrokes)
         pulumi.set(__self__, "upload_download", upload_download)
+        pulumi.set(__self__, "watermarks", watermarks)
 
     @property
     @pulumi.getter(name="allowPrinting")
@@ -6093,9 +6500,19 @@ class GetCloudBrowserIsolationExternalProfileSecurityControlResult(dict):
         return pulumi.get(self, "copy_paste")
 
     @property
+    @pulumi.getter(name="deepLinks")
+    def deep_links(self) -> Sequence['outputs.GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkResult']:
+        return pulumi.get(self, "deep_links")
+
+    @property
     @pulumi.getter(name="documentViewer")
     def document_viewer(self) -> bool:
         return pulumi.get(self, "document_viewer")
+
+    @property
+    @pulumi.getter(name="flattenedPdf")
+    def flattened_pdf(self) -> bool:
+        return pulumi.get(self, "flattened_pdf")
 
     @property
     @pulumi.getter(name="localRender")
@@ -6112,14 +6529,87 @@ class GetCloudBrowserIsolationExternalProfileSecurityControlResult(dict):
     def upload_download(self) -> str:
         return pulumi.get(self, "upload_download")
 
+    @property
+    @pulumi.getter
+    def watermarks(self) -> Sequence['outputs.GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkResult']:
+        return pulumi.get(self, "watermarks")
+
+
+@pulumi.output_type
+class GetCloudBrowserIsolationExternalProfileSecurityControlDeepLinkResult(dict):
+    def __init__(__self__, *,
+                 applications: Sequence[str],
+                 enabled: bool):
+        pulumi.set(__self__, "applications", applications)
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def applications(self) -> Sequence[str]:
+        return pulumi.get(self, "applications")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetCloudBrowserIsolationExternalProfileSecurityControlWatermarkResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 message: str,
+                 show_message: bool,
+                 show_timestamp: bool,
+                 show_user_id: bool):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "show_message", show_message)
+        pulumi.set(__self__, "show_timestamp", show_timestamp)
+        pulumi.set(__self__, "show_user_id", show_user_id)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter(name="showMessage")
+    def show_message(self) -> bool:
+        return pulumi.get(self, "show_message")
+
+    @property
+    @pulumi.getter(name="showTimestamp")
+    def show_timestamp(self) -> bool:
+        return pulumi.get(self, "show_timestamp")
+
+    @property
+    @pulumi.getter(name="showUserId")
+    def show_user_id(self) -> bool:
+        return pulumi.get(self, "show_user_id")
+
 
 @pulumi.output_type
 class GetCloudBrowserIsolationExternalProfileUserExperienceResult(dict):
     def __init__(__self__, *,
                  browser_in_browser: bool,
-                 session_persistence: bool):
+                 forward_to_zias: Sequence['outputs.GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaResult'],
+                 persist_isolation_bar: bool,
+                 session_persistence: bool,
+                 translate: bool,
+                 zgpu: Optional[bool] = None):
         pulumi.set(__self__, "browser_in_browser", browser_in_browser)
+        pulumi.set(__self__, "forward_to_zias", forward_to_zias)
+        pulumi.set(__self__, "persist_isolation_bar", persist_isolation_bar)
         pulumi.set(__self__, "session_persistence", session_persistence)
+        pulumi.set(__self__, "translate", translate)
+        if zgpu is not None:
+            pulumi.set(__self__, "zgpu", zgpu)
 
     @property
     @pulumi.getter(name="browserInBrowser")
@@ -6127,9 +6617,62 @@ class GetCloudBrowserIsolationExternalProfileUserExperienceResult(dict):
         return pulumi.get(self, "browser_in_browser")
 
     @property
+    @pulumi.getter(name="forwardToZias")
+    def forward_to_zias(self) -> Sequence['outputs.GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaResult']:
+        return pulumi.get(self, "forward_to_zias")
+
+    @property
+    @pulumi.getter(name="persistIsolationBar")
+    def persist_isolation_bar(self) -> bool:
+        return pulumi.get(self, "persist_isolation_bar")
+
+    @property
     @pulumi.getter(name="sessionPersistence")
     def session_persistence(self) -> bool:
         return pulumi.get(self, "session_persistence")
+
+    @property
+    @pulumi.getter
+    def translate(self) -> bool:
+        return pulumi.get(self, "translate")
+
+    @property
+    @pulumi.getter
+    def zgpu(self) -> Optional[bool]:
+        return pulumi.get(self, "zgpu")
+
+
+@pulumi.output_type
+class GetCloudBrowserIsolationExternalProfileUserExperienceForwardToZiaResult(dict):
+    def __init__(__self__, *,
+                 cloud_name: str,
+                 enabled: bool,
+                 organization_id: str,
+                 pac_file_url: str):
+        pulumi.set(__self__, "cloud_name", cloud_name)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "pac_file_url", pac_file_url)
+
+    @property
+    @pulumi.getter(name="cloudName")
+    def cloud_name(self) -> str:
+        return pulumi.get(self, "cloud_name")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> str:
+        return pulumi.get(self, "organization_id")
+
+    @property
+    @pulumi.getter(name="pacFileUrl")
+    def pac_file_url(self) -> str:
+        return pulumi.get(self, "pac_file_url")
 
 
 @pulumi.output_type
@@ -8497,7 +9040,7 @@ class GetPraConsoleControllerPraApplicationResult(dict):
                  name: str):
         """
         :param str id: The unique identifier of the Privileged Remote Access-enabled application
-        :param str name: The name of the Privileged Remote Access-enabled application
+        :param str name: - (Required) The name of the privileged console.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -8514,7 +9057,7 @@ class GetPraConsoleControllerPraApplicationResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the Privileged Remote Access-enabled application
+        - (Required) The name of the privileged console.
         """
         return pulumi.get(self, "name")
 
@@ -8526,7 +9069,7 @@ class GetPraConsoleControllerPraPortalResult(dict):
                  name: str):
         """
         :param str id: The unique identifier of the privileged portal
-        :param str name: The name of the privileged portal
+        :param str name: - (Required) The name of the privileged console.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -8543,7 +9086,7 @@ class GetPraConsoleControllerPraPortalResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the privileged portal
+        - (Required) The name of the privileged console.
         """
         return pulumi.get(self, "name")
 

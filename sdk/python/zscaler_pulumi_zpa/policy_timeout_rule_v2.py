@@ -293,7 +293,126 @@ class PolicyTimeoutRuleV2(pulumi.CustomResource):
                  reauth_timeout: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a PolicyTimeoutRuleV2 resource with the given unique name, props, and options.
+        * [Official documentation](https://help.zscaler.com/zpa/about-timeout-policy)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-timeout-policies-using-api)
+
+        The **zpa_policy_timeout_rule_v2** resource creates and manages policy access timeout rule in the Zscaler Private Access cloud using a new v2 API endpoint.
+
+          ⚠️ **NOTE**: This resource is recommended if your configuration requires the association of more than 1000 resource criteria per rule.
+
+          ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        this_id_p_controller = zpa.get_id_p_controller(name="Idp_Name")
+        email_user_sso = zpa.get_saml_attribute(name="Email_Users",
+            idp_name="Idp_Name")
+        group_user = zpa.get_saml_attribute(name="GroupName_Users",
+            idp_name="Idp_Name")
+        a000 = zpa.get_scim_groups(name="A000",
+            idp_name="Idp_Name")
+        b000 = zpa.get_scim_groups(name="B000",
+            idp_name="Idp_Name")
+        # Create Segment Group
+        this_segment_group = zpa.SegmentGroup("thisSegmentGroup",
+            description="Example",
+            enabled=True)
+        # Create Policy Access Rule V2
+        this_policy_access_time_out_rule_v2 = zpa.PolicyAccessTimeOutRuleV2("thisPolicyAccessTimeOutRuleV2",
+            description="Example",
+            action="RE_AUTH",
+            reauth_idle_timeout="10 Days",
+            reauth_timeout="10 Days",
+            conditions=[
+                zpa.PolicyAccessTimeOutRuleV2ConditionArgs(
+                    operator="OR",
+                    operands=[zpa.PolicyAccessTimeOutRuleV2ConditionOperandArgs(
+                        object_type="APP_GROUP",
+                        values=[this_segment_group.id],
+                    )],
+                ),
+                zpa.PolicyAccessTimeOutRuleV2ConditionArgs(
+                    operator="OR",
+                    operands=[
+                        zpa.PolicyAccessTimeOutRuleV2ConditionOperandArgs(
+                            object_type="SAML",
+                            entry_values=[
+                                zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs(
+                                    rhs="user1@acme.com",
+                                    lhs=email_user_sso.id,
+                                ),
+                                zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs(
+                                    rhs="A000",
+                                    lhs=group_user.id,
+                                ),
+                            ],
+                        ),
+                        zpa.PolicyAccessTimeOutRuleV2ConditionOperandArgs(
+                            object_type="SCIM_GROUP",
+                            entry_values=[
+                                zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs(
+                                    rhs=a000.id,
+                                    lhs=this_id_p_controller.id,
+                                ),
+                                zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs(
+                                    rhs=b000.id,
+                                    lhs=this_id_p_controller.id,
+                                ),
+                            ],
+                        ),
+                    ],
+                ),
+                zpa.PolicyAccessTimeOutRuleV2ConditionArgs(
+                    operator="OR",
+                    operands=[zpa.PolicyAccessTimeOutRuleV2ConditionOperandArgs(
+                        object_type="PLATFORM",
+                        entry_values=[
+                            zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs(
+                                rhs="true",
+                                lhs="linux",
+                            ),
+                            zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs(
+                                rhs="true",
+                                lhs="android",
+                            ),
+                        ],
+                    )],
+                ),
+            ])
+        ```
+
+        ## LHS and RHS Values
+
+        | Object Type | LHS| RHS| VALUES
+        |----------|-----------|----------|----------
+        | APP  |   |  | ``application_segment_id`` |
+        | APP_GROUP  |   |  | ``segment_group_id``|
+        | CLIENT_TYPE  |   |  |  ``zpn_client_type_zappl``, ``zpn_client_type_exporter``, ``zpn_client_type_browser_isolation``, ``zpn_client_type_ip_anchoring``, ``zpn_client_type_edge_connector``, ``zpn_client_type_branch_connector``,  ``zpn_client_type_zapp_partner``, ``zpn_client_type_zapp``  |
+        | SAML | ``saml_attribute_id``  | ``attribute_value_to_match`` |
+        | SCIM | ``scim_attribute_id``  | ``attribute_value_to_match``  |
+        | SCIM_GROUP | ``scim_group_attribute_id``  | ``attribute_value_to_match``  |
+        | PLATFORM | ``mac``, ``ios``, ``windows``, ``android``, ``linux`` | ``"true"`` / ``"false"`` |
+        | POSTURE | ``posture_udid``  | ``"true"`` / ``"false"`` |
+
+        ## Import
+
+        Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+
+        Visit
+
+        Policy access timeout rule can be imported by using `<RULE ID>` as the import ID.
+
+        For example:
+
+        ```sh
+        $ pulumi import zpa:index/policyTimeoutRuleV2:PolicyTimeoutRuleV2 example <rule_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: This is for providing the rule action.
@@ -309,7 +428,126 @@ class PolicyTimeoutRuleV2(pulumi.CustomResource):
                  args: Optional[PolicyTimeoutRuleV2Args] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a PolicyTimeoutRuleV2 resource with the given unique name, props, and options.
+        * [Official documentation](https://help.zscaler.com/zpa/about-timeout-policy)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-timeout-policies-using-api)
+
+        The **zpa_policy_timeout_rule_v2** resource creates and manages policy access timeout rule in the Zscaler Private Access cloud using a new v2 API endpoint.
+
+          ⚠️ **NOTE**: This resource is recommended if your configuration requires the association of more than 1000 resource criteria per rule.
+
+          ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        this_id_p_controller = zpa.get_id_p_controller(name="Idp_Name")
+        email_user_sso = zpa.get_saml_attribute(name="Email_Users",
+            idp_name="Idp_Name")
+        group_user = zpa.get_saml_attribute(name="GroupName_Users",
+            idp_name="Idp_Name")
+        a000 = zpa.get_scim_groups(name="A000",
+            idp_name="Idp_Name")
+        b000 = zpa.get_scim_groups(name="B000",
+            idp_name="Idp_Name")
+        # Create Segment Group
+        this_segment_group = zpa.SegmentGroup("thisSegmentGroup",
+            description="Example",
+            enabled=True)
+        # Create Policy Access Rule V2
+        this_policy_access_time_out_rule_v2 = zpa.PolicyAccessTimeOutRuleV2("thisPolicyAccessTimeOutRuleV2",
+            description="Example",
+            action="RE_AUTH",
+            reauth_idle_timeout="10 Days",
+            reauth_timeout="10 Days",
+            conditions=[
+                zpa.PolicyAccessTimeOutRuleV2ConditionArgs(
+                    operator="OR",
+                    operands=[zpa.PolicyAccessTimeOutRuleV2ConditionOperandArgs(
+                        object_type="APP_GROUP",
+                        values=[this_segment_group.id],
+                    )],
+                ),
+                zpa.PolicyAccessTimeOutRuleV2ConditionArgs(
+                    operator="OR",
+                    operands=[
+                        zpa.PolicyAccessTimeOutRuleV2ConditionOperandArgs(
+                            object_type="SAML",
+                            entry_values=[
+                                zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs(
+                                    rhs="user1@acme.com",
+                                    lhs=email_user_sso.id,
+                                ),
+                                zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs(
+                                    rhs="A000",
+                                    lhs=group_user.id,
+                                ),
+                            ],
+                        ),
+                        zpa.PolicyAccessTimeOutRuleV2ConditionOperandArgs(
+                            object_type="SCIM_GROUP",
+                            entry_values=[
+                                zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs(
+                                    rhs=a000.id,
+                                    lhs=this_id_p_controller.id,
+                                ),
+                                zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs(
+                                    rhs=b000.id,
+                                    lhs=this_id_p_controller.id,
+                                ),
+                            ],
+                        ),
+                    ],
+                ),
+                zpa.PolicyAccessTimeOutRuleV2ConditionArgs(
+                    operator="OR",
+                    operands=[zpa.PolicyAccessTimeOutRuleV2ConditionOperandArgs(
+                        object_type="PLATFORM",
+                        entry_values=[
+                            zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs(
+                                rhs="true",
+                                lhs="linux",
+                            ),
+                            zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs(
+                                rhs="true",
+                                lhs="android",
+                            ),
+                        ],
+                    )],
+                ),
+            ])
+        ```
+
+        ## LHS and RHS Values
+
+        | Object Type | LHS| RHS| VALUES
+        |----------|-----------|----------|----------
+        | APP  |   |  | ``application_segment_id`` |
+        | APP_GROUP  |   |  | ``segment_group_id``|
+        | CLIENT_TYPE  |   |  |  ``zpn_client_type_zappl``, ``zpn_client_type_exporter``, ``zpn_client_type_browser_isolation``, ``zpn_client_type_ip_anchoring``, ``zpn_client_type_edge_connector``, ``zpn_client_type_branch_connector``,  ``zpn_client_type_zapp_partner``, ``zpn_client_type_zapp``  |
+        | SAML | ``saml_attribute_id``  | ``attribute_value_to_match`` |
+        | SCIM | ``scim_attribute_id``  | ``attribute_value_to_match``  |
+        | SCIM_GROUP | ``scim_group_attribute_id``  | ``attribute_value_to_match``  |
+        | PLATFORM | ``mac``, ``ios``, ``windows``, ``android``, ``linux`` | ``"true"`` / ``"false"`` |
+        | POSTURE | ``posture_udid``  | ``"true"`` / ``"false"`` |
+
+        ## Import
+
+        Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+
+        Visit
+
+        Policy access timeout rule can be imported by using `<RULE ID>` as the import ID.
+
+        For example:
+
+        ```sh
+        $ pulumi import zpa:index/policyTimeoutRuleV2:PolicyTimeoutRuleV2 example <rule_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param PolicyTimeoutRuleV2Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -11,18 +11,186 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-client-forwarding-policy)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-client-forwarding-policies-using-api)
+//
+// The **zpa_policy_forwarding_rule_v2** resource creates and manages policy access forwarding rule in the Zscaler Private Access cloud using a new v2 API endpoint.
+//
+//	⚠️ **NOTE**: This resource is recommended if your configuration requires the association of more than 1000 resource criteria per rule.
+//
+//	⚠️ **WARNING:**: The attribute ``ruleOrder`` is now deprecated in favor of the new resource  ``policyAccessRuleReorder``
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			thisIdPController, err := zpa.GetIdPController(ctx, &zpa.GetIdPControllerArgs{
+//				Name: pulumi.StringRef("Idp_Name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			emailUserSso, err := zpa.GetSAMLAttribute(ctx, &zpa.GetSAMLAttributeArgs{
+//				Name:    pulumi.StringRef("Email_Users"),
+//				IdpName: pulumi.StringRef("Idp_Name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			groupUser, err := zpa.GetSAMLAttribute(ctx, &zpa.GetSAMLAttributeArgs{
+//				Name:    pulumi.StringRef("GroupName_Users"),
+//				IdpName: pulumi.StringRef("Idp_Name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			a000, err := zpa.GetSCIMGroups(ctx, &zpa.GetSCIMGroupsArgs{
+//				Name:    pulumi.StringRef("A000"),
+//				IdpName: pulumi.StringRef("Idp_Name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			b000, err := zpa.GetSCIMGroups(ctx, &zpa.GetSCIMGroupsArgs{
+//				Name:    pulumi.StringRef("B000"),
+//				IdpName: pulumi.StringRef("Idp_Name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Create Segment Group
+//			thisSegmentGroup, err := zpa.NewSegmentGroup(ctx, "thisSegmentGroup", &zpa.SegmentGroupArgs{
+//				Description: pulumi.String("Example"),
+//				Enabled:     pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create Policy Access Rule V2
+//			_, err = zpa.NewPolicyAccessForwardingRuleV2(ctx, "thisPolicyAccessForwardingRuleV2", &zpa.PolicyAccessForwardingRuleV2Args{
+//				Description: pulumi.String("Example"),
+//				Action:      pulumi.String("BYPASS"),
+//				Conditions: zpa.PolicyAccessForwardingRuleV2ConditionArray{
+//					&zpa.PolicyAccessForwardingRuleV2ConditionArgs{
+//						Operator: pulumi.String("OR"),
+//						Operands: zpa.PolicyAccessForwardingRuleV2ConditionOperandArray{
+//							&zpa.PolicyAccessForwardingRuleV2ConditionOperandArgs{
+//								ObjectType: pulumi.String("APP_GROUP"),
+//								Values: pulumi.StringArray{
+//									thisSegmentGroup.ID(),
+//								},
+//							},
+//						},
+//					},
+//					&zpa.PolicyAccessForwardingRuleV2ConditionArgs{
+//						Operator: pulumi.String("OR"),
+//						Operands: zpa.PolicyAccessForwardingRuleV2ConditionOperandArray{
+//							&zpa.PolicyAccessForwardingRuleV2ConditionOperandArgs{
+//								ObjectType: pulumi.String("SAML"),
+//								EntryValues: zpa.PolicyAccessForwardingRuleV2ConditionOperandEntryValueArray{
+//									&zpa.PolicyAccessForwardingRuleV2ConditionOperandEntryValueArgs{
+//										Rhs: pulumi.String("user1@acme.com"),
+//										Lhs: pulumi.String(emailUserSso.Id),
+//									},
+//									&zpa.PolicyAccessForwardingRuleV2ConditionOperandEntryValueArgs{
+//										Rhs: pulumi.String("A000"),
+//										Lhs: pulumi.String(groupUser.Id),
+//									},
+//								},
+//							},
+//							&zpa.PolicyAccessForwardingRuleV2ConditionOperandArgs{
+//								ObjectType: pulumi.String("SCIM_GROUP"),
+//								EntryValues: zpa.PolicyAccessForwardingRuleV2ConditionOperandEntryValueArray{
+//									&zpa.PolicyAccessForwardingRuleV2ConditionOperandEntryValueArgs{
+//										Rhs: pulumi.String(a000.Id),
+//										Lhs: pulumi.String(thisIdPController.Id),
+//									},
+//									&zpa.PolicyAccessForwardingRuleV2ConditionOperandEntryValueArgs{
+//										Rhs: pulumi.String(b000.Id),
+//										Lhs: pulumi.String(thisIdPController.Id),
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&zpa.PolicyAccessForwardingRuleV2ConditionArgs{
+//						Operator: pulumi.String("OR"),
+//						Operands: zpa.PolicyAccessForwardingRuleV2ConditionOperandArray{
+//							&zpa.PolicyAccessForwardingRuleV2ConditionOperandArgs{
+//								ObjectType: pulumi.String("PLATFORM"),
+//								EntryValues: zpa.PolicyAccessForwardingRuleV2ConditionOperandEntryValueArray{
+//									&zpa.PolicyAccessForwardingRuleV2ConditionOperandEntryValueArgs{
+//										Rhs: pulumi.String("true"),
+//										Lhs: pulumi.String("linux"),
+//									},
+//									&zpa.PolicyAccessForwardingRuleV2ConditionOperandEntryValueArgs{
+//										Rhs: pulumi.String("true"),
+//										Lhs: pulumi.String("android"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## LHS and RHS Values
+//
+// | Object Type | LHS| RHS| VALUES
+// |----------|-----------|----------|----------
+// | APP  |   |  | “applicationSegmentId“ |
+// | APP_GROUP  |   |  | “segmentGroupId“|
+// | CLIENT_TYPE  |   |  |  “zpnClientTypeZappl“, “zpnClientTypeExporter“, “zpnClientTypeBrowserIsolation“, “zpnClientTypeIpAnchoring“, “zpnClientTypeEdgeConnector“, “zpnClientTypeBranchConnector“,  “zpnClientTypeZappPartner“, “zpnClientTypeZapp“  |
+// | SAML | “samlAttributeId“  | “attributeValueToMatch“ |
+// | SCIM | “scimAttributeId“  | “attributeValueToMatch“  |
+// | SCIM_GROUP | “scimGroupAttributeId“  | “attributeValueToMatch“  |
+// | PLATFORM | “mac“, “ios“, “windows“, “android“, “linux“ | “"true"“ / “"false"“ |
+// | POSTURE | “postureUdid“  | “"true"“ / “"false"“ |
+//
+// ## Import
+//
+// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+//
+// # Visit
+//
+// Policy access timeout rule can be imported by using `<RULE ID>` as the import ID.
+//
+// For example:
+//
+// ```sh
+// $ pulumi import zpa:index/policyForwardingRuleV2:PolicyForwardingRuleV2 example <rule_id>
+// ```
+//
 // Deprecated: zpa.index/policyforwardingrulev2.PolicyForwardingRuleV2 has been deprecated in favor of zpa.index/policyaccessforwardingrulev2.PolicyAccessForwardingRuleV2
 type PolicyForwardingRuleV2 struct {
 	pulumi.CustomResourceState
 
-	// This is for providing the rule action.
+	// This is for providing the rule action. Supported values: `BYPASS`, `INTERCEPT`, and `INTERCEPT_ACCESSIBLE`
 	Action pulumi.StringPtrOutput `pulumi:"action"`
 	// This is for proviidng the set of conditions for the policy.
 	Conditions PolicyForwardingRuleV2ConditionArrayOutput `pulumi:"conditions"`
-	// This is the description of the access policy.
+	// This is the description of the access policy rule.
 	Description   pulumi.StringPtrOutput `pulumi:"description"`
 	MicrotenantId pulumi.StringOutput    `pulumi:"microtenantId"`
-	// This is the name of the policy.
+	// This is the name of the policy rule.
 	Name        pulumi.StringOutput `pulumi:"name"`
 	PolicySetId pulumi.StringOutput `pulumi:"policySetId"`
 }
@@ -57,27 +225,27 @@ func GetPolicyForwardingRuleV2(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PolicyForwardingRuleV2 resources.
 type policyForwardingRuleV2State struct {
-	// This is for providing the rule action.
+	// This is for providing the rule action. Supported values: `BYPASS`, `INTERCEPT`, and `INTERCEPT_ACCESSIBLE`
 	Action *string `pulumi:"action"`
 	// This is for proviidng the set of conditions for the policy.
 	Conditions []PolicyForwardingRuleV2Condition `pulumi:"conditions"`
-	// This is the description of the access policy.
+	// This is the description of the access policy rule.
 	Description   *string `pulumi:"description"`
 	MicrotenantId *string `pulumi:"microtenantId"`
-	// This is the name of the policy.
+	// This is the name of the policy rule.
 	Name        *string `pulumi:"name"`
 	PolicySetId *string `pulumi:"policySetId"`
 }
 
 type PolicyForwardingRuleV2State struct {
-	// This is for providing the rule action.
+	// This is for providing the rule action. Supported values: `BYPASS`, `INTERCEPT`, and `INTERCEPT_ACCESSIBLE`
 	Action pulumi.StringPtrInput
 	// This is for proviidng the set of conditions for the policy.
 	Conditions PolicyForwardingRuleV2ConditionArrayInput
-	// This is the description of the access policy.
+	// This is the description of the access policy rule.
 	Description   pulumi.StringPtrInput
 	MicrotenantId pulumi.StringPtrInput
-	// This is the name of the policy.
+	// This is the name of the policy rule.
 	Name        pulumi.StringPtrInput
 	PolicySetId pulumi.StringPtrInput
 }
@@ -87,27 +255,27 @@ func (PolicyForwardingRuleV2State) ElementType() reflect.Type {
 }
 
 type policyForwardingRuleV2Args struct {
-	// This is for providing the rule action.
+	// This is for providing the rule action. Supported values: `BYPASS`, `INTERCEPT`, and `INTERCEPT_ACCESSIBLE`
 	Action *string `pulumi:"action"`
 	// This is for proviidng the set of conditions for the policy.
 	Conditions []PolicyForwardingRuleV2Condition `pulumi:"conditions"`
-	// This is the description of the access policy.
+	// This is the description of the access policy rule.
 	Description   *string `pulumi:"description"`
 	MicrotenantId *string `pulumi:"microtenantId"`
-	// This is the name of the policy.
+	// This is the name of the policy rule.
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a PolicyForwardingRuleV2 resource.
 type PolicyForwardingRuleV2Args struct {
-	// This is for providing the rule action.
+	// This is for providing the rule action. Supported values: `BYPASS`, `INTERCEPT`, and `INTERCEPT_ACCESSIBLE`
 	Action pulumi.StringPtrInput
 	// This is for proviidng the set of conditions for the policy.
 	Conditions PolicyForwardingRuleV2ConditionArrayInput
-	// This is the description of the access policy.
+	// This is the description of the access policy rule.
 	Description   pulumi.StringPtrInput
 	MicrotenantId pulumi.StringPtrInput
-	// This is the name of the policy.
+	// This is the name of the policy rule.
 	Name pulumi.StringPtrInput
 }
 
@@ -198,7 +366,7 @@ func (o PolicyForwardingRuleV2Output) ToPolicyForwardingRuleV2OutputWithContext(
 	return o
 }
 
-// This is for providing the rule action.
+// This is for providing the rule action. Supported values: `BYPASS`, `INTERCEPT`, and `INTERCEPT_ACCESSIBLE`
 func (o PolicyForwardingRuleV2Output) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyForwardingRuleV2) pulumi.StringPtrOutput { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -208,7 +376,7 @@ func (o PolicyForwardingRuleV2Output) Conditions() PolicyForwardingRuleV2Conditi
 	return o.ApplyT(func(v *PolicyForwardingRuleV2) PolicyForwardingRuleV2ConditionArrayOutput { return v.Conditions }).(PolicyForwardingRuleV2ConditionArrayOutput)
 }
 
-// This is the description of the access policy.
+// This is the description of the access policy rule.
 func (o PolicyForwardingRuleV2Output) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyForwardingRuleV2) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -217,7 +385,7 @@ func (o PolicyForwardingRuleV2Output) MicrotenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyForwardingRuleV2) pulumi.StringOutput { return v.MicrotenantId }).(pulumi.StringOutput)
 }
 
-// This is the name of the policy.
+// This is the name of the policy rule.
 func (o PolicyForwardingRuleV2Output) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyForwardingRuleV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

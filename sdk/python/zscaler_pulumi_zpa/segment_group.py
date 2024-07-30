@@ -187,7 +187,6 @@ class SegmentGroup(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -197,7 +196,6 @@ class SegmentGroup(pulumi.CustomResource):
             description="test1-segment-group",
             enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -234,7 +232,6 @@ class SegmentGroup(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import zscaler_pulumi_zpa as zpa
@@ -244,7 +241,6 @@ class SegmentGroup(pulumi.CustomResource):
             description="test1-segment-group",
             enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

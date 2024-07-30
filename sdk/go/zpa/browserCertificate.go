@@ -18,7 +18,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,9 +41,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
-// <!--Start PulumiCodeChooser -->
+// ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE #########\
+// ######### ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ##########
 // ```go
 // package main
 //
@@ -59,11 +58,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Browser Access resource
 //			_, err := zpa.NewBrowserCertificate(ctx, "this", &zpa.BrowserCertificateArgs{
-//				CertBlob: pulumi.String(`-----BEGIN CERTIFICATE-----
+//				CertBlob: pulumi.String(`-----BEGIN PRIVATE KEY-----
 //
+// MIIDyzCCArOgA
+// -----END PRIVATE KEY-----
+// -----BEGIN CERTIFICATE-----
 // MIIDyzCCArOgAwIBAgIUekBD+iu64583B3u5ew7Bqj2O5cQwDQYJKoZIhvcNAQEL
-// BQAwgY0xCzAJBgNVBAYTAkNBMRkwFwYDVQQIDBBCcml0aXNoIENvbHVtYmlhMRIw
-// EAYDVQQHDAlWYW5jb3V2ZXIxFTATBgNVBAoMDEJELUhhc2hpQ29ycDEVMBMGA1UE
 // -----END CERTIFICATE-----
 //
 // `),
@@ -78,7 +78,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Let's Encrypt Certbot
 //

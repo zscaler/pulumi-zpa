@@ -131,13 +131,12 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"zpa_app_connector_assistant_schedule":         {Tok: zpaResource(zpaMod, "AssistantSchedule")},
+			"zpa_app_connector_assistant_schedule":         {Tok: zpaResource(zpaMod, "AppConnectorAssistantSchedule")},
 			"zpa_app_connector_group":                      {Tok: zpaResource(zpaMod, "ConnectorGroup")},
 			"zpa_service_edge_group":                       {Tok: zpaResource(zpaMod, "ServiceEdgeGroup")},
 			"zpa_segment_group":                            {Tok: zpaResource(zpaMod, "SegmentGroup")},
 			"zpa_server_group":                             {Tok: zpaResource(zpaMod, "ServerGroup")},
 			"zpa_application_segment":                      {Tok: zpaResource(zpaMod, "ApplicationSegment")},
-			"zpa_browser_access":                           {Tok: zpaResource(zpaMod, "BrowserAccess")},
 			"zpa_application_segment_browser_access":       {Tok: zpaResource(zpaMod, "ApplicationSegmentBrowserAccess")},
 			"zpa_application_segment_inspection":           {Tok: zpaResource(zpaMod, "ApplicationSegmentInspection")},
 			"zpa_application_segment_pra":                  {Tok: zpaResource(zpaMod, "ApplicationSegmentPRA")},
@@ -160,11 +159,13 @@ func Provider() tfbridge.ProviderInfo {
 			"zpa_policy_inspection_rule_v2":                {Tok: zpaResource(zpaMod, "PolicyAccessInspectionRuleV2")},
 			"zpa_policy_isolation_rule":                    {Tok: zpaResource(zpaMod, "PolicyAccessIsolationRule")},
 			"zpa_policy_isolation_rule_v2":                 {Tok: zpaResource(zpaMod, "PolicyAccessIsolationRuleV2")},
+			"zpa_policy_credential_rule":                   {Tok: zpaResource(zpaMod, "PolicyAccessCredentialRule")},
 			"zpa_policy_access_rule_reorder":               {Tok: zpaResource(zpaMod, "PolicyAccessReorderRule")},
 			"zpa_pra_approval_controller":                  {Tok: zpaResource(zpaMod, "PRAApproval")},
 			"zpa_pra_console_controller":                   {Tok: zpaResource(zpaMod, "PRAConsole")},
 			"zpa_pra_credential_controller":                {Tok: zpaResource(zpaMod, "PRACredential")},
 			"zpa_pra_portal_controller":                    {Tok: zpaResource(zpaMod, "PRAPortal")},
+			"zpa_service_edge_assistant_schedule":          {Tok: zpaResource(zpaMod, "ServiceEdgeAssistantSchedule")},
 			"zpa_provisioning_key": {Tok: zpaResource(zpaMod, "ProvisioningKey"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					// Rename field to prevent this error in the DotNet SDK generation:
@@ -183,7 +184,7 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: zpaDataSource(zpaMod, "getAppConnectorController"),
 			},
 			"zpa_app_connector_assistant_schedule": {
-				Tok: zpaDataSource(zpaMod, "getAssistantSchedule"),
+				Tok: zpaDataSource(zpaMod, "getAppConnectorAssistantSchedule"),
 			},
 			"zpa_cloud_browser_isolation_certificate": {
 				Tok: zpaDataSource(zpaMod, "getCloudBrowserIsolationCertificate"),
@@ -313,6 +314,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"zpa_trusted_network": {
 				Tok: zpaDataSource(zpaMod, "getTrustedNetwork"),
+			},
+			"zpa_service_edge_assistant_schedule": {
+				Tok: zpaDataSource(zpaMod, "getServiceEdgeAssistantSchedule"),
 			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{

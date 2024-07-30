@@ -20,7 +20,6 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,9 +36,8 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
-        public static Task<GetInspectionAllPredefinedControlsResult> InvokeAsync(GetInspectionAllPredefinedControlsArgs args, InvokeOptions? options = null)
+        public static Task<GetInspectionAllPredefinedControlsResult> InvokeAsync(GetInspectionAllPredefinedControlsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInspectionAllPredefinedControlsResult>("zpa:index/getInspectionAllPredefinedControls:getInspectionAllPredefinedControls", args ?? new GetInspectionAllPredefinedControlsArgs(), options.WithDefaults());
 
         /// <summary>
@@ -50,7 +48,6 @@ namespace Zscaler.Zpa
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -67,9 +64,8 @@ namespace Zscaler.Zpa
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
-        public static Output<GetInspectionAllPredefinedControlsResult> Invoke(GetInspectionAllPredefinedControlsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetInspectionAllPredefinedControlsResult> Invoke(GetInspectionAllPredefinedControlsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInspectionAllPredefinedControlsResult>("zpa:index/getInspectionAllPredefinedControls:getInspectionAllPredefinedControls", args ?? new GetInspectionAllPredefinedControlsInvokeArgs(), options.WithDefaults());
     }
 
@@ -79,8 +75,8 @@ namespace Zscaler.Zpa
         [Input("groupName")]
         public string? GroupName { get; set; }
 
-        [Input("version", required: true)]
-        public string Version { get; set; } = null!;
+        [Input("version")]
+        public string? Version { get; set; }
 
         public GetInspectionAllPredefinedControlsArgs()
         {
@@ -93,8 +89,8 @@ namespace Zscaler.Zpa
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }
 
-        [Input("version", required: true)]
-        public Input<string> Version { get; set; } = null!;
+        [Input("version")]
+        public Input<string>? Version { get; set; }
 
         public GetInspectionAllPredefinedControlsInvokeArgs()
         {
@@ -112,7 +108,7 @@ namespace Zscaler.Zpa
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetInspectionAllPredefinedControlsListResult> Lists;
-        public readonly string Version;
+        public readonly string? Version;
 
         [OutputConstructor]
         private GetInspectionAllPredefinedControlsResult(
@@ -122,7 +118,7 @@ namespace Zscaler.Zpa
 
             ImmutableArray<Outputs.GetInspectionAllPredefinedControlsListResult> lists,
 
-            string version)
+            string? version)
         {
             GroupName = groupName;
             Id = id;

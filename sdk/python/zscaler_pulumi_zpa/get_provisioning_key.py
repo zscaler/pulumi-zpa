@@ -230,7 +230,6 @@ def get_provisioning_key(association_type: Optional[str] = None,
     """
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -238,9 +237,7 @@ def get_provisioning_key(association_type: Optional[str] = None,
     example = zpa.get_provisioning_key(association_type="CONNECTOR_GRP",
         name="Provisioning_Key")
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -248,7 +245,6 @@ def get_provisioning_key(association_type: Optional[str] = None,
     example = zpa.get_provisioning_key(association_type="SERVICE_EDGE_GRP",
         name="Provisioning_Key")
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['associationType'] = association_type
@@ -293,7 +289,6 @@ def get_provisioning_key_output(association_type: Optional[pulumi.Input[str]] = 
     """
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -301,9 +296,7 @@ def get_provisioning_key_output(association_type: Optional[pulumi.Input[str]] = 
     example = zpa.get_provisioning_key(association_type="CONNECTOR_GRP",
         name="Provisioning_Key")
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -311,6 +304,5 @@ def get_provisioning_key_output(association_type: Optional[pulumi.Input[str]] = 
     example = zpa.get_provisioning_key(association_type="SERVICE_EDGE_GRP",
         name="Provisioning_Key")
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

@@ -15,12 +15,22 @@ namespace Zscaler.Zpa
     /// * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-profiles-using-api)
     /// 
     /// The  **zpa_inspection_profile** resource creates an inspection profile in the Zscaler Private Access cloud. This resource can then be referenced in an inspection custom control resource.
+    /// 
+    /// **NOTE** There are several ways to set up the Inspection Profile due to its complex data structure
+    /// 
+    /// ## Example Usage
     /// </summary>
     [ZpaResourceType("zpa:index/inspectionProfile:InspectionProfile")]
     public partial class InspectionProfile : global::Pulumi.CustomResource
     {
+        [Output("apiProfile")]
+        public Output<bool?> ApiProfile { get; private set; } = null!;
+
         [Output("associateAllControls")]
         public Output<bool?> AssociateAllControls { get; private set; } = null!;
+
+        [Output("commonGlobalOverrideActionsConfig")]
+        public Output<ImmutableDictionary<string, string>> CommonGlobalOverrideActionsConfig { get; private set; } = null!;
 
         [Output("controlsInfos")]
         public Output<ImmutableArray<Outputs.InspectionProfileControlsInfo>> ControlsInfos { get; private set; } = null!;
@@ -43,17 +53,23 @@ namespace Zscaler.Zpa
         [Output("globalControlActions")]
         public Output<ImmutableArray<string>> GlobalControlActions { get; private set; } = null!;
 
-        [Output("incarnationNumber")]
-        public Output<string?> IncarnationNumber { get; private set; } = null!;
-
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("overrideAction")]
+        public Output<string?> OverrideAction { get; private set; } = null!;
 
         /// <summary>
         /// The OWASP Predefined Paranoia Level
         /// </summary>
         [Output("paranoiaLevel")]
         public Output<string?> ParanoiaLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// The predefined controls
+        /// </summary>
+        [Output("predefinedApiControls")]
+        public Output<ImmutableArray<Outputs.InspectionProfilePredefinedApiControl>> PredefinedApiControls { get; private set; } = null!;
 
         /// <summary>
         /// The predefined controls
@@ -66,6 +82,18 @@ namespace Zscaler.Zpa
         /// </summary>
         [Output("predefinedControlsVersion")]
         public Output<string?> PredefinedControlsVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// The ThreatLabZ predefined controls
+        /// </summary>
+        [Output("threatLabzControls")]
+        public Output<ImmutableArray<Outputs.InspectionProfileThreatLabzControl>> ThreatLabzControls { get; private set; } = null!;
+
+        /// <summary>
+        /// The WebSocket predefined controls
+        /// </summary>
+        [Output("websocketControls")]
+        public Output<ImmutableArray<Outputs.InspectionProfileWebsocketControl>> WebsocketControls { get; private set; } = null!;
 
         /// <summary>
         /// Indicates the user's choice for the ThreatLabZ Controls. Supported values: ALL and SPECIFIC
@@ -120,8 +148,19 @@ namespace Zscaler.Zpa
 
     public sealed class InspectionProfileArgs : global::Pulumi.ResourceArgs
     {
+        [Input("apiProfile")]
+        public Input<bool>? ApiProfile { get; set; }
+
         [Input("associateAllControls")]
         public Input<bool>? AssociateAllControls { get; set; }
+
+        [Input("commonGlobalOverrideActionsConfig")]
+        private InputMap<string>? _commonGlobalOverrideActionsConfig;
+        public InputMap<string> CommonGlobalOverrideActionsConfig
+        {
+            get => _commonGlobalOverrideActionsConfig ?? (_commonGlobalOverrideActionsConfig = new InputMap<string>());
+            set => _commonGlobalOverrideActionsConfig = value;
+        }
 
         [Input("controlsInfos")]
         private InputList<Inputs.InspectionProfileControlsInfoArgs>? _controlsInfos;
@@ -161,17 +200,29 @@ namespace Zscaler.Zpa
             set => _globalControlActions = value;
         }
 
-        [Input("incarnationNumber")]
-        public Input<string>? IncarnationNumber { get; set; }
-
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("overrideAction")]
+        public Input<string>? OverrideAction { get; set; }
 
         /// <summary>
         /// The OWASP Predefined Paranoia Level
         /// </summary>
         [Input("paranoiaLevel")]
         public Input<string>? ParanoiaLevel { get; set; }
+
+        [Input("predefinedApiControls")]
+        private InputList<Inputs.InspectionProfilePredefinedApiControlArgs>? _predefinedApiControls;
+
+        /// <summary>
+        /// The predefined controls
+        /// </summary>
+        public InputList<Inputs.InspectionProfilePredefinedApiControlArgs> PredefinedApiControls
+        {
+            get => _predefinedApiControls ?? (_predefinedApiControls = new InputList<Inputs.InspectionProfilePredefinedApiControlArgs>());
+            set => _predefinedApiControls = value;
+        }
 
         [Input("predefinedControls")]
         private InputList<Inputs.InspectionProfilePredefinedControlArgs>? _predefinedControls;
@@ -191,6 +242,30 @@ namespace Zscaler.Zpa
         [Input("predefinedControlsVersion")]
         public Input<string>? PredefinedControlsVersion { get; set; }
 
+        [Input("threatLabzControls")]
+        private InputList<Inputs.InspectionProfileThreatLabzControlArgs>? _threatLabzControls;
+
+        /// <summary>
+        /// The ThreatLabZ predefined controls
+        /// </summary>
+        public InputList<Inputs.InspectionProfileThreatLabzControlArgs> ThreatLabzControls
+        {
+            get => _threatLabzControls ?? (_threatLabzControls = new InputList<Inputs.InspectionProfileThreatLabzControlArgs>());
+            set => _threatLabzControls = value;
+        }
+
+        [Input("websocketControls")]
+        private InputList<Inputs.InspectionProfileWebsocketControlArgs>? _websocketControls;
+
+        /// <summary>
+        /// The WebSocket predefined controls
+        /// </summary>
+        public InputList<Inputs.InspectionProfileWebsocketControlArgs> WebsocketControls
+        {
+            get => _websocketControls ?? (_websocketControls = new InputList<Inputs.InspectionProfileWebsocketControlArgs>());
+            set => _websocketControls = value;
+        }
+
         /// <summary>
         /// Indicates the user's choice for the ThreatLabZ Controls. Supported values: ALL and SPECIFIC
         /// </summary>
@@ -205,8 +280,19 @@ namespace Zscaler.Zpa
 
     public sealed class InspectionProfileState : global::Pulumi.ResourceArgs
     {
+        [Input("apiProfile")]
+        public Input<bool>? ApiProfile { get; set; }
+
         [Input("associateAllControls")]
         public Input<bool>? AssociateAllControls { get; set; }
+
+        [Input("commonGlobalOverrideActionsConfig")]
+        private InputMap<string>? _commonGlobalOverrideActionsConfig;
+        public InputMap<string> CommonGlobalOverrideActionsConfig
+        {
+            get => _commonGlobalOverrideActionsConfig ?? (_commonGlobalOverrideActionsConfig = new InputMap<string>());
+            set => _commonGlobalOverrideActionsConfig = value;
+        }
 
         [Input("controlsInfos")]
         private InputList<Inputs.InspectionProfileControlsInfoGetArgs>? _controlsInfos;
@@ -246,17 +332,29 @@ namespace Zscaler.Zpa
             set => _globalControlActions = value;
         }
 
-        [Input("incarnationNumber")]
-        public Input<string>? IncarnationNumber { get; set; }
-
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("overrideAction")]
+        public Input<string>? OverrideAction { get; set; }
 
         /// <summary>
         /// The OWASP Predefined Paranoia Level
         /// </summary>
         [Input("paranoiaLevel")]
         public Input<string>? ParanoiaLevel { get; set; }
+
+        [Input("predefinedApiControls")]
+        private InputList<Inputs.InspectionProfilePredefinedApiControlGetArgs>? _predefinedApiControls;
+
+        /// <summary>
+        /// The predefined controls
+        /// </summary>
+        public InputList<Inputs.InspectionProfilePredefinedApiControlGetArgs> PredefinedApiControls
+        {
+            get => _predefinedApiControls ?? (_predefinedApiControls = new InputList<Inputs.InspectionProfilePredefinedApiControlGetArgs>());
+            set => _predefinedApiControls = value;
+        }
 
         [Input("predefinedControls")]
         private InputList<Inputs.InspectionProfilePredefinedControlGetArgs>? _predefinedControls;
@@ -275,6 +373,30 @@ namespace Zscaler.Zpa
         /// </summary>
         [Input("predefinedControlsVersion")]
         public Input<string>? PredefinedControlsVersion { get; set; }
+
+        [Input("threatLabzControls")]
+        private InputList<Inputs.InspectionProfileThreatLabzControlGetArgs>? _threatLabzControls;
+
+        /// <summary>
+        /// The ThreatLabZ predefined controls
+        /// </summary>
+        public InputList<Inputs.InspectionProfileThreatLabzControlGetArgs> ThreatLabzControls
+        {
+            get => _threatLabzControls ?? (_threatLabzControls = new InputList<Inputs.InspectionProfileThreatLabzControlGetArgs>());
+            set => _threatLabzControls = value;
+        }
+
+        [Input("websocketControls")]
+        private InputList<Inputs.InspectionProfileWebsocketControlGetArgs>? _websocketControls;
+
+        /// <summary>
+        /// The WebSocket predefined controls
+        /// </summary>
+        public InputList<Inputs.InspectionProfileWebsocketControlGetArgs> WebsocketControls
+        {
+            get => _websocketControls ?? (_websocketControls = new InputList<Inputs.InspectionProfileWebsocketControlGetArgs>());
+            set => _websocketControls = value;
+        }
 
         /// <summary>
         /// Indicates the user's choice for the ThreatLabZ Controls. Supported values: ALL and SPECIFIC

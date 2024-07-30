@@ -16,8 +16,20 @@ namespace Zscaler.Zpa.Inputs
         [Input("browserInBrowser")]
         public Input<bool>? BrowserInBrowser { get; set; }
 
+        [Input("forwardToZia")]
+        public Input<Inputs.CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaGetArgs>? ForwardToZia { get; set; }
+
+        [Input("persistIsolationBar")]
+        public Input<bool>? PersistIsolationBar { get; set; }
+
         [Input("sessionPersistence")]
         public Input<bool>? SessionPersistence { get; set; }
+
+        [Input("translate")]
+        public Input<bool>? Translate { get; set; }
+
+        [Input("zgpu")]
+        public Input<bool>? Zgpu { get; set; }
 
         public CloudBrowserIsolationExternalProfileUserExperienceGetArgs()
         {

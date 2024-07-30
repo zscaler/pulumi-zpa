@@ -13,30 +13,6 @@ namespace Zscaler.Zpa
     [ZpaResourceType("zpa:index/inspectionCustomControls:InspectionCustomControls")]
     public partial class InspectionCustomControls : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The performed action
-        /// </summary>
-        [Output("action")]
-        public Output<string> Action { get; private set; } = null!;
-
-        [Output("actionValue")]
-        public Output<string> ActionValue { get; private set; } = null!;
-
-        /// <summary>
-        /// Name of the inspection profile
-        /// </summary>
-        [Output("associatedInspectionProfileNames")]
-        public Output<ImmutableArray<Outputs.InspectionCustomControlsAssociatedInspectionProfileName>> AssociatedInspectionProfileNames { get; private set; } = null!;
-
-        [Output("controlNumber")]
-        public Output<string> ControlNumber { get; private set; } = null!;
-
-        /// <summary>
-        /// The control rule in JSON format that has the conditions and type of control for the inspection control
-        /// </summary>
-        [Output("controlRuleJson")]
-        public Output<string> ControlRuleJson { get; private set; } = null!;
-
         [Output("controlType")]
         public Output<string> ControlType { get; private set; } = null!;
 
@@ -44,7 +20,7 @@ namespace Zscaler.Zpa
         /// The performed action
         /// </summary>
         [Output("defaultAction")]
-        public Output<string> DefaultAction { get; private set; } = null!;
+        public Output<string?> DefaultAction { get; private set; } = null!;
 
         /// <summary>
         /// This is used to provide the redirect URL if the default action is set to REDIRECT
@@ -138,44 +114,14 @@ namespace Zscaler.Zpa
 
     public sealed class InspectionCustomControlsArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The performed action
-        /// </summary>
-        [Input("action")]
-        public Input<string>? Action { get; set; }
-
-        [Input("actionValue")]
-        public Input<string>? ActionValue { get; set; }
-
-        [Input("associatedInspectionProfileNames")]
-        private InputList<Inputs.InspectionCustomControlsAssociatedInspectionProfileNameArgs>? _associatedInspectionProfileNames;
-
-        /// <summary>
-        /// Name of the inspection profile
-        /// </summary>
-        public InputList<Inputs.InspectionCustomControlsAssociatedInspectionProfileNameArgs> AssociatedInspectionProfileNames
-        {
-            get => _associatedInspectionProfileNames ?? (_associatedInspectionProfileNames = new InputList<Inputs.InspectionCustomControlsAssociatedInspectionProfileNameArgs>());
-            set => _associatedInspectionProfileNames = value;
-        }
-
-        [Input("controlNumber")]
-        public Input<string>? ControlNumber { get; set; }
-
-        /// <summary>
-        /// The control rule in JSON format that has the conditions and type of control for the inspection control
-        /// </summary>
-        [Input("controlRuleJson")]
-        public Input<string>? ControlRuleJson { get; set; }
-
         [Input("controlType")]
         public Input<string>? ControlType { get; set; }
 
         /// <summary>
         /// The performed action
         /// </summary>
-        [Input("defaultAction", required: true)]
-        public Input<string> DefaultAction { get; set; } = null!;
+        [Input("defaultAction")]
+        public Input<string>? DefaultAction { get; set; }
 
         /// <summary>
         /// This is used to provide the redirect URL if the default action is set to REDIRECT
@@ -236,36 +182,6 @@ namespace Zscaler.Zpa
 
     public sealed class InspectionCustomControlsState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The performed action
-        /// </summary>
-        [Input("action")]
-        public Input<string>? Action { get; set; }
-
-        [Input("actionValue")]
-        public Input<string>? ActionValue { get; set; }
-
-        [Input("associatedInspectionProfileNames")]
-        private InputList<Inputs.InspectionCustomControlsAssociatedInspectionProfileNameGetArgs>? _associatedInspectionProfileNames;
-
-        /// <summary>
-        /// Name of the inspection profile
-        /// </summary>
-        public InputList<Inputs.InspectionCustomControlsAssociatedInspectionProfileNameGetArgs> AssociatedInspectionProfileNames
-        {
-            get => _associatedInspectionProfileNames ?? (_associatedInspectionProfileNames = new InputList<Inputs.InspectionCustomControlsAssociatedInspectionProfileNameGetArgs>());
-            set => _associatedInspectionProfileNames = value;
-        }
-
-        [Input("controlNumber")]
-        public Input<string>? ControlNumber { get; set; }
-
-        /// <summary>
-        /// The control rule in JSON format that has the conditions and type of control for the inspection control
-        /// </summary>
-        [Input("controlRuleJson")]
-        public Input<string>? ControlRuleJson { get; set; }
-
         [Input("controlType")]
         public Input<string>? ControlType { get; set; }
 
