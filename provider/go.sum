@@ -2067,8 +2067,8 @@ github.com/zclconf/go-cty-yaml v1.0.1 h1:up11wlgAaDvlAGENcFDnZgkn0qUJurso7k6EpUR
 github.com/zclconf/go-cty-yaml v1.0.1/go.mod h1:IP3Ylp0wQpYm50IHK8OZWKMu6sPJIUgKa8XhiVHura0=
 github.com/zeebo/assert v1.3.0/go.mod h1:Pq9JiuJQpG8JLJdtkwrJESF0Foym2/D9XMU5ciN/wJ0=
 github.com/zeebo/xxh3 v1.0.2/go.mod h1:5NWz9Sef7zIDm2JHfFlcQvNekmcEl9ekUZQQKCYaDcA=
-github.com/zscaler/terraform-provider-zpa/v3 v3.32.0 h1:j1hjrzBGy6ignNCKnlasgRQ/2jGEGa/SwyCvkdhQPKM=
-github.com/zscaler/terraform-provider-zpa/v3 v3.32.0/go.mod h1:5pb4Sx7LmiaZIKEtq+0NTtTm+iOOb27xcpVWup9IeIA=
+github.com/zscaler/terraform-provider-zpa/v3 v3.32.1 h1:+AZDyRpO9YipCWyZz7gn2JnQnAQtoTN2LcrfPOZdmWM=
+github.com/zscaler/terraform-provider-zpa/v3 v3.32.1/go.mod h1:5pb4Sx7LmiaZIKEtq+0NTtTm+iOOb27xcpVWup9IeIA=
 github.com/zscaler/zscaler-sdk-go/v2 v2.70.0 h1:pabyVnCNIs+EOSqDK6ROR+8H9HHhrmFfzZPUTdbZ3GY=
 github.com/zscaler/zscaler-sdk-go/v2 v2.70.0/go.mod h1:GDYmG+wN13d/chGX6r6T95Gqbqq3UejMxfDud6FORJc=
 go.opencensus.io v0.21.0/go.mod h1:mSImk1erAIZhrmZN+AvHh14ztQfjbGwt4TtuofqLduU=
