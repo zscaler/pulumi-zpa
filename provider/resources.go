@@ -231,196 +231,150 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"zpa_app_connector_group": {
-				Tok:  zpaDataSource(zpaMod, "getAppConnectorGroup"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getAppConnectorGroup"),
 			},
 			"zpa_app_connector_controller": {
-				Tok:  zpaDataSource(zpaMod, "getAppConnectorController"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getAppConnectorController"),
 			},
 			"zpa_app_connector_assistant_schedule": {
-				Tok:  zpaDataSource(zpaMod, "getAppConnectorAssistantSchedule"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getAppConnectorAssistantSchedule"),
 			},
 			"zpa_cloud_browser_isolation_certificate": {
-				Tok:  zpaDataSource(zpaMod, "getCloudBrowserIsolationCertificate"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getCloudBrowserIsolationCertificate"),
 			},
 			"zpa_cloud_browser_isolation_banner": {
-				Tok:  zpaDataSource(zpaMod, "getCloudBrowserIsolationBanner"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getCloudBrowserIsolationBanner"),
 			},
 			"zpa_cloud_browser_isolation_external_profile": {
-				Tok:  zpaDataSource(zpaMod, "getCloudBrowserIsolationExternalProfile"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getCloudBrowserIsolationExternalProfile"),
 			},
 			"zpa_cloud_browser_isolation_region": {
-				Tok:  zpaDataSource(zpaMod, "getCloudBrowserIsolationRegion"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getCloudBrowserIsolationRegion"),
 			},
 			"zpa_cloud_browser_isolation_zpa_profile": {
-				Tok:  zpaDataSource(zpaMod, "getCloudBrowserIsolationZPAProfile"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getCloudBrowserIsolationZPAProfile"),
 			},
 			"zpa_service_edge_group": {
-				Tok:  zpaDataSource(zpaMod, "getServiceEdgeGroup"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getServiceEdgeGroup"),
 			},
 			"zpa_service_edge_controller": {
-				Tok:  zpaDataSource(zpaMod, "getServiceEdgeController"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getServiceEdgeController"),
 			},
 			"zpa_segment_group": {
-				Tok:  zpaDataSource(zpaMod, "getSegmentGroup"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getSegmentGroup"),
 			},
 			"zpa_server_group": {
-				Tok:  zpaDataSource(zpaMod, "getServerGroup"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getServerGroup"),
 			},
 			"zpa_application_segment": {
-				Tok:  zpaDataSource(zpaMod, "getApplicationSegment"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getApplicationSegment"),
 			},
 			"zpa_application_segment_browser_access": {
-				Tok:  zpaDataSource(zpaMod, "getApplicationSegmentBrowserAccess"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getApplicationSegmentBrowserAccess"),
 			},
 			"zpa_application_segment_inspection": {
-				Tok:  zpaDataSource(zpaMod, "getApplicationSegmentInspection"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getApplicationSegmentInspection"),
 			},
 			"zpa_inspection_custom_controls": {
 				Tok:  zpaDataSource(zpaMod, "getInspectionCustomControls"),
 				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"zpa_inspection_profile": {
-				Tok:  zpaDataSource(zpaMod, "getInspectionProfile"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getInspectionProfile"),
 			},
 			"zpa_inspection_predefined_controls": {
-				Tok:  zpaDataSource(zpaMod, "getInspectionPredefinedControls"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getInspectionPredefinedControls"),
 			},
 			"zpa_inspection_all_predefined_controls": {
-				Tok:  zpaDataSource(zpaMod, "getInspectionAllPredefinedControls"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getInspectionAllPredefinedControls"),
 			},
 			"zpa_application_segment_pra": {
-				Tok:  zpaDataSource(zpaMod, "getApplicationSegmentPRA"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getApplicationSegmentPRA"),
 			},
 			"zpa_application_server": {
-				Tok:  zpaDataSource(zpaMod, "getApplicationServer"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getApplicationServer"),
 			},
 			"zpa_lss_config_controller": {
 				Tok:  zpaDataSource(zpaMod, "getLSSConfigController"),
 				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"zpa_lss_config_client_types": {
-				Tok:  zpaDataSource(zpaMod, "getLSSClientTypes"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getLSSClientTypes"),
 			},
 			"zpa_lss_config_log_type_formats": {
-				Tok:  zpaDataSource(zpaMod, "getLSSLogTypeFormats"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getLSSLogTypeFormats"),
 			},
 			"zpa_lss_config_status_codes": {
-				Tok:  zpaDataSource(zpaMod, "getLSSStatusCodes"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getLSSStatusCodes"),
 			},
 			"zpa_microtenant_controller": {
-				Tok:  zpaDataSource(zpaMod, "getMicrotenant"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getMicrotenant"),
 			},
 			"zpa_provisioning_key": {
-				Tok:  zpaDataSource(zpaMod, "getProvisioningKey"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getProvisioningKey"),
 			},
 			"zpa_ba_certificate": {
-				Tok:  zpaDataSource(zpaMod, "getBaCertificate"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getBaCertificate"),
 			},
 			"zpa_cloud_connector_group": {
-				Tok:  zpaDataSource(zpaMod, "getCloudConnectorGroup"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getCloudConnectorGroup"),
 			},
 			"zpa_enrollment_cert": {
-				Tok:  zpaDataSource(zpaMod, "getEnrollmentCert"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getEnrollmentCert"),
 			},
 			"zpa_idp_controller": {
-				Tok:  zpaDataSource(zpaMod, "getIdPController"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getIdPController"),
 			},
 			"zpa_policy_type": {
-				Tok:  zpaDataSource(zpaMod, "getPolicyType"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getPolicyType"),
 			},
 			"zpa_access_policy_client_types": {
-				Tok:  zpaDataSource(zpaMod, "getPolicyClientType"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getPolicyClientType"),
 			},
 			"zpa_access_policy_platforms": {
-				Tok:  zpaDataSource(zpaMod, "getPolicyPlatform"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getPolicyPlatform"),
 			},
 			"zpa_customer_version_profile": {
-				Tok:  zpaDataSource(zpaMod, "getCustomerVersionProfile"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getCustomerVersionProfile"),
 			},
 			"zpa_isolation_profile": {
-				Tok:  zpaDataSource(zpaMod, "getIsolationProfile"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getIsolationProfile"),
 			},
 			"zpa_pra_approval_controller": {
-				Tok:  zpaDataSource(zpaMod, "getPRAApproval"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getPRAApproval"),
 			},
 			"zpa_pra_console_controller": {
-				Tok:  zpaDataSource(zpaMod, "getPRAConsole"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getPRAConsole"),
 			},
 			"zpa_pra_credential_controller": {
-				Tok:  zpaDataSource(zpaMod, "getPRACredential"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getPRACredential"),
 			},
 			"zpa_pra_credential_pool": {
-				Tok:  zpaDataSource(zpaMod, "getPRACredentialPool"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getPRACredentialPool"),
 			},
 			"zpa_pra_portal_controller": {
-				Tok:  zpaDataSource(zpaMod, "getPRAPortal"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getPRAPortal"),
 			},
 			"zpa_saml_attribute": {
-				Tok:  zpaDataSource(zpaMod, "getSAMLAttribute"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getSAMLAttribute"),
 			},
 			"zpa_scim_attribute_header": {
-				Tok:  zpaDataSource(zpaMod, "getSCIMAttributeHeader"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getSCIMAttributeHeader"),
 			},
 			"zpa_scim_groups": {
-				Tok:  zpaDataSource(zpaMod, "getSCIMGroups"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getSCIMGroups"),
 			},
 			"zpa_machine_group": {
-				Tok:  zpaDataSource(zpaMod, "getMachineGroup"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getMachineGroup"),
 			},
 			"zpa_posture_profile": {
-				Tok:  zpaDataSource(zpaMod, "getPostureProfile"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getPostureProfile"),
 			},
 			"zpa_trusted_network": {
-				Tok:  zpaDataSource(zpaMod, "getTrustedNetwork"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getTrustedNetwork"),
 			},
 			"zpa_service_edge_assistant_schedule": {
-				Tok:  zpaDataSource(zpaMod, "getServiceEdgeAssistantSchedule"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getServiceEdgeAssistantSchedule"),
 			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
