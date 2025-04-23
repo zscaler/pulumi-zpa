@@ -784,7 +784,12 @@ class _BrowserAccessState:
         pulumi.set(self, "use_in_dr_mode", value)
 
 
+warnings.warn("""Resource is deprecated due to a correction in naming conventions""", DeprecationWarning)
+
+
 class BrowserAccess(pulumi.CustomResource):
+    warnings.warn("""Resource is deprecated due to a correction in naming conventions""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -887,6 +892,7 @@ class BrowserAccess(pulumi.CustomResource):
                  udp_port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  use_in_dr_mode: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
+        pulumi.log.warn("""BrowserAccess is deprecated: Resource is deprecated due to a correction in naming conventions""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

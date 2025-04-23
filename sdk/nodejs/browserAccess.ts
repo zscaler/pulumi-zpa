@@ -6,6 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated Resource is deprecated due to a correction in naming conventions
+ */
 export class BrowserAccess extends pulumi.CustomResource {
     /**
      * Get an existing BrowserAccess resource's state with the given name, ID, and optional extra
@@ -17,6 +20,7 @@ export class BrowserAccess extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BrowserAccessState, opts?: pulumi.CustomResourceOptions): BrowserAccess {
+        pulumi.log.warn("BrowserAccess is deprecated: Resource is deprecated due to a correction in naming conventions")
         return new BrowserAccess(name, <any>state, { ...opts, id: id });
     }
 
@@ -107,8 +111,11 @@ export class BrowserAccess extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated Resource is deprecated due to a correction in naming conventions */
     constructor(name: string, args: BrowserAccessArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated Resource is deprecated due to a correction in naming conventions */
     constructor(name: string, argsOrState?: BrowserAccessArgs | BrowserAccessState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("BrowserAccess is deprecated: Resource is deprecated due to a correction in naming conventions")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
