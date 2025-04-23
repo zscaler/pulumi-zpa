@@ -41,9 +41,6 @@ class GetPRAConsoleResult:
         if icon_text and not isinstance(icon_text, str):
             raise TypeError("Expected argument 'icon_text' to be a str")
         pulumi.set(__self__, "icon_text", icon_text)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if microtenant_id and not isinstance(microtenant_id, str):
             raise TypeError("Expected argument 'microtenant_id' to be a str")
         pulumi.set(__self__, "microtenant_id", microtenant_id)
@@ -85,11 +82,6 @@ class GetPRAConsoleResult:
     @pulumi.getter(name="iconText")
     def icon_text(self) -> builtins.str:
         return pulumi.get(self, "icon_text")
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="microtenantId")
