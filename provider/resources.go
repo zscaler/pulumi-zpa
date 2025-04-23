@@ -295,7 +295,8 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: zpaDataSource(zpaMod, "getApplicationServer"),
 			},
 			"zpa_lss_config_controller": {
-				Tok: zpaDataSource(zpaMod, "getLSSConfigController"),
+				Tok:  zpaDataSource(zpaMod, "getLSSConfigController"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"zpa_lss_config_client_types": {
 				Tok: zpaDataSource(zpaMod, "getLSSClientTypes"),
@@ -340,10 +341,12 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: zpaDataSource(zpaMod, "getIsolationProfile"),
 			},
 			"zpa_pra_approval_controller": {
-				Tok: zpaDataSource(zpaMod, "getPRAApproval"),
+				Tok:  zpaDataSource(zpaMod, "getPRAApproval"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"zpa_pra_console_controller": {
-				Tok: zpaDataSource(zpaMod, "getPRAConsole"),
+				Tok:  zpaDataSource(zpaMod, "getPRAConsole"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"zpa_pra_credential_controller": {
 				Tok: zpaDataSource(zpaMod, "getPRACredential"),
