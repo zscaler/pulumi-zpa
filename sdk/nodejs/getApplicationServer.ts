@@ -27,7 +27,6 @@ import * as utilities from "./utilities";
  */
 export function getApplicationServer(args?: GetApplicationServerArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationServerResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getApplicationServer:getApplicationServer", {
         "id": args.id,
@@ -85,8 +84,15 @@ export interface GetApplicationServerResult {
  * });
  * ```
  */
-export function getApplicationServerOutput(args?: GetApplicationServerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationServerResult> {
-    return pulumi.output(args).apply((a: any) => getApplicationServer(a, opts))
+export function getApplicationServerOutput(args?: GetApplicationServerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApplicationServerResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getApplicationServer:getApplicationServer", {
+        "id": args.id,
+        "microtenantId": args.microtenantId,
+        "microtenantName": args.microtenantName,
+        "name": args.name,
+    }, opts);
 }
 
 /**

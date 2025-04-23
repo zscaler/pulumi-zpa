@@ -10,6 +10,8 @@ import * as utilities from "./utilities";
  *
  * Use the **zpa_scim_groups** data source to get information about a SCIM Group from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -24,7 +26,6 @@ import * as utilities from "./utilities";
  */
 export function getSCIMGroups(args?: GetSCIMGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetSCIMGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getSCIMGroups:getSCIMGroups", {
         "id": args.id,
@@ -62,6 +63,8 @@ export interface GetSCIMGroupsResult {
  *
  * Use the **zpa_scim_groups** data source to get information about a SCIM Group from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -74,8 +77,15 @@ export interface GetSCIMGroupsResult {
  * });
  * ```
  */
-export function getSCIMGroupsOutput(args?: GetSCIMGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSCIMGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getSCIMGroups(a, opts))
+export function getSCIMGroupsOutput(args?: GetSCIMGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSCIMGroupsResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getSCIMGroups:getSCIMGroups", {
+        "id": args.id,
+        "idpId": args.idpId,
+        "idpName": args.idpName,
+        "name": args.name,
+    }, opts);
 }
 
 /**

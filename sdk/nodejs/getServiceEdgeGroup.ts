@@ -12,6 +12,8 @@ import * as utilities from "./utilities";
  *
  * Use the **zpa_service_edge_group** data source to get information about a service edge group in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group. This data source can then be referenced in the following resources:
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * * Create a server group
  * * Provisioning Key
  * * Access policy rule
@@ -38,7 +40,6 @@ import * as utilities from "./utilities";
  */
 export function getServiceEdgeGroup(args?: GetServiceEdgeGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceEdgeGroupResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getServiceEdgeGroup:getServiceEdgeGroup", {
         "id": args.id,
@@ -58,6 +59,7 @@ export interface GetServiceEdgeGroupArgs {
  * A collection of values returned by getServiceEdgeGroup.
  */
 export interface GetServiceEdgeGroupResult {
+    readonly altCloud: string;
     readonly cityCountry: string;
     readonly countryCode: string;
     readonly creationTime: string;
@@ -72,14 +74,17 @@ export interface GetServiceEdgeGroupResult {
     readonly latitude: string;
     readonly location: string;
     readonly longitude: string;
+    readonly modifiedBy: string;
     readonly modifiedTime: string;
-    readonly modifiedby: string;
     readonly name: string;
     readonly overrideVersionProfile: boolean;
     readonly serviceEdges: outputs.GetServiceEdgeGroupServiceEdge[];
+    readonly siteId: string;
+    readonly siteName: string;
     readonly trustedNetworks: outputs.GetServiceEdgeGroupTrustedNetwork[];
     readonly upgradeDay: string;
     readonly upgradeTimeInSecs: string;
+    readonly useInDrMode: boolean;
     readonly versionProfileId: string;
     readonly versionProfileName: string;
     readonly versionProfileVisibilityScope: string;
@@ -89,6 +94,8 @@ export interface GetServiceEdgeGroupResult {
  * * [API documentation](https://help.zscaler.com/zpa/configuring-zpa-private-service-edge-groups-using-api)
  *
  * Use the **zpa_service_edge_group** data source to get information about a service edge group in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group. This data source can then be referenced in the following resources:
+ *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
  *
  * * Create a server group
  * * Provisioning Key
@@ -114,8 +121,13 @@ export interface GetServiceEdgeGroupResult {
  * });
  * ```
  */
-export function getServiceEdgeGroupOutput(args?: GetServiceEdgeGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceEdgeGroupResult> {
-    return pulumi.output(args).apply((a: any) => getServiceEdgeGroup(a, opts))
+export function getServiceEdgeGroupOutput(args?: GetServiceEdgeGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceEdgeGroupResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getServiceEdgeGroup:getServiceEdgeGroup", {
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

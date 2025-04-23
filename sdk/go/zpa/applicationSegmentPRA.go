@@ -58,7 +58,6 @@ import (
 //				CommonAppsDto: &zpa.ApplicationSegmentPRACommonAppsDtoArgs{
 //					AppsConfigs: zpa.ApplicationSegmentPRACommonAppsDtoAppsConfigArray{
 //						&zpa.ApplicationSegmentPRACommonAppsDtoAppsConfigArgs{
-//							Name:                pulumi.String("ssh_pra"),
 //							Domain:              pulumi.String("ssh_pra.example.com"),
 //							ApplicationProtocol: pulumi.String("SSH"),
 //							ApplicationPort:     pulumi.String("22"),
@@ -68,7 +67,6 @@ import (
 //							},
 //						},
 //						&zpa.ApplicationSegmentPRACommonAppsDtoAppsConfigArgs{
-//							Name:                pulumi.String("rdp_pra"),
 //							Domain:              pulumi.String("rdp_pra.example.com"),
 //							ApplicationProtocol: pulumi.String("RDP"),
 //							ConnectionSecurity:  pulumi.String("ANY"),
@@ -110,11 +108,12 @@ import (
 type ApplicationSegmentPRA struct {
 	pulumi.CustomResourceState
 
+	BypassOnReauth pulumi.BoolOutput `pulumi:"bypassOnReauth"`
 	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
 	// The value NEVER indicates the use of the client forwarding policy.
-	BypassType    pulumi.StringOutput                         `pulumi:"bypassType"`
-	CommonAppsDto ApplicationSegmentPRACommonAppsDtoPtrOutput `pulumi:"commonAppsDto"`
-	ConfigSpace   pulumi.StringPtrOutput                      `pulumi:"configSpace"`
+	BypassType    pulumi.StringOutput                      `pulumi:"bypassType"`
+	CommonAppsDto ApplicationSegmentPRACommonAppsDtoOutput `pulumi:"commonAppsDto"`
+	ConfigSpace   pulumi.StringPtrOutput                   `pulumi:"configSpace"`
 	// Description of the application.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// List of domains and IPs.
@@ -122,16 +121,17 @@ type ApplicationSegmentPRA struct {
 	// Whether Double Encryption is enabled or disabled for the app.
 	DoubleEncrypt   pulumi.BoolOutput      `pulumi:"doubleEncrypt"`
 	Enabled         pulumi.BoolOutput      `pulumi:"enabled"`
+	FqdnDnsCheck    pulumi.BoolPtrOutput   `pulumi:"fqdnDnsCheck"`
 	HealthCheckType pulumi.StringPtrOutput `pulumi:"healthCheckType"`
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting pulumi.StringPtrOutput `pulumi:"healthReporting"`
 	IcmpAccessType  pulumi.StringOutput    `pulumi:"icmpAccessType"`
-	IpAnchored      pulumi.BoolOutput      `pulumi:"ipAnchored"`
+	IpAnchored      pulumi.BoolPtrOutput   `pulumi:"ipAnchored"`
 	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
 	// connectors.
 	IsCnameEnabled       pulumi.BoolOutput   `pulumi:"isCnameEnabled"`
 	IsIncompleteDrConfig pulumi.BoolOutput   `pulumi:"isIncompleteDrConfig"`
-	MatchStyle           pulumi.StringOutput `pulumi:"matchStyle"`
+	MicrotenantId        pulumi.StringOutput `pulumi:"microtenantId"`
 	// Name of the application.
 	Name                      pulumi.StringOutput  `pulumi:"name"`
 	PassiveHealthEnabled      pulumi.BoolOutput    `pulumi:"passiveHealthEnabled"`
@@ -187,6 +187,7 @@ func GetApplicationSegmentPRA(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApplicationSegmentPRA resources.
 type applicationSegmentPRAState struct {
+	BypassOnReauth *bool `pulumi:"bypassOnReauth"`
 	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
 	// The value NEVER indicates the use of the client forwarding policy.
 	BypassType    *string                             `pulumi:"bypassType"`
@@ -199,6 +200,7 @@ type applicationSegmentPRAState struct {
 	// Whether Double Encryption is enabled or disabled for the app.
 	DoubleEncrypt   *bool   `pulumi:"doubleEncrypt"`
 	Enabled         *bool   `pulumi:"enabled"`
+	FqdnDnsCheck    *bool   `pulumi:"fqdnDnsCheck"`
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting *string `pulumi:"healthReporting"`
@@ -208,7 +210,7 @@ type applicationSegmentPRAState struct {
 	// connectors.
 	IsCnameEnabled       *bool   `pulumi:"isCnameEnabled"`
 	IsIncompleteDrConfig *bool   `pulumi:"isIncompleteDrConfig"`
-	MatchStyle           *string `pulumi:"matchStyle"`
+	MicrotenantId        *string `pulumi:"microtenantId"`
 	// Name of the application.
 	Name                      *string `pulumi:"name"`
 	PassiveHealthEnabled      *bool   `pulumi:"passiveHealthEnabled"`
@@ -229,6 +231,7 @@ type applicationSegmentPRAState struct {
 }
 
 type ApplicationSegmentPRAState struct {
+	BypassOnReauth pulumi.BoolPtrInput
 	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
 	// The value NEVER indicates the use of the client forwarding policy.
 	BypassType    pulumi.StringPtrInput
@@ -241,6 +244,7 @@ type ApplicationSegmentPRAState struct {
 	// Whether Double Encryption is enabled or disabled for the app.
 	DoubleEncrypt   pulumi.BoolPtrInput
 	Enabled         pulumi.BoolPtrInput
+	FqdnDnsCheck    pulumi.BoolPtrInput
 	HealthCheckType pulumi.StringPtrInput
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting pulumi.StringPtrInput
@@ -250,7 +254,7 @@ type ApplicationSegmentPRAState struct {
 	// connectors.
 	IsCnameEnabled       pulumi.BoolPtrInput
 	IsIncompleteDrConfig pulumi.BoolPtrInput
-	MatchStyle           pulumi.StringPtrInput
+	MicrotenantId        pulumi.StringPtrInput
 	// Name of the application.
 	Name                      pulumi.StringPtrInput
 	PassiveHealthEnabled      pulumi.BoolPtrInput
@@ -275,6 +279,7 @@ func (ApplicationSegmentPRAState) ElementType() reflect.Type {
 }
 
 type applicationSegmentPRAArgs struct {
+	BypassOnReauth *bool `pulumi:"bypassOnReauth"`
 	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
 	// The value NEVER indicates the use of the client forwarding policy.
 	BypassType    *string                             `pulumi:"bypassType"`
@@ -287,6 +292,7 @@ type applicationSegmentPRAArgs struct {
 	// Whether Double Encryption is enabled or disabled for the app.
 	DoubleEncrypt   *bool   `pulumi:"doubleEncrypt"`
 	Enabled         *bool   `pulumi:"enabled"`
+	FqdnDnsCheck    *bool   `pulumi:"fqdnDnsCheck"`
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting *string `pulumi:"healthReporting"`
@@ -296,7 +302,7 @@ type applicationSegmentPRAArgs struct {
 	// connectors.
 	IsCnameEnabled       *bool   `pulumi:"isCnameEnabled"`
 	IsIncompleteDrConfig *bool   `pulumi:"isIncompleteDrConfig"`
-	MatchStyle           *string `pulumi:"matchStyle"`
+	MicrotenantId        *string `pulumi:"microtenantId"`
 	// Name of the application.
 	Name                      *string `pulumi:"name"`
 	PassiveHealthEnabled      *bool   `pulumi:"passiveHealthEnabled"`
@@ -318,6 +324,7 @@ type applicationSegmentPRAArgs struct {
 
 // The set of arguments for constructing a ApplicationSegmentPRA resource.
 type ApplicationSegmentPRAArgs struct {
+	BypassOnReauth pulumi.BoolPtrInput
 	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
 	// The value NEVER indicates the use of the client forwarding policy.
 	BypassType    pulumi.StringPtrInput
@@ -330,6 +337,7 @@ type ApplicationSegmentPRAArgs struct {
 	// Whether Double Encryption is enabled or disabled for the app.
 	DoubleEncrypt   pulumi.BoolPtrInput
 	Enabled         pulumi.BoolPtrInput
+	FqdnDnsCheck    pulumi.BoolPtrInput
 	HealthCheckType pulumi.StringPtrInput
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting pulumi.StringPtrInput
@@ -339,7 +347,7 @@ type ApplicationSegmentPRAArgs struct {
 	// connectors.
 	IsCnameEnabled       pulumi.BoolPtrInput
 	IsIncompleteDrConfig pulumi.BoolPtrInput
-	MatchStyle           pulumi.StringPtrInput
+	MicrotenantId        pulumi.StringPtrInput
 	// Name of the application.
 	Name                      pulumi.StringPtrInput
 	PassiveHealthEnabled      pulumi.BoolPtrInput
@@ -446,14 +454,18 @@ func (o ApplicationSegmentPRAOutput) ToApplicationSegmentPRAOutputWithContext(ct
 	return o
 }
 
+func (o ApplicationSegmentPRAOutput) BypassOnReauth() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSegmentPRA) pulumi.BoolOutput { return v.BypassOnReauth }).(pulumi.BoolOutput)
+}
+
 // Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
 // The value NEVER indicates the use of the client forwarding policy.
 func (o ApplicationSegmentPRAOutput) BypassType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSegmentPRA) pulumi.StringOutput { return v.BypassType }).(pulumi.StringOutput)
 }
 
-func (o ApplicationSegmentPRAOutput) CommonAppsDto() ApplicationSegmentPRACommonAppsDtoPtrOutput {
-	return o.ApplyT(func(v *ApplicationSegmentPRA) ApplicationSegmentPRACommonAppsDtoPtrOutput { return v.CommonAppsDto }).(ApplicationSegmentPRACommonAppsDtoPtrOutput)
+func (o ApplicationSegmentPRAOutput) CommonAppsDto() ApplicationSegmentPRACommonAppsDtoOutput {
+	return o.ApplyT(func(v *ApplicationSegmentPRA) ApplicationSegmentPRACommonAppsDtoOutput { return v.CommonAppsDto }).(ApplicationSegmentPRACommonAppsDtoOutput)
 }
 
 func (o ApplicationSegmentPRAOutput) ConfigSpace() pulumi.StringPtrOutput {
@@ -479,6 +491,10 @@ func (o ApplicationSegmentPRAOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSegmentPRA) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+func (o ApplicationSegmentPRAOutput) FqdnDnsCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationSegmentPRA) pulumi.BoolPtrOutput { return v.FqdnDnsCheck }).(pulumi.BoolPtrOutput)
+}
+
 func (o ApplicationSegmentPRAOutput) HealthCheckType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegmentPRA) pulumi.StringPtrOutput { return v.HealthCheckType }).(pulumi.StringPtrOutput)
 }
@@ -492,8 +508,8 @@ func (o ApplicationSegmentPRAOutput) IcmpAccessType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSegmentPRA) pulumi.StringOutput { return v.IcmpAccessType }).(pulumi.StringOutput)
 }
 
-func (o ApplicationSegmentPRAOutput) IpAnchored() pulumi.BoolOutput {
-	return o.ApplyT(func(v *ApplicationSegmentPRA) pulumi.BoolOutput { return v.IpAnchored }).(pulumi.BoolOutput)
+func (o ApplicationSegmentPRAOutput) IpAnchored() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationSegmentPRA) pulumi.BoolPtrOutput { return v.IpAnchored }).(pulumi.BoolPtrOutput)
 }
 
 // Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
@@ -506,8 +522,8 @@ func (o ApplicationSegmentPRAOutput) IsIncompleteDrConfig() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSegmentPRA) pulumi.BoolOutput { return v.IsIncompleteDrConfig }).(pulumi.BoolOutput)
 }
 
-func (o ApplicationSegmentPRAOutput) MatchStyle() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApplicationSegmentPRA) pulumi.StringOutput { return v.MatchStyle }).(pulumi.StringOutput)
+func (o ApplicationSegmentPRAOutput) MicrotenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationSegmentPRA) pulumi.StringOutput { return v.MicrotenantId }).(pulumi.StringOutput)
 }
 
 // Name of the application.

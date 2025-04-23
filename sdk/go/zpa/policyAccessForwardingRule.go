@@ -42,7 +42,7 @@ type PolicyAccessForwardingRule struct {
 	// This is for proviidng the set of conditions for the policy.
 	Conditions PolicyAccessForwardingRuleConditionArrayOutput `pulumi:"conditions"`
 	// This is for providing a customer message for the user.
-	CustomMsg pulumi.StringPtrOutput `pulumi:"customMsg"`
+	CustomMsg pulumi.StringOutput `pulumi:"customMsg"`
 	// This is for providing a customer message for the user.
 	DefaultRule pulumi.BoolPtrOutput `pulumi:"defaultRule"`
 	// This is the description of the access policy.
@@ -336,8 +336,8 @@ func (o PolicyAccessForwardingRuleOutput) Conditions() PolicyAccessForwardingRul
 }
 
 // This is for providing a customer message for the user.
-func (o PolicyAccessForwardingRuleOutput) CustomMsg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicyAccessForwardingRule) pulumi.StringPtrOutput { return v.CustomMsg }).(pulumi.StringPtrOutput)
+func (o PolicyAccessForwardingRuleOutput) CustomMsg() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyAccessForwardingRule) pulumi.StringOutput { return v.CustomMsg }).(pulumi.StringOutput)
 }
 
 // This is for providing a customer message for the user.

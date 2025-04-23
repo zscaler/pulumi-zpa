@@ -14,20 +14,21 @@ import * as utilities from "./utilities";
  *
  * ⚠️ **WARNING:**: This feature is in limited availability and requires additional license. To learn more, contact Zscaler Support or your local account team.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getMicrotenant({
+ * const _this = zpa.getMicrotenant({
  *     name: "Microtenant_A",
  * });
  * ```
  */
 export function getMicrotenant(args?: GetMicrotenantArgs, opts?: pulumi.InvokeOptions): Promise<GetMicrotenantResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getMicrotenant:getMicrotenant", {
         "id": args.id,
@@ -64,6 +65,7 @@ export interface GetMicrotenantResult {
     readonly name?: string;
     readonly operator: string;
     readonly priority: string;
+    readonly privilegedApprovalsEnabled: boolean;
     readonly roles: outputs.GetMicrotenantRole[];
     readonly users: outputs.GetMicrotenantUser[];
 }
@@ -75,19 +77,26 @@ export interface GetMicrotenantResult {
  *
  * ⚠️ **WARNING:**: This feature is in limited availability and requires additional license. To learn more, contact Zscaler Support or your local account team.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getMicrotenant({
+ * const _this = zpa.getMicrotenant({
  *     name: "Microtenant_A",
  * });
  * ```
  */
-export function getMicrotenantOutput(args?: GetMicrotenantOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMicrotenantResult> {
-    return pulumi.output(args).apply((a: any) => getMicrotenant(a, opts))
+export function getMicrotenantOutput(args?: GetMicrotenantOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMicrotenantResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getMicrotenant:getMicrotenant", {
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

@@ -105,6 +105,53 @@ namespace Zscaler.Zpa
         /// </summary>
         public static Output<GetEnrollmentCertResult> Invoke(GetEnrollmentCertInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnrollmentCertResult>("zpa:index/getEnrollmentCert:getEnrollmentCert", args ?? new GetEnrollmentCertInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-enrollment-ca-certificates)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-enrollment-certificate-details-using-api)
+        /// 
+        /// Use the **zpa_enrollment_cert** data source to get information about all configured enrollment certificate details created in the Zscaler Private Access cloud. This data source is required when creating provisioning key resources.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var root = Zpa.GetEnrollmentCert.Invoke(new()
+        ///     {
+        ///         Name = "Root",
+        ///     });
+        /// 
+        ///     var client = Zpa.GetEnrollmentCert.Invoke(new()
+        ///     {
+        ///         Name = "Client",
+        ///     });
+        /// 
+        ///     var connector = Zpa.GetEnrollmentCert.Invoke(new()
+        ///     {
+        ///         Name = "Connector",
+        ///     });
+        /// 
+        ///     var serviceEdge = Zpa.GetEnrollmentCert.Invoke(new()
+        ///     {
+        ///         Name = "Service Edge",
+        ///     });
+        /// 
+        ///     var isolationClient = Zpa.GetEnrollmentCert.Invoke(new()
+        ///     {
+        ///         Name = "Isolation Client",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetEnrollmentCertResult> Invoke(GetEnrollmentCertInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetEnrollmentCertResult>("zpa:index/getEnrollmentCert:getEnrollmentCert", args ?? new GetEnrollmentCertInvokeArgs(), options.WithDefaults());
     }
 
 

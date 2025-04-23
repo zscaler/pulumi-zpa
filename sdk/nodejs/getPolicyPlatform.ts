@@ -22,11 +22,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getPolicyPlatform({});
+ * const _this = zpa.getPolicyPlatform({});
  * ```
  */
 export function getPolicyPlatform(opts?: pulumi.InvokeOptions): Promise<GetPolicyPlatformResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getPolicyPlatform:getPolicyPlatform", {
     }, opts);
@@ -64,9 +63,11 @@ export interface GetPolicyPlatformResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getPolicyPlatform({});
+ * const _this = zpa.getPolicyPlatform({});
  * ```
  */
-export function getPolicyPlatformOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyPlatformResult> {
-    return pulumi.output(getPolicyPlatform(opts))
+export function getPolicyPlatformOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPolicyPlatformResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getPolicyPlatform:getPolicyPlatform", {
+    }, opts);
 }

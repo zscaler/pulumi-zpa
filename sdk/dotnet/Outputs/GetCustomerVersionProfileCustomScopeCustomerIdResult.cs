@@ -16,6 +16,7 @@ namespace Zscaler.Zpa.Outputs
     {
         public readonly string CustomerId;
         public readonly bool ExcludeConstellation;
+        public readonly bool IsPartner;
         public readonly string Name;
 
         [OutputConstructor]
@@ -24,10 +25,13 @@ namespace Zscaler.Zpa.Outputs
 
             bool excludeConstellation,
 
+            bool isPartner,
+
             string name)
         {
             CustomerId = customerId;
             ExcludeConstellation = excludeConstellation;
+            IsPartner = isPartner;
             Name = name;
         }
     }

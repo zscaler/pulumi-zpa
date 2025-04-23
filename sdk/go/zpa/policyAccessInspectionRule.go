@@ -153,7 +153,7 @@ type PolicyAccessInspectionRule struct {
 	// This is for proviidng the set of conditions for the policy.
 	Conditions PolicyAccessInspectionRuleConditionArrayOutput `pulumi:"conditions"`
 	// This is for providing a customer message for the user.
-	CustomMsg pulumi.StringPtrOutput `pulumi:"customMsg"`
+	CustomMsg pulumi.StringOutput `pulumi:"customMsg"`
 	// This is for providing a customer message for the user.
 	DefaultRule pulumi.BoolPtrOutput `pulumi:"defaultRule"`
 	// This is the description of the access policy.
@@ -447,8 +447,8 @@ func (o PolicyAccessInspectionRuleOutput) Conditions() PolicyAccessInspectionRul
 }
 
 // This is for providing a customer message for the user.
-func (o PolicyAccessInspectionRuleOutput) CustomMsg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicyAccessInspectionRule) pulumi.StringPtrOutput { return v.CustomMsg }).(pulumi.StringPtrOutput)
+func (o PolicyAccessInspectionRuleOutput) CustomMsg() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyAccessInspectionRule) pulumi.StringOutput { return v.CustomMsg }).(pulumi.StringOutput)
 }
 
 // This is for providing a customer message for the user.

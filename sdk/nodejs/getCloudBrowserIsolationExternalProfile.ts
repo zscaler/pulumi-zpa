@@ -11,20 +11,21 @@ import * as utilities from "./utilities";
  *
  * Use the **zpa_cloud_browser_isolation_external_profile** data source to get information about Cloud Browser Isolation external profile. This data source information can then be used in as part of `zpa.PolicyAccessIsolationRule` when the `action` attribute is set to `ISOLATE`.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getCloudBrowserIsolationExternalProfile({
+ * const _this = zpa.getCloudBrowserIsolationExternalProfile({
  *     name: "Example",
  * });
  * ```
  */
 export function getCloudBrowserIsolationExternalProfile(args?: GetCloudBrowserIsolationExternalProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudBrowserIsolationExternalProfileResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getCloudBrowserIsolationExternalProfile:getCloudBrowserIsolationExternalProfile", {
         "id": args.id,
@@ -61,19 +62,26 @@ export interface GetCloudBrowserIsolationExternalProfileResult {
  *
  * Use the **zpa_cloud_browser_isolation_external_profile** data source to get information about Cloud Browser Isolation external profile. This data source information can then be used in as part of `zpa.PolicyAccessIsolationRule` when the `action` attribute is set to `ISOLATE`.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getCloudBrowserIsolationExternalProfile({
+ * const _this = zpa.getCloudBrowserIsolationExternalProfile({
  *     name: "Example",
  * });
  * ```
  */
-export function getCloudBrowserIsolationExternalProfileOutput(args?: GetCloudBrowserIsolationExternalProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudBrowserIsolationExternalProfileResult> {
-    return pulumi.output(args).apply((a: any) => getCloudBrowserIsolationExternalProfile(a, opts))
+export function getCloudBrowserIsolationExternalProfileOutput(args?: GetCloudBrowserIsolationExternalProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudBrowserIsolationExternalProfileResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getCloudBrowserIsolationExternalProfile:getCloudBrowserIsolationExternalProfile", {
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

@@ -10,6 +10,8 @@ import * as utilities from "./utilities";
  *
  * Use the **zpa_posture_profile** data source to get information about a posture profile created in the Zscaler Private Access Mobile Portal. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -64,7 +66,6 @@ import * as utilities from "./utilities";
  */
 export function getPostureProfile(args?: GetPostureProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetPostureProfileResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getPostureProfile:getPostureProfile", {
         "name": args.name,
@@ -98,6 +99,8 @@ export interface GetPostureProfileResult {
  * * [API documentation](https://help.zscaler.com/zpa/obtaining-posture-profile-details-using-api)
  *
  * Use the **zpa_posture_profile** data source to get information about a posture profile created in the Zscaler Private Access Mobile Portal. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
+ *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
  *
  * ## Example Usage
  *
@@ -151,8 +154,12 @@ export interface GetPostureProfileResult {
  * export const zpaPostureProfile = example1.then(example1 => example1.postureUdid);
  * ```
  */
-export function getPostureProfileOutput(args?: GetPostureProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPostureProfileResult> {
-    return pulumi.output(args).apply((a: any) => getPostureProfile(a, opts))
+export function getPostureProfileOutput(args?: GetPostureProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPostureProfileResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getPostureProfile:getPostureProfile", {
+        "name": args.name,
+    }, opts);
 }
 
 /**

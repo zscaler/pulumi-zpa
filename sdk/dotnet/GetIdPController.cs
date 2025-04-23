@@ -18,6 +18,8 @@ namespace Zscaler.Zpa
         /// 
         /// Use the **zpa_idp_controller** data source to get information about an Identity Provider created in the Zscaler Private Access cloud. This data source is required when creating:
         /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
         /// * Access policy Rules
         /// * Access policy timeout rules
         /// * Access policy forwarding rules
@@ -69,6 +71,8 @@ namespace Zscaler.Zpa
         /// 
         /// Use the **zpa_idp_controller** data source to get information about an Identity Provider created in the Zscaler Private Access cloud. This data source is required when creating:
         /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
         /// * Access policy Rules
         /// * Access policy timeout rules
         /// * Access policy forwarding rules
@@ -112,6 +116,59 @@ namespace Zscaler.Zpa
         /// ```
         /// </summary>
         public static Output<GetIdPControllerResult> Invoke(GetIdPControllerInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIdPControllerResult>("zpa:index/getIdPController:getIdPController", args ?? new GetIdPControllerInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/identity-management)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-idp-configuration-details-using-api)
+        /// 
+        /// Use the **zpa_idp_controller** data source to get information about an Identity Provider created in the Zscaler Private Access cloud. This data source is required when creating:
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// * Access policy Rules
+        /// * Access policy timeout rules
+        /// * Access policy forwarding rules
+        /// * Access policy inspection rules
+        /// * Access policy isolation rules
+        /// * Access policy privileged credentials rules
+        /// * Access policy privileged capabilities rules
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Zpa.GetIdPController.Invoke(new()
+        ///     {
+        ///         Name = "idp_name",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Zpa.GetIdPController.Invoke(new()
+        ///     {
+        ///         Id = "1234567890",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetIdPControllerResult> Invoke(GetIdPControllerInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetIdPControllerResult>("zpa:index/getIdPController:getIdPController", args ?? new GetIdPControllerInvokeArgs(), options.WithDefaults());
     }
 

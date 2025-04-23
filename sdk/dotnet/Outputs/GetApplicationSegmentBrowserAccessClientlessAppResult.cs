@@ -30,6 +30,7 @@ namespace Zscaler.Zpa.Outputs
         /// </summary>
         public readonly string Id;
         public readonly string LocalDomain;
+        public readonly string MicrotenantId;
         /// <summary>
         /// - (String) This field defines the name of the server.
         /// </summary>
@@ -65,6 +66,8 @@ namespace Zscaler.Zpa.Outputs
 
             string localDomain,
 
+            string microtenantId,
+
             string name,
 
             string path,
@@ -84,6 +87,7 @@ namespace Zscaler.Zpa.Outputs
             Hidden = hidden;
             Id = id;
             LocalDomain = localDomain;
+            MicrotenantId = microtenantId;
             Name = name;
             Path = path;
             TrustUntrustedCert = trustUntrustedCert;

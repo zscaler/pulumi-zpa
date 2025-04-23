@@ -14,9 +14,6 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class PRAConsolePraApplication
     {
-        /// <summary>
-        /// The unique identifier of the Privileged Remote Access-enabled application
-        /// </summary>
         public readonly string Id;
 
         [OutputConstructor]

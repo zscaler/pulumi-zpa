@@ -95,15 +95,11 @@ type LookupApplicationServerResult struct {
 }
 
 func LookupApplicationServerOutput(ctx *pulumi.Context, args LookupApplicationServerOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationServerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupApplicationServerResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupApplicationServerResultOutput, error) {
 			args := v.(LookupApplicationServerArgs)
-			r, err := LookupApplicationServer(ctx, &args, opts...)
-			var s LookupApplicationServerResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getApplicationServer:getApplicationServer", args, LookupApplicationServerResultOutput{}, options).(LookupApplicationServerResultOutput), nil
 		}).(LookupApplicationServerResultOutput)
 }
 

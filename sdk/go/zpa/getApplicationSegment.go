@@ -116,15 +116,11 @@ type LookupApplicationSegmentResult struct {
 }
 
 func LookupApplicationSegmentOutput(ctx *pulumi.Context, args LookupApplicationSegmentOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationSegmentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupApplicationSegmentResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupApplicationSegmentResultOutput, error) {
 			args := v.(LookupApplicationSegmentArgs)
-			r, err := LookupApplicationSegment(ctx, &args, opts...)
-			var s LookupApplicationSegmentResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getApplicationSegment:getApplicationSegment", args, LookupApplicationSegmentResultOutput{}, options).(LookupApplicationSegmentResultOutput), nil
 		}).(LookupApplicationSegmentResultOutput)
 }
 

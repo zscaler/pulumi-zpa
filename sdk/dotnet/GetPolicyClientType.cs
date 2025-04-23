@@ -81,6 +81,41 @@ namespace Zscaler.Zpa
         /// </summary>
         public static Output<GetPolicyClientTypeResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyClientTypeResult>("zpa:index/getPolicyClientType:getPolicyClientType", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api#getClientTypes)
+        /// 
+        /// Use the **zpa_access_policy_client_types** data source to get information about all client types for the specified customer in the Zscaler Private Access cloud. This data source can be optionally used when defining the following policy types:
+        ///     - ``zpa.PolicyAccessRule``
+        ///     - ``zpa.PolicyAccessTimeOutRule``
+        ///     - ``zpa.PolicyAccessForwardingRule``
+        ///     - ``zpa.PolicyAccessIsolationRule``
+        ///     - ``zpa.PolicyAccessInspectionRule``
+        /// 
+        /// The ``object_type`` attribute must be defined as "CLIENT_TYPE" in the policy operand condition. To learn more see the To learn more see the [Getting Details of All Client Types](https://help.zscaler.com/zpa/configuring-access-policies-using-api#getClientTypes)
+        /// 
+        /// &gt; **NOTE** By Default the ZPA provider will return all client types
+        /// 
+        /// &gt; **NOTE** When defining a ``zpa.PolicyAccessIsolationRule`` policy the ``object_type`` "CLIENT_TYPE" is mandatory and ``zpn_client_type_exporter`` is the only supported value.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Zpa.GetPolicyClientType.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPolicyClientTypeResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPolicyClientTypeResult>("zpa:index/getPolicyClientType:getPolicyClientType", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

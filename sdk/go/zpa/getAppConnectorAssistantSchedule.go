@@ -70,15 +70,11 @@ type LookupAppConnectorAssistantScheduleResult struct {
 }
 
 func LookupAppConnectorAssistantScheduleOutput(ctx *pulumi.Context, args LookupAppConnectorAssistantScheduleOutputArgs, opts ...pulumi.InvokeOption) LookupAppConnectorAssistantScheduleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAppConnectorAssistantScheduleResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupAppConnectorAssistantScheduleResultOutput, error) {
 			args := v.(LookupAppConnectorAssistantScheduleArgs)
-			r, err := LookupAppConnectorAssistantSchedule(ctx, &args, opts...)
-			var s LookupAppConnectorAssistantScheduleResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getAppConnectorAssistantSchedule:getAppConnectorAssistantSchedule", args, LookupAppConnectorAssistantScheduleResultOutput{}, options).(LookupAppConnectorAssistantScheduleResultOutput), nil
 		}).(LookupAppConnectorAssistantScheduleResultOutput)
 }
 

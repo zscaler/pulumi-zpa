@@ -53,6 +53,7 @@ export class ApplicationSegment extends pulumi.CustomResource {
         return obj['__pulumiType'] === ApplicationSegment.__pulumiType;
     }
 
+    public readonly bypassOnReauth!: pulumi.Output<boolean>;
     /**
      * Indicates whether users can bypass ZPA to access applications.
      */
@@ -74,12 +75,17 @@ export class ApplicationSegment extends pulumi.CustomResource {
      * Whether this application is enabled or not.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
+    public readonly fqdnDnsCheck!: pulumi.Output<boolean | undefined>;
     public readonly healthCheckType!: pulumi.Output<string | undefined>;
     /**
      * Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
      */
     public readonly healthReporting!: pulumi.Output<string | undefined>;
     public readonly icmpAccessType!: pulumi.Output<string | undefined>;
+    /**
+     * Indicates if Inspect Traffic with ZIA is enabled for the application.
+     */
+    public readonly inspectTrafficWithZia!: pulumi.Output<boolean | undefined>;
     public readonly ipAnchored!: pulumi.Output<boolean | undefined>;
     /**
      * Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
@@ -133,15 +139,18 @@ export class ApplicationSegment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationSegmentState | undefined;
+            resourceInputs["bypassOnReauth"] = state ? state.bypassOnReauth : undefined;
             resourceInputs["bypassType"] = state ? state.bypassType : undefined;
             resourceInputs["configSpace"] = state ? state.configSpace : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["domainNames"] = state ? state.domainNames : undefined;
             resourceInputs["doubleEncrypt"] = state ? state.doubleEncrypt : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["fqdnDnsCheck"] = state ? state.fqdnDnsCheck : undefined;
             resourceInputs["healthCheckType"] = state ? state.healthCheckType : undefined;
             resourceInputs["healthReporting"] = state ? state.healthReporting : undefined;
             resourceInputs["icmpAccessType"] = state ? state.icmpAccessType : undefined;
+            resourceInputs["inspectTrafficWithZia"] = state ? state.inspectTrafficWithZia : undefined;
             resourceInputs["ipAnchored"] = state ? state.ipAnchored : undefined;
             resourceInputs["isCnameEnabled"] = state ? state.isCnameEnabled : undefined;
             resourceInputs["isIncompleteDrConfig"] = state ? state.isIncompleteDrConfig : undefined;
@@ -164,15 +173,18 @@ export class ApplicationSegment extends pulumi.CustomResource {
             if ((!args || args.domainNames === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domainNames'");
             }
+            resourceInputs["bypassOnReauth"] = args ? args.bypassOnReauth : undefined;
             resourceInputs["bypassType"] = args ? args.bypassType : undefined;
             resourceInputs["configSpace"] = args ? args.configSpace : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["domainNames"] = args ? args.domainNames : undefined;
             resourceInputs["doubleEncrypt"] = args ? args.doubleEncrypt : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["fqdnDnsCheck"] = args ? args.fqdnDnsCheck : undefined;
             resourceInputs["healthCheckType"] = args ? args.healthCheckType : undefined;
             resourceInputs["healthReporting"] = args ? args.healthReporting : undefined;
             resourceInputs["icmpAccessType"] = args ? args.icmpAccessType : undefined;
+            resourceInputs["inspectTrafficWithZia"] = args ? args.inspectTrafficWithZia : undefined;
             resourceInputs["ipAnchored"] = args ? args.ipAnchored : undefined;
             resourceInputs["isCnameEnabled"] = args ? args.isCnameEnabled : undefined;
             resourceInputs["isIncompleteDrConfig"] = args ? args.isIncompleteDrConfig : undefined;
@@ -200,6 +212,7 @@ export class ApplicationSegment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ApplicationSegment resources.
  */
 export interface ApplicationSegmentState {
+    bypassOnReauth?: pulumi.Input<boolean>;
     /**
      * Indicates whether users can bypass ZPA to access applications.
      */
@@ -221,12 +234,17 @@ export interface ApplicationSegmentState {
      * Whether this application is enabled or not.
      */
     enabled?: pulumi.Input<boolean>;
+    fqdnDnsCheck?: pulumi.Input<boolean>;
     healthCheckType?: pulumi.Input<string>;
     /**
      * Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
      */
     healthReporting?: pulumi.Input<string>;
     icmpAccessType?: pulumi.Input<string>;
+    /**
+     * Indicates if Inspect Traffic with ZIA is enabled for the application.
+     */
+    inspectTrafficWithZia?: pulumi.Input<boolean>;
     ipAnchored?: pulumi.Input<boolean>;
     /**
      * Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
@@ -272,6 +290,7 @@ export interface ApplicationSegmentState {
  * The set of arguments for constructing a ApplicationSegment resource.
  */
 export interface ApplicationSegmentArgs {
+    bypassOnReauth?: pulumi.Input<boolean>;
     /**
      * Indicates whether users can bypass ZPA to access applications.
      */
@@ -293,12 +312,17 @@ export interface ApplicationSegmentArgs {
      * Whether this application is enabled or not.
      */
     enabled?: pulumi.Input<boolean>;
+    fqdnDnsCheck?: pulumi.Input<boolean>;
     healthCheckType?: pulumi.Input<string>;
     /**
      * Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
      */
     healthReporting?: pulumi.Input<string>;
     icmpAccessType?: pulumi.Input<string>;
+    /**
+     * Indicates if Inspect Traffic with ZIA is enabled for the application.
+     */
+    inspectTrafficWithZia?: pulumi.Input<boolean>;
     ipAnchored?: pulumi.Input<boolean>;
     /**
      * Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the

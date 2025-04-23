@@ -72,15 +72,11 @@ type LookupAssistantScheduleResult struct {
 }
 
 func LookupAssistantScheduleOutput(ctx *pulumi.Context, args LookupAssistantScheduleOutputArgs, opts ...pulumi.InvokeOption) LookupAssistantScheduleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAssistantScheduleResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupAssistantScheduleResultOutput, error) {
 			args := v.(LookupAssistantScheduleArgs)
-			r, err := LookupAssistantSchedule(ctx, &args, opts...)
-			var s LookupAssistantScheduleResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getAssistantSchedule:getAssistantSchedule", args, LookupAssistantScheduleResultOutput{}, options).(LookupAssistantScheduleResultOutput), nil
 		}).(LookupAssistantScheduleResultOutput)
 }
 

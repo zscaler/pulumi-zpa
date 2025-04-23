@@ -27,11 +27,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getPolicyClientType({});
+ * const _this = zpa.getPolicyClientType({});
  * ```
  */
 export function getPolicyClientType(opts?: pulumi.InvokeOptions): Promise<GetPolicyClientTypeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getPolicyClientType:getPolicyClientType", {
     }, opts);
@@ -78,9 +77,11 @@ export interface GetPolicyClientTypeResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getPolicyClientType({});
+ * const _this = zpa.getPolicyClientType({});
  * ```
  */
-export function getPolicyClientTypeOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyClientTypeResult> {
-    return pulumi.output(getPolicyClientType(opts))
+export function getPolicyClientTypeOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPolicyClientTypeResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getPolicyClientType:getPolicyClientType", {
+    }, opts);
 }

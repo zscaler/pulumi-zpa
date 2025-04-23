@@ -122,6 +122,50 @@ import * as utilities from "./utilities";
  *                 ],
  *             }],
  *         },
+ *         {
+ *             operator: "OR",
+ *             operands: [{
+ *                 objectType: "RISK_FACTOR_TYPE",
+ *                 entryValues: [
+ *                     {
+ *                         lhs: "ZIA",
+ *                         rhs: "UNKNOWN",
+ *                     },
+ *                     {
+ *                         lhs: "ZIA",
+ *                         rhs: "LOW",
+ *                     },
+ *                     {
+ *                         lhs: "ZIA",
+ *                         rhs: "MEDIUM",
+ *                     },
+ *                     {
+ *                         lhs: "ZIA",
+ *                         rhs: "HIGH",
+ *                     },
+ *                     {
+ *                         lhs: "ZIA",
+ *                         rhs: "CRITICAL",
+ *                     },
+ *                 ],
+ *             }],
+ *         },
+ *         {
+ *             operator: "OR",
+ *             operands: [{
+ *                 objectType: "CHROME_ENTERPRISE",
+ *                 entryValues: [
+ *                     {
+ *                         lhs: "managed",
+ *                         rhs: "true",
+ *                     },
+ *                     {
+ *                         lhs: "managed",
+ *                         rhs: "false",
+ *                     },
+ *                 ],
+ *             }],
+ *         },
  *     ],
  * });
  * ```
@@ -144,6 +188,8 @@ import * as utilities from "./utilities";
  * | POSTURE | ``postureUdid``  | ``"true"`` / ``"false"`` |
  * | TRUSTED_NETWORK | ``networkId``  | ``"true"`` |
  * | COUNTRY_CODE | [2 Letter ISO3166 Alpha2](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)  | ``"true"`` / ``"false"`` |
+ * | RISK_FACTOR_TYPE | ``ZIA``  | ``"UNKNOWN", "LOW", "MEDIUM", "HIGH", "CRITICAL"`` |
+ * | CHROME_ENTERPRISE | ``managed``  | ``"true" / "false"`` |
  *
  * ## Import
  *
@@ -206,7 +252,7 @@ export class PolicyAccessRuleV2 extends pulumi.CustomResource {
     /**
      * This is for providing a customer message for the user.
      */
-    public readonly customMsg!: pulumi.Output<string | undefined>;
+    public readonly customMsg!: pulumi.Output<string>;
     /**
      * This is the description of the access policy rule.
      */

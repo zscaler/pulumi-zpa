@@ -18,6 +18,8 @@ namespace Zscaler.Zpa
         /// 
         /// Use the **zpa_scim_attribute_header** data source to get information about a SCIM attribute from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Inspection Policy.
         /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,6 +54,8 @@ namespace Zscaler.Zpa
         /// 
         /// Use the **zpa_scim_attribute_header** data source to get information about a SCIM attribute from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Inspection Policy.
         /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -78,6 +82,42 @@ namespace Zscaler.Zpa
         /// ```
         /// </summary>
         public static Output<GetSCIMAttributeHeaderResult> Invoke(GetSCIMAttributeHeaderInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSCIMAttributeHeaderResult>("zpa:index/getSCIMAttributeHeader:getSCIMAttributeHeader", args ?? new GetSCIMAttributeHeaderInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-scim)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-scim-attribute-details-using-api)
+        /// 
+        /// Use the **zpa_scim_attribute_header** data source to get information about a SCIM attribute from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Inspection Policy.
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var givenName = Zpa.GetSCIMAttributeHeader.Invoke(new()
+        ///     {
+        ///         IdpName = "IdP_Name",
+        ///         Name = "name.givenName",
+        ///     });
+        /// 
+        ///     var familyName = Zpa.GetSCIMAttributeHeader.Invoke(new()
+        ///     {
+        ///         IdpName = "IdP_Name",
+        ///         Name = "name.familyName",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSCIMAttributeHeaderResult> Invoke(GetSCIMAttributeHeaderInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSCIMAttributeHeaderResult>("zpa:index/getSCIMAttributeHeader:getSCIMAttributeHeader", args ?? new GetSCIMAttributeHeaderInvokeArgs(), options.WithDefaults());
     }
 

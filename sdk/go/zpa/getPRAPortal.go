@@ -16,6 +16,8 @@ import (
 //
 // Use the **zpa_pra_portal_controller** data source to get information about a privileged remote access portal created in the Zscaler Private Access cloud. This data source can then be referenced in an privileged remote access console resource.
 //
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
 // ## Example Usage
 //
 // ```go
@@ -77,15 +79,11 @@ type LookupPRAPortalResult struct {
 }
 
 func LookupPRAPortalOutput(ctx *pulumi.Context, args LookupPRAPortalOutputArgs, opts ...pulumi.InvokeOption) LookupPRAPortalResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPRAPortalResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupPRAPortalResultOutput, error) {
 			args := v.(LookupPRAPortalArgs)
-			r, err := LookupPRAPortal(ctx, &args, opts...)
-			var s LookupPRAPortalResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getPRAPortal:getPRAPortal", args, LookupPRAPortalResultOutput{}, options).(LookupPRAPortalResultOutput), nil
 		}).(LookupPRAPortalResultOutput)
 }
 

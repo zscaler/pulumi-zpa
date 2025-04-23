@@ -35,7 +35,6 @@ import * as utilities from "./utilities";
  */
 export function getEnrollmentCert(args?: GetEnrollmentCertArgs, opts?: pulumi.InvokeOptions): Promise<GetEnrollmentCertResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getEnrollmentCert:getEnrollmentCert", {
         "id": args.id,
@@ -110,8 +109,14 @@ export interface GetEnrollmentCertResult {
  * });
  * ```
  */
-export function getEnrollmentCertOutput(args?: GetEnrollmentCertOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnrollmentCertResult> {
-    return pulumi.output(args).apply((a: any) => getEnrollmentCert(a, opts))
+export function getEnrollmentCertOutput(args?: GetEnrollmentCertOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnrollmentCertResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getEnrollmentCert:getEnrollmentCert", {
+        "id": args.id,
+        "microtenantId": args.microtenantId,
+        "name": args.name,
+    }, opts);
 }
 
 /**

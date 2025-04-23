@@ -73,7 +73,7 @@ namespace Zscaler.Zpa
         /// The unique identifier of the certificate
         /// </summary>
         [Output("certificateId")]
-        public Output<string?> CertificateId { get; private set; } = null!;
+        public Output<string> CertificateId { get; private set; } = null!;
 
         /// <summary>
         /// The description of the privileged portal

@@ -16,6 +16,8 @@ import (
 //
 // Use the **zpa_saml_attribute** data source to get information about a SAML Attributes from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
 //
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
 // ## Example Usage
 //
 // ```go
@@ -98,15 +100,11 @@ type GetSAMLAttributeResult struct {
 }
 
 func GetSAMLAttributeOutput(ctx *pulumi.Context, args GetSAMLAttributeOutputArgs, opts ...pulumi.InvokeOption) GetSAMLAttributeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSAMLAttributeResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetSAMLAttributeResultOutput, error) {
 			args := v.(GetSAMLAttributeArgs)
-			r, err := GetSAMLAttribute(ctx, &args, opts...)
-			var s GetSAMLAttributeResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getSAMLAttribute:getSAMLAttribute", args, GetSAMLAttributeResultOutput{}, options).(GetSAMLAttributeResultOutput), nil
 		}).(GetSAMLAttributeResultOutput)
 }
 

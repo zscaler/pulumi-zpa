@@ -12,13 +12,15 @@ import * as utilities from "./utilities";
  *
  * Use the **zpa_application_segment_pra** data source to get information about an application segment for Privileged Remote Access in the Zscaler Private Access cloud. This resource can then be referenced in an access policy rule, access policy timeout rule, access policy client forwarding rule and inspection policy. This resource supports Privileged Remote Access for both `RDP` and `SSH`.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getApplicationSegmentPRA({
+ * const _this = zpa.getApplicationSegmentPRA({
  *     name: "PRA_Example",
  * });
  * ```
@@ -27,14 +29,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getApplicationSegmentPRA({
+ * const _this = zpa.getApplicationSegmentPRA({
  *     id: "123456789",
  * });
  * ```
  */
 export function getApplicationSegmentPRA(args?: GetApplicationSegmentPRAArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationSegmentPRAResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getApplicationSegmentPRA:getApplicationSegmentPRA", {
         "id": args.id,
@@ -92,13 +93,15 @@ export interface GetApplicationSegmentPRAResult {
  *
  * Use the **zpa_application_segment_pra** data source to get information about an application segment for Privileged Remote Access in the Zscaler Private Access cloud. This resource can then be referenced in an access policy rule, access policy timeout rule, access policy client forwarding rule and inspection policy. This resource supports Privileged Remote Access for both `RDP` and `SSH`.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getApplicationSegmentPRA({
+ * const _this = zpa.getApplicationSegmentPRA({
  *     name: "PRA_Example",
  * });
  * ```
@@ -107,13 +110,22 @@ export interface GetApplicationSegmentPRAResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getApplicationSegmentPRA({
+ * const _this = zpa.getApplicationSegmentPRA({
  *     id: "123456789",
  * });
  * ```
  */
-export function getApplicationSegmentPRAOutput(args?: GetApplicationSegmentPRAOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationSegmentPRAResult> {
-    return pulumi.output(args).apply((a: any) => getApplicationSegmentPRA(a, opts))
+export function getApplicationSegmentPRAOutput(args?: GetApplicationSegmentPRAOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApplicationSegmentPRAResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getApplicationSegmentPRA:getApplicationSegmentPRA", {
+        "id": args.id,
+        "microtenantId": args.microtenantId,
+        "microtenantName": args.microtenantName,
+        "name": args.name,
+        "tcpPortRange": args.tcpPortRange,
+        "udpPortRange": args.udpPortRange,
+    }, opts);
 }
 
 /**

@@ -14,48 +14,16 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class GetServerGroupServerResult
     {
-        public readonly string Address;
-        public readonly ImmutableArray<string> AppServerGroupIds;
-        public readonly string ConfigSpace;
-        public readonly string CreationTime;
-        public readonly string Description;
-        public readonly bool Enabled;
         public readonly string Id;
-        public readonly string ModifiedTime;
-        public readonly string Modifiedby;
         public readonly string Name;
 
         [OutputConstructor]
         private GetServerGroupServerResult(
-            string address,
-
-            ImmutableArray<string> appServerGroupIds,
-
-            string configSpace,
-
-            string creationTime,
-
-            string description,
-
-            bool enabled,
-
             string id,
-
-            string modifiedTime,
-
-            string modifiedby,
 
             string name)
         {
-            Address = address;
-            AppServerGroupIds = appServerGroupIds;
-            ConfigSpace = configSpace;
-            CreationTime = creationTime;
-            Description = description;
-            Enabled = enabled;
             Id = id;
-            ModifiedTime = modifiedTime;
-            Modifiedby = modifiedby;
             Name = name;
         }
     }

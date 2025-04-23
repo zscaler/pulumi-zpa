@@ -14,14 +14,26 @@ namespace Zscaler.Zpa
     {
         /// <summary>
         /// Use the **zpa_pra_approval_controller** data source to get information about a privileged remote access approval created in the Zscaler Private Access cloud.
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
         /// </summary>
         public static Task<GetPRAApprovalResult> InvokeAsync(GetPRAApprovalArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPRAApprovalResult>("zpa:index/getPRAApproval:getPRAApproval", args ?? new GetPRAApprovalArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use the **zpa_pra_approval_controller** data source to get information about a privileged remote access approval created in the Zscaler Private Access cloud.
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
         /// </summary>
         public static Output<GetPRAApprovalResult> Invoke(GetPRAApprovalInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPRAApprovalResult>("zpa:index/getPRAApproval:getPRAApproval", args ?? new GetPRAApprovalInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use the **zpa_pra_approval_controller** data source to get information about a privileged remote access approval created in the Zscaler Private Access cloud.
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// </summary>
+        public static Output<GetPRAApprovalResult> Invoke(GetPRAApprovalInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPRAApprovalResult>("zpa:index/getPRAApproval:getPRAApproval", args ?? new GetPRAApprovalInvokeArgs(), options.WithDefaults());
     }
 

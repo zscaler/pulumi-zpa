@@ -24,6 +24,7 @@ namespace Zscaler.Zpa.Outputs
         public readonly bool Enabled;
         public readonly string Id;
         public readonly string Name;
+        public readonly bool TrustedUntrustedCert;
 
         [OutputConstructor]
         private GetApplicationSegmentInspectionInspectionAppResult(
@@ -45,7 +46,9 @@ namespace Zscaler.Zpa.Outputs
 
             string id,
 
-            string name)
+            string name,
+
+            bool trustedUntrustedCert)
         {
             AppId = appId;
             ApplicationPort = applicationPort;
@@ -57,6 +60,7 @@ namespace Zscaler.Zpa.Outputs
             Enabled = enabled;
             Id = id;
             Name = name;
+            TrustedUntrustedCert = trustedUntrustedCert;
         }
     }
 }

@@ -39,6 +39,7 @@ import (
 // CriteriaAttributeValues: pulumi.StringArray{
 // pulumi.String("acme.com"),
 // },
+// PrivilegedApprovalsEnabled: pulumi.Bool(true),
 // })
 // if err != nil {
 // return err
@@ -77,11 +78,16 @@ type Microtenant struct {
 	CriteriaAttribute pulumi.StringPtrOutput `pulumi:"criteriaAttribute"`
 	// - (Required) The domain associated with the respective microtenant controller resource
 	CriteriaAttributeValues pulumi.StringArrayOutput `pulumi:"criteriaAttributeValues"`
-	Description             pulumi.StringPtrOutput   `pulumi:"description"`
-	Enabled                 pulumi.BoolOutput        `pulumi:"enabled"`
+	// The description of the Microtenant.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Whether or not the Microtenant is enabled.
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// - (Required) Name of the microtenant controller.
-	Name  pulumi.StringOutput        `pulumi:"name"`
-	Users MicrotenantUserArrayOutput `pulumi:"users"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no
+	// Authentication Domain is selected.
+	PrivilegedApprovalsEnabled pulumi.BoolPtrOutput       `pulumi:"privilegedApprovalsEnabled"`
+	Users                      MicrotenantUserArrayOutput `pulumi:"users"`
 }
 
 // NewMicrotenant registers a new resource with the given unique name, arguments, and options.
@@ -118,11 +124,16 @@ type microtenantState struct {
 	CriteriaAttribute *string `pulumi:"criteriaAttribute"`
 	// - (Required) The domain associated with the respective microtenant controller resource
 	CriteriaAttributeValues []string `pulumi:"criteriaAttributeValues"`
-	Description             *string  `pulumi:"description"`
-	Enabled                 *bool    `pulumi:"enabled"`
+	// The description of the Microtenant.
+	Description *string `pulumi:"description"`
+	// Whether or not the Microtenant is enabled.
+	Enabled *bool `pulumi:"enabled"`
 	// - (Required) Name of the microtenant controller.
-	Name  *string           `pulumi:"name"`
-	Users []MicrotenantUser `pulumi:"users"`
+	Name *string `pulumi:"name"`
+	// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no
+	// Authentication Domain is selected.
+	PrivilegedApprovalsEnabled *bool             `pulumi:"privilegedApprovalsEnabled"`
+	Users                      []MicrotenantUser `pulumi:"users"`
 }
 
 type MicrotenantState struct {
@@ -130,11 +141,16 @@ type MicrotenantState struct {
 	CriteriaAttribute pulumi.StringPtrInput
 	// - (Required) The domain associated with the respective microtenant controller resource
 	CriteriaAttributeValues pulumi.StringArrayInput
-	Description             pulumi.StringPtrInput
-	Enabled                 pulumi.BoolPtrInput
+	// The description of the Microtenant.
+	Description pulumi.StringPtrInput
+	// Whether or not the Microtenant is enabled.
+	Enabled pulumi.BoolPtrInput
 	// - (Required) Name of the microtenant controller.
-	Name  pulumi.StringPtrInput
-	Users MicrotenantUserArrayInput
+	Name pulumi.StringPtrInput
+	// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no
+	// Authentication Domain is selected.
+	PrivilegedApprovalsEnabled pulumi.BoolPtrInput
+	Users                      MicrotenantUserArrayInput
 }
 
 func (MicrotenantState) ElementType() reflect.Type {
@@ -146,11 +162,16 @@ type microtenantArgs struct {
 	CriteriaAttribute *string `pulumi:"criteriaAttribute"`
 	// - (Required) The domain associated with the respective microtenant controller resource
 	CriteriaAttributeValues []string `pulumi:"criteriaAttributeValues"`
-	Description             *string  `pulumi:"description"`
-	Enabled                 *bool    `pulumi:"enabled"`
+	// The description of the Microtenant.
+	Description *string `pulumi:"description"`
+	// Whether or not the Microtenant is enabled.
+	Enabled *bool `pulumi:"enabled"`
 	// - (Required) Name of the microtenant controller.
-	Name  *string           `pulumi:"name"`
-	Users []MicrotenantUser `pulumi:"users"`
+	Name *string `pulumi:"name"`
+	// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no
+	// Authentication Domain is selected.
+	PrivilegedApprovalsEnabled *bool             `pulumi:"privilegedApprovalsEnabled"`
+	Users                      []MicrotenantUser `pulumi:"users"`
 }
 
 // The set of arguments for constructing a Microtenant resource.
@@ -159,11 +180,16 @@ type MicrotenantArgs struct {
 	CriteriaAttribute pulumi.StringPtrInput
 	// - (Required) The domain associated with the respective microtenant controller resource
 	CriteriaAttributeValues pulumi.StringArrayInput
-	Description             pulumi.StringPtrInput
-	Enabled                 pulumi.BoolPtrInput
+	// The description of the Microtenant.
+	Description pulumi.StringPtrInput
+	// Whether or not the Microtenant is enabled.
+	Enabled pulumi.BoolPtrInput
 	// - (Required) Name of the microtenant controller.
-	Name  pulumi.StringPtrInput
-	Users MicrotenantUserArrayInput
+	Name pulumi.StringPtrInput
+	// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no
+	// Authentication Domain is selected.
+	PrivilegedApprovalsEnabled pulumi.BoolPtrInput
+	Users                      MicrotenantUserArrayInput
 }
 
 func (MicrotenantArgs) ElementType() reflect.Type {
@@ -263,10 +289,12 @@ func (o MicrotenantOutput) CriteriaAttributeValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Microtenant) pulumi.StringArrayOutput { return v.CriteriaAttributeValues }).(pulumi.StringArrayOutput)
 }
 
+// The description of the Microtenant.
 func (o MicrotenantOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Microtenant) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Whether or not the Microtenant is enabled.
 func (o MicrotenantOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Microtenant) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -274,6 +302,12 @@ func (o MicrotenantOutput) Enabled() pulumi.BoolOutput {
 // - (Required) Name of the microtenant controller.
 func (o MicrotenantOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Microtenant) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no
+// Authentication Domain is selected.
+func (o MicrotenantOutput) PrivilegedApprovalsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Microtenant) pulumi.BoolPtrOutput { return v.PrivilegedApprovalsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o MicrotenantOutput) Users() MicrotenantUserArrayOutput {

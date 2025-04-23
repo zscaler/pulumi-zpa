@@ -29,7 +29,6 @@ import * as utilities from "./utilities";
  */
 export function getAppConnectorGroup(args?: GetAppConnectorGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetAppConnectorGroupResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getAppConnectorGroup:getAppConnectorGroup", {
         "id": args.id,
@@ -106,8 +105,16 @@ export interface GetAppConnectorGroupResult {
  * });
  * ```
  */
-export function getAppConnectorGroupOutput(args?: GetAppConnectorGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppConnectorGroupResult> {
-    return pulumi.output(args).apply((a: any) => getAppConnectorGroup(a, opts))
+export function getAppConnectorGroupOutput(args?: GetAppConnectorGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppConnectorGroupResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getAppConnectorGroup:getAppConnectorGroup", {
+        "id": args.id,
+        "microtenantId": args.microtenantId,
+        "microtenantName": args.microtenantName,
+        "name": args.name,
+        "overrideVersionProfile": args.overrideVersionProfile,
+    }, opts);
 }
 
 /**

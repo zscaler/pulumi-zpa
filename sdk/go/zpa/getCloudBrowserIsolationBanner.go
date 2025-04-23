@@ -15,6 +15,8 @@ import (
 //
 // Use the **zpa_cloud_browser_isolation_banner** data source to get information about Cloud Browser Isolation banner. This data source information is required as part of the attribute `bannerId` when creating an Cloud Browser Isolation External Profile “CloudBrowserIsolationExternalProfile“
 //
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
 // ## Example Usage
 //
 // ```go
@@ -70,15 +72,11 @@ type LookupCloudBrowserIsolationBannerResult struct {
 }
 
 func LookupCloudBrowserIsolationBannerOutput(ctx *pulumi.Context, args LookupCloudBrowserIsolationBannerOutputArgs, opts ...pulumi.InvokeOption) LookupCloudBrowserIsolationBannerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCloudBrowserIsolationBannerResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupCloudBrowserIsolationBannerResultOutput, error) {
 			args := v.(LookupCloudBrowserIsolationBannerArgs)
-			r, err := LookupCloudBrowserIsolationBanner(ctx, &args, opts...)
-			var s LookupCloudBrowserIsolationBannerResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getCloudBrowserIsolationBanner:getCloudBrowserIsolationBanner", args, LookupCloudBrowserIsolationBannerResultOutput{}, options).(LookupCloudBrowserIsolationBannerResultOutput), nil
 		}).(LookupCloudBrowserIsolationBannerResultOutput)
 }
 

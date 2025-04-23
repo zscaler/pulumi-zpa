@@ -25,6 +25,9 @@ namespace Zscaler.Zpa
         [Output("conditions")]
         public Output<ImmutableArray<Outputs.PolicyAccessCredentialRuleCondition>> Conditions { get; private set; } = null!;
 
+        [Output("credentialPools")]
+        public Output<ImmutableArray<Outputs.PolicyAccessCredentialRuleCredentialPool>> CredentialPools { get; private set; } = null!;
+
         [Output("credentials")]
         public Output<ImmutableArray<Outputs.PolicyAccessCredentialRuleCredential>> Credentials { get; private set; } = null!;
 
@@ -115,6 +118,14 @@ namespace Zscaler.Zpa
             set => _conditions = value;
         }
 
+        [Input("credentialPools")]
+        private InputList<Inputs.PolicyAccessCredentialRuleCredentialPoolArgs>? _credentialPools;
+        public InputList<Inputs.PolicyAccessCredentialRuleCredentialPoolArgs> CredentialPools
+        {
+            get => _credentialPools ?? (_credentialPools = new InputList<Inputs.PolicyAccessCredentialRuleCredentialPoolArgs>());
+            set => _credentialPools = value;
+        }
+
         [Input("credentials")]
         private InputList<Inputs.PolicyAccessCredentialRuleCredentialArgs>? _credentials;
         public InputList<Inputs.PolicyAccessCredentialRuleCredentialArgs> Credentials
@@ -162,6 +173,14 @@ namespace Zscaler.Zpa
         {
             get => _conditions ?? (_conditions = new InputList<Inputs.PolicyAccessCredentialRuleConditionGetArgs>());
             set => _conditions = value;
+        }
+
+        [Input("credentialPools")]
+        private InputList<Inputs.PolicyAccessCredentialRuleCredentialPoolGetArgs>? _credentialPools;
+        public InputList<Inputs.PolicyAccessCredentialRuleCredentialPoolGetArgs> CredentialPools
+        {
+            get => _credentialPools ?? (_credentialPools = new InputList<Inputs.PolicyAccessCredentialRuleCredentialPoolGetArgs>());
+            set => _credentialPools = value;
         }
 
         [Input("credentials")]

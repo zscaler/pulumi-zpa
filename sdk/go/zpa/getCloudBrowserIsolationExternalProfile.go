@@ -15,6 +15,8 @@ import (
 //
 // Use the **zpa_cloud_browser_isolation_external_profile** data source to get information about Cloud Browser Isolation external profile. This data source information can then be used in as part of `PolicyAccessIsolationRule` when the `action` attribute is set to `ISOLATE`.
 //
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
 // ## Example Usage
 //
 // ```go
@@ -72,15 +74,11 @@ type LookupCloudBrowserIsolationExternalProfileResult struct {
 }
 
 func LookupCloudBrowserIsolationExternalProfileOutput(ctx *pulumi.Context, args LookupCloudBrowserIsolationExternalProfileOutputArgs, opts ...pulumi.InvokeOption) LookupCloudBrowserIsolationExternalProfileResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCloudBrowserIsolationExternalProfileResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupCloudBrowserIsolationExternalProfileResultOutput, error) {
 			args := v.(LookupCloudBrowserIsolationExternalProfileArgs)
-			r, err := LookupCloudBrowserIsolationExternalProfile(ctx, &args, opts...)
-			var s LookupCloudBrowserIsolationExternalProfileResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getCloudBrowserIsolationExternalProfile:getCloudBrowserIsolationExternalProfile", args, LookupCloudBrowserIsolationExternalProfileResultOutput{}, options).(LookupCloudBrowserIsolationExternalProfileResultOutput), nil
 		}).(LookupCloudBrowserIsolationExternalProfileResultOutput)
 }
 

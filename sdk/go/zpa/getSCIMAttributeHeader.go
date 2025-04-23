@@ -16,6 +16,8 @@ import (
 //
 // Use the **zpa_scim_attribute_header** data source to get information about a SCIM attribute from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Inspection Policy.
 //
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
 // ## Example Usage
 //
 // ```go
@@ -89,15 +91,11 @@ type GetSCIMAttributeHeaderResult struct {
 }
 
 func GetSCIMAttributeHeaderOutput(ctx *pulumi.Context, args GetSCIMAttributeHeaderOutputArgs, opts ...pulumi.InvokeOption) GetSCIMAttributeHeaderResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSCIMAttributeHeaderResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetSCIMAttributeHeaderResultOutput, error) {
 			args := v.(GetSCIMAttributeHeaderArgs)
-			r, err := GetSCIMAttributeHeader(ctx, &args, opts...)
-			var s GetSCIMAttributeHeaderResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getSCIMAttributeHeader:getSCIMAttributeHeader", args, GetSCIMAttributeHeaderResultOutput{}, options).(GetSCIMAttributeHeaderResultOutput), nil
 		}).(GetSCIMAttributeHeaderResultOutput)
 }
 

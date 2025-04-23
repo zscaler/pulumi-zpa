@@ -73,7 +73,9 @@ func LookupApplicationSegmentBrowserAccess(ctx *pulumi.Context, args *LookupAppl
 // A collection of arguments for invoking getApplicationSegmentBrowserAccess.
 type LookupApplicationSegmentBrowserAccessArgs struct {
 	// - (String) This field defines the id of the application server.
-	Id *string `pulumi:"id"`
+	Id            *string `pulumi:"id"`
+	MatchStyle    *string `pulumi:"matchStyle"`
+	MicrotenantId *string `pulumi:"microtenantId"`
 	// - (String) This field defines the name of the server.
 	Name         *string                                          `pulumi:"name"`
 	TcpPortRange []GetApplicationSegmentBrowserAccessTcpPortRange `pulumi:"tcpPortRange"`
@@ -95,6 +97,8 @@ type LookupApplicationSegmentBrowserAccessResult struct {
 	Id             *string `pulumi:"id"`
 	IpAnchored     bool    `pulumi:"ipAnchored"`
 	IsCnameEnabled bool    `pulumi:"isCnameEnabled"`
+	MatchStyle     string  `pulumi:"matchStyle"`
+	MicrotenantId  *string `pulumi:"microtenantId"`
 	// - (String) This field defines the name of the server.
 	Name                 *string                                          `pulumi:"name"`
 	PassiveHealthEnabled bool                                             `pulumi:"passiveHealthEnabled"`
@@ -108,22 +112,20 @@ type LookupApplicationSegmentBrowserAccessResult struct {
 }
 
 func LookupApplicationSegmentBrowserAccessOutput(ctx *pulumi.Context, args LookupApplicationSegmentBrowserAccessOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationSegmentBrowserAccessResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupApplicationSegmentBrowserAccessResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupApplicationSegmentBrowserAccessResultOutput, error) {
 			args := v.(LookupApplicationSegmentBrowserAccessArgs)
-			r, err := LookupApplicationSegmentBrowserAccess(ctx, &args, opts...)
-			var s LookupApplicationSegmentBrowserAccessResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getApplicationSegmentBrowserAccess:getApplicationSegmentBrowserAccess", args, LookupApplicationSegmentBrowserAccessResultOutput{}, options).(LookupApplicationSegmentBrowserAccessResultOutput), nil
 		}).(LookupApplicationSegmentBrowserAccessResultOutput)
 }
 
 // A collection of arguments for invoking getApplicationSegmentBrowserAccess.
 type LookupApplicationSegmentBrowserAccessOutputArgs struct {
 	// - (String) This field defines the id of the application server.
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	Id            pulumi.StringPtrInput `pulumi:"id"`
+	MatchStyle    pulumi.StringPtrInput `pulumi:"matchStyle"`
+	MicrotenantId pulumi.StringPtrInput `pulumi:"microtenantId"`
 	// - (String) This field defines the name of the server.
 	Name         pulumi.StringPtrInput                                    `pulumi:"name"`
 	TcpPortRange GetApplicationSegmentBrowserAccessTcpPortRangeArrayInput `pulumi:"tcpPortRange"`
@@ -198,6 +200,14 @@ func (o LookupApplicationSegmentBrowserAccessResultOutput) IpAnchored() pulumi.B
 
 func (o LookupApplicationSegmentBrowserAccessResultOutput) IsCnameEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentBrowserAccessResult) bool { return v.IsCnameEnabled }).(pulumi.BoolOutput)
+}
+
+func (o LookupApplicationSegmentBrowserAccessResultOutput) MatchStyle() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationSegmentBrowserAccessResult) string { return v.MatchStyle }).(pulumi.StringOutput)
+}
+
+func (o LookupApplicationSegmentBrowserAccessResultOutput) MicrotenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupApplicationSegmentBrowserAccessResult) *string { return v.MicrotenantId }).(pulumi.StringPtrOutput)
 }
 
 // - (String) This field defines the name of the server.

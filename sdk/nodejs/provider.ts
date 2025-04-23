@@ -28,6 +28,34 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * zpa client id
      */
+    public readonly clientId!: pulumi.Output<string | undefined>;
+    /**
+     * zpa client secret
+     */
+    public readonly clientSecret!: pulumi.Output<string | undefined>;
+    /**
+     * zpa customer id
+     */
+    public readonly customerId!: pulumi.Output<string | undefined>;
+    /**
+     * Alternate HTTP proxy of scheme://hostname or scheme://hostname:port format
+     */
+    public readonly httpProxy!: pulumi.Output<string | undefined>;
+    /**
+     * zpa microtenant ID
+     */
+    public readonly microtenantId!: pulumi.Output<string | undefined>;
+    /**
+     * zpa private key
+     */
+    public readonly privateKey!: pulumi.Output<string | undefined>;
+    /**
+     * Zscaler Vanity Domain
+     */
+    public readonly vanityDomain!: pulumi.Output<string | undefined>;
+    /**
+     * zpa client id
+     */
     public readonly zpaClientId!: pulumi.Output<string | undefined>;
     /**
      * zpa client secret
@@ -41,6 +69,10 @@ export class Provider extends pulumi.ProviderResource {
      * zpa customer id
      */
     public readonly zpaCustomerId!: pulumi.Output<string | undefined>;
+    /**
+     * Zscaler Cloud Name
+     */
+    public readonly zscalerCloud!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -53,13 +85,28 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
+            resourceInputs["backoff"] = pulumi.output(args ? args.backoff : undefined).apply(JSON.stringify);
+            resourceInputs["clientId"] = (args ? args.clientId : undefined) ?? utilities.getEnv("ZSCALER_CLIENT_ID");
+            resourceInputs["clientSecret"] = (args?.clientSecret ? pulumi.secret(args.clientSecret) : undefined) ?? utilities.getEnv("ZSCALER_CLIENT_SECRET");
+            resourceInputs["customerId"] = args?.customerId ? pulumi.secret(args.customerId) : undefined;
+            resourceInputs["httpProxy"] = args ? args.httpProxy : undefined;
+            resourceInputs["maxRetries"] = pulumi.output(args ? args.maxRetries : undefined).apply(JSON.stringify);
+            resourceInputs["maxWaitSeconds"] = pulumi.output(args ? args.maxWaitSeconds : undefined).apply(JSON.stringify);
+            resourceInputs["microtenantId"] = args?.microtenantId ? pulumi.secret(args.microtenantId) : undefined;
+            resourceInputs["minWaitSeconds"] = pulumi.output(args ? args.minWaitSeconds : undefined).apply(JSON.stringify);
+            resourceInputs["parallelism"] = pulumi.output(args ? args.parallelism : undefined).apply(JSON.stringify);
+            resourceInputs["privateKey"] = (args?.privateKey ? pulumi.secret(args.privateKey) : undefined) ?? utilities.getEnv("ZSCALER_PRIVATE_KEY");
+            resourceInputs["requestTimeout"] = pulumi.output(args ? args.requestTimeout : undefined).apply(JSON.stringify);
+            resourceInputs["useLegacyClient"] = pulumi.output((args ? args.useLegacyClient : undefined) ?? utilities.getEnvBoolean("ZSCALER_USE_LEGACY_CLIENT")).apply(JSON.stringify);
+            resourceInputs["vanityDomain"] = (args?.vanityDomain ? pulumi.secret(args.vanityDomain) : undefined) ?? utilities.getEnv("ZSCALER_VANITY_DOMAIN");
             resourceInputs["zpaClientId"] = (args ? args.zpaClientId : undefined) ?? utilities.getEnv("ZPA_CLIENT_ID");
             resourceInputs["zpaClientSecret"] = (args?.zpaClientSecret ? pulumi.secret(args.zpaClientSecret) : undefined) ?? utilities.getEnv("ZPA_CLIENT_SECRET");
             resourceInputs["zpaCloud"] = (args ? args.zpaCloud : undefined) ?? utilities.getEnv("ZPA_CLOUD");
             resourceInputs["zpaCustomerId"] = (args?.zpaCustomerId ? pulumi.secret(args.zpaCustomerId) : undefined) ?? utilities.getEnv("ZPA_CUSTOMER_ID");
+            resourceInputs["zscalerCloud"] = (args?.zscalerCloud ? pulumi.secret(args.zscalerCloud) : undefined) ?? utilities.getEnv("ZSCALER_CLOUD");
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["zpaClientSecret", "zpaCustomerId"] };
+        const secretOpts = { additionalSecretOutputs: ["clientSecret", "customerId", "microtenantId", "privateKey", "vanityDomain", "zpaClientSecret", "zpaCustomerId", "zscalerCloud"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
@@ -69,6 +116,64 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
+    /**
+     * Use exponential back off strategy for rate limits.
+     */
+    backoff?: pulumi.Input<boolean>;
+    /**
+     * zpa client id
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * zpa client secret
+     */
+    clientSecret?: pulumi.Input<string>;
+    /**
+     * zpa customer id
+     */
+    customerId?: pulumi.Input<string>;
+    /**
+     * Alternate HTTP proxy of scheme://hostname or scheme://hostname:port format
+     */
+    httpProxy?: pulumi.Input<string>;
+    /**
+     * maximum number of retries to attempt before erroring out.
+     */
+    maxRetries?: pulumi.Input<number>;
+    /**
+     * maximum seconds to wait when rate limit is hit. We use exponential backoffs when backoff is enabled.
+     */
+    maxWaitSeconds?: pulumi.Input<number>;
+    /**
+     * zpa microtenant ID
+     */
+    microtenantId?: pulumi.Input<string>;
+    /**
+     * minimum seconds to wait when rate limit is hit. We use exponential backoffs when backoff is enabled.
+     */
+    minWaitSeconds?: pulumi.Input<number>;
+    /**
+     * Number of concurrent requests to make within a resource where bulk operations are not possible. Take note of
+     * https://help.zscaler.com/zpa/understanding-rate-limiting.
+     */
+    parallelism?: pulumi.Input<number>;
+    /**
+     * zpa private key
+     */
+    privateKey?: pulumi.Input<string>;
+    /**
+     * Timeout for single request (in seconds) which is made to Zscaler, the default is `0` (means no limit is set). The
+     * maximum value can be `300`.
+     */
+    requestTimeout?: pulumi.Input<number>;
+    /**
+     * Enables interaction with the ZPA legacy API framework
+     */
+    useLegacyClient?: pulumi.Input<boolean>;
+    /**
+     * Zscaler Vanity Domain
+     */
+    vanityDomain?: pulumi.Input<string>;
     /**
      * zpa client id
      */
@@ -85,4 +190,8 @@ export interface ProviderArgs {
      * zpa customer id
      */
     zpaCustomerId?: pulumi.Input<string>;
+    /**
+     * Zscaler Cloud Name
+     */
+    zscalerCloud?: pulumi.Input<string>;
 }

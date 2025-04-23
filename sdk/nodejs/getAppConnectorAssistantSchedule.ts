@@ -18,14 +18,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getAppConnectorAssistantSchedule({
+ * const _this = zpa.getAppConnectorAssistantSchedule({
  *     customerId: "1234567891012",
  * });
  * ```
  */
 export function getAppConnectorAssistantSchedule(args?: GetAppConnectorAssistantScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetAppConnectorAssistantScheduleResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getAppConnectorAssistantSchedule:getAppConnectorAssistantSchedule", {
         "customerId": args.customerId,
@@ -66,13 +65,18 @@ export interface GetAppConnectorAssistantScheduleResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getAppConnectorAssistantSchedule({
+ * const _this = zpa.getAppConnectorAssistantSchedule({
  *     customerId: "1234567891012",
  * });
  * ```
  */
-export function getAppConnectorAssistantScheduleOutput(args?: GetAppConnectorAssistantScheduleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppConnectorAssistantScheduleResult> {
-    return pulumi.output(args).apply((a: any) => getAppConnectorAssistantSchedule(a, opts))
+export function getAppConnectorAssistantScheduleOutput(args?: GetAppConnectorAssistantScheduleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppConnectorAssistantScheduleResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getAppConnectorAssistantSchedule:getAppConnectorAssistantSchedule", {
+        "customerId": args.customerId,
+        "id": args.id,
+    }, opts);
 }
 
 /**

@@ -13,6 +13,8 @@ namespace Zscaler.Zpa
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ### Using Version Profile Name
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -37,6 +39,41 @@ namespace Zscaler.Zpa
     ///         UpgradeTimeInSecs = "66600",
     ///         UseInDrMode = true,
     ///         VersionProfileName = "New Release",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Using Version Profile ID
+    /// 
+    /// data "zpa.getCustomerVersionProfile" "this" {
+    ///   name = "New Release"
+    /// }
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Zscaler.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a App Connector Group
+    ///     var example = new Zpa.ConnectorGroup("example", new()
+    ///     {
+    ///         Description = "Example",
+    ///         Enabled = true,
+    ///         CityCountry = "San Jose, CA",
+    ///         CountryCode = "US",
+    ///         Latitude = "37.338",
+    ///         Longitude = "-121.8863",
+    ///         Location = "San Jose, CA, US",
+    ///         UpgradeDay = "SUNDAY",
+    ///         UpgradeTimeInSecs = "66600",
+    ///         OverrideVersionProfile = true,
+    ///         VersionProfileId = data.Zpa_customer_version_profile.This.Id,
+    ///         DnsQueryType = "IPV4_IPV6",
+    ///         UseInDrMode = true,
     ///     });
     /// 
     /// });
@@ -105,6 +142,9 @@ namespace Zscaler.Zpa
         [Output("longitude")]
         public Output<string> Longitude { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether or not the App Connector Group is configured for the Log Streaming Service (LSS)
+        /// </summary>
         [Output("lssAppConnectorGroup")]
         public Output<bool> LssAppConnectorGroup { get; private set; } = null!;
 
@@ -271,6 +311,9 @@ namespace Zscaler.Zpa
         [Input("longitude", required: true)]
         public Input<string> Longitude { get; set; } = null!;
 
+        /// <summary>
+        /// Whether or not the App Connector Group is configured for the Log Streaming Service (LSS)
+        /// </summary>
         [Input("lssAppConnectorGroup")]
         public Input<bool>? LssAppConnectorGroup { get; set; }
 
@@ -398,6 +441,9 @@ namespace Zscaler.Zpa
         [Input("longitude")]
         public Input<string>? Longitude { get; set; }
 
+        /// <summary>
+        /// Whether or not the App Connector Group is configured for the Log Streaming Service (LSS)
+        /// </summary>
         [Input("lssAppConnectorGroup")]
         public Input<bool>? LssAppConnectorGroup { get; set; }
 

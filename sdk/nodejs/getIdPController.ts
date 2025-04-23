@@ -12,6 +12,8 @@ import * as utilities from "./utilities";
  *
  * Use the **zpa_idp_controller** data source to get information about an Identity Provider created in the Zscaler Private Access cloud. This data source is required when creating:
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * * Access policy Rules
  * * Access policy timeout rules
  * * Access policy forwarding rules
@@ -42,7 +44,6 @@ import * as utilities from "./utilities";
  */
 export function getIdPController(args?: GetIdPControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetIdPControllerResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getIdPController:getIdPController", {
         "id": args.id,
@@ -98,6 +99,8 @@ export interface GetIdPControllerResult {
  *
  * Use the **zpa_idp_controller** data source to get information about an Identity Provider created in the Zscaler Private Access cloud. This data source is required when creating:
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * * Access policy Rules
  * * Access policy timeout rules
  * * Access policy forwarding rules
@@ -126,8 +129,13 @@ export interface GetIdPControllerResult {
  * });
  * ```
  */
-export function getIdPControllerOutput(args?: GetIdPControllerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIdPControllerResult> {
-    return pulumi.output(args).apply((a: any) => getIdPController(a, opts))
+export function getIdPControllerOutput(args?: GetIdPControllerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIdPControllerResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getIdPController:getIdPController", {
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

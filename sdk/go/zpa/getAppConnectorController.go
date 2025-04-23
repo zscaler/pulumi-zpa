@@ -16,6 +16,8 @@ import (
 //
 // Use the **zpa_app_connector_controller** data source to get information about a app connector created in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group.
 //
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
 // ## Example Usage
 //
 // ```go
@@ -60,56 +62,56 @@ type GetAppConnectorControllerArgs struct {
 
 // A collection of values returned by getAppConnectorController.
 type GetAppConnectorControllerResult struct {
-	AppConnectorGroupId              string                 `pulumi:"appConnectorGroupId"`
-	AppConnectorGroupName            string                 `pulumi:"appConnectorGroupName"`
-	ApplicationStartTime             string                 `pulumi:"applicationStartTime"`
-	ControlChannelStatus             string                 `pulumi:"controlChannelStatus"`
-	CreationTime                     string                 `pulumi:"creationTime"`
-	CtrlBrokerName                   string                 `pulumi:"ctrlBrokerName"`
-	CurrentVersion                   string                 `pulumi:"currentVersion"`
-	Description                      string                 `pulumi:"description"`
-	Enabled                          bool                   `pulumi:"enabled"`
-	EnrollmentCert                   map[string]interface{} `pulumi:"enrollmentCert"`
-	ExpectedUpgradeTime              string                 `pulumi:"expectedUpgradeTime"`
-	ExpectedVersion                  string                 `pulumi:"expectedVersion"`
-	Fingerprint                      string                 `pulumi:"fingerprint"`
-	Id                               string                 `pulumi:"id"`
-	IpAcl                            string                 `pulumi:"ipAcl"`
-	IssuedCertId                     string                 `pulumi:"issuedCertId"`
-	LastBrokerConnectTime            string                 `pulumi:"lastBrokerConnectTime"`
-	LastBrokerConnectTimeDuration    string                 `pulumi:"lastBrokerConnectTimeDuration"`
-	LastBrokerDisconnectTime         string                 `pulumi:"lastBrokerDisconnectTime"`
-	LastBrokerDisconnectTimeDuration string                 `pulumi:"lastBrokerDisconnectTimeDuration"`
-	LastUpgradeTime                  string                 `pulumi:"lastUpgradeTime"`
-	Latitude                         string                 `pulumi:"latitude"`
-	Location                         string                 `pulumi:"location"`
-	Longitude                        string                 `pulumi:"longitude"`
-	MicrotenantId                    *string                `pulumi:"microtenantId"`
-	MicrotenantName                  *string                `pulumi:"microtenantName"`
-	ModifiedTime                     string                 `pulumi:"modifiedTime"`
-	Modifiedby                       string                 `pulumi:"modifiedby"`
-	Name                             *string                `pulumi:"name"`
-	Platform                         string                 `pulumi:"platform"`
-	PreviousVersion                  string                 `pulumi:"previousVersion"`
-	PrivateIp                        string                 `pulumi:"privateIp"`
-	ProvisioningKeyId                string                 `pulumi:"provisioningKeyId"`
-	ProvisioningKeyName              string                 `pulumi:"provisioningKeyName"`
-	PublicIp                         string                 `pulumi:"publicIp"`
-	SargeVersion                     string                 `pulumi:"sargeVersion"`
-	UpgradeAttempt                   string                 `pulumi:"upgradeAttempt"`
-	UpgradeStatus                    string                 `pulumi:"upgradeStatus"`
+	AppConnectorGroupId              string                                             `pulumi:"appConnectorGroupId"`
+	AppConnectorGroupName            string                                             `pulumi:"appConnectorGroupName"`
+	ApplicationStartTime             string                                             `pulumi:"applicationStartTime"`
+	AssistantVersions                []GetAppConnectorControllerAssistantVersion        `pulumi:"assistantVersions"`
+	ControlChannelStatus             string                                             `pulumi:"controlChannelStatus"`
+	CreationTime                     string                                             `pulumi:"creationTime"`
+	CtrlBrokerName                   string                                             `pulumi:"ctrlBrokerName"`
+	CurrentVersion                   string                                             `pulumi:"currentVersion"`
+	Description                      string                                             `pulumi:"description"`
+	Enabled                          bool                                               `pulumi:"enabled"`
+	EnrollmentCert                   map[string]string                                  `pulumi:"enrollmentCert"`
+	ExpectedUpgradeTime              string                                             `pulumi:"expectedUpgradeTime"`
+	ExpectedVersion                  string                                             `pulumi:"expectedVersion"`
+	Fingerprint                      string                                             `pulumi:"fingerprint"`
+	Id                               string                                             `pulumi:"id"`
+	IpAcl                            string                                             `pulumi:"ipAcl"`
+	IssuedCertId                     string                                             `pulumi:"issuedCertId"`
+	LastBrokerConnectTime            string                                             `pulumi:"lastBrokerConnectTime"`
+	LastBrokerConnectTimeDuration    string                                             `pulumi:"lastBrokerConnectTimeDuration"`
+	LastBrokerDisconnectTime         string                                             `pulumi:"lastBrokerDisconnectTime"`
+	LastBrokerDisconnectTimeDuration string                                             `pulumi:"lastBrokerDisconnectTimeDuration"`
+	LastUpgradeTime                  string                                             `pulumi:"lastUpgradeTime"`
+	Latitude                         string                                             `pulumi:"latitude"`
+	Location                         string                                             `pulumi:"location"`
+	Longitude                        string                                             `pulumi:"longitude"`
+	MicrotenantId                    *string                                            `pulumi:"microtenantId"`
+	MicrotenantName                  *string                                            `pulumi:"microtenantName"`
+	ModifiedBy                       string                                             `pulumi:"modifiedBy"`
+	ModifiedTime                     string                                             `pulumi:"modifiedTime"`
+	Name                             *string                                            `pulumi:"name"`
+	Platform                         string                                             `pulumi:"platform"`
+	PlatformDetail                   string                                             `pulumi:"platformDetail"`
+	PreviousVersion                  string                                             `pulumi:"previousVersion"`
+	PrivateIp                        string                                             `pulumi:"privateIp"`
+	ProvisioningKeyId                string                                             `pulumi:"provisioningKeyId"`
+	ProvisioningKeyName              string                                             `pulumi:"provisioningKeyName"`
+	PublicIp                         string                                             `pulumi:"publicIp"`
+	RuntimeOs                        string                                             `pulumi:"runtimeOs"`
+	SargeVersion                     string                                             `pulumi:"sargeVersion"`
+	UpgradeAttempt                   string                                             `pulumi:"upgradeAttempt"`
+	UpgradeStatus                    string                                             `pulumi:"upgradeStatus"`
+	ZpnSubModuleUpgradeLists         []GetAppConnectorControllerZpnSubModuleUpgradeList `pulumi:"zpnSubModuleUpgradeLists"`
 }
 
 func GetAppConnectorControllerOutput(ctx *pulumi.Context, args GetAppConnectorControllerOutputArgs, opts ...pulumi.InvokeOption) GetAppConnectorControllerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAppConnectorControllerResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetAppConnectorControllerResultOutput, error) {
 			args := v.(GetAppConnectorControllerArgs)
-			r, err := GetAppConnectorController(ctx, &args, opts...)
-			var s GetAppConnectorControllerResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getAppConnectorController:getAppConnectorController", args, GetAppConnectorControllerResultOutput{}, options).(GetAppConnectorControllerResultOutput), nil
 		}).(GetAppConnectorControllerResultOutput)
 }
 
@@ -151,6 +153,12 @@ func (o GetAppConnectorControllerResultOutput) ApplicationStartTime() pulumi.Str
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.ApplicationStartTime }).(pulumi.StringOutput)
 }
 
+func (o GetAppConnectorControllerResultOutput) AssistantVersions() GetAppConnectorControllerAssistantVersionArrayOutput {
+	return o.ApplyT(func(v GetAppConnectorControllerResult) []GetAppConnectorControllerAssistantVersion {
+		return v.AssistantVersions
+	}).(GetAppConnectorControllerAssistantVersionArrayOutput)
+}
+
 func (o GetAppConnectorControllerResultOutput) ControlChannelStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.ControlChannelStatus }).(pulumi.StringOutput)
 }
@@ -175,8 +183,8 @@ func (o GetAppConnectorControllerResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-func (o GetAppConnectorControllerResultOutput) EnrollmentCert() pulumi.MapOutput {
-	return o.ApplyT(func(v GetAppConnectorControllerResult) map[string]interface{} { return v.EnrollmentCert }).(pulumi.MapOutput)
+func (o GetAppConnectorControllerResultOutput) EnrollmentCert() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAppConnectorControllerResult) map[string]string { return v.EnrollmentCert }).(pulumi.StringMapOutput)
 }
 
 func (o GetAppConnectorControllerResultOutput) ExpectedUpgradeTime() pulumi.StringOutput {
@@ -243,12 +251,12 @@ func (o GetAppConnectorControllerResultOutput) MicrotenantName() pulumi.StringPt
 	return o.ApplyT(func(v GetAppConnectorControllerResult) *string { return v.MicrotenantName }).(pulumi.StringPtrOutput)
 }
 
-func (o GetAppConnectorControllerResultOutput) ModifiedTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
+func (o GetAppConnectorControllerResultOutput) ModifiedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.ModifiedBy }).(pulumi.StringOutput)
 }
 
-func (o GetAppConnectorControllerResultOutput) Modifiedby() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.Modifiedby }).(pulumi.StringOutput)
+func (o GetAppConnectorControllerResultOutput) ModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
 
 func (o GetAppConnectorControllerResultOutput) Name() pulumi.StringPtrOutput {
@@ -257,6 +265,10 @@ func (o GetAppConnectorControllerResultOutput) Name() pulumi.StringPtrOutput {
 
 func (o GetAppConnectorControllerResultOutput) Platform() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.Platform }).(pulumi.StringOutput)
+}
+
+func (o GetAppConnectorControllerResultOutput) PlatformDetail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.PlatformDetail }).(pulumi.StringOutput)
 }
 
 func (o GetAppConnectorControllerResultOutput) PreviousVersion() pulumi.StringOutput {
@@ -279,6 +291,10 @@ func (o GetAppConnectorControllerResultOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
+func (o GetAppConnectorControllerResultOutput) RuntimeOs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.RuntimeOs }).(pulumi.StringOutput)
+}
+
 func (o GetAppConnectorControllerResultOutput) SargeVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.SargeVersion }).(pulumi.StringOutput)
 }
@@ -289,6 +305,12 @@ func (o GetAppConnectorControllerResultOutput) UpgradeAttempt() pulumi.StringOut
 
 func (o GetAppConnectorControllerResultOutput) UpgradeStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorControllerResult) string { return v.UpgradeStatus }).(pulumi.StringOutput)
+}
+
+func (o GetAppConnectorControllerResultOutput) ZpnSubModuleUpgradeLists() GetAppConnectorControllerZpnSubModuleUpgradeListArrayOutput {
+	return o.ApplyT(func(v GetAppConnectorControllerResult) []GetAppConnectorControllerZpnSubModuleUpgradeList {
+		return v.ZpnSubModuleUpgradeLists
+	}).(GetAppConnectorControllerZpnSubModuleUpgradeListArrayOutput)
 }
 
 func init() {

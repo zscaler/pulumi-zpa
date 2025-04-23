@@ -74,15 +74,11 @@ type LookupServerGroupResult struct {
 }
 
 func LookupServerGroupOutput(ctx *pulumi.Context, args LookupServerGroupOutputArgs, opts ...pulumi.InvokeOption) LookupServerGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupServerGroupResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupServerGroupResultOutput, error) {
 			args := v.(LookupServerGroupArgs)
-			r, err := LookupServerGroup(ctx, &args, opts...)
-			var s LookupServerGroupResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getServerGroup:getServerGroup", args, LookupServerGroupResultOutput{}, options).(LookupServerGroupResultOutput), nil
 		}).(LookupServerGroupResultOutput)
 }
 

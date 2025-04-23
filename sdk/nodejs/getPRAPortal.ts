@@ -10,20 +10,21 @@ import * as utilities from "./utilities";
  *
  * Use the **zpa_pra_portal_controller** data source to get information about a privileged remote access portal created in the Zscaler Private Access cloud. This data source can then be referenced in an privileged remote access console resource.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getPRAPortal({
+ * const _this = zpa.getPRAPortal({
  *     name: "Example",
  * });
  * ```
  */
 export function getPRAPortal(args?: GetPRAPortalArgs, opts?: pulumi.InvokeOptions): Promise<GetPRAPortalResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getPRAPortal:getPRAPortal", {
         "id": args.id,
@@ -65,19 +66,26 @@ export interface GetPRAPortalResult {
  *
  * Use the **zpa_pra_portal_controller** data source to get information about a privileged remote access portal created in the Zscaler Private Access cloud. This data source can then be referenced in an privileged remote access console resource.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getPRAPortal({
+ * const _this = zpa.getPRAPortal({
  *     name: "Example",
  * });
  * ```
  */
-export function getPRAPortalOutput(args?: GetPRAPortalOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPRAPortalResult> {
-    return pulumi.output(args).apply((a: any) => getPRAPortal(a, opts))
+export function getPRAPortalOutput(args?: GetPRAPortalOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPRAPortalResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getPRAPortal:getPRAPortal", {
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

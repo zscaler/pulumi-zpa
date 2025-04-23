@@ -10,6 +10,8 @@ import * as utilities from "./utilities";
  *
  * Use the **zpa_ba_certificate** data source to get information about a browser access certificate created in the Zscaler Private Access cloud. This data source is required when creating a browser access application segment resource.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -32,7 +34,6 @@ import * as utilities from "./utilities";
  */
 export function getBaCertificate(args?: GetBaCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetBaCertificateResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getBaCertificate:getBaCertificate", {
         "id": args.id,
@@ -77,6 +78,8 @@ export interface GetBaCertificateResult {
  *
  * Use the **zpa_ba_certificate** data source to get information about a browser access certificate created in the Zscaler Private Access cloud. This data source is required when creating a browser access application segment resource.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -97,8 +100,13 @@ export interface GetBaCertificateResult {
  * });
  * ```
  */
-export function getBaCertificateOutput(args?: GetBaCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBaCertificateResult> {
-    return pulumi.output(args).apply((a: any) => getBaCertificate(a, opts))
+export function getBaCertificateOutput(args?: GetBaCertificateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBaCertificateResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getBaCertificate:getBaCertificate", {
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

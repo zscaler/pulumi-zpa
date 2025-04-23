@@ -80,7 +80,7 @@ export class ProvisioningKey extends pulumi.CustomResource {
      * The maximum number of instances where this provisioning key can be used for enrolling an App Connector or Service Edge.
      */
     public readonly maxUsage!: pulumi.Output<string>;
-    public readonly microtenantId!: pulumi.Output<string | undefined>;
+    public readonly microtenantId!: pulumi.Output<string>;
     /**
      * Name of the provisioning key.
      */

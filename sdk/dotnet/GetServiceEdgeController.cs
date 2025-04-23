@@ -18,6 +18,8 @@ namespace Zscaler.Zpa
         /// 
         /// Use the **zpa_service_edge_controller** data source to get information about a service edge controller in the Zscaler Private Access cloud. This data source can then be referenced in a Service Edge Group and Provisioning Key.
         /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -45,6 +47,8 @@ namespace Zscaler.Zpa
         /// 
         /// Use the **zpa_service_edge_controller** data source to get information about a service edge controller in the Zscaler Private Access cloud. This data source can then be referenced in a Service Edge Group and Provisioning Key.
         /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -65,11 +69,46 @@ namespace Zscaler.Zpa
         /// </summary>
         public static Output<GetServiceEdgeControllerResult> Invoke(GetServiceEdgeControllerInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceEdgeControllerResult>("zpa:index/getServiceEdgeController:getServiceEdgeController", args ?? new GetServiceEdgeControllerInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-zpa-private-service-edges)
+        /// * [API documentation](https://help.zscaler.com/zpa/managing-zpa-private-service-edges-using-api)
+        /// 
+        /// Use the **zpa_service_edge_controller** data source to get information about a service edge controller in the Zscaler Private Access cloud. This data source can then be referenced in a Service Edge Group and Provisioning Key.
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Zpa.GetServiceEdgeController.Invoke(new()
+        ///     {
+        ///         Name = "On-Prem-PSE",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServiceEdgeControllerResult> Invoke(GetServiceEdgeControllerInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceEdgeControllerResult>("zpa:index/getServiceEdgeController:getServiceEdgeController", args ?? new GetServiceEdgeControllerInvokeArgs(), options.WithDefaults());
     }
 
 
     public sealed class GetServiceEdgeControllerArgs : global::Pulumi.InvokeArgs
     {
+        [Input("microtenantId")]
+        public string? MicrotenantId { get; set; }
+
+        [Input("microtenantName")]
+        public string? MicrotenantName { get; set; }
+
         [Input("name")]
         public string? Name { get; set; }
 
@@ -81,6 +120,12 @@ namespace Zscaler.Zpa
 
     public sealed class GetServiceEdgeControllerInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("microtenantId")]
+        public Input<string>? MicrotenantId { get; set; }
+
+        [Input("microtenantName")]
+        public Input<string>? MicrotenantName { get; set; }
+
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -101,7 +146,7 @@ namespace Zscaler.Zpa
         public readonly string CurrentVersion;
         public readonly string Description;
         public readonly bool Enabled;
-        public readonly ImmutableDictionary<string, object> EnrollmentCert;
+        public readonly ImmutableDictionary<string, string> EnrollmentCert;
         public readonly string ExpectedUpgradeTime;
         public readonly string ExpectedVersion;
         public readonly string Fingerprint;
@@ -114,25 +159,29 @@ namespace Zscaler.Zpa
         public readonly string LastBrokerDisconnectTimeDuration;
         public readonly string LastUpgradeTime;
         public readonly string Latitude;
-        public readonly string ListenIps;
+        public readonly ImmutableArray<string> ListenIps;
         public readonly string Location;
         public readonly string Longitude;
+        public readonly string? MicrotenantId;
+        public readonly string? MicrotenantName;
         public readonly string ModifiedBy;
         public readonly string ModifiedTime;
         public readonly string? Name;
         public readonly string Platform;
         public readonly string PreviousVersion;
+        public readonly ImmutableArray<Outputs.GetServiceEdgeControllerPrivateBrokerVersionResult> PrivateBrokerVersions;
         public readonly string PrivateIp;
         public readonly string ProvisioningKeyId;
         public readonly string ProvisioningKeyName;
         public readonly string PublicIp;
         public readonly ImmutableArray<string> PublishIps;
+        public readonly bool PublishIpv6;
+        public readonly string RuntimeOs;
         public readonly string SargeVersion;
         public readonly string ServiceEdgeGroupId;
         public readonly string ServiceEdgeGroupName;
         public readonly string UpgradeAttempt;
         public readonly string UpgradeStatus;
-        public readonly ImmutableArray<Outputs.GetServiceEdgeControllerZpnSubModuleUpgradeListResult> ZpnSubModuleUpgradeLists;
 
         [OutputConstructor]
         private GetServiceEdgeControllerResult(
@@ -150,7 +199,7 @@ namespace Zscaler.Zpa
 
             bool enabled,
 
-            ImmutableDictionary<string, object> enrollmentCert,
+            ImmutableDictionary<string, string> enrollmentCert,
 
             string expectedUpgradeTime,
 
@@ -176,11 +225,15 @@ namespace Zscaler.Zpa
 
             string latitude,
 
-            string listenIps,
+            ImmutableArray<string> listenIps,
 
             string location,
 
             string longitude,
+
+            string? microtenantId,
+
+            string? microtenantName,
 
             string modifiedBy,
 
@@ -192,6 +245,8 @@ namespace Zscaler.Zpa
 
             string previousVersion,
 
+            ImmutableArray<Outputs.GetServiceEdgeControllerPrivateBrokerVersionResult> privateBrokerVersions,
+
             string privateIp,
 
             string provisioningKeyId,
@@ -202,6 +257,10 @@ namespace Zscaler.Zpa
 
             ImmutableArray<string> publishIps,
 
+            bool publishIpv6,
+
+            string runtimeOs,
+
             string sargeVersion,
 
             string serviceEdgeGroupId,
@@ -210,9 +269,7 @@ namespace Zscaler.Zpa
 
             string upgradeAttempt,
 
-            string upgradeStatus,
-
-            ImmutableArray<Outputs.GetServiceEdgeControllerZpnSubModuleUpgradeListResult> zpnSubModuleUpgradeLists)
+            string upgradeStatus)
         {
             ApplicationStartTime = applicationStartTime;
             ControlChannelStatus = controlChannelStatus;
@@ -237,22 +294,26 @@ namespace Zscaler.Zpa
             ListenIps = listenIps;
             Location = location;
             Longitude = longitude;
+            MicrotenantId = microtenantId;
+            MicrotenantName = microtenantName;
             ModifiedBy = modifiedBy;
             ModifiedTime = modifiedTime;
             Name = name;
             Platform = platform;
             PreviousVersion = previousVersion;
+            PrivateBrokerVersions = privateBrokerVersions;
             PrivateIp = privateIp;
             ProvisioningKeyId = provisioningKeyId;
             ProvisioningKeyName = provisioningKeyName;
             PublicIp = publicIp;
             PublishIps = publishIps;
+            PublishIpv6 = publishIpv6;
+            RuntimeOs = runtimeOs;
             SargeVersion = sargeVersion;
             ServiceEdgeGroupId = serviceEdgeGroupId;
             ServiceEdgeGroupName = serviceEdgeGroupName;
             UpgradeAttempt = upgradeAttempt;
             UpgradeStatus = upgradeStatus;
-            ZpnSubModuleUpgradeLists = zpnSubModuleUpgradeLists;
         }
     }
 }

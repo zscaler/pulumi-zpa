@@ -23,7 +23,7 @@ namespace Zscaler.Zpa.Outputs
         public readonly string CurrentVersion;
         public readonly string Description;
         public readonly bool Enabled;
-        public readonly ImmutableDictionary<string, object> EnrollmentCert;
+        public readonly ImmutableDictionary<string, string> EnrollmentCert;
         public readonly string ExpectedUpgradeTime;
         public readonly string ExpectedVersion;
         public readonly string Fingerprint;
@@ -71,7 +71,7 @@ namespace Zscaler.Zpa.Outputs
 
             bool enabled,
 
-            ImmutableDictionary<string, object> enrollmentCert,
+            ImmutableDictionary<string, string> enrollmentCert,
 
             string expectedUpgradeTime,
 

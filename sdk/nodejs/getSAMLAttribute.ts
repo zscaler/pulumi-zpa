@@ -10,6 +10,8 @@ import * as utilities from "./utilities";
  *
  * Use the **zpa_saml_attribute** data source to get information about a SAML Attributes from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -34,7 +36,6 @@ import * as utilities from "./utilities";
  */
 export function getSAMLAttribute(args?: GetSAMLAttributeArgs, opts?: pulumi.InvokeOptions): Promise<GetSAMLAttributeResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getSAMLAttribute:getSAMLAttribute", {
         "id": args.id,
@@ -72,6 +73,8 @@ export interface GetSAMLAttributeResult {
  *
  * Use the **zpa_saml_attribute** data source to get information about a SAML Attributes from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -94,8 +97,14 @@ export interface GetSAMLAttributeResult {
  * });
  * ```
  */
-export function getSAMLAttributeOutput(args?: GetSAMLAttributeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSAMLAttributeResult> {
-    return pulumi.output(args).apply((a: any) => getSAMLAttribute(a, opts))
+export function getSAMLAttributeOutput(args?: GetSAMLAttributeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSAMLAttributeResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getSAMLAttribute:getSAMLAttribute", {
+        "id": args.id,
+        "idpName": args.idpName,
+        "name": args.name,
+    }, opts);
 }
 
 /**

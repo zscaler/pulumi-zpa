@@ -14,17 +14,20 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class ApplicationSegmentPRACommonAppsDtoAppsConfig
     {
+        public readonly string? AppId;
         public readonly ImmutableArray<string> AppTypes;
         public readonly string? ApplicationPort;
         public readonly string? ApplicationProtocol;
         public readonly string? ConnectionSecurity;
         public readonly string? Domain;
         public readonly bool? Enabled;
-        public readonly string? Id;
         public readonly string? Name;
+        public readonly string? PraAppId;
 
         [OutputConstructor]
         private ApplicationSegmentPRACommonAppsDtoAppsConfig(
+            string? appId,
+
             ImmutableArray<string> appTypes,
 
             string? applicationPort,
@@ -37,18 +40,19 @@ namespace Zscaler.Zpa.Outputs
 
             bool? enabled,
 
-            string? id,
+            string? name,
 
-            string? name)
+            string? praAppId)
         {
+            AppId = appId;
             AppTypes = appTypes;
             ApplicationPort = applicationPort;
             ApplicationProtocol = applicationProtocol;
             ConnectionSecurity = connectionSecurity;
             Domain = domain;
             Enabled = enabled;
-            Id = id;
             Name = name;
+            PraAppId = praAppId;
         }
     }
 }

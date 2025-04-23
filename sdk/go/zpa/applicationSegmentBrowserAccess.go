@@ -138,6 +138,7 @@ type ApplicationSegmentBrowserAccess struct {
 	// Whether Double Encryption is enabled or disabled for the app.
 	DoubleEncrypt   pulumi.BoolPtrOutput   `pulumi:"doubleEncrypt"`
 	Enabled         pulumi.BoolOutput      `pulumi:"enabled"`
+	FqdnDnsCheck    pulumi.BoolPtrOutput   `pulumi:"fqdnDnsCheck"`
 	HealthCheckType pulumi.StringPtrOutput `pulumi:"healthCheckType"`
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting pulumi.StringPtrOutput `pulumi:"healthReporting"`
@@ -147,7 +148,7 @@ type ApplicationSegmentBrowserAccess struct {
 	// connectors.
 	IsCnameEnabled       pulumi.BoolPtrOutput `pulumi:"isCnameEnabled"`
 	IsIncompleteDrConfig pulumi.BoolPtrOutput `pulumi:"isIncompleteDrConfig"`
-	MatchStyle           pulumi.StringOutput  `pulumi:"matchStyle"`
+	MicrotenantId        pulumi.StringOutput  `pulumi:"microtenantId"`
 	// Name of the application.
 	Name                      pulumi.StringOutput  `pulumi:"name"`
 	PassiveHealthEnabled      pulumi.BoolOutput    `pulumi:"passiveHealthEnabled"`
@@ -219,6 +220,7 @@ type applicationSegmentBrowserAccessState struct {
 	// Whether Double Encryption is enabled or disabled for the app.
 	DoubleEncrypt   *bool   `pulumi:"doubleEncrypt"`
 	Enabled         *bool   `pulumi:"enabled"`
+	FqdnDnsCheck    *bool   `pulumi:"fqdnDnsCheck"`
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting *string `pulumi:"healthReporting"`
@@ -228,7 +230,7 @@ type applicationSegmentBrowserAccessState struct {
 	// connectors.
 	IsCnameEnabled       *bool   `pulumi:"isCnameEnabled"`
 	IsIncompleteDrConfig *bool   `pulumi:"isIncompleteDrConfig"`
-	MatchStyle           *string `pulumi:"matchStyle"`
+	MicrotenantId        *string `pulumi:"microtenantId"`
 	// Name of the application.
 	Name                      *string `pulumi:"name"`
 	PassiveHealthEnabled      *bool   `pulumi:"passiveHealthEnabled"`
@@ -262,6 +264,7 @@ type ApplicationSegmentBrowserAccessState struct {
 	// Whether Double Encryption is enabled or disabled for the app.
 	DoubleEncrypt   pulumi.BoolPtrInput
 	Enabled         pulumi.BoolPtrInput
+	FqdnDnsCheck    pulumi.BoolPtrInput
 	HealthCheckType pulumi.StringPtrInput
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting pulumi.StringPtrInput
@@ -271,7 +274,7 @@ type ApplicationSegmentBrowserAccessState struct {
 	// connectors.
 	IsCnameEnabled       pulumi.BoolPtrInput
 	IsIncompleteDrConfig pulumi.BoolPtrInput
-	MatchStyle           pulumi.StringPtrInput
+	MicrotenantId        pulumi.StringPtrInput
 	// Name of the application.
 	Name                      pulumi.StringPtrInput
 	PassiveHealthEnabled      pulumi.BoolPtrInput
@@ -309,6 +312,7 @@ type applicationSegmentBrowserAccessArgs struct {
 	// Whether Double Encryption is enabled or disabled for the app.
 	DoubleEncrypt   *bool   `pulumi:"doubleEncrypt"`
 	Enabled         *bool   `pulumi:"enabled"`
+	FqdnDnsCheck    *bool   `pulumi:"fqdnDnsCheck"`
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting *string `pulumi:"healthReporting"`
@@ -318,7 +322,7 @@ type applicationSegmentBrowserAccessArgs struct {
 	// connectors.
 	IsCnameEnabled       *bool   `pulumi:"isCnameEnabled"`
 	IsIncompleteDrConfig *bool   `pulumi:"isIncompleteDrConfig"`
-	MatchStyle           *string `pulumi:"matchStyle"`
+	MicrotenantId        *string `pulumi:"microtenantId"`
 	// Name of the application.
 	Name                      *string `pulumi:"name"`
 	PassiveHealthEnabled      *bool   `pulumi:"passiveHealthEnabled"`
@@ -353,6 +357,7 @@ type ApplicationSegmentBrowserAccessArgs struct {
 	// Whether Double Encryption is enabled or disabled for the app.
 	DoubleEncrypt   pulumi.BoolPtrInput
 	Enabled         pulumi.BoolPtrInput
+	FqdnDnsCheck    pulumi.BoolPtrInput
 	HealthCheckType pulumi.StringPtrInput
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting pulumi.StringPtrInput
@@ -362,7 +367,7 @@ type ApplicationSegmentBrowserAccessArgs struct {
 	// connectors.
 	IsCnameEnabled       pulumi.BoolPtrInput
 	IsIncompleteDrConfig pulumi.BoolPtrInput
-	MatchStyle           pulumi.StringPtrInput
+	MicrotenantId        pulumi.StringPtrInput
 	// Name of the application.
 	Name                      pulumi.StringPtrInput
 	PassiveHealthEnabled      pulumi.BoolPtrInput
@@ -505,6 +510,10 @@ func (o ApplicationSegmentBrowserAccessOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+func (o ApplicationSegmentBrowserAccessOutput) FqdnDnsCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.BoolPtrOutput { return v.FqdnDnsCheck }).(pulumi.BoolPtrOutput)
+}
+
 func (o ApplicationSegmentBrowserAccessOutput) HealthCheckType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.StringPtrOutput { return v.HealthCheckType }).(pulumi.StringPtrOutput)
 }
@@ -532,8 +541,8 @@ func (o ApplicationSegmentBrowserAccessOutput) IsIncompleteDrConfig() pulumi.Boo
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.BoolPtrOutput { return v.IsIncompleteDrConfig }).(pulumi.BoolPtrOutput)
 }
 
-func (o ApplicationSegmentBrowserAccessOutput) MatchStyle() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.StringOutput { return v.MatchStyle }).(pulumi.StringOutput)
+func (o ApplicationSegmentBrowserAccessOutput) MicrotenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.StringOutput { return v.MicrotenantId }).(pulumi.StringOutput)
 }
 
 // Name of the application.

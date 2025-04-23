@@ -81,7 +81,7 @@ export class PRAPortal extends pulumi.CustomResource {
     /**
      * The unique identifier of the certificate
      */
-    public readonly certificateId!: pulumi.Output<string | undefined>;
+    public readonly certificateId!: pulumi.Output<string>;
     /**
      * The description of the privileged portal
      */

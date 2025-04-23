@@ -62,7 +62,6 @@ namespace Zscaler.Zpa
     ///             {
     ///                 new Zpa.Inputs.ApplicationSegmentPRACommonAppsDtoAppsConfigArgs
     ///                 {
-    ///                     Name = "ssh_pra",
     ///                     Domain = "ssh_pra.example.com",
     ///                     ApplicationProtocol = "SSH",
     ///                     ApplicationPort = "22",
@@ -74,7 +73,6 @@ namespace Zscaler.Zpa
     ///                 },
     ///                 new Zpa.Inputs.ApplicationSegmentPRACommonAppsDtoAppsConfigArgs
     ///                 {
-    ///                     Name = "rdp_pra",
     ///                     Domain = "rdp_pra.example.com",
     ///                     ApplicationProtocol = "RDP",
     ///                     ConnectionSecurity = "ANY",
@@ -113,6 +111,9 @@ namespace Zscaler.Zpa
     [ZpaResourceType("zpa:index/applicationSegmentPRA:ApplicationSegmentPRA")]
     public partial class ApplicationSegmentPRA : global::Pulumi.CustomResource
     {
+        [Output("bypassOnReauth")]
+        public Output<bool> BypassOnReauth { get; private set; } = null!;
+
         /// <summary>
         /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
         /// The value NEVER indicates the use of the client forwarding policy.
@@ -121,7 +122,7 @@ namespace Zscaler.Zpa
         public Output<string> BypassType { get; private set; } = null!;
 
         [Output("commonAppsDto")]
-        public Output<Outputs.ApplicationSegmentPRACommonAppsDto?> CommonAppsDto { get; private set; } = null!;
+        public Output<Outputs.ApplicationSegmentPRACommonAppsDto> CommonAppsDto { get; private set; } = null!;
 
         [Output("configSpace")]
         public Output<string?> ConfigSpace { get; private set; } = null!;
@@ -147,6 +148,9 @@ namespace Zscaler.Zpa
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
+        [Output("fqdnDnsCheck")]
+        public Output<bool?> FqdnDnsCheck { get; private set; } = null!;
+
         [Output("healthCheckType")]
         public Output<string?> HealthCheckType { get; private set; } = null!;
 
@@ -160,7 +164,7 @@ namespace Zscaler.Zpa
         public Output<string> IcmpAccessType { get; private set; } = null!;
 
         [Output("ipAnchored")]
-        public Output<bool> IpAnchored { get; private set; } = null!;
+        public Output<bool?> IpAnchored { get; private set; } = null!;
 
         /// <summary>
         /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
@@ -172,8 +176,8 @@ namespace Zscaler.Zpa
         [Output("isIncompleteDrConfig")]
         public Output<bool> IsIncompleteDrConfig { get; private set; } = null!;
 
-        [Output("matchStyle")]
-        public Output<string> MatchStyle { get; private set; } = null!;
+        [Output("microtenantId")]
+        public Output<string> MicrotenantId { get; private set; } = null!;
 
         /// <summary>
         /// Name of the application.
@@ -273,6 +277,9 @@ namespace Zscaler.Zpa
 
     public sealed class ApplicationSegmentPRAArgs : global::Pulumi.ResourceArgs
     {
+        [Input("bypassOnReauth")]
+        public Input<bool>? BypassOnReauth { get; set; }
+
         /// <summary>
         /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
         /// The value NEVER indicates the use of the client forwarding policy.
@@ -313,6 +320,9 @@ namespace Zscaler.Zpa
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        [Input("fqdnDnsCheck")]
+        public Input<bool>? FqdnDnsCheck { get; set; }
+
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
@@ -338,8 +348,8 @@ namespace Zscaler.Zpa
         [Input("isIncompleteDrConfig")]
         public Input<bool>? IsIncompleteDrConfig { get; set; }
 
-        [Input("matchStyle")]
-        public Input<string>? MatchStyle { get; set; }
+        [Input("microtenantId")]
+        public Input<string>? MicrotenantId { get; set; }
 
         /// <summary>
         /// Name of the application.
@@ -430,6 +440,9 @@ namespace Zscaler.Zpa
 
     public sealed class ApplicationSegmentPRAState : global::Pulumi.ResourceArgs
     {
+        [Input("bypassOnReauth")]
+        public Input<bool>? BypassOnReauth { get; set; }
+
         /// <summary>
         /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
         /// The value NEVER indicates the use of the client forwarding policy.
@@ -470,6 +483,9 @@ namespace Zscaler.Zpa
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        [Input("fqdnDnsCheck")]
+        public Input<bool>? FqdnDnsCheck { get; set; }
+
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
@@ -495,8 +511,8 @@ namespace Zscaler.Zpa
         [Input("isIncompleteDrConfig")]
         public Input<bool>? IsIncompleteDrConfig { get; set; }
 
-        [Input("matchStyle")]
-        public Input<string>? MatchStyle { get; set; }
+        [Input("microtenantId")]
+        public Input<string>? MicrotenantId { get; set; }
 
         /// <summary>
         /// Name of the application.

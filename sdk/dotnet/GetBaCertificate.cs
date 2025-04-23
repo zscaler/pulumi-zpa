@@ -18,6 +18,8 @@ namespace Zscaler.Zpa
         /// 
         /// Use the **zpa_ba_certificate** data source to get information about a browser access certificate created in the Zscaler Private Access cloud. This data source is required when creating a browser access application segment resource.
         /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -61,6 +63,8 @@ namespace Zscaler.Zpa
         /// 
         /// Use the **zpa_ba_certificate** data source to get information about a browser access certificate created in the Zscaler Private Access cloud. This data source is required when creating a browser access application segment resource.
         /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -96,6 +100,51 @@ namespace Zscaler.Zpa
         /// ```
         /// </summary>
         public static Output<GetBaCertificateResult> Invoke(GetBaCertificateInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBaCertificateResult>("zpa:index/getBaCertificate:getBaCertificate", args ?? new GetBaCertificateInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-web-server-certificates)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-certificates-using-api)
+        /// 
+        /// Use the **zpa_ba_certificate** data source to get information about a browser access certificate created in the Zscaler Private Access cloud. This data source is required when creating a browser access application segment resource.
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Zpa.GetBaCertificate.Invoke(new()
+        ///     {
+        ///         Name = "example.acme.com",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Zpa.GetBaCertificate.Invoke(new()
+        ///     {
+        ///         Id = "1234567890",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetBaCertificateResult> Invoke(GetBaCertificateInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetBaCertificateResult>("zpa:index/getBaCertificate:getBaCertificate", args ?? new GetBaCertificateInvokeArgs(), options.WithDefaults());
     }
 

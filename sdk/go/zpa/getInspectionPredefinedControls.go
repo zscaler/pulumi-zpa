@@ -84,15 +84,11 @@ type GetInspectionPredefinedControlsResult struct {
 }
 
 func GetInspectionPredefinedControlsOutput(ctx *pulumi.Context, args GetInspectionPredefinedControlsOutputArgs, opts ...pulumi.InvokeOption) GetInspectionPredefinedControlsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetInspectionPredefinedControlsResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetInspectionPredefinedControlsResultOutput, error) {
 			args := v.(GetInspectionPredefinedControlsArgs)
-			r, err := GetInspectionPredefinedControls(ctx, &args, opts...)
-			var s GetInspectionPredefinedControlsResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getInspectionPredefinedControls:getInspectionPredefinedControls", args, GetInspectionPredefinedControlsResultOutput{}, options).(GetInspectionPredefinedControlsResultOutput), nil
 		}).(GetInspectionPredefinedControlsResultOutput)
 }
 

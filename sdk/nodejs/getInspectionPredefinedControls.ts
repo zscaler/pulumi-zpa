@@ -27,7 +27,6 @@ import * as utilities from "./utilities";
  */
 export function getInspectionPredefinedControls(args?: GetInspectionPredefinedControlsArgs, opts?: pulumi.InvokeOptions): Promise<GetInspectionPredefinedControlsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getInspectionPredefinedControls:getInspectionPredefinedControls", {
         "id": args.id,
@@ -88,8 +87,14 @@ export interface GetInspectionPredefinedControlsResult {
  * export const zpaInspectionPredefinedControls = example;
  * ```
  */
-export function getInspectionPredefinedControlsOutput(args?: GetInspectionPredefinedControlsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInspectionPredefinedControlsResult> {
-    return pulumi.output(args).apply((a: any) => getInspectionPredefinedControls(a, opts))
+export function getInspectionPredefinedControlsOutput(args?: GetInspectionPredefinedControlsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInspectionPredefinedControlsResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getInspectionPredefinedControls:getInspectionPredefinedControls", {
+        "id": args.id,
+        "name": args.name,
+        "version": args.version,
+    }, opts);
 }
 
 /**

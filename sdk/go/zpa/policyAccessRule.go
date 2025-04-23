@@ -18,88 +18,6 @@ import (
 //
 //	⚠️ **WARNING:**: The attribute ``ruleOrder`` is now deprecated in favor of the new resource  ``policyAccessRuleReorder``
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			idpName, err := zpa.GetIdPController(ctx, &zpa.GetIdPControllerArgs{
-//				Name: pulumi.StringRef("IdP_Name"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			engineering, err := zpa.GetSCIMGroups(ctx, &zpa.GetSCIMGroupsArgs{
-//				Name:    pulumi.StringRef("Engineering"),
-//				IdpName: pulumi.StringRef("IdP_Name"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			// Create Policy Access Rule
-//			_, err = zpa.NewPolicyAccessRule(ctx, "this", &zpa.PolicyAccessRuleArgs{
-//				Description: pulumi.String("Example"),
-//				Action:      pulumi.String("ALLOW"),
-//				Operator:    pulumi.String("AND"),
-//				Conditions: zpa.PolicyAccessRuleConditionArray{
-//					&zpa.PolicyAccessRuleConditionArgs{
-//						Operator: pulumi.String("OR"),
-//						Operands: zpa.PolicyAccessRuleConditionOperandArray{
-//							&zpa.PolicyAccessRuleConditionOperandArgs{
-//								ObjectType: pulumi.String("APP"),
-//								Lhs:        pulumi.String("id"),
-//								Rhs:        pulumi.Any(zpa_application_segment.This.Id),
-//							},
-//						},
-//					},
-//					&zpa.PolicyAccessRuleConditionArgs{
-//						Operator: pulumi.String("OR"),
-//						Operands: zpa.PolicyAccessRuleConditionOperandArray{
-//							&zpa.PolicyAccessRuleConditionOperandArgs{
-//								ObjectType: pulumi.String("SCIM_GROUP"),
-//								Lhs:        pulumi.String(idpName.Id),
-//								Rhs:        pulumi.String(engineering.Id),
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## LHS and RHS Values
-//
-// | Object Type | LHS| RHS
-// |----------|-----------|----------
-// | APP | “"id"“ | “applicationSegmentId“ |
-// | APP_GROUP | “"id"“ | “segmentGroupId“|
-// | CLIENT_TYPE | “"id"“ | “zpnClientTypeZappl“, “zpnClientTypeExporter“, “zpnClientTypeBrowserIsolation“, “zpnClientTypeIpAnchoring“, “zpnClientTypeEdgeConnector“, “zpnClientTypeBranchConnector“,  “zpnClientTypeZappPartner“, “zpnClientTypeZapp“  |
-// | EDGE_CONNECTOR_GROUP | “"id"“ | “<edge_connector_id>“ |
-// | IDP | “"id"“ | “identityProviderId“ |
-// | SAML | “samlAttributeId“  | “attributeValueToMatch“ |
-// | SCIM | “scimAttributeId“  | “attributeValueToMatch“  |
-// | SCIM_GROUP | “scimGroupAttributeId“  | “attributeValueToMatch“  |
-// | PLATFORM | “mac“, “ios“, “windows“, “android“, “linux“ | “"true"“ / “"false"“ |
-// | MACHINE_GRP | “"id"“ | “machineGroupId“ |
-// | POSTURE | “postureUdid“  | “"true"“ / “"false"“ |
-// | TRUSTED_NETWORK | “networkId“  | “"true"“ |
-// | COUNTRY_CODE | [2 Letter ISO3166 Alpha2](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)  | “"true"“ / “"false"“ |
-//
 // ## Import
 //
 // Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
@@ -128,7 +46,7 @@ type PolicyAccessRule struct {
 	// This is for proviidng the set of conditions for the policy.
 	Conditions PolicyAccessRuleConditionArrayOutput `pulumi:"conditions"`
 	// This is for providing a customer message for the user.
-	CustomMsg pulumi.StringPtrOutput `pulumi:"customMsg"`
+	CustomMsg pulumi.StringOutput `pulumi:"customMsg"`
 	// This is for providing a customer message for the user.
 	DefaultRule pulumi.BoolPtrOutput `pulumi:"defaultRule"`
 	// This is the description of the access policy rule.
@@ -461,8 +379,8 @@ func (o PolicyAccessRuleOutput) Conditions() PolicyAccessRuleConditionArrayOutpu
 }
 
 // This is for providing a customer message for the user.
-func (o PolicyAccessRuleOutput) CustomMsg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicyAccessRule) pulumi.StringPtrOutput { return v.CustomMsg }).(pulumi.StringPtrOutput)
+func (o PolicyAccessRuleOutput) CustomMsg() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyAccessRule) pulumi.StringOutput { return v.CustomMsg }).(pulumi.StringOutput)
 }
 
 // This is for providing a customer message for the user.

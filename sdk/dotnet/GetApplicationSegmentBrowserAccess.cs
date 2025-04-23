@@ -87,6 +87,44 @@ namespace Zscaler.Zpa
         /// </summary>
         public static Output<GetApplicationSegmentBrowserAccessResult> Invoke(GetApplicationSegmentBrowserAccessInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationSegmentBrowserAccessResult>("zpa:index/getApplicationSegmentBrowserAccess:getApplicationSegmentBrowserAccess", args ?? new GetApplicationSegmentBrowserAccessInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Zpa.GetApplicationSegmentBrowserAccess.Invoke(new()
+        ///     {
+        ///         Name = "example",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Zpa.GetApplicationSegmentBrowserAccess.Invoke(new()
+        ///     {
+        ///         Id = "123456789",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetApplicationSegmentBrowserAccessResult> Invoke(GetApplicationSegmentBrowserAccessInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetApplicationSegmentBrowserAccessResult>("zpa:index/getApplicationSegmentBrowserAccess:getApplicationSegmentBrowserAccess", args ?? new GetApplicationSegmentBrowserAccessInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -97,6 +135,12 @@ namespace Zscaler.Zpa
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
+
+        [Input("matchStyle")]
+        public string? MatchStyle { get; set; }
+
+        [Input("microtenantId")]
+        public string? MicrotenantId { get; set; }
 
         /// <summary>
         /// - (String) This field defines the name of the server.
@@ -133,6 +177,12 @@ namespace Zscaler.Zpa
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
+
+        [Input("matchStyle")]
+        public Input<string>? MatchStyle { get; set; }
+
+        [Input("microtenantId")]
+        public Input<string>? MicrotenantId { get; set; }
 
         /// <summary>
         /// - (String) This field defines the name of the server.
@@ -181,6 +231,8 @@ namespace Zscaler.Zpa
         public readonly string? Id;
         public readonly bool IpAnchored;
         public readonly bool IsCnameEnabled;
+        public readonly string MatchStyle;
+        public readonly string? MicrotenantId;
         /// <summary>
         /// - (String) This field defines the name of the server.
         /// </summary>
@@ -220,6 +272,10 @@ namespace Zscaler.Zpa
 
             bool isCnameEnabled,
 
+            string matchStyle,
+
+            string? microtenantId,
+
             string? name,
 
             bool passiveHealthEnabled,
@@ -250,6 +306,8 @@ namespace Zscaler.Zpa
             Id = id;
             IpAnchored = ipAnchored;
             IsCnameEnabled = isCnameEnabled;
+            MatchStyle = matchStyle;
+            MicrotenantId = microtenantId;
             Name = name;
             PassiveHealthEnabled = passiveHealthEnabled;
             SegmentGroupId = segmentGroupId;

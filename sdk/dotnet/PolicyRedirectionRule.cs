@@ -34,6 +34,7 @@ namespace Zscaler.Zpa
     /// $ pulumi import zpa:index/policyRedirectionRule:PolicyRedirectionRule example &lt;rule_id&gt;
     /// ```
     /// </summary>
+    [Obsolete(@"zpa.index/policyredirectionrule.PolicyRedirectionRule has been deprecated in favor of zpa.index/policyaccessredirectionrule.PolicyAccessRedirectionRule")]
     [ZpaResourceType("zpa:index/policyRedirectionRule:PolicyRedirectionRule")]
     public partial class PolicyRedirectionRule : global::Pulumi.CustomResource
     {
@@ -62,7 +63,7 @@ namespace Zscaler.Zpa
         /// This is for providing a customer message for the user.
         /// </summary>
         [Output("customMsg")]
-        public Output<string?> CustomMsg { get; private set; } = null!;
+        public Output<string> CustomMsg { get; private set; } = null!;
 
         /// <summary>
         /// This is for providing a customer message for the user.

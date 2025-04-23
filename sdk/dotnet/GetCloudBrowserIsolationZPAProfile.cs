@@ -15,6 +15,8 @@ namespace Zscaler.Zpa
         /// <summary>
         /// Use the **zpa_cloud_browser_isolation_zpa_profile** data source to get information about an isolation profile in the Zscaler Private Access cloud. This data source is required when configuring an isolation policy rule resource
         /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -39,6 +41,8 @@ namespace Zscaler.Zpa
         /// <summary>
         /// Use the **zpa_cloud_browser_isolation_zpa_profile** data source to get information about an isolation profile in the Zscaler Private Access cloud. This data source is required when configuring an isolation policy rule resource
         /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +62,32 @@ namespace Zscaler.Zpa
         /// ```
         /// </summary>
         public static Output<GetCloudBrowserIsolationZPAProfileResult> Invoke(GetCloudBrowserIsolationZPAProfileInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCloudBrowserIsolationZPAProfileResult>("zpa:index/getCloudBrowserIsolationZPAProfile:getCloudBrowserIsolationZPAProfile", args ?? new GetCloudBrowserIsolationZPAProfileInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use the **zpa_cloud_browser_isolation_zpa_profile** data source to get information about an isolation profile in the Zscaler Private Access cloud. This data source is required when configuring an isolation policy rule resource
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Zpa.GetCloudBrowserIsolationZPAProfile.Invoke(new()
+        ///     {
+        ///         Name = "ZPA_Profile",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCloudBrowserIsolationZPAProfileResult> Invoke(GetCloudBrowserIsolationZPAProfileInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetCloudBrowserIsolationZPAProfileResult>("zpa:index/getCloudBrowserIsolationZPAProfile:getCloudBrowserIsolationZPAProfile", args ?? new GetCloudBrowserIsolationZPAProfileInvokeArgs(), options.WithDefaults());
     }
 

@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getAppConnectorAssistantSchedule({
+ * const _this = zpa.getAppConnectorAssistantSchedule({
  *     customerId: "1234567891012",
  * });
  * ```
@@ -27,7 +27,6 @@ import * as utilities from "./utilities";
 export function getAssistantSchedule(args?: GetAssistantScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetAssistantScheduleResult> {
     pulumi.log.warn("getAssistantSchedule is deprecated: zpa.index/getassistantschedule.getAssistantSchedule has been deprecated in favor of zpa.index/getappconnectorassistantschedule.getAppConnectorAssistantSchedule")
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getAssistantSchedule:getAssistantSchedule", {
         "customerId": args.customerId,
@@ -68,14 +67,20 @@ export interface GetAssistantScheduleResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getAppConnectorAssistantSchedule({
+ * const _this = zpa.getAppConnectorAssistantSchedule({
  *     customerId: "1234567891012",
  * });
  * ```
  */
 /** @deprecated zpa.index/getassistantschedule.getAssistantSchedule has been deprecated in favor of zpa.index/getappconnectorassistantschedule.getAppConnectorAssistantSchedule */
-export function getAssistantScheduleOutput(args?: GetAssistantScheduleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAssistantScheduleResult> {
-    return pulumi.output(args).apply((a: any) => getAssistantSchedule(a, opts))
+export function getAssistantScheduleOutput(args?: GetAssistantScheduleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAssistantScheduleResult> {
+    pulumi.log.warn("getAssistantSchedule is deprecated: zpa.index/getassistantschedule.getAssistantSchedule has been deprecated in favor of zpa.index/getappconnectorassistantschedule.getAppConnectorAssistantSchedule")
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getAssistantSchedule:getAssistantSchedule", {
+        "customerId": args.customerId,
+        "id": args.id,
+    }, opts);
 }
 
 /**

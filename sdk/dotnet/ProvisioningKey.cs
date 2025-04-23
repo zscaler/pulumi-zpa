@@ -78,7 +78,7 @@ namespace Zscaler.Zpa
         public Output<string> MaxUsage { get; private set; } = null!;
 
         [Output("microtenantId")]
-        public Output<string?> MicrotenantId { get; private set; } = null!;
+        public Output<string> MicrotenantId { get; private set; } = null!;
 
         /// <summary>
         /// Name of the provisioning key.

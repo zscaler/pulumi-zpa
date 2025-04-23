@@ -7,6 +7,8 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ### Using Version Profile Name
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
@@ -26,6 +28,34 @@ import * as utilities from "./utilities";
  *     upgradeTimeInSecs: "66600",
  *     useInDrMode: true,
  *     versionProfileName: "New Release",
+ * });
+ * ```
+ *
+ * ### Using Version Profile ID
+ *
+ * data "zpa.getCustomerVersionProfile" "this" {
+ *   name = "New Release"
+ * }
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * // Create a App Connector Group
+ * const example = new zpa.ConnectorGroup("example", {
+ *     description: "Example",
+ *     enabled: true,
+ *     cityCountry: "San Jose, CA",
+ *     countryCode: "US",
+ *     latitude: "37.338",
+ *     longitude: "-121.8863",
+ *     location: "San Jose, CA, US",
+ *     upgradeDay: "SUNDAY",
+ *     upgradeTimeInSecs: "66600",
+ *     overrideVersionProfile: true,
+ *     versionProfileId: data.zpa_customer_version_profile["this"].id,
+ *     dnsQueryType: "IPV4_IPV6",
+ *     useInDrMode: true,
  * });
  * ```
  *
@@ -101,6 +131,9 @@ export class ConnectorGroup extends pulumi.CustomResource {
      * Longitude of the App Connector Group. Integer or decimal. With values in the range of -180 to 180
      */
     public readonly longitude!: pulumi.Output<string>;
+    /**
+     * Whether or not the App Connector Group is configured for the Log Streaming Service (LSS)
+     */
     public readonly lssAppConnectorGroup!: pulumi.Output<boolean>;
     public readonly microtenantId!: pulumi.Output<string>;
     /**
@@ -255,6 +288,9 @@ export interface ConnectorGroupState {
      * Longitude of the App Connector Group. Integer or decimal. With values in the range of -180 to 180
      */
     longitude?: pulumi.Input<string>;
+    /**
+     * Whether or not the App Connector Group is configured for the Log Streaming Service (LSS)
+     */
     lssAppConnectorGroup?: pulumi.Input<boolean>;
     microtenantId?: pulumi.Input<string>;
     /**
@@ -336,6 +372,9 @@ export interface ConnectorGroupArgs {
      * Longitude of the App Connector Group. Integer or decimal. With values in the range of -180 to 180
      */
     longitude: pulumi.Input<string>;
+    /**
+     * Whether or not the App Connector Group is configured for the Log Streaming Service (LSS)
+     */
     lssAppConnectorGroup?: pulumi.Input<boolean>;
     microtenantId?: pulumi.Input<string>;
     /**

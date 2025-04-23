@@ -159,6 +159,9 @@ namespace Zscaler.Zpa
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
+        [Output("fqdnDnsCheck")]
+        public Output<bool?> FqdnDnsCheck { get; private set; } = null!;
+
         [Output("healthCheckType")]
         public Output<string?> HealthCheckType { get; private set; } = null!;
 
@@ -184,8 +187,8 @@ namespace Zscaler.Zpa
         [Output("isIncompleteDrConfig")]
         public Output<bool?> IsIncompleteDrConfig { get; private set; } = null!;
 
-        [Output("matchStyle")]
-        public Output<string> MatchStyle { get; private set; } = null!;
+        [Output("microtenantId")]
+        public Output<string> MicrotenantId { get; private set; } = null!;
 
         /// <summary>
         /// Name of the application.
@@ -333,6 +336,9 @@ namespace Zscaler.Zpa
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        [Input("fqdnDnsCheck")]
+        public Input<bool>? FqdnDnsCheck { get; set; }
+
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
@@ -358,8 +364,8 @@ namespace Zscaler.Zpa
         [Input("isIncompleteDrConfig")]
         public Input<bool>? IsIncompleteDrConfig { get; set; }
 
-        [Input("matchStyle")]
-        public Input<string>? MatchStyle { get; set; }
+        [Input("microtenantId")]
+        public Input<string>? MicrotenantId { get; set; }
 
         /// <summary>
         /// Name of the application.
@@ -498,6 +504,9 @@ namespace Zscaler.Zpa
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        [Input("fqdnDnsCheck")]
+        public Input<bool>? FqdnDnsCheck { get; set; }
+
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
@@ -523,8 +532,8 @@ namespace Zscaler.Zpa
         [Input("isIncompleteDrConfig")]
         public Input<bool>? IsIncompleteDrConfig { get; set; }
 
-        [Input("matchStyle")]
-        public Input<string>? MatchStyle { get; set; }
+        [Input("microtenantId")]
+        public Input<string>? MicrotenantId { get; set; }
 
         /// <summary>
         /// Name of the application.

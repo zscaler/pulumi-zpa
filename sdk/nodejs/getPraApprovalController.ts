@@ -8,12 +8,13 @@ import * as utilities from "./utilities";
 
 /**
  * Use the **zpa_pra_approval_controller** data source to get information about a privileged remote access approval created in the Zscaler Private Access cloud.
+ *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
  */
 /** @deprecated zpa.index/getpraapprovalcontroller.getPraApprovalController has been deprecated in favor of zpa.index/getpraapproval.getPRAApproval */
 export function getPraApprovalController(args?: GetPraApprovalControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetPraApprovalControllerResult> {
     pulumi.log.warn("getPraApprovalController is deprecated: zpa.index/getpraapprovalcontroller.getPraApprovalController has been deprecated in favor of zpa.index/getpraapproval.getPRAApproval")
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getPraApprovalController:getPraApprovalController", {
         "emailIds": args.emailIds,
@@ -57,10 +58,18 @@ export interface GetPraApprovalControllerResult {
 }
 /**
  * Use the **zpa_pra_approval_controller** data source to get information about a privileged remote access approval created in the Zscaler Private Access cloud.
+ *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
  */
 /** @deprecated zpa.index/getpraapprovalcontroller.getPraApprovalController has been deprecated in favor of zpa.index/getpraapproval.getPRAApproval */
-export function getPraApprovalControllerOutput(args?: GetPraApprovalControllerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPraApprovalControllerResult> {
-    return pulumi.output(args).apply((a: any) => getPraApprovalController(a, opts))
+export function getPraApprovalControllerOutput(args?: GetPraApprovalControllerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPraApprovalControllerResult> {
+    pulumi.log.warn("getPraApprovalController is deprecated: zpa.index/getpraapprovalcontroller.getPraApprovalController has been deprecated in favor of zpa.index/getpraapproval.getPRAApproval")
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getPraApprovalController:getPraApprovalController", {
+        "emailIds": args.emailIds,
+        "id": args.id,
+    }, opts);
 }
 
 /**

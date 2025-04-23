@@ -12,6 +12,8 @@ import (
 )
 
 // Use the **zpa_pra_approval_controller** data source to get information about a privileged remote access approval created in the Zscaler Private Access cloud.
+//
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
 func LookupPRAApproval(ctx *pulumi.Context, args *LookupPRAApprovalArgs, opts ...pulumi.InvokeOption) (*LookupPRAApprovalResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPRAApprovalResult
@@ -50,15 +52,11 @@ type LookupPRAApprovalResult struct {
 }
 
 func LookupPRAApprovalOutput(ctx *pulumi.Context, args LookupPRAApprovalOutputArgs, opts ...pulumi.InvokeOption) LookupPRAApprovalResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPRAApprovalResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupPRAApprovalResultOutput, error) {
 			args := v.(LookupPRAApprovalArgs)
-			r, err := LookupPRAApproval(ctx, &args, opts...)
-			var s LookupPRAApprovalResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getPRAApproval:getPRAApproval", args, LookupPRAApprovalResultOutput{}, options).(LookupPRAApprovalResultOutput), nil
 		}).(LookupPRAApprovalResultOutput)
 }
 

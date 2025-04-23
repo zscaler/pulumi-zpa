@@ -16,6 +16,8 @@ import (
 //
 // Use the **zpa_ba_certificate** data source to get information about a browser access certificate created in the Zscaler Private Access cloud. This data source is required when creating a browser access application segment resource.
 //
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
 // ## Example Usage
 //
 // ```go
@@ -104,15 +106,11 @@ type GetBaCertificateResult struct {
 }
 
 func GetBaCertificateOutput(ctx *pulumi.Context, args GetBaCertificateOutputArgs, opts ...pulumi.InvokeOption) GetBaCertificateResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetBaCertificateResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetBaCertificateResultOutput, error) {
 			args := v.(GetBaCertificateArgs)
-			r, err := GetBaCertificate(ctx, &args, opts...)
-			var s GetBaCertificateResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getBaCertificate:getBaCertificate", args, GetBaCertificateResultOutput{}, options).(GetBaCertificateResultOutput), nil
 		}).(GetBaCertificateResultOutput)
 }
 

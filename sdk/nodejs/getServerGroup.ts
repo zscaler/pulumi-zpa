@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  */
 export function getServerGroup(args?: GetServerGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetServerGroupResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getServerGroup:getServerGroup", {
         "id": args.id,
@@ -72,8 +71,15 @@ export interface GetServerGroupResult {
  * });
  * ```
  */
-export function getServerGroupOutput(args?: GetServerGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerGroupResult> {
-    return pulumi.output(args).apply((a: any) => getServerGroup(a, opts))
+export function getServerGroupOutput(args?: GetServerGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerGroupResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getServerGroup:getServerGroup", {
+        "id": args.id,
+        "microtenantId": args.microtenantId,
+        "microtenantName": args.microtenantName,
+        "name": args.name,
+    }, opts);
 }
 
 /**

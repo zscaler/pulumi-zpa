@@ -11,10 +11,11 @@ import * as utilities from "./utilities";
  * * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
  *
  * Use the **zpa_lss_config_controller** data source to get information about a Log Streaming (LSS) configuration resource created in the Zscaler Private Access.
+ *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
  */
 export function getLSSConfigController(args?: GetLSSConfigControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetLSSConfigControllerResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getLSSConfigController:getLSSConfigController", {
         "configs": args.configs,
@@ -44,9 +45,16 @@ export interface GetLSSConfigControllerResult {
  * * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
  *
  * Use the **zpa_lss_config_controller** data source to get information about a Log Streaming (LSS) configuration resource created in the Zscaler Private Access.
+ *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
  */
-export function getLSSConfigControllerOutput(args?: GetLSSConfigControllerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLSSConfigControllerResult> {
-    return pulumi.output(args).apply((a: any) => getLSSConfigController(a, opts))
+export function getLSSConfigControllerOutput(args?: GetLSSConfigControllerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLSSConfigControllerResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getLSSConfigController:getLSSConfigController", {
+        "configs": args.configs,
+        "id": args.id,
+    }, opts);
 }
 
 /**

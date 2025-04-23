@@ -13,6 +13,9 @@ namespace Zscaler.Zpa.Inputs
 
     public sealed class ApplicationSegmentPRACommonAppsDtoAppsConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("appId")]
+        public Input<string>? AppId { get; set; }
+
         [Input("appTypes")]
         private InputList<string>? _appTypes;
         public InputList<string> AppTypes
@@ -36,11 +39,11 @@ namespace Zscaler.Zpa.Inputs
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("praAppId")]
+        public Input<string>? PraAppId { get; set; }
 
         public ApplicationSegmentPRACommonAppsDtoAppsConfigArgs()
         {

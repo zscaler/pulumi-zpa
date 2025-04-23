@@ -130,15 +130,11 @@ type GetLSSLogTypeFormatsResult struct {
 }
 
 func GetLSSLogTypeFormatsOutput(ctx *pulumi.Context, args GetLSSLogTypeFormatsOutputArgs, opts ...pulumi.InvokeOption) GetLSSLogTypeFormatsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetLSSLogTypeFormatsResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetLSSLogTypeFormatsResultOutput, error) {
 			args := v.(GetLSSLogTypeFormatsArgs)
-			r, err := GetLSSLogTypeFormats(ctx, &args, opts...)
-			var s GetLSSLogTypeFormatsResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getLSSLogTypeFormats:getLSSLogTypeFormats", args, GetLSSLogTypeFormatsResultOutput{}, options).(GetLSSLogTypeFormatsResultOutput), nil
 		}).(GetLSSLogTypeFormatsResultOutput)
 }
 

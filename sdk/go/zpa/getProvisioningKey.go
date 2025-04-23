@@ -107,15 +107,11 @@ type LookupProvisioningKeyResult struct {
 }
 
 func LookupProvisioningKeyOutput(ctx *pulumi.Context, args LookupProvisioningKeyOutputArgs, opts ...pulumi.InvokeOption) LookupProvisioningKeyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupProvisioningKeyResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupProvisioningKeyResultOutput, error) {
 			args := v.(LookupProvisioningKeyArgs)
-			r, err := LookupProvisioningKey(ctx, &args, opts...)
-			var s LookupProvisioningKeyResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getProvisioningKey:getProvisioningKey", args, LookupProvisioningKeyResultOutput{}, options).(LookupProvisioningKeyResultOutput), nil
 		}).(LookupProvisioningKeyResultOutput)
 }
 

@@ -55,6 +55,28 @@ namespace Zscaler.Zpa
         /// </summary>
         public static Output<GetSegmentGroupResult> Invoke(GetSegmentGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSegmentGroupResult>("zpa:index/getSegmentGroup:getSegmentGroup", args ?? new GetSegmentGroupInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Zpa.GetSegmentGroup.Invoke(new()
+        ///     {
+        ///         Name = "segment_group_name",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSegmentGroupResult> Invoke(GetSegmentGroupInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSegmentGroupResult>("zpa:index/getSegmentGroup:getSegmentGroup", args ?? new GetSegmentGroupInvokeArgs(), options.WithDefaults());
     }
 
 

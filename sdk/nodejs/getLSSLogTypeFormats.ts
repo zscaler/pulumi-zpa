@@ -61,7 +61,6 @@ import * as utilities from "./utilities";
  *   * `zpnPbrokerComprehensiveStats`
  */
 export function getLSSLogTypeFormats(args: GetLSSLogTypeFormatsArgs, opts?: pulumi.InvokeOptions): Promise<GetLSSLogTypeFormatsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getLSSLogTypeFormats:getLSSLogTypeFormats", {
         "logType": args.logType,
@@ -144,8 +143,11 @@ export interface GetLSSLogTypeFormatsResult {
  *   * `zpnWafHttpExchangesLog`
  *   * `zpnPbrokerComprehensiveStats`
  */
-export function getLSSLogTypeFormatsOutput(args: GetLSSLogTypeFormatsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLSSLogTypeFormatsResult> {
-    return pulumi.output(args).apply((a: any) => getLSSLogTypeFormats(a, opts))
+export function getLSSLogTypeFormatsOutput(args: GetLSSLogTypeFormatsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLSSLogTypeFormatsResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getLSSLogTypeFormats:getLSSLogTypeFormats", {
+        "logType": args.logType,
+    }, opts);
 }
 
 /**

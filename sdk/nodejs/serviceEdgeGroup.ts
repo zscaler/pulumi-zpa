@@ -14,6 +14,53 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ### Using Version Profile Name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * // ZPA Service Edge Group resource - Trusted Network
+ * const serviceEdgeGroupSjc = new zpa.ServiceEdgeGroup("serviceEdgeGroupSjc", {
+ *     description: "Service Edge Group in San Jose",
+ *     enabled: true,
+ *     isPublic: true,
+ *     upgradeDay: "SUNDAY",
+ *     upgradeTimeInSecs: "66600",
+ *     latitude: "37.3382082",
+ *     longitude: "-121.8863286",
+ *     location: "San Jose, CA, USA",
+ *     versionProfileName: "New Release",
+ *     trustedNetworks: [{
+ *         ids: [data.zpa_trusted_network.example.id],
+ *     }],
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * // ZPA Service Edge Group resource - No Trusted Network
+ * const serviceEdgeGroupNyc = new zpa.ServiceEdgeGroup("serviceEdgeGroupNyc", {
+ *     description: "Service Edge Group in New York",
+ *     enabled: true,
+ *     isPublic: true,
+ *     upgradeDay: "SUNDAY",
+ *     upgradeTimeInSecs: "66600",
+ *     latitude: "40.7128",
+ *     longitude: "-73.935242",
+ *     location: "New York, NY, USA",
+ *     versionProfileId: data.zpa_customer_version_profile["this"].id,
+ * });
+ * ```
+ *
+ * ### Using Version Profile ID
+ *
+ * data "zpa.getCustomerVersionProfile" "this" {
+ *   name = "New Release"
+ * }
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
@@ -151,11 +198,11 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
      * Whether the default version profile of the App Connector Group is applied or overridden.
      */
     public readonly overrideVersionProfile!: pulumi.Output<boolean | undefined>;
-    public readonly serviceEdges!: pulumi.Output<outputs.ServiceEdgeGroupServiceEdge[]>;
+    public readonly serviceEdges!: pulumi.Output<outputs.ServiceEdgeGroupServiceEdge[] | undefined>;
     /**
      * List of trusted network IDs.
      */
-    public readonly trustedNetworks!: pulumi.Output<outputs.ServiceEdgeGroupTrustedNetwork[]>;
+    public readonly trustedNetworks!: pulumi.Output<outputs.ServiceEdgeGroupTrustedNetwork[] | undefined>;
     /**
      * Service Edges in this group will attempt to update to a newer version of the software during this specified day.
      */
@@ -164,12 +211,14 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
      * Service Edges in this group will attempt to update to a newer version of the software during this specified time.
      */
     public readonly upgradeTimeInSecs!: pulumi.Output<string | undefined>;
+    public readonly useInDrMode!: pulumi.Output<boolean>;
     /**
      * ID of the version profile.
      */
     public readonly versionProfileId!: pulumi.Output<string>;
     /**
-     * ID of the version profile.
+     * Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
+     * overrideVersionProfile is set to true
      */
     public readonly versionProfileName!: pulumi.Output<string>;
     /**
@@ -208,6 +257,7 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
             resourceInputs["trustedNetworks"] = state ? state.trustedNetworks : undefined;
             resourceInputs["upgradeDay"] = state ? state.upgradeDay : undefined;
             resourceInputs["upgradeTimeInSecs"] = state ? state.upgradeTimeInSecs : undefined;
+            resourceInputs["useInDrMode"] = state ? state.useInDrMode : undefined;
             resourceInputs["versionProfileId"] = state ? state.versionProfileId : undefined;
             resourceInputs["versionProfileName"] = state ? state.versionProfileName : undefined;
             resourceInputs["versionProfileVisibilityScope"] = state ? state.versionProfileVisibilityScope : undefined;
@@ -240,6 +290,7 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
             resourceInputs["trustedNetworks"] = args ? args.trustedNetworks : undefined;
             resourceInputs["upgradeDay"] = args ? args.upgradeDay : undefined;
             resourceInputs["upgradeTimeInSecs"] = args ? args.upgradeTimeInSecs : undefined;
+            resourceInputs["useInDrMode"] = args ? args.useInDrMode : undefined;
             resourceInputs["versionProfileId"] = args ? args.versionProfileId : undefined;
             resourceInputs["versionProfileName"] = args ? args.versionProfileName : undefined;
             resourceInputs["versionProfileVisibilityScope"] = args ? args.versionProfileVisibilityScope : undefined;
@@ -316,12 +367,14 @@ export interface ServiceEdgeGroupState {
      * Service Edges in this group will attempt to update to a newer version of the software during this specified time.
      */
     upgradeTimeInSecs?: pulumi.Input<string>;
+    useInDrMode?: pulumi.Input<boolean>;
     /**
      * ID of the version profile.
      */
     versionProfileId?: pulumi.Input<string>;
     /**
-     * ID of the version profile.
+     * Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
+     * overrideVersionProfile is set to true
      */
     versionProfileName?: pulumi.Input<string>;
     /**
@@ -397,12 +450,14 @@ export interface ServiceEdgeGroupArgs {
      * Service Edges in this group will attempt to update to a newer version of the software during this specified time.
      */
     upgradeTimeInSecs?: pulumi.Input<string>;
+    useInDrMode?: pulumi.Input<boolean>;
     /**
      * ID of the version profile.
      */
     versionProfileId?: pulumi.Input<string>;
     /**
-     * ID of the version profile.
+     * Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
+     * overrideVersionProfile is set to true
      */
     versionProfileName?: pulumi.Input<string>;
     /**

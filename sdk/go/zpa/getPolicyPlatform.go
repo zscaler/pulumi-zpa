@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := zpa.GetPolicyPlatform(ctx, nil, nil)
+//			_, err := zpa.GetPolicyPlatform(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -67,13 +67,9 @@ type GetPolicyPlatformResult struct {
 }
 
 func GetPolicyPlatformOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetPolicyPlatformResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetPolicyPlatformResult, error) {
-		r, err := GetPolicyPlatform(ctx, opts...)
-		var s GetPolicyPlatformResult
-		if r != nil {
-			s = *r
-		}
-		return s, err
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetPolicyPlatformResultOutput, error) {
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("zpa:index/getPolicyPlatform:getPolicyPlatform", nil, GetPolicyPlatformResultOutput{}, options).(GetPolicyPlatformResultOutput), nil
 	}).(GetPolicyPlatformResultOutput)
 }
 

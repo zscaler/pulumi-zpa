@@ -29,7 +29,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/zscaler/pulumi-zpa/provider/pkg/version"
-	"github.com/zscaler/terraform-provider-zpa/v3/zpa"
+	"github.com/zscaler/terraform-provider-zpa/v4/zpa"
 )
 
 // all of the token components used below.
@@ -104,9 +104,36 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:               "zscaler",
 		Publisher:               "Zscaler",
 		DisplayName:             "Zscaler Private Access",
-		TFProviderModuleVersion: "v3",
+		TFProviderModuleVersion: "v4",
 		Version:                 version.Version,
 		Config: map[string]*tfbridge.SchemaInfo{
+			// Authentication Parameters for OneAPI Mode
+			"client_id": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ZSCALER_CLIENT_ID"},
+				},
+			},
+			"client_secret": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ZSCALER_CLIENT_SECRET"},
+				},
+			},
+			"private_key": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ZSCALER_PRIVATE_KEY"},
+				},
+			},
+			"vanity_domain": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ZSCALER_VANITY_DOMAIN"},
+				},
+			},
+			"zscaler_cloud": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ZSCALER_CLOUD"},
+				},
+			},
+			// Authentication Parameters for Legacy API Model
 			"zpa_client_id": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"ZPA_CLIENT_ID"},
@@ -128,15 +155,26 @@ func Provider() tfbridge.ProviderInfo {
 					EnvVars: []string{"ZPA_CLOUD"},
 				},
 			},
+			"use_legacy_client": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ZSCALER_USE_LEGACY_CLIENT"},
+				},
+			},
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"zpa_app_connector_assistant_schedule":         {Tok: zpaResource(zpaMod, "AppConnectorAssistantSchedule")},
-			"zpa_app_connector_group":                      {Tok: zpaResource(zpaMod, "ConnectorGroup")},
-			"zpa_service_edge_group":                       {Tok: zpaResource(zpaMod, "ServiceEdgeGroup")},
-			"zpa_segment_group":                            {Tok: zpaResource(zpaMod, "SegmentGroup")},
-			"zpa_server_group":                             {Tok: zpaResource(zpaMod, "ServerGroup")},
-			"zpa_application_segment":                      {Tok: zpaResource(zpaMod, "ApplicationSegment")},
+			"zpa_app_connector_assistant_schedule": {Tok: zpaResource(zpaMod, "AppConnectorAssistantSchedule")},
+			"zpa_app_connector_group":              {Tok: zpaResource(zpaMod, "ConnectorGroup")},
+			"zpa_service_edge_group":               {Tok: zpaResource(zpaMod, "ServiceEdgeGroup")},
+			"zpa_segment_group":                    {Tok: zpaResource(zpaMod, "SegmentGroup")},
+			"zpa_server_group":                     {Tok: zpaResource(zpaMod, "ServerGroup")},
+			"zpa_application_segment":              {Tok: zpaResource(zpaMod, "ApplicationSegment")},
+			"zpa_browser_access": {
+				Tok: zpaResource(zpaMod, "BrowserAccess"),
+				// No upstream docs for this resource exist:
+				Docs:               &tfbridge.DocInfo{AllowMissing: true},
+				DeprecationMessage: "Resource is deprecated due to a correction in naming conventions",
+			},
 			"zpa_application_segment_browser_access":       {Tok: zpaResource(zpaMod, "ApplicationSegmentBrowserAccess")},
 			"zpa_application_segment_inspection":           {Tok: zpaResource(zpaMod, "ApplicationSegmentInspection")},
 			"zpa_application_segment_pra":                  {Tok: zpaResource(zpaMod, "ApplicationSegmentPRA")},
@@ -145,27 +183,42 @@ func Provider() tfbridge.ProviderInfo {
 			"zpa_cloud_browser_isolation_banner":           {Tok: zpaResource(zpaMod, "CloudBrowserIsolationBanner")},
 			"zpa_cloud_browser_isolation_certificate":      {Tok: zpaResource(zpaMod, "CloudBrowserIsolationCertificate")},
 			"zpa_cloud_browser_isolation_external_profile": {Tok: zpaResource(zpaMod, "CloudBrowserIsolationExternalProfile")},
-			"zpa_inspection_custom_controls":               {Tok: zpaResource(zpaMod, "InspectionCustomControls")},
-			"zpa_inspection_profile":                       {Tok: zpaResource(zpaMod, "InspectionProfile")},
-			"zpa_lss_config_controller":                    {Tok: zpaResource(zpaMod, "LSSConfigController")},
-			"zpa_microtenant_controller":                   {Tok: zpaResource(zpaMod, "Microtenant")},
-			"zpa_policy_access_rule":                       {Tok: zpaResource(zpaMod, "PolicyAccessRule")},
-			"zpa_policy_access_rule_v2":                    {Tok: zpaResource(zpaMod, "PolicyAccessRuleV2")},
-			"zpa_policy_forwarding_rule":                   {Tok: zpaResource(zpaMod, "PolicyAccessForwardingRule")},
-			"zpa_policy_forwarding_rule_v2":                {Tok: zpaResource(zpaMod, "PolicyAccessForwardingRuleV2")},
-			"zpa_policy_timeout_rule":                      {Tok: zpaResource(zpaMod, "PolicyAccessTimeOutRule")},
-			"zpa_policy_timeout_rule_v2":                   {Tok: zpaResource(zpaMod, "PolicyAccessTimeOutRuleV2")},
-			"zpa_policy_inspection_rule":                   {Tok: zpaResource(zpaMod, "PolicyAccessInspectionRule")},
-			"zpa_policy_inspection_rule_v2":                {Tok: zpaResource(zpaMod, "PolicyAccessInspectionRuleV2")},
-			"zpa_policy_isolation_rule":                    {Tok: zpaResource(zpaMod, "PolicyAccessIsolationRule")},
-			"zpa_policy_isolation_rule_v2":                 {Tok: zpaResource(zpaMod, "PolicyAccessIsolationRuleV2")},
-			"zpa_policy_credential_rule":                   {Tok: zpaResource(zpaMod, "PolicyAccessCredentialRule")},
-			"zpa_policy_access_rule_reorder":               {Tok: zpaResource(zpaMod, "PolicyAccessReorderRule")},
-			"zpa_pra_approval_controller":                  {Tok: zpaResource(zpaMod, "PRAApproval")},
-			"zpa_pra_console_controller":                   {Tok: zpaResource(zpaMod, "PRAConsole")},
-			"zpa_pra_credential_controller":                {Tok: zpaResource(zpaMod, "PRACredential")},
-			"zpa_pra_portal_controller":                    {Tok: zpaResource(zpaMod, "PRAPortal")},
-			"zpa_service_edge_assistant_schedule":          {Tok: zpaResource(zpaMod, "ServiceEdgeAssistantSchedule")},
+			"zpa_emergency_access_user":                    {Tok: zpaResource(zpaMod, "EmergencyAccessUser")},
+			"zpa_inspection_custom_controls": {
+				Tok: zpaResource(zpaMod, "InspectionCustomControls"),
+				// No upstream docs for this resource exist:
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
+			},
+			"zpa_inspection_profile": {Tok: zpaResource(zpaMod, "InspectionProfile")},
+			"zpa_lss_config_controller": {
+				Tok: zpaResource(zpaMod, "LSSConfigController"),
+				// No upstream docs for this resource exist:
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
+			},
+			"zpa_microtenant_controller":    {Tok: zpaResource(zpaMod, "Microtenant")},
+			"zpa_policy_access_rule":        {Tok: zpaResource(zpaMod, "PolicyAccessRule")},
+			"zpa_policy_access_rule_v2":     {Tok: zpaResource(zpaMod, "PolicyAccessRuleV2")},
+			"zpa_policy_forwarding_rule":    {Tok: zpaResource(zpaMod, "PolicyAccessForwardingRule")},
+			"zpa_policy_forwarding_rule_v2": {Tok: zpaResource(zpaMod, "PolicyAccessForwardingRuleV2")},
+			"zpa_policy_timeout_rule":       {Tok: zpaResource(zpaMod, "PolicyAccessTimeOutRule")},
+			"zpa_policy_timeout_rule_v2":    {Tok: zpaResource(zpaMod, "PolicyAccessTimeOutRuleV2")},
+			"zpa_policy_inspection_rule":    {Tok: zpaResource(zpaMod, "PolicyAccessInspectionRule")},
+			"zpa_policy_inspection_rule_v2": {Tok: zpaResource(zpaMod, "PolicyAccessInspectionRuleV2")},
+			"zpa_policy_isolation_rule":     {Tok: zpaResource(zpaMod, "PolicyAccessIsolationRule")},
+			"zpa_policy_isolation_rule_v2":  {Tok: zpaResource(zpaMod, "PolicyAccessIsolationRuleV2")},
+			"zpa_policy_credential_rule": {
+				Tok: zpaResource(zpaMod, "PolicyAccessCredentialRule"),
+				// No upstream docs for this resource exist:
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
+			},
+			"zpa_policy_redirection_rule":         {Tok: zpaResource(zpaMod, "PolicyAccessRedirectionRule")},
+			"zpa_policy_access_rule_reorder":      {Tok: zpaResource(zpaMod, "PolicyAccessReorderRule")},
+			"zpa_pra_approval_controller":         {Tok: zpaResource(zpaMod, "PRAApproval")},
+			"zpa_pra_console_controller":          {Tok: zpaResource(zpaMod, "PRAConsole")},
+			"zpa_pra_credential_controller":       {Tok: zpaResource(zpaMod, "PRACredential")},
+			"zpa_pra_credential_pool":             {Tok: zpaResource(zpaMod, "PRACredentialPool")},
+			"zpa_pra_portal_controller":           {Tok: zpaResource(zpaMod, "PRAPortal")},
+			"zpa_service_edge_assistant_schedule": {Tok: zpaResource(zpaMod, "ServiceEdgeAssistantSchedule")},
 			"zpa_provisioning_key": {Tok: zpaResource(zpaMod, "ProvisioningKey"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					// Rename field to prevent this error in the DotNet SDK generation:
@@ -223,7 +276,8 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: zpaDataSource(zpaMod, "getApplicationSegmentInspection"),
 			},
 			"zpa_inspection_custom_controls": {
-				Tok: zpaDataSource(zpaMod, "getInspectionCustomControls"),
+				Tok:  zpaDataSource(zpaMod, "getInspectionCustomControls"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"zpa_inspection_profile": {
 				Tok: zpaDataSource(zpaMod, "getInspectionProfile"),
@@ -293,6 +347,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"zpa_pra_credential_controller": {
 				Tok: zpaDataSource(zpaMod, "getPRACredential"),
+			},
+			"zpa_pra_credential_pool": {
+				Tok: zpaDataSource(zpaMod, "getPRACredentialPool"),
 			},
 			"zpa_pra_portal_controller": {
 				Tok: zpaDataSource(zpaMod, "getPRAPortal"),

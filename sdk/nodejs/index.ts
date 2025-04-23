@@ -245,6 +245,11 @@ export const getPRACredential: typeof import("./getPRACredential").getPRACredent
 export const getPRACredentialOutput: typeof import("./getPRACredential").getPRACredentialOutput = null as any;
 utilities.lazyLoad(exports, ["getPRACredential","getPRACredentialOutput"], () => require("./getPRACredential"));
 
+export { GetPRACredentialPoolArgs, GetPRACredentialPoolResult, GetPRACredentialPoolOutputArgs } from "./getPRACredentialPool";
+export const getPRACredentialPool: typeof import("./getPRACredentialPool").getPRACredentialPool = null as any;
+export const getPRACredentialPoolOutput: typeof import("./getPRACredentialPool").getPRACredentialPoolOutput = null as any;
+utilities.lazyLoad(exports, ["getPRACredentialPool","getPRACredentialPoolOutput"], () => require("./getPRACredentialPool"));
+
 export { GetPRAPortalArgs, GetPRAPortalResult, GetPRAPortalOutputArgs } from "./getPRAPortal";
 export const getPRAPortal: typeof import("./getPRAPortal").getPRAPortal = null as any;
 export const getPRAPortalOutput: typeof import("./getPRAPortal").getPRAPortalOutput = null as any;
@@ -395,6 +400,11 @@ export type PolicyAccessIsolationRuleV2 = import("./policyAccessIsolationRuleV2"
 export const PolicyAccessIsolationRuleV2: typeof import("./policyAccessIsolationRuleV2").PolicyAccessIsolationRuleV2 = null as any;
 utilities.lazyLoad(exports, ["PolicyAccessIsolationRuleV2"], () => require("./policyAccessIsolationRuleV2"));
 
+export { PolicyAccessRedirectionRuleArgs, PolicyAccessRedirectionRuleState } from "./policyAccessRedirectionRule";
+export type PolicyAccessRedirectionRule = import("./policyAccessRedirectionRule").PolicyAccessRedirectionRule;
+export const PolicyAccessRedirectionRule: typeof import("./policyAccessRedirectionRule").PolicyAccessRedirectionRule = null as any;
+utilities.lazyLoad(exports, ["PolicyAccessRedirectionRule"], () => require("./policyAccessRedirectionRule"));
+
 export { PolicyAccessReorderRuleArgs, PolicyAccessReorderRuleState } from "./policyAccessReorderRule";
 export type PolicyAccessReorderRule = import("./policyAccessReorderRule").PolicyAccessReorderRule;
 export const PolicyAccessReorderRule: typeof import("./policyAccessReorderRule").PolicyAccessReorderRule = null as any;
@@ -490,6 +500,11 @@ export type PRACredential = import("./pracredential").PRACredential;
 export const PRACredential: typeof import("./pracredential").PRACredential = null as any;
 utilities.lazyLoad(exports, ["PRACredential"], () => require("./pracredential"));
 
+export { PRACredentialPoolArgs, PRACredentialPoolState } from "./pracredentialPool";
+export type PRACredentialPool = import("./pracredentialPool").PRACredentialPool;
+export const PRACredentialPool: typeof import("./pracredentialPool").PRACredentialPool = null as any;
+utilities.lazyLoad(exports, ["PRACredentialPool"], () => require("./pracredentialPool"));
+
 export { PRAPortalArgs, PRAPortalState } from "./praportal";
 export type PRAPortal = import("./praportal").PRAPortal;
 export const PRAPortal: typeof import("./praportal").PRAPortal = null as any;
@@ -581,6 +596,8 @@ const _module = {
                 return new PRAConsole(name, <any>undefined, { urn })
             case "zpa:index/pRACredential:PRACredential":
                 return new PRACredential(name, <any>undefined, { urn })
+            case "zpa:index/pRACredentialPool:PRACredentialPool":
+                return new PRACredentialPool(name, <any>undefined, { urn })
             case "zpa:index/pRAPortal:PRAPortal":
                 return new PRAPortal(name, <any>undefined, { urn })
             case "zpa:index/policyAccessCredentialRule:PolicyAccessCredentialRule":
@@ -597,6 +614,8 @@ const _module = {
                 return new PolicyAccessIsolationRule(name, <any>undefined, { urn })
             case "zpa:index/policyAccessIsolationRuleV2:PolicyAccessIsolationRuleV2":
                 return new PolicyAccessIsolationRuleV2(name, <any>undefined, { urn })
+            case "zpa:index/policyAccessRedirectionRule:PolicyAccessRedirectionRule":
+                return new PolicyAccessRedirectionRule(name, <any>undefined, { urn })
             case "zpa:index/policyAccessReorderRule:PolicyAccessReorderRule":
                 return new PolicyAccessReorderRule(name, <any>undefined, { urn })
             case "zpa:index/policyAccessRule:PolicyAccessRule":
@@ -665,6 +684,7 @@ pulumi.runtime.registerResourceModule("zpa", "index/microtenant", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/pRAApproval", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/pRAConsole", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/pRACredential", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/pRACredentialPool", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/pRAPortal", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/policyAccessCredentialRule", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/policyAccessForwardingRule", _module)
@@ -673,6 +693,7 @@ pulumi.runtime.registerResourceModule("zpa", "index/policyAccessInspectionRule",
 pulumi.runtime.registerResourceModule("zpa", "index/policyAccessInspectionRuleV2", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/policyAccessIsolationRule", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/policyAccessIsolationRuleV2", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/policyAccessRedirectionRule", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/policyAccessReorderRule", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/policyAccessRule", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/policyAccessRuleV2", _module)

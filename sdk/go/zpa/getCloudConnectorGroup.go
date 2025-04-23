@@ -18,6 +18,8 @@ import (
 //
 // > **NOTE:** A Cloud Connector Group resource is created in the Zscaler Cloud Connector cloud and replicated to the ZPA cloud. This resource can then be referenced in a Access Policy Rule where the Object Type = `EDGE_CONNECTOR_GROUP` is being used.
 //
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
 // ## Example Usage
 //
 // ```go
@@ -99,15 +101,11 @@ type GetCloudConnectorGroupResult struct {
 }
 
 func GetCloudConnectorGroupOutput(ctx *pulumi.Context, args GetCloudConnectorGroupOutputArgs, opts ...pulumi.InvokeOption) GetCloudConnectorGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetCloudConnectorGroupResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetCloudConnectorGroupResultOutput, error) {
 			args := v.(GetCloudConnectorGroupArgs)
-			r, err := GetCloudConnectorGroup(ctx, &args, opts...)
-			var s GetCloudConnectorGroupResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getCloudConnectorGroup:getCloudConnectorGroup", args, GetCloudConnectorGroupResultOutput{}, options).(GetCloudConnectorGroupResultOutput), nil
 		}).(GetCloudConnectorGroupResultOutput)
 }
 

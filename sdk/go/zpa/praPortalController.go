@@ -78,7 +78,7 @@ type PraPortalController struct {
 	pulumi.CustomResourceState
 
 	// The unique identifier of the certificate
-	CertificateId pulumi.StringPtrOutput `pulumi:"certificateId"`
+	CertificateId pulumi.StringOutput `pulumi:"certificateId"`
 	// The description of the privileged portal
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The domain of the privileged portal
@@ -303,8 +303,8 @@ func (o PraPortalControllerOutput) ToPraPortalControllerOutputWithContext(ctx co
 }
 
 // The unique identifier of the certificate
-func (o PraPortalControllerOutput) CertificateId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PraPortalController) pulumi.StringPtrOutput { return v.CertificateId }).(pulumi.StringPtrOutput)
+func (o PraPortalControllerOutput) CertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PraPortalController) pulumi.StringOutput { return v.CertificateId }).(pulumi.StringOutput)
 }
 
 // The description of the privileged portal

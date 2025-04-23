@@ -16,7 +16,9 @@ namespace Zscaler.Zpa
         /// * [Official documentation](https://help.zscaler.com/zpa/about-privileged-credentials)
         /// * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-credentials-using-api)
         /// 
-        /// The **zpa_pra_credential_controller** resource creates a privileged remote access credential in the Zscaler Private Access cloud. This resource can then be referenced in an privileged access policy resource.
+        /// The **zpa_pra_credential_controller** data source to get information about a privileged remote access credential created in the Zscaler Private Access cloud.
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
         /// 
         /// ## Example Usage
         /// 
@@ -41,7 +43,9 @@ namespace Zscaler.Zpa
         /// * [Official documentation](https://help.zscaler.com/zpa/about-privileged-credentials)
         /// * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-credentials-using-api)
         /// 
-        /// The **zpa_pra_credential_controller** resource creates a privileged remote access credential in the Zscaler Private Access cloud. This resource can then be referenced in an privileged access policy resource.
+        /// The **zpa_pra_credential_controller** data source to get information about a privileged remote access credential created in the Zscaler Private Access cloud.
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
         /// 
         /// ## Example Usage
         /// 
@@ -61,6 +65,33 @@ namespace Zscaler.Zpa
         /// </summary>
         public static Output<GetPRACredentialResult> Invoke(GetPRACredentialInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPRACredentialResult>("zpa:index/getPRACredential:getPRACredential", args ?? new GetPRACredentialInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-privileged-credentials)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-credentials-using-api)
+        /// 
+        /// The **zpa_pra_credential_controller** data source to get information about a privileged remote access credential created in the Zscaler Private Access cloud.
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Zscaler.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Retrieves PRA Credential By ID
+        ///     var @this = new Zpa.PRACredential("this");
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPRACredentialResult> Invoke(GetPRACredentialInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPRACredentialResult>("zpa:index/getPRACredential:getPRACredential", args ?? new GetPRACredentialInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -70,7 +101,7 @@ namespace Zscaler.Zpa
         public string? Id { get; set; }
 
         /// <summary>
-        /// - (String) The name of the privileged credential.
+        /// - (Optional) The name of the privileged credential.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -87,7 +118,7 @@ namespace Zscaler.Zpa
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// - (String) The name of the privileged credential.
+        /// - (Optional) The name of the privileged credential.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -112,7 +143,7 @@ namespace Zscaler.Zpa
         public readonly string ModifiedBy;
         public readonly string ModifiedTime;
         /// <summary>
-        /// - (String) The name of the privileged credential.
+        /// - (Optional) The name of the privileged credential.
         /// </summary>
         public readonly string? Name;
         public readonly string Password;

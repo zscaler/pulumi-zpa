@@ -55,6 +55,28 @@ namespace Zscaler.Zpa
         /// </summary>
         public static Output<GetServerGroupResult> Invoke(GetServerGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerGroupResult>("zpa:index/getServerGroup:getServerGroup", args ?? new GetServerGroupInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Zpa.GetServerGroup.Invoke(new()
+        ///     {
+        ///         Name = "server_group_name",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServerGroupResult> Invoke(GetServerGroupInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServerGroupResult>("zpa:index/getServerGroup:getServerGroup", args ?? new GetServerGroupInvokeArgs(), options.WithDefaults());
     }
 
 

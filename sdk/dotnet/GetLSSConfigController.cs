@@ -17,6 +17,8 @@ namespace Zscaler.Zpa
         /// * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
         /// 
         /// Use the **zpa_lss_config_controller** data source to get information about a Log Streaming (LSS) configuration resource created in the Zscaler Private Access.
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
         /// </summary>
         public static Task<GetLSSConfigControllerResult> InvokeAsync(GetLSSConfigControllerArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLSSConfigControllerResult>("zpa:index/getLSSConfigController:getLSSConfigController", args ?? new GetLSSConfigControllerArgs(), options.WithDefaults());
@@ -26,8 +28,21 @@ namespace Zscaler.Zpa
         /// * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
         /// 
         /// Use the **zpa_lss_config_controller** data source to get information about a Log Streaming (LSS) configuration resource created in the Zscaler Private Access.
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
         /// </summary>
         public static Output<GetLSSConfigControllerResult> Invoke(GetLSSConfigControllerInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLSSConfigControllerResult>("zpa:index/getLSSConfigController:getLSSConfigController", args ?? new GetLSSConfigControllerInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-log-streaming-service)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
+        /// 
+        /// Use the **zpa_lss_config_controller** data source to get information about a Log Streaming (LSS) configuration resource created in the Zscaler Private Access.
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// </summary>
+        public static Output<GetLSSConfigControllerResult> Invoke(GetLSSConfigControllerInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetLSSConfigControllerResult>("zpa:index/getLSSConfigController:getLSSConfigController", args ?? new GetLSSConfigControllerInvokeArgs(), options.WithDefaults());
     }
 

@@ -10,6 +10,8 @@ import * as utilities from "./utilities";
  *
  * Use the **zpa_scim_attribute_header** data source to get information about a SCIM attribute from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Inspection Policy.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -28,7 +30,6 @@ import * as utilities from "./utilities";
  */
 export function getSCIMAttributeHeader(args?: GetSCIMAttributeHeaderArgs, opts?: pulumi.InvokeOptions): Promise<GetSCIMAttributeHeaderResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getSCIMAttributeHeader:getSCIMAttributeHeader", {
         "idpId": args.idpId,
@@ -75,6 +76,8 @@ export interface GetSCIMAttributeHeaderResult {
  *
  * Use the **zpa_scim_attribute_header** data source to get information about a SCIM attribute from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Inspection Policy.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -91,8 +94,14 @@ export interface GetSCIMAttributeHeaderResult {
  * });
  * ```
  */
-export function getSCIMAttributeHeaderOutput(args?: GetSCIMAttributeHeaderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSCIMAttributeHeaderResult> {
-    return pulumi.output(args).apply((a: any) => getSCIMAttributeHeader(a, opts))
+export function getSCIMAttributeHeaderOutput(args?: GetSCIMAttributeHeaderOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSCIMAttributeHeaderResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getSCIMAttributeHeader:getSCIMAttributeHeader", {
+        "idpId": args.idpId,
+        "idpName": args.idpName,
+        "name": args.name,
+    }, opts);
 }
 
 /**

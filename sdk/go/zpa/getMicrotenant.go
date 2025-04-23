@@ -18,6 +18,8 @@ import (
 //
 // ⚠️ **WARNING:**: This feature is in limited availability and requires additional license. To learn more, contact Zscaler Support or your local account team.
 //
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
 // ## Example Usage
 //
 // ```go
@@ -71,23 +73,20 @@ type LookupMicrotenantResult struct {
 	ModifiedBy              string   `pulumi:"modifiedBy"`
 	ModifiedTime            string   `pulumi:"modifiedTime"`
 	// - (Required) Name of the microtenant controller.
-	Name     *string              `pulumi:"name"`
-	Operator string               `pulumi:"operator"`
-	Priority string               `pulumi:"priority"`
-	Roles    []GetMicrotenantRole `pulumi:"roles"`
-	Users    []GetMicrotenantUser `pulumi:"users"`
+	Name                       *string              `pulumi:"name"`
+	Operator                   string               `pulumi:"operator"`
+	Priority                   string               `pulumi:"priority"`
+	PrivilegedApprovalsEnabled bool                 `pulumi:"privilegedApprovalsEnabled"`
+	Roles                      []GetMicrotenantRole `pulumi:"roles"`
+	Users                      []GetMicrotenantUser `pulumi:"users"`
 }
 
 func LookupMicrotenantOutput(ctx *pulumi.Context, args LookupMicrotenantOutputArgs, opts ...pulumi.InvokeOption) LookupMicrotenantResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMicrotenantResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupMicrotenantResultOutput, error) {
 			args := v.(LookupMicrotenantArgs)
-			r, err := LookupMicrotenant(ctx, &args, opts...)
-			var s LookupMicrotenantResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getMicrotenant:getMicrotenant", args, LookupMicrotenantResultOutput{}, options).(LookupMicrotenantResultOutput), nil
 		}).(LookupMicrotenantResultOutput)
 }
 
@@ -160,6 +159,10 @@ func (o LookupMicrotenantResultOutput) Operator() pulumi.StringOutput {
 
 func (o LookupMicrotenantResultOutput) Priority() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMicrotenantResult) string { return v.Priority }).(pulumi.StringOutput)
+}
+
+func (o LookupMicrotenantResultOutput) PrivilegedApprovalsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupMicrotenantResult) bool { return v.PrivilegedApprovalsEnabled }).(pulumi.BoolOutput)
 }
 
 func (o LookupMicrotenantResultOutput) Roles() GetMicrotenantRoleArrayOutput {

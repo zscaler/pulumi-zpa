@@ -33,6 +33,8 @@ import (
 // ```sh
 // $ pulumi import zpa:index/policyRedirectionRule:PolicyRedirectionRule example <rule_id>
 // ```
+//
+// Deprecated: zpa.index/policyredirectionrule.PolicyRedirectionRule has been deprecated in favor of zpa.index/policyaccessredirectionrule.PolicyAccessRedirectionRule
 type PolicyRedirectionRule struct {
 	pulumi.CustomResourceState
 
@@ -44,7 +46,7 @@ type PolicyRedirectionRule struct {
 	// This is for proviidng the set of conditions for the policy.
 	Conditions PolicyRedirectionRuleConditionArrayOutput `pulumi:"conditions"`
 	// This is for providing a customer message for the user.
-	CustomMsg pulumi.StringPtrOutput `pulumi:"customMsg"`
+	CustomMsg pulumi.StringOutput `pulumi:"customMsg"`
 	// This is for providing a customer message for the user.
 	DefaultRule pulumi.BoolPtrOutput `pulumi:"defaultRule"`
 	// This is the description of the access policy.
@@ -346,8 +348,8 @@ func (o PolicyRedirectionRuleOutput) Conditions() PolicyRedirectionRuleCondition
 }
 
 // This is for providing a customer message for the user.
-func (o PolicyRedirectionRuleOutput) CustomMsg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicyRedirectionRule) pulumi.StringPtrOutput { return v.CustomMsg }).(pulumi.StringPtrOutput)
+func (o PolicyRedirectionRuleOutput) CustomMsg() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyRedirectionRule) pulumi.StringOutput { return v.CustomMsg }).(pulumi.StringOutput)
 }
 
 // This is for providing a customer message for the user.

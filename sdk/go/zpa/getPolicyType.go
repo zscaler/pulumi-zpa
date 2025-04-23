@@ -214,15 +214,11 @@ type GetPolicyTypeResult struct {
 }
 
 func GetPolicyTypeOutput(ctx *pulumi.Context, args GetPolicyTypeOutputArgs, opts ...pulumi.InvokeOption) GetPolicyTypeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetPolicyTypeResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetPolicyTypeResultOutput, error) {
 			args := v.(GetPolicyTypeArgs)
-			r, err := GetPolicyType(ctx, &args, opts...)
-			var s GetPolicyTypeResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getPolicyType:getPolicyType", args, GetPolicyTypeResultOutput{}, options).(GetPolicyTypeResultOutput), nil
 		}).(GetPolicyTypeResultOutput)
 }
 

@@ -15,6 +15,8 @@ import (
 //
 // Use the **zpa_cloud_browser_isolation_certificate** data source to get information about Cloud Browser Isolation Certificate. This data source information is required as part of the attribute `certificateIds` when creating an Cloud Browser Isolation External Profile “CloudBrowserIsolationExternalProfile“
 //
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
 // ## Example Usage
 //
 // ```go
@@ -65,15 +67,11 @@ type LookupCloudBrowserIsolationCertificateResult struct {
 }
 
 func LookupCloudBrowserIsolationCertificateOutput(ctx *pulumi.Context, args LookupCloudBrowserIsolationCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupCloudBrowserIsolationCertificateResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCloudBrowserIsolationCertificateResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupCloudBrowserIsolationCertificateResultOutput, error) {
 			args := v.(LookupCloudBrowserIsolationCertificateArgs)
-			r, err := LookupCloudBrowserIsolationCertificate(ctx, &args, opts...)
-			var s LookupCloudBrowserIsolationCertificateResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getCloudBrowserIsolationCertificate:getCloudBrowserIsolationCertificate", args, LookupCloudBrowserIsolationCertificateResultOutput{}, options).(LookupCloudBrowserIsolationCertificateResultOutput), nil
 		}).(LookupCloudBrowserIsolationCertificateResultOutput)
 }
 

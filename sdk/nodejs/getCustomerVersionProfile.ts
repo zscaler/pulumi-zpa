@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const default = zpa.getCustomerVersionProfile({
+ * const _default = zpa.getCustomerVersionProfile({
  *     name: "Default",
  * });
  * const previousDefault = zpa.getCustomerVersionProfile({
@@ -36,7 +36,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getCustomerVersionProfile(args: GetCustomerVersionProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomerVersionProfileResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getCustomerVersionProfile:getCustomerVersionProfile", {
         "name": args.name,
@@ -56,12 +55,20 @@ export interface GetCustomerVersionProfileArgs {
 export interface GetCustomerVersionProfileResult {
     readonly creationTime: string;
     readonly customScopeCustomerIds: outputs.GetCustomerVersionProfileCustomScopeCustomerId[];
+    readonly customScopeRequestCustomerIds: outputs.GetCustomerVersionProfileCustomScopeRequestCustomerId[];
     readonly customerId: string;
     readonly description: string;
     readonly id: string;
     readonly modifiedBy: string;
     readonly modifiedTime: string;
     readonly name: string;
+    readonly numberOfAssistants: string;
+    readonly numberOfCustomers: string;
+    readonly numberOfPrivateBrokers: string;
+    readonly numberOfSiteControllers: string;
+    readonly numberOfUpdatedAssistants: string;
+    readonly numberOfUpdatedPrivateBrokers: string;
+    readonly numberOfUpdatedSiteControllers: string;
     readonly upgradePriority: string;
     readonly versions: outputs.GetCustomerVersionProfileVersion[];
     readonly visibilityScope: string;
@@ -84,7 +91,7 @@ export interface GetCustomerVersionProfileResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const default = zpa.getCustomerVersionProfile({
+ * const _default = zpa.getCustomerVersionProfile({
  *     name: "Default",
  * });
  * const previousDefault = zpa.getCustomerVersionProfile({
@@ -95,8 +102,11 @@ export interface GetCustomerVersionProfileResult {
  * });
  * ```
  */
-export function getCustomerVersionProfileOutput(args: GetCustomerVersionProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomerVersionProfileResult> {
-    return pulumi.output(args).apply((a: any) => getCustomerVersionProfile(a, opts))
+export function getCustomerVersionProfileOutput(args: GetCustomerVersionProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomerVersionProfileResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getCustomerVersionProfile:getCustomerVersionProfile", {
+        "name": args.name,
+    }, opts);
 }
 
 /**

@@ -42,7 +42,8 @@ export class PolicyAccessCredentialRule extends pulumi.CustomResource {
      * This is for proviidng the set of conditions for the policy.
      */
     public readonly conditions!: pulumi.Output<outputs.PolicyAccessCredentialRuleCondition[]>;
-    public readonly credentials!: pulumi.Output<outputs.PolicyAccessCredentialRuleCredential[]>;
+    public readonly credentialPools!: pulumi.Output<outputs.PolicyAccessCredentialRuleCredentialPool[] | undefined>;
+    public readonly credentials!: pulumi.Output<outputs.PolicyAccessCredentialRuleCredential[] | undefined>;
     /**
      * This is the description of the access policy.
      */
@@ -69,6 +70,7 @@ export class PolicyAccessCredentialRule extends pulumi.CustomResource {
             const state = argsOrState as PolicyAccessCredentialRuleState | undefined;
             resourceInputs["action"] = state ? state.action : undefined;
             resourceInputs["conditions"] = state ? state.conditions : undefined;
+            resourceInputs["credentialPools"] = state ? state.credentialPools : undefined;
             resourceInputs["credentials"] = state ? state.credentials : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
@@ -78,6 +80,7 @@ export class PolicyAccessCredentialRule extends pulumi.CustomResource {
             const args = argsOrState as PolicyAccessCredentialRuleArgs | undefined;
             resourceInputs["action"] = args ? args.action : undefined;
             resourceInputs["conditions"] = args ? args.conditions : undefined;
+            resourceInputs["credentialPools"] = args ? args.credentialPools : undefined;
             resourceInputs["credentials"] = args ? args.credentials : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
@@ -103,6 +106,7 @@ export interface PolicyAccessCredentialRuleState {
      * This is for proviidng the set of conditions for the policy.
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.PolicyAccessCredentialRuleCondition>[]>;
+    credentialPools?: pulumi.Input<pulumi.Input<inputs.PolicyAccessCredentialRuleCredentialPool>[]>;
     credentials?: pulumi.Input<pulumi.Input<inputs.PolicyAccessCredentialRuleCredential>[]>;
     /**
      * This is the description of the access policy.
@@ -128,6 +132,7 @@ export interface PolicyAccessCredentialRuleArgs {
      * This is for proviidng the set of conditions for the policy.
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.PolicyAccessCredentialRuleCondition>[]>;
+    credentialPools?: pulumi.Input<pulumi.Input<inputs.PolicyAccessCredentialRuleCredentialPool>[]>;
     credentials?: pulumi.Input<pulumi.Input<inputs.PolicyAccessCredentialRuleCredential>[]>;
     /**
      * This is the description of the access policy.

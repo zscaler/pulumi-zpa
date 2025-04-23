@@ -16,6 +16,8 @@ import (
 //
 // Use the **zpa_scim_groups** data source to get information about a SCIM Group from an Identity Provider (IdP). This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
 //
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
 // ## Example Usage
 //
 // ```go
@@ -72,15 +74,11 @@ type GetSCIMGroupsResult struct {
 }
 
 func GetSCIMGroupsOutput(ctx *pulumi.Context, args GetSCIMGroupsOutputArgs, opts ...pulumi.InvokeOption) GetSCIMGroupsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSCIMGroupsResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetSCIMGroupsResultOutput, error) {
 			args := v.(GetSCIMGroupsArgs)
-			r, err := GetSCIMGroups(ctx, &args, opts...)
-			var s GetSCIMGroupsResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getSCIMGroups:getSCIMGroups", args, GetSCIMGroupsResultOutput{}, options).(GetSCIMGroupsResultOutput), nil
 		}).(GetSCIMGroupsResultOutput)
 }
 

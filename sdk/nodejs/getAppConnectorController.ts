@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -9,6 +11,8 @@ import * as utilities from "./utilities";
  * * [API documentation](https://help.zscaler.com/zpa/managing-app-connectors-using-api)
  *
  * Use the **zpa_app_connector_controller** data source to get information about a app connector created in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group.
+ *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
  *
  * ## Example Usage
  *
@@ -23,7 +27,6 @@ import * as utilities from "./utilities";
  */
 export function getAppConnectorController(args?: GetAppConnectorControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetAppConnectorControllerResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getAppConnectorController:getAppConnectorController", {
         "microtenantId": args.microtenantId,
@@ -48,13 +51,14 @@ export interface GetAppConnectorControllerResult {
     readonly appConnectorGroupId: string;
     readonly appConnectorGroupName: string;
     readonly applicationStartTime: string;
+    readonly assistantVersions: outputs.GetAppConnectorControllerAssistantVersion[];
     readonly controlChannelStatus: string;
     readonly creationTime: string;
     readonly ctrlBrokerName: string;
     readonly currentVersion: string;
     readonly description: string;
     readonly enabled: boolean;
-    readonly enrollmentCert: {[key: string]: any};
+    readonly enrollmentCert: {[key: string]: string};
     readonly expectedUpgradeTime: string;
     readonly expectedVersion: string;
     readonly fingerprint: string;
@@ -71,24 +75,29 @@ export interface GetAppConnectorControllerResult {
     readonly longitude: string;
     readonly microtenantId?: string;
     readonly microtenantName?: string;
+    readonly modifiedBy: string;
     readonly modifiedTime: string;
-    readonly modifiedby: string;
     readonly name?: string;
     readonly platform: string;
+    readonly platformDetail: string;
     readonly previousVersion: string;
     readonly privateIp: string;
     readonly provisioningKeyId: string;
     readonly provisioningKeyName: string;
     readonly publicIp: string;
+    readonly runtimeOs: string;
     readonly sargeVersion: string;
     readonly upgradeAttempt: string;
     readonly upgradeStatus: string;
+    readonly zpnSubModuleUpgradeLists: outputs.GetAppConnectorControllerZpnSubModuleUpgradeList[];
 }
 /**
  * * [Official documentation](https://help.zscaler.com/zpa/about-connectors)
  * * [API documentation](https://help.zscaler.com/zpa/managing-app-connectors-using-api)
  *
  * Use the **zpa_app_connector_controller** data source to get information about a app connector created in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group.
+ *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
  *
  * ## Example Usage
  *
@@ -101,8 +110,14 @@ export interface GetAppConnectorControllerResult {
  * });
  * ```
  */
-export function getAppConnectorControllerOutput(args?: GetAppConnectorControllerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppConnectorControllerResult> {
-    return pulumi.output(args).apply((a: any) => getAppConnectorController(a, opts))
+export function getAppConnectorControllerOutput(args?: GetAppConnectorControllerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppConnectorControllerResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getAppConnectorController:getAppConnectorController", {
+        "microtenantId": args.microtenantId,
+        "microtenantName": args.microtenantName,
+        "name": args.name,
+    }, opts);
 }
 
 /**

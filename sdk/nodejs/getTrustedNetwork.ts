@@ -10,6 +10,8 @@ import * as utilities from "./utilities";
  *
  * The **zpa_trusted_network** data source to get information about a trusted network created in the Zscaler Private Access Mobile Portal. This data source can then be referenced within the following resources:
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * 1. Access Policy
  * 2. Forwarding Policy
  * 3. Inspection Policy
@@ -41,7 +43,6 @@ import * as utilities from "./utilities";
  */
 export function getTrustedNetwork(args?: GetTrustedNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetTrustedNetworkResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getTrustedNetwork:getTrustedNetwork", {
         "id": args.id,
@@ -76,6 +77,8 @@ export interface GetTrustedNetworkResult {
  *
  * The **zpa_trusted_network** data source to get information about a trusted network created in the Zscaler Private Access Mobile Portal. This data source can then be referenced within the following resources:
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * 1. Access Policy
  * 2. Forwarding Policy
  * 3. Inspection Policy
@@ -105,8 +108,13 @@ export interface GetTrustedNetworkResult {
  * export const zpaTrustedNetwork = example1.then(example1 => example1.networkId);
  * ```
  */
-export function getTrustedNetworkOutput(args?: GetTrustedNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrustedNetworkResult> {
-    return pulumi.output(args).apply((a: any) => getTrustedNetwork(a, opts))
+export function getTrustedNetworkOutput(args?: GetTrustedNetworkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTrustedNetworkResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getTrustedNetwork:getTrustedNetwork", {
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

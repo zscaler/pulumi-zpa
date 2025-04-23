@@ -17,13 +17,15 @@ namespace Zscaler.Zpa.Outputs
         public readonly string Comments;
         public readonly string CreationTime;
         public readonly string CustomerId;
+        public readonly string DeliveryTag;
         public readonly string Description;
         public readonly string DisplayName;
         public readonly string Email;
         public readonly bool Enabled;
         public readonly string Eula;
         public readonly bool ForcePwdChange;
-        public readonly string GroupIds;
+        public readonly ImmutableArray<string> GroupIds;
+        public readonly string IamUserId;
         public readonly string Id;
         public readonly bool IsEnabled;
         public readonly bool IsLocked;
@@ -37,10 +39,13 @@ namespace Zscaler.Zpa.Outputs
         /// - (Required) Name of the microtenant controller.
         /// </summary>
         public readonly string Name;
+        public readonly bool OneIdentityUser;
+        public readonly string OperationType;
         public readonly string Password;
         public readonly bool PhoneNumber;
         public readonly string PinSession;
         public readonly bool RoleId;
+        public readonly string SyncVersion;
         public readonly string Timezone;
         public readonly string TmpPassword;
         public readonly string TokenId;
@@ -56,6 +61,8 @@ namespace Zscaler.Zpa.Outputs
 
             string customerId,
 
+            string deliveryTag,
+
             string description,
 
             string displayName,
@@ -68,7 +75,9 @@ namespace Zscaler.Zpa.Outputs
 
             bool forcePwdChange,
 
-            string groupIds,
+            ImmutableArray<string> groupIds,
+
+            string iamUserId,
 
             string id,
 
@@ -90,6 +99,10 @@ namespace Zscaler.Zpa.Outputs
 
             string name,
 
+            bool oneIdentityUser,
+
+            string operationType,
+
             string password,
 
             bool phoneNumber,
@@ -97,6 +110,8 @@ namespace Zscaler.Zpa.Outputs
             string pinSession,
 
             bool roleId,
+
+            string syncVersion,
 
             string timezone,
 
@@ -113,6 +128,7 @@ namespace Zscaler.Zpa.Outputs
             Comments = comments;
             CreationTime = creationTime;
             CustomerId = customerId;
+            DeliveryTag = deliveryTag;
             Description = description;
             DisplayName = displayName;
             Email = email;
@@ -120,6 +136,7 @@ namespace Zscaler.Zpa.Outputs
             Eula = eula;
             ForcePwdChange = forcePwdChange;
             GroupIds = groupIds;
+            IamUserId = iamUserId;
             Id = id;
             IsEnabled = isEnabled;
             IsLocked = isLocked;
@@ -130,10 +147,13 @@ namespace Zscaler.Zpa.Outputs
             ModifiedTime = modifiedTime;
             Modifiedby = modifiedby;
             Name = name;
+            OneIdentityUser = oneIdentityUser;
+            OperationType = operationType;
             Password = password;
             PhoneNumber = phoneNumber;
             PinSession = pinSession;
             RoleId = roleId;
+            SyncVersion = syncVersion;
             Timezone = timezone;
             TmpPassword = tmpPassword;
             TokenId = tokenId;

@@ -70,6 +70,35 @@ namespace Zscaler.Zpa
         /// </summary>
         public static Output<GetAssistantScheduleResult> Invoke(GetAssistantScheduleInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAssistantScheduleResult>("zpa:index/getAssistantSchedule:getAssistantSchedule", args ?? new GetAssistantScheduleInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/deleting-disconnected-app-connectors)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-auto-delete-disconnected-app-connectors-using-api)
+        /// 
+        /// Use the **zpa_app_connector_assistant_schedule** data source to get information about Auto Delete frequency of the App Connector for the specified customer in the Zscaler Private Access cloud.
+        /// 
+        /// &gt; **NOTE** - The `customer_id` attribute is optional and not required during the configuration.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Zpa.GetAppConnectorAssistantSchedule.Invoke(new()
+        ///     {
+        ///         CustomerId = "1234567891012",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAssistantScheduleResult> Invoke(GetAssistantScheduleInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAssistantScheduleResult>("zpa:index/getAssistantSchedule:getAssistantSchedule", args ?? new GetAssistantScheduleInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -48,8 +48,8 @@ type ProvisioningKey struct {
 	EnrollmentCertId pulumi.StringOutput      `pulumi:"enrollmentCertId"`
 	IpAcls           pulumi.StringArrayOutput `pulumi:"ipAcls"`
 	// The maximum number of instances where this provisioning key can be used for enrolling an App Connector or Service Edge.
-	MaxUsage      pulumi.StringOutput    `pulumi:"maxUsage"`
-	MicrotenantId pulumi.StringPtrOutput `pulumi:"microtenantId"`
+	MaxUsage      pulumi.StringOutput `pulumi:"maxUsage"`
+	MicrotenantId pulumi.StringOutput `pulumi:"microtenantId"`
 	// Name of the provisioning key.
 	Name     pulumi.StringOutput    `pulumi:"name"`
 	UiConfig pulumi.StringPtrOutput `pulumi:"uiConfig"`
@@ -341,8 +341,8 @@ func (o ProvisioningKeyOutput) MaxUsage() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProvisioningKey) pulumi.StringOutput { return v.MaxUsage }).(pulumi.StringOutput)
 }
 
-func (o ProvisioningKeyOutput) MicrotenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProvisioningKey) pulumi.StringPtrOutput { return v.MicrotenantId }).(pulumi.StringPtrOutput)
+func (o ProvisioningKeyOutput) MicrotenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProvisioningKey) pulumi.StringOutput { return v.MicrotenantId }).(pulumi.StringOutput)
 }
 
 // Name of the provisioning key.

@@ -87,6 +87,44 @@ namespace Zscaler.Zpa
         /// </summary>
         public static Output<GetApplicationSegmentResult> Invoke(GetApplicationSegmentInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationSegmentResult>("zpa:index/getApplicationSegment:getApplicationSegment", args ?? new GetApplicationSegmentInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Zpa.GetApplicationSegment.Invoke(new()
+        ///     {
+        ///         Name = "example",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Zpa.GetApplicationSegment.Invoke(new()
+        ///     {
+        ///         Id = "123456789",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetApplicationSegmentResult> Invoke(GetApplicationSegmentInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetApplicationSegmentResult>("zpa:index/getApplicationSegment:getApplicationSegment", args ?? new GetApplicationSegmentInvokeArgs(), options.WithDefaults());
     }
 
 

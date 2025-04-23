@@ -87,6 +87,44 @@ namespace Zscaler.Zpa
         /// </summary>
         public static Output<GetAppConnectorGroupResult> Invoke(GetAppConnectorGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppConnectorGroupResult>("zpa:index/getAppConnectorGroup:getAppConnectorGroup", args ?? new GetAppConnectorGroupInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Zpa.GetAppConnectorGroup.Invoke(new()
+        ///     {
+        ///         Name = "DataCenter",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Zpa.GetAppConnectorGroup.Invoke(new()
+        ///     {
+        ///         Id = "123456789",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAppConnectorGroupResult> Invoke(GetAppConnectorGroupInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAppConnectorGroupResult>("zpa:index/getAppConnectorGroup:getAppConnectorGroup", args ?? new GetAppConnectorGroupInvokeArgs(), options.WithDefaults());
     }
 
 

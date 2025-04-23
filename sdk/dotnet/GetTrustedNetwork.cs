@@ -18,6 +18,8 @@ namespace Zscaler.Zpa
         /// 
         /// The **zpa_trusted_network** data source to get information about a trusted network created in the Zscaler Private Access Mobile Portal. This data source can then be referenced within the following resources:
         /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
         /// 1. Access Policy
         /// 2. Forwarding Policy
         /// 3. Inspection Policy
@@ -73,6 +75,8 @@ namespace Zscaler.Zpa
         /// 
         /// The **zpa_trusted_network** data source to get information about a trusted network created in the Zscaler Private Access Mobile Portal. This data source can then be referenced within the following resources:
         /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
         /// 1. Access Policy
         /// 2. Forwarding Policy
         /// 3. Inspection Policy
@@ -120,6 +124,63 @@ namespace Zscaler.Zpa
         /// ```
         /// </summary>
         public static Output<GetTrustedNetworkResult> Invoke(GetTrustedNetworkInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTrustedNetworkResult>("zpa:index/getTrustedNetwork:getTrustedNetwork", args ?? new GetTrustedNetworkInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/client-connector/about-trusted-networks)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-trusted-network-details-using-api)
+        /// 
+        /// The **zpa_trusted_network** data source to get information about a trusted network created in the Zscaler Private Access Mobile Portal. This data source can then be referenced within the following resources:
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// 1. Access Policy
+        /// 2. Forwarding Policy
+        /// 3. Inspection Policy
+        /// 4. Isolation Policy
+        /// 5. Service Edge Group.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Zpa.GetTrustedNetwork.Invoke(new()
+        ///     {
+        ///         Name = "trusted_network_name",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// &gt; **NOTE** To query trusted network that are associated with a specific Zscaler cloud, it is required to append the cloud name to the name of the trusted network as the below example:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example1 = Zpa.GetTrustedNetwork.Invoke(new()
+        ///     {
+        ///         Name = "Corporate-Network (zscalertwo.net)",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["zpaTrustedNetwork"] = example1.Apply(getTrustedNetworkResult =&gt; getTrustedNetworkResult.NetworkId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTrustedNetworkResult> Invoke(GetTrustedNetworkInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetTrustedNetworkResult>("zpa:index/getTrustedNetwork:getTrustedNetwork", args ?? new GetTrustedNetworkInvokeArgs(), options.WithDefaults());
     }
 

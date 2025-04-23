@@ -70,15 +70,11 @@ type LookupSegmentGroupResult struct {
 }
 
 func LookupSegmentGroupOutput(ctx *pulumi.Context, args LookupSegmentGroupOutputArgs, opts ...pulumi.InvokeOption) LookupSegmentGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSegmentGroupResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupSegmentGroupResultOutput, error) {
 			args := v.(LookupSegmentGroupArgs)
-			r, err := LookupSegmentGroup(ctx, &args, opts...)
-			var s LookupSegmentGroupResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getSegmentGroup:getSegmentGroup", args, LookupSegmentGroupResultOutput{}, options).(LookupSegmentGroupResultOutput), nil
 		}).(LookupSegmentGroupResultOutput)
 }
 

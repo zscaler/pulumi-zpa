@@ -10,6 +10,7 @@ export interface ApplicationSegmentBrowserAccessClientlessApp {
      * If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.
      */
     allowOptions?: boolean;
+    appId: string;
     /**
      * Port for the BA app.
      */
@@ -22,6 +23,10 @@ export interface ApplicationSegmentBrowserAccessClientlessApp {
      * ID of the BA certificate.
      */
     certificateId?: string;
+    /**
+     * ID of the BA certificate.
+     */
+    cname: string;
     description?: string;
     /**
      * Domain name or IP address of the BA app.
@@ -29,6 +34,7 @@ export interface ApplicationSegmentBrowserAccessClientlessApp {
     domain?: string;
     enabled: boolean;
     id: string;
+    microtenantId?: string;
     name: string;
     /**
      * Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
@@ -51,19 +57,21 @@ export interface ApplicationSegmentBrowserAccessUdpPortRange {
 }
 
 export interface ApplicationSegmentInspectionCommonAppsDto {
-    appsConfigs?: outputs.ApplicationSegmentInspectionCommonAppsDtoAppsConfig[];
+    appsConfigs: outputs.ApplicationSegmentInspectionCommonAppsDtoAppsConfig[];
 }
 
 export interface ApplicationSegmentInspectionCommonAppsDtoAppsConfig {
-    appTypes?: string[];
-    applicationPort?: string;
-    applicationProtocol?: string;
-    certificateId?: string;
-    domain?: string;
+    appId: string;
+    appTypes: string[];
+    applicationPort: string;
+    applicationProtocol: string;
+    certificateId: string;
+    description: string;
+    domain: string;
     enabled: boolean;
-    id: string;
-    name?: string;
-    trustUntrustedCert?: boolean;
+    inspectAppId: string;
+    name: string;
+    trustUntrustedCert: boolean;
 }
 
 export interface ApplicationSegmentInspectionServerGroup {
@@ -81,18 +89,19 @@ export interface ApplicationSegmentInspectionUdpPortRange {
 }
 
 export interface ApplicationSegmentPRACommonAppsDto {
-    appsConfigs?: outputs.ApplicationSegmentPRACommonAppsDtoAppsConfig[];
+    appsConfigs: outputs.ApplicationSegmentPRACommonAppsDtoAppsConfig[];
 }
 
 export interface ApplicationSegmentPRACommonAppsDtoAppsConfig {
-    appTypes?: string[];
-    applicationPort?: string;
-    applicationProtocol?: string;
-    connectionSecurity?: string;
-    domain?: string;
+    appId: string;
+    appTypes: string[];
+    applicationPort: string;
+    applicationProtocol: string;
+    connectionSecurity: string;
+    domain: string;
     enabled: boolean;
-    id: string;
-    name?: string;
+    name: string;
+    praAppId: string;
 }
 
 export interface ApplicationSegmentPRAServerGroup {
@@ -128,6 +137,7 @@ export interface BrowserAccessClientlessApp {
      * If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.
      */
     allowOptions?: boolean;
+    appId: string;
     /**
      * Port for the BA app.
      */
@@ -140,6 +150,10 @@ export interface BrowserAccessClientlessApp {
      * ID of the BA certificate.
      */
     certificateId?: string;
+    /**
+     * ID of the BA certificate.
+     */
+    cname: string;
     description?: string;
     /**
      * Domain name or IP address of the BA app.
@@ -147,6 +161,7 @@ export interface BrowserAccessClientlessApp {
     domain?: string;
     enabled: boolean;
     id: string;
+    microtenantId?: string;
     name: string;
     /**
      * Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
@@ -214,6 +229,54 @@ export interface CloudBrowserIsolationExternalProfileUserExperienceForwardToZia 
     pacFileUrl: string;
 }
 
+export interface GetAppConnectorControllerAssistantVersion {
+    appConnectorGroupId: string;
+    applicationStartTime: string;
+    brokerId: string;
+    creationTime: string;
+    ctrlChannelStatus: string;
+    currentVersion: string;
+    disableAutoUpdate: boolean;
+    expectedVersion: string;
+    id: string;
+    lastBrokerConnectTime: string;
+    lastBrokerDisconnectTime: string;
+    lastUpgradedTime: string;
+    latitude: string;
+    loneWarrior: boolean;
+    longitude: string;
+    modifiedBy: string;
+    modifiedTime: string;
+    mtunnelId: string;
+    platform: string;
+    platformDetail: string;
+    previousVersion: string;
+    privateIp: string;
+    publicIp: string;
+    restartTimeInSec: string;
+    runtimeOs: string;
+    sargeVersion: string;
+    systemStartTime: string;
+    upgradeAttempt: string;
+    upgradeNowOnce: boolean;
+    upgradeStatus: string;
+}
+
+export interface GetAppConnectorControllerZpnSubModuleUpgradeList {
+    creationTime: string;
+    currentVersion: string;
+    entityGid: string;
+    entityType: string;
+    expectedVersion: string;
+    id: string;
+    modifiedBy: string;
+    modifiedTime: string;
+    previousVersion: string;
+    role: string;
+    upgradeStatus: string;
+    upgradeTime: string;
+}
+
 export interface GetAppConnectorGroupConnector {
     appconnectorGroupId: string;
     appconnectorGroupName: string;
@@ -224,7 +287,7 @@ export interface GetAppConnectorGroupConnector {
     currentVersion: string;
     description: string;
     enabled: boolean;
-    enrollmentCert: {[key: string]: any};
+    enrollmentCert: {[key: string]: string};
     expectedUpgradeTime: string;
     expectedVersion: string;
     fingerprint: string;
@@ -282,6 +345,7 @@ export interface GetApplicationSegmentBrowserAccessClientlessApp {
      */
     id: string;
     localDomain: string;
+    microtenantId: string;
     /**
      * - (String) This field defines the name of the server.
      */
@@ -318,6 +382,7 @@ export interface GetApplicationSegmentInspectionInspectionApp {
     enabled: boolean;
     id: string;
     name: string;
+    trustedUntrustedCert: boolean;
 }
 
 export interface GetApplicationSegmentInspectionServerGroup {
@@ -367,15 +432,7 @@ export interface GetApplicationSegmentPRAUdpPortRange {
 }
 
 export interface GetApplicationSegmentServerGroup {
-    configSpace: string;
-    creationTime: string;
-    description: string;
-    dynamicDiscovery: boolean;
-    enabled: boolean;
-    id: string;
-    modifiedTime: string;
-    modifiedby: string;
-    name: string;
+    ids: string[];
 }
 
 export interface GetApplicationSegmentTcpPortRange {
@@ -450,13 +507,19 @@ export interface GetCloudConnectorGroupCloudConnector {
     modifiedTime: string;
     modifiedby: string;
     name: string;
-    signingCert: {[key: string]: any};
+    signingCert: {[key: string]: string};
 }
 
 export interface GetCustomerVersionProfileCustomScopeCustomerId {
     customerId: string;
     excludeConstellation: boolean;
+    isPartner: boolean;
     name: string;
+}
+
+export interface GetCustomerVersionProfileCustomScopeRequestCustomerId {
+    addCustomerIds: string[];
+    deleteCustomerIds: string[];
 }
 
 export interface GetCustomerVersionProfileVersion {
@@ -747,13 +810,15 @@ export interface GetMicrotenantUser {
     comments: string;
     creationTime: string;
     customerId: string;
+    deliveryTag: string;
     description: string;
     displayName: string;
     email: string;
     enabled: boolean;
     eula: string;
     forcePwdChange: boolean;
-    groupIds: string;
+    groupIds: string[];
+    iamUserId: string;
     id: string;
     isEnabled: boolean;
     isLocked: boolean;
@@ -767,10 +832,13 @@ export interface GetMicrotenantUser {
      * - (Required) Name of the microtenant controller.
      */
     name: string;
+    oneIdentityUser: boolean;
+    operationType: string;
     password: string;
     phoneNumber: boolean;
     pinSession: string;
     roleId: boolean;
+    syncVersion: string;
     timezone: string;
     tmpPassword: string;
     tokenId: string;
@@ -837,6 +905,10 @@ export interface GetPRAConsolePraPortal {
      * - (Required) The name of the privileged console.
      */
     name: string;
+}
+
+export interface GetPRACredentialPoolCredential {
+    ids?: string[];
 }
 
 export interface GetPolicyTypeRule {
@@ -985,51 +1057,8 @@ export interface GetSegmentGroupApplicationServerGroup {
 }
 
 export interface GetServerGroupAppConnectorGroup {
-    cityCountry: string;
-    connectors: outputs.GetServerGroupAppConnectorGroupConnector[];
-    countryCode: string;
-    creationTime: string;
-    description: string;
-    dnsQueryType: string;
-    enabled: boolean;
-    geolocationId: string;
     id: string;
-    latitude: string;
-    location: string;
-    longitude: string;
-    modifiedTime: string;
-    modifiedby: string;
     name: string;
-    serverGroups: outputs.GetServerGroupAppConnectorGroupServerGroup[];
-    siemAppConnectorGroup: boolean;
-    upgradeDay: string;
-    upgradeTimeInSecs: string;
-    versionProfileId: string;
-}
-
-export interface GetServerGroupAppConnectorGroupConnector {
-    creationTime: string;
-    description: string;
-    enabled: boolean;
-    fingerprint: string;
-    id: string;
-    issuedCertId: string;
-    modifiedTime: string;
-    modifiedby: string;
-    name?: string;
-    upgradeAttempt: string;
-}
-
-export interface GetServerGroupAppConnectorGroupServerGroup {
-    configSpace: string;
-    creationTime: string;
-    description: string;
-    dynamicDiscovery: boolean;
-    enabled: boolean;
-    id: string;
-    modifiedTime: string;
-    modifiedby: string;
-    name?: string;
 }
 
 export interface GetServerGroupApplication {
@@ -1038,26 +1067,51 @@ export interface GetServerGroupApplication {
 }
 
 export interface GetServerGroupServer {
-    address: string;
-    appServerGroupIds: string[];
-    configSpace: string;
-    creationTime: string;
-    description: string;
-    enabled: boolean;
     id: string;
-    modifiedTime: string;
-    modifiedby: string;
     name: string;
 }
 
-export interface GetServiceEdgeControllerZpnSubModuleUpgradeList {
+export interface GetServiceEdgeControllerPrivateBrokerVersion {
+    applicationStartTime: string;
+    brokerId: string;
+    creationTime: string;
+    currentVersion: string;
+    disableAutoUpdate: boolean;
+    id: string;
+    lastConnectTime: string;
+    lastDisconnectTime: string;
+    lastUpgradedTime: string;
+    loneWarrior: boolean;
+    modifiedBy: string;
+    modifiedTime: string;
+    platform: string;
+    platformDetail: string;
+    previousVersion: string;
+    privateIp: string;
+    publicIp: string;
+    restartInstructions: string;
+    restartTimeInSec: string;
+    runtimeOs: string;
+    sargeVersion: string;
+    serviceEdgeGroupId: string;
+    systemStartTime: string;
+    tunnelId: string;
+    upgradeAttempt: string;
+    upgradeNowOnce: boolean;
+    upgradeStatus: string;
+    zpnSubModuleUpgrades: outputs.GetServiceEdgeControllerPrivateBrokerVersionZpnSubModuleUpgrade[];
+}
+
+export interface GetServiceEdgeControllerPrivateBrokerVersionZpnSubModuleUpgrade {
     creationTime: string;
     currentVersion: string;
     entityGid: string;
+    entityType: string;
     expectedVersion: string;
     id: string;
     modifiedBy: string;
     modifiedTime: string;
+    previousVersion: string;
     role: string;
     upgradeStatus: string;
     upgradeTime: string;
@@ -1071,12 +1125,12 @@ export interface GetServiceEdgeGroupServiceEdge {
     currentVersion: string;
     description: string;
     enabled: boolean;
-    enrollmentCert: {[key: string]: any};
+    enrollmentCert: {[key: string]: string};
     expectedUpgradeTime: string;
     expectedVersion: string;
     fingerprint: string;
     id: string;
-    ipacl: string;
+    ipAcl: string;
     issuedCertId: string;
     lastBrokerConnectTime: string;
     lastBrokerConnectTimeDuration: string;
@@ -1084,35 +1138,72 @@ export interface GetServiceEdgeGroupServiceEdge {
     lastBrokerDisconnectTimeDuration: string;
     lastUpgradeTime: string;
     latitude: string;
-    listenIps: string;
+    listenIps: string[];
     location: string;
     longitude: string;
+    microtenantId?: string;
+    microtenantName?: string;
+    modifiedBy: string;
     modifiedTime: string;
-    modifiedby: string;
-    name: string;
+    name?: string;
     platform: string;
     previousVersion: string;
+    privateBrokerVersions: outputs.GetServiceEdgeGroupServiceEdgePrivateBrokerVersion[];
     privateIp: string;
     provisioningKeyId: string;
     provisioningKeyName: string;
     publicIp: string;
     publishIps: string[];
+    publishIpv6: boolean;
+    runtimeOs: string;
     sargeVersion: string;
     serviceEdgeGroupId: string;
     serviceEdgeGroupName: string;
     upgradeAttempt: string;
     upgradeStatus: string;
-    zpnSubModuleUpgradeLists: outputs.GetServiceEdgeGroupServiceEdgeZpnSubModuleUpgradeList[];
 }
 
-export interface GetServiceEdgeGroupServiceEdgeZpnSubModuleUpgradeList {
+export interface GetServiceEdgeGroupServiceEdgePrivateBrokerVersion {
+    applicationStartTime: string;
+    brokerId: string;
+    creationTime: string;
+    currentVersion: string;
+    disableAutoUpdate: boolean;
+    id: string;
+    lastConnectTime: string;
+    lastDisconnectTime: string;
+    lastUpgradedTime: string;
+    loneWarrior: boolean;
+    modifiedBy: string;
+    modifiedTime: string;
+    platform: string;
+    platformDetail: string;
+    previousVersion: string;
+    privateIp: string;
+    publicIp: string;
+    restartInstructions: string;
+    restartTimeInSec: string;
+    runtimeOs: string;
+    sargeVersion: string;
+    serviceEdgeGroupId: string;
+    systemStartTime: string;
+    tunnelId: string;
+    upgradeAttempt: string;
+    upgradeNowOnce: boolean;
+    upgradeStatus: string;
+    zpnSubModuleUpgrades: outputs.GetServiceEdgeGroupServiceEdgePrivateBrokerVersionZpnSubModuleUpgrade[];
+}
+
+export interface GetServiceEdgeGroupServiceEdgePrivateBrokerVersionZpnSubModuleUpgrade {
     creationTime: string;
     currentVersion: string;
     entityGid: string;
+    entityType: string;
     expectedVersion: string;
     id: string;
+    modifiedBy: string;
     modifiedTime: string;
-    modifiedby: string;
+    previousVersion: string;
     role: string;
     upgradeStatus: string;
     upgradeTime: string;
@@ -1123,8 +1214,8 @@ export interface GetServiceEdgeGroupTrustedNetwork {
     domain: string;
     id: string;
     masterCustomerId: string;
+    modifiedBy: string;
     modifiedTime: string;
-    modifiedby: string;
     name: string;
     networkId: string;
     zscalerCloud: string;
@@ -1259,7 +1350,7 @@ export interface LSSConfigControllerPolicyRuleResource {
     /**
      * This is for providing a customer message for the user.
      */
-    customMsg?: string;
+    customMsg: string;
     /**
      * This is for providing a customer message for the user.
      */
@@ -1358,9 +1449,6 @@ export interface PRAApprovalWorkingHour {
 }
 
 export interface PRAConsolePraApplication {
-    /**
-     * The unique identifier of the Privileged Remote Access-enabled application
-     */
     id: string;
 }
 
@@ -1369,6 +1457,10 @@ export interface PRAConsolePraPortal {
      * The unique identifier of the privileged portal
      */
     ids: string[];
+}
+
+export interface PRACredentialPoolCredential {
+    ids?: string[];
 }
 
 export interface PolicyAccessCredentialRuleCondition {
@@ -1398,7 +1490,11 @@ export interface PolicyAccessCredentialRuleConditionOperandEntryValue {
 }
 
 export interface PolicyAccessCredentialRuleCredential {
-    id: string;
+    id?: string;
+}
+
+export interface PolicyAccessCredentialRuleCredentialPool {
+    id?: string;
 }
 
 export interface PolicyAccessForwardingRuleCondition {
@@ -1587,6 +1683,46 @@ export interface PolicyAccessIsolationRuleV2ConditionOperandEntryValue {
     rhs?: string;
 }
 
+export interface PolicyAccessRedirectionRuleCondition {
+    id: string;
+    microtenantId: string;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands?: outputs.PolicyAccessRedirectionRuleConditionOperand[];
+    operator: string;
+}
+
+export interface PolicyAccessRedirectionRuleConditionOperand {
+    id: string;
+    idpId: string;
+    /**
+     * This signifies the key for the object type. String ID example: id
+     */
+    lhs: string;
+    /**
+     * This denotes the value for the given object type. Its value depends upon the key.
+     */
+    microtenantId: string;
+    name: string;
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: string;
+    /**
+     * This denotes the value for the given object type. Its value depends upon the key.
+     */
+    rhs: string;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    rhsLists: string[];
+}
+
+export interface PolicyAccessRedirectionRuleServiceEdgeGroup {
+    ids?: string[];
+}
+
 export interface PolicyAccessReorderRuleRule {
     id: string;
     order: string;
@@ -1668,12 +1804,12 @@ export interface PolicyAccessRuleV2ConditionOperand {
     /**
      * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
      */
-    values?: string[];
+    values: string[];
 }
 
 export interface PolicyAccessRuleV2ConditionOperandEntryValue {
-    lhs?: string;
-    rhs?: string;
+    lhs: string;
+    rhs: string;
 }
 
 export interface PolicyAccessTimeOutRuleCondition {
@@ -1830,7 +1966,11 @@ export interface PolicyCredentialRuleConditionOperandEntryValue {
 }
 
 export interface PolicyCredentialRuleCredential {
-    id: string;
+    id?: string;
+}
+
+export interface PolicyCredentialRuleCredentialPool {
+    id?: string;
 }
 
 export interface PolicyForwardingRuleV2Condition {
@@ -2012,9 +2152,6 @@ export interface PraApprovalControllerWorkingHour {
 }
 
 export interface PraConsoleControllerPraApplication {
-    /**
-     * The unique identifier of the Privileged Remote Access-enabled application
-     */
     id: string;
 }
 
@@ -2042,7 +2179,7 @@ export interface ServerGroupServer {
 }
 
 export interface ServiceEdgeGroupServiceEdge {
-    ids: string[];
+    ids?: string[];
 }
 
 export interface ServiceEdgeGroupTrustedNetwork {

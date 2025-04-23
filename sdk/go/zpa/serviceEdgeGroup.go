@@ -19,6 +19,87 @@ import (
 //
 // ## Example Usage
 //
+// ### Using Version Profile Name
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Service Edge Group resource - Trusted Network
+//			_, err := zpa.NewServiceEdgeGroup(ctx, "serviceEdgeGroupSjc", &zpa.ServiceEdgeGroupArgs{
+//				Description:        pulumi.String("Service Edge Group in San Jose"),
+//				Enabled:            pulumi.Bool(true),
+//				IsPublic:           pulumi.Bool(true),
+//				UpgradeDay:         pulumi.String("SUNDAY"),
+//				UpgradeTimeInSecs:  pulumi.String("66600"),
+//				Latitude:           pulumi.String("37.3382082"),
+//				Longitude:          pulumi.String("-121.8863286"),
+//				Location:           pulumi.String("San Jose, CA, USA"),
+//				VersionProfileName: pulumi.String("New Release"),
+//				TrustedNetworks: zpa.ServiceEdgeGroupTrustedNetworkArray{
+//					&zpa.ServiceEdgeGroupTrustedNetworkArgs{
+//						Ids: pulumi.StringArray{
+//							data.Zpa_trusted_network.Example.Id,
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Service Edge Group resource - No Trusted Network
+//			_, err := zpa.NewServiceEdgeGroup(ctx, "serviceEdgeGroupNyc", &zpa.ServiceEdgeGroupArgs{
+//				Description:       pulumi.String("Service Edge Group in New York"),
+//				Enabled:           pulumi.Bool(true),
+//				IsPublic:          pulumi.Bool(true),
+//				UpgradeDay:        pulumi.String("SUNDAY"),
+//				UpgradeTimeInSecs: pulumi.String("66600"),
+//				Latitude:          pulumi.String("40.7128"),
+//				Longitude:         pulumi.String("-73.935242"),
+//				Location:          pulumi.String("New York, NY, USA"),
+//				VersionProfileId:  pulumi.Any(data.Zpa_customer_version_profile.This.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Using Version Profile ID
+//
+//	data "getCustomerVersionProfile" "this" {
+//	  name = "New Release"
+//	}
+//
 // ```go
 // package main
 //
@@ -149,9 +230,11 @@ type ServiceEdgeGroup struct {
 	UpgradeDay pulumi.StringPtrOutput `pulumi:"upgradeDay"`
 	// Service Edges in this group will attempt to update to a newer version of the software during this specified time.
 	UpgradeTimeInSecs pulumi.StringPtrOutput `pulumi:"upgradeTimeInSecs"`
+	UseInDrMode       pulumi.BoolOutput      `pulumi:"useInDrMode"`
 	// ID of the version profile.
 	VersionProfileId pulumi.StringOutput `pulumi:"versionProfileId"`
-	// ID of the version profile.
+	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
+	// overrideVersionProfile is set to true
 	VersionProfileName pulumi.StringOutput `pulumi:"versionProfileName"`
 	// ID of the version profile.
 	VersionProfileVisibilityScope pulumi.StringOutput `pulumi:"versionProfileVisibilityScope"`
@@ -231,9 +314,11 @@ type serviceEdgeGroupState struct {
 	UpgradeDay *string `pulumi:"upgradeDay"`
 	// Service Edges in this group will attempt to update to a newer version of the software during this specified time.
 	UpgradeTimeInSecs *string `pulumi:"upgradeTimeInSecs"`
+	UseInDrMode       *bool   `pulumi:"useInDrMode"`
 	// ID of the version profile.
 	VersionProfileId *string `pulumi:"versionProfileId"`
-	// ID of the version profile.
+	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
+	// overrideVersionProfile is set to true
 	VersionProfileName *string `pulumi:"versionProfileName"`
 	// ID of the version profile.
 	VersionProfileVisibilityScope *string `pulumi:"versionProfileVisibilityScope"`
@@ -275,9 +360,11 @@ type ServiceEdgeGroupState struct {
 	UpgradeDay pulumi.StringPtrInput
 	// Service Edges in this group will attempt to update to a newer version of the software during this specified time.
 	UpgradeTimeInSecs pulumi.StringPtrInput
+	UseInDrMode       pulumi.BoolPtrInput
 	// ID of the version profile.
 	VersionProfileId pulumi.StringPtrInput
-	// ID of the version profile.
+	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
+	// overrideVersionProfile is set to true
 	VersionProfileName pulumi.StringPtrInput
 	// ID of the version profile.
 	VersionProfileVisibilityScope pulumi.StringPtrInput
@@ -323,9 +410,11 @@ type serviceEdgeGroupArgs struct {
 	UpgradeDay *string `pulumi:"upgradeDay"`
 	// Service Edges in this group will attempt to update to a newer version of the software during this specified time.
 	UpgradeTimeInSecs *string `pulumi:"upgradeTimeInSecs"`
+	UseInDrMode       *bool   `pulumi:"useInDrMode"`
 	// ID of the version profile.
 	VersionProfileId *string `pulumi:"versionProfileId"`
-	// ID of the version profile.
+	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
+	// overrideVersionProfile is set to true
 	VersionProfileName *string `pulumi:"versionProfileName"`
 	// ID of the version profile.
 	VersionProfileVisibilityScope *string `pulumi:"versionProfileVisibilityScope"`
@@ -368,9 +457,11 @@ type ServiceEdgeGroupArgs struct {
 	UpgradeDay pulumi.StringPtrInput
 	// Service Edges in this group will attempt to update to a newer version of the software during this specified time.
 	UpgradeTimeInSecs pulumi.StringPtrInput
+	UseInDrMode       pulumi.BoolPtrInput
 	// ID of the version profile.
 	VersionProfileId pulumi.StringPtrInput
-	// ID of the version profile.
+	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
+	// overrideVersionProfile is set to true
 	VersionProfileName pulumi.StringPtrInput
 	// ID of the version profile.
 	VersionProfileVisibilityScope pulumi.StringPtrInput
@@ -552,12 +643,17 @@ func (o ServiceEdgeGroupOutput) UpgradeTimeInSecs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceEdgeGroup) pulumi.StringPtrOutput { return v.UpgradeTimeInSecs }).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceEdgeGroupOutput) UseInDrMode() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceEdgeGroup) pulumi.BoolOutput { return v.UseInDrMode }).(pulumi.BoolOutput)
+}
+
 // ID of the version profile.
 func (o ServiceEdgeGroupOutput) VersionProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceEdgeGroup) pulumi.StringOutput { return v.VersionProfileId }).(pulumi.StringOutput)
 }
 
-// ID of the version profile.
+// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
+// overrideVersionProfile is set to true
 func (o ServiceEdgeGroupOutput) VersionProfileName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceEdgeGroup) pulumi.StringOutput { return v.VersionProfileName }).(pulumi.StringOutput)
 }

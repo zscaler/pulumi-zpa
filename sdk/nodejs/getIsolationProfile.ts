@@ -10,6 +10,8 @@ import * as utilities from "./utilities";
  *
  * Use the **zpa_isolation_profile** data source to get information about an isolation profile in the Zscaler Private Access cloud. This data source is required when configuring an isolation policy rule resource
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -23,7 +25,6 @@ import * as utilities from "./utilities";
  */
 export function getIsolationProfile(args?: GetIsolationProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetIsolationProfileResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getIsolationProfile:getIsolationProfile", {
         "name": args.name,
@@ -64,6 +65,8 @@ export interface GetIsolationProfileResult {
  *
  * Use the **zpa_isolation_profile** data source to get information about an isolation profile in the Zscaler Private Access cloud. This data source is required when configuring an isolation policy rule resource
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -75,8 +78,12 @@ export interface GetIsolationProfileResult {
  * });
  * ```
  */
-export function getIsolationProfileOutput(args?: GetIsolationProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIsolationProfileResult> {
-    return pulumi.output(args).apply((a: any) => getIsolationProfile(a, opts))
+export function getIsolationProfileOutput(args?: GetIsolationProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIsolationProfileResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getIsolationProfile:getIsolationProfile", {
+        "name": args.name,
+    }, opts);
 }
 
 /**

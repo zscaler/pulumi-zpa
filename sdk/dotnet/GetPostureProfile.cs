@@ -18,6 +18,8 @@ namespace Zscaler.Zpa
         /// 
         /// Use the **zpa_posture_profile** data source to get information about a posture profile created in the Zscaler Private Access Mobile Portal. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
         /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -117,6 +119,8 @@ namespace Zscaler.Zpa
         /// 
         /// Use the **zpa_posture_profile** data source to get information about a posture profile created in the Zscaler Private Access Mobile Portal. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
         /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -208,6 +212,107 @@ namespace Zscaler.Zpa
         /// ```
         /// </summary>
         public static Output<GetPostureProfileResult> Invoke(GetPostureProfileInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPostureProfileResult>("zpa:index/getPostureProfile:getPostureProfile", args ?? new GetPostureProfileInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/client-connector/about-device-posture-profiles)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-posture-profile-details-using-api)
+        /// 
+        /// Use the **zpa_posture_profile** data source to get information about a posture profile created in the Zscaler Private Access Mobile Portal. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example1 = Zpa.GetPostureProfile.Invoke(new()
+        ///     {
+        ///         Name = "CrowdStrike_ZPA_ZTA_40",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example2 = Zpa.GetPostureProfile.Invoke(new()
+        ///     {
+        ///         Name = "Detect SentinelOne",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example3 = Zpa.GetPostureProfile.Invoke(new()
+        ///     {
+        ///         Name = "domain_joined",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// &gt; **NOTE** To query posture profiles that are associated with a specific Zscaler cloud, it is required to append the cloud name to the name of the posture profile as the below example:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example1 = Zpa.GetPostureProfile.Invoke(new()
+        ///     {
+        ///         Name = "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// &gt; **NOTE** When associating a posture profile with one of supported resources, the following parameter must be exported: ``posture_udid`` instead of the ``id`` of the resource.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example1 = Zpa.GetPostureProfile.Invoke(new()
+        ///     {
+        ///         Name = "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["zpaPostureProfile"] = example1.Apply(getPostureProfileResult =&gt; getPostureProfileResult.PostureUdid),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPostureProfileResult> Invoke(GetPostureProfileInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostureProfileResult>("zpa:index/getPostureProfile:getPostureProfile", args ?? new GetPostureProfileInvokeArgs(), options.WithDefaults());
     }
 

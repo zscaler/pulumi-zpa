@@ -67,6 +67,34 @@ namespace Zscaler.Zpa
         /// </summary>
         public static Output<GetInspectionAllPredefinedControlsResult> Invoke(GetInspectionAllPredefinedControlsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInspectionAllPredefinedControlsResult>("zpa:index/getInspectionAllPredefinedControls:getInspectionAllPredefinedControls", args ?? new GetInspectionAllPredefinedControlsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+        /// 
+        /// Use the **zpa_inspection_all_predefined_controls** data source to get information about all OWASP predefined control and prefedined control version by group name. The `Preprocessors` predefined control is the default predefined control, This data source is always required, when creating an inspection profile.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Zpa.GetInspectionAllPredefinedControls.Invoke(new()
+        ///     {
+        ///         GroupName = "Preprocessors",
+        ///         Version = "OWASP_CRS/3.3.0",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInspectionAllPredefinedControlsResult> Invoke(GetInspectionAllPredefinedControlsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInspectionAllPredefinedControlsResult>("zpa:index/getInspectionAllPredefinedControls:getInspectionAllPredefinedControls", args ?? new GetInspectionAllPredefinedControlsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -10,13 +10,15 @@ import * as utilities from "./utilities";
  *
  * Use the **zpa_pra_portal_controller** data source to get information about a privileged remote access portal created in the Zscaler Private Access cloud. This data source can then be referenced in an privileged remote access console resource.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getPRAPortal({
+ * const _this = zpa.getPRAPortal({
  *     name: "Example",
  * });
  * ```
@@ -25,7 +27,6 @@ import * as utilities from "./utilities";
 export function getPraPortalController(args?: GetPraPortalControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetPraPortalControllerResult> {
     pulumi.log.warn("getPraPortalController is deprecated: zpa.index/getpraportalcontroller.getPraPortalController has been deprecated in favor of zpa.index/getpraportal.getPRAPortal")
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getPraPortalController:getPraPortalController", {
         "id": args.id,
@@ -67,20 +68,28 @@ export interface GetPraPortalControllerResult {
  *
  * Use the **zpa_pra_portal_controller** data source to get information about a privileged remote access portal created in the Zscaler Private Access cloud. This data source can then be referenced in an privileged remote access console resource.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getPRAPortal({
+ * const _this = zpa.getPRAPortal({
  *     name: "Example",
  * });
  * ```
  */
 /** @deprecated zpa.index/getpraportalcontroller.getPraPortalController has been deprecated in favor of zpa.index/getpraportal.getPRAPortal */
-export function getPraPortalControllerOutput(args?: GetPraPortalControllerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPraPortalControllerResult> {
-    return pulumi.output(args).apply((a: any) => getPraPortalController(a, opts))
+export function getPraPortalControllerOutput(args?: GetPraPortalControllerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPraPortalControllerResult> {
+    pulumi.log.warn("getPraPortalController is deprecated: zpa.index/getpraportalcontroller.getPraPortalController has been deprecated in favor of zpa.index/getpraportal.getPRAPortal")
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getPraPortalController:getPraPortalController", {
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

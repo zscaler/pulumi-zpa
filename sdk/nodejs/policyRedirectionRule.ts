@@ -29,6 +29,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import zpa:index/policyRedirectionRule:PolicyRedirectionRule example <rule_id>
  * ```
+ *
+ * @deprecated zpa.index/policyredirectionrule.PolicyRedirectionRule has been deprecated in favor of zpa.index/policyaccessredirectionrule.PolicyAccessRedirectionRule
  */
 export class PolicyRedirectionRule extends pulumi.CustomResource {
     /**
@@ -41,6 +43,7 @@ export class PolicyRedirectionRule extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: PolicyRedirectionRuleState, opts?: pulumi.CustomResourceOptions): PolicyRedirectionRule {
+        pulumi.log.warn("PolicyRedirectionRule is deprecated: zpa.index/policyredirectionrule.PolicyRedirectionRule has been deprecated in favor of zpa.index/policyaccessredirectionrule.PolicyAccessRedirectionRule")
         return new PolicyRedirectionRule(name, <any>state, { ...opts, id: id });
     }
 
@@ -74,7 +77,7 @@ export class PolicyRedirectionRule extends pulumi.CustomResource {
     /**
      * This is for providing a customer message for the user.
      */
-    public readonly customMsg!: pulumi.Output<string | undefined>;
+    public readonly customMsg!: pulumi.Output<string>;
     /**
      * This is for providing a customer message for the user.
      */
@@ -115,8 +118,11 @@ export class PolicyRedirectionRule extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated zpa.index/policyredirectionrule.PolicyRedirectionRule has been deprecated in favor of zpa.index/policyaccessredirectionrule.PolicyAccessRedirectionRule */
     constructor(name: string, args?: PolicyRedirectionRuleArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated zpa.index/policyredirectionrule.PolicyRedirectionRule has been deprecated in favor of zpa.index/policyaccessredirectionrule.PolicyAccessRedirectionRule */
     constructor(name: string, argsOrState?: PolicyRedirectionRuleArgs | PolicyRedirectionRuleState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("PolicyRedirectionRule is deprecated: zpa.index/policyredirectionrule.PolicyRedirectionRule has been deprecated in favor of zpa.index/policyaccessredirectionrule.PolicyAccessRedirectionRule")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

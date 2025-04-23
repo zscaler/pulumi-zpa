@@ -16,6 +16,8 @@ import (
 //
 // Use the **zpa_isolation_profile** data source to get information about an isolation profile in the Zscaler Private Access cloud. This data source is required when configuring an isolation policy rule resource
 //
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
 // ## Example Usage
 //
 // ```go
@@ -73,15 +75,11 @@ type GetIsolationProfileResult struct {
 }
 
 func GetIsolationProfileOutput(ctx *pulumi.Context, args GetIsolationProfileOutputArgs, opts ...pulumi.InvokeOption) GetIsolationProfileResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetIsolationProfileResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetIsolationProfileResultOutput, error) {
 			args := v.(GetIsolationProfileArgs)
-			r, err := GetIsolationProfile(ctx, &args, opts...)
-			var s GetIsolationProfileResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getIsolationProfile:getIsolationProfile", args, GetIsolationProfileResultOutput{}, options).(GetIsolationProfileResultOutput), nil
 		}).(GetIsolationProfileResultOutput)
 }
 

@@ -15,6 +15,8 @@ import (
 // * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
 //
 // Use the **zpa_lss_config_controller** data source to get information about a Log Streaming (LSS) configuration resource created in the Zscaler Private Access.
+//
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
 func LookupLSSConfigController(ctx *pulumi.Context, args *LookupLSSConfigControllerArgs, opts ...pulumi.InvokeOption) (*LookupLSSConfigControllerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLSSConfigControllerResult
@@ -40,15 +42,11 @@ type LookupLSSConfigControllerResult struct {
 }
 
 func LookupLSSConfigControllerOutput(ctx *pulumi.Context, args LookupLSSConfigControllerOutputArgs, opts ...pulumi.InvokeOption) LookupLSSConfigControllerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupLSSConfigControllerResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupLSSConfigControllerResultOutput, error) {
 			args := v.(LookupLSSConfigControllerArgs)
-			r, err := LookupLSSConfigController(ctx, &args, opts...)
-			var s LookupLSSConfigControllerResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getLSSConfigController:getLSSConfigController", args, LookupLSSConfigControllerResultOutput{}, options).(LookupLSSConfigControllerResultOutput), nil
 		}).(LookupLSSConfigControllerResultOutput)
 }
 

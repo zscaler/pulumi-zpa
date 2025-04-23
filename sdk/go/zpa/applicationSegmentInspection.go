@@ -103,11 +103,18 @@ import (
 type ApplicationSegmentInspection struct {
 	pulumi.CustomResourceState
 
+	// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's
+	// traffic to be inspected by Active Directory (AD) Protection.
+	AdpEnabled pulumi.BoolOutput `pulumi:"adpEnabled"`
+	// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by
+	// AppProtection.
+	AutoAppProtectEnabled pulumi.BoolOutput `pulumi:"autoAppProtectEnabled"`
+	BypassOnReauth        pulumi.BoolOutput `pulumi:"bypassOnReauth"`
 	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
 	// The value NEVER indicates the use of the client forwarding policy.
-	BypassType    pulumi.StringOutput                                `pulumi:"bypassType"`
-	CommonAppsDto ApplicationSegmentInspectionCommonAppsDtoPtrOutput `pulumi:"commonAppsDto"`
-	ConfigSpace   pulumi.StringPtrOutput                             `pulumi:"configSpace"`
+	BypassType    pulumi.StringOutput                             `pulumi:"bypassType"`
+	CommonAppsDto ApplicationSegmentInspectionCommonAppsDtoOutput `pulumi:"commonAppsDto"`
+	ConfigSpace   pulumi.StringPtrOutput                          `pulumi:"configSpace"`
 	// Description of the application.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// List of domains and IPs.
@@ -115,16 +122,16 @@ type ApplicationSegmentInspection struct {
 	// Whether Double Encryption is enabled or disabled for the app.
 	DoubleEncrypt   pulumi.BoolOutput      `pulumi:"doubleEncrypt"`
 	Enabled         pulumi.BoolOutput      `pulumi:"enabled"`
+	FqdnDnsCheck    pulumi.BoolPtrOutput   `pulumi:"fqdnDnsCheck"`
 	HealthCheckType pulumi.StringPtrOutput `pulumi:"healthCheckType"`
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting pulumi.StringPtrOutput `pulumi:"healthReporting"`
 	IcmpAccessType  pulumi.StringOutput    `pulumi:"icmpAccessType"`
-	IpAnchored      pulumi.BoolOutput      `pulumi:"ipAnchored"`
+	IpAnchored      pulumi.BoolPtrOutput   `pulumi:"ipAnchored"`
 	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
 	// connectors.
 	IsCnameEnabled       pulumi.BoolOutput    `pulumi:"isCnameEnabled"`
 	IsIncompleteDrConfig pulumi.BoolPtrOutput `pulumi:"isIncompleteDrConfig"`
-	MatchStyle           pulumi.StringOutput  `pulumi:"matchStyle"`
 	// Name of the application.
 	Name                      pulumi.StringOutput  `pulumi:"name"`
 	PassiveHealthEnabled      pulumi.BoolOutput    `pulumi:"passiveHealthEnabled"`
@@ -137,11 +144,15 @@ type ApplicationSegmentInspection struct {
 	TcpPortRange ApplicationSegmentInspectionTcpPortRangeArrayOutput `pulumi:"tcpPortRange"`
 	// TCP port ranges used to access the app.
 	TcpPortRanges pulumi.StringArrayOutput `pulumi:"tcpPortRanges"`
+	// TCP port ranges used to access the app.
+	TcpProtocols pulumi.StringArrayOutput `pulumi:"tcpProtocols"`
 	// udp port range
 	UdpPortRange ApplicationSegmentInspectionUdpPortRangeArrayOutput `pulumi:"udpPortRange"`
 	// UDP port ranges used to access the app.
 	UdpPortRanges pulumi.StringArrayOutput `pulumi:"udpPortRanges"`
-	UseInDrMode   pulumi.BoolPtrOutput     `pulumi:"useInDrMode"`
+	// TCP port ranges used to access the app.
+	UdpProtocols pulumi.StringArrayOutput `pulumi:"udpProtocols"`
+	UseInDrMode  pulumi.BoolPtrOutput     `pulumi:"useInDrMode"`
 }
 
 // NewApplicationSegmentInspection registers a new resource with the given unique name, arguments, and options.
@@ -177,6 +188,13 @@ func GetApplicationSegmentInspection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApplicationSegmentInspection resources.
 type applicationSegmentInspectionState struct {
+	// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's
+	// traffic to be inspected by Active Directory (AD) Protection.
+	AdpEnabled *bool `pulumi:"adpEnabled"`
+	// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by
+	// AppProtection.
+	AutoAppProtectEnabled *bool `pulumi:"autoAppProtectEnabled"`
+	BypassOnReauth        *bool `pulumi:"bypassOnReauth"`
 	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
 	// The value NEVER indicates the use of the client forwarding policy.
 	BypassType    *string                                    `pulumi:"bypassType"`
@@ -189,6 +207,7 @@ type applicationSegmentInspectionState struct {
 	// Whether Double Encryption is enabled or disabled for the app.
 	DoubleEncrypt   *bool   `pulumi:"doubleEncrypt"`
 	Enabled         *bool   `pulumi:"enabled"`
+	FqdnDnsCheck    *bool   `pulumi:"fqdnDnsCheck"`
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting *string `pulumi:"healthReporting"`
@@ -196,9 +215,8 @@ type applicationSegmentInspectionState struct {
 	IpAnchored      *bool   `pulumi:"ipAnchored"`
 	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
 	// connectors.
-	IsCnameEnabled       *bool   `pulumi:"isCnameEnabled"`
-	IsIncompleteDrConfig *bool   `pulumi:"isIncompleteDrConfig"`
-	MatchStyle           *string `pulumi:"matchStyle"`
+	IsCnameEnabled       *bool `pulumi:"isCnameEnabled"`
+	IsIncompleteDrConfig *bool `pulumi:"isIncompleteDrConfig"`
 	// Name of the application.
 	Name                      *string `pulumi:"name"`
 	PassiveHealthEnabled      *bool   `pulumi:"passiveHealthEnabled"`
@@ -211,14 +229,25 @@ type applicationSegmentInspectionState struct {
 	TcpPortRange []ApplicationSegmentInspectionTcpPortRange `pulumi:"tcpPortRange"`
 	// TCP port ranges used to access the app.
 	TcpPortRanges []string `pulumi:"tcpPortRanges"`
+	// TCP port ranges used to access the app.
+	TcpProtocols []string `pulumi:"tcpProtocols"`
 	// udp port range
 	UdpPortRange []ApplicationSegmentInspectionUdpPortRange `pulumi:"udpPortRange"`
 	// UDP port ranges used to access the app.
 	UdpPortRanges []string `pulumi:"udpPortRanges"`
-	UseInDrMode   *bool    `pulumi:"useInDrMode"`
+	// TCP port ranges used to access the app.
+	UdpProtocols []string `pulumi:"udpProtocols"`
+	UseInDrMode  *bool    `pulumi:"useInDrMode"`
 }
 
 type ApplicationSegmentInspectionState struct {
+	// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's
+	// traffic to be inspected by Active Directory (AD) Protection.
+	AdpEnabled pulumi.BoolPtrInput
+	// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by
+	// AppProtection.
+	AutoAppProtectEnabled pulumi.BoolPtrInput
+	BypassOnReauth        pulumi.BoolPtrInput
 	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
 	// The value NEVER indicates the use of the client forwarding policy.
 	BypassType    pulumi.StringPtrInput
@@ -231,6 +260,7 @@ type ApplicationSegmentInspectionState struct {
 	// Whether Double Encryption is enabled or disabled for the app.
 	DoubleEncrypt   pulumi.BoolPtrInput
 	Enabled         pulumi.BoolPtrInput
+	FqdnDnsCheck    pulumi.BoolPtrInput
 	HealthCheckType pulumi.StringPtrInput
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting pulumi.StringPtrInput
@@ -240,7 +270,6 @@ type ApplicationSegmentInspectionState struct {
 	// connectors.
 	IsCnameEnabled       pulumi.BoolPtrInput
 	IsIncompleteDrConfig pulumi.BoolPtrInput
-	MatchStyle           pulumi.StringPtrInput
 	// Name of the application.
 	Name                      pulumi.StringPtrInput
 	PassiveHealthEnabled      pulumi.BoolPtrInput
@@ -253,11 +282,15 @@ type ApplicationSegmentInspectionState struct {
 	TcpPortRange ApplicationSegmentInspectionTcpPortRangeArrayInput
 	// TCP port ranges used to access the app.
 	TcpPortRanges pulumi.StringArrayInput
+	// TCP port ranges used to access the app.
+	TcpProtocols pulumi.StringArrayInput
 	// udp port range
 	UdpPortRange ApplicationSegmentInspectionUdpPortRangeArrayInput
 	// UDP port ranges used to access the app.
 	UdpPortRanges pulumi.StringArrayInput
-	UseInDrMode   pulumi.BoolPtrInput
+	// TCP port ranges used to access the app.
+	UdpProtocols pulumi.StringArrayInput
+	UseInDrMode  pulumi.BoolPtrInput
 }
 
 func (ApplicationSegmentInspectionState) ElementType() reflect.Type {
@@ -265,6 +298,13 @@ func (ApplicationSegmentInspectionState) ElementType() reflect.Type {
 }
 
 type applicationSegmentInspectionArgs struct {
+	// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's
+	// traffic to be inspected by Active Directory (AD) Protection.
+	AdpEnabled *bool `pulumi:"adpEnabled"`
+	// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by
+	// AppProtection.
+	AutoAppProtectEnabled *bool `pulumi:"autoAppProtectEnabled"`
+	BypassOnReauth        *bool `pulumi:"bypassOnReauth"`
 	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
 	// The value NEVER indicates the use of the client forwarding policy.
 	BypassType    *string                                    `pulumi:"bypassType"`
@@ -277,6 +317,7 @@ type applicationSegmentInspectionArgs struct {
 	// Whether Double Encryption is enabled or disabled for the app.
 	DoubleEncrypt   *bool   `pulumi:"doubleEncrypt"`
 	Enabled         *bool   `pulumi:"enabled"`
+	FqdnDnsCheck    *bool   `pulumi:"fqdnDnsCheck"`
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting *string `pulumi:"healthReporting"`
@@ -284,9 +325,8 @@ type applicationSegmentInspectionArgs struct {
 	IpAnchored      *bool   `pulumi:"ipAnchored"`
 	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
 	// connectors.
-	IsCnameEnabled       *bool   `pulumi:"isCnameEnabled"`
-	IsIncompleteDrConfig *bool   `pulumi:"isIncompleteDrConfig"`
-	MatchStyle           *string `pulumi:"matchStyle"`
+	IsCnameEnabled       *bool `pulumi:"isCnameEnabled"`
+	IsIncompleteDrConfig *bool `pulumi:"isIncompleteDrConfig"`
 	// Name of the application.
 	Name                      *string `pulumi:"name"`
 	PassiveHealthEnabled      *bool   `pulumi:"passiveHealthEnabled"`
@@ -299,15 +339,26 @@ type applicationSegmentInspectionArgs struct {
 	TcpPortRange []ApplicationSegmentInspectionTcpPortRange `pulumi:"tcpPortRange"`
 	// TCP port ranges used to access the app.
 	TcpPortRanges []string `pulumi:"tcpPortRanges"`
+	// TCP port ranges used to access the app.
+	TcpProtocols []string `pulumi:"tcpProtocols"`
 	// udp port range
 	UdpPortRange []ApplicationSegmentInspectionUdpPortRange `pulumi:"udpPortRange"`
 	// UDP port ranges used to access the app.
 	UdpPortRanges []string `pulumi:"udpPortRanges"`
-	UseInDrMode   *bool    `pulumi:"useInDrMode"`
+	// TCP port ranges used to access the app.
+	UdpProtocols []string `pulumi:"udpProtocols"`
+	UseInDrMode  *bool    `pulumi:"useInDrMode"`
 }
 
 // The set of arguments for constructing a ApplicationSegmentInspection resource.
 type ApplicationSegmentInspectionArgs struct {
+	// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's
+	// traffic to be inspected by Active Directory (AD) Protection.
+	AdpEnabled pulumi.BoolPtrInput
+	// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by
+	// AppProtection.
+	AutoAppProtectEnabled pulumi.BoolPtrInput
+	BypassOnReauth        pulumi.BoolPtrInput
 	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
 	// The value NEVER indicates the use of the client forwarding policy.
 	BypassType    pulumi.StringPtrInput
@@ -320,6 +371,7 @@ type ApplicationSegmentInspectionArgs struct {
 	// Whether Double Encryption is enabled or disabled for the app.
 	DoubleEncrypt   pulumi.BoolPtrInput
 	Enabled         pulumi.BoolPtrInput
+	FqdnDnsCheck    pulumi.BoolPtrInput
 	HealthCheckType pulumi.StringPtrInput
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting pulumi.StringPtrInput
@@ -329,7 +381,6 @@ type ApplicationSegmentInspectionArgs struct {
 	// connectors.
 	IsCnameEnabled       pulumi.BoolPtrInput
 	IsIncompleteDrConfig pulumi.BoolPtrInput
-	MatchStyle           pulumi.StringPtrInput
 	// Name of the application.
 	Name                      pulumi.StringPtrInput
 	PassiveHealthEnabled      pulumi.BoolPtrInput
@@ -342,11 +393,15 @@ type ApplicationSegmentInspectionArgs struct {
 	TcpPortRange ApplicationSegmentInspectionTcpPortRangeArrayInput
 	// TCP port ranges used to access the app.
 	TcpPortRanges pulumi.StringArrayInput
+	// TCP port ranges used to access the app.
+	TcpProtocols pulumi.StringArrayInput
 	// udp port range
 	UdpPortRange ApplicationSegmentInspectionUdpPortRangeArrayInput
 	// UDP port ranges used to access the app.
 	UdpPortRanges pulumi.StringArrayInput
-	UseInDrMode   pulumi.BoolPtrInput
+	// TCP port ranges used to access the app.
+	UdpProtocols pulumi.StringArrayInput
+	UseInDrMode  pulumi.BoolPtrInput
 }
 
 func (ApplicationSegmentInspectionArgs) ElementType() reflect.Type {
@@ -436,16 +491,32 @@ func (o ApplicationSegmentInspectionOutput) ToApplicationSegmentInspectionOutput
 	return o
 }
 
+// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's
+// traffic to be inspected by Active Directory (AD) Protection.
+func (o ApplicationSegmentInspectionOutput) AdpEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.BoolOutput { return v.AdpEnabled }).(pulumi.BoolOutput)
+}
+
+// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by
+// AppProtection.
+func (o ApplicationSegmentInspectionOutput) AutoAppProtectEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.BoolOutput { return v.AutoAppProtectEnabled }).(pulumi.BoolOutput)
+}
+
+func (o ApplicationSegmentInspectionOutput) BypassOnReauth() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.BoolOutput { return v.BypassOnReauth }).(pulumi.BoolOutput)
+}
+
 // Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
 // The value NEVER indicates the use of the client forwarding policy.
 func (o ApplicationSegmentInspectionOutput) BypassType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.StringOutput { return v.BypassType }).(pulumi.StringOutput)
 }
 
-func (o ApplicationSegmentInspectionOutput) CommonAppsDto() ApplicationSegmentInspectionCommonAppsDtoPtrOutput {
-	return o.ApplyT(func(v *ApplicationSegmentInspection) ApplicationSegmentInspectionCommonAppsDtoPtrOutput {
+func (o ApplicationSegmentInspectionOutput) CommonAppsDto() ApplicationSegmentInspectionCommonAppsDtoOutput {
+	return o.ApplyT(func(v *ApplicationSegmentInspection) ApplicationSegmentInspectionCommonAppsDtoOutput {
 		return v.CommonAppsDto
-	}).(ApplicationSegmentInspectionCommonAppsDtoPtrOutput)
+	}).(ApplicationSegmentInspectionCommonAppsDtoOutput)
 }
 
 func (o ApplicationSegmentInspectionOutput) ConfigSpace() pulumi.StringPtrOutput {
@@ -471,6 +542,10 @@ func (o ApplicationSegmentInspectionOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+func (o ApplicationSegmentInspectionOutput) FqdnDnsCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.BoolPtrOutput { return v.FqdnDnsCheck }).(pulumi.BoolPtrOutput)
+}
+
 func (o ApplicationSegmentInspectionOutput) HealthCheckType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.StringPtrOutput { return v.HealthCheckType }).(pulumi.StringPtrOutput)
 }
@@ -484,8 +559,8 @@ func (o ApplicationSegmentInspectionOutput) IcmpAccessType() pulumi.StringOutput
 	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.StringOutput { return v.IcmpAccessType }).(pulumi.StringOutput)
 }
 
-func (o ApplicationSegmentInspectionOutput) IpAnchored() pulumi.BoolOutput {
-	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.BoolOutput { return v.IpAnchored }).(pulumi.BoolOutput)
+func (o ApplicationSegmentInspectionOutput) IpAnchored() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.BoolPtrOutput { return v.IpAnchored }).(pulumi.BoolPtrOutput)
 }
 
 // Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
@@ -496,10 +571,6 @@ func (o ApplicationSegmentInspectionOutput) IsCnameEnabled() pulumi.BoolOutput {
 
 func (o ApplicationSegmentInspectionOutput) IsIncompleteDrConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.BoolPtrOutput { return v.IsIncompleteDrConfig }).(pulumi.BoolPtrOutput)
-}
-
-func (o ApplicationSegmentInspectionOutput) MatchStyle() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.StringOutput { return v.MatchStyle }).(pulumi.StringOutput)
 }
 
 // Name of the application.
@@ -542,6 +613,11 @@ func (o ApplicationSegmentInspectionOutput) TcpPortRanges() pulumi.StringArrayOu
 	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.StringArrayOutput { return v.TcpPortRanges }).(pulumi.StringArrayOutput)
 }
 
+// TCP port ranges used to access the app.
+func (o ApplicationSegmentInspectionOutput) TcpProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.StringArrayOutput { return v.TcpProtocols }).(pulumi.StringArrayOutput)
+}
+
 // udp port range
 func (o ApplicationSegmentInspectionOutput) UdpPortRange() ApplicationSegmentInspectionUdpPortRangeArrayOutput {
 	return o.ApplyT(func(v *ApplicationSegmentInspection) ApplicationSegmentInspectionUdpPortRangeArrayOutput {
@@ -552,6 +628,11 @@ func (o ApplicationSegmentInspectionOutput) UdpPortRange() ApplicationSegmentIns
 // UDP port ranges used to access the app.
 func (o ApplicationSegmentInspectionOutput) UdpPortRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.StringArrayOutput { return v.UdpPortRanges }).(pulumi.StringArrayOutput)
+}
+
+// TCP port ranges used to access the app.
+func (o ApplicationSegmentInspectionOutput) UdpProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.StringArrayOutput { return v.UdpProtocols }).(pulumi.StringArrayOutput)
 }
 
 func (o ApplicationSegmentInspectionOutput) UseInDrMode() pulumi.BoolPtrOutput {

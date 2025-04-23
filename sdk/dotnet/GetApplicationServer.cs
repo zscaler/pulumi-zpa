@@ -87,6 +87,44 @@ namespace Zscaler.Zpa
         /// </summary>
         public static Output<GetApplicationServerResult> Invoke(GetApplicationServerInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationServerResult>("zpa:index/getApplicationServer:getApplicationServer", args ?? new GetApplicationServerInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Zpa.GetApplicationServer.Invoke(new()
+        ///     {
+        ///         Name = "server.example.com",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Zpa.GetApplicationServer.Invoke(new()
+        ///     {
+        ///         Id = "1234567890",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetApplicationServerResult> Invoke(GetApplicationServerInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetApplicationServerResult>("zpa:index/getApplicationServer:getApplicationServer", args ?? new GetApplicationServerInvokeArgs(), options.WithDefaults());
     }
 
 

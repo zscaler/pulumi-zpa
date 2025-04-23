@@ -32,6 +32,7 @@ import (
 type ApplicationSegment struct {
 	pulumi.CustomResourceState
 
+	BypassOnReauth pulumi.BoolOutput `pulumi:"bypassOnReauth"`
 	// Indicates whether users can bypass ZPA to access applications.
 	BypassType  pulumi.StringOutput    `pulumi:"bypassType"`
 	ConfigSpace pulumi.StringPtrOutput `pulumi:"configSpace"`
@@ -43,11 +44,14 @@ type ApplicationSegment struct {
 	DoubleEncrypt pulumi.BoolPtrOutput `pulumi:"doubleEncrypt"`
 	// Whether this application is enabled or not.
 	Enabled         pulumi.BoolPtrOutput   `pulumi:"enabled"`
+	FqdnDnsCheck    pulumi.BoolPtrOutput   `pulumi:"fqdnDnsCheck"`
 	HealthCheckType pulumi.StringPtrOutput `pulumi:"healthCheckType"`
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting pulumi.StringPtrOutput `pulumi:"healthReporting"`
 	IcmpAccessType  pulumi.StringPtrOutput `pulumi:"icmpAccessType"`
-	IpAnchored      pulumi.BoolPtrOutput   `pulumi:"ipAnchored"`
+	// Indicates if Inspect Traffic with ZIA is enabled for the application.
+	InspectTrafficWithZia pulumi.BoolPtrOutput `pulumi:"inspectTrafficWithZia"`
+	IpAnchored            pulumi.BoolPtrOutput `pulumi:"ipAnchored"`
 	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
 	// connectors.
 	IsCnameEnabled       pulumi.BoolOutput      `pulumi:"isCnameEnabled"`
@@ -107,6 +111,7 @@ func GetApplicationSegment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApplicationSegment resources.
 type applicationSegmentState struct {
+	BypassOnReauth *bool `pulumi:"bypassOnReauth"`
 	// Indicates whether users can bypass ZPA to access applications.
 	BypassType  *string `pulumi:"bypassType"`
 	ConfigSpace *string `pulumi:"configSpace"`
@@ -118,11 +123,14 @@ type applicationSegmentState struct {
 	DoubleEncrypt *bool `pulumi:"doubleEncrypt"`
 	// Whether this application is enabled or not.
 	Enabled         *bool   `pulumi:"enabled"`
+	FqdnDnsCheck    *bool   `pulumi:"fqdnDnsCheck"`
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting *string `pulumi:"healthReporting"`
 	IcmpAccessType  *string `pulumi:"icmpAccessType"`
-	IpAnchored      *bool   `pulumi:"ipAnchored"`
+	// Indicates if Inspect Traffic with ZIA is enabled for the application.
+	InspectTrafficWithZia *bool `pulumi:"inspectTrafficWithZia"`
+	IpAnchored            *bool `pulumi:"ipAnchored"`
 	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
 	// connectors.
 	IsCnameEnabled       *bool   `pulumi:"isCnameEnabled"`
@@ -150,6 +158,7 @@ type applicationSegmentState struct {
 }
 
 type ApplicationSegmentState struct {
+	BypassOnReauth pulumi.BoolPtrInput
 	// Indicates whether users can bypass ZPA to access applications.
 	BypassType  pulumi.StringPtrInput
 	ConfigSpace pulumi.StringPtrInput
@@ -161,11 +170,14 @@ type ApplicationSegmentState struct {
 	DoubleEncrypt pulumi.BoolPtrInput
 	// Whether this application is enabled or not.
 	Enabled         pulumi.BoolPtrInput
+	FqdnDnsCheck    pulumi.BoolPtrInput
 	HealthCheckType pulumi.StringPtrInput
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting pulumi.StringPtrInput
 	IcmpAccessType  pulumi.StringPtrInput
-	IpAnchored      pulumi.BoolPtrInput
+	// Indicates if Inspect Traffic with ZIA is enabled for the application.
+	InspectTrafficWithZia pulumi.BoolPtrInput
+	IpAnchored            pulumi.BoolPtrInput
 	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
 	// connectors.
 	IsCnameEnabled       pulumi.BoolPtrInput
@@ -197,6 +209,7 @@ func (ApplicationSegmentState) ElementType() reflect.Type {
 }
 
 type applicationSegmentArgs struct {
+	BypassOnReauth *bool `pulumi:"bypassOnReauth"`
 	// Indicates whether users can bypass ZPA to access applications.
 	BypassType  *string `pulumi:"bypassType"`
 	ConfigSpace *string `pulumi:"configSpace"`
@@ -208,11 +221,14 @@ type applicationSegmentArgs struct {
 	DoubleEncrypt *bool `pulumi:"doubleEncrypt"`
 	// Whether this application is enabled or not.
 	Enabled         *bool   `pulumi:"enabled"`
+	FqdnDnsCheck    *bool   `pulumi:"fqdnDnsCheck"`
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting *string `pulumi:"healthReporting"`
 	IcmpAccessType  *string `pulumi:"icmpAccessType"`
-	IpAnchored      *bool   `pulumi:"ipAnchored"`
+	// Indicates if Inspect Traffic with ZIA is enabled for the application.
+	InspectTrafficWithZia *bool `pulumi:"inspectTrafficWithZia"`
+	IpAnchored            *bool `pulumi:"ipAnchored"`
 	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
 	// connectors.
 	IsCnameEnabled       *bool   `pulumi:"isCnameEnabled"`
@@ -241,6 +257,7 @@ type applicationSegmentArgs struct {
 
 // The set of arguments for constructing a ApplicationSegment resource.
 type ApplicationSegmentArgs struct {
+	BypassOnReauth pulumi.BoolPtrInput
 	// Indicates whether users can bypass ZPA to access applications.
 	BypassType  pulumi.StringPtrInput
 	ConfigSpace pulumi.StringPtrInput
@@ -252,11 +269,14 @@ type ApplicationSegmentArgs struct {
 	DoubleEncrypt pulumi.BoolPtrInput
 	// Whether this application is enabled or not.
 	Enabled         pulumi.BoolPtrInput
+	FqdnDnsCheck    pulumi.BoolPtrInput
 	HealthCheckType pulumi.StringPtrInput
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting pulumi.StringPtrInput
 	IcmpAccessType  pulumi.StringPtrInput
-	IpAnchored      pulumi.BoolPtrInput
+	// Indicates if Inspect Traffic with ZIA is enabled for the application.
+	InspectTrafficWithZia pulumi.BoolPtrInput
+	IpAnchored            pulumi.BoolPtrInput
 	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
 	// connectors.
 	IsCnameEnabled       pulumi.BoolPtrInput
@@ -370,6 +390,10 @@ func (o ApplicationSegmentOutput) ToApplicationSegmentOutputWithContext(ctx cont
 	return o
 }
 
+func (o ApplicationSegmentOutput) BypassOnReauth() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSegment) pulumi.BoolOutput { return v.BypassOnReauth }).(pulumi.BoolOutput)
+}
+
 // Indicates whether users can bypass ZPA to access applications.
 func (o ApplicationSegmentOutput) BypassType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.StringOutput { return v.BypassType }).(pulumi.StringOutput)
@@ -399,6 +423,10 @@ func (o ApplicationSegmentOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+func (o ApplicationSegmentOutput) FqdnDnsCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationSegment) pulumi.BoolPtrOutput { return v.FqdnDnsCheck }).(pulumi.BoolPtrOutput)
+}
+
 func (o ApplicationSegmentOutput) HealthCheckType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.StringPtrOutput { return v.HealthCheckType }).(pulumi.StringPtrOutput)
 }
@@ -410,6 +438,11 @@ func (o ApplicationSegmentOutput) HealthReporting() pulumi.StringPtrOutput {
 
 func (o ApplicationSegmentOutput) IcmpAccessType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.StringPtrOutput { return v.IcmpAccessType }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if Inspect Traffic with ZIA is enabled for the application.
+func (o ApplicationSegmentOutput) InspectTrafficWithZia() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationSegment) pulumi.BoolPtrOutput { return v.InspectTrafficWithZia }).(pulumi.BoolPtrOutput)
 }
 
 func (o ApplicationSegmentOutput) IpAnchored() pulumi.BoolPtrOutput {

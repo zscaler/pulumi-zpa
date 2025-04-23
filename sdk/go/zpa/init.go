@@ -63,6 +63,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PRAConsole{}
 	case "zpa:index/pRACredential:PRACredential":
 		r = &PRACredential{}
+	case "zpa:index/pRACredentialPool:PRACredentialPool":
+		r = &PRACredentialPool{}
 	case "zpa:index/pRAPortal:PRAPortal":
 		r = &PRAPortal{}
 	case "zpa:index/policyAccessCredentialRule:PolicyAccessCredentialRule":
@@ -79,6 +81,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PolicyAccessIsolationRule{}
 	case "zpa:index/policyAccessIsolationRuleV2:PolicyAccessIsolationRuleV2":
 		r = &PolicyAccessIsolationRuleV2{}
+	case "zpa:index/policyAccessRedirectionRule:PolicyAccessRedirectionRule":
+		r = &PolicyAccessRedirectionRule{}
 	case "zpa:index/policyAccessReorderRule:PolicyAccessReorderRule":
 		r = &PolicyAccessReorderRule{}
 	case "zpa:index/policyAccessRule:PolicyAccessRule":
@@ -259,6 +263,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"zpa",
+		"index/pRACredentialPool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
 		"index/pRAPortal",
 		&module{version},
 	)
@@ -295,6 +304,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"zpa",
 		"index/policyAccessIsolationRuleV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/policyAccessRedirectionRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

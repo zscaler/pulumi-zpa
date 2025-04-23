@@ -88,7 +88,6 @@ import * as utilities from "./utilities";
  */
 export function getPolicyType(args?: GetPolicyTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyTypeResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getPolicyType:getPolicyType", {
         "id": args.id,
@@ -205,8 +204,15 @@ export interface GetPolicyTypeResult {
  * export const zpaPolicyTypeInspectionPolicy = inspectionPolicy.then(inspectionPolicy => inspectionPolicy.id);
  * ```
  */
-export function getPolicyTypeOutput(args?: GetPolicyTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyTypeResult> {
-    return pulumi.output(args).apply((a: any) => getPolicyType(a, opts))
+export function getPolicyTypeOutput(args?: GetPolicyTypeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPolicyTypeResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getPolicyType:getPolicyType", {
+        "id": args.id,
+        "microtenantId": args.microtenantId,
+        "microtenantName": args.microtenantName,
+        "policyType": args.policyType,
+    }, opts);
 }
 
 /**

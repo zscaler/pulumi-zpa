@@ -12,6 +12,8 @@ import * as utilities from "./utilities";
  *
  * Use the **zpa_machine_group** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -34,7 +36,6 @@ import * as utilities from "./utilities";
  */
 export function getMachineGroup(args?: GetMachineGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetMachineGroupResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getMachineGroup:getMachineGroup", {
         "id": args.id,
@@ -75,6 +76,8 @@ export interface GetMachineGroupResult {
  *
  * Use the **zpa_machine_group** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -95,8 +98,15 @@ export interface GetMachineGroupResult {
  * });
  * ```
  */
-export function getMachineGroupOutput(args?: GetMachineGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMachineGroupResult> {
-    return pulumi.output(args).apply((a: any) => getMachineGroup(a, opts))
+export function getMachineGroupOutput(args?: GetMachineGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMachineGroupResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getMachineGroup:getMachineGroup", {
+        "id": args.id,
+        "microtenantId": args.microtenantId,
+        "microtenantName": args.microtenantName,
+        "name": args.name,
+    }, opts);
 }
 
 /**

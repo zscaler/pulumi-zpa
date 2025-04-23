@@ -16,6 +16,8 @@ import (
 //
 // Use the **zpa_posture_profile** data source to get information about a posture profile created in the Zscaler Private Access Mobile Portal. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
 //
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
 // ## Example Usage
 //
 // ```go
@@ -172,15 +174,11 @@ type GetPostureProfileResult struct {
 }
 
 func GetPostureProfileOutput(ctx *pulumi.Context, args GetPostureProfileOutputArgs, opts ...pulumi.InvokeOption) GetPostureProfileResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetPostureProfileResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetPostureProfileResultOutput, error) {
 			args := v.(GetPostureProfileArgs)
-			r, err := GetPostureProfile(ctx, &args, opts...)
-			var s GetPostureProfileResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getPostureProfile:getPostureProfile", args, GetPostureProfileResultOutput{}, options).(GetPostureProfileResultOutput), nil
 		}).(GetPostureProfileResultOutput)
 }
 

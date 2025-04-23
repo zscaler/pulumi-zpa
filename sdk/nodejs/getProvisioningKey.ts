@@ -28,7 +28,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getProvisioningKey(args: GetProvisioningKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetProvisioningKeyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getProvisioningKey:getProvisioningKey", {
         "associationType": args.associationType,
@@ -99,8 +98,15 @@ export interface GetProvisioningKeyResult {
  * });
  * ```
  */
-export function getProvisioningKeyOutput(args: GetProvisioningKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProvisioningKeyResult> {
-    return pulumi.output(args).apply((a: any) => getProvisioningKey(a, opts))
+export function getProvisioningKeyOutput(args: GetProvisioningKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProvisioningKeyResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getProvisioningKey:getProvisioningKey", {
+        "associationType": args.associationType,
+        "id": args.id,
+        "microtenantId": args.microtenantId,
+        "microtenantName": args.microtenantName,
+        "name": args.name,
+    }, opts);
 }
 
 /**

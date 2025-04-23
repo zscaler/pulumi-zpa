@@ -19,6 +19,9 @@ namespace Zscaler.Zpa.Inputs
         [Input("allowOptions")]
         public Input<bool>? AllowOptions { get; set; }
 
+        [Input("appId")]
+        public Input<string>? AppId { get; set; }
+
         /// <summary>
         /// Port for the BA app.
         /// </summary>
@@ -37,6 +40,12 @@ namespace Zscaler.Zpa.Inputs
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }
 
+        /// <summary>
+        /// ID of the BA certificate.
+        /// </summary>
+        [Input("cname")]
+        public Input<string>? Cname { get; set; }
+
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -51,6 +60,9 @@ namespace Zscaler.Zpa.Inputs
 
         [Input("id")]
         public Input<string>? Id { get; set; }
+
+        [Input("microtenantId")]
+        public Input<string>? MicrotenantId { get; set; }
 
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

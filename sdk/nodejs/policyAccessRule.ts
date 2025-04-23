@@ -14,64 +14,6 @@ import * as utilities from "./utilities";
  *
  *   ⚠️ **WARNING:**: The attribute ``ruleOrder`` is now deprecated in favor of the new resource  ``policyAccessRuleReorder``
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as zpa from "@bdzscaler/pulumi-zpa";
- * import * as zpa from "@pulumi/zpa";
- *
- * const idpName = zpa.getIdPController({
- *     name: "IdP_Name",
- * });
- * const engineering = zpa.getSCIMGroups({
- *     name: "Engineering",
- *     idpName: "IdP_Name",
- * });
- * //Create Policy Access Rule
- * const _this = new zpa.PolicyAccessRule("this", {
- *     description: "Example",
- *     action: "ALLOW",
- *     operator: "AND",
- *     conditions: [
- *         {
- *             operator: "OR",
- *             operands: [{
- *                 objectType: "APP",
- *                 lhs: "id",
- *                 rhs: zpa_application_segment["this"].id,
- *             }],
- *         },
- *         {
- *             operator: "OR",
- *             operands: [{
- *                 objectType: "SCIM_GROUP",
- *                 lhs: idpName.then(idpName => idpName.id),
- *                 rhs: engineering.then(engineering => engineering.id),
- *             }],
- *         },
- *     ],
- * });
- * ```
- *
- * ## LHS and RHS Values
- *
- * | Object Type | LHS| RHS
- * |----------|-----------|----------
- * | APP | ``"id"`` | ``applicationSegmentId`` |
- * | APP_GROUP | ``"id"`` | ``segmentGroupId``|
- * | CLIENT_TYPE | ``"id"`` | ``zpnClientTypeZappl``, ``zpnClientTypeExporter``, ``zpnClientTypeBrowserIsolation``, ``zpnClientTypeIpAnchoring``, ``zpnClientTypeEdgeConnector``, ``zpnClientTypeBranchConnector``,  ``zpnClientTypeZappPartner``, ``zpnClientTypeZapp``  |
- * | EDGE_CONNECTOR_GROUP | ``"id"`` | ``<edge_connector_id>`` |
- * | IDP | ``"id"`` | ``identityProviderId`` |
- * | SAML | ``samlAttributeId``  | ``attributeValueToMatch`` |
- * | SCIM | ``scimAttributeId``  | ``attributeValueToMatch``  |
- * | SCIM_GROUP | ``scimGroupAttributeId``  | ``attributeValueToMatch``  |
- * | PLATFORM | ``mac``, ``ios``, ``windows``, ``android``, ``linux`` | ``"true"`` / ``"false"`` |
- * | MACHINE_GRP | ``"id"`` | ``machineGroupId`` |
- * | POSTURE | ``postureUdid``  | ``"true"`` / ``"false"`` |
- * | TRUSTED_NETWORK | ``networkId``  | ``"true"`` |
- * | COUNTRY_CODE | [2 Letter ISO3166 Alpha2](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)  | ``"true"`` / ``"false"`` |
- *
  * ## Import
  *
  * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
@@ -138,7 +80,7 @@ export class PolicyAccessRule extends pulumi.CustomResource {
     /**
      * This is for providing a customer message for the user.
      */
-    public readonly customMsg!: pulumi.Output<string | undefined>;
+    public readonly customMsg!: pulumi.Output<string>;
     /**
      * This is for providing a customer message for the user.
      */

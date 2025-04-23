@@ -29,10 +29,11 @@ import * as utilities from "./utilities";
  */
 export function getApplicationSegmentBrowserAccess(args?: GetApplicationSegmentBrowserAccessArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationSegmentBrowserAccessResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getApplicationSegmentBrowserAccess:getApplicationSegmentBrowserAccess", {
         "id": args.id,
+        "matchStyle": args.matchStyle,
+        "microtenantId": args.microtenantId,
         "name": args.name,
         "tcpPortRange": args.tcpPortRange,
         "udpPortRange": args.udpPortRange,
@@ -47,6 +48,8 @@ export interface GetApplicationSegmentBrowserAccessArgs {
      * - (String) This field defines the id of the application server.
      */
     id?: string;
+    matchStyle?: string;
+    microtenantId?: string;
     /**
      * - (String) This field defines the name of the server.
      */
@@ -74,6 +77,8 @@ export interface GetApplicationSegmentBrowserAccessResult {
     readonly id?: string;
     readonly ipAnchored: boolean;
     readonly isCnameEnabled: boolean;
+    readonly matchStyle: string;
+    readonly microtenantId?: string;
     /**
      * - (String) This field defines the name of the server.
      */
@@ -108,8 +113,17 @@ export interface GetApplicationSegmentBrowserAccessResult {
  * });
  * ```
  */
-export function getApplicationSegmentBrowserAccessOutput(args?: GetApplicationSegmentBrowserAccessOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationSegmentBrowserAccessResult> {
-    return pulumi.output(args).apply((a: any) => getApplicationSegmentBrowserAccess(a, opts))
+export function getApplicationSegmentBrowserAccessOutput(args?: GetApplicationSegmentBrowserAccessOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApplicationSegmentBrowserAccessResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getApplicationSegmentBrowserAccess:getApplicationSegmentBrowserAccess", {
+        "id": args.id,
+        "matchStyle": args.matchStyle,
+        "microtenantId": args.microtenantId,
+        "name": args.name,
+        "tcpPortRange": args.tcpPortRange,
+        "udpPortRange": args.udpPortRange,
+    }, opts);
 }
 
 /**
@@ -120,6 +134,8 @@ export interface GetApplicationSegmentBrowserAccessOutputArgs {
      * - (String) This field defines the id of the application server.
      */
     id?: pulumi.Input<string>;
+    matchStyle?: pulumi.Input<string>;
+    microtenantId?: pulumi.Input<string>;
     /**
      * - (String) This field defines the name of the server.
      */

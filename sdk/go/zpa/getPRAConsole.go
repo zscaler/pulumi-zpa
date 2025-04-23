@@ -16,6 +16,8 @@ import (
 //
 // The **zpa_pra_console_controller** data source gets information about a privileged remote access console created in the Zscaler Private Access cloud.
 // This resource can then be referenced in an privileged access policy credential and a privileged access portal resource.
+//
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
 func LookupPRAConsole(ctx *pulumi.Context, args *LookupPRAConsoleArgs, opts ...pulumi.InvokeOption) (*LookupPRAConsoleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPRAConsoleResult
@@ -29,6 +31,8 @@ func LookupPRAConsole(ctx *pulumi.Context, args *LookupPRAConsoleArgs, opts ...p
 // A collection of arguments for invoking getPRAConsole.
 type LookupPRAConsoleArgs struct {
 	Id *string `pulumi:"id"`
+	// - (Required) The name of the privileged console.
+	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getPRAConsole.
@@ -43,27 +47,25 @@ type LookupPRAConsoleResult struct {
 	ModifiedBy      string  `pulumi:"modifiedBy"`
 	ModifiedTime    string  `pulumi:"modifiedTime"`
 	// - (Required) The name of the privileged console.
-	Name            string                        `pulumi:"name"`
+	Name            *string                       `pulumi:"name"`
 	PraApplications []GetPRAConsolePraApplication `pulumi:"praApplications"`
 	PraPortals      []GetPRAConsolePraPortal      `pulumi:"praPortals"`
 }
 
 func LookupPRAConsoleOutput(ctx *pulumi.Context, args LookupPRAConsoleOutputArgs, opts ...pulumi.InvokeOption) LookupPRAConsoleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPRAConsoleResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupPRAConsoleResultOutput, error) {
 			args := v.(LookupPRAConsoleArgs)
-			r, err := LookupPRAConsole(ctx, &args, opts...)
-			var s LookupPRAConsoleResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getPRAConsole:getPRAConsole", args, LookupPRAConsoleResultOutput{}, options).(LookupPRAConsoleResultOutput), nil
 		}).(LookupPRAConsoleResultOutput)
 }
 
 // A collection of arguments for invoking getPRAConsole.
 type LookupPRAConsoleOutputArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// - (Required) The name of the privileged console.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (LookupPRAConsoleOutputArgs) ElementType() reflect.Type {
@@ -122,8 +124,8 @@ func (o LookupPRAConsoleResultOutput) ModifiedTime() pulumi.StringOutput {
 }
 
 // - (Required) The name of the privileged console.
-func (o LookupPRAConsoleResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPRAConsoleResult) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupPRAConsoleResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPRAConsoleResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupPRAConsoleResultOutput) PraApplications() GetPRAConsolePraApplicationArrayOutput {

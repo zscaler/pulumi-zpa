@@ -10,6 +10,7 @@ export interface ApplicationSegmentBrowserAccessClientlessApp {
      * If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.
      */
     allowOptions?: pulumi.Input<boolean>;
+    appId?: pulumi.Input<string>;
     /**
      * Port for the BA app.
      */
@@ -22,6 +23,10 @@ export interface ApplicationSegmentBrowserAccessClientlessApp {
      * ID of the BA certificate.
      */
     certificateId?: pulumi.Input<string>;
+    /**
+     * ID of the BA certificate.
+     */
+    cname?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
     /**
      * Domain name or IP address of the BA app.
@@ -29,6 +34,7 @@ export interface ApplicationSegmentBrowserAccessClientlessApp {
     domain?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
     id?: pulumi.Input<string>;
+    microtenantId?: pulumi.Input<string>;
     name: pulumi.Input<string>;
     /**
      * Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
@@ -55,13 +61,15 @@ export interface ApplicationSegmentInspectionCommonAppsDto {
 }
 
 export interface ApplicationSegmentInspectionCommonAppsDtoAppsConfig {
+    appId?: pulumi.Input<string>;
     appTypes?: pulumi.Input<pulumi.Input<string>[]>;
     applicationPort?: pulumi.Input<string>;
     applicationProtocol?: pulumi.Input<string>;
     certificateId?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     domain?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
-    id?: pulumi.Input<string>;
+    inspectAppId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     trustUntrustedCert?: pulumi.Input<boolean>;
 }
@@ -85,14 +93,15 @@ export interface ApplicationSegmentPRACommonAppsDto {
 }
 
 export interface ApplicationSegmentPRACommonAppsDtoAppsConfig {
+    appId?: pulumi.Input<string>;
     appTypes?: pulumi.Input<pulumi.Input<string>[]>;
     applicationPort?: pulumi.Input<string>;
     applicationProtocol?: pulumi.Input<string>;
     connectionSecurity?: pulumi.Input<string>;
     domain?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
-    id?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
+    praAppId?: pulumi.Input<string>;
 }
 
 export interface ApplicationSegmentPRAServerGroup {
@@ -128,6 +137,7 @@ export interface BrowserAccessClientlessApp {
      * If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.
      */
     allowOptions?: pulumi.Input<boolean>;
+    appId?: pulumi.Input<string>;
     /**
      * Port for the BA app.
      */
@@ -140,6 +150,10 @@ export interface BrowserAccessClientlessApp {
      * ID of the BA certificate.
      */
     certificateId?: pulumi.Input<string>;
+    /**
+     * ID of the BA certificate.
+     */
+    cname?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
     /**
      * Domain name or IP address of the BA app.
@@ -147,6 +161,7 @@ export interface BrowserAccessClientlessApp {
     domain?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
     id?: pulumi.Input<string>;
+    microtenantId?: pulumi.Input<string>;
     name: pulumi.Input<string>;
     /**
      * Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
@@ -320,6 +335,14 @@ export interface GetLSSConfigControllerConfigArgs {
     name?: pulumi.Input<string>;
     sourceLogType?: pulumi.Input<string>;
     useTls?: pulumi.Input<boolean>;
+}
+
+export interface GetPRACredentialPoolCredential {
+    ids?: string[];
+}
+
+export interface GetPRACredentialPoolCredentialArgs {
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface InspectionCustomControlsRule {
@@ -550,9 +573,6 @@ export interface PRAApprovalWorkingHour {
 }
 
 export interface PRAConsolePraApplication {
-    /**
-     * The unique identifier of the Privileged Remote Access-enabled application
-     */
     id: pulumi.Input<string>;
 }
 
@@ -560,6 +580,10 @@ export interface PRAConsolePraPortal {
     /**
      * The unique identifier of the privileged portal
      */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PRACredentialPoolCredential {
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -590,7 +614,11 @@ export interface PolicyAccessCredentialRuleConditionOperandEntryValue {
 }
 
 export interface PolicyAccessCredentialRuleCredential {
-    id: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+}
+
+export interface PolicyAccessCredentialRuleCredentialPool {
+    id?: pulumi.Input<string>;
 }
 
 export interface PolicyAccessForwardingRuleCondition {
@@ -777,6 +805,46 @@ export interface PolicyAccessIsolationRuleV2ConditionOperand {
 export interface PolicyAccessIsolationRuleV2ConditionOperandEntryValue {
     lhs?: pulumi.Input<string>;
     rhs?: pulumi.Input<string>;
+}
+
+export interface PolicyAccessRedirectionRuleCondition {
+    id?: pulumi.Input<string>;
+    microtenantId?: pulumi.Input<string>;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands?: pulumi.Input<pulumi.Input<inputs.PolicyAccessRedirectionRuleConditionOperand>[]>;
+    operator: pulumi.Input<string>;
+}
+
+export interface PolicyAccessRedirectionRuleConditionOperand {
+    id?: pulumi.Input<string>;
+    idpId?: pulumi.Input<string>;
+    /**
+     * This signifies the key for the object type. String ID example: id
+     */
+    lhs: pulumi.Input<string>;
+    /**
+     * This denotes the value for the given object type. Its value depends upon the key.
+     */
+    microtenantId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: pulumi.Input<string>;
+    /**
+     * This denotes the value for the given object type. Its value depends upon the key.
+     */
+    rhs?: pulumi.Input<string>;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    rhsLists?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PolicyAccessRedirectionRuleServiceEdgeGroup {
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface PolicyAccessReorderRuleRule {
@@ -1022,7 +1090,11 @@ export interface PolicyCredentialRuleConditionOperandEntryValue {
 }
 
 export interface PolicyCredentialRuleCredential {
-    id: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+}
+
+export interface PolicyCredentialRuleCredentialPool {
+    id?: pulumi.Input<string>;
 }
 
 export interface PolicyForwardingRuleV2Condition {
@@ -1204,9 +1276,6 @@ export interface PraApprovalControllerWorkingHour {
 }
 
 export interface PraConsoleControllerPraApplication {
-    /**
-     * The unique identifier of the Privileged Remote Access-enabled application
-     */
     id: pulumi.Input<string>;
 }
 

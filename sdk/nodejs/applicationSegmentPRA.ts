@@ -41,7 +41,6 @@ import * as utilities from "./utilities";
  *     commonAppsDto: {
  *         appsConfigs: [
  *             {
- *                 name: "ssh_pra",
  *                 domain: "ssh_pra.example.com",
  *                 applicationProtocol: "SSH",
  *                 applicationPort: "22",
@@ -49,7 +48,6 @@ import * as utilities from "./utilities";
  *                 appTypes: ["SECURE_REMOTE_ACCESS"],
  *             },
  *             {
- *                 name: "rdp_pra",
  *                 domain: "rdp_pra.example.com",
  *                 applicationProtocol: "RDP",
  *                 connectionSecurity: "ANY",
@@ -108,12 +106,13 @@ export class ApplicationSegmentPRA extends pulumi.CustomResource {
         return obj['__pulumiType'] === ApplicationSegmentPRA.__pulumiType;
     }
 
+    public readonly bypassOnReauth!: pulumi.Output<boolean>;
     /**
      * Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
      * The value NEVER indicates the use of the client forwarding policy.
      */
     public readonly bypassType!: pulumi.Output<string>;
-    public readonly commonAppsDto!: pulumi.Output<outputs.ApplicationSegmentPRACommonAppsDto | undefined>;
+    public readonly commonAppsDto!: pulumi.Output<outputs.ApplicationSegmentPRACommonAppsDto>;
     public readonly configSpace!: pulumi.Output<string | undefined>;
     /**
      * Description of the application.
@@ -128,20 +127,21 @@ export class ApplicationSegmentPRA extends pulumi.CustomResource {
      */
     public readonly doubleEncrypt!: pulumi.Output<boolean>;
     public readonly enabled!: pulumi.Output<boolean>;
+    public readonly fqdnDnsCheck!: pulumi.Output<boolean | undefined>;
     public readonly healthCheckType!: pulumi.Output<string | undefined>;
     /**
      * Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
      */
     public readonly healthReporting!: pulumi.Output<string | undefined>;
     public readonly icmpAccessType!: pulumi.Output<string>;
-    public readonly ipAnchored!: pulumi.Output<boolean>;
+    public readonly ipAnchored!: pulumi.Output<boolean | undefined>;
     /**
      * Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
      * connectors.
      */
     public readonly isCnameEnabled!: pulumi.Output<boolean>;
     public readonly isIncompleteDrConfig!: pulumi.Output<boolean>;
-    public readonly matchStyle!: pulumi.Output<string>;
+    public readonly microtenantId!: pulumi.Output<string>;
     /**
      * Name of the application.
      */
@@ -185,6 +185,7 @@ export class ApplicationSegmentPRA extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationSegmentPRAState | undefined;
+            resourceInputs["bypassOnReauth"] = state ? state.bypassOnReauth : undefined;
             resourceInputs["bypassType"] = state ? state.bypassType : undefined;
             resourceInputs["commonAppsDto"] = state ? state.commonAppsDto : undefined;
             resourceInputs["configSpace"] = state ? state.configSpace : undefined;
@@ -192,13 +193,14 @@ export class ApplicationSegmentPRA extends pulumi.CustomResource {
             resourceInputs["domainNames"] = state ? state.domainNames : undefined;
             resourceInputs["doubleEncrypt"] = state ? state.doubleEncrypt : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["fqdnDnsCheck"] = state ? state.fqdnDnsCheck : undefined;
             resourceInputs["healthCheckType"] = state ? state.healthCheckType : undefined;
             resourceInputs["healthReporting"] = state ? state.healthReporting : undefined;
             resourceInputs["icmpAccessType"] = state ? state.icmpAccessType : undefined;
             resourceInputs["ipAnchored"] = state ? state.ipAnchored : undefined;
             resourceInputs["isCnameEnabled"] = state ? state.isCnameEnabled : undefined;
             resourceInputs["isIncompleteDrConfig"] = state ? state.isIncompleteDrConfig : undefined;
-            resourceInputs["matchStyle"] = state ? state.matchStyle : undefined;
+            resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["passiveHealthEnabled"] = state ? state.passiveHealthEnabled : undefined;
             resourceInputs["segmentGroupId"] = state ? state.segmentGroupId : undefined;
@@ -218,6 +220,7 @@ export class ApplicationSegmentPRA extends pulumi.CustomResource {
             if ((!args || args.segmentGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'segmentGroupId'");
             }
+            resourceInputs["bypassOnReauth"] = args ? args.bypassOnReauth : undefined;
             resourceInputs["bypassType"] = args ? args.bypassType : undefined;
             resourceInputs["commonAppsDto"] = args ? args.commonAppsDto : undefined;
             resourceInputs["configSpace"] = args ? args.configSpace : undefined;
@@ -225,13 +228,14 @@ export class ApplicationSegmentPRA extends pulumi.CustomResource {
             resourceInputs["domainNames"] = args ? args.domainNames : undefined;
             resourceInputs["doubleEncrypt"] = args ? args.doubleEncrypt : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["fqdnDnsCheck"] = args ? args.fqdnDnsCheck : undefined;
             resourceInputs["healthCheckType"] = args ? args.healthCheckType : undefined;
             resourceInputs["healthReporting"] = args ? args.healthReporting : undefined;
             resourceInputs["icmpAccessType"] = args ? args.icmpAccessType : undefined;
             resourceInputs["ipAnchored"] = args ? args.ipAnchored : undefined;
             resourceInputs["isCnameEnabled"] = args ? args.isCnameEnabled : undefined;
             resourceInputs["isIncompleteDrConfig"] = args ? args.isIncompleteDrConfig : undefined;
-            resourceInputs["matchStyle"] = args ? args.matchStyle : undefined;
+            resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["passiveHealthEnabled"] = args ? args.passiveHealthEnabled : undefined;
             resourceInputs["segmentGroupId"] = args ? args.segmentGroupId : undefined;
@@ -253,6 +257,7 @@ export class ApplicationSegmentPRA extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ApplicationSegmentPRA resources.
  */
 export interface ApplicationSegmentPRAState {
+    bypassOnReauth?: pulumi.Input<boolean>;
     /**
      * Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
      * The value NEVER indicates the use of the client forwarding policy.
@@ -273,6 +278,7 @@ export interface ApplicationSegmentPRAState {
      */
     doubleEncrypt?: pulumi.Input<boolean>;
     enabled?: pulumi.Input<boolean>;
+    fqdnDnsCheck?: pulumi.Input<boolean>;
     healthCheckType?: pulumi.Input<string>;
     /**
      * Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
@@ -286,7 +292,7 @@ export interface ApplicationSegmentPRAState {
      */
     isCnameEnabled?: pulumi.Input<boolean>;
     isIncompleteDrConfig?: pulumi.Input<boolean>;
-    matchStyle?: pulumi.Input<string>;
+    microtenantId?: pulumi.Input<string>;
     /**
      * Name of the application.
      */
@@ -322,6 +328,7 @@ export interface ApplicationSegmentPRAState {
  * The set of arguments for constructing a ApplicationSegmentPRA resource.
  */
 export interface ApplicationSegmentPRAArgs {
+    bypassOnReauth?: pulumi.Input<boolean>;
     /**
      * Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
      * The value NEVER indicates the use of the client forwarding policy.
@@ -342,6 +349,7 @@ export interface ApplicationSegmentPRAArgs {
      */
     doubleEncrypt?: pulumi.Input<boolean>;
     enabled?: pulumi.Input<boolean>;
+    fqdnDnsCheck?: pulumi.Input<boolean>;
     healthCheckType?: pulumi.Input<string>;
     /**
      * Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
@@ -355,7 +363,7 @@ export interface ApplicationSegmentPRAArgs {
      */
     isCnameEnabled?: pulumi.Input<boolean>;
     isIncompleteDrConfig?: pulumi.Input<boolean>;
-    matchStyle?: pulumi.Input<string>;
+    microtenantId?: pulumi.Input<string>;
     /**
      * Name of the application.
      */

@@ -105,6 +105,23 @@ namespace Zscaler.Zpa
     public partial class ApplicationSegmentInspection : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's
+        /// traffic to be inspected by Active Directory (AD) Protection.
+        /// </summary>
+        [Output("adpEnabled")]
+        public Output<bool> AdpEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by
+        /// AppProtection.
+        /// </summary>
+        [Output("autoAppProtectEnabled")]
+        public Output<bool> AutoAppProtectEnabled { get; private set; } = null!;
+
+        [Output("bypassOnReauth")]
+        public Output<bool> BypassOnReauth { get; private set; } = null!;
+
+        /// <summary>
         /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
         /// The value NEVER indicates the use of the client forwarding policy.
         /// </summary>
@@ -112,7 +129,7 @@ namespace Zscaler.Zpa
         public Output<string> BypassType { get; private set; } = null!;
 
         [Output("commonAppsDto")]
-        public Output<Outputs.ApplicationSegmentInspectionCommonAppsDto?> CommonAppsDto { get; private set; } = null!;
+        public Output<Outputs.ApplicationSegmentInspectionCommonAppsDto> CommonAppsDto { get; private set; } = null!;
 
         [Output("configSpace")]
         public Output<string?> ConfigSpace { get; private set; } = null!;
@@ -138,6 +155,9 @@ namespace Zscaler.Zpa
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
+        [Output("fqdnDnsCheck")]
+        public Output<bool?> FqdnDnsCheck { get; private set; } = null!;
+
         [Output("healthCheckType")]
         public Output<string?> HealthCheckType { get; private set; } = null!;
 
@@ -151,7 +171,7 @@ namespace Zscaler.Zpa
         public Output<string> IcmpAccessType { get; private set; } = null!;
 
         [Output("ipAnchored")]
-        public Output<bool> IpAnchored { get; private set; } = null!;
+        public Output<bool?> IpAnchored { get; private set; } = null!;
 
         /// <summary>
         /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
@@ -162,9 +182,6 @@ namespace Zscaler.Zpa
 
         [Output("isIncompleteDrConfig")]
         public Output<bool?> IsIncompleteDrConfig { get; private set; } = null!;
-
-        [Output("matchStyle")]
-        public Output<string> MatchStyle { get; private set; } = null!;
 
         /// <summary>
         /// Name of the application.
@@ -203,6 +220,12 @@ namespace Zscaler.Zpa
         public Output<ImmutableArray<string>> TcpPortRanges { get; private set; } = null!;
 
         /// <summary>
+        /// TCP port ranges used to access the app.
+        /// </summary>
+        [Output("tcpProtocols")]
+        public Output<ImmutableArray<string>> TcpProtocols { get; private set; } = null!;
+
+        /// <summary>
         /// udp port range
         /// </summary>
         [Output("udpPortRange")]
@@ -213,6 +236,12 @@ namespace Zscaler.Zpa
         /// </summary>
         [Output("udpPortRanges")]
         public Output<ImmutableArray<string>> UdpPortRanges { get; private set; } = null!;
+
+        /// <summary>
+        /// TCP port ranges used to access the app.
+        /// </summary>
+        [Output("udpProtocols")]
+        public Output<ImmutableArray<string>> UdpProtocols { get; private set; } = null!;
 
         [Output("useInDrMode")]
         public Output<bool?> UseInDrMode { get; private set; } = null!;
@@ -265,6 +294,23 @@ namespace Zscaler.Zpa
     public sealed class ApplicationSegmentInspectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's
+        /// traffic to be inspected by Active Directory (AD) Protection.
+        /// </summary>
+        [Input("adpEnabled")]
+        public Input<bool>? AdpEnabled { get; set; }
+
+        /// <summary>
+        /// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by
+        /// AppProtection.
+        /// </summary>
+        [Input("autoAppProtectEnabled")]
+        public Input<bool>? AutoAppProtectEnabled { get; set; }
+
+        [Input("bypassOnReauth")]
+        public Input<bool>? BypassOnReauth { get; set; }
+
+        /// <summary>
         /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
         /// The value NEVER indicates the use of the client forwarding policy.
         /// </summary>
@@ -304,6 +350,9 @@ namespace Zscaler.Zpa
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        [Input("fqdnDnsCheck")]
+        public Input<bool>? FqdnDnsCheck { get; set; }
+
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
@@ -328,9 +377,6 @@ namespace Zscaler.Zpa
 
         [Input("isIncompleteDrConfig")]
         public Input<bool>? IsIncompleteDrConfig { get; set; }
-
-        [Input("matchStyle")]
-        public Input<string>? MatchStyle { get; set; }
 
         /// <summary>
         /// Name of the application.
@@ -386,6 +432,18 @@ namespace Zscaler.Zpa
             set => _tcpPortRanges = value;
         }
 
+        [Input("tcpProtocols")]
+        private InputList<string>? _tcpProtocols;
+
+        /// <summary>
+        /// TCP port ranges used to access the app.
+        /// </summary>
+        public InputList<string> TcpProtocols
+        {
+            get => _tcpProtocols ?? (_tcpProtocols = new InputList<string>());
+            set => _tcpProtocols = value;
+        }
+
         [Input("udpPortRange")]
         private InputList<Inputs.ApplicationSegmentInspectionUdpPortRangeArgs>? _udpPortRange;
 
@@ -410,6 +468,18 @@ namespace Zscaler.Zpa
             set => _udpPortRanges = value;
         }
 
+        [Input("udpProtocols")]
+        private InputList<string>? _udpProtocols;
+
+        /// <summary>
+        /// TCP port ranges used to access the app.
+        /// </summary>
+        public InputList<string> UdpProtocols
+        {
+            get => _udpProtocols ?? (_udpProtocols = new InputList<string>());
+            set => _udpProtocols = value;
+        }
+
         [Input("useInDrMode")]
         public Input<bool>? UseInDrMode { get; set; }
 
@@ -421,6 +491,23 @@ namespace Zscaler.Zpa
 
     public sealed class ApplicationSegmentInspectionState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's
+        /// traffic to be inspected by Active Directory (AD) Protection.
+        /// </summary>
+        [Input("adpEnabled")]
+        public Input<bool>? AdpEnabled { get; set; }
+
+        /// <summary>
+        /// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by
+        /// AppProtection.
+        /// </summary>
+        [Input("autoAppProtectEnabled")]
+        public Input<bool>? AutoAppProtectEnabled { get; set; }
+
+        [Input("bypassOnReauth")]
+        public Input<bool>? BypassOnReauth { get; set; }
+
         /// <summary>
         /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
         /// The value NEVER indicates the use of the client forwarding policy.
@@ -461,6 +548,9 @@ namespace Zscaler.Zpa
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        [Input("fqdnDnsCheck")]
+        public Input<bool>? FqdnDnsCheck { get; set; }
+
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
@@ -485,9 +575,6 @@ namespace Zscaler.Zpa
 
         [Input("isIncompleteDrConfig")]
         public Input<bool>? IsIncompleteDrConfig { get; set; }
-
-        [Input("matchStyle")]
-        public Input<string>? MatchStyle { get; set; }
 
         /// <summary>
         /// Name of the application.
@@ -543,6 +630,18 @@ namespace Zscaler.Zpa
             set => _tcpPortRanges = value;
         }
 
+        [Input("tcpProtocols")]
+        private InputList<string>? _tcpProtocols;
+
+        /// <summary>
+        /// TCP port ranges used to access the app.
+        /// </summary>
+        public InputList<string> TcpProtocols
+        {
+            get => _tcpProtocols ?? (_tcpProtocols = new InputList<string>());
+            set => _tcpProtocols = value;
+        }
+
         [Input("udpPortRange")]
         private InputList<Inputs.ApplicationSegmentInspectionUdpPortRangeGetArgs>? _udpPortRange;
 
@@ -565,6 +664,18 @@ namespace Zscaler.Zpa
         {
             get => _udpPortRanges ?? (_udpPortRanges = new InputList<string>());
             set => _udpPortRanges = value;
+        }
+
+        [Input("udpProtocols")]
+        private InputList<string>? _udpProtocols;
+
+        /// <summary>
+        /// TCP port ranges used to access the app.
+        /// </summary>
+        public InputList<string> UdpProtocols
+        {
+            get => _udpProtocols ?? (_udpProtocols = new InputList<string>());
+            set => _udpProtocols = value;
         }
 
         [Input("useInDrMode")]

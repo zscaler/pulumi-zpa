@@ -18,6 +18,8 @@ namespace Zscaler.Zpa
         /// 
         /// Use the **zpa_app_connector_controller** data source to get information about a app connector created in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group.
         /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -45,6 +47,8 @@ namespace Zscaler.Zpa
         /// 
         /// Use the **zpa_app_connector_controller** data source to get information about a app connector created in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group.
         /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -64,6 +68,35 @@ namespace Zscaler.Zpa
         /// ```
         /// </summary>
         public static Output<GetAppConnectorControllerResult> Invoke(GetAppConnectorControllerInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAppConnectorControllerResult>("zpa:index/getAppConnectorController:getAppConnectorController", args ?? new GetAppConnectorControllerInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-connectors)
+        /// * [API documentation](https://help.zscaler.com/zpa/managing-app-connectors-using-api)
+        /// 
+        /// Use the **zpa_app_connector_controller** data source to get information about a app connector created in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group.
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Zpa.GetAppConnectorController.Invoke(new()
+        ///     {
+        ///         Name = "AWS-VPC100-App-Connector",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAppConnectorControllerResult> Invoke(GetAppConnectorControllerInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppConnectorControllerResult>("zpa:index/getAppConnectorController:getAppConnectorController", args ?? new GetAppConnectorControllerInvokeArgs(), options.WithDefaults());
     }
 
@@ -109,13 +142,14 @@ namespace Zscaler.Zpa
         public readonly string AppConnectorGroupId;
         public readonly string AppConnectorGroupName;
         public readonly string ApplicationStartTime;
+        public readonly ImmutableArray<Outputs.GetAppConnectorControllerAssistantVersionResult> AssistantVersions;
         public readonly string ControlChannelStatus;
         public readonly string CreationTime;
         public readonly string CtrlBrokerName;
         public readonly string CurrentVersion;
         public readonly string Description;
         public readonly bool Enabled;
-        public readonly ImmutableDictionary<string, object> EnrollmentCert;
+        public readonly ImmutableDictionary<string, string> EnrollmentCert;
         public readonly string ExpectedUpgradeTime;
         public readonly string ExpectedVersion;
         public readonly string Fingerprint;
@@ -132,18 +166,21 @@ namespace Zscaler.Zpa
         public readonly string Longitude;
         public readonly string? MicrotenantId;
         public readonly string? MicrotenantName;
+        public readonly string ModifiedBy;
         public readonly string ModifiedTime;
-        public readonly string Modifiedby;
         public readonly string? Name;
         public readonly string Platform;
+        public readonly string PlatformDetail;
         public readonly string PreviousVersion;
         public readonly string PrivateIp;
         public readonly string ProvisioningKeyId;
         public readonly string ProvisioningKeyName;
         public readonly string PublicIp;
+        public readonly string RuntimeOs;
         public readonly string SargeVersion;
         public readonly string UpgradeAttempt;
         public readonly string UpgradeStatus;
+        public readonly ImmutableArray<Outputs.GetAppConnectorControllerZpnSubModuleUpgradeListResult> ZpnSubModuleUpgradeLists;
 
         [OutputConstructor]
         private GetAppConnectorControllerResult(
@@ -152,6 +189,8 @@ namespace Zscaler.Zpa
             string appConnectorGroupName,
 
             string applicationStartTime,
+
+            ImmutableArray<Outputs.GetAppConnectorControllerAssistantVersionResult> assistantVersions,
 
             string controlChannelStatus,
 
@@ -165,7 +204,7 @@ namespace Zscaler.Zpa
 
             bool enabled,
 
-            ImmutableDictionary<string, object> enrollmentCert,
+            ImmutableDictionary<string, string> enrollmentCert,
 
             string expectedUpgradeTime,
 
@@ -199,13 +238,15 @@ namespace Zscaler.Zpa
 
             string? microtenantName,
 
-            string modifiedTime,
+            string modifiedBy,
 
-            string modifiedby,
+            string modifiedTime,
 
             string? name,
 
             string platform,
+
+            string platformDetail,
 
             string previousVersion,
 
@@ -217,15 +258,20 @@ namespace Zscaler.Zpa
 
             string publicIp,
 
+            string runtimeOs,
+
             string sargeVersion,
 
             string upgradeAttempt,
 
-            string upgradeStatus)
+            string upgradeStatus,
+
+            ImmutableArray<Outputs.GetAppConnectorControllerZpnSubModuleUpgradeListResult> zpnSubModuleUpgradeLists)
         {
             AppConnectorGroupId = appConnectorGroupId;
             AppConnectorGroupName = appConnectorGroupName;
             ApplicationStartTime = applicationStartTime;
+            AssistantVersions = assistantVersions;
             ControlChannelStatus = controlChannelStatus;
             CreationTime = creationTime;
             CtrlBrokerName = ctrlBrokerName;
@@ -249,18 +295,21 @@ namespace Zscaler.Zpa
             Longitude = longitude;
             MicrotenantId = microtenantId;
             MicrotenantName = microtenantName;
+            ModifiedBy = modifiedBy;
             ModifiedTime = modifiedTime;
-            Modifiedby = modifiedby;
             Name = name;
             Platform = platform;
+            PlatformDetail = platformDetail;
             PreviousVersion = previousVersion;
             PrivateIp = privateIp;
             ProvisioningKeyId = provisioningKeyId;
             ProvisioningKeyName = provisioningKeyName;
             PublicIp = publicIp;
+            RuntimeOs = runtimeOs;
             SargeVersion = sargeVersion;
             UpgradeAttempt = upgradeAttempt;
             UpgradeStatus = upgradeStatus;
+            ZpnSubModuleUpgradeLists = zpnSubModuleUpgradeLists;
         }
     }
 }

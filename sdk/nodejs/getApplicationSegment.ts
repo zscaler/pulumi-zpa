@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getApplicationSegment({
+ * const _this = zpa.getApplicationSegment({
  *     name: "example",
  * });
  * ```
@@ -22,14 +22,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getApplicationSegment({
+ * const _this = zpa.getApplicationSegment({
  *     id: "123456789",
  * });
  * ```
  */
 export function getApplicationSegment(args?: GetApplicationSegmentArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationSegmentResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getApplicationSegment:getApplicationSegment", {
         "id": args.id,
@@ -97,7 +96,7 @@ export interface GetApplicationSegmentResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getApplicationSegment({
+ * const _this = zpa.getApplicationSegment({
  *     name: "example",
  * });
  * ```
@@ -106,13 +105,23 @@ export interface GetApplicationSegmentResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getApplicationSegment({
+ * const _this = zpa.getApplicationSegment({
  *     id: "123456789",
  * });
  * ```
  */
-export function getApplicationSegmentOutput(args?: GetApplicationSegmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationSegmentResult> {
-    return pulumi.output(args).apply((a: any) => getApplicationSegment(a, opts))
+export function getApplicationSegmentOutput(args?: GetApplicationSegmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApplicationSegmentResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getApplicationSegment:getApplicationSegment", {
+        "id": args.id,
+        "isIncompleteDrConfig": args.isIncompleteDrConfig,
+        "microtenantId": args.microtenantId,
+        "microtenantName": args.microtenantName,
+        "name": args.name,
+        "tcpPortRange": args.tcpPortRange,
+        "udpPortRange": args.udpPortRange,
+    }, opts);
 }
 
 /**

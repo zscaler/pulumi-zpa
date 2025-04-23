@@ -14,10 +14,10 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class PolicyAccessCredentialRuleCredential
     {
-        public readonly string Id;
+        public readonly string? Id;
 
         [OutputConstructor]
-        private PolicyAccessCredentialRuleCredential(string id)
+        private PolicyAccessCredentialRuleCredential(string? id)
         {
             Id = id;
         }

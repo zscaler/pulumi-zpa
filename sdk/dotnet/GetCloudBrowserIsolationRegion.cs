@@ -15,6 +15,8 @@ namespace Zscaler.Zpa
         /// <summary>
         /// Use the **zpa_cloud_browser_isolation_region** data source to get information about Cloud Browser Isolation regions such as ID and Name. This data source information is required as part of the attribute `region_ids` when creating an Cloud Browser Isolation External Profile ``zpa.CloudBrowserIsolationExternalProfile``
         /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -39,6 +41,8 @@ namespace Zscaler.Zpa
         /// <summary>
         /// Use the **zpa_cloud_browser_isolation_region** data source to get information about Cloud Browser Isolation regions such as ID and Name. This data source information is required as part of the attribute `region_ids` when creating an Cloud Browser Isolation External Profile ``zpa.CloudBrowserIsolationExternalProfile``
         /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +62,32 @@ namespace Zscaler.Zpa
         /// ```
         /// </summary>
         public static Output<GetCloudBrowserIsolationRegionResult> Invoke(GetCloudBrowserIsolationRegionInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCloudBrowserIsolationRegionResult>("zpa:index/getCloudBrowserIsolationRegion:getCloudBrowserIsolationRegion", args ?? new GetCloudBrowserIsolationRegionInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use the **zpa_cloud_browser_isolation_region** data source to get information about Cloud Browser Isolation regions such as ID and Name. This data source information is required as part of the attribute `region_ids` when creating an Cloud Browser Isolation External Profile ``zpa.CloudBrowserIsolationExternalProfile``
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Zpa.GetCloudBrowserIsolationRegion.Invoke(new()
+        ///     {
+        ///         Name = "Singapore",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCloudBrowserIsolationRegionResult> Invoke(GetCloudBrowserIsolationRegionInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetCloudBrowserIsolationRegionResult>("zpa:index/getCloudBrowserIsolationRegion:getCloudBrowserIsolationRegion", args ?? new GetCloudBrowserIsolationRegionInvokeArgs(), options.WithDefaults());
     }
 

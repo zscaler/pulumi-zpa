@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
 
 export function getInspectionCustomControls(args?: GetInspectionCustomControlsArgs, opts?: pulumi.InvokeOptions): Promise<GetInspectionCustomControlsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getInspectionCustomControls:getInspectionCustomControls", {
         "id": args.id,
@@ -48,8 +47,13 @@ export interface GetInspectionCustomControlsResult {
     readonly type: string;
     readonly version: string;
 }
-export function getInspectionCustomControlsOutput(args?: GetInspectionCustomControlsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInspectionCustomControlsResult> {
-    return pulumi.output(args).apply((a: any) => getInspectionCustomControls(a, opts))
+export function getInspectionCustomControlsOutput(args?: GetInspectionCustomControlsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInspectionCustomControlsResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getInspectionCustomControls:getInspectionCustomControls", {
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

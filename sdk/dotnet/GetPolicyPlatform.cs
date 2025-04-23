@@ -71,6 +71,36 @@ namespace Zscaler.Zpa
         /// </summary>
         public static Output<GetPolicyPlatformResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyPlatformResult>("zpa:index/getPolicyPlatform:getPolicyPlatform", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Use the **zpa_access_policy_platforms** data source to get information about all platforms for the specified customer in the Zscaler Private Access cloud. This data source can be optionally used when defining the following policy types:
+        ///     - ``zpa.PolicyAccessRule``
+        ///     - ``zpa.PolicyAccessTimeOutRule``
+        ///     - ``zpa.PolicyAccessForwardingRule``
+        ///     - ``zpa.PolicyAccessIsolationRule``
+        ///     - ``zpa.PolicyAccessInspectionRule``
+        /// 
+        /// The ``object_type`` attribute must be defined as "PLATFORM" in the policy operand condition. To learn more see the To learn more see the [Getting Platform Types for a Customer](https://help.zscaler.com/zpa/configuring-access-policies-using-api#getPlatformTypes)
+        /// 
+        /// &gt; **NOTE** By Default the ZPA provider will return all platform types
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Zpa.GetPolicyPlatform.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPolicyPlatformResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPolicyPlatformResult>("zpa:index/getPolicyPlatform:getPolicyPlatform", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

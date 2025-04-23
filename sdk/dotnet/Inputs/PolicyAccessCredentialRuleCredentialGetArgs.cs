@@ -13,8 +13,8 @@ namespace Zscaler.Zpa.Inputs
 
     public sealed class PolicyAccessCredentialRuleCredentialGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
+        [Input("id")]
+        public Input<string>? Id { get; set; }
 
         public PolicyAccessCredentialRuleCredentialGetArgs()
         {

@@ -159,6 +159,54 @@ import (
 //							},
 //						},
 //					},
+//					&zpa.PolicyAccessRuleV2ConditionArgs{
+//						Operator: pulumi.String("OR"),
+//						Operands: zpa.PolicyAccessRuleV2ConditionOperandArray{
+//							&zpa.PolicyAccessRuleV2ConditionOperandArgs{
+//								ObjectType: pulumi.String("RISK_FACTOR_TYPE"),
+//								EntryValues: zpa.PolicyAccessRuleV2ConditionOperandEntryValueArray{
+//									&zpa.PolicyAccessRuleV2ConditionOperandEntryValueArgs{
+//										Lhs: pulumi.String("ZIA"),
+//										Rhs: pulumi.String("UNKNOWN"),
+//									},
+//									&zpa.PolicyAccessRuleV2ConditionOperandEntryValueArgs{
+//										Lhs: pulumi.String("ZIA"),
+//										Rhs: pulumi.String("LOW"),
+//									},
+//									&zpa.PolicyAccessRuleV2ConditionOperandEntryValueArgs{
+//										Lhs: pulumi.String("ZIA"),
+//										Rhs: pulumi.String("MEDIUM"),
+//									},
+//									&zpa.PolicyAccessRuleV2ConditionOperandEntryValueArgs{
+//										Lhs: pulumi.String("ZIA"),
+//										Rhs: pulumi.String("HIGH"),
+//									},
+//									&zpa.PolicyAccessRuleV2ConditionOperandEntryValueArgs{
+//										Lhs: pulumi.String("ZIA"),
+//										Rhs: pulumi.String("CRITICAL"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&zpa.PolicyAccessRuleV2ConditionArgs{
+//						Operator: pulumi.String("OR"),
+//						Operands: zpa.PolicyAccessRuleV2ConditionOperandArray{
+//							&zpa.PolicyAccessRuleV2ConditionOperandArgs{
+//								ObjectType: pulumi.String("CHROME_ENTERPRISE"),
+//								EntryValues: zpa.PolicyAccessRuleV2ConditionOperandEntryValueArray{
+//									&zpa.PolicyAccessRuleV2ConditionOperandEntryValueArgs{
+//										Lhs: pulumi.String("managed"),
+//										Rhs: pulumi.String("true"),
+//									},
+//									&zpa.PolicyAccessRuleV2ConditionOperandEntryValueArgs{
+//										Lhs: pulumi.String("managed"),
+//										Rhs: pulumi.String("false"),
+//									},
+//								},
+//							},
+//						},
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -188,6 +236,8 @@ import (
 // | POSTURE | “postureUdid“  | “"true"“ / “"false"“ |
 // | TRUSTED_NETWORK | “networkId“  | “"true"“ |
 // | COUNTRY_CODE | [2 Letter ISO3166 Alpha2](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)  | “"true"“ / “"false"“ |
+// | RISK_FACTOR_TYPE | “ZIA“  | “"UNKNOWN", "LOW", "MEDIUM", "HIGH", "CRITICAL"“ |
+// | CHROME_ENTERPRISE | “managed“  | “"true" / "false"“ |
 //
 // ## Import
 //
@@ -214,7 +264,7 @@ type PolicyAccessRuleV2 struct {
 	// This is for proviidng the set of conditions for the policy.
 	Conditions PolicyAccessRuleV2ConditionArrayOutput `pulumi:"conditions"`
 	// This is for providing a customer message for the user.
-	CustomMsg pulumi.StringPtrOutput `pulumi:"customMsg"`
+	CustomMsg pulumi.StringOutput `pulumi:"customMsg"`
 	// This is the description of the access policy rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// This is the name of the policy rule.
@@ -441,8 +491,8 @@ func (o PolicyAccessRuleV2Output) Conditions() PolicyAccessRuleV2ConditionArrayO
 }
 
 // This is for providing a customer message for the user.
-func (o PolicyAccessRuleV2Output) CustomMsg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicyAccessRuleV2) pulumi.StringPtrOutput { return v.CustomMsg }).(pulumi.StringPtrOutput)
+func (o PolicyAccessRuleV2Output) CustomMsg() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyAccessRuleV2) pulumi.StringOutput { return v.CustomMsg }).(pulumi.StringOutput)
 }
 
 // This is the description of the access policy rule.

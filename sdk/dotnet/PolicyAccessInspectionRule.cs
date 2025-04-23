@@ -163,7 +163,7 @@ namespace Zscaler.Zpa
         /// This is for providing a customer message for the user.
         /// </summary>
         [Output("customMsg")]
-        public Output<string?> CustomMsg { get; private set; } = null!;
+        public Output<string> CustomMsg { get; private set; } = null!;
 
         /// <summary>
         /// This is for providing a customer message for the user.

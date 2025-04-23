@@ -16,6 +16,8 @@ import (
 //
 // Use the **zpa_machine_group** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
 //
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
 // ## Example Usage
 //
 // ```go
@@ -98,15 +100,11 @@ type GetMachineGroupResult struct {
 }
 
 func GetMachineGroupOutput(ctx *pulumi.Context, args GetMachineGroupOutputArgs, opts ...pulumi.InvokeOption) GetMachineGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetMachineGroupResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetMachineGroupResultOutput, error) {
 			args := v.(GetMachineGroupArgs)
-			r, err := GetMachineGroup(ctx, &args, opts...)
-			var s GetMachineGroupResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getMachineGroup:getMachineGroup", args, GetMachineGroupResultOutput{}, options).(GetMachineGroupResultOutput), nil
 		}).(GetMachineGroupResultOutput)
 }
 

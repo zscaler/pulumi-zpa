@@ -110,15 +110,11 @@ type GetEnrollmentCertResult struct {
 }
 
 func GetEnrollmentCertOutput(ctx *pulumi.Context, args GetEnrollmentCertOutputArgs, opts ...pulumi.InvokeOption) GetEnrollmentCertResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetEnrollmentCertResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetEnrollmentCertResultOutput, error) {
 			args := v.(GetEnrollmentCertArgs)
-			r, err := GetEnrollmentCert(ctx, &args, opts...)
-			var s GetEnrollmentCertResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getEnrollmentCert:getEnrollmentCert", args, GetEnrollmentCertResultOutput{}, options).(GetEnrollmentCertResultOutput), nil
 		}).(GetEnrollmentCertResultOutput)
 }
 

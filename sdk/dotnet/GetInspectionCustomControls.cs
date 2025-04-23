@@ -17,6 +17,9 @@ namespace Zscaler.Zpa
 
         public static Output<GetInspectionCustomControlsResult> Invoke(GetInspectionCustomControlsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInspectionCustomControlsResult>("zpa:index/getInspectionCustomControls:getInspectionCustomControls", args ?? new GetInspectionCustomControlsInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetInspectionCustomControlsResult> Invoke(GetInspectionCustomControlsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInspectionCustomControlsResult>("zpa:index/getInspectionCustomControls:getInspectionCustomControls", args ?? new GetInspectionCustomControlsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -20,6 +20,8 @@ namespace Zscaler.Zpa
         /// 
         /// &gt; **NOTE:** A Cloud Connector Group resource is created in the Zscaler Cloud Connector cloud and replicated to the ZPA cloud. This resource can then be referenced in a Access Policy Rule where the Object Type = `EDGE_CONNECTOR_GROUP` is being used.
         /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -65,6 +67,8 @@ namespace Zscaler.Zpa
         /// 
         /// &gt; **NOTE:** A Cloud Connector Group resource is created in the Zscaler Cloud Connector cloud and replicated to the ZPA cloud. This resource can then be referenced in a Access Policy Rule where the Object Type = `EDGE_CONNECTOR_GROUP` is being used.
         /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -100,6 +104,53 @@ namespace Zscaler.Zpa
         /// ```
         /// </summary>
         public static Output<GetCloudConnectorGroupResult> Invoke(GetCloudConnectorGroupInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCloudConnectorGroupResult>("zpa:index/getCloudConnectorGroup:getCloudConnectorGroup", args ?? new GetCloudConnectorGroupInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-web-server-certificates)
+        /// * [API documentation](https://help.zscaler.com/zpa/obtaining-cloud-connector-group-details-using-api)
+        /// 
+        /// Use the **zpa_cloud_connector_group** data source to get information about a cloud connector group created from the Zscaler Private Access cloud. This data source can then be referenced within an Access Policy rule
+        /// 
+        /// &gt; **NOTE:** A Cloud Connector Group resource is created in the Zscaler Cloud Connector cloud and replicated to the ZPA cloud. This resource can then be referenced in a Access Policy Rule where the Object Type = `EDGE_CONNECTOR_GROUP` is being used.
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Zpa.GetCloudConnectorGroup.Invoke(new()
+        ///     {
+        ///         Name = "AWS-Cloud",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Zpa.GetCloudConnectorGroup.Invoke(new()
+        ///     {
+        ///         Id = "1234567890",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCloudConnectorGroupResult> Invoke(GetCloudConnectorGroupInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetCloudConnectorGroupResult>("zpa:index/getCloudConnectorGroup:getCloudConnectorGroup", args ?? new GetCloudConnectorGroupInvokeArgs(), options.WithDefaults());
     }
 

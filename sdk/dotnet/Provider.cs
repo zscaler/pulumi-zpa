@@ -22,6 +22,48 @@ namespace Zscaler.Zpa
         /// <summary>
         /// zpa client id
         /// </summary>
+        [Output("clientId")]
+        public Output<string?> ClientId { get; private set; } = null!;
+
+        /// <summary>
+        /// zpa client secret
+        /// </summary>
+        [Output("clientSecret")]
+        public Output<string?> ClientSecret { get; private set; } = null!;
+
+        /// <summary>
+        /// zpa customer id
+        /// </summary>
+        [Output("customerId")]
+        public Output<string?> CustomerId { get; private set; } = null!;
+
+        /// <summary>
+        /// Alternate HTTP proxy of scheme://hostname or scheme://hostname:port format
+        /// </summary>
+        [Output("httpProxy")]
+        public Output<string?> HttpProxy { get; private set; } = null!;
+
+        /// <summary>
+        /// zpa microtenant ID
+        /// </summary>
+        [Output("microtenantId")]
+        public Output<string?> MicrotenantId { get; private set; } = null!;
+
+        /// <summary>
+        /// zpa private key
+        /// </summary>
+        [Output("privateKey")]
+        public Output<string?> PrivateKey { get; private set; } = null!;
+
+        /// <summary>
+        /// Zscaler Vanity Domain
+        /// </summary>
+        [Output("vanityDomain")]
+        public Output<string?> VanityDomain { get; private set; } = null!;
+
+        /// <summary>
+        /// zpa client id
+        /// </summary>
         [Output("zpaClientId")]
         public Output<string?> ZpaClientId { get; private set; } = null!;
 
@@ -42,6 +84,12 @@ namespace Zscaler.Zpa
         /// </summary>
         [Output("zpaCustomerId")]
         public Output<string?> ZpaCustomerId { get; private set; } = null!;
+
+        /// <summary>
+        /// Zscaler Cloud Name
+        /// </summary>
+        [Output("zscalerCloud")]
+        public Output<string?> ZscalerCloud { get; private set; } = null!;
 
 
         /// <summary>
@@ -64,8 +112,14 @@ namespace Zscaler.Zpa
                 PluginDownloadURL = "github://api.github.com/zscaler",
                 AdditionalSecretOutputs =
                 {
+                    "clientSecret",
+                    "customerId",
+                    "microtenantId",
+                    "privateKey",
+                    "vanityDomain",
                     "zpaClientSecret",
                     "zpaCustomerId",
+                    "zscalerCloud",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -77,6 +131,142 @@ namespace Zscaler.Zpa
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Use exponential back off strategy for rate limits.
+        /// </summary>
+        [Input("backoff", json: true)]
+        public Input<bool>? Backoff { get; set; }
+
+        /// <summary>
+        /// zpa client id
+        /// </summary>
+        [Input("clientId")]
+        public Input<string>? ClientId { get; set; }
+
+        [Input("clientSecret")]
+        private Input<string>? _clientSecret;
+
+        /// <summary>
+        /// zpa client secret
+        /// </summary>
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("customerId")]
+        private Input<string>? _customerId;
+
+        /// <summary>
+        /// zpa customer id
+        /// </summary>
+        public Input<string>? CustomerId
+        {
+            get => _customerId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _customerId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Alternate HTTP proxy of scheme://hostname or scheme://hostname:port format
+        /// </summary>
+        [Input("httpProxy")]
+        public Input<string>? HttpProxy { get; set; }
+
+        /// <summary>
+        /// maximum number of retries to attempt before erroring out.
+        /// </summary>
+        [Input("maxRetries", json: true)]
+        public Input<int>? MaxRetries { get; set; }
+
+        /// <summary>
+        /// maximum seconds to wait when rate limit is hit. We use exponential backoffs when backoff is enabled.
+        /// </summary>
+        [Input("maxWaitSeconds", json: true)]
+        public Input<int>? MaxWaitSeconds { get; set; }
+
+        [Input("microtenantId")]
+        private Input<string>? _microtenantId;
+
+        /// <summary>
+        /// zpa microtenant ID
+        /// </summary>
+        public Input<string>? MicrotenantId
+        {
+            get => _microtenantId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _microtenantId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// minimum seconds to wait when rate limit is hit. We use exponential backoffs when backoff is enabled.
+        /// </summary>
+        [Input("minWaitSeconds", json: true)]
+        public Input<int>? MinWaitSeconds { get; set; }
+
+        /// <summary>
+        /// Number of concurrent requests to make within a resource where bulk operations are not possible. Take note of
+        /// https://help.zscaler.com/zpa/understanding-rate-limiting.
+        /// </summary>
+        [Input("parallelism", json: true)]
+        public Input<int>? Parallelism { get; set; }
+
+        [Input("privateKey")]
+        private Input<string>? _privateKey;
+
+        /// <summary>
+        /// zpa private key
+        /// </summary>
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Timeout for single request (in seconds) which is made to Zscaler, the default is `0` (means no limit is set). The
+        /// maximum value can be `300`.
+        /// </summary>
+        [Input("requestTimeout", json: true)]
+        public Input<int>? RequestTimeout { get; set; }
+
+        /// <summary>
+        /// Enables interaction with the ZPA legacy API framework
+        /// </summary>
+        [Input("useLegacyClient", json: true)]
+        public Input<bool>? UseLegacyClient { get; set; }
+
+        [Input("vanityDomain")]
+        private Input<string>? _vanityDomain;
+
+        /// <summary>
+        /// Zscaler Vanity Domain
+        /// </summary>
+        public Input<string>? VanityDomain
+        {
+            get => _vanityDomain;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _vanityDomain = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// zpa client id
         /// </summary>
@@ -121,12 +311,34 @@ namespace Zscaler.Zpa
             }
         }
 
+        [Input("zscalerCloud")]
+        private Input<string>? _zscalerCloud;
+
+        /// <summary>
+        /// Zscaler Cloud Name
+        /// </summary>
+        public Input<string>? ZscalerCloud
+        {
+            get => _zscalerCloud;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _zscalerCloud = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         public ProviderArgs()
         {
+            ClientId = Utilities.GetEnv("ZSCALER_CLIENT_ID");
+            ClientSecret = Utilities.GetEnv("ZSCALER_CLIENT_SECRET");
+            PrivateKey = Utilities.GetEnv("ZSCALER_PRIVATE_KEY");
+            UseLegacyClient = Utilities.GetEnvBoolean("ZSCALER_USE_LEGACY_CLIENT");
+            VanityDomain = Utilities.GetEnv("ZSCALER_VANITY_DOMAIN");
             ZpaClientId = Utilities.GetEnv("ZPA_CLIENT_ID");
             ZpaClientSecret = Utilities.GetEnv("ZPA_CLIENT_SECRET");
             ZpaCloud = Utilities.GetEnv("ZPA_CLOUD");
             ZpaCustomerId = Utilities.GetEnv("ZPA_CUSTOMER_ID");
+            ZscalerCloud = Utilities.GetEnv("ZSCALER_CLOUD");
         }
         public static new ProviderArgs Empty => new ProviderArgs();
     }

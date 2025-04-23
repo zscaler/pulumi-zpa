@@ -13,6 +13,8 @@ import (
 
 // Use the **zpa_cloud_browser_isolation_region** data source to get information about Cloud Browser Isolation regions such as ID and Name. This data source information is required as part of the attribute `regionIds` when creating an Cloud Browser Isolation External Profile “CloudBrowserIsolationExternalProfile“
 //
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
 // ## Example Usage
 //
 // ```go
@@ -61,15 +63,11 @@ type GetCloudBrowserIsolationRegionResult struct {
 }
 
 func GetCloudBrowserIsolationRegionOutput(ctx *pulumi.Context, args GetCloudBrowserIsolationRegionOutputArgs, opts ...pulumi.InvokeOption) GetCloudBrowserIsolationRegionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetCloudBrowserIsolationRegionResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetCloudBrowserIsolationRegionResultOutput, error) {
 			args := v.(GetCloudBrowserIsolationRegionArgs)
-			r, err := GetCloudBrowserIsolationRegion(ctx, &args, opts...)
-			var s GetCloudBrowserIsolationRegionResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getCloudBrowserIsolationRegion:getCloudBrowserIsolationRegion", args, GetCloudBrowserIsolationRegionResultOutput{}, options).(GetCloudBrowserIsolationRegionResultOutput), nil
 		}).(GetCloudBrowserIsolationRegionResultOutput)
 }
 

@@ -16,6 +16,8 @@ import (
 //
 // Use the **zpa_idp_controller** data source to get information about an Identity Provider created in the Zscaler Private Access cloud. This data source is required when creating:
 //
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
 // * Access policy Rules
 // * Access policy timeout rules
 // * Access policy forwarding rules
@@ -123,15 +125,11 @@ type GetIdPControllerResult struct {
 }
 
 func GetIdPControllerOutput(ctx *pulumi.Context, args GetIdPControllerOutputArgs, opts ...pulumi.InvokeOption) GetIdPControllerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetIdPControllerResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetIdPControllerResultOutput, error) {
 			args := v.(GetIdPControllerArgs)
-			r, err := GetIdPController(ctx, &args, opts...)
-			var s GetIdPControllerResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getIdPController:getIdPController", args, GetIdPControllerResultOutput{}, options).(GetIdPControllerResultOutput), nil
 		}).(GetIdPControllerResultOutput)
 }
 

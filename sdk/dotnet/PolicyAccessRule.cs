@@ -18,86 +18,6 @@ namespace Zscaler.Zpa
     /// 
     ///   ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Zpa = Pulumi.Zpa;
-    /// using Zpa = Zscaler.Zpa;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var idpName = Zpa.GetIdPController.Invoke(new()
-    ///     {
-    ///         Name = "IdP_Name",
-    ///     });
-    /// 
-    ///     var engineering = Zpa.GetSCIMGroups.Invoke(new()
-    ///     {
-    ///         Name = "Engineering",
-    ///         IdpName = "IdP_Name",
-    ///     });
-    /// 
-    ///     //Create Policy Access Rule
-    ///     var @this = new Zpa.PolicyAccessRule("this", new()
-    ///     {
-    ///         Description = "Example",
-    ///         Action = "ALLOW",
-    ///         Operator = "AND",
-    ///         Conditions = new[]
-    ///         {
-    ///             new Zpa.Inputs.PolicyAccessRuleConditionArgs
-    ///             {
-    ///                 Operator = "OR",
-    ///                 Operands = new[]
-    ///                 {
-    ///                     new Zpa.Inputs.PolicyAccessRuleConditionOperandArgs
-    ///                     {
-    ///                         ObjectType = "APP",
-    ///                         Lhs = "id",
-    ///                         Rhs = zpa_application_segment.This.Id,
-    ///                     },
-    ///                 },
-    ///             },
-    ///             new Zpa.Inputs.PolicyAccessRuleConditionArgs
-    ///             {
-    ///                 Operator = "OR",
-    ///                 Operands = new[]
-    ///                 {
-    ///                     new Zpa.Inputs.PolicyAccessRuleConditionOperandArgs
-    ///                     {
-    ///                         ObjectType = "SCIM_GROUP",
-    ///                         Lhs = idpName.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
-    ///                         Rhs = engineering.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## LHS and RHS Values
-    /// 
-    /// | Object Type | LHS| RHS
-    /// |----------|-----------|----------
-    /// | APP | ``"id"`` | ``application_segment_id`` |
-    /// | APP_GROUP | ``"id"`` | ``segment_group_id``|
-    /// | CLIENT_TYPE | ``"id"`` | ``zpn_client_type_zappl``, ``zpn_client_type_exporter``, ``zpn_client_type_browser_isolation``, ``zpn_client_type_ip_anchoring``, ``zpn_client_type_edge_connector``, ``zpn_client_type_branch_connector``,  ``zpn_client_type_zapp_partner``, ``zpn_client_type_zapp``  |
-    /// | EDGE_CONNECTOR_GROUP | ``"id"`` | ``&lt;edge_connector_id&gt;`` |
-    /// | IDP | ``"id"`` | ``identity_provider_id`` |
-    /// | SAML | ``saml_attribute_id``  | ``attribute_value_to_match`` |
-    /// | SCIM | ``scim_attribute_id``  | ``attribute_value_to_match``  |
-    /// | SCIM_GROUP | ``scim_group_attribute_id``  | ``attribute_value_to_match``  |
-    /// | PLATFORM | ``mac``, ``ios``, ``windows``, ``android``, ``linux`` | ``"true"`` / ``"false"`` |
-    /// | MACHINE_GRP | ``"id"`` | ``machine_group_id`` |
-    /// | POSTURE | ``posture_udid``  | ``"true"`` / ``"false"`` |
-    /// | TRUSTED_NETWORK | ``network_id``  | ``"true"`` |
-    /// | COUNTRY_CODE | [2 Letter ISO3166 Alpha2](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)  | ``"true"`` / ``"false"`` |
-    /// 
     /// ## Import
     /// 
     /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
@@ -152,7 +72,7 @@ namespace Zscaler.Zpa
         /// This is for providing a customer message for the user.
         /// </summary>
         [Output("customMsg")]
-        public Output<string?> CustomMsg { get; private set; } = null!;
+        public Output<string> CustomMsg { get; private set; } = null!;
 
         /// <summary>
         /// This is for providing a customer message for the user.

@@ -42,7 +42,7 @@ type PolicyAccessTimeOutRule struct {
 	// This is for proviidng the set of conditions for the policy.
 	Conditions PolicyAccessTimeOutRuleConditionArrayOutput `pulumi:"conditions"`
 	// This is for providing a customer message for the user.
-	CustomMsg pulumi.StringPtrOutput `pulumi:"customMsg"`
+	CustomMsg pulumi.StringOutput `pulumi:"customMsg"`
 	// This is for providing a customer message for the user.
 	DefaultRule pulumi.BoolPtrOutput `pulumi:"defaultRule"`
 	// This is the description of the access policy.
@@ -334,8 +334,8 @@ func (o PolicyAccessTimeOutRuleOutput) Conditions() PolicyAccessTimeOutRuleCondi
 }
 
 // This is for providing a customer message for the user.
-func (o PolicyAccessTimeOutRuleOutput) CustomMsg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicyAccessTimeOutRule) pulumi.StringPtrOutput { return v.CustomMsg }).(pulumi.StringPtrOutput)
+func (o PolicyAccessTimeOutRuleOutput) CustomMsg() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyAccessTimeOutRule) pulumi.StringOutput { return v.CustomMsg }).(pulumi.StringOutput)
 }
 
 // This is for providing a customer message for the user.

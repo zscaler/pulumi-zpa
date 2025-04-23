@@ -4,6 +4,49 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://help.zscaler.com/zpa/configuring-app-connectors-settings)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-auto-delete-disconnected-app-connectors-using-api)
+ *
+ * Use the **zpa_service_edge_assistant_schedule** resource sets the scheduled frequency at which the disconnected Service Edges are eligible for deletion. The supported value for frequency is days. The frequencyInterval field is the number of days after an Service Edge disconnects for it to become eligible for deletion. The minimum supported value for frequencyInterval is 5.
+ *
+ * > **NOTE** - When enabling the Assistant Schedule for the first time, you must provide the `customerId` information. If you authenticated using environment variables and used `ZPA_CUSTOMER_ID` environment variable, you don't have to define the customerId attribute in the HCL configuration, and the provider will automatically use the value from the environment variable `ZPA_CUSTOMER_ID`
+ *
+ * ## Example Usage
+ *
+ * ### Defined Customer ID Value
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const _this = new zpa.ServiceEdgeAssistantSchedule("this", {
+ *     customerId: "123456789101112",
+ *     deleteDisabled: true,
+ *     enabled: true,
+ *     frequency: "days",
+ *     frequencyInterval: "5",
+ * });
+ * ```
+ *
+ * ### Customer ID Via Environment Variable
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const _this = new zpa.ServiceEdgeAssistantSchedule("this", {
+ *     deleteDisabled: true,
+ *     enabled: true,
+ *     frequency: "days",
+ *     frequencyInterval: "5",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import is not currently supported for this resource.
+ */
 export class ServiceEdgeAssistantSchedule extends pulumi.CustomResource {
     /**
      * Get an existing ServiceEdgeAssistantSchedule resource's state with the given name, ID, and optional extra

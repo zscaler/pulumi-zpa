@@ -91,6 +91,46 @@ namespace Zscaler.Zpa
         /// </summary>
         public static Output<GetProvisioningKeyResult> Invoke(GetProvisioningKeyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProvisioningKeyResult>("zpa:index/getProvisioningKey:getProvisioningKey", args ?? new GetProvisioningKeyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Zpa.GetProvisioningKey.Invoke(new()
+        ///     {
+        ///         AssociationType = "CONNECTOR_GRP",
+        ///         Name = "Provisioning_Key",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Zpa.GetProvisioningKey.Invoke(new()
+        ///     {
+        ///         AssociationType = "SERVICE_EDGE_GRP",
+        ///         Name = "Provisioning_Key",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetProvisioningKeyResult> Invoke(GetProvisioningKeyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProvisioningKeyResult>("zpa:index/getProvisioningKey:getProvisioningKey", args ?? new GetProvisioningKeyInvokeArgs(), options.WithDefaults());
     }
 
 

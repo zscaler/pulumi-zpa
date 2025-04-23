@@ -35,7 +35,6 @@ import * as utilities from "./utilities";
  * To learn more see the [Getting Details of All LSS Status Codes](https://help.zscaler.com/zpa/log-streaming-service-configuration-use-cases#GettingLSSClientTypes)
  */
 export function getLSSClientTypes(opts?: pulumi.InvokeOptions): Promise<GetLSSClientTypesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getLSSClientTypes:getLSSClientTypes", {
     }, opts);
@@ -86,6 +85,8 @@ export interface GetLSSClientTypesResult {
  *
  * To learn more see the [Getting Details of All LSS Status Codes](https://help.zscaler.com/zpa/log-streaming-service-configuration-use-cases#GettingLSSClientTypes)
  */
-export function getLSSClientTypesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetLSSClientTypesResult> {
-    return pulumi.output(getLSSClientTypes(opts))
+export function getLSSClientTypesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLSSClientTypesResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getLSSClientTypes:getLSSClientTypes", {
+    }, opts);
 }

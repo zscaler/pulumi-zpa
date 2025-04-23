@@ -14,6 +14,8 @@ import (
 
 // ## Example Usage
 //
+// ### Using Version Profile Name
+//
 // ```go
 // package main
 //
@@ -41,6 +43,49 @@ import (
 //				UpgradeTimeInSecs:      pulumi.String("66600"),
 //				UseInDrMode:            pulumi.Bool(true),
 //				VersionProfileName:     pulumi.String("New Release"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Using Version Profile ID
+//
+//	data "getCustomerVersionProfile" "this" {
+//	  name = "New Release"
+//	}
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a App Connector Group
+//			_, err := zpa.NewConnectorGroup(ctx, "example", &zpa.ConnectorGroupArgs{
+//				Description:            pulumi.String("Example"),
+//				Enabled:                pulumi.Bool(true),
+//				CityCountry:            pulumi.String("San Jose, CA"),
+//				CountryCode:            pulumi.String("US"),
+//				Latitude:               pulumi.String("37.338"),
+//				Longitude:              pulumi.String("-121.8863"),
+//				Location:               pulumi.String("San Jose, CA, US"),
+//				UpgradeDay:             pulumi.String("SUNDAY"),
+//				UpgradeTimeInSecs:      pulumi.String("66600"),
+//				OverrideVersionProfile: pulumi.Bool(true),
+//				VersionProfileId:       pulumi.Any(data.Zpa_customer_version_profile.This.Id),
+//				DnsQueryType:           pulumi.String("IPV4_IPV6"),
+//				UseInDrMode:            pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -84,7 +129,8 @@ type ConnectorGroup struct {
 	// Location of the App Connector Group
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Longitude of the App Connector Group. Integer or decimal. With values in the range of -180 to 180
-	Longitude            pulumi.StringOutput `pulumi:"longitude"`
+	Longitude pulumi.StringOutput `pulumi:"longitude"`
+	// Whether or not the App Connector Group is configured for the Log Streaming Service (LSS)
 	LssAppConnectorGroup pulumi.BoolOutput   `pulumi:"lssAppConnectorGroup"`
 	MicrotenantId        pulumi.StringOutput `pulumi:"microtenantId"`
 	// Name of the App Connector Group
@@ -170,7 +216,8 @@ type connectorGroupState struct {
 	// Location of the App Connector Group
 	Location *string `pulumi:"location"`
 	// Longitude of the App Connector Group. Integer or decimal. With values in the range of -180 to 180
-	Longitude            *string `pulumi:"longitude"`
+	Longitude *string `pulumi:"longitude"`
+	// Whether or not the App Connector Group is configured for the Log Streaming Service (LSS)
 	LssAppConnectorGroup *bool   `pulumi:"lssAppConnectorGroup"`
 	MicrotenantId        *string `pulumi:"microtenantId"`
 	// Name of the App Connector Group
@@ -218,7 +265,8 @@ type ConnectorGroupState struct {
 	// Location of the App Connector Group
 	Location pulumi.StringPtrInput
 	// Longitude of the App Connector Group. Integer or decimal. With values in the range of -180 to 180
-	Longitude            pulumi.StringPtrInput
+	Longitude pulumi.StringPtrInput
+	// Whether or not the App Connector Group is configured for the Log Streaming Service (LSS)
 	LssAppConnectorGroup pulumi.BoolPtrInput
 	MicrotenantId        pulumi.StringPtrInput
 	// Name of the App Connector Group
@@ -270,7 +318,8 @@ type connectorGroupArgs struct {
 	// Location of the App Connector Group
 	Location string `pulumi:"location"`
 	// Longitude of the App Connector Group. Integer or decimal. With values in the range of -180 to 180
-	Longitude            string  `pulumi:"longitude"`
+	Longitude string `pulumi:"longitude"`
+	// Whether or not the App Connector Group is configured for the Log Streaming Service (LSS)
 	LssAppConnectorGroup *bool   `pulumi:"lssAppConnectorGroup"`
 	MicrotenantId        *string `pulumi:"microtenantId"`
 	// Name of the App Connector Group
@@ -319,7 +368,8 @@ type ConnectorGroupArgs struct {
 	// Location of the App Connector Group
 	Location pulumi.StringInput
 	// Longitude of the App Connector Group. Integer or decimal. With values in the range of -180 to 180
-	Longitude            pulumi.StringInput
+	Longitude pulumi.StringInput
+	// Whether or not the App Connector Group is configured for the Log Streaming Service (LSS)
 	LssAppConnectorGroup pulumi.BoolPtrInput
 	MicrotenantId        pulumi.StringPtrInput
 	// Name of the App Connector Group
@@ -478,6 +528,7 @@ func (o ConnectorGroupOutput) Longitude() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.StringOutput { return v.Longitude }).(pulumi.StringOutput)
 }
 
+// Whether or not the App Connector Group is configured for the Log Streaming Service (LSS)
 func (o ConnectorGroupOutput) LssAppConnectorGroup() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.BoolOutput { return v.LssAppConnectorGroup }).(pulumi.BoolOutput)
 }

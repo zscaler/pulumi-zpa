@@ -13,6 +13,8 @@ import (
 
 // Use the **zpa_application_segment_inspection** data source to get information about an inspection application segment in the Zscaler Private Access cloud. This resource can then be referenced in a ZPA access inspection policy. This resource supports ZPA Inspection for both `HTTP` and `HTTPS`.
 //
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
 // ## Example Usage
 //
 // ```go
@@ -74,12 +76,10 @@ func LookupApplicationSegmentInspection(ctx *pulumi.Context, args *LookupApplica
 
 // A collection of arguments for invoking getApplicationSegmentInspection.
 type LookupApplicationSegmentInspectionArgs struct {
-	Id              *string                                       `pulumi:"id"`
-	MicrotenantId   *string                                       `pulumi:"microtenantId"`
-	MicrotenantName *string                                       `pulumi:"microtenantName"`
-	Name            *string                                       `pulumi:"name"`
-	TcpPortRange    []GetApplicationSegmentInspectionTcpPortRange `pulumi:"tcpPortRange"`
-	UdpPortRange    []GetApplicationSegmentInspectionUdpPortRange `pulumi:"udpPortRange"`
+	Id           *string                                       `pulumi:"id"`
+	Name         *string                                       `pulumi:"name"`
+	TcpPortRange []GetApplicationSegmentInspectionTcpPortRange `pulumi:"tcpPortRange"`
+	UdpPortRange []GetApplicationSegmentInspectionUdpPortRange `pulumi:"udpPortRange"`
 }
 
 // A collection of values returned by getApplicationSegmentInspection.
@@ -97,8 +97,6 @@ type LookupApplicationSegmentInspectionResult struct {
 	InspectionApps            []GetApplicationSegmentInspectionInspectionApp `pulumi:"inspectionApps"`
 	IpAnchored                bool                                           `pulumi:"ipAnchored"`
 	IsCnameEnabled            bool                                           `pulumi:"isCnameEnabled"`
-	MicrotenantId             *string                                        `pulumi:"microtenantId"`
-	MicrotenantName           *string                                        `pulumi:"microtenantName"`
 	ModifiedBy                string                                         `pulumi:"modifiedBy"`
 	ModifiedTime              string                                         `pulumi:"modifiedTime"`
 	Name                      *string                                        `pulumi:"name"`
@@ -114,26 +112,20 @@ type LookupApplicationSegmentInspectionResult struct {
 }
 
 func LookupApplicationSegmentInspectionOutput(ctx *pulumi.Context, args LookupApplicationSegmentInspectionOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationSegmentInspectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupApplicationSegmentInspectionResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupApplicationSegmentInspectionResultOutput, error) {
 			args := v.(LookupApplicationSegmentInspectionArgs)
-			r, err := LookupApplicationSegmentInspection(ctx, &args, opts...)
-			var s LookupApplicationSegmentInspectionResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getApplicationSegmentInspection:getApplicationSegmentInspection", args, LookupApplicationSegmentInspectionResultOutput{}, options).(LookupApplicationSegmentInspectionResultOutput), nil
 		}).(LookupApplicationSegmentInspectionResultOutput)
 }
 
 // A collection of arguments for invoking getApplicationSegmentInspection.
 type LookupApplicationSegmentInspectionOutputArgs struct {
-	Id              pulumi.StringPtrInput                                 `pulumi:"id"`
-	MicrotenantId   pulumi.StringPtrInput                                 `pulumi:"microtenantId"`
-	MicrotenantName pulumi.StringPtrInput                                 `pulumi:"microtenantName"`
-	Name            pulumi.StringPtrInput                                 `pulumi:"name"`
-	TcpPortRange    GetApplicationSegmentInspectionTcpPortRangeArrayInput `pulumi:"tcpPortRange"`
-	UdpPortRange    GetApplicationSegmentInspectionUdpPortRangeArrayInput `pulumi:"udpPortRange"`
+	Id           pulumi.StringPtrInput                                 `pulumi:"id"`
+	Name         pulumi.StringPtrInput                                 `pulumi:"name"`
+	TcpPortRange GetApplicationSegmentInspectionTcpPortRangeArrayInput `pulumi:"tcpPortRange"`
+	UdpPortRange GetApplicationSegmentInspectionUdpPortRangeArrayInput `pulumi:"udpPortRange"`
 }
 
 func (LookupApplicationSegmentInspectionOutputArgs) ElementType() reflect.Type {
@@ -207,14 +199,6 @@ func (o LookupApplicationSegmentInspectionResultOutput) IpAnchored() pulumi.Bool
 
 func (o LookupApplicationSegmentInspectionResultOutput) IsCnameEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) bool { return v.IsCnameEnabled }).(pulumi.BoolOutput)
-}
-
-func (o LookupApplicationSegmentInspectionResultOutput) MicrotenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) *string { return v.MicrotenantId }).(pulumi.StringPtrOutput)
-}
-
-func (o LookupApplicationSegmentInspectionResultOutput) MicrotenantName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupApplicationSegmentInspectionResult) *string { return v.MicrotenantName }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupApplicationSegmentInspectionResultOutput) ModifiedBy() pulumi.StringOutput {

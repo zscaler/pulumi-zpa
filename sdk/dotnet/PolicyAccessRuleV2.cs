@@ -178,6 +178,69 @@ namespace Zscaler.Zpa
     ///                     },
     ///                 },
     ///             },
+    ///             new Zpa.Inputs.PolicyAccessRuleV2ConditionArgs
+    ///             {
+    ///                 Operator = "OR",
+    ///                 Operands = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.PolicyAccessRuleV2ConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "RISK_FACTOR_TYPE",
+    ///                         EntryValues = new[]
+    ///                         {
+    ///                             new Zpa.Inputs.PolicyAccessRuleV2ConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Lhs = "ZIA",
+    ///                                 Rhs = "UNKNOWN",
+    ///                             },
+    ///                             new Zpa.Inputs.PolicyAccessRuleV2ConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Lhs = "ZIA",
+    ///                                 Rhs = "LOW",
+    ///                             },
+    ///                             new Zpa.Inputs.PolicyAccessRuleV2ConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Lhs = "ZIA",
+    ///                                 Rhs = "MEDIUM",
+    ///                             },
+    ///                             new Zpa.Inputs.PolicyAccessRuleV2ConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Lhs = "ZIA",
+    ///                                 Rhs = "HIGH",
+    ///                             },
+    ///                             new Zpa.Inputs.PolicyAccessRuleV2ConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Lhs = "ZIA",
+    ///                                 Rhs = "CRITICAL",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Zpa.Inputs.PolicyAccessRuleV2ConditionArgs
+    ///             {
+    ///                 Operator = "OR",
+    ///                 Operands = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.PolicyAccessRuleV2ConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "CHROME_ENTERPRISE",
+    ///                         EntryValues = new[]
+    ///                         {
+    ///                             new Zpa.Inputs.PolicyAccessRuleV2ConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Lhs = "managed",
+    ///                                 Rhs = "true",
+    ///                             },
+    ///                             new Zpa.Inputs.PolicyAccessRuleV2ConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Lhs = "managed",
+    ///                                 Rhs = "false",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
     ///         },
     ///     });
     /// 
@@ -202,6 +265,8 @@ namespace Zscaler.Zpa
     /// | POSTURE | ``posture_udid``  | ``"true"`` / ``"false"`` |
     /// | TRUSTED_NETWORK | ``network_id``  | ``"true"`` |
     /// | COUNTRY_CODE | [2 Letter ISO3166 Alpha2](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)  | ``"true"`` / ``"false"`` |
+    /// | RISK_FACTOR_TYPE | ``ZIA``  | ``"UNKNOWN", "LOW", "MEDIUM", "HIGH", "CRITICAL"`` |
+    /// | CHROME_ENTERPRISE | ``managed``  | ``"true" / "false"`` |
     /// 
     /// ## Import
     /// 
@@ -248,7 +313,7 @@ namespace Zscaler.Zpa
         /// This is for providing a customer message for the user.
         /// </summary>
         [Output("customMsg")]
-        public Output<string?> CustomMsg { get; private set; } = null!;
+        public Output<string> CustomMsg { get; private set; } = null!;
 
         /// <summary>
         /// This is the description of the access policy rule.

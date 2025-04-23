@@ -75,15 +75,11 @@ type GetApplicationSegmentByTypeResult struct {
 }
 
 func GetApplicationSegmentByTypeOutput(ctx *pulumi.Context, args GetApplicationSegmentByTypeOutputArgs, opts ...pulumi.InvokeOption) GetApplicationSegmentByTypeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetApplicationSegmentByTypeResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetApplicationSegmentByTypeResultOutput, error) {
 			args := v.(GetApplicationSegmentByTypeArgs)
-			r, err := GetApplicationSegmentByType(ctx, &args, opts...)
-			var s GetApplicationSegmentByTypeResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getApplicationSegmentByType:getApplicationSegmentByType", args, GetApplicationSegmentByTypeResultOutput{}, options).(GetApplicationSegmentByTypeResultOutput), nil
 		}).(GetApplicationSegmentByTypeResultOutput)
 }
 

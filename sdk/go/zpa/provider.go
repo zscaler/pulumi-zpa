@@ -19,6 +19,20 @@ type Provider struct {
 	pulumi.ProviderResourceState
 
 	// zpa client id
+	ClientId pulumi.StringPtrOutput `pulumi:"clientId"`
+	// zpa client secret
+	ClientSecret pulumi.StringPtrOutput `pulumi:"clientSecret"`
+	// zpa customer id
+	CustomerId pulumi.StringPtrOutput `pulumi:"customerId"`
+	// Alternate HTTP proxy of scheme://hostname or scheme://hostname:port format
+	HttpProxy pulumi.StringPtrOutput `pulumi:"httpProxy"`
+	// zpa microtenant ID
+	MicrotenantId pulumi.StringPtrOutput `pulumi:"microtenantId"`
+	// zpa private key
+	PrivateKey pulumi.StringPtrOutput `pulumi:"privateKey"`
+	// Zscaler Vanity Domain
+	VanityDomain pulumi.StringPtrOutput `pulumi:"vanityDomain"`
+	// zpa client id
 	ZpaClientId pulumi.StringPtrOutput `pulumi:"zpaClientId"`
 	// zpa client secret
 	ZpaClientSecret pulumi.StringPtrOutput `pulumi:"zpaClientSecret"`
@@ -26,6 +40,8 @@ type Provider struct {
 	ZpaCloud pulumi.StringPtrOutput `pulumi:"zpaCloud"`
 	// zpa customer id
 	ZpaCustomerId pulumi.StringPtrOutput `pulumi:"zpaCustomerId"`
+	// Zscaler Cloud Name
+	ZscalerCloud pulumi.StringPtrOutput `pulumi:"zscalerCloud"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -35,6 +51,31 @@ func NewProvider(ctx *pulumi.Context,
 		args = &ProviderArgs{}
 	}
 
+	if args.ClientId == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "ZSCALER_CLIENT_ID"); d != nil {
+			args.ClientId = pulumi.StringPtr(d.(string))
+		}
+	}
+	if args.ClientSecret == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "ZSCALER_CLIENT_SECRET"); d != nil {
+			args.ClientSecret = pulumi.StringPtr(d.(string))
+		}
+	}
+	if args.PrivateKey == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "ZSCALER_PRIVATE_KEY"); d != nil {
+			args.PrivateKey = pulumi.StringPtr(d.(string))
+		}
+	}
+	if args.UseLegacyClient == nil {
+		if d := internal.GetEnvOrDefault(nil, internal.ParseEnvBool, "ZSCALER_USE_LEGACY_CLIENT"); d != nil {
+			args.UseLegacyClient = pulumi.BoolPtr(d.(bool))
+		}
+	}
+	if args.VanityDomain == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "ZSCALER_VANITY_DOMAIN"); d != nil {
+			args.VanityDomain = pulumi.StringPtr(d.(string))
+		}
+	}
 	if args.ZpaClientId == nil {
 		if d := internal.GetEnvOrDefault(nil, nil, "ZPA_CLIENT_ID"); d != nil {
 			args.ZpaClientId = pulumi.StringPtr(d.(string))
@@ -55,15 +96,44 @@ func NewProvider(ctx *pulumi.Context,
 			args.ZpaCustomerId = pulumi.StringPtr(d.(string))
 		}
 	}
+	if args.ZscalerCloud == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "ZSCALER_CLOUD"); d != nil {
+			args.ZscalerCloud = pulumi.StringPtr(d.(string))
+		}
+	}
+	if args.ClientSecret != nil {
+		args.ClientSecret = pulumi.ToSecret(args.ClientSecret).(pulumi.StringPtrInput)
+	}
+	if args.CustomerId != nil {
+		args.CustomerId = pulumi.ToSecret(args.CustomerId).(pulumi.StringPtrInput)
+	}
+	if args.MicrotenantId != nil {
+		args.MicrotenantId = pulumi.ToSecret(args.MicrotenantId).(pulumi.StringPtrInput)
+	}
+	if args.PrivateKey != nil {
+		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringPtrInput)
+	}
+	if args.VanityDomain != nil {
+		args.VanityDomain = pulumi.ToSecret(args.VanityDomain).(pulumi.StringPtrInput)
+	}
 	if args.ZpaClientSecret != nil {
 		args.ZpaClientSecret = pulumi.ToSecret(args.ZpaClientSecret).(pulumi.StringPtrInput)
 	}
 	if args.ZpaCustomerId != nil {
 		args.ZpaCustomerId = pulumi.ToSecret(args.ZpaCustomerId).(pulumi.StringPtrInput)
 	}
+	if args.ZscalerCloud != nil {
+		args.ZscalerCloud = pulumi.ToSecret(args.ZscalerCloud).(pulumi.StringPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"clientSecret",
+		"customerId",
+		"microtenantId",
+		"privateKey",
+		"vanityDomain",
 		"zpaClientSecret",
 		"zpaCustomerId",
+		"zscalerCloud",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -76,6 +146,36 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
+	// Use exponential back off strategy for rate limits.
+	Backoff *bool `pulumi:"backoff"`
+	// zpa client id
+	ClientId *string `pulumi:"clientId"`
+	// zpa client secret
+	ClientSecret *string `pulumi:"clientSecret"`
+	// zpa customer id
+	CustomerId *string `pulumi:"customerId"`
+	// Alternate HTTP proxy of scheme://hostname or scheme://hostname:port format
+	HttpProxy *string `pulumi:"httpProxy"`
+	// maximum number of retries to attempt before erroring out.
+	MaxRetries *int `pulumi:"maxRetries"`
+	// maximum seconds to wait when rate limit is hit. We use exponential backoffs when backoff is enabled.
+	MaxWaitSeconds *int `pulumi:"maxWaitSeconds"`
+	// zpa microtenant ID
+	MicrotenantId *string `pulumi:"microtenantId"`
+	// minimum seconds to wait when rate limit is hit. We use exponential backoffs when backoff is enabled.
+	MinWaitSeconds *int `pulumi:"minWaitSeconds"`
+	// Number of concurrent requests to make within a resource where bulk operations are not possible. Take note of
+	// https://help.zscaler.com/zpa/understanding-rate-limiting.
+	Parallelism *int `pulumi:"parallelism"`
+	// zpa private key
+	PrivateKey *string `pulumi:"privateKey"`
+	// Timeout for single request (in seconds) which is made to Zscaler, the default is `0` (means no limit is set). The
+	// maximum value can be `300`.
+	RequestTimeout *int `pulumi:"requestTimeout"`
+	// Enables interaction with the ZPA legacy API framework
+	UseLegacyClient *bool `pulumi:"useLegacyClient"`
+	// Zscaler Vanity Domain
+	VanityDomain *string `pulumi:"vanityDomain"`
 	// zpa client id
 	ZpaClientId *string `pulumi:"zpaClientId"`
 	// zpa client secret
@@ -84,10 +184,42 @@ type providerArgs struct {
 	ZpaCloud *string `pulumi:"zpaCloud"`
 	// zpa customer id
 	ZpaCustomerId *string `pulumi:"zpaCustomerId"`
+	// Zscaler Cloud Name
+	ZscalerCloud *string `pulumi:"zscalerCloud"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
+	// Use exponential back off strategy for rate limits.
+	Backoff pulumi.BoolPtrInput
+	// zpa client id
+	ClientId pulumi.StringPtrInput
+	// zpa client secret
+	ClientSecret pulumi.StringPtrInput
+	// zpa customer id
+	CustomerId pulumi.StringPtrInput
+	// Alternate HTTP proxy of scheme://hostname or scheme://hostname:port format
+	HttpProxy pulumi.StringPtrInput
+	// maximum number of retries to attempt before erroring out.
+	MaxRetries pulumi.IntPtrInput
+	// maximum seconds to wait when rate limit is hit. We use exponential backoffs when backoff is enabled.
+	MaxWaitSeconds pulumi.IntPtrInput
+	// zpa microtenant ID
+	MicrotenantId pulumi.StringPtrInput
+	// minimum seconds to wait when rate limit is hit. We use exponential backoffs when backoff is enabled.
+	MinWaitSeconds pulumi.IntPtrInput
+	// Number of concurrent requests to make within a resource where bulk operations are not possible. Take note of
+	// https://help.zscaler.com/zpa/understanding-rate-limiting.
+	Parallelism pulumi.IntPtrInput
+	// zpa private key
+	PrivateKey pulumi.StringPtrInput
+	// Timeout for single request (in seconds) which is made to Zscaler, the default is `0` (means no limit is set). The
+	// maximum value can be `300`.
+	RequestTimeout pulumi.IntPtrInput
+	// Enables interaction with the ZPA legacy API framework
+	UseLegacyClient pulumi.BoolPtrInput
+	// Zscaler Vanity Domain
+	VanityDomain pulumi.StringPtrInput
 	// zpa client id
 	ZpaClientId pulumi.StringPtrInput
 	// zpa client secret
@@ -96,6 +228,8 @@ type ProviderArgs struct {
 	ZpaCloud pulumi.StringPtrInput
 	// zpa customer id
 	ZpaCustomerId pulumi.StringPtrInput
+	// Zscaler Cloud Name
+	ZscalerCloud pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -136,6 +270,41 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 }
 
 // zpa client id
+func (o ProviderOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// zpa client secret
+func (o ProviderOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// zpa customer id
+func (o ProviderOutput) CustomerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CustomerId }).(pulumi.StringPtrOutput)
+}
+
+// Alternate HTTP proxy of scheme://hostname or scheme://hostname:port format
+func (o ProviderOutput) HttpProxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.HttpProxy }).(pulumi.StringPtrOutput)
+}
+
+// zpa microtenant ID
+func (o ProviderOutput) MicrotenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MicrotenantId }).(pulumi.StringPtrOutput)
+}
+
+// zpa private key
+func (o ProviderOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// Zscaler Vanity Domain
+func (o ProviderOutput) VanityDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.VanityDomain }).(pulumi.StringPtrOutput)
+}
+
+// zpa client id
 func (o ProviderOutput) ZpaClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ZpaClientId }).(pulumi.StringPtrOutput)
 }
@@ -153,6 +322,11 @@ func (o ProviderOutput) ZpaCloud() pulumi.StringPtrOutput {
 // zpa customer id
 func (o ProviderOutput) ZpaCustomerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ZpaCustomerId }).(pulumi.StringPtrOutput)
+}
+
+// Zscaler Cloud Name
+func (o ProviderOutput) ZscalerCloud() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ZscalerCloud }).(pulumi.StringPtrOutput)
 }
 
 func init() {

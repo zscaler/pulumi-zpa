@@ -12,20 +12,21 @@ import * as utilities from "./utilities";
  *
  * Use the **zpa_inspection_profile** data source to get information about an inspection profile in the Zscaler Private Access cloud. This resource can then be referenced in an inspection custom control resource.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getInspectionProfile({
+ * const _this = zpa.getInspectionProfile({
  *     name: "Example",
  * });
  * ```
  */
 export function getInspectionProfile(args?: GetInspectionProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetInspectionProfileResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getInspectionProfile:getInspectionProfile", {
         "id": args.id,
@@ -73,19 +74,26 @@ export interface GetInspectionProfileResult {
  *
  * Use the **zpa_inspection_profile** data source to get information about an inspection profile in the Zscaler Private Access cloud. This resource can then be referenced in an inspection custom control resource.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getInspectionProfile({
+ * const _this = zpa.getInspectionProfile({
  *     name: "Example",
  * });
  * ```
  */
-export function getInspectionProfileOutput(args?: GetInspectionProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInspectionProfileResult> {
-    return pulumi.output(args).apply((a: any) => getInspectionProfile(a, opts))
+export function getInspectionProfileOutput(args?: GetInspectionProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInspectionProfileResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getInspectionProfile:getInspectionProfile", {
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

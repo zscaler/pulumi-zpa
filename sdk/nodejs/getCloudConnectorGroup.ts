@@ -14,6 +14,8 @@ import * as utilities from "./utilities";
  *
  * > **NOTE:** A Cloud Connector Group resource is created in the Zscaler Cloud Connector cloud and replicated to the ZPA cloud. This resource can then be referenced in a Access Policy Rule where the Object Type = `EDGE_CONNECTOR_GROUP` is being used.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -36,7 +38,6 @@ import * as utilities from "./utilities";
  */
 export function getCloudConnectorGroup(args?: GetCloudConnectorGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudConnectorGroupResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getCloudConnectorGroup:getCloudConnectorGroup", {
         "id": args.id,
@@ -76,6 +77,8 @@ export interface GetCloudConnectorGroupResult {
  *
  * > **NOTE:** A Cloud Connector Group resource is created in the Zscaler Cloud Connector cloud and replicated to the ZPA cloud. This resource can then be referenced in a Access Policy Rule where the Object Type = `EDGE_CONNECTOR_GROUP` is being used.
  *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -96,8 +99,13 @@ export interface GetCloudConnectorGroupResult {
  * });
  * ```
  */
-export function getCloudConnectorGroupOutput(args?: GetCloudConnectorGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudConnectorGroupResult> {
-    return pulumi.output(args).apply((a: any) => getCloudConnectorGroup(a, opts))
+export function getCloudConnectorGroupOutput(args?: GetCloudConnectorGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudConnectorGroupResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getCloudConnectorGroup:getCloudConnectorGroup", {
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

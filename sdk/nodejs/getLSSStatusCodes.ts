@@ -18,11 +18,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getLSSStatusCodes({});
+ * const _this = zpa.getLSSStatusCodes({});
  * ```
  */
 export function getLSSStatusCodes(opts?: pulumi.InvokeOptions): Promise<GetLSSStatusCodesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getLSSStatusCodes:getLSSStatusCodes", {
     }, opts);
@@ -55,9 +54,11 @@ export interface GetLSSStatusCodesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getLSSStatusCodes({});
+ * const _this = zpa.getLSSStatusCodes({});
  * ```
  */
-export function getLSSStatusCodesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetLSSStatusCodesResult> {
-    return pulumi.output(getLSSStatusCodes(opts))
+export function getLSSStatusCodesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLSSStatusCodesResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getLSSStatusCodes:getLSSStatusCodes", {
+    }, opts);
 }

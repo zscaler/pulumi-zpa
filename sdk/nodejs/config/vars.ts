@@ -8,6 +8,162 @@ declare var exports: any;
 const __config = new pulumi.Config("zpa");
 
 /**
+ * Use exponential back off strategy for rate limits.
+ */
+export declare const backoff: boolean | undefined;
+Object.defineProperty(exports, "backoff", {
+    get() {
+        return __config.getObject<boolean>("backoff");
+    },
+    enumerable: true,
+});
+
+/**
+ * zpa client id
+ */
+export declare const clientId: string | undefined;
+Object.defineProperty(exports, "clientId", {
+    get() {
+        return __config.get("clientId") ?? utilities.getEnv("ZSCALER_CLIENT_ID");
+    },
+    enumerable: true,
+});
+
+/**
+ * zpa client secret
+ */
+export declare const clientSecret: string | undefined;
+Object.defineProperty(exports, "clientSecret", {
+    get() {
+        return __config.get("clientSecret") ?? utilities.getEnv("ZSCALER_CLIENT_SECRET");
+    },
+    enumerable: true,
+});
+
+/**
+ * zpa customer id
+ */
+export declare const customerId: string | undefined;
+Object.defineProperty(exports, "customerId", {
+    get() {
+        return __config.get("customerId");
+    },
+    enumerable: true,
+});
+
+/**
+ * Alternate HTTP proxy of scheme://hostname or scheme://hostname:port format
+ */
+export declare const httpProxy: string | undefined;
+Object.defineProperty(exports, "httpProxy", {
+    get() {
+        return __config.get("httpProxy");
+    },
+    enumerable: true,
+});
+
+/**
+ * maximum number of retries to attempt before erroring out.
+ */
+export declare const maxRetries: number | undefined;
+Object.defineProperty(exports, "maxRetries", {
+    get() {
+        return __config.getObject<number>("maxRetries");
+    },
+    enumerable: true,
+});
+
+/**
+ * maximum seconds to wait when rate limit is hit. We use exponential backoffs when backoff is enabled.
+ */
+export declare const maxWaitSeconds: number | undefined;
+Object.defineProperty(exports, "maxWaitSeconds", {
+    get() {
+        return __config.getObject<number>("maxWaitSeconds");
+    },
+    enumerable: true,
+});
+
+/**
+ * zpa microtenant ID
+ */
+export declare const microtenantId: string | undefined;
+Object.defineProperty(exports, "microtenantId", {
+    get() {
+        return __config.get("microtenantId");
+    },
+    enumerable: true,
+});
+
+/**
+ * minimum seconds to wait when rate limit is hit. We use exponential backoffs when backoff is enabled.
+ */
+export declare const minWaitSeconds: number | undefined;
+Object.defineProperty(exports, "minWaitSeconds", {
+    get() {
+        return __config.getObject<number>("minWaitSeconds");
+    },
+    enumerable: true,
+});
+
+/**
+ * Number of concurrent requests to make within a resource where bulk operations are not possible. Take note of
+ * https://help.zscaler.com/zpa/understanding-rate-limiting.
+ */
+export declare const parallelism: number | undefined;
+Object.defineProperty(exports, "parallelism", {
+    get() {
+        return __config.getObject<number>("parallelism");
+    },
+    enumerable: true,
+});
+
+/**
+ * zpa private key
+ */
+export declare const privateKey: string | undefined;
+Object.defineProperty(exports, "privateKey", {
+    get() {
+        return __config.get("privateKey") ?? utilities.getEnv("ZSCALER_PRIVATE_KEY");
+    },
+    enumerable: true,
+});
+
+/**
+ * Timeout for single request (in seconds) which is made to Zscaler, the default is `0` (means no limit is set). The
+ * maximum value can be `300`.
+ */
+export declare const requestTimeout: number | undefined;
+Object.defineProperty(exports, "requestTimeout", {
+    get() {
+        return __config.getObject<number>("requestTimeout");
+    },
+    enumerable: true,
+});
+
+/**
+ * Enables interaction with the ZPA legacy API framework
+ */
+export declare const useLegacyClient: boolean | undefined;
+Object.defineProperty(exports, "useLegacyClient", {
+    get() {
+        return __config.getObject<boolean>("useLegacyClient") ?? utilities.getEnvBoolean("ZSCALER_USE_LEGACY_CLIENT");
+    },
+    enumerable: true,
+});
+
+/**
+ * Zscaler Vanity Domain
+ */
+export declare const vanityDomain: string | undefined;
+Object.defineProperty(exports, "vanityDomain", {
+    get() {
+        return __config.get("vanityDomain") ?? utilities.getEnv("ZSCALER_VANITY_DOMAIN");
+    },
+    enumerable: true,
+});
+
+/**
  * zpa client id
  */
 export declare const zpaClientId: string | undefined;
@@ -47,6 +203,17 @@ export declare const zpaCustomerId: string | undefined;
 Object.defineProperty(exports, "zpaCustomerId", {
     get() {
         return __config.get("zpaCustomerId") ?? utilities.getEnv("ZPA_CUSTOMER_ID");
+    },
+    enumerable: true,
+});
+
+/**
+ * Zscaler Cloud Name
+ */
+export declare const zscalerCloud: string | undefined;
+Object.defineProperty(exports, "zscalerCloud", {
+    get() {
+        return __config.get("zscalerCloud") ?? utilities.getEnv("ZSCALER_CLOUD");
     },
     enumerable: true,
 });

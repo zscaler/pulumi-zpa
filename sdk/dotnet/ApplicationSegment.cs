@@ -32,6 +32,9 @@ namespace Zscaler.Zpa
     [ZpaResourceType("zpa:index/applicationSegment:ApplicationSegment")]
     public partial class ApplicationSegment : global::Pulumi.CustomResource
     {
+        [Output("bypassOnReauth")]
+        public Output<bool> BypassOnReauth { get; private set; } = null!;
+
         /// <summary>
         /// Indicates whether users can bypass ZPA to access applications.
         /// </summary>
@@ -65,6 +68,9 @@ namespace Zscaler.Zpa
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
+        [Output("fqdnDnsCheck")]
+        public Output<bool?> FqdnDnsCheck { get; private set; } = null!;
+
         [Output("healthCheckType")]
         public Output<string?> HealthCheckType { get; private set; } = null!;
 
@@ -76,6 +82,12 @@ namespace Zscaler.Zpa
 
         [Output("icmpAccessType")]
         public Output<string?> IcmpAccessType { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates if Inspect Traffic with ZIA is enabled for the application.
+        /// </summary>
+        [Output("inspectTrafficWithZia")]
+        public Output<bool?> InspectTrafficWithZia { get; private set; } = null!;
 
         [Output("ipAnchored")]
         public Output<bool?> IpAnchored { get; private set; } = null!;
@@ -197,6 +209,9 @@ namespace Zscaler.Zpa
 
     public sealed class ApplicationSegmentArgs : global::Pulumi.ResourceArgs
     {
+        [Input("bypassOnReauth")]
+        public Input<bool>? BypassOnReauth { get; set; }
+
         /// <summary>
         /// Indicates whether users can bypass ZPA to access applications.
         /// </summary>
@@ -236,6 +251,9 @@ namespace Zscaler.Zpa
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        [Input("fqdnDnsCheck")]
+        public Input<bool>? FqdnDnsCheck { get; set; }
+
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
@@ -247,6 +265,12 @@ namespace Zscaler.Zpa
 
         [Input("icmpAccessType")]
         public Input<string>? IcmpAccessType { get; set; }
+
+        /// <summary>
+        /// Indicates if Inspect Traffic with ZIA is enabled for the application.
+        /// </summary>
+        [Input("inspectTrafficWithZia")]
+        public Input<bool>? InspectTrafficWithZia { get; set; }
 
         [Input("ipAnchored")]
         public Input<bool>? IpAnchored { get; set; }
@@ -359,6 +383,9 @@ namespace Zscaler.Zpa
 
     public sealed class ApplicationSegmentState : global::Pulumi.ResourceArgs
     {
+        [Input("bypassOnReauth")]
+        public Input<bool>? BypassOnReauth { get; set; }
+
         /// <summary>
         /// Indicates whether users can bypass ZPA to access applications.
         /// </summary>
@@ -398,6 +425,9 @@ namespace Zscaler.Zpa
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        [Input("fqdnDnsCheck")]
+        public Input<bool>? FqdnDnsCheck { get; set; }
+
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
@@ -409,6 +439,12 @@ namespace Zscaler.Zpa
 
         [Input("icmpAccessType")]
         public Input<string>? IcmpAccessType { get; set; }
+
+        /// <summary>
+        /// Indicates if Inspect Traffic with ZIA is enabled for the application.
+        /// </summary>
+        [Input("inspectTrafficWithZia")]
+        public Input<bool>? InspectTrafficWithZia { get; set; }
 
         [Input("ipAnchored")]
         public Input<bool>? IpAnchored { get; set; }

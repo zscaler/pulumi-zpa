@@ -113,15 +113,11 @@ type GetAppConnectorGroupResult struct {
 }
 
 func GetAppConnectorGroupOutput(ctx *pulumi.Context, args GetAppConnectorGroupOutputArgs, opts ...pulumi.InvokeOption) GetAppConnectorGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAppConnectorGroupResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetAppConnectorGroupResultOutput, error) {
 			args := v.(GetAppConnectorGroupArgs)
-			r, err := GetAppConnectorGroup(ctx, &args, opts...)
-			var s GetAppConnectorGroupResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("zpa:index/getAppConnectorGroup:getAppConnectorGroup", args, GetAppConnectorGroupResultOutput{}, options).(GetAppConnectorGroupResultOutput), nil
 		}).(GetAppConnectorGroupResultOutput)
 }
 

@@ -129,6 +129,7 @@ export class ApplicationSegmentBrowserAccess extends pulumi.CustomResource {
      */
     public readonly doubleEncrypt!: pulumi.Output<boolean | undefined>;
     public readonly enabled!: pulumi.Output<boolean>;
+    public readonly fqdnDnsCheck!: pulumi.Output<boolean | undefined>;
     public readonly healthCheckType!: pulumi.Output<string | undefined>;
     /**
      * Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
@@ -142,7 +143,7 @@ export class ApplicationSegmentBrowserAccess extends pulumi.CustomResource {
      */
     public readonly isCnameEnabled!: pulumi.Output<boolean | undefined>;
     public readonly isIncompleteDrConfig!: pulumi.Output<boolean | undefined>;
-    public readonly matchStyle!: pulumi.Output<string>;
+    public readonly microtenantId!: pulumi.Output<string>;
     /**
      * Name of the application.
      */
@@ -194,13 +195,14 @@ export class ApplicationSegmentBrowserAccess extends pulumi.CustomResource {
             resourceInputs["domainNames"] = state ? state.domainNames : undefined;
             resourceInputs["doubleEncrypt"] = state ? state.doubleEncrypt : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["fqdnDnsCheck"] = state ? state.fqdnDnsCheck : undefined;
             resourceInputs["healthCheckType"] = state ? state.healthCheckType : undefined;
             resourceInputs["healthReporting"] = state ? state.healthReporting : undefined;
             resourceInputs["icmpAccessType"] = state ? state.icmpAccessType : undefined;
             resourceInputs["ipAnchored"] = state ? state.ipAnchored : undefined;
             resourceInputs["isCnameEnabled"] = state ? state.isCnameEnabled : undefined;
             resourceInputs["isIncompleteDrConfig"] = state ? state.isIncompleteDrConfig : undefined;
-            resourceInputs["matchStyle"] = state ? state.matchStyle : undefined;
+            resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["passiveHealthEnabled"] = state ? state.passiveHealthEnabled : undefined;
             resourceInputs["segmentGroupId"] = state ? state.segmentGroupId : undefined;
@@ -231,13 +233,14 @@ export class ApplicationSegmentBrowserAccess extends pulumi.CustomResource {
             resourceInputs["domainNames"] = args ? args.domainNames : undefined;
             resourceInputs["doubleEncrypt"] = args ? args.doubleEncrypt : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["fqdnDnsCheck"] = args ? args.fqdnDnsCheck : undefined;
             resourceInputs["healthCheckType"] = args ? args.healthCheckType : undefined;
             resourceInputs["healthReporting"] = args ? args.healthReporting : undefined;
             resourceInputs["icmpAccessType"] = args ? args.icmpAccessType : undefined;
             resourceInputs["ipAnchored"] = args ? args.ipAnchored : undefined;
             resourceInputs["isCnameEnabled"] = args ? args.isCnameEnabled : undefined;
             resourceInputs["isIncompleteDrConfig"] = args ? args.isIncompleteDrConfig : undefined;
-            resourceInputs["matchStyle"] = args ? args.matchStyle : undefined;
+            resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["passiveHealthEnabled"] = args ? args.passiveHealthEnabled : undefined;
             resourceInputs["segmentGroupId"] = args ? args.segmentGroupId : undefined;
@@ -280,6 +283,7 @@ export interface ApplicationSegmentBrowserAccessState {
      */
     doubleEncrypt?: pulumi.Input<boolean>;
     enabled?: pulumi.Input<boolean>;
+    fqdnDnsCheck?: pulumi.Input<boolean>;
     healthCheckType?: pulumi.Input<string>;
     /**
      * Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
@@ -293,7 +297,7 @@ export interface ApplicationSegmentBrowserAccessState {
      */
     isCnameEnabled?: pulumi.Input<boolean>;
     isIncompleteDrConfig?: pulumi.Input<boolean>;
-    matchStyle?: pulumi.Input<string>;
+    microtenantId?: pulumi.Input<string>;
     /**
      * Name of the application.
      */
@@ -350,6 +354,7 @@ export interface ApplicationSegmentBrowserAccessArgs {
      */
     doubleEncrypt?: pulumi.Input<boolean>;
     enabled?: pulumi.Input<boolean>;
+    fqdnDnsCheck?: pulumi.Input<boolean>;
     healthCheckType?: pulumi.Input<string>;
     /**
      * Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
@@ -363,7 +368,7 @@ export interface ApplicationSegmentBrowserAccessArgs {
      */
     isCnameEnabled?: pulumi.Input<boolean>;
     isIncompleteDrConfig?: pulumi.Input<boolean>;
-    matchStyle?: pulumi.Input<string>;
+    microtenantId?: pulumi.Input<string>;
     /**
      * Name of the application.
      */

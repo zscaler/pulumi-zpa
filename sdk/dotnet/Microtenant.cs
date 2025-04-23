@@ -38,6 +38,7 @@ namespace Zscaler.Zpa
     ///         {
     ///             "acme.com",
     ///         },
+    ///         PrivilegedApprovalsEnabled = true,
     ///     });
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
@@ -90,9 +91,15 @@ namespace Zscaler.Zpa
         [Output("criteriaAttributeValues")]
         public Output<ImmutableArray<string>> CriteriaAttributeValues { get; private set; } = null!;
 
+        /// <summary>
+        /// The description of the Microtenant.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether or not the Microtenant is enabled.
+        /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
@@ -101,6 +108,13 @@ namespace Zscaler.Zpa
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no
+        /// Authentication Domain is selected.
+        /// </summary>
+        [Output("privilegedApprovalsEnabled")]
+        public Output<bool?> PrivilegedApprovalsEnabled { get; private set; } = null!;
 
         [Output("users")]
         public Output<ImmutableArray<Outputs.MicrotenantUser>> Users { get; private set; } = null!;
@@ -170,9 +184,15 @@ namespace Zscaler.Zpa
             set => _criteriaAttributeValues = value;
         }
 
+        /// <summary>
+        /// The description of the Microtenant.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Whether or not the Microtenant is enabled.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
@@ -181,6 +201,13 @@ namespace Zscaler.Zpa
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no
+        /// Authentication Domain is selected.
+        /// </summary>
+        [Input("privilegedApprovalsEnabled")]
+        public Input<bool>? PrivilegedApprovalsEnabled { get; set; }
 
         [Input("users")]
         private InputList<Inputs.MicrotenantUserArgs>? _users;
@@ -216,9 +243,15 @@ namespace Zscaler.Zpa
             set => _criteriaAttributeValues = value;
         }
 
+        /// <summary>
+        /// The description of the Microtenant.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Whether or not the Microtenant is enabled.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
@@ -227,6 +260,13 @@ namespace Zscaler.Zpa
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no
+        /// Authentication Domain is selected.
+        /// </summary>
+        [Input("privilegedApprovalsEnabled")]
+        public Input<bool>? PrivilegedApprovalsEnabled { get; set; }
 
         [Input("users")]
         private InputList<Inputs.MicrotenantUserGetArgs>? _users;

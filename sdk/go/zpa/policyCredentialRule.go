@@ -18,8 +18,9 @@ type PolicyCredentialRule struct {
 	// This is for providing the rule action.
 	Action pulumi.StringPtrOutput `pulumi:"action"`
 	// This is for proviidng the set of conditions for the policy.
-	Conditions  PolicyCredentialRuleConditionArrayOutput  `pulumi:"conditions"`
-	Credentials PolicyCredentialRuleCredentialArrayOutput `pulumi:"credentials"`
+	Conditions      PolicyCredentialRuleConditionArrayOutput      `pulumi:"conditions"`
+	CredentialPools PolicyCredentialRuleCredentialPoolArrayOutput `pulumi:"credentialPools"`
+	Credentials     PolicyCredentialRuleCredentialArrayOutput     `pulumi:"credentials"`
 	// This is the description of the access policy.
 	Description   pulumi.StringPtrOutput `pulumi:"description"`
 	MicrotenantId pulumi.StringOutput    `pulumi:"microtenantId"`
@@ -61,8 +62,9 @@ type policyCredentialRuleState struct {
 	// This is for providing the rule action.
 	Action *string `pulumi:"action"`
 	// This is for proviidng the set of conditions for the policy.
-	Conditions  []PolicyCredentialRuleCondition  `pulumi:"conditions"`
-	Credentials []PolicyCredentialRuleCredential `pulumi:"credentials"`
+	Conditions      []PolicyCredentialRuleCondition      `pulumi:"conditions"`
+	CredentialPools []PolicyCredentialRuleCredentialPool `pulumi:"credentialPools"`
+	Credentials     []PolicyCredentialRuleCredential     `pulumi:"credentials"`
 	// This is the description of the access policy.
 	Description   *string `pulumi:"description"`
 	MicrotenantId *string `pulumi:"microtenantId"`
@@ -75,8 +77,9 @@ type PolicyCredentialRuleState struct {
 	// This is for providing the rule action.
 	Action pulumi.StringPtrInput
 	// This is for proviidng the set of conditions for the policy.
-	Conditions  PolicyCredentialRuleConditionArrayInput
-	Credentials PolicyCredentialRuleCredentialArrayInput
+	Conditions      PolicyCredentialRuleConditionArrayInput
+	CredentialPools PolicyCredentialRuleCredentialPoolArrayInput
+	Credentials     PolicyCredentialRuleCredentialArrayInput
 	// This is the description of the access policy.
 	Description   pulumi.StringPtrInput
 	MicrotenantId pulumi.StringPtrInput
@@ -93,8 +96,9 @@ type policyCredentialRuleArgs struct {
 	// This is for providing the rule action.
 	Action *string `pulumi:"action"`
 	// This is for proviidng the set of conditions for the policy.
-	Conditions  []PolicyCredentialRuleCondition  `pulumi:"conditions"`
-	Credentials []PolicyCredentialRuleCredential `pulumi:"credentials"`
+	Conditions      []PolicyCredentialRuleCondition      `pulumi:"conditions"`
+	CredentialPools []PolicyCredentialRuleCredentialPool `pulumi:"credentialPools"`
+	Credentials     []PolicyCredentialRuleCredential     `pulumi:"credentials"`
 	// This is the description of the access policy.
 	Description   *string `pulumi:"description"`
 	MicrotenantId *string `pulumi:"microtenantId"`
@@ -107,8 +111,9 @@ type PolicyCredentialRuleArgs struct {
 	// This is for providing the rule action.
 	Action pulumi.StringPtrInput
 	// This is for proviidng the set of conditions for the policy.
-	Conditions  PolicyCredentialRuleConditionArrayInput
-	Credentials PolicyCredentialRuleCredentialArrayInput
+	Conditions      PolicyCredentialRuleConditionArrayInput
+	CredentialPools PolicyCredentialRuleCredentialPoolArrayInput
+	Credentials     PolicyCredentialRuleCredentialArrayInput
 	// This is the description of the access policy.
 	Description   pulumi.StringPtrInput
 	MicrotenantId pulumi.StringPtrInput
@@ -211,6 +216,10 @@ func (o PolicyCredentialRuleOutput) Action() pulumi.StringPtrOutput {
 // This is for proviidng the set of conditions for the policy.
 func (o PolicyCredentialRuleOutput) Conditions() PolicyCredentialRuleConditionArrayOutput {
 	return o.ApplyT(func(v *PolicyCredentialRule) PolicyCredentialRuleConditionArrayOutput { return v.Conditions }).(PolicyCredentialRuleConditionArrayOutput)
+}
+
+func (o PolicyCredentialRuleOutput) CredentialPools() PolicyCredentialRuleCredentialPoolArrayOutput {
+	return o.ApplyT(func(v *PolicyCredentialRule) PolicyCredentialRuleCredentialPoolArrayOutput { return v.CredentialPools }).(PolicyCredentialRuleCredentialPoolArrayOutput)
 }
 
 func (o PolicyCredentialRuleOutput) Credentials() PolicyCredentialRuleCredentialArrayOutput {

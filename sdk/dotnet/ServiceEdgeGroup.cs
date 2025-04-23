@@ -18,6 +18,74 @@ namespace Zscaler.Zpa
     /// 
     /// ## Example Usage
     /// 
+    /// ### Using Version Profile Name
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Zscaler.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // ZPA Service Edge Group resource - Trusted Network
+    ///     var serviceEdgeGroupSjc = new Zpa.ServiceEdgeGroup("serviceEdgeGroupSjc", new()
+    ///     {
+    ///         Description = "Service Edge Group in San Jose",
+    ///         Enabled = true,
+    ///         IsPublic = true,
+    ///         UpgradeDay = "SUNDAY",
+    ///         UpgradeTimeInSecs = "66600",
+    ///         Latitude = "37.3382082",
+    ///         Longitude = "-121.8863286",
+    ///         Location = "San Jose, CA, USA",
+    ///         VersionProfileName = "New Release",
+    ///         TrustedNetworks = new[]
+    ///         {
+    ///             new Zpa.Inputs.ServiceEdgeGroupTrustedNetworkArgs
+    ///             {
+    ///                 Ids = new[]
+    ///                 {
+    ///                     data.Zpa_trusted_network.Example.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Zscaler.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // ZPA Service Edge Group resource - No Trusted Network
+    ///     var serviceEdgeGroupNyc = new Zpa.ServiceEdgeGroup("serviceEdgeGroupNyc", new()
+    ///     {
+    ///         Description = "Service Edge Group in New York",
+    ///         Enabled = true,
+    ///         IsPublic = true,
+    ///         UpgradeDay = "SUNDAY",
+    ///         UpgradeTimeInSecs = "66600",
+    ///         Latitude = "40.7128",
+    ///         Longitude = "-73.935242",
+    ///         Location = "New York, NY, USA",
+    ///         VersionProfileId = data.Zpa_customer_version_profile.This.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Using Version Profile ID
+    /// 
+    /// data "zpa.getCustomerVersionProfile" "this" {
+    ///   name = "New Release"
+    /// }
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -200,6 +268,9 @@ namespace Zscaler.Zpa
         [Output("upgradeTimeInSecs")]
         public Output<string?> UpgradeTimeInSecs { get; private set; } = null!;
 
+        [Output("useInDrMode")]
+        public Output<bool> UseInDrMode { get; private set; } = null!;
+
         /// <summary>
         /// ID of the version profile.
         /// </summary>
@@ -207,7 +278,8 @@ namespace Zscaler.Zpa
         public Output<string> VersionProfileId { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the version profile.
+        /// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
+        /// overrideVersionProfile is set to true
         /// </summary>
         [Output("versionProfileName")]
         public Output<string> VersionProfileName { get; private set; } = null!;
@@ -375,6 +447,9 @@ namespace Zscaler.Zpa
         [Input("upgradeTimeInSecs")]
         public Input<string>? UpgradeTimeInSecs { get; set; }
 
+        [Input("useInDrMode")]
+        public Input<bool>? UseInDrMode { get; set; }
+
         /// <summary>
         /// ID of the version profile.
         /// </summary>
@@ -382,7 +457,8 @@ namespace Zscaler.Zpa
         public Input<string>? VersionProfileId { get; set; }
 
         /// <summary>
-        /// ID of the version profile.
+        /// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
+        /// overrideVersionProfile is set to true
         /// </summary>
         [Input("versionProfileName")]
         public Input<string>? VersionProfileName { get; set; }
@@ -511,6 +587,9 @@ namespace Zscaler.Zpa
         [Input("upgradeTimeInSecs")]
         public Input<string>? UpgradeTimeInSecs { get; set; }
 
+        [Input("useInDrMode")]
+        public Input<bool>? UseInDrMode { get; set; }
+
         /// <summary>
         /// ID of the version profile.
         /// </summary>
@@ -518,7 +597,8 @@ namespace Zscaler.Zpa
         public Input<string>? VersionProfileId { get; set; }
 
         /// <summary>
-        /// ID of the version profile.
+        /// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
+        /// overrideVersionProfile is set to true
         /// </summary>
         [Input("versionProfileName")]
         public Input<string>? VersionProfileName { get; set; }

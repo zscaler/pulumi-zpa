@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getInspectionAllPredefinedControls({
+ * const _this = zpa.getInspectionAllPredefinedControls({
  *     groupName: "Preprocessors",
  *     version: "OWASP_CRS/3.3.0",
  * });
@@ -26,7 +26,6 @@ import * as utilities from "./utilities";
  */
 export function getInspectionAllPredefinedControls(args?: GetInspectionAllPredefinedControlsArgs, opts?: pulumi.InvokeOptions): Promise<GetInspectionAllPredefinedControlsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getInspectionAllPredefinedControls:getInspectionAllPredefinedControls", {
         "groupName": args.groupName,
@@ -66,14 +65,19 @@ export interface GetInspectionAllPredefinedControlsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getInspectionAllPredefinedControls({
+ * const _this = zpa.getInspectionAllPredefinedControls({
  *     groupName: "Preprocessors",
  *     version: "OWASP_CRS/3.3.0",
  * });
  * ```
  */
-export function getInspectionAllPredefinedControlsOutput(args?: GetInspectionAllPredefinedControlsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInspectionAllPredefinedControlsResult> {
-    return pulumi.output(args).apply((a: any) => getInspectionAllPredefinedControls(a, opts))
+export function getInspectionAllPredefinedControlsOutput(args?: GetInspectionAllPredefinedControlsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInspectionAllPredefinedControlsResult> {
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getInspectionAllPredefinedControls:getInspectionAllPredefinedControls", {
+        "groupName": args.groupName,
+        "version": args.version,
+    }, opts);
 }
 
 /**

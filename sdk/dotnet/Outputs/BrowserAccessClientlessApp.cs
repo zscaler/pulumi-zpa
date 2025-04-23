@@ -18,6 +18,7 @@ namespace Zscaler.Zpa.Outputs
         /// If you want ZPA to forward unauthenticated HTTP preflight OPTIONS requests from the browser to the app.
         /// </summary>
         public readonly bool? AllowOptions;
+        public readonly string? AppId;
         /// <summary>
         /// Port for the BA app.
         /// </summary>
@@ -30,6 +31,10 @@ namespace Zscaler.Zpa.Outputs
         /// ID of the BA certificate.
         /// </summary>
         public readonly string? CertificateId;
+        /// <summary>
+        /// ID of the BA certificate.
+        /// </summary>
+        public readonly string? Cname;
         public readonly string? Description;
         /// <summary>
         /// Domain name or IP address of the BA app.
@@ -37,6 +42,7 @@ namespace Zscaler.Zpa.Outputs
         public readonly string? Domain;
         public readonly bool? Enabled;
         public readonly string? Id;
+        public readonly string? MicrotenantId;
         public readonly string Name;
         /// <summary>
         /// Indicates whether Use Untrusted Certificates is enabled or disabled for a BA app.
@@ -47,11 +53,15 @@ namespace Zscaler.Zpa.Outputs
         private BrowserAccessClientlessApp(
             bool? allowOptions,
 
+            string? appId,
+
             string applicationPort,
 
             string applicationProtocol,
 
             string? certificateId,
+
+            string? cname,
 
             string? description,
 
@@ -61,18 +71,23 @@ namespace Zscaler.Zpa.Outputs
 
             string? id,
 
+            string? microtenantId,
+
             string name,
 
             bool? trustUntrustedCert)
         {
             AllowOptions = allowOptions;
+            AppId = appId;
             ApplicationPort = applicationPort;
             ApplicationProtocol = applicationProtocol;
             CertificateId = certificateId;
+            Cname = cname;
             Description = description;
             Domain = domain;
             Enabled = enabled;
             Id = id;
+            MicrotenantId = microtenantId;
             Name = name;
             TrustUntrustedCert = trustUntrustedCert;
         }

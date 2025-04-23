@@ -16,13 +16,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getApplicationSegmentByType({
+ * const _this = zpa.getApplicationSegmentByType({
  *     applicationType: "SECURE_REMOTE_ACCESS",
  * });
  * ```
  */
 export function getApplicationSegmentByType(args: GetApplicationSegmentByTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationSegmentByTypeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getApplicationSegmentByType:getApplicationSegmentByType", {
         "applicationType": args.applicationType,
@@ -69,13 +68,18 @@ export interface GetApplicationSegmentByTypeResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@pulumi/zpa";
  *
- * const this = zpa.getApplicationSegmentByType({
+ * const _this = zpa.getApplicationSegmentByType({
  *     applicationType: "SECURE_REMOTE_ACCESS",
  * });
  * ```
  */
-export function getApplicationSegmentByTypeOutput(args: GetApplicationSegmentByTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationSegmentByTypeResult> {
-    return pulumi.output(args).apply((a: any) => getApplicationSegmentByType(a, opts))
+export function getApplicationSegmentByTypeOutput(args: GetApplicationSegmentByTypeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApplicationSegmentByTypeResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("zpa:index/getApplicationSegmentByType:getApplicationSegmentByType", {
+        "applicationType": args.applicationType,
+        "microtenantId": args.microtenantId,
+        "name": args.name,
+    }, opts);
 }
 
 /**

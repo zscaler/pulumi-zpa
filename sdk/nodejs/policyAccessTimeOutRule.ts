@@ -72,7 +72,7 @@ export class PolicyAccessTimeOutRule extends pulumi.CustomResource {
     /**
      * This is for providing a customer message for the user.
      */
-    public readonly customMsg!: pulumi.Output<string | undefined>;
+    public readonly customMsg!: pulumi.Output<string>;
     /**
      * This is for providing a customer message for the user.
      */

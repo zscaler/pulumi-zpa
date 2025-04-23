@@ -24,7 +24,7 @@ namespace Zscaler.Zpa.Outputs
         public readonly string ModifiedTime;
         public readonly string Modifiedby;
         public readonly string Name;
-        public readonly ImmutableDictionary<string, object> SigningCert;
+        public readonly ImmutableDictionary<string, string> SigningCert;
 
         [OutputConstructor]
         private GetCloudConnectorGroupCloudConnectorResult(
@@ -48,7 +48,7 @@ namespace Zscaler.Zpa.Outputs
 
             string name,
 
-            ImmutableDictionary<string, object> signingCert)
+            ImmutableDictionary<string, string> signingCert)
         {
             CreationTime = creationTime;
             Description = description;

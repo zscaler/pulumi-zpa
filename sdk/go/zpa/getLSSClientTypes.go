@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := zpa.GetLSSClientTypes(ctx, nil, nil)
+//			_, err := zpa.GetLSSClientTypes(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -77,13 +77,9 @@ type GetLSSClientTypesResult struct {
 }
 
 func GetLSSClientTypesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetLSSClientTypesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetLSSClientTypesResult, error) {
-		r, err := GetLSSClientTypes(ctx, opts...)
-		var s GetLSSClientTypesResult
-		if r != nil {
-			s = *r
-		}
-		return s, err
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetLSSClientTypesResultOutput, error) {
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("zpa:index/getLSSClientTypes:getLSSClientTypes", nil, GetLSSClientTypesResultOutput{}, options).(GetLSSClientTypesResultOutput), nil
 	}).(GetLSSClientTypesResultOutput)
 }
 

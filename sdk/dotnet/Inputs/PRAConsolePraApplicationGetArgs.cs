@@ -13,9 +13,6 @@ namespace Zscaler.Zpa.Inputs
 
     public sealed class PRAConsolePraApplicationGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The unique identifier of the Privileged Remote Access-enabled application
-        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 

@@ -15,6 +15,8 @@ namespace Zscaler.Zpa
         /// <summary>
         /// Use the **zpa_application_segment_inspection** data source to get information about an inspection application segment in the Zscaler Private Access cloud. This resource can then be referenced in a ZPA access inspection policy. This resource supports ZPA Inspection for both `HTTP` and `HTTPS`.
         /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -55,6 +57,8 @@ namespace Zscaler.Zpa
         /// <summary>
         /// Use the **zpa_application_segment_inspection** data source to get information about an inspection application segment in the Zscaler Private Access cloud. This resource can then be referenced in a ZPA access inspection policy. This resource supports ZPA Inspection for both `HTTP` and `HTTPS`.
         /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -91,6 +95,48 @@ namespace Zscaler.Zpa
         /// </summary>
         public static Output<GetApplicationSegmentInspectionResult> Invoke(GetApplicationSegmentInspectionInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationSegmentInspectionResult>("zpa:index/getApplicationSegmentInspection:getApplicationSegmentInspection", args ?? new GetApplicationSegmentInspectionInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use the **zpa_application_segment_inspection** data source to get information about an inspection application segment in the Zscaler Private Access cloud. This resource can then be referenced in a ZPA access inspection policy. This resource supports ZPA Inspection for both `HTTP` and `HTTPS`.
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Zpa.GetApplicationSegmentInspection.Invoke(new()
+        ///     {
+        ///         Name = "ZPA_Inspection_Example",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Zpa.GetApplicationSegmentInspection.Invoke(new()
+        ///     {
+        ///         Id = "123456789",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetApplicationSegmentInspectionResult> Invoke(GetApplicationSegmentInspectionInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetApplicationSegmentInspectionResult>("zpa:index/getApplicationSegmentInspection:getApplicationSegmentInspection", args ?? new GetApplicationSegmentInspectionInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -98,12 +144,6 @@ namespace Zscaler.Zpa
     {
         [Input("id")]
         public string? Id { get; set; }
-
-        [Input("microtenantId")]
-        public string? MicrotenantId { get; set; }
-
-        [Input("microtenantName")]
-        public string? MicrotenantName { get; set; }
 
         [Input("name")]
         public string? Name { get; set; }
@@ -134,12 +174,6 @@ namespace Zscaler.Zpa
     {
         [Input("id")]
         public Input<string>? Id { get; set; }
-
-        [Input("microtenantId")]
-        public Input<string>? MicrotenantId { get; set; }
-
-        [Input("microtenantName")]
-        public Input<string>? MicrotenantName { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -183,8 +217,6 @@ namespace Zscaler.Zpa
         public readonly ImmutableArray<Outputs.GetApplicationSegmentInspectionInspectionAppResult> InspectionApps;
         public readonly bool IpAnchored;
         public readonly bool IsCnameEnabled;
-        public readonly string? MicrotenantId;
-        public readonly string? MicrotenantName;
         public readonly string ModifiedBy;
         public readonly string ModifiedTime;
         public readonly string? Name;
@@ -226,10 +258,6 @@ namespace Zscaler.Zpa
 
             bool isCnameEnabled,
 
-            string? microtenantId,
-
-            string? microtenantName,
-
             string modifiedBy,
 
             string modifiedTime,
@@ -267,8 +295,6 @@ namespace Zscaler.Zpa
             InspectionApps = inspectionApps;
             IpAnchored = ipAnchored;
             IsCnameEnabled = isCnameEnabled;
-            MicrotenantId = microtenantId;
-            MicrotenantName = microtenantName;
             ModifiedBy = modifiedBy;
             ModifiedTime = modifiedTime;
             Name = name;
