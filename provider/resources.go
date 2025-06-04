@@ -29,7 +29,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/zscaler/pulumi-zpa/provider/pkg/version"
-	"github.com/zscaler/terraform-provider-zpa/v3/zpa"
+	"github.com/zscaler/terraform-provider-zpa/v4/zpa"
 )
 
 // all of the token components used below.
@@ -104,9 +104,35 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:               "zscaler",
 		Publisher:               "Zscaler",
 		DisplayName:             "Zscaler Private Access",
-		TFProviderModuleVersion: "v3",
+		TFProviderModuleVersion: "v4",
 		Version:                 version.Version,
 		Config: map[string]*tfbridge.SchemaInfo{
+			// Authentication Parameters for OneAPI Mode
+			"client_id": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ZSCALER_CLIENT_ID"},
+				},
+			},
+			"client_secret": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ZSCALER_CLIENT_SECRET"},
+				},
+			},
+			"private_key": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ZSCALER_PRIVATE_KEY"},
+				},
+			},
+			"vanity_domain": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ZSCALER_VANITY_DOMAIN"},
+				},
+			},
+			"zscaler_cloud": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ZSCALER_CLOUD"},
+				},
+			},
 			"zpa_client_id": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"ZPA_CLIENT_ID"},
@@ -128,16 +154,26 @@ func Provider() tfbridge.ProviderInfo {
 					EnvVars: []string{"ZPA_CLOUD"},
 				},
 			},
+			"use_legacy_client": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ZSCALER_USE_LEGACY_CLIENT"},
+				},
+			},
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"zpa_app_connector_assistant_schedule":         {Tok: zpaResource(zpaMod, "AppConnectorAssistantSchedule")},
-			"zpa_app_connector_group":                      {Tok: zpaResource(zpaMod, "ConnectorGroup")},
-			"zpa_service_edge_group":                       {Tok: zpaResource(zpaMod, "ServiceEdgeGroup")},
-			"zpa_segment_group":                            {Tok: zpaResource(zpaMod, "SegmentGroup")},
-			"zpa_server_group":                             {Tok: zpaResource(zpaMod, "ServerGroup")},
-			"zpa_application_segment":                      {Tok: zpaResource(zpaMod, "ApplicationSegment")},
-			"zpa_application_segment_browser_access":       {Tok: zpaResource(zpaMod, "ApplicationSegmentBrowserAccess")},
+			"zpa_app_connector_assistant_schedule":   {Tok: zpaResource(zpaMod, "AppConnectorAssistantSchedule")},
+			"zpa_app_connector_group":                {Tok: zpaResource(zpaMod, "ConnectorGroup")},
+			"zpa_service_edge_group":                 {Tok: zpaResource(zpaMod, "ServiceEdgeGroup")},
+			"zpa_segment_group":                      {Tok: zpaResource(zpaMod, "SegmentGroup")},
+			"zpa_server_group":                       {Tok: zpaResource(zpaMod, "ServerGroup")},
+			"zpa_application_segment":                {Tok: zpaResource(zpaMod, "ApplicationSegment")},
+			"zpa_application_segment_browser_access": {Tok: zpaResource(zpaMod, "ApplicationSegmentBrowserAccess")},
+			"zpa_browser_access": {
+				Tok: zpaResource(zpaMod, "BrowserAccess"),
+				// No upstream docs for this resource exist:
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
+			},
 			"zpa_application_segment_inspection":           {Tok: zpaResource(zpaMod, "ApplicationSegmentInspection")},
 			"zpa_application_segment_pra":                  {Tok: zpaResource(zpaMod, "ApplicationSegmentPRA")},
 			"zpa_application_server":                       {Tok: zpaResource(zpaMod, "ApplicationServer")},
@@ -219,11 +255,17 @@ func Provider() tfbridge.ProviderInfo {
 			"zpa_application_segment_browser_access": {
 				Tok: zpaDataSource(zpaMod, "getApplicationSegmentBrowserAccess"),
 			},
+			// "zpa_browser_access": {
+			// 	Tok: zpaDataSource(zpaMod, "getBrowserAccess"),
+			// 	// No upstream docs for this resource exist:
+			// 	Docs: &tfbridge.DocInfo{AllowMissing: true},
+			// },
 			"zpa_application_segment_inspection": {
 				Tok: zpaDataSource(zpaMod, "getApplicationSegmentInspection"),
 			},
 			"zpa_inspection_custom_controls": {
-				Tok: zpaDataSource(zpaMod, "getInspectionCustomControls"),
+				Tok:  zpaDataSource(zpaMod, "getInspectionCustomControls"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"zpa_inspection_profile": {
 				Tok: zpaDataSource(zpaMod, "getInspectionProfile"),
