@@ -1350,6 +1350,115 @@
                 }
             }
         },
+        "zpa:index/PolicyAccessCapabilitiesRuleCondition:PolicyAccessCapabilitiesRuleCondition": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "operands": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/zpa:index/PolicyAccessCapabilitiesRuleConditionOperand:PolicyAccessCapabilitiesRuleConditionOperand"
+                    },
+                    "description": "This signifies the various policy criteria.\n"
+                },
+                "operator": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "operands",
+                        "operator"
+                    ]
+                }
+            }
+        },
+        "zpa:index/PolicyAccessCapabilitiesRuleConditionOperand:PolicyAccessCapabilitiesRuleConditionOperand": {
+            "properties": {
+                "entryValues": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/zpa:index/PolicyAccessCapabilitiesRuleConditionOperandEntryValue:PolicyAccessCapabilitiesRuleConditionOperandEntryValue"
+                    }
+                },
+                "objectType": {
+                    "type": "string",
+                    "description": "This is for specifying the policy critiera.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "entryValues",
+                        "objectType"
+                    ]
+                }
+            }
+        },
+        "zpa:index/PolicyAccessCapabilitiesRuleConditionOperandEntryValue:PolicyAccessCapabilitiesRuleConditionOperandEntryValue": {
+            "properties": {
+                "lhs": {
+                    "type": "string"
+                },
+                "rhs": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "zpa:index/PolicyAccessCapabilitiesRulePrivilegedCapabilities:PolicyAccessCapabilitiesRulePrivilegedCapabilities": {
+            "properties": {
+                "clipboardCopy": {
+                    "type": "boolean",
+                    "description": "Indicates the PRA Clipboard Copy function\n"
+                },
+                "clipboardPaste": {
+                    "type": "boolean",
+                    "description": "Indicates the PRA Clipboard Paste function\n"
+                },
+                "fileDownload": {
+                    "type": "boolean",
+                    "description": "Indicates the PRA File Transfer capabilities that enables the File Download function\n"
+                },
+                "fileUpload": {
+                    "type": "boolean",
+                    "description": "Indicates the PRA File Transfer capabilities that enables the File Upload function\n"
+                },
+                "inspectFileDownload": {
+                    "type": "boolean",
+                    "description": "Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and downloads the file following the inspection\n"
+                },
+                "inspectFileUpload": {
+                    "type": "boolean",
+                    "description": "Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and uploads the file following the inspection\n"
+                },
+                "monitorSession": {
+                    "type": "boolean",
+                    "description": "Indicates the PRA Monitoring Capabilities to enable the PRA Session Monitoring function\n"
+                },
+                "recordSession": {
+                    "type": "boolean",
+                    "description": "Indicates the PRA Session Recording capabilities to enable PRA Session Recording\n"
+                },
+                "shareSession": {
+                    "type": "boolean",
+                    "description": "Indicates the PRA Session Control and Monitoring capabilities to enable PRA Session Monitoring\n"
+                }
+            },
+            "type": "object"
+        },
         "zpa:index/PolicyAccessCredentialRuleCondition:PolicyAccessCredentialRuleCondition": {
             "properties": {
                 "id": {
@@ -1901,6 +2010,108 @@
                 }
             },
             "type": "object"
+        },
+        "zpa:index/PolicyAccessRedirectionRuleCondition:PolicyAccessRedirectionRuleCondition": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "microtenantId": {
+                    "type": "string"
+                },
+                "operands": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/zpa:index/PolicyAccessRedirectionRuleConditionOperand:PolicyAccessRedirectionRuleConditionOperand"
+                    },
+                    "description": "This signifies the various policy criteria.\n"
+                },
+                "operator": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "operator"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "microtenantId",
+                        "operator"
+                    ]
+                }
+            }
+        },
+        "zpa:index/PolicyAccessRedirectionRuleConditionOperand:PolicyAccessRedirectionRuleConditionOperand": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "idpId": {
+                    "type": "string"
+                },
+                "lhs": {
+                    "type": "string",
+                    "description": "This signifies the key for the object type. String ID example: id\n"
+                },
+                "microtenantId": {
+                    "type": "string",
+                    "description": "This denotes the value for the given object type. Its value depends upon the key.\n"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "objectType": {
+                    "type": "string",
+                    "description": "This is for specifying the policy critiera.\n"
+                },
+                "rhs": {
+                    "type": "string",
+                    "description": "This denotes the value for the given object type. Its value depends upon the key.\n"
+                },
+                "rhsLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "lhs",
+                "objectType"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "idpId",
+                        "lhs",
+                        "microtenantId",
+                        "name",
+                        "objectType",
+                        "rhs",
+                        "rhsLists"
+                    ]
+                }
+            }
+        },
+        "zpa:index/PolicyAccessRedirectionRuleServiceEdgeGroup:PolicyAccessRedirectionRuleServiceEdgeGroup": {
+            "properties": {
+                "ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "ids"
+            ]
         },
         "zpa:index/PolicyAccessReorderRuleRule:PolicyAccessReorderRuleRule": {
             "properties": {
@@ -4149,6 +4360,17 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "zpa:index/getCredentialPoolCredential:getCredentialPoolCredential": {
+            "properties": {
+                "ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object"
         },
         "zpa:index/getCustomerVersionProfileCustomScopeCustomerId:getCustomerVersionProfileCustomScopeCustomerId": {
             "properties": {
@@ -10974,6 +11196,112 @@
                 }
             ]
         },
+        "zpa:index/policyAccessCapabilitiesRule:PolicyAccessCapabilitiesRule": {
+            "description": "* [Official documentation](https://help.zscaler.com/zpa/about-privileged-capabilities-policy)\n* [API documentation](https://help.zscaler.com/zpa/configuring-privileged-policies-using-api)\n\nThe **zpa_policy_capabilities_rule** resource creates a policy capabilities rule in the Zscaler Private Access cloud.\n\n  ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as zpa from \"@bdzscaler/pulumi-zpa\";\n\nconst thisIdPController = zpa.getIdPController({\n    name: \"IdP_Users\",\n});\nconst emailUserSso = zpa.getSAMLAttribute({\n    name: \"Email_IdP_Users\",\n    idpName: \"IdP_Users\",\n});\nconst groupUser = zpa.getSAMLAttribute({\n    name: \"GroupName_IdP_Users\",\n    idpName: \"IdP_Users\",\n});\nconst a000 = zpa.getSCIMGroups({\n    name: \"A000\",\n    idpName: \"IdP_Users\",\n});\nconst b000 = zpa.getSCIMGroups({\n    name: \"B000\",\n    idpName: \"IdP_Users\",\n});\nconst thisPolicyAccessCapabilitiesRule = new zpa.PolicyAccessCapabilitiesRule(\"thisPolicyAccessCapabilitiesRule\", {\n    description: \"Example\",\n    action: \"CHECK_CAPABILITIES\",\n    privilegedCapabilities: {\n        fileUpload: true,\n        fileDownload: true,\n        inspectFileUpload: true,\n        clipboardCopy: true,\n        clipboardPaste: true,\n        recordSession: true,\n    },\n    conditions: [{\n        operator: \"OR\",\n        operands: [\n            {\n                objectType: \"SAML\",\n                entryValues: [\n                    {\n                        rhs: \"user1@example.com\",\n                        lhs: emailUserSso.then(emailUserSso =\u003e emailUserSso.id),\n                    },\n                    {\n                        rhs: \"A000\",\n                        lhs: groupUser.then(groupUser =\u003e groupUser.id),\n                    },\n                ],\n            },\n            {\n                objectType: \"SCIM_GROUP\",\n                entryValues: [\n                    {\n                        rhs: a000.then(a000 =\u003e a000.id),\n                        lhs: thisIdPController.then(thisIdPController =\u003e thisIdPController.id),\n                    },\n                    {\n                        rhs: b000.then(b000 =\u003e b000.id),\n                        lhs: thisIdPController.then(thisIdPController =\u003e thisIdPController.id),\n                    },\n                ],\n            },\n        ],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_zpa as zpa\nimport zscaler_pulumi_zpa as zpa\n\nthis_id_p_controller = zpa.get_id_p_controller(name=\"IdP_Users\")\nemail_user_sso = zpa.get_saml_attribute(name=\"Email_IdP_Users\",\n    idp_name=\"IdP_Users\")\ngroup_user = zpa.get_saml_attribute(name=\"GroupName_IdP_Users\",\n    idp_name=\"IdP_Users\")\na000 = zpa.get_scim_groups(name=\"A000\",\n    idp_name=\"IdP_Users\")\nb000 = zpa.get_scim_groups(name=\"B000\",\n    idp_name=\"IdP_Users\")\nthis_policy_access_capabilities_rule = zpa.PolicyAccessCapabilitiesRule(\"thisPolicyAccessCapabilitiesRule\",\n    description=\"Example\",\n    action=\"CHECK_CAPABILITIES\",\n    privileged_capabilities={\n        \"file_upload\": True,\n        \"file_download\": True,\n        \"inspect_file_upload\": True,\n        \"clipboard_copy\": True,\n        \"clipboard_paste\": True,\n        \"record_session\": True,\n    },\n    conditions=[{\n        \"operator\": \"OR\",\n        \"operands\": [\n            {\n                \"object_type\": \"SAML\",\n                \"entry_values\": [\n                    {\n                        \"rhs\": \"user1@example.com\",\n                        \"lhs\": email_user_sso.id,\n                    },\n                    {\n                        \"rhs\": \"A000\",\n                        \"lhs\": group_user.id,\n                    },\n                ],\n            },\n            {\n                \"object_type\": \"SCIM_GROUP\",\n                \"entry_values\": [\n                    {\n                        \"rhs\": a000.id,\n                        \"lhs\": this_id_p_controller.id,\n                    },\n                    {\n                        \"rhs\": b000.id,\n                        \"lhs\": this_id_p_controller.id,\n                    },\n                ],\n            },\n        ],\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Zpa = Pulumi.Zpa;\nusing Zpa = Zscaler.Zpa;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var thisIdPController = Zpa.GetIdPController.Invoke(new()\n    {\n        Name = \"IdP_Users\",\n    });\n\n    var emailUserSso = Zpa.GetSAMLAttribute.Invoke(new()\n    {\n        Name = \"Email_IdP_Users\",\n        IdpName = \"IdP_Users\",\n    });\n\n    var groupUser = Zpa.GetSAMLAttribute.Invoke(new()\n    {\n        Name = \"GroupName_IdP_Users\",\n        IdpName = \"IdP_Users\",\n    });\n\n    var a000 = Zpa.GetSCIMGroups.Invoke(new()\n    {\n        Name = \"A000\",\n        IdpName = \"IdP_Users\",\n    });\n\n    var b000 = Zpa.GetSCIMGroups.Invoke(new()\n    {\n        Name = \"B000\",\n        IdpName = \"IdP_Users\",\n    });\n\n    var thisPolicyAccessCapabilitiesRule = new Zpa.PolicyAccessCapabilitiesRule(\"thisPolicyAccessCapabilitiesRule\", new()\n    {\n        Description = \"Example\",\n        Action = \"CHECK_CAPABILITIES\",\n        PrivilegedCapabilities = new Zpa.Inputs.PolicyAccessCapabilitiesRulePrivilegedCapabilitiesArgs\n        {\n            FileUpload = true,\n            FileDownload = true,\n            InspectFileUpload = true,\n            ClipboardCopy = true,\n            ClipboardPaste = true,\n            RecordSession = true,\n        },\n        Conditions = new[]\n        {\n            new Zpa.Inputs.PolicyAccessCapabilitiesRuleConditionArgs\n            {\n                Operator = \"OR\",\n                Operands = new[]\n                {\n                    new Zpa.Inputs.PolicyAccessCapabilitiesRuleConditionOperandArgs\n                    {\n                        ObjectType = \"SAML\",\n                        EntryValues = new[]\n                        {\n                            new Zpa.Inputs.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs\n                            {\n                                Rhs = \"user1@example.com\",\n                                Lhs = emailUserSso.Apply(getSAMLAttributeResult =\u003e getSAMLAttributeResult.Id),\n                            },\n                            new Zpa.Inputs.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs\n                            {\n                                Rhs = \"A000\",\n                                Lhs = groupUser.Apply(getSAMLAttributeResult =\u003e getSAMLAttributeResult.Id),\n                            },\n                        },\n                    },\n                    new Zpa.Inputs.PolicyAccessCapabilitiesRuleConditionOperandArgs\n                    {\n                        ObjectType = \"SCIM_GROUP\",\n                        EntryValues = new[]\n                        {\n                            new Zpa.Inputs.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs\n                            {\n                                Rhs = a000.Apply(getSCIMGroupsResult =\u003e getSCIMGroupsResult.Id),\n                                Lhs = thisIdPController.Apply(getIdPControllerResult =\u003e getIdPControllerResult.Id),\n                            },\n                            new Zpa.Inputs.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs\n                            {\n                                Rhs = b000.Apply(getSCIMGroupsResult =\u003e getSCIMGroupsResult.Id),\n                                Lhs = thisIdPController.Apply(getIdPControllerResult =\u003e getIdPControllerResult.Id),\n                            },\n                        },\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/zscaler/pulumi-zpa/sdk/go/zpa\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tthisIdPController, err := zpa.GetIdPController(ctx, \u0026zpa.GetIdPControllerArgs{\n\t\t\tName: pulumi.StringRef(\"IdP_Users\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\temailUserSso, err := zpa.GetSAMLAttribute(ctx, \u0026zpa.GetSAMLAttributeArgs{\n\t\t\tName:    pulumi.StringRef(\"Email_IdP_Users\"),\n\t\t\tIdpName: pulumi.StringRef(\"IdP_Users\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tgroupUser, err := zpa.GetSAMLAttribute(ctx, \u0026zpa.GetSAMLAttributeArgs{\n\t\t\tName:    pulumi.StringRef(\"GroupName_IdP_Users\"),\n\t\t\tIdpName: pulumi.StringRef(\"IdP_Users\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ta000, err := zpa.GetSCIMGroups(ctx, \u0026zpa.GetSCIMGroupsArgs{\n\t\t\tName:    pulumi.StringRef(\"A000\"),\n\t\t\tIdpName: pulumi.StringRef(\"IdP_Users\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tb000, err := zpa.GetSCIMGroups(ctx, \u0026zpa.GetSCIMGroupsArgs{\n\t\t\tName:    pulumi.StringRef(\"B000\"),\n\t\t\tIdpName: pulumi.StringRef(\"IdP_Users\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = zpa.NewPolicyAccessCapabilitiesRule(ctx, \"thisPolicyAccessCapabilitiesRule\", \u0026zpa.PolicyAccessCapabilitiesRuleArgs{\n\t\t\tDescription: pulumi.String(\"Example\"),\n\t\t\tAction:      pulumi.String(\"CHECK_CAPABILITIES\"),\n\t\t\tPrivilegedCapabilities: \u0026zpa.PolicyAccessCapabilitiesRulePrivilegedCapabilitiesArgs{\n\t\t\t\tFileUpload:        pulumi.Bool(true),\n\t\t\t\tFileDownload:      pulumi.Bool(true),\n\t\t\t\tInspectFileUpload: pulumi.Bool(true),\n\t\t\t\tClipboardCopy:     pulumi.Bool(true),\n\t\t\t\tClipboardPaste:    pulumi.Bool(true),\n\t\t\t\tRecordSession:     pulumi.Bool(true),\n\t\t\t},\n\t\t\tConditions: zpa.PolicyAccessCapabilitiesRuleConditionArray{\n\t\t\t\t\u0026zpa.PolicyAccessCapabilitiesRuleConditionArgs{\n\t\t\t\t\tOperator: pulumi.String(\"OR\"),\n\t\t\t\t\tOperands: zpa.PolicyAccessCapabilitiesRuleConditionOperandArray{\n\t\t\t\t\t\t\u0026zpa.PolicyAccessCapabilitiesRuleConditionOperandArgs{\n\t\t\t\t\t\t\tObjectType: pulumi.String(\"SAML\"),\n\t\t\t\t\t\t\tEntryValues: zpa.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArray{\n\t\t\t\t\t\t\t\t\u0026zpa.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs{\n\t\t\t\t\t\t\t\t\tRhs: pulumi.String(\"user1@example.com\"),\n\t\t\t\t\t\t\t\t\tLhs: pulumi.String(emailUserSso.Id),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\u0026zpa.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs{\n\t\t\t\t\t\t\t\t\tRhs: pulumi.String(\"A000\"),\n\t\t\t\t\t\t\t\t\tLhs: pulumi.String(groupUser.Id),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026zpa.PolicyAccessCapabilitiesRuleConditionOperandArgs{\n\t\t\t\t\t\t\tObjectType: pulumi.String(\"SCIM_GROUP\"),\n\t\t\t\t\t\t\tEntryValues: zpa.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArray{\n\t\t\t\t\t\t\t\t\u0026zpa.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs{\n\t\t\t\t\t\t\t\t\tRhs: pulumi.String(a000.Id),\n\t\t\t\t\t\t\t\t\tLhs: pulumi.String(thisIdPController.Id),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\u0026zpa.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs{\n\t\t\t\t\t\t\t\t\tRhs: pulumi.String(b000.Id),\n\t\t\t\t\t\t\t\t\tLhs: pulumi.String(thisIdPController.Id),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.zpa.ZpaFunctions;\nimport com.pulumi.zpa.inputs.GetIdPControllerArgs;\nimport com.pulumi.zpa.inputs.GetSAMLAttributeArgs;\nimport com.pulumi.zpa.inputs.GetSCIMGroupsArgs;\nimport com.pulumi.zpa.PolicyAccessCapabilitiesRule;\nimport com.pulumi.zpa.PolicyAccessCapabilitiesRuleArgs;\nimport com.pulumi.zpa.inputs.PolicyAccessCapabilitiesRulePrivilegedCapabilitiesArgs;\nimport com.pulumi.zpa.inputs.PolicyAccessCapabilitiesRuleConditionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var thisIdPController = ZpaFunctions.getIdPController(GetIdPControllerArgs.builder()\n            .name(\"IdP_Users\")\n            .build());\n\n        final var emailUserSso = ZpaFunctions.getSAMLAttribute(GetSAMLAttributeArgs.builder()\n            .name(\"Email_IdP_Users\")\n            .idpName(\"IdP_Users\")\n            .build());\n\n        final var groupUser = ZpaFunctions.getSAMLAttribute(GetSAMLAttributeArgs.builder()\n            .name(\"GroupName_IdP_Users\")\n            .idpName(\"IdP_Users\")\n            .build());\n\n        final var a000 = ZpaFunctions.getSCIMGroups(GetSCIMGroupsArgs.builder()\n            .name(\"A000\")\n            .idpName(\"IdP_Users\")\n            .build());\n\n        final var b000 = ZpaFunctions.getSCIMGroups(GetSCIMGroupsArgs.builder()\n            .name(\"B000\")\n            .idpName(\"IdP_Users\")\n            .build());\n\n        var thisPolicyAccessCapabilitiesRule = new PolicyAccessCapabilitiesRule(\"thisPolicyAccessCapabilitiesRule\", PolicyAccessCapabilitiesRuleArgs.builder()\n            .description(\"Example\")\n            .action(\"CHECK_CAPABILITIES\")\n            .privilegedCapabilities(PolicyAccessCapabilitiesRulePrivilegedCapabilitiesArgs.builder()\n                .fileUpload(true)\n                .fileDownload(true)\n                .inspectFileUpload(true)\n                .clipboardCopy(true)\n                .clipboardPaste(true)\n                .recordSession(true)\n                .build())\n            .conditions(PolicyAccessCapabilitiesRuleConditionArgs.builder()\n                .operator(\"OR\")\n                .operands(                \n                    PolicyAccessCapabilitiesRuleConditionOperandArgs.builder()\n                        .objectType(\"SAML\")\n                        .entryValues(                        \n                            PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs.builder()\n                                .rhs(\"user1@example.com\")\n                                .lhs(emailUserSso.id())\n                                .build(),\n                            PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs.builder()\n                                .rhs(\"A000\")\n                                .lhs(groupUser.id())\n                                .build())\n                        .build(),\n                    PolicyAccessCapabilitiesRuleConditionOperandArgs.builder()\n                        .objectType(\"SCIM_GROUP\")\n                        .entryValues(                        \n                            PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs.builder()\n                                .rhs(a000.id())\n                                .lhs(thisIdPController.id())\n                                .build(),\n                            PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs.builder()\n                                .rhs(b000.id())\n                                .lhs(thisIdPController.id())\n                                .build())\n                        .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  thisPolicyAccessCapabilitiesRule:\n    type: zpa:PolicyAccessCapabilitiesRule\n    properties:\n      description: Example\n      action: CHECK_CAPABILITIES\n      privilegedCapabilities:\n        fileUpload: true\n        fileDownload: true\n        inspectFileUpload: true\n        clipboardCopy: true\n        clipboardPaste: true\n        recordSession: true\n      conditions:\n        - operator: OR\n          operands:\n            - objectType: SAML\n              entryValues:\n                - rhs: user1@example.com\n                  lhs: ${emailUserSso.id}\n                - rhs: A000\n                  lhs: ${groupUser.id}\n            - objectType: SCIM_GROUP\n              entryValues:\n                - rhs: ${a000.id}\n                  lhs: ${thisIdPController.id}\n                - rhs: ${b000.id}\n                  lhs: ${thisIdPController.id}\nvariables:\n  thisIdPController:\n    fn::invoke:\n      function: zpa:getIdPController\n      arguments:\n        name: IdP_Users\n  emailUserSso:\n    fn::invoke:\n      function: zpa:getSAMLAttribute\n      arguments:\n        name: Email_IdP_Users\n        idpName: IdP_Users\n  groupUser:\n    fn::invoke:\n      function: zpa:getSAMLAttribute\n      arguments:\n        name: GroupName_IdP_Users\n        idpName: IdP_Users\n  a000:\n    fn::invoke:\n      function: zpa:getSCIMGroups\n      arguments:\n        name: A000\n        idpName: IdP_Users\n  b000:\n    fn::invoke:\n      function: zpa:getSCIMGroups\n      arguments:\n        name: B000\n        idpName: IdP_Users\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## LHS and RHS Values\n\n| Object Type | LHS| RHS| VALUES\n|----------|-----------|----------|----------\n| APP |   |  | ``application_segment_id``\n| APP_GROUP |   |  | ``segment_group_id``\n| SAML | ``saml_attribute_id``  | ``attribute_value_to_match`` |\n| SCIM | ``scim_attribute_id``  | ``attribute_value_to_match``  |\n| SCIM_GROUP | ``scim_group_attribute_id``  | ``attribute_value_to_match``  |\n\n## Import\n\nZscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.\n\nVisit\n\nPolicy access capability can be imported by using `\u003cRULE ID\u003e` as the import ID.\n\nFor example:\n\n```sh\n$ pulumi import zpa:index/policyAccessCapabilitiesRule:PolicyAccessCapabilitiesRule example \u003crule_id\u003e\n```\n\n",
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "This is for providing the rule action. Supported value: `CHECK_CAPABILITIES`\n"
+                },
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/zpa:index/PolicyAccessCapabilitiesRuleCondition:PolicyAccessCapabilitiesRuleCondition"
+                    },
+                    "description": "This is for proviidng the set of conditions for the policy.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "This is the description of the access policy.\n"
+                },
+                "microtenantId": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "This is the name of the policy rule.\n"
+                },
+                "policySetId": {
+                    "type": "string"
+                },
+                "privilegedCapabilities": {
+                    "$ref": "#/types/zpa:index/PolicyAccessCapabilitiesRulePrivilegedCapabilities:PolicyAccessCapabilitiesRulePrivilegedCapabilities"
+                }
+            },
+            "required": [
+                "conditions",
+                "microtenantId",
+                "name",
+                "policySetId",
+                "privilegedCapabilities"
+            ],
+            "inputProperties": {
+                "action": {
+                    "type": "string",
+                    "description": "This is for providing the rule action. Supported value: `CHECK_CAPABILITIES`\n"
+                },
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/zpa:index/PolicyAccessCapabilitiesRuleCondition:PolicyAccessCapabilitiesRuleCondition"
+                    },
+                    "description": "This is for proviidng the set of conditions for the policy.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "This is the description of the access policy.\n"
+                },
+                "microtenantId": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "This is the name of the policy rule.\n"
+                },
+                "privilegedCapabilities": {
+                    "$ref": "#/types/zpa:index/PolicyAccessCapabilitiesRulePrivilegedCapabilities:PolicyAccessCapabilitiesRulePrivilegedCapabilities"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PolicyAccessCapabilitiesRule resources.\n",
+                "properties": {
+                    "action": {
+                        "type": "string",
+                        "description": "This is for providing the rule action. Supported value: `CHECK_CAPABILITIES`\n"
+                    },
+                    "conditions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/zpa:index/PolicyAccessCapabilitiesRuleCondition:PolicyAccessCapabilitiesRuleCondition"
+                        },
+                        "description": "This is for proviidng the set of conditions for the policy.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "This is the description of the access policy.\n"
+                    },
+                    "microtenantId": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "This is the name of the policy rule.\n"
+                    },
+                    "policySetId": {
+                        "type": "string"
+                    },
+                    "privilegedCapabilities": {
+                        "$ref": "#/types/zpa:index/PolicyAccessCapabilitiesRulePrivilegedCapabilities:PolicyAccessCapabilitiesRulePrivilegedCapabilities"
+                    }
+                },
+                "type": "object"
+            },
+            "aliases": [
+                {
+                    "type": "zpa:index/policyCapabilitiesRule:PolicyCapabilitiesRule"
+                }
+            ]
+        },
         "zpa:index/policyAccessCredentialRule:PolicyAccessCredentialRule": {
             "description": "* [Official documentation](https://help.zscaler.com/zpa/about-privileged-capabilities-policy)\n* [API documentation](https://help.zscaler.com/zpa/configuring-privileged-policies-using-api)\n\nThe **zpa_policy_credential_rule** resource creates a policy credential rule in the Zscaler Private Access cloud.\n\n  ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``\n\n## Import\n\nZscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.\n\nVisit\n\nPolicy access credential can be imported by using `\u003cPOLICY CREDENTIAL ID\u003e` as the import ID.\n\nFor example:\n\n```sh\n$ pulumi import zpa:index/policyAccessCredentialRule:PolicyAccessCredentialRule example \u003cpolicy_credential_id\u003e\n```\n\n",
             "properties": {
@@ -12176,6 +12504,284 @@
                 }
             ]
         },
+        "zpa:index/policyAccessRedirectionRule:PolicyAccessRedirectionRule": {
+            "description": "* [Official documentation](https://help.zscaler.com/zpa/about-redirection-policy)\n* [API documentation](https://help.zscaler.com/zpa/configuring-redirection-policies-using-api)\n\nThe **zpa_policy_redirection_rule** resource creates a policy redirection access rule in the Zscaler Private Access cloud.\n\n  ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``\n\n## Example Usage\n\n### REDIRECT_DEFAULT\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  this:\n    type: zpa:PolicyAccessRedirectionRule\n    properties:\n      action: REDIRECT_DEFAULT\n      conditions:\n        - operands:\n            - objectType: CLIENT_TYPE\n              values:\n                - zpn_client_type_branch_connector\n          operator: OR\n      description: Example\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nZscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.\n\nVisit\n\nPolicy Access Isolation Rule can be imported by using `\u003cPOLICY REDIRECTION RULE ID\u003e` as the import ID.\n\nFor example:\n\n```sh\n$ pulumi import zpa:index/policyAccessRedirectionRule:PolicyAccessRedirectionRule example \u003crule_id\u003e\n```\n\n",
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "This is for providing the rule action.\n"
+                },
+                "actionId": {
+                    "type": "string",
+                    "description": "This field defines the description of the server.\n"
+                },
+                "bypassDefaultRule": {
+                    "type": "boolean"
+                },
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/zpa:index/PolicyAccessRedirectionRuleCondition:PolicyAccessRedirectionRuleCondition"
+                    },
+                    "description": "This is for proviidng the set of conditions for the policy.\n"
+                },
+                "customMsg": {
+                    "type": "string",
+                    "description": "This is for providing a customer message for the user.\n"
+                },
+                "defaultRule": {
+                    "type": "boolean",
+                    "description": "This is for providing a customer message for the user.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "This is the description of the access policy.\n"
+                },
+                "lssDefaultRule": {
+                    "type": "boolean"
+                },
+                "microtenantId": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "This is the name of the policy.\n"
+                },
+                "operator": {
+                    "type": "string"
+                },
+                "policySetId": {
+                    "type": "string"
+                },
+                "policyType": {
+                    "type": "string"
+                },
+                "priority": {
+                    "type": "string"
+                },
+                "reauthDefaultRule": {
+                    "type": "boolean"
+                },
+                "reauthIdleTimeout": {
+                    "type": "string"
+                },
+                "reauthTimeout": {
+                    "type": "string"
+                },
+                "ruleOrder": {
+                    "type": "string",
+                    "deprecationMessage": "The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `zpa.PolicyAccessReorderRule`"
+                },
+                "serviceEdgeGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/zpa:index/PolicyAccessRedirectionRuleServiceEdgeGroup:PolicyAccessRedirectionRuleServiceEdgeGroup"
+                    },
+                    "description": "List of the service edge group IDs.\n"
+                },
+                "zpnCbiProfileId": {
+                    "type": "string"
+                },
+                "zpnInspectionProfileId": {
+                    "type": "string"
+                },
+                "zpnIsolationProfileId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "customMsg",
+                "microtenantId",
+                "name",
+                "operator",
+                "policySetId",
+                "policyType",
+                "priority",
+                "ruleOrder",
+                "zpnCbiProfileId",
+                "zpnInspectionProfileId",
+                "zpnIsolationProfileId"
+            ],
+            "inputProperties": {
+                "action": {
+                    "type": "string",
+                    "description": "This is for providing the rule action.\n"
+                },
+                "actionId": {
+                    "type": "string",
+                    "description": "This field defines the description of the server.\n"
+                },
+                "bypassDefaultRule": {
+                    "type": "boolean"
+                },
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/zpa:index/PolicyAccessRedirectionRuleCondition:PolicyAccessRedirectionRuleCondition"
+                    },
+                    "description": "This is for proviidng the set of conditions for the policy.\n"
+                },
+                "customMsg": {
+                    "type": "string",
+                    "description": "This is for providing a customer message for the user.\n"
+                },
+                "defaultRule": {
+                    "type": "boolean",
+                    "description": "This is for providing a customer message for the user.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "This is the description of the access policy.\n"
+                },
+                "lssDefaultRule": {
+                    "type": "boolean"
+                },
+                "microtenantId": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "This is the name of the policy.\n"
+                },
+                "operator": {
+                    "type": "string"
+                },
+                "policySetId": {
+                    "type": "string"
+                },
+                "policyType": {
+                    "type": "string"
+                },
+                "priority": {
+                    "type": "string"
+                },
+                "reauthDefaultRule": {
+                    "type": "boolean"
+                },
+                "reauthIdleTimeout": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "reauthTimeout": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "ruleOrder": {
+                    "type": "string",
+                    "deprecationMessage": "The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `zpa.PolicyAccessReorderRule`"
+                },
+                "serviceEdgeGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/zpa:index/PolicyAccessRedirectionRuleServiceEdgeGroup:PolicyAccessRedirectionRuleServiceEdgeGroup"
+                    },
+                    "description": "List of the service edge group IDs.\n"
+                },
+                "zpnCbiProfileId": {
+                    "type": "string"
+                },
+                "zpnInspectionProfileId": {
+                    "type": "string"
+                },
+                "zpnIsolationProfileId": {
+                    "type": "string"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PolicyAccessRedirectionRule resources.\n",
+                "properties": {
+                    "action": {
+                        "type": "string",
+                        "description": "This is for providing the rule action.\n"
+                    },
+                    "actionId": {
+                        "type": "string",
+                        "description": "This field defines the description of the server.\n"
+                    },
+                    "bypassDefaultRule": {
+                        "type": "boolean"
+                    },
+                    "conditions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/zpa:index/PolicyAccessRedirectionRuleCondition:PolicyAccessRedirectionRuleCondition"
+                        },
+                        "description": "This is for proviidng the set of conditions for the policy.\n"
+                    },
+                    "customMsg": {
+                        "type": "string",
+                        "description": "This is for providing a customer message for the user.\n"
+                    },
+                    "defaultRule": {
+                        "type": "boolean",
+                        "description": "This is for providing a customer message for the user.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "This is the description of the access policy.\n"
+                    },
+                    "lssDefaultRule": {
+                        "type": "boolean"
+                    },
+                    "microtenantId": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "This is the name of the policy.\n"
+                    },
+                    "operator": {
+                        "type": "string"
+                    },
+                    "policySetId": {
+                        "type": "string"
+                    },
+                    "policyType": {
+                        "type": "string"
+                    },
+                    "priority": {
+                        "type": "string"
+                    },
+                    "reauthDefaultRule": {
+                        "type": "boolean"
+                    },
+                    "reauthIdleTimeout": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "reauthTimeout": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "ruleOrder": {
+                        "type": "string",
+                        "deprecationMessage": "The `rule_order` field is now deprecated for all zpa access policy resources in favor of the resource `zpa.PolicyAccessReorderRule`"
+                    },
+                    "serviceEdgeGroups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/zpa:index/PolicyAccessRedirectionRuleServiceEdgeGroup:PolicyAccessRedirectionRuleServiceEdgeGroup"
+                        },
+                        "description": "List of the service edge group IDs.\n"
+                    },
+                    "zpnCbiProfileId": {
+                        "type": "string"
+                    },
+                    "zpnInspectionProfileId": {
+                        "type": "string"
+                    },
+                    "zpnIsolationProfileId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "aliases": [
+                {
+                    "type": "zpa:index/policyRedirectionRule:PolicyRedirectionRule"
+                }
+            ]
+        },
         "zpa:index/policyAccessReorderRule:PolicyAccessReorderRule": {
             "description": "* [Official documentation](https://help.zscaler.com/zpa/about-access-policy)\n* [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api)\n\nThe **zpa_policy_access_rule_reorder** is a dedicated resource to manage and update `rule_orders` in any of the supported ZPA Policy Access types Zscaler Private Access cloud.\n\n⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of this resource for all ZPA policy types.\n\n⚠️ **WARNING:**: Updating the rule order of an access policy configured using `Zscaler Deception` is not supported. When changing the rule order of a regular access policy and there is an access policy configured using Deception, the rule order of the regular access policy must be greater than the rule order for an access policy configured using Deception. Please refer to the [Zscaler API Documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api#:~:text=Updating%20the%20rule,configured%20using%20Deception.) for further details.\n\n## Example Usage\n\n### 1\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  example001:\n    type: zpa:PolicyAccessRule\n    properties:\n      description: example001\n      action: ALLOW\n      operator: AND\n  example002:\n    type: zpa:PolicyAccessRule\n    properties:\n      description: example002\n      action: ALLOW\n      operator: AND\n  accessPolicyReorder:\n    type: zpa:PolicyAccessReorderRule\n    properties:\n      policyType: ACCESS_POLICY\n      dynamic:\n        - forEach: ${ruleOrders}\n          content:\n            - id: ${rules.value.id}\n              order: ${rules.value.order}\nvariables:\n  ruleOrders:\n    - id: ${example001.id}\n      order: 1\n    - id: ${example002.id}\n      order: 2\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n\n",
             "properties": {
@@ -13137,7 +13743,7 @@
             }
         },
         "zpa:index/policyCapabilitiesRule:PolicyCapabilitiesRule": {
-            "description": "* [Official documentation](https://help.zscaler.com/zpa/about-privileged-capabilities-policy)\n* [API documentation](https://help.zscaler.com/zpa/configuring-privileged-policies-using-api)\n\nThe **zpa_policy_capabilities_rule** resource creates a policy capabilities rule in the Zscaler Private Access cloud.\n\n  ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as zpa from \"@bdzscaler/pulumi-zpa\";\n\nconst thisIdPController = zpa.getIdPController({\n    name: \"IdP_Users\",\n});\nconst emailUserSso = zpa.getSAMLAttribute({\n    name: \"Email_IdP_Users\",\n    idpName: \"IdP_Users\",\n});\nconst groupUser = zpa.getSAMLAttribute({\n    name: \"GroupName_IdP_Users\",\n    idpName: \"IdP_Users\",\n});\nconst a000 = zpa.getSCIMGroups({\n    name: \"A000\",\n    idpName: \"IdP_Users\",\n});\nconst b000 = zpa.getSCIMGroups({\n    name: \"B000\",\n    idpName: \"IdP_Users\",\n});\nconst thisPolicyCapabilitiesRule = new zpa.PolicyCapabilitiesRule(\"thisPolicyCapabilitiesRule\", {\n    description: \"Example\",\n    action: \"CHECK_CAPABILITIES\",\n    privilegedCapabilities: {\n        fileUpload: true,\n        fileDownload: true,\n        inspectFileUpload: true,\n        clipboardCopy: true,\n        clipboardPaste: true,\n        recordSession: true,\n    },\n    conditions: [{\n        operator: \"OR\",\n        operands: [\n            {\n                objectType: \"SAML\",\n                entryValues: [\n                    {\n                        rhs: \"user1@example.com\",\n                        lhs: emailUserSso.then(emailUserSso =\u003e emailUserSso.id),\n                    },\n                    {\n                        rhs: \"A000\",\n                        lhs: groupUser.then(groupUser =\u003e groupUser.id),\n                    },\n                ],\n            },\n            {\n                objectType: \"SCIM_GROUP\",\n                entryValues: [\n                    {\n                        rhs: a000.then(a000 =\u003e a000.id),\n                        lhs: thisIdPController.then(thisIdPController =\u003e thisIdPController.id),\n                    },\n                    {\n                        rhs: b000.then(b000 =\u003e b000.id),\n                        lhs: thisIdPController.then(thisIdPController =\u003e thisIdPController.id),\n                    },\n                ],\n            },\n        ],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_zpa as zpa\nimport zscaler_pulumi_zpa as zpa\n\nthis_id_p_controller = zpa.get_id_p_controller(name=\"IdP_Users\")\nemail_user_sso = zpa.get_saml_attribute(name=\"Email_IdP_Users\",\n    idp_name=\"IdP_Users\")\ngroup_user = zpa.get_saml_attribute(name=\"GroupName_IdP_Users\",\n    idp_name=\"IdP_Users\")\na000 = zpa.get_scim_groups(name=\"A000\",\n    idp_name=\"IdP_Users\")\nb000 = zpa.get_scim_groups(name=\"B000\",\n    idp_name=\"IdP_Users\")\nthis_policy_capabilities_rule = zpa.PolicyCapabilitiesRule(\"thisPolicyCapabilitiesRule\",\n    description=\"Example\",\n    action=\"CHECK_CAPABILITIES\",\n    privileged_capabilities={\n        \"file_upload\": True,\n        \"file_download\": True,\n        \"inspect_file_upload\": True,\n        \"clipboard_copy\": True,\n        \"clipboard_paste\": True,\n        \"record_session\": True,\n    },\n    conditions=[{\n        \"operator\": \"OR\",\n        \"operands\": [\n            {\n                \"object_type\": \"SAML\",\n                \"entry_values\": [\n                    {\n                        \"rhs\": \"user1@example.com\",\n                        \"lhs\": email_user_sso.id,\n                    },\n                    {\n                        \"rhs\": \"A000\",\n                        \"lhs\": group_user.id,\n                    },\n                ],\n            },\n            {\n                \"object_type\": \"SCIM_GROUP\",\n                \"entry_values\": [\n                    {\n                        \"rhs\": a000.id,\n                        \"lhs\": this_id_p_controller.id,\n                    },\n                    {\n                        \"rhs\": b000.id,\n                        \"lhs\": this_id_p_controller.id,\n                    },\n                ],\n            },\n        ],\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Zpa = Pulumi.Zpa;\nusing Zpa = Zscaler.Zpa;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var thisIdPController = Zpa.GetIdPController.Invoke(new()\n    {\n        Name = \"IdP_Users\",\n    });\n\n    var emailUserSso = Zpa.GetSAMLAttribute.Invoke(new()\n    {\n        Name = \"Email_IdP_Users\",\n        IdpName = \"IdP_Users\",\n    });\n\n    var groupUser = Zpa.GetSAMLAttribute.Invoke(new()\n    {\n        Name = \"GroupName_IdP_Users\",\n        IdpName = \"IdP_Users\",\n    });\n\n    var a000 = Zpa.GetSCIMGroups.Invoke(new()\n    {\n        Name = \"A000\",\n        IdpName = \"IdP_Users\",\n    });\n\n    var b000 = Zpa.GetSCIMGroups.Invoke(new()\n    {\n        Name = \"B000\",\n        IdpName = \"IdP_Users\",\n    });\n\n    var thisPolicyCapabilitiesRule = new Zpa.PolicyCapabilitiesRule(\"thisPolicyCapabilitiesRule\", new()\n    {\n        Description = \"Example\",\n        Action = \"CHECK_CAPABILITIES\",\n        PrivilegedCapabilities = new Zpa.Inputs.PolicyCapabilitiesRulePrivilegedCapabilitiesArgs\n        {\n            FileUpload = true,\n            FileDownload = true,\n            InspectFileUpload = true,\n            ClipboardCopy = true,\n            ClipboardPaste = true,\n            RecordSession = true,\n        },\n        Conditions = new[]\n        {\n            new Zpa.Inputs.PolicyCapabilitiesRuleConditionArgs\n            {\n                Operator = \"OR\",\n                Operands = new[]\n                {\n                    new Zpa.Inputs.PolicyCapabilitiesRuleConditionOperandArgs\n                    {\n                        ObjectType = \"SAML\",\n                        EntryValues = new[]\n                        {\n                            new Zpa.Inputs.PolicyCapabilitiesRuleConditionOperandEntryValueArgs\n                            {\n                                Rhs = \"user1@example.com\",\n                                Lhs = emailUserSso.Apply(getSAMLAttributeResult =\u003e getSAMLAttributeResult.Id),\n                            },\n                            new Zpa.Inputs.PolicyCapabilitiesRuleConditionOperandEntryValueArgs\n                            {\n                                Rhs = \"A000\",\n                                Lhs = groupUser.Apply(getSAMLAttributeResult =\u003e getSAMLAttributeResult.Id),\n                            },\n                        },\n                    },\n                    new Zpa.Inputs.PolicyCapabilitiesRuleConditionOperandArgs\n                    {\n                        ObjectType = \"SCIM_GROUP\",\n                        EntryValues = new[]\n                        {\n                            new Zpa.Inputs.PolicyCapabilitiesRuleConditionOperandEntryValueArgs\n                            {\n                                Rhs = a000.Apply(getSCIMGroupsResult =\u003e getSCIMGroupsResult.Id),\n                                Lhs = thisIdPController.Apply(getIdPControllerResult =\u003e getIdPControllerResult.Id),\n                            },\n                            new Zpa.Inputs.PolicyCapabilitiesRuleConditionOperandEntryValueArgs\n                            {\n                                Rhs = b000.Apply(getSCIMGroupsResult =\u003e getSCIMGroupsResult.Id),\n                                Lhs = thisIdPController.Apply(getIdPControllerResult =\u003e getIdPControllerResult.Id),\n                            },\n                        },\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/zscaler/pulumi-zpa/sdk/go/zpa\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tthisIdPController, err := zpa.GetIdPController(ctx, \u0026zpa.GetIdPControllerArgs{\n\t\t\tName: pulumi.StringRef(\"IdP_Users\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\temailUserSso, err := zpa.GetSAMLAttribute(ctx, \u0026zpa.GetSAMLAttributeArgs{\n\t\t\tName:    pulumi.StringRef(\"Email_IdP_Users\"),\n\t\t\tIdpName: pulumi.StringRef(\"IdP_Users\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tgroupUser, err := zpa.GetSAMLAttribute(ctx, \u0026zpa.GetSAMLAttributeArgs{\n\t\t\tName:    pulumi.StringRef(\"GroupName_IdP_Users\"),\n\t\t\tIdpName: pulumi.StringRef(\"IdP_Users\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ta000, err := zpa.GetSCIMGroups(ctx, \u0026zpa.GetSCIMGroupsArgs{\n\t\t\tName:    pulumi.StringRef(\"A000\"),\n\t\t\tIdpName: pulumi.StringRef(\"IdP_Users\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tb000, err := zpa.GetSCIMGroups(ctx, \u0026zpa.GetSCIMGroupsArgs{\n\t\t\tName:    pulumi.StringRef(\"B000\"),\n\t\t\tIdpName: pulumi.StringRef(\"IdP_Users\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = zpa.NewPolicyCapabilitiesRule(ctx, \"thisPolicyCapabilitiesRule\", \u0026zpa.PolicyCapabilitiesRuleArgs{\n\t\t\tDescription: pulumi.String(\"Example\"),\n\t\t\tAction:      pulumi.String(\"CHECK_CAPABILITIES\"),\n\t\t\tPrivilegedCapabilities: \u0026zpa.PolicyCapabilitiesRulePrivilegedCapabilitiesArgs{\n\t\t\t\tFileUpload:        pulumi.Bool(true),\n\t\t\t\tFileDownload:      pulumi.Bool(true),\n\t\t\t\tInspectFileUpload: pulumi.Bool(true),\n\t\t\t\tClipboardCopy:     pulumi.Bool(true),\n\t\t\t\tClipboardPaste:    pulumi.Bool(true),\n\t\t\t\tRecordSession:     pulumi.Bool(true),\n\t\t\t},\n\t\t\tConditions: zpa.PolicyCapabilitiesRuleConditionArray{\n\t\t\t\t\u0026zpa.PolicyCapabilitiesRuleConditionArgs{\n\t\t\t\t\tOperator: pulumi.String(\"OR\"),\n\t\t\t\t\tOperands: zpa.PolicyCapabilitiesRuleConditionOperandArray{\n\t\t\t\t\t\t\u0026zpa.PolicyCapabilitiesRuleConditionOperandArgs{\n\t\t\t\t\t\t\tObjectType: pulumi.String(\"SAML\"),\n\t\t\t\t\t\t\tEntryValues: zpa.PolicyCapabilitiesRuleConditionOperandEntryValueArray{\n\t\t\t\t\t\t\t\t\u0026zpa.PolicyCapabilitiesRuleConditionOperandEntryValueArgs{\n\t\t\t\t\t\t\t\t\tRhs: pulumi.String(\"user1@example.com\"),\n\t\t\t\t\t\t\t\t\tLhs: pulumi.String(emailUserSso.Id),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\u0026zpa.PolicyCapabilitiesRuleConditionOperandEntryValueArgs{\n\t\t\t\t\t\t\t\t\tRhs: pulumi.String(\"A000\"),\n\t\t\t\t\t\t\t\t\tLhs: pulumi.String(groupUser.Id),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026zpa.PolicyCapabilitiesRuleConditionOperandArgs{\n\t\t\t\t\t\t\tObjectType: pulumi.String(\"SCIM_GROUP\"),\n\t\t\t\t\t\t\tEntryValues: zpa.PolicyCapabilitiesRuleConditionOperandEntryValueArray{\n\t\t\t\t\t\t\t\t\u0026zpa.PolicyCapabilitiesRuleConditionOperandEntryValueArgs{\n\t\t\t\t\t\t\t\t\tRhs: pulumi.String(a000.Id),\n\t\t\t\t\t\t\t\t\tLhs: pulumi.String(thisIdPController.Id),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\u0026zpa.PolicyCapabilitiesRuleConditionOperandEntryValueArgs{\n\t\t\t\t\t\t\t\t\tRhs: pulumi.String(b000.Id),\n\t\t\t\t\t\t\t\t\tLhs: pulumi.String(thisIdPController.Id),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.zpa.ZpaFunctions;\nimport com.pulumi.zpa.inputs.GetIdPControllerArgs;\nimport com.pulumi.zpa.inputs.GetSAMLAttributeArgs;\nimport com.pulumi.zpa.inputs.GetSCIMGroupsArgs;\nimport com.pulumi.zpa.PolicyCapabilitiesRule;\nimport com.pulumi.zpa.PolicyCapabilitiesRuleArgs;\nimport com.pulumi.zpa.inputs.PolicyCapabilitiesRulePrivilegedCapabilitiesArgs;\nimport com.pulumi.zpa.inputs.PolicyCapabilitiesRuleConditionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var thisIdPController = ZpaFunctions.getIdPController(GetIdPControllerArgs.builder()\n            .name(\"IdP_Users\")\n            .build());\n\n        final var emailUserSso = ZpaFunctions.getSAMLAttribute(GetSAMLAttributeArgs.builder()\n            .name(\"Email_IdP_Users\")\n            .idpName(\"IdP_Users\")\n            .build());\n\n        final var groupUser = ZpaFunctions.getSAMLAttribute(GetSAMLAttributeArgs.builder()\n            .name(\"GroupName_IdP_Users\")\n            .idpName(\"IdP_Users\")\n            .build());\n\n        final var a000 = ZpaFunctions.getSCIMGroups(GetSCIMGroupsArgs.builder()\n            .name(\"A000\")\n            .idpName(\"IdP_Users\")\n            .build());\n\n        final var b000 = ZpaFunctions.getSCIMGroups(GetSCIMGroupsArgs.builder()\n            .name(\"B000\")\n            .idpName(\"IdP_Users\")\n            .build());\n\n        var thisPolicyCapabilitiesRule = new PolicyCapabilitiesRule(\"thisPolicyCapabilitiesRule\", PolicyCapabilitiesRuleArgs.builder()\n            .description(\"Example\")\n            .action(\"CHECK_CAPABILITIES\")\n            .privilegedCapabilities(PolicyCapabilitiesRulePrivilegedCapabilitiesArgs.builder()\n                .fileUpload(true)\n                .fileDownload(true)\n                .inspectFileUpload(true)\n                .clipboardCopy(true)\n                .clipboardPaste(true)\n                .recordSession(true)\n                .build())\n            .conditions(PolicyCapabilitiesRuleConditionArgs.builder()\n                .operator(\"OR\")\n                .operands(                \n                    PolicyCapabilitiesRuleConditionOperandArgs.builder()\n                        .objectType(\"SAML\")\n                        .entryValues(                        \n                            PolicyCapabilitiesRuleConditionOperandEntryValueArgs.builder()\n                                .rhs(\"user1@example.com\")\n                                .lhs(emailUserSso.id())\n                                .build(),\n                            PolicyCapabilitiesRuleConditionOperandEntryValueArgs.builder()\n                                .rhs(\"A000\")\n                                .lhs(groupUser.id())\n                                .build())\n                        .build(),\n                    PolicyCapabilitiesRuleConditionOperandArgs.builder()\n                        .objectType(\"SCIM_GROUP\")\n                        .entryValues(                        \n                            PolicyCapabilitiesRuleConditionOperandEntryValueArgs.builder()\n                                .rhs(a000.id())\n                                .lhs(thisIdPController.id())\n                                .build(),\n                            PolicyCapabilitiesRuleConditionOperandEntryValueArgs.builder()\n                                .rhs(b000.id())\n                                .lhs(thisIdPController.id())\n                                .build())\n                        .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  thisPolicyCapabilitiesRule:\n    type: zpa:PolicyCapabilitiesRule\n    properties:\n      description: Example\n      action: CHECK_CAPABILITIES\n      privilegedCapabilities:\n        fileUpload: true\n        fileDownload: true\n        inspectFileUpload: true\n        clipboardCopy: true\n        clipboardPaste: true\n        recordSession: true\n      conditions:\n        - operator: OR\n          operands:\n            - objectType: SAML\n              entryValues:\n                - rhs: user1@example.com\n                  lhs: ${emailUserSso.id}\n                - rhs: A000\n                  lhs: ${groupUser.id}\n            - objectType: SCIM_GROUP\n              entryValues:\n                - rhs: ${a000.id}\n                  lhs: ${thisIdPController.id}\n                - rhs: ${b000.id}\n                  lhs: ${thisIdPController.id}\nvariables:\n  thisIdPController:\n    fn::invoke:\n      function: zpa:getIdPController\n      arguments:\n        name: IdP_Users\n  emailUserSso:\n    fn::invoke:\n      function: zpa:getSAMLAttribute\n      arguments:\n        name: Email_IdP_Users\n        idpName: IdP_Users\n  groupUser:\n    fn::invoke:\n      function: zpa:getSAMLAttribute\n      arguments:\n        name: GroupName_IdP_Users\n        idpName: IdP_Users\n  a000:\n    fn::invoke:\n      function: zpa:getSCIMGroups\n      arguments:\n        name: A000\n        idpName: IdP_Users\n  b000:\n    fn::invoke:\n      function: zpa:getSCIMGroups\n      arguments:\n        name: B000\n        idpName: IdP_Users\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## LHS and RHS Values\n\n| Object Type | LHS| RHS| VALUES\n|----------|-----------|----------|----------\n| APP |   |  | ``application_segment_id``\n| APP_GROUP |   |  | ``segment_group_id``\n| SAML | ``saml_attribute_id``  | ``attribute_value_to_match`` |\n| SCIM | ``scim_attribute_id``  | ``attribute_value_to_match``  |\n| SCIM_GROUP | ``scim_group_attribute_id``  | ``attribute_value_to_match``  |\n\n## Import\n\nZscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.\n\nVisit\n\nPolicy access capability can be imported by using `\u003cRULE ID\u003e` as the import ID.\n\nFor example:\n\n```sh\n$ pulumi import zpa:index/policyCapabilitiesRule:PolicyCapabilitiesRule example \u003crule_id\u003e\n```\n\n",
+            "description": "* [Official documentation](https://help.zscaler.com/zpa/about-privileged-capabilities-policy)\n* [API documentation](https://help.zscaler.com/zpa/configuring-privileged-policies-using-api)\n\nThe **zpa_policy_capabilities_rule** resource creates a policy capabilities rule in the Zscaler Private Access cloud.\n\n  ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as zpa from \"@bdzscaler/pulumi-zpa\";\n\nconst thisIdPController = zpa.getIdPController({\n    name: \"IdP_Users\",\n});\nconst emailUserSso = zpa.getSAMLAttribute({\n    name: \"Email_IdP_Users\",\n    idpName: \"IdP_Users\",\n});\nconst groupUser = zpa.getSAMLAttribute({\n    name: \"GroupName_IdP_Users\",\n    idpName: \"IdP_Users\",\n});\nconst a000 = zpa.getSCIMGroups({\n    name: \"A000\",\n    idpName: \"IdP_Users\",\n});\nconst b000 = zpa.getSCIMGroups({\n    name: \"B000\",\n    idpName: \"IdP_Users\",\n});\nconst thisPolicyAccessCapabilitiesRule = new zpa.PolicyAccessCapabilitiesRule(\"thisPolicyAccessCapabilitiesRule\", {\n    description: \"Example\",\n    action: \"CHECK_CAPABILITIES\",\n    privilegedCapabilities: {\n        fileUpload: true,\n        fileDownload: true,\n        inspectFileUpload: true,\n        clipboardCopy: true,\n        clipboardPaste: true,\n        recordSession: true,\n    },\n    conditions: [{\n        operator: \"OR\",\n        operands: [\n            {\n                objectType: \"SAML\",\n                entryValues: [\n                    {\n                        rhs: \"user1@example.com\",\n                        lhs: emailUserSso.then(emailUserSso =\u003e emailUserSso.id),\n                    },\n                    {\n                        rhs: \"A000\",\n                        lhs: groupUser.then(groupUser =\u003e groupUser.id),\n                    },\n                ],\n            },\n            {\n                objectType: \"SCIM_GROUP\",\n                entryValues: [\n                    {\n                        rhs: a000.then(a000 =\u003e a000.id),\n                        lhs: thisIdPController.then(thisIdPController =\u003e thisIdPController.id),\n                    },\n                    {\n                        rhs: b000.then(b000 =\u003e b000.id),\n                        lhs: thisIdPController.then(thisIdPController =\u003e thisIdPController.id),\n                    },\n                ],\n            },\n        ],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_zpa as zpa\nimport zscaler_pulumi_zpa as zpa\n\nthis_id_p_controller = zpa.get_id_p_controller(name=\"IdP_Users\")\nemail_user_sso = zpa.get_saml_attribute(name=\"Email_IdP_Users\",\n    idp_name=\"IdP_Users\")\ngroup_user = zpa.get_saml_attribute(name=\"GroupName_IdP_Users\",\n    idp_name=\"IdP_Users\")\na000 = zpa.get_scim_groups(name=\"A000\",\n    idp_name=\"IdP_Users\")\nb000 = zpa.get_scim_groups(name=\"B000\",\n    idp_name=\"IdP_Users\")\nthis_policy_access_capabilities_rule = zpa.PolicyAccessCapabilitiesRule(\"thisPolicyAccessCapabilitiesRule\",\n    description=\"Example\",\n    action=\"CHECK_CAPABILITIES\",\n    privileged_capabilities={\n        \"file_upload\": True,\n        \"file_download\": True,\n        \"inspect_file_upload\": True,\n        \"clipboard_copy\": True,\n        \"clipboard_paste\": True,\n        \"record_session\": True,\n    },\n    conditions=[{\n        \"operator\": \"OR\",\n        \"operands\": [\n            {\n                \"object_type\": \"SAML\",\n                \"entry_values\": [\n                    {\n                        \"rhs\": \"user1@example.com\",\n                        \"lhs\": email_user_sso.id,\n                    },\n                    {\n                        \"rhs\": \"A000\",\n                        \"lhs\": group_user.id,\n                    },\n                ],\n            },\n            {\n                \"object_type\": \"SCIM_GROUP\",\n                \"entry_values\": [\n                    {\n                        \"rhs\": a000.id,\n                        \"lhs\": this_id_p_controller.id,\n                    },\n                    {\n                        \"rhs\": b000.id,\n                        \"lhs\": this_id_p_controller.id,\n                    },\n                ],\n            },\n        ],\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Zpa = Pulumi.Zpa;\nusing Zpa = Zscaler.Zpa;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var thisIdPController = Zpa.GetIdPController.Invoke(new()\n    {\n        Name = \"IdP_Users\",\n    });\n\n    var emailUserSso = Zpa.GetSAMLAttribute.Invoke(new()\n    {\n        Name = \"Email_IdP_Users\",\n        IdpName = \"IdP_Users\",\n    });\n\n    var groupUser = Zpa.GetSAMLAttribute.Invoke(new()\n    {\n        Name = \"GroupName_IdP_Users\",\n        IdpName = \"IdP_Users\",\n    });\n\n    var a000 = Zpa.GetSCIMGroups.Invoke(new()\n    {\n        Name = \"A000\",\n        IdpName = \"IdP_Users\",\n    });\n\n    var b000 = Zpa.GetSCIMGroups.Invoke(new()\n    {\n        Name = \"B000\",\n        IdpName = \"IdP_Users\",\n    });\n\n    var thisPolicyAccessCapabilitiesRule = new Zpa.PolicyAccessCapabilitiesRule(\"thisPolicyAccessCapabilitiesRule\", new()\n    {\n        Description = \"Example\",\n        Action = \"CHECK_CAPABILITIES\",\n        PrivilegedCapabilities = new Zpa.Inputs.PolicyAccessCapabilitiesRulePrivilegedCapabilitiesArgs\n        {\n            FileUpload = true,\n            FileDownload = true,\n            InspectFileUpload = true,\n            ClipboardCopy = true,\n            ClipboardPaste = true,\n            RecordSession = true,\n        },\n        Conditions = new[]\n        {\n            new Zpa.Inputs.PolicyAccessCapabilitiesRuleConditionArgs\n            {\n                Operator = \"OR\",\n                Operands = new[]\n                {\n                    new Zpa.Inputs.PolicyAccessCapabilitiesRuleConditionOperandArgs\n                    {\n                        ObjectType = \"SAML\",\n                        EntryValues = new[]\n                        {\n                            new Zpa.Inputs.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs\n                            {\n                                Rhs = \"user1@example.com\",\n                                Lhs = emailUserSso.Apply(getSAMLAttributeResult =\u003e getSAMLAttributeResult.Id),\n                            },\n                            new Zpa.Inputs.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs\n                            {\n                                Rhs = \"A000\",\n                                Lhs = groupUser.Apply(getSAMLAttributeResult =\u003e getSAMLAttributeResult.Id),\n                            },\n                        },\n                    },\n                    new Zpa.Inputs.PolicyAccessCapabilitiesRuleConditionOperandArgs\n                    {\n                        ObjectType = \"SCIM_GROUP\",\n                        EntryValues = new[]\n                        {\n                            new Zpa.Inputs.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs\n                            {\n                                Rhs = a000.Apply(getSCIMGroupsResult =\u003e getSCIMGroupsResult.Id),\n                                Lhs = thisIdPController.Apply(getIdPControllerResult =\u003e getIdPControllerResult.Id),\n                            },\n                            new Zpa.Inputs.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs\n                            {\n                                Rhs = b000.Apply(getSCIMGroupsResult =\u003e getSCIMGroupsResult.Id),\n                                Lhs = thisIdPController.Apply(getIdPControllerResult =\u003e getIdPControllerResult.Id),\n                            },\n                        },\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/zscaler/pulumi-zpa/sdk/go/zpa\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tthisIdPController, err := zpa.GetIdPController(ctx, \u0026zpa.GetIdPControllerArgs{\n\t\t\tName: pulumi.StringRef(\"IdP_Users\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\temailUserSso, err := zpa.GetSAMLAttribute(ctx, \u0026zpa.GetSAMLAttributeArgs{\n\t\t\tName:    pulumi.StringRef(\"Email_IdP_Users\"),\n\t\t\tIdpName: pulumi.StringRef(\"IdP_Users\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tgroupUser, err := zpa.GetSAMLAttribute(ctx, \u0026zpa.GetSAMLAttributeArgs{\n\t\t\tName:    pulumi.StringRef(\"GroupName_IdP_Users\"),\n\t\t\tIdpName: pulumi.StringRef(\"IdP_Users\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ta000, err := zpa.GetSCIMGroups(ctx, \u0026zpa.GetSCIMGroupsArgs{\n\t\t\tName:    pulumi.StringRef(\"A000\"),\n\t\t\tIdpName: pulumi.StringRef(\"IdP_Users\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tb000, err := zpa.GetSCIMGroups(ctx, \u0026zpa.GetSCIMGroupsArgs{\n\t\t\tName:    pulumi.StringRef(\"B000\"),\n\t\t\tIdpName: pulumi.StringRef(\"IdP_Users\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = zpa.NewPolicyAccessCapabilitiesRule(ctx, \"thisPolicyAccessCapabilitiesRule\", \u0026zpa.PolicyAccessCapabilitiesRuleArgs{\n\t\t\tDescription: pulumi.String(\"Example\"),\n\t\t\tAction:      pulumi.String(\"CHECK_CAPABILITIES\"),\n\t\t\tPrivilegedCapabilities: \u0026zpa.PolicyAccessCapabilitiesRulePrivilegedCapabilitiesArgs{\n\t\t\t\tFileUpload:        pulumi.Bool(true),\n\t\t\t\tFileDownload:      pulumi.Bool(true),\n\t\t\t\tInspectFileUpload: pulumi.Bool(true),\n\t\t\t\tClipboardCopy:     pulumi.Bool(true),\n\t\t\t\tClipboardPaste:    pulumi.Bool(true),\n\t\t\t\tRecordSession:     pulumi.Bool(true),\n\t\t\t},\n\t\t\tConditions: zpa.PolicyAccessCapabilitiesRuleConditionArray{\n\t\t\t\t\u0026zpa.PolicyAccessCapabilitiesRuleConditionArgs{\n\t\t\t\t\tOperator: pulumi.String(\"OR\"),\n\t\t\t\t\tOperands: zpa.PolicyAccessCapabilitiesRuleConditionOperandArray{\n\t\t\t\t\t\t\u0026zpa.PolicyAccessCapabilitiesRuleConditionOperandArgs{\n\t\t\t\t\t\t\tObjectType: pulumi.String(\"SAML\"),\n\t\t\t\t\t\t\tEntryValues: zpa.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArray{\n\t\t\t\t\t\t\t\t\u0026zpa.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs{\n\t\t\t\t\t\t\t\t\tRhs: pulumi.String(\"user1@example.com\"),\n\t\t\t\t\t\t\t\t\tLhs: pulumi.String(emailUserSso.Id),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\u0026zpa.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs{\n\t\t\t\t\t\t\t\t\tRhs: pulumi.String(\"A000\"),\n\t\t\t\t\t\t\t\t\tLhs: pulumi.String(groupUser.Id),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026zpa.PolicyAccessCapabilitiesRuleConditionOperandArgs{\n\t\t\t\t\t\t\tObjectType: pulumi.String(\"SCIM_GROUP\"),\n\t\t\t\t\t\t\tEntryValues: zpa.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArray{\n\t\t\t\t\t\t\t\t\u0026zpa.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs{\n\t\t\t\t\t\t\t\t\tRhs: pulumi.String(a000.Id),\n\t\t\t\t\t\t\t\t\tLhs: pulumi.String(thisIdPController.Id),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\u0026zpa.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs{\n\t\t\t\t\t\t\t\t\tRhs: pulumi.String(b000.Id),\n\t\t\t\t\t\t\t\t\tLhs: pulumi.String(thisIdPController.Id),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.zpa.ZpaFunctions;\nimport com.pulumi.zpa.inputs.GetIdPControllerArgs;\nimport com.pulumi.zpa.inputs.GetSAMLAttributeArgs;\nimport com.pulumi.zpa.inputs.GetSCIMGroupsArgs;\nimport com.pulumi.zpa.PolicyAccessCapabilitiesRule;\nimport com.pulumi.zpa.PolicyAccessCapabilitiesRuleArgs;\nimport com.pulumi.zpa.inputs.PolicyAccessCapabilitiesRulePrivilegedCapabilitiesArgs;\nimport com.pulumi.zpa.inputs.PolicyAccessCapabilitiesRuleConditionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var thisIdPController = ZpaFunctions.getIdPController(GetIdPControllerArgs.builder()\n            .name(\"IdP_Users\")\n            .build());\n\n        final var emailUserSso = ZpaFunctions.getSAMLAttribute(GetSAMLAttributeArgs.builder()\n            .name(\"Email_IdP_Users\")\n            .idpName(\"IdP_Users\")\n            .build());\n\n        final var groupUser = ZpaFunctions.getSAMLAttribute(GetSAMLAttributeArgs.builder()\n            .name(\"GroupName_IdP_Users\")\n            .idpName(\"IdP_Users\")\n            .build());\n\n        final var a000 = ZpaFunctions.getSCIMGroups(GetSCIMGroupsArgs.builder()\n            .name(\"A000\")\n            .idpName(\"IdP_Users\")\n            .build());\n\n        final var b000 = ZpaFunctions.getSCIMGroups(GetSCIMGroupsArgs.builder()\n            .name(\"B000\")\n            .idpName(\"IdP_Users\")\n            .build());\n\n        var thisPolicyAccessCapabilitiesRule = new PolicyAccessCapabilitiesRule(\"thisPolicyAccessCapabilitiesRule\", PolicyAccessCapabilitiesRuleArgs.builder()\n            .description(\"Example\")\n            .action(\"CHECK_CAPABILITIES\")\n            .privilegedCapabilities(PolicyAccessCapabilitiesRulePrivilegedCapabilitiesArgs.builder()\n                .fileUpload(true)\n                .fileDownload(true)\n                .inspectFileUpload(true)\n                .clipboardCopy(true)\n                .clipboardPaste(true)\n                .recordSession(true)\n                .build())\n            .conditions(PolicyAccessCapabilitiesRuleConditionArgs.builder()\n                .operator(\"OR\")\n                .operands(                \n                    PolicyAccessCapabilitiesRuleConditionOperandArgs.builder()\n                        .objectType(\"SAML\")\n                        .entryValues(                        \n                            PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs.builder()\n                                .rhs(\"user1@example.com\")\n                                .lhs(emailUserSso.id())\n                                .build(),\n                            PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs.builder()\n                                .rhs(\"A000\")\n                                .lhs(groupUser.id())\n                                .build())\n                        .build(),\n                    PolicyAccessCapabilitiesRuleConditionOperandArgs.builder()\n                        .objectType(\"SCIM_GROUP\")\n                        .entryValues(                        \n                            PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs.builder()\n                                .rhs(a000.id())\n                                .lhs(thisIdPController.id())\n                                .build(),\n                            PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs.builder()\n                                .rhs(b000.id())\n                                .lhs(thisIdPController.id())\n                                .build())\n                        .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  thisPolicyAccessCapabilitiesRule:\n    type: zpa:PolicyAccessCapabilitiesRule\n    properties:\n      description: Example\n      action: CHECK_CAPABILITIES\n      privilegedCapabilities:\n        fileUpload: true\n        fileDownload: true\n        inspectFileUpload: true\n        clipboardCopy: true\n        clipboardPaste: true\n        recordSession: true\n      conditions:\n        - operator: OR\n          operands:\n            - objectType: SAML\n              entryValues:\n                - rhs: user1@example.com\n                  lhs: ${emailUserSso.id}\n                - rhs: A000\n                  lhs: ${groupUser.id}\n            - objectType: SCIM_GROUP\n              entryValues:\n                - rhs: ${a000.id}\n                  lhs: ${thisIdPController.id}\n                - rhs: ${b000.id}\n                  lhs: ${thisIdPController.id}\nvariables:\n  thisIdPController:\n    fn::invoke:\n      function: zpa:getIdPController\n      arguments:\n        name: IdP_Users\n  emailUserSso:\n    fn::invoke:\n      function: zpa:getSAMLAttribute\n      arguments:\n        name: Email_IdP_Users\n        idpName: IdP_Users\n  groupUser:\n    fn::invoke:\n      function: zpa:getSAMLAttribute\n      arguments:\n        name: GroupName_IdP_Users\n        idpName: IdP_Users\n  a000:\n    fn::invoke:\n      function: zpa:getSCIMGroups\n      arguments:\n        name: A000\n        idpName: IdP_Users\n  b000:\n    fn::invoke:\n      function: zpa:getSCIMGroups\n      arguments:\n        name: B000\n        idpName: IdP_Users\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## LHS and RHS Values\n\n| Object Type | LHS| RHS| VALUES\n|----------|-----------|----------|----------\n| APP |   |  | ``application_segment_id``\n| APP_GROUP |   |  | ``segment_group_id``\n| SAML | ``saml_attribute_id``  | ``attribute_value_to_match`` |\n| SCIM | ``scim_attribute_id``  | ``attribute_value_to_match``  |\n| SCIM_GROUP | ``scim_group_attribute_id``  | ``attribute_value_to_match``  |\n\n## Import\n\nZscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.\n\nVisit\n\nPolicy access capability can be imported by using `\u003cRULE ID\u003e` as the import ID.\n\nFor example:\n\n```sh\n$ pulumi import zpa:index/policyCapabilitiesRule:PolicyCapabilitiesRule example \u003crule_id\u003e\n```\n\n",
             "properties": {
                 "action": {
                     "type": "string",
@@ -13235,7 +13841,8 @@
                     }
                 },
                 "type": "object"
-            }
+            },
+            "deprecationMessage": "zpa.index/policycapabilitiesrule.PolicyCapabilitiesRule has been deprecated in favor of zpa.index/policyaccesscapabilitiesrule.PolicyAccessCapabilitiesRule"
         },
         "zpa:index/policyCredentialRule:PolicyCredentialRule": {
             "description": "* [Official documentation](https://help.zscaler.com/zpa/about-privileged-capabilities-policy)\n* [API documentation](https://help.zscaler.com/zpa/configuring-privileged-policies-using-api)\n\nThe **zpa_policy_credential_rule** resource creates a policy credential rule in the Zscaler Private Access cloud.\n\n  ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``\n\n## Import\n\nZscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.\n\nVisit\n\nPolicy access credential can be imported by using `\u003cPOLICY CREDENTIAL ID\u003e` as the import ID.\n\nFor example:\n\n```sh\n$ pulumi import zpa:index/policyCredentialRule:PolicyCredentialRule example \u003cpolicy_credential_id\u003e\n```\n\n",
@@ -13668,7 +14275,7 @@
             "deprecationMessage": "zpa.index/policyisolationrulev2.PolicyIsolationRuleV2 has been deprecated in favor of zpa.index/policyaccessisolationrulev2.PolicyAccessIsolationRuleV2"
         },
         "zpa:index/policyRedirectionRule:PolicyRedirectionRule": {
-            "description": "* [Official documentation](https://help.zscaler.com/zpa/about-redirection-policy)\n* [API documentation](https://help.zscaler.com/zpa/configuring-redirection-policies-using-api)\n\nThe **zpa_policy_redirection_rule** resource creates a policy redirection access rule in the Zscaler Private Access cloud.\n\n  ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``\n\n## Example Usage\n\n### REDIRECT_DEFAULT\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  this:\n    type: zpa:PolicyRedirectionRule\n    properties:\n      action: REDIRECT_DEFAULT\n      conditions:\n        - operands:\n            - objectType: CLIENT_TYPE\n              values:\n                - zpn_client_type_branch_connector\n          operator: OR\n      description: Example\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nZscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.\n\nVisit\n\nPolicy Access Isolation Rule can be imported by using `\u003cPOLICY REDIRECTION RULE ID\u003e` as the import ID.\n\nFor example:\n\n```sh\n$ pulumi import zpa:index/policyRedirectionRule:PolicyRedirectionRule example \u003crule_id\u003e\n```\n\n",
+            "description": "* [Official documentation](https://help.zscaler.com/zpa/about-redirection-policy)\n* [API documentation](https://help.zscaler.com/zpa/configuring-redirection-policies-using-api)\n\nThe **zpa_policy_redirection_rule** resource creates a policy redirection access rule in the Zscaler Private Access cloud.\n\n  ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``\n\n## Example Usage\n\n### REDIRECT_DEFAULT\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  this:\n    type: zpa:PolicyAccessRedirectionRule\n    properties:\n      action: REDIRECT_DEFAULT\n      conditions:\n        - operands:\n            - objectType: CLIENT_TYPE\n              values:\n                - zpn_client_type_branch_connector\n          operator: OR\n      description: Example\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nZscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.\n\nVisit\n\nPolicy Access Isolation Rule can be imported by using `\u003cPOLICY REDIRECTION RULE ID\u003e` as the import ID.\n\nFor example:\n\n```sh\n$ pulumi import zpa:index/policyRedirectionRule:PolicyRedirectionRule example \u003crule_id\u003e\n```\n\n",
             "properties": {
                 "action": {
                     "type": "string",
@@ -13938,7 +14545,8 @@
                     }
                 },
                 "type": "object"
-            }
+            },
+            "deprecationMessage": "zpa.index/policyredirectionrule.PolicyRedirectionRule has been deprecated in favor of zpa.index/policyaccessredirectionrule.PolicyAccessRedirectionRule"
         },
         "zpa:index/policyTimeoutRuleV2:PolicyTimeoutRuleV2": {
             "description": "* [Official documentation](https://help.zscaler.com/zpa/about-timeout-policy)\n* [API documentation](https://help.zscaler.com/zpa/configuring-timeout-policies-using-api)\n\nThe **zpa_policy_timeout_rule_v2** resource creates and manages policy access timeout rule in the Zscaler Private Access cloud using a new v2 API endpoint.\n\n  ⚠️ **NOTE**: This resource is recommended if your configuration requires the association of more than 1000 resource criteria per rule.\n\n  ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as zpa from \"@bdzscaler/pulumi-zpa\";\n\nconst thisIdPController = zpa.getIdPController({\n    name: \"Idp_Name\",\n});\nconst emailUserSso = zpa.getSAMLAttribute({\n    name: \"Email_Users\",\n    idpName: \"Idp_Name\",\n});\nconst groupUser = zpa.getSAMLAttribute({\n    name: \"GroupName_Users\",\n    idpName: \"Idp_Name\",\n});\nconst a000 = zpa.getSCIMGroups({\n    name: \"A000\",\n    idpName: \"Idp_Name\",\n});\nconst b000 = zpa.getSCIMGroups({\n    name: \"B000\",\n    idpName: \"Idp_Name\",\n});\n// Create Segment Group\nconst thisSegmentGroup = new zpa.SegmentGroup(\"thisSegmentGroup\", {\n    description: \"Example\",\n    enabled: true,\n});\n// Create Policy Access Rule V2\nconst thisPolicyAccessTimeOutRuleV2 = new zpa.PolicyAccessTimeOutRuleV2(\"thisPolicyAccessTimeOutRuleV2\", {\n    description: \"Example\",\n    action: \"RE_AUTH\",\n    reauthIdleTimeout: \"10 Days\",\n    reauthTimeout: \"10 Days\",\n    conditions: [\n        {\n            operator: \"OR\",\n            operands: [{\n                objectType: \"APP_GROUP\",\n                values: [thisSegmentGroup.id],\n            }],\n        },\n        {\n            operator: \"OR\",\n            operands: [\n                {\n                    objectType: \"SAML\",\n                    entryValues: [\n                        {\n                            rhs: \"user1@acme.com\",\n                            lhs: emailUserSso.then(emailUserSso =\u003e emailUserSso.id),\n                        },\n                        {\n                            rhs: \"A000\",\n                            lhs: groupUser.then(groupUser =\u003e groupUser.id),\n                        },\n                    ],\n                },\n                {\n                    objectType: \"SCIM_GROUP\",\n                    entryValues: [\n                        {\n                            rhs: a000.then(a000 =\u003e a000.id),\n                            lhs: thisIdPController.then(thisIdPController =\u003e thisIdPController.id),\n                        },\n                        {\n                            rhs: b000.then(b000 =\u003e b000.id),\n                            lhs: thisIdPController.then(thisIdPController =\u003e thisIdPController.id),\n                        },\n                    ],\n                },\n            ],\n        },\n        {\n            operator: \"OR\",\n            operands: [{\n                objectType: \"PLATFORM\",\n                entryValues: [\n                    {\n                        rhs: \"true\",\n                        lhs: \"linux\",\n                    },\n                    {\n                        rhs: \"true\",\n                        lhs: \"android\",\n                    },\n                ],\n            }],\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_zpa as zpa\nimport zscaler_pulumi_zpa as zpa\n\nthis_id_p_controller = zpa.get_id_p_controller(name=\"Idp_Name\")\nemail_user_sso = zpa.get_saml_attribute(name=\"Email_Users\",\n    idp_name=\"Idp_Name\")\ngroup_user = zpa.get_saml_attribute(name=\"GroupName_Users\",\n    idp_name=\"Idp_Name\")\na000 = zpa.get_scim_groups(name=\"A000\",\n    idp_name=\"Idp_Name\")\nb000 = zpa.get_scim_groups(name=\"B000\",\n    idp_name=\"Idp_Name\")\n# Create Segment Group\nthis_segment_group = zpa.SegmentGroup(\"thisSegmentGroup\",\n    description=\"Example\",\n    enabled=True)\n# Create Policy Access Rule V2\nthis_policy_access_time_out_rule_v2 = zpa.PolicyAccessTimeOutRuleV2(\"thisPolicyAccessTimeOutRuleV2\",\n    description=\"Example\",\n    action=\"RE_AUTH\",\n    reauth_idle_timeout=\"10 Days\",\n    reauth_timeout=\"10 Days\",\n    conditions=[\n        {\n            \"operator\": \"OR\",\n            \"operands\": [{\n                \"object_type\": \"APP_GROUP\",\n                \"values\": [this_segment_group.id],\n            }],\n        },\n        {\n            \"operator\": \"OR\",\n            \"operands\": [\n                {\n                    \"object_type\": \"SAML\",\n                    \"entry_values\": [\n                        {\n                            \"rhs\": \"user1@acme.com\",\n                            \"lhs\": email_user_sso.id,\n                        },\n                        {\n                            \"rhs\": \"A000\",\n                            \"lhs\": group_user.id,\n                        },\n                    ],\n                },\n                {\n                    \"object_type\": \"SCIM_GROUP\",\n                    \"entry_values\": [\n                        {\n                            \"rhs\": a000.id,\n                            \"lhs\": this_id_p_controller.id,\n                        },\n                        {\n                            \"rhs\": b000.id,\n                            \"lhs\": this_id_p_controller.id,\n                        },\n                    ],\n                },\n            ],\n        },\n        {\n            \"operator\": \"OR\",\n            \"operands\": [{\n                \"object_type\": \"PLATFORM\",\n                \"entry_values\": [\n                    {\n                        \"rhs\": \"true\",\n                        \"lhs\": \"linux\",\n                    },\n                    {\n                        \"rhs\": \"true\",\n                        \"lhs\": \"android\",\n                    },\n                ],\n            }],\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Zpa = Pulumi.Zpa;\nusing Zpa = Zscaler.Zpa;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var thisIdPController = Zpa.GetIdPController.Invoke(new()\n    {\n        Name = \"Idp_Name\",\n    });\n\n    var emailUserSso = Zpa.GetSAMLAttribute.Invoke(new()\n    {\n        Name = \"Email_Users\",\n        IdpName = \"Idp_Name\",\n    });\n\n    var groupUser = Zpa.GetSAMLAttribute.Invoke(new()\n    {\n        Name = \"GroupName_Users\",\n        IdpName = \"Idp_Name\",\n    });\n\n    var a000 = Zpa.GetSCIMGroups.Invoke(new()\n    {\n        Name = \"A000\",\n        IdpName = \"Idp_Name\",\n    });\n\n    var b000 = Zpa.GetSCIMGroups.Invoke(new()\n    {\n        Name = \"B000\",\n        IdpName = \"Idp_Name\",\n    });\n\n    // Create Segment Group\n    var thisSegmentGroup = new Zpa.SegmentGroup(\"thisSegmentGroup\", new()\n    {\n        Description = \"Example\",\n        Enabled = true,\n    });\n\n    // Create Policy Access Rule V2\n    var thisPolicyAccessTimeOutRuleV2 = new Zpa.PolicyAccessTimeOutRuleV2(\"thisPolicyAccessTimeOutRuleV2\", new()\n    {\n        Description = \"Example\",\n        Action = \"RE_AUTH\",\n        ReauthIdleTimeout = \"10 Days\",\n        ReauthTimeout = \"10 Days\",\n        Conditions = new[]\n        {\n            new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionArgs\n            {\n                Operator = \"OR\",\n                Operands = new[]\n                {\n                    new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionOperandArgs\n                    {\n                        ObjectType = \"APP_GROUP\",\n                        Values = new[]\n                        {\n                            thisSegmentGroup.Id,\n                        },\n                    },\n                },\n            },\n            new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionArgs\n            {\n                Operator = \"OR\",\n                Operands = new[]\n                {\n                    new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionOperandArgs\n                    {\n                        ObjectType = \"SAML\",\n                        EntryValues = new[]\n                        {\n                            new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs\n                            {\n                                Rhs = \"user1@acme.com\",\n                                Lhs = emailUserSso.Apply(getSAMLAttributeResult =\u003e getSAMLAttributeResult.Id),\n                            },\n                            new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs\n                            {\n                                Rhs = \"A000\",\n                                Lhs = groupUser.Apply(getSAMLAttributeResult =\u003e getSAMLAttributeResult.Id),\n                            },\n                        },\n                    },\n                    new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionOperandArgs\n                    {\n                        ObjectType = \"SCIM_GROUP\",\n                        EntryValues = new[]\n                        {\n                            new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs\n                            {\n                                Rhs = a000.Apply(getSCIMGroupsResult =\u003e getSCIMGroupsResult.Id),\n                                Lhs = thisIdPController.Apply(getIdPControllerResult =\u003e getIdPControllerResult.Id),\n                            },\n                            new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs\n                            {\n                                Rhs = b000.Apply(getSCIMGroupsResult =\u003e getSCIMGroupsResult.Id),\n                                Lhs = thisIdPController.Apply(getIdPControllerResult =\u003e getIdPControllerResult.Id),\n                            },\n                        },\n                    },\n                },\n            },\n            new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionArgs\n            {\n                Operator = \"OR\",\n                Operands = new[]\n                {\n                    new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionOperandArgs\n                    {\n                        ObjectType = \"PLATFORM\",\n                        EntryValues = new[]\n                        {\n                            new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs\n                            {\n                                Rhs = \"true\",\n                                Lhs = \"linux\",\n                            },\n                            new Zpa.Inputs.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs\n                            {\n                                Rhs = \"true\",\n                                Lhs = \"android\",\n                            },\n                        },\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/zscaler/pulumi-zpa/sdk/go/zpa\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tthisIdPController, err := zpa.GetIdPController(ctx, \u0026zpa.GetIdPControllerArgs{\n\t\t\tName: pulumi.StringRef(\"Idp_Name\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\temailUserSso, err := zpa.GetSAMLAttribute(ctx, \u0026zpa.GetSAMLAttributeArgs{\n\t\t\tName:    pulumi.StringRef(\"Email_Users\"),\n\t\t\tIdpName: pulumi.StringRef(\"Idp_Name\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tgroupUser, err := zpa.GetSAMLAttribute(ctx, \u0026zpa.GetSAMLAttributeArgs{\n\t\t\tName:    pulumi.StringRef(\"GroupName_Users\"),\n\t\t\tIdpName: pulumi.StringRef(\"Idp_Name\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ta000, err := zpa.GetSCIMGroups(ctx, \u0026zpa.GetSCIMGroupsArgs{\n\t\t\tName:    pulumi.StringRef(\"A000\"),\n\t\t\tIdpName: pulumi.StringRef(\"Idp_Name\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tb000, err := zpa.GetSCIMGroups(ctx, \u0026zpa.GetSCIMGroupsArgs{\n\t\t\tName:    pulumi.StringRef(\"B000\"),\n\t\t\tIdpName: pulumi.StringRef(\"Idp_Name\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Create Segment Group\n\t\tthisSegmentGroup, err := zpa.NewSegmentGroup(ctx, \"thisSegmentGroup\", \u0026zpa.SegmentGroupArgs{\n\t\t\tDescription: pulumi.String(\"Example\"),\n\t\t\tEnabled:     pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Create Policy Access Rule V2\n\t\t_, err = zpa.NewPolicyAccessTimeOutRuleV2(ctx, \"thisPolicyAccessTimeOutRuleV2\", \u0026zpa.PolicyAccessTimeOutRuleV2Args{\n\t\t\tDescription:       pulumi.String(\"Example\"),\n\t\t\tAction:            pulumi.String(\"RE_AUTH\"),\n\t\t\tReauthIdleTimeout: pulumi.String(\"10 Days\"),\n\t\t\tReauthTimeout:     pulumi.String(\"10 Days\"),\n\t\t\tConditions: zpa.PolicyAccessTimeOutRuleV2ConditionArray{\n\t\t\t\t\u0026zpa.PolicyAccessTimeOutRuleV2ConditionArgs{\n\t\t\t\t\tOperator: pulumi.String(\"OR\"),\n\t\t\t\t\tOperands: zpa.PolicyAccessTimeOutRuleV2ConditionOperandArray{\n\t\t\t\t\t\t\u0026zpa.PolicyAccessTimeOutRuleV2ConditionOperandArgs{\n\t\t\t\t\t\t\tObjectType: pulumi.String(\"APP_GROUP\"),\n\t\t\t\t\t\t\tValues: pulumi.StringArray{\n\t\t\t\t\t\t\t\tthisSegmentGroup.ID(),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026zpa.PolicyAccessTimeOutRuleV2ConditionArgs{\n\t\t\t\t\tOperator: pulumi.String(\"OR\"),\n\t\t\t\t\tOperands: zpa.PolicyAccessTimeOutRuleV2ConditionOperandArray{\n\t\t\t\t\t\t\u0026zpa.PolicyAccessTimeOutRuleV2ConditionOperandArgs{\n\t\t\t\t\t\t\tObjectType: pulumi.String(\"SAML\"),\n\t\t\t\t\t\t\tEntryValues: zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArray{\n\t\t\t\t\t\t\t\t\u0026zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs{\n\t\t\t\t\t\t\t\t\tRhs: pulumi.String(\"user1@acme.com\"),\n\t\t\t\t\t\t\t\t\tLhs: pulumi.String(emailUserSso.Id),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\u0026zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs{\n\t\t\t\t\t\t\t\t\tRhs: pulumi.String(\"A000\"),\n\t\t\t\t\t\t\t\t\tLhs: pulumi.String(groupUser.Id),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026zpa.PolicyAccessTimeOutRuleV2ConditionOperandArgs{\n\t\t\t\t\t\t\tObjectType: pulumi.String(\"SCIM_GROUP\"),\n\t\t\t\t\t\t\tEntryValues: zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArray{\n\t\t\t\t\t\t\t\t\u0026zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs{\n\t\t\t\t\t\t\t\t\tRhs: pulumi.String(a000.Id),\n\t\t\t\t\t\t\t\t\tLhs: pulumi.String(thisIdPController.Id),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\u0026zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs{\n\t\t\t\t\t\t\t\t\tRhs: pulumi.String(b000.Id),\n\t\t\t\t\t\t\t\t\tLhs: pulumi.String(thisIdPController.Id),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026zpa.PolicyAccessTimeOutRuleV2ConditionArgs{\n\t\t\t\t\tOperator: pulumi.String(\"OR\"),\n\t\t\t\t\tOperands: zpa.PolicyAccessTimeOutRuleV2ConditionOperandArray{\n\t\t\t\t\t\t\u0026zpa.PolicyAccessTimeOutRuleV2ConditionOperandArgs{\n\t\t\t\t\t\t\tObjectType: pulumi.String(\"PLATFORM\"),\n\t\t\t\t\t\t\tEntryValues: zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArray{\n\t\t\t\t\t\t\t\t\u0026zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs{\n\t\t\t\t\t\t\t\t\tRhs: pulumi.String(\"true\"),\n\t\t\t\t\t\t\t\t\tLhs: pulumi.String(\"linux\"),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\u0026zpa.PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs{\n\t\t\t\t\t\t\t\t\tRhs: pulumi.String(\"true\"),\n\t\t\t\t\t\t\t\t\tLhs: pulumi.String(\"android\"),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.zpa.ZpaFunctions;\nimport com.pulumi.zpa.inputs.GetIdPControllerArgs;\nimport com.pulumi.zpa.inputs.GetSAMLAttributeArgs;\nimport com.pulumi.zpa.inputs.GetSCIMGroupsArgs;\nimport com.pulumi.zpa.SegmentGroup;\nimport com.pulumi.zpa.SegmentGroupArgs;\nimport com.pulumi.zpa.PolicyAccessTimeOutRuleV2;\nimport com.pulumi.zpa.PolicyAccessTimeOutRuleV2Args;\nimport com.pulumi.zpa.inputs.PolicyAccessTimeOutRuleV2ConditionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var thisIdPController = ZpaFunctions.getIdPController(GetIdPControllerArgs.builder()\n            .name(\"Idp_Name\")\n            .build());\n\n        final var emailUserSso = ZpaFunctions.getSAMLAttribute(GetSAMLAttributeArgs.builder()\n            .name(\"Email_Users\")\n            .idpName(\"Idp_Name\")\n            .build());\n\n        final var groupUser = ZpaFunctions.getSAMLAttribute(GetSAMLAttributeArgs.builder()\n            .name(\"GroupName_Users\")\n            .idpName(\"Idp_Name\")\n            .build());\n\n        final var a000 = ZpaFunctions.getSCIMGroups(GetSCIMGroupsArgs.builder()\n            .name(\"A000\")\n            .idpName(\"Idp_Name\")\n            .build());\n\n        final var b000 = ZpaFunctions.getSCIMGroups(GetSCIMGroupsArgs.builder()\n            .name(\"B000\")\n            .idpName(\"Idp_Name\")\n            .build());\n\n        // Create Segment Group\n        var thisSegmentGroup = new SegmentGroup(\"thisSegmentGroup\", SegmentGroupArgs.builder()\n            .description(\"Example\")\n            .enabled(true)\n            .build());\n\n        // Create Policy Access Rule V2\n        var thisPolicyAccessTimeOutRuleV2 = new PolicyAccessTimeOutRuleV2(\"thisPolicyAccessTimeOutRuleV2\", PolicyAccessTimeOutRuleV2Args.builder()\n            .description(\"Example\")\n            .action(\"RE_AUTH\")\n            .reauthIdleTimeout(\"10 Days\")\n            .reauthTimeout(\"10 Days\")\n            .conditions(            \n                PolicyAccessTimeOutRuleV2ConditionArgs.builder()\n                    .operator(\"OR\")\n                    .operands(PolicyAccessTimeOutRuleV2ConditionOperandArgs.builder()\n                        .objectType(\"APP_GROUP\")\n                        .values(thisSegmentGroup.id())\n                        .build())\n                    .build(),\n                PolicyAccessTimeOutRuleV2ConditionArgs.builder()\n                    .operator(\"OR\")\n                    .operands(                    \n                        PolicyAccessTimeOutRuleV2ConditionOperandArgs.builder()\n                            .objectType(\"SAML\")\n                            .entryValues(                            \n                                PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs.builder()\n                                    .rhs(\"user1@acme.com\")\n                                    .lhs(emailUserSso.id())\n                                    .build(),\n                                PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs.builder()\n                                    .rhs(\"A000\")\n                                    .lhs(groupUser.id())\n                                    .build())\n                            .build(),\n                        PolicyAccessTimeOutRuleV2ConditionOperandArgs.builder()\n                            .objectType(\"SCIM_GROUP\")\n                            .entryValues(                            \n                                PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs.builder()\n                                    .rhs(a000.id())\n                                    .lhs(thisIdPController.id())\n                                    .build(),\n                                PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs.builder()\n                                    .rhs(b000.id())\n                                    .lhs(thisIdPController.id())\n                                    .build())\n                            .build())\n                    .build(),\n                PolicyAccessTimeOutRuleV2ConditionArgs.builder()\n                    .operator(\"OR\")\n                    .operands(PolicyAccessTimeOutRuleV2ConditionOperandArgs.builder()\n                        .objectType(\"PLATFORM\")\n                        .entryValues(                        \n                            PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs.builder()\n                                .rhs(\"true\")\n                                .lhs(\"linux\")\n                                .build(),\n                            PolicyAccessTimeOutRuleV2ConditionOperandEntryValueArgs.builder()\n                                .rhs(\"true\")\n                                .lhs(\"android\")\n                                .build())\n                        .build())\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create Segment Group\n  thisSegmentGroup:\n    type: zpa:SegmentGroup\n    properties:\n      description: Example\n      enabled: true\n  # Create Policy Access Rule V2\n  thisPolicyAccessTimeOutRuleV2:\n    type: zpa:PolicyAccessTimeOutRuleV2\n    properties:\n      description: Example\n      action: RE_AUTH\n      reauthIdleTimeout: 10 Days\n      reauthTimeout: 10 Days\n      conditions:\n        - operator: OR\n          operands:\n            - objectType: APP_GROUP\n              values:\n                - ${thisSegmentGroup.id}\n        - operator: OR\n          operands:\n            - objectType: SAML\n              entryValues:\n                - rhs: user1@acme.com\n                  lhs: ${emailUserSso.id}\n                - rhs: A000\n                  lhs: ${groupUser.id}\n            - objectType: SCIM_GROUP\n              entryValues:\n                - rhs: ${a000.id}\n                  lhs: ${thisIdPController.id}\n                - rhs: ${b000.id}\n                  lhs: ${thisIdPController.id}\n        - operator: OR\n          operands:\n            - objectType: PLATFORM\n              entryValues:\n                - rhs: 'true'\n                  lhs: linux\n                - rhs: 'true'\n                  lhs: android\nvariables:\n  thisIdPController:\n    fn::invoke:\n      function: zpa:getIdPController\n      arguments:\n        name: Idp_Name\n  emailUserSso:\n    fn::invoke:\n      function: zpa:getSAMLAttribute\n      arguments:\n        name: Email_Users\n        idpName: Idp_Name\n  groupUser:\n    fn::invoke:\n      function: zpa:getSAMLAttribute\n      arguments:\n        name: GroupName_Users\n        idpName: Idp_Name\n  a000:\n    fn::invoke:\n      function: zpa:getSCIMGroups\n      arguments:\n        name: A000\n        idpName: Idp_Name\n  b000:\n    fn::invoke:\n      function: zpa:getSCIMGroups\n      arguments:\n        name: B000\n        idpName: Idp_Name\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## LHS and RHS Values\n\n| Object Type | LHS| RHS| VALUES\n|----------|-----------|----------|----------\n| APP  |   |  | ``application_segment_id`` |\n| APP_GROUP  |   |  | ``segment_group_id``|\n| CLIENT_TYPE  |   |  |  ``zpn_client_type_zappl``, ``zpn_client_type_exporter``, ``zpn_client_type_browser_isolation``, ``zpn_client_type_ip_anchoring``, ``zpn_client_type_edge_connector``, ``zpn_client_type_branch_connector``,  ``zpn_client_type_zapp_partner``, ``zpn_client_type_zapp``  |\n| SAML | ``saml_attribute_id``  | ``attribute_value_to_match`` |\n| SCIM | ``scim_attribute_id``  | ``attribute_value_to_match``  |\n| SCIM_GROUP | ``scim_group_attribute_id``  | ``attribute_value_to_match``  |\n| PLATFORM | ``mac``, ``ios``, ``windows``, ``android``, ``linux`` | ``\"true\"`` / ``\"false\"`` |\n| POSTURE | ``posture_udid``  | ``\"true\"`` / ``\"false\"`` |\n\n## Import\n\nZscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.\n\nVisit\n\nPolicy access timeout rule can be imported by using `\u003cRULE ID\u003e` as the import ID.\n\nFor example:\n\n```sh\n$ pulumi import zpa:index/policyTimeoutRuleV2:PolicyTimeoutRuleV2 example \u003crule_id\u003e\n```\n\n",
@@ -17177,6 +17785,78 @@
                 ]
             }
         },
+        "zpa:index/getCredentialPool:getCredentialPool": {
+            "description": "* [Official documentation](https://help.zscaler.com/zpa/about-privileged-credential-pools)\n* [API documentation](https://help.zscaler.com/zpa/configuring-privileged-credentials-using-api)\n\nThe **zpa_pra_credential_pool** data source to get information about a privileged remote access credential pool created in the Zscaler Private Access cloud.\n\n**NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.\n\n## Example Usage\n\n# Retrieves PRA Credential Pool By Name\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as zpa from \"@bdzscaler/pulumi-zpa\";\n\nconst _this = zpa.getCredentialPool({\n    name: \"PRACredentialPool01\",\n});\n```\n```python\nimport pulumi\nimport pulumi_zpa as zpa\n\nthis = zpa.get_credential_pool(name=\"PRACredentialPool01\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Zpa = Pulumi.Zpa;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = Zpa.GetCredentialPool.Invoke(new()\n    {\n        Name = \"PRACredentialPool01\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/zscaler/pulumi-zpa/sdk/go/zpa\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := zpa.GetCredentialPool(ctx, \u0026zpa.GetCredentialPoolArgs{\n\t\t\tName: pulumi.StringRef(\"PRACredentialPool01\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.zpa.ZpaFunctions;\nimport com.pulumi.zpa.inputs.GetCredentialPoolArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var this = ZpaFunctions.getCredentialPool(GetCredentialPoolArgs.builder()\n            .name(\"PRACredentialPool01\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  this:\n    fn::invoke:\n      function: zpa:getCredentialPool\n      arguments:\n        name: PRACredentialPool01\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n# Retrieves PRA Credential Pool By ID\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as zpa from \"@bdzscaler/pulumi-zpa\";\n\nconst _this = zpa.getCredentialPool({\n    id: \"5458\",\n});\n```\n```python\nimport pulumi\nimport pulumi_zpa as zpa\n\nthis = zpa.get_credential_pool(id=\"5458\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Zpa = Pulumi.Zpa;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = Zpa.GetCredentialPool.Invoke(new()\n    {\n        Id = \"5458\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/zscaler/pulumi-zpa/sdk/go/zpa\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := zpa.GetCredentialPool(ctx, \u0026zpa.GetCredentialPoolArgs{\n\t\t\tId: pulumi.StringRef(\"5458\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.zpa.ZpaFunctions;\nimport com.pulumi.zpa.inputs.GetCredentialPoolArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var this = ZpaFunctions.getCredentialPool(GetCredentialPoolArgs.builder()\n            .id(\"5458\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  this:\n    fn::invoke:\n      function: zpa:getCredentialPool\n      arguments:\n        id: '5458'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getCredentialPool.\n",
+                "properties": {
+                    "credentials": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/zpa:index/getCredentialPoolCredential:getCredentialPoolCredential"
+                        }
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "- (String) The name of the privileged credential.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getCredentialPool.\n",
+                "properties": {
+                    "creationTime": {
+                        "type": "string"
+                    },
+                    "credentialMappingCount": {
+                        "type": "string"
+                    },
+                    "credentialType": {
+                        "type": "string"
+                    },
+                    "credentials": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/zpa:index/getCredentialPoolCredential:getCredentialPoolCredential"
+                        }
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "microtenantId": {
+                        "type": "string"
+                    },
+                    "microtenantName": {
+                        "type": "string"
+                    },
+                    "modifiedBy": {
+                        "type": "string"
+                    },
+                    "modifiedTime": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "- (String) The name of the privileged credential.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "creationTime",
+                    "credentialMappingCount",
+                    "credentialType",
+                    "credentials",
+                    "microtenantId",
+                    "microtenantName",
+                    "modifiedBy",
+                    "modifiedTime"
+                ]
+            }
+        },
         "zpa:index/getCustomerVersionProfile:getCustomerVersionProfile": {
             "description": "* [Official documentation](https://help.zscaler.com/zpa/about-connectors)\n* [API documentation](https://help.zscaler.com/zpa/obtaining-version-profile-details-using-api)\n\nUse the **zpa_customer_version_profile** data source to get information about all customer version profiles from the Zscaler Private Access cloud. This data source can be associated with an App Connector Group within the parameter `version_profile_id` or `version_profile_name`\n\nThe customer version profile IDs are:\n\n* `Default` = `0`\n* `Previous Default` = `1`\n* `New Release` = `2`\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as zpa from \"@bdzscaler/pulumi-zpa\";\n\nconst _default = zpa.getCustomerVersionProfile({\n    name: \"Default\",\n});\nconst previousDefault = zpa.getCustomerVersionProfile({\n    name: \"Previous Default\",\n});\nconst newRelease = zpa.getCustomerVersionProfile({\n    name: \"New Release\",\n});\n```\n```python\nimport pulumi\nimport pulumi_zpa as zpa\n\ndefault = zpa.get_customer_version_profile(name=\"Default\")\nprevious_default = zpa.get_customer_version_profile(name=\"Previous Default\")\nnew_release = zpa.get_customer_version_profile(name=\"New Release\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Zpa = Pulumi.Zpa;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @default = Zpa.GetCustomerVersionProfile.Invoke(new()\n    {\n        Name = \"Default\",\n    });\n\n    var previousDefault = Zpa.GetCustomerVersionProfile.Invoke(new()\n    {\n        Name = \"Previous Default\",\n    });\n\n    var newRelease = Zpa.GetCustomerVersionProfile.Invoke(new()\n    {\n        Name = \"New Release\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/zscaler/pulumi-zpa/sdk/go/zpa\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := zpa.GetCustomerVersionProfile(ctx, \u0026zpa.GetCustomerVersionProfileArgs{\n\t\t\tName: \"Default\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = zpa.GetCustomerVersionProfile(ctx, \u0026zpa.GetCustomerVersionProfileArgs{\n\t\t\tName: \"Previous Default\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = zpa.GetCustomerVersionProfile(ctx, \u0026zpa.GetCustomerVersionProfileArgs{\n\t\t\tName: \"New Release\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.zpa.ZpaFunctions;\nimport com.pulumi.zpa.inputs.GetCustomerVersionProfileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var default = ZpaFunctions.getCustomerVersionProfile(GetCustomerVersionProfileArgs.builder()\n            .name(\"Default\")\n            .build());\n\n        final var previousDefault = ZpaFunctions.getCustomerVersionProfile(GetCustomerVersionProfileArgs.builder()\n            .name(\"Previous Default\")\n            .build());\n\n        final var newRelease = ZpaFunctions.getCustomerVersionProfile(GetCustomerVersionProfileArgs.builder()\n            .name(\"New Release\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  default:\n    fn::invoke:\n      function: zpa:getCustomerVersionProfile\n      arguments:\n        name: Default\n  previousDefault:\n    fn::invoke:\n      function: zpa:getCustomerVersionProfile\n      arguments:\n        name: Previous Default\n  newRelease:\n    fn::invoke:\n      function: zpa:getCustomerVersionProfile\n      arguments:\n        name: New Release\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -19102,7 +19782,8 @@
             }
         },
         "zpa:index/getPraCredentialPool:getPraCredentialPool": {
-            "description": "* [Official documentation](https://help.zscaler.com/zpa/about-privileged-credential-pools)\n* [API documentation](https://help.zscaler.com/zpa/configuring-privileged-credentials-using-api)\n\nThe **zpa_pra_credential_pool** data source to get information about a privileged remote access credential pool created in the Zscaler Private Access cloud.\n\n**NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.\n\n## Example Usage\n\n# Retrieves PRA Credential Pool By Name\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as zpa from \"@bdzscaler/pulumi-zpa\";\n\nconst _this = zpa.getPraCredentialPool({\n    name: \"PRACredentialPool01\",\n});\n```\n```python\nimport pulumi\nimport pulumi_zpa as zpa\n\nthis = zpa.get_pra_credential_pool(name=\"PRACredentialPool01\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Zpa = Pulumi.Zpa;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = Zpa.GetPraCredentialPool.Invoke(new()\n    {\n        Name = \"PRACredentialPool01\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/zscaler/pulumi-zpa/sdk/go/zpa\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := zpa.LookupPraCredentialPool(ctx, \u0026zpa.LookupPraCredentialPoolArgs{\n\t\t\tName: pulumi.StringRef(\"PRACredentialPool01\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.zpa.ZpaFunctions;\nimport com.pulumi.zpa.inputs.GetPraCredentialPoolArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var this = ZpaFunctions.getPraCredentialPool(GetPraCredentialPoolArgs.builder()\n            .name(\"PRACredentialPool01\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  this:\n    fn::invoke:\n      function: zpa:getPraCredentialPool\n      arguments:\n        name: PRACredentialPool01\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n# Retrieves PRA Credential Pool By ID\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as zpa from \"@bdzscaler/pulumi-zpa\";\n\nconst _this = zpa.getPraCredentialPool({\n    id: \"5458\",\n});\n```\n```python\nimport pulumi\nimport pulumi_zpa as zpa\n\nthis = zpa.get_pra_credential_pool(id=\"5458\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Zpa = Pulumi.Zpa;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = Zpa.GetPraCredentialPool.Invoke(new()\n    {\n        Id = \"5458\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/zscaler/pulumi-zpa/sdk/go/zpa\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := zpa.LookupPraCredentialPool(ctx, \u0026zpa.LookupPraCredentialPoolArgs{\n\t\t\tId: pulumi.StringRef(\"5458\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.zpa.ZpaFunctions;\nimport com.pulumi.zpa.inputs.GetPraCredentialPoolArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var this = ZpaFunctions.getPraCredentialPool(GetPraCredentialPoolArgs.builder()\n            .id(\"5458\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  this:\n    fn::invoke:\n      function: zpa:getPraCredentialPool\n      arguments:\n        id: '5458'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "deprecationMessage": "zpa.index/getpracredentialpool.getPraCredentialPool has been deprecated in favor of zpa.index/getcredentialpool.getCredentialPool",
+            "description": "* [Official documentation](https://help.zscaler.com/zpa/about-privileged-credential-pools)\n* [API documentation](https://help.zscaler.com/zpa/configuring-privileged-credentials-using-api)\n\nThe **zpa_pra_credential_pool** data source to get information about a privileged remote access credential pool created in the Zscaler Private Access cloud.\n\n**NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.\n\n## Example Usage\n\n# Retrieves PRA Credential Pool By Name\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as zpa from \"@bdzscaler/pulumi-zpa\";\n\nconst _this = zpa.getCredentialPool({\n    name: \"PRACredentialPool01\",\n});\n```\n```python\nimport pulumi\nimport pulumi_zpa as zpa\n\nthis = zpa.get_credential_pool(name=\"PRACredentialPool01\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Zpa = Pulumi.Zpa;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = Zpa.GetCredentialPool.Invoke(new()\n    {\n        Name = \"PRACredentialPool01\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/zscaler/pulumi-zpa/sdk/go/zpa\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := zpa.GetCredentialPool(ctx, \u0026zpa.GetCredentialPoolArgs{\n\t\t\tName: pulumi.StringRef(\"PRACredentialPool01\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.zpa.ZpaFunctions;\nimport com.pulumi.zpa.inputs.GetCredentialPoolArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var this = ZpaFunctions.getCredentialPool(GetCredentialPoolArgs.builder()\n            .name(\"PRACredentialPool01\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  this:\n    fn::invoke:\n      function: zpa:getCredentialPool\n      arguments:\n        name: PRACredentialPool01\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n# Retrieves PRA Credential Pool By ID\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as zpa from \"@bdzscaler/pulumi-zpa\";\n\nconst _this = zpa.getCredentialPool({\n    id: \"5458\",\n});\n```\n```python\nimport pulumi\nimport pulumi_zpa as zpa\n\nthis = zpa.get_credential_pool(id=\"5458\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Zpa = Pulumi.Zpa;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = Zpa.GetCredentialPool.Invoke(new()\n    {\n        Id = \"5458\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/zscaler/pulumi-zpa/sdk/go/zpa\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := zpa.GetCredentialPool(ctx, \u0026zpa.GetCredentialPoolArgs{\n\t\t\tId: pulumi.StringRef(\"5458\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.zpa.ZpaFunctions;\nimport com.pulumi.zpa.inputs.GetCredentialPoolArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var this = ZpaFunctions.getCredentialPool(GetCredentialPoolArgs.builder()\n            .id(\"5458\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  this:\n    fn::invoke:\n      function: zpa:getCredentialPool\n      arguments:\n        id: '5458'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getPraCredentialPool.\n",
                 "properties": {

@@ -197,9 +197,13 @@ func Provider() tfbridge.ProviderInfo {
 			"zpa_policy_isolation_rule_v2":                 {Tok: zpaResource(zpaMod, "PolicyAccessIsolationRuleV2")},
 			"zpa_policy_credential_rule":                   {Tok: zpaResource(zpaMod, "PolicyAccessCredentialRule")},
 			"zpa_policy_access_rule_reorder":               {Tok: zpaResource(zpaMod, "PolicyAccessReorderRule")},
+			"zpa_policy_redirection_rule":                  {Tok: zpaResource(zpaMod, "PolicyAccessRedirectionRule")},
+			"zpa_policy_capabilities_rule":                 {Tok: zpaResource(zpaMod, "PolicyAccessCapabilitiesRule")},
+			"zpa_policy_browser_protection_rule":           {Tok: zpaResource(zpaMod, "PolicyBrowserProtectionRule")},
 			"zpa_pra_approval_controller":                  {Tok: zpaResource(zpaMod, "PRAApproval")},
 			"zpa_pra_console_controller":                   {Tok: zpaResource(zpaMod, "PRAConsole")},
 			"zpa_pra_credential_controller":                {Tok: zpaResource(zpaMod, "PRACredential")},
+			"zpa_pra_credential_pool":                      {Tok: zpaResource(zpaMod, "PraCredentialPool")},
 			"zpa_pra_portal_controller":                    {Tok: zpaResource(zpaMod, "PRAPortal")},
 			"zpa_service_edge_assistant_schedule":          {Tok: zpaResource(zpaMod, "ServiceEdgeAssistantSchedule")},
 			"zpa_provisioning_key": {Tok: zpaResource(zpaMod, "ProvisioningKey"),
@@ -335,6 +339,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"zpa_pra_credential_controller": {
 				Tok: zpaDataSource(zpaMod, "getPRACredential"),
+			},
+			"zpa_pra_credential_pool": {
+				Tok: zpaDataSource(zpaMod, "getCredentialPool"),
 			},
 			"zpa_pra_portal_controller": {
 				Tok: zpaDataSource(zpaMod, "getPRAPortal"),

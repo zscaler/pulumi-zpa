@@ -502,7 +502,14 @@
                 }
             },
             "zpa_policy_capabilities_rule": {
-                "current": "zpa:index/policyCapabilitiesRule:PolicyCapabilitiesRule",
+                "current": "zpa:index/policyAccessCapabilitiesRule:PolicyAccessCapabilitiesRule",
+                "past": [
+                    {
+                        "name": "zpa:index/policyCapabilitiesRule:PolicyCapabilitiesRule",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
                 "fields": {
                     "conditions": {
                         "maxItemsOne": false,
@@ -730,7 +737,14 @@
                 }
             },
             "zpa_policy_redirection_rule": {
-                "current": "zpa:index/policyRedirectionRule:PolicyRedirectionRule",
+                "current": "zpa:index/policyAccessRedirectionRule:PolicyAccessRedirectionRule",
+                "past": [
+                    {
+                        "name": "zpa:index/policyRedirectionRule:PolicyRedirectionRule",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
                 "fields": {
                     "conditions": {
                         "maxItemsOne": false,
@@ -1542,7 +1556,14 @@
                 ]
             },
             "zpa_pra_credential_pool": {
-                "current": "zpa:index/getPraCredentialPool:getPraCredentialPool",
+                "current": "zpa:index/getCredentialPool:getCredentialPool",
+                "past": [
+                    {
+                        "name": "zpa:index/getPraCredentialPool:getPraCredentialPool",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
                 "fields": {
                     "credentials": {
                         "maxItemsOne": false,
@@ -1726,6 +1747,11 @@
                     "rules.$.conditions": true
                 }
             },
+            "zpa_policy_capabilities_rule": {
+                "aliases": [
+                    "zpa:index/policyCapabilitiesRule:PolicyCapabilitiesRule"
+                ]
+            },
             "zpa_policy_credential_rule": {
                 "aliases": [
                     "zpa:index/policyCredentialRule:PolicyCredentialRule"
@@ -1744,6 +1770,11 @@
             "zpa_policy_isolation_rule_v2": {
                 "aliases": [
                     "zpa:index/policyIsolationRuleV2:PolicyIsolationRuleV2"
+                ]
+            },
+            "zpa_policy_redirection_rule": {
+                "aliases": [
+                    "zpa:index/policyRedirectionRule:PolicyRedirectionRule"
                 ]
             },
             "zpa_policy_timeout_rule_v2": {
@@ -1802,6 +1833,11 @@
             "zpa_pra_credential_controller": {
                 "renames": [
                     "zpa:index/getPraCredentialController:getPraCredentialController"
+                ]
+            },
+            "zpa_pra_credential_pool": {
+                "renames": [
+                    "zpa:index/getPraCredentialPool:getPraCredentialPool"
                 ]
             },
             "zpa_pra_portal_controller": {
