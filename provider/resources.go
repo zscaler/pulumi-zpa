@@ -133,6 +133,11 @@ func Provider() tfbridge.ProviderInfo {
 					EnvVars: []string{"ZSCALER_CLOUD"},
 				},
 			},
+			"customer_id": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ZPA_CUSTOMER_ID"},
+				},
+			},
 			"zpa_client_id": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"ZPA_CLIENT_ID"},
