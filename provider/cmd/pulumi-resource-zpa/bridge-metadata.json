@@ -116,10 +116,16 @@
                     "tcp_port_ranges": {
                         "maxItemsOne": false
                     },
+                    "tcp_protocols": {
+                        "maxItemsOne": false
+                    },
                     "udp_port_range": {
                         "maxItemsOne": false
                     },
                     "udp_port_ranges": {
+                        "maxItemsOne": false
+                    },
+                    "udp_protocols": {
                         "maxItemsOne": false
                     }
                 }
@@ -470,8 +476,40 @@
                     }
                 }
             },
+            "zpa_policy_browser_protection_rule": {
+                "current": "zpa:index/policyBrowserProtectionRule:PolicyBrowserProtectionRule",
+                "fields": {
+                    "conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "operands": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "entry_values": {
+                                                "maxItemsOne": false
+                                            },
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "zpa_policy_capabilities_rule": {
-                "current": "zpa:index/policyCapabilitiesRule:PolicyCapabilitiesRule",
+                "current": "zpa:index/policyAccessCapabilitiesRule:PolicyAccessCapabilitiesRule",
+                "past": [
+                    {
+                        "name": "zpa:index/policyCapabilitiesRule:PolicyCapabilitiesRule",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
                 "fields": {
                     "conditions": {
                         "maxItemsOne": false,
@@ -529,6 +567,9 @@
                         }
                     },
                     "credential": {
+                        "maxItemsOne": false
+                    },
+                    "credential_pool": {
                         "maxItemsOne": false
                     }
                 }
@@ -696,7 +737,14 @@
                 }
             },
             "zpa_policy_redirection_rule": {
-                "current": "zpa:index/policyRedirectionRule:PolicyRedirectionRule",
+                "current": "zpa:index/policyAccessRedirectionRule:PolicyAccessRedirectionRule",
+                "past": [
+                    {
+                        "name": "zpa:index/policyRedirectionRule:PolicyRedirectionRule",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
                 "fields": {
                     "conditions": {
                         "maxItemsOne": false,
@@ -851,6 +899,21 @@
                     }
                 ]
             },
+            "zpa_pra_credential_pool": {
+                "current": "zpa:index/praCredentialPool:PraCredentialPool",
+                "fields": {
+                    "credentials": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "zpa_pra_portal_controller": {
                 "current": "zpa:index/pRAPortal:PRAPortal",
                 "past": [
@@ -959,7 +1022,15 @@
                 ]
             },
             "zpa_app_connector_controller": {
-                "current": "zpa:index/getAppConnectorController:getAppConnectorController"
+                "current": "zpa:index/getAppConnectorController:getAppConnectorController",
+                "fields": {
+                    "assistant_version": {
+                        "maxItemsOne": false
+                    },
+                    "zpn_sub_module_upgrade_list": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "zpa_app_connector_group": {
                 "current": "zpa:index/getAppConnectorGroup:getAppConnectorGroup",
@@ -979,7 +1050,14 @@
                         "maxItemsOne": false
                     },
                     "server_groups": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "tcp_port_range": {
                         "maxItemsOne": false
@@ -1190,6 +1268,19 @@
                     "custom_scope_customer_ids": {
                         "maxItemsOne": false
                     },
+                    "custom_scope_request_customer_ids": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "add_customer_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "delete_customer_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "versions": {
                         "maxItemsOne": false
                     }
@@ -1372,7 +1463,14 @@
                         "maxItemsOne": false
                     },
                     "user": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "group_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1457,6 +1555,28 @@
                     }
                 ]
             },
+            "zpa_pra_credential_pool": {
+                "current": "zpa:index/getCredentialPool:getCredentialPool",
+                "past": [
+                    {
+                        "name": "zpa:index/getPraCredentialPool:getPraCredentialPool",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
+                "fields": {
+                    "credentials": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "zpa_pra_portal_controller": {
                 "current": "zpa:index/getPRAPortal:getPRAPortal",
                 "past": [
@@ -1529,30 +1649,13 @@
                 "current": "zpa:index/getServerGroup:getServerGroup",
                 "fields": {
                     "app_connector_groups": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "connectors": {
-                                    "maxItemsOne": false
-                                },
-                                "server_groups": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
+                        "maxItemsOne": false
                     },
                     "applications": {
                         "maxItemsOne": false
                     },
                     "servers": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "app_server_group_ids": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -1562,10 +1665,20 @@
             "zpa_service_edge_controller": {
                 "current": "zpa:index/getServiceEdgeController:getServiceEdgeController",
                 "fields": {
-                    "publish_ips": {
+                    "listen_ips": {
                         "maxItemsOne": false
                     },
-                    "zpn_sub_module_upgrade_list": {
+                    "private_broker_version": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "zpn_sub_module_upgrade": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "publish_ips": {
                         "maxItemsOne": false
                     }
                 }
@@ -1577,10 +1690,20 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
-                                "publish_ips": {
+                                "listen_ips": {
                                     "maxItemsOne": false
                                 },
-                                "zpn_sub_module_upgrade_list": {
+                                "private_broker_version": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "zpn_sub_module_upgrade": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "publish_ips": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -1624,6 +1747,11 @@
                     "rules.$.conditions": true
                 }
             },
+            "zpa_policy_capabilities_rule": {
+                "aliases": [
+                    "zpa:index/policyCapabilitiesRule:PolicyCapabilitiesRule"
+                ]
+            },
             "zpa_policy_credential_rule": {
                 "aliases": [
                     "zpa:index/policyCredentialRule:PolicyCredentialRule"
@@ -1642,6 +1770,11 @@
             "zpa_policy_isolation_rule_v2": {
                 "aliases": [
                     "zpa:index/policyIsolationRuleV2:PolicyIsolationRuleV2"
+                ]
+            },
+            "zpa_policy_redirection_rule": {
+                "aliases": [
+                    "zpa:index/policyRedirectionRule:PolicyRedirectionRule"
                 ]
             },
             "zpa_policy_timeout_rule_v2": {
@@ -1674,6 +1807,11 @@
                 "aliases": [
                     "zpa:index/praPortalController:PraPortalController"
                 ]
+            },
+            "zpa_service_edge_group": {
+                "maxItemsOneOverrides": {
+                    "service_edges": false
+                }
             }
         },
         "datasources": {
@@ -1695,6 +1833,11 @@
             "zpa_pra_credential_controller": {
                 "renames": [
                     "zpa:index/getPraCredentialController:getPraCredentialController"
+                ]
+            },
+            "zpa_pra_credential_pool": {
+                "renames": [
+                    "zpa:index/getPraCredentialPool:getPraCredentialPool"
                 ]
             },
             "zpa_pra_portal_controller": {

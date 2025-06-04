@@ -13,7 +13,7 @@ TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell pulumictl get version)
 
-TESTPARALLELISM := 10
+TESTPARALLELISM := 4
 
 WORKING_DIR     := $(shell pwd)
 
