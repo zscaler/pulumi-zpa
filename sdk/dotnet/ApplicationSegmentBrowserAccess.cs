@@ -23,29 +23,26 @@ namespace Zscaler.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Retrieve Browser Access Certificate
     ///     var testCert = Zpa.GetBaCertificate.Invoke(new()
     ///     {
     ///         Name = "sales.acme.com",
     ///     });
     /// 
     ///     // ZPA Segment Group resource
-    ///     var exampleSegmentGroup = new Zpa.SegmentGroup("example", new()
+    ///     var exampleSegmentGroup = new Zpa.SegmentGroup("exampleSegmentGroup", new()
     ///     {
-    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///     });
     /// 
-    ///     var example = Zpa.GetAppConnectorGroup.Invoke(new()
+    ///     var exampleAppConnectorGroup = Zpa.GetAppConnectorGroup.Invoke(new()
     ///     {
     ///         Name = "AWS-Connector",
     ///     });
     /// 
     ///     // ZPA Server Group resource
-    ///     var exampleServerGroup = new Zpa.ServerGroup("example", new()
+    ///     var exampleServerGroup = new Zpa.ServerGroup("exampleServerGroup", new()
     ///     {
-    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///         DynamicDiscovery = true,
@@ -55,16 +52,15 @@ namespace Zscaler.Zpa
     ///             {
     ///                 Ids = new[]
     ///                 {
-    ///                     example.Apply(getAppConnectorGroupResult =&gt; getAppConnectorGroupResult.Id),
+    ///                     exampleAppConnectorGroup.Apply(getAppConnectorGroupResult =&gt; getAppConnectorGroupResult.Id),
     ///                 },
     ///             },
     ///         },
     ///     });
     /// 
     ///     // Create Browser Access Application
-    ///     var browserAccessApps = new Zpa.ApplicationSegmentBrowserAccess("browser_access_apps", new()
+    ///     var browserAccessApps = new Zpa.ApplicationSegmentBrowserAccess("browserAccessApps", new()
     ///     {
-    ///         Name = "Browser Access Apps",
     ///         Description = "Browser Access Apps",
     ///         Enabled = true,
     ///         HealthReporting = "ON_ACCESS",

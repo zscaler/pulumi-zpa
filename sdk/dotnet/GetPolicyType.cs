@@ -40,7 +40,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Get information for "ACCESS_POLICY" ID
         ///     var accessPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "ACCESS_POLICY",
@@ -61,7 +60,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Get information for "GLOBAL_POLICY" ID
         ///     var globalPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "GLOBAL_POLICY",
@@ -82,7 +80,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Get information for "TIMEOUT_POLICY" ID
         ///     var timeoutPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "TIMEOUT_POLICY",
@@ -103,7 +100,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Get information for "REAUTH_POLICY" ID
         ///     var reauthPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "REAUTH_POLICY",
@@ -124,7 +120,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Get information for "CLIENT_FORWARDING_POLICY" ID
         ///     var clientForwardingPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "CLIENT_FORWARDING_POLICY",
@@ -145,7 +140,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Get information for "INSPECTION_POLICY" ID
         ///     var inspectionPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "INSPECTION_POLICY",
@@ -189,7 +183,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Get information for "ACCESS_POLICY" ID
         ///     var accessPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "ACCESS_POLICY",
@@ -210,7 +203,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Get information for "GLOBAL_POLICY" ID
         ///     var globalPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "GLOBAL_POLICY",
@@ -231,7 +223,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Get information for "TIMEOUT_POLICY" ID
         ///     var timeoutPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "TIMEOUT_POLICY",
@@ -252,7 +243,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Get information for "REAUTH_POLICY" ID
         ///     var reauthPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "REAUTH_POLICY",
@@ -273,7 +263,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Get information for "CLIENT_FORWARDING_POLICY" ID
         ///     var clientForwardingPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "CLIENT_FORWARDING_POLICY",
@@ -294,7 +283,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Get information for "INSPECTION_POLICY" ID
         ///     var inspectionPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "INSPECTION_POLICY",
@@ -338,7 +326,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Get information for "ACCESS_POLICY" ID
         ///     var accessPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "ACCESS_POLICY",
@@ -359,7 +346,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Get information for "GLOBAL_POLICY" ID
         ///     var globalPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "GLOBAL_POLICY",
@@ -380,7 +366,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Get information for "TIMEOUT_POLICY" ID
         ///     var timeoutPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "TIMEOUT_POLICY",
@@ -401,7 +386,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Get information for "REAUTH_POLICY" ID
         ///     var reauthPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "REAUTH_POLICY",
@@ -422,7 +406,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Get information for "CLIENT_FORWARDING_POLICY" ID
         ///     var clientForwardingPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "CLIENT_FORWARDING_POLICY",
@@ -443,7 +426,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Get information for "INSPECTION_POLICY" ID
         ///     var inspectionPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "INSPECTION_POLICY",

@@ -25,10 +25,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ZPA Provisioning Key for "CONNECTOR_GRP"
 //			_, err := zpa.LookupProvisioningKey(ctx, &zpa.LookupProvisioningKeyArgs{
-//				Name:            pulumi.StringRef("Provisioning_Key"),
 //				AssociationType: "CONNECTOR_GRP",
+//				Name:            pulumi.StringRef("Provisioning_Key"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,10 +50,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ZPA Provisioning Key for "SERVICE_EDGE_GRP"
 //			_, err := zpa.LookupProvisioningKey(ctx, &zpa.LookupProvisioningKeyArgs{
-//				Name:            pulumi.StringRef("Provisioning_Key"),
 //				AssociationType: "SERVICE_EDGE_GRP",
+//				Name:            pulumi.StringRef("Provisioning_Key"),
 //			}, nil)
 //			if err != nil {
 //				return err

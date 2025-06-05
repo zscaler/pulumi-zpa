@@ -22,9 +22,8 @@ namespace Zscaler.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a App Connector Group
-    ///     var exampleConnectorGroup = new Zpa.ConnectorGroup("example", new()
+    ///     var exampleConnectorGroup = new Zpa.ConnectorGroup("exampleConnectorGroup", new()
     ///     {
-    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///         CityCountry = "San Jose, CA",
@@ -40,9 +39,8 @@ namespace Zscaler.Zpa
     ///     });
     /// 
     ///     // Create a Server Group resource with Dynamic Discovery Enabled
-    ///     var example = new Zpa.ServerGroup("example", new()
+    ///     var exampleServerGroup = new Zpa.ServerGroup("exampleServerGroup", new()
     ///     {
-    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///         DynamicDiscovery = true,
@@ -76,18 +74,16 @@ namespace Zscaler.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create an application server
-    ///     var exampleApplicationServer = new Zpa.ApplicationServer("example", new()
+    ///     var exampleApplicationServer = new Zpa.ApplicationServer("exampleApplicationServer", new()
     ///     {
-    ///         Name = "Example",
     ///         Description = "Example",
     ///         Address = "server.example.com",
     ///         Enabled = true,
     ///     });
     /// 
     ///     // Create a App Connector Group
-    ///     var exampleConnectorGroup = new Zpa.ConnectorGroup("example", new()
+    ///     var exampleConnectorGroup = new Zpa.ConnectorGroup("exampleConnectorGroup", new()
     ///     {
-    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///         CityCountry = "San Jose, CA",
@@ -103,9 +99,8 @@ namespace Zscaler.Zpa
     ///     });
     /// 
     ///     // ZPA Server Group resource with Dynamic Discovery Disabled
-    ///     var example = new Zpa.ServerGroup("example", new()
+    ///     var exampleServerGroup = new Zpa.ServerGroup("exampleServerGroup", new()
     ///     {
-    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///         DynamicDiscovery = false,
@@ -134,7 +129,7 @@ namespace Zscaler.Zpa
     ///         DependsOn =
     ///         {
     ///             exampleConnectorGroup,
-    ///             server,
+    ///             zpa_application_server.Server,
     ///         },
     ///     });
     /// 

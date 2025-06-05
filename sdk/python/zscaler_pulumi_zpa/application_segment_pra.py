@@ -824,7 +824,6 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         this = zpa.ApplicationSegmentPRA("this",
-            name="PRA_Example",
             description="PRA_Example",
             enabled=True,
             health_reporting="ON_ACCESS",
@@ -840,9 +839,9 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
                 "ssh_pra.example.com",
                 "rdp_pra.example.com",
             ],
-            segment_group_id=this_zpa_segment_group["id"],
+            segment_group_id=zpa_segment_group["this"]["id"],
             server_groups=[{
-                "ids": [this_zpa_server_group["id"]],
+                "ids": [zpa_server_group["this"]["id"]],
             }],
             common_apps_dtos=[{
                 "apps_configs": [
@@ -918,7 +917,6 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         this = zpa.ApplicationSegmentPRA("this",
-            name="PRA_Example",
             description="PRA_Example",
             enabled=True,
             health_reporting="ON_ACCESS",
@@ -934,9 +932,9 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
                 "ssh_pra.example.com",
                 "rdp_pra.example.com",
             ],
-            segment_group_id=this_zpa_segment_group["id"],
+            segment_group_id=zpa_segment_group["this"]["id"],
             server_groups=[{
-                "ids": [this_zpa_server_group["id"]],
+                "ids": [zpa_server_group["this"]["id"]],
             }],
             common_apps_dtos=[{
                 "apps_configs": [

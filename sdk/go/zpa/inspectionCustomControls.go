@@ -32,28 +32,24 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := zpa.NewInspectionCustomControls(ctx, "this", &zpa.InspectionCustomControlsArgs{
-//				Name:          pulumi.String("Example"),
-//				Description:   pulumi.String("Example"),
 //				DefaultAction: pulumi.String("PASS"),
+//				Description:   pulumi.String("Example"),
 //				ParanoiaLevel: pulumi.String("1"),
-//				Severity:      pulumi.String("CRITICAL"),
-//				Type:          pulumi.String("RESPONSE"),
 //				Rules: zpa.InspectionCustomControlsRuleArray{
 //					&zpa.InspectionCustomControlsRuleArgs{
+//						Conditions: zpa.InspectionCustomControlsRuleConditionArray{
+//							&zpa.InspectionCustomControlsRuleConditionArgs{
+//								Lhs: pulumi.String("SIZE"),
+//								Op:  pulumi.String("GE"),
+//								Rhs: pulumi.String("1000"),
+//							},
+//						},
 //						Names: pulumi.StringArray{
 //							pulumi.String("this"),
 //						},
 //						Type: pulumi.String("RESPONSE_HEADERS"),
-//						Conditions: zpa.InspectionCustomControlsRuleConditionArray{
-//							&zpa.InspectionCustomControlsRuleConditionArgs{
-//								Lhs: pulumi.String("SIZE"),
-//								Op:  pulumi.String("GE"),
-//								Rhs: pulumi.String("1000"),
-//							},
-//						},
 //					},
 //					&zpa.InspectionCustomControlsRuleArgs{
-//						Type: pulumi.String("RESPONSE_BODY"),
 //						Conditions: zpa.InspectionCustomControlsRuleConditionArray{
 //							&zpa.InspectionCustomControlsRuleConditionArgs{
 //								Lhs: pulumi.String("SIZE"),
@@ -61,8 +57,11 @@ import (
 //								Rhs: pulumi.String("1000"),
 //							},
 //						},
+//						Type: pulumi.String("RESPONSE_BODY"),
 //					},
 //				},
+//				Severity: pulumi.String("CRITICAL"),
+//				Type:     pulumi.String("RESPONSE"),
 //			})
 //			if err != nil {
 //				return err
@@ -88,28 +87,24 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := zpa.NewInspectionCustomControls(ctx, "this", &zpa.InspectionCustomControlsArgs{
-//				Name:          pulumi.String("Example"),
-//				Description:   pulumi.String("Example"),
 //				DefaultAction: pulumi.String("BLOCK"),
+//				Description:   pulumi.String("Example"),
 //				ParanoiaLevel: pulumi.String("1"),
-//				Severity:      pulumi.String("CRITICAL"),
-//				Type:          pulumi.String("RESPONSE"),
 //				Rules: zpa.InspectionCustomControlsRuleArray{
 //					&zpa.InspectionCustomControlsRuleArgs{
+//						Conditions: zpa.InspectionCustomControlsRuleConditionArray{
+//							&zpa.InspectionCustomControlsRuleConditionArgs{
+//								Lhs: pulumi.String("SIZE"),
+//								Op:  pulumi.String("GE"),
+//								Rhs: pulumi.String("1000"),
+//							},
+//						},
 //						Names: pulumi.StringArray{
 //							pulumi.String("this"),
 //						},
 //						Type: pulumi.String("RESPONSE_HEADERS"),
-//						Conditions: zpa.InspectionCustomControlsRuleConditionArray{
-//							&zpa.InspectionCustomControlsRuleConditionArgs{
-//								Lhs: pulumi.String("SIZE"),
-//								Op:  pulumi.String("GE"),
-//								Rhs: pulumi.String("1000"),
-//							},
-//						},
 //					},
 //					&zpa.InspectionCustomControlsRuleArgs{
-//						Type: pulumi.String("RESPONSE_BODY"),
 //						Conditions: zpa.InspectionCustomControlsRuleConditionArray{
 //							&zpa.InspectionCustomControlsRuleConditionArgs{
 //								Lhs: pulumi.String("SIZE"),
@@ -117,8 +112,11 @@ import (
 //								Rhs: pulumi.String("1000"),
 //							},
 //						},
+//						Type: pulumi.String("RESPONSE_BODY"),
 //					},
 //				},
+//				Severity: pulumi.String("CRITICAL"),
+//				Type:     pulumi.String("RESPONSE"),
 //			})
 //			if err != nil {
 //				return err
@@ -144,29 +142,25 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := zpa.NewInspectionCustomControls(ctx, "this", &zpa.InspectionCustomControlsArgs{
-//				Name:               pulumi.String("Example"),
-//				Description:        pulumi.String("Example"),
 //				DefaultAction:      pulumi.String("REDIRECT"),
 //				DefaultActionValue: pulumi.String("https://test.com"),
+//				Description:        pulumi.String("Example"),
 //				ParanoiaLevel:      pulumi.String("1"),
-//				Severity:           pulumi.String("CRITICAL"),
-//				Type:               pulumi.String("RESPONSE"),
 //				Rules: zpa.InspectionCustomControlsRuleArray{
 //					&zpa.InspectionCustomControlsRuleArgs{
+//						Conditions: zpa.InspectionCustomControlsRuleConditionArray{
+//							&zpa.InspectionCustomControlsRuleConditionArgs{
+//								Lhs: pulumi.String("SIZE"),
+//								Op:  pulumi.String("GE"),
+//								Rhs: pulumi.String("1000"),
+//							},
+//						},
 //						Names: pulumi.StringArray{
 //							pulumi.String("this"),
 //						},
 //						Type: pulumi.String("RESPONSE_HEADERS"),
-//						Conditions: zpa.InspectionCustomControlsRuleConditionArray{
-//							&zpa.InspectionCustomControlsRuleConditionArgs{
-//								Lhs: pulumi.String("SIZE"),
-//								Op:  pulumi.String("GE"),
-//								Rhs: pulumi.String("1000"),
-//							},
-//						},
 //					},
 //					&zpa.InspectionCustomControlsRuleArgs{
-//						Type: pulumi.String("RESPONSE_BODY"),
 //						Conditions: zpa.InspectionCustomControlsRuleConditionArray{
 //							&zpa.InspectionCustomControlsRuleConditionArgs{
 //								Lhs: pulumi.String("SIZE"),
@@ -174,8 +168,11 @@ import (
 //								Rhs: pulumi.String("1000"),
 //							},
 //						},
+//						Type: pulumi.String("RESPONSE_BODY"),
 //					},
 //				},
+//				Severity: pulumi.String("CRITICAL"),
+//				Type:     pulumi.String("RESPONSE"),
 //			})
 //			if err != nil {
 //				return err

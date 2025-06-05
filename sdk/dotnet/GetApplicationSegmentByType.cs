@@ -17,6 +17,24 @@ namespace Zscaler.Zpa
         /// * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
         /// 
         /// Use the **zpa_application_segment_by_type** data source to get all configured Application Segments by Access Type (e.g., ``BROWSER_ACCESS``, ``INSPECT``, or ``SECURE_REMOTE_ACCESS``) for the specified customer.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Zpa.GetApplicationSegmentByType.Invoke(new()
+        ///     {
+        ///         ApplicationType = "SECURE_REMOTE_ACCESS",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetApplicationSegmentByTypeResult> InvokeAsync(GetApplicationSegmentByTypeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationSegmentByTypeResult>("zpa:index/getApplicationSegmentByType:getApplicationSegmentByType", args ?? new GetApplicationSegmentByTypeArgs(), options.WithDefaults());
@@ -26,6 +44,24 @@ namespace Zscaler.Zpa
         /// * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
         /// 
         /// Use the **zpa_application_segment_by_type** data source to get all configured Application Segments by Access Type (e.g., ``BROWSER_ACCESS``, ``INSPECT``, or ``SECURE_REMOTE_ACCESS``) for the specified customer.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Zpa.GetApplicationSegmentByType.Invoke(new()
+        ///     {
+        ///         ApplicationType = "SECURE_REMOTE_ACCESS",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetApplicationSegmentByTypeResult> Invoke(GetApplicationSegmentByTypeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationSegmentByTypeResult>("zpa:index/getApplicationSegmentByType:getApplicationSegmentByType", args ?? new GetApplicationSegmentByTypeInvokeArgs(), options.WithDefaults());
@@ -35,6 +71,24 @@ namespace Zscaler.Zpa
         /// * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
         /// 
         /// Use the **zpa_application_segment_by_type** data source to get all configured Application Segments by Access Type (e.g., ``BROWSER_ACCESS``, ``INSPECT``, or ``SECURE_REMOTE_ACCESS``) for the specified customer.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Zpa.GetApplicationSegmentByType.Invoke(new()
+        ///     {
+        ///         ApplicationType = "SECURE_REMOTE_ACCESS",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetApplicationSegmentByTypeResult> Invoke(GetApplicationSegmentByTypeInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationSegmentByTypeResult>("zpa:index/getApplicationSegmentByType:getApplicationSegmentByType", args ?? new GetApplicationSegmentByTypeInvokeArgs(), options.WithDefaults());

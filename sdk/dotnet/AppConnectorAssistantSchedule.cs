@@ -33,10 +33,10 @@ namespace Zscaler.Zpa
     ///     var @this = new Zpa.AppConnectorAssistantSchedule("this", new()
     ///     {
     ///         CustomerId = "123456789101112",
+    ///         DeleteDisabled = true,
+    ///         Enabled = true,
     ///         Frequency = "days",
     ///         FrequencyInterval = "5",
-    ///         Enabled = true,
-    ///         DeleteDisabled = true,
     ///     });
     /// 
     /// });
@@ -54,10 +54,10 @@ namespace Zscaler.Zpa
     /// {
     ///     var @this = new Zpa.AppConnectorAssistantSchedule("this", new()
     ///     {
+    ///         DeleteDisabled = true,
+    ///         Enabled = true,
     ///         Frequency = "days",
     ///         FrequencyInterval = "5",
-    ///         Enabled = true,
-    ///         DeleteDisabled = true,
     ///     });
     /// 
     /// });

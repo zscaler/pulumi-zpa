@@ -271,6 +271,86 @@ class PraApprovalController(pulumi.CustomResource):
 
         The **zpa_pra_approval_controller** resource creates a privileged remote access approval in the Zscaler Private Access cloud. This resource allows third-party users and contractors to be able to log in to a Privileged Remote Access (PRA) portal.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import zscaler_pulumi_zpa as zpa
+
+        # ZPA Segment Group resource
+        this_segment_group = zpa.SegmentGroup("thisSegmentGroup",
+            description="Example",
+            enabled=True)
+        # ZPA App Connector Group resource
+        this_connector_group = zpa.ConnectorGroup("thisConnectorGroup",
+            description="Example",
+            enabled=True,
+            city_country="San Jose, CA",
+            country_code="US",
+            latitude="37.338",
+            longitude="-121.8863",
+            location="San Jose, CA, US",
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            override_version_profile=True,
+            version_profile_id="0",
+            dns_query_type="IPV4")
+        # ZPA Server Group resource
+        this_server_group = zpa.ServerGroup("thisServerGroup",
+            description="Example",
+            enabled=True,
+            dynamic_discovery=False,
+            app_connector_groups=[{
+                "ids": [this_connector_group.id],
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[this_connector_group]))
+        # ZPA Application Segment resource
+        this_application_segment = zpa.ApplicationSegment("thisApplicationSegment",
+            description="Example",
+            enabled=True,
+            health_reporting="ON_ACCESS",
+            bypass_type="NEVER",
+            is_cname_enabled=True,
+            tcp_port_ranges=[
+                "8080",
+                "8080",
+            ],
+            domain_names=["server.acme.com"],
+            segment_group_id=this_segment_group.id,
+            server_groups=[{
+                "ids": [this_server_group.id],
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[
+                    this_server_group,
+                    this_segment_group,
+                ]))
+        # Create PRA Approval Controller
+        this_pra_approval = zpa.PRAApproval("thisPRAApproval",
+            email_ids=["jdoe@acme.com"],
+            start_time="Tue, 07 Mar 2024 11:05:30 PST",
+            end_time="Tue, 07 Jun 2024 11:05:30 PST",
+            status="FUTURE",
+            applications=[{
+                "ids": [this_application_segment.id],
+            }],
+            working_hours=[{
+                "days": [
+                    "FRI",
+                    "MON",
+                    "SAT",
+                    "SUN",
+                    "THU",
+                    "TUE",
+                    "WED",
+                ],
+                "start_time": "00:10",
+                "start_time_cron": "0 0 8 ? * MON,TUE,WED,THU,FRI,SAT",
+                "end_time": "09:15",
+                "end_time_cron": "0 15 17 ? * MON,TUE,WED,THU,FRI,SAT",
+                "timezone": "America/Vancouver",
+            }])
+        ```
+
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
@@ -311,6 +391,86 @@ class PraApprovalController(pulumi.CustomResource):
         * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-approvals-using-api)
 
         The **zpa_pra_approval_controller** resource creates a privileged remote access approval in the Zscaler Private Access cloud. This resource allows third-party users and contractors to be able to log in to a Privileged Remote Access (PRA) portal.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import zscaler_pulumi_zpa as zpa
+
+        # ZPA Segment Group resource
+        this_segment_group = zpa.SegmentGroup("thisSegmentGroup",
+            description="Example",
+            enabled=True)
+        # ZPA App Connector Group resource
+        this_connector_group = zpa.ConnectorGroup("thisConnectorGroup",
+            description="Example",
+            enabled=True,
+            city_country="San Jose, CA",
+            country_code="US",
+            latitude="37.338",
+            longitude="-121.8863",
+            location="San Jose, CA, US",
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            override_version_profile=True,
+            version_profile_id="0",
+            dns_query_type="IPV4")
+        # ZPA Server Group resource
+        this_server_group = zpa.ServerGroup("thisServerGroup",
+            description="Example",
+            enabled=True,
+            dynamic_discovery=False,
+            app_connector_groups=[{
+                "ids": [this_connector_group.id],
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[this_connector_group]))
+        # ZPA Application Segment resource
+        this_application_segment = zpa.ApplicationSegment("thisApplicationSegment",
+            description="Example",
+            enabled=True,
+            health_reporting="ON_ACCESS",
+            bypass_type="NEVER",
+            is_cname_enabled=True,
+            tcp_port_ranges=[
+                "8080",
+                "8080",
+            ],
+            domain_names=["server.acme.com"],
+            segment_group_id=this_segment_group.id,
+            server_groups=[{
+                "ids": [this_server_group.id],
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[
+                    this_server_group,
+                    this_segment_group,
+                ]))
+        # Create PRA Approval Controller
+        this_pra_approval = zpa.PRAApproval("thisPRAApproval",
+            email_ids=["jdoe@acme.com"],
+            start_time="Tue, 07 Mar 2024 11:05:30 PST",
+            end_time="Tue, 07 Jun 2024 11:05:30 PST",
+            status="FUTURE",
+            applications=[{
+                "ids": [this_application_segment.id],
+            }],
+            working_hours=[{
+                "days": [
+                    "FRI",
+                    "MON",
+                    "SAT",
+                    "SUN",
+                    "THU",
+                    "TUE",
+                    "WED",
+                ],
+                "start_time": "00:10",
+                "start_time_cron": "0 0 8 ? * MON,TUE,WED,THU,FRI,SAT",
+                "end_time": "09:15",
+                "end_time_cron": "0 15 17 ? * MON,TUE,WED,THU,FRI,SAT",
+                "timezone": "America/Vancouver",
+            }])
+        ```
 
         ## Import
 

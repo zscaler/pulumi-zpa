@@ -32,7 +32,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := zpa.NewApplicationSegmentPRA(ctx, "this", &zpa.ApplicationSegmentPRAArgs{
-//				Name:            pulumi.String("PRA_Example"),
 //				Description:     pulumi.String("PRA_Example"),
 //				Enabled:         pulumi.Bool(true),
 //				HealthReporting: pulumi.String("ON_ACCESS"),
@@ -48,11 +47,11 @@ import (
 //					pulumi.String("ssh_pra.example.com"),
 //					pulumi.String("rdp_pra.example.com"),
 //				},
-//				SegmentGroupId: pulumi.Any(thisZpaSegmentGroup.Id),
+//				SegmentGroupId: pulumi.Any(zpa_segment_group.This.Id),
 //				ServerGroups: zpa.ApplicationSegmentPRAServerGroupArray{
 //					&zpa.ApplicationSegmentPRAServerGroupArgs{
 //						Ids: pulumi.StringArray{
-//							thisZpaServerGroup.Id,
+//							zpa_server_group.This.Id,
 //						},
 //					},
 //				},

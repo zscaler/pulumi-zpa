@@ -19,14 +19,12 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Segment Group resource
- * const thisSegmentGroup = new zpa.SegmentGroup("this", {
- *     name: "Example",
+ * const thisSegmentGroup = new zpa.SegmentGroup("thisSegmentGroup", {
  *     description: "Example",
  *     enabled: true,
  * });
  * // ZPA App Connector Group resource
- * const thisConnectorGroup = new zpa.ConnectorGroup("this", {
- *     name: "Example",
+ * const thisConnectorGroup = new zpa.ConnectorGroup("thisConnectorGroup", {
  *     description: "Example",
  *     enabled: true,
  *     cityCountry: "San Jose, CA",
@@ -41,8 +39,7 @@ import * as utilities from "./utilities";
  *     dnsQueryType: "IPV4",
  * });
  * // ZPA Server Group resource
- * const thisServerGroup = new zpa.ServerGroup("this", {
- *     name: "Example",
+ * const thisServerGroup = new zpa.ServerGroup("thisServerGroup", {
  *     description: "Example",
  *     enabled: true,
  *     dynamicDiscovery: false,
@@ -53,8 +50,7 @@ import * as utilities from "./utilities";
  *     dependsOn: [thisConnectorGroup],
  * });
  * // ZPA Application Segment resource
- * const _this = new zpa.ApplicationSegment("this", {
- *     name: "Example",
+ * const thisApplicationSegment = new zpa.ApplicationSegment("thisApplicationSegment", {
  *     description: "Example",
  *     enabled: true,
  *     healthReporting: "ON_ACCESS",
@@ -76,13 +72,13 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * // Create PRA Approval Controller
- * const thisPRAApproval = new zpa.PRAApproval("this", {
+ * const thisPRAApproval = new zpa.PRAApproval("thisPRAApproval", {
  *     emailIds: ["jdoe@acme.com"],
  *     startTime: "Tue, 07 Mar 2024 11:05:30 PST",
  *     endTime: "Tue, 07 Jun 2024 11:05:30 PST",
  *     status: "FUTURE",
  *     applications: [{
- *         ids: [_this.id],
+ *         ids: [thisApplicationSegment.id],
  *     }],
  *     workingHours: [{
  *         days: [

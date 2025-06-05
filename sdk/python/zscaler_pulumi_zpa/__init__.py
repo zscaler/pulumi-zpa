@@ -12,6 +12,7 @@ from .application_segment_browser_access import *
 from .application_segment_inspection import *
 from .application_segment_pra import *
 from .application_server import *
+from .assistant_schedule import *
 from .browser_access import *
 from .browser_certificate import *
 from .cloud_browser_isolation_banner import *
@@ -28,6 +29,7 @@ from .get_application_segment_by_type import *
 from .get_application_segment_inspection import *
 from .get_application_segment_pra import *
 from .get_application_server import *
+from .get_assistant_schedule import *
 from .get_ba_certificate import *
 from .get_cloud_browser_isolation_banner import *
 from .get_cloud_browser_isolation_certificate import *
@@ -55,9 +57,14 @@ from .get_policy_platform import *
 from .get_policy_type import *
 from .get_posture_profile import *
 from .get_pra_approval import *
+from .get_pra_approval_controller import *
 from .get_pra_console import *
+from .get_pra_console_controller import *
 from .get_pra_credential import *
+from .get_pra_credential_controller import *
+from .get_pra_credential_pool import *
 from .get_pra_portal import *
+from .get_pra_portal_controller import *
 from .get_provisioning_key import *
 from .get_saml_attribute import *
 from .get_scim_attribute_header import *
@@ -87,11 +94,22 @@ from .policy_access_rule_v2 import *
 from .policy_access_time_out_rule import *
 from .policy_access_time_out_rule_v2 import *
 from .policy_browser_protection_rule import *
+from .policy_capabilities_rule import *
+from .policy_credential_rule import *
+from .policy_forwarding_rule_v2 import *
+from .policy_inspection_rule_v2 import *
+from .policy_isolation_rule_v2 import *
+from .policy_redirection_rule import *
+from .policy_timeout_rule_v2 import *
 from .pra_approval import *
+from .pra_approval_controller import *
 from .pra_console import *
+from .pra_console_controller import *
 from .pra_credential import *
+from .pra_credential_controller import *
 from .pra_credential_pool import *
 from .pra_portal import *
+from .pra_portal_controller import *
 from .provider import *
 from .provisioning_key import *
 from .segment_group import *
@@ -157,6 +175,14 @@ _utilities.register(
   "fqn": "zscaler_pulumi_zpa",
   "classes": {
    "zpa:index/applicationServer:ApplicationServer": "ApplicationServer"
+  }
+ },
+ {
+  "pkg": "zpa",
+  "mod": "index/assistantSchedule",
+  "fqn": "zscaler_pulumi_zpa",
+  "classes": {
+   "zpa:index/assistantSchedule:AssistantSchedule": "AssistantSchedule"
   }
  },
  {
@@ -401,10 +427,98 @@ _utilities.register(
  },
  {
   "pkg": "zpa",
+  "mod": "index/policyCapabilitiesRule",
+  "fqn": "zscaler_pulumi_zpa",
+  "classes": {
+   "zpa:index/policyCapabilitiesRule:PolicyCapabilitiesRule": "PolicyCapabilitiesRule"
+  }
+ },
+ {
+  "pkg": "zpa",
+  "mod": "index/policyCredentialRule",
+  "fqn": "zscaler_pulumi_zpa",
+  "classes": {
+   "zpa:index/policyCredentialRule:PolicyCredentialRule": "PolicyCredentialRule"
+  }
+ },
+ {
+  "pkg": "zpa",
+  "mod": "index/policyForwardingRuleV2",
+  "fqn": "zscaler_pulumi_zpa",
+  "classes": {
+   "zpa:index/policyForwardingRuleV2:PolicyForwardingRuleV2": "PolicyForwardingRuleV2"
+  }
+ },
+ {
+  "pkg": "zpa",
+  "mod": "index/policyInspectionRuleV2",
+  "fqn": "zscaler_pulumi_zpa",
+  "classes": {
+   "zpa:index/policyInspectionRuleV2:PolicyInspectionRuleV2": "PolicyInspectionRuleV2"
+  }
+ },
+ {
+  "pkg": "zpa",
+  "mod": "index/policyIsolationRuleV2",
+  "fqn": "zscaler_pulumi_zpa",
+  "classes": {
+   "zpa:index/policyIsolationRuleV2:PolicyIsolationRuleV2": "PolicyIsolationRuleV2"
+  }
+ },
+ {
+  "pkg": "zpa",
+  "mod": "index/policyRedirectionRule",
+  "fqn": "zscaler_pulumi_zpa",
+  "classes": {
+   "zpa:index/policyRedirectionRule:PolicyRedirectionRule": "PolicyRedirectionRule"
+  }
+ },
+ {
+  "pkg": "zpa",
+  "mod": "index/policyTimeoutRuleV2",
+  "fqn": "zscaler_pulumi_zpa",
+  "classes": {
+   "zpa:index/policyTimeoutRuleV2:PolicyTimeoutRuleV2": "PolicyTimeoutRuleV2"
+  }
+ },
+ {
+  "pkg": "zpa",
+  "mod": "index/praApprovalController",
+  "fqn": "zscaler_pulumi_zpa",
+  "classes": {
+   "zpa:index/praApprovalController:PraApprovalController": "PraApprovalController"
+  }
+ },
+ {
+  "pkg": "zpa",
+  "mod": "index/praConsoleController",
+  "fqn": "zscaler_pulumi_zpa",
+  "classes": {
+   "zpa:index/praConsoleController:PraConsoleController": "PraConsoleController"
+  }
+ },
+ {
+  "pkg": "zpa",
+  "mod": "index/praCredentialController",
+  "fqn": "zscaler_pulumi_zpa",
+  "classes": {
+   "zpa:index/praCredentialController:PraCredentialController": "PraCredentialController"
+  }
+ },
+ {
+  "pkg": "zpa",
   "mod": "index/praCredentialPool",
   "fqn": "zscaler_pulumi_zpa",
   "classes": {
    "zpa:index/praCredentialPool:PraCredentialPool": "PraCredentialPool"
+  }
+ },
+ {
+  "pkg": "zpa",
+  "mod": "index/praPortalController",
+  "fqn": "zscaler_pulumi_zpa",
+  "classes": {
+   "zpa:index/praPortalController:PraPortalController": "PraPortalController"
   }
  },
  {

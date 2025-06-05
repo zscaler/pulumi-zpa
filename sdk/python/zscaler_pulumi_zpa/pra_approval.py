@@ -273,13 +273,11 @@ class PRAApproval(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # ZPA Segment Group resource
-        this_segment_group = zpa.SegmentGroup("this",
-            name="Example",
+        this_segment_group = zpa.SegmentGroup("thisSegmentGroup",
             description="Example",
             enabled=True)
         # ZPA App Connector Group resource
-        this_connector_group = zpa.ConnectorGroup("this",
-            name="Example",
+        this_connector_group = zpa.ConnectorGroup("thisConnectorGroup",
             description="Example",
             enabled=True,
             city_country="San Jose, CA",
@@ -293,8 +291,7 @@ class PRAApproval(pulumi.CustomResource):
             version_profile_id="0",
             dns_query_type="IPV4")
         # ZPA Server Group resource
-        this_server_group = zpa.ServerGroup("this",
-            name="Example",
+        this_server_group = zpa.ServerGroup("thisServerGroup",
             description="Example",
             enabled=True,
             dynamic_discovery=False,
@@ -303,8 +300,7 @@ class PRAApproval(pulumi.CustomResource):
             }],
             opts = pulumi.ResourceOptions(depends_on=[this_connector_group]))
         # ZPA Application Segment resource
-        this = zpa.ApplicationSegment("this",
-            name="Example",
+        this_application_segment = zpa.ApplicationSegment("thisApplicationSegment",
             description="Example",
             enabled=True,
             health_reporting="ON_ACCESS",
@@ -324,13 +320,13 @@ class PRAApproval(pulumi.CustomResource):
                     this_segment_group,
                 ]))
         # Create PRA Approval Controller
-        this_pra_approval = zpa.PRAApproval("this",
+        this_pra_approval = zpa.PRAApproval("thisPRAApproval",
             email_ids=["jdoe@acme.com"],
             start_time="Tue, 07 Mar 2024 11:05:30 PST",
             end_time="Tue, 07 Jun 2024 11:05:30 PST",
             status="FUTURE",
             applications=[{
-                "ids": [this.id],
+                "ids": [this_application_segment.id],
             }],
             working_hours=[{
                 "days": [
@@ -398,13 +394,11 @@ class PRAApproval(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # ZPA Segment Group resource
-        this_segment_group = zpa.SegmentGroup("this",
-            name="Example",
+        this_segment_group = zpa.SegmentGroup("thisSegmentGroup",
             description="Example",
             enabled=True)
         # ZPA App Connector Group resource
-        this_connector_group = zpa.ConnectorGroup("this",
-            name="Example",
+        this_connector_group = zpa.ConnectorGroup("thisConnectorGroup",
             description="Example",
             enabled=True,
             city_country="San Jose, CA",
@@ -418,8 +412,7 @@ class PRAApproval(pulumi.CustomResource):
             version_profile_id="0",
             dns_query_type="IPV4")
         # ZPA Server Group resource
-        this_server_group = zpa.ServerGroup("this",
-            name="Example",
+        this_server_group = zpa.ServerGroup("thisServerGroup",
             description="Example",
             enabled=True,
             dynamic_discovery=False,
@@ -428,8 +421,7 @@ class PRAApproval(pulumi.CustomResource):
             }],
             opts = pulumi.ResourceOptions(depends_on=[this_connector_group]))
         # ZPA Application Segment resource
-        this = zpa.ApplicationSegment("this",
-            name="Example",
+        this_application_segment = zpa.ApplicationSegment("thisApplicationSegment",
             description="Example",
             enabled=True,
             health_reporting="ON_ACCESS",
@@ -449,13 +441,13 @@ class PRAApproval(pulumi.CustomResource):
                     this_segment_group,
                 ]))
         # Create PRA Approval Controller
-        this_pra_approval = zpa.PRAApproval("this",
+        this_pra_approval = zpa.PRAApproval("thisPRAApproval",
             email_ids=["jdoe@acme.com"],
             start_time="Tue, 07 Mar 2024 11:05:30 PST",
             end_time="Tue, 07 Jun 2024 11:05:30 PST",
             status="FUTURE",
             applications=[{
-                "ids": [this.id],
+                "ids": [this_application_segment.id],
             }],
             working_hours=[{
                 "days": [

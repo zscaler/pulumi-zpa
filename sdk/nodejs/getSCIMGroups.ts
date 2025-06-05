@@ -18,10 +18,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA SCIM Groups Data Source
  * const engineering = zpa.getSCIMGroups({
- *     name: "Engineering",
  *     idpName: "idp_name",
+ *     name: "Engineering",
  * });
  * ```
  */
@@ -72,10 +71,9 @@ export interface GetSCIMGroupsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA SCIM Groups Data Source
  * const engineering = zpa.getSCIMGroups({
- *     name: "Engineering",
  *     idpName: "idp_name",
+ *     name: "Engineering",
  * });
  * ```
  */

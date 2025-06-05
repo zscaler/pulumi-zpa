@@ -27,17 +27,15 @@ namespace Zscaler.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // ZPA Segment Group resource
-    ///     var thisSegmentGroup = new Zpa.SegmentGroup("this", new()
+    ///     var thisSegmentGroup = new Zpa.SegmentGroup("thisSegmentGroup", new()
     ///     {
-    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///     });
     /// 
     ///     // ZPA App Connector Group resource
-    ///     var thisConnectorGroup = new Zpa.ConnectorGroup("this", new()
+    ///     var thisConnectorGroup = new Zpa.ConnectorGroup("thisConnectorGroup", new()
     ///     {
-    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///         CityCountry = "San Jose, CA",
@@ -53,9 +51,8 @@ namespace Zscaler.Zpa
     ///     });
     /// 
     ///     // ZPA Server Group resource
-    ///     var thisServerGroup = new Zpa.ServerGroup("this", new()
+    ///     var thisServerGroup = new Zpa.ServerGroup("thisServerGroup", new()
     ///     {
-    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///         DynamicDiscovery = false,
@@ -78,9 +75,8 @@ namespace Zscaler.Zpa
     ///     });
     /// 
     ///     // ZPA Application Segment resource
-    ///     var @this = new Zpa.ApplicationSegment("this", new()
+    ///     var thisApplicationSegment = new Zpa.ApplicationSegment("thisApplicationSegment", new()
     ///     {
-    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///         HealthReporting = "ON_ACCESS",
@@ -116,7 +112,7 @@ namespace Zscaler.Zpa
     ///     });
     /// 
     ///     // Create PRA Approval Controller
-    ///     var thisPRAApproval = new Zpa.PRAApproval("this", new()
+    ///     var thisPRAApproval = new Zpa.PRAApproval("thisPRAApproval", new()
     ///     {
     ///         EmailIds = new[]
     ///         {
@@ -131,7 +127,7 @@ namespace Zscaler.Zpa
     ///             {
     ///                 Ids = new[]
     ///                 {
-    ///                     @this.Id,
+    ///                     thisApplicationSegment.Id,
     ///                 },
     ///             },
     ///         },

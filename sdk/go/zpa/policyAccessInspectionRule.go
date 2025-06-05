@@ -36,12 +36,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create Inspection Access Rule
 //			_, err := zpa.NewPolicyAccessInspectionRule(ctx, "this", &zpa.PolicyAccessInspectionRuleArgs{
-//				Name:                   pulumi.String("Example"),
 //				Description:            pulumi.String("Example"),
 //				Action:                 pulumi.String("INSPECT"),
 //				Operator:               pulumi.String("AND"),
-//				PolicySetId:            pulumi.Any(inspectionPolicy.Id),
-//				ZpnInspectionProfileId: pulumi.Any(thisZpaInspectionProfile.Id),
+//				PolicySetId:            pulumi.Any(data.Zpa_policy_type.Inspection_policy.Id),
+//				ZpnInspectionProfileId: pulumi.Any(zpa_inspection_profile.This.Id),
 //				Conditions: zpa.PolicyAccessInspectionRuleConditionArray{
 //					&zpa.PolicyAccessInspectionRuleConditionArgs{
 //						Operator: pulumi.String("OR"),
@@ -49,7 +48,7 @@ import (
 //							&zpa.PolicyAccessInspectionRuleConditionOperandArgs{
 //								ObjectType: pulumi.String("APP"),
 //								Lhs:        pulumi.String("id"),
-//								Rhs:        pulumi.Any(thisZpaApplicationSegmentInspection.Id),
+//								Rhs:        pulumi.Any(zpa_application_segment_inspection.This.Id),
 //							},
 //						},
 //					},
@@ -78,7 +77,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Retrieve Inspection policy type
 //			inspectionPolicy, err := zpa.GetPolicyType(ctx, &zpa.GetPolicyTypeArgs{
 //				PolicyType: pulumi.StringRef("INSPECTION_POLICY"),
 //			}, nil)
@@ -87,7 +85,6 @@ import (
 //			}
 //			// Create Inspection Access Rule
 //			_, err = zpa.NewPolicyAccessInspectionRule(ctx, "this", &zpa.PolicyAccessInspectionRuleArgs{
-//				Name:        pulumi.String("Example"),
 //				Description: pulumi.String("Example"),
 //				Action:      pulumi.String("BYPASS_INSPECT"),
 //				RuleOrder:   pulumi.String("1"),
@@ -100,7 +97,7 @@ import (
 //							&zpa.PolicyAccessInspectionRuleConditionOperandArgs{
 //								ObjectType: pulumi.String("APP"),
 //								Lhs:        pulumi.String("id"),
-//								Rhs:        pulumi.Any(thisZpaApplicationSegmentInspection.Id),
+//								Rhs:        pulumi.Any(zpa_application_segment_inspection.This.Id),
 //							},
 //						},
 //					},

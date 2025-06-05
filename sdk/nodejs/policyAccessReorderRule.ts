@@ -17,43 +17,6 @@ import * as utilities from "./utilities";
  * ⚠️ **WARNING:**: Updating the rule order of an access policy configured using `Zscaler Deception` is not supported. When changing the rule order of a regular access policy and there is an access policy configured using Deception, the rule order of the regular access policy must be greater than the rule order for an access policy configured using Deception. Please refer to the [Zscaler API Documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api#:~:text=Updating%20the%20rule,configured%20using%20Deception.) for further details.
  *
  * ## Example Usage
- *
- * ### 1
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as zpa from "@bdzscaler/pulumi-zpa";
- *
- * const example001 = new zpa.PolicyAccessRule("example001", {
- *     name: "example001",
- *     description: "example001",
- *     action: "ALLOW",
- *     operator: "AND",
- * });
- * const example002 = new zpa.PolicyAccessRule("example002", {
- *     name: "example002",
- *     description: "example002",
- *     action: "ALLOW",
- *     operator: "AND",
- * });
- * const ruleOrders = [
- *     {
- *         id: example001.id,
- *         order: 1,
- *     },
- *     {
- *         id: example002.id,
- *         order: 2,
- *     },
- * ];
- * const accessPolicyReorder = new zpa.PolicyAccessReorderRule("access_policy_reorder", {
- *     rules: ruleOrders.map((v, k) => ({key: k, value: v})).apply(entries => entries.map(entry => ({
- *         id: entry.value.id,
- *         order: entry.value.order,
- *     }))),
- *     policyType: "ACCESS_POLICY",
- * });
- * ```
  */
 export class PolicyAccessReorderRule extends pulumi.CustomResource {
     /**

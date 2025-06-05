@@ -38,7 +38,6 @@ import (
 //				return err
 //			}
 //			_, err = zpa.NewApplicationSegmentInspection(ctx, "this", &zpa.ApplicationSegmentInspectionArgs{
-//				Name:            pulumi.String("ZPA_Inspection_Example"),
 //				Description:     pulumi.String("ZPA_Inspection_Example"),
 //				Enabled:         pulumi.Bool(true),
 //				HealthReporting: pulumi.String("ON_ACCESS"),
@@ -51,11 +50,11 @@ import (
 //				DomainNames: pulumi.StringArray{
 //					pulumi.String("jenkins.example.com"),
 //				},
-//				SegmentGroupId: pulumi.Any(thisZpaSegmentGroup.Id),
+//				SegmentGroupId: pulumi.Any(zpa_segment_group.This.Id),
 //				ServerGroups: zpa.ApplicationSegmentInspectionServerGroupArray{
 //					&zpa.ApplicationSegmentInspectionServerGroupArgs{
 //						Ids: pulumi.StringArray{
-//							thisZpaServerGroup.Id,
+//							zpa_server_group.This.Id,
 //						},
 //					},
 //				},

@@ -30,7 +30,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Application Segment Data Source
         ///     var @this = Zpa.GetApplicationSegmentPRA.Invoke(new()
         ///     {
         ///         Name = "PRA_Example",
@@ -47,7 +46,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Application Segment Data Source
         ///     var @this = Zpa.GetApplicationSegmentPRA.Invoke(new()
         ///     {
         ///         Id = "123456789",
@@ -77,7 +75,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Application Segment Data Source
         ///     var @this = Zpa.GetApplicationSegmentPRA.Invoke(new()
         ///     {
         ///         Name = "PRA_Example",
@@ -94,7 +91,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Application Segment Data Source
         ///     var @this = Zpa.GetApplicationSegmentPRA.Invoke(new()
         ///     {
         ///         Id = "123456789",
@@ -124,7 +120,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Application Segment Data Source
         ///     var @this = Zpa.GetApplicationSegmentPRA.Invoke(new()
         ///     {
         ///         Name = "PRA_Example",
@@ -141,7 +136,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Application Segment Data Source
         ///     var @this = Zpa.GetApplicationSegmentPRA.Invoke(new()
         ///     {
         ///         Id = "123456789",

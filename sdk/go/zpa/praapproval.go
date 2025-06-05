@@ -32,8 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Segment Group resource
-//			thisSegmentGroup, err := zpa.NewSegmentGroup(ctx, "this", &zpa.SegmentGroupArgs{
-//				Name:        pulumi.String("Example"),
+//			thisSegmentGroup, err := zpa.NewSegmentGroup(ctx, "thisSegmentGroup", &zpa.SegmentGroupArgs{
 //				Description: pulumi.String("Example"),
 //				Enabled:     pulumi.Bool(true),
 //			})
@@ -41,8 +40,7 @@ import (
 //				return err
 //			}
 //			// ZPA App Connector Group resource
-//			thisConnectorGroup, err := zpa.NewConnectorGroup(ctx, "this", &zpa.ConnectorGroupArgs{
-//				Name:                   pulumi.String("Example"),
+//			thisConnectorGroup, err := zpa.NewConnectorGroup(ctx, "thisConnectorGroup", &zpa.ConnectorGroupArgs{
 //				Description:            pulumi.String("Example"),
 //				Enabled:                pulumi.Bool(true),
 //				CityCountry:            pulumi.String("San Jose, CA"),
@@ -60,8 +58,7 @@ import (
 //				return err
 //			}
 //			// ZPA Server Group resource
-//			thisServerGroup, err := zpa.NewServerGroup(ctx, "this", &zpa.ServerGroupArgs{
-//				Name:             pulumi.String("Example"),
+//			thisServerGroup, err := zpa.NewServerGroup(ctx, "thisServerGroup", &zpa.ServerGroupArgs{
 //				Description:      pulumi.String("Example"),
 //				Enabled:          pulumi.Bool(true),
 //				DynamicDiscovery: pulumi.Bool(false),
@@ -79,8 +76,7 @@ import (
 //				return err
 //			}
 //			// ZPA Application Segment resource
-//			this, err := zpa.NewApplicationSegment(ctx, "this", &zpa.ApplicationSegmentArgs{
-//				Name:            pulumi.String("Example"),
+//			thisApplicationSegment, err := zpa.NewApplicationSegment(ctx, "thisApplicationSegment", &zpa.ApplicationSegmentArgs{
 //				Description:     pulumi.String("Example"),
 //				Enabled:         pulumi.Bool(true),
 //				HealthReporting: pulumi.String("ON_ACCESS"),
@@ -109,7 +105,7 @@ import (
 //				return err
 //			}
 //			// Create PRA Approval Controller
-//			_, err = zpa.NewPRAApproval(ctx, "this", &zpa.PRAApprovalArgs{
+//			_, err = zpa.NewPRAApproval(ctx, "thisPRAApproval", &zpa.PRAApprovalArgs{
 //				EmailIds: pulumi.StringArray{
 //					pulumi.String("jdoe@acme.com"),
 //				},
@@ -119,7 +115,7 @@ import (
 //				Applications: zpa.PRAApprovalApplicationArray{
 //					&zpa.PRAApprovalApplicationArgs{
 //						Ids: pulumi.StringArray{
-//							this.ID(),
+//							thisApplicationSegment.ID(),
 //						},
 //					},
 //				},

@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Server Group Data Source
  * const example = zpa.getSegmentGroup({
  *     name: "segment_group_name",
  * });
@@ -63,7 +62,6 @@ export interface GetSegmentGroupResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Server Group Data Source
  * const example = zpa.getSegmentGroup({
  *     name: "segment_group_name",
  * });

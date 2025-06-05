@@ -30,8 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thisPRACredential, err := zpa.NewPRACredential(ctx, "this", &zpa.PRACredentialArgs{
-//				Name:           pulumi.String("John Doe"),
+//			thisPRACredential, err := zpa.NewPRACredential(ctx, "thisPRACredential", &zpa.PRACredentialArgs{
 //				Description:    pulumi.String("Created with Terraform"),
 //				CredentialType: pulumi.String("PASSWORD"),
 //				UserDomain:     pulumi.String("acme.com"),
@@ -41,8 +40,7 @@ import (
 //				return err
 //			}
 //			// Creates Credential Pool of Type "USERNAME_PASSWORD"
-//			_, err = zpa.NewPraCredentialPool(ctx, "this", &zpa.PraCredentialPoolArgs{
-//				Name:           pulumi.String("PRACredentialPool01"),
+//			_, err = zpa.NewPraCredentialPool(ctx, "thisPraCredentialPool", &zpa.PraCredentialPoolArgs{
 //				CredentialType: pulumi.String("USERNAME_PASSWORD"),
 //				Credentials: zpa.PraCredentialPoolCredentialArray{
 //					&zpa.PraCredentialPoolCredentialArgs{

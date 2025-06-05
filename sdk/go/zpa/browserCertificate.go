@@ -30,7 +30,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ZPA Browser Access Data Source
 //			_, err := zpa.GetBaCertificate(ctx, &zpa.GetBaCertificateArgs{
 //				Name: pulumi.StringRef("example.acme.com"),
 //			}, nil)
@@ -59,8 +58,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Browser Access resource
 //			_, err := zpa.NewBrowserCertificate(ctx, "this", &zpa.BrowserCertificateArgs{
-//				Name:        pulumi.String("server.example.com"),
-//				Description: pulumi.String("server.example.com"),
 //				CertBlob: pulumi.String(`-----BEGIN PRIVATE KEY-----
 //
 // MIIDyzCCArOgA
@@ -68,8 +65,10 @@ import (
 // -----BEGIN CERTIFICATE-----
 // MIIDyzCCArOgAwIBAgIUekBD+iu64583B3u5ew7Bqj2O5cQwDQYJKoZIhvcNAQEL
 // -----END CERTIFICATE-----
+//
 // `),
 //
+//				Description: pulumi.String("server.example.com"),
 //			})
 //			if err != nil {
 //				return err

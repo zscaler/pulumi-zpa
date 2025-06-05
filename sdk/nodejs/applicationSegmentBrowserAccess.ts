@@ -14,32 +14,28 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // Retrieve Browser Access Certificate
  * const testCert = zpa.getBaCertificate({
  *     name: "sales.acme.com",
  * });
  * // ZPA Segment Group resource
- * const exampleSegmentGroup = new zpa.SegmentGroup("example", {
- *     name: "Example",
+ * const exampleSegmentGroup = new zpa.SegmentGroup("exampleSegmentGroup", {
  *     description: "Example",
  *     enabled: true,
  * });
- * const example = zpa.getAppConnectorGroup({
+ * const exampleAppConnectorGroup = zpa.getAppConnectorGroup({
  *     name: "AWS-Connector",
  * });
  * // ZPA Server Group resource
- * const exampleServerGroup = new zpa.ServerGroup("example", {
- *     name: "Example",
+ * const exampleServerGroup = new zpa.ServerGroup("exampleServerGroup", {
  *     description: "Example",
  *     enabled: true,
  *     dynamicDiscovery: true,
  *     appConnectorGroups: [{
- *         ids: [example.then(example => example.id)],
+ *         ids: [exampleAppConnectorGroup.then(exampleAppConnectorGroup => exampleAppConnectorGroup.id)],
  *     }],
  * });
  * // Create Browser Access Application
- * const browserAccessApps = new zpa.ApplicationSegmentBrowserAccess("browser_access_apps", {
- *     name: "Browser Access Apps",
+ * const browserAccessApps = new zpa.ApplicationSegmentBrowserAccess("browserAccessApps", {
  *     description: "Browser Access Apps",
  *     enabled: true,
  *     healthReporting: "ON_ACCESS",

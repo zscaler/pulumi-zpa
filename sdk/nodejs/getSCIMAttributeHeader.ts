@@ -18,14 +18,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA SCIM Attribute Header Data Source
  * const givenName = zpa.getSCIMAttributeHeader({
- *     name: "name.givenName",
  *     idpName: "IdP_Name",
+ *     name: "name.givenName",
  * });
  * const familyName = zpa.getSCIMAttributeHeader({
- *     name: "name.familyName",
  *     idpName: "IdP_Name",
+ *     name: "name.familyName",
  * });
  * ```
  */
@@ -85,14 +84,13 @@ export interface GetSCIMAttributeHeaderResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA SCIM Attribute Header Data Source
  * const givenName = zpa.getSCIMAttributeHeader({
- *     name: "name.givenName",
  *     idpName: "IdP_Name",
+ *     name: "name.givenName",
  * });
  * const familyName = zpa.getSCIMAttributeHeader({
- *     name: "name.familyName",
  *     idpName: "IdP_Name",
+ *     name: "name.familyName",
  * });
  * ```
  */

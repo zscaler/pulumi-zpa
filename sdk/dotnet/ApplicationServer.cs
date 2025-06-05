@@ -22,11 +22,10 @@ namespace Zscaler.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // ZPA Application Server resource (IP Address)
-    ///     var testAppServer = new Zpa.ApplicationServer("test_app_server", new()
+    ///     var testAppServer = new Zpa.ApplicationServer("testAppServer", new()
     ///     {
-    ///         Name = "test1-app-server",
-    ///         Description = "test1-app-server",
     ///         Address = "192.168.1.1",
+    ///         Description = "test1-app-server",
     ///         Enabled = true,
     ///     });
     /// 
@@ -42,11 +41,10 @@ namespace Zscaler.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // ZPA Application Server resource (FQDN Address)
-    ///     var testAppServer = new Zpa.ApplicationServer("test_app_server", new()
+    ///     var testAppServer = new Zpa.ApplicationServer("testAppServer", new()
     ///     {
-    ///         Name = "test1-app-server",
-    ///         Description = "test1-app-server",
     ///         Address = "server1.acme.com",
+    ///         Description = "test1-app-server",
     ///         Enabled = true,
     ///     });
     /// 

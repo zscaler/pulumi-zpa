@@ -23,7 +23,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Server Group Data Source
         ///     var example = Zpa.GetServerGroup.Invoke(new()
         ///     {
         ///         Name = "server_group_name",
@@ -46,7 +45,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Server Group Data Source
         ///     var example = Zpa.GetServerGroup.Invoke(new()
         ///     {
         ///         Name = "server_group_name",
@@ -69,7 +67,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Server Group Data Source
         ///     var example = Zpa.GetServerGroup.Invoke(new()
         ///     {
         ///         Name = "server_group_name",

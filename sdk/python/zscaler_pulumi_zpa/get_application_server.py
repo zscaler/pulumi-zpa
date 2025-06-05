@@ -158,7 +158,6 @@ def get_application_server(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Application Server Data Source by Name
     example = zpa.get_application_server(name="server.example.com")
     ```
 
@@ -166,7 +165,6 @@ def get_application_server(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Application Server Data Source by ID
     example = zpa.get_application_server(id="1234567890")
     ```
     """
@@ -203,7 +201,6 @@ def get_application_server_output(id: Optional[pulumi.Input[Optional[builtins.st
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Application Server Data Source by Name
     example = zpa.get_application_server(name="server.example.com")
     ```
 
@@ -211,7 +208,6 @@ def get_application_server_output(id: Optional[pulumi.Input[Optional[builtins.st
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Application Server Data Source by ID
     example = zpa.get_application_server(id="1234567890")
     ```
     """

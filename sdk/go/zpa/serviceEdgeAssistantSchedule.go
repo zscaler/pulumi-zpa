@@ -36,10 +36,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := zpa.NewServiceEdgeAssistantSchedule(ctx, "this", &zpa.ServiceEdgeAssistantScheduleArgs{
 //				CustomerId:        pulumi.String("123456789101112"),
+//				DeleteDisabled:    pulumi.Bool(true),
+//				Enabled:           pulumi.Bool(true),
 //				Frequency:         pulumi.String("days"),
 //				FrequencyInterval: pulumi.String("5"),
-//				Enabled:           pulumi.Bool(true),
-//				DeleteDisabled:    pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -65,10 +65,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := zpa.NewServiceEdgeAssistantSchedule(ctx, "this", &zpa.ServiceEdgeAssistantScheduleArgs{
+//				DeleteDisabled:    pulumi.Bool(true),
+//				Enabled:           pulumi.Bool(true),
 //				Frequency:         pulumi.String("days"),
 //				FrequencyInterval: pulumi.String("5"),
-//				Enabled:           pulumi.Bool(true),
-//				DeleteDisabled:    pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

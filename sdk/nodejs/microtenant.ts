@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  *
  * // ZPA Microtenant Controller resource
  * const _this = new zpa.Microtenant("this", {
- *     name: "Microtenant_A",
  *     description: "Microtenant_A",
  *     enabled: true,
  *     criteriaAttribute: "AuthDomain",
@@ -30,7 +29,7 @@ import * as utilities from "./utilities";
  *     privilegedApprovalsEnabled: true,
  * });
  * export const zpaMicrotenantController1 = _this.users.apply(users => users.map(u => ({
- *     microtenantId: u.microtenantId,
+ *     microtenant_id: u.microtenantId,
  *     username: u.username,
  *     password: u.password,
  * })));

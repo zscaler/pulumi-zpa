@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Application Segment Data Source
  * const _this = zpa.getApplicationSegmentPRA({
  *     name: "PRA_Example",
  * });
@@ -30,7 +29,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Application Segment Data Source
  * const _this = zpa.getApplicationSegmentPRA({
  *     id: "123456789",
  * });
@@ -103,7 +101,6 @@ export interface GetApplicationSegmentPRAResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Application Segment Data Source
  * const _this = zpa.getApplicationSegmentPRA({
  *     name: "PRA_Example",
  * });
@@ -113,7 +110,6 @@ export interface GetApplicationSegmentPRAResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Application Segment Data Source
  * const _this = zpa.getApplicationSegmentPRA({
  *     id: "123456789",
  * });

@@ -31,35 +31,29 @@ namespace Zscaler.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Retrieve Policy Types
-    ///     // Retrieve Identity Provider ID
-    ///     var @this = Zpa.GetIdPController.Invoke(new()
+    ///     var thisIdPController = Zpa.GetIdPController.Invoke(new()
     ///     {
     ///         Name = "Idp_Name",
     ///     });
     /// 
-    ///     // Retrieve SAML Attribute ID
     ///     var emailUserSso = Zpa.GetSAMLAttribute.Invoke(new()
     ///     {
     ///         Name = "Email_Users",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
-    ///     // Retrieve SAML Attribute ID
     ///     var groupUser = Zpa.GetSAMLAttribute.Invoke(new()
     ///     {
     ///         Name = "GroupName_Users",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
-    ///     // Retrieve SCIM Group ID
     ///     var a000 = Zpa.GetSCIMGroups.Invoke(new()
     ///     {
     ///         Name = "A000",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
-    ///     // Retrieve SCIM Group ID
     ///     var b000 = Zpa.GetSCIMGroups.Invoke(new()
     ///     {
     ///         Name = "B000",
@@ -67,17 +61,15 @@ namespace Zscaler.Zpa
     ///     });
     /// 
     ///     // Create Segment Group
-    ///     var thisSegmentGroup = new Zpa.SegmentGroup("this", new()
+    ///     var thisSegmentGroup = new Zpa.SegmentGroup("thisSegmentGroup", new()
     ///     {
-    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///     });
     /// 
     ///     // Create Policy Access Rule V2
-    ///     var thisPolicyAccessRuleV2 = new Zpa.PolicyAccessRuleV2("this", new()
+    ///     var thisPolicyAccessRuleV2 = new Zpa.PolicyAccessRuleV2("thisPolicyAccessRuleV2", new()
     ///     {
-    ///         Name = "Example",
     ///         Description = "Example",
     ///         Action = "ALLOW",
     ///         Conditions = new[]
@@ -127,12 +119,12 @@ namespace Zscaler.Zpa
     ///                             new Zpa.Inputs.PolicyAccessRuleV2ConditionOperandEntryValueArgs
     ///                             {
     ///                                 Rhs = a000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
-    ///                                 Lhs = @this.Apply(@this =&gt; @this.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id)),
+    ///                                 Lhs = thisIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
     ///                             },
     ///                             new Zpa.Inputs.PolicyAccessRuleV2ConditionOperandEntryValueArgs
     ///                             {
     ///                                 Rhs = b000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
-    ///                                 Lhs = @this.Apply(@this =&gt; @this.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id)),
+    ///                                 Lhs = thisIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
     ///                             },
     ///                         },
     ///                     },

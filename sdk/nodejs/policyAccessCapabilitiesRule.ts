@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * const _this = zpa.getIdPController({
+ * const thisIdPController = zpa.getIdPController({
  *     name: "IdP_Users",
  * });
  * const emailUserSso = zpa.getSAMLAttribute({
@@ -39,8 +39,7 @@ import * as utilities from "./utilities";
  *     name: "B000",
  *     idpName: "IdP_Users",
  * });
- * const thisPolicyAccessCapabilitiesRule = new zpa.PolicyAccessCapabilitiesRule("this", {
- *     name: "Example",
+ * const thisPolicyAccessCapabilitiesRule = new zpa.PolicyAccessCapabilitiesRule("thisPolicyAccessCapabilitiesRule", {
  *     description: "Example",
  *     action: "CHECK_CAPABILITIES",
  *     privilegedCapabilities: {
@@ -72,11 +71,11 @@ import * as utilities from "./utilities";
  *                 entryValues: [
  *                     {
  *                         rhs: a000.then(a000 => a000.id),
- *                         lhs: _this.then(_this => _this.id),
+ *                         lhs: thisIdPController.then(thisIdPController => thisIdPController.id),
  *                     },
  *                     {
  *                         rhs: b000.then(b000 => b000.id),
- *                         lhs: _this.then(_this => _this.id),
+ *                         lhs: thisIdPController.then(thisIdPController => thisIdPController.id),
  *                     },
  *                 ],
  *             },

@@ -32,8 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Creates Segment Group for Application Segment"
-//			thisSegmentGroup, err := zpa.NewSegmentGroup(ctx, "this", &zpa.SegmentGroupArgs{
-//				Name:        pulumi.String("Example"),
+//			thisSegmentGroup, err := zpa.NewSegmentGroup(ctx, "thisSegmentGroup", &zpa.SegmentGroupArgs{
 //				Description: pulumi.String("Example"),
 //				Enabled:     pulumi.Bool(true),
 //			})
@@ -41,8 +40,7 @@ import (
 //				return err
 //			}
 //			// Creates Privileged Remote Access Application Segment"
-//			_, err = zpa.NewApplicationSegmentPRA(ctx, "this", &zpa.ApplicationSegmentPRAArgs{
-//				Name:            pulumi.String("Example"),
+//			_, err = zpa.NewApplicationSegmentPRA(ctx, "thisApplicationSegmentPRA", &zpa.ApplicationSegmentPRAArgs{
 //				Description:     pulumi.String("Example"),
 //				Enabled:         pulumi.Bool(true),
 //				HealthReporting: pulumi.String("ON_ACCESS"),
@@ -77,15 +75,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			this, err := zpa.GetApplicationSegmentByType(ctx, &zpa.GetApplicationSegmentByTypeArgs{
+//			thisApplicationSegmentByType, err := zpa.GetApplicationSegmentByType(ctx, &zpa.GetApplicationSegmentByTypeArgs{
 //				ApplicationType: "SECURE_REMOTE_ACCESS",
 //				Name:            pulumi.StringRef("rdp_pra"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			// Retrieves the Browser Access Certificate
-//			thisGetBaCertificate, err := zpa.GetBaCertificate(ctx, &zpa.GetBaCertificateArgs{
+//			thisBaCertificate, err := zpa.GetBaCertificate(ctx, &zpa.GetBaCertificateArgs{
 //				Name: pulumi.StringRef("pra01.example.com"),
 //			}, nil)
 //			if err != nil {
@@ -93,30 +90,28 @@ import (
 //			}
 //			// Creates PRA Portal"
 //			_, err = zpa.NewPRAPortal(ctx, "this1", &zpa.PRAPortalArgs{
-//				Name:                    pulumi.String("pra01.example.com"),
 //				Description:             pulumi.String("pra01.example.com"),
 //				Enabled:                 pulumi.Bool(true),
 //				Domain:                  pulumi.String("pra01.example.com"),
-//				CertificateId:           pulumi.String(thisGetBaCertificate.Id),
+//				CertificateId:           pulumi.String(thisBaCertificate.Id),
 //				UserNotification:        pulumi.String("Created with Terraform"),
 //				UserNotificationEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = zpa.NewPRAConsole(ctx, "ssh_pra", &zpa.PRAConsoleArgs{
-//				Name:        pulumi.String("ssh_console"),
+//			_, err = zpa.NewPRAConsole(ctx, "sshPra", &zpa.PRAConsoleArgs{
 //				Description: pulumi.String("Created with Terraform"),
 //				Enabled:     pulumi.Bool(true),
 //				PraApplications: zpa.PRAConsolePraApplicationArray{
 //					&zpa.PRAConsolePraApplicationArgs{
-//						Id: pulumi.String(this.Id),
+//						Id: pulumi.String(thisApplicationSegmentByType.Id),
 //					},
 //				},
 //				PraPortals: zpa.PRAConsolePraPortalArray{
 //					&zpa.PRAConsolePraPortalArgs{
 //						Ids: pulumi.StringArray{
-//							thisZpaPraPortalController.Id,
+//							zpa_pra_portal_controller.This.Id,
 //						},
 //					},
 //				},

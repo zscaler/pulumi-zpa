@@ -268,7 +268,6 @@ def get_application_segment_pra(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Application Segment Data Source
     this = zpa.get_application_segment_pra(name="PRA_Example")
     ```
 
@@ -276,7 +275,6 @@ def get_application_segment_pra(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Application Segment Data Source
     this = zpa.get_application_segment_pra(id="123456789")
     ```
     """
@@ -335,7 +333,6 @@ def get_application_segment_pra_output(id: Optional[pulumi.Input[Optional[builti
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Application Segment Data Source
     this = zpa.get_application_segment_pra(name="PRA_Example")
     ```
 
@@ -343,7 +340,6 @@ def get_application_segment_pra_output(id: Optional[pulumi.Input[Optional[builti
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Application Segment Data Source
     this = zpa.get_application_segment_pra(id="123456789")
     ```
     """

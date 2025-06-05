@@ -273,13 +273,11 @@ class PRAConsole(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # Creates Segment Group for Application Segment"
-        this_segment_group = zpa.SegmentGroup("this",
-            name="Example",
+        this_segment_group = zpa.SegmentGroup("thisSegmentGroup",
             description="Example",
             enabled=True)
         # Creates Privileged Remote Access Application Segment"
-        this_application_segment_pra = zpa.ApplicationSegmentPRA("this",
-            name="Example",
+        this_application_segment_pra = zpa.ApplicationSegmentPRA("thisApplicationSegmentPRA",
             description="Example",
             enabled=True,
             health_reporting="ON_ACCESS",
@@ -302,28 +300,25 @@ class PRAConsole(pulumi.CustomResource):
                     "app_types": ["SECURE_REMOTE_ACCESS"],
                 }],
             }])
-        this = zpa.get_application_segment_by_type(application_type="SECURE_REMOTE_ACCESS",
+        this_application_segment_by_type = zpa.get_application_segment_by_type(application_type="SECURE_REMOTE_ACCESS",
             name="rdp_pra")
-        # Retrieves the Browser Access Certificate
-        this_get_ba_certificate = zpa.get_ba_certificate(name="pra01.example.com")
+        this_ba_certificate = zpa.get_ba_certificate(name="pra01.example.com")
         # Creates PRA Portal"
         this1 = zpa.PRAPortal("this1",
-            name="pra01.example.com",
             description="pra01.example.com",
             enabled=True,
             domain="pra01.example.com",
-            certificate_id=this_get_ba_certificate.id,
+            certificate_id=this_ba_certificate.id,
             user_notification="Created with Terraform",
             user_notification_enabled=True)
-        ssh_pra = zpa.PRAConsole("ssh_pra",
-            name="ssh_console",
+        ssh_pra = zpa.PRAConsole("sshPra",
             description="Created with Terraform",
             enabled=True,
             pra_applications=[{
-                "id": this.id,
+                "id": this_application_segment_by_type.id,
             }],
             pra_portals=[{
-                "ids": [this_zpa_pra_portal_controller["id"]],
+                "ids": [zpa_pra_portal_controller["this"]["id"]],
             }])
         ```
 
@@ -376,13 +371,11 @@ class PRAConsole(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # Creates Segment Group for Application Segment"
-        this_segment_group = zpa.SegmentGroup("this",
-            name="Example",
+        this_segment_group = zpa.SegmentGroup("thisSegmentGroup",
             description="Example",
             enabled=True)
         # Creates Privileged Remote Access Application Segment"
-        this_application_segment_pra = zpa.ApplicationSegmentPRA("this",
-            name="Example",
+        this_application_segment_pra = zpa.ApplicationSegmentPRA("thisApplicationSegmentPRA",
             description="Example",
             enabled=True,
             health_reporting="ON_ACCESS",
@@ -405,28 +398,25 @@ class PRAConsole(pulumi.CustomResource):
                     "app_types": ["SECURE_REMOTE_ACCESS"],
                 }],
             }])
-        this = zpa.get_application_segment_by_type(application_type="SECURE_REMOTE_ACCESS",
+        this_application_segment_by_type = zpa.get_application_segment_by_type(application_type="SECURE_REMOTE_ACCESS",
             name="rdp_pra")
-        # Retrieves the Browser Access Certificate
-        this_get_ba_certificate = zpa.get_ba_certificate(name="pra01.example.com")
+        this_ba_certificate = zpa.get_ba_certificate(name="pra01.example.com")
         # Creates PRA Portal"
         this1 = zpa.PRAPortal("this1",
-            name="pra01.example.com",
             description="pra01.example.com",
             enabled=True,
             domain="pra01.example.com",
-            certificate_id=this_get_ba_certificate.id,
+            certificate_id=this_ba_certificate.id,
             user_notification="Created with Terraform",
             user_notification_enabled=True)
-        ssh_pra = zpa.PRAConsole("ssh_pra",
-            name="ssh_console",
+        ssh_pra = zpa.PRAConsole("sshPra",
             description="Created with Terraform",
             enabled=True,
             pra_applications=[{
-                "id": this.id,
+                "id": this_application_segment_by_type.id,
             }],
             pra_portals=[{
-                "ids": [this_zpa_pra_portal_controller["id"]],
+                "ids": [zpa_pra_portal_controller["this"]["id"]],
             }])
         ```
 

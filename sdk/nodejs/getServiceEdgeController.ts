@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Service Edge Controller Data Source
  * const example = zpa.getServiceEdgeController({
  *     name: "On-Prem-PSE",
  * });
@@ -107,7 +106,6 @@ export interface GetServiceEdgeControllerResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Service Edge Controller Data Source
  * const example = zpa.getServiceEdgeController({
  *     name: "On-Prem-PSE",
  * });

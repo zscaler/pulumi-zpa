@@ -28,17 +28,15 @@ namespace Zscaler.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Creates Segment Group for Application Segment"
-    ///     var thisSegmentGroup = new Zpa.SegmentGroup("this", new()
+    ///     var thisSegmentGroup = new Zpa.SegmentGroup("thisSegmentGroup", new()
     ///     {
-    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///     });
     /// 
     ///     // Creates Privileged Remote Access Application Segment"
-    ///     var thisApplicationSegmentPRA = new Zpa.ApplicationSegmentPRA("this", new()
+    ///     var thisApplicationSegmentPRA = new Zpa.ApplicationSegmentPRA("thisApplicationSegmentPRA", new()
     ///     {
-    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///         HealthReporting = "ON_ACCESS",
@@ -78,14 +76,13 @@ namespace Zscaler.Zpa
     ///         },
     ///     });
     /// 
-    ///     var @this = Zpa.GetApplicationSegmentByType.Invoke(new()
+    ///     var thisApplicationSegmentByType = Zpa.GetApplicationSegmentByType.Invoke(new()
     ///     {
     ///         ApplicationType = "SECURE_REMOTE_ACCESS",
     ///         Name = "rdp_pra",
     ///     });
     /// 
-    ///     // Retrieves the Browser Access Certificate
-    ///     var thisGetBaCertificate = Zpa.GetBaCertificate.Invoke(new()
+    ///     var thisBaCertificate = Zpa.GetBaCertificate.Invoke(new()
     ///     {
     ///         Name = "pra01.example.com",
     ///     });
@@ -93,25 +90,23 @@ namespace Zscaler.Zpa
     ///     // Creates PRA Portal"
     ///     var this1 = new Zpa.PRAPortal("this1", new()
     ///     {
-    ///         Name = "pra01.example.com",
     ///         Description = "pra01.example.com",
     ///         Enabled = true,
     ///         Domain = "pra01.example.com",
-    ///         CertificateId = thisGetBaCertificate.Apply(getBaCertificateResult =&gt; getBaCertificateResult.Id),
+    ///         CertificateId = thisBaCertificate.Apply(getBaCertificateResult =&gt; getBaCertificateResult.Id),
     ///         UserNotification = "Created with Terraform",
     ///         UserNotificationEnabled = true,
     ///     });
     /// 
-    ///     var sshPra = new Zpa.PRAConsole("ssh_pra", new()
+    ///     var sshPra = new Zpa.PRAConsole("sshPra", new()
     ///     {
-    ///         Name = "ssh_console",
     ///         Description = "Created with Terraform",
     ///         Enabled = true,
     ///         PraApplications = new[]
     ///         {
     ///             new Zpa.Inputs.PRAConsolePraApplicationArgs
     ///             {
-    ///                 Id = @this.Apply(@this =&gt; @this.Apply(getApplicationSegmentByTypeResult =&gt; getApplicationSegmentByTypeResult.Id)),
+    ///                 Id = thisApplicationSegmentByType.Apply(getApplicationSegmentByTypeResult =&gt; getApplicationSegmentByTypeResult.Id),
     ///             },
     ///         },
     ///         PraPortals = new[]
@@ -120,7 +115,7 @@ namespace Zscaler.Zpa
     ///             {
     ///                 Ids = new[]
     ///                 {
-    ///                     thisZpaPraPortalController.Id,
+    ///                     zpa_pra_portal_controller.This.Id,
     ///                 },
     ///             },
     ///         },

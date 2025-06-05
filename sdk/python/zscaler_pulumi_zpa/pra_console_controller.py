@@ -22,7 +22,7 @@ __all__ = ['PraConsoleControllerArgs', 'PraConsoleController']
 @pulumi.input_type
 class PraConsoleControllerArgs:
     def __init__(__self__, *,
-                 pra_application: pulumi.Input['PraConsoleControllerPraApplicationArgs'],
+                 pra_applications: pulumi.Input[Sequence[pulumi.Input['PraConsoleControllerPraApplicationArgs']]],
                  pra_portals: pulumi.Input[Sequence[pulumi.Input['PraConsoleControllerPraPortalArgs']]],
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
@@ -38,7 +38,7 @@ class PraConsoleControllerArgs:
                microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
         :param pulumi.Input[builtins.str] name: The name of the privileged console
         """
-        pulumi.set(__self__, "pra_application", pra_application)
+        pulumi.set(__self__, "pra_applications", pra_applications)
         pulumi.set(__self__, "pra_portals", pra_portals)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -52,13 +52,13 @@ class PraConsoleControllerArgs:
             pulumi.set(__self__, "name", name)
 
     @property
-    @pulumi.getter(name="praApplication")
-    def pra_application(self) -> pulumi.Input['PraConsoleControllerPraApplicationArgs']:
-        return pulumi.get(self, "pra_application")
+    @pulumi.getter(name="praApplications")
+    def pra_applications(self) -> pulumi.Input[Sequence[pulumi.Input['PraConsoleControllerPraApplicationArgs']]]:
+        return pulumi.get(self, "pra_applications")
 
-    @pra_application.setter
-    def pra_application(self, value: pulumi.Input['PraConsoleControllerPraApplicationArgs']):
-        pulumi.set(self, "pra_application", value)
+    @pra_applications.setter
+    def pra_applications(self, value: pulumi.Input[Sequence[pulumi.Input['PraConsoleControllerPraApplicationArgs']]]):
+        pulumi.set(self, "pra_applications", value)
 
     @property
     @pulumi.getter(name="praPortals")
@@ -139,7 +139,7 @@ class _PraConsoleControllerState:
                  icon_text: Optional[pulumi.Input[builtins.str]] = None,
                  microtenant_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 pra_application: Optional[pulumi.Input['PraConsoleControllerPraApplicationArgs']] = None,
+                 pra_applications: Optional[pulumi.Input[Sequence[pulumi.Input['PraConsoleControllerPraApplicationArgs']]]] = None,
                  pra_portals: Optional[pulumi.Input[Sequence[pulumi.Input['PraConsoleControllerPraPortalArgs']]]] = None):
         """
         Input properties used for looking up and filtering PraConsoleController resources.
@@ -160,8 +160,8 @@ class _PraConsoleControllerState:
             pulumi.set(__self__, "microtenant_id", microtenant_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if pra_application is not None:
-            pulumi.set(__self__, "pra_application", pra_application)
+        if pra_applications is not None:
+            pulumi.set(__self__, "pra_applications", pra_applications)
         if pra_portals is not None:
             pulumi.set(__self__, "pra_portals", pra_portals)
 
@@ -227,13 +227,13 @@ class _PraConsoleControllerState:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="praApplication")
-    def pra_application(self) -> Optional[pulumi.Input['PraConsoleControllerPraApplicationArgs']]:
-        return pulumi.get(self, "pra_application")
+    @pulumi.getter(name="praApplications")
+    def pra_applications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PraConsoleControllerPraApplicationArgs']]]]:
+        return pulumi.get(self, "pra_applications")
 
-    @pra_application.setter
-    def pra_application(self, value: Optional[pulumi.Input['PraConsoleControllerPraApplicationArgs']]):
-        pulumi.set(self, "pra_application", value)
+    @pra_applications.setter
+    def pra_applications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PraConsoleControllerPraApplicationArgs']]]]):
+        pulumi.set(self, "pra_applications", value)
 
     @property
     @pulumi.getter(name="praPortals")
@@ -261,7 +261,7 @@ class PraConsoleController(pulumi.CustomResource):
                  icon_text: Optional[pulumi.Input[builtins.str]] = None,
                  microtenant_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 pra_application: Optional[pulumi.Input[Union['PraConsoleControllerPraApplicationArgs', 'PraConsoleControllerPraApplicationArgsDict']]] = None,
+                 pra_applications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PraConsoleControllerPraApplicationArgs', 'PraConsoleControllerPraApplicationArgsDict']]]]] = None,
                  pra_portals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PraConsoleControllerPraPortalArgs', 'PraConsoleControllerPraPortalArgsDict']]]]] = None,
                  __props__=None):
         """
@@ -294,7 +294,7 @@ class PraConsoleController(pulumi.CustomResource):
             ],
             domain_names=["rdp_pra.example.com"],
             segment_group_id=this_segment_group.id,
-            common_apps_dto={
+            common_apps_dtos=[{
                 "apps_configs": [{
                     "name": "rdp_pra",
                     "domain": "rdp_pra.example.com",
@@ -304,7 +304,7 @@ class PraConsoleController(pulumi.CustomResource):
                     "enabled": True,
                     "app_types": ["SECURE_REMOTE_ACCESS"],
                 }],
-            })
+            }])
         this_application_segment_by_type = zpa.get_application_segment_by_type(application_type="SECURE_REMOTE_ACCESS",
             name="rdp_pra")
         this_ba_certificate = zpa.get_ba_certificate(name="pra01.example.com")
@@ -319,9 +319,9 @@ class PraConsoleController(pulumi.CustomResource):
         ssh_pra = zpa.PRAConsole("sshPra",
             description="Created with Terraform",
             enabled=True,
-            pra_application={
+            pra_applications=[{
                 "id": this_application_segment_by_type.id,
-            },
+            }],
             pra_portals=[{
                 "ids": [zpa_pra_portal_controller["this"]["id"]],
             }])
@@ -392,7 +392,7 @@ class PraConsoleController(pulumi.CustomResource):
             ],
             domain_names=["rdp_pra.example.com"],
             segment_group_id=this_segment_group.id,
-            common_apps_dto={
+            common_apps_dtos=[{
                 "apps_configs": [{
                     "name": "rdp_pra",
                     "domain": "rdp_pra.example.com",
@@ -402,7 +402,7 @@ class PraConsoleController(pulumi.CustomResource):
                     "enabled": True,
                     "app_types": ["SECURE_REMOTE_ACCESS"],
                 }],
-            })
+            }])
         this_application_segment_by_type = zpa.get_application_segment_by_type(application_type="SECURE_REMOTE_ACCESS",
             name="rdp_pra")
         this_ba_certificate = zpa.get_ba_certificate(name="pra01.example.com")
@@ -417,9 +417,9 @@ class PraConsoleController(pulumi.CustomResource):
         ssh_pra = zpa.PRAConsole("sshPra",
             description="Created with Terraform",
             enabled=True,
-            pra_application={
+            pra_applications=[{
                 "id": this_application_segment_by_type.id,
-            },
+            }],
             pra_portals=[{
                 "ids": [zpa_pra_portal_controller["this"]["id"]],
             }])
@@ -465,7 +465,7 @@ class PraConsoleController(pulumi.CustomResource):
                  icon_text: Optional[pulumi.Input[builtins.str]] = None,
                  microtenant_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 pra_application: Optional[pulumi.Input[Union['PraConsoleControllerPraApplicationArgs', 'PraConsoleControllerPraApplicationArgsDict']]] = None,
+                 pra_applications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PraConsoleControllerPraApplicationArgs', 'PraConsoleControllerPraApplicationArgsDict']]]]] = None,
                  pra_portals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PraConsoleControllerPraPortalArgs', 'PraConsoleControllerPraPortalArgsDict']]]]] = None,
                  __props__=None):
         pulumi.log.warn("""PraConsoleController is deprecated: zpa.index/praconsolecontroller.PraConsoleController has been deprecated in favor of zpa.index/praconsole.PRAConsole""")
@@ -482,9 +482,9 @@ class PraConsoleController(pulumi.CustomResource):
             __props__.__dict__["icon_text"] = icon_text
             __props__.__dict__["microtenant_id"] = microtenant_id
             __props__.__dict__["name"] = name
-            if pra_application is None and not opts.urn:
-                raise TypeError("Missing required property 'pra_application'")
-            __props__.__dict__["pra_application"] = pra_application
+            if pra_applications is None and not opts.urn:
+                raise TypeError("Missing required property 'pra_applications'")
+            __props__.__dict__["pra_applications"] = pra_applications
             if pra_portals is None and not opts.urn:
                 raise TypeError("Missing required property 'pra_portals'")
             __props__.__dict__["pra_portals"] = pra_portals
@@ -503,7 +503,7 @@ class PraConsoleController(pulumi.CustomResource):
             icon_text: Optional[pulumi.Input[builtins.str]] = None,
             microtenant_id: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
-            pra_application: Optional[pulumi.Input[Union['PraConsoleControllerPraApplicationArgs', 'PraConsoleControllerPraApplicationArgsDict']]] = None,
+            pra_applications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PraConsoleControllerPraApplicationArgs', 'PraConsoleControllerPraApplicationArgsDict']]]]] = None,
             pra_portals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PraConsoleControllerPraPortalArgs', 'PraConsoleControllerPraPortalArgsDict']]]]] = None) -> 'PraConsoleController':
         """
         Get an existing PraConsoleController resource's state with the given name, id, and optional extra
@@ -528,7 +528,7 @@ class PraConsoleController(pulumi.CustomResource):
         __props__.__dict__["icon_text"] = icon_text
         __props__.__dict__["microtenant_id"] = microtenant_id
         __props__.__dict__["name"] = name
-        __props__.__dict__["pra_application"] = pra_application
+        __props__.__dict__["pra_applications"] = pra_applications
         __props__.__dict__["pra_portals"] = pra_portals
         return PraConsoleController(resource_name, opts=opts, __props__=__props__)
 
@@ -574,9 +574,9 @@ class PraConsoleController(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter(name="praApplication")
-    def pra_application(self) -> pulumi.Output['outputs.PraConsoleControllerPraApplication']:
-        return pulumi.get(self, "pra_application")
+    @pulumi.getter(name="praApplications")
+    def pra_applications(self) -> pulumi.Output[Sequence['outputs.PraConsoleControllerPraApplication']]:
+        return pulumi.get(self, "pra_applications")
 
     @property
     @pulumi.getter(name="praPortals")

@@ -25,7 +25,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ZPA Server Group Data Source
 //			_, err := zpa.LookupSegmentGroup(ctx, &zpa.LookupSegmentGroupArgs{
 //				Name: pulumi.StringRef("segment_group_name"),
 //			}, nil)

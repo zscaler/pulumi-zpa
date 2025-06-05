@@ -32,7 +32,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ZPA Browser Access Data Source
 //			_, err := zpa.GetBaCertificate(ctx, &zpa.GetBaCertificateArgs{
 //				Name: pulumi.StringRef("example.acme.com"),
 //			}, nil)
@@ -57,7 +56,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ZPA Browser Access Data Source
 //			_, err := zpa.GetBaCertificate(ctx, &zpa.GetBaCertificateArgs{
 //				Id: pulumi.StringRef("1234567890"),
 //			}, nil)

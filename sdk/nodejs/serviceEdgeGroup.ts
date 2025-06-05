@@ -21,8 +21,7 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Service Edge Group resource - Trusted Network
- * const serviceEdgeGroupSjc = new zpa.ServiceEdgeGroup("service_edge_group_sjc", {
- *     name: "Service Edge Group San Jose",
+ * const serviceEdgeGroupSjc = new zpa.ServiceEdgeGroup("serviceEdgeGroupSjc", {
  *     description: "Service Edge Group in San Jose",
  *     enabled: true,
  *     isPublic: true,
@@ -33,7 +32,7 @@ import * as utilities from "./utilities";
  *     location: "San Jose, CA, USA",
  *     versionProfileName: "New Release",
  *     trustedNetworks: [{
- *         ids: [example.id],
+ *         ids: [data.zpa_trusted_network.example.id],
  *     }],
  * });
  * ```
@@ -43,8 +42,7 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Service Edge Group resource - No Trusted Network
- * const serviceEdgeGroupNyc = new zpa.ServiceEdgeGroup("service_edge_group_nyc", {
- *     name: "Service Edge Group New York",
+ * const serviceEdgeGroupNyc = new zpa.ServiceEdgeGroup("serviceEdgeGroupNyc", {
  *     description: "Service Edge Group in New York",
  *     enabled: true,
  *     isPublic: true,
@@ -53,7 +51,7 @@ import * as utilities from "./utilities";
  *     latitude: "40.7128",
  *     longitude: "-73.935242",
  *     location: "New York, NY, USA",
- *     versionProfileId: _this.id,
+ *     versionProfileId: data.zpa_customer_version_profile["this"].id,
  * });
  * ```
  *
@@ -68,8 +66,7 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Service Edge Group resource - Trusted Network
- * const serviceEdgeGroupSjc = new zpa.ServiceEdgeGroup("service_edge_group_sjc", {
- *     name: "Service Edge Group San Jose",
+ * const serviceEdgeGroupSjc = new zpa.ServiceEdgeGroup("serviceEdgeGroupSjc", {
  *     description: "Service Edge Group in San Jose",
  *     enabled: true,
  *     isPublic: true,
@@ -80,7 +77,7 @@ import * as utilities from "./utilities";
  *     location: "San Jose, CA, USA",
  *     versionProfileName: "New Release",
  *     trustedNetworks: [{
- *         ids: [example.id],
+ *         ids: [data.zpa_trusted_network.example.id],
  *     }],
  * });
  * ```
@@ -90,16 +87,15 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Service Edge Group resource - No Trusted Network
- * const serviceEdgeGroupNyc = new zpa.ServiceEdgeGroup("service_edge_group_nyc", {
- *     name: "Service Edge Group New York",
+ * const serviceEdgeGroupNyc = new zpa.ServiceEdgeGroup("serviceEdgeGroupNyc", {
  *     description: "Service Edge Group in New York",
  *     enabled: true,
  *     isPublic: true,
+ *     latitude: "40.7128",
+ *     location: "New York, NY, USA",
+ *     longitude: "-73.935242",
  *     upgradeDay: "SUNDAY",
  *     upgradeTimeInSecs: "66600",
- *     latitude: "40.7128",
- *     longitude: "-73.935242",
- *     location: "New York, NY, USA",
  *     versionProfileName: "New Release",
  * });
  * ```

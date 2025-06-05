@@ -30,7 +30,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // Get information for "ACCESS_POLICY" ID
  * const accessPolicy = zpa.getPolicyType({
  *     policyType: "ACCESS_POLICY",
  * });
@@ -41,7 +40,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // Get information for "GLOBAL_POLICY" ID
  * const globalPolicy = zpa.getPolicyType({
  *     policyType: "GLOBAL_POLICY",
  * });
@@ -52,7 +50,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // Get information for "TIMEOUT_POLICY" ID
  * const timeoutPolicy = zpa.getPolicyType({
  *     policyType: "TIMEOUT_POLICY",
  * });
@@ -63,7 +60,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // Get information for "REAUTH_POLICY" ID
  * const reauthPolicy = zpa.getPolicyType({
  *     policyType: "REAUTH_POLICY",
  * });
@@ -74,7 +70,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // Get information for "CLIENT_FORWARDING_POLICY" ID
  * const clientForwardingPolicy = zpa.getPolicyType({
  *     policyType: "CLIENT_FORWARDING_POLICY",
  * });
@@ -85,7 +80,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // Get information for "INSPECTION_POLICY" ID
  * const inspectionPolicy = zpa.getPolicyType({
  *     policyType: "INSPECTION_POLICY",
  * });
@@ -154,7 +148,6 @@ export interface GetPolicyTypeResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // Get information for "ACCESS_POLICY" ID
  * const accessPolicy = zpa.getPolicyType({
  *     policyType: "ACCESS_POLICY",
  * });
@@ -165,7 +158,6 @@ export interface GetPolicyTypeResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // Get information for "GLOBAL_POLICY" ID
  * const globalPolicy = zpa.getPolicyType({
  *     policyType: "GLOBAL_POLICY",
  * });
@@ -176,7 +168,6 @@ export interface GetPolicyTypeResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // Get information for "TIMEOUT_POLICY" ID
  * const timeoutPolicy = zpa.getPolicyType({
  *     policyType: "TIMEOUT_POLICY",
  * });
@@ -187,7 +178,6 @@ export interface GetPolicyTypeResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // Get information for "REAUTH_POLICY" ID
  * const reauthPolicy = zpa.getPolicyType({
  *     policyType: "REAUTH_POLICY",
  * });
@@ -198,7 +188,6 @@ export interface GetPolicyTypeResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // Get information for "CLIENT_FORWARDING_POLICY" ID
  * const clientForwardingPolicy = zpa.getPolicyType({
  *     policyType: "CLIENT_FORWARDING_POLICY",
  * });
@@ -209,7 +198,6 @@ export interface GetPolicyTypeResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // Get information for "INSPECTION_POLICY" ID
  * const inspectionPolicy = zpa.getPolicyType({
  *     policyType: "INSPECTION_POLICY",
  * });

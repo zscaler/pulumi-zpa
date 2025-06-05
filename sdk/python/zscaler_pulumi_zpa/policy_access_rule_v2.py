@@ -319,29 +319,21 @@ class PolicyAccessRuleV2(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        # Retrieve Policy Types
-        # Retrieve Identity Provider ID
-        this = zpa.get_id_p_controller(name="Idp_Name")
-        # Retrieve SAML Attribute ID
+        this_id_p_controller = zpa.get_id_p_controller(name="Idp_Name")
         email_user_sso = zpa.get_saml_attribute(name="Email_Users",
             idp_name="Idp_Name")
-        # Retrieve SAML Attribute ID
         group_user = zpa.get_saml_attribute(name="GroupName_Users",
             idp_name="Idp_Name")
-        # Retrieve SCIM Group ID
         a000 = zpa.get_scim_groups(name="A000",
             idp_name="Idp_Name")
-        # Retrieve SCIM Group ID
         b000 = zpa.get_scim_groups(name="B000",
             idp_name="Idp_Name")
         # Create Segment Group
-        this_segment_group = zpa.SegmentGroup("this",
-            name="Example",
+        this_segment_group = zpa.SegmentGroup("thisSegmentGroup",
             description="Example",
             enabled=True)
         # Create Policy Access Rule V2
-        this_policy_access_rule_v2 = zpa.PolicyAccessRuleV2("this",
-            name="Example",
+        this_policy_access_rule_v2 = zpa.PolicyAccessRuleV2("thisPolicyAccessRuleV2",
             description="Example",
             action="ALLOW",
             conditions=[
@@ -373,11 +365,11 @@ class PolicyAccessRuleV2(pulumi.CustomResource):
                             "entry_values": [
                                 {
                                     "rhs": a000.id,
-                                    "lhs": this.id,
+                                    "lhs": this_id_p_controller.id,
                                 },
                                 {
                                     "rhs": b000.id,
-                                    "lhs": this.id,
+                                    "lhs": this_id_p_controller.id,
                                 },
                             ],
                         },
@@ -529,29 +521,21 @@ class PolicyAccessRuleV2(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        # Retrieve Policy Types
-        # Retrieve Identity Provider ID
-        this = zpa.get_id_p_controller(name="Idp_Name")
-        # Retrieve SAML Attribute ID
+        this_id_p_controller = zpa.get_id_p_controller(name="Idp_Name")
         email_user_sso = zpa.get_saml_attribute(name="Email_Users",
             idp_name="Idp_Name")
-        # Retrieve SAML Attribute ID
         group_user = zpa.get_saml_attribute(name="GroupName_Users",
             idp_name="Idp_Name")
-        # Retrieve SCIM Group ID
         a000 = zpa.get_scim_groups(name="A000",
             idp_name="Idp_Name")
-        # Retrieve SCIM Group ID
         b000 = zpa.get_scim_groups(name="B000",
             idp_name="Idp_Name")
         # Create Segment Group
-        this_segment_group = zpa.SegmentGroup("this",
-            name="Example",
+        this_segment_group = zpa.SegmentGroup("thisSegmentGroup",
             description="Example",
             enabled=True)
         # Create Policy Access Rule V2
-        this_policy_access_rule_v2 = zpa.PolicyAccessRuleV2("this",
-            name="Example",
+        this_policy_access_rule_v2 = zpa.PolicyAccessRuleV2("thisPolicyAccessRuleV2",
             description="Example",
             action="ALLOW",
             conditions=[
@@ -583,11 +567,11 @@ class PolicyAccessRuleV2(pulumi.CustomResource):
                             "entry_values": [
                                 {
                                     "rhs": a000.id,
-                                    "lhs": this.id,
+                                    "lhs": this_id_p_controller.id,
                                 },
                                 {
                                     "rhs": b000.id,
-                                    "lhs": this.id,
+                                    "lhs": this_id_p_controller.id,
                                 },
                             ],
                         },

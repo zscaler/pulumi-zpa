@@ -34,8 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Service Edge Group resource - Trusted Network
-//			_, err := zpa.NewServiceEdgeGroup(ctx, "service_edge_group_sjc", &zpa.ServiceEdgeGroupArgs{
-//				Name:               pulumi.String("Service Edge Group San Jose"),
+//			_, err := zpa.NewServiceEdgeGroup(ctx, "serviceEdgeGroupSjc", &zpa.ServiceEdgeGroupArgs{
 //				Description:        pulumi.String("Service Edge Group in San Jose"),
 //				Enabled:            pulumi.Bool(true),
 //				IsPublic:           pulumi.Bool(true),
@@ -48,7 +47,7 @@ import (
 //				TrustedNetworks: zpa.ServiceEdgeGroupTrustedNetworkArray{
 //					&zpa.ServiceEdgeGroupTrustedNetworkArgs{
 //						Ids: pulumi.StringArray{
-//							example.Id,
+//							data.Zpa_trusted_network.Example.Id,
 //						},
 //					},
 //				},
@@ -75,8 +74,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Service Edge Group resource - No Trusted Network
-//			_, err := zpa.NewServiceEdgeGroup(ctx, "service_edge_group_nyc", &zpa.ServiceEdgeGroupArgs{
-//				Name:              pulumi.String("Service Edge Group New York"),
+//			_, err := zpa.NewServiceEdgeGroup(ctx, "serviceEdgeGroupNyc", &zpa.ServiceEdgeGroupArgs{
 //				Description:       pulumi.String("Service Edge Group in New York"),
 //				Enabled:           pulumi.Bool(true),
 //				IsPublic:          pulumi.Bool(true),
@@ -85,7 +83,7 @@ import (
 //				Latitude:          pulumi.String("40.7128"),
 //				Longitude:         pulumi.String("-73.935242"),
 //				Location:          pulumi.String("New York, NY, USA"),
-//				VersionProfileId:  pulumi.Any(this.Id),
+//				VersionProfileId:  pulumi.Any(data.Zpa_customer_version_profile.This.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -115,8 +113,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Service Edge Group resource - Trusted Network
-//			_, err := zpa.NewServiceEdgeGroup(ctx, "service_edge_group_sjc", &zpa.ServiceEdgeGroupArgs{
-//				Name:               pulumi.String("Service Edge Group San Jose"),
+//			_, err := zpa.NewServiceEdgeGroup(ctx, "serviceEdgeGroupSjc", &zpa.ServiceEdgeGroupArgs{
 //				Description:        pulumi.String("Service Edge Group in San Jose"),
 //				Enabled:            pulumi.Bool(true),
 //				IsPublic:           pulumi.Bool(true),
@@ -129,7 +126,7 @@ import (
 //				TrustedNetworks: zpa.ServiceEdgeGroupTrustedNetworkArray{
 //					&zpa.ServiceEdgeGroupTrustedNetworkArgs{
 //						Ids: pulumi.StringArray{
-//							example.Id,
+//							data.Zpa_trusted_network.Example.Id,
 //						},
 //					},
 //				},
@@ -156,16 +153,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Service Edge Group resource - No Trusted Network
-//			_, err := zpa.NewServiceEdgeGroup(ctx, "service_edge_group_nyc", &zpa.ServiceEdgeGroupArgs{
-//				Name:               pulumi.String("Service Edge Group New York"),
+//			_, err := zpa.NewServiceEdgeGroup(ctx, "serviceEdgeGroupNyc", &zpa.ServiceEdgeGroupArgs{
 //				Description:        pulumi.String("Service Edge Group in New York"),
 //				Enabled:            pulumi.Bool(true),
 //				IsPublic:           pulumi.Bool(true),
+//				Latitude:           pulumi.String("40.7128"),
+//				Location:           pulumi.String("New York, NY, USA"),
+//				Longitude:          pulumi.String("-73.935242"),
 //				UpgradeDay:         pulumi.String("SUNDAY"),
 //				UpgradeTimeInSecs:  pulumi.String("66600"),
-//				Latitude:           pulumi.String("40.7128"),
-//				Longitude:          pulumi.String("-73.935242"),
-//				Location:           pulumi.String("New York, NY, USA"),
 //				VersionProfileName: pulumi.String("New Release"),
 //			})
 //			if err != nil {

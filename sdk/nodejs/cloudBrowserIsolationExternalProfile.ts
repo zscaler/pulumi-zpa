@@ -17,28 +17,23 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // Retrieve CBI Banner ID
- * const _this = zpa.getCloudBrowserIsolationBanner({
+ * const thisCloudBrowserIsolationBanner = zpa.getCloudBrowserIsolationBanner({
  *     name: "Default",
  * });
- * // Retrieve Primary CBI Region ID
  * const singapore = zpa.getCloudBrowserIsolationRegion({
  *     name: "Singapore",
  * });
- * // Retrieve Secondary CBI Region ID
  * const frankfurt = zpa.getCloudBrowserIsolationRegion({
  *     name: "Frankfurt",
  * });
- * // Retrieve CBI Certificate ID
- * const thisGetCloudBrowserIsolationCertificate = zpa.getCloudBrowserIsolationCertificate({
+ * const thisCloudBrowserIsolationCertificate = zpa.getCloudBrowserIsolationCertificate({
  *     name: "Zscaler Root Certificate",
  * });
- * const thisCloudBrowserIsolationExternalProfile = new zpa.CloudBrowserIsolationExternalProfile("this", {
- *     name: "CBI_Profile_Example",
+ * const thisCloudBrowserIsolationExternalProfile = new zpa.CloudBrowserIsolationExternalProfile("thisCloudBrowserIsolationExternalProfile", {
  *     description: "CBI_Profile_Example",
- *     bannerId: _this.then(_this => _this.id),
+ *     bannerId: thisCloudBrowserIsolationBanner.then(thisCloudBrowserIsolationBanner => thisCloudBrowserIsolationBanner.id),
  *     regionIds: [singapore.then(singapore => singapore.id)],
- *     certificateIds: [thisGetCloudBrowserIsolationCertificate.then(thisGetCloudBrowserIsolationCertificate => thisGetCloudBrowserIsolationCertificate.id)],
+ *     certificateIds: [thisCloudBrowserIsolationCertificate.then(thisCloudBrowserIsolationCertificate => thisCloudBrowserIsolationCertificate.id)],
  *     userExperience: {
  *         forwardToZia: {
  *             enabled: true,

@@ -27,7 +27,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Retrieve CBI Region ID and Name
         ///     var @this = Zpa.GetCloudBrowserIsolationRegion.Invoke(new()
         ///     {
         ///         Name = "Singapore",
@@ -54,7 +53,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Retrieve CBI Region ID and Name
         ///     var @this = Zpa.GetCloudBrowserIsolationRegion.Invoke(new()
         ///     {
         ///         Name = "Singapore",
@@ -81,7 +79,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Retrieve CBI Region ID and Name
         ///     var @this = Zpa.GetCloudBrowserIsolationRegion.Invoke(new()
         ///     {
         ///         Name = "Singapore",

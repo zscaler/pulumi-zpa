@@ -267,7 +267,6 @@ def get_application_segment_browser_access(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Application Segment Browser Access Data Source
     example = zpa.get_application_segment_browser_access(name="example")
     ```
 
@@ -275,7 +274,6 @@ def get_application_segment_browser_access(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Application Segment Browser Access Data Source
     example = zpa.get_application_segment_browser_access(id="123456789")
     ```
 
@@ -331,7 +329,6 @@ def get_application_segment_browser_access_output(id: Optional[pulumi.Input[Opti
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Application Segment Browser Access Data Source
     example = zpa.get_application_segment_browser_access(name="example")
     ```
 
@@ -339,7 +336,6 @@ def get_application_segment_browser_access_output(id: Optional[pulumi.Input[Opti
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Application Segment Browser Access Data Source
     example = zpa.get_application_segment_browser_access(id="123456789")
     ```
 

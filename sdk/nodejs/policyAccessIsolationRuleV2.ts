@@ -22,40 +22,33 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // Get Isolation Profile ID
- * const _this = zpa.getIsolationProfile({
+ * const thisIsolationProfile = zpa.getIsolationProfile({
  *     name: "zpa_isolation_profile",
  * });
- * // Retrieve Identity Provider ID
- * const thisGetIdPController = zpa.getIdPController({
+ * const thisIdPController = zpa.getIdPController({
  *     name: "Idp_Name",
  * });
- * // Retrieve SAML Attribute ID
  * const emailUserSso = zpa.getSAMLAttribute({
  *     name: "Email_Users",
  *     idpName: "Idp_Name",
  * });
- * // Retrieve SAML Attribute ID
  * const groupUser = zpa.getSAMLAttribute({
  *     name: "GroupName_Users",
  *     idpName: "Idp_Name",
  * });
- * // Retrieve SCIM Group ID
  * const a000 = zpa.getSCIMGroups({
  *     name: "A000",
  *     idpName: "Idp_Name",
  * });
- * // Retrieve SCIM Group ID
  * const b000 = zpa.getSCIMGroups({
  *     name: "B000",
  *     idpName: "Idp_Name",
  * });
  * // Create Policy Access Isolation Rule V2
- * const thisPolicyAccessIsolationRuleV2 = new zpa.PolicyAccessIsolationRuleV2("this", {
- *     name: "Example",
+ * const thisPolicyAccessIsolationRuleV2 = new zpa.PolicyAccessIsolationRuleV2("thisPolicyAccessIsolationRuleV2", {
  *     description: "Example",
  *     action: "ISOLATE",
- *     zpnIsolationProfileId: _this.then(_this => _this.id),
+ *     zpnIsolationProfileId: thisIsolationProfile.then(thisIsolationProfile => thisIsolationProfile.id),
  *     conditions: [
  *         {
  *             operator: "OR",
@@ -85,11 +78,11 @@ import * as utilities from "./utilities";
  *                     entryValues: [
  *                         {
  *                             rhs: a000.then(a000 => a000.id),
- *                             lhs: thisGetIdPController.then(thisGetIdPController => thisGetIdPController.id),
+ *                             lhs: thisIdPController.then(thisIdPController => thisIdPController.id),
  *                         },
  *                         {
  *                             rhs: b000.then(b000 => b000.id),
- *                             lhs: thisGetIdPController.then(thisGetIdPController => thisGetIdPController.id),
+ *                             lhs: thisIdPController.then(thisIdPController => thisIdPController.id),
  *                         },
  *                     ],
  *                 },

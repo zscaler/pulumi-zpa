@@ -17,7 +17,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // Retrieve CBI Certificate ID and Name
  * const _this = zpa.getCloudBrowserIsolationCertificate({
  *     name: "Zscaler Root Certificate",
  * });
@@ -62,7 +61,6 @@ export interface GetCloudBrowserIsolationCertificateResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // Retrieve CBI Certificate ID and Name
  * const _this = zpa.getCloudBrowserIsolationCertificate({
  *     name: "Zscaler Root Certificate",
  * });

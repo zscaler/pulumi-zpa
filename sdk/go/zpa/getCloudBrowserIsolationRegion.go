@@ -29,7 +29,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Retrieve CBI Region ID and Name
 //			_, err := zpa.GetCloudBrowserIsolationRegion(ctx, &zpa.GetCloudBrowserIsolationRegionArgs{
 //				Name: pulumi.StringRef("Singapore"),
 //			}, nil)

@@ -30,7 +30,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA PRA Portal Data Source
         ///     var @this = Zpa.GetPRAPortal.Invoke(new()
         ///     {
         ///         Name = "Example",
@@ -60,7 +59,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA PRA Portal Data Source
         ///     var @this = Zpa.GetPRAPortal.Invoke(new()
         ///     {
         ///         Name = "Example",
@@ -90,7 +88,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA PRA Portal Data Source
         ///     var @this = Zpa.GetPRAPortal.Invoke(new()
         ///     {
         ///         Name = "Example",

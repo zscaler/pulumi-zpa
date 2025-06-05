@@ -1,6 +1,6 @@
 {
     "name": "@bdzscaler/pulumi-zpa",
-    "version": "1.0.0-alpha.0+dev",
+    "version": "${VERSION}",
     "description": "A Pulumi package for creating and managing Zscaler Private Access (ZPA) cloud resources.",
     "keywords": [
         "pulumi",
@@ -25,7 +25,6 @@
     "pulumi": {
         "resource": true,
         "name": "zpa",
-        "version": "1.0.0-alpha.0+dev",
         "server": "github://api.github.com/zscaler"
     }
 }

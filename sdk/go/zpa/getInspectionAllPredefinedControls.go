@@ -31,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := zpa.GetInspectionAllPredefinedControls(ctx, &zpa.GetInspectionAllPredefinedControlsArgs{
-//				Version:   pulumi.StringRef("OWASP_CRS/3.3.0"),
 //				GroupName: pulumi.StringRef("Preprocessors"),
+//				Version:   pulumi.StringRef("OWASP_CRS/3.3.0"),
 //			}, nil)
 //			if err != nil {
 //				return err

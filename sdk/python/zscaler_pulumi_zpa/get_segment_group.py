@@ -150,7 +150,6 @@ def get_segment_group(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Server Group Data Source
     example = zpa.get_segment_group(name="segment_group_name")
     ```
     """
@@ -186,7 +185,6 @@ def get_segment_group_output(id: Optional[pulumi.Input[Optional[builtins.str]]] 
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Server Group Data Source
     example = zpa.get_segment_group(name="segment_group_name")
     ```
     """

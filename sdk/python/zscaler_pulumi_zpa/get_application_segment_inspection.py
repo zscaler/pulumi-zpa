@@ -281,7 +281,6 @@ def get_application_segment_inspection(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Inspection Application Segment Data Source
     this = zpa.get_application_segment_inspection(name="ZPA_Inspection_Example")
     ```
 
@@ -289,7 +288,6 @@ def get_application_segment_inspection(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Inspection Application Segment Data Source
     this = zpa.get_application_segment_inspection(id="123456789")
     ```
     """
@@ -343,7 +341,6 @@ def get_application_segment_inspection_output(id: Optional[pulumi.Input[Optional
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Inspection Application Segment Data Source
     this = zpa.get_application_segment_inspection(name="ZPA_Inspection_Example")
     ```
 
@@ -351,7 +348,6 @@ def get_application_segment_inspection_output(id: Optional[pulumi.Input[Optional
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Inspection Application Segment Data Source
     this = zpa.get_application_segment_inspection(id="123456789")
     ```
     """

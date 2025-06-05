@@ -269,20 +269,15 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        # Retrieve CBI Banner ID
-        this = zpa.get_cloud_browser_isolation_banner(name="Default")
-        # Retrieve Primary CBI Region ID
+        this_cloud_browser_isolation_banner = zpa.get_cloud_browser_isolation_banner(name="Default")
         singapore = zpa.get_cloud_browser_isolation_region(name="Singapore")
-        # Retrieve Secondary CBI Region ID
         frankfurt = zpa.get_cloud_browser_isolation_region(name="Frankfurt")
-        # Retrieve CBI Certificate ID
-        this_get_cloud_browser_isolation_certificate = zpa.get_cloud_browser_isolation_certificate(name="Zscaler Root Certificate")
-        this_cloud_browser_isolation_external_profile = zpa.CloudBrowserIsolationExternalProfile("this",
-            name="CBI_Profile_Example",
+        this_cloud_browser_isolation_certificate = zpa.get_cloud_browser_isolation_certificate(name="Zscaler Root Certificate")
+        this_cloud_browser_isolation_external_profile = zpa.CloudBrowserIsolationExternalProfile("thisCloudBrowserIsolationExternalProfile",
             description="CBI_Profile_Example",
-            banner_id=this.id,
+            banner_id=this_cloud_browser_isolation_banner.id,
             region_ids=[singapore.id],
-            certificate_ids=[this_get_cloud_browser_isolation_certificate.id],
+            certificate_ids=[this_cloud_browser_isolation_certificate.id],
             user_experience={
                 "forward_to_zia": {
                     "enabled": True,
@@ -347,20 +342,15 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        # Retrieve CBI Banner ID
-        this = zpa.get_cloud_browser_isolation_banner(name="Default")
-        # Retrieve Primary CBI Region ID
+        this_cloud_browser_isolation_banner = zpa.get_cloud_browser_isolation_banner(name="Default")
         singapore = zpa.get_cloud_browser_isolation_region(name="Singapore")
-        # Retrieve Secondary CBI Region ID
         frankfurt = zpa.get_cloud_browser_isolation_region(name="Frankfurt")
-        # Retrieve CBI Certificate ID
-        this_get_cloud_browser_isolation_certificate = zpa.get_cloud_browser_isolation_certificate(name="Zscaler Root Certificate")
-        this_cloud_browser_isolation_external_profile = zpa.CloudBrowserIsolationExternalProfile("this",
-            name="CBI_Profile_Example",
+        this_cloud_browser_isolation_certificate = zpa.get_cloud_browser_isolation_certificate(name="Zscaler Root Certificate")
+        this_cloud_browser_isolation_external_profile = zpa.CloudBrowserIsolationExternalProfile("thisCloudBrowserIsolationExternalProfile",
             description="CBI_Profile_Example",
-            banner_id=this.id,
+            banner_id=this_cloud_browser_isolation_banner.id,
             region_ids=[singapore.id],
-            certificate_ids=[this_get_cloud_browser_isolation_certificate.id],
+            certificate_ids=[this_cloud_browser_isolation_certificate.id],
             user_experience={
                 "forward_to_zia": {
                     "enabled": True,

@@ -32,19 +32,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Retrieves Browser Access Certificate
-//			this, err := zpa.GetBaCertificate(ctx, &zpa.GetBaCertificateArgs{
+//			thisBaCertificate, err := zpa.GetBaCertificate(ctx, &zpa.GetBaCertificateArgs{
 //				Name: pulumi.StringRef("portal.acme.com"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = zpa.NewPRAPortal(ctx, "this", &zpa.PRAPortalArgs{
-//				Name:                    pulumi.String("portal.acme.com"),
+//			_, err = zpa.NewPRAPortal(ctx, "thisPRAPortal", &zpa.PRAPortalArgs{
 //				Description:             pulumi.String("portal.acme.com"),
 //				Enabled:                 pulumi.Bool(true),
 //				Domain:                  pulumi.String("portal.acme.com"),
-//				CertificateId:           pulumi.String(this.Id),
+//				CertificateId:           pulumi.String(thisBaCertificate.Id),
 //				UserNotification:        pulumi.String("Created with Terraform"),
 //				UserNotificationEnabled: pulumi.Bool(true),
 //			})
@@ -72,16 +70,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := zpa.NewPRAPortal(ctx, "this", &zpa.PRAPortalArgs{
-//				Name:                    pulumi.String("server1.acme.com"),
 //				Description:             pulumi.String("server1.acme.com"),
-//				Enabled:                 pulumi.Bool(true),
 //				Domain:                  pulumi.String("server1-acme.com.pra.d.zscalerportal.net"),
-//				UserNotification:        pulumi.String("Created with Terraform"),
-//				UserNotificationEnabled: pulumi.Bool(true),
-//				ExtLabel:                pulumi.String("server1"),
+//				Enabled:                 pulumi.Bool(true),
 //				ExtDomain:               pulumi.String("acme.com"),
 //				ExtDomainName:           pulumi.String("acme.com.pra.d.zscalerportal.net"),
 //				ExtDomainTranslation:    pulumi.String("acme.com"),
+//				ExtLabel:                pulumi.String("server1"),
+//				UserNotification:        pulumi.String("Created with Terraform"),
+//				UserNotificationEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -106,16 +103,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := zpa.NewPRAPortal(ctx, "this", &zpa.PRAPortalArgs{
-//				Name:                    pulumi.String("Server1 PRA01"),
 //				Description:             pulumi.String("Server1 PRA01 Description"),
-//				Enabled:                 pulumi.Bool(true),
 //				Domain:                  pulumi.String("server1-acme.com.pra.d.zscalerportal.net"),
-//				UserNotification:        pulumi.String("Created with Terraform"),
-//				UserNotificationEnabled: pulumi.Bool(true),
-//				ExtLabel:                pulumi.String("server1"),
+//				Enabled:                 pulumi.Bool(true),
 //				ExtDomain:               pulumi.String("acme.com"),
 //				ExtDomainName:           pulumi.String("acme.com.pra.d.zscalerportal.net"),
 //				ExtDomainTranslation:    pulumi.String("acme.com"),
+//				ExtLabel:                pulumi.String("server1"),
+//				UserNotification:        pulumi.String("Created with Terraform"),
+//				UserNotificationEnabled: pulumi.Bool(true),
 //				UserPortalGid:           pulumi.String("145262059234265326"),
 //			})
 //			if err != nil {

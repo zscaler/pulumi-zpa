@@ -11,6 +11,17 @@ import * as utilities from "./utilities";
  * Use the **zpa_app_connector_assistant_schedule** data source to get information about Auto Delete frequency of the App Connector for the specified customer in the Zscaler Private Access cloud.
  *
  * > **NOTE** - The `customerId` attribute is optional and not required during the configuration.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const _this = zpa.getAppConnectorAssistantSchedule({
+ *     customerId: "1234567891012",
+ * });
+ * ```
  */
 export function getAppConnectorAssistantSchedule(args?: GetAppConnectorAssistantScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetAppConnectorAssistantScheduleResult> {
     args = args || {};
@@ -47,6 +58,17 @@ export interface GetAppConnectorAssistantScheduleResult {
  * Use the **zpa_app_connector_assistant_schedule** data source to get information about Auto Delete frequency of the App Connector for the specified customer in the Zscaler Private Access cloud.
  *
  * > **NOTE** - The `customerId` attribute is optional and not required during the configuration.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const _this = zpa.getAppConnectorAssistantSchedule({
+ *     customerId: "1234567891012",
+ * });
+ * ```
  */
 export function getAppConnectorAssistantScheduleOutput(args?: GetAppConnectorAssistantScheduleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppConnectorAssistantScheduleResult> {
     args = args || {};

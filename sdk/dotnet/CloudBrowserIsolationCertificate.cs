@@ -14,6 +14,33 @@ namespace Zscaler.Zpa
     /// * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
     /// 
     /// The **zpa_cloud_browser_isolation_certificate** resource creates a Cloud Browser Isolation certificate. This resource can then be used when creating a CBI External Profile `zpa.CloudBrowserIsolationExternalProfile`.`
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Zscaler.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Retrieve CBI Banner ID
+    ///     var thisCloudBrowserIsolationCertificate = new Zpa.CloudBrowserIsolationCertificate("thisCloudBrowserIsolationCertificate", new()
+    ///     {
+    ///         Pem = File.ReadAllText("cert.pem"),
+    ///     });
+    /// 
+    ///     var thisIndex_cloudBrowserIsolationCertificateCloudBrowserIsolationCertificate = new Zpa.CloudBrowserIsolationCertificate("thisIndex/cloudBrowserIsolationCertificateCloudBrowserIsolationCertificate", new()
+    ///     {
+    ///         Pem = @"    -----BEGIN CERTIFICATE-----
+    ///     MIIFYDCCBEigAwIBAgIQQAF3ITfU6UK47naqPGQKtzANBgkqhkiG9w0BAQsFADA/
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [ZpaResourceType("zpa:index/cloudBrowserIsolationCertificate:CloudBrowserIsolationCertificate")]
     public partial class CloudBrowserIsolationCertificate : global::Pulumi.CustomResource

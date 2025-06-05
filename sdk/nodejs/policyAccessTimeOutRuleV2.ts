@@ -22,39 +22,32 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // Retrieve Identity Provider ID
- * const _this = zpa.getIdPController({
+ * const thisIdPController = zpa.getIdPController({
  *     name: "Idp_Name",
  * });
- * // Retrieve SAML Attribute ID
  * const emailUserSso = zpa.getSAMLAttribute({
  *     name: "Email_Users",
  *     idpName: "Idp_Name",
  * });
- * // Retrieve SAML Attribute ID
  * const groupUser = zpa.getSAMLAttribute({
  *     name: "GroupName_Users",
  *     idpName: "Idp_Name",
  * });
- * // Retrieve SCIM Group ID
  * const a000 = zpa.getSCIMGroups({
  *     name: "A000",
  *     idpName: "Idp_Name",
  * });
- * // Retrieve SCIM Group ID
  * const b000 = zpa.getSCIMGroups({
  *     name: "B000",
  *     idpName: "Idp_Name",
  * });
  * // Create Segment Group
- * const thisSegmentGroup = new zpa.SegmentGroup("this", {
- *     name: "Example",
+ * const thisSegmentGroup = new zpa.SegmentGroup("thisSegmentGroup", {
  *     description: "Example",
  *     enabled: true,
  * });
  * // Create Policy Access Rule V2
- * const thisPolicyAccessTimeOutRuleV2 = new zpa.PolicyAccessTimeOutRuleV2("this", {
- *     name: "Example",
+ * const thisPolicyAccessTimeOutRuleV2 = new zpa.PolicyAccessTimeOutRuleV2("thisPolicyAccessTimeOutRuleV2", {
  *     description: "Example",
  *     action: "RE_AUTH",
  *     reauthIdleTimeout: "10 Days",
@@ -88,11 +81,11 @@ import * as utilities from "./utilities";
  *                     entryValues: [
  *                         {
  *                             rhs: a000.then(a000 => a000.id),
- *                             lhs: _this.then(_this => _this.id),
+ *                             lhs: thisIdPController.then(thisIdPController => thisIdPController.id),
  *                         },
  *                         {
  *                             rhs: b000.then(b000 => b000.id),
- *                             lhs: _this.then(_this => _this.id),
+ *                             lhs: thisIdPController.then(thisIdPController => thisIdPController.id),
  *                         },
  *                     ],
  *                 },

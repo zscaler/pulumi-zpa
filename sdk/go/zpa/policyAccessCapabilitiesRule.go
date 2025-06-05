@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := zpa.GetIdPController(ctx, &zpa.GetIdPControllerArgs{
+//			thisIdPController, err := zpa.GetIdPController(ctx, &zpa.GetIdPControllerArgs{
 //				Name: pulumi.StringRef("IdP_Users"),
 //			}, nil)
 //			if err != nil {
@@ -66,8 +66,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = zpa.NewPolicyAccessCapabilitiesRule(ctx, "this", &zpa.PolicyAccessCapabilitiesRuleArgs{
-//				Name:        pulumi.String("Example"),
+//			_, err = zpa.NewPolicyAccessCapabilitiesRule(ctx, "thisPolicyAccessCapabilitiesRule", &zpa.PolicyAccessCapabilitiesRuleArgs{
 //				Description: pulumi.String("Example"),
 //				Action:      pulumi.String("CHECK_CAPABILITIES"),
 //				PrivilegedCapabilities: &zpa.PolicyAccessCapabilitiesRulePrivilegedCapabilitiesArgs{
@@ -100,11 +99,11 @@ import (
 //								EntryValues: zpa.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArray{
 //									&zpa.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs{
 //										Rhs: pulumi.String(a000.Id),
-//										Lhs: pulumi.String(this.Id),
+//										Lhs: pulumi.String(thisIdPController.Id),
 //									},
 //									&zpa.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs{
 //										Rhs: pulumi.String(b000.Id),
-//										Lhs: pulumi.String(this.Id),
+//										Lhs: pulumi.String(thisIdPController.Id),
 //									},
 //								},
 //							},

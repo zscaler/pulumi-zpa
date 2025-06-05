@@ -27,7 +27,6 @@ namespace Zscaler.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Get Log Type Format - "App Connector Metrics"
     ///     var zpnAstComprehensiveStats = Zpa.GetLSSLogTypeFormats.Invoke(new()
     ///     {
     ///         LogType = "zpn_ast_comprehensive_stats",
@@ -43,7 +42,7 @@ namespace Zscaler.Zpa
     ///         Name = "Example100",
     ///     });
     /// 
-    ///     var lssAppConnectorMetrics = new Zpa.LSSConfigController("lss_app_connector_metrics", new()
+    ///     var lssAppConnectorMetrics = new Zpa.LSSConfigController("lssAppConnectorMetrics", new()
     ///     {
     ///         Config = new Zpa.Inputs.LSSConfigControllerConfigArgs
     ///         {

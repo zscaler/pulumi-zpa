@@ -36,21 +36,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Retrieve "Default" customer version profile
 //			_, err := zpa.GetCustomerVersionProfile(ctx, &zpa.GetCustomerVersionProfileArgs{
 //				Name: "Default",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			// Retrieve "Previous Default" customer version profile
 //			_, err = zpa.GetCustomerVersionProfile(ctx, &zpa.GetCustomerVersionProfileArgs{
 //				Name: "Previous Default",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			// Retrieve "New Release" customer version profile
 //			_, err = zpa.GetCustomerVersionProfile(ctx, &zpa.GetCustomerVersionProfileArgs{
 //				Name: "New Release",
 //			}, nil)

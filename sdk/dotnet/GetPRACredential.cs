@@ -19,6 +19,22 @@ namespace Zscaler.Zpa
         /// The **zpa_pra_credential_controller** data source to get information about a privileged remote access credential created in the Zscaler Private Access cloud.
         /// 
         /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Zscaler.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Retrieves PRA Credential By ID
+        ///     var @this = new Zpa.PRACredential("this");
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetPRACredentialResult> InvokeAsync(GetPRACredentialArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPRACredentialResult>("zpa:index/getPRACredential:getPRACredential", args ?? new GetPRACredentialArgs(), options.WithDefaults());
@@ -30,6 +46,22 @@ namespace Zscaler.Zpa
         /// The **zpa_pra_credential_controller** data source to get information about a privileged remote access credential created in the Zscaler Private Access cloud.
         /// 
         /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Zscaler.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Retrieves PRA Credential By ID
+        ///     var @this = new Zpa.PRACredential("this");
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPRACredentialResult> Invoke(GetPRACredentialInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPRACredentialResult>("zpa:index/getPRACredential:getPRACredential", args ?? new GetPRACredentialInvokeArgs(), options.WithDefaults());
@@ -41,6 +73,22 @@ namespace Zscaler.Zpa
         /// The **zpa_pra_credential_controller** data source to get information about a privileged remote access credential created in the Zscaler Private Access cloud.
         /// 
         /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Zscaler.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Retrieves PRA Credential By ID
+        ///     var @this = new Zpa.PRACredential("this");
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPRACredentialResult> Invoke(GetPRACredentialInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPRACredentialResult>("zpa:index/getPRACredential:getPRACredential", args ?? new GetPRACredentialInvokeArgs(), options.WithDefaults());

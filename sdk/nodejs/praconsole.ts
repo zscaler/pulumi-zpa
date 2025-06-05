@@ -19,14 +19,12 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // Creates Segment Group for Application Segment"
- * const thisSegmentGroup = new zpa.SegmentGroup("this", {
- *     name: "Example",
+ * const thisSegmentGroup = new zpa.SegmentGroup("thisSegmentGroup", {
  *     description: "Example",
  *     enabled: true,
  * });
  * // Creates Privileged Remote Access Application Segment"
- * const thisApplicationSegmentPRA = new zpa.ApplicationSegmentPRA("this", {
- *     name: "Example",
+ * const thisApplicationSegmentPRA = new zpa.ApplicationSegmentPRA("thisApplicationSegmentPRA", {
  *     description: "Example",
  *     enabled: true,
  *     healthReporting: "ON_ACCESS",
@@ -50,33 +48,30 @@ import * as utilities from "./utilities";
  *         }],
  *     }],
  * });
- * const _this = zpa.getApplicationSegmentByType({
+ * const thisApplicationSegmentByType = zpa.getApplicationSegmentByType({
  *     applicationType: "SECURE_REMOTE_ACCESS",
  *     name: "rdp_pra",
  * });
- * // Retrieves the Browser Access Certificate
- * const thisGetBaCertificate = zpa.getBaCertificate({
+ * const thisBaCertificate = zpa.getBaCertificate({
  *     name: "pra01.example.com",
  * });
  * // Creates PRA Portal"
  * const this1 = new zpa.PRAPortal("this1", {
- *     name: "pra01.example.com",
  *     description: "pra01.example.com",
  *     enabled: true,
  *     domain: "pra01.example.com",
- *     certificateId: thisGetBaCertificate.then(thisGetBaCertificate => thisGetBaCertificate.id),
+ *     certificateId: thisBaCertificate.then(thisBaCertificate => thisBaCertificate.id),
  *     userNotification: "Created with Terraform",
  *     userNotificationEnabled: true,
  * });
- * const sshPra = new zpa.PRAConsole("ssh_pra", {
- *     name: "ssh_console",
+ * const sshPra = new zpa.PRAConsole("sshPra", {
  *     description: "Created with Terraform",
  *     enabled: true,
  *     praApplications: [{
- *         id: _this.then(_this => _this.id),
+ *         id: thisApplicationSegmentByType.then(thisApplicationSegmentByType => thisApplicationSegmentByType.id),
  *     }],
  *     praPortals: [{
- *         ids: [thisZpaPraPortalController.id],
+ *         ids: [zpa_pra_portal_controller["this"].id],
  *     }],
  * });
  * ```

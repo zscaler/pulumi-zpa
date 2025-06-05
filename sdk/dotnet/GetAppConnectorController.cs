@@ -30,7 +30,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA App Connector Data Source
         ///     var example = Zpa.GetAppConnectorController.Invoke(new()
         ///     {
         ///         Name = "AWS-VPC100-App-Connector",
@@ -60,7 +59,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA App Connector Data Source
         ///     var example = Zpa.GetAppConnectorController.Invoke(new()
         ///     {
         ///         Name = "AWS-VPC100-App-Connector",
@@ -90,7 +88,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA App Connector Data Source
         ///     var example = Zpa.GetAppConnectorController.Invoke(new()
         ///     {
         ///         Name = "AWS-VPC100-App-Connector",

@@ -31,40 +31,34 @@ namespace Zscaler.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Get Isolation Profile ID
-    ///     var @this = Zpa.GetIsolationProfile.Invoke(new()
+    ///     var thisIsolationProfile = Zpa.GetIsolationProfile.Invoke(new()
     ///     {
     ///         Name = "zpa_isolation_profile",
     ///     });
     /// 
-    ///     // Retrieve Identity Provider ID
-    ///     var thisGetIdPController = Zpa.GetIdPController.Invoke(new()
+    ///     var thisIdPController = Zpa.GetIdPController.Invoke(new()
     ///     {
     ///         Name = "Idp_Name",
     ///     });
     /// 
-    ///     // Retrieve SAML Attribute ID
     ///     var emailUserSso = Zpa.GetSAMLAttribute.Invoke(new()
     ///     {
     ///         Name = "Email_Users",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
-    ///     // Retrieve SAML Attribute ID
     ///     var groupUser = Zpa.GetSAMLAttribute.Invoke(new()
     ///     {
     ///         Name = "GroupName_Users",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
-    ///     // Retrieve SCIM Group ID
     ///     var a000 = Zpa.GetSCIMGroups.Invoke(new()
     ///     {
     ///         Name = "A000",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
-    ///     // Retrieve SCIM Group ID
     ///     var b000 = Zpa.GetSCIMGroups.Invoke(new()
     ///     {
     ///         Name = "B000",
@@ -72,12 +66,11 @@ namespace Zscaler.Zpa
     ///     });
     /// 
     ///     // Create Policy Access Isolation Rule V2
-    ///     var thisPolicyAccessIsolationRuleV2 = new Zpa.PolicyAccessIsolationRuleV2("this", new()
+    ///     var thisPolicyAccessIsolationRuleV2 = new Zpa.PolicyAccessIsolationRuleV2("thisPolicyAccessIsolationRuleV2", new()
     ///     {
-    ///         Name = "Example",
     ///         Description = "Example",
     ///         Action = "ISOLATE",
-    ///         ZpnIsolationProfileId = @this.Apply(@this =&gt; @this.Apply(getIsolationProfileResult =&gt; getIsolationProfileResult.Id)),
+    ///         ZpnIsolationProfileId = thisIsolationProfile.Apply(getIsolationProfileResult =&gt; getIsolationProfileResult.Id),
     ///         Conditions = new[]
     ///         {
     ///             new Zpa.Inputs.PolicyAccessIsolationRuleV2ConditionArgs
@@ -125,12 +118,12 @@ namespace Zscaler.Zpa
     ///                             new Zpa.Inputs.PolicyAccessIsolationRuleV2ConditionOperandEntryValueArgs
     ///                             {
     ///                                 Rhs = a000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
-    ///                                 Lhs = thisGetIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                                 Lhs = thisIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
     ///                             },
     ///                             new Zpa.Inputs.PolicyAccessIsolationRuleV2ConditionOperandEntryValueArgs
     ///                             {
     ///                                 Rhs = b000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
-    ///                                 Lhs = thisGetIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                                 Lhs = thisIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
     ///                             },
     ///                         },
     ///                     },

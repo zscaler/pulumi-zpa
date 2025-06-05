@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // Retrieve CBI External Profile
  * const _this = zpa.getCloudBrowserIsolationExternalProfile({
  *     name: "Example",
  * });
@@ -71,7 +70,6 @@ export interface GetCloudBrowserIsolationExternalProfileResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // Retrieve CBI External Profile
  * const _this = zpa.getCloudBrowserIsolationExternalProfile({
  *     name: "Example",
  * });

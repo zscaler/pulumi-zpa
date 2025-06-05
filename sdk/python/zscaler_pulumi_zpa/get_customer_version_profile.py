@@ -230,11 +230,8 @@ def get_customer_version_profile(name: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    # Retrieve "Default" customer version profile
     default = zpa.get_customer_version_profile(name="Default")
-    # Retrieve "Previous Default" customer version profile
     previous_default = zpa.get_customer_version_profile(name="Previous Default")
-    # Retrieve "New Release" customer version profile
     new_release = zpa.get_customer_version_profile(name="New Release")
     ```
     """
@@ -283,11 +280,8 @@ def get_customer_version_profile_output(name: Optional[pulumi.Input[builtins.str
     import pulumi
     import pulumi_zpa as zpa
 
-    # Retrieve "Default" customer version profile
     default = zpa.get_customer_version_profile(name="Default")
-    # Retrieve "Previous Default" customer version profile
     previous_default = zpa.get_customer_version_profile(name="Previous Default")
-    # Retrieve "New Release" customer version profile
     new_release = zpa.get_customer_version_profile(name="New Release")
     ```
     """

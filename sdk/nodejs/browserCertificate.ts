@@ -16,7 +16,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Browser Access Data Source
  * const foo = zpa.getBaCertificate({
  *     name: "example.acme.com",
  * });
@@ -30,15 +29,15 @@ import * as utilities from "./utilities";
  *
  * // ZPA Browser Access resource
  * const _this = new zpa.BrowserCertificate("this", {
- *     name: "server.example.com",
- *     description: "server.example.com",
  *     certBlob: `-----BEGIN PRIVATE KEY-----
  * MIIDyzCCArOgA
  * -----END PRIVATE KEY-----
  * -----BEGIN CERTIFICATE-----
  * MIIDyzCCArOgAwIBAgIUekBD+iu64583B3u5ew7Bqj2O5cQwDQYJKoZIhvcNAQEL
  * -----END CERTIFICATE-----
+ *
  * `,
+ *     description: "server.example.com",
  * });
  * ```
  *

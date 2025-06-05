@@ -194,15 +194,13 @@ class PraCredentialPool(pulumi.CustomResource):
         import pulumi
         import zscaler_pulumi_zpa as zpa
 
-        this_pra_credential = zpa.PRACredential("this",
-            name="John Doe",
+        this_pra_credential = zpa.PRACredential("thisPRACredential",
             description="Created with Terraform",
             credential_type="PASSWORD",
             user_domain="acme.com",
             password="")
         # Creates Credential Pool of Type "USERNAME_PASSWORD"
-        this = zpa.PraCredentialPool("this",
-            name="PRACredentialPool01",
+        this_pra_credential_pool = zpa.PraCredentialPool("thisPraCredentialPool",
             credential_type="USERNAME_PASSWORD",
             credentials=[{
                 "ids": [this_pra_credential.id],
@@ -256,15 +254,13 @@ class PraCredentialPool(pulumi.CustomResource):
         import pulumi
         import zscaler_pulumi_zpa as zpa
 
-        this_pra_credential = zpa.PRACredential("this",
-            name="John Doe",
+        this_pra_credential = zpa.PRACredential("thisPRACredential",
             description="Created with Terraform",
             credential_type="PASSWORD",
             user_domain="acme.com",
             password="")
         # Creates Credential Pool of Type "USERNAME_PASSWORD"
-        this = zpa.PraCredentialPool("this",
-            name="PRACredentialPool01",
+        this_pra_credential_pool = zpa.PraCredentialPool("thisPraCredentialPool",
             credential_type="USERNAME_PASSWORD",
             credentials=[{
                 "ids": [this_pra_credential.id],

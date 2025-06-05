@@ -34,7 +34,6 @@ namespace Zscaler.Zpa
     /// 
     ///     var @this = new Zpa.ApplicationSegmentInspection("this", new()
     ///     {
-    ///         Name = "ZPA_Inspection_Example",
     ///         Description = "ZPA_Inspection_Example",
     ///         Enabled = true,
     ///         HealthReporting = "ON_ACCESS",
@@ -49,14 +48,14 @@ namespace Zscaler.Zpa
     ///         {
     ///             "jenkins.example.com",
     ///         },
-    ///         SegmentGroupId = thisZpaSegmentGroup.Id,
+    ///         SegmentGroupId = zpa_segment_group.This.Id,
     ///         ServerGroups = new[]
     ///         {
     ///             new Zpa.Inputs.ApplicationSegmentInspectionServerGroupArgs
     ///             {
     ///                 Ids = new[]
     ///                 {
-    ///                     thisZpaServerGroup.Id,
+    ///                     zpa_server_group.This.Id,
     ///                 },
     ///             },
     ///         },

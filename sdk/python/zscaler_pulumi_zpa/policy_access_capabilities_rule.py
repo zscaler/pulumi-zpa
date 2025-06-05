@@ -251,7 +251,7 @@ class PolicyAccessCapabilitiesRule(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        this = zpa.get_id_p_controller(name="IdP_Users")
+        this_id_p_controller = zpa.get_id_p_controller(name="IdP_Users")
         email_user_sso = zpa.get_saml_attribute(name="Email_IdP_Users",
             idp_name="IdP_Users")
         group_user = zpa.get_saml_attribute(name="GroupName_IdP_Users",
@@ -260,8 +260,7 @@ class PolicyAccessCapabilitiesRule(pulumi.CustomResource):
             idp_name="IdP_Users")
         b000 = zpa.get_scim_groups(name="B000",
             idp_name="IdP_Users")
-        this_policy_access_capabilities_rule = zpa.PolicyAccessCapabilitiesRule("this",
-            name="Example",
+        this_policy_access_capabilities_rule = zpa.PolicyAccessCapabilitiesRule("thisPolicyAccessCapabilitiesRule",
             description="Example",
             action="CHECK_CAPABILITIES",
             privileged_capabilities={
@@ -293,11 +292,11 @@ class PolicyAccessCapabilitiesRule(pulumi.CustomResource):
                         "entry_values": [
                             {
                                 "rhs": a000.id,
-                                "lhs": this.id,
+                                "lhs": this_id_p_controller.id,
                             },
                             {
                                 "rhs": b000.id,
-                                "lhs": this.id,
+                                "lhs": this_id_p_controller.id,
                             },
                         ],
                     },
@@ -357,7 +356,7 @@ class PolicyAccessCapabilitiesRule(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        this = zpa.get_id_p_controller(name="IdP_Users")
+        this_id_p_controller = zpa.get_id_p_controller(name="IdP_Users")
         email_user_sso = zpa.get_saml_attribute(name="Email_IdP_Users",
             idp_name="IdP_Users")
         group_user = zpa.get_saml_attribute(name="GroupName_IdP_Users",
@@ -366,8 +365,7 @@ class PolicyAccessCapabilitiesRule(pulumi.CustomResource):
             idp_name="IdP_Users")
         b000 = zpa.get_scim_groups(name="B000",
             idp_name="IdP_Users")
-        this_policy_access_capabilities_rule = zpa.PolicyAccessCapabilitiesRule("this",
-            name="Example",
+        this_policy_access_capabilities_rule = zpa.PolicyAccessCapabilitiesRule("thisPolicyAccessCapabilitiesRule",
             description="Example",
             action="CHECK_CAPABILITIES",
             privileged_capabilities={
@@ -399,11 +397,11 @@ class PolicyAccessCapabilitiesRule(pulumi.CustomResource):
                         "entry_values": [
                             {
                                 "rhs": a000.id,
-                                "lhs": this.id,
+                                "lhs": this_id_p_controller.id,
                             },
                             {
                                 "rhs": b000.id,
-                                "lhs": this.id,
+                                "lhs": this_id_p_controller.id,
                             },
                         ],
                     },

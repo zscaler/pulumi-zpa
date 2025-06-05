@@ -435,7 +435,6 @@ def get_app_connector_controller(microtenant_id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA App Connector Data Source
     example = zpa.get_app_connector_controller(name="AWS-VPC100-App-Connector")
     ```
     """
@@ -507,7 +506,6 @@ def get_app_connector_controller_output(microtenant_id: Optional[pulumi.Input[Op
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA App Connector Data Source
     example = zpa.get_app_connector_controller(name="AWS-VPC100-App-Connector")
     ```
     """

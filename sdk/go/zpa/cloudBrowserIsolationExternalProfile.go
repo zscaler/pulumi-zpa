@@ -30,43 +30,38 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Retrieve CBI Banner ID
-//			this, err := zpa.LookupCloudBrowserIsolationBanner(ctx, &zpa.LookupCloudBrowserIsolationBannerArgs{
+//			thisCloudBrowserIsolationBanner, err := zpa.LookupCloudBrowserIsolationBanner(ctx, &zpa.LookupCloudBrowserIsolationBannerArgs{
 //				Name: pulumi.StringRef("Default"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			// Retrieve Primary CBI Region ID
 //			singapore, err := zpa.GetCloudBrowserIsolationRegion(ctx, &zpa.GetCloudBrowserIsolationRegionArgs{
 //				Name: pulumi.StringRef("Singapore"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			// Retrieve Secondary CBI Region ID
 //			_, err = zpa.GetCloudBrowserIsolationRegion(ctx, &zpa.GetCloudBrowserIsolationRegionArgs{
 //				Name: pulumi.StringRef("Frankfurt"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			// Retrieve CBI Certificate ID
-//			thisGetCloudBrowserIsolationCertificate, err := zpa.LookupCloudBrowserIsolationCertificate(ctx, &zpa.LookupCloudBrowserIsolationCertificateArgs{
+//			thisCloudBrowserIsolationCertificate, err := zpa.LookupCloudBrowserIsolationCertificate(ctx, &zpa.LookupCloudBrowserIsolationCertificateArgs{
 //				Name: pulumi.StringRef("Zscaler Root Certificate"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = zpa.NewCloudBrowserIsolationExternalProfile(ctx, "this", &zpa.CloudBrowserIsolationExternalProfileArgs{
-//				Name:        pulumi.String("CBI_Profile_Example"),
+//			_, err = zpa.NewCloudBrowserIsolationExternalProfile(ctx, "thisCloudBrowserIsolationExternalProfile", &zpa.CloudBrowserIsolationExternalProfileArgs{
 //				Description: pulumi.String("CBI_Profile_Example"),
-//				BannerId:    pulumi.String(this.Id),
+//				BannerId:    pulumi.String(thisCloudBrowserIsolationBanner.Id),
 //				RegionIds: pulumi.StringArray{
 //					pulumi.String(singapore.Id),
 //				},
 //				CertificateIds: pulumi.StringArray{
-//					pulumi.String(thisGetCloudBrowserIsolationCertificate.Id),
+//					pulumi.String(thisCloudBrowserIsolationCertificate.Id),
 //				},
 //				UserExperience: &zpa.CloudBrowserIsolationExternalProfileUserExperienceArgs{
 //					ForwardToZia: &zpa.CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs{

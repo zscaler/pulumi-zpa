@@ -31,7 +31,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Retrieve CBI Certificate ID and Name
 //			_, err := zpa.LookupCloudBrowserIsolationCertificate(ctx, &zpa.LookupCloudBrowserIsolationCertificateArgs{
 //				Name: pulumi.StringRef("Zscaler Root Certificate"),
 //			}, nil)

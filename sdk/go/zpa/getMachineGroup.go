@@ -32,7 +32,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ZPA Machine Group Data Source by name
 //			_, err := zpa.GetMachineGroup(ctx, &zpa.GetMachineGroupArgs{
 //				Name: pulumi.StringRef("MGR01"),
 //			}, nil)
@@ -57,7 +56,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ZPA Machine Group Data Source by id
 //			_, err := zpa.GetMachineGroup(ctx, &zpa.GetMachineGroupArgs{
 //				Id: pulumi.StringRef("1234567890"),
 //			}, nil)

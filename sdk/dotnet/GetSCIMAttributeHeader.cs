@@ -30,17 +30,16 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA SCIM Attribute Header Data Source
         ///     var givenName = Zpa.GetSCIMAttributeHeader.Invoke(new()
         ///     {
-        ///         Name = "name.givenName",
         ///         IdpName = "IdP_Name",
+        ///         Name = "name.givenName",
         ///     });
         /// 
         ///     var familyName = Zpa.GetSCIMAttributeHeader.Invoke(new()
         ///     {
-        ///         Name = "name.familyName",
         ///         IdpName = "IdP_Name",
+        ///         Name = "name.familyName",
         ///     });
         /// 
         /// });
@@ -67,17 +66,16 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA SCIM Attribute Header Data Source
         ///     var givenName = Zpa.GetSCIMAttributeHeader.Invoke(new()
         ///     {
-        ///         Name = "name.givenName",
         ///         IdpName = "IdP_Name",
+        ///         Name = "name.givenName",
         ///     });
         /// 
         ///     var familyName = Zpa.GetSCIMAttributeHeader.Invoke(new()
         ///     {
-        ///         Name = "name.familyName",
         ///         IdpName = "IdP_Name",
+        ///         Name = "name.familyName",
         ///     });
         /// 
         /// });
@@ -104,17 +102,16 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA SCIM Attribute Header Data Source
         ///     var givenName = Zpa.GetSCIMAttributeHeader.Invoke(new()
         ///     {
-        ///         Name = "name.givenName",
         ///         IdpName = "IdP_Name",
+        ///         Name = "name.givenName",
         ///     });
         /// 
         ///     var familyName = Zpa.GetSCIMAttributeHeader.Invoke(new()
         ///     {
-        ///         Name = "name.familyName",
         ///         IdpName = "IdP_Name",
+        ///         Name = "name.familyName",
         ///     });
         /// 
         /// });

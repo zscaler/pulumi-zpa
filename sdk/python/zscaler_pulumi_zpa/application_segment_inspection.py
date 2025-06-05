@@ -942,7 +942,6 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
 
         jenkins = zpa.get_ba_certificate(name="jenkins.example.com")
         this = zpa.ApplicationSegmentInspection("this",
-            name="ZPA_Inspection_Example",
             description="ZPA_Inspection_Example",
             enabled=True,
             health_reporting="ON_ACCESS",
@@ -953,9 +952,9 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
                 "443",
             ],
             domain_names=["jenkins.example.com"],
-            segment_group_id=this_zpa_segment_group["id"],
+            segment_group_id=zpa_segment_group["this"]["id"],
             server_groups=[{
-                "ids": [this_zpa_server_group["id"]],
+                "ids": [zpa_server_group["this"]["id"]],
             }],
             common_apps_dtos=[{
                 "apps_configs": [{
@@ -1031,7 +1030,6 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
 
         jenkins = zpa.get_ba_certificate(name="jenkins.example.com")
         this = zpa.ApplicationSegmentInspection("this",
-            name="ZPA_Inspection_Example",
             description="ZPA_Inspection_Example",
             enabled=True,
             health_reporting="ON_ACCESS",
@@ -1042,9 +1040,9 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
                 "443",
             ],
             domain_names=["jenkins.example.com"],
-            segment_group_id=this_zpa_segment_group["id"],
+            segment_group_id=zpa_segment_group["this"]["id"],
             server_groups=[{
-                "ids": [this_zpa_server_group["id"]],
+                "ids": [zpa_server_group["this"]["id"]],
             }],
             common_apps_dtos=[{
                 "apps_configs": [{

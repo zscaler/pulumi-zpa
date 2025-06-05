@@ -18,10 +18,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA SAML Attribute Data Source
  * const emailUserSso = zpa.getSAMLAttribute({
- *     name: "Email_User SSO",
  *     idpName: "idp_name",
+ *     name: "Email_User SSO",
  * });
  * ```
  *
@@ -29,10 +28,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA SAML Attribute Data Source
  * const department = zpa.getSAMLAttribute({
- *     name: "DepartmentName_IdP_Name_Users",
  *     idpName: "idp_name",
+ *     name: "DepartmentName_IdP_Name_Users",
  * });
  * ```
  */
@@ -83,10 +81,9 @@ export interface GetSAMLAttributeResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA SAML Attribute Data Source
  * const emailUserSso = zpa.getSAMLAttribute({
- *     name: "Email_User SSO",
  *     idpName: "idp_name",
+ *     name: "Email_User SSO",
  * });
  * ```
  *
@@ -94,10 +91,9 @@ export interface GetSAMLAttributeResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA SAML Attribute Data Source
  * const department = zpa.getSAMLAttribute({
- *     name: "DepartmentName_IdP_Name_Users",
  *     idpName: "idp_name",
+ *     name: "DepartmentName_IdP_Name_Users",
  * });
  * ```
  */

@@ -183,10 +183,10 @@ class ServiceEdgeAssistantSchedule(pulumi.CustomResource):
 
         this = zpa.ServiceEdgeAssistantSchedule("this",
             customer_id="123456789101112",
-            frequency="days",
-            frequency_interval="5",
+            delete_disabled=True,
             enabled=True,
-            delete_disabled=True)
+            frequency="days",
+            frequency_interval="5")
         ```
 
         ### Customer ID Via Environment Variable
@@ -196,10 +196,10 @@ class ServiceEdgeAssistantSchedule(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         this = zpa.ServiceEdgeAssistantSchedule("this",
-            frequency="days",
-            frequency_interval="5",
+            delete_disabled=True,
             enabled=True,
-            delete_disabled=True)
+            frequency="days",
+            frequency_interval="5")
         ```
 
         ## Import
@@ -233,10 +233,10 @@ class ServiceEdgeAssistantSchedule(pulumi.CustomResource):
 
         this = zpa.ServiceEdgeAssistantSchedule("this",
             customer_id="123456789101112",
-            frequency="days",
-            frequency_interval="5",
+            delete_disabled=True,
             enabled=True,
-            delete_disabled=True)
+            frequency="days",
+            frequency_interval="5")
         ```
 
         ### Customer ID Via Environment Variable
@@ -246,10 +246,10 @@ class ServiceEdgeAssistantSchedule(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         this = zpa.ServiceEdgeAssistantSchedule("this",
-            frequency="days",
-            frequency_interval="5",
+            delete_disabled=True,
             enabled=True,
-            delete_disabled=True)
+            frequency="days",
+            frequency_interval="5")
         ```
 
         ## Import

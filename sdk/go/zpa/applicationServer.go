@@ -27,10 +27,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Application Server resource (IP Address)
-//			_, err := zpa.NewApplicationServer(ctx, "test_app_server", &zpa.ApplicationServerArgs{
-//				Name:        pulumi.String("test1-app-server"),
-//				Description: pulumi.String("test1-app-server"),
+//			_, err := zpa.NewApplicationServer(ctx, "testAppServer", &zpa.ApplicationServerArgs{
 //				Address:     pulumi.String("192.168.1.1"),
+//				Description: pulumi.String("test1-app-server"),
 //				Enabled:     pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -55,10 +54,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Application Server resource (FQDN Address)
-//			_, err := zpa.NewApplicationServer(ctx, "test_app_server", &zpa.ApplicationServerArgs{
-//				Name:        pulumi.String("test1-app-server"),
-//				Description: pulumi.String("test1-app-server"),
+//			_, err := zpa.NewApplicationServer(ctx, "testAppServer", &zpa.ApplicationServerArgs{
 //				Address:     pulumi.String("server1.acme.com"),
+//				Description: pulumi.String("test1-app-server"),
 //				Enabled:     pulumi.Bool(true),
 //			})
 //			if err != nil {

@@ -11,10 +11,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Provisioning Key for "CONNECTOR_GRP"
  * const example = zpa.getProvisioningKey({
- *     name: "Provisioning_Key",
  *     associationType: "CONNECTOR_GRP",
+ *     name: "Provisioning_Key",
  * });
  * ```
  *
@@ -22,10 +21,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Provisioning Key for "SERVICE_EDGE_GRP"
  * const example = zpa.getProvisioningKey({
- *     name: "Provisioning_Key",
  *     associationType: "SERVICE_EDGE_GRP",
+ *     name: "Provisioning_Key",
  * });
  * ```
  */
@@ -84,10 +82,9 @@ export interface GetProvisioningKeyResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Provisioning Key for "CONNECTOR_GRP"
  * const example = zpa.getProvisioningKey({
- *     name: "Provisioning_Key",
  *     associationType: "CONNECTOR_GRP",
+ *     name: "Provisioning_Key",
  * });
  * ```
  *
@@ -95,10 +92,9 @@ export interface GetProvisioningKeyResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Provisioning Key for "SERVICE_EDGE_GRP"
  * const example = zpa.getProvisioningKey({
- *     name: "Provisioning_Key",
  *     associationType: "SERVICE_EDGE_GRP",
+ *     name: "Provisioning_Key",
  * });
  * ```
  */

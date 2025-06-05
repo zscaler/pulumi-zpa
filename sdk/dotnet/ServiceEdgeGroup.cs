@@ -29,9 +29,8 @@ namespace Zscaler.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // ZPA Service Edge Group resource - Trusted Network
-    ///     var serviceEdgeGroupSjc = new Zpa.ServiceEdgeGroup("service_edge_group_sjc", new()
+    ///     var serviceEdgeGroupSjc = new Zpa.ServiceEdgeGroup("serviceEdgeGroupSjc", new()
     ///     {
-    ///         Name = "Service Edge Group San Jose",
     ///         Description = "Service Edge Group in San Jose",
     ///         Enabled = true,
     ///         IsPublic = true,
@@ -47,7 +46,7 @@ namespace Zscaler.Zpa
     ///             {
     ///                 Ids = new[]
     ///                 {
-    ///                     example.Id,
+    ///                     data.Zpa_trusted_network.Example.Id,
     ///                 },
     ///             },
     ///         },
@@ -65,9 +64,8 @@ namespace Zscaler.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // ZPA Service Edge Group resource - No Trusted Network
-    ///     var serviceEdgeGroupNyc = new Zpa.ServiceEdgeGroup("service_edge_group_nyc", new()
+    ///     var serviceEdgeGroupNyc = new Zpa.ServiceEdgeGroup("serviceEdgeGroupNyc", new()
     ///     {
-    ///         Name = "Service Edge Group New York",
     ///         Description = "Service Edge Group in New York",
     ///         Enabled = true,
     ///         IsPublic = true,
@@ -76,7 +74,7 @@ namespace Zscaler.Zpa
     ///         Latitude = "40.7128",
     ///         Longitude = "-73.935242",
     ///         Location = "New York, NY, USA",
-    ///         VersionProfileId = @this.Id,
+    ///         VersionProfileId = data.Zpa_customer_version_profile.This.Id,
     ///     });
     /// 
     /// });
@@ -97,9 +95,8 @@ namespace Zscaler.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // ZPA Service Edge Group resource - Trusted Network
-    ///     var serviceEdgeGroupSjc = new Zpa.ServiceEdgeGroup("service_edge_group_sjc", new()
+    ///     var serviceEdgeGroupSjc = new Zpa.ServiceEdgeGroup("serviceEdgeGroupSjc", new()
     ///     {
-    ///         Name = "Service Edge Group San Jose",
     ///         Description = "Service Edge Group in San Jose",
     ///         Enabled = true,
     ///         IsPublic = true,
@@ -115,7 +112,7 @@ namespace Zscaler.Zpa
     ///             {
     ///                 Ids = new[]
     ///                 {
-    ///                     example.Id,
+    ///                     data.Zpa_trusted_network.Example.Id,
     ///                 },
     ///             },
     ///         },
@@ -133,17 +130,16 @@ namespace Zscaler.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // ZPA Service Edge Group resource - No Trusted Network
-    ///     var serviceEdgeGroupNyc = new Zpa.ServiceEdgeGroup("service_edge_group_nyc", new()
+    ///     var serviceEdgeGroupNyc = new Zpa.ServiceEdgeGroup("serviceEdgeGroupNyc", new()
     ///     {
-    ///         Name = "Service Edge Group New York",
     ///         Description = "Service Edge Group in New York",
     ///         Enabled = true,
     ///         IsPublic = true,
+    ///         Latitude = "40.7128",
+    ///         Location = "New York, NY, USA",
+    ///         Longitude = "-73.935242",
     ///         UpgradeDay = "SUNDAY",
     ///         UpgradeTimeInSecs = "66600",
-    ///         Latitude = "40.7128",
-    ///         Longitude = "-73.935242",
-    ///         Location = "New York, NY, USA",
     ///         VersionProfileName = "New Release",
     ///     });
     /// 

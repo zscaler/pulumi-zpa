@@ -24,7 +24,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Service Edge Group Data Source by name
  * const foo = zpa.getServiceEdgeGroup({
  *     name: "DataCenter",
  * });
@@ -34,7 +33,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Service Edge Group Data Source by ID
  * const foo = zpa.getServiceEdgeGroup({
  *     id: "123456789",
  * });
@@ -109,7 +107,6 @@ export interface GetServiceEdgeGroupResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Service Edge Group Data Source by name
  * const foo = zpa.getServiceEdgeGroup({
  *     name: "DataCenter",
  * });
@@ -119,7 +116,6 @@ export interface GetServiceEdgeGroupResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Service Edge Group Data Source by ID
  * const foo = zpa.getServiceEdgeGroup({
  *     id: "123456789",
  * });

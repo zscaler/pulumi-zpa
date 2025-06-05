@@ -30,7 +30,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Machine Group Data Source by name
         ///     var example = Zpa.GetMachineGroup.Invoke(new()
         ///     {
         ///         Name = "MGR01",
@@ -47,7 +46,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Machine Group Data Source by id
         ///     var example = Zpa.GetMachineGroup.Invoke(new()
         ///     {
         ///         Id = "1234567890",
@@ -77,7 +75,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Machine Group Data Source by name
         ///     var example = Zpa.GetMachineGroup.Invoke(new()
         ///     {
         ///         Name = "MGR01",
@@ -94,7 +91,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Machine Group Data Source by id
         ///     var example = Zpa.GetMachineGroup.Invoke(new()
         ///     {
         ///         Id = "1234567890",
@@ -124,7 +120,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Machine Group Data Source by name
         ///     var example = Zpa.GetMachineGroup.Invoke(new()
         ///     {
         ///         Name = "MGR01",
@@ -141,7 +136,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Machine Group Data Source by id
         ///     var example = Zpa.GetMachineGroup.Invoke(new()
         ///     {
         ///         Id = "1234567890",

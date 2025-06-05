@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  *     name: "jenkins.example.com",
  * });
  * const _this = new zpa.ApplicationSegmentInspection("this", {
- *     name: "ZPA_Inspection_Example",
  *     description: "ZPA_Inspection_Example",
  *     enabled: true,
  *     healthReporting: "ON_ACCESS",
@@ -33,9 +32,9 @@ import * as utilities from "./utilities";
  *         "443",
  *     ],
  *     domainNames: ["jenkins.example.com"],
- *     segmentGroupId: thisZpaSegmentGroup.id,
+ *     segmentGroupId: zpa_segment_group["this"].id,
  *     serverGroups: [{
- *         ids: [thisZpaServerGroup.id],
+ *         ids: [zpa_server_group["this"].id],
  *     }],
  *     commonAppsDtos: [{
  *         appsConfigs: [{

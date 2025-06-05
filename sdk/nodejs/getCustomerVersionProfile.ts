@@ -24,15 +24,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // Retrieve "Default" customer version profile
  * const _default = zpa.getCustomerVersionProfile({
  *     name: "Default",
  * });
- * // Retrieve "Previous Default" customer version profile
  * const previousDefault = zpa.getCustomerVersionProfile({
  *     name: "Previous Default",
  * });
- * // Retrieve "New Release" customer version profile
  * const newRelease = zpa.getCustomerVersionProfile({
  *     name: "New Release",
  * });
@@ -94,15 +91,12 @@ export interface GetCustomerVersionProfileResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // Retrieve "Default" customer version profile
  * const _default = zpa.getCustomerVersionProfile({
  *     name: "Default",
  * });
- * // Retrieve "Previous Default" customer version profile
  * const previousDefault = zpa.getCustomerVersionProfile({
  *     name: "Previous Default",
  * });
- * // Retrieve "New Release" customer version profile
  * const newRelease = zpa.getCustomerVersionProfile({
  *     name: "New Release",
  * });

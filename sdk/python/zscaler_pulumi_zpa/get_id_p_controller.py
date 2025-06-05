@@ -325,7 +325,6 @@ def get_id_p_controller(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA IdP Controller Data Source
     example = zpa.get_id_p_controller(name="idp_name")
     ```
 
@@ -333,7 +332,6 @@ def get_id_p_controller(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA IdP Controller Data Source
     example = zpa.get_id_p_controller(id="1234567890")
     ```
     """
@@ -398,7 +396,6 @@ def get_id_p_controller_output(id: Optional[pulumi.Input[Optional[builtins.str]]
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA IdP Controller Data Source
     example = zpa.get_id_p_controller(name="idp_name")
     ```
 
@@ -406,7 +403,6 @@ def get_id_p_controller_output(id: Optional[pulumi.Input[Optional[builtins.str]]
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA IdP Controller Data Source
     example = zpa.get_id_p_controller(id="1234567890")
     ```
     """

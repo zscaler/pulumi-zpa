@@ -15,6 +15,32 @@ import (
 // * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
 //
 // Use the **zpa_application_segment_by_type** data source to get all configured Application Segments by Access Type (e.g., “BROWSER_ACCESS“, “INSPECT“, or “SECURE_REMOTE_ACCESS“) for the specified customer.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := zpa.GetApplicationSegmentByType(ctx, &zpa.GetApplicationSegmentByTypeArgs{
+//				ApplicationType: "SECURE_REMOTE_ACCESS",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetApplicationSegmentByType(ctx *pulumi.Context, args *GetApplicationSegmentByTypeArgs, opts ...pulumi.InvokeOption) (*GetApplicationSegmentByTypeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApplicationSegmentByTypeResult

@@ -36,7 +36,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Trusted Network Data Source
         ///     var example = Zpa.GetTrustedNetwork.Invoke(new()
         ///     {
         ///         Name = "trusted_network_name",
@@ -55,7 +54,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetTrustedNetwork.Invoke(new()
         ///     {
         ///         Name = "Corporate-Network (zscalertwo.net)",
@@ -95,7 +93,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Trusted Network Data Source
         ///     var example = Zpa.GetTrustedNetwork.Invoke(new()
         ///     {
         ///         Name = "trusted_network_name",
@@ -114,7 +111,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetTrustedNetwork.Invoke(new()
         ///     {
         ///         Name = "Corporate-Network (zscalertwo.net)",
@@ -154,7 +150,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Trusted Network Data Source
         ///     var example = Zpa.GetTrustedNetwork.Invoke(new()
         ///     {
         ///         Name = "trusted_network_name",
@@ -173,7 +168,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetTrustedNetwork.Invoke(new()
         ///     {
         ///         Name = "Corporate-Network (zscalertwo.net)",

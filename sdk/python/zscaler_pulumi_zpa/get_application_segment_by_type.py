@@ -155,6 +155,15 @@ def get_application_segment_by_type(application_type: Optional[builtins.str] = N
     * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
 
     Use the **zpa_application_segment_by_type** data source to get all configured Application Segments by Access Type (e.g., ``BROWSER_ACCESS``, ``INSPECT``, or ``SECURE_REMOTE_ACCESS``) for the specified customer.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_zpa as zpa
+
+    this = zpa.get_application_segment_by_type(application_type="SECURE_REMOTE_ACCESS")
+    ```
     """
     __args__ = dict()
     __args__['applicationType'] = application_type
@@ -185,6 +194,15 @@ def get_application_segment_by_type_output(application_type: Optional[pulumi.Inp
     * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
 
     Use the **zpa_application_segment_by_type** data source to get all configured Application Segments by Access Type (e.g., ``BROWSER_ACCESS``, ``INSPECT``, or ``SECURE_REMOTE_ACCESS``) for the specified customer.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_zpa as zpa
+
+    this = zpa.get_application_segment_by_type(application_type="SECURE_REMOTE_ACCESS")
+    ```
     """
     __args__ = dict()
     __args__['applicationType'] = application_type

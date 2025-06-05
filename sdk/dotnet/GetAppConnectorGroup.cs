@@ -23,7 +23,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA App Connector Group Data Source
         ///     var foo = Zpa.GetAppConnectorGroup.Invoke(new()
         ///     {
         ///         Name = "DataCenter",
@@ -40,7 +39,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA App Connector Group Data Source
         ///     var foo = Zpa.GetAppConnectorGroup.Invoke(new()
         ///     {
         ///         Id = "123456789",
@@ -63,7 +61,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA App Connector Group Data Source
         ///     var foo = Zpa.GetAppConnectorGroup.Invoke(new()
         ///     {
         ///         Name = "DataCenter",
@@ -80,7 +77,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA App Connector Group Data Source
         ///     var foo = Zpa.GetAppConnectorGroup.Invoke(new()
         ///     {
         ///         Id = "123456789",
@@ -103,7 +99,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA App Connector Group Data Source
         ///     var foo = Zpa.GetAppConnectorGroup.Invoke(new()
         ///     {
         ///         Name = "DataCenter",
@@ -120,7 +115,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA App Connector Group Data Source
         ///     var foo = Zpa.GetAppConnectorGroup.Invoke(new()
         ///     {
         ///         Id = "123456789",

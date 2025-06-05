@@ -29,7 +29,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Retrieve CBI Certificate ID and Name
         ///     var @this = Zpa.GetCloudBrowserIsolationCertificate.Invoke(new()
         ///     {
         ///         Name = "Zscaler Root Certificate",
@@ -58,7 +57,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Retrieve CBI Certificate ID and Name
         ///     var @this = Zpa.GetCloudBrowserIsolationCertificate.Invoke(new()
         ///     {
         ///         Name = "Zscaler Root Certificate",
@@ -87,7 +85,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Retrieve CBI Certificate ID and Name
         ///     var @this = Zpa.GetCloudBrowserIsolationCertificate.Invoke(new()
         ///     {
         ///         Name = "Zscaler Root Certificate",

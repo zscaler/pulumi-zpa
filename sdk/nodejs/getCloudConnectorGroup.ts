@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Cloud Connector Group Data Source
  * const foo = zpa.getCloudConnectorGroup({
  *     name: "AWS-Cloud",
  * });
@@ -32,7 +31,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Cloud Connector Group Data Source
  * const foo = zpa.getCloudConnectorGroup({
  *     id: "1234567890",
  * });
@@ -87,7 +85,6 @@ export interface GetCloudConnectorGroupResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Cloud Connector Group Data Source
  * const foo = zpa.getCloudConnectorGroup({
  *     name: "AWS-Cloud",
  * });
@@ -97,7 +94,6 @@ export interface GetCloudConnectorGroupResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Cloud Connector Group Data Source
  * const foo = zpa.getCloudConnectorGroup({
  *     id: "1234567890",
  * });

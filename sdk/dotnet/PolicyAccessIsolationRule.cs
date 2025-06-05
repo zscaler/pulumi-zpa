@@ -29,7 +29,6 @@ namespace Zscaler.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Get Isolation Profile ID
     ///     var isolationProfile = Zpa.GetIsolationProfile.Invoke(new()
     ///     {
     ///         Name = "zpa_isolation_profile",
@@ -38,7 +37,6 @@ namespace Zscaler.Zpa
     ///     //Create Client Isolation Access Rule
     ///     var @this = new Zpa.PolicyAccessIsolationRule("this", new()
     ///     {
-    ///         Name = "Example_Isolation_Policy",
     ///         Description = "Example_Isolation_Policy",
     ///         Action = "ISOLATE",
     ///         Operator = "AND",

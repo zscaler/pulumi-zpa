@@ -148,7 +148,6 @@ def get_machine_group(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Machine Group Data Source by name
     example = zpa.get_machine_group(name="MGR01")
     ```
 
@@ -156,7 +155,6 @@ def get_machine_group(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Machine Group Data Source by id
     example = zpa.get_machine_group(id="1234567890")
     ```
     """
@@ -198,7 +196,6 @@ def get_machine_group_output(id: Optional[pulumi.Input[Optional[builtins.str]]] 
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Machine Group Data Source by name
     example = zpa.get_machine_group(name="MGR01")
     ```
 
@@ -206,7 +203,6 @@ def get_machine_group_output(id: Optional[pulumi.Input[Optional[builtins.str]]] 
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Machine Group Data Source by id
     example = zpa.get_machine_group(id="1234567890")
     ```
     """

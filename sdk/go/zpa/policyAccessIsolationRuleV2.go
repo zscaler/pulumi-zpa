@@ -34,21 +34,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Get Isolation Profile ID
-//			this, err := zpa.GetIsolationProfile(ctx, &zpa.GetIsolationProfileArgs{
+//			thisIsolationProfile, err := zpa.GetIsolationProfile(ctx, &zpa.GetIsolationProfileArgs{
 //				Name: pulumi.StringRef("zpa_isolation_profile"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			// Retrieve Identity Provider ID
-//			thisGetIdPController, err := zpa.GetIdPController(ctx, &zpa.GetIdPControllerArgs{
+//			thisIdPController, err := zpa.GetIdPController(ctx, &zpa.GetIdPControllerArgs{
 //				Name: pulumi.StringRef("Idp_Name"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			// Retrieve SAML Attribute ID
 //			emailUserSso, err := zpa.GetSAMLAttribute(ctx, &zpa.GetSAMLAttributeArgs{
 //				Name:    pulumi.StringRef("Email_Users"),
 //				IdpName: pulumi.StringRef("Idp_Name"),
@@ -56,7 +53,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// Retrieve SAML Attribute ID
 //			groupUser, err := zpa.GetSAMLAttribute(ctx, &zpa.GetSAMLAttributeArgs{
 //				Name:    pulumi.StringRef("GroupName_Users"),
 //				IdpName: pulumi.StringRef("Idp_Name"),
@@ -64,7 +60,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// Retrieve SCIM Group ID
 //			a000, err := zpa.GetSCIMGroups(ctx, &zpa.GetSCIMGroupsArgs{
 //				Name:    pulumi.StringRef("A000"),
 //				IdpName: pulumi.StringRef("Idp_Name"),
@@ -72,7 +67,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// Retrieve SCIM Group ID
 //			b000, err := zpa.GetSCIMGroups(ctx, &zpa.GetSCIMGroupsArgs{
 //				Name:    pulumi.StringRef("B000"),
 //				IdpName: pulumi.StringRef("Idp_Name"),
@@ -81,11 +75,10 @@ import (
 //				return err
 //			}
 //			// Create Policy Access Isolation Rule V2
-//			_, err = zpa.NewPolicyAccessIsolationRuleV2(ctx, "this", &zpa.PolicyAccessIsolationRuleV2Args{
-//				Name:                  pulumi.String("Example"),
+//			_, err = zpa.NewPolicyAccessIsolationRuleV2(ctx, "thisPolicyAccessIsolationRuleV2", &zpa.PolicyAccessIsolationRuleV2Args{
 //				Description:           pulumi.String("Example"),
 //				Action:                pulumi.String("ISOLATE"),
-//				ZpnIsolationProfileId: pulumi.String(this.Id),
+//				ZpnIsolationProfileId: pulumi.String(thisIsolationProfile.Id),
 //				Conditions: zpa.PolicyAccessIsolationRuleV2ConditionArray{
 //					&zpa.PolicyAccessIsolationRuleV2ConditionArgs{
 //						Operator: pulumi.String("OR"),
@@ -119,11 +112,11 @@ import (
 //								EntryValues: zpa.PolicyAccessIsolationRuleV2ConditionOperandEntryValueArray{
 //									&zpa.PolicyAccessIsolationRuleV2ConditionOperandEntryValueArgs{
 //										Rhs: pulumi.String(a000.Id),
-//										Lhs: pulumi.String(thisGetIdPController.Id),
+//										Lhs: pulumi.String(thisIdPController.Id),
 //									},
 //									&zpa.PolicyAccessIsolationRuleV2ConditionOperandEntryValueArgs{
 //										Rhs: pulumi.String(b000.Id),
-//										Lhs: pulumi.String(thisGetIdPController.Id),
+//										Lhs: pulumi.String(thisIdPController.Id),
 //									},
 //								},
 //							},

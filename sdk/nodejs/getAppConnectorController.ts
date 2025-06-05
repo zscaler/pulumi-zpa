@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA App Connector Data Source
  * const example = zpa.getAppConnectorController({
  *     name: "AWS-VPC100-App-Connector",
  * });
@@ -106,7 +105,6 @@ export interface GetAppConnectorControllerResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA App Connector Data Source
  * const example = zpa.getAppConnectorController({
  *     name: "AWS-VPC100-App-Connector",
  * });

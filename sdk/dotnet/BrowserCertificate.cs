@@ -26,7 +26,6 @@ namespace Zscaler.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // ZPA Browser Access Data Source
     ///     var foo = Zpa.GetBaCertificate.Invoke(new()
     ///     {
     ///         Name = "example.acme.com",
@@ -48,15 +47,15 @@ namespace Zscaler.Zpa
     ///     // ZPA Browser Access resource
     ///     var @this = new Zpa.BrowserCertificate("this", new()
     ///     {
-    ///         Name = "server.example.com",
-    ///         Description = "server.example.com",
     ///         CertBlob = @"-----BEGIN PRIVATE KEY-----
     /// MIIDyzCCArOgA
     /// -----END PRIVATE KEY-----
     /// -----BEGIN CERTIFICATE-----
     /// MIIDyzCCArOgAwIBAgIUekBD+iu64583B3u5ew7Bqj2O5cQwDQYJKoZIhvcNAQEL
     /// -----END CERTIFICATE-----
+    /// 
     /// ",
+    ///         Description = "server.example.com",
     ///     });
     /// 
     /// });

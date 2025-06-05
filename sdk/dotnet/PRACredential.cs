@@ -29,12 +29,11 @@ namespace Zscaler.Zpa
     ///     // Creates Credential of Type "USERNAME_PASSWORD"
     ///     var @this = new Zpa.PRACredential("this", new()
     ///     {
-    ///         Name = "John Doe",
-    ///         Description = "Created with Terraform",
     ///         CredentialType = "USERNAME_PASSWORD",
+    ///         Description = "Created with Terraform",
+    ///         Password = "",
     ///         UserDomain = "acme.com",
     ///         Username = "jdoe",
-    ///         Password = "",
     ///     });
     /// 
     /// });
@@ -53,15 +52,15 @@ namespace Zscaler.Zpa
     ///     // Creates Credential of Type "SSH_KEY"
     ///     var @this = new Zpa.PRACredential("this", new()
     ///     {
-    ///         Name = "John Doe",
-    ///         Description = "Created with Terraform",
     ///         CredentialType = "SSH_KEY",
-    ///         UserDomain = "acme.com",
-    ///         Username = "jdoe",
+    ///         Description = "Created with Terraform",
     ///         PrivateKey = @"-----BEGIN PRIVATE KEY-----
     /// MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEjc8pPoobS0l6
     /// -----END PRIVATE KEY-----
+    /// 
     /// ",
+    ///         UserDomain = "acme.com",
+    ///         Username = "jdoe",
     ///     });
     /// 
     /// });

@@ -157,7 +157,6 @@ def get_cloud_connector_group(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Cloud Connector Group Data Source
     foo = zpa.get_cloud_connector_group(name="AWS-Cloud")
     ```
 
@@ -165,7 +164,6 @@ def get_cloud_connector_group(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Cloud Connector Group Data Source
     foo = zpa.get_cloud_connector_group(id="1234567890")
     ```
     """
@@ -206,7 +204,6 @@ def get_cloud_connector_group_output(id: Optional[pulumi.Input[Optional[builtins
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Cloud Connector Group Data Source
     foo = zpa.get_cloud_connector_group(name="AWS-Cloud")
     ```
 
@@ -214,7 +211,6 @@ def get_cloud_connector_group_output(id: Optional[pulumi.Input[Optional[builtins
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Cloud Connector Group Data Source
     foo = zpa.get_cloud_connector_group(id="1234567890")
     ```
     """

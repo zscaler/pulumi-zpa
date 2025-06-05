@@ -25,7 +25,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ZPA App Connector Group Data Source
 //			_, err := zpa.GetAppConnectorGroup(ctx, &zpa.GetAppConnectorGroupArgs{
 //				Name: pulumi.StringRef("DataCenter"),
 //			}, nil)
@@ -50,7 +49,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ZPA App Connector Group Data Source
 //			_, err := zpa.GetAppConnectorGroup(ctx, &zpa.GetAppConnectorGroupArgs{
 //				Id: pulumi.StringRef("123456789"),
 //			}, nil)

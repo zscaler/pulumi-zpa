@@ -32,10 +32,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ZPA SCIM Groups Data Source
 //			_, err := zpa.GetSCIMGroups(ctx, &zpa.GetSCIMGroupsArgs{
-//				Name:    pulumi.StringRef("Engineering"),
 //				IdpName: pulumi.StringRef("idp_name"),
+//				Name:    pulumi.StringRef("Engineering"),
 //			}, nil)
 //			if err != nil {
 //				return err

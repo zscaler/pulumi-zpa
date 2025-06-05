@@ -17,7 +17,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Inspection Application Segment Data Source
  * const _this = zpa.getApplicationSegmentInspection({
  *     name: "ZPA_Inspection_Example",
  * });
@@ -27,7 +26,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Inspection Application Segment Data Source
  * const _this = zpa.getApplicationSegmentInspection({
  *     id: "123456789",
  * });
@@ -95,7 +93,6 @@ export interface GetApplicationSegmentInspectionResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Inspection Application Segment Data Source
  * const _this = zpa.getApplicationSegmentInspection({
  *     name: "ZPA_Inspection_Example",
  * });
@@ -105,7 +102,6 @@ export interface GetApplicationSegmentInspectionResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Inspection Application Segment Data Source
  * const _this = zpa.getApplicationSegmentInspection({
  *     id: "123456789",
  * });

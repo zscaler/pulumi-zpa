@@ -199,8 +199,7 @@ class SegmentGroup(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # ZPA Segment Group resource
-        test_segment_group = zpa.SegmentGroup("test_segment_group",
-            name="test1-segment-group",
+        test_segment_group = zpa.SegmentGroup("testSegmentGroup",
             description="test1-segment-group",
             enabled=True)
         ```
@@ -245,8 +244,7 @@ class SegmentGroup(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # ZPA Segment Group resource
-        test_segment_group = zpa.SegmentGroup("test_segment_group",
-            name="test1-segment-group",
+        test_segment_group = zpa.SegmentGroup("testSegmentGroup",
             description="test1-segment-group",
             enabled=True)
         ```

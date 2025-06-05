@@ -982,6 +982,70 @@ export interface GetPolicyTypeRuleConditionOperand {
     rhs: string;
 }
 
+export interface GetPraApprovalControllerApplication {
+    /**
+     * The unique identifier of the pra application segment
+     */
+    id: string;
+    /**
+     * The name of the pra application segment
+     */
+    name: string;
+}
+
+export interface GetPraApprovalControllerWorkingHour {
+    /**
+     * The days of the week that you want to enable the privileged approval
+     */
+    days: string[];
+    /**
+     * The end time that the user no longer has access to the privileged approval
+     */
+    endTime: string;
+    /**
+     * The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+     */
+    endTimeCron: string;
+    /**
+     * The start time that the user has access to the privileged approval
+     */
+    startTime: string;
+    /**
+     * The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+     */
+    startTimeCron: string;
+    /**
+     * The time zone for the time window of a privileged approval
+     */
+    timezone: string;
+}
+
+export interface GetPraConsoleControllerPraApplication {
+    /**
+     * The unique identifier of the Privileged Remote Access-enabled application
+     */
+    id: string;
+    /**
+     * - (Required) The name of the privileged console.
+     */
+    name: string;
+}
+
+export interface GetPraConsoleControllerPraPortal {
+    /**
+     * The unique identifier of the privileged portal
+     */
+    id: string;
+    /**
+     * - (Required) The name of the privileged console.
+     */
+    name: string;
+}
+
+export interface GetPraCredentialPoolCredential {
+    ids?: string[];
+}
+
 export interface GetSegmentGroupApplication {
     bypassType: string;
     configSpace: string;
@@ -1923,6 +1987,294 @@ export interface PolicyBrowserProtectionRuleConditionOperand {
 export interface PolicyBrowserProtectionRuleConditionOperandEntryValue {
     lhs?: string;
     rhs?: string;
+}
+
+export interface PolicyCapabilitiesRuleCondition {
+    id: string;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands: outputs.PolicyCapabilitiesRuleConditionOperand[];
+    operator: string;
+}
+
+export interface PolicyCapabilitiesRuleConditionOperand {
+    entryValues: outputs.PolicyCapabilitiesRuleConditionOperandEntryValue[];
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: string;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: string[];
+}
+
+export interface PolicyCapabilitiesRuleConditionOperandEntryValue {
+    lhs?: string;
+    rhs?: string;
+}
+
+export interface PolicyCapabilitiesRulePrivilegedCapabilities {
+    /**
+     * Indicates the PRA Clipboard Copy function
+     */
+    clipboardCopy?: boolean;
+    /**
+     * Indicates the PRA Clipboard Paste function
+     */
+    clipboardPaste?: boolean;
+    /**
+     * Indicates the PRA File Transfer capabilities that enables the File Download function
+     */
+    fileDownload?: boolean;
+    /**
+     * Indicates the PRA File Transfer capabilities that enables the File Upload function
+     */
+    fileUpload?: boolean;
+    /**
+     * Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and downloads the file following the inspection
+     */
+    inspectFileDownload?: boolean;
+    /**
+     * Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and uploads the file following the inspection
+     */
+    inspectFileUpload?: boolean;
+    /**
+     * Indicates the PRA Monitoring Capabilities to enable the PRA Session Monitoring function
+     */
+    monitorSession?: boolean;
+    /**
+     * Indicates the PRA Session Recording capabilities to enable PRA Session Recording
+     */
+    recordSession?: boolean;
+    /**
+     * Indicates the PRA Session Control and Monitoring capabilities to enable PRA Session Monitoring
+     */
+    shareSession?: boolean;
+}
+
+export interface PolicyCredentialRuleCondition {
+    id: string;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands: outputs.PolicyCredentialRuleConditionOperand[];
+    operator: string;
+}
+
+export interface PolicyCredentialRuleConditionOperand {
+    entryValues: outputs.PolicyCredentialRuleConditionOperandEntryValue[];
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: string;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: string[];
+}
+
+export interface PolicyCredentialRuleConditionOperandEntryValue {
+    lhs?: string;
+    rhs?: string;
+}
+
+export interface PolicyCredentialRuleCredential {
+    id?: string;
+}
+
+export interface PolicyCredentialRuleCredentialPool {
+    id?: string;
+}
+
+export interface PolicyForwardingRuleV2Condition {
+    id: string;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands: outputs.PolicyForwardingRuleV2ConditionOperand[];
+    operator: string;
+}
+
+export interface PolicyForwardingRuleV2ConditionOperand {
+    entryValues: outputs.PolicyForwardingRuleV2ConditionOperandEntryValue[];
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: string;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: string[];
+}
+
+export interface PolicyForwardingRuleV2ConditionOperandEntryValue {
+    lhs?: string;
+    rhs?: string;
+}
+
+export interface PolicyInspectionRuleV2Condition {
+    id: string;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands: outputs.PolicyInspectionRuleV2ConditionOperand[];
+    operator: string;
+}
+
+export interface PolicyInspectionRuleV2ConditionOperand {
+    entryValues: outputs.PolicyInspectionRuleV2ConditionOperandEntryValue[];
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: string;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: string[];
+}
+
+export interface PolicyInspectionRuleV2ConditionOperandEntryValue {
+    lhs?: string;
+    rhs?: string;
+}
+
+export interface PolicyIsolationRuleV2Condition {
+    id: string;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands: outputs.PolicyIsolationRuleV2ConditionOperand[];
+    operator: string;
+}
+
+export interface PolicyIsolationRuleV2ConditionOperand {
+    entryValues: outputs.PolicyIsolationRuleV2ConditionOperandEntryValue[];
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: string;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: string[];
+}
+
+export interface PolicyIsolationRuleV2ConditionOperandEntryValue {
+    lhs?: string;
+    rhs?: string;
+}
+
+export interface PolicyRedirectionRuleCondition {
+    id: string;
+    microtenantId: string;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands?: outputs.PolicyRedirectionRuleConditionOperand[];
+    operator: string;
+}
+
+export interface PolicyRedirectionRuleConditionOperand {
+    id: string;
+    idpId: string;
+    /**
+     * This signifies the key for the object type. String ID example: id
+     */
+    lhs: string;
+    /**
+     * This denotes the value for the given object type. Its value depends upon the key.
+     */
+    microtenantId: string;
+    name: string;
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: string;
+    /**
+     * This denotes the value for the given object type. Its value depends upon the key.
+     */
+    rhs: string;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    rhsLists: string[];
+}
+
+export interface PolicyRedirectionRuleServiceEdgeGroup {
+    ids: string[];
+}
+
+export interface PolicyTimeoutRuleV2Condition {
+    id: string;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands: outputs.PolicyTimeoutRuleV2ConditionOperand[];
+    operator: string;
+}
+
+export interface PolicyTimeoutRuleV2ConditionOperand {
+    entryValues: outputs.PolicyTimeoutRuleV2ConditionOperandEntryValue[];
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType: string;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: string[];
+}
+
+export interface PolicyTimeoutRuleV2ConditionOperandEntryValue {
+    lhs?: string;
+    rhs?: string;
+}
+
+export interface PraApprovalControllerApplication {
+    /**
+     * The unique identifier of the pra application segment
+     */
+    ids?: string[];
+}
+
+export interface PraApprovalControllerWorkingHour {
+    /**
+     * The days of the week that you want to enable the privileged approval
+     */
+    days: string[];
+    /**
+     * The end time that the user no longer has access to the privileged approval
+     */
+    endTime: string;
+    /**
+     * The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+     */
+    endTimeCron: string;
+    /**
+     * The start time that the user has access to the privileged approval
+     */
+    startTime: string;
+    /**
+     * The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
+     */
+    startTimeCron: string;
+    /**
+     * The time zone for the time window of a privileged approval
+     */
+    timezone: string;
+}
+
+export interface PraConsoleControllerPraApplication {
+    id: string;
+}
+
+export interface PraConsoleControllerPraPortal {
+    /**
+     * The unique identifier of the privileged portal
+     */
+    ids: string[];
 }
 
 export interface PraCredentialPoolCredential {

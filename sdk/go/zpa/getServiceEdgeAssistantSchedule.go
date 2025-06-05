@@ -17,6 +17,32 @@ import (
 // Use the **zpa_service_edge_assistant_schedule** data source to get information about Auto Delete frequency of the Service Edge for the specified customer in the Zscaler Private Access cloud.
 //
 // > **NOTE** - The `customerId` attribute is optional and not required during the configuration.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := zpa.LookupServiceEdgeAssistantSchedule(ctx, &zpa.LookupServiceEdgeAssistantScheduleArgs{
+//				CustomerId: pulumi.StringRef("1234567891012"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupServiceEdgeAssistantSchedule(ctx *pulumi.Context, args *LookupServiceEdgeAssistantScheduleArgs, opts ...pulumi.InvokeOption) (*LookupServiceEdgeAssistantScheduleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceEdgeAssistantScheduleResult

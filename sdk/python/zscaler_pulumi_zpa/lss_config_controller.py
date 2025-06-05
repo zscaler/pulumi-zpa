@@ -150,11 +150,10 @@ class LSSConfigController(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        # Get Log Type Format - "App Connector Metrics"
         zpn_ast_comprehensive_stats = zpa.get_lss_log_type_formats(log_type="zpn_ast_comprehensive_stats")
         lss_siem_policy = zpa.get_policy_type(policy_type="SIEM_POLICY")
         this = zpa.get_app_connector_group(name="Example100")
-        lss_app_connector_metrics = zpa.LSSConfigController("lss_app_connector_metrics",
+        lss_app_connector_metrics = zpa.LSSConfigController("lssAppConnectorMetrics",
             config={
                 "name": "LSS App Connector Metrics",
                 "description": "LSS App Connector Metrics",
@@ -213,11 +212,10 @@ class LSSConfigController(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        # Get Log Type Format - "App Connector Metrics"
         zpn_ast_comprehensive_stats = zpa.get_lss_log_type_formats(log_type="zpn_ast_comprehensive_stats")
         lss_siem_policy = zpa.get_policy_type(policy_type="SIEM_POLICY")
         this = zpa.get_app_connector_group(name="Example100")
-        lss_app_connector_metrics = zpa.LSSConfigController("lss_app_connector_metrics",
+        lss_app_connector_metrics = zpa.LSSConfigController("lssAppConnectorMetrics",
             config={
                 "name": "LSS App Connector Metrics",
                 "description": "LSS App Connector Metrics",

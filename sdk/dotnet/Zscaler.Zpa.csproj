@@ -9,7 +9,6 @@
     <PackageProjectUrl>https://www.zscaler.com</PackageProjectUrl>
     <RepositoryUrl>https://github.com/zscaler/pulumi-zpa</RepositoryUrl>
     <PackageIcon>logo.png</PackageIcon>
-    <Version>1.0.0-alpha.0+dev</Version>
 
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>

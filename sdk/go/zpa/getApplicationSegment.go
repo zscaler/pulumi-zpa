@@ -25,7 +25,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ZPA Application Segment Data Source
 //			_, err := zpa.LookupApplicationSegment(ctx, &zpa.LookupApplicationSegmentArgs{
 //				Name: pulumi.StringRef("example"),
 //			}, nil)
@@ -50,7 +49,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ZPA Application Segment Data Source
 //			_, err := zpa.LookupApplicationSegment(ctx, &zpa.LookupApplicationSegmentArgs{
 //				Id: pulumi.StringRef("123456789"),
 //			}, nil)

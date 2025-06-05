@@ -34,7 +34,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Service Edge Group Data Source by name
         ///     var foo = Zpa.GetServiceEdgeGroup.Invoke(new()
         ///     {
         ///         Name = "DataCenter",
@@ -51,7 +50,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Service Edge Group Data Source by ID
         ///     var foo = Zpa.GetServiceEdgeGroup.Invoke(new()
         ///     {
         ///         Id = "123456789",
@@ -85,7 +83,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Service Edge Group Data Source by name
         ///     var foo = Zpa.GetServiceEdgeGroup.Invoke(new()
         ///     {
         ///         Name = "DataCenter",
@@ -102,7 +99,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Service Edge Group Data Source by ID
         ///     var foo = Zpa.GetServiceEdgeGroup.Invoke(new()
         ///     {
         ///         Id = "123456789",
@@ -136,7 +132,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Service Edge Group Data Source by name
         ///     var foo = Zpa.GetServiceEdgeGroup.Invoke(new()
         ///     {
         ///         Name = "DataCenter",
@@ -153,7 +148,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Service Edge Group Data Source by ID
         ///     var foo = Zpa.GetServiceEdgeGroup.Invoke(new()
         ///     {
         ///         Id = "123456789",

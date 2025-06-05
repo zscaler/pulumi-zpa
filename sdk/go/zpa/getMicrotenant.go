@@ -34,7 +34,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ZPA Microtenant Controller Data Source
 //			_, err := zpa.LookupMicrotenant(ctx, &zpa.LookupMicrotenantArgs{
 //				Name: pulumi.StringRef("Microtenant_A"),
 //			}, nil)

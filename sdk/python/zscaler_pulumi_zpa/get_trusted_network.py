@@ -133,7 +133,6 @@ def get_trusted_network(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Trusted Network Data Source
     example = zpa.get_trusted_network(name="trusted_network_name")
     ```
 
@@ -143,7 +142,6 @@ def get_trusted_network(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Posture Profile Data Source
     example1 = zpa.get_trusted_network(name="Corporate-Network (zscalertwo.net)")
     pulumi.export("zpaTrustedNetwork", example1.network_id)
     ```
@@ -186,7 +184,6 @@ def get_trusted_network_output(id: Optional[pulumi.Input[Optional[builtins.str]]
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Trusted Network Data Source
     example = zpa.get_trusted_network(name="trusted_network_name")
     ```
 
@@ -196,7 +193,6 @@ def get_trusted_network_output(id: Optional[pulumi.Input[Optional[builtins.str]]
     import pulumi
     import pulumi_zpa as zpa
 
-    # ZPA Posture Profile Data Source
     example1 = zpa.get_trusted_network(name="Corporate-Network (zscalertwo.net)")
     pulumi.export("zpaTrustedNetwork", example1.network_id)
     ```

@@ -28,7 +28,6 @@ namespace Zscaler.Zpa
     /// {
     ///     var @this = new Zpa.ApplicationSegmentPRA("this", new()
     ///     {
-    ///         Name = "PRA_Example",
     ///         Description = "PRA_Example",
     ///         Enabled = true,
     ///         HealthReporting = "ON_ACCESS",
@@ -46,14 +45,14 @@ namespace Zscaler.Zpa
     ///             "ssh_pra.example.com",
     ///             "rdp_pra.example.com",
     ///         },
-    ///         SegmentGroupId = thisZpaSegmentGroup.Id,
+    ///         SegmentGroupId = zpa_segment_group.This.Id,
     ///         ServerGroups = new[]
     ///         {
     ///             new Zpa.Inputs.ApplicationSegmentPRAServerGroupArgs
     ///             {
     ///                 Ids = new[]
     ///                 {
-    ///                     thisZpaServerGroup.Id,
+    ///                     zpa_server_group.This.Id,
     ///                 },
     ///             },
     ///         },

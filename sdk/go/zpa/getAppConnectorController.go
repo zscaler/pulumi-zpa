@@ -32,7 +32,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ZPA App Connector Data Source
 //			_, err := zpa.GetAppConnectorController(ctx, &zpa.GetAppConnectorControllerArgs{
 //				Name: pulumi.StringRef("AWS-VPC100-App-Connector"),
 //			}, nil)

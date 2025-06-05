@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApplicationSegmentPRA{}
 	case "zpa:index/applicationServer:ApplicationServer":
 		r = &ApplicationServer{}
+	case "zpa:index/assistantSchedule:AssistantSchedule":
+		r = &AssistantSchedule{}
 	case "zpa:index/browserAccess:BrowserAccess":
 		r = &BrowserAccess{}
 	case "zpa:index/browserCertificate:BrowserCertificate":
@@ -93,8 +95,30 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PolicyAccessTimeOutRuleV2{}
 	case "zpa:index/policyBrowserProtectionRule:PolicyBrowserProtectionRule":
 		r = &PolicyBrowserProtectionRule{}
+	case "zpa:index/policyCapabilitiesRule:PolicyCapabilitiesRule":
+		r = &PolicyCapabilitiesRule{}
+	case "zpa:index/policyCredentialRule:PolicyCredentialRule":
+		r = &PolicyCredentialRule{}
+	case "zpa:index/policyForwardingRuleV2:PolicyForwardingRuleV2":
+		r = &PolicyForwardingRuleV2{}
+	case "zpa:index/policyInspectionRuleV2:PolicyInspectionRuleV2":
+		r = &PolicyInspectionRuleV2{}
+	case "zpa:index/policyIsolationRuleV2:PolicyIsolationRuleV2":
+		r = &PolicyIsolationRuleV2{}
+	case "zpa:index/policyRedirectionRule:PolicyRedirectionRule":
+		r = &PolicyRedirectionRule{}
+	case "zpa:index/policyTimeoutRuleV2:PolicyTimeoutRuleV2":
+		r = &PolicyTimeoutRuleV2{}
+	case "zpa:index/praApprovalController:PraApprovalController":
+		r = &PraApprovalController{}
+	case "zpa:index/praConsoleController:PraConsoleController":
+		r = &PraConsoleController{}
+	case "zpa:index/praCredentialController:PraCredentialController":
+		r = &PraCredentialController{}
 	case "zpa:index/praCredentialPool:PraCredentialPool":
 		r = &PraCredentialPool{}
+	case "zpa:index/praPortalController:PraPortalController":
+		r = &PraPortalController{}
 	case "zpa:index/provisioningKey:ProvisioningKey":
 		r = &ProvisioningKey{}
 	case "zpa:index/segmentGroup:SegmentGroup":
@@ -164,6 +188,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"zpa",
 		"index/applicationServer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/assistantSchedule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -318,7 +347,62 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"zpa",
+		"index/policyCapabilitiesRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/policyCredentialRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/policyForwardingRuleV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/policyInspectionRuleV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/policyIsolationRuleV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/policyRedirectionRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/policyTimeoutRuleV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/praApprovalController",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/praConsoleController",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/praCredentialController",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
 		"index/praCredentialPool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/praPortalController",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

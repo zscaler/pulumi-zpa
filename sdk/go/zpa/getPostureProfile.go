@@ -32,7 +32,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ZPA Posture Profile Data Source
 //			_, err := zpa.GetPostureProfile(ctx, &zpa.GetPostureProfileArgs{
 //				Name: pulumi.StringRef("CrowdStrike_ZPA_ZTA_40"),
 //			}, nil)
@@ -57,7 +56,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ZPA Posture Profile Data Source
 //			_, err := zpa.GetPostureProfile(ctx, &zpa.GetPostureProfileArgs{
 //				Name: pulumi.StringRef("Detect SentinelOne"),
 //			}, nil)
@@ -82,7 +80,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ZPA Posture Profile Data Source
 //			_, err := zpa.GetPostureProfile(ctx, &zpa.GetPostureProfileArgs{
 //				Name: pulumi.StringRef("domain_joined"),
 //			}, nil)
@@ -109,7 +106,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ZPA Posture Profile Data Source
 //			_, err := zpa.GetPostureProfile(ctx, &zpa.GetPostureProfileArgs{
 //				Name: pulumi.StringRef("CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)"),
 //			}, nil)
@@ -136,7 +132,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ZPA Posture Profile Data Source
 //			example1, err := zpa.GetPostureProfile(ctx, &zpa.GetPostureProfileArgs{
 //				Name: pulumi.StringRef("CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)"),
 //			}, nil)

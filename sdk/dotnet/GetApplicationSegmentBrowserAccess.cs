@@ -23,7 +23,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Application Segment Browser Access Data Source
         ///     var example = Zpa.GetApplicationSegmentBrowserAccess.Invoke(new()
         ///     {
         ///         Name = "example",
@@ -40,7 +39,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Application Segment Browser Access Data Source
         ///     var example = Zpa.GetApplicationSegmentBrowserAccess.Invoke(new()
         ///     {
         ///         Id = "123456789",
@@ -63,7 +61,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Application Segment Browser Access Data Source
         ///     var example = Zpa.GetApplicationSegmentBrowserAccess.Invoke(new()
         ///     {
         ///         Name = "example",
@@ -80,7 +77,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Application Segment Browser Access Data Source
         ///     var example = Zpa.GetApplicationSegmentBrowserAccess.Invoke(new()
         ///     {
         ///         Id = "123456789",
@@ -103,7 +99,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Application Segment Browser Access Data Source
         ///     var example = Zpa.GetApplicationSegmentBrowserAccess.Invoke(new()
         ///     {
         ///         Name = "example",
@@ -120,7 +115,6 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA Application Segment Browser Access Data Source
         ///     var example = Zpa.GetApplicationSegmentBrowserAccess.Invoke(new()
         ///     {
         ///         Id = "123456789",

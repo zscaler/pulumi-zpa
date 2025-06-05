@@ -26,9 +26,8 @@ namespace Zscaler.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thisPRACredential = new Zpa.PRACredential("this", new()
+    ///     var thisPRACredential = new Zpa.PRACredential("thisPRACredential", new()
     ///     {
-    ///         Name = "John Doe",
     ///         Description = "Created with Terraform",
     ///         CredentialType = "PASSWORD",
     ///         UserDomain = "acme.com",
@@ -36,9 +35,8 @@ namespace Zscaler.Zpa
     ///     });
     /// 
     ///     // Creates Credential Pool of Type "USERNAME_PASSWORD"
-    ///     var @this = new Zpa.PraCredentialPool("this", new()
+    ///     var thisPraCredentialPool = new Zpa.PraCredentialPool("thisPraCredentialPool", new()
     ///     {
-    ///         Name = "PRACredentialPool01",
     ///         CredentialType = "USERNAME_PASSWORD",
     ///         Credentials = new[]
     ///         {

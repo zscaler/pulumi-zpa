@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * const _this = new zpa.ApplicationSegmentPRA("this", {
- *     name: "PRA_Example",
  *     description: "PRA_Example",
  *     enabled: true,
  *     healthReporting: "ON_ACCESS",
@@ -35,9 +34,9 @@ import * as utilities from "./utilities";
  *         "ssh_pra.example.com",
  *         "rdp_pra.example.com",
  *     ],
- *     segmentGroupId: thisZpaSegmentGroup.id,
+ *     segmentGroupId: zpa_segment_group["this"].id,
  *     serverGroups: [{
- *         ids: [thisZpaServerGroup.id],
+ *         ids: [zpa_server_group["this"].id],
  *     }],
  *     commonAppsDtos: [{
  *         appsConfigs: [

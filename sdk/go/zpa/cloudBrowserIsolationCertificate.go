@@ -14,6 +14,49 @@ import (
 // * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
 //
 // The **zpa_cloud_browser_isolation_certificate** resource creates a Cloud Browser Isolation certificate. This resource can then be used when creating a CBI External Profile `CloudBrowserIsolationExternalProfile`.`
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"os"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := os.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Retrieve CBI Banner ID
+//			_, err := zpa.NewCloudBrowserIsolationCertificate(ctx, "thisCloudBrowserIsolationCertificate", &zpa.CloudBrowserIsolationCertificateArgs{
+//				Pem: pulumi.String(readFileOrPanic("cert.pem")),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = zpa.NewCloudBrowserIsolationCertificate(ctx, "thisIndex/cloudBrowserIsolationCertificateCloudBrowserIsolationCertificate", &zpa.CloudBrowserIsolationCertificateArgs{
+//				Pem: pulumi.String("    -----BEGIN CERTIFICATE-----\n    MIIFYDCCBEigAwIBAgIQQAF3ITfU6UK47naqPGQKtzANBgkqhkiG9w0BAQsFADA/\n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type CloudBrowserIsolationCertificate struct {
 	pulumi.CustomResourceState
 

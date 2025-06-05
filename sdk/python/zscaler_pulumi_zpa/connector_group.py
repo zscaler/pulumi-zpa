@@ -758,20 +758,19 @@ class ConnectorGroup(pulumi.CustomResource):
 
         # Create a App Connector Group
         example = zpa.ConnectorGroup("example",
-            name="Example",
-            description="Example",
-            enabled=True,
             city_country="San Jose, CA",
             country_code="US",
+            description="Example",
+            dns_query_type="IPV4_IPV6",
+            enabled=True,
             latitude="37.338",
-            longitude="-121.8863",
             location="San Jose, CA, US",
+            longitude="-121.8863",
+            override_version_profile=True,
             upgrade_day="SUNDAY",
             upgrade_time_in_secs="66600",
-            override_version_profile=True,
-            version_profile_name="New Release",
-            dns_query_type="IPV4_IPV6",
-            use_in_dr_mode=True)
+            use_in_dr_mode=True,
+            version_profile_name="New Release")
         ```
 
         ### Using Version Profile ID
@@ -786,7 +785,6 @@ class ConnectorGroup(pulumi.CustomResource):
 
         # Create a App Connector Group
         example = zpa.ConnectorGroup("example",
-            name="Example",
             description="Example",
             enabled=True,
             city_country="San Jose, CA",
@@ -797,7 +795,7 @@ class ConnectorGroup(pulumi.CustomResource):
             upgrade_day="SUNDAY",
             upgrade_time_in_secs="66600",
             override_version_profile=True,
-            version_profile_id=this["id"],
+            version_profile_id=data["zpa_customer_version_profile"]["this"]["id"],
             dns_query_type="IPV4_IPV6",
             use_in_dr_mode=True)
         ```
@@ -864,20 +862,19 @@ class ConnectorGroup(pulumi.CustomResource):
 
         # Create a App Connector Group
         example = zpa.ConnectorGroup("example",
-            name="Example",
-            description="Example",
-            enabled=True,
             city_country="San Jose, CA",
             country_code="US",
+            description="Example",
+            dns_query_type="IPV4_IPV6",
+            enabled=True,
             latitude="37.338",
-            longitude="-121.8863",
             location="San Jose, CA, US",
+            longitude="-121.8863",
+            override_version_profile=True,
             upgrade_day="SUNDAY",
             upgrade_time_in_secs="66600",
-            override_version_profile=True,
-            version_profile_name="New Release",
-            dns_query_type="IPV4_IPV6",
-            use_in_dr_mode=True)
+            use_in_dr_mode=True,
+            version_profile_name="New Release")
         ```
 
         ### Using Version Profile ID
@@ -892,7 +889,6 @@ class ConnectorGroup(pulumi.CustomResource):
 
         # Create a App Connector Group
         example = zpa.ConnectorGroup("example",
-            name="Example",
             description="Example",
             enabled=True,
             city_country="San Jose, CA",
@@ -903,7 +899,7 @@ class ConnectorGroup(pulumi.CustomResource):
             upgrade_day="SUNDAY",
             upgrade_time_in_secs="66600",
             override_version_profile=True,
-            version_profile_id=this["id"],
+            version_profile_id=data["zpa_customer_version_profile"]["this"]["id"],
             dns_query_type="IPV4_IPV6",
             use_in_dr_mode=True)
         ```

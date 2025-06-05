@@ -18,7 +18,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Browser Access Data Source
  * const foo = zpa.getBaCertificate({
  *     name: "example.acme.com",
  * });
@@ -28,7 +27,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Browser Access Data Source
  * const foo = zpa.getBaCertificate({
  *     id: "1234567890",
  * });
@@ -88,7 +86,6 @@ export interface GetBaCertificateResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Browser Access Data Source
  * const foo = zpa.getBaCertificate({
  *     name: "example.acme.com",
  * });
@@ -98,7 +95,6 @@ export interface GetBaCertificateResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Browser Access Data Source
  * const foo = zpa.getBaCertificate({
  *     id: "1234567890",
  * });

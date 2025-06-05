@@ -135,7 +135,6 @@ def get_cloud_browser_isolation_banner(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    # Retrieve CBI Region ID and Name
     this = zpa.get_cloud_browser_isolation_banner(name="Default")
     ```
     """
@@ -171,7 +170,6 @@ def get_cloud_browser_isolation_banner_output(id: Optional[pulumi.Input[Optional
     import pulumi
     import pulumi_zpa as zpa
 
-    # Retrieve CBI Region ID and Name
     this = zpa.get_cloud_browser_isolation_banner(name="Default")
     ```
     """

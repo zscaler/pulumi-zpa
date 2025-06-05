@@ -30,11 +30,10 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA SCIM Groups Data Source
         ///     var engineering = Zpa.GetSCIMGroups.Invoke(new()
         ///     {
-        ///         Name = "Engineering",
         ///         IdpName = "idp_name",
+        ///         Name = "Engineering",
         ///     });
         /// 
         /// });
@@ -61,11 +60,10 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA SCIM Groups Data Source
         ///     var engineering = Zpa.GetSCIMGroups.Invoke(new()
         ///     {
-        ///         Name = "Engineering",
         ///         IdpName = "idp_name",
+        ///         Name = "Engineering",
         ///     });
         /// 
         /// });
@@ -92,11 +90,10 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // ZPA SCIM Groups Data Source
         ///     var engineering = Zpa.GetSCIMGroups.Invoke(new()
         ///     {
-        ///         Name = "Engineering",
         ///         IdpName = "idp_name",
+        ///         Name = "Engineering",
         ///     });
         /// 
         /// });

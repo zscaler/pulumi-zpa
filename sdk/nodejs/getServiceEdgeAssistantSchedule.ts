@@ -11,6 +11,17 @@ import * as utilities from "./utilities";
  * Use the **zpa_service_edge_assistant_schedule** data source to get information about Auto Delete frequency of the Service Edge for the specified customer in the Zscaler Private Access cloud.
  *
  * > **NOTE** - The `customerId` attribute is optional and not required during the configuration.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const _this = zpa.getServiceEdgeAssistantSchedule({
+ *     customerId: "1234567891012",
+ * });
+ * ```
  */
 export function getServiceEdgeAssistantSchedule(args?: GetServiceEdgeAssistantScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceEdgeAssistantScheduleResult> {
     args = args || {};
@@ -47,6 +58,17 @@ export interface GetServiceEdgeAssistantScheduleResult {
  * Use the **zpa_service_edge_assistant_schedule** data source to get information about Auto Delete frequency of the Service Edge for the specified customer in the Zscaler Private Access cloud.
  *
  * > **NOTE** - The `customerId` attribute is optional and not required during the configuration.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const _this = zpa.getServiceEdgeAssistantSchedule({
+ *     customerId: "1234567891012",
+ * });
+ * ```
  */
 export function getServiceEdgeAssistantScheduleOutput(args?: GetServiceEdgeAssistantScheduleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceEdgeAssistantScheduleResult> {
     args = args || {};
