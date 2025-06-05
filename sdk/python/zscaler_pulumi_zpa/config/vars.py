@@ -47,7 +47,7 @@ class _ExportableConfig(types.ModuleType):
         """
         zpa customer id
         """
-        return __config__.get('customerId')
+        return __config__.get('customerId') or _utilities.get_env('ZPA_CUSTOMER_ID')
 
     @property
     def http_proxy(self) -> Optional[str]:

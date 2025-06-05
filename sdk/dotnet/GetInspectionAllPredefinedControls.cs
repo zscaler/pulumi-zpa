@@ -30,8 +30,8 @@ namespace Zscaler.Zpa
         /// {
         ///     var @this = Zpa.GetInspectionAllPredefinedControls.Invoke(new()
         ///     {
-        ///         GroupName = "Preprocessors",
         ///         Version = "OWASP_CRS/3.3.0",
+        ///         GroupName = "Preprocessors",
         ///     });
         /// 
         /// });
@@ -58,8 +58,8 @@ namespace Zscaler.Zpa
         /// {
         ///     var @this = Zpa.GetInspectionAllPredefinedControls.Invoke(new()
         ///     {
-        ///         GroupName = "Preprocessors",
         ///         Version = "OWASP_CRS/3.3.0",
+        ///         GroupName = "Preprocessors",
         ///     });
         /// 
         /// });
@@ -86,8 +86,8 @@ namespace Zscaler.Zpa
         /// {
         ///     var @this = Zpa.GetInspectionAllPredefinedControls.Invoke(new()
         ///     {
-        ///         GroupName = "Preprocessors",
         ///         Version = "OWASP_CRS/3.3.0",
+        ///         GroupName = "Preprocessors",
         ///     });
         /// 
         /// });

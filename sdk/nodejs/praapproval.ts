@@ -12,6 +12,97 @@ import * as utilities from "./utilities";
  *
  * The **zpa_pra_approval_controller** resource creates a privileged remote access approval in the Zscaler Private Access cloud. This resource allows third-party users and contractors to be able to log in to a Privileged Remote Access (PRA) portal.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * // ZPA Segment Group resource
+ * const thisSegmentGroup = new zpa.SegmentGroup("this", {
+ *     name: "Example",
+ *     description: "Example",
+ *     enabled: true,
+ * });
+ * // ZPA App Connector Group resource
+ * const thisConnectorGroup = new zpa.ConnectorGroup("this", {
+ *     name: "Example",
+ *     description: "Example",
+ *     enabled: true,
+ *     cityCountry: "San Jose, CA",
+ *     countryCode: "US",
+ *     latitude: "37.338",
+ *     longitude: "-121.8863",
+ *     location: "San Jose, CA, US",
+ *     upgradeDay: "SUNDAY",
+ *     upgradeTimeInSecs: "66600",
+ *     overrideVersionProfile: true,
+ *     versionProfileId: "0",
+ *     dnsQueryType: "IPV4",
+ * });
+ * // ZPA Server Group resource
+ * const thisServerGroup = new zpa.ServerGroup("this", {
+ *     name: "Example",
+ *     description: "Example",
+ *     enabled: true,
+ *     dynamicDiscovery: false,
+ *     appConnectorGroups: [{
+ *         ids: [thisConnectorGroup.id],
+ *     }],
+ * }, {
+ *     dependsOn: [thisConnectorGroup],
+ * });
+ * // ZPA Application Segment resource
+ * const _this = new zpa.ApplicationSegment("this", {
+ *     name: "Example",
+ *     description: "Example",
+ *     enabled: true,
+ *     healthReporting: "ON_ACCESS",
+ *     bypassType: "NEVER",
+ *     isCnameEnabled: true,
+ *     tcpPortRanges: [
+ *         "8080",
+ *         "8080",
+ *     ],
+ *     domainNames: ["server.acme.com"],
+ *     segmentGroupId: thisSegmentGroup.id,
+ *     serverGroups: [{
+ *         ids: [thisServerGroup.id],
+ *     }],
+ * }, {
+ *     dependsOn: [
+ *         thisServerGroup,
+ *         thisSegmentGroup,
+ *     ],
+ * });
+ * // Create PRA Approval Controller
+ * const thisPRAApproval = new zpa.PRAApproval("this", {
+ *     emailIds: ["jdoe@acme.com"],
+ *     startTime: "Tue, 07 Mar 2024 11:05:30 PST",
+ *     endTime: "Tue, 07 Jun 2024 11:05:30 PST",
+ *     status: "FUTURE",
+ *     applications: [{
+ *         ids: [_this.id],
+ *     }],
+ *     workingHours: [{
+ *         days: [
+ *             "FRI",
+ *             "MON",
+ *             "SAT",
+ *             "SUN",
+ *             "THU",
+ *             "TUE",
+ *             "WED",
+ *         ],
+ *         startTime: "00:10",
+ *         startTimeCron: "0 0 8 ? * MON,TUE,WED,THU,FRI,SAT",
+ *         endTime: "09:15",
+ *         endTimeCron: "0 15 17 ? * MON,TUE,WED,THU,FRI,SAT",
+ *         timezone: "America/Vancouver",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
@@ -64,7 +155,7 @@ export class PRAApproval extends pulumi.CustomResource {
     /**
      * The email address of the user that you are assigning the privileged approval to
      */
-    public readonly emailIds!: pulumi.Output<string>;
+    public readonly emailIds!: pulumi.Output<string[]>;
     /**
      * The end date that the user no longer has access to the privileged approval
      */
@@ -132,7 +223,7 @@ export interface PRAApprovalState {
     /**
      * The email address of the user that you are assigning the privileged approval to
      */
-    emailIds?: pulumi.Input<string>;
+    emailIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The end date that the user no longer has access to the privileged approval
      */
@@ -161,7 +252,7 @@ export interface PRAApprovalArgs {
     /**
      * The email address of the user that you are assigning the privileged approval to
      */
-    emailIds?: pulumi.Input<string>;
+    emailIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The end date that the user no longer has access to the privileged approval
      */

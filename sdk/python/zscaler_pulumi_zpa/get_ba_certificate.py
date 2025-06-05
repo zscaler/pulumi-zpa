@@ -217,6 +217,7 @@ def get_ba_certificate(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA Browser Access Data Source
     foo = zpa.get_ba_certificate(name="example.acme.com")
     ```
 
@@ -224,6 +225,7 @@ def get_ba_certificate(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA Browser Access Data Source
     foo = zpa.get_ba_certificate(id="1234567890")
     ```
     """
@@ -269,6 +271,7 @@ def get_ba_certificate_output(id: Optional[pulumi.Input[Optional[builtins.str]]]
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA Browser Access Data Source
     foo = zpa.get_ba_certificate(name="example.acme.com")
     ```
 
@@ -276,6 +279,7 @@ def get_ba_certificate_output(id: Optional[pulumi.Input[Optional[builtins.str]]]
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA Browser Access Data Source
     foo = zpa.get_ba_certificate(id="1234567890")
     ```
     """

@@ -17,24 +17,29 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * const thisCloudBrowserIsolationBanner = zpa.getCloudBrowserIsolationBanner({
+ * // Retrieve CBI Banner ID
+ * const _this = zpa.getCloudBrowserIsolationBanner({
  *     name: "Default",
  * });
+ * // Retrieve Primary CBI Region ID
  * const singapore = zpa.getCloudBrowserIsolationRegion({
  *     name: "Singapore",
  * });
+ * // Retrieve Secondary CBI Region ID
  * const frankfurt = zpa.getCloudBrowserIsolationRegion({
  *     name: "Frankfurt",
  * });
- * const thisCloudBrowserIsolationCertificate = zpa.getCloudBrowserIsolationCertificate({
+ * // Retrieve CBI Certificate ID
+ * const thisGetCloudBrowserIsolationCertificate = zpa.getCloudBrowserIsolationCertificate({
  *     name: "Zscaler Root Certificate",
  * });
- * const thisCloudBrowserIsolationExternalProfile = new zpa.CloudBrowserIsolationExternalProfile("thisCloudBrowserIsolationExternalProfile", {
+ * const thisCloudBrowserIsolationExternalProfile = new zpa.CloudBrowserIsolationExternalProfile("this", {
+ *     name: "CBI_Profile_Example",
  *     description: "CBI_Profile_Example",
- *     bannerId: thisCloudBrowserIsolationBanner.then(thisCloudBrowserIsolationBanner => thisCloudBrowserIsolationBanner.id),
+ *     bannerId: _this.then(_this => _this.id),
  *     regionIds: [singapore.then(singapore => singapore.id)],
- *     certificateIds: [thisCloudBrowserIsolationCertificate.then(thisCloudBrowserIsolationCertificate => thisCloudBrowserIsolationCertificate.id)],
- *     userExperiences: [{
+ *     certificateIds: [thisGetCloudBrowserIsolationCertificate.then(thisGetCloudBrowserIsolationCertificate => thisGetCloudBrowserIsolationCertificate.id)],
+ *     userExperience: {
  *         forwardToZia: {
  *             enabled: true,
  *             organizationId: "***********",
@@ -45,8 +50,8 @@ import * as utilities from "./utilities";
  *         persistIsolationBar: true,
  *         translate: true,
  *         sessionPersistence: true,
- *     }],
- *     securityControls: [{
+ *     },
+ *     securityControls: {
  *         copyPaste: "all",
  *         uploadDownload: "upstream",
  *         documentViewer: true,
@@ -68,7 +73,7 @@ import * as utilities from "./utilities";
  *             showMessage: true,
  *             message: "Zscaler CBI",
  *         },
- *     }],
+ *     },
  *     debugMode: {
  *         allowed: true,
  *         filePassword: "***********",
@@ -116,8 +121,8 @@ export class CloudBrowserIsolationExternalProfile extends pulumi.CustomResource 
      * This field defines the list of region IDs.
      */
     public readonly regionIds!: pulumi.Output<string[] | undefined>;
-    public readonly securityControls!: pulumi.Output<outputs.CloudBrowserIsolationExternalProfileSecurityControl[] | undefined>;
-    public readonly userExperiences!: pulumi.Output<outputs.CloudBrowserIsolationExternalProfileUserExperience[]>;
+    public readonly securityControls!: pulumi.Output<outputs.CloudBrowserIsolationExternalProfileSecurityControls | undefined>;
+    public readonly userExperience!: pulumi.Output<outputs.CloudBrowserIsolationExternalProfileUserExperience>;
 
     /**
      * Create a CloudBrowserIsolationExternalProfile resource with the given unique name, arguments, and options.
@@ -139,7 +144,7 @@ export class CloudBrowserIsolationExternalProfile extends pulumi.CustomResource 
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["regionIds"] = state ? state.regionIds : undefined;
             resourceInputs["securityControls"] = state ? state.securityControls : undefined;
-            resourceInputs["userExperiences"] = state ? state.userExperiences : undefined;
+            resourceInputs["userExperience"] = state ? state.userExperience : undefined;
         } else {
             const args = argsOrState as CloudBrowserIsolationExternalProfileArgs | undefined;
             if ((!args || args.bannerId === undefined) && !opts.urn) {
@@ -152,7 +157,7 @@ export class CloudBrowserIsolationExternalProfile extends pulumi.CustomResource 
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["regionIds"] = args ? args.regionIds : undefined;
             resourceInputs["securityControls"] = args ? args.securityControls : undefined;
-            resourceInputs["userExperiences"] = args ? args.userExperiences : undefined;
+            resourceInputs["userExperience"] = args ? args.userExperience : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CloudBrowserIsolationExternalProfile.__pulumiType, name, resourceInputs, opts);
@@ -175,8 +180,8 @@ export interface CloudBrowserIsolationExternalProfileState {
      * This field defines the list of region IDs.
      */
     regionIds?: pulumi.Input<pulumi.Input<string>[]>;
-    securityControls?: pulumi.Input<pulumi.Input<inputs.CloudBrowserIsolationExternalProfileSecurityControl>[]>;
-    userExperiences?: pulumi.Input<pulumi.Input<inputs.CloudBrowserIsolationExternalProfileUserExperience>[]>;
+    securityControls?: pulumi.Input<inputs.CloudBrowserIsolationExternalProfileSecurityControls>;
+    userExperience?: pulumi.Input<inputs.CloudBrowserIsolationExternalProfileUserExperience>;
 }
 
 /**
@@ -195,6 +200,6 @@ export interface CloudBrowserIsolationExternalProfileArgs {
      * This field defines the list of region IDs.
      */
     regionIds?: pulumi.Input<pulumi.Input<string>[]>;
-    securityControls?: pulumi.Input<pulumi.Input<inputs.CloudBrowserIsolationExternalProfileSecurityControl>[]>;
-    userExperiences?: pulumi.Input<pulumi.Input<inputs.CloudBrowserIsolationExternalProfileUserExperience>[]>;
+    securityControls?: pulumi.Input<inputs.CloudBrowserIsolationExternalProfileSecurityControls>;
+    userExperience?: pulumi.Input<inputs.CloudBrowserIsolationExternalProfileUserExperience>;
 }

@@ -36,7 +36,7 @@ class ServiceEdgeGroupArgs:
                  microtenant_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  override_version_profile: Optional[pulumi.Input[builtins.bool]] = None,
-                 service_edges: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceEdgeGroupServiceEdgeArgs']]]] = None,
+                 service_edges: Optional[pulumi.Input['ServiceEdgeGroupServiceEdgesArgs']] = None,
                  trusted_networks: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceEdgeGroupTrustedNetworkArgs']]]] = None,
                  upgrade_day: Optional[pulumi.Input[builtins.str]] = None,
                  upgrade_time_in_secs: Optional[pulumi.Input[builtins.str]] = None,
@@ -60,7 +60,7 @@ class ServiceEdgeGroupArgs:
         :param pulumi.Input[builtins.bool] is_public: Enable or disable public access for the Service Edge Group.
         :param pulumi.Input[builtins.str] name: Name of the Service Edge Group.
         :param pulumi.Input[builtins.bool] override_version_profile: Whether the default version profile of the App Connector Group is applied or overridden.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceEdgeGroupServiceEdgeArgs']]] service_edges: WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
+        :param pulumi.Input['ServiceEdgeGroupServiceEdgesArgs'] service_edges: WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
                matching.This field will be deprecated in future versions
         :param pulumi.Input[Sequence[pulumi.Input['ServiceEdgeGroupTrustedNetworkArgs']]] trusted_networks: List of trusted network IDs.
         :param pulumi.Input[builtins.str] upgrade_day: Service Edges in this group will attempt to update to a newer version of the software during this specified day.
@@ -276,7 +276,7 @@ class ServiceEdgeGroupArgs:
 
     @property
     @pulumi.getter(name="serviceEdges")
-    def service_edges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceEdgeGroupServiceEdgeArgs']]]]:
+    def service_edges(self) -> Optional[pulumi.Input['ServiceEdgeGroupServiceEdgesArgs']]:
         """
         WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
         matching.This field will be deprecated in future versions
@@ -284,7 +284,7 @@ class ServiceEdgeGroupArgs:
         return pulumi.get(self, "service_edges")
 
     @service_edges.setter
-    def service_edges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceEdgeGroupServiceEdgeArgs']]]]):
+    def service_edges(self, value: Optional[pulumi.Input['ServiceEdgeGroupServiceEdgesArgs']]):
         pulumi.set(self, "service_edges", value)
 
     @property
@@ -387,7 +387,7 @@ class _ServiceEdgeGroupState:
                  microtenant_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  override_version_profile: Optional[pulumi.Input[builtins.bool]] = None,
-                 service_edges: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceEdgeGroupServiceEdgeArgs']]]] = None,
+                 service_edges: Optional[pulumi.Input['ServiceEdgeGroupServiceEdgesArgs']] = None,
                  trusted_networks: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceEdgeGroupTrustedNetworkArgs']]]] = None,
                  upgrade_day: Optional[pulumi.Input[builtins.str]] = None,
                  upgrade_time_in_secs: Optional[pulumi.Input[builtins.str]] = None,
@@ -411,7 +411,7 @@ class _ServiceEdgeGroupState:
         :param pulumi.Input[builtins.str] longitude: Longitude for the Service Edge Group.
         :param pulumi.Input[builtins.str] name: Name of the Service Edge Group.
         :param pulumi.Input[builtins.bool] override_version_profile: Whether the default version profile of the App Connector Group is applied or overridden.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceEdgeGroupServiceEdgeArgs']]] service_edges: WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
+        :param pulumi.Input['ServiceEdgeGroupServiceEdgesArgs'] service_edges: WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
                matching.This field will be deprecated in future versions
         :param pulumi.Input[Sequence[pulumi.Input['ServiceEdgeGroupTrustedNetworkArgs']]] trusted_networks: List of trusted network IDs.
         :param pulumi.Input[builtins.str] upgrade_day: Service Edges in this group will attempt to update to a newer version of the software during this specified day.
@@ -630,7 +630,7 @@ class _ServiceEdgeGroupState:
 
     @property
     @pulumi.getter(name="serviceEdges")
-    def service_edges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceEdgeGroupServiceEdgeArgs']]]]:
+    def service_edges(self) -> Optional[pulumi.Input['ServiceEdgeGroupServiceEdgesArgs']]:
         """
         WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
         matching.This field will be deprecated in future versions
@@ -638,7 +638,7 @@ class _ServiceEdgeGroupState:
         return pulumi.get(self, "service_edges")
 
     @service_edges.setter
-    def service_edges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceEdgeGroupServiceEdgeArgs']]]]):
+    def service_edges(self, value: Optional[pulumi.Input['ServiceEdgeGroupServiceEdgesArgs']]):
         pulumi.set(self, "service_edges", value)
 
     @property
@@ -744,7 +744,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
                  microtenant_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  override_version_profile: Optional[pulumi.Input[builtins.bool]] = None,
-                 service_edges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEdgeGroupServiceEdgeArgs', 'ServiceEdgeGroupServiceEdgeArgsDict']]]]] = None,
+                 service_edges: Optional[pulumi.Input[Union['ServiceEdgeGroupServiceEdgesArgs', 'ServiceEdgeGroupServiceEdgesArgsDict']]] = None,
                  trusted_networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEdgeGroupTrustedNetworkArgs', 'ServiceEdgeGroupTrustedNetworkArgsDict']]]]] = None,
                  upgrade_day: Optional[pulumi.Input[builtins.str]] = None,
                  upgrade_time_in_secs: Optional[pulumi.Input[builtins.str]] = None,
@@ -768,7 +768,8 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # ZPA Service Edge Group resource - Trusted Network
-        service_edge_group_sjc = zpa.ServiceEdgeGroup("serviceEdgeGroupSjc",
+        service_edge_group_sjc = zpa.ServiceEdgeGroup("service_edge_group_sjc",
+            name="Service Edge Group San Jose",
             description="Service Edge Group in San Jose",
             enabled=True,
             is_public=True,
@@ -779,7 +780,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             location="San Jose, CA, USA",
             version_profile_name="New Release",
             trusted_networks=[{
-                "ids": [data["zpa_trusted_network"]["example"]["id"]],
+                "ids": [example["id"]],
             }])
         ```
 
@@ -788,7 +789,8 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # ZPA Service Edge Group resource - No Trusted Network
-        service_edge_group_nyc = zpa.ServiceEdgeGroup("serviceEdgeGroupNyc",
+        service_edge_group_nyc = zpa.ServiceEdgeGroup("service_edge_group_nyc",
+            name="Service Edge Group New York",
             description="Service Edge Group in New York",
             enabled=True,
             is_public=True,
@@ -797,7 +799,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             latitude="40.7128",
             longitude="-73.935242",
             location="New York, NY, USA",
-            version_profile_id=data["zpa_customer_version_profile"]["this"]["id"])
+            version_profile_id=this["id"])
         ```
 
         ### Using Version Profile ID
@@ -811,7 +813,8 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # ZPA Service Edge Group resource - Trusted Network
-        service_edge_group_sjc = zpa.ServiceEdgeGroup("serviceEdgeGroupSjc",
+        service_edge_group_sjc = zpa.ServiceEdgeGroup("service_edge_group_sjc",
+            name="Service Edge Group San Jose",
             description="Service Edge Group in San Jose",
             enabled=True,
             is_public=True,
@@ -822,7 +825,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             location="San Jose, CA, USA",
             version_profile_name="New Release",
             trusted_networks=[{
-                "ids": [data["zpa_trusted_network"]["example"]["id"]],
+                "ids": [example["id"]],
             }])
         ```
 
@@ -831,15 +834,16 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # ZPA Service Edge Group resource - No Trusted Network
-        service_edge_group_nyc = zpa.ServiceEdgeGroup("serviceEdgeGroupNyc",
+        service_edge_group_nyc = zpa.ServiceEdgeGroup("service_edge_group_nyc",
+            name="Service Edge Group New York",
             description="Service Edge Group in New York",
             enabled=True,
             is_public=True,
-            latitude="40.7128",
-            location="New York, NY, USA",
-            longitude="-73.935242",
             upgrade_day="SUNDAY",
             upgrade_time_in_secs="66600",
+            latitude="40.7128",
+            longitude="-73.935242",
+            location="New York, NY, USA",
             version_profile_name="New Release")
         ```
 
@@ -879,7 +883,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] longitude: Longitude for the Service Edge Group.
         :param pulumi.Input[builtins.str] name: Name of the Service Edge Group.
         :param pulumi.Input[builtins.bool] override_version_profile: Whether the default version profile of the App Connector Group is applied or overridden.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceEdgeGroupServiceEdgeArgs', 'ServiceEdgeGroupServiceEdgeArgsDict']]]] service_edges: WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
+        :param pulumi.Input[Union['ServiceEdgeGroupServiceEdgesArgs', 'ServiceEdgeGroupServiceEdgesArgsDict']] service_edges: WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
                matching.This field will be deprecated in future versions
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceEdgeGroupTrustedNetworkArgs', 'ServiceEdgeGroupTrustedNetworkArgsDict']]]] trusted_networks: List of trusted network IDs.
         :param pulumi.Input[builtins.str] upgrade_day: Service Edges in this group will attempt to update to a newer version of the software during this specified day.
@@ -910,7 +914,8 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # ZPA Service Edge Group resource - Trusted Network
-        service_edge_group_sjc = zpa.ServiceEdgeGroup("serviceEdgeGroupSjc",
+        service_edge_group_sjc = zpa.ServiceEdgeGroup("service_edge_group_sjc",
+            name="Service Edge Group San Jose",
             description="Service Edge Group in San Jose",
             enabled=True,
             is_public=True,
@@ -921,7 +926,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             location="San Jose, CA, USA",
             version_profile_name="New Release",
             trusted_networks=[{
-                "ids": [data["zpa_trusted_network"]["example"]["id"]],
+                "ids": [example["id"]],
             }])
         ```
 
@@ -930,7 +935,8 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # ZPA Service Edge Group resource - No Trusted Network
-        service_edge_group_nyc = zpa.ServiceEdgeGroup("serviceEdgeGroupNyc",
+        service_edge_group_nyc = zpa.ServiceEdgeGroup("service_edge_group_nyc",
+            name="Service Edge Group New York",
             description="Service Edge Group in New York",
             enabled=True,
             is_public=True,
@@ -939,7 +945,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             latitude="40.7128",
             longitude="-73.935242",
             location="New York, NY, USA",
-            version_profile_id=data["zpa_customer_version_profile"]["this"]["id"])
+            version_profile_id=this["id"])
         ```
 
         ### Using Version Profile ID
@@ -953,7 +959,8 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # ZPA Service Edge Group resource - Trusted Network
-        service_edge_group_sjc = zpa.ServiceEdgeGroup("serviceEdgeGroupSjc",
+        service_edge_group_sjc = zpa.ServiceEdgeGroup("service_edge_group_sjc",
+            name="Service Edge Group San Jose",
             description="Service Edge Group in San Jose",
             enabled=True,
             is_public=True,
@@ -964,7 +971,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             location="San Jose, CA, USA",
             version_profile_name="New Release",
             trusted_networks=[{
-                "ids": [data["zpa_trusted_network"]["example"]["id"]],
+                "ids": [example["id"]],
             }])
         ```
 
@@ -973,15 +980,16 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # ZPA Service Edge Group resource - No Trusted Network
-        service_edge_group_nyc = zpa.ServiceEdgeGroup("serviceEdgeGroupNyc",
+        service_edge_group_nyc = zpa.ServiceEdgeGroup("service_edge_group_nyc",
+            name="Service Edge Group New York",
             description="Service Edge Group in New York",
             enabled=True,
             is_public=True,
-            latitude="40.7128",
-            location="New York, NY, USA",
-            longitude="-73.935242",
             upgrade_day="SUNDAY",
             upgrade_time_in_secs="66600",
+            latitude="40.7128",
+            longitude="-73.935242",
+            location="New York, NY, USA",
             version_profile_name="New Release")
         ```
 
@@ -1034,7 +1042,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
                  microtenant_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  override_version_profile: Optional[pulumi.Input[builtins.bool]] = None,
-                 service_edges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEdgeGroupServiceEdgeArgs', 'ServiceEdgeGroupServiceEdgeArgsDict']]]]] = None,
+                 service_edges: Optional[pulumi.Input[Union['ServiceEdgeGroupServiceEdgesArgs', 'ServiceEdgeGroupServiceEdgesArgsDict']]] = None,
                  trusted_networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEdgeGroupTrustedNetworkArgs', 'ServiceEdgeGroupTrustedNetworkArgsDict']]]]] = None,
                  upgrade_day: Optional[pulumi.Input[builtins.str]] = None,
                  upgrade_time_in_secs: Optional[pulumi.Input[builtins.str]] = None,
@@ -1103,7 +1111,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             microtenant_id: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             override_version_profile: Optional[pulumi.Input[builtins.bool]] = None,
-            service_edges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEdgeGroupServiceEdgeArgs', 'ServiceEdgeGroupServiceEdgeArgsDict']]]]] = None,
+            service_edges: Optional[pulumi.Input[Union['ServiceEdgeGroupServiceEdgesArgs', 'ServiceEdgeGroupServiceEdgesArgsDict']]] = None,
             trusted_networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEdgeGroupTrustedNetworkArgs', 'ServiceEdgeGroupTrustedNetworkArgsDict']]]]] = None,
             upgrade_day: Optional[pulumi.Input[builtins.str]] = None,
             upgrade_time_in_secs: Optional[pulumi.Input[builtins.str]] = None,
@@ -1132,7 +1140,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] longitude: Longitude for the Service Edge Group.
         :param pulumi.Input[builtins.str] name: Name of the Service Edge Group.
         :param pulumi.Input[builtins.bool] override_version_profile: Whether the default version profile of the App Connector Group is applied or overridden.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceEdgeGroupServiceEdgeArgs', 'ServiceEdgeGroupServiceEdgeArgsDict']]]] service_edges: WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
+        :param pulumi.Input[Union['ServiceEdgeGroupServiceEdgesArgs', 'ServiceEdgeGroupServiceEdgesArgsDict']] service_edges: WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
                matching.This field will be deprecated in future versions
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceEdgeGroupTrustedNetworkArgs', 'ServiceEdgeGroupTrustedNetworkArgsDict']]]] trusted_networks: List of trusted network IDs.
         :param pulumi.Input[builtins.str] upgrade_day: Service Edges in this group will attempt to update to a newer version of the software during this specified day.
@@ -1278,7 +1286,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceEdges")
-    def service_edges(self) -> pulumi.Output[Sequence['outputs.ServiceEdgeGroupServiceEdge']]:
+    def service_edges(self) -> pulumi.Output['outputs.ServiceEdgeGroupServiceEdges']:
         """
         WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
         matching.This field will be deprecated in future versions

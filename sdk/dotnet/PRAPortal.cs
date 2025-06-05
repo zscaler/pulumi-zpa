@@ -29,17 +29,19 @@ namespace Zscaler.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thisBaCertificate = Zpa.GetBaCertificate.Invoke(new()
+    ///     // Retrieves Browser Access Certificate
+    ///     var @this = Zpa.GetBaCertificate.Invoke(new()
     ///     {
     ///         Name = "portal.acme.com",
     ///     });
     /// 
-    ///     var thisPRAPortal = new Zpa.PRAPortal("thisPRAPortal", new()
+    ///     var thisPRAPortal = new Zpa.PRAPortal("this", new()
     ///     {
+    ///         Name = "portal.acme.com",
     ///         Description = "portal.acme.com",
     ///         Enabled = true,
     ///         Domain = "portal.acme.com",
-    ///         CertificateId = thisBaCertificate.Apply(getBaCertificateResult =&gt; getBaCertificateResult.Id),
+    ///         CertificateId = @this.Apply(@this =&gt; @this.Apply(getBaCertificateResult =&gt; getBaCertificateResult.Id)),
     ///         UserNotification = "Created with Terraform",
     ///         UserNotificationEnabled = true,
     ///     });
@@ -59,15 +61,16 @@ namespace Zscaler.Zpa
     /// {
     ///     var @this = new Zpa.PRAPortal("this", new()
     ///     {
+    ///         Name = "server1.acme.com",
     ///         Description = "server1.acme.com",
-    ///         Domain = "server1-acme.com.pra.d.zscalerportal.net",
     ///         Enabled = true,
+    ///         Domain = "server1-acme.com.pra.d.zscalerportal.net",
+    ///         UserNotification = "Created with Terraform",
+    ///         UserNotificationEnabled = true,
+    ///         ExtLabel = "server1",
     ///         ExtDomain = "acme.com",
     ///         ExtDomainName = "acme.com.pra.d.zscalerportal.net",
     ///         ExtDomainTranslation = "acme.com",
-    ///         ExtLabel = "server1",
-    ///         UserNotification = "Created with Terraform",
-    ///         UserNotificationEnabled = true,
     ///     });
     /// 
     /// });
@@ -84,15 +87,16 @@ namespace Zscaler.Zpa
     /// {
     ///     var @this = new Zpa.PRAPortal("this", new()
     ///     {
+    ///         Name = "Server1 PRA01",
     ///         Description = "Server1 PRA01 Description",
-    ///         Domain = "server1-acme.com.pra.d.zscalerportal.net",
     ///         Enabled = true,
+    ///         Domain = "server1-acme.com.pra.d.zscalerportal.net",
+    ///         UserNotification = "Created with Terraform",
+    ///         UserNotificationEnabled = true,
+    ///         ExtLabel = "server1",
     ///         ExtDomain = "acme.com",
     ///         ExtDomainName = "acme.com.pra.d.zscalerportal.net",
     ///         ExtDomainTranslation = "acme.com",
-    ///         ExtLabel = "server1",
-    ///         UserNotification = "Created with Terraform",
-    ///         UserNotificationEnabled = true,
     ///         UserPortalGid = "145262059234265326",
     ///     });
     /// 

@@ -29,7 +29,7 @@ namespace Zscaler.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thisIdPController = Zpa.GetIdPController.Invoke(new()
+    ///     var @this = Zpa.GetIdPController.Invoke(new()
     ///     {
     ///         Name = "IdP_Users",
     ///     });
@@ -58,8 +58,9 @@ namespace Zscaler.Zpa
     ///         IdpName = "IdP_Users",
     ///     });
     /// 
-    ///     var thisPolicyAccessCapabilitiesRule = new Zpa.PolicyAccessCapabilitiesRule("thisPolicyAccessCapabilitiesRule", new()
+    ///     var thisPolicyAccessCapabilitiesRule = new Zpa.PolicyAccessCapabilitiesRule("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Action = "CHECK_CAPABILITIES",
     ///         PrivilegedCapabilities = new Zpa.Inputs.PolicyAccessCapabilitiesRulePrivilegedCapabilitiesArgs
@@ -103,12 +104,12 @@ namespace Zscaler.Zpa
     ///                             new Zpa.Inputs.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs
     ///                             {
     ///                                 Rhs = a000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
-    ///                                 Lhs = thisIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                                 Lhs = @this.Apply(@this =&gt; @this.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id)),
     ///                             },
     ///                             new Zpa.Inputs.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs
     ///                             {
     ///                                 Rhs = b000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
-    ///                                 Lhs = thisIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                                 Lhs = @this.Apply(@this =&gt; @this.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id)),
     ///                             },
     ///                         },
     ///                     },

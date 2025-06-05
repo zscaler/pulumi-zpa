@@ -187,6 +187,7 @@ def get_microtenant(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA Microtenant Controller Data Source
     this = zpa.get_microtenant(name="Microtenant_A")
     ```
 
@@ -233,6 +234,7 @@ def get_microtenant_output(id: Optional[pulumi.Input[Optional[builtins.str]]] = 
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA Microtenant Controller Data Source
     this = zpa.get_microtenant(name="Microtenant_A")
     ```
 

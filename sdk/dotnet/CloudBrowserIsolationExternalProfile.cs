@@ -26,83 +26,82 @@ namespace Zscaler.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thisCloudBrowserIsolationBanner = Zpa.GetCloudBrowserIsolationBanner.Invoke(new()
+    ///     // Retrieve CBI Banner ID
+    ///     var @this = Zpa.GetCloudBrowserIsolationBanner.Invoke(new()
     ///     {
     ///         Name = "Default",
     ///     });
     /// 
+    ///     // Retrieve Primary CBI Region ID
     ///     var singapore = Zpa.GetCloudBrowserIsolationRegion.Invoke(new()
     ///     {
     ///         Name = "Singapore",
     ///     });
     /// 
+    ///     // Retrieve Secondary CBI Region ID
     ///     var frankfurt = Zpa.GetCloudBrowserIsolationRegion.Invoke(new()
     ///     {
     ///         Name = "Frankfurt",
     ///     });
     /// 
-    ///     var thisCloudBrowserIsolationCertificate = Zpa.GetCloudBrowserIsolationCertificate.Invoke(new()
+    ///     // Retrieve CBI Certificate ID
+    ///     var thisGetCloudBrowserIsolationCertificate = Zpa.GetCloudBrowserIsolationCertificate.Invoke(new()
     ///     {
     ///         Name = "Zscaler Root Certificate",
     ///     });
     /// 
-    ///     var thisCloudBrowserIsolationExternalProfile = new Zpa.CloudBrowserIsolationExternalProfile("thisCloudBrowserIsolationExternalProfile", new()
+    ///     var thisCloudBrowserIsolationExternalProfile = new Zpa.CloudBrowserIsolationExternalProfile("this", new()
     ///     {
+    ///         Name = "CBI_Profile_Example",
     ///         Description = "CBI_Profile_Example",
-    ///         BannerId = thisCloudBrowserIsolationBanner.Apply(getCloudBrowserIsolationBannerResult =&gt; getCloudBrowserIsolationBannerResult.Id),
+    ///         BannerId = @this.Apply(@this =&gt; @this.Apply(getCloudBrowserIsolationBannerResult =&gt; getCloudBrowserIsolationBannerResult.Id)),
     ///         RegionIds = new[]
     ///         {
     ///             singapore.Apply(getCloudBrowserIsolationRegionResult =&gt; getCloudBrowserIsolationRegionResult.Id),
     ///         },
     ///         CertificateIds = new[]
     ///         {
-    ///             thisCloudBrowserIsolationCertificate.Apply(getCloudBrowserIsolationCertificateResult =&gt; getCloudBrowserIsolationCertificateResult.Id),
+    ///             thisGetCloudBrowserIsolationCertificate.Apply(getCloudBrowserIsolationCertificateResult =&gt; getCloudBrowserIsolationCertificateResult.Id),
     ///         },
-    ///         UserExperiences = new[]
+    ///         UserExperience = new Zpa.Inputs.CloudBrowserIsolationExternalProfileUserExperienceArgs
     ///         {
-    ///             new Zpa.Inputs.CloudBrowserIsolationExternalProfileUserExperienceArgs
+    ///             ForwardToZia = new Zpa.Inputs.CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs
     ///             {
-    ///                 ForwardToZia = new Zpa.Inputs.CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs
-    ///                 {
-    ///                     Enabled = true,
-    ///                     OrganizationId = "***********",
-    ///                     CloudName = "&lt;cloud_name&gt;",
-    ///                     PacFileUrl = "https://pac.&lt;cloud_name&gt;/&lt;cloud_name&gt;/proxy.pac",
-    ///                 },
-    ///                 BrowserInBrowser = true,
-    ///                 PersistIsolationBar = true,
-    ///                 Translate = true,
-    ///                 SessionPersistence = true,
+    ///                 Enabled = true,
+    ///                 OrganizationId = "***********",
+    ///                 CloudName = "&lt;cloud_name&gt;",
+    ///                 PacFileUrl = "https://pac.&lt;cloud_name&gt;/&lt;cloud_name&gt;/proxy.pac",
     ///             },
+    ///             BrowserInBrowser = true,
+    ///             PersistIsolationBar = true,
+    ///             Translate = true,
+    ///             SessionPersistence = true,
     ///         },
-    ///         SecurityControls = new[]
+    ///         SecurityControls = new Zpa.Inputs.CloudBrowserIsolationExternalProfileSecurityControlsArgs
     ///         {
-    ///             new Zpa.Inputs.CloudBrowserIsolationExternalProfileSecurityControlArgs
+    ///             CopyPaste = "all",
+    ///             UploadDownload = "upstream",
+    ///             DocumentViewer = true,
+    ///             LocalRender = true,
+    ///             AllowPrinting = true,
+    ///             RestrictKeystrokes = true,
+    ///             FlattenedPdf = true,
+    ///             DeepLink = new Zpa.Inputs.CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkArgs
     ///             {
-    ///                 CopyPaste = "all",
-    ///                 UploadDownload = "upstream",
-    ///                 DocumentViewer = true,
-    ///                 LocalRender = true,
-    ///                 AllowPrinting = true,
-    ///                 RestrictKeystrokes = true,
-    ///                 FlattenedPdf = true,
-    ///                 DeepLink = new Zpa.Inputs.CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs
+    ///                 Enabled = true,
+    ///                 Applications = new[]
     ///                 {
-    ///                     Enabled = true,
-    ///                     Applications = new[]
-    ///                     {
-    ///                         "test1",
-    ///                         "test",
-    ///                     },
+    ///                     "test1",
+    ///                     "test",
     ///                 },
-    ///                 Watermark = new Zpa.Inputs.CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs
-    ///                 {
-    ///                     Enabled = true,
-    ///                     ShowUserId = true,
-    ///                     ShowTimestamp = true,
-    ///                     ShowMessage = true,
-    ///                     Message = "Zscaler CBI",
-    ///                 },
+    ///             },
+    ///             Watermark = new Zpa.Inputs.CloudBrowserIsolationExternalProfileSecurityControlsWatermarkArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 ShowUserId = true,
+    ///                 ShowTimestamp = true,
+    ///                 ShowMessage = true,
+    ///                 Message = "Zscaler CBI",
     ///             },
     ///         },
     ///         DebugMode = new Zpa.Inputs.CloudBrowserIsolationExternalProfileDebugModeArgs
@@ -143,10 +142,10 @@ namespace Zscaler.Zpa
         public Output<ImmutableArray<string>> RegionIds { get; private set; } = null!;
 
         [Output("securityControls")]
-        public Output<ImmutableArray<Outputs.CloudBrowserIsolationExternalProfileSecurityControl>> SecurityControls { get; private set; } = null!;
+        public Output<Outputs.CloudBrowserIsolationExternalProfileSecurityControls?> SecurityControls { get; private set; } = null!;
 
-        [Output("userExperiences")]
-        public Output<ImmutableArray<Outputs.CloudBrowserIsolationExternalProfileUserExperience>> UserExperiences { get; private set; } = null!;
+        [Output("userExperience")]
+        public Output<Outputs.CloudBrowserIsolationExternalProfileUserExperience> UserExperience { get; private set; } = null!;
 
 
         /// <summary>
@@ -232,20 +231,10 @@ namespace Zscaler.Zpa
         }
 
         [Input("securityControls")]
-        private InputList<Inputs.CloudBrowserIsolationExternalProfileSecurityControlArgs>? _securityControls;
-        public InputList<Inputs.CloudBrowserIsolationExternalProfileSecurityControlArgs> SecurityControls
-        {
-            get => _securityControls ?? (_securityControls = new InputList<Inputs.CloudBrowserIsolationExternalProfileSecurityControlArgs>());
-            set => _securityControls = value;
-        }
+        public Input<Inputs.CloudBrowserIsolationExternalProfileSecurityControlsArgs>? SecurityControls { get; set; }
 
-        [Input("userExperiences")]
-        private InputList<Inputs.CloudBrowserIsolationExternalProfileUserExperienceArgs>? _userExperiences;
-        public InputList<Inputs.CloudBrowserIsolationExternalProfileUserExperienceArgs> UserExperiences
-        {
-            get => _userExperiences ?? (_userExperiences = new InputList<Inputs.CloudBrowserIsolationExternalProfileUserExperienceArgs>());
-            set => _userExperiences = value;
-        }
+        [Input("userExperience")]
+        public Input<Inputs.CloudBrowserIsolationExternalProfileUserExperienceArgs>? UserExperience { get; set; }
 
         public CloudBrowserIsolationExternalProfileArgs()
         {
@@ -292,20 +281,10 @@ namespace Zscaler.Zpa
         }
 
         [Input("securityControls")]
-        private InputList<Inputs.CloudBrowserIsolationExternalProfileSecurityControlGetArgs>? _securityControls;
-        public InputList<Inputs.CloudBrowserIsolationExternalProfileSecurityControlGetArgs> SecurityControls
-        {
-            get => _securityControls ?? (_securityControls = new InputList<Inputs.CloudBrowserIsolationExternalProfileSecurityControlGetArgs>());
-            set => _securityControls = value;
-        }
+        public Input<Inputs.CloudBrowserIsolationExternalProfileSecurityControlsGetArgs>? SecurityControls { get; set; }
 
-        [Input("userExperiences")]
-        private InputList<Inputs.CloudBrowserIsolationExternalProfileUserExperienceGetArgs>? _userExperiences;
-        public InputList<Inputs.CloudBrowserIsolationExternalProfileUserExperienceGetArgs> UserExperiences
-        {
-            get => _userExperiences ?? (_userExperiences = new InputList<Inputs.CloudBrowserIsolationExternalProfileUserExperienceGetArgs>());
-            set => _userExperiences = value;
-        }
+        [Input("userExperience")]
+        public Input<Inputs.CloudBrowserIsolationExternalProfileUserExperienceGetArgs>? UserExperience { get; set; }
 
         public CloudBrowserIsolationExternalProfileState()
         {

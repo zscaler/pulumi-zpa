@@ -61,6 +61,11 @@ func NewProvider(ctx *pulumi.Context,
 			args.ClientSecret = pulumi.StringPtr(d.(string))
 		}
 	}
+	if args.CustomerId == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "ZPA_CUSTOMER_ID"); d != nil {
+			args.CustomerId = pulumi.StringPtr(d.(string))
+		}
+	}
 	if args.PrivateKey == nil {
 		if d := internal.GetEnvOrDefault(nil, nil, "ZSCALER_PRIVATE_KEY"); d != nil {
 			args.PrivateKey = pulumi.StringPtr(d.(string))

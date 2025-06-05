@@ -543,45 +543,29 @@ func (i ApplicationSegmentInspectionCommonAppsDtoArgs) ToApplicationSegmentInspe
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSegmentInspectionCommonAppsDtoOutput)
 }
 
-func (i ApplicationSegmentInspectionCommonAppsDtoArgs) ToApplicationSegmentInspectionCommonAppsDtoPtrOutput() ApplicationSegmentInspectionCommonAppsDtoPtrOutput {
-	return i.ToApplicationSegmentInspectionCommonAppsDtoPtrOutputWithContext(context.Background())
-}
-
-func (i ApplicationSegmentInspectionCommonAppsDtoArgs) ToApplicationSegmentInspectionCommonAppsDtoPtrOutputWithContext(ctx context.Context) ApplicationSegmentInspectionCommonAppsDtoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSegmentInspectionCommonAppsDtoOutput).ToApplicationSegmentInspectionCommonAppsDtoPtrOutputWithContext(ctx)
-}
-
-// ApplicationSegmentInspectionCommonAppsDtoPtrInput is an input type that accepts ApplicationSegmentInspectionCommonAppsDtoArgs, ApplicationSegmentInspectionCommonAppsDtoPtr and ApplicationSegmentInspectionCommonAppsDtoPtrOutput values.
-// You can construct a concrete instance of `ApplicationSegmentInspectionCommonAppsDtoPtrInput` via:
+// ApplicationSegmentInspectionCommonAppsDtoArrayInput is an input type that accepts ApplicationSegmentInspectionCommonAppsDtoArray and ApplicationSegmentInspectionCommonAppsDtoArrayOutput values.
+// You can construct a concrete instance of `ApplicationSegmentInspectionCommonAppsDtoArrayInput` via:
 //
-//	        ApplicationSegmentInspectionCommonAppsDtoArgs{...}
-//
-//	or:
-//
-//	        nil
-type ApplicationSegmentInspectionCommonAppsDtoPtrInput interface {
+//	ApplicationSegmentInspectionCommonAppsDtoArray{ ApplicationSegmentInspectionCommonAppsDtoArgs{...} }
+type ApplicationSegmentInspectionCommonAppsDtoArrayInput interface {
 	pulumi.Input
 
-	ToApplicationSegmentInspectionCommonAppsDtoPtrOutput() ApplicationSegmentInspectionCommonAppsDtoPtrOutput
-	ToApplicationSegmentInspectionCommonAppsDtoPtrOutputWithContext(context.Context) ApplicationSegmentInspectionCommonAppsDtoPtrOutput
+	ToApplicationSegmentInspectionCommonAppsDtoArrayOutput() ApplicationSegmentInspectionCommonAppsDtoArrayOutput
+	ToApplicationSegmentInspectionCommonAppsDtoArrayOutputWithContext(context.Context) ApplicationSegmentInspectionCommonAppsDtoArrayOutput
 }
 
-type applicationSegmentInspectionCommonAppsDtoPtrType ApplicationSegmentInspectionCommonAppsDtoArgs
+type ApplicationSegmentInspectionCommonAppsDtoArray []ApplicationSegmentInspectionCommonAppsDtoInput
 
-func ApplicationSegmentInspectionCommonAppsDtoPtr(v *ApplicationSegmentInspectionCommonAppsDtoArgs) ApplicationSegmentInspectionCommonAppsDtoPtrInput {
-	return (*applicationSegmentInspectionCommonAppsDtoPtrType)(v)
+func (ApplicationSegmentInspectionCommonAppsDtoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationSegmentInspectionCommonAppsDto)(nil)).Elem()
 }
 
-func (*applicationSegmentInspectionCommonAppsDtoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApplicationSegmentInspectionCommonAppsDto)(nil)).Elem()
+func (i ApplicationSegmentInspectionCommonAppsDtoArray) ToApplicationSegmentInspectionCommonAppsDtoArrayOutput() ApplicationSegmentInspectionCommonAppsDtoArrayOutput {
+	return i.ToApplicationSegmentInspectionCommonAppsDtoArrayOutputWithContext(context.Background())
 }
 
-func (i *applicationSegmentInspectionCommonAppsDtoPtrType) ToApplicationSegmentInspectionCommonAppsDtoPtrOutput() ApplicationSegmentInspectionCommonAppsDtoPtrOutput {
-	return i.ToApplicationSegmentInspectionCommonAppsDtoPtrOutputWithContext(context.Background())
-}
-
-func (i *applicationSegmentInspectionCommonAppsDtoPtrType) ToApplicationSegmentInspectionCommonAppsDtoPtrOutputWithContext(ctx context.Context) ApplicationSegmentInspectionCommonAppsDtoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSegmentInspectionCommonAppsDtoPtrOutput)
+func (i ApplicationSegmentInspectionCommonAppsDtoArray) ToApplicationSegmentInspectionCommonAppsDtoArrayOutputWithContext(ctx context.Context) ApplicationSegmentInspectionCommonAppsDtoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSegmentInspectionCommonAppsDtoArrayOutput)
 }
 
 type ApplicationSegmentInspectionCommonAppsDtoOutput struct{ *pulumi.OutputState }
@@ -598,53 +582,30 @@ func (o ApplicationSegmentInspectionCommonAppsDtoOutput) ToApplicationSegmentIns
 	return o
 }
 
-func (o ApplicationSegmentInspectionCommonAppsDtoOutput) ToApplicationSegmentInspectionCommonAppsDtoPtrOutput() ApplicationSegmentInspectionCommonAppsDtoPtrOutput {
-	return o.ToApplicationSegmentInspectionCommonAppsDtoPtrOutputWithContext(context.Background())
-}
-
-func (o ApplicationSegmentInspectionCommonAppsDtoOutput) ToApplicationSegmentInspectionCommonAppsDtoPtrOutputWithContext(ctx context.Context) ApplicationSegmentInspectionCommonAppsDtoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationSegmentInspectionCommonAppsDto) *ApplicationSegmentInspectionCommonAppsDto {
-		return &v
-	}).(ApplicationSegmentInspectionCommonAppsDtoPtrOutput)
-}
-
 func (o ApplicationSegmentInspectionCommonAppsDtoOutput) AppsConfigs() ApplicationSegmentInspectionCommonAppsDtoAppsConfigArrayOutput {
 	return o.ApplyT(func(v ApplicationSegmentInspectionCommonAppsDto) []ApplicationSegmentInspectionCommonAppsDtoAppsConfig {
 		return v.AppsConfigs
 	}).(ApplicationSegmentInspectionCommonAppsDtoAppsConfigArrayOutput)
 }
 
-type ApplicationSegmentInspectionCommonAppsDtoPtrOutput struct{ *pulumi.OutputState }
+type ApplicationSegmentInspectionCommonAppsDtoArrayOutput struct{ *pulumi.OutputState }
 
-func (ApplicationSegmentInspectionCommonAppsDtoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApplicationSegmentInspectionCommonAppsDto)(nil)).Elem()
+func (ApplicationSegmentInspectionCommonAppsDtoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationSegmentInspectionCommonAppsDto)(nil)).Elem()
 }
 
-func (o ApplicationSegmentInspectionCommonAppsDtoPtrOutput) ToApplicationSegmentInspectionCommonAppsDtoPtrOutput() ApplicationSegmentInspectionCommonAppsDtoPtrOutput {
+func (o ApplicationSegmentInspectionCommonAppsDtoArrayOutput) ToApplicationSegmentInspectionCommonAppsDtoArrayOutput() ApplicationSegmentInspectionCommonAppsDtoArrayOutput {
 	return o
 }
 
-func (o ApplicationSegmentInspectionCommonAppsDtoPtrOutput) ToApplicationSegmentInspectionCommonAppsDtoPtrOutputWithContext(ctx context.Context) ApplicationSegmentInspectionCommonAppsDtoPtrOutput {
+func (o ApplicationSegmentInspectionCommonAppsDtoArrayOutput) ToApplicationSegmentInspectionCommonAppsDtoArrayOutputWithContext(ctx context.Context) ApplicationSegmentInspectionCommonAppsDtoArrayOutput {
 	return o
 }
 
-func (o ApplicationSegmentInspectionCommonAppsDtoPtrOutput) Elem() ApplicationSegmentInspectionCommonAppsDtoOutput {
-	return o.ApplyT(func(v *ApplicationSegmentInspectionCommonAppsDto) ApplicationSegmentInspectionCommonAppsDto {
-		if v != nil {
-			return *v
-		}
-		var ret ApplicationSegmentInspectionCommonAppsDto
-		return ret
+func (o ApplicationSegmentInspectionCommonAppsDtoArrayOutput) Index(i pulumi.IntInput) ApplicationSegmentInspectionCommonAppsDtoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationSegmentInspectionCommonAppsDto {
+		return vs[0].([]ApplicationSegmentInspectionCommonAppsDto)[vs[1].(int)]
 	}).(ApplicationSegmentInspectionCommonAppsDtoOutput)
-}
-
-func (o ApplicationSegmentInspectionCommonAppsDtoPtrOutput) AppsConfigs() ApplicationSegmentInspectionCommonAppsDtoAppsConfigArrayOutput {
-	return o.ApplyT(func(v *ApplicationSegmentInspectionCommonAppsDto) []ApplicationSegmentInspectionCommonAppsDtoAppsConfig {
-		if v == nil {
-			return nil
-		}
-		return v.AppsConfigs
-	}).(ApplicationSegmentInspectionCommonAppsDtoAppsConfigArrayOutput)
 }
 
 type ApplicationSegmentInspectionCommonAppsDtoAppsConfig struct {
@@ -1126,45 +1087,29 @@ func (i ApplicationSegmentPRACommonAppsDtoArgs) ToApplicationSegmentPRACommonApp
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSegmentPRACommonAppsDtoOutput)
 }
 
-func (i ApplicationSegmentPRACommonAppsDtoArgs) ToApplicationSegmentPRACommonAppsDtoPtrOutput() ApplicationSegmentPRACommonAppsDtoPtrOutput {
-	return i.ToApplicationSegmentPRACommonAppsDtoPtrOutputWithContext(context.Background())
-}
-
-func (i ApplicationSegmentPRACommonAppsDtoArgs) ToApplicationSegmentPRACommonAppsDtoPtrOutputWithContext(ctx context.Context) ApplicationSegmentPRACommonAppsDtoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSegmentPRACommonAppsDtoOutput).ToApplicationSegmentPRACommonAppsDtoPtrOutputWithContext(ctx)
-}
-
-// ApplicationSegmentPRACommonAppsDtoPtrInput is an input type that accepts ApplicationSegmentPRACommonAppsDtoArgs, ApplicationSegmentPRACommonAppsDtoPtr and ApplicationSegmentPRACommonAppsDtoPtrOutput values.
-// You can construct a concrete instance of `ApplicationSegmentPRACommonAppsDtoPtrInput` via:
+// ApplicationSegmentPRACommonAppsDtoArrayInput is an input type that accepts ApplicationSegmentPRACommonAppsDtoArray and ApplicationSegmentPRACommonAppsDtoArrayOutput values.
+// You can construct a concrete instance of `ApplicationSegmentPRACommonAppsDtoArrayInput` via:
 //
-//	        ApplicationSegmentPRACommonAppsDtoArgs{...}
-//
-//	or:
-//
-//	        nil
-type ApplicationSegmentPRACommonAppsDtoPtrInput interface {
+//	ApplicationSegmentPRACommonAppsDtoArray{ ApplicationSegmentPRACommonAppsDtoArgs{...} }
+type ApplicationSegmentPRACommonAppsDtoArrayInput interface {
 	pulumi.Input
 
-	ToApplicationSegmentPRACommonAppsDtoPtrOutput() ApplicationSegmentPRACommonAppsDtoPtrOutput
-	ToApplicationSegmentPRACommonAppsDtoPtrOutputWithContext(context.Context) ApplicationSegmentPRACommonAppsDtoPtrOutput
+	ToApplicationSegmentPRACommonAppsDtoArrayOutput() ApplicationSegmentPRACommonAppsDtoArrayOutput
+	ToApplicationSegmentPRACommonAppsDtoArrayOutputWithContext(context.Context) ApplicationSegmentPRACommonAppsDtoArrayOutput
 }
 
-type applicationSegmentPRACommonAppsDtoPtrType ApplicationSegmentPRACommonAppsDtoArgs
+type ApplicationSegmentPRACommonAppsDtoArray []ApplicationSegmentPRACommonAppsDtoInput
 
-func ApplicationSegmentPRACommonAppsDtoPtr(v *ApplicationSegmentPRACommonAppsDtoArgs) ApplicationSegmentPRACommonAppsDtoPtrInput {
-	return (*applicationSegmentPRACommonAppsDtoPtrType)(v)
+func (ApplicationSegmentPRACommonAppsDtoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationSegmentPRACommonAppsDto)(nil)).Elem()
 }
 
-func (*applicationSegmentPRACommonAppsDtoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApplicationSegmentPRACommonAppsDto)(nil)).Elem()
+func (i ApplicationSegmentPRACommonAppsDtoArray) ToApplicationSegmentPRACommonAppsDtoArrayOutput() ApplicationSegmentPRACommonAppsDtoArrayOutput {
+	return i.ToApplicationSegmentPRACommonAppsDtoArrayOutputWithContext(context.Background())
 }
 
-func (i *applicationSegmentPRACommonAppsDtoPtrType) ToApplicationSegmentPRACommonAppsDtoPtrOutput() ApplicationSegmentPRACommonAppsDtoPtrOutput {
-	return i.ToApplicationSegmentPRACommonAppsDtoPtrOutputWithContext(context.Background())
-}
-
-func (i *applicationSegmentPRACommonAppsDtoPtrType) ToApplicationSegmentPRACommonAppsDtoPtrOutputWithContext(ctx context.Context) ApplicationSegmentPRACommonAppsDtoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSegmentPRACommonAppsDtoPtrOutput)
+func (i ApplicationSegmentPRACommonAppsDtoArray) ToApplicationSegmentPRACommonAppsDtoArrayOutputWithContext(ctx context.Context) ApplicationSegmentPRACommonAppsDtoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSegmentPRACommonAppsDtoArrayOutput)
 }
 
 type ApplicationSegmentPRACommonAppsDtoOutput struct{ *pulumi.OutputState }
@@ -1181,53 +1126,30 @@ func (o ApplicationSegmentPRACommonAppsDtoOutput) ToApplicationSegmentPRACommonA
 	return o
 }
 
-func (o ApplicationSegmentPRACommonAppsDtoOutput) ToApplicationSegmentPRACommonAppsDtoPtrOutput() ApplicationSegmentPRACommonAppsDtoPtrOutput {
-	return o.ToApplicationSegmentPRACommonAppsDtoPtrOutputWithContext(context.Background())
-}
-
-func (o ApplicationSegmentPRACommonAppsDtoOutput) ToApplicationSegmentPRACommonAppsDtoPtrOutputWithContext(ctx context.Context) ApplicationSegmentPRACommonAppsDtoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationSegmentPRACommonAppsDto) *ApplicationSegmentPRACommonAppsDto {
-		return &v
-	}).(ApplicationSegmentPRACommonAppsDtoPtrOutput)
-}
-
 func (o ApplicationSegmentPRACommonAppsDtoOutput) AppsConfigs() ApplicationSegmentPRACommonAppsDtoAppsConfigArrayOutput {
 	return o.ApplyT(func(v ApplicationSegmentPRACommonAppsDto) []ApplicationSegmentPRACommonAppsDtoAppsConfig {
 		return v.AppsConfigs
 	}).(ApplicationSegmentPRACommonAppsDtoAppsConfigArrayOutput)
 }
 
-type ApplicationSegmentPRACommonAppsDtoPtrOutput struct{ *pulumi.OutputState }
+type ApplicationSegmentPRACommonAppsDtoArrayOutput struct{ *pulumi.OutputState }
 
-func (ApplicationSegmentPRACommonAppsDtoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApplicationSegmentPRACommonAppsDto)(nil)).Elem()
+func (ApplicationSegmentPRACommonAppsDtoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationSegmentPRACommonAppsDto)(nil)).Elem()
 }
 
-func (o ApplicationSegmentPRACommonAppsDtoPtrOutput) ToApplicationSegmentPRACommonAppsDtoPtrOutput() ApplicationSegmentPRACommonAppsDtoPtrOutput {
+func (o ApplicationSegmentPRACommonAppsDtoArrayOutput) ToApplicationSegmentPRACommonAppsDtoArrayOutput() ApplicationSegmentPRACommonAppsDtoArrayOutput {
 	return o
 }
 
-func (o ApplicationSegmentPRACommonAppsDtoPtrOutput) ToApplicationSegmentPRACommonAppsDtoPtrOutputWithContext(ctx context.Context) ApplicationSegmentPRACommonAppsDtoPtrOutput {
+func (o ApplicationSegmentPRACommonAppsDtoArrayOutput) ToApplicationSegmentPRACommonAppsDtoArrayOutputWithContext(ctx context.Context) ApplicationSegmentPRACommonAppsDtoArrayOutput {
 	return o
 }
 
-func (o ApplicationSegmentPRACommonAppsDtoPtrOutput) Elem() ApplicationSegmentPRACommonAppsDtoOutput {
-	return o.ApplyT(func(v *ApplicationSegmentPRACommonAppsDto) ApplicationSegmentPRACommonAppsDto {
-		if v != nil {
-			return *v
-		}
-		var ret ApplicationSegmentPRACommonAppsDto
-		return ret
+func (o ApplicationSegmentPRACommonAppsDtoArrayOutput) Index(i pulumi.IntInput) ApplicationSegmentPRACommonAppsDtoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationSegmentPRACommonAppsDto {
+		return vs[0].([]ApplicationSegmentPRACommonAppsDto)[vs[1].(int)]
 	}).(ApplicationSegmentPRACommonAppsDtoOutput)
-}
-
-func (o ApplicationSegmentPRACommonAppsDtoPtrOutput) AppsConfigs() ApplicationSegmentPRACommonAppsDtoAppsConfigArrayOutput {
-	return o.ApplyT(func(v *ApplicationSegmentPRACommonAppsDto) []ApplicationSegmentPRACommonAppsDtoAppsConfig {
-		if v == nil {
-			return nil
-		}
-		return v.AppsConfigs
-	}).(ApplicationSegmentPRACommonAppsDtoAppsConfigArrayOutput)
 }
 
 type ApplicationSegmentPRACommonAppsDtoAppsConfig struct {
@@ -2607,284 +2529,395 @@ func (o CloudBrowserIsolationExternalProfileDebugModePtrOutput) FilePassword() p
 	}).(pulumi.StringPtrOutput)
 }
 
-type CloudBrowserIsolationExternalProfileSecurityControl struct {
-	AllowPrinting      *bool                                                         `pulumi:"allowPrinting"`
-	CopyPaste          *string                                                       `pulumi:"copyPaste"`
-	DeepLink           *CloudBrowserIsolationExternalProfileSecurityControlDeepLink  `pulumi:"deepLink"`
-	DocumentViewer     *bool                                                         `pulumi:"documentViewer"`
-	FlattenedPdf       *bool                                                         `pulumi:"flattenedPdf"`
-	LocalRender        *bool                                                         `pulumi:"localRender"`
-	RestrictKeystrokes *bool                                                         `pulumi:"restrictKeystrokes"`
-	UploadDownload     *string                                                       `pulumi:"uploadDownload"`
-	Watermark          *CloudBrowserIsolationExternalProfileSecurityControlWatermark `pulumi:"watermark"`
+type CloudBrowserIsolationExternalProfileSecurityControls struct {
+	AllowPrinting      *bool                                                          `pulumi:"allowPrinting"`
+	CopyPaste          *string                                                        `pulumi:"copyPaste"`
+	DeepLink           *CloudBrowserIsolationExternalProfileSecurityControlsDeepLink  `pulumi:"deepLink"`
+	DocumentViewer     *bool                                                          `pulumi:"documentViewer"`
+	FlattenedPdf       *bool                                                          `pulumi:"flattenedPdf"`
+	LocalRender        *bool                                                          `pulumi:"localRender"`
+	RestrictKeystrokes *bool                                                          `pulumi:"restrictKeystrokes"`
+	UploadDownload     *string                                                        `pulumi:"uploadDownload"`
+	Watermark          *CloudBrowserIsolationExternalProfileSecurityControlsWatermark `pulumi:"watermark"`
 }
 
-// CloudBrowserIsolationExternalProfileSecurityControlInput is an input type that accepts CloudBrowserIsolationExternalProfileSecurityControlArgs and CloudBrowserIsolationExternalProfileSecurityControlOutput values.
-// You can construct a concrete instance of `CloudBrowserIsolationExternalProfileSecurityControlInput` via:
+// CloudBrowserIsolationExternalProfileSecurityControlsInput is an input type that accepts CloudBrowserIsolationExternalProfileSecurityControlsArgs and CloudBrowserIsolationExternalProfileSecurityControlsOutput values.
+// You can construct a concrete instance of `CloudBrowserIsolationExternalProfileSecurityControlsInput` via:
 //
-//	CloudBrowserIsolationExternalProfileSecurityControlArgs{...}
-type CloudBrowserIsolationExternalProfileSecurityControlInput interface {
+//	CloudBrowserIsolationExternalProfileSecurityControlsArgs{...}
+type CloudBrowserIsolationExternalProfileSecurityControlsInput interface {
 	pulumi.Input
 
-	ToCloudBrowserIsolationExternalProfileSecurityControlOutput() CloudBrowserIsolationExternalProfileSecurityControlOutput
-	ToCloudBrowserIsolationExternalProfileSecurityControlOutputWithContext(context.Context) CloudBrowserIsolationExternalProfileSecurityControlOutput
+	ToCloudBrowserIsolationExternalProfileSecurityControlsOutput() CloudBrowserIsolationExternalProfileSecurityControlsOutput
+	ToCloudBrowserIsolationExternalProfileSecurityControlsOutputWithContext(context.Context) CloudBrowserIsolationExternalProfileSecurityControlsOutput
 }
 
-type CloudBrowserIsolationExternalProfileSecurityControlArgs struct {
-	AllowPrinting      pulumi.BoolPtrInput                                                  `pulumi:"allowPrinting"`
-	CopyPaste          pulumi.StringPtrInput                                                `pulumi:"copyPaste"`
-	DeepLink           CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrInput  `pulumi:"deepLink"`
-	DocumentViewer     pulumi.BoolPtrInput                                                  `pulumi:"documentViewer"`
-	FlattenedPdf       pulumi.BoolPtrInput                                                  `pulumi:"flattenedPdf"`
-	LocalRender        pulumi.BoolPtrInput                                                  `pulumi:"localRender"`
-	RestrictKeystrokes pulumi.BoolPtrInput                                                  `pulumi:"restrictKeystrokes"`
-	UploadDownload     pulumi.StringPtrInput                                                `pulumi:"uploadDownload"`
-	Watermark          CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrInput `pulumi:"watermark"`
+type CloudBrowserIsolationExternalProfileSecurityControlsArgs struct {
+	AllowPrinting      pulumi.BoolPtrInput                                                   `pulumi:"allowPrinting"`
+	CopyPaste          pulumi.StringPtrInput                                                 `pulumi:"copyPaste"`
+	DeepLink           CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrInput  `pulumi:"deepLink"`
+	DocumentViewer     pulumi.BoolPtrInput                                                   `pulumi:"documentViewer"`
+	FlattenedPdf       pulumi.BoolPtrInput                                                   `pulumi:"flattenedPdf"`
+	LocalRender        pulumi.BoolPtrInput                                                   `pulumi:"localRender"`
+	RestrictKeystrokes pulumi.BoolPtrInput                                                   `pulumi:"restrictKeystrokes"`
+	UploadDownload     pulumi.StringPtrInput                                                 `pulumi:"uploadDownload"`
+	Watermark          CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrInput `pulumi:"watermark"`
 }
 
-func (CloudBrowserIsolationExternalProfileSecurityControlArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControl)(nil)).Elem()
+func (CloudBrowserIsolationExternalProfileSecurityControlsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControls)(nil)).Elem()
 }
 
-func (i CloudBrowserIsolationExternalProfileSecurityControlArgs) ToCloudBrowserIsolationExternalProfileSecurityControlOutput() CloudBrowserIsolationExternalProfileSecurityControlOutput {
-	return i.ToCloudBrowserIsolationExternalProfileSecurityControlOutputWithContext(context.Background())
+func (i CloudBrowserIsolationExternalProfileSecurityControlsArgs) ToCloudBrowserIsolationExternalProfileSecurityControlsOutput() CloudBrowserIsolationExternalProfileSecurityControlsOutput {
+	return i.ToCloudBrowserIsolationExternalProfileSecurityControlsOutputWithContext(context.Background())
 }
 
-func (i CloudBrowserIsolationExternalProfileSecurityControlArgs) ToCloudBrowserIsolationExternalProfileSecurityControlOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlOutput)
+func (i CloudBrowserIsolationExternalProfileSecurityControlsArgs) ToCloudBrowserIsolationExternalProfileSecurityControlsOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlsOutput)
 }
 
-// CloudBrowserIsolationExternalProfileSecurityControlArrayInput is an input type that accepts CloudBrowserIsolationExternalProfileSecurityControlArray and CloudBrowserIsolationExternalProfileSecurityControlArrayOutput values.
-// You can construct a concrete instance of `CloudBrowserIsolationExternalProfileSecurityControlArrayInput` via:
+func (i CloudBrowserIsolationExternalProfileSecurityControlsArgs) ToCloudBrowserIsolationExternalProfileSecurityControlsPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput {
+	return i.ToCloudBrowserIsolationExternalProfileSecurityControlsPtrOutputWithContext(context.Background())
+}
+
+func (i CloudBrowserIsolationExternalProfileSecurityControlsArgs) ToCloudBrowserIsolationExternalProfileSecurityControlsPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlsOutput).ToCloudBrowserIsolationExternalProfileSecurityControlsPtrOutputWithContext(ctx)
+}
+
+// CloudBrowserIsolationExternalProfileSecurityControlsPtrInput is an input type that accepts CloudBrowserIsolationExternalProfileSecurityControlsArgs, CloudBrowserIsolationExternalProfileSecurityControlsPtr and CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput values.
+// You can construct a concrete instance of `CloudBrowserIsolationExternalProfileSecurityControlsPtrInput` via:
 //
-//	CloudBrowserIsolationExternalProfileSecurityControlArray{ CloudBrowserIsolationExternalProfileSecurityControlArgs{...} }
-type CloudBrowserIsolationExternalProfileSecurityControlArrayInput interface {
-	pulumi.Input
-
-	ToCloudBrowserIsolationExternalProfileSecurityControlArrayOutput() CloudBrowserIsolationExternalProfileSecurityControlArrayOutput
-	ToCloudBrowserIsolationExternalProfileSecurityControlArrayOutputWithContext(context.Context) CloudBrowserIsolationExternalProfileSecurityControlArrayOutput
-}
-
-type CloudBrowserIsolationExternalProfileSecurityControlArray []CloudBrowserIsolationExternalProfileSecurityControlInput
-
-func (CloudBrowserIsolationExternalProfileSecurityControlArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CloudBrowserIsolationExternalProfileSecurityControl)(nil)).Elem()
-}
-
-func (i CloudBrowserIsolationExternalProfileSecurityControlArray) ToCloudBrowserIsolationExternalProfileSecurityControlArrayOutput() CloudBrowserIsolationExternalProfileSecurityControlArrayOutput {
-	return i.ToCloudBrowserIsolationExternalProfileSecurityControlArrayOutputWithContext(context.Background())
-}
-
-func (i CloudBrowserIsolationExternalProfileSecurityControlArray) ToCloudBrowserIsolationExternalProfileSecurityControlArrayOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlArrayOutput)
-}
-
-type CloudBrowserIsolationExternalProfileSecurityControlOutput struct{ *pulumi.OutputState }
-
-func (CloudBrowserIsolationExternalProfileSecurityControlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControl)(nil)).Elem()
-}
-
-func (o CloudBrowserIsolationExternalProfileSecurityControlOutput) ToCloudBrowserIsolationExternalProfileSecurityControlOutput() CloudBrowserIsolationExternalProfileSecurityControlOutput {
-	return o
-}
-
-func (o CloudBrowserIsolationExternalProfileSecurityControlOutput) ToCloudBrowserIsolationExternalProfileSecurityControlOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlOutput {
-	return o
-}
-
-func (o CloudBrowserIsolationExternalProfileSecurityControlOutput) AllowPrinting() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControl) *bool { return v.AllowPrinting }).(pulumi.BoolPtrOutput)
-}
-
-func (o CloudBrowserIsolationExternalProfileSecurityControlOutput) CopyPaste() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControl) *string { return v.CopyPaste }).(pulumi.StringPtrOutput)
-}
-
-func (o CloudBrowserIsolationExternalProfileSecurityControlOutput) DeepLink() CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput {
-	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControl) *CloudBrowserIsolationExternalProfileSecurityControlDeepLink {
-		return v.DeepLink
-	}).(CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput)
-}
-
-func (o CloudBrowserIsolationExternalProfileSecurityControlOutput) DocumentViewer() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControl) *bool { return v.DocumentViewer }).(pulumi.BoolPtrOutput)
-}
-
-func (o CloudBrowserIsolationExternalProfileSecurityControlOutput) FlattenedPdf() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControl) *bool { return v.FlattenedPdf }).(pulumi.BoolPtrOutput)
-}
-
-func (o CloudBrowserIsolationExternalProfileSecurityControlOutput) LocalRender() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControl) *bool { return v.LocalRender }).(pulumi.BoolPtrOutput)
-}
-
-func (o CloudBrowserIsolationExternalProfileSecurityControlOutput) RestrictKeystrokes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControl) *bool { return v.RestrictKeystrokes }).(pulumi.BoolPtrOutput)
-}
-
-func (o CloudBrowserIsolationExternalProfileSecurityControlOutput) UploadDownload() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControl) *string { return v.UploadDownload }).(pulumi.StringPtrOutput)
-}
-
-func (o CloudBrowserIsolationExternalProfileSecurityControlOutput) Watermark() CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput {
-	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControl) *CloudBrowserIsolationExternalProfileSecurityControlWatermark {
-		return v.Watermark
-	}).(CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput)
-}
-
-type CloudBrowserIsolationExternalProfileSecurityControlArrayOutput struct{ *pulumi.OutputState }
-
-func (CloudBrowserIsolationExternalProfileSecurityControlArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CloudBrowserIsolationExternalProfileSecurityControl)(nil)).Elem()
-}
-
-func (o CloudBrowserIsolationExternalProfileSecurityControlArrayOutput) ToCloudBrowserIsolationExternalProfileSecurityControlArrayOutput() CloudBrowserIsolationExternalProfileSecurityControlArrayOutput {
-	return o
-}
-
-func (o CloudBrowserIsolationExternalProfileSecurityControlArrayOutput) ToCloudBrowserIsolationExternalProfileSecurityControlArrayOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlArrayOutput {
-	return o
-}
-
-func (o CloudBrowserIsolationExternalProfileSecurityControlArrayOutput) Index(i pulumi.IntInput) CloudBrowserIsolationExternalProfileSecurityControlOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudBrowserIsolationExternalProfileSecurityControl {
-		return vs[0].([]CloudBrowserIsolationExternalProfileSecurityControl)[vs[1].(int)]
-	}).(CloudBrowserIsolationExternalProfileSecurityControlOutput)
-}
-
-type CloudBrowserIsolationExternalProfileSecurityControlDeepLink struct {
-	Applications []string `pulumi:"applications"`
-	Enabled      *bool    `pulumi:"enabled"`
-}
-
-// CloudBrowserIsolationExternalProfileSecurityControlDeepLinkInput is an input type that accepts CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs and CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput values.
-// You can construct a concrete instance of `CloudBrowserIsolationExternalProfileSecurityControlDeepLinkInput` via:
-//
-//	CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs{...}
-type CloudBrowserIsolationExternalProfileSecurityControlDeepLinkInput interface {
-	pulumi.Input
-
-	ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput() CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput
-	ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutputWithContext(context.Context) CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput
-}
-
-type CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs struct {
-	Applications pulumi.StringArrayInput `pulumi:"applications"`
-	Enabled      pulumi.BoolPtrInput     `pulumi:"enabled"`
-}
-
-func (CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlDeepLink)(nil)).Elem()
-}
-
-func (i CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput() CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput {
-	return i.ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutputWithContext(context.Background())
-}
-
-func (i CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput)
-}
-
-func (i CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput {
-	return i.ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutputWithContext(context.Background())
-}
-
-func (i CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput).ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutputWithContext(ctx)
-}
-
-// CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrInput is an input type that accepts CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs, CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtr and CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput values.
-// You can construct a concrete instance of `CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrInput` via:
-//
-//	        CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs{...}
+//	        CloudBrowserIsolationExternalProfileSecurityControlsArgs{...}
 //
 //	or:
 //
 //	        nil
-type CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrInput interface {
+type CloudBrowserIsolationExternalProfileSecurityControlsPtrInput interface {
 	pulumi.Input
 
-	ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput
-	ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutputWithContext(context.Context) CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput
+	ToCloudBrowserIsolationExternalProfileSecurityControlsPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput
+	ToCloudBrowserIsolationExternalProfileSecurityControlsPtrOutputWithContext(context.Context) CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput
 }
 
-type cloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrType CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs
+type cloudBrowserIsolationExternalProfileSecurityControlsPtrType CloudBrowserIsolationExternalProfileSecurityControlsArgs
 
-func CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtr(v *CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs) CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrInput {
-	return (*cloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrType)(v)
+func CloudBrowserIsolationExternalProfileSecurityControlsPtr(v *CloudBrowserIsolationExternalProfileSecurityControlsArgs) CloudBrowserIsolationExternalProfileSecurityControlsPtrInput {
+	return (*cloudBrowserIsolationExternalProfileSecurityControlsPtrType)(v)
 }
 
-func (*cloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudBrowserIsolationExternalProfileSecurityControlDeepLink)(nil)).Elem()
+func (*cloudBrowserIsolationExternalProfileSecurityControlsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudBrowserIsolationExternalProfileSecurityControls)(nil)).Elem()
 }
 
-func (i *cloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrType) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput {
-	return i.ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutputWithContext(context.Background())
+func (i *cloudBrowserIsolationExternalProfileSecurityControlsPtrType) ToCloudBrowserIsolationExternalProfileSecurityControlsPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput {
+	return i.ToCloudBrowserIsolationExternalProfileSecurityControlsPtrOutputWithContext(context.Background())
 }
 
-func (i *cloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrType) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput)
+func (i *cloudBrowserIsolationExternalProfileSecurityControlsPtrType) ToCloudBrowserIsolationExternalProfileSecurityControlsPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput)
 }
 
-type CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput struct{ *pulumi.OutputState }
+type CloudBrowserIsolationExternalProfileSecurityControlsOutput struct{ *pulumi.OutputState }
 
-func (CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlDeepLink)(nil)).Elem()
+func (CloudBrowserIsolationExternalProfileSecurityControlsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControls)(nil)).Elem()
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput() CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput {
+func (o CloudBrowserIsolationExternalProfileSecurityControlsOutput) ToCloudBrowserIsolationExternalProfileSecurityControlsOutput() CloudBrowserIsolationExternalProfileSecurityControlsOutput {
 	return o
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput {
+func (o CloudBrowserIsolationExternalProfileSecurityControlsOutput) ToCloudBrowserIsolationExternalProfileSecurityControlsOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlsOutput {
 	return o
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput {
-	return o.ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutputWithContext(context.Background())
+func (o CloudBrowserIsolationExternalProfileSecurityControlsOutput) ToCloudBrowserIsolationExternalProfileSecurityControlsPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput {
+	return o.ToCloudBrowserIsolationExternalProfileSecurityControlsPtrOutputWithContext(context.Background())
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudBrowserIsolationExternalProfileSecurityControlDeepLink) *CloudBrowserIsolationExternalProfileSecurityControlDeepLink {
+func (o CloudBrowserIsolationExternalProfileSecurityControlsOutput) ToCloudBrowserIsolationExternalProfileSecurityControlsPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudBrowserIsolationExternalProfileSecurityControls) *CloudBrowserIsolationExternalProfileSecurityControls {
 		return &v
-	}).(CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput)
+	}).(CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput)
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput) Applications() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControlDeepLink) []string { return v.Applications }).(pulumi.StringArrayOutput)
+func (o CloudBrowserIsolationExternalProfileSecurityControlsOutput) AllowPrinting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControls) *bool { return v.AllowPrinting }).(pulumi.BoolPtrOutput)
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControlDeepLink) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o CloudBrowserIsolationExternalProfileSecurityControlsOutput) CopyPaste() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControls) *string { return v.CopyPaste }).(pulumi.StringPtrOutput)
 }
 
-type CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput struct{ *pulumi.OutputState }
-
-func (CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudBrowserIsolationExternalProfileSecurityControlDeepLink)(nil)).Elem()
+func (o CloudBrowserIsolationExternalProfileSecurityControlsOutput) DeepLink() CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControls) *CloudBrowserIsolationExternalProfileSecurityControlsDeepLink {
+		return v.DeepLink
+	}).(CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput)
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput {
+func (o CloudBrowserIsolationExternalProfileSecurityControlsOutput) DocumentViewer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControls) *bool { return v.DocumentViewer }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsOutput) FlattenedPdf() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControls) *bool { return v.FlattenedPdf }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsOutput) LocalRender() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControls) *bool { return v.LocalRender }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsOutput) RestrictKeystrokes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControls) *bool { return v.RestrictKeystrokes }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsOutput) UploadDownload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControls) *string { return v.UploadDownload }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsOutput) Watermark() CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControls) *CloudBrowserIsolationExternalProfileSecurityControlsWatermark {
+		return v.Watermark
+	}).(CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput)
+}
+
+type CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudBrowserIsolationExternalProfileSecurityControls)(nil)).Elem()
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput) ToCloudBrowserIsolationExternalProfileSecurityControlsPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput {
 	return o
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput) ToCloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput {
+func (o CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput) ToCloudBrowserIsolationExternalProfileSecurityControlsPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput {
 	return o
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput) Elem() CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput {
-	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlDeepLink) CloudBrowserIsolationExternalProfileSecurityControlDeepLink {
+func (o CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput) Elem() CloudBrowserIsolationExternalProfileSecurityControlsOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControls) CloudBrowserIsolationExternalProfileSecurityControls {
 		if v != nil {
 			return *v
 		}
-		var ret CloudBrowserIsolationExternalProfileSecurityControlDeepLink
+		var ret CloudBrowserIsolationExternalProfileSecurityControls
 		return ret
-	}).(CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput)
+	}).(CloudBrowserIsolationExternalProfileSecurityControlsOutput)
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput) Applications() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlDeepLink) []string {
+func (o CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput) AllowPrinting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControls) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPrinting
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput) CopyPaste() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControls) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CopyPaste
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput) DeepLink() CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControls) *CloudBrowserIsolationExternalProfileSecurityControlsDeepLink {
+		if v == nil {
+			return nil
+		}
+		return v.DeepLink
+	}).(CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput) DocumentViewer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControls) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DocumentViewer
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput) FlattenedPdf() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControls) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FlattenedPdf
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput) LocalRender() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControls) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LocalRender
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput) RestrictKeystrokes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControls) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RestrictKeystrokes
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput) UploadDownload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControls) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UploadDownload
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput) Watermark() CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControls) *CloudBrowserIsolationExternalProfileSecurityControlsWatermark {
+		if v == nil {
+			return nil
+		}
+		return v.Watermark
+	}).(CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput)
+}
+
+type CloudBrowserIsolationExternalProfileSecurityControlsDeepLink struct {
+	Applications []string `pulumi:"applications"`
+	Enabled      *bool    `pulumi:"enabled"`
+}
+
+// CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkInput is an input type that accepts CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkArgs and CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput values.
+// You can construct a concrete instance of `CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkInput` via:
+//
+//	CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkArgs{...}
+type CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkInput interface {
+	pulumi.Input
+
+	ToCloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput() CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput
+	ToCloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutputWithContext(context.Context) CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput
+}
+
+type CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkArgs struct {
+	Applications pulumi.StringArrayInput `pulumi:"applications"`
+	Enabled      pulumi.BoolPtrInput     `pulumi:"enabled"`
+}
+
+func (CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlsDeepLink)(nil)).Elem()
+}
+
+func (i CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput() CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput {
+	return i.ToCloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutputWithContext(context.Background())
+}
+
+func (i CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput)
+}
+
+func (i CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput {
+	return i.ToCloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutputWithContext(context.Background())
+}
+
+func (i CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput).ToCloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutputWithContext(ctx)
+}
+
+// CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrInput is an input type that accepts CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkArgs, CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtr and CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput values.
+// You can construct a concrete instance of `CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrInput` via:
+//
+//	        CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrInput interface {
+	pulumi.Input
+
+	ToCloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput
+	ToCloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutputWithContext(context.Context) CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput
+}
+
+type cloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrType CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkArgs
+
+func CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtr(v *CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkArgs) CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrInput {
+	return (*cloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrType)(v)
+}
+
+func (*cloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudBrowserIsolationExternalProfileSecurityControlsDeepLink)(nil)).Elem()
+}
+
+func (i *cloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrType) ToCloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput {
+	return i.ToCloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrType) ToCloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput)
+}
+
+type CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput struct{ *pulumi.OutputState }
+
+func (CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlsDeepLink)(nil)).Elem()
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput() CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput {
+	return o
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput {
+	return o
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput {
+	return o.ToCloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutputWithContext(context.Background())
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudBrowserIsolationExternalProfileSecurityControlsDeepLink) *CloudBrowserIsolationExternalProfileSecurityControlsDeepLink {
+		return &v
+	}).(CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput) Applications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControlsDeepLink) []string { return v.Applications }).(pulumi.StringArrayOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControlsDeepLink) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudBrowserIsolationExternalProfileSecurityControlsDeepLink)(nil)).Elem()
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput) ToCloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput {
+	return o
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput) ToCloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput {
+	return o
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput) Elem() CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlsDeepLink) CloudBrowserIsolationExternalProfileSecurityControlsDeepLink {
+		if v != nil {
+			return *v
+		}
+		var ret CloudBrowserIsolationExternalProfileSecurityControlsDeepLink
+		return ret
+	}).(CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput) Applications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlsDeepLink) []string {
 		if v == nil {
 			return nil
 		}
@@ -2892,8 +2925,8 @@ func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput) Ap
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlDeepLink) *bool {
+func (o CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlsDeepLink) *bool {
 		if v == nil {
 			return nil
 		}
@@ -2901,7 +2934,7 @@ func (o CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput) En
 	}).(pulumi.BoolPtrOutput)
 }
 
-type CloudBrowserIsolationExternalProfileSecurityControlWatermark struct {
+type CloudBrowserIsolationExternalProfileSecurityControlsWatermark struct {
 	Enabled       *bool   `pulumi:"enabled"`
 	Message       *string `pulumi:"message"`
 	ShowMessage   *bool   `pulumi:"showMessage"`
@@ -2909,18 +2942,18 @@ type CloudBrowserIsolationExternalProfileSecurityControlWatermark struct {
 	ShowUserId    *bool   `pulumi:"showUserId"`
 }
 
-// CloudBrowserIsolationExternalProfileSecurityControlWatermarkInput is an input type that accepts CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs and CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput values.
-// You can construct a concrete instance of `CloudBrowserIsolationExternalProfileSecurityControlWatermarkInput` via:
+// CloudBrowserIsolationExternalProfileSecurityControlsWatermarkInput is an input type that accepts CloudBrowserIsolationExternalProfileSecurityControlsWatermarkArgs and CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput values.
+// You can construct a concrete instance of `CloudBrowserIsolationExternalProfileSecurityControlsWatermarkInput` via:
 //
-//	CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs{...}
-type CloudBrowserIsolationExternalProfileSecurityControlWatermarkInput interface {
+//	CloudBrowserIsolationExternalProfileSecurityControlsWatermarkArgs{...}
+type CloudBrowserIsolationExternalProfileSecurityControlsWatermarkInput interface {
 	pulumi.Input
 
-	ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput() CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput
-	ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutputWithContext(context.Context) CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput
+	ToCloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput() CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput
+	ToCloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutputWithContext(context.Context) CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput
 }
 
-type CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs struct {
+type CloudBrowserIsolationExternalProfileSecurityControlsWatermarkArgs struct {
 	Enabled       pulumi.BoolPtrInput   `pulumi:"enabled"`
 	Message       pulumi.StringPtrInput `pulumi:"message"`
 	ShowMessage   pulumi.BoolPtrInput   `pulumi:"showMessage"`
@@ -2928,129 +2961,129 @@ type CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs struct {
 	ShowUserId    pulumi.BoolPtrInput   `pulumi:"showUserId"`
 }
 
-func (CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlWatermark)(nil)).Elem()
+func (CloudBrowserIsolationExternalProfileSecurityControlsWatermarkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlsWatermark)(nil)).Elem()
 }
 
-func (i CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput() CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput {
-	return i.ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutputWithContext(context.Background())
+func (i CloudBrowserIsolationExternalProfileSecurityControlsWatermarkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput() CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput {
+	return i.ToCloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutputWithContext(context.Background())
 }
 
-func (i CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput)
+func (i CloudBrowserIsolationExternalProfileSecurityControlsWatermarkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput)
 }
 
-func (i CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput {
-	return i.ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutputWithContext(context.Background())
+func (i CloudBrowserIsolationExternalProfileSecurityControlsWatermarkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput {
+	return i.ToCloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutputWithContext(context.Background())
 }
 
-func (i CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput).ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutputWithContext(ctx)
+func (i CloudBrowserIsolationExternalProfileSecurityControlsWatermarkArgs) ToCloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput).ToCloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutputWithContext(ctx)
 }
 
-// CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrInput is an input type that accepts CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs, CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtr and CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput values.
-// You can construct a concrete instance of `CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrInput` via:
+// CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrInput is an input type that accepts CloudBrowserIsolationExternalProfileSecurityControlsWatermarkArgs, CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtr and CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput values.
+// You can construct a concrete instance of `CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrInput` via:
 //
-//	        CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs{...}
+//	        CloudBrowserIsolationExternalProfileSecurityControlsWatermarkArgs{...}
 //
 //	or:
 //
 //	        nil
-type CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrInput interface {
+type CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrInput interface {
 	pulumi.Input
 
-	ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput
-	ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutputWithContext(context.Context) CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput
+	ToCloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput
+	ToCloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutputWithContext(context.Context) CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput
 }
 
-type cloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrType CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs
+type cloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrType CloudBrowserIsolationExternalProfileSecurityControlsWatermarkArgs
 
-func CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtr(v *CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs) CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrInput {
-	return (*cloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrType)(v)
+func CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtr(v *CloudBrowserIsolationExternalProfileSecurityControlsWatermarkArgs) CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrInput {
+	return (*cloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrType)(v)
 }
 
-func (*cloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudBrowserIsolationExternalProfileSecurityControlWatermark)(nil)).Elem()
+func (*cloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudBrowserIsolationExternalProfileSecurityControlsWatermark)(nil)).Elem()
 }
 
-func (i *cloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrType) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput {
-	return i.ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutputWithContext(context.Background())
+func (i *cloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrType) ToCloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput {
+	return i.ToCloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutputWithContext(context.Background())
 }
 
-func (i *cloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrType) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput)
+func (i *cloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrType) ToCloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput)
 }
 
-type CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput struct{ *pulumi.OutputState }
+type CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput struct{ *pulumi.OutputState }
 
-func (CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlWatermark)(nil)).Elem()
+func (CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlsWatermark)(nil)).Elem()
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput() CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput {
+func (o CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput() CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput {
 	return o
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput {
+func (o CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput {
 	return o
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput {
-	return o.ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutputWithContext(context.Background())
+func (o CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput {
+	return o.ToCloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutputWithContext(context.Background())
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudBrowserIsolationExternalProfileSecurityControlWatermark) *CloudBrowserIsolationExternalProfileSecurityControlWatermark {
+func (o CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput) ToCloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudBrowserIsolationExternalProfileSecurityControlsWatermark) *CloudBrowserIsolationExternalProfileSecurityControlsWatermark {
 		return &v
-	}).(CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput)
+	}).(CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput)
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControlWatermark) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControlsWatermark) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControlWatermark) *string { return v.Message }).(pulumi.StringPtrOutput)
+func (o CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControlsWatermark) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) ShowMessage() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControlWatermark) *bool { return v.ShowMessage }).(pulumi.BoolPtrOutput)
+func (o CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput) ShowMessage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControlsWatermark) *bool { return v.ShowMessage }).(pulumi.BoolPtrOutput)
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) ShowTimestamp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControlWatermark) *bool { return v.ShowTimestamp }).(pulumi.BoolPtrOutput)
+func (o CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput) ShowTimestamp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControlsWatermark) *bool { return v.ShowTimestamp }).(pulumi.BoolPtrOutput)
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput) ShowUserId() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControlWatermark) *bool { return v.ShowUserId }).(pulumi.BoolPtrOutput)
+func (o CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput) ShowUserId() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileSecurityControlsWatermark) *bool { return v.ShowUserId }).(pulumi.BoolPtrOutput)
 }
 
-type CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput struct{ *pulumi.OutputState }
+type CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput struct{ *pulumi.OutputState }
 
-func (CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudBrowserIsolationExternalProfileSecurityControlWatermark)(nil)).Elem()
+func (CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudBrowserIsolationExternalProfileSecurityControlsWatermark)(nil)).Elem()
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput {
+func (o CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput) ToCloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput() CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput {
 	return o
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput) ToCloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput {
+func (o CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput) ToCloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput {
 	return o
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput) Elem() CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput {
-	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlWatermark) CloudBrowserIsolationExternalProfileSecurityControlWatermark {
+func (o CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput) Elem() CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlsWatermark) CloudBrowserIsolationExternalProfileSecurityControlsWatermark {
 		if v != nil {
 			return *v
 		}
-		var ret CloudBrowserIsolationExternalProfileSecurityControlWatermark
+		var ret CloudBrowserIsolationExternalProfileSecurityControlsWatermark
 		return ret
-	}).(CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput)
+	}).(CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput)
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlWatermark) *bool {
+func (o CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlsWatermark) *bool {
 		if v == nil {
 			return nil
 		}
@@ -3058,8 +3091,8 @@ func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput) E
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlWatermark) *string {
+func (o CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlsWatermark) *string {
 		if v == nil {
 			return nil
 		}
@@ -3067,8 +3100,8 @@ func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput) M
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput) ShowMessage() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlWatermark) *bool {
+func (o CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput) ShowMessage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlsWatermark) *bool {
 		if v == nil {
 			return nil
 		}
@@ -3076,8 +3109,8 @@ func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput) S
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput) ShowTimestamp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlWatermark) *bool {
+func (o CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput) ShowTimestamp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlsWatermark) *bool {
 		if v == nil {
 			return nil
 		}
@@ -3085,8 +3118,8 @@ func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput) S
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput) ShowUserId() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlWatermark) *bool {
+func (o CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput) ShowUserId() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileSecurityControlsWatermark) *bool {
 		if v == nil {
 			return nil
 		}
@@ -3135,29 +3168,45 @@ func (i CloudBrowserIsolationExternalProfileUserExperienceArgs) ToCloudBrowserIs
 	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileUserExperienceOutput)
 }
 
-// CloudBrowserIsolationExternalProfileUserExperienceArrayInput is an input type that accepts CloudBrowserIsolationExternalProfileUserExperienceArray and CloudBrowserIsolationExternalProfileUserExperienceArrayOutput values.
-// You can construct a concrete instance of `CloudBrowserIsolationExternalProfileUserExperienceArrayInput` via:
+func (i CloudBrowserIsolationExternalProfileUserExperienceArgs) ToCloudBrowserIsolationExternalProfileUserExperiencePtrOutput() CloudBrowserIsolationExternalProfileUserExperiencePtrOutput {
+	return i.ToCloudBrowserIsolationExternalProfileUserExperiencePtrOutputWithContext(context.Background())
+}
+
+func (i CloudBrowserIsolationExternalProfileUserExperienceArgs) ToCloudBrowserIsolationExternalProfileUserExperiencePtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileUserExperiencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileUserExperienceOutput).ToCloudBrowserIsolationExternalProfileUserExperiencePtrOutputWithContext(ctx)
+}
+
+// CloudBrowserIsolationExternalProfileUserExperiencePtrInput is an input type that accepts CloudBrowserIsolationExternalProfileUserExperienceArgs, CloudBrowserIsolationExternalProfileUserExperiencePtr and CloudBrowserIsolationExternalProfileUserExperiencePtrOutput values.
+// You can construct a concrete instance of `CloudBrowserIsolationExternalProfileUserExperiencePtrInput` via:
 //
-//	CloudBrowserIsolationExternalProfileUserExperienceArray{ CloudBrowserIsolationExternalProfileUserExperienceArgs{...} }
-type CloudBrowserIsolationExternalProfileUserExperienceArrayInput interface {
+//	        CloudBrowserIsolationExternalProfileUserExperienceArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudBrowserIsolationExternalProfileUserExperiencePtrInput interface {
 	pulumi.Input
 
-	ToCloudBrowserIsolationExternalProfileUserExperienceArrayOutput() CloudBrowserIsolationExternalProfileUserExperienceArrayOutput
-	ToCloudBrowserIsolationExternalProfileUserExperienceArrayOutputWithContext(context.Context) CloudBrowserIsolationExternalProfileUserExperienceArrayOutput
+	ToCloudBrowserIsolationExternalProfileUserExperiencePtrOutput() CloudBrowserIsolationExternalProfileUserExperiencePtrOutput
+	ToCloudBrowserIsolationExternalProfileUserExperiencePtrOutputWithContext(context.Context) CloudBrowserIsolationExternalProfileUserExperiencePtrOutput
 }
 
-type CloudBrowserIsolationExternalProfileUserExperienceArray []CloudBrowserIsolationExternalProfileUserExperienceInput
+type cloudBrowserIsolationExternalProfileUserExperiencePtrType CloudBrowserIsolationExternalProfileUserExperienceArgs
 
-func (CloudBrowserIsolationExternalProfileUserExperienceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CloudBrowserIsolationExternalProfileUserExperience)(nil)).Elem()
+func CloudBrowserIsolationExternalProfileUserExperiencePtr(v *CloudBrowserIsolationExternalProfileUserExperienceArgs) CloudBrowserIsolationExternalProfileUserExperiencePtrInput {
+	return (*cloudBrowserIsolationExternalProfileUserExperiencePtrType)(v)
 }
 
-func (i CloudBrowserIsolationExternalProfileUserExperienceArray) ToCloudBrowserIsolationExternalProfileUserExperienceArrayOutput() CloudBrowserIsolationExternalProfileUserExperienceArrayOutput {
-	return i.ToCloudBrowserIsolationExternalProfileUserExperienceArrayOutputWithContext(context.Background())
+func (*cloudBrowserIsolationExternalProfileUserExperiencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudBrowserIsolationExternalProfileUserExperience)(nil)).Elem()
 }
 
-func (i CloudBrowserIsolationExternalProfileUserExperienceArray) ToCloudBrowserIsolationExternalProfileUserExperienceArrayOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileUserExperienceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileUserExperienceArrayOutput)
+func (i *cloudBrowserIsolationExternalProfileUserExperiencePtrType) ToCloudBrowserIsolationExternalProfileUserExperiencePtrOutput() CloudBrowserIsolationExternalProfileUserExperiencePtrOutput {
+	return i.ToCloudBrowserIsolationExternalProfileUserExperiencePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudBrowserIsolationExternalProfileUserExperiencePtrType) ToCloudBrowserIsolationExternalProfileUserExperiencePtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileUserExperiencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBrowserIsolationExternalProfileUserExperiencePtrOutput)
 }
 
 type CloudBrowserIsolationExternalProfileUserExperienceOutput struct{ *pulumi.OutputState }
@@ -3172,6 +3221,16 @@ func (o CloudBrowserIsolationExternalProfileUserExperienceOutput) ToCloudBrowser
 
 func (o CloudBrowserIsolationExternalProfileUserExperienceOutput) ToCloudBrowserIsolationExternalProfileUserExperienceOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileUserExperienceOutput {
 	return o
+}
+
+func (o CloudBrowserIsolationExternalProfileUserExperienceOutput) ToCloudBrowserIsolationExternalProfileUserExperiencePtrOutput() CloudBrowserIsolationExternalProfileUserExperiencePtrOutput {
+	return o.ToCloudBrowserIsolationExternalProfileUserExperiencePtrOutputWithContext(context.Background())
+}
+
+func (o CloudBrowserIsolationExternalProfileUserExperienceOutput) ToCloudBrowserIsolationExternalProfileUserExperiencePtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileUserExperiencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudBrowserIsolationExternalProfileUserExperience) *CloudBrowserIsolationExternalProfileUserExperience {
+		return &v
+	}).(CloudBrowserIsolationExternalProfileUserExperiencePtrOutput)
 }
 
 func (o CloudBrowserIsolationExternalProfileUserExperienceOutput) BrowserInBrowser() pulumi.BoolPtrOutput {
@@ -3200,24 +3259,82 @@ func (o CloudBrowserIsolationExternalProfileUserExperienceOutput) Zgpu() pulumi.
 	return o.ApplyT(func(v CloudBrowserIsolationExternalProfileUserExperience) *bool { return v.Zgpu }).(pulumi.BoolPtrOutput)
 }
 
-type CloudBrowserIsolationExternalProfileUserExperienceArrayOutput struct{ *pulumi.OutputState }
+type CloudBrowserIsolationExternalProfileUserExperiencePtrOutput struct{ *pulumi.OutputState }
 
-func (CloudBrowserIsolationExternalProfileUserExperienceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CloudBrowserIsolationExternalProfileUserExperience)(nil)).Elem()
+func (CloudBrowserIsolationExternalProfileUserExperiencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudBrowserIsolationExternalProfileUserExperience)(nil)).Elem()
 }
 
-func (o CloudBrowserIsolationExternalProfileUserExperienceArrayOutput) ToCloudBrowserIsolationExternalProfileUserExperienceArrayOutput() CloudBrowserIsolationExternalProfileUserExperienceArrayOutput {
+func (o CloudBrowserIsolationExternalProfileUserExperiencePtrOutput) ToCloudBrowserIsolationExternalProfileUserExperiencePtrOutput() CloudBrowserIsolationExternalProfileUserExperiencePtrOutput {
 	return o
 }
 
-func (o CloudBrowserIsolationExternalProfileUserExperienceArrayOutput) ToCloudBrowserIsolationExternalProfileUserExperienceArrayOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileUserExperienceArrayOutput {
+func (o CloudBrowserIsolationExternalProfileUserExperiencePtrOutput) ToCloudBrowserIsolationExternalProfileUserExperiencePtrOutputWithContext(ctx context.Context) CloudBrowserIsolationExternalProfileUserExperiencePtrOutput {
 	return o
 }
 
-func (o CloudBrowserIsolationExternalProfileUserExperienceArrayOutput) Index(i pulumi.IntInput) CloudBrowserIsolationExternalProfileUserExperienceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudBrowserIsolationExternalProfileUserExperience {
-		return vs[0].([]CloudBrowserIsolationExternalProfileUserExperience)[vs[1].(int)]
+func (o CloudBrowserIsolationExternalProfileUserExperiencePtrOutput) Elem() CloudBrowserIsolationExternalProfileUserExperienceOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileUserExperience) CloudBrowserIsolationExternalProfileUserExperience {
+		if v != nil {
+			return *v
+		}
+		var ret CloudBrowserIsolationExternalProfileUserExperience
+		return ret
 	}).(CloudBrowserIsolationExternalProfileUserExperienceOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileUserExperiencePtrOutput) BrowserInBrowser() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileUserExperience) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BrowserInBrowser
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileUserExperiencePtrOutput) ForwardToZia() CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileUserExperience) *CloudBrowserIsolationExternalProfileUserExperienceForwardToZia {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardToZia
+	}).(CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileUserExperiencePtrOutput) PersistIsolationBar() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileUserExperience) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PersistIsolationBar
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileUserExperiencePtrOutput) SessionPersistence() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileUserExperience) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SessionPersistence
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileUserExperiencePtrOutput) Translate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileUserExperience) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Translate
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudBrowserIsolationExternalProfileUserExperiencePtrOutput) Zgpu() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfileUserExperience) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Zgpu
+	}).(pulumi.BoolPtrOutput)
 }
 
 type CloudBrowserIsolationExternalProfileUserExperienceForwardToZia struct {
@@ -3401,7 +3518,7 @@ func (o CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput)
 }
 
 type InspectionCustomControlsRule struct {
-	Conditions *InspectionCustomControlsRuleConditions `pulumi:"conditions"`
+	Conditions []InspectionCustomControlsRuleCondition `pulumi:"conditions"`
 	// Name of the rules. If rules.type is set to REQUEST_HEADERS, REQUEST_COOKIES, or RESPONSE_HEADERS, the rules.name field is required.
 	Names []string `pulumi:"names"`
 	// Type value for the rules.
@@ -3420,7 +3537,7 @@ type InspectionCustomControlsRuleInput interface {
 }
 
 type InspectionCustomControlsRuleArgs struct {
-	Conditions InspectionCustomControlsRuleConditionsPtrInput `pulumi:"conditions"`
+	Conditions InspectionCustomControlsRuleConditionArrayInput `pulumi:"conditions"`
 	// Name of the rules. If rules.type is set to REQUEST_HEADERS, REQUEST_COOKIES, or RESPONSE_HEADERS, the rules.name field is required.
 	Names pulumi.StringArrayInput `pulumi:"names"`
 	// Type value for the rules.
@@ -3478,8 +3595,8 @@ func (o InspectionCustomControlsRuleOutput) ToInspectionCustomControlsRuleOutput
 	return o
 }
 
-func (o InspectionCustomControlsRuleOutput) Conditions() InspectionCustomControlsRuleConditionsPtrOutput {
-	return o.ApplyT(func(v InspectionCustomControlsRule) *InspectionCustomControlsRuleConditions { return v.Conditions }).(InspectionCustomControlsRuleConditionsPtrOutput)
+func (o InspectionCustomControlsRuleOutput) Conditions() InspectionCustomControlsRuleConditionArrayOutput {
+	return o.ApplyT(func(v InspectionCustomControlsRule) []InspectionCustomControlsRuleCondition { return v.Conditions }).(InspectionCustomControlsRuleConditionArrayOutput)
 }
 
 // Name of the rules. If rules.type is set to REQUEST_HEADERS, REQUEST_COOKIES, or RESPONSE_HEADERS, the rules.name field is required.
@@ -3512,7 +3629,7 @@ func (o InspectionCustomControlsRuleArrayOutput) Index(i pulumi.IntInput) Inspec
 	}).(InspectionCustomControlsRuleOutput)
 }
 
-type InspectionCustomControlsRuleConditions struct {
+type InspectionCustomControlsRuleCondition struct {
 	// Signifies the key for the object type
 	Lhs *string `pulumi:"lhs"`
 	// Denotes the operation type.
@@ -3521,18 +3638,18 @@ type InspectionCustomControlsRuleConditions struct {
 	Rhs *string `pulumi:"rhs"`
 }
 
-// InspectionCustomControlsRuleConditionsInput is an input type that accepts InspectionCustomControlsRuleConditionsArgs and InspectionCustomControlsRuleConditionsOutput values.
-// You can construct a concrete instance of `InspectionCustomControlsRuleConditionsInput` via:
+// InspectionCustomControlsRuleConditionInput is an input type that accepts InspectionCustomControlsRuleConditionArgs and InspectionCustomControlsRuleConditionOutput values.
+// You can construct a concrete instance of `InspectionCustomControlsRuleConditionInput` via:
 //
-//	InspectionCustomControlsRuleConditionsArgs{...}
-type InspectionCustomControlsRuleConditionsInput interface {
+//	InspectionCustomControlsRuleConditionArgs{...}
+type InspectionCustomControlsRuleConditionInput interface {
 	pulumi.Input
 
-	ToInspectionCustomControlsRuleConditionsOutput() InspectionCustomControlsRuleConditionsOutput
-	ToInspectionCustomControlsRuleConditionsOutputWithContext(context.Context) InspectionCustomControlsRuleConditionsOutput
+	ToInspectionCustomControlsRuleConditionOutput() InspectionCustomControlsRuleConditionOutput
+	ToInspectionCustomControlsRuleConditionOutputWithContext(context.Context) InspectionCustomControlsRuleConditionOutput
 }
 
-type InspectionCustomControlsRuleConditionsArgs struct {
+type InspectionCustomControlsRuleConditionArgs struct {
 	// Signifies the key for the object type
 	Lhs pulumi.StringPtrInput `pulumi:"lhs"`
 	// Denotes the operation type.
@@ -3541,150 +3658,90 @@ type InspectionCustomControlsRuleConditionsArgs struct {
 	Rhs pulumi.StringPtrInput `pulumi:"rhs"`
 }
 
-func (InspectionCustomControlsRuleConditionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InspectionCustomControlsRuleConditions)(nil)).Elem()
+func (InspectionCustomControlsRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InspectionCustomControlsRuleCondition)(nil)).Elem()
 }
 
-func (i InspectionCustomControlsRuleConditionsArgs) ToInspectionCustomControlsRuleConditionsOutput() InspectionCustomControlsRuleConditionsOutput {
-	return i.ToInspectionCustomControlsRuleConditionsOutputWithContext(context.Background())
+func (i InspectionCustomControlsRuleConditionArgs) ToInspectionCustomControlsRuleConditionOutput() InspectionCustomControlsRuleConditionOutput {
+	return i.ToInspectionCustomControlsRuleConditionOutputWithContext(context.Background())
 }
 
-func (i InspectionCustomControlsRuleConditionsArgs) ToInspectionCustomControlsRuleConditionsOutputWithContext(ctx context.Context) InspectionCustomControlsRuleConditionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InspectionCustomControlsRuleConditionsOutput)
+func (i InspectionCustomControlsRuleConditionArgs) ToInspectionCustomControlsRuleConditionOutputWithContext(ctx context.Context) InspectionCustomControlsRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InspectionCustomControlsRuleConditionOutput)
 }
 
-func (i InspectionCustomControlsRuleConditionsArgs) ToInspectionCustomControlsRuleConditionsPtrOutput() InspectionCustomControlsRuleConditionsPtrOutput {
-	return i.ToInspectionCustomControlsRuleConditionsPtrOutputWithContext(context.Background())
-}
-
-func (i InspectionCustomControlsRuleConditionsArgs) ToInspectionCustomControlsRuleConditionsPtrOutputWithContext(ctx context.Context) InspectionCustomControlsRuleConditionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InspectionCustomControlsRuleConditionsOutput).ToInspectionCustomControlsRuleConditionsPtrOutputWithContext(ctx)
-}
-
-// InspectionCustomControlsRuleConditionsPtrInput is an input type that accepts InspectionCustomControlsRuleConditionsArgs, InspectionCustomControlsRuleConditionsPtr and InspectionCustomControlsRuleConditionsPtrOutput values.
-// You can construct a concrete instance of `InspectionCustomControlsRuleConditionsPtrInput` via:
+// InspectionCustomControlsRuleConditionArrayInput is an input type that accepts InspectionCustomControlsRuleConditionArray and InspectionCustomControlsRuleConditionArrayOutput values.
+// You can construct a concrete instance of `InspectionCustomControlsRuleConditionArrayInput` via:
 //
-//	        InspectionCustomControlsRuleConditionsArgs{...}
-//
-//	or:
-//
-//	        nil
-type InspectionCustomControlsRuleConditionsPtrInput interface {
+//	InspectionCustomControlsRuleConditionArray{ InspectionCustomControlsRuleConditionArgs{...} }
+type InspectionCustomControlsRuleConditionArrayInput interface {
 	pulumi.Input
 
-	ToInspectionCustomControlsRuleConditionsPtrOutput() InspectionCustomControlsRuleConditionsPtrOutput
-	ToInspectionCustomControlsRuleConditionsPtrOutputWithContext(context.Context) InspectionCustomControlsRuleConditionsPtrOutput
+	ToInspectionCustomControlsRuleConditionArrayOutput() InspectionCustomControlsRuleConditionArrayOutput
+	ToInspectionCustomControlsRuleConditionArrayOutputWithContext(context.Context) InspectionCustomControlsRuleConditionArrayOutput
 }
 
-type inspectionCustomControlsRuleConditionsPtrType InspectionCustomControlsRuleConditionsArgs
+type InspectionCustomControlsRuleConditionArray []InspectionCustomControlsRuleConditionInput
 
-func InspectionCustomControlsRuleConditionsPtr(v *InspectionCustomControlsRuleConditionsArgs) InspectionCustomControlsRuleConditionsPtrInput {
-	return (*inspectionCustomControlsRuleConditionsPtrType)(v)
+func (InspectionCustomControlsRuleConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InspectionCustomControlsRuleCondition)(nil)).Elem()
 }
 
-func (*inspectionCustomControlsRuleConditionsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InspectionCustomControlsRuleConditions)(nil)).Elem()
+func (i InspectionCustomControlsRuleConditionArray) ToInspectionCustomControlsRuleConditionArrayOutput() InspectionCustomControlsRuleConditionArrayOutput {
+	return i.ToInspectionCustomControlsRuleConditionArrayOutputWithContext(context.Background())
 }
 
-func (i *inspectionCustomControlsRuleConditionsPtrType) ToInspectionCustomControlsRuleConditionsPtrOutput() InspectionCustomControlsRuleConditionsPtrOutput {
-	return i.ToInspectionCustomControlsRuleConditionsPtrOutputWithContext(context.Background())
+func (i InspectionCustomControlsRuleConditionArray) ToInspectionCustomControlsRuleConditionArrayOutputWithContext(ctx context.Context) InspectionCustomControlsRuleConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InspectionCustomControlsRuleConditionArrayOutput)
 }
 
-func (i *inspectionCustomControlsRuleConditionsPtrType) ToInspectionCustomControlsRuleConditionsPtrOutputWithContext(ctx context.Context) InspectionCustomControlsRuleConditionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InspectionCustomControlsRuleConditionsPtrOutput)
+type InspectionCustomControlsRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (InspectionCustomControlsRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InspectionCustomControlsRuleCondition)(nil)).Elem()
 }
 
-type InspectionCustomControlsRuleConditionsOutput struct{ *pulumi.OutputState }
-
-func (InspectionCustomControlsRuleConditionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InspectionCustomControlsRuleConditions)(nil)).Elem()
-}
-
-func (o InspectionCustomControlsRuleConditionsOutput) ToInspectionCustomControlsRuleConditionsOutput() InspectionCustomControlsRuleConditionsOutput {
+func (o InspectionCustomControlsRuleConditionOutput) ToInspectionCustomControlsRuleConditionOutput() InspectionCustomControlsRuleConditionOutput {
 	return o
 }
 
-func (o InspectionCustomControlsRuleConditionsOutput) ToInspectionCustomControlsRuleConditionsOutputWithContext(ctx context.Context) InspectionCustomControlsRuleConditionsOutput {
+func (o InspectionCustomControlsRuleConditionOutput) ToInspectionCustomControlsRuleConditionOutputWithContext(ctx context.Context) InspectionCustomControlsRuleConditionOutput {
 	return o
-}
-
-func (o InspectionCustomControlsRuleConditionsOutput) ToInspectionCustomControlsRuleConditionsPtrOutput() InspectionCustomControlsRuleConditionsPtrOutput {
-	return o.ToInspectionCustomControlsRuleConditionsPtrOutputWithContext(context.Background())
-}
-
-func (o InspectionCustomControlsRuleConditionsOutput) ToInspectionCustomControlsRuleConditionsPtrOutputWithContext(ctx context.Context) InspectionCustomControlsRuleConditionsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InspectionCustomControlsRuleConditions) *InspectionCustomControlsRuleConditions {
-		return &v
-	}).(InspectionCustomControlsRuleConditionsPtrOutput)
 }
 
 // Signifies the key for the object type
-func (o InspectionCustomControlsRuleConditionsOutput) Lhs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InspectionCustomControlsRuleConditions) *string { return v.Lhs }).(pulumi.StringPtrOutput)
+func (o InspectionCustomControlsRuleConditionOutput) Lhs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InspectionCustomControlsRuleCondition) *string { return v.Lhs }).(pulumi.StringPtrOutput)
 }
 
 // Denotes the operation type.
-func (o InspectionCustomControlsRuleConditionsOutput) Op() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InspectionCustomControlsRuleConditions) *string { return v.Op }).(pulumi.StringPtrOutput)
+func (o InspectionCustomControlsRuleConditionOutput) Op() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InspectionCustomControlsRuleCondition) *string { return v.Op }).(pulumi.StringPtrOutput)
 }
 
 // Denotes the value for the given object type. Its value depends on the key.
-func (o InspectionCustomControlsRuleConditionsOutput) Rhs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InspectionCustomControlsRuleConditions) *string { return v.Rhs }).(pulumi.StringPtrOutput)
+func (o InspectionCustomControlsRuleConditionOutput) Rhs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InspectionCustomControlsRuleCondition) *string { return v.Rhs }).(pulumi.StringPtrOutput)
 }
 
-type InspectionCustomControlsRuleConditionsPtrOutput struct{ *pulumi.OutputState }
+type InspectionCustomControlsRuleConditionArrayOutput struct{ *pulumi.OutputState }
 
-func (InspectionCustomControlsRuleConditionsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InspectionCustomControlsRuleConditions)(nil)).Elem()
+func (InspectionCustomControlsRuleConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InspectionCustomControlsRuleCondition)(nil)).Elem()
 }
 
-func (o InspectionCustomControlsRuleConditionsPtrOutput) ToInspectionCustomControlsRuleConditionsPtrOutput() InspectionCustomControlsRuleConditionsPtrOutput {
+func (o InspectionCustomControlsRuleConditionArrayOutput) ToInspectionCustomControlsRuleConditionArrayOutput() InspectionCustomControlsRuleConditionArrayOutput {
 	return o
 }
 
-func (o InspectionCustomControlsRuleConditionsPtrOutput) ToInspectionCustomControlsRuleConditionsPtrOutputWithContext(ctx context.Context) InspectionCustomControlsRuleConditionsPtrOutput {
+func (o InspectionCustomControlsRuleConditionArrayOutput) ToInspectionCustomControlsRuleConditionArrayOutputWithContext(ctx context.Context) InspectionCustomControlsRuleConditionArrayOutput {
 	return o
 }
 
-func (o InspectionCustomControlsRuleConditionsPtrOutput) Elem() InspectionCustomControlsRuleConditionsOutput {
-	return o.ApplyT(func(v *InspectionCustomControlsRuleConditions) InspectionCustomControlsRuleConditions {
-		if v != nil {
-			return *v
-		}
-		var ret InspectionCustomControlsRuleConditions
-		return ret
-	}).(InspectionCustomControlsRuleConditionsOutput)
-}
-
-// Signifies the key for the object type
-func (o InspectionCustomControlsRuleConditionsPtrOutput) Lhs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InspectionCustomControlsRuleConditions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Lhs
-	}).(pulumi.StringPtrOutput)
-}
-
-// Denotes the operation type.
-func (o InspectionCustomControlsRuleConditionsPtrOutput) Op() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InspectionCustomControlsRuleConditions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Op
-	}).(pulumi.StringPtrOutput)
-}
-
-// Denotes the value for the given object type. Its value depends on the key.
-func (o InspectionCustomControlsRuleConditionsPtrOutput) Rhs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InspectionCustomControlsRuleConditions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Rhs
-	}).(pulumi.StringPtrOutput)
+func (o InspectionCustomControlsRuleConditionArrayOutput) Index(i pulumi.IntInput) InspectionCustomControlsRuleConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InspectionCustomControlsRuleCondition {
+		return vs[0].([]InspectionCustomControlsRuleCondition)[vs[1].(int)]
+	}).(InspectionCustomControlsRuleConditionOutput)
 }
 
 type InspectionProfileControlsInfo struct {
@@ -5912,45 +5969,29 @@ func (i PRAConsolePraApplicationArgs) ToPRAConsolePraApplicationOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(PRAConsolePraApplicationOutput)
 }
 
-func (i PRAConsolePraApplicationArgs) ToPRAConsolePraApplicationPtrOutput() PRAConsolePraApplicationPtrOutput {
-	return i.ToPRAConsolePraApplicationPtrOutputWithContext(context.Background())
-}
-
-func (i PRAConsolePraApplicationArgs) ToPRAConsolePraApplicationPtrOutputWithContext(ctx context.Context) PRAConsolePraApplicationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PRAConsolePraApplicationOutput).ToPRAConsolePraApplicationPtrOutputWithContext(ctx)
-}
-
-// PRAConsolePraApplicationPtrInput is an input type that accepts PRAConsolePraApplicationArgs, PRAConsolePraApplicationPtr and PRAConsolePraApplicationPtrOutput values.
-// You can construct a concrete instance of `PRAConsolePraApplicationPtrInput` via:
+// PRAConsolePraApplicationArrayInput is an input type that accepts PRAConsolePraApplicationArray and PRAConsolePraApplicationArrayOutput values.
+// You can construct a concrete instance of `PRAConsolePraApplicationArrayInput` via:
 //
-//	        PRAConsolePraApplicationArgs{...}
-//
-//	or:
-//
-//	        nil
-type PRAConsolePraApplicationPtrInput interface {
+//	PRAConsolePraApplicationArray{ PRAConsolePraApplicationArgs{...} }
+type PRAConsolePraApplicationArrayInput interface {
 	pulumi.Input
 
-	ToPRAConsolePraApplicationPtrOutput() PRAConsolePraApplicationPtrOutput
-	ToPRAConsolePraApplicationPtrOutputWithContext(context.Context) PRAConsolePraApplicationPtrOutput
+	ToPRAConsolePraApplicationArrayOutput() PRAConsolePraApplicationArrayOutput
+	ToPRAConsolePraApplicationArrayOutputWithContext(context.Context) PRAConsolePraApplicationArrayOutput
 }
 
-type praconsolePraApplicationPtrType PRAConsolePraApplicationArgs
+type PRAConsolePraApplicationArray []PRAConsolePraApplicationInput
 
-func PRAConsolePraApplicationPtr(v *PRAConsolePraApplicationArgs) PRAConsolePraApplicationPtrInput {
-	return (*praconsolePraApplicationPtrType)(v)
+func (PRAConsolePraApplicationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PRAConsolePraApplication)(nil)).Elem()
 }
 
-func (*praconsolePraApplicationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PRAConsolePraApplication)(nil)).Elem()
+func (i PRAConsolePraApplicationArray) ToPRAConsolePraApplicationArrayOutput() PRAConsolePraApplicationArrayOutput {
+	return i.ToPRAConsolePraApplicationArrayOutputWithContext(context.Background())
 }
 
-func (i *praconsolePraApplicationPtrType) ToPRAConsolePraApplicationPtrOutput() PRAConsolePraApplicationPtrOutput {
-	return i.ToPRAConsolePraApplicationPtrOutputWithContext(context.Background())
-}
-
-func (i *praconsolePraApplicationPtrType) ToPRAConsolePraApplicationPtrOutputWithContext(ctx context.Context) PRAConsolePraApplicationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PRAConsolePraApplicationPtrOutput)
+func (i PRAConsolePraApplicationArray) ToPRAConsolePraApplicationArrayOutputWithContext(ctx context.Context) PRAConsolePraApplicationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PRAConsolePraApplicationArrayOutput)
 }
 
 type PRAConsolePraApplicationOutput struct{ *pulumi.OutputState }
@@ -5967,51 +6008,28 @@ func (o PRAConsolePraApplicationOutput) ToPRAConsolePraApplicationOutputWithCont
 	return o
 }
 
-func (o PRAConsolePraApplicationOutput) ToPRAConsolePraApplicationPtrOutput() PRAConsolePraApplicationPtrOutput {
-	return o.ToPRAConsolePraApplicationPtrOutputWithContext(context.Background())
-}
-
-func (o PRAConsolePraApplicationOutput) ToPRAConsolePraApplicationPtrOutputWithContext(ctx context.Context) PRAConsolePraApplicationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PRAConsolePraApplication) *PRAConsolePraApplication {
-		return &v
-	}).(PRAConsolePraApplicationPtrOutput)
-}
-
 func (o PRAConsolePraApplicationOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PRAConsolePraApplication) string { return v.Id }).(pulumi.StringOutput)
 }
 
-type PRAConsolePraApplicationPtrOutput struct{ *pulumi.OutputState }
+type PRAConsolePraApplicationArrayOutput struct{ *pulumi.OutputState }
 
-func (PRAConsolePraApplicationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PRAConsolePraApplication)(nil)).Elem()
+func (PRAConsolePraApplicationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PRAConsolePraApplication)(nil)).Elem()
 }
 
-func (o PRAConsolePraApplicationPtrOutput) ToPRAConsolePraApplicationPtrOutput() PRAConsolePraApplicationPtrOutput {
+func (o PRAConsolePraApplicationArrayOutput) ToPRAConsolePraApplicationArrayOutput() PRAConsolePraApplicationArrayOutput {
 	return o
 }
 
-func (o PRAConsolePraApplicationPtrOutput) ToPRAConsolePraApplicationPtrOutputWithContext(ctx context.Context) PRAConsolePraApplicationPtrOutput {
+func (o PRAConsolePraApplicationArrayOutput) ToPRAConsolePraApplicationArrayOutputWithContext(ctx context.Context) PRAConsolePraApplicationArrayOutput {
 	return o
 }
 
-func (o PRAConsolePraApplicationPtrOutput) Elem() PRAConsolePraApplicationOutput {
-	return o.ApplyT(func(v *PRAConsolePraApplication) PRAConsolePraApplication {
-		if v != nil {
-			return *v
-		}
-		var ret PRAConsolePraApplication
-		return ret
+func (o PRAConsolePraApplicationArrayOutput) Index(i pulumi.IntInput) PRAConsolePraApplicationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PRAConsolePraApplication {
+		return vs[0].([]PRAConsolePraApplication)[vs[1].(int)]
 	}).(PRAConsolePraApplicationOutput)
-}
-
-func (o PRAConsolePraApplicationPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PRAConsolePraApplication) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
 }
 
 type PRAConsolePraPortal struct {
@@ -11366,3250 +11384,6 @@ func (o PolicyBrowserProtectionRuleConditionOperandEntryValueArrayOutput) Index(
 	}).(PolicyBrowserProtectionRuleConditionOperandEntryValueOutput)
 }
 
-type PolicyCapabilitiesRuleCondition struct {
-	Id *string `pulumi:"id"`
-	// This signifies the various policy criteria.
-	Operands []PolicyCapabilitiesRuleConditionOperand `pulumi:"operands"`
-	Operator *string                                  `pulumi:"operator"`
-}
-
-// PolicyCapabilitiesRuleConditionInput is an input type that accepts PolicyCapabilitiesRuleConditionArgs and PolicyCapabilitiesRuleConditionOutput values.
-// You can construct a concrete instance of `PolicyCapabilitiesRuleConditionInput` via:
-//
-//	PolicyCapabilitiesRuleConditionArgs{...}
-type PolicyCapabilitiesRuleConditionInput interface {
-	pulumi.Input
-
-	ToPolicyCapabilitiesRuleConditionOutput() PolicyCapabilitiesRuleConditionOutput
-	ToPolicyCapabilitiesRuleConditionOutputWithContext(context.Context) PolicyCapabilitiesRuleConditionOutput
-}
-
-type PolicyCapabilitiesRuleConditionArgs struct {
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// This signifies the various policy criteria.
-	Operands PolicyCapabilitiesRuleConditionOperandArrayInput `pulumi:"operands"`
-	Operator pulumi.StringPtrInput                            `pulumi:"operator"`
-}
-
-func (PolicyCapabilitiesRuleConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyCapabilitiesRuleCondition)(nil)).Elem()
-}
-
-func (i PolicyCapabilitiesRuleConditionArgs) ToPolicyCapabilitiesRuleConditionOutput() PolicyCapabilitiesRuleConditionOutput {
-	return i.ToPolicyCapabilitiesRuleConditionOutputWithContext(context.Background())
-}
-
-func (i PolicyCapabilitiesRuleConditionArgs) ToPolicyCapabilitiesRuleConditionOutputWithContext(ctx context.Context) PolicyCapabilitiesRuleConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyCapabilitiesRuleConditionOutput)
-}
-
-// PolicyCapabilitiesRuleConditionArrayInput is an input type that accepts PolicyCapabilitiesRuleConditionArray and PolicyCapabilitiesRuleConditionArrayOutput values.
-// You can construct a concrete instance of `PolicyCapabilitiesRuleConditionArrayInput` via:
-//
-//	PolicyCapabilitiesRuleConditionArray{ PolicyCapabilitiesRuleConditionArgs{...} }
-type PolicyCapabilitiesRuleConditionArrayInput interface {
-	pulumi.Input
-
-	ToPolicyCapabilitiesRuleConditionArrayOutput() PolicyCapabilitiesRuleConditionArrayOutput
-	ToPolicyCapabilitiesRuleConditionArrayOutputWithContext(context.Context) PolicyCapabilitiesRuleConditionArrayOutput
-}
-
-type PolicyCapabilitiesRuleConditionArray []PolicyCapabilitiesRuleConditionInput
-
-func (PolicyCapabilitiesRuleConditionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyCapabilitiesRuleCondition)(nil)).Elem()
-}
-
-func (i PolicyCapabilitiesRuleConditionArray) ToPolicyCapabilitiesRuleConditionArrayOutput() PolicyCapabilitiesRuleConditionArrayOutput {
-	return i.ToPolicyCapabilitiesRuleConditionArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyCapabilitiesRuleConditionArray) ToPolicyCapabilitiesRuleConditionArrayOutputWithContext(ctx context.Context) PolicyCapabilitiesRuleConditionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyCapabilitiesRuleConditionArrayOutput)
-}
-
-type PolicyCapabilitiesRuleConditionOutput struct{ *pulumi.OutputState }
-
-func (PolicyCapabilitiesRuleConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyCapabilitiesRuleCondition)(nil)).Elem()
-}
-
-func (o PolicyCapabilitiesRuleConditionOutput) ToPolicyCapabilitiesRuleConditionOutput() PolicyCapabilitiesRuleConditionOutput {
-	return o
-}
-
-func (o PolicyCapabilitiesRuleConditionOutput) ToPolicyCapabilitiesRuleConditionOutputWithContext(ctx context.Context) PolicyCapabilitiesRuleConditionOutput {
-	return o
-}
-
-func (o PolicyCapabilitiesRuleConditionOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyCapabilitiesRuleCondition) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// This signifies the various policy criteria.
-func (o PolicyCapabilitiesRuleConditionOutput) Operands() PolicyCapabilitiesRuleConditionOperandArrayOutput {
-	return o.ApplyT(func(v PolicyCapabilitiesRuleCondition) []PolicyCapabilitiesRuleConditionOperand { return v.Operands }).(PolicyCapabilitiesRuleConditionOperandArrayOutput)
-}
-
-func (o PolicyCapabilitiesRuleConditionOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyCapabilitiesRuleCondition) *string { return v.Operator }).(pulumi.StringPtrOutput)
-}
-
-type PolicyCapabilitiesRuleConditionArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyCapabilitiesRuleConditionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyCapabilitiesRuleCondition)(nil)).Elem()
-}
-
-func (o PolicyCapabilitiesRuleConditionArrayOutput) ToPolicyCapabilitiesRuleConditionArrayOutput() PolicyCapabilitiesRuleConditionArrayOutput {
-	return o
-}
-
-func (o PolicyCapabilitiesRuleConditionArrayOutput) ToPolicyCapabilitiesRuleConditionArrayOutputWithContext(ctx context.Context) PolicyCapabilitiesRuleConditionArrayOutput {
-	return o
-}
-
-func (o PolicyCapabilitiesRuleConditionArrayOutput) Index(i pulumi.IntInput) PolicyCapabilitiesRuleConditionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyCapabilitiesRuleCondition {
-		return vs[0].([]PolicyCapabilitiesRuleCondition)[vs[1].(int)]
-	}).(PolicyCapabilitiesRuleConditionOutput)
-}
-
-type PolicyCapabilitiesRuleConditionOperand struct {
-	EntryValues []PolicyCapabilitiesRuleConditionOperandEntryValue `pulumi:"entryValues"`
-	// This is for specifying the policy critiera.
-	ObjectType *string `pulumi:"objectType"`
-	// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-	Values []string `pulumi:"values"`
-}
-
-// PolicyCapabilitiesRuleConditionOperandInput is an input type that accepts PolicyCapabilitiesRuleConditionOperandArgs and PolicyCapabilitiesRuleConditionOperandOutput values.
-// You can construct a concrete instance of `PolicyCapabilitiesRuleConditionOperandInput` via:
-//
-//	PolicyCapabilitiesRuleConditionOperandArgs{...}
-type PolicyCapabilitiesRuleConditionOperandInput interface {
-	pulumi.Input
-
-	ToPolicyCapabilitiesRuleConditionOperandOutput() PolicyCapabilitiesRuleConditionOperandOutput
-	ToPolicyCapabilitiesRuleConditionOperandOutputWithContext(context.Context) PolicyCapabilitiesRuleConditionOperandOutput
-}
-
-type PolicyCapabilitiesRuleConditionOperandArgs struct {
-	EntryValues PolicyCapabilitiesRuleConditionOperandEntryValueArrayInput `pulumi:"entryValues"`
-	// This is for specifying the policy critiera.
-	ObjectType pulumi.StringPtrInput `pulumi:"objectType"`
-	// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (PolicyCapabilitiesRuleConditionOperandArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyCapabilitiesRuleConditionOperand)(nil)).Elem()
-}
-
-func (i PolicyCapabilitiesRuleConditionOperandArgs) ToPolicyCapabilitiesRuleConditionOperandOutput() PolicyCapabilitiesRuleConditionOperandOutput {
-	return i.ToPolicyCapabilitiesRuleConditionOperandOutputWithContext(context.Background())
-}
-
-func (i PolicyCapabilitiesRuleConditionOperandArgs) ToPolicyCapabilitiesRuleConditionOperandOutputWithContext(ctx context.Context) PolicyCapabilitiesRuleConditionOperandOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyCapabilitiesRuleConditionOperandOutput)
-}
-
-// PolicyCapabilitiesRuleConditionOperandArrayInput is an input type that accepts PolicyCapabilitiesRuleConditionOperandArray and PolicyCapabilitiesRuleConditionOperandArrayOutput values.
-// You can construct a concrete instance of `PolicyCapabilitiesRuleConditionOperandArrayInput` via:
-//
-//	PolicyCapabilitiesRuleConditionOperandArray{ PolicyCapabilitiesRuleConditionOperandArgs{...} }
-type PolicyCapabilitiesRuleConditionOperandArrayInput interface {
-	pulumi.Input
-
-	ToPolicyCapabilitiesRuleConditionOperandArrayOutput() PolicyCapabilitiesRuleConditionOperandArrayOutput
-	ToPolicyCapabilitiesRuleConditionOperandArrayOutputWithContext(context.Context) PolicyCapabilitiesRuleConditionOperandArrayOutput
-}
-
-type PolicyCapabilitiesRuleConditionOperandArray []PolicyCapabilitiesRuleConditionOperandInput
-
-func (PolicyCapabilitiesRuleConditionOperandArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyCapabilitiesRuleConditionOperand)(nil)).Elem()
-}
-
-func (i PolicyCapabilitiesRuleConditionOperandArray) ToPolicyCapabilitiesRuleConditionOperandArrayOutput() PolicyCapabilitiesRuleConditionOperandArrayOutput {
-	return i.ToPolicyCapabilitiesRuleConditionOperandArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyCapabilitiesRuleConditionOperandArray) ToPolicyCapabilitiesRuleConditionOperandArrayOutputWithContext(ctx context.Context) PolicyCapabilitiesRuleConditionOperandArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyCapabilitiesRuleConditionOperandArrayOutput)
-}
-
-type PolicyCapabilitiesRuleConditionOperandOutput struct{ *pulumi.OutputState }
-
-func (PolicyCapabilitiesRuleConditionOperandOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyCapabilitiesRuleConditionOperand)(nil)).Elem()
-}
-
-func (o PolicyCapabilitiesRuleConditionOperandOutput) ToPolicyCapabilitiesRuleConditionOperandOutput() PolicyCapabilitiesRuleConditionOperandOutput {
-	return o
-}
-
-func (o PolicyCapabilitiesRuleConditionOperandOutput) ToPolicyCapabilitiesRuleConditionOperandOutputWithContext(ctx context.Context) PolicyCapabilitiesRuleConditionOperandOutput {
-	return o
-}
-
-func (o PolicyCapabilitiesRuleConditionOperandOutput) EntryValues() PolicyCapabilitiesRuleConditionOperandEntryValueArrayOutput {
-	return o.ApplyT(func(v PolicyCapabilitiesRuleConditionOperand) []PolicyCapabilitiesRuleConditionOperandEntryValue {
-		return v.EntryValues
-	}).(PolicyCapabilitiesRuleConditionOperandEntryValueArrayOutput)
-}
-
-// This is for specifying the policy critiera.
-func (o PolicyCapabilitiesRuleConditionOperandOutput) ObjectType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyCapabilitiesRuleConditionOperand) *string { return v.ObjectType }).(pulumi.StringPtrOutput)
-}
-
-// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-func (o PolicyCapabilitiesRuleConditionOperandOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PolicyCapabilitiesRuleConditionOperand) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type PolicyCapabilitiesRuleConditionOperandArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyCapabilitiesRuleConditionOperandArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyCapabilitiesRuleConditionOperand)(nil)).Elem()
-}
-
-func (o PolicyCapabilitiesRuleConditionOperandArrayOutput) ToPolicyCapabilitiesRuleConditionOperandArrayOutput() PolicyCapabilitiesRuleConditionOperandArrayOutput {
-	return o
-}
-
-func (o PolicyCapabilitiesRuleConditionOperandArrayOutput) ToPolicyCapabilitiesRuleConditionOperandArrayOutputWithContext(ctx context.Context) PolicyCapabilitiesRuleConditionOperandArrayOutput {
-	return o
-}
-
-func (o PolicyCapabilitiesRuleConditionOperandArrayOutput) Index(i pulumi.IntInput) PolicyCapabilitiesRuleConditionOperandOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyCapabilitiesRuleConditionOperand {
-		return vs[0].([]PolicyCapabilitiesRuleConditionOperand)[vs[1].(int)]
-	}).(PolicyCapabilitiesRuleConditionOperandOutput)
-}
-
-type PolicyCapabilitiesRuleConditionOperandEntryValue struct {
-	Lhs *string `pulumi:"lhs"`
-	Rhs *string `pulumi:"rhs"`
-}
-
-// PolicyCapabilitiesRuleConditionOperandEntryValueInput is an input type that accepts PolicyCapabilitiesRuleConditionOperandEntryValueArgs and PolicyCapabilitiesRuleConditionOperandEntryValueOutput values.
-// You can construct a concrete instance of `PolicyCapabilitiesRuleConditionOperandEntryValueInput` via:
-//
-//	PolicyCapabilitiesRuleConditionOperandEntryValueArgs{...}
-type PolicyCapabilitiesRuleConditionOperandEntryValueInput interface {
-	pulumi.Input
-
-	ToPolicyCapabilitiesRuleConditionOperandEntryValueOutput() PolicyCapabilitiesRuleConditionOperandEntryValueOutput
-	ToPolicyCapabilitiesRuleConditionOperandEntryValueOutputWithContext(context.Context) PolicyCapabilitiesRuleConditionOperandEntryValueOutput
-}
-
-type PolicyCapabilitiesRuleConditionOperandEntryValueArgs struct {
-	Lhs pulumi.StringPtrInput `pulumi:"lhs"`
-	Rhs pulumi.StringPtrInput `pulumi:"rhs"`
-}
-
-func (PolicyCapabilitiesRuleConditionOperandEntryValueArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyCapabilitiesRuleConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (i PolicyCapabilitiesRuleConditionOperandEntryValueArgs) ToPolicyCapabilitiesRuleConditionOperandEntryValueOutput() PolicyCapabilitiesRuleConditionOperandEntryValueOutput {
-	return i.ToPolicyCapabilitiesRuleConditionOperandEntryValueOutputWithContext(context.Background())
-}
-
-func (i PolicyCapabilitiesRuleConditionOperandEntryValueArgs) ToPolicyCapabilitiesRuleConditionOperandEntryValueOutputWithContext(ctx context.Context) PolicyCapabilitiesRuleConditionOperandEntryValueOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyCapabilitiesRuleConditionOperandEntryValueOutput)
-}
-
-// PolicyCapabilitiesRuleConditionOperandEntryValueArrayInput is an input type that accepts PolicyCapabilitiesRuleConditionOperandEntryValueArray and PolicyCapabilitiesRuleConditionOperandEntryValueArrayOutput values.
-// You can construct a concrete instance of `PolicyCapabilitiesRuleConditionOperandEntryValueArrayInput` via:
-//
-//	PolicyCapabilitiesRuleConditionOperandEntryValueArray{ PolicyCapabilitiesRuleConditionOperandEntryValueArgs{...} }
-type PolicyCapabilitiesRuleConditionOperandEntryValueArrayInput interface {
-	pulumi.Input
-
-	ToPolicyCapabilitiesRuleConditionOperandEntryValueArrayOutput() PolicyCapabilitiesRuleConditionOperandEntryValueArrayOutput
-	ToPolicyCapabilitiesRuleConditionOperandEntryValueArrayOutputWithContext(context.Context) PolicyCapabilitiesRuleConditionOperandEntryValueArrayOutput
-}
-
-type PolicyCapabilitiesRuleConditionOperandEntryValueArray []PolicyCapabilitiesRuleConditionOperandEntryValueInput
-
-func (PolicyCapabilitiesRuleConditionOperandEntryValueArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyCapabilitiesRuleConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (i PolicyCapabilitiesRuleConditionOperandEntryValueArray) ToPolicyCapabilitiesRuleConditionOperandEntryValueArrayOutput() PolicyCapabilitiesRuleConditionOperandEntryValueArrayOutput {
-	return i.ToPolicyCapabilitiesRuleConditionOperandEntryValueArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyCapabilitiesRuleConditionOperandEntryValueArray) ToPolicyCapabilitiesRuleConditionOperandEntryValueArrayOutputWithContext(ctx context.Context) PolicyCapabilitiesRuleConditionOperandEntryValueArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyCapabilitiesRuleConditionOperandEntryValueArrayOutput)
-}
-
-type PolicyCapabilitiesRuleConditionOperandEntryValueOutput struct{ *pulumi.OutputState }
-
-func (PolicyCapabilitiesRuleConditionOperandEntryValueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyCapabilitiesRuleConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (o PolicyCapabilitiesRuleConditionOperandEntryValueOutput) ToPolicyCapabilitiesRuleConditionOperandEntryValueOutput() PolicyCapabilitiesRuleConditionOperandEntryValueOutput {
-	return o
-}
-
-func (o PolicyCapabilitiesRuleConditionOperandEntryValueOutput) ToPolicyCapabilitiesRuleConditionOperandEntryValueOutputWithContext(ctx context.Context) PolicyCapabilitiesRuleConditionOperandEntryValueOutput {
-	return o
-}
-
-func (o PolicyCapabilitiesRuleConditionOperandEntryValueOutput) Lhs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyCapabilitiesRuleConditionOperandEntryValue) *string { return v.Lhs }).(pulumi.StringPtrOutput)
-}
-
-func (o PolicyCapabilitiesRuleConditionOperandEntryValueOutput) Rhs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyCapabilitiesRuleConditionOperandEntryValue) *string { return v.Rhs }).(pulumi.StringPtrOutput)
-}
-
-type PolicyCapabilitiesRuleConditionOperandEntryValueArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyCapabilitiesRuleConditionOperandEntryValueArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyCapabilitiesRuleConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (o PolicyCapabilitiesRuleConditionOperandEntryValueArrayOutput) ToPolicyCapabilitiesRuleConditionOperandEntryValueArrayOutput() PolicyCapabilitiesRuleConditionOperandEntryValueArrayOutput {
-	return o
-}
-
-func (o PolicyCapabilitiesRuleConditionOperandEntryValueArrayOutput) ToPolicyCapabilitiesRuleConditionOperandEntryValueArrayOutputWithContext(ctx context.Context) PolicyCapabilitiesRuleConditionOperandEntryValueArrayOutput {
-	return o
-}
-
-func (o PolicyCapabilitiesRuleConditionOperandEntryValueArrayOutput) Index(i pulumi.IntInput) PolicyCapabilitiesRuleConditionOperandEntryValueOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyCapabilitiesRuleConditionOperandEntryValue {
-		return vs[0].([]PolicyCapabilitiesRuleConditionOperandEntryValue)[vs[1].(int)]
-	}).(PolicyCapabilitiesRuleConditionOperandEntryValueOutput)
-}
-
-type PolicyCapabilitiesRulePrivilegedCapabilities struct {
-	// Indicates the PRA Clipboard Copy function
-	ClipboardCopy *bool `pulumi:"clipboardCopy"`
-	// Indicates the PRA Clipboard Paste function
-	ClipboardPaste *bool `pulumi:"clipboardPaste"`
-	// Indicates the PRA File Transfer capabilities that enables the File Download function
-	FileDownload *bool `pulumi:"fileDownload"`
-	// Indicates the PRA File Transfer capabilities that enables the File Upload function
-	FileUpload *bool `pulumi:"fileUpload"`
-	// Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and downloads the file following the inspection
-	InspectFileDownload *bool `pulumi:"inspectFileDownload"`
-	// Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and uploads the file following the inspection
-	InspectFileUpload *bool `pulumi:"inspectFileUpload"`
-	// Indicates the PRA Monitoring Capabilities to enable the PRA Session Monitoring function
-	MonitorSession *bool `pulumi:"monitorSession"`
-	// Indicates the PRA Session Recording capabilities to enable PRA Session Recording
-	RecordSession *bool `pulumi:"recordSession"`
-	// Indicates the PRA Session Control and Monitoring capabilities to enable PRA Session Monitoring
-	ShareSession *bool `pulumi:"shareSession"`
-}
-
-// PolicyCapabilitiesRulePrivilegedCapabilitiesInput is an input type that accepts PolicyCapabilitiesRulePrivilegedCapabilitiesArgs and PolicyCapabilitiesRulePrivilegedCapabilitiesOutput values.
-// You can construct a concrete instance of `PolicyCapabilitiesRulePrivilegedCapabilitiesInput` via:
-//
-//	PolicyCapabilitiesRulePrivilegedCapabilitiesArgs{...}
-type PolicyCapabilitiesRulePrivilegedCapabilitiesInput interface {
-	pulumi.Input
-
-	ToPolicyCapabilitiesRulePrivilegedCapabilitiesOutput() PolicyCapabilitiesRulePrivilegedCapabilitiesOutput
-	ToPolicyCapabilitiesRulePrivilegedCapabilitiesOutputWithContext(context.Context) PolicyCapabilitiesRulePrivilegedCapabilitiesOutput
-}
-
-type PolicyCapabilitiesRulePrivilegedCapabilitiesArgs struct {
-	// Indicates the PRA Clipboard Copy function
-	ClipboardCopy pulumi.BoolPtrInput `pulumi:"clipboardCopy"`
-	// Indicates the PRA Clipboard Paste function
-	ClipboardPaste pulumi.BoolPtrInput `pulumi:"clipboardPaste"`
-	// Indicates the PRA File Transfer capabilities that enables the File Download function
-	FileDownload pulumi.BoolPtrInput `pulumi:"fileDownload"`
-	// Indicates the PRA File Transfer capabilities that enables the File Upload function
-	FileUpload pulumi.BoolPtrInput `pulumi:"fileUpload"`
-	// Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and downloads the file following the inspection
-	InspectFileDownload pulumi.BoolPtrInput `pulumi:"inspectFileDownload"`
-	// Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and uploads the file following the inspection
-	InspectFileUpload pulumi.BoolPtrInput `pulumi:"inspectFileUpload"`
-	// Indicates the PRA Monitoring Capabilities to enable the PRA Session Monitoring function
-	MonitorSession pulumi.BoolPtrInput `pulumi:"monitorSession"`
-	// Indicates the PRA Session Recording capabilities to enable PRA Session Recording
-	RecordSession pulumi.BoolPtrInput `pulumi:"recordSession"`
-	// Indicates the PRA Session Control and Monitoring capabilities to enable PRA Session Monitoring
-	ShareSession pulumi.BoolPtrInput `pulumi:"shareSession"`
-}
-
-func (PolicyCapabilitiesRulePrivilegedCapabilitiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyCapabilitiesRulePrivilegedCapabilities)(nil)).Elem()
-}
-
-func (i PolicyCapabilitiesRulePrivilegedCapabilitiesArgs) ToPolicyCapabilitiesRulePrivilegedCapabilitiesOutput() PolicyCapabilitiesRulePrivilegedCapabilitiesOutput {
-	return i.ToPolicyCapabilitiesRulePrivilegedCapabilitiesOutputWithContext(context.Background())
-}
-
-func (i PolicyCapabilitiesRulePrivilegedCapabilitiesArgs) ToPolicyCapabilitiesRulePrivilegedCapabilitiesOutputWithContext(ctx context.Context) PolicyCapabilitiesRulePrivilegedCapabilitiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyCapabilitiesRulePrivilegedCapabilitiesOutput)
-}
-
-func (i PolicyCapabilitiesRulePrivilegedCapabilitiesArgs) ToPolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput() PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput {
-	return i.ToPolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutputWithContext(context.Background())
-}
-
-func (i PolicyCapabilitiesRulePrivilegedCapabilitiesArgs) ToPolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutputWithContext(ctx context.Context) PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyCapabilitiesRulePrivilegedCapabilitiesOutput).ToPolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutputWithContext(ctx)
-}
-
-// PolicyCapabilitiesRulePrivilegedCapabilitiesPtrInput is an input type that accepts PolicyCapabilitiesRulePrivilegedCapabilitiesArgs, PolicyCapabilitiesRulePrivilegedCapabilitiesPtr and PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput values.
-// You can construct a concrete instance of `PolicyCapabilitiesRulePrivilegedCapabilitiesPtrInput` via:
-//
-//	        PolicyCapabilitiesRulePrivilegedCapabilitiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type PolicyCapabilitiesRulePrivilegedCapabilitiesPtrInput interface {
-	pulumi.Input
-
-	ToPolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput() PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput
-	ToPolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutputWithContext(context.Context) PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput
-}
-
-type policyCapabilitiesRulePrivilegedCapabilitiesPtrType PolicyCapabilitiesRulePrivilegedCapabilitiesArgs
-
-func PolicyCapabilitiesRulePrivilegedCapabilitiesPtr(v *PolicyCapabilitiesRulePrivilegedCapabilitiesArgs) PolicyCapabilitiesRulePrivilegedCapabilitiesPtrInput {
-	return (*policyCapabilitiesRulePrivilegedCapabilitiesPtrType)(v)
-}
-
-func (*policyCapabilitiesRulePrivilegedCapabilitiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicyCapabilitiesRulePrivilegedCapabilities)(nil)).Elem()
-}
-
-func (i *policyCapabilitiesRulePrivilegedCapabilitiesPtrType) ToPolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput() PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput {
-	return i.ToPolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutputWithContext(context.Background())
-}
-
-func (i *policyCapabilitiesRulePrivilegedCapabilitiesPtrType) ToPolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutputWithContext(ctx context.Context) PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput)
-}
-
-type PolicyCapabilitiesRulePrivilegedCapabilitiesOutput struct{ *pulumi.OutputState }
-
-func (PolicyCapabilitiesRulePrivilegedCapabilitiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyCapabilitiesRulePrivilegedCapabilities)(nil)).Elem()
-}
-
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesOutput) ToPolicyCapabilitiesRulePrivilegedCapabilitiesOutput() PolicyCapabilitiesRulePrivilegedCapabilitiesOutput {
-	return o
-}
-
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesOutput) ToPolicyCapabilitiesRulePrivilegedCapabilitiesOutputWithContext(ctx context.Context) PolicyCapabilitiesRulePrivilegedCapabilitiesOutput {
-	return o
-}
-
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesOutput) ToPolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput() PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput {
-	return o.ToPolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutputWithContext(context.Background())
-}
-
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesOutput) ToPolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutputWithContext(ctx context.Context) PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyCapabilitiesRulePrivilegedCapabilities) *PolicyCapabilitiesRulePrivilegedCapabilities {
-		return &v
-	}).(PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput)
-}
-
-// Indicates the PRA Clipboard Copy function
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesOutput) ClipboardCopy() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PolicyCapabilitiesRulePrivilegedCapabilities) *bool { return v.ClipboardCopy }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates the PRA Clipboard Paste function
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesOutput) ClipboardPaste() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PolicyCapabilitiesRulePrivilegedCapabilities) *bool { return v.ClipboardPaste }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates the PRA File Transfer capabilities that enables the File Download function
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesOutput) FileDownload() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PolicyCapabilitiesRulePrivilegedCapabilities) *bool { return v.FileDownload }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates the PRA File Transfer capabilities that enables the File Upload function
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesOutput) FileUpload() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PolicyCapabilitiesRulePrivilegedCapabilities) *bool { return v.FileUpload }).(pulumi.BoolPtrOutput)
-}
-
-// Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and downloads the file following the inspection
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesOutput) InspectFileDownload() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PolicyCapabilitiesRulePrivilegedCapabilities) *bool { return v.InspectFileDownload }).(pulumi.BoolPtrOutput)
-}
-
-// Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and uploads the file following the inspection
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesOutput) InspectFileUpload() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PolicyCapabilitiesRulePrivilegedCapabilities) *bool { return v.InspectFileUpload }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates the PRA Monitoring Capabilities to enable the PRA Session Monitoring function
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesOutput) MonitorSession() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PolicyCapabilitiesRulePrivilegedCapabilities) *bool { return v.MonitorSession }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates the PRA Session Recording capabilities to enable PRA Session Recording
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesOutput) RecordSession() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PolicyCapabilitiesRulePrivilegedCapabilities) *bool { return v.RecordSession }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates the PRA Session Control and Monitoring capabilities to enable PRA Session Monitoring
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesOutput) ShareSession() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PolicyCapabilitiesRulePrivilegedCapabilities) *bool { return v.ShareSession }).(pulumi.BoolPtrOutput)
-}
-
-type PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput struct{ *pulumi.OutputState }
-
-func (PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicyCapabilitiesRulePrivilegedCapabilities)(nil)).Elem()
-}
-
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput) ToPolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput() PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput {
-	return o
-}
-
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput) ToPolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutputWithContext(ctx context.Context) PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput {
-	return o
-}
-
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput) Elem() PolicyCapabilitiesRulePrivilegedCapabilitiesOutput {
-	return o.ApplyT(func(v *PolicyCapabilitiesRulePrivilegedCapabilities) PolicyCapabilitiesRulePrivilegedCapabilities {
-		if v != nil {
-			return *v
-		}
-		var ret PolicyCapabilitiesRulePrivilegedCapabilities
-		return ret
-	}).(PolicyCapabilitiesRulePrivilegedCapabilitiesOutput)
-}
-
-// Indicates the PRA Clipboard Copy function
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput) ClipboardCopy() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyCapabilitiesRulePrivilegedCapabilities) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ClipboardCopy
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicates the PRA Clipboard Paste function
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput) ClipboardPaste() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyCapabilitiesRulePrivilegedCapabilities) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ClipboardPaste
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicates the PRA File Transfer capabilities that enables the File Download function
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput) FileDownload() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyCapabilitiesRulePrivilegedCapabilities) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.FileDownload
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicates the PRA File Transfer capabilities that enables the File Upload function
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput) FileUpload() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyCapabilitiesRulePrivilegedCapabilities) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.FileUpload
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and downloads the file following the inspection
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput) InspectFileDownload() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyCapabilitiesRulePrivilegedCapabilities) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.InspectFileDownload
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and uploads the file following the inspection
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput) InspectFileUpload() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyCapabilitiesRulePrivilegedCapabilities) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.InspectFileUpload
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicates the PRA Monitoring Capabilities to enable the PRA Session Monitoring function
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput) MonitorSession() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyCapabilitiesRulePrivilegedCapabilities) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.MonitorSession
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicates the PRA Session Recording capabilities to enable PRA Session Recording
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput) RecordSession() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyCapabilitiesRulePrivilegedCapabilities) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.RecordSession
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicates the PRA Session Control and Monitoring capabilities to enable PRA Session Monitoring
-func (o PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput) ShareSession() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyCapabilitiesRulePrivilegedCapabilities) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ShareSession
-	}).(pulumi.BoolPtrOutput)
-}
-
-type PolicyCredentialRuleCondition struct {
-	Id *string `pulumi:"id"`
-	// This signifies the various policy criteria.
-	Operands []PolicyCredentialRuleConditionOperand `pulumi:"operands"`
-	Operator *string                                `pulumi:"operator"`
-}
-
-// PolicyCredentialRuleConditionInput is an input type that accepts PolicyCredentialRuleConditionArgs and PolicyCredentialRuleConditionOutput values.
-// You can construct a concrete instance of `PolicyCredentialRuleConditionInput` via:
-//
-//	PolicyCredentialRuleConditionArgs{...}
-type PolicyCredentialRuleConditionInput interface {
-	pulumi.Input
-
-	ToPolicyCredentialRuleConditionOutput() PolicyCredentialRuleConditionOutput
-	ToPolicyCredentialRuleConditionOutputWithContext(context.Context) PolicyCredentialRuleConditionOutput
-}
-
-type PolicyCredentialRuleConditionArgs struct {
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// This signifies the various policy criteria.
-	Operands PolicyCredentialRuleConditionOperandArrayInput `pulumi:"operands"`
-	Operator pulumi.StringPtrInput                          `pulumi:"operator"`
-}
-
-func (PolicyCredentialRuleConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyCredentialRuleCondition)(nil)).Elem()
-}
-
-func (i PolicyCredentialRuleConditionArgs) ToPolicyCredentialRuleConditionOutput() PolicyCredentialRuleConditionOutput {
-	return i.ToPolicyCredentialRuleConditionOutputWithContext(context.Background())
-}
-
-func (i PolicyCredentialRuleConditionArgs) ToPolicyCredentialRuleConditionOutputWithContext(ctx context.Context) PolicyCredentialRuleConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyCredentialRuleConditionOutput)
-}
-
-// PolicyCredentialRuleConditionArrayInput is an input type that accepts PolicyCredentialRuleConditionArray and PolicyCredentialRuleConditionArrayOutput values.
-// You can construct a concrete instance of `PolicyCredentialRuleConditionArrayInput` via:
-//
-//	PolicyCredentialRuleConditionArray{ PolicyCredentialRuleConditionArgs{...} }
-type PolicyCredentialRuleConditionArrayInput interface {
-	pulumi.Input
-
-	ToPolicyCredentialRuleConditionArrayOutput() PolicyCredentialRuleConditionArrayOutput
-	ToPolicyCredentialRuleConditionArrayOutputWithContext(context.Context) PolicyCredentialRuleConditionArrayOutput
-}
-
-type PolicyCredentialRuleConditionArray []PolicyCredentialRuleConditionInput
-
-func (PolicyCredentialRuleConditionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyCredentialRuleCondition)(nil)).Elem()
-}
-
-func (i PolicyCredentialRuleConditionArray) ToPolicyCredentialRuleConditionArrayOutput() PolicyCredentialRuleConditionArrayOutput {
-	return i.ToPolicyCredentialRuleConditionArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyCredentialRuleConditionArray) ToPolicyCredentialRuleConditionArrayOutputWithContext(ctx context.Context) PolicyCredentialRuleConditionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyCredentialRuleConditionArrayOutput)
-}
-
-type PolicyCredentialRuleConditionOutput struct{ *pulumi.OutputState }
-
-func (PolicyCredentialRuleConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyCredentialRuleCondition)(nil)).Elem()
-}
-
-func (o PolicyCredentialRuleConditionOutput) ToPolicyCredentialRuleConditionOutput() PolicyCredentialRuleConditionOutput {
-	return o
-}
-
-func (o PolicyCredentialRuleConditionOutput) ToPolicyCredentialRuleConditionOutputWithContext(ctx context.Context) PolicyCredentialRuleConditionOutput {
-	return o
-}
-
-func (o PolicyCredentialRuleConditionOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyCredentialRuleCondition) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// This signifies the various policy criteria.
-func (o PolicyCredentialRuleConditionOutput) Operands() PolicyCredentialRuleConditionOperandArrayOutput {
-	return o.ApplyT(func(v PolicyCredentialRuleCondition) []PolicyCredentialRuleConditionOperand { return v.Operands }).(PolicyCredentialRuleConditionOperandArrayOutput)
-}
-
-func (o PolicyCredentialRuleConditionOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyCredentialRuleCondition) *string { return v.Operator }).(pulumi.StringPtrOutput)
-}
-
-type PolicyCredentialRuleConditionArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyCredentialRuleConditionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyCredentialRuleCondition)(nil)).Elem()
-}
-
-func (o PolicyCredentialRuleConditionArrayOutput) ToPolicyCredentialRuleConditionArrayOutput() PolicyCredentialRuleConditionArrayOutput {
-	return o
-}
-
-func (o PolicyCredentialRuleConditionArrayOutput) ToPolicyCredentialRuleConditionArrayOutputWithContext(ctx context.Context) PolicyCredentialRuleConditionArrayOutput {
-	return o
-}
-
-func (o PolicyCredentialRuleConditionArrayOutput) Index(i pulumi.IntInput) PolicyCredentialRuleConditionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyCredentialRuleCondition {
-		return vs[0].([]PolicyCredentialRuleCondition)[vs[1].(int)]
-	}).(PolicyCredentialRuleConditionOutput)
-}
-
-type PolicyCredentialRuleConditionOperand struct {
-	EntryValues []PolicyCredentialRuleConditionOperandEntryValue `pulumi:"entryValues"`
-	// This is for specifying the policy critiera.
-	ObjectType *string `pulumi:"objectType"`
-	// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-	Values []string `pulumi:"values"`
-}
-
-// PolicyCredentialRuleConditionOperandInput is an input type that accepts PolicyCredentialRuleConditionOperandArgs and PolicyCredentialRuleConditionOperandOutput values.
-// You can construct a concrete instance of `PolicyCredentialRuleConditionOperandInput` via:
-//
-//	PolicyCredentialRuleConditionOperandArgs{...}
-type PolicyCredentialRuleConditionOperandInput interface {
-	pulumi.Input
-
-	ToPolicyCredentialRuleConditionOperandOutput() PolicyCredentialRuleConditionOperandOutput
-	ToPolicyCredentialRuleConditionOperandOutputWithContext(context.Context) PolicyCredentialRuleConditionOperandOutput
-}
-
-type PolicyCredentialRuleConditionOperandArgs struct {
-	EntryValues PolicyCredentialRuleConditionOperandEntryValueArrayInput `pulumi:"entryValues"`
-	// This is for specifying the policy critiera.
-	ObjectType pulumi.StringPtrInput `pulumi:"objectType"`
-	// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (PolicyCredentialRuleConditionOperandArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyCredentialRuleConditionOperand)(nil)).Elem()
-}
-
-func (i PolicyCredentialRuleConditionOperandArgs) ToPolicyCredentialRuleConditionOperandOutput() PolicyCredentialRuleConditionOperandOutput {
-	return i.ToPolicyCredentialRuleConditionOperandOutputWithContext(context.Background())
-}
-
-func (i PolicyCredentialRuleConditionOperandArgs) ToPolicyCredentialRuleConditionOperandOutputWithContext(ctx context.Context) PolicyCredentialRuleConditionOperandOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyCredentialRuleConditionOperandOutput)
-}
-
-// PolicyCredentialRuleConditionOperandArrayInput is an input type that accepts PolicyCredentialRuleConditionOperandArray and PolicyCredentialRuleConditionOperandArrayOutput values.
-// You can construct a concrete instance of `PolicyCredentialRuleConditionOperandArrayInput` via:
-//
-//	PolicyCredentialRuleConditionOperandArray{ PolicyCredentialRuleConditionOperandArgs{...} }
-type PolicyCredentialRuleConditionOperandArrayInput interface {
-	pulumi.Input
-
-	ToPolicyCredentialRuleConditionOperandArrayOutput() PolicyCredentialRuleConditionOperandArrayOutput
-	ToPolicyCredentialRuleConditionOperandArrayOutputWithContext(context.Context) PolicyCredentialRuleConditionOperandArrayOutput
-}
-
-type PolicyCredentialRuleConditionOperandArray []PolicyCredentialRuleConditionOperandInput
-
-func (PolicyCredentialRuleConditionOperandArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyCredentialRuleConditionOperand)(nil)).Elem()
-}
-
-func (i PolicyCredentialRuleConditionOperandArray) ToPolicyCredentialRuleConditionOperandArrayOutput() PolicyCredentialRuleConditionOperandArrayOutput {
-	return i.ToPolicyCredentialRuleConditionOperandArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyCredentialRuleConditionOperandArray) ToPolicyCredentialRuleConditionOperandArrayOutputWithContext(ctx context.Context) PolicyCredentialRuleConditionOperandArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyCredentialRuleConditionOperandArrayOutput)
-}
-
-type PolicyCredentialRuleConditionOperandOutput struct{ *pulumi.OutputState }
-
-func (PolicyCredentialRuleConditionOperandOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyCredentialRuleConditionOperand)(nil)).Elem()
-}
-
-func (o PolicyCredentialRuleConditionOperandOutput) ToPolicyCredentialRuleConditionOperandOutput() PolicyCredentialRuleConditionOperandOutput {
-	return o
-}
-
-func (o PolicyCredentialRuleConditionOperandOutput) ToPolicyCredentialRuleConditionOperandOutputWithContext(ctx context.Context) PolicyCredentialRuleConditionOperandOutput {
-	return o
-}
-
-func (o PolicyCredentialRuleConditionOperandOutput) EntryValues() PolicyCredentialRuleConditionOperandEntryValueArrayOutput {
-	return o.ApplyT(func(v PolicyCredentialRuleConditionOperand) []PolicyCredentialRuleConditionOperandEntryValue {
-		return v.EntryValues
-	}).(PolicyCredentialRuleConditionOperandEntryValueArrayOutput)
-}
-
-// This is for specifying the policy critiera.
-func (o PolicyCredentialRuleConditionOperandOutput) ObjectType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyCredentialRuleConditionOperand) *string { return v.ObjectType }).(pulumi.StringPtrOutput)
-}
-
-// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-func (o PolicyCredentialRuleConditionOperandOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PolicyCredentialRuleConditionOperand) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type PolicyCredentialRuleConditionOperandArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyCredentialRuleConditionOperandArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyCredentialRuleConditionOperand)(nil)).Elem()
-}
-
-func (o PolicyCredentialRuleConditionOperandArrayOutput) ToPolicyCredentialRuleConditionOperandArrayOutput() PolicyCredentialRuleConditionOperandArrayOutput {
-	return o
-}
-
-func (o PolicyCredentialRuleConditionOperandArrayOutput) ToPolicyCredentialRuleConditionOperandArrayOutputWithContext(ctx context.Context) PolicyCredentialRuleConditionOperandArrayOutput {
-	return o
-}
-
-func (o PolicyCredentialRuleConditionOperandArrayOutput) Index(i pulumi.IntInput) PolicyCredentialRuleConditionOperandOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyCredentialRuleConditionOperand {
-		return vs[0].([]PolicyCredentialRuleConditionOperand)[vs[1].(int)]
-	}).(PolicyCredentialRuleConditionOperandOutput)
-}
-
-type PolicyCredentialRuleConditionOperandEntryValue struct {
-	Lhs *string `pulumi:"lhs"`
-	Rhs *string `pulumi:"rhs"`
-}
-
-// PolicyCredentialRuleConditionOperandEntryValueInput is an input type that accepts PolicyCredentialRuleConditionOperandEntryValueArgs and PolicyCredentialRuleConditionOperandEntryValueOutput values.
-// You can construct a concrete instance of `PolicyCredentialRuleConditionOperandEntryValueInput` via:
-//
-//	PolicyCredentialRuleConditionOperandEntryValueArgs{...}
-type PolicyCredentialRuleConditionOperandEntryValueInput interface {
-	pulumi.Input
-
-	ToPolicyCredentialRuleConditionOperandEntryValueOutput() PolicyCredentialRuleConditionOperandEntryValueOutput
-	ToPolicyCredentialRuleConditionOperandEntryValueOutputWithContext(context.Context) PolicyCredentialRuleConditionOperandEntryValueOutput
-}
-
-type PolicyCredentialRuleConditionOperandEntryValueArgs struct {
-	Lhs pulumi.StringPtrInput `pulumi:"lhs"`
-	Rhs pulumi.StringPtrInput `pulumi:"rhs"`
-}
-
-func (PolicyCredentialRuleConditionOperandEntryValueArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyCredentialRuleConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (i PolicyCredentialRuleConditionOperandEntryValueArgs) ToPolicyCredentialRuleConditionOperandEntryValueOutput() PolicyCredentialRuleConditionOperandEntryValueOutput {
-	return i.ToPolicyCredentialRuleConditionOperandEntryValueOutputWithContext(context.Background())
-}
-
-func (i PolicyCredentialRuleConditionOperandEntryValueArgs) ToPolicyCredentialRuleConditionOperandEntryValueOutputWithContext(ctx context.Context) PolicyCredentialRuleConditionOperandEntryValueOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyCredentialRuleConditionOperandEntryValueOutput)
-}
-
-// PolicyCredentialRuleConditionOperandEntryValueArrayInput is an input type that accepts PolicyCredentialRuleConditionOperandEntryValueArray and PolicyCredentialRuleConditionOperandEntryValueArrayOutput values.
-// You can construct a concrete instance of `PolicyCredentialRuleConditionOperandEntryValueArrayInput` via:
-//
-//	PolicyCredentialRuleConditionOperandEntryValueArray{ PolicyCredentialRuleConditionOperandEntryValueArgs{...} }
-type PolicyCredentialRuleConditionOperandEntryValueArrayInput interface {
-	pulumi.Input
-
-	ToPolicyCredentialRuleConditionOperandEntryValueArrayOutput() PolicyCredentialRuleConditionOperandEntryValueArrayOutput
-	ToPolicyCredentialRuleConditionOperandEntryValueArrayOutputWithContext(context.Context) PolicyCredentialRuleConditionOperandEntryValueArrayOutput
-}
-
-type PolicyCredentialRuleConditionOperandEntryValueArray []PolicyCredentialRuleConditionOperandEntryValueInput
-
-func (PolicyCredentialRuleConditionOperandEntryValueArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyCredentialRuleConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (i PolicyCredentialRuleConditionOperandEntryValueArray) ToPolicyCredentialRuleConditionOperandEntryValueArrayOutput() PolicyCredentialRuleConditionOperandEntryValueArrayOutput {
-	return i.ToPolicyCredentialRuleConditionOperandEntryValueArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyCredentialRuleConditionOperandEntryValueArray) ToPolicyCredentialRuleConditionOperandEntryValueArrayOutputWithContext(ctx context.Context) PolicyCredentialRuleConditionOperandEntryValueArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyCredentialRuleConditionOperandEntryValueArrayOutput)
-}
-
-type PolicyCredentialRuleConditionOperandEntryValueOutput struct{ *pulumi.OutputState }
-
-func (PolicyCredentialRuleConditionOperandEntryValueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyCredentialRuleConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (o PolicyCredentialRuleConditionOperandEntryValueOutput) ToPolicyCredentialRuleConditionOperandEntryValueOutput() PolicyCredentialRuleConditionOperandEntryValueOutput {
-	return o
-}
-
-func (o PolicyCredentialRuleConditionOperandEntryValueOutput) ToPolicyCredentialRuleConditionOperandEntryValueOutputWithContext(ctx context.Context) PolicyCredentialRuleConditionOperandEntryValueOutput {
-	return o
-}
-
-func (o PolicyCredentialRuleConditionOperandEntryValueOutput) Lhs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyCredentialRuleConditionOperandEntryValue) *string { return v.Lhs }).(pulumi.StringPtrOutput)
-}
-
-func (o PolicyCredentialRuleConditionOperandEntryValueOutput) Rhs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyCredentialRuleConditionOperandEntryValue) *string { return v.Rhs }).(pulumi.StringPtrOutput)
-}
-
-type PolicyCredentialRuleConditionOperandEntryValueArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyCredentialRuleConditionOperandEntryValueArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyCredentialRuleConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (o PolicyCredentialRuleConditionOperandEntryValueArrayOutput) ToPolicyCredentialRuleConditionOperandEntryValueArrayOutput() PolicyCredentialRuleConditionOperandEntryValueArrayOutput {
-	return o
-}
-
-func (o PolicyCredentialRuleConditionOperandEntryValueArrayOutput) ToPolicyCredentialRuleConditionOperandEntryValueArrayOutputWithContext(ctx context.Context) PolicyCredentialRuleConditionOperandEntryValueArrayOutput {
-	return o
-}
-
-func (o PolicyCredentialRuleConditionOperandEntryValueArrayOutput) Index(i pulumi.IntInput) PolicyCredentialRuleConditionOperandEntryValueOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyCredentialRuleConditionOperandEntryValue {
-		return vs[0].([]PolicyCredentialRuleConditionOperandEntryValue)[vs[1].(int)]
-	}).(PolicyCredentialRuleConditionOperandEntryValueOutput)
-}
-
-type PolicyCredentialRuleCredential struct {
-	Id *string `pulumi:"id"`
-}
-
-// PolicyCredentialRuleCredentialInput is an input type that accepts PolicyCredentialRuleCredentialArgs and PolicyCredentialRuleCredentialOutput values.
-// You can construct a concrete instance of `PolicyCredentialRuleCredentialInput` via:
-//
-//	PolicyCredentialRuleCredentialArgs{...}
-type PolicyCredentialRuleCredentialInput interface {
-	pulumi.Input
-
-	ToPolicyCredentialRuleCredentialOutput() PolicyCredentialRuleCredentialOutput
-	ToPolicyCredentialRuleCredentialOutputWithContext(context.Context) PolicyCredentialRuleCredentialOutput
-}
-
-type PolicyCredentialRuleCredentialArgs struct {
-	Id pulumi.StringPtrInput `pulumi:"id"`
-}
-
-func (PolicyCredentialRuleCredentialArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyCredentialRuleCredential)(nil)).Elem()
-}
-
-func (i PolicyCredentialRuleCredentialArgs) ToPolicyCredentialRuleCredentialOutput() PolicyCredentialRuleCredentialOutput {
-	return i.ToPolicyCredentialRuleCredentialOutputWithContext(context.Background())
-}
-
-func (i PolicyCredentialRuleCredentialArgs) ToPolicyCredentialRuleCredentialOutputWithContext(ctx context.Context) PolicyCredentialRuleCredentialOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyCredentialRuleCredentialOutput)
-}
-
-// PolicyCredentialRuleCredentialArrayInput is an input type that accepts PolicyCredentialRuleCredentialArray and PolicyCredentialRuleCredentialArrayOutput values.
-// You can construct a concrete instance of `PolicyCredentialRuleCredentialArrayInput` via:
-//
-//	PolicyCredentialRuleCredentialArray{ PolicyCredentialRuleCredentialArgs{...} }
-type PolicyCredentialRuleCredentialArrayInput interface {
-	pulumi.Input
-
-	ToPolicyCredentialRuleCredentialArrayOutput() PolicyCredentialRuleCredentialArrayOutput
-	ToPolicyCredentialRuleCredentialArrayOutputWithContext(context.Context) PolicyCredentialRuleCredentialArrayOutput
-}
-
-type PolicyCredentialRuleCredentialArray []PolicyCredentialRuleCredentialInput
-
-func (PolicyCredentialRuleCredentialArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyCredentialRuleCredential)(nil)).Elem()
-}
-
-func (i PolicyCredentialRuleCredentialArray) ToPolicyCredentialRuleCredentialArrayOutput() PolicyCredentialRuleCredentialArrayOutput {
-	return i.ToPolicyCredentialRuleCredentialArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyCredentialRuleCredentialArray) ToPolicyCredentialRuleCredentialArrayOutputWithContext(ctx context.Context) PolicyCredentialRuleCredentialArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyCredentialRuleCredentialArrayOutput)
-}
-
-type PolicyCredentialRuleCredentialOutput struct{ *pulumi.OutputState }
-
-func (PolicyCredentialRuleCredentialOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyCredentialRuleCredential)(nil)).Elem()
-}
-
-func (o PolicyCredentialRuleCredentialOutput) ToPolicyCredentialRuleCredentialOutput() PolicyCredentialRuleCredentialOutput {
-	return o
-}
-
-func (o PolicyCredentialRuleCredentialOutput) ToPolicyCredentialRuleCredentialOutputWithContext(ctx context.Context) PolicyCredentialRuleCredentialOutput {
-	return o
-}
-
-func (o PolicyCredentialRuleCredentialOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyCredentialRuleCredential) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-type PolicyCredentialRuleCredentialArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyCredentialRuleCredentialArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyCredentialRuleCredential)(nil)).Elem()
-}
-
-func (o PolicyCredentialRuleCredentialArrayOutput) ToPolicyCredentialRuleCredentialArrayOutput() PolicyCredentialRuleCredentialArrayOutput {
-	return o
-}
-
-func (o PolicyCredentialRuleCredentialArrayOutput) ToPolicyCredentialRuleCredentialArrayOutputWithContext(ctx context.Context) PolicyCredentialRuleCredentialArrayOutput {
-	return o
-}
-
-func (o PolicyCredentialRuleCredentialArrayOutput) Index(i pulumi.IntInput) PolicyCredentialRuleCredentialOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyCredentialRuleCredential {
-		return vs[0].([]PolicyCredentialRuleCredential)[vs[1].(int)]
-	}).(PolicyCredentialRuleCredentialOutput)
-}
-
-type PolicyCredentialRuleCredentialPool struct {
-	Id *string `pulumi:"id"`
-}
-
-// PolicyCredentialRuleCredentialPoolInput is an input type that accepts PolicyCredentialRuleCredentialPoolArgs and PolicyCredentialRuleCredentialPoolOutput values.
-// You can construct a concrete instance of `PolicyCredentialRuleCredentialPoolInput` via:
-//
-//	PolicyCredentialRuleCredentialPoolArgs{...}
-type PolicyCredentialRuleCredentialPoolInput interface {
-	pulumi.Input
-
-	ToPolicyCredentialRuleCredentialPoolOutput() PolicyCredentialRuleCredentialPoolOutput
-	ToPolicyCredentialRuleCredentialPoolOutputWithContext(context.Context) PolicyCredentialRuleCredentialPoolOutput
-}
-
-type PolicyCredentialRuleCredentialPoolArgs struct {
-	Id pulumi.StringPtrInput `pulumi:"id"`
-}
-
-func (PolicyCredentialRuleCredentialPoolArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyCredentialRuleCredentialPool)(nil)).Elem()
-}
-
-func (i PolicyCredentialRuleCredentialPoolArgs) ToPolicyCredentialRuleCredentialPoolOutput() PolicyCredentialRuleCredentialPoolOutput {
-	return i.ToPolicyCredentialRuleCredentialPoolOutputWithContext(context.Background())
-}
-
-func (i PolicyCredentialRuleCredentialPoolArgs) ToPolicyCredentialRuleCredentialPoolOutputWithContext(ctx context.Context) PolicyCredentialRuleCredentialPoolOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyCredentialRuleCredentialPoolOutput)
-}
-
-// PolicyCredentialRuleCredentialPoolArrayInput is an input type that accepts PolicyCredentialRuleCredentialPoolArray and PolicyCredentialRuleCredentialPoolArrayOutput values.
-// You can construct a concrete instance of `PolicyCredentialRuleCredentialPoolArrayInput` via:
-//
-//	PolicyCredentialRuleCredentialPoolArray{ PolicyCredentialRuleCredentialPoolArgs{...} }
-type PolicyCredentialRuleCredentialPoolArrayInput interface {
-	pulumi.Input
-
-	ToPolicyCredentialRuleCredentialPoolArrayOutput() PolicyCredentialRuleCredentialPoolArrayOutput
-	ToPolicyCredentialRuleCredentialPoolArrayOutputWithContext(context.Context) PolicyCredentialRuleCredentialPoolArrayOutput
-}
-
-type PolicyCredentialRuleCredentialPoolArray []PolicyCredentialRuleCredentialPoolInput
-
-func (PolicyCredentialRuleCredentialPoolArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyCredentialRuleCredentialPool)(nil)).Elem()
-}
-
-func (i PolicyCredentialRuleCredentialPoolArray) ToPolicyCredentialRuleCredentialPoolArrayOutput() PolicyCredentialRuleCredentialPoolArrayOutput {
-	return i.ToPolicyCredentialRuleCredentialPoolArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyCredentialRuleCredentialPoolArray) ToPolicyCredentialRuleCredentialPoolArrayOutputWithContext(ctx context.Context) PolicyCredentialRuleCredentialPoolArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyCredentialRuleCredentialPoolArrayOutput)
-}
-
-type PolicyCredentialRuleCredentialPoolOutput struct{ *pulumi.OutputState }
-
-func (PolicyCredentialRuleCredentialPoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyCredentialRuleCredentialPool)(nil)).Elem()
-}
-
-func (o PolicyCredentialRuleCredentialPoolOutput) ToPolicyCredentialRuleCredentialPoolOutput() PolicyCredentialRuleCredentialPoolOutput {
-	return o
-}
-
-func (o PolicyCredentialRuleCredentialPoolOutput) ToPolicyCredentialRuleCredentialPoolOutputWithContext(ctx context.Context) PolicyCredentialRuleCredentialPoolOutput {
-	return o
-}
-
-func (o PolicyCredentialRuleCredentialPoolOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyCredentialRuleCredentialPool) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-type PolicyCredentialRuleCredentialPoolArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyCredentialRuleCredentialPoolArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyCredentialRuleCredentialPool)(nil)).Elem()
-}
-
-func (o PolicyCredentialRuleCredentialPoolArrayOutput) ToPolicyCredentialRuleCredentialPoolArrayOutput() PolicyCredentialRuleCredentialPoolArrayOutput {
-	return o
-}
-
-func (o PolicyCredentialRuleCredentialPoolArrayOutput) ToPolicyCredentialRuleCredentialPoolArrayOutputWithContext(ctx context.Context) PolicyCredentialRuleCredentialPoolArrayOutput {
-	return o
-}
-
-func (o PolicyCredentialRuleCredentialPoolArrayOutput) Index(i pulumi.IntInput) PolicyCredentialRuleCredentialPoolOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyCredentialRuleCredentialPool {
-		return vs[0].([]PolicyCredentialRuleCredentialPool)[vs[1].(int)]
-	}).(PolicyCredentialRuleCredentialPoolOutput)
-}
-
-type PolicyForwardingRuleV2Condition struct {
-	Id *string `pulumi:"id"`
-	// This signifies the various policy criteria.
-	Operands []PolicyForwardingRuleV2ConditionOperand `pulumi:"operands"`
-	Operator *string                                  `pulumi:"operator"`
-}
-
-// PolicyForwardingRuleV2ConditionInput is an input type that accepts PolicyForwardingRuleV2ConditionArgs and PolicyForwardingRuleV2ConditionOutput values.
-// You can construct a concrete instance of `PolicyForwardingRuleV2ConditionInput` via:
-//
-//	PolicyForwardingRuleV2ConditionArgs{...}
-type PolicyForwardingRuleV2ConditionInput interface {
-	pulumi.Input
-
-	ToPolicyForwardingRuleV2ConditionOutput() PolicyForwardingRuleV2ConditionOutput
-	ToPolicyForwardingRuleV2ConditionOutputWithContext(context.Context) PolicyForwardingRuleV2ConditionOutput
-}
-
-type PolicyForwardingRuleV2ConditionArgs struct {
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// This signifies the various policy criteria.
-	Operands PolicyForwardingRuleV2ConditionOperandArrayInput `pulumi:"operands"`
-	Operator pulumi.StringPtrInput                            `pulumi:"operator"`
-}
-
-func (PolicyForwardingRuleV2ConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyForwardingRuleV2Condition)(nil)).Elem()
-}
-
-func (i PolicyForwardingRuleV2ConditionArgs) ToPolicyForwardingRuleV2ConditionOutput() PolicyForwardingRuleV2ConditionOutput {
-	return i.ToPolicyForwardingRuleV2ConditionOutputWithContext(context.Background())
-}
-
-func (i PolicyForwardingRuleV2ConditionArgs) ToPolicyForwardingRuleV2ConditionOutputWithContext(ctx context.Context) PolicyForwardingRuleV2ConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyForwardingRuleV2ConditionOutput)
-}
-
-// PolicyForwardingRuleV2ConditionArrayInput is an input type that accepts PolicyForwardingRuleV2ConditionArray and PolicyForwardingRuleV2ConditionArrayOutput values.
-// You can construct a concrete instance of `PolicyForwardingRuleV2ConditionArrayInput` via:
-//
-//	PolicyForwardingRuleV2ConditionArray{ PolicyForwardingRuleV2ConditionArgs{...} }
-type PolicyForwardingRuleV2ConditionArrayInput interface {
-	pulumi.Input
-
-	ToPolicyForwardingRuleV2ConditionArrayOutput() PolicyForwardingRuleV2ConditionArrayOutput
-	ToPolicyForwardingRuleV2ConditionArrayOutputWithContext(context.Context) PolicyForwardingRuleV2ConditionArrayOutput
-}
-
-type PolicyForwardingRuleV2ConditionArray []PolicyForwardingRuleV2ConditionInput
-
-func (PolicyForwardingRuleV2ConditionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyForwardingRuleV2Condition)(nil)).Elem()
-}
-
-func (i PolicyForwardingRuleV2ConditionArray) ToPolicyForwardingRuleV2ConditionArrayOutput() PolicyForwardingRuleV2ConditionArrayOutput {
-	return i.ToPolicyForwardingRuleV2ConditionArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyForwardingRuleV2ConditionArray) ToPolicyForwardingRuleV2ConditionArrayOutputWithContext(ctx context.Context) PolicyForwardingRuleV2ConditionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyForwardingRuleV2ConditionArrayOutput)
-}
-
-type PolicyForwardingRuleV2ConditionOutput struct{ *pulumi.OutputState }
-
-func (PolicyForwardingRuleV2ConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyForwardingRuleV2Condition)(nil)).Elem()
-}
-
-func (o PolicyForwardingRuleV2ConditionOutput) ToPolicyForwardingRuleV2ConditionOutput() PolicyForwardingRuleV2ConditionOutput {
-	return o
-}
-
-func (o PolicyForwardingRuleV2ConditionOutput) ToPolicyForwardingRuleV2ConditionOutputWithContext(ctx context.Context) PolicyForwardingRuleV2ConditionOutput {
-	return o
-}
-
-func (o PolicyForwardingRuleV2ConditionOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyForwardingRuleV2Condition) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// This signifies the various policy criteria.
-func (o PolicyForwardingRuleV2ConditionOutput) Operands() PolicyForwardingRuleV2ConditionOperandArrayOutput {
-	return o.ApplyT(func(v PolicyForwardingRuleV2Condition) []PolicyForwardingRuleV2ConditionOperand { return v.Operands }).(PolicyForwardingRuleV2ConditionOperandArrayOutput)
-}
-
-func (o PolicyForwardingRuleV2ConditionOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyForwardingRuleV2Condition) *string { return v.Operator }).(pulumi.StringPtrOutput)
-}
-
-type PolicyForwardingRuleV2ConditionArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyForwardingRuleV2ConditionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyForwardingRuleV2Condition)(nil)).Elem()
-}
-
-func (o PolicyForwardingRuleV2ConditionArrayOutput) ToPolicyForwardingRuleV2ConditionArrayOutput() PolicyForwardingRuleV2ConditionArrayOutput {
-	return o
-}
-
-func (o PolicyForwardingRuleV2ConditionArrayOutput) ToPolicyForwardingRuleV2ConditionArrayOutputWithContext(ctx context.Context) PolicyForwardingRuleV2ConditionArrayOutput {
-	return o
-}
-
-func (o PolicyForwardingRuleV2ConditionArrayOutput) Index(i pulumi.IntInput) PolicyForwardingRuleV2ConditionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyForwardingRuleV2Condition {
-		return vs[0].([]PolicyForwardingRuleV2Condition)[vs[1].(int)]
-	}).(PolicyForwardingRuleV2ConditionOutput)
-}
-
-type PolicyForwardingRuleV2ConditionOperand struct {
-	EntryValues []PolicyForwardingRuleV2ConditionOperandEntryValue `pulumi:"entryValues"`
-	// This is for specifying the policy critiera.
-	ObjectType *string `pulumi:"objectType"`
-	// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-	Values []string `pulumi:"values"`
-}
-
-// PolicyForwardingRuleV2ConditionOperandInput is an input type that accepts PolicyForwardingRuleV2ConditionOperandArgs and PolicyForwardingRuleV2ConditionOperandOutput values.
-// You can construct a concrete instance of `PolicyForwardingRuleV2ConditionOperandInput` via:
-//
-//	PolicyForwardingRuleV2ConditionOperandArgs{...}
-type PolicyForwardingRuleV2ConditionOperandInput interface {
-	pulumi.Input
-
-	ToPolicyForwardingRuleV2ConditionOperandOutput() PolicyForwardingRuleV2ConditionOperandOutput
-	ToPolicyForwardingRuleV2ConditionOperandOutputWithContext(context.Context) PolicyForwardingRuleV2ConditionOperandOutput
-}
-
-type PolicyForwardingRuleV2ConditionOperandArgs struct {
-	EntryValues PolicyForwardingRuleV2ConditionOperandEntryValueArrayInput `pulumi:"entryValues"`
-	// This is for specifying the policy critiera.
-	ObjectType pulumi.StringPtrInput `pulumi:"objectType"`
-	// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (PolicyForwardingRuleV2ConditionOperandArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyForwardingRuleV2ConditionOperand)(nil)).Elem()
-}
-
-func (i PolicyForwardingRuleV2ConditionOperandArgs) ToPolicyForwardingRuleV2ConditionOperandOutput() PolicyForwardingRuleV2ConditionOperandOutput {
-	return i.ToPolicyForwardingRuleV2ConditionOperandOutputWithContext(context.Background())
-}
-
-func (i PolicyForwardingRuleV2ConditionOperandArgs) ToPolicyForwardingRuleV2ConditionOperandOutputWithContext(ctx context.Context) PolicyForwardingRuleV2ConditionOperandOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyForwardingRuleV2ConditionOperandOutput)
-}
-
-// PolicyForwardingRuleV2ConditionOperandArrayInput is an input type that accepts PolicyForwardingRuleV2ConditionOperandArray and PolicyForwardingRuleV2ConditionOperandArrayOutput values.
-// You can construct a concrete instance of `PolicyForwardingRuleV2ConditionOperandArrayInput` via:
-//
-//	PolicyForwardingRuleV2ConditionOperandArray{ PolicyForwardingRuleV2ConditionOperandArgs{...} }
-type PolicyForwardingRuleV2ConditionOperandArrayInput interface {
-	pulumi.Input
-
-	ToPolicyForwardingRuleV2ConditionOperandArrayOutput() PolicyForwardingRuleV2ConditionOperandArrayOutput
-	ToPolicyForwardingRuleV2ConditionOperandArrayOutputWithContext(context.Context) PolicyForwardingRuleV2ConditionOperandArrayOutput
-}
-
-type PolicyForwardingRuleV2ConditionOperandArray []PolicyForwardingRuleV2ConditionOperandInput
-
-func (PolicyForwardingRuleV2ConditionOperandArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyForwardingRuleV2ConditionOperand)(nil)).Elem()
-}
-
-func (i PolicyForwardingRuleV2ConditionOperandArray) ToPolicyForwardingRuleV2ConditionOperandArrayOutput() PolicyForwardingRuleV2ConditionOperandArrayOutput {
-	return i.ToPolicyForwardingRuleV2ConditionOperandArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyForwardingRuleV2ConditionOperandArray) ToPolicyForwardingRuleV2ConditionOperandArrayOutputWithContext(ctx context.Context) PolicyForwardingRuleV2ConditionOperandArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyForwardingRuleV2ConditionOperandArrayOutput)
-}
-
-type PolicyForwardingRuleV2ConditionOperandOutput struct{ *pulumi.OutputState }
-
-func (PolicyForwardingRuleV2ConditionOperandOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyForwardingRuleV2ConditionOperand)(nil)).Elem()
-}
-
-func (o PolicyForwardingRuleV2ConditionOperandOutput) ToPolicyForwardingRuleV2ConditionOperandOutput() PolicyForwardingRuleV2ConditionOperandOutput {
-	return o
-}
-
-func (o PolicyForwardingRuleV2ConditionOperandOutput) ToPolicyForwardingRuleV2ConditionOperandOutputWithContext(ctx context.Context) PolicyForwardingRuleV2ConditionOperandOutput {
-	return o
-}
-
-func (o PolicyForwardingRuleV2ConditionOperandOutput) EntryValues() PolicyForwardingRuleV2ConditionOperandEntryValueArrayOutput {
-	return o.ApplyT(func(v PolicyForwardingRuleV2ConditionOperand) []PolicyForwardingRuleV2ConditionOperandEntryValue {
-		return v.EntryValues
-	}).(PolicyForwardingRuleV2ConditionOperandEntryValueArrayOutput)
-}
-
-// This is for specifying the policy critiera.
-func (o PolicyForwardingRuleV2ConditionOperandOutput) ObjectType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyForwardingRuleV2ConditionOperand) *string { return v.ObjectType }).(pulumi.StringPtrOutput)
-}
-
-// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-func (o PolicyForwardingRuleV2ConditionOperandOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PolicyForwardingRuleV2ConditionOperand) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type PolicyForwardingRuleV2ConditionOperandArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyForwardingRuleV2ConditionOperandArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyForwardingRuleV2ConditionOperand)(nil)).Elem()
-}
-
-func (o PolicyForwardingRuleV2ConditionOperandArrayOutput) ToPolicyForwardingRuleV2ConditionOperandArrayOutput() PolicyForwardingRuleV2ConditionOperandArrayOutput {
-	return o
-}
-
-func (o PolicyForwardingRuleV2ConditionOperandArrayOutput) ToPolicyForwardingRuleV2ConditionOperandArrayOutputWithContext(ctx context.Context) PolicyForwardingRuleV2ConditionOperandArrayOutput {
-	return o
-}
-
-func (o PolicyForwardingRuleV2ConditionOperandArrayOutput) Index(i pulumi.IntInput) PolicyForwardingRuleV2ConditionOperandOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyForwardingRuleV2ConditionOperand {
-		return vs[0].([]PolicyForwardingRuleV2ConditionOperand)[vs[1].(int)]
-	}).(PolicyForwardingRuleV2ConditionOperandOutput)
-}
-
-type PolicyForwardingRuleV2ConditionOperandEntryValue struct {
-	Lhs *string `pulumi:"lhs"`
-	Rhs *string `pulumi:"rhs"`
-}
-
-// PolicyForwardingRuleV2ConditionOperandEntryValueInput is an input type that accepts PolicyForwardingRuleV2ConditionOperandEntryValueArgs and PolicyForwardingRuleV2ConditionOperandEntryValueOutput values.
-// You can construct a concrete instance of `PolicyForwardingRuleV2ConditionOperandEntryValueInput` via:
-//
-//	PolicyForwardingRuleV2ConditionOperandEntryValueArgs{...}
-type PolicyForwardingRuleV2ConditionOperandEntryValueInput interface {
-	pulumi.Input
-
-	ToPolicyForwardingRuleV2ConditionOperandEntryValueOutput() PolicyForwardingRuleV2ConditionOperandEntryValueOutput
-	ToPolicyForwardingRuleV2ConditionOperandEntryValueOutputWithContext(context.Context) PolicyForwardingRuleV2ConditionOperandEntryValueOutput
-}
-
-type PolicyForwardingRuleV2ConditionOperandEntryValueArgs struct {
-	Lhs pulumi.StringPtrInput `pulumi:"lhs"`
-	Rhs pulumi.StringPtrInput `pulumi:"rhs"`
-}
-
-func (PolicyForwardingRuleV2ConditionOperandEntryValueArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyForwardingRuleV2ConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (i PolicyForwardingRuleV2ConditionOperandEntryValueArgs) ToPolicyForwardingRuleV2ConditionOperandEntryValueOutput() PolicyForwardingRuleV2ConditionOperandEntryValueOutput {
-	return i.ToPolicyForwardingRuleV2ConditionOperandEntryValueOutputWithContext(context.Background())
-}
-
-func (i PolicyForwardingRuleV2ConditionOperandEntryValueArgs) ToPolicyForwardingRuleV2ConditionOperandEntryValueOutputWithContext(ctx context.Context) PolicyForwardingRuleV2ConditionOperandEntryValueOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyForwardingRuleV2ConditionOperandEntryValueOutput)
-}
-
-// PolicyForwardingRuleV2ConditionOperandEntryValueArrayInput is an input type that accepts PolicyForwardingRuleV2ConditionOperandEntryValueArray and PolicyForwardingRuleV2ConditionOperandEntryValueArrayOutput values.
-// You can construct a concrete instance of `PolicyForwardingRuleV2ConditionOperandEntryValueArrayInput` via:
-//
-//	PolicyForwardingRuleV2ConditionOperandEntryValueArray{ PolicyForwardingRuleV2ConditionOperandEntryValueArgs{...} }
-type PolicyForwardingRuleV2ConditionOperandEntryValueArrayInput interface {
-	pulumi.Input
-
-	ToPolicyForwardingRuleV2ConditionOperandEntryValueArrayOutput() PolicyForwardingRuleV2ConditionOperandEntryValueArrayOutput
-	ToPolicyForwardingRuleV2ConditionOperandEntryValueArrayOutputWithContext(context.Context) PolicyForwardingRuleV2ConditionOperandEntryValueArrayOutput
-}
-
-type PolicyForwardingRuleV2ConditionOperandEntryValueArray []PolicyForwardingRuleV2ConditionOperandEntryValueInput
-
-func (PolicyForwardingRuleV2ConditionOperandEntryValueArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyForwardingRuleV2ConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (i PolicyForwardingRuleV2ConditionOperandEntryValueArray) ToPolicyForwardingRuleV2ConditionOperandEntryValueArrayOutput() PolicyForwardingRuleV2ConditionOperandEntryValueArrayOutput {
-	return i.ToPolicyForwardingRuleV2ConditionOperandEntryValueArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyForwardingRuleV2ConditionOperandEntryValueArray) ToPolicyForwardingRuleV2ConditionOperandEntryValueArrayOutputWithContext(ctx context.Context) PolicyForwardingRuleV2ConditionOperandEntryValueArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyForwardingRuleV2ConditionOperandEntryValueArrayOutput)
-}
-
-type PolicyForwardingRuleV2ConditionOperandEntryValueOutput struct{ *pulumi.OutputState }
-
-func (PolicyForwardingRuleV2ConditionOperandEntryValueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyForwardingRuleV2ConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (o PolicyForwardingRuleV2ConditionOperandEntryValueOutput) ToPolicyForwardingRuleV2ConditionOperandEntryValueOutput() PolicyForwardingRuleV2ConditionOperandEntryValueOutput {
-	return o
-}
-
-func (o PolicyForwardingRuleV2ConditionOperandEntryValueOutput) ToPolicyForwardingRuleV2ConditionOperandEntryValueOutputWithContext(ctx context.Context) PolicyForwardingRuleV2ConditionOperandEntryValueOutput {
-	return o
-}
-
-func (o PolicyForwardingRuleV2ConditionOperandEntryValueOutput) Lhs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyForwardingRuleV2ConditionOperandEntryValue) *string { return v.Lhs }).(pulumi.StringPtrOutput)
-}
-
-func (o PolicyForwardingRuleV2ConditionOperandEntryValueOutput) Rhs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyForwardingRuleV2ConditionOperandEntryValue) *string { return v.Rhs }).(pulumi.StringPtrOutput)
-}
-
-type PolicyForwardingRuleV2ConditionOperandEntryValueArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyForwardingRuleV2ConditionOperandEntryValueArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyForwardingRuleV2ConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (o PolicyForwardingRuleV2ConditionOperandEntryValueArrayOutput) ToPolicyForwardingRuleV2ConditionOperandEntryValueArrayOutput() PolicyForwardingRuleV2ConditionOperandEntryValueArrayOutput {
-	return o
-}
-
-func (o PolicyForwardingRuleV2ConditionOperandEntryValueArrayOutput) ToPolicyForwardingRuleV2ConditionOperandEntryValueArrayOutputWithContext(ctx context.Context) PolicyForwardingRuleV2ConditionOperandEntryValueArrayOutput {
-	return o
-}
-
-func (o PolicyForwardingRuleV2ConditionOperandEntryValueArrayOutput) Index(i pulumi.IntInput) PolicyForwardingRuleV2ConditionOperandEntryValueOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyForwardingRuleV2ConditionOperandEntryValue {
-		return vs[0].([]PolicyForwardingRuleV2ConditionOperandEntryValue)[vs[1].(int)]
-	}).(PolicyForwardingRuleV2ConditionOperandEntryValueOutput)
-}
-
-type PolicyInspectionRuleV2Condition struct {
-	Id *string `pulumi:"id"`
-	// This signifies the various policy criteria.
-	Operands []PolicyInspectionRuleV2ConditionOperand `pulumi:"operands"`
-	Operator *string                                  `pulumi:"operator"`
-}
-
-// PolicyInspectionRuleV2ConditionInput is an input type that accepts PolicyInspectionRuleV2ConditionArgs and PolicyInspectionRuleV2ConditionOutput values.
-// You can construct a concrete instance of `PolicyInspectionRuleV2ConditionInput` via:
-//
-//	PolicyInspectionRuleV2ConditionArgs{...}
-type PolicyInspectionRuleV2ConditionInput interface {
-	pulumi.Input
-
-	ToPolicyInspectionRuleV2ConditionOutput() PolicyInspectionRuleV2ConditionOutput
-	ToPolicyInspectionRuleV2ConditionOutputWithContext(context.Context) PolicyInspectionRuleV2ConditionOutput
-}
-
-type PolicyInspectionRuleV2ConditionArgs struct {
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// This signifies the various policy criteria.
-	Operands PolicyInspectionRuleV2ConditionOperandArrayInput `pulumi:"operands"`
-	Operator pulumi.StringPtrInput                            `pulumi:"operator"`
-}
-
-func (PolicyInspectionRuleV2ConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyInspectionRuleV2Condition)(nil)).Elem()
-}
-
-func (i PolicyInspectionRuleV2ConditionArgs) ToPolicyInspectionRuleV2ConditionOutput() PolicyInspectionRuleV2ConditionOutput {
-	return i.ToPolicyInspectionRuleV2ConditionOutputWithContext(context.Background())
-}
-
-func (i PolicyInspectionRuleV2ConditionArgs) ToPolicyInspectionRuleV2ConditionOutputWithContext(ctx context.Context) PolicyInspectionRuleV2ConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyInspectionRuleV2ConditionOutput)
-}
-
-// PolicyInspectionRuleV2ConditionArrayInput is an input type that accepts PolicyInspectionRuleV2ConditionArray and PolicyInspectionRuleV2ConditionArrayOutput values.
-// You can construct a concrete instance of `PolicyInspectionRuleV2ConditionArrayInput` via:
-//
-//	PolicyInspectionRuleV2ConditionArray{ PolicyInspectionRuleV2ConditionArgs{...} }
-type PolicyInspectionRuleV2ConditionArrayInput interface {
-	pulumi.Input
-
-	ToPolicyInspectionRuleV2ConditionArrayOutput() PolicyInspectionRuleV2ConditionArrayOutput
-	ToPolicyInspectionRuleV2ConditionArrayOutputWithContext(context.Context) PolicyInspectionRuleV2ConditionArrayOutput
-}
-
-type PolicyInspectionRuleV2ConditionArray []PolicyInspectionRuleV2ConditionInput
-
-func (PolicyInspectionRuleV2ConditionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyInspectionRuleV2Condition)(nil)).Elem()
-}
-
-func (i PolicyInspectionRuleV2ConditionArray) ToPolicyInspectionRuleV2ConditionArrayOutput() PolicyInspectionRuleV2ConditionArrayOutput {
-	return i.ToPolicyInspectionRuleV2ConditionArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyInspectionRuleV2ConditionArray) ToPolicyInspectionRuleV2ConditionArrayOutputWithContext(ctx context.Context) PolicyInspectionRuleV2ConditionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyInspectionRuleV2ConditionArrayOutput)
-}
-
-type PolicyInspectionRuleV2ConditionOutput struct{ *pulumi.OutputState }
-
-func (PolicyInspectionRuleV2ConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyInspectionRuleV2Condition)(nil)).Elem()
-}
-
-func (o PolicyInspectionRuleV2ConditionOutput) ToPolicyInspectionRuleV2ConditionOutput() PolicyInspectionRuleV2ConditionOutput {
-	return o
-}
-
-func (o PolicyInspectionRuleV2ConditionOutput) ToPolicyInspectionRuleV2ConditionOutputWithContext(ctx context.Context) PolicyInspectionRuleV2ConditionOutput {
-	return o
-}
-
-func (o PolicyInspectionRuleV2ConditionOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyInspectionRuleV2Condition) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// This signifies the various policy criteria.
-func (o PolicyInspectionRuleV2ConditionOutput) Operands() PolicyInspectionRuleV2ConditionOperandArrayOutput {
-	return o.ApplyT(func(v PolicyInspectionRuleV2Condition) []PolicyInspectionRuleV2ConditionOperand { return v.Operands }).(PolicyInspectionRuleV2ConditionOperandArrayOutput)
-}
-
-func (o PolicyInspectionRuleV2ConditionOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyInspectionRuleV2Condition) *string { return v.Operator }).(pulumi.StringPtrOutput)
-}
-
-type PolicyInspectionRuleV2ConditionArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyInspectionRuleV2ConditionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyInspectionRuleV2Condition)(nil)).Elem()
-}
-
-func (o PolicyInspectionRuleV2ConditionArrayOutput) ToPolicyInspectionRuleV2ConditionArrayOutput() PolicyInspectionRuleV2ConditionArrayOutput {
-	return o
-}
-
-func (o PolicyInspectionRuleV2ConditionArrayOutput) ToPolicyInspectionRuleV2ConditionArrayOutputWithContext(ctx context.Context) PolicyInspectionRuleV2ConditionArrayOutput {
-	return o
-}
-
-func (o PolicyInspectionRuleV2ConditionArrayOutput) Index(i pulumi.IntInput) PolicyInspectionRuleV2ConditionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyInspectionRuleV2Condition {
-		return vs[0].([]PolicyInspectionRuleV2Condition)[vs[1].(int)]
-	}).(PolicyInspectionRuleV2ConditionOutput)
-}
-
-type PolicyInspectionRuleV2ConditionOperand struct {
-	EntryValues []PolicyInspectionRuleV2ConditionOperandEntryValue `pulumi:"entryValues"`
-	// This is for specifying the policy critiera.
-	ObjectType *string `pulumi:"objectType"`
-	// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-	Values []string `pulumi:"values"`
-}
-
-// PolicyInspectionRuleV2ConditionOperandInput is an input type that accepts PolicyInspectionRuleV2ConditionOperandArgs and PolicyInspectionRuleV2ConditionOperandOutput values.
-// You can construct a concrete instance of `PolicyInspectionRuleV2ConditionOperandInput` via:
-//
-//	PolicyInspectionRuleV2ConditionOperandArgs{...}
-type PolicyInspectionRuleV2ConditionOperandInput interface {
-	pulumi.Input
-
-	ToPolicyInspectionRuleV2ConditionOperandOutput() PolicyInspectionRuleV2ConditionOperandOutput
-	ToPolicyInspectionRuleV2ConditionOperandOutputWithContext(context.Context) PolicyInspectionRuleV2ConditionOperandOutput
-}
-
-type PolicyInspectionRuleV2ConditionOperandArgs struct {
-	EntryValues PolicyInspectionRuleV2ConditionOperandEntryValueArrayInput `pulumi:"entryValues"`
-	// This is for specifying the policy critiera.
-	ObjectType pulumi.StringPtrInput `pulumi:"objectType"`
-	// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (PolicyInspectionRuleV2ConditionOperandArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyInspectionRuleV2ConditionOperand)(nil)).Elem()
-}
-
-func (i PolicyInspectionRuleV2ConditionOperandArgs) ToPolicyInspectionRuleV2ConditionOperandOutput() PolicyInspectionRuleV2ConditionOperandOutput {
-	return i.ToPolicyInspectionRuleV2ConditionOperandOutputWithContext(context.Background())
-}
-
-func (i PolicyInspectionRuleV2ConditionOperandArgs) ToPolicyInspectionRuleV2ConditionOperandOutputWithContext(ctx context.Context) PolicyInspectionRuleV2ConditionOperandOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyInspectionRuleV2ConditionOperandOutput)
-}
-
-// PolicyInspectionRuleV2ConditionOperandArrayInput is an input type that accepts PolicyInspectionRuleV2ConditionOperandArray and PolicyInspectionRuleV2ConditionOperandArrayOutput values.
-// You can construct a concrete instance of `PolicyInspectionRuleV2ConditionOperandArrayInput` via:
-//
-//	PolicyInspectionRuleV2ConditionOperandArray{ PolicyInspectionRuleV2ConditionOperandArgs{...} }
-type PolicyInspectionRuleV2ConditionOperandArrayInput interface {
-	pulumi.Input
-
-	ToPolicyInspectionRuleV2ConditionOperandArrayOutput() PolicyInspectionRuleV2ConditionOperandArrayOutput
-	ToPolicyInspectionRuleV2ConditionOperandArrayOutputWithContext(context.Context) PolicyInspectionRuleV2ConditionOperandArrayOutput
-}
-
-type PolicyInspectionRuleV2ConditionOperandArray []PolicyInspectionRuleV2ConditionOperandInput
-
-func (PolicyInspectionRuleV2ConditionOperandArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyInspectionRuleV2ConditionOperand)(nil)).Elem()
-}
-
-func (i PolicyInspectionRuleV2ConditionOperandArray) ToPolicyInspectionRuleV2ConditionOperandArrayOutput() PolicyInspectionRuleV2ConditionOperandArrayOutput {
-	return i.ToPolicyInspectionRuleV2ConditionOperandArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyInspectionRuleV2ConditionOperandArray) ToPolicyInspectionRuleV2ConditionOperandArrayOutputWithContext(ctx context.Context) PolicyInspectionRuleV2ConditionOperandArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyInspectionRuleV2ConditionOperandArrayOutput)
-}
-
-type PolicyInspectionRuleV2ConditionOperandOutput struct{ *pulumi.OutputState }
-
-func (PolicyInspectionRuleV2ConditionOperandOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyInspectionRuleV2ConditionOperand)(nil)).Elem()
-}
-
-func (o PolicyInspectionRuleV2ConditionOperandOutput) ToPolicyInspectionRuleV2ConditionOperandOutput() PolicyInspectionRuleV2ConditionOperandOutput {
-	return o
-}
-
-func (o PolicyInspectionRuleV2ConditionOperandOutput) ToPolicyInspectionRuleV2ConditionOperandOutputWithContext(ctx context.Context) PolicyInspectionRuleV2ConditionOperandOutput {
-	return o
-}
-
-func (o PolicyInspectionRuleV2ConditionOperandOutput) EntryValues() PolicyInspectionRuleV2ConditionOperandEntryValueArrayOutput {
-	return o.ApplyT(func(v PolicyInspectionRuleV2ConditionOperand) []PolicyInspectionRuleV2ConditionOperandEntryValue {
-		return v.EntryValues
-	}).(PolicyInspectionRuleV2ConditionOperandEntryValueArrayOutput)
-}
-
-// This is for specifying the policy critiera.
-func (o PolicyInspectionRuleV2ConditionOperandOutput) ObjectType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyInspectionRuleV2ConditionOperand) *string { return v.ObjectType }).(pulumi.StringPtrOutput)
-}
-
-// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-func (o PolicyInspectionRuleV2ConditionOperandOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PolicyInspectionRuleV2ConditionOperand) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type PolicyInspectionRuleV2ConditionOperandArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyInspectionRuleV2ConditionOperandArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyInspectionRuleV2ConditionOperand)(nil)).Elem()
-}
-
-func (o PolicyInspectionRuleV2ConditionOperandArrayOutput) ToPolicyInspectionRuleV2ConditionOperandArrayOutput() PolicyInspectionRuleV2ConditionOperandArrayOutput {
-	return o
-}
-
-func (o PolicyInspectionRuleV2ConditionOperandArrayOutput) ToPolicyInspectionRuleV2ConditionOperandArrayOutputWithContext(ctx context.Context) PolicyInspectionRuleV2ConditionOperandArrayOutput {
-	return o
-}
-
-func (o PolicyInspectionRuleV2ConditionOperandArrayOutput) Index(i pulumi.IntInput) PolicyInspectionRuleV2ConditionOperandOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyInspectionRuleV2ConditionOperand {
-		return vs[0].([]PolicyInspectionRuleV2ConditionOperand)[vs[1].(int)]
-	}).(PolicyInspectionRuleV2ConditionOperandOutput)
-}
-
-type PolicyInspectionRuleV2ConditionOperandEntryValue struct {
-	Lhs *string `pulumi:"lhs"`
-	Rhs *string `pulumi:"rhs"`
-}
-
-// PolicyInspectionRuleV2ConditionOperandEntryValueInput is an input type that accepts PolicyInspectionRuleV2ConditionOperandEntryValueArgs and PolicyInspectionRuleV2ConditionOperandEntryValueOutput values.
-// You can construct a concrete instance of `PolicyInspectionRuleV2ConditionOperandEntryValueInput` via:
-//
-//	PolicyInspectionRuleV2ConditionOperandEntryValueArgs{...}
-type PolicyInspectionRuleV2ConditionOperandEntryValueInput interface {
-	pulumi.Input
-
-	ToPolicyInspectionRuleV2ConditionOperandEntryValueOutput() PolicyInspectionRuleV2ConditionOperandEntryValueOutput
-	ToPolicyInspectionRuleV2ConditionOperandEntryValueOutputWithContext(context.Context) PolicyInspectionRuleV2ConditionOperandEntryValueOutput
-}
-
-type PolicyInspectionRuleV2ConditionOperandEntryValueArgs struct {
-	Lhs pulumi.StringPtrInput `pulumi:"lhs"`
-	Rhs pulumi.StringPtrInput `pulumi:"rhs"`
-}
-
-func (PolicyInspectionRuleV2ConditionOperandEntryValueArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyInspectionRuleV2ConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (i PolicyInspectionRuleV2ConditionOperandEntryValueArgs) ToPolicyInspectionRuleV2ConditionOperandEntryValueOutput() PolicyInspectionRuleV2ConditionOperandEntryValueOutput {
-	return i.ToPolicyInspectionRuleV2ConditionOperandEntryValueOutputWithContext(context.Background())
-}
-
-func (i PolicyInspectionRuleV2ConditionOperandEntryValueArgs) ToPolicyInspectionRuleV2ConditionOperandEntryValueOutputWithContext(ctx context.Context) PolicyInspectionRuleV2ConditionOperandEntryValueOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyInspectionRuleV2ConditionOperandEntryValueOutput)
-}
-
-// PolicyInspectionRuleV2ConditionOperandEntryValueArrayInput is an input type that accepts PolicyInspectionRuleV2ConditionOperandEntryValueArray and PolicyInspectionRuleV2ConditionOperandEntryValueArrayOutput values.
-// You can construct a concrete instance of `PolicyInspectionRuleV2ConditionOperandEntryValueArrayInput` via:
-//
-//	PolicyInspectionRuleV2ConditionOperandEntryValueArray{ PolicyInspectionRuleV2ConditionOperandEntryValueArgs{...} }
-type PolicyInspectionRuleV2ConditionOperandEntryValueArrayInput interface {
-	pulumi.Input
-
-	ToPolicyInspectionRuleV2ConditionOperandEntryValueArrayOutput() PolicyInspectionRuleV2ConditionOperandEntryValueArrayOutput
-	ToPolicyInspectionRuleV2ConditionOperandEntryValueArrayOutputWithContext(context.Context) PolicyInspectionRuleV2ConditionOperandEntryValueArrayOutput
-}
-
-type PolicyInspectionRuleV2ConditionOperandEntryValueArray []PolicyInspectionRuleV2ConditionOperandEntryValueInput
-
-func (PolicyInspectionRuleV2ConditionOperandEntryValueArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyInspectionRuleV2ConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (i PolicyInspectionRuleV2ConditionOperandEntryValueArray) ToPolicyInspectionRuleV2ConditionOperandEntryValueArrayOutput() PolicyInspectionRuleV2ConditionOperandEntryValueArrayOutput {
-	return i.ToPolicyInspectionRuleV2ConditionOperandEntryValueArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyInspectionRuleV2ConditionOperandEntryValueArray) ToPolicyInspectionRuleV2ConditionOperandEntryValueArrayOutputWithContext(ctx context.Context) PolicyInspectionRuleV2ConditionOperandEntryValueArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyInspectionRuleV2ConditionOperandEntryValueArrayOutput)
-}
-
-type PolicyInspectionRuleV2ConditionOperandEntryValueOutput struct{ *pulumi.OutputState }
-
-func (PolicyInspectionRuleV2ConditionOperandEntryValueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyInspectionRuleV2ConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (o PolicyInspectionRuleV2ConditionOperandEntryValueOutput) ToPolicyInspectionRuleV2ConditionOperandEntryValueOutput() PolicyInspectionRuleV2ConditionOperandEntryValueOutput {
-	return o
-}
-
-func (o PolicyInspectionRuleV2ConditionOperandEntryValueOutput) ToPolicyInspectionRuleV2ConditionOperandEntryValueOutputWithContext(ctx context.Context) PolicyInspectionRuleV2ConditionOperandEntryValueOutput {
-	return o
-}
-
-func (o PolicyInspectionRuleV2ConditionOperandEntryValueOutput) Lhs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyInspectionRuleV2ConditionOperandEntryValue) *string { return v.Lhs }).(pulumi.StringPtrOutput)
-}
-
-func (o PolicyInspectionRuleV2ConditionOperandEntryValueOutput) Rhs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyInspectionRuleV2ConditionOperandEntryValue) *string { return v.Rhs }).(pulumi.StringPtrOutput)
-}
-
-type PolicyInspectionRuleV2ConditionOperandEntryValueArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyInspectionRuleV2ConditionOperandEntryValueArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyInspectionRuleV2ConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (o PolicyInspectionRuleV2ConditionOperandEntryValueArrayOutput) ToPolicyInspectionRuleV2ConditionOperandEntryValueArrayOutput() PolicyInspectionRuleV2ConditionOperandEntryValueArrayOutput {
-	return o
-}
-
-func (o PolicyInspectionRuleV2ConditionOperandEntryValueArrayOutput) ToPolicyInspectionRuleV2ConditionOperandEntryValueArrayOutputWithContext(ctx context.Context) PolicyInspectionRuleV2ConditionOperandEntryValueArrayOutput {
-	return o
-}
-
-func (o PolicyInspectionRuleV2ConditionOperandEntryValueArrayOutput) Index(i pulumi.IntInput) PolicyInspectionRuleV2ConditionOperandEntryValueOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyInspectionRuleV2ConditionOperandEntryValue {
-		return vs[0].([]PolicyInspectionRuleV2ConditionOperandEntryValue)[vs[1].(int)]
-	}).(PolicyInspectionRuleV2ConditionOperandEntryValueOutput)
-}
-
-type PolicyIsolationRuleV2Condition struct {
-	Id *string `pulumi:"id"`
-	// This signifies the various policy criteria.
-	Operands []PolicyIsolationRuleV2ConditionOperand `pulumi:"operands"`
-	Operator *string                                 `pulumi:"operator"`
-}
-
-// PolicyIsolationRuleV2ConditionInput is an input type that accepts PolicyIsolationRuleV2ConditionArgs and PolicyIsolationRuleV2ConditionOutput values.
-// You can construct a concrete instance of `PolicyIsolationRuleV2ConditionInput` via:
-//
-//	PolicyIsolationRuleV2ConditionArgs{...}
-type PolicyIsolationRuleV2ConditionInput interface {
-	pulumi.Input
-
-	ToPolicyIsolationRuleV2ConditionOutput() PolicyIsolationRuleV2ConditionOutput
-	ToPolicyIsolationRuleV2ConditionOutputWithContext(context.Context) PolicyIsolationRuleV2ConditionOutput
-}
-
-type PolicyIsolationRuleV2ConditionArgs struct {
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// This signifies the various policy criteria.
-	Operands PolicyIsolationRuleV2ConditionOperandArrayInput `pulumi:"operands"`
-	Operator pulumi.StringPtrInput                           `pulumi:"operator"`
-}
-
-func (PolicyIsolationRuleV2ConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyIsolationRuleV2Condition)(nil)).Elem()
-}
-
-func (i PolicyIsolationRuleV2ConditionArgs) ToPolicyIsolationRuleV2ConditionOutput() PolicyIsolationRuleV2ConditionOutput {
-	return i.ToPolicyIsolationRuleV2ConditionOutputWithContext(context.Background())
-}
-
-func (i PolicyIsolationRuleV2ConditionArgs) ToPolicyIsolationRuleV2ConditionOutputWithContext(ctx context.Context) PolicyIsolationRuleV2ConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyIsolationRuleV2ConditionOutput)
-}
-
-// PolicyIsolationRuleV2ConditionArrayInput is an input type that accepts PolicyIsolationRuleV2ConditionArray and PolicyIsolationRuleV2ConditionArrayOutput values.
-// You can construct a concrete instance of `PolicyIsolationRuleV2ConditionArrayInput` via:
-//
-//	PolicyIsolationRuleV2ConditionArray{ PolicyIsolationRuleV2ConditionArgs{...} }
-type PolicyIsolationRuleV2ConditionArrayInput interface {
-	pulumi.Input
-
-	ToPolicyIsolationRuleV2ConditionArrayOutput() PolicyIsolationRuleV2ConditionArrayOutput
-	ToPolicyIsolationRuleV2ConditionArrayOutputWithContext(context.Context) PolicyIsolationRuleV2ConditionArrayOutput
-}
-
-type PolicyIsolationRuleV2ConditionArray []PolicyIsolationRuleV2ConditionInput
-
-func (PolicyIsolationRuleV2ConditionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyIsolationRuleV2Condition)(nil)).Elem()
-}
-
-func (i PolicyIsolationRuleV2ConditionArray) ToPolicyIsolationRuleV2ConditionArrayOutput() PolicyIsolationRuleV2ConditionArrayOutput {
-	return i.ToPolicyIsolationRuleV2ConditionArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyIsolationRuleV2ConditionArray) ToPolicyIsolationRuleV2ConditionArrayOutputWithContext(ctx context.Context) PolicyIsolationRuleV2ConditionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyIsolationRuleV2ConditionArrayOutput)
-}
-
-type PolicyIsolationRuleV2ConditionOutput struct{ *pulumi.OutputState }
-
-func (PolicyIsolationRuleV2ConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyIsolationRuleV2Condition)(nil)).Elem()
-}
-
-func (o PolicyIsolationRuleV2ConditionOutput) ToPolicyIsolationRuleV2ConditionOutput() PolicyIsolationRuleV2ConditionOutput {
-	return o
-}
-
-func (o PolicyIsolationRuleV2ConditionOutput) ToPolicyIsolationRuleV2ConditionOutputWithContext(ctx context.Context) PolicyIsolationRuleV2ConditionOutput {
-	return o
-}
-
-func (o PolicyIsolationRuleV2ConditionOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyIsolationRuleV2Condition) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// This signifies the various policy criteria.
-func (o PolicyIsolationRuleV2ConditionOutput) Operands() PolicyIsolationRuleV2ConditionOperandArrayOutput {
-	return o.ApplyT(func(v PolicyIsolationRuleV2Condition) []PolicyIsolationRuleV2ConditionOperand { return v.Operands }).(PolicyIsolationRuleV2ConditionOperandArrayOutput)
-}
-
-func (o PolicyIsolationRuleV2ConditionOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyIsolationRuleV2Condition) *string { return v.Operator }).(pulumi.StringPtrOutput)
-}
-
-type PolicyIsolationRuleV2ConditionArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyIsolationRuleV2ConditionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyIsolationRuleV2Condition)(nil)).Elem()
-}
-
-func (o PolicyIsolationRuleV2ConditionArrayOutput) ToPolicyIsolationRuleV2ConditionArrayOutput() PolicyIsolationRuleV2ConditionArrayOutput {
-	return o
-}
-
-func (o PolicyIsolationRuleV2ConditionArrayOutput) ToPolicyIsolationRuleV2ConditionArrayOutputWithContext(ctx context.Context) PolicyIsolationRuleV2ConditionArrayOutput {
-	return o
-}
-
-func (o PolicyIsolationRuleV2ConditionArrayOutput) Index(i pulumi.IntInput) PolicyIsolationRuleV2ConditionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyIsolationRuleV2Condition {
-		return vs[0].([]PolicyIsolationRuleV2Condition)[vs[1].(int)]
-	}).(PolicyIsolationRuleV2ConditionOutput)
-}
-
-type PolicyIsolationRuleV2ConditionOperand struct {
-	EntryValues []PolicyIsolationRuleV2ConditionOperandEntryValue `pulumi:"entryValues"`
-	// This is for specifying the policy critiera.
-	ObjectType *string `pulumi:"objectType"`
-	// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-	Values []string `pulumi:"values"`
-}
-
-// PolicyIsolationRuleV2ConditionOperandInput is an input type that accepts PolicyIsolationRuleV2ConditionOperandArgs and PolicyIsolationRuleV2ConditionOperandOutput values.
-// You can construct a concrete instance of `PolicyIsolationRuleV2ConditionOperandInput` via:
-//
-//	PolicyIsolationRuleV2ConditionOperandArgs{...}
-type PolicyIsolationRuleV2ConditionOperandInput interface {
-	pulumi.Input
-
-	ToPolicyIsolationRuleV2ConditionOperandOutput() PolicyIsolationRuleV2ConditionOperandOutput
-	ToPolicyIsolationRuleV2ConditionOperandOutputWithContext(context.Context) PolicyIsolationRuleV2ConditionOperandOutput
-}
-
-type PolicyIsolationRuleV2ConditionOperandArgs struct {
-	EntryValues PolicyIsolationRuleV2ConditionOperandEntryValueArrayInput `pulumi:"entryValues"`
-	// This is for specifying the policy critiera.
-	ObjectType pulumi.StringPtrInput `pulumi:"objectType"`
-	// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (PolicyIsolationRuleV2ConditionOperandArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyIsolationRuleV2ConditionOperand)(nil)).Elem()
-}
-
-func (i PolicyIsolationRuleV2ConditionOperandArgs) ToPolicyIsolationRuleV2ConditionOperandOutput() PolicyIsolationRuleV2ConditionOperandOutput {
-	return i.ToPolicyIsolationRuleV2ConditionOperandOutputWithContext(context.Background())
-}
-
-func (i PolicyIsolationRuleV2ConditionOperandArgs) ToPolicyIsolationRuleV2ConditionOperandOutputWithContext(ctx context.Context) PolicyIsolationRuleV2ConditionOperandOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyIsolationRuleV2ConditionOperandOutput)
-}
-
-// PolicyIsolationRuleV2ConditionOperandArrayInput is an input type that accepts PolicyIsolationRuleV2ConditionOperandArray and PolicyIsolationRuleV2ConditionOperandArrayOutput values.
-// You can construct a concrete instance of `PolicyIsolationRuleV2ConditionOperandArrayInput` via:
-//
-//	PolicyIsolationRuleV2ConditionOperandArray{ PolicyIsolationRuleV2ConditionOperandArgs{...} }
-type PolicyIsolationRuleV2ConditionOperandArrayInput interface {
-	pulumi.Input
-
-	ToPolicyIsolationRuleV2ConditionOperandArrayOutput() PolicyIsolationRuleV2ConditionOperandArrayOutput
-	ToPolicyIsolationRuleV2ConditionOperandArrayOutputWithContext(context.Context) PolicyIsolationRuleV2ConditionOperandArrayOutput
-}
-
-type PolicyIsolationRuleV2ConditionOperandArray []PolicyIsolationRuleV2ConditionOperandInput
-
-func (PolicyIsolationRuleV2ConditionOperandArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyIsolationRuleV2ConditionOperand)(nil)).Elem()
-}
-
-func (i PolicyIsolationRuleV2ConditionOperandArray) ToPolicyIsolationRuleV2ConditionOperandArrayOutput() PolicyIsolationRuleV2ConditionOperandArrayOutput {
-	return i.ToPolicyIsolationRuleV2ConditionOperandArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyIsolationRuleV2ConditionOperandArray) ToPolicyIsolationRuleV2ConditionOperandArrayOutputWithContext(ctx context.Context) PolicyIsolationRuleV2ConditionOperandArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyIsolationRuleV2ConditionOperandArrayOutput)
-}
-
-type PolicyIsolationRuleV2ConditionOperandOutput struct{ *pulumi.OutputState }
-
-func (PolicyIsolationRuleV2ConditionOperandOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyIsolationRuleV2ConditionOperand)(nil)).Elem()
-}
-
-func (o PolicyIsolationRuleV2ConditionOperandOutput) ToPolicyIsolationRuleV2ConditionOperandOutput() PolicyIsolationRuleV2ConditionOperandOutput {
-	return o
-}
-
-func (o PolicyIsolationRuleV2ConditionOperandOutput) ToPolicyIsolationRuleV2ConditionOperandOutputWithContext(ctx context.Context) PolicyIsolationRuleV2ConditionOperandOutput {
-	return o
-}
-
-func (o PolicyIsolationRuleV2ConditionOperandOutput) EntryValues() PolicyIsolationRuleV2ConditionOperandEntryValueArrayOutput {
-	return o.ApplyT(func(v PolicyIsolationRuleV2ConditionOperand) []PolicyIsolationRuleV2ConditionOperandEntryValue {
-		return v.EntryValues
-	}).(PolicyIsolationRuleV2ConditionOperandEntryValueArrayOutput)
-}
-
-// This is for specifying the policy critiera.
-func (o PolicyIsolationRuleV2ConditionOperandOutput) ObjectType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyIsolationRuleV2ConditionOperand) *string { return v.ObjectType }).(pulumi.StringPtrOutput)
-}
-
-// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-func (o PolicyIsolationRuleV2ConditionOperandOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PolicyIsolationRuleV2ConditionOperand) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type PolicyIsolationRuleV2ConditionOperandArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyIsolationRuleV2ConditionOperandArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyIsolationRuleV2ConditionOperand)(nil)).Elem()
-}
-
-func (o PolicyIsolationRuleV2ConditionOperandArrayOutput) ToPolicyIsolationRuleV2ConditionOperandArrayOutput() PolicyIsolationRuleV2ConditionOperandArrayOutput {
-	return o
-}
-
-func (o PolicyIsolationRuleV2ConditionOperandArrayOutput) ToPolicyIsolationRuleV2ConditionOperandArrayOutputWithContext(ctx context.Context) PolicyIsolationRuleV2ConditionOperandArrayOutput {
-	return o
-}
-
-func (o PolicyIsolationRuleV2ConditionOperandArrayOutput) Index(i pulumi.IntInput) PolicyIsolationRuleV2ConditionOperandOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyIsolationRuleV2ConditionOperand {
-		return vs[0].([]PolicyIsolationRuleV2ConditionOperand)[vs[1].(int)]
-	}).(PolicyIsolationRuleV2ConditionOperandOutput)
-}
-
-type PolicyIsolationRuleV2ConditionOperandEntryValue struct {
-	Lhs *string `pulumi:"lhs"`
-	Rhs *string `pulumi:"rhs"`
-}
-
-// PolicyIsolationRuleV2ConditionOperandEntryValueInput is an input type that accepts PolicyIsolationRuleV2ConditionOperandEntryValueArgs and PolicyIsolationRuleV2ConditionOperandEntryValueOutput values.
-// You can construct a concrete instance of `PolicyIsolationRuleV2ConditionOperandEntryValueInput` via:
-//
-//	PolicyIsolationRuleV2ConditionOperandEntryValueArgs{...}
-type PolicyIsolationRuleV2ConditionOperandEntryValueInput interface {
-	pulumi.Input
-
-	ToPolicyIsolationRuleV2ConditionOperandEntryValueOutput() PolicyIsolationRuleV2ConditionOperandEntryValueOutput
-	ToPolicyIsolationRuleV2ConditionOperandEntryValueOutputWithContext(context.Context) PolicyIsolationRuleV2ConditionOperandEntryValueOutput
-}
-
-type PolicyIsolationRuleV2ConditionOperandEntryValueArgs struct {
-	Lhs pulumi.StringPtrInput `pulumi:"lhs"`
-	Rhs pulumi.StringPtrInput `pulumi:"rhs"`
-}
-
-func (PolicyIsolationRuleV2ConditionOperandEntryValueArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyIsolationRuleV2ConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (i PolicyIsolationRuleV2ConditionOperandEntryValueArgs) ToPolicyIsolationRuleV2ConditionOperandEntryValueOutput() PolicyIsolationRuleV2ConditionOperandEntryValueOutput {
-	return i.ToPolicyIsolationRuleV2ConditionOperandEntryValueOutputWithContext(context.Background())
-}
-
-func (i PolicyIsolationRuleV2ConditionOperandEntryValueArgs) ToPolicyIsolationRuleV2ConditionOperandEntryValueOutputWithContext(ctx context.Context) PolicyIsolationRuleV2ConditionOperandEntryValueOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyIsolationRuleV2ConditionOperandEntryValueOutput)
-}
-
-// PolicyIsolationRuleV2ConditionOperandEntryValueArrayInput is an input type that accepts PolicyIsolationRuleV2ConditionOperandEntryValueArray and PolicyIsolationRuleV2ConditionOperandEntryValueArrayOutput values.
-// You can construct a concrete instance of `PolicyIsolationRuleV2ConditionOperandEntryValueArrayInput` via:
-//
-//	PolicyIsolationRuleV2ConditionOperandEntryValueArray{ PolicyIsolationRuleV2ConditionOperandEntryValueArgs{...} }
-type PolicyIsolationRuleV2ConditionOperandEntryValueArrayInput interface {
-	pulumi.Input
-
-	ToPolicyIsolationRuleV2ConditionOperandEntryValueArrayOutput() PolicyIsolationRuleV2ConditionOperandEntryValueArrayOutput
-	ToPolicyIsolationRuleV2ConditionOperandEntryValueArrayOutputWithContext(context.Context) PolicyIsolationRuleV2ConditionOperandEntryValueArrayOutput
-}
-
-type PolicyIsolationRuleV2ConditionOperandEntryValueArray []PolicyIsolationRuleV2ConditionOperandEntryValueInput
-
-func (PolicyIsolationRuleV2ConditionOperandEntryValueArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyIsolationRuleV2ConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (i PolicyIsolationRuleV2ConditionOperandEntryValueArray) ToPolicyIsolationRuleV2ConditionOperandEntryValueArrayOutput() PolicyIsolationRuleV2ConditionOperandEntryValueArrayOutput {
-	return i.ToPolicyIsolationRuleV2ConditionOperandEntryValueArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyIsolationRuleV2ConditionOperandEntryValueArray) ToPolicyIsolationRuleV2ConditionOperandEntryValueArrayOutputWithContext(ctx context.Context) PolicyIsolationRuleV2ConditionOperandEntryValueArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyIsolationRuleV2ConditionOperandEntryValueArrayOutput)
-}
-
-type PolicyIsolationRuleV2ConditionOperandEntryValueOutput struct{ *pulumi.OutputState }
-
-func (PolicyIsolationRuleV2ConditionOperandEntryValueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyIsolationRuleV2ConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (o PolicyIsolationRuleV2ConditionOperandEntryValueOutput) ToPolicyIsolationRuleV2ConditionOperandEntryValueOutput() PolicyIsolationRuleV2ConditionOperandEntryValueOutput {
-	return o
-}
-
-func (o PolicyIsolationRuleV2ConditionOperandEntryValueOutput) ToPolicyIsolationRuleV2ConditionOperandEntryValueOutputWithContext(ctx context.Context) PolicyIsolationRuleV2ConditionOperandEntryValueOutput {
-	return o
-}
-
-func (o PolicyIsolationRuleV2ConditionOperandEntryValueOutput) Lhs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyIsolationRuleV2ConditionOperandEntryValue) *string { return v.Lhs }).(pulumi.StringPtrOutput)
-}
-
-func (o PolicyIsolationRuleV2ConditionOperandEntryValueOutput) Rhs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyIsolationRuleV2ConditionOperandEntryValue) *string { return v.Rhs }).(pulumi.StringPtrOutput)
-}
-
-type PolicyIsolationRuleV2ConditionOperandEntryValueArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyIsolationRuleV2ConditionOperandEntryValueArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyIsolationRuleV2ConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (o PolicyIsolationRuleV2ConditionOperandEntryValueArrayOutput) ToPolicyIsolationRuleV2ConditionOperandEntryValueArrayOutput() PolicyIsolationRuleV2ConditionOperandEntryValueArrayOutput {
-	return o
-}
-
-func (o PolicyIsolationRuleV2ConditionOperandEntryValueArrayOutput) ToPolicyIsolationRuleV2ConditionOperandEntryValueArrayOutputWithContext(ctx context.Context) PolicyIsolationRuleV2ConditionOperandEntryValueArrayOutput {
-	return o
-}
-
-func (o PolicyIsolationRuleV2ConditionOperandEntryValueArrayOutput) Index(i pulumi.IntInput) PolicyIsolationRuleV2ConditionOperandEntryValueOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyIsolationRuleV2ConditionOperandEntryValue {
-		return vs[0].([]PolicyIsolationRuleV2ConditionOperandEntryValue)[vs[1].(int)]
-	}).(PolicyIsolationRuleV2ConditionOperandEntryValueOutput)
-}
-
-type PolicyRedirectionRuleCondition struct {
-	Id            *string `pulumi:"id"`
-	MicrotenantId *string `pulumi:"microtenantId"`
-	// This signifies the various policy criteria.
-	Operands []PolicyRedirectionRuleConditionOperand `pulumi:"operands"`
-	Operator string                                  `pulumi:"operator"`
-}
-
-// PolicyRedirectionRuleConditionInput is an input type that accepts PolicyRedirectionRuleConditionArgs and PolicyRedirectionRuleConditionOutput values.
-// You can construct a concrete instance of `PolicyRedirectionRuleConditionInput` via:
-//
-//	PolicyRedirectionRuleConditionArgs{...}
-type PolicyRedirectionRuleConditionInput interface {
-	pulumi.Input
-
-	ToPolicyRedirectionRuleConditionOutput() PolicyRedirectionRuleConditionOutput
-	ToPolicyRedirectionRuleConditionOutputWithContext(context.Context) PolicyRedirectionRuleConditionOutput
-}
-
-type PolicyRedirectionRuleConditionArgs struct {
-	Id            pulumi.StringPtrInput `pulumi:"id"`
-	MicrotenantId pulumi.StringPtrInput `pulumi:"microtenantId"`
-	// This signifies the various policy criteria.
-	Operands PolicyRedirectionRuleConditionOperandArrayInput `pulumi:"operands"`
-	Operator pulumi.StringInput                              `pulumi:"operator"`
-}
-
-func (PolicyRedirectionRuleConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyRedirectionRuleCondition)(nil)).Elem()
-}
-
-func (i PolicyRedirectionRuleConditionArgs) ToPolicyRedirectionRuleConditionOutput() PolicyRedirectionRuleConditionOutput {
-	return i.ToPolicyRedirectionRuleConditionOutputWithContext(context.Background())
-}
-
-func (i PolicyRedirectionRuleConditionArgs) ToPolicyRedirectionRuleConditionOutputWithContext(ctx context.Context) PolicyRedirectionRuleConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyRedirectionRuleConditionOutput)
-}
-
-// PolicyRedirectionRuleConditionArrayInput is an input type that accepts PolicyRedirectionRuleConditionArray and PolicyRedirectionRuleConditionArrayOutput values.
-// You can construct a concrete instance of `PolicyRedirectionRuleConditionArrayInput` via:
-//
-//	PolicyRedirectionRuleConditionArray{ PolicyRedirectionRuleConditionArgs{...} }
-type PolicyRedirectionRuleConditionArrayInput interface {
-	pulumi.Input
-
-	ToPolicyRedirectionRuleConditionArrayOutput() PolicyRedirectionRuleConditionArrayOutput
-	ToPolicyRedirectionRuleConditionArrayOutputWithContext(context.Context) PolicyRedirectionRuleConditionArrayOutput
-}
-
-type PolicyRedirectionRuleConditionArray []PolicyRedirectionRuleConditionInput
-
-func (PolicyRedirectionRuleConditionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyRedirectionRuleCondition)(nil)).Elem()
-}
-
-func (i PolicyRedirectionRuleConditionArray) ToPolicyRedirectionRuleConditionArrayOutput() PolicyRedirectionRuleConditionArrayOutput {
-	return i.ToPolicyRedirectionRuleConditionArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyRedirectionRuleConditionArray) ToPolicyRedirectionRuleConditionArrayOutputWithContext(ctx context.Context) PolicyRedirectionRuleConditionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyRedirectionRuleConditionArrayOutput)
-}
-
-type PolicyRedirectionRuleConditionOutput struct{ *pulumi.OutputState }
-
-func (PolicyRedirectionRuleConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyRedirectionRuleCondition)(nil)).Elem()
-}
-
-func (o PolicyRedirectionRuleConditionOutput) ToPolicyRedirectionRuleConditionOutput() PolicyRedirectionRuleConditionOutput {
-	return o
-}
-
-func (o PolicyRedirectionRuleConditionOutput) ToPolicyRedirectionRuleConditionOutputWithContext(ctx context.Context) PolicyRedirectionRuleConditionOutput {
-	return o
-}
-
-func (o PolicyRedirectionRuleConditionOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyRedirectionRuleCondition) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-func (o PolicyRedirectionRuleConditionOutput) MicrotenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyRedirectionRuleCondition) *string { return v.MicrotenantId }).(pulumi.StringPtrOutput)
-}
-
-// This signifies the various policy criteria.
-func (o PolicyRedirectionRuleConditionOutput) Operands() PolicyRedirectionRuleConditionOperandArrayOutput {
-	return o.ApplyT(func(v PolicyRedirectionRuleCondition) []PolicyRedirectionRuleConditionOperand { return v.Operands }).(PolicyRedirectionRuleConditionOperandArrayOutput)
-}
-
-func (o PolicyRedirectionRuleConditionOutput) Operator() pulumi.StringOutput {
-	return o.ApplyT(func(v PolicyRedirectionRuleCondition) string { return v.Operator }).(pulumi.StringOutput)
-}
-
-type PolicyRedirectionRuleConditionArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyRedirectionRuleConditionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyRedirectionRuleCondition)(nil)).Elem()
-}
-
-func (o PolicyRedirectionRuleConditionArrayOutput) ToPolicyRedirectionRuleConditionArrayOutput() PolicyRedirectionRuleConditionArrayOutput {
-	return o
-}
-
-func (o PolicyRedirectionRuleConditionArrayOutput) ToPolicyRedirectionRuleConditionArrayOutputWithContext(ctx context.Context) PolicyRedirectionRuleConditionArrayOutput {
-	return o
-}
-
-func (o PolicyRedirectionRuleConditionArrayOutput) Index(i pulumi.IntInput) PolicyRedirectionRuleConditionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyRedirectionRuleCondition {
-		return vs[0].([]PolicyRedirectionRuleCondition)[vs[1].(int)]
-	}).(PolicyRedirectionRuleConditionOutput)
-}
-
-type PolicyRedirectionRuleConditionOperand struct {
-	Id    *string `pulumi:"id"`
-	IdpId *string `pulumi:"idpId"`
-	// This signifies the key for the object type. String ID example: id
-	Lhs string `pulumi:"lhs"`
-	// This denotes the value for the given object type. Its value depends upon the key.
-	MicrotenantId *string `pulumi:"microtenantId"`
-	Name          *string `pulumi:"name"`
-	// This is for specifying the policy critiera.
-	ObjectType string `pulumi:"objectType"`
-	// This denotes the value for the given object type. Its value depends upon the key.
-	Rhs *string `pulumi:"rhs"`
-	// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-	RhsLists []string `pulumi:"rhsLists"`
-}
-
-// PolicyRedirectionRuleConditionOperandInput is an input type that accepts PolicyRedirectionRuleConditionOperandArgs and PolicyRedirectionRuleConditionOperandOutput values.
-// You can construct a concrete instance of `PolicyRedirectionRuleConditionOperandInput` via:
-//
-//	PolicyRedirectionRuleConditionOperandArgs{...}
-type PolicyRedirectionRuleConditionOperandInput interface {
-	pulumi.Input
-
-	ToPolicyRedirectionRuleConditionOperandOutput() PolicyRedirectionRuleConditionOperandOutput
-	ToPolicyRedirectionRuleConditionOperandOutputWithContext(context.Context) PolicyRedirectionRuleConditionOperandOutput
-}
-
-type PolicyRedirectionRuleConditionOperandArgs struct {
-	Id    pulumi.StringPtrInput `pulumi:"id"`
-	IdpId pulumi.StringPtrInput `pulumi:"idpId"`
-	// This signifies the key for the object type. String ID example: id
-	Lhs pulumi.StringInput `pulumi:"lhs"`
-	// This denotes the value for the given object type. Its value depends upon the key.
-	MicrotenantId pulumi.StringPtrInput `pulumi:"microtenantId"`
-	Name          pulumi.StringPtrInput `pulumi:"name"`
-	// This is for specifying the policy critiera.
-	ObjectType pulumi.StringInput `pulumi:"objectType"`
-	// This denotes the value for the given object type. Its value depends upon the key.
-	Rhs pulumi.StringPtrInput `pulumi:"rhs"`
-	// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-	RhsLists pulumi.StringArrayInput `pulumi:"rhsLists"`
-}
-
-func (PolicyRedirectionRuleConditionOperandArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyRedirectionRuleConditionOperand)(nil)).Elem()
-}
-
-func (i PolicyRedirectionRuleConditionOperandArgs) ToPolicyRedirectionRuleConditionOperandOutput() PolicyRedirectionRuleConditionOperandOutput {
-	return i.ToPolicyRedirectionRuleConditionOperandOutputWithContext(context.Background())
-}
-
-func (i PolicyRedirectionRuleConditionOperandArgs) ToPolicyRedirectionRuleConditionOperandOutputWithContext(ctx context.Context) PolicyRedirectionRuleConditionOperandOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyRedirectionRuleConditionOperandOutput)
-}
-
-// PolicyRedirectionRuleConditionOperandArrayInput is an input type that accepts PolicyRedirectionRuleConditionOperandArray and PolicyRedirectionRuleConditionOperandArrayOutput values.
-// You can construct a concrete instance of `PolicyRedirectionRuleConditionOperandArrayInput` via:
-//
-//	PolicyRedirectionRuleConditionOperandArray{ PolicyRedirectionRuleConditionOperandArgs{...} }
-type PolicyRedirectionRuleConditionOperandArrayInput interface {
-	pulumi.Input
-
-	ToPolicyRedirectionRuleConditionOperandArrayOutput() PolicyRedirectionRuleConditionOperandArrayOutput
-	ToPolicyRedirectionRuleConditionOperandArrayOutputWithContext(context.Context) PolicyRedirectionRuleConditionOperandArrayOutput
-}
-
-type PolicyRedirectionRuleConditionOperandArray []PolicyRedirectionRuleConditionOperandInput
-
-func (PolicyRedirectionRuleConditionOperandArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyRedirectionRuleConditionOperand)(nil)).Elem()
-}
-
-func (i PolicyRedirectionRuleConditionOperandArray) ToPolicyRedirectionRuleConditionOperandArrayOutput() PolicyRedirectionRuleConditionOperandArrayOutput {
-	return i.ToPolicyRedirectionRuleConditionOperandArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyRedirectionRuleConditionOperandArray) ToPolicyRedirectionRuleConditionOperandArrayOutputWithContext(ctx context.Context) PolicyRedirectionRuleConditionOperandArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyRedirectionRuleConditionOperandArrayOutput)
-}
-
-type PolicyRedirectionRuleConditionOperandOutput struct{ *pulumi.OutputState }
-
-func (PolicyRedirectionRuleConditionOperandOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyRedirectionRuleConditionOperand)(nil)).Elem()
-}
-
-func (o PolicyRedirectionRuleConditionOperandOutput) ToPolicyRedirectionRuleConditionOperandOutput() PolicyRedirectionRuleConditionOperandOutput {
-	return o
-}
-
-func (o PolicyRedirectionRuleConditionOperandOutput) ToPolicyRedirectionRuleConditionOperandOutputWithContext(ctx context.Context) PolicyRedirectionRuleConditionOperandOutput {
-	return o
-}
-
-func (o PolicyRedirectionRuleConditionOperandOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyRedirectionRuleConditionOperand) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-func (o PolicyRedirectionRuleConditionOperandOutput) IdpId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyRedirectionRuleConditionOperand) *string { return v.IdpId }).(pulumi.StringPtrOutput)
-}
-
-// This signifies the key for the object type. String ID example: id
-func (o PolicyRedirectionRuleConditionOperandOutput) Lhs() pulumi.StringOutput {
-	return o.ApplyT(func(v PolicyRedirectionRuleConditionOperand) string { return v.Lhs }).(pulumi.StringOutput)
-}
-
-// This denotes the value for the given object type. Its value depends upon the key.
-func (o PolicyRedirectionRuleConditionOperandOutput) MicrotenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyRedirectionRuleConditionOperand) *string { return v.MicrotenantId }).(pulumi.StringPtrOutput)
-}
-
-func (o PolicyRedirectionRuleConditionOperandOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyRedirectionRuleConditionOperand) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// This is for specifying the policy critiera.
-func (o PolicyRedirectionRuleConditionOperandOutput) ObjectType() pulumi.StringOutput {
-	return o.ApplyT(func(v PolicyRedirectionRuleConditionOperand) string { return v.ObjectType }).(pulumi.StringOutput)
-}
-
-// This denotes the value for the given object type. Its value depends upon the key.
-func (o PolicyRedirectionRuleConditionOperandOutput) Rhs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyRedirectionRuleConditionOperand) *string { return v.Rhs }).(pulumi.StringPtrOutput)
-}
-
-// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-func (o PolicyRedirectionRuleConditionOperandOutput) RhsLists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PolicyRedirectionRuleConditionOperand) []string { return v.RhsLists }).(pulumi.StringArrayOutput)
-}
-
-type PolicyRedirectionRuleConditionOperandArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyRedirectionRuleConditionOperandArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyRedirectionRuleConditionOperand)(nil)).Elem()
-}
-
-func (o PolicyRedirectionRuleConditionOperandArrayOutput) ToPolicyRedirectionRuleConditionOperandArrayOutput() PolicyRedirectionRuleConditionOperandArrayOutput {
-	return o
-}
-
-func (o PolicyRedirectionRuleConditionOperandArrayOutput) ToPolicyRedirectionRuleConditionOperandArrayOutputWithContext(ctx context.Context) PolicyRedirectionRuleConditionOperandArrayOutput {
-	return o
-}
-
-func (o PolicyRedirectionRuleConditionOperandArrayOutput) Index(i pulumi.IntInput) PolicyRedirectionRuleConditionOperandOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyRedirectionRuleConditionOperand {
-		return vs[0].([]PolicyRedirectionRuleConditionOperand)[vs[1].(int)]
-	}).(PolicyRedirectionRuleConditionOperandOutput)
-}
-
-type PolicyRedirectionRuleServiceEdgeGroup struct {
-	Ids []string `pulumi:"ids"`
-}
-
-// PolicyRedirectionRuleServiceEdgeGroupInput is an input type that accepts PolicyRedirectionRuleServiceEdgeGroupArgs and PolicyRedirectionRuleServiceEdgeGroupOutput values.
-// You can construct a concrete instance of `PolicyRedirectionRuleServiceEdgeGroupInput` via:
-//
-//	PolicyRedirectionRuleServiceEdgeGroupArgs{...}
-type PolicyRedirectionRuleServiceEdgeGroupInput interface {
-	pulumi.Input
-
-	ToPolicyRedirectionRuleServiceEdgeGroupOutput() PolicyRedirectionRuleServiceEdgeGroupOutput
-	ToPolicyRedirectionRuleServiceEdgeGroupOutputWithContext(context.Context) PolicyRedirectionRuleServiceEdgeGroupOutput
-}
-
-type PolicyRedirectionRuleServiceEdgeGroupArgs struct {
-	Ids pulumi.StringArrayInput `pulumi:"ids"`
-}
-
-func (PolicyRedirectionRuleServiceEdgeGroupArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyRedirectionRuleServiceEdgeGroup)(nil)).Elem()
-}
-
-func (i PolicyRedirectionRuleServiceEdgeGroupArgs) ToPolicyRedirectionRuleServiceEdgeGroupOutput() PolicyRedirectionRuleServiceEdgeGroupOutput {
-	return i.ToPolicyRedirectionRuleServiceEdgeGroupOutputWithContext(context.Background())
-}
-
-func (i PolicyRedirectionRuleServiceEdgeGroupArgs) ToPolicyRedirectionRuleServiceEdgeGroupOutputWithContext(ctx context.Context) PolicyRedirectionRuleServiceEdgeGroupOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyRedirectionRuleServiceEdgeGroupOutput)
-}
-
-// PolicyRedirectionRuleServiceEdgeGroupArrayInput is an input type that accepts PolicyRedirectionRuleServiceEdgeGroupArray and PolicyRedirectionRuleServiceEdgeGroupArrayOutput values.
-// You can construct a concrete instance of `PolicyRedirectionRuleServiceEdgeGroupArrayInput` via:
-//
-//	PolicyRedirectionRuleServiceEdgeGroupArray{ PolicyRedirectionRuleServiceEdgeGroupArgs{...} }
-type PolicyRedirectionRuleServiceEdgeGroupArrayInput interface {
-	pulumi.Input
-
-	ToPolicyRedirectionRuleServiceEdgeGroupArrayOutput() PolicyRedirectionRuleServiceEdgeGroupArrayOutput
-	ToPolicyRedirectionRuleServiceEdgeGroupArrayOutputWithContext(context.Context) PolicyRedirectionRuleServiceEdgeGroupArrayOutput
-}
-
-type PolicyRedirectionRuleServiceEdgeGroupArray []PolicyRedirectionRuleServiceEdgeGroupInput
-
-func (PolicyRedirectionRuleServiceEdgeGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyRedirectionRuleServiceEdgeGroup)(nil)).Elem()
-}
-
-func (i PolicyRedirectionRuleServiceEdgeGroupArray) ToPolicyRedirectionRuleServiceEdgeGroupArrayOutput() PolicyRedirectionRuleServiceEdgeGroupArrayOutput {
-	return i.ToPolicyRedirectionRuleServiceEdgeGroupArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyRedirectionRuleServiceEdgeGroupArray) ToPolicyRedirectionRuleServiceEdgeGroupArrayOutputWithContext(ctx context.Context) PolicyRedirectionRuleServiceEdgeGroupArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyRedirectionRuleServiceEdgeGroupArrayOutput)
-}
-
-type PolicyRedirectionRuleServiceEdgeGroupOutput struct{ *pulumi.OutputState }
-
-func (PolicyRedirectionRuleServiceEdgeGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyRedirectionRuleServiceEdgeGroup)(nil)).Elem()
-}
-
-func (o PolicyRedirectionRuleServiceEdgeGroupOutput) ToPolicyRedirectionRuleServiceEdgeGroupOutput() PolicyRedirectionRuleServiceEdgeGroupOutput {
-	return o
-}
-
-func (o PolicyRedirectionRuleServiceEdgeGroupOutput) ToPolicyRedirectionRuleServiceEdgeGroupOutputWithContext(ctx context.Context) PolicyRedirectionRuleServiceEdgeGroupOutput {
-	return o
-}
-
-func (o PolicyRedirectionRuleServiceEdgeGroupOutput) Ids() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PolicyRedirectionRuleServiceEdgeGroup) []string { return v.Ids }).(pulumi.StringArrayOutput)
-}
-
-type PolicyRedirectionRuleServiceEdgeGroupArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyRedirectionRuleServiceEdgeGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyRedirectionRuleServiceEdgeGroup)(nil)).Elem()
-}
-
-func (o PolicyRedirectionRuleServiceEdgeGroupArrayOutput) ToPolicyRedirectionRuleServiceEdgeGroupArrayOutput() PolicyRedirectionRuleServiceEdgeGroupArrayOutput {
-	return o
-}
-
-func (o PolicyRedirectionRuleServiceEdgeGroupArrayOutput) ToPolicyRedirectionRuleServiceEdgeGroupArrayOutputWithContext(ctx context.Context) PolicyRedirectionRuleServiceEdgeGroupArrayOutput {
-	return o
-}
-
-func (o PolicyRedirectionRuleServiceEdgeGroupArrayOutput) Index(i pulumi.IntInput) PolicyRedirectionRuleServiceEdgeGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyRedirectionRuleServiceEdgeGroup {
-		return vs[0].([]PolicyRedirectionRuleServiceEdgeGroup)[vs[1].(int)]
-	}).(PolicyRedirectionRuleServiceEdgeGroupOutput)
-}
-
-type PolicyTimeoutRuleV2Condition struct {
-	Id *string `pulumi:"id"`
-	// This signifies the various policy criteria.
-	Operands []PolicyTimeoutRuleV2ConditionOperand `pulumi:"operands"`
-	Operator *string                               `pulumi:"operator"`
-}
-
-// PolicyTimeoutRuleV2ConditionInput is an input type that accepts PolicyTimeoutRuleV2ConditionArgs and PolicyTimeoutRuleV2ConditionOutput values.
-// You can construct a concrete instance of `PolicyTimeoutRuleV2ConditionInput` via:
-//
-//	PolicyTimeoutRuleV2ConditionArgs{...}
-type PolicyTimeoutRuleV2ConditionInput interface {
-	pulumi.Input
-
-	ToPolicyTimeoutRuleV2ConditionOutput() PolicyTimeoutRuleV2ConditionOutput
-	ToPolicyTimeoutRuleV2ConditionOutputWithContext(context.Context) PolicyTimeoutRuleV2ConditionOutput
-}
-
-type PolicyTimeoutRuleV2ConditionArgs struct {
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// This signifies the various policy criteria.
-	Operands PolicyTimeoutRuleV2ConditionOperandArrayInput `pulumi:"operands"`
-	Operator pulumi.StringPtrInput                         `pulumi:"operator"`
-}
-
-func (PolicyTimeoutRuleV2ConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyTimeoutRuleV2Condition)(nil)).Elem()
-}
-
-func (i PolicyTimeoutRuleV2ConditionArgs) ToPolicyTimeoutRuleV2ConditionOutput() PolicyTimeoutRuleV2ConditionOutput {
-	return i.ToPolicyTimeoutRuleV2ConditionOutputWithContext(context.Background())
-}
-
-func (i PolicyTimeoutRuleV2ConditionArgs) ToPolicyTimeoutRuleV2ConditionOutputWithContext(ctx context.Context) PolicyTimeoutRuleV2ConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTimeoutRuleV2ConditionOutput)
-}
-
-// PolicyTimeoutRuleV2ConditionArrayInput is an input type that accepts PolicyTimeoutRuleV2ConditionArray and PolicyTimeoutRuleV2ConditionArrayOutput values.
-// You can construct a concrete instance of `PolicyTimeoutRuleV2ConditionArrayInput` via:
-//
-//	PolicyTimeoutRuleV2ConditionArray{ PolicyTimeoutRuleV2ConditionArgs{...} }
-type PolicyTimeoutRuleV2ConditionArrayInput interface {
-	pulumi.Input
-
-	ToPolicyTimeoutRuleV2ConditionArrayOutput() PolicyTimeoutRuleV2ConditionArrayOutput
-	ToPolicyTimeoutRuleV2ConditionArrayOutputWithContext(context.Context) PolicyTimeoutRuleV2ConditionArrayOutput
-}
-
-type PolicyTimeoutRuleV2ConditionArray []PolicyTimeoutRuleV2ConditionInput
-
-func (PolicyTimeoutRuleV2ConditionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyTimeoutRuleV2Condition)(nil)).Elem()
-}
-
-func (i PolicyTimeoutRuleV2ConditionArray) ToPolicyTimeoutRuleV2ConditionArrayOutput() PolicyTimeoutRuleV2ConditionArrayOutput {
-	return i.ToPolicyTimeoutRuleV2ConditionArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyTimeoutRuleV2ConditionArray) ToPolicyTimeoutRuleV2ConditionArrayOutputWithContext(ctx context.Context) PolicyTimeoutRuleV2ConditionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTimeoutRuleV2ConditionArrayOutput)
-}
-
-type PolicyTimeoutRuleV2ConditionOutput struct{ *pulumi.OutputState }
-
-func (PolicyTimeoutRuleV2ConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyTimeoutRuleV2Condition)(nil)).Elem()
-}
-
-func (o PolicyTimeoutRuleV2ConditionOutput) ToPolicyTimeoutRuleV2ConditionOutput() PolicyTimeoutRuleV2ConditionOutput {
-	return o
-}
-
-func (o PolicyTimeoutRuleV2ConditionOutput) ToPolicyTimeoutRuleV2ConditionOutputWithContext(ctx context.Context) PolicyTimeoutRuleV2ConditionOutput {
-	return o
-}
-
-func (o PolicyTimeoutRuleV2ConditionOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyTimeoutRuleV2Condition) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// This signifies the various policy criteria.
-func (o PolicyTimeoutRuleV2ConditionOutput) Operands() PolicyTimeoutRuleV2ConditionOperandArrayOutput {
-	return o.ApplyT(func(v PolicyTimeoutRuleV2Condition) []PolicyTimeoutRuleV2ConditionOperand { return v.Operands }).(PolicyTimeoutRuleV2ConditionOperandArrayOutput)
-}
-
-func (o PolicyTimeoutRuleV2ConditionOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyTimeoutRuleV2Condition) *string { return v.Operator }).(pulumi.StringPtrOutput)
-}
-
-type PolicyTimeoutRuleV2ConditionArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyTimeoutRuleV2ConditionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyTimeoutRuleV2Condition)(nil)).Elem()
-}
-
-func (o PolicyTimeoutRuleV2ConditionArrayOutput) ToPolicyTimeoutRuleV2ConditionArrayOutput() PolicyTimeoutRuleV2ConditionArrayOutput {
-	return o
-}
-
-func (o PolicyTimeoutRuleV2ConditionArrayOutput) ToPolicyTimeoutRuleV2ConditionArrayOutputWithContext(ctx context.Context) PolicyTimeoutRuleV2ConditionArrayOutput {
-	return o
-}
-
-func (o PolicyTimeoutRuleV2ConditionArrayOutput) Index(i pulumi.IntInput) PolicyTimeoutRuleV2ConditionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyTimeoutRuleV2Condition {
-		return vs[0].([]PolicyTimeoutRuleV2Condition)[vs[1].(int)]
-	}).(PolicyTimeoutRuleV2ConditionOutput)
-}
-
-type PolicyTimeoutRuleV2ConditionOperand struct {
-	EntryValues []PolicyTimeoutRuleV2ConditionOperandEntryValue `pulumi:"entryValues"`
-	// This is for specifying the policy critiera.
-	ObjectType *string `pulumi:"objectType"`
-	// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-	Values []string `pulumi:"values"`
-}
-
-// PolicyTimeoutRuleV2ConditionOperandInput is an input type that accepts PolicyTimeoutRuleV2ConditionOperandArgs and PolicyTimeoutRuleV2ConditionOperandOutput values.
-// You can construct a concrete instance of `PolicyTimeoutRuleV2ConditionOperandInput` via:
-//
-//	PolicyTimeoutRuleV2ConditionOperandArgs{...}
-type PolicyTimeoutRuleV2ConditionOperandInput interface {
-	pulumi.Input
-
-	ToPolicyTimeoutRuleV2ConditionOperandOutput() PolicyTimeoutRuleV2ConditionOperandOutput
-	ToPolicyTimeoutRuleV2ConditionOperandOutputWithContext(context.Context) PolicyTimeoutRuleV2ConditionOperandOutput
-}
-
-type PolicyTimeoutRuleV2ConditionOperandArgs struct {
-	EntryValues PolicyTimeoutRuleV2ConditionOperandEntryValueArrayInput `pulumi:"entryValues"`
-	// This is for specifying the policy critiera.
-	ObjectType pulumi.StringPtrInput `pulumi:"objectType"`
-	// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (PolicyTimeoutRuleV2ConditionOperandArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyTimeoutRuleV2ConditionOperand)(nil)).Elem()
-}
-
-func (i PolicyTimeoutRuleV2ConditionOperandArgs) ToPolicyTimeoutRuleV2ConditionOperandOutput() PolicyTimeoutRuleV2ConditionOperandOutput {
-	return i.ToPolicyTimeoutRuleV2ConditionOperandOutputWithContext(context.Background())
-}
-
-func (i PolicyTimeoutRuleV2ConditionOperandArgs) ToPolicyTimeoutRuleV2ConditionOperandOutputWithContext(ctx context.Context) PolicyTimeoutRuleV2ConditionOperandOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTimeoutRuleV2ConditionOperandOutput)
-}
-
-// PolicyTimeoutRuleV2ConditionOperandArrayInput is an input type that accepts PolicyTimeoutRuleV2ConditionOperandArray and PolicyTimeoutRuleV2ConditionOperandArrayOutput values.
-// You can construct a concrete instance of `PolicyTimeoutRuleV2ConditionOperandArrayInput` via:
-//
-//	PolicyTimeoutRuleV2ConditionOperandArray{ PolicyTimeoutRuleV2ConditionOperandArgs{...} }
-type PolicyTimeoutRuleV2ConditionOperandArrayInput interface {
-	pulumi.Input
-
-	ToPolicyTimeoutRuleV2ConditionOperandArrayOutput() PolicyTimeoutRuleV2ConditionOperandArrayOutput
-	ToPolicyTimeoutRuleV2ConditionOperandArrayOutputWithContext(context.Context) PolicyTimeoutRuleV2ConditionOperandArrayOutput
-}
-
-type PolicyTimeoutRuleV2ConditionOperandArray []PolicyTimeoutRuleV2ConditionOperandInput
-
-func (PolicyTimeoutRuleV2ConditionOperandArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyTimeoutRuleV2ConditionOperand)(nil)).Elem()
-}
-
-func (i PolicyTimeoutRuleV2ConditionOperandArray) ToPolicyTimeoutRuleV2ConditionOperandArrayOutput() PolicyTimeoutRuleV2ConditionOperandArrayOutput {
-	return i.ToPolicyTimeoutRuleV2ConditionOperandArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyTimeoutRuleV2ConditionOperandArray) ToPolicyTimeoutRuleV2ConditionOperandArrayOutputWithContext(ctx context.Context) PolicyTimeoutRuleV2ConditionOperandArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTimeoutRuleV2ConditionOperandArrayOutput)
-}
-
-type PolicyTimeoutRuleV2ConditionOperandOutput struct{ *pulumi.OutputState }
-
-func (PolicyTimeoutRuleV2ConditionOperandOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyTimeoutRuleV2ConditionOperand)(nil)).Elem()
-}
-
-func (o PolicyTimeoutRuleV2ConditionOperandOutput) ToPolicyTimeoutRuleV2ConditionOperandOutput() PolicyTimeoutRuleV2ConditionOperandOutput {
-	return o
-}
-
-func (o PolicyTimeoutRuleV2ConditionOperandOutput) ToPolicyTimeoutRuleV2ConditionOperandOutputWithContext(ctx context.Context) PolicyTimeoutRuleV2ConditionOperandOutput {
-	return o
-}
-
-func (o PolicyTimeoutRuleV2ConditionOperandOutput) EntryValues() PolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutput {
-	return o.ApplyT(func(v PolicyTimeoutRuleV2ConditionOperand) []PolicyTimeoutRuleV2ConditionOperandEntryValue {
-		return v.EntryValues
-	}).(PolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutput)
-}
-
-// This is for specifying the policy critiera.
-func (o PolicyTimeoutRuleV2ConditionOperandOutput) ObjectType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyTimeoutRuleV2ConditionOperand) *string { return v.ObjectType }).(pulumi.StringPtrOutput)
-}
-
-// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-func (o PolicyTimeoutRuleV2ConditionOperandOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PolicyTimeoutRuleV2ConditionOperand) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type PolicyTimeoutRuleV2ConditionOperandArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyTimeoutRuleV2ConditionOperandArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyTimeoutRuleV2ConditionOperand)(nil)).Elem()
-}
-
-func (o PolicyTimeoutRuleV2ConditionOperandArrayOutput) ToPolicyTimeoutRuleV2ConditionOperandArrayOutput() PolicyTimeoutRuleV2ConditionOperandArrayOutput {
-	return o
-}
-
-func (o PolicyTimeoutRuleV2ConditionOperandArrayOutput) ToPolicyTimeoutRuleV2ConditionOperandArrayOutputWithContext(ctx context.Context) PolicyTimeoutRuleV2ConditionOperandArrayOutput {
-	return o
-}
-
-func (o PolicyTimeoutRuleV2ConditionOperandArrayOutput) Index(i pulumi.IntInput) PolicyTimeoutRuleV2ConditionOperandOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyTimeoutRuleV2ConditionOperand {
-		return vs[0].([]PolicyTimeoutRuleV2ConditionOperand)[vs[1].(int)]
-	}).(PolicyTimeoutRuleV2ConditionOperandOutput)
-}
-
-type PolicyTimeoutRuleV2ConditionOperandEntryValue struct {
-	Lhs *string `pulumi:"lhs"`
-	Rhs *string `pulumi:"rhs"`
-}
-
-// PolicyTimeoutRuleV2ConditionOperandEntryValueInput is an input type that accepts PolicyTimeoutRuleV2ConditionOperandEntryValueArgs and PolicyTimeoutRuleV2ConditionOperandEntryValueOutput values.
-// You can construct a concrete instance of `PolicyTimeoutRuleV2ConditionOperandEntryValueInput` via:
-//
-//	PolicyTimeoutRuleV2ConditionOperandEntryValueArgs{...}
-type PolicyTimeoutRuleV2ConditionOperandEntryValueInput interface {
-	pulumi.Input
-
-	ToPolicyTimeoutRuleV2ConditionOperandEntryValueOutput() PolicyTimeoutRuleV2ConditionOperandEntryValueOutput
-	ToPolicyTimeoutRuleV2ConditionOperandEntryValueOutputWithContext(context.Context) PolicyTimeoutRuleV2ConditionOperandEntryValueOutput
-}
-
-type PolicyTimeoutRuleV2ConditionOperandEntryValueArgs struct {
-	Lhs pulumi.StringPtrInput `pulumi:"lhs"`
-	Rhs pulumi.StringPtrInput `pulumi:"rhs"`
-}
-
-func (PolicyTimeoutRuleV2ConditionOperandEntryValueArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyTimeoutRuleV2ConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (i PolicyTimeoutRuleV2ConditionOperandEntryValueArgs) ToPolicyTimeoutRuleV2ConditionOperandEntryValueOutput() PolicyTimeoutRuleV2ConditionOperandEntryValueOutput {
-	return i.ToPolicyTimeoutRuleV2ConditionOperandEntryValueOutputWithContext(context.Background())
-}
-
-func (i PolicyTimeoutRuleV2ConditionOperandEntryValueArgs) ToPolicyTimeoutRuleV2ConditionOperandEntryValueOutputWithContext(ctx context.Context) PolicyTimeoutRuleV2ConditionOperandEntryValueOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTimeoutRuleV2ConditionOperandEntryValueOutput)
-}
-
-// PolicyTimeoutRuleV2ConditionOperandEntryValueArrayInput is an input type that accepts PolicyTimeoutRuleV2ConditionOperandEntryValueArray and PolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutput values.
-// You can construct a concrete instance of `PolicyTimeoutRuleV2ConditionOperandEntryValueArrayInput` via:
-//
-//	PolicyTimeoutRuleV2ConditionOperandEntryValueArray{ PolicyTimeoutRuleV2ConditionOperandEntryValueArgs{...} }
-type PolicyTimeoutRuleV2ConditionOperandEntryValueArrayInput interface {
-	pulumi.Input
-
-	ToPolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutput() PolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutput
-	ToPolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutputWithContext(context.Context) PolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutput
-}
-
-type PolicyTimeoutRuleV2ConditionOperandEntryValueArray []PolicyTimeoutRuleV2ConditionOperandEntryValueInput
-
-func (PolicyTimeoutRuleV2ConditionOperandEntryValueArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyTimeoutRuleV2ConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (i PolicyTimeoutRuleV2ConditionOperandEntryValueArray) ToPolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutput() PolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutput {
-	return i.ToPolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutputWithContext(context.Background())
-}
-
-func (i PolicyTimeoutRuleV2ConditionOperandEntryValueArray) ToPolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutputWithContext(ctx context.Context) PolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutput)
-}
-
-type PolicyTimeoutRuleV2ConditionOperandEntryValueOutput struct{ *pulumi.OutputState }
-
-func (PolicyTimeoutRuleV2ConditionOperandEntryValueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyTimeoutRuleV2ConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (o PolicyTimeoutRuleV2ConditionOperandEntryValueOutput) ToPolicyTimeoutRuleV2ConditionOperandEntryValueOutput() PolicyTimeoutRuleV2ConditionOperandEntryValueOutput {
-	return o
-}
-
-func (o PolicyTimeoutRuleV2ConditionOperandEntryValueOutput) ToPolicyTimeoutRuleV2ConditionOperandEntryValueOutputWithContext(ctx context.Context) PolicyTimeoutRuleV2ConditionOperandEntryValueOutput {
-	return o
-}
-
-func (o PolicyTimeoutRuleV2ConditionOperandEntryValueOutput) Lhs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyTimeoutRuleV2ConditionOperandEntryValue) *string { return v.Lhs }).(pulumi.StringPtrOutput)
-}
-
-func (o PolicyTimeoutRuleV2ConditionOperandEntryValueOutput) Rhs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyTimeoutRuleV2ConditionOperandEntryValue) *string { return v.Rhs }).(pulumi.StringPtrOutput)
-}
-
-type PolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutput struct{ *pulumi.OutputState }
-
-func (PolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyTimeoutRuleV2ConditionOperandEntryValue)(nil)).Elem()
-}
-
-func (o PolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutput) ToPolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutput() PolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutput {
-	return o
-}
-
-func (o PolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutput) ToPolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutputWithContext(ctx context.Context) PolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutput {
-	return o
-}
-
-func (o PolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutput) Index(i pulumi.IntInput) PolicyTimeoutRuleV2ConditionOperandEntryValueOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyTimeoutRuleV2ConditionOperandEntryValue {
-		return vs[0].([]PolicyTimeoutRuleV2ConditionOperandEntryValue)[vs[1].(int)]
-	}).(PolicyTimeoutRuleV2ConditionOperandEntryValueOutput)
-}
-
-type PraApprovalControllerApplication struct {
-	// The unique identifier of the pra application segment
-	Ids []string `pulumi:"ids"`
-}
-
-// PraApprovalControllerApplicationInput is an input type that accepts PraApprovalControllerApplicationArgs and PraApprovalControllerApplicationOutput values.
-// You can construct a concrete instance of `PraApprovalControllerApplicationInput` via:
-//
-//	PraApprovalControllerApplicationArgs{...}
-type PraApprovalControllerApplicationInput interface {
-	pulumi.Input
-
-	ToPraApprovalControllerApplicationOutput() PraApprovalControllerApplicationOutput
-	ToPraApprovalControllerApplicationOutputWithContext(context.Context) PraApprovalControllerApplicationOutput
-}
-
-type PraApprovalControllerApplicationArgs struct {
-	// The unique identifier of the pra application segment
-	Ids pulumi.StringArrayInput `pulumi:"ids"`
-}
-
-func (PraApprovalControllerApplicationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PraApprovalControllerApplication)(nil)).Elem()
-}
-
-func (i PraApprovalControllerApplicationArgs) ToPraApprovalControllerApplicationOutput() PraApprovalControllerApplicationOutput {
-	return i.ToPraApprovalControllerApplicationOutputWithContext(context.Background())
-}
-
-func (i PraApprovalControllerApplicationArgs) ToPraApprovalControllerApplicationOutputWithContext(ctx context.Context) PraApprovalControllerApplicationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PraApprovalControllerApplicationOutput)
-}
-
-// PraApprovalControllerApplicationArrayInput is an input type that accepts PraApprovalControllerApplicationArray and PraApprovalControllerApplicationArrayOutput values.
-// You can construct a concrete instance of `PraApprovalControllerApplicationArrayInput` via:
-//
-//	PraApprovalControllerApplicationArray{ PraApprovalControllerApplicationArgs{...} }
-type PraApprovalControllerApplicationArrayInput interface {
-	pulumi.Input
-
-	ToPraApprovalControllerApplicationArrayOutput() PraApprovalControllerApplicationArrayOutput
-	ToPraApprovalControllerApplicationArrayOutputWithContext(context.Context) PraApprovalControllerApplicationArrayOutput
-}
-
-type PraApprovalControllerApplicationArray []PraApprovalControllerApplicationInput
-
-func (PraApprovalControllerApplicationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PraApprovalControllerApplication)(nil)).Elem()
-}
-
-func (i PraApprovalControllerApplicationArray) ToPraApprovalControllerApplicationArrayOutput() PraApprovalControllerApplicationArrayOutput {
-	return i.ToPraApprovalControllerApplicationArrayOutputWithContext(context.Background())
-}
-
-func (i PraApprovalControllerApplicationArray) ToPraApprovalControllerApplicationArrayOutputWithContext(ctx context.Context) PraApprovalControllerApplicationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PraApprovalControllerApplicationArrayOutput)
-}
-
-type PraApprovalControllerApplicationOutput struct{ *pulumi.OutputState }
-
-func (PraApprovalControllerApplicationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PraApprovalControllerApplication)(nil)).Elem()
-}
-
-func (o PraApprovalControllerApplicationOutput) ToPraApprovalControllerApplicationOutput() PraApprovalControllerApplicationOutput {
-	return o
-}
-
-func (o PraApprovalControllerApplicationOutput) ToPraApprovalControllerApplicationOutputWithContext(ctx context.Context) PraApprovalControllerApplicationOutput {
-	return o
-}
-
-// The unique identifier of the pra application segment
-func (o PraApprovalControllerApplicationOutput) Ids() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PraApprovalControllerApplication) []string { return v.Ids }).(pulumi.StringArrayOutput)
-}
-
-type PraApprovalControllerApplicationArrayOutput struct{ *pulumi.OutputState }
-
-func (PraApprovalControllerApplicationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PraApprovalControllerApplication)(nil)).Elem()
-}
-
-func (o PraApprovalControllerApplicationArrayOutput) ToPraApprovalControllerApplicationArrayOutput() PraApprovalControllerApplicationArrayOutput {
-	return o
-}
-
-func (o PraApprovalControllerApplicationArrayOutput) ToPraApprovalControllerApplicationArrayOutputWithContext(ctx context.Context) PraApprovalControllerApplicationArrayOutput {
-	return o
-}
-
-func (o PraApprovalControllerApplicationArrayOutput) Index(i pulumi.IntInput) PraApprovalControllerApplicationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PraApprovalControllerApplication {
-		return vs[0].([]PraApprovalControllerApplication)[vs[1].(int)]
-	}).(PraApprovalControllerApplicationOutput)
-}
-
-type PraApprovalControllerWorkingHour struct {
-	// The days of the week that you want to enable the privileged approval
-	Days []string `pulumi:"days"`
-	// The end time that the user no longer has access to the privileged approval
-	EndTime *string `pulumi:"endTime"`
-	// The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
-	EndTimeCron *string `pulumi:"endTimeCron"`
-	// The start time that the user has access to the privileged approval
-	StartTime *string `pulumi:"startTime"`
-	// The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
-	StartTimeCron *string `pulumi:"startTimeCron"`
-	// The time zone for the time window of a privileged approval
-	Timezone *string `pulumi:"timezone"`
-}
-
-// PraApprovalControllerWorkingHourInput is an input type that accepts PraApprovalControllerWorkingHourArgs and PraApprovalControllerWorkingHourOutput values.
-// You can construct a concrete instance of `PraApprovalControllerWorkingHourInput` via:
-//
-//	PraApprovalControllerWorkingHourArgs{...}
-type PraApprovalControllerWorkingHourInput interface {
-	pulumi.Input
-
-	ToPraApprovalControllerWorkingHourOutput() PraApprovalControllerWorkingHourOutput
-	ToPraApprovalControllerWorkingHourOutputWithContext(context.Context) PraApprovalControllerWorkingHourOutput
-}
-
-type PraApprovalControllerWorkingHourArgs struct {
-	// The days of the week that you want to enable the privileged approval
-	Days pulumi.StringArrayInput `pulumi:"days"`
-	// The end time that the user no longer has access to the privileged approval
-	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	// The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
-	EndTimeCron pulumi.StringPtrInput `pulumi:"endTimeCron"`
-	// The start time that the user has access to the privileged approval
-	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
-	StartTimeCron pulumi.StringPtrInput `pulumi:"startTimeCron"`
-	// The time zone for the time window of a privileged approval
-	Timezone pulumi.StringPtrInput `pulumi:"timezone"`
-}
-
-func (PraApprovalControllerWorkingHourArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PraApprovalControllerWorkingHour)(nil)).Elem()
-}
-
-func (i PraApprovalControllerWorkingHourArgs) ToPraApprovalControllerWorkingHourOutput() PraApprovalControllerWorkingHourOutput {
-	return i.ToPraApprovalControllerWorkingHourOutputWithContext(context.Background())
-}
-
-func (i PraApprovalControllerWorkingHourArgs) ToPraApprovalControllerWorkingHourOutputWithContext(ctx context.Context) PraApprovalControllerWorkingHourOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PraApprovalControllerWorkingHourOutput)
-}
-
-// PraApprovalControllerWorkingHourArrayInput is an input type that accepts PraApprovalControllerWorkingHourArray and PraApprovalControllerWorkingHourArrayOutput values.
-// You can construct a concrete instance of `PraApprovalControllerWorkingHourArrayInput` via:
-//
-//	PraApprovalControllerWorkingHourArray{ PraApprovalControllerWorkingHourArgs{...} }
-type PraApprovalControllerWorkingHourArrayInput interface {
-	pulumi.Input
-
-	ToPraApprovalControllerWorkingHourArrayOutput() PraApprovalControllerWorkingHourArrayOutput
-	ToPraApprovalControllerWorkingHourArrayOutputWithContext(context.Context) PraApprovalControllerWorkingHourArrayOutput
-}
-
-type PraApprovalControllerWorkingHourArray []PraApprovalControllerWorkingHourInput
-
-func (PraApprovalControllerWorkingHourArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PraApprovalControllerWorkingHour)(nil)).Elem()
-}
-
-func (i PraApprovalControllerWorkingHourArray) ToPraApprovalControllerWorkingHourArrayOutput() PraApprovalControllerWorkingHourArrayOutput {
-	return i.ToPraApprovalControllerWorkingHourArrayOutputWithContext(context.Background())
-}
-
-func (i PraApprovalControllerWorkingHourArray) ToPraApprovalControllerWorkingHourArrayOutputWithContext(ctx context.Context) PraApprovalControllerWorkingHourArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PraApprovalControllerWorkingHourArrayOutput)
-}
-
-type PraApprovalControllerWorkingHourOutput struct{ *pulumi.OutputState }
-
-func (PraApprovalControllerWorkingHourOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PraApprovalControllerWorkingHour)(nil)).Elem()
-}
-
-func (o PraApprovalControllerWorkingHourOutput) ToPraApprovalControllerWorkingHourOutput() PraApprovalControllerWorkingHourOutput {
-	return o
-}
-
-func (o PraApprovalControllerWorkingHourOutput) ToPraApprovalControllerWorkingHourOutputWithContext(ctx context.Context) PraApprovalControllerWorkingHourOutput {
-	return o
-}
-
-// The days of the week that you want to enable the privileged approval
-func (o PraApprovalControllerWorkingHourOutput) Days() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PraApprovalControllerWorkingHour) []string { return v.Days }).(pulumi.StringArrayOutput)
-}
-
-// The end time that the user no longer has access to the privileged approval
-func (o PraApprovalControllerWorkingHourOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PraApprovalControllerWorkingHour) *string { return v.EndTime }).(pulumi.StringPtrOutput)
-}
-
-// The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
-func (o PraApprovalControllerWorkingHourOutput) EndTimeCron() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PraApprovalControllerWorkingHour) *string { return v.EndTimeCron }).(pulumi.StringPtrOutput)
-}
-
-// The start time that the user has access to the privileged approval
-func (o PraApprovalControllerWorkingHourOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PraApprovalControllerWorkingHour) *string { return v.StartTime }).(pulumi.StringPtrOutput)
-}
-
-// The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
-func (o PraApprovalControllerWorkingHourOutput) StartTimeCron() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PraApprovalControllerWorkingHour) *string { return v.StartTimeCron }).(pulumi.StringPtrOutput)
-}
-
-// The time zone for the time window of a privileged approval
-func (o PraApprovalControllerWorkingHourOutput) Timezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PraApprovalControllerWorkingHour) *string { return v.Timezone }).(pulumi.StringPtrOutput)
-}
-
-type PraApprovalControllerWorkingHourArrayOutput struct{ *pulumi.OutputState }
-
-func (PraApprovalControllerWorkingHourArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PraApprovalControllerWorkingHour)(nil)).Elem()
-}
-
-func (o PraApprovalControllerWorkingHourArrayOutput) ToPraApprovalControllerWorkingHourArrayOutput() PraApprovalControllerWorkingHourArrayOutput {
-	return o
-}
-
-func (o PraApprovalControllerWorkingHourArrayOutput) ToPraApprovalControllerWorkingHourArrayOutputWithContext(ctx context.Context) PraApprovalControllerWorkingHourArrayOutput {
-	return o
-}
-
-func (o PraApprovalControllerWorkingHourArrayOutput) Index(i pulumi.IntInput) PraApprovalControllerWorkingHourOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PraApprovalControllerWorkingHour {
-		return vs[0].([]PraApprovalControllerWorkingHour)[vs[1].(int)]
-	}).(PraApprovalControllerWorkingHourOutput)
-}
-
-type PraConsoleControllerPraApplication struct {
-	Id string `pulumi:"id"`
-}
-
-// PraConsoleControllerPraApplicationInput is an input type that accepts PraConsoleControllerPraApplicationArgs and PraConsoleControllerPraApplicationOutput values.
-// You can construct a concrete instance of `PraConsoleControllerPraApplicationInput` via:
-//
-//	PraConsoleControllerPraApplicationArgs{...}
-type PraConsoleControllerPraApplicationInput interface {
-	pulumi.Input
-
-	ToPraConsoleControllerPraApplicationOutput() PraConsoleControllerPraApplicationOutput
-	ToPraConsoleControllerPraApplicationOutputWithContext(context.Context) PraConsoleControllerPraApplicationOutput
-}
-
-type PraConsoleControllerPraApplicationArgs struct {
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (PraConsoleControllerPraApplicationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PraConsoleControllerPraApplication)(nil)).Elem()
-}
-
-func (i PraConsoleControllerPraApplicationArgs) ToPraConsoleControllerPraApplicationOutput() PraConsoleControllerPraApplicationOutput {
-	return i.ToPraConsoleControllerPraApplicationOutputWithContext(context.Background())
-}
-
-func (i PraConsoleControllerPraApplicationArgs) ToPraConsoleControllerPraApplicationOutputWithContext(ctx context.Context) PraConsoleControllerPraApplicationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PraConsoleControllerPraApplicationOutput)
-}
-
-func (i PraConsoleControllerPraApplicationArgs) ToPraConsoleControllerPraApplicationPtrOutput() PraConsoleControllerPraApplicationPtrOutput {
-	return i.ToPraConsoleControllerPraApplicationPtrOutputWithContext(context.Background())
-}
-
-func (i PraConsoleControllerPraApplicationArgs) ToPraConsoleControllerPraApplicationPtrOutputWithContext(ctx context.Context) PraConsoleControllerPraApplicationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PraConsoleControllerPraApplicationOutput).ToPraConsoleControllerPraApplicationPtrOutputWithContext(ctx)
-}
-
-// PraConsoleControllerPraApplicationPtrInput is an input type that accepts PraConsoleControllerPraApplicationArgs, PraConsoleControllerPraApplicationPtr and PraConsoleControllerPraApplicationPtrOutput values.
-// You can construct a concrete instance of `PraConsoleControllerPraApplicationPtrInput` via:
-//
-//	        PraConsoleControllerPraApplicationArgs{...}
-//
-//	or:
-//
-//	        nil
-type PraConsoleControllerPraApplicationPtrInput interface {
-	pulumi.Input
-
-	ToPraConsoleControllerPraApplicationPtrOutput() PraConsoleControllerPraApplicationPtrOutput
-	ToPraConsoleControllerPraApplicationPtrOutputWithContext(context.Context) PraConsoleControllerPraApplicationPtrOutput
-}
-
-type praConsoleControllerPraApplicationPtrType PraConsoleControllerPraApplicationArgs
-
-func PraConsoleControllerPraApplicationPtr(v *PraConsoleControllerPraApplicationArgs) PraConsoleControllerPraApplicationPtrInput {
-	return (*praConsoleControllerPraApplicationPtrType)(v)
-}
-
-func (*praConsoleControllerPraApplicationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PraConsoleControllerPraApplication)(nil)).Elem()
-}
-
-func (i *praConsoleControllerPraApplicationPtrType) ToPraConsoleControllerPraApplicationPtrOutput() PraConsoleControllerPraApplicationPtrOutput {
-	return i.ToPraConsoleControllerPraApplicationPtrOutputWithContext(context.Background())
-}
-
-func (i *praConsoleControllerPraApplicationPtrType) ToPraConsoleControllerPraApplicationPtrOutputWithContext(ctx context.Context) PraConsoleControllerPraApplicationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PraConsoleControllerPraApplicationPtrOutput)
-}
-
-type PraConsoleControllerPraApplicationOutput struct{ *pulumi.OutputState }
-
-func (PraConsoleControllerPraApplicationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PraConsoleControllerPraApplication)(nil)).Elem()
-}
-
-func (o PraConsoleControllerPraApplicationOutput) ToPraConsoleControllerPraApplicationOutput() PraConsoleControllerPraApplicationOutput {
-	return o
-}
-
-func (o PraConsoleControllerPraApplicationOutput) ToPraConsoleControllerPraApplicationOutputWithContext(ctx context.Context) PraConsoleControllerPraApplicationOutput {
-	return o
-}
-
-func (o PraConsoleControllerPraApplicationOutput) ToPraConsoleControllerPraApplicationPtrOutput() PraConsoleControllerPraApplicationPtrOutput {
-	return o.ToPraConsoleControllerPraApplicationPtrOutputWithContext(context.Background())
-}
-
-func (o PraConsoleControllerPraApplicationOutput) ToPraConsoleControllerPraApplicationPtrOutputWithContext(ctx context.Context) PraConsoleControllerPraApplicationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PraConsoleControllerPraApplication) *PraConsoleControllerPraApplication {
-		return &v
-	}).(PraConsoleControllerPraApplicationPtrOutput)
-}
-
-func (o PraConsoleControllerPraApplicationOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PraConsoleControllerPraApplication) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type PraConsoleControllerPraApplicationPtrOutput struct{ *pulumi.OutputState }
-
-func (PraConsoleControllerPraApplicationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PraConsoleControllerPraApplication)(nil)).Elem()
-}
-
-func (o PraConsoleControllerPraApplicationPtrOutput) ToPraConsoleControllerPraApplicationPtrOutput() PraConsoleControllerPraApplicationPtrOutput {
-	return o
-}
-
-func (o PraConsoleControllerPraApplicationPtrOutput) ToPraConsoleControllerPraApplicationPtrOutputWithContext(ctx context.Context) PraConsoleControllerPraApplicationPtrOutput {
-	return o
-}
-
-func (o PraConsoleControllerPraApplicationPtrOutput) Elem() PraConsoleControllerPraApplicationOutput {
-	return o.ApplyT(func(v *PraConsoleControllerPraApplication) PraConsoleControllerPraApplication {
-		if v != nil {
-			return *v
-		}
-		var ret PraConsoleControllerPraApplication
-		return ret
-	}).(PraConsoleControllerPraApplicationOutput)
-}
-
-func (o PraConsoleControllerPraApplicationPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PraConsoleControllerPraApplication) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-type PraConsoleControllerPraPortal struct {
-	// The unique identifier of the privileged portal
-	Ids []string `pulumi:"ids"`
-}
-
-// PraConsoleControllerPraPortalInput is an input type that accepts PraConsoleControllerPraPortalArgs and PraConsoleControllerPraPortalOutput values.
-// You can construct a concrete instance of `PraConsoleControllerPraPortalInput` via:
-//
-//	PraConsoleControllerPraPortalArgs{...}
-type PraConsoleControllerPraPortalInput interface {
-	pulumi.Input
-
-	ToPraConsoleControllerPraPortalOutput() PraConsoleControllerPraPortalOutput
-	ToPraConsoleControllerPraPortalOutputWithContext(context.Context) PraConsoleControllerPraPortalOutput
-}
-
-type PraConsoleControllerPraPortalArgs struct {
-	// The unique identifier of the privileged portal
-	Ids pulumi.StringArrayInput `pulumi:"ids"`
-}
-
-func (PraConsoleControllerPraPortalArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PraConsoleControllerPraPortal)(nil)).Elem()
-}
-
-func (i PraConsoleControllerPraPortalArgs) ToPraConsoleControllerPraPortalOutput() PraConsoleControllerPraPortalOutput {
-	return i.ToPraConsoleControllerPraPortalOutputWithContext(context.Background())
-}
-
-func (i PraConsoleControllerPraPortalArgs) ToPraConsoleControllerPraPortalOutputWithContext(ctx context.Context) PraConsoleControllerPraPortalOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PraConsoleControllerPraPortalOutput)
-}
-
-// PraConsoleControllerPraPortalArrayInput is an input type that accepts PraConsoleControllerPraPortalArray and PraConsoleControllerPraPortalArrayOutput values.
-// You can construct a concrete instance of `PraConsoleControllerPraPortalArrayInput` via:
-//
-//	PraConsoleControllerPraPortalArray{ PraConsoleControllerPraPortalArgs{...} }
-type PraConsoleControllerPraPortalArrayInput interface {
-	pulumi.Input
-
-	ToPraConsoleControllerPraPortalArrayOutput() PraConsoleControllerPraPortalArrayOutput
-	ToPraConsoleControllerPraPortalArrayOutputWithContext(context.Context) PraConsoleControllerPraPortalArrayOutput
-}
-
-type PraConsoleControllerPraPortalArray []PraConsoleControllerPraPortalInput
-
-func (PraConsoleControllerPraPortalArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PraConsoleControllerPraPortal)(nil)).Elem()
-}
-
-func (i PraConsoleControllerPraPortalArray) ToPraConsoleControllerPraPortalArrayOutput() PraConsoleControllerPraPortalArrayOutput {
-	return i.ToPraConsoleControllerPraPortalArrayOutputWithContext(context.Background())
-}
-
-func (i PraConsoleControllerPraPortalArray) ToPraConsoleControllerPraPortalArrayOutputWithContext(ctx context.Context) PraConsoleControllerPraPortalArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PraConsoleControllerPraPortalArrayOutput)
-}
-
-type PraConsoleControllerPraPortalOutput struct{ *pulumi.OutputState }
-
-func (PraConsoleControllerPraPortalOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PraConsoleControllerPraPortal)(nil)).Elem()
-}
-
-func (o PraConsoleControllerPraPortalOutput) ToPraConsoleControllerPraPortalOutput() PraConsoleControllerPraPortalOutput {
-	return o
-}
-
-func (o PraConsoleControllerPraPortalOutput) ToPraConsoleControllerPraPortalOutputWithContext(ctx context.Context) PraConsoleControllerPraPortalOutput {
-	return o
-}
-
-// The unique identifier of the privileged portal
-func (o PraConsoleControllerPraPortalOutput) Ids() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PraConsoleControllerPraPortal) []string { return v.Ids }).(pulumi.StringArrayOutput)
-}
-
-type PraConsoleControllerPraPortalArrayOutput struct{ *pulumi.OutputState }
-
-func (PraConsoleControllerPraPortalArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PraConsoleControllerPraPortal)(nil)).Elem()
-}
-
-func (o PraConsoleControllerPraPortalArrayOutput) ToPraConsoleControllerPraPortalArrayOutput() PraConsoleControllerPraPortalArrayOutput {
-	return o
-}
-
-func (o PraConsoleControllerPraPortalArrayOutput) ToPraConsoleControllerPraPortalArrayOutputWithContext(ctx context.Context) PraConsoleControllerPraPortalArrayOutput {
-	return o
-}
-
-func (o PraConsoleControllerPraPortalArrayOutput) Index(i pulumi.IntInput) PraConsoleControllerPraPortalOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PraConsoleControllerPraPortal {
-		return vs[0].([]PraConsoleControllerPraPortal)[vs[1].(int)]
-	}).(PraConsoleControllerPraPortalOutput)
-}
-
 type PraCredentialPoolCredential struct {
 	Ids []string `pulumi:"ids"`
 }
@@ -15080,98 +11854,137 @@ func (o ServerGroupServerArrayOutput) Index(i pulumi.IntInput) ServerGroupServer
 	}).(ServerGroupServerOutput)
 }
 
-type ServiceEdgeGroupServiceEdge struct {
+type ServiceEdgeGroupServiceEdges struct {
 	Ids []string `pulumi:"ids"`
 }
 
-// ServiceEdgeGroupServiceEdgeInput is an input type that accepts ServiceEdgeGroupServiceEdgeArgs and ServiceEdgeGroupServiceEdgeOutput values.
-// You can construct a concrete instance of `ServiceEdgeGroupServiceEdgeInput` via:
+// ServiceEdgeGroupServiceEdgesInput is an input type that accepts ServiceEdgeGroupServiceEdgesArgs and ServiceEdgeGroupServiceEdgesOutput values.
+// You can construct a concrete instance of `ServiceEdgeGroupServiceEdgesInput` via:
 //
-//	ServiceEdgeGroupServiceEdgeArgs{...}
-type ServiceEdgeGroupServiceEdgeInput interface {
+//	ServiceEdgeGroupServiceEdgesArgs{...}
+type ServiceEdgeGroupServiceEdgesInput interface {
 	pulumi.Input
 
-	ToServiceEdgeGroupServiceEdgeOutput() ServiceEdgeGroupServiceEdgeOutput
-	ToServiceEdgeGroupServiceEdgeOutputWithContext(context.Context) ServiceEdgeGroupServiceEdgeOutput
+	ToServiceEdgeGroupServiceEdgesOutput() ServiceEdgeGroupServiceEdgesOutput
+	ToServiceEdgeGroupServiceEdgesOutputWithContext(context.Context) ServiceEdgeGroupServiceEdgesOutput
 }
 
-type ServiceEdgeGroupServiceEdgeArgs struct {
+type ServiceEdgeGroupServiceEdgesArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 }
 
-func (ServiceEdgeGroupServiceEdgeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceEdgeGroupServiceEdge)(nil)).Elem()
+func (ServiceEdgeGroupServiceEdgesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceEdgeGroupServiceEdges)(nil)).Elem()
 }
 
-func (i ServiceEdgeGroupServiceEdgeArgs) ToServiceEdgeGroupServiceEdgeOutput() ServiceEdgeGroupServiceEdgeOutput {
-	return i.ToServiceEdgeGroupServiceEdgeOutputWithContext(context.Background())
+func (i ServiceEdgeGroupServiceEdgesArgs) ToServiceEdgeGroupServiceEdgesOutput() ServiceEdgeGroupServiceEdgesOutput {
+	return i.ToServiceEdgeGroupServiceEdgesOutputWithContext(context.Background())
 }
 
-func (i ServiceEdgeGroupServiceEdgeArgs) ToServiceEdgeGroupServiceEdgeOutputWithContext(ctx context.Context) ServiceEdgeGroupServiceEdgeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceEdgeGroupServiceEdgeOutput)
+func (i ServiceEdgeGroupServiceEdgesArgs) ToServiceEdgeGroupServiceEdgesOutputWithContext(ctx context.Context) ServiceEdgeGroupServiceEdgesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceEdgeGroupServiceEdgesOutput)
 }
 
-// ServiceEdgeGroupServiceEdgeArrayInput is an input type that accepts ServiceEdgeGroupServiceEdgeArray and ServiceEdgeGroupServiceEdgeArrayOutput values.
-// You can construct a concrete instance of `ServiceEdgeGroupServiceEdgeArrayInput` via:
+func (i ServiceEdgeGroupServiceEdgesArgs) ToServiceEdgeGroupServiceEdgesPtrOutput() ServiceEdgeGroupServiceEdgesPtrOutput {
+	return i.ToServiceEdgeGroupServiceEdgesPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceEdgeGroupServiceEdgesArgs) ToServiceEdgeGroupServiceEdgesPtrOutputWithContext(ctx context.Context) ServiceEdgeGroupServiceEdgesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceEdgeGroupServiceEdgesOutput).ToServiceEdgeGroupServiceEdgesPtrOutputWithContext(ctx)
+}
+
+// ServiceEdgeGroupServiceEdgesPtrInput is an input type that accepts ServiceEdgeGroupServiceEdgesArgs, ServiceEdgeGroupServiceEdgesPtr and ServiceEdgeGroupServiceEdgesPtrOutput values.
+// You can construct a concrete instance of `ServiceEdgeGroupServiceEdgesPtrInput` via:
 //
-//	ServiceEdgeGroupServiceEdgeArray{ ServiceEdgeGroupServiceEdgeArgs{...} }
-type ServiceEdgeGroupServiceEdgeArrayInput interface {
+//	        ServiceEdgeGroupServiceEdgesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceEdgeGroupServiceEdgesPtrInput interface {
 	pulumi.Input
 
-	ToServiceEdgeGroupServiceEdgeArrayOutput() ServiceEdgeGroupServiceEdgeArrayOutput
-	ToServiceEdgeGroupServiceEdgeArrayOutputWithContext(context.Context) ServiceEdgeGroupServiceEdgeArrayOutput
+	ToServiceEdgeGroupServiceEdgesPtrOutput() ServiceEdgeGroupServiceEdgesPtrOutput
+	ToServiceEdgeGroupServiceEdgesPtrOutputWithContext(context.Context) ServiceEdgeGroupServiceEdgesPtrOutput
 }
 
-type ServiceEdgeGroupServiceEdgeArray []ServiceEdgeGroupServiceEdgeInput
+type serviceEdgeGroupServiceEdgesPtrType ServiceEdgeGroupServiceEdgesArgs
 
-func (ServiceEdgeGroupServiceEdgeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceEdgeGroupServiceEdge)(nil)).Elem()
+func ServiceEdgeGroupServiceEdgesPtr(v *ServiceEdgeGroupServiceEdgesArgs) ServiceEdgeGroupServiceEdgesPtrInput {
+	return (*serviceEdgeGroupServiceEdgesPtrType)(v)
 }
 
-func (i ServiceEdgeGroupServiceEdgeArray) ToServiceEdgeGroupServiceEdgeArrayOutput() ServiceEdgeGroupServiceEdgeArrayOutput {
-	return i.ToServiceEdgeGroupServiceEdgeArrayOutputWithContext(context.Background())
+func (*serviceEdgeGroupServiceEdgesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceEdgeGroupServiceEdges)(nil)).Elem()
 }
 
-func (i ServiceEdgeGroupServiceEdgeArray) ToServiceEdgeGroupServiceEdgeArrayOutputWithContext(ctx context.Context) ServiceEdgeGroupServiceEdgeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceEdgeGroupServiceEdgeArrayOutput)
+func (i *serviceEdgeGroupServiceEdgesPtrType) ToServiceEdgeGroupServiceEdgesPtrOutput() ServiceEdgeGroupServiceEdgesPtrOutput {
+	return i.ToServiceEdgeGroupServiceEdgesPtrOutputWithContext(context.Background())
 }
 
-type ServiceEdgeGroupServiceEdgeOutput struct{ *pulumi.OutputState }
-
-func (ServiceEdgeGroupServiceEdgeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceEdgeGroupServiceEdge)(nil)).Elem()
+func (i *serviceEdgeGroupServiceEdgesPtrType) ToServiceEdgeGroupServiceEdgesPtrOutputWithContext(ctx context.Context) ServiceEdgeGroupServiceEdgesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceEdgeGroupServiceEdgesPtrOutput)
 }
 
-func (o ServiceEdgeGroupServiceEdgeOutput) ToServiceEdgeGroupServiceEdgeOutput() ServiceEdgeGroupServiceEdgeOutput {
+type ServiceEdgeGroupServiceEdgesOutput struct{ *pulumi.OutputState }
+
+func (ServiceEdgeGroupServiceEdgesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceEdgeGroupServiceEdges)(nil)).Elem()
+}
+
+func (o ServiceEdgeGroupServiceEdgesOutput) ToServiceEdgeGroupServiceEdgesOutput() ServiceEdgeGroupServiceEdgesOutput {
 	return o
 }
 
-func (o ServiceEdgeGroupServiceEdgeOutput) ToServiceEdgeGroupServiceEdgeOutputWithContext(ctx context.Context) ServiceEdgeGroupServiceEdgeOutput {
+func (o ServiceEdgeGroupServiceEdgesOutput) ToServiceEdgeGroupServiceEdgesOutputWithContext(ctx context.Context) ServiceEdgeGroupServiceEdgesOutput {
 	return o
 }
 
-func (o ServiceEdgeGroupServiceEdgeOutput) Ids() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServiceEdgeGroupServiceEdge) []string { return v.Ids }).(pulumi.StringArrayOutput)
+func (o ServiceEdgeGroupServiceEdgesOutput) ToServiceEdgeGroupServiceEdgesPtrOutput() ServiceEdgeGroupServiceEdgesPtrOutput {
+	return o.ToServiceEdgeGroupServiceEdgesPtrOutputWithContext(context.Background())
 }
 
-type ServiceEdgeGroupServiceEdgeArrayOutput struct{ *pulumi.OutputState }
-
-func (ServiceEdgeGroupServiceEdgeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceEdgeGroupServiceEdge)(nil)).Elem()
+func (o ServiceEdgeGroupServiceEdgesOutput) ToServiceEdgeGroupServiceEdgesPtrOutputWithContext(ctx context.Context) ServiceEdgeGroupServiceEdgesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceEdgeGroupServiceEdges) *ServiceEdgeGroupServiceEdges {
+		return &v
+	}).(ServiceEdgeGroupServiceEdgesPtrOutput)
 }
 
-func (o ServiceEdgeGroupServiceEdgeArrayOutput) ToServiceEdgeGroupServiceEdgeArrayOutput() ServiceEdgeGroupServiceEdgeArrayOutput {
+func (o ServiceEdgeGroupServiceEdgesOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceEdgeGroupServiceEdges) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type ServiceEdgeGroupServiceEdgesPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceEdgeGroupServiceEdgesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceEdgeGroupServiceEdges)(nil)).Elem()
+}
+
+func (o ServiceEdgeGroupServiceEdgesPtrOutput) ToServiceEdgeGroupServiceEdgesPtrOutput() ServiceEdgeGroupServiceEdgesPtrOutput {
 	return o
 }
 
-func (o ServiceEdgeGroupServiceEdgeArrayOutput) ToServiceEdgeGroupServiceEdgeArrayOutputWithContext(ctx context.Context) ServiceEdgeGroupServiceEdgeArrayOutput {
+func (o ServiceEdgeGroupServiceEdgesPtrOutput) ToServiceEdgeGroupServiceEdgesPtrOutputWithContext(ctx context.Context) ServiceEdgeGroupServiceEdgesPtrOutput {
 	return o
 }
 
-func (o ServiceEdgeGroupServiceEdgeArrayOutput) Index(i pulumi.IntInput) ServiceEdgeGroupServiceEdgeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceEdgeGroupServiceEdge {
-		return vs[0].([]ServiceEdgeGroupServiceEdge)[vs[1].(int)]
-	}).(ServiceEdgeGroupServiceEdgeOutput)
+func (o ServiceEdgeGroupServiceEdgesPtrOutput) Elem() ServiceEdgeGroupServiceEdgesOutput {
+	return o.ApplyT(func(v *ServiceEdgeGroupServiceEdges) ServiceEdgeGroupServiceEdges {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceEdgeGroupServiceEdges
+		return ret
+	}).(ServiceEdgeGroupServiceEdgesOutput)
+}
+
+func (o ServiceEdgeGroupServiceEdgesPtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceEdgeGroupServiceEdges) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
 }
 
 type ServiceEdgeGroupTrustedNetwork struct {
@@ -23664,560 +20477,6 @@ func (o GetPolicyTypeRuleConditionOperandArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetPolicyTypeRuleConditionOperandOutput)
 }
 
-type GetPraApprovalControllerApplication struct {
-	// The unique identifier of the pra application segment
-	Id string `pulumi:"id"`
-	// The name of the pra application segment
-	Name string `pulumi:"name"`
-}
-
-// GetPraApprovalControllerApplicationInput is an input type that accepts GetPraApprovalControllerApplicationArgs and GetPraApprovalControllerApplicationOutput values.
-// You can construct a concrete instance of `GetPraApprovalControllerApplicationInput` via:
-//
-//	GetPraApprovalControllerApplicationArgs{...}
-type GetPraApprovalControllerApplicationInput interface {
-	pulumi.Input
-
-	ToGetPraApprovalControllerApplicationOutput() GetPraApprovalControllerApplicationOutput
-	ToGetPraApprovalControllerApplicationOutputWithContext(context.Context) GetPraApprovalControllerApplicationOutput
-}
-
-type GetPraApprovalControllerApplicationArgs struct {
-	// The unique identifier of the pra application segment
-	Id pulumi.StringInput `pulumi:"id"`
-	// The name of the pra application segment
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetPraApprovalControllerApplicationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPraApprovalControllerApplication)(nil)).Elem()
-}
-
-func (i GetPraApprovalControllerApplicationArgs) ToGetPraApprovalControllerApplicationOutput() GetPraApprovalControllerApplicationOutput {
-	return i.ToGetPraApprovalControllerApplicationOutputWithContext(context.Background())
-}
-
-func (i GetPraApprovalControllerApplicationArgs) ToGetPraApprovalControllerApplicationOutputWithContext(ctx context.Context) GetPraApprovalControllerApplicationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPraApprovalControllerApplicationOutput)
-}
-
-// GetPraApprovalControllerApplicationArrayInput is an input type that accepts GetPraApprovalControllerApplicationArray and GetPraApprovalControllerApplicationArrayOutput values.
-// You can construct a concrete instance of `GetPraApprovalControllerApplicationArrayInput` via:
-//
-//	GetPraApprovalControllerApplicationArray{ GetPraApprovalControllerApplicationArgs{...} }
-type GetPraApprovalControllerApplicationArrayInput interface {
-	pulumi.Input
-
-	ToGetPraApprovalControllerApplicationArrayOutput() GetPraApprovalControllerApplicationArrayOutput
-	ToGetPraApprovalControllerApplicationArrayOutputWithContext(context.Context) GetPraApprovalControllerApplicationArrayOutput
-}
-
-type GetPraApprovalControllerApplicationArray []GetPraApprovalControllerApplicationInput
-
-func (GetPraApprovalControllerApplicationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPraApprovalControllerApplication)(nil)).Elem()
-}
-
-func (i GetPraApprovalControllerApplicationArray) ToGetPraApprovalControllerApplicationArrayOutput() GetPraApprovalControllerApplicationArrayOutput {
-	return i.ToGetPraApprovalControllerApplicationArrayOutputWithContext(context.Background())
-}
-
-func (i GetPraApprovalControllerApplicationArray) ToGetPraApprovalControllerApplicationArrayOutputWithContext(ctx context.Context) GetPraApprovalControllerApplicationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPraApprovalControllerApplicationArrayOutput)
-}
-
-type GetPraApprovalControllerApplicationOutput struct{ *pulumi.OutputState }
-
-func (GetPraApprovalControllerApplicationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPraApprovalControllerApplication)(nil)).Elem()
-}
-
-func (o GetPraApprovalControllerApplicationOutput) ToGetPraApprovalControllerApplicationOutput() GetPraApprovalControllerApplicationOutput {
-	return o
-}
-
-func (o GetPraApprovalControllerApplicationOutput) ToGetPraApprovalControllerApplicationOutputWithContext(ctx context.Context) GetPraApprovalControllerApplicationOutput {
-	return o
-}
-
-// The unique identifier of the pra application segment
-func (o GetPraApprovalControllerApplicationOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPraApprovalControllerApplication) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The name of the pra application segment
-func (o GetPraApprovalControllerApplicationOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPraApprovalControllerApplication) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetPraApprovalControllerApplicationArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPraApprovalControllerApplicationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPraApprovalControllerApplication)(nil)).Elem()
-}
-
-func (o GetPraApprovalControllerApplicationArrayOutput) ToGetPraApprovalControllerApplicationArrayOutput() GetPraApprovalControllerApplicationArrayOutput {
-	return o
-}
-
-func (o GetPraApprovalControllerApplicationArrayOutput) ToGetPraApprovalControllerApplicationArrayOutputWithContext(ctx context.Context) GetPraApprovalControllerApplicationArrayOutput {
-	return o
-}
-
-func (o GetPraApprovalControllerApplicationArrayOutput) Index(i pulumi.IntInput) GetPraApprovalControllerApplicationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPraApprovalControllerApplication {
-		return vs[0].([]GetPraApprovalControllerApplication)[vs[1].(int)]
-	}).(GetPraApprovalControllerApplicationOutput)
-}
-
-type GetPraApprovalControllerWorkingHour struct {
-	// The days of the week that you want to enable the privileged approval
-	Days []string `pulumi:"days"`
-	// The end time that the user no longer has access to the privileged approval
-	EndTime string `pulumi:"endTime"`
-	// The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
-	EndTimeCron string `pulumi:"endTimeCron"`
-	// The start time that the user has access to the privileged approval
-	StartTime string `pulumi:"startTime"`
-	// The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
-	StartTimeCron string `pulumi:"startTimeCron"`
-	// The time zone for the time window of a privileged approval
-	Timezone string `pulumi:"timezone"`
-}
-
-// GetPraApprovalControllerWorkingHourInput is an input type that accepts GetPraApprovalControllerWorkingHourArgs and GetPraApprovalControllerWorkingHourOutput values.
-// You can construct a concrete instance of `GetPraApprovalControllerWorkingHourInput` via:
-//
-//	GetPraApprovalControllerWorkingHourArgs{...}
-type GetPraApprovalControllerWorkingHourInput interface {
-	pulumi.Input
-
-	ToGetPraApprovalControllerWorkingHourOutput() GetPraApprovalControllerWorkingHourOutput
-	ToGetPraApprovalControllerWorkingHourOutputWithContext(context.Context) GetPraApprovalControllerWorkingHourOutput
-}
-
-type GetPraApprovalControllerWorkingHourArgs struct {
-	// The days of the week that you want to enable the privileged approval
-	Days pulumi.StringArrayInput `pulumi:"days"`
-	// The end time that the user no longer has access to the privileged approval
-	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
-	EndTimeCron pulumi.StringInput `pulumi:"endTimeCron"`
-	// The start time that the user has access to the privileged approval
-	StartTime pulumi.StringInput `pulumi:"startTime"`
-	// The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
-	StartTimeCron pulumi.StringInput `pulumi:"startTimeCron"`
-	// The time zone for the time window of a privileged approval
-	Timezone pulumi.StringInput `pulumi:"timezone"`
-}
-
-func (GetPraApprovalControllerWorkingHourArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPraApprovalControllerWorkingHour)(nil)).Elem()
-}
-
-func (i GetPraApprovalControllerWorkingHourArgs) ToGetPraApprovalControllerWorkingHourOutput() GetPraApprovalControllerWorkingHourOutput {
-	return i.ToGetPraApprovalControllerWorkingHourOutputWithContext(context.Background())
-}
-
-func (i GetPraApprovalControllerWorkingHourArgs) ToGetPraApprovalControllerWorkingHourOutputWithContext(ctx context.Context) GetPraApprovalControllerWorkingHourOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPraApprovalControllerWorkingHourOutput)
-}
-
-// GetPraApprovalControllerWorkingHourArrayInput is an input type that accepts GetPraApprovalControllerWorkingHourArray and GetPraApprovalControllerWorkingHourArrayOutput values.
-// You can construct a concrete instance of `GetPraApprovalControllerWorkingHourArrayInput` via:
-//
-//	GetPraApprovalControllerWorkingHourArray{ GetPraApprovalControllerWorkingHourArgs{...} }
-type GetPraApprovalControllerWorkingHourArrayInput interface {
-	pulumi.Input
-
-	ToGetPraApprovalControllerWorkingHourArrayOutput() GetPraApprovalControllerWorkingHourArrayOutput
-	ToGetPraApprovalControllerWorkingHourArrayOutputWithContext(context.Context) GetPraApprovalControllerWorkingHourArrayOutput
-}
-
-type GetPraApprovalControllerWorkingHourArray []GetPraApprovalControllerWorkingHourInput
-
-func (GetPraApprovalControllerWorkingHourArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPraApprovalControllerWorkingHour)(nil)).Elem()
-}
-
-func (i GetPraApprovalControllerWorkingHourArray) ToGetPraApprovalControllerWorkingHourArrayOutput() GetPraApprovalControllerWorkingHourArrayOutput {
-	return i.ToGetPraApprovalControllerWorkingHourArrayOutputWithContext(context.Background())
-}
-
-func (i GetPraApprovalControllerWorkingHourArray) ToGetPraApprovalControllerWorkingHourArrayOutputWithContext(ctx context.Context) GetPraApprovalControllerWorkingHourArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPraApprovalControllerWorkingHourArrayOutput)
-}
-
-type GetPraApprovalControllerWorkingHourOutput struct{ *pulumi.OutputState }
-
-func (GetPraApprovalControllerWorkingHourOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPraApprovalControllerWorkingHour)(nil)).Elem()
-}
-
-func (o GetPraApprovalControllerWorkingHourOutput) ToGetPraApprovalControllerWorkingHourOutput() GetPraApprovalControllerWorkingHourOutput {
-	return o
-}
-
-func (o GetPraApprovalControllerWorkingHourOutput) ToGetPraApprovalControllerWorkingHourOutputWithContext(ctx context.Context) GetPraApprovalControllerWorkingHourOutput {
-	return o
-}
-
-// The days of the week that you want to enable the privileged approval
-func (o GetPraApprovalControllerWorkingHourOutput) Days() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPraApprovalControllerWorkingHour) []string { return v.Days }).(pulumi.StringArrayOutput)
-}
-
-// The end time that the user no longer has access to the privileged approval
-func (o GetPraApprovalControllerWorkingHourOutput) EndTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPraApprovalControllerWorkingHour) string { return v.EndTime }).(pulumi.StringOutput)
-}
-
-// The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
-func (o GetPraApprovalControllerWorkingHourOutput) EndTimeCron() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPraApprovalControllerWorkingHour) string { return v.EndTimeCron }).(pulumi.StringOutput)
-}
-
-// The start time that the user has access to the privileged approval
-func (o GetPraApprovalControllerWorkingHourOutput) StartTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPraApprovalControllerWorkingHour) string { return v.StartTime }).(pulumi.StringOutput)
-}
-
-// The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
-func (o GetPraApprovalControllerWorkingHourOutput) StartTimeCron() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPraApprovalControllerWorkingHour) string { return v.StartTimeCron }).(pulumi.StringOutput)
-}
-
-// The time zone for the time window of a privileged approval
-func (o GetPraApprovalControllerWorkingHourOutput) Timezone() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPraApprovalControllerWorkingHour) string { return v.Timezone }).(pulumi.StringOutput)
-}
-
-type GetPraApprovalControllerWorkingHourArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPraApprovalControllerWorkingHourArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPraApprovalControllerWorkingHour)(nil)).Elem()
-}
-
-func (o GetPraApprovalControllerWorkingHourArrayOutput) ToGetPraApprovalControllerWorkingHourArrayOutput() GetPraApprovalControllerWorkingHourArrayOutput {
-	return o
-}
-
-func (o GetPraApprovalControllerWorkingHourArrayOutput) ToGetPraApprovalControllerWorkingHourArrayOutputWithContext(ctx context.Context) GetPraApprovalControllerWorkingHourArrayOutput {
-	return o
-}
-
-func (o GetPraApprovalControllerWorkingHourArrayOutput) Index(i pulumi.IntInput) GetPraApprovalControllerWorkingHourOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPraApprovalControllerWorkingHour {
-		return vs[0].([]GetPraApprovalControllerWorkingHour)[vs[1].(int)]
-	}).(GetPraApprovalControllerWorkingHourOutput)
-}
-
-type GetPraConsoleControllerPraApplication struct {
-	// The unique identifier of the Privileged Remote Access-enabled application
-	Id string `pulumi:"id"`
-	// - (Required) The name of the privileged console.
-	Name string `pulumi:"name"`
-}
-
-// GetPraConsoleControllerPraApplicationInput is an input type that accepts GetPraConsoleControllerPraApplicationArgs and GetPraConsoleControllerPraApplicationOutput values.
-// You can construct a concrete instance of `GetPraConsoleControllerPraApplicationInput` via:
-//
-//	GetPraConsoleControllerPraApplicationArgs{...}
-type GetPraConsoleControllerPraApplicationInput interface {
-	pulumi.Input
-
-	ToGetPraConsoleControllerPraApplicationOutput() GetPraConsoleControllerPraApplicationOutput
-	ToGetPraConsoleControllerPraApplicationOutputWithContext(context.Context) GetPraConsoleControllerPraApplicationOutput
-}
-
-type GetPraConsoleControllerPraApplicationArgs struct {
-	// The unique identifier of the Privileged Remote Access-enabled application
-	Id pulumi.StringInput `pulumi:"id"`
-	// - (Required) The name of the privileged console.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetPraConsoleControllerPraApplicationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPraConsoleControllerPraApplication)(nil)).Elem()
-}
-
-func (i GetPraConsoleControllerPraApplicationArgs) ToGetPraConsoleControllerPraApplicationOutput() GetPraConsoleControllerPraApplicationOutput {
-	return i.ToGetPraConsoleControllerPraApplicationOutputWithContext(context.Background())
-}
-
-func (i GetPraConsoleControllerPraApplicationArgs) ToGetPraConsoleControllerPraApplicationOutputWithContext(ctx context.Context) GetPraConsoleControllerPraApplicationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPraConsoleControllerPraApplicationOutput)
-}
-
-// GetPraConsoleControllerPraApplicationArrayInput is an input type that accepts GetPraConsoleControllerPraApplicationArray and GetPraConsoleControllerPraApplicationArrayOutput values.
-// You can construct a concrete instance of `GetPraConsoleControllerPraApplicationArrayInput` via:
-//
-//	GetPraConsoleControllerPraApplicationArray{ GetPraConsoleControllerPraApplicationArgs{...} }
-type GetPraConsoleControllerPraApplicationArrayInput interface {
-	pulumi.Input
-
-	ToGetPraConsoleControllerPraApplicationArrayOutput() GetPraConsoleControllerPraApplicationArrayOutput
-	ToGetPraConsoleControllerPraApplicationArrayOutputWithContext(context.Context) GetPraConsoleControllerPraApplicationArrayOutput
-}
-
-type GetPraConsoleControllerPraApplicationArray []GetPraConsoleControllerPraApplicationInput
-
-func (GetPraConsoleControllerPraApplicationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPraConsoleControllerPraApplication)(nil)).Elem()
-}
-
-func (i GetPraConsoleControllerPraApplicationArray) ToGetPraConsoleControllerPraApplicationArrayOutput() GetPraConsoleControllerPraApplicationArrayOutput {
-	return i.ToGetPraConsoleControllerPraApplicationArrayOutputWithContext(context.Background())
-}
-
-func (i GetPraConsoleControllerPraApplicationArray) ToGetPraConsoleControllerPraApplicationArrayOutputWithContext(ctx context.Context) GetPraConsoleControllerPraApplicationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPraConsoleControllerPraApplicationArrayOutput)
-}
-
-type GetPraConsoleControllerPraApplicationOutput struct{ *pulumi.OutputState }
-
-func (GetPraConsoleControllerPraApplicationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPraConsoleControllerPraApplication)(nil)).Elem()
-}
-
-func (o GetPraConsoleControllerPraApplicationOutput) ToGetPraConsoleControllerPraApplicationOutput() GetPraConsoleControllerPraApplicationOutput {
-	return o
-}
-
-func (o GetPraConsoleControllerPraApplicationOutput) ToGetPraConsoleControllerPraApplicationOutputWithContext(ctx context.Context) GetPraConsoleControllerPraApplicationOutput {
-	return o
-}
-
-// The unique identifier of the Privileged Remote Access-enabled application
-func (o GetPraConsoleControllerPraApplicationOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPraConsoleControllerPraApplication) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// - (Required) The name of the privileged console.
-func (o GetPraConsoleControllerPraApplicationOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPraConsoleControllerPraApplication) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetPraConsoleControllerPraApplicationArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPraConsoleControllerPraApplicationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPraConsoleControllerPraApplication)(nil)).Elem()
-}
-
-func (o GetPraConsoleControllerPraApplicationArrayOutput) ToGetPraConsoleControllerPraApplicationArrayOutput() GetPraConsoleControllerPraApplicationArrayOutput {
-	return o
-}
-
-func (o GetPraConsoleControllerPraApplicationArrayOutput) ToGetPraConsoleControllerPraApplicationArrayOutputWithContext(ctx context.Context) GetPraConsoleControllerPraApplicationArrayOutput {
-	return o
-}
-
-func (o GetPraConsoleControllerPraApplicationArrayOutput) Index(i pulumi.IntInput) GetPraConsoleControllerPraApplicationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPraConsoleControllerPraApplication {
-		return vs[0].([]GetPraConsoleControllerPraApplication)[vs[1].(int)]
-	}).(GetPraConsoleControllerPraApplicationOutput)
-}
-
-type GetPraConsoleControllerPraPortal struct {
-	// The unique identifier of the privileged portal
-	Id string `pulumi:"id"`
-	// - (Required) The name of the privileged console.
-	Name string `pulumi:"name"`
-}
-
-// GetPraConsoleControllerPraPortalInput is an input type that accepts GetPraConsoleControllerPraPortalArgs and GetPraConsoleControllerPraPortalOutput values.
-// You can construct a concrete instance of `GetPraConsoleControllerPraPortalInput` via:
-//
-//	GetPraConsoleControllerPraPortalArgs{...}
-type GetPraConsoleControllerPraPortalInput interface {
-	pulumi.Input
-
-	ToGetPraConsoleControllerPraPortalOutput() GetPraConsoleControllerPraPortalOutput
-	ToGetPraConsoleControllerPraPortalOutputWithContext(context.Context) GetPraConsoleControllerPraPortalOutput
-}
-
-type GetPraConsoleControllerPraPortalArgs struct {
-	// The unique identifier of the privileged portal
-	Id pulumi.StringInput `pulumi:"id"`
-	// - (Required) The name of the privileged console.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetPraConsoleControllerPraPortalArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPraConsoleControllerPraPortal)(nil)).Elem()
-}
-
-func (i GetPraConsoleControllerPraPortalArgs) ToGetPraConsoleControllerPraPortalOutput() GetPraConsoleControllerPraPortalOutput {
-	return i.ToGetPraConsoleControllerPraPortalOutputWithContext(context.Background())
-}
-
-func (i GetPraConsoleControllerPraPortalArgs) ToGetPraConsoleControllerPraPortalOutputWithContext(ctx context.Context) GetPraConsoleControllerPraPortalOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPraConsoleControllerPraPortalOutput)
-}
-
-// GetPraConsoleControllerPraPortalArrayInput is an input type that accepts GetPraConsoleControllerPraPortalArray and GetPraConsoleControllerPraPortalArrayOutput values.
-// You can construct a concrete instance of `GetPraConsoleControllerPraPortalArrayInput` via:
-//
-//	GetPraConsoleControllerPraPortalArray{ GetPraConsoleControllerPraPortalArgs{...} }
-type GetPraConsoleControllerPraPortalArrayInput interface {
-	pulumi.Input
-
-	ToGetPraConsoleControllerPraPortalArrayOutput() GetPraConsoleControllerPraPortalArrayOutput
-	ToGetPraConsoleControllerPraPortalArrayOutputWithContext(context.Context) GetPraConsoleControllerPraPortalArrayOutput
-}
-
-type GetPraConsoleControllerPraPortalArray []GetPraConsoleControllerPraPortalInput
-
-func (GetPraConsoleControllerPraPortalArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPraConsoleControllerPraPortal)(nil)).Elem()
-}
-
-func (i GetPraConsoleControllerPraPortalArray) ToGetPraConsoleControllerPraPortalArrayOutput() GetPraConsoleControllerPraPortalArrayOutput {
-	return i.ToGetPraConsoleControllerPraPortalArrayOutputWithContext(context.Background())
-}
-
-func (i GetPraConsoleControllerPraPortalArray) ToGetPraConsoleControllerPraPortalArrayOutputWithContext(ctx context.Context) GetPraConsoleControllerPraPortalArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPraConsoleControllerPraPortalArrayOutput)
-}
-
-type GetPraConsoleControllerPraPortalOutput struct{ *pulumi.OutputState }
-
-func (GetPraConsoleControllerPraPortalOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPraConsoleControllerPraPortal)(nil)).Elem()
-}
-
-func (o GetPraConsoleControllerPraPortalOutput) ToGetPraConsoleControllerPraPortalOutput() GetPraConsoleControllerPraPortalOutput {
-	return o
-}
-
-func (o GetPraConsoleControllerPraPortalOutput) ToGetPraConsoleControllerPraPortalOutputWithContext(ctx context.Context) GetPraConsoleControllerPraPortalOutput {
-	return o
-}
-
-// The unique identifier of the privileged portal
-func (o GetPraConsoleControllerPraPortalOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPraConsoleControllerPraPortal) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// - (Required) The name of the privileged console.
-func (o GetPraConsoleControllerPraPortalOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPraConsoleControllerPraPortal) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetPraConsoleControllerPraPortalArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPraConsoleControllerPraPortalArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPraConsoleControllerPraPortal)(nil)).Elem()
-}
-
-func (o GetPraConsoleControllerPraPortalArrayOutput) ToGetPraConsoleControllerPraPortalArrayOutput() GetPraConsoleControllerPraPortalArrayOutput {
-	return o
-}
-
-func (o GetPraConsoleControllerPraPortalArrayOutput) ToGetPraConsoleControllerPraPortalArrayOutputWithContext(ctx context.Context) GetPraConsoleControllerPraPortalArrayOutput {
-	return o
-}
-
-func (o GetPraConsoleControllerPraPortalArrayOutput) Index(i pulumi.IntInput) GetPraConsoleControllerPraPortalOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPraConsoleControllerPraPortal {
-		return vs[0].([]GetPraConsoleControllerPraPortal)[vs[1].(int)]
-	}).(GetPraConsoleControllerPraPortalOutput)
-}
-
-type GetPraCredentialPoolCredential struct {
-	Ids []string `pulumi:"ids"`
-}
-
-// GetPraCredentialPoolCredentialInput is an input type that accepts GetPraCredentialPoolCredentialArgs and GetPraCredentialPoolCredentialOutput values.
-// You can construct a concrete instance of `GetPraCredentialPoolCredentialInput` via:
-//
-//	GetPraCredentialPoolCredentialArgs{...}
-type GetPraCredentialPoolCredentialInput interface {
-	pulumi.Input
-
-	ToGetPraCredentialPoolCredentialOutput() GetPraCredentialPoolCredentialOutput
-	ToGetPraCredentialPoolCredentialOutputWithContext(context.Context) GetPraCredentialPoolCredentialOutput
-}
-
-type GetPraCredentialPoolCredentialArgs struct {
-	Ids pulumi.StringArrayInput `pulumi:"ids"`
-}
-
-func (GetPraCredentialPoolCredentialArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPraCredentialPoolCredential)(nil)).Elem()
-}
-
-func (i GetPraCredentialPoolCredentialArgs) ToGetPraCredentialPoolCredentialOutput() GetPraCredentialPoolCredentialOutput {
-	return i.ToGetPraCredentialPoolCredentialOutputWithContext(context.Background())
-}
-
-func (i GetPraCredentialPoolCredentialArgs) ToGetPraCredentialPoolCredentialOutputWithContext(ctx context.Context) GetPraCredentialPoolCredentialOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPraCredentialPoolCredentialOutput)
-}
-
-// GetPraCredentialPoolCredentialArrayInput is an input type that accepts GetPraCredentialPoolCredentialArray and GetPraCredentialPoolCredentialArrayOutput values.
-// You can construct a concrete instance of `GetPraCredentialPoolCredentialArrayInput` via:
-//
-//	GetPraCredentialPoolCredentialArray{ GetPraCredentialPoolCredentialArgs{...} }
-type GetPraCredentialPoolCredentialArrayInput interface {
-	pulumi.Input
-
-	ToGetPraCredentialPoolCredentialArrayOutput() GetPraCredentialPoolCredentialArrayOutput
-	ToGetPraCredentialPoolCredentialArrayOutputWithContext(context.Context) GetPraCredentialPoolCredentialArrayOutput
-}
-
-type GetPraCredentialPoolCredentialArray []GetPraCredentialPoolCredentialInput
-
-func (GetPraCredentialPoolCredentialArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPraCredentialPoolCredential)(nil)).Elem()
-}
-
-func (i GetPraCredentialPoolCredentialArray) ToGetPraCredentialPoolCredentialArrayOutput() GetPraCredentialPoolCredentialArrayOutput {
-	return i.ToGetPraCredentialPoolCredentialArrayOutputWithContext(context.Background())
-}
-
-func (i GetPraCredentialPoolCredentialArray) ToGetPraCredentialPoolCredentialArrayOutputWithContext(ctx context.Context) GetPraCredentialPoolCredentialArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPraCredentialPoolCredentialArrayOutput)
-}
-
-type GetPraCredentialPoolCredentialOutput struct{ *pulumi.OutputState }
-
-func (GetPraCredentialPoolCredentialOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPraCredentialPoolCredential)(nil)).Elem()
-}
-
-func (o GetPraCredentialPoolCredentialOutput) ToGetPraCredentialPoolCredentialOutput() GetPraCredentialPoolCredentialOutput {
-	return o
-}
-
-func (o GetPraCredentialPoolCredentialOutput) ToGetPraCredentialPoolCredentialOutputWithContext(ctx context.Context) GetPraCredentialPoolCredentialOutput {
-	return o
-}
-
-func (o GetPraCredentialPoolCredentialOutput) Ids() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPraCredentialPoolCredential) []string { return v.Ids }).(pulumi.StringArrayOutput)
-}
-
-type GetPraCredentialPoolCredentialArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPraCredentialPoolCredentialArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPraCredentialPoolCredential)(nil)).Elem()
-}
-
-func (o GetPraCredentialPoolCredentialArrayOutput) ToGetPraCredentialPoolCredentialArrayOutput() GetPraCredentialPoolCredentialArrayOutput {
-	return o
-}
-
-func (o GetPraCredentialPoolCredentialArrayOutput) ToGetPraCredentialPoolCredentialArrayOutputWithContext(ctx context.Context) GetPraCredentialPoolCredentialArrayOutput {
-	return o
-}
-
-func (o GetPraCredentialPoolCredentialArrayOutput) Index(i pulumi.IntInput) GetPraCredentialPoolCredentialOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPraCredentialPoolCredential {
-		return vs[0].([]GetPraCredentialPoolCredential)[vs[1].(int)]
-	}).(GetPraCredentialPoolCredentialOutput)
-}
-
 type GetSegmentGroupApplication struct {
 	BypassType           string                                  `pulumi:"bypassType"`
 	ConfigSpace          string                                  `pulumi:"configSpace"`
@@ -26248,7 +22507,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentBrowserAccessUdpPortRangeInput)(nil)).Elem(), ApplicationSegmentBrowserAccessUdpPortRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentBrowserAccessUdpPortRangeArrayInput)(nil)).Elem(), ApplicationSegmentBrowserAccessUdpPortRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentInspectionCommonAppsDtoInput)(nil)).Elem(), ApplicationSegmentInspectionCommonAppsDtoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentInspectionCommonAppsDtoPtrInput)(nil)).Elem(), ApplicationSegmentInspectionCommonAppsDtoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentInspectionCommonAppsDtoArrayInput)(nil)).Elem(), ApplicationSegmentInspectionCommonAppsDtoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentInspectionCommonAppsDtoAppsConfigInput)(nil)).Elem(), ApplicationSegmentInspectionCommonAppsDtoAppsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentInspectionCommonAppsDtoAppsConfigArrayInput)(nil)).Elem(), ApplicationSegmentInspectionCommonAppsDtoAppsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentInspectionServerGroupInput)(nil)).Elem(), ApplicationSegmentInspectionServerGroupArgs{})
@@ -26258,7 +22517,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentInspectionUdpPortRangeInput)(nil)).Elem(), ApplicationSegmentInspectionUdpPortRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentInspectionUdpPortRangeArrayInput)(nil)).Elem(), ApplicationSegmentInspectionUdpPortRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentPRACommonAppsDtoInput)(nil)).Elem(), ApplicationSegmentPRACommonAppsDtoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentPRACommonAppsDtoPtrInput)(nil)).Elem(), ApplicationSegmentPRACommonAppsDtoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentPRACommonAppsDtoArrayInput)(nil)).Elem(), ApplicationSegmentPRACommonAppsDtoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentPRACommonAppsDtoAppsConfigInput)(nil)).Elem(), ApplicationSegmentPRACommonAppsDtoAppsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentPRACommonAppsDtoAppsConfigArrayInput)(nil)).Elem(), ApplicationSegmentPRACommonAppsDtoAppsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentPRAServerGroupInput)(nil)).Elem(), ApplicationSegmentPRAServerGroupArgs{})
@@ -26283,20 +22542,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BrowserAccessUdpPortRangeArrayInput)(nil)).Elem(), BrowserAccessUdpPortRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileDebugModeInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileDebugModeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileDebugModePtrInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileDebugModeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileSecurityControlArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlArrayInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileSecurityControlArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlDeepLinkInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlWatermarkInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlsInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileSecurityControlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlsPtrInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileSecurityControlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlsWatermarkInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileSecurityControlsWatermarkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileSecurityControlsWatermarkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileUserExperienceInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileUserExperienceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileUserExperienceArrayInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileUserExperienceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileUserExperiencePtrInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileUserExperienceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InspectionCustomControlsRuleInput)(nil)).Elem(), InspectionCustomControlsRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InspectionCustomControlsRuleArrayInput)(nil)).Elem(), InspectionCustomControlsRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InspectionCustomControlsRuleConditionsInput)(nil)).Elem(), InspectionCustomControlsRuleConditionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InspectionCustomControlsRuleConditionsPtrInput)(nil)).Elem(), InspectionCustomControlsRuleConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InspectionCustomControlsRuleConditionInput)(nil)).Elem(), InspectionCustomControlsRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InspectionCustomControlsRuleConditionArrayInput)(nil)).Elem(), InspectionCustomControlsRuleConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InspectionProfileControlsInfoInput)(nil)).Elem(), InspectionProfileControlsInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InspectionProfileControlsInfoArrayInput)(nil)).Elem(), InspectionProfileControlsInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InspectionProfileCustomControlInput)(nil)).Elem(), InspectionProfileCustomControlArgs{})
@@ -26328,7 +22587,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PRAApprovalWorkingHourInput)(nil)).Elem(), PRAApprovalWorkingHourArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PRAApprovalWorkingHourArrayInput)(nil)).Elem(), PRAApprovalWorkingHourArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PRAConsolePraApplicationInput)(nil)).Elem(), PRAConsolePraApplicationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PRAConsolePraApplicationPtrInput)(nil)).Elem(), PRAConsolePraApplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PRAConsolePraApplicationArrayInput)(nil)).Elem(), PRAConsolePraApplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PRAConsolePraPortalInput)(nil)).Elem(), PRAConsolePraPortalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PRAConsolePraPortalArrayInput)(nil)).Elem(), PRAConsolePraPortalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessCapabilitiesRuleConditionInput)(nil)).Elem(), PolicyAccessCapabilitiesRuleConditionArgs{})
@@ -26421,62 +22680,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBrowserProtectionRuleConditionOperandArrayInput)(nil)).Elem(), PolicyBrowserProtectionRuleConditionOperandArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBrowserProtectionRuleConditionOperandEntryValueInput)(nil)).Elem(), PolicyBrowserProtectionRuleConditionOperandEntryValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBrowserProtectionRuleConditionOperandEntryValueArrayInput)(nil)).Elem(), PolicyBrowserProtectionRuleConditionOperandEntryValueArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyCapabilitiesRuleConditionInput)(nil)).Elem(), PolicyCapabilitiesRuleConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyCapabilitiesRuleConditionArrayInput)(nil)).Elem(), PolicyCapabilitiesRuleConditionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyCapabilitiesRuleConditionOperandInput)(nil)).Elem(), PolicyCapabilitiesRuleConditionOperandArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyCapabilitiesRuleConditionOperandArrayInput)(nil)).Elem(), PolicyCapabilitiesRuleConditionOperandArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyCapabilitiesRuleConditionOperandEntryValueInput)(nil)).Elem(), PolicyCapabilitiesRuleConditionOperandEntryValueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyCapabilitiesRuleConditionOperandEntryValueArrayInput)(nil)).Elem(), PolicyCapabilitiesRuleConditionOperandEntryValueArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyCapabilitiesRulePrivilegedCapabilitiesInput)(nil)).Elem(), PolicyCapabilitiesRulePrivilegedCapabilitiesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyCapabilitiesRulePrivilegedCapabilitiesPtrInput)(nil)).Elem(), PolicyCapabilitiesRulePrivilegedCapabilitiesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyCredentialRuleConditionInput)(nil)).Elem(), PolicyCredentialRuleConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyCredentialRuleConditionArrayInput)(nil)).Elem(), PolicyCredentialRuleConditionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyCredentialRuleConditionOperandInput)(nil)).Elem(), PolicyCredentialRuleConditionOperandArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyCredentialRuleConditionOperandArrayInput)(nil)).Elem(), PolicyCredentialRuleConditionOperandArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyCredentialRuleConditionOperandEntryValueInput)(nil)).Elem(), PolicyCredentialRuleConditionOperandEntryValueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyCredentialRuleConditionOperandEntryValueArrayInput)(nil)).Elem(), PolicyCredentialRuleConditionOperandEntryValueArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyCredentialRuleCredentialInput)(nil)).Elem(), PolicyCredentialRuleCredentialArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyCredentialRuleCredentialArrayInput)(nil)).Elem(), PolicyCredentialRuleCredentialArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyCredentialRuleCredentialPoolInput)(nil)).Elem(), PolicyCredentialRuleCredentialPoolArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyCredentialRuleCredentialPoolArrayInput)(nil)).Elem(), PolicyCredentialRuleCredentialPoolArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyForwardingRuleV2ConditionInput)(nil)).Elem(), PolicyForwardingRuleV2ConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyForwardingRuleV2ConditionArrayInput)(nil)).Elem(), PolicyForwardingRuleV2ConditionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyForwardingRuleV2ConditionOperandInput)(nil)).Elem(), PolicyForwardingRuleV2ConditionOperandArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyForwardingRuleV2ConditionOperandArrayInput)(nil)).Elem(), PolicyForwardingRuleV2ConditionOperandArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyForwardingRuleV2ConditionOperandEntryValueInput)(nil)).Elem(), PolicyForwardingRuleV2ConditionOperandEntryValueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyForwardingRuleV2ConditionOperandEntryValueArrayInput)(nil)).Elem(), PolicyForwardingRuleV2ConditionOperandEntryValueArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyInspectionRuleV2ConditionInput)(nil)).Elem(), PolicyInspectionRuleV2ConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyInspectionRuleV2ConditionArrayInput)(nil)).Elem(), PolicyInspectionRuleV2ConditionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyInspectionRuleV2ConditionOperandInput)(nil)).Elem(), PolicyInspectionRuleV2ConditionOperandArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyInspectionRuleV2ConditionOperandArrayInput)(nil)).Elem(), PolicyInspectionRuleV2ConditionOperandArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyInspectionRuleV2ConditionOperandEntryValueInput)(nil)).Elem(), PolicyInspectionRuleV2ConditionOperandEntryValueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyInspectionRuleV2ConditionOperandEntryValueArrayInput)(nil)).Elem(), PolicyInspectionRuleV2ConditionOperandEntryValueArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyIsolationRuleV2ConditionInput)(nil)).Elem(), PolicyIsolationRuleV2ConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyIsolationRuleV2ConditionArrayInput)(nil)).Elem(), PolicyIsolationRuleV2ConditionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyIsolationRuleV2ConditionOperandInput)(nil)).Elem(), PolicyIsolationRuleV2ConditionOperandArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyIsolationRuleV2ConditionOperandArrayInput)(nil)).Elem(), PolicyIsolationRuleV2ConditionOperandArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyIsolationRuleV2ConditionOperandEntryValueInput)(nil)).Elem(), PolicyIsolationRuleV2ConditionOperandEntryValueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyIsolationRuleV2ConditionOperandEntryValueArrayInput)(nil)).Elem(), PolicyIsolationRuleV2ConditionOperandEntryValueArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRedirectionRuleConditionInput)(nil)).Elem(), PolicyRedirectionRuleConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRedirectionRuleConditionArrayInput)(nil)).Elem(), PolicyRedirectionRuleConditionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRedirectionRuleConditionOperandInput)(nil)).Elem(), PolicyRedirectionRuleConditionOperandArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRedirectionRuleConditionOperandArrayInput)(nil)).Elem(), PolicyRedirectionRuleConditionOperandArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRedirectionRuleServiceEdgeGroupInput)(nil)).Elem(), PolicyRedirectionRuleServiceEdgeGroupArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRedirectionRuleServiceEdgeGroupArrayInput)(nil)).Elem(), PolicyRedirectionRuleServiceEdgeGroupArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyTimeoutRuleV2ConditionInput)(nil)).Elem(), PolicyTimeoutRuleV2ConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyTimeoutRuleV2ConditionArrayInput)(nil)).Elem(), PolicyTimeoutRuleV2ConditionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyTimeoutRuleV2ConditionOperandInput)(nil)).Elem(), PolicyTimeoutRuleV2ConditionOperandArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyTimeoutRuleV2ConditionOperandArrayInput)(nil)).Elem(), PolicyTimeoutRuleV2ConditionOperandArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyTimeoutRuleV2ConditionOperandEntryValueInput)(nil)).Elem(), PolicyTimeoutRuleV2ConditionOperandEntryValueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyTimeoutRuleV2ConditionOperandEntryValueArrayInput)(nil)).Elem(), PolicyTimeoutRuleV2ConditionOperandEntryValueArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PraApprovalControllerApplicationInput)(nil)).Elem(), PraApprovalControllerApplicationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PraApprovalControllerApplicationArrayInput)(nil)).Elem(), PraApprovalControllerApplicationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PraApprovalControllerWorkingHourInput)(nil)).Elem(), PraApprovalControllerWorkingHourArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PraApprovalControllerWorkingHourArrayInput)(nil)).Elem(), PraApprovalControllerWorkingHourArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PraConsoleControllerPraApplicationInput)(nil)).Elem(), PraConsoleControllerPraApplicationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PraConsoleControllerPraApplicationPtrInput)(nil)).Elem(), PraConsoleControllerPraApplicationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PraConsoleControllerPraPortalInput)(nil)).Elem(), PraConsoleControllerPraPortalArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PraConsoleControllerPraPortalArrayInput)(nil)).Elem(), PraConsoleControllerPraPortalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PraCredentialPoolCredentialInput)(nil)).Elem(), PraCredentialPoolCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PraCredentialPoolCredentialArrayInput)(nil)).Elem(), PraCredentialPoolCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentGroupApplicationInput)(nil)).Elem(), SegmentGroupApplicationArgs{})
@@ -26487,8 +22690,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupApplicationArrayInput)(nil)).Elem(), ServerGroupApplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupServerInput)(nil)).Elem(), ServerGroupServerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupServerArrayInput)(nil)).Elem(), ServerGroupServerArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceEdgeGroupServiceEdgeInput)(nil)).Elem(), ServiceEdgeGroupServiceEdgeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceEdgeGroupServiceEdgeArrayInput)(nil)).Elem(), ServiceEdgeGroupServiceEdgeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceEdgeGroupServiceEdgesInput)(nil)).Elem(), ServiceEdgeGroupServiceEdgesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceEdgeGroupServiceEdgesPtrInput)(nil)).Elem(), ServiceEdgeGroupServiceEdgesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceEdgeGroupTrustedNetworkInput)(nil)).Elem(), ServiceEdgeGroupTrustedNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceEdgeGroupTrustedNetworkArrayInput)(nil)).Elem(), ServiceEdgeGroupTrustedNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppConnectorControllerAssistantVersionInput)(nil)).Elem(), GetAppConnectorControllerAssistantVersionArgs{})
@@ -26615,16 +22818,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyTypeRuleConditionArrayInput)(nil)).Elem(), GetPolicyTypeRuleConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyTypeRuleConditionOperandInput)(nil)).Elem(), GetPolicyTypeRuleConditionOperandArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyTypeRuleConditionOperandArrayInput)(nil)).Elem(), GetPolicyTypeRuleConditionOperandArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPraApprovalControllerApplicationInput)(nil)).Elem(), GetPraApprovalControllerApplicationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPraApprovalControllerApplicationArrayInput)(nil)).Elem(), GetPraApprovalControllerApplicationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPraApprovalControllerWorkingHourInput)(nil)).Elem(), GetPraApprovalControllerWorkingHourArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPraApprovalControllerWorkingHourArrayInput)(nil)).Elem(), GetPraApprovalControllerWorkingHourArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPraConsoleControllerPraApplicationInput)(nil)).Elem(), GetPraConsoleControllerPraApplicationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPraConsoleControllerPraApplicationArrayInput)(nil)).Elem(), GetPraConsoleControllerPraApplicationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPraConsoleControllerPraPortalInput)(nil)).Elem(), GetPraConsoleControllerPraPortalArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPraConsoleControllerPraPortalArrayInput)(nil)).Elem(), GetPraConsoleControllerPraPortalArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPraCredentialPoolCredentialInput)(nil)).Elem(), GetPraCredentialPoolCredentialArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPraCredentialPoolCredentialArrayInput)(nil)).Elem(), GetPraCredentialPoolCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSegmentGroupApplicationInput)(nil)).Elem(), GetSegmentGroupApplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSegmentGroupApplicationArrayInput)(nil)).Elem(), GetSegmentGroupApplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSegmentGroupApplicationServerGroupInput)(nil)).Elem(), GetSegmentGroupApplicationServerGroupArgs{})
@@ -26656,7 +22849,7 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationSegmentBrowserAccessUdpPortRangeOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentBrowserAccessUdpPortRangeArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentInspectionCommonAppsDtoOutput{})
-	pulumi.RegisterOutputType(ApplicationSegmentInspectionCommonAppsDtoPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationSegmentInspectionCommonAppsDtoArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentInspectionCommonAppsDtoAppsConfigOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentInspectionCommonAppsDtoAppsConfigArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentInspectionServerGroupOutput{})
@@ -26666,7 +22859,7 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationSegmentInspectionUdpPortRangeOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentInspectionUdpPortRangeArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentPRACommonAppsDtoOutput{})
-	pulumi.RegisterOutputType(ApplicationSegmentPRACommonAppsDtoPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationSegmentPRACommonAppsDtoArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentPRACommonAppsDtoAppsConfigOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentPRACommonAppsDtoAppsConfigArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentPRAServerGroupOutput{})
@@ -26691,20 +22884,20 @@ func init() {
 	pulumi.RegisterOutputType(BrowserAccessUdpPortRangeArrayOutput{})
 	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileDebugModeOutput{})
 	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileDebugModePtrOutput{})
-	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileSecurityControlOutput{})
-	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileSecurityControlArrayOutput{})
-	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileSecurityControlDeepLinkOutput{})
-	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileSecurityControlDeepLinkPtrOutput{})
-	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileSecurityControlWatermarkOutput{})
-	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileSecurityControlWatermarkPtrOutput{})
+	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileSecurityControlsOutput{})
+	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput{})
+	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkOutput{})
+	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkPtrOutput{})
+	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileSecurityControlsWatermarkOutput{})
+	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileSecurityControlsWatermarkPtrOutput{})
 	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileUserExperienceOutput{})
-	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileUserExperienceArrayOutput{})
+	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileUserExperiencePtrOutput{})
 	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaOutput{})
 	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaPtrOutput{})
 	pulumi.RegisterOutputType(InspectionCustomControlsRuleOutput{})
 	pulumi.RegisterOutputType(InspectionCustomControlsRuleArrayOutput{})
-	pulumi.RegisterOutputType(InspectionCustomControlsRuleConditionsOutput{})
-	pulumi.RegisterOutputType(InspectionCustomControlsRuleConditionsPtrOutput{})
+	pulumi.RegisterOutputType(InspectionCustomControlsRuleConditionOutput{})
+	pulumi.RegisterOutputType(InspectionCustomControlsRuleConditionArrayOutput{})
 	pulumi.RegisterOutputType(InspectionProfileControlsInfoOutput{})
 	pulumi.RegisterOutputType(InspectionProfileControlsInfoArrayOutput{})
 	pulumi.RegisterOutputType(InspectionProfileCustomControlOutput{})
@@ -26736,7 +22929,7 @@ func init() {
 	pulumi.RegisterOutputType(PRAApprovalWorkingHourOutput{})
 	pulumi.RegisterOutputType(PRAApprovalWorkingHourArrayOutput{})
 	pulumi.RegisterOutputType(PRAConsolePraApplicationOutput{})
-	pulumi.RegisterOutputType(PRAConsolePraApplicationPtrOutput{})
+	pulumi.RegisterOutputType(PRAConsolePraApplicationArrayOutput{})
 	pulumi.RegisterOutputType(PRAConsolePraPortalOutput{})
 	pulumi.RegisterOutputType(PRAConsolePraPortalArrayOutput{})
 	pulumi.RegisterOutputType(PolicyAccessCapabilitiesRuleConditionOutput{})
@@ -26829,62 +23022,6 @@ func init() {
 	pulumi.RegisterOutputType(PolicyBrowserProtectionRuleConditionOperandArrayOutput{})
 	pulumi.RegisterOutputType(PolicyBrowserProtectionRuleConditionOperandEntryValueOutput{})
 	pulumi.RegisterOutputType(PolicyBrowserProtectionRuleConditionOperandEntryValueArrayOutput{})
-	pulumi.RegisterOutputType(PolicyCapabilitiesRuleConditionOutput{})
-	pulumi.RegisterOutputType(PolicyCapabilitiesRuleConditionArrayOutput{})
-	pulumi.RegisterOutputType(PolicyCapabilitiesRuleConditionOperandOutput{})
-	pulumi.RegisterOutputType(PolicyCapabilitiesRuleConditionOperandArrayOutput{})
-	pulumi.RegisterOutputType(PolicyCapabilitiesRuleConditionOperandEntryValueOutput{})
-	pulumi.RegisterOutputType(PolicyCapabilitiesRuleConditionOperandEntryValueArrayOutput{})
-	pulumi.RegisterOutputType(PolicyCapabilitiesRulePrivilegedCapabilitiesOutput{})
-	pulumi.RegisterOutputType(PolicyCapabilitiesRulePrivilegedCapabilitiesPtrOutput{})
-	pulumi.RegisterOutputType(PolicyCredentialRuleConditionOutput{})
-	pulumi.RegisterOutputType(PolicyCredentialRuleConditionArrayOutput{})
-	pulumi.RegisterOutputType(PolicyCredentialRuleConditionOperandOutput{})
-	pulumi.RegisterOutputType(PolicyCredentialRuleConditionOperandArrayOutput{})
-	pulumi.RegisterOutputType(PolicyCredentialRuleConditionOperandEntryValueOutput{})
-	pulumi.RegisterOutputType(PolicyCredentialRuleConditionOperandEntryValueArrayOutput{})
-	pulumi.RegisterOutputType(PolicyCredentialRuleCredentialOutput{})
-	pulumi.RegisterOutputType(PolicyCredentialRuleCredentialArrayOutput{})
-	pulumi.RegisterOutputType(PolicyCredentialRuleCredentialPoolOutput{})
-	pulumi.RegisterOutputType(PolicyCredentialRuleCredentialPoolArrayOutput{})
-	pulumi.RegisterOutputType(PolicyForwardingRuleV2ConditionOutput{})
-	pulumi.RegisterOutputType(PolicyForwardingRuleV2ConditionArrayOutput{})
-	pulumi.RegisterOutputType(PolicyForwardingRuleV2ConditionOperandOutput{})
-	pulumi.RegisterOutputType(PolicyForwardingRuleV2ConditionOperandArrayOutput{})
-	pulumi.RegisterOutputType(PolicyForwardingRuleV2ConditionOperandEntryValueOutput{})
-	pulumi.RegisterOutputType(PolicyForwardingRuleV2ConditionOperandEntryValueArrayOutput{})
-	pulumi.RegisterOutputType(PolicyInspectionRuleV2ConditionOutput{})
-	pulumi.RegisterOutputType(PolicyInspectionRuleV2ConditionArrayOutput{})
-	pulumi.RegisterOutputType(PolicyInspectionRuleV2ConditionOperandOutput{})
-	pulumi.RegisterOutputType(PolicyInspectionRuleV2ConditionOperandArrayOutput{})
-	pulumi.RegisterOutputType(PolicyInspectionRuleV2ConditionOperandEntryValueOutput{})
-	pulumi.RegisterOutputType(PolicyInspectionRuleV2ConditionOperandEntryValueArrayOutput{})
-	pulumi.RegisterOutputType(PolicyIsolationRuleV2ConditionOutput{})
-	pulumi.RegisterOutputType(PolicyIsolationRuleV2ConditionArrayOutput{})
-	pulumi.RegisterOutputType(PolicyIsolationRuleV2ConditionOperandOutput{})
-	pulumi.RegisterOutputType(PolicyIsolationRuleV2ConditionOperandArrayOutput{})
-	pulumi.RegisterOutputType(PolicyIsolationRuleV2ConditionOperandEntryValueOutput{})
-	pulumi.RegisterOutputType(PolicyIsolationRuleV2ConditionOperandEntryValueArrayOutput{})
-	pulumi.RegisterOutputType(PolicyRedirectionRuleConditionOutput{})
-	pulumi.RegisterOutputType(PolicyRedirectionRuleConditionArrayOutput{})
-	pulumi.RegisterOutputType(PolicyRedirectionRuleConditionOperandOutput{})
-	pulumi.RegisterOutputType(PolicyRedirectionRuleConditionOperandArrayOutput{})
-	pulumi.RegisterOutputType(PolicyRedirectionRuleServiceEdgeGroupOutput{})
-	pulumi.RegisterOutputType(PolicyRedirectionRuleServiceEdgeGroupArrayOutput{})
-	pulumi.RegisterOutputType(PolicyTimeoutRuleV2ConditionOutput{})
-	pulumi.RegisterOutputType(PolicyTimeoutRuleV2ConditionArrayOutput{})
-	pulumi.RegisterOutputType(PolicyTimeoutRuleV2ConditionOperandOutput{})
-	pulumi.RegisterOutputType(PolicyTimeoutRuleV2ConditionOperandArrayOutput{})
-	pulumi.RegisterOutputType(PolicyTimeoutRuleV2ConditionOperandEntryValueOutput{})
-	pulumi.RegisterOutputType(PolicyTimeoutRuleV2ConditionOperandEntryValueArrayOutput{})
-	pulumi.RegisterOutputType(PraApprovalControllerApplicationOutput{})
-	pulumi.RegisterOutputType(PraApprovalControllerApplicationArrayOutput{})
-	pulumi.RegisterOutputType(PraApprovalControllerWorkingHourOutput{})
-	pulumi.RegisterOutputType(PraApprovalControllerWorkingHourArrayOutput{})
-	pulumi.RegisterOutputType(PraConsoleControllerPraApplicationOutput{})
-	pulumi.RegisterOutputType(PraConsoleControllerPraApplicationPtrOutput{})
-	pulumi.RegisterOutputType(PraConsoleControllerPraPortalOutput{})
-	pulumi.RegisterOutputType(PraConsoleControllerPraPortalArrayOutput{})
 	pulumi.RegisterOutputType(PraCredentialPoolCredentialOutput{})
 	pulumi.RegisterOutputType(PraCredentialPoolCredentialArrayOutput{})
 	pulumi.RegisterOutputType(SegmentGroupApplicationOutput{})
@@ -26895,8 +23032,8 @@ func init() {
 	pulumi.RegisterOutputType(ServerGroupApplicationArrayOutput{})
 	pulumi.RegisterOutputType(ServerGroupServerOutput{})
 	pulumi.RegisterOutputType(ServerGroupServerArrayOutput{})
-	pulumi.RegisterOutputType(ServiceEdgeGroupServiceEdgeOutput{})
-	pulumi.RegisterOutputType(ServiceEdgeGroupServiceEdgeArrayOutput{})
+	pulumi.RegisterOutputType(ServiceEdgeGroupServiceEdgesOutput{})
+	pulumi.RegisterOutputType(ServiceEdgeGroupServiceEdgesPtrOutput{})
 	pulumi.RegisterOutputType(ServiceEdgeGroupTrustedNetworkOutput{})
 	pulumi.RegisterOutputType(ServiceEdgeGroupTrustedNetworkArrayOutput{})
 	pulumi.RegisterOutputType(GetAppConnectorControllerAssistantVersionOutput{})
@@ -27023,16 +23160,6 @@ func init() {
 	pulumi.RegisterOutputType(GetPolicyTypeRuleConditionArrayOutput{})
 	pulumi.RegisterOutputType(GetPolicyTypeRuleConditionOperandOutput{})
 	pulumi.RegisterOutputType(GetPolicyTypeRuleConditionOperandArrayOutput{})
-	pulumi.RegisterOutputType(GetPraApprovalControllerApplicationOutput{})
-	pulumi.RegisterOutputType(GetPraApprovalControllerApplicationArrayOutput{})
-	pulumi.RegisterOutputType(GetPraApprovalControllerWorkingHourOutput{})
-	pulumi.RegisterOutputType(GetPraApprovalControllerWorkingHourArrayOutput{})
-	pulumi.RegisterOutputType(GetPraConsoleControllerPraApplicationOutput{})
-	pulumi.RegisterOutputType(GetPraConsoleControllerPraApplicationArrayOutput{})
-	pulumi.RegisterOutputType(GetPraConsoleControllerPraPortalOutput{})
-	pulumi.RegisterOutputType(GetPraConsoleControllerPraPortalArrayOutput{})
-	pulumi.RegisterOutputType(GetPraCredentialPoolCredentialOutput{})
-	pulumi.RegisterOutputType(GetPraCredentialPoolCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetSegmentGroupApplicationOutput{})
 	pulumi.RegisterOutputType(GetSegmentGroupApplicationArrayOutput{})
 	pulumi.RegisterOutputType(GetSegmentGroupApplicationServerGroupOutput{})

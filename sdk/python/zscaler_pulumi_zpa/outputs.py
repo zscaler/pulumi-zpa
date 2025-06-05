@@ -39,13 +39,13 @@ __all__ = [
     'BrowserAccessTcpPortRange',
     'BrowserAccessUdpPortRange',
     'CloudBrowserIsolationExternalProfileDebugMode',
-    'CloudBrowserIsolationExternalProfileSecurityControl',
-    'CloudBrowserIsolationExternalProfileSecurityControlDeepLink',
-    'CloudBrowserIsolationExternalProfileSecurityControlWatermark',
+    'CloudBrowserIsolationExternalProfileSecurityControls',
+    'CloudBrowserIsolationExternalProfileSecurityControlsDeepLink',
+    'CloudBrowserIsolationExternalProfileSecurityControlsWatermark',
     'CloudBrowserIsolationExternalProfileUserExperience',
     'CloudBrowserIsolationExternalProfileUserExperienceForwardToZia',
     'InspectionCustomControlsRule',
-    'InspectionCustomControlsRuleConditions',
+    'InspectionCustomControlsRuleCondition',
     'InspectionProfileControlsInfo',
     'InspectionProfileCustomControl',
     'InspectionProfilePredefinedApiControl',
@@ -108,40 +108,12 @@ __all__ = [
     'PolicyBrowserProtectionRuleCondition',
     'PolicyBrowserProtectionRuleConditionOperand',
     'PolicyBrowserProtectionRuleConditionOperandEntryValue',
-    'PolicyCapabilitiesRuleCondition',
-    'PolicyCapabilitiesRuleConditionOperand',
-    'PolicyCapabilitiesRuleConditionOperandEntryValue',
-    'PolicyCapabilitiesRulePrivilegedCapabilities',
-    'PolicyCredentialRuleCondition',
-    'PolicyCredentialRuleConditionOperand',
-    'PolicyCredentialRuleConditionOperandEntryValue',
-    'PolicyCredentialRuleCredential',
-    'PolicyCredentialRuleCredentialPool',
-    'PolicyForwardingRuleV2Condition',
-    'PolicyForwardingRuleV2ConditionOperand',
-    'PolicyForwardingRuleV2ConditionOperandEntryValue',
-    'PolicyInspectionRuleV2Condition',
-    'PolicyInspectionRuleV2ConditionOperand',
-    'PolicyInspectionRuleV2ConditionOperandEntryValue',
-    'PolicyIsolationRuleV2Condition',
-    'PolicyIsolationRuleV2ConditionOperand',
-    'PolicyIsolationRuleV2ConditionOperandEntryValue',
-    'PolicyRedirectionRuleCondition',
-    'PolicyRedirectionRuleConditionOperand',
-    'PolicyRedirectionRuleServiceEdgeGroup',
-    'PolicyTimeoutRuleV2Condition',
-    'PolicyTimeoutRuleV2ConditionOperand',
-    'PolicyTimeoutRuleV2ConditionOperandEntryValue',
-    'PraApprovalControllerApplication',
-    'PraApprovalControllerWorkingHour',
-    'PraConsoleControllerPraApplication',
-    'PraConsoleControllerPraPortal',
     'PraCredentialPoolCredential',
     'SegmentGroupApplication',
     'ServerGroupAppConnectorGroup',
     'ServerGroupApplication',
     'ServerGroupServer',
-    'ServiceEdgeGroupServiceEdge',
+    'ServiceEdgeGroupServiceEdges',
     'ServiceEdgeGroupTrustedNetwork',
     'GetAppConnectorControllerAssistantVersionResult',
     'GetAppConnectorControllerZpnSubModuleUpgradeListResult',
@@ -205,11 +177,6 @@ __all__ = [
     'GetPolicyTypeRuleResult',
     'GetPolicyTypeRuleConditionResult',
     'GetPolicyTypeRuleConditionOperandResult',
-    'GetPraApprovalControllerApplicationResult',
-    'GetPraApprovalControllerWorkingHourResult',
-    'GetPraConsoleControllerPraApplicationResult',
-    'GetPraConsoleControllerPraPortalResult',
-    'GetPraCredentialPoolCredentialResult',
     'GetSegmentGroupApplicationResult',
     'GetSegmentGroupApplicationServerGroupResult',
     'GetServerGroupAppConnectorGroupResult',
@@ -1374,7 +1341,7 @@ class CloudBrowserIsolationExternalProfileDebugMode(dict):
 
 
 @pulumi.output_type
-class CloudBrowserIsolationExternalProfileSecurityControl(dict):
+class CloudBrowserIsolationExternalProfileSecurityControls(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1396,26 +1363,26 @@ class CloudBrowserIsolationExternalProfileSecurityControl(dict):
             suggest = "upload_download"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CloudBrowserIsolationExternalProfileSecurityControl. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in CloudBrowserIsolationExternalProfileSecurityControls. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        CloudBrowserIsolationExternalProfileSecurityControl.__key_warning(key)
+        CloudBrowserIsolationExternalProfileSecurityControls.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        CloudBrowserIsolationExternalProfileSecurityControl.__key_warning(key)
+        CloudBrowserIsolationExternalProfileSecurityControls.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
                  allow_printing: Optional[builtins.bool] = None,
                  copy_paste: Optional[builtins.str] = None,
-                 deep_link: Optional['outputs.CloudBrowserIsolationExternalProfileSecurityControlDeepLink'] = None,
+                 deep_link: Optional['outputs.CloudBrowserIsolationExternalProfileSecurityControlsDeepLink'] = None,
                  document_viewer: Optional[builtins.bool] = None,
                  flattened_pdf: Optional[builtins.bool] = None,
                  local_render: Optional[builtins.bool] = None,
                  restrict_keystrokes: Optional[builtins.bool] = None,
                  upload_download: Optional[builtins.str] = None,
-                 watermark: Optional['outputs.CloudBrowserIsolationExternalProfileSecurityControlWatermark'] = None):
+                 watermark: Optional['outputs.CloudBrowserIsolationExternalProfileSecurityControlsWatermark'] = None):
         if allow_printing is not None:
             pulumi.set(__self__, "allow_printing", allow_printing)
         if copy_paste is not None:
@@ -1447,7 +1414,7 @@ class CloudBrowserIsolationExternalProfileSecurityControl(dict):
 
     @property
     @pulumi.getter(name="deepLink")
-    def deep_link(self) -> Optional['outputs.CloudBrowserIsolationExternalProfileSecurityControlDeepLink']:
+    def deep_link(self) -> Optional['outputs.CloudBrowserIsolationExternalProfileSecurityControlsDeepLink']:
         return pulumi.get(self, "deep_link")
 
     @property
@@ -1477,12 +1444,12 @@ class CloudBrowserIsolationExternalProfileSecurityControl(dict):
 
     @property
     @pulumi.getter
-    def watermark(self) -> Optional['outputs.CloudBrowserIsolationExternalProfileSecurityControlWatermark']:
+    def watermark(self) -> Optional['outputs.CloudBrowserIsolationExternalProfileSecurityControlsWatermark']:
         return pulumi.get(self, "watermark")
 
 
 @pulumi.output_type
-class CloudBrowserIsolationExternalProfileSecurityControlDeepLink(dict):
+class CloudBrowserIsolationExternalProfileSecurityControlsDeepLink(dict):
     def __init__(__self__, *,
                  applications: Optional[Sequence[builtins.str]] = None,
                  enabled: Optional[builtins.bool] = None):
@@ -1503,7 +1470,7 @@ class CloudBrowserIsolationExternalProfileSecurityControlDeepLink(dict):
 
 
 @pulumi.output_type
-class CloudBrowserIsolationExternalProfileSecurityControlWatermark(dict):
+class CloudBrowserIsolationExternalProfileSecurityControlsWatermark(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1515,14 +1482,14 @@ class CloudBrowserIsolationExternalProfileSecurityControlWatermark(dict):
             suggest = "show_user_id"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CloudBrowserIsolationExternalProfileSecurityControlWatermark. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in CloudBrowserIsolationExternalProfileSecurityControlsWatermark. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        CloudBrowserIsolationExternalProfileSecurityControlWatermark.__key_warning(key)
+        CloudBrowserIsolationExternalProfileSecurityControlsWatermark.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        CloudBrowserIsolationExternalProfileSecurityControlWatermark.__key_warning(key)
+        CloudBrowserIsolationExternalProfileSecurityControlsWatermark.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -1705,7 +1672,7 @@ class CloudBrowserIsolationExternalProfileUserExperienceForwardToZia(dict):
 @pulumi.output_type
 class InspectionCustomControlsRule(dict):
     def __init__(__self__, *,
-                 conditions: Optional['outputs.InspectionCustomControlsRuleConditions'] = None,
+                 conditions: Optional[Sequence['outputs.InspectionCustomControlsRuleCondition']] = None,
                  names: Optional[Sequence[builtins.str]] = None,
                  type: Optional[builtins.str] = None):
         """
@@ -1721,7 +1688,7 @@ class InspectionCustomControlsRule(dict):
 
     @property
     @pulumi.getter
-    def conditions(self) -> Optional['outputs.InspectionCustomControlsRuleConditions']:
+    def conditions(self) -> Optional[Sequence['outputs.InspectionCustomControlsRuleCondition']]:
         return pulumi.get(self, "conditions")
 
     @property
@@ -1742,7 +1709,7 @@ class InspectionCustomControlsRule(dict):
 
 
 @pulumi.output_type
-class InspectionCustomControlsRuleConditions(dict):
+class InspectionCustomControlsRuleCondition(dict):
     def __init__(__self__, *,
                  lhs: Optional[builtins.str] = None,
                  op: Optional[builtins.str] = None,
@@ -4986,1199 +4953,6 @@ class PolicyBrowserProtectionRuleConditionOperandEntryValue(dict):
 
 
 @pulumi.output_type
-class PolicyCapabilitiesRuleCondition(dict):
-    def __init__(__self__, *,
-                 id: Optional[builtins.str] = None,
-                 operands: Optional[Sequence['outputs.PolicyCapabilitiesRuleConditionOperand']] = None,
-                 operator: Optional[builtins.str] = None):
-        """
-        :param Sequence['PolicyCapabilitiesRuleConditionOperandArgs'] operands: This signifies the various policy criteria.
-        """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if operands is not None:
-            pulumi.set(__self__, "operands", operands)
-        if operator is not None:
-            pulumi.set(__self__, "operator", operator)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def operands(self) -> Optional[Sequence['outputs.PolicyCapabilitiesRuleConditionOperand']]:
-        """
-        This signifies the various policy criteria.
-        """
-        return pulumi.get(self, "operands")
-
-    @property
-    @pulumi.getter
-    def operator(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "operator")
-
-
-@pulumi.output_type
-class PolicyCapabilitiesRuleConditionOperand(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "entryValues":
-            suggest = "entry_values"
-        elif key == "objectType":
-            suggest = "object_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PolicyCapabilitiesRuleConditionOperand. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PolicyCapabilitiesRuleConditionOperand.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PolicyCapabilitiesRuleConditionOperand.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 entry_values: Optional[Sequence['outputs.PolicyCapabilitiesRuleConditionOperandEntryValue']] = None,
-                 object_type: Optional[builtins.str] = None,
-                 values: Optional[Sequence[builtins.str]] = None):
-        """
-        :param builtins.str object_type: This is for specifying the policy critiera.
-        :param Sequence[builtins.str] values: This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-        """
-        if entry_values is not None:
-            pulumi.set(__self__, "entry_values", entry_values)
-        if object_type is not None:
-            pulumi.set(__self__, "object_type", object_type)
-        if values is not None:
-            pulumi.set(__self__, "values", values)
-
-    @property
-    @pulumi.getter(name="entryValues")
-    def entry_values(self) -> Optional[Sequence['outputs.PolicyCapabilitiesRuleConditionOperandEntryValue']]:
-        return pulumi.get(self, "entry_values")
-
-    @property
-    @pulumi.getter(name="objectType")
-    def object_type(self) -> Optional[builtins.str]:
-        """
-        This is for specifying the policy critiera.
-        """
-        return pulumi.get(self, "object_type")
-
-    @property
-    @pulumi.getter
-    def values(self) -> Optional[Sequence[builtins.str]]:
-        """
-        This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-        """
-        return pulumi.get(self, "values")
-
-
-@pulumi.output_type
-class PolicyCapabilitiesRuleConditionOperandEntryValue(dict):
-    def __init__(__self__, *,
-                 lhs: Optional[builtins.str] = None,
-                 rhs: Optional[builtins.str] = None):
-        if lhs is not None:
-            pulumi.set(__self__, "lhs", lhs)
-        if rhs is not None:
-            pulumi.set(__self__, "rhs", rhs)
-
-    @property
-    @pulumi.getter
-    def lhs(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "lhs")
-
-    @property
-    @pulumi.getter
-    def rhs(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "rhs")
-
-
-@pulumi.output_type
-class PolicyCapabilitiesRulePrivilegedCapabilities(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clipboardCopy":
-            suggest = "clipboard_copy"
-        elif key == "clipboardPaste":
-            suggest = "clipboard_paste"
-        elif key == "fileDownload":
-            suggest = "file_download"
-        elif key == "fileUpload":
-            suggest = "file_upload"
-        elif key == "inspectFileDownload":
-            suggest = "inspect_file_download"
-        elif key == "inspectFileUpload":
-            suggest = "inspect_file_upload"
-        elif key == "monitorSession":
-            suggest = "monitor_session"
-        elif key == "recordSession":
-            suggest = "record_session"
-        elif key == "shareSession":
-            suggest = "share_session"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PolicyCapabilitiesRulePrivilegedCapabilities. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PolicyCapabilitiesRulePrivilegedCapabilities.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PolicyCapabilitiesRulePrivilegedCapabilities.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 clipboard_copy: Optional[builtins.bool] = None,
-                 clipboard_paste: Optional[builtins.bool] = None,
-                 file_download: Optional[builtins.bool] = None,
-                 file_upload: Optional[builtins.bool] = None,
-                 inspect_file_download: Optional[builtins.bool] = None,
-                 inspect_file_upload: Optional[builtins.bool] = None,
-                 monitor_session: Optional[builtins.bool] = None,
-                 record_session: Optional[builtins.bool] = None,
-                 share_session: Optional[builtins.bool] = None):
-        """
-        :param builtins.bool clipboard_copy: Indicates the PRA Clipboard Copy function
-        :param builtins.bool clipboard_paste: Indicates the PRA Clipboard Paste function
-        :param builtins.bool file_download: Indicates the PRA File Transfer capabilities that enables the File Download function
-        :param builtins.bool file_upload: Indicates the PRA File Transfer capabilities that enables the File Upload function
-        :param builtins.bool inspect_file_download: Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and downloads the file following the inspection
-        :param builtins.bool inspect_file_upload: Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and uploads the file following the inspection
-        :param builtins.bool monitor_session: Indicates the PRA Monitoring Capabilities to enable the PRA Session Monitoring function
-        :param builtins.bool record_session: Indicates the PRA Session Recording capabilities to enable PRA Session Recording
-        :param builtins.bool share_session: Indicates the PRA Session Control and Monitoring capabilities to enable PRA Session Monitoring
-        """
-        if clipboard_copy is not None:
-            pulumi.set(__self__, "clipboard_copy", clipboard_copy)
-        if clipboard_paste is not None:
-            pulumi.set(__self__, "clipboard_paste", clipboard_paste)
-        if file_download is not None:
-            pulumi.set(__self__, "file_download", file_download)
-        if file_upload is not None:
-            pulumi.set(__self__, "file_upload", file_upload)
-        if inspect_file_download is not None:
-            pulumi.set(__self__, "inspect_file_download", inspect_file_download)
-        if inspect_file_upload is not None:
-            pulumi.set(__self__, "inspect_file_upload", inspect_file_upload)
-        if monitor_session is not None:
-            pulumi.set(__self__, "monitor_session", monitor_session)
-        if record_session is not None:
-            pulumi.set(__self__, "record_session", record_session)
-        if share_session is not None:
-            pulumi.set(__self__, "share_session", share_session)
-
-    @property
-    @pulumi.getter(name="clipboardCopy")
-    def clipboard_copy(self) -> Optional[builtins.bool]:
-        """
-        Indicates the PRA Clipboard Copy function
-        """
-        return pulumi.get(self, "clipboard_copy")
-
-    @property
-    @pulumi.getter(name="clipboardPaste")
-    def clipboard_paste(self) -> Optional[builtins.bool]:
-        """
-        Indicates the PRA Clipboard Paste function
-        """
-        return pulumi.get(self, "clipboard_paste")
-
-    @property
-    @pulumi.getter(name="fileDownload")
-    def file_download(self) -> Optional[builtins.bool]:
-        """
-        Indicates the PRA File Transfer capabilities that enables the File Download function
-        """
-        return pulumi.get(self, "file_download")
-
-    @property
-    @pulumi.getter(name="fileUpload")
-    def file_upload(self) -> Optional[builtins.bool]:
-        """
-        Indicates the PRA File Transfer capabilities that enables the File Upload function
-        """
-        return pulumi.get(self, "file_upload")
-
-    @property
-    @pulumi.getter(name="inspectFileDownload")
-    def inspect_file_download(self) -> Optional[builtins.bool]:
-        """
-        Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and downloads the file following the inspection
-        """
-        return pulumi.get(self, "inspect_file_download")
-
-    @property
-    @pulumi.getter(name="inspectFileUpload")
-    def inspect_file_upload(self) -> Optional[builtins.bool]:
-        """
-        Inspects the file via ZIA sandbox (if you have set up the ZIA cloud and the Integrations settings) and uploads the file following the inspection
-        """
-        return pulumi.get(self, "inspect_file_upload")
-
-    @property
-    @pulumi.getter(name="monitorSession")
-    def monitor_session(self) -> Optional[builtins.bool]:
-        """
-        Indicates the PRA Monitoring Capabilities to enable the PRA Session Monitoring function
-        """
-        return pulumi.get(self, "monitor_session")
-
-    @property
-    @pulumi.getter(name="recordSession")
-    def record_session(self) -> Optional[builtins.bool]:
-        """
-        Indicates the PRA Session Recording capabilities to enable PRA Session Recording
-        """
-        return pulumi.get(self, "record_session")
-
-    @property
-    @pulumi.getter(name="shareSession")
-    def share_session(self) -> Optional[builtins.bool]:
-        """
-        Indicates the PRA Session Control and Monitoring capabilities to enable PRA Session Monitoring
-        """
-        return pulumi.get(self, "share_session")
-
-
-@pulumi.output_type
-class PolicyCredentialRuleCondition(dict):
-    def __init__(__self__, *,
-                 id: Optional[builtins.str] = None,
-                 operands: Optional[Sequence['outputs.PolicyCredentialRuleConditionOperand']] = None,
-                 operator: Optional[builtins.str] = None):
-        """
-        :param Sequence['PolicyCredentialRuleConditionOperandArgs'] operands: This signifies the various policy criteria.
-        """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if operands is not None:
-            pulumi.set(__self__, "operands", operands)
-        if operator is not None:
-            pulumi.set(__self__, "operator", operator)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def operands(self) -> Optional[Sequence['outputs.PolicyCredentialRuleConditionOperand']]:
-        """
-        This signifies the various policy criteria.
-        """
-        return pulumi.get(self, "operands")
-
-    @property
-    @pulumi.getter
-    def operator(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "operator")
-
-
-@pulumi.output_type
-class PolicyCredentialRuleConditionOperand(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "entryValues":
-            suggest = "entry_values"
-        elif key == "objectType":
-            suggest = "object_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PolicyCredentialRuleConditionOperand. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PolicyCredentialRuleConditionOperand.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PolicyCredentialRuleConditionOperand.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 entry_values: Optional[Sequence['outputs.PolicyCredentialRuleConditionOperandEntryValue']] = None,
-                 object_type: Optional[builtins.str] = None,
-                 values: Optional[Sequence[builtins.str]] = None):
-        """
-        :param builtins.str object_type: This is for specifying the policy critiera.
-        :param Sequence[builtins.str] values: This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-        """
-        if entry_values is not None:
-            pulumi.set(__self__, "entry_values", entry_values)
-        if object_type is not None:
-            pulumi.set(__self__, "object_type", object_type)
-        if values is not None:
-            pulumi.set(__self__, "values", values)
-
-    @property
-    @pulumi.getter(name="entryValues")
-    def entry_values(self) -> Optional[Sequence['outputs.PolicyCredentialRuleConditionOperandEntryValue']]:
-        return pulumi.get(self, "entry_values")
-
-    @property
-    @pulumi.getter(name="objectType")
-    def object_type(self) -> Optional[builtins.str]:
-        """
-        This is for specifying the policy critiera.
-        """
-        return pulumi.get(self, "object_type")
-
-    @property
-    @pulumi.getter
-    def values(self) -> Optional[Sequence[builtins.str]]:
-        """
-        This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-        """
-        return pulumi.get(self, "values")
-
-
-@pulumi.output_type
-class PolicyCredentialRuleConditionOperandEntryValue(dict):
-    def __init__(__self__, *,
-                 lhs: Optional[builtins.str] = None,
-                 rhs: Optional[builtins.str] = None):
-        if lhs is not None:
-            pulumi.set(__self__, "lhs", lhs)
-        if rhs is not None:
-            pulumi.set(__self__, "rhs", rhs)
-
-    @property
-    @pulumi.getter
-    def lhs(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "lhs")
-
-    @property
-    @pulumi.getter
-    def rhs(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "rhs")
-
-
-@pulumi.output_type
-class PolicyCredentialRuleCredential(dict):
-    def __init__(__self__, *,
-                 id: Optional[builtins.str] = None):
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "id")
-
-
-@pulumi.output_type
-class PolicyCredentialRuleCredentialPool(dict):
-    def __init__(__self__, *,
-                 id: Optional[builtins.str] = None):
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "id")
-
-
-@pulumi.output_type
-class PolicyForwardingRuleV2Condition(dict):
-    def __init__(__self__, *,
-                 id: Optional[builtins.str] = None,
-                 operands: Optional[Sequence['outputs.PolicyForwardingRuleV2ConditionOperand']] = None,
-                 operator: Optional[builtins.str] = None):
-        """
-        :param Sequence['PolicyForwardingRuleV2ConditionOperandArgs'] operands: This signifies the various policy criteria.
-        """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if operands is not None:
-            pulumi.set(__self__, "operands", operands)
-        if operator is not None:
-            pulumi.set(__self__, "operator", operator)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def operands(self) -> Optional[Sequence['outputs.PolicyForwardingRuleV2ConditionOperand']]:
-        """
-        This signifies the various policy criteria.
-        """
-        return pulumi.get(self, "operands")
-
-    @property
-    @pulumi.getter
-    def operator(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "operator")
-
-
-@pulumi.output_type
-class PolicyForwardingRuleV2ConditionOperand(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "entryValues":
-            suggest = "entry_values"
-        elif key == "objectType":
-            suggest = "object_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PolicyForwardingRuleV2ConditionOperand. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PolicyForwardingRuleV2ConditionOperand.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PolicyForwardingRuleV2ConditionOperand.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 entry_values: Optional[Sequence['outputs.PolicyForwardingRuleV2ConditionOperandEntryValue']] = None,
-                 object_type: Optional[builtins.str] = None,
-                 values: Optional[Sequence[builtins.str]] = None):
-        """
-        :param builtins.str object_type: This is for specifying the policy critiera.
-        :param Sequence[builtins.str] values: This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-        """
-        if entry_values is not None:
-            pulumi.set(__self__, "entry_values", entry_values)
-        if object_type is not None:
-            pulumi.set(__self__, "object_type", object_type)
-        if values is not None:
-            pulumi.set(__self__, "values", values)
-
-    @property
-    @pulumi.getter(name="entryValues")
-    def entry_values(self) -> Optional[Sequence['outputs.PolicyForwardingRuleV2ConditionOperandEntryValue']]:
-        return pulumi.get(self, "entry_values")
-
-    @property
-    @pulumi.getter(name="objectType")
-    def object_type(self) -> Optional[builtins.str]:
-        """
-        This is for specifying the policy critiera.
-        """
-        return pulumi.get(self, "object_type")
-
-    @property
-    @pulumi.getter
-    def values(self) -> Optional[Sequence[builtins.str]]:
-        """
-        This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-        """
-        return pulumi.get(self, "values")
-
-
-@pulumi.output_type
-class PolicyForwardingRuleV2ConditionOperandEntryValue(dict):
-    def __init__(__self__, *,
-                 lhs: Optional[builtins.str] = None,
-                 rhs: Optional[builtins.str] = None):
-        if lhs is not None:
-            pulumi.set(__self__, "lhs", lhs)
-        if rhs is not None:
-            pulumi.set(__self__, "rhs", rhs)
-
-    @property
-    @pulumi.getter
-    def lhs(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "lhs")
-
-    @property
-    @pulumi.getter
-    def rhs(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "rhs")
-
-
-@pulumi.output_type
-class PolicyInspectionRuleV2Condition(dict):
-    def __init__(__self__, *,
-                 id: Optional[builtins.str] = None,
-                 operands: Optional[Sequence['outputs.PolicyInspectionRuleV2ConditionOperand']] = None,
-                 operator: Optional[builtins.str] = None):
-        """
-        :param Sequence['PolicyInspectionRuleV2ConditionOperandArgs'] operands: This signifies the various policy criteria.
-        """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if operands is not None:
-            pulumi.set(__self__, "operands", operands)
-        if operator is not None:
-            pulumi.set(__self__, "operator", operator)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def operands(self) -> Optional[Sequence['outputs.PolicyInspectionRuleV2ConditionOperand']]:
-        """
-        This signifies the various policy criteria.
-        """
-        return pulumi.get(self, "operands")
-
-    @property
-    @pulumi.getter
-    def operator(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "operator")
-
-
-@pulumi.output_type
-class PolicyInspectionRuleV2ConditionOperand(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "entryValues":
-            suggest = "entry_values"
-        elif key == "objectType":
-            suggest = "object_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PolicyInspectionRuleV2ConditionOperand. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PolicyInspectionRuleV2ConditionOperand.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PolicyInspectionRuleV2ConditionOperand.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 entry_values: Optional[Sequence['outputs.PolicyInspectionRuleV2ConditionOperandEntryValue']] = None,
-                 object_type: Optional[builtins.str] = None,
-                 values: Optional[Sequence[builtins.str]] = None):
-        """
-        :param builtins.str object_type: This is for specifying the policy critiera.
-        :param Sequence[builtins.str] values: This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-        """
-        if entry_values is not None:
-            pulumi.set(__self__, "entry_values", entry_values)
-        if object_type is not None:
-            pulumi.set(__self__, "object_type", object_type)
-        if values is not None:
-            pulumi.set(__self__, "values", values)
-
-    @property
-    @pulumi.getter(name="entryValues")
-    def entry_values(self) -> Optional[Sequence['outputs.PolicyInspectionRuleV2ConditionOperandEntryValue']]:
-        return pulumi.get(self, "entry_values")
-
-    @property
-    @pulumi.getter(name="objectType")
-    def object_type(self) -> Optional[builtins.str]:
-        """
-        This is for specifying the policy critiera.
-        """
-        return pulumi.get(self, "object_type")
-
-    @property
-    @pulumi.getter
-    def values(self) -> Optional[Sequence[builtins.str]]:
-        """
-        This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-        """
-        return pulumi.get(self, "values")
-
-
-@pulumi.output_type
-class PolicyInspectionRuleV2ConditionOperandEntryValue(dict):
-    def __init__(__self__, *,
-                 lhs: Optional[builtins.str] = None,
-                 rhs: Optional[builtins.str] = None):
-        if lhs is not None:
-            pulumi.set(__self__, "lhs", lhs)
-        if rhs is not None:
-            pulumi.set(__self__, "rhs", rhs)
-
-    @property
-    @pulumi.getter
-    def lhs(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "lhs")
-
-    @property
-    @pulumi.getter
-    def rhs(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "rhs")
-
-
-@pulumi.output_type
-class PolicyIsolationRuleV2Condition(dict):
-    def __init__(__self__, *,
-                 id: Optional[builtins.str] = None,
-                 operands: Optional[Sequence['outputs.PolicyIsolationRuleV2ConditionOperand']] = None,
-                 operator: Optional[builtins.str] = None):
-        """
-        :param Sequence['PolicyIsolationRuleV2ConditionOperandArgs'] operands: This signifies the various policy criteria.
-        """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if operands is not None:
-            pulumi.set(__self__, "operands", operands)
-        if operator is not None:
-            pulumi.set(__self__, "operator", operator)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def operands(self) -> Optional[Sequence['outputs.PolicyIsolationRuleV2ConditionOperand']]:
-        """
-        This signifies the various policy criteria.
-        """
-        return pulumi.get(self, "operands")
-
-    @property
-    @pulumi.getter
-    def operator(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "operator")
-
-
-@pulumi.output_type
-class PolicyIsolationRuleV2ConditionOperand(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "entryValues":
-            suggest = "entry_values"
-        elif key == "objectType":
-            suggest = "object_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PolicyIsolationRuleV2ConditionOperand. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PolicyIsolationRuleV2ConditionOperand.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PolicyIsolationRuleV2ConditionOperand.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 entry_values: Optional[Sequence['outputs.PolicyIsolationRuleV2ConditionOperandEntryValue']] = None,
-                 object_type: Optional[builtins.str] = None,
-                 values: Optional[Sequence[builtins.str]] = None):
-        """
-        :param builtins.str object_type: This is for specifying the policy critiera.
-        :param Sequence[builtins.str] values: This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-        """
-        if entry_values is not None:
-            pulumi.set(__self__, "entry_values", entry_values)
-        if object_type is not None:
-            pulumi.set(__self__, "object_type", object_type)
-        if values is not None:
-            pulumi.set(__self__, "values", values)
-
-    @property
-    @pulumi.getter(name="entryValues")
-    def entry_values(self) -> Optional[Sequence['outputs.PolicyIsolationRuleV2ConditionOperandEntryValue']]:
-        return pulumi.get(self, "entry_values")
-
-    @property
-    @pulumi.getter(name="objectType")
-    def object_type(self) -> Optional[builtins.str]:
-        """
-        This is for specifying the policy critiera.
-        """
-        return pulumi.get(self, "object_type")
-
-    @property
-    @pulumi.getter
-    def values(self) -> Optional[Sequence[builtins.str]]:
-        """
-        This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-        """
-        return pulumi.get(self, "values")
-
-
-@pulumi.output_type
-class PolicyIsolationRuleV2ConditionOperandEntryValue(dict):
-    def __init__(__self__, *,
-                 lhs: Optional[builtins.str] = None,
-                 rhs: Optional[builtins.str] = None):
-        if lhs is not None:
-            pulumi.set(__self__, "lhs", lhs)
-        if rhs is not None:
-            pulumi.set(__self__, "rhs", rhs)
-
-    @property
-    @pulumi.getter
-    def lhs(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "lhs")
-
-    @property
-    @pulumi.getter
-    def rhs(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "rhs")
-
-
-@pulumi.output_type
-class PolicyRedirectionRuleCondition(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "microtenantId":
-            suggest = "microtenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PolicyRedirectionRuleCondition. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PolicyRedirectionRuleCondition.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PolicyRedirectionRuleCondition.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 operator: builtins.str,
-                 id: Optional[builtins.str] = None,
-                 microtenant_id: Optional[builtins.str] = None,
-                 operands: Optional[Sequence['outputs.PolicyRedirectionRuleConditionOperand']] = None):
-        """
-        :param Sequence['PolicyRedirectionRuleConditionOperandArgs'] operands: This signifies the various policy criteria.
-        """
-        pulumi.set(__self__, "operator", operator)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if microtenant_id is not None:
-            pulumi.set(__self__, "microtenant_id", microtenant_id)
-        if operands is not None:
-            pulumi.set(__self__, "operands", operands)
-
-    @property
-    @pulumi.getter
-    def operator(self) -> builtins.str:
-        return pulumi.get(self, "operator")
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="microtenantId")
-    def microtenant_id(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "microtenant_id")
-
-    @property
-    @pulumi.getter
-    def operands(self) -> Optional[Sequence['outputs.PolicyRedirectionRuleConditionOperand']]:
-        """
-        This signifies the various policy criteria.
-        """
-        return pulumi.get(self, "operands")
-
-
-@pulumi.output_type
-class PolicyRedirectionRuleConditionOperand(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "objectType":
-            suggest = "object_type"
-        elif key == "idpId":
-            suggest = "idp_id"
-        elif key == "microtenantId":
-            suggest = "microtenant_id"
-        elif key == "rhsLists":
-            suggest = "rhs_lists"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PolicyRedirectionRuleConditionOperand. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PolicyRedirectionRuleConditionOperand.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PolicyRedirectionRuleConditionOperand.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 lhs: builtins.str,
-                 object_type: builtins.str,
-                 id: Optional[builtins.str] = None,
-                 idp_id: Optional[builtins.str] = None,
-                 microtenant_id: Optional[builtins.str] = None,
-                 name: Optional[builtins.str] = None,
-                 rhs: Optional[builtins.str] = None,
-                 rhs_lists: Optional[Sequence[builtins.str]] = None):
-        """
-        :param builtins.str lhs: This signifies the key for the object type. String ID example: id
-        :param builtins.str object_type: This is for specifying the policy critiera.
-        :param builtins.str microtenant_id: This denotes the value for the given object type. Its value depends upon the key.
-        :param builtins.str rhs: This denotes the value for the given object type. Its value depends upon the key.
-        :param Sequence[builtins.str] rhs_lists: This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-        """
-        pulumi.set(__self__, "lhs", lhs)
-        pulumi.set(__self__, "object_type", object_type)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if idp_id is not None:
-            pulumi.set(__self__, "idp_id", idp_id)
-        if microtenant_id is not None:
-            pulumi.set(__self__, "microtenant_id", microtenant_id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if rhs is not None:
-            pulumi.set(__self__, "rhs", rhs)
-        if rhs_lists is not None:
-            pulumi.set(__self__, "rhs_lists", rhs_lists)
-
-    @property
-    @pulumi.getter
-    def lhs(self) -> builtins.str:
-        """
-        This signifies the key for the object type. String ID example: id
-        """
-        return pulumi.get(self, "lhs")
-
-    @property
-    @pulumi.getter(name="objectType")
-    def object_type(self) -> builtins.str:
-        """
-        This is for specifying the policy critiera.
-        """
-        return pulumi.get(self, "object_type")
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="idpId")
-    def idp_id(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "idp_id")
-
-    @property
-    @pulumi.getter(name="microtenantId")
-    def microtenant_id(self) -> Optional[builtins.str]:
-        """
-        This denotes the value for the given object type. Its value depends upon the key.
-        """
-        return pulumi.get(self, "microtenant_id")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def rhs(self) -> Optional[builtins.str]:
-        """
-        This denotes the value for the given object type. Its value depends upon the key.
-        """
-        return pulumi.get(self, "rhs")
-
-    @property
-    @pulumi.getter(name="rhsLists")
-    def rhs_lists(self) -> Optional[Sequence[builtins.str]]:
-        """
-        This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-        """
-        return pulumi.get(self, "rhs_lists")
-
-
-@pulumi.output_type
-class PolicyRedirectionRuleServiceEdgeGroup(dict):
-    def __init__(__self__, *,
-                 ids: Sequence[builtins.str]):
-        pulumi.set(__self__, "ids", ids)
-
-    @property
-    @pulumi.getter
-    def ids(self) -> Sequence[builtins.str]:
-        return pulumi.get(self, "ids")
-
-
-@pulumi.output_type
-class PolicyTimeoutRuleV2Condition(dict):
-    def __init__(__self__, *,
-                 id: Optional[builtins.str] = None,
-                 operands: Optional[Sequence['outputs.PolicyTimeoutRuleV2ConditionOperand']] = None,
-                 operator: Optional[builtins.str] = None):
-        """
-        :param Sequence['PolicyTimeoutRuleV2ConditionOperandArgs'] operands: This signifies the various policy criteria.
-        """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if operands is not None:
-            pulumi.set(__self__, "operands", operands)
-        if operator is not None:
-            pulumi.set(__self__, "operator", operator)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def operands(self) -> Optional[Sequence['outputs.PolicyTimeoutRuleV2ConditionOperand']]:
-        """
-        This signifies the various policy criteria.
-        """
-        return pulumi.get(self, "operands")
-
-    @property
-    @pulumi.getter
-    def operator(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "operator")
-
-
-@pulumi.output_type
-class PolicyTimeoutRuleV2ConditionOperand(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "entryValues":
-            suggest = "entry_values"
-        elif key == "objectType":
-            suggest = "object_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PolicyTimeoutRuleV2ConditionOperand. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PolicyTimeoutRuleV2ConditionOperand.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PolicyTimeoutRuleV2ConditionOperand.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 entry_values: Optional[Sequence['outputs.PolicyTimeoutRuleV2ConditionOperandEntryValue']] = None,
-                 object_type: Optional[builtins.str] = None,
-                 values: Optional[Sequence[builtins.str]] = None):
-        """
-        :param builtins.str object_type: This is for specifying the policy critiera.
-        :param Sequence[builtins.str] values: This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-        """
-        if entry_values is not None:
-            pulumi.set(__self__, "entry_values", entry_values)
-        if object_type is not None:
-            pulumi.set(__self__, "object_type", object_type)
-        if values is not None:
-            pulumi.set(__self__, "values", values)
-
-    @property
-    @pulumi.getter(name="entryValues")
-    def entry_values(self) -> Optional[Sequence['outputs.PolicyTimeoutRuleV2ConditionOperandEntryValue']]:
-        return pulumi.get(self, "entry_values")
-
-    @property
-    @pulumi.getter(name="objectType")
-    def object_type(self) -> Optional[builtins.str]:
-        """
-        This is for specifying the policy critiera.
-        """
-        return pulumi.get(self, "object_type")
-
-    @property
-    @pulumi.getter
-    def values(self) -> Optional[Sequence[builtins.str]]:
-        """
-        This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
-        """
-        return pulumi.get(self, "values")
-
-
-@pulumi.output_type
-class PolicyTimeoutRuleV2ConditionOperandEntryValue(dict):
-    def __init__(__self__, *,
-                 lhs: Optional[builtins.str] = None,
-                 rhs: Optional[builtins.str] = None):
-        if lhs is not None:
-            pulumi.set(__self__, "lhs", lhs)
-        if rhs is not None:
-            pulumi.set(__self__, "rhs", rhs)
-
-    @property
-    @pulumi.getter
-    def lhs(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "lhs")
-
-    @property
-    @pulumi.getter
-    def rhs(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "rhs")
-
-
-@pulumi.output_type
-class PraApprovalControllerApplication(dict):
-    def __init__(__self__, *,
-                 ids: Optional[Sequence[builtins.str]] = None):
-        """
-        :param Sequence[builtins.str] ids: The unique identifier of the pra application segment
-        """
-        if ids is not None:
-            pulumi.set(__self__, "ids", ids)
-
-    @property
-    @pulumi.getter
-    def ids(self) -> Optional[Sequence[builtins.str]]:
-        """
-        The unique identifier of the pra application segment
-        """
-        return pulumi.get(self, "ids")
-
-
-@pulumi.output_type
-class PraApprovalControllerWorkingHour(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endTime":
-            suggest = "end_time"
-        elif key == "endTimeCron":
-            suggest = "end_time_cron"
-        elif key == "startTime":
-            suggest = "start_time"
-        elif key == "startTimeCron":
-            suggest = "start_time_cron"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PraApprovalControllerWorkingHour. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PraApprovalControllerWorkingHour.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PraApprovalControllerWorkingHour.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 days: Optional[Sequence[builtins.str]] = None,
-                 end_time: Optional[builtins.str] = None,
-                 end_time_cron: Optional[builtins.str] = None,
-                 start_time: Optional[builtins.str] = None,
-                 start_time_cron: Optional[builtins.str] = None,
-                 timezone: Optional[builtins.str] = None):
-        """
-        :param Sequence[builtins.str] days: The days of the week that you want to enable the privileged approval
-        :param builtins.str end_time: The end time that the user no longer has access to the privileged approval
-        :param builtins.str end_time_cron: The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
-        :param builtins.str start_time: The start time that the user has access to the privileged approval
-        :param builtins.str start_time_cron: The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
-        :param builtins.str timezone: The time zone for the time window of a privileged approval
-        """
-        if days is not None:
-            pulumi.set(__self__, "days", days)
-        if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
-        if end_time_cron is not None:
-            pulumi.set(__self__, "end_time_cron", end_time_cron)
-        if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
-        if start_time_cron is not None:
-            pulumi.set(__self__, "start_time_cron", start_time_cron)
-        if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
-
-    @property
-    @pulumi.getter
-    def days(self) -> Optional[Sequence[builtins.str]]:
-        """
-        The days of the week that you want to enable the privileged approval
-        """
-        return pulumi.get(self, "days")
-
-    @property
-    @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[builtins.str]:
-        """
-        The end time that the user no longer has access to the privileged approval
-        """
-        return pulumi.get(self, "end_time")
-
-    @property
-    @pulumi.getter(name="endTimeCron")
-    def end_time_cron(self) -> Optional[builtins.str]:
-        """
-        The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
-        """
-        return pulumi.get(self, "end_time_cron")
-
-    @property
-    @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[builtins.str]:
-        """
-        The start time that the user has access to the privileged approval
-        """
-        return pulumi.get(self, "start_time")
-
-    @property
-    @pulumi.getter(name="startTimeCron")
-    def start_time_cron(self) -> Optional[builtins.str]:
-        """
-        The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
-        """
-        return pulumi.get(self, "start_time_cron")
-
-    @property
-    @pulumi.getter
-    def timezone(self) -> Optional[builtins.str]:
-        """
-        The time zone for the time window of a privileged approval
-        """
-        return pulumi.get(self, "timezone")
-
-
-@pulumi.output_type
-class PraConsoleControllerPraApplication(dict):
-    def __init__(__self__, *,
-                 id: builtins.str):
-        pulumi.set(__self__, "id", id)
-
-    @property
-    @pulumi.getter
-    def id(self) -> builtins.str:
-        return pulumi.get(self, "id")
-
-
-@pulumi.output_type
-class PraConsoleControllerPraPortal(dict):
-    def __init__(__self__, *,
-                 ids: Optional[Sequence[builtins.str]] = None):
-        """
-        :param Sequence[builtins.str] ids: The unique identifier of the privileged portal
-        """
-        if ids is not None:
-            pulumi.set(__self__, "ids", ids)
-
-    @property
-    @pulumi.getter
-    def ids(self) -> Optional[Sequence[builtins.str]]:
-        """
-        The unique identifier of the privileged portal
-        """
-        return pulumi.get(self, "ids")
-
-
-@pulumi.output_type
 class PraCredentialPoolCredential(dict):
     def __init__(__self__, *,
                  ids: Optional[Sequence[builtins.str]] = None):
@@ -6243,7 +5017,7 @@ class ServerGroupServer(dict):
 
 
 @pulumi.output_type
-class ServiceEdgeGroupServiceEdge(dict):
+class ServiceEdgeGroupServiceEdges(dict):
     def __init__(__self__, *,
                  ids: Optional[Sequence[builtins.str]] = None):
         if ids is not None:
@@ -10043,179 +8817,6 @@ class GetPolicyTypeRuleConditionOperandResult(dict):
     @pulumi.getter
     def rhs(self) -> builtins.str:
         return pulumi.get(self, "rhs")
-
-
-@pulumi.output_type
-class GetPraApprovalControllerApplicationResult(dict):
-    def __init__(__self__, *,
-                 id: builtins.str,
-                 name: builtins.str):
-        """
-        :param builtins.str id: The unique identifier of the pra application segment
-        :param builtins.str name: The name of the pra application segment
-        """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def id(self) -> builtins.str:
-        """
-        The unique identifier of the pra application segment
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def name(self) -> builtins.str:
-        """
-        The name of the pra application segment
-        """
-        return pulumi.get(self, "name")
-
-
-@pulumi.output_type
-class GetPraApprovalControllerWorkingHourResult(dict):
-    def __init__(__self__, *,
-                 days: Sequence[builtins.str],
-                 end_time: builtins.str,
-                 end_time_cron: builtins.str,
-                 start_time: builtins.str,
-                 start_time_cron: builtins.str,
-                 timezone: builtins.str):
-        """
-        :param Sequence[builtins.str] days: The days of the week that you want to enable the privileged approval
-        :param builtins.str end_time: The end time that the user no longer has access to the privileged approval
-        :param builtins.str end_time_cron: The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
-        :param builtins.str start_time: The start time that the user has access to the privileged approval
-        :param builtins.str start_time_cron: The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
-        :param builtins.str timezone: The time zone for the time window of a privileged approval
-        """
-        pulumi.set(__self__, "days", days)
-        pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "end_time_cron", end_time_cron)
-        pulumi.set(__self__, "start_time", start_time)
-        pulumi.set(__self__, "start_time_cron", start_time_cron)
-        pulumi.set(__self__, "timezone", timezone)
-
-    @property
-    @pulumi.getter
-    def days(self) -> Sequence[builtins.str]:
-        """
-        The days of the week that you want to enable the privileged approval
-        """
-        return pulumi.get(self, "days")
-
-    @property
-    @pulumi.getter(name="endTime")
-    def end_time(self) -> builtins.str:
-        """
-        The end time that the user no longer has access to the privileged approval
-        """
-        return pulumi.get(self, "end_time")
-
-    @property
-    @pulumi.getter(name="endTimeCron")
-    def end_time_cron(self) -> builtins.str:
-        """
-        The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]The cron expression provided to configure the privileged approval end time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
-        """
-        return pulumi.get(self, "end_time_cron")
-
-    @property
-    @pulumi.getter(name="startTime")
-    def start_time(self) -> builtins.str:
-        """
-        The start time that the user has access to the privileged approval
-        """
-        return pulumi.get(self, "start_time")
-
-    @property
-    @pulumi.getter(name="startTimeCron")
-    def start_time_cron(self) -> builtins.str:
-        """
-        The cron expression provided to configure the privileged approval start time working hours. The standard cron expression format is [Seconds][Minutes][Hours][Day of the Month][Month][Day of the Week][Year]
-        """
-        return pulumi.get(self, "start_time_cron")
-
-    @property
-    @pulumi.getter
-    def timezone(self) -> builtins.str:
-        """
-        The time zone for the time window of a privileged approval
-        """
-        return pulumi.get(self, "timezone")
-
-
-@pulumi.output_type
-class GetPraConsoleControllerPraApplicationResult(dict):
-    def __init__(__self__, *,
-                 id: builtins.str,
-                 name: builtins.str):
-        """
-        :param builtins.str id: The unique identifier of the Privileged Remote Access-enabled application
-        :param builtins.str name: - (Required) The name of the privileged console.
-        """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def id(self) -> builtins.str:
-        """
-        The unique identifier of the Privileged Remote Access-enabled application
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def name(self) -> builtins.str:
-        """
-        - (Required) The name of the privileged console.
-        """
-        return pulumi.get(self, "name")
-
-
-@pulumi.output_type
-class GetPraConsoleControllerPraPortalResult(dict):
-    def __init__(__self__, *,
-                 id: builtins.str,
-                 name: builtins.str):
-        """
-        :param builtins.str id: The unique identifier of the privileged portal
-        :param builtins.str name: - (Required) The name of the privileged console.
-        """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def id(self) -> builtins.str:
-        """
-        The unique identifier of the privileged portal
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def name(self) -> builtins.str:
-        """
-        - (Required) The name of the privileged console.
-        """
-        return pulumi.get(self, "name")
-
-
-@pulumi.output_type
-class GetPraCredentialPoolCredentialResult(dict):
-    def __init__(__self__, *,
-                 ids: Optional[Sequence[builtins.str]] = None):
-        if ids is not None:
-            pulumi.set(__self__, "ids", ids)
-
-    @property
-    @pulumi.getter
-    def ids(self) -> Optional[Sequence[builtins.str]]:
-        return pulumi.get(self, "ids")
 
 
 @pulumi.output_type

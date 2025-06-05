@@ -313,6 +313,7 @@ def get_app_connector_group(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA App Connector Group Data Source
     foo = zpa.get_app_connector_group(name="DataCenter")
     ```
 
@@ -320,6 +321,7 @@ def get_app_connector_group(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA App Connector Group Data Source
     foo = zpa.get_app_connector_group(id="123456789")
     ```
     """
@@ -375,6 +377,7 @@ def get_app_connector_group_output(id: Optional[pulumi.Input[Optional[builtins.s
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA App Connector Group Data Source
     foo = zpa.get_app_connector_group(name="DataCenter")
     ```
 
@@ -382,6 +385,7 @@ def get_app_connector_group_output(id: Optional[pulumi.Input[Optional[builtins.s
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA App Connector Group Data Source
     foo = zpa.get_app_connector_group(id="123456789")
     ```
     """

@@ -32,11 +32,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Creates Credential of Type "USERNAME_PASSWORD"
 //			_, err := zpa.NewPRACredential(ctx, "this", &zpa.PRACredentialArgs{
-//				CredentialType: pulumi.String("USERNAME_PASSWORD"),
+//				Name:           pulumi.String("John Doe"),
 //				Description:    pulumi.String("Created with Terraform"),
-//				Password:       pulumi.String(""),
+//				CredentialType: pulumi.String("USERNAME_PASSWORD"),
 //				UserDomain:     pulumi.String("acme.com"),
 //				Username:       pulumi.String("jdoe"),
+//				Password:       pulumi.String(""),
 //			})
 //			if err != nil {
 //				return err
@@ -63,11 +64,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Creates Credential of Type "SSH_KEY"
 //			_, err := zpa.NewPRACredential(ctx, "this", &zpa.PRACredentialArgs{
-//				CredentialType: pulumi.String("SSH_KEY"),
+//				Name:           pulumi.String("John Doe"),
 //				Description:    pulumi.String("Created with Terraform"),
-//				PrivateKey:     pulumi.String("-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEjc8pPoobS0l6\n-----END PRIVATE KEY-----\n\n"),
+//				CredentialType: pulumi.String("SSH_KEY"),
 //				UserDomain:     pulumi.String("acme.com"),
 //				Username:       pulumi.String("jdoe"),
+//				PrivateKey:     pulumi.String("-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEjc8pPoobS0l6\n-----END PRIVATE KEY-----\n"),
 //			})
 //			if err != nil {
 //				return err

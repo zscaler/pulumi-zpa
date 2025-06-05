@@ -18,14 +18,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * const thisPRACredential = new zpa.PRACredential("thisPRACredential", {
+ * const thisPRACredential = new zpa.PRACredential("this", {
+ *     name: "John Doe",
  *     description: "Created with Terraform",
  *     credentialType: "PASSWORD",
  *     userDomain: "acme.com",
  *     password: "",
  * });
  * // Creates Credential Pool of Type "USERNAME_PASSWORD"
- * const thisPraCredentialPool = new zpa.PraCredentialPool("thisPraCredentialPool", {
+ * const _this = new zpa.PraCredentialPool("this", {
+ *     name: "PRACredentialPool01",
  *     credentialType: "USERNAME_PASSWORD",
  *     credentials: [{
  *         ids: [thisPRACredential.id],

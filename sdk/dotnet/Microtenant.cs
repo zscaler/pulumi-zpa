@@ -31,6 +31,7 @@ namespace Zscaler.Zpa
     ///     // ZPA Microtenant Controller resource
     ///     var @this = new Zpa.Microtenant("this", new()
     ///     {
+    ///         Name = "Microtenant_A",
     ///         Description = "Microtenant_A",
     ///         Enabled = true,
     ///         CriteriaAttribute = "AuthDomain",
@@ -47,7 +48,7 @@ namespace Zscaler.Zpa
     ///         {
     ///             return 
     ///             {
-    ///                 { "microtenant_id", u.MicrotenantId },
+    ///                 { "microtenantId", u.MicrotenantId },
     ///                 { "username", u.Username },
     ///                 { "password", u.Password },
     ///             };

@@ -14,7 +14,8 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // Create a App Connector Group
- * const exampleConnectorGroup = new zpa.ConnectorGroup("exampleConnectorGroup", {
+ * const exampleConnectorGroup = new zpa.ConnectorGroup("example", {
+ *     name: "Example",
  *     description: "Example",
  *     enabled: true,
  *     cityCountry: "San Jose, CA",
@@ -29,7 +30,8 @@ import * as utilities from "./utilities";
  *     dnsQueryType: "IPV4",
  * });
  * // Create a Server Group resource with Dynamic Discovery Enabled
- * const exampleServerGroup = new zpa.ServerGroup("exampleServerGroup", {
+ * const example = new zpa.ServerGroup("example", {
+ *     name: "Example",
  *     description: "Example",
  *     enabled: true,
  *     dynamicDiscovery: true,
@@ -46,13 +48,15 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // Create an application server
- * const exampleApplicationServer = new zpa.ApplicationServer("exampleApplicationServer", {
+ * const exampleApplicationServer = new zpa.ApplicationServer("example", {
+ *     name: "Example",
  *     description: "Example",
  *     address: "server.example.com",
  *     enabled: true,
  * });
  * // Create a App Connector Group
- * const exampleConnectorGroup = new zpa.ConnectorGroup("exampleConnectorGroup", {
+ * const exampleConnectorGroup = new zpa.ConnectorGroup("example", {
+ *     name: "Example",
  *     description: "Example",
  *     enabled: true,
  *     cityCountry: "San Jose, CA",
@@ -67,7 +71,8 @@ import * as utilities from "./utilities";
  *     dnsQueryType: "IPV4",
  * });
  * // ZPA Server Group resource with Dynamic Discovery Disabled
- * const exampleServerGroup = new zpa.ServerGroup("exampleServerGroup", {
+ * const example = new zpa.ServerGroup("example", {
+ *     name: "Example",
  *     description: "Example",
  *     enabled: true,
  *     dynamicDiscovery: false,
@@ -80,7 +85,7 @@ import * as utilities from "./utilities";
  * }, {
  *     dependsOn: [
  *         exampleConnectorGroup,
- *         zpa_application_server.server,
+ *         server,
  *     ],
  * });
  * ```

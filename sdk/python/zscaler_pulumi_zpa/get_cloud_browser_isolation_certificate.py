@@ -90,6 +90,7 @@ def get_cloud_browser_isolation_certificate(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
+    # Retrieve CBI Certificate ID and Name
     this = zpa.get_cloud_browser_isolation_certificate(name="Zscaler Root Certificate")
     ```
     """
@@ -120,6 +121,7 @@ def get_cloud_browser_isolation_certificate_output(id: Optional[pulumi.Input[Opt
     import pulumi
     import pulumi_zpa as zpa
 
+    # Retrieve CBI Certificate ID and Name
     this = zpa.get_cloud_browser_isolation_certificate(name="Zscaler Root Certificate")
     ```
     """

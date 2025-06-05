@@ -22,8 +22,9 @@ namespace Zscaler.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // ZPA Segment Group resource
-    ///     var testSegmentGroup = new Zpa.SegmentGroup("testSegmentGroup", new()
+    ///     var testSegmentGroup = new Zpa.SegmentGroup("test_segment_group", new()
     ///     {
+    ///         Name = "test1-segment-group",
     ///         Description = "test1-segment-group",
     ///         Enabled = true,
     ///     });

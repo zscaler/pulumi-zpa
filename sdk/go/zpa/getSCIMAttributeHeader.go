@@ -32,16 +32,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA SCIM Attribute Header Data Source
 //			_, err := zpa.GetSCIMAttributeHeader(ctx, &zpa.GetSCIMAttributeHeaderArgs{
-//				IdpName: pulumi.StringRef("IdP_Name"),
 //				Name:    pulumi.StringRef("name.givenName"),
+//				IdpName: pulumi.StringRef("IdP_Name"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = zpa.GetSCIMAttributeHeader(ctx, &zpa.GetSCIMAttributeHeaderArgs{
-//				IdpName: pulumi.StringRef("IdP_Name"),
 //				Name:    pulumi.StringRef("name.familyName"),
+//				IdpName: pulumi.StringRef("IdP_Name"),
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -28,6 +28,7 @@ namespace Zscaler.Zpa
     /// {
     ///     var @this = new Zpa.ApplicationSegmentPRA("this", new()
     ///     {
+    ///         Name = "PRA_Example",
     ///         Description = "PRA_Example",
     ///         Enabled = true,
     ///         HealthReporting = "ON_ACCESS",
@@ -45,42 +46,45 @@ namespace Zscaler.Zpa
     ///             "ssh_pra.example.com",
     ///             "rdp_pra.example.com",
     ///         },
-    ///         SegmentGroupId = zpa_segment_group.This.Id,
+    ///         SegmentGroupId = thisZpaSegmentGroup.Id,
     ///         ServerGroups = new[]
     ///         {
     ///             new Zpa.Inputs.ApplicationSegmentPRAServerGroupArgs
     ///             {
     ///                 Ids = new[]
     ///                 {
-    ///                     zpa_server_group.This.Id,
+    ///                     thisZpaServerGroup.Id,
     ///                 },
     ///             },
     ///         },
-    ///         CommonAppsDto = new Zpa.Inputs.ApplicationSegmentPRACommonAppsDtoArgs
+    ///         CommonAppsDtos = new[]
     ///         {
-    ///             AppsConfigs = new[]
+    ///             new Zpa.Inputs.ApplicationSegmentPRACommonAppsDtoArgs
     ///             {
-    ///                 new Zpa.Inputs.ApplicationSegmentPRACommonAppsDtoAppsConfigArgs
+    ///                 AppsConfigs = new[]
     ///                 {
-    ///                     Domain = "ssh_pra.example.com",
-    ///                     ApplicationProtocol = "SSH",
-    ///                     ApplicationPort = "22",
-    ///                     Enabled = true,
-    ///                     AppTypes = new[]
+    ///                     new Zpa.Inputs.ApplicationSegmentPRACommonAppsDtoAppsConfigArgs
     ///                     {
-    ///                         "SECURE_REMOTE_ACCESS",
+    ///                         Domain = "ssh_pra.example.com",
+    ///                         ApplicationProtocol = "SSH",
+    ///                         ApplicationPort = "22",
+    ///                         Enabled = true,
+    ///                         AppTypes = new[]
+    ///                         {
+    ///                             "SECURE_REMOTE_ACCESS",
+    ///                         },
     ///                     },
-    ///                 },
-    ///                 new Zpa.Inputs.ApplicationSegmentPRACommonAppsDtoAppsConfigArgs
-    ///                 {
-    ///                     Domain = "rdp_pra.example.com",
-    ///                     ApplicationProtocol = "RDP",
-    ///                     ConnectionSecurity = "ANY",
-    ///                     ApplicationPort = "3389",
-    ///                     Enabled = true,
-    ///                     AppTypes = new[]
+    ///                     new Zpa.Inputs.ApplicationSegmentPRACommonAppsDtoAppsConfigArgs
     ///                     {
-    ///                         "SECURE_REMOTE_ACCESS",
+    ///                         Domain = "rdp_pra.example.com",
+    ///                         ApplicationProtocol = "RDP",
+    ///                         ConnectionSecurity = "ANY",
+    ///                         ApplicationPort = "3389",
+    ///                         Enabled = true,
+    ///                         AppTypes = new[]
+    ///                         {
+    ///                             "SECURE_REMOTE_ACCESS",
+    ///                         },
     ///                     },
     ///                 },
     ///             },
@@ -121,8 +125,8 @@ namespace Zscaler.Zpa
         [Output("bypassType")]
         public Output<string> BypassType { get; private set; } = null!;
 
-        [Output("commonAppsDto")]
-        public Output<Outputs.ApplicationSegmentPRACommonAppsDto> CommonAppsDto { get; private set; } = null!;
+        [Output("commonAppsDtos")]
+        public Output<ImmutableArray<Outputs.ApplicationSegmentPRACommonAppsDto>> CommonAppsDtos { get; private set; } = null!;
 
         [Output("configSpace")]
         public Output<string?> ConfigSpace { get; private set; } = null!;
@@ -284,8 +288,13 @@ namespace Zscaler.Zpa
         [Input("bypassType")]
         public Input<string>? BypassType { get; set; }
 
-        [Input("commonAppsDto")]
-        public Input<Inputs.ApplicationSegmentPRACommonAppsDtoArgs>? CommonAppsDto { get; set; }
+        [Input("commonAppsDtos")]
+        private InputList<Inputs.ApplicationSegmentPRACommonAppsDtoArgs>? _commonAppsDtos;
+        public InputList<Inputs.ApplicationSegmentPRACommonAppsDtoArgs> CommonAppsDtos
+        {
+            get => _commonAppsDtos ?? (_commonAppsDtos = new InputList<Inputs.ApplicationSegmentPRACommonAppsDtoArgs>());
+            set => _commonAppsDtos = value;
+        }
 
         [Input("configSpace")]
         public Input<string>? ConfigSpace { get; set; }
@@ -443,8 +452,13 @@ namespace Zscaler.Zpa
         [Input("bypassType")]
         public Input<string>? BypassType { get; set; }
 
-        [Input("commonAppsDto")]
-        public Input<Inputs.ApplicationSegmentPRACommonAppsDtoGetArgs>? CommonAppsDto { get; set; }
+        [Input("commonAppsDtos")]
+        private InputList<Inputs.ApplicationSegmentPRACommonAppsDtoGetArgs>? _commonAppsDtos;
+        public InputList<Inputs.ApplicationSegmentPRACommonAppsDtoGetArgs> CommonAppsDtos
+        {
+            get => _commonAppsDtos ?? (_commonAppsDtos = new InputList<Inputs.ApplicationSegmentPRACommonAppsDtoGetArgs>());
+            set => _commonAppsDtos = value;
+        }
 
         [Input("configSpace")]
         public Input<string>? ConfigSpace { get; set; }

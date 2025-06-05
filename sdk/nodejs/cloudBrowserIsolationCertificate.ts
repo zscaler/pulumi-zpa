@@ -8,20 +8,6 @@ import * as utilities from "./utilities";
  * * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
  *
  * The **zpa_cloud_browser_isolation_certificate** resource creates a Cloud Browser Isolation certificate. This resource can then be used when creating a CBI External Profile `zpa.CloudBrowserIsolationExternalProfile`.`
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
- * import * as zpa from "@bdzscaler/pulumi-zpa";
- *
- * // Retrieve CBI Banner ID
- * const thisCloudBrowserIsolationCertificate = new zpa.CloudBrowserIsolationCertificate("thisCloudBrowserIsolationCertificate", {pem: fs.readFileSync("cert.pem", "utf8")});
- * const thisIndex_cloudBrowserIsolationCertificateCloudBrowserIsolationCertificate = new zpa.CloudBrowserIsolationCertificate("thisIndex/cloudBrowserIsolationCertificateCloudBrowserIsolationCertificate", {pem: `    -----BEGIN CERTIFICATE-----
- *     MIIFYDCCBEigAwIBAgIQQAF3ITfU6UK47naqPGQKtzANBgkqhkiG9w0BAQsFADA/
- * `});
- * ```
  */
 export class CloudBrowserIsolationCertificate extends pulumi.CustomResource {
     /**

@@ -19,8 +19,8 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * const _this = zpa.getInspectionAllPredefinedControls({
- *     groupName: "Preprocessors",
  *     version: "OWASP_CRS/3.3.0",
+ *     groupName: "Preprocessors",
  * });
  * ```
  */
@@ -66,8 +66,8 @@ export interface GetInspectionAllPredefinedControlsResult {
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * const _this = zpa.getInspectionAllPredefinedControls({
- *     groupName: "Preprocessors",
  *     version: "OWASP_CRS/3.3.0",
+ *     groupName: "Preprocessors",
  * });
  * ```
  */

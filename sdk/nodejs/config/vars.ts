@@ -46,7 +46,7 @@ Object.defineProperty(exports, "clientSecret", {
 export declare const customerId: string | undefined;
 Object.defineProperty(exports, "customerId", {
     get() {
-        return __config.get("customerId");
+        return __config.get("customerId") ?? utilities.getEnv("ZPA_CUSTOMER_ID");
     },
     enumerable: true,
 });

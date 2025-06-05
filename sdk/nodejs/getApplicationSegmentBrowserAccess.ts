@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Application Segment Browser Access Data Source
  * const example = zpa.getApplicationSegmentBrowserAccess({
  *     name: "example",
  * });
@@ -22,6 +23,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Application Segment Browser Access Data Source
  * const example = zpa.getApplicationSegmentBrowserAccess({
  *     id: "123456789",
  * });
@@ -99,6 +101,7 @@ export interface GetApplicationSegmentBrowserAccessResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Application Segment Browser Access Data Source
  * const example = zpa.getApplicationSegmentBrowserAccess({
  *     name: "example",
  * });
@@ -108,6 +111,7 @@ export interface GetApplicationSegmentBrowserAccessResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Application Segment Browser Access Data Source
  * const example = zpa.getApplicationSegmentBrowserAccess({
  *     id: "123456789",
  * });

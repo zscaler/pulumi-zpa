@@ -28,8 +28,8 @@ class CloudBrowserIsolationExternalProfileArgs:
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
-                 security_controls: Optional[pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileSecurityControlArgs']]]] = None,
-                 user_experiences: Optional[pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceArgs']]]] = None):
+                 security_controls: Optional[pulumi.Input['CloudBrowserIsolationExternalProfileSecurityControlsArgs']] = None,
+                 user_experience: Optional[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceArgs']] = None):
         """
         The set of arguments for constructing a CloudBrowserIsolationExternalProfile resource.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] certificate_ids: This field defines the list of certificate IDs.
@@ -48,8 +48,8 @@ class CloudBrowserIsolationExternalProfileArgs:
             pulumi.set(__self__, "region_ids", region_ids)
         if security_controls is not None:
             pulumi.set(__self__, "security_controls", security_controls)
-        if user_experiences is not None:
-            pulumi.set(__self__, "user_experiences", user_experiences)
+        if user_experience is not None:
+            pulumi.set(__self__, "user_experience", user_experience)
 
     @property
     @pulumi.getter(name="bannerId")
@@ -113,21 +113,21 @@ class CloudBrowserIsolationExternalProfileArgs:
 
     @property
     @pulumi.getter(name="securityControls")
-    def security_controls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileSecurityControlArgs']]]]:
+    def security_controls(self) -> Optional[pulumi.Input['CloudBrowserIsolationExternalProfileSecurityControlsArgs']]:
         return pulumi.get(self, "security_controls")
 
     @security_controls.setter
-    def security_controls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileSecurityControlArgs']]]]):
+    def security_controls(self, value: Optional[pulumi.Input['CloudBrowserIsolationExternalProfileSecurityControlsArgs']]):
         pulumi.set(self, "security_controls", value)
 
     @property
-    @pulumi.getter(name="userExperiences")
-    def user_experiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceArgs']]]]:
-        return pulumi.get(self, "user_experiences")
+    @pulumi.getter(name="userExperience")
+    def user_experience(self) -> Optional[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceArgs']]:
+        return pulumi.get(self, "user_experience")
 
-    @user_experiences.setter
-    def user_experiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceArgs']]]]):
-        pulumi.set(self, "user_experiences", value)
+    @user_experience.setter
+    def user_experience(self, value: Optional[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceArgs']]):
+        pulumi.set(self, "user_experience", value)
 
 
 @pulumi.input_type
@@ -139,8 +139,8 @@ class _CloudBrowserIsolationExternalProfileState:
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
-                 security_controls: Optional[pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileSecurityControlArgs']]]] = None,
-                 user_experiences: Optional[pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceArgs']]]] = None):
+                 security_controls: Optional[pulumi.Input['CloudBrowserIsolationExternalProfileSecurityControlsArgs']] = None,
+                 user_experience: Optional[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceArgs']] = None):
         """
         Input properties used for looking up and filtering CloudBrowserIsolationExternalProfile resources.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] certificate_ids: This field defines the list of certificate IDs.
@@ -160,8 +160,8 @@ class _CloudBrowserIsolationExternalProfileState:
             pulumi.set(__self__, "region_ids", region_ids)
         if security_controls is not None:
             pulumi.set(__self__, "security_controls", security_controls)
-        if user_experiences is not None:
-            pulumi.set(__self__, "user_experiences", user_experiences)
+        if user_experience is not None:
+            pulumi.set(__self__, "user_experience", user_experience)
 
     @property
     @pulumi.getter(name="bannerId")
@@ -225,21 +225,21 @@ class _CloudBrowserIsolationExternalProfileState:
 
     @property
     @pulumi.getter(name="securityControls")
-    def security_controls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileSecurityControlArgs']]]]:
+    def security_controls(self) -> Optional[pulumi.Input['CloudBrowserIsolationExternalProfileSecurityControlsArgs']]:
         return pulumi.get(self, "security_controls")
 
     @security_controls.setter
-    def security_controls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileSecurityControlArgs']]]]):
+    def security_controls(self, value: Optional[pulumi.Input['CloudBrowserIsolationExternalProfileSecurityControlsArgs']]):
         pulumi.set(self, "security_controls", value)
 
     @property
-    @pulumi.getter(name="userExperiences")
-    def user_experiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceArgs']]]]:
-        return pulumi.get(self, "user_experiences")
+    @pulumi.getter(name="userExperience")
+    def user_experience(self) -> Optional[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceArgs']]:
+        return pulumi.get(self, "user_experience")
 
-    @user_experiences.setter
-    def user_experiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceArgs']]]]):
-        pulumi.set(self, "user_experiences", value)
+    @user_experience.setter
+    def user_experience(self, value: Optional[pulumi.Input['CloudBrowserIsolationExternalProfileUserExperienceArgs']]):
+        pulumi.set(self, "user_experience", value)
 
 
 @pulumi.type_token("zpa:index/cloudBrowserIsolationExternalProfile:CloudBrowserIsolationExternalProfile")
@@ -254,8 +254,8 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
-                 security_controls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudBrowserIsolationExternalProfileSecurityControlArgs', 'CloudBrowserIsolationExternalProfileSecurityControlArgsDict']]]]] = None,
-                 user_experiences: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudBrowserIsolationExternalProfileUserExperienceArgs', 'CloudBrowserIsolationExternalProfileUserExperienceArgsDict']]]]] = None,
+                 security_controls: Optional[pulumi.Input[Union['CloudBrowserIsolationExternalProfileSecurityControlsArgs', 'CloudBrowserIsolationExternalProfileSecurityControlsArgsDict']]] = None,
+                 user_experience: Optional[pulumi.Input[Union['CloudBrowserIsolationExternalProfileUserExperienceArgs', 'CloudBrowserIsolationExternalProfileUserExperienceArgsDict']]] = None,
                  __props__=None):
         """
         * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
@@ -269,16 +269,21 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        this_cloud_browser_isolation_banner = zpa.get_cloud_browser_isolation_banner(name="Default")
+        # Retrieve CBI Banner ID
+        this = zpa.get_cloud_browser_isolation_banner(name="Default")
+        # Retrieve Primary CBI Region ID
         singapore = zpa.get_cloud_browser_isolation_region(name="Singapore")
+        # Retrieve Secondary CBI Region ID
         frankfurt = zpa.get_cloud_browser_isolation_region(name="Frankfurt")
-        this_cloud_browser_isolation_certificate = zpa.get_cloud_browser_isolation_certificate(name="Zscaler Root Certificate")
-        this_cloud_browser_isolation_external_profile = zpa.CloudBrowserIsolationExternalProfile("thisCloudBrowserIsolationExternalProfile",
+        # Retrieve CBI Certificate ID
+        this_get_cloud_browser_isolation_certificate = zpa.get_cloud_browser_isolation_certificate(name="Zscaler Root Certificate")
+        this_cloud_browser_isolation_external_profile = zpa.CloudBrowserIsolationExternalProfile("this",
+            name="CBI_Profile_Example",
             description="CBI_Profile_Example",
-            banner_id=this_cloud_browser_isolation_banner.id,
+            banner_id=this.id,
             region_ids=[singapore.id],
-            certificate_ids=[this_cloud_browser_isolation_certificate.id],
-            user_experiences=[{
+            certificate_ids=[this_get_cloud_browser_isolation_certificate.id],
+            user_experience={
                 "forward_to_zia": {
                     "enabled": True,
                     "organization_id": "***********",
@@ -289,8 +294,8 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
                 "persist_isolation_bar": True,
                 "translate": True,
                 "session_persistence": True,
-            }],
-            security_controls=[{
+            },
+            security_controls={
                 "copy_paste": "all",
                 "upload_download": "upstream",
                 "document_viewer": True,
@@ -312,7 +317,7 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
                     "show_message": True,
                     "message": "Zscaler CBI",
                 },
-            }],
+            },
             debug_mode={
                 "allowed": True,
                 "file_password": "***********",
@@ -342,16 +347,21 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        this_cloud_browser_isolation_banner = zpa.get_cloud_browser_isolation_banner(name="Default")
+        # Retrieve CBI Banner ID
+        this = zpa.get_cloud_browser_isolation_banner(name="Default")
+        # Retrieve Primary CBI Region ID
         singapore = zpa.get_cloud_browser_isolation_region(name="Singapore")
+        # Retrieve Secondary CBI Region ID
         frankfurt = zpa.get_cloud_browser_isolation_region(name="Frankfurt")
-        this_cloud_browser_isolation_certificate = zpa.get_cloud_browser_isolation_certificate(name="Zscaler Root Certificate")
-        this_cloud_browser_isolation_external_profile = zpa.CloudBrowserIsolationExternalProfile("thisCloudBrowserIsolationExternalProfile",
+        # Retrieve CBI Certificate ID
+        this_get_cloud_browser_isolation_certificate = zpa.get_cloud_browser_isolation_certificate(name="Zscaler Root Certificate")
+        this_cloud_browser_isolation_external_profile = zpa.CloudBrowserIsolationExternalProfile("this",
+            name="CBI_Profile_Example",
             description="CBI_Profile_Example",
-            banner_id=this_cloud_browser_isolation_banner.id,
+            banner_id=this.id,
             region_ids=[singapore.id],
-            certificate_ids=[this_cloud_browser_isolation_certificate.id],
-            user_experiences=[{
+            certificate_ids=[this_get_cloud_browser_isolation_certificate.id],
+            user_experience={
                 "forward_to_zia": {
                     "enabled": True,
                     "organization_id": "***********",
@@ -362,8 +372,8 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
                 "persist_isolation_bar": True,
                 "translate": True,
                 "session_persistence": True,
-            }],
-            security_controls=[{
+            },
+            security_controls={
                 "copy_paste": "all",
                 "upload_download": "upstream",
                 "document_viewer": True,
@@ -385,7 +395,7 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
                     "show_message": True,
                     "message": "Zscaler CBI",
                 },
-            }],
+            },
             debug_mode={
                 "allowed": True,
                 "file_password": "***********",
@@ -413,8 +423,8 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
-                 security_controls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudBrowserIsolationExternalProfileSecurityControlArgs', 'CloudBrowserIsolationExternalProfileSecurityControlArgsDict']]]]] = None,
-                 user_experiences: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudBrowserIsolationExternalProfileUserExperienceArgs', 'CloudBrowserIsolationExternalProfileUserExperienceArgsDict']]]]] = None,
+                 security_controls: Optional[pulumi.Input[Union['CloudBrowserIsolationExternalProfileSecurityControlsArgs', 'CloudBrowserIsolationExternalProfileSecurityControlsArgsDict']]] = None,
+                 user_experience: Optional[pulumi.Input[Union['CloudBrowserIsolationExternalProfileUserExperienceArgs', 'CloudBrowserIsolationExternalProfileUserExperienceArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -433,7 +443,7 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["region_ids"] = region_ids
             __props__.__dict__["security_controls"] = security_controls
-            __props__.__dict__["user_experiences"] = user_experiences
+            __props__.__dict__["user_experience"] = user_experience
         super(CloudBrowserIsolationExternalProfile, __self__).__init__(
             'zpa:index/cloudBrowserIsolationExternalProfile:CloudBrowserIsolationExternalProfile',
             resource_name,
@@ -450,8 +460,8 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
             description: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
-            security_controls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudBrowserIsolationExternalProfileSecurityControlArgs', 'CloudBrowserIsolationExternalProfileSecurityControlArgsDict']]]]] = None,
-            user_experiences: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudBrowserIsolationExternalProfileUserExperienceArgs', 'CloudBrowserIsolationExternalProfileUserExperienceArgsDict']]]]] = None) -> 'CloudBrowserIsolationExternalProfile':
+            security_controls: Optional[pulumi.Input[Union['CloudBrowserIsolationExternalProfileSecurityControlsArgs', 'CloudBrowserIsolationExternalProfileSecurityControlsArgsDict']]] = None,
+            user_experience: Optional[pulumi.Input[Union['CloudBrowserIsolationExternalProfileUserExperienceArgs', 'CloudBrowserIsolationExternalProfileUserExperienceArgsDict']]] = None) -> 'CloudBrowserIsolationExternalProfile':
         """
         Get an existing CloudBrowserIsolationExternalProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -473,7 +483,7 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["region_ids"] = region_ids
         __props__.__dict__["security_controls"] = security_controls
-        __props__.__dict__["user_experiences"] = user_experiences
+        __props__.__dict__["user_experience"] = user_experience
         return CloudBrowserIsolationExternalProfile(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -514,11 +524,11 @@ class CloudBrowserIsolationExternalProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityControls")
-    def security_controls(self) -> pulumi.Output[Optional[Sequence['outputs.CloudBrowserIsolationExternalProfileSecurityControl']]]:
+    def security_controls(self) -> pulumi.Output[Optional['outputs.CloudBrowserIsolationExternalProfileSecurityControls']]:
         return pulumi.get(self, "security_controls")
 
     @property
-    @pulumi.getter(name="userExperiences")
-    def user_experiences(self) -> pulumi.Output[Sequence['outputs.CloudBrowserIsolationExternalProfileUserExperience']]:
-        return pulumi.get(self, "user_experiences")
+    @pulumi.getter(name="userExperience")
+    def user_experience(self) -> pulumi.Output['outputs.CloudBrowserIsolationExternalProfileUserExperience']:
+        return pulumi.get(self, "user_experience")
 

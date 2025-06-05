@@ -504,12 +504,14 @@ class PRAPortal(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        this_ba_certificate = zpa.get_ba_certificate(name="portal.acme.com")
-        this_pra_portal = zpa.PRAPortal("thisPRAPortal",
+        # Retrieves Browser Access Certificate
+        this = zpa.get_ba_certificate(name="portal.acme.com")
+        this_pra_portal = zpa.PRAPortal("this",
+            name="portal.acme.com",
             description="portal.acme.com",
             enabled=True,
             domain="portal.acme.com",
-            certificate_id=this_ba_certificate.id,
+            certificate_id=this.id,
             user_notification="Created with Terraform",
             user_notification_enabled=True)
         ```
@@ -521,15 +523,16 @@ class PRAPortal(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         this = zpa.PRAPortal("this",
+            name="server1.acme.com",
             description="server1.acme.com",
-            domain="server1-acme.com.pra.d.zscalerportal.net",
             enabled=True,
+            domain="server1-acme.com.pra.d.zscalerportal.net",
+            user_notification="Created with Terraform",
+            user_notification_enabled=True,
+            ext_label="server1",
             ext_domain="acme.com",
             ext_domain_name="acme.com.pra.d.zscalerportal.net",
-            ext_domain_translation="acme.com",
-            ext_label="server1",
-            user_notification="Created with Terraform",
-            user_notification_enabled=True)
+            ext_domain_translation="acme.com")
         ```
 
         # Configuring PRA Portal with User Portal
@@ -538,15 +541,16 @@ class PRAPortal(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         this = zpa.PRAPortal("this",
+            name="Server1 PRA01",
             description="Server1 PRA01 Description",
-            domain="server1-acme.com.pra.d.zscalerportal.net",
             enabled=True,
+            domain="server1-acme.com.pra.d.zscalerportal.net",
+            user_notification="Created with Terraform",
+            user_notification_enabled=True,
+            ext_label="server1",
             ext_domain="acme.com",
             ext_domain_name="acme.com.pra.d.zscalerportal.net",
             ext_domain_translation="acme.com",
-            ext_label="server1",
-            user_notification="Created with Terraform",
-            user_notification_enabled=True,
             user_portal_gid="145262059234265326")
         ```
 
@@ -612,12 +616,14 @@ class PRAPortal(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        this_ba_certificate = zpa.get_ba_certificate(name="portal.acme.com")
-        this_pra_portal = zpa.PRAPortal("thisPRAPortal",
+        # Retrieves Browser Access Certificate
+        this = zpa.get_ba_certificate(name="portal.acme.com")
+        this_pra_portal = zpa.PRAPortal("this",
+            name="portal.acme.com",
             description="portal.acme.com",
             enabled=True,
             domain="portal.acme.com",
-            certificate_id=this_ba_certificate.id,
+            certificate_id=this.id,
             user_notification="Created with Terraform",
             user_notification_enabled=True)
         ```
@@ -629,15 +635,16 @@ class PRAPortal(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         this = zpa.PRAPortal("this",
+            name="server1.acme.com",
             description="server1.acme.com",
-            domain="server1-acme.com.pra.d.zscalerportal.net",
             enabled=True,
+            domain="server1-acme.com.pra.d.zscalerportal.net",
+            user_notification="Created with Terraform",
+            user_notification_enabled=True,
+            ext_label="server1",
             ext_domain="acme.com",
             ext_domain_name="acme.com.pra.d.zscalerportal.net",
-            ext_domain_translation="acme.com",
-            ext_label="server1",
-            user_notification="Created with Terraform",
-            user_notification_enabled=True)
+            ext_domain_translation="acme.com")
         ```
 
         # Configuring PRA Portal with User Portal
@@ -646,15 +653,16 @@ class PRAPortal(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         this = zpa.PRAPortal("this",
+            name="Server1 PRA01",
             description="Server1 PRA01 Description",
-            domain="server1-acme.com.pra.d.zscalerportal.net",
             enabled=True,
+            domain="server1-acme.com.pra.d.zscalerportal.net",
+            user_notification="Created with Terraform",
+            user_notification_enabled=True,
+            ext_label="server1",
             ext_domain="acme.com",
             ext_domain_name="acme.com.pra.d.zscalerportal.net",
             ext_domain_translation="acme.com",
-            ext_label="server1",
-            user_notification="Created with Terraform",
-            user_notification_enabled=True,
             user_portal_gid="145262059234265326")
         ```
 

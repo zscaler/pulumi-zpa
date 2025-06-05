@@ -22,7 +22,7 @@ __all__ = ['PRAConsoleArgs', 'PRAConsole']
 @pulumi.input_type
 class PRAConsoleArgs:
     def __init__(__self__, *,
-                 pra_application: pulumi.Input['PRAConsolePraApplicationArgs'],
+                 pra_applications: pulumi.Input[Sequence[pulumi.Input['PRAConsolePraApplicationArgs']]],
                  pra_portals: pulumi.Input[Sequence[pulumi.Input['PRAConsolePraPortalArgs']]],
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
@@ -38,7 +38,7 @@ class PRAConsoleArgs:
                microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
         :param pulumi.Input[builtins.str] name: The name of the privileged console
         """
-        pulumi.set(__self__, "pra_application", pra_application)
+        pulumi.set(__self__, "pra_applications", pra_applications)
         pulumi.set(__self__, "pra_portals", pra_portals)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -52,13 +52,13 @@ class PRAConsoleArgs:
             pulumi.set(__self__, "name", name)
 
     @property
-    @pulumi.getter(name="praApplication")
-    def pra_application(self) -> pulumi.Input['PRAConsolePraApplicationArgs']:
-        return pulumi.get(self, "pra_application")
+    @pulumi.getter(name="praApplications")
+    def pra_applications(self) -> pulumi.Input[Sequence[pulumi.Input['PRAConsolePraApplicationArgs']]]:
+        return pulumi.get(self, "pra_applications")
 
-    @pra_application.setter
-    def pra_application(self, value: pulumi.Input['PRAConsolePraApplicationArgs']):
-        pulumi.set(self, "pra_application", value)
+    @pra_applications.setter
+    def pra_applications(self, value: pulumi.Input[Sequence[pulumi.Input['PRAConsolePraApplicationArgs']]]):
+        pulumi.set(self, "pra_applications", value)
 
     @property
     @pulumi.getter(name="praPortals")
@@ -139,7 +139,7 @@ class _PRAConsoleState:
                  icon_text: Optional[pulumi.Input[builtins.str]] = None,
                  microtenant_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 pra_application: Optional[pulumi.Input['PRAConsolePraApplicationArgs']] = None,
+                 pra_applications: Optional[pulumi.Input[Sequence[pulumi.Input['PRAConsolePraApplicationArgs']]]] = None,
                  pra_portals: Optional[pulumi.Input[Sequence[pulumi.Input['PRAConsolePraPortalArgs']]]] = None):
         """
         Input properties used for looking up and filtering PRAConsole resources.
@@ -160,8 +160,8 @@ class _PRAConsoleState:
             pulumi.set(__self__, "microtenant_id", microtenant_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if pra_application is not None:
-            pulumi.set(__self__, "pra_application", pra_application)
+        if pra_applications is not None:
+            pulumi.set(__self__, "pra_applications", pra_applications)
         if pra_portals is not None:
             pulumi.set(__self__, "pra_portals", pra_portals)
 
@@ -227,13 +227,13 @@ class _PRAConsoleState:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="praApplication")
-    def pra_application(self) -> Optional[pulumi.Input['PRAConsolePraApplicationArgs']]:
-        return pulumi.get(self, "pra_application")
+    @pulumi.getter(name="praApplications")
+    def pra_applications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PRAConsolePraApplicationArgs']]]]:
+        return pulumi.get(self, "pra_applications")
 
-    @pra_application.setter
-    def pra_application(self, value: Optional[pulumi.Input['PRAConsolePraApplicationArgs']]):
-        pulumi.set(self, "pra_application", value)
+    @pra_applications.setter
+    def pra_applications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PRAConsolePraApplicationArgs']]]]):
+        pulumi.set(self, "pra_applications", value)
 
     @property
     @pulumi.getter(name="praPortals")
@@ -256,7 +256,7 @@ class PRAConsole(pulumi.CustomResource):
                  icon_text: Optional[pulumi.Input[builtins.str]] = None,
                  microtenant_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 pra_application: Optional[pulumi.Input[Union['PRAConsolePraApplicationArgs', 'PRAConsolePraApplicationArgsDict']]] = None,
+                 pra_applications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PRAConsolePraApplicationArgs', 'PRAConsolePraApplicationArgsDict']]]]] = None,
                  pra_portals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PRAConsolePraPortalArgs', 'PRAConsolePraPortalArgsDict']]]]] = None,
                  __props__=None):
         """
@@ -273,11 +273,13 @@ class PRAConsole(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # Creates Segment Group for Application Segment"
-        this_segment_group = zpa.SegmentGroup("thisSegmentGroup",
+        this_segment_group = zpa.SegmentGroup("this",
+            name="Example",
             description="Example",
             enabled=True)
         # Creates Privileged Remote Access Application Segment"
-        this_application_segment_pra = zpa.ApplicationSegmentPRA("thisApplicationSegmentPRA",
+        this_application_segment_pra = zpa.ApplicationSegmentPRA("this",
+            name="Example",
             description="Example",
             enabled=True,
             health_reporting="ON_ACCESS",
@@ -289,7 +291,7 @@ class PRAConsole(pulumi.CustomResource):
             ],
             domain_names=["rdp_pra.example.com"],
             segment_group_id=this_segment_group.id,
-            common_apps_dto={
+            common_apps_dtos=[{
                 "apps_configs": [{
                     "name": "rdp_pra",
                     "domain": "rdp_pra.example.com",
@@ -299,26 +301,29 @@ class PRAConsole(pulumi.CustomResource):
                     "enabled": True,
                     "app_types": ["SECURE_REMOTE_ACCESS"],
                 }],
-            })
-        this_application_segment_by_type = zpa.get_application_segment_by_type(application_type="SECURE_REMOTE_ACCESS",
+            }])
+        this = zpa.get_application_segment_by_type(application_type="SECURE_REMOTE_ACCESS",
             name="rdp_pra")
-        this_ba_certificate = zpa.get_ba_certificate(name="pra01.example.com")
+        # Retrieves the Browser Access Certificate
+        this_get_ba_certificate = zpa.get_ba_certificate(name="pra01.example.com")
         # Creates PRA Portal"
         this1 = zpa.PRAPortal("this1",
+            name="pra01.example.com",
             description="pra01.example.com",
             enabled=True,
             domain="pra01.example.com",
-            certificate_id=this_ba_certificate.id,
+            certificate_id=this_get_ba_certificate.id,
             user_notification="Created with Terraform",
             user_notification_enabled=True)
-        ssh_pra = zpa.PRAConsole("sshPra",
+        ssh_pra = zpa.PRAConsole("ssh_pra",
+            name="ssh_console",
             description="Created with Terraform",
             enabled=True,
-            pra_application={
-                "id": this_application_segment_by_type.id,
-            },
+            pra_applications=[{
+                "id": this.id,
+            }],
             pra_portals=[{
-                "ids": [zpa_pra_portal_controller["this"]["id"]],
+                "ids": [this_zpa_pra_portal_controller["id"]],
             }])
         ```
 
@@ -371,11 +376,13 @@ class PRAConsole(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # Creates Segment Group for Application Segment"
-        this_segment_group = zpa.SegmentGroup("thisSegmentGroup",
+        this_segment_group = zpa.SegmentGroup("this",
+            name="Example",
             description="Example",
             enabled=True)
         # Creates Privileged Remote Access Application Segment"
-        this_application_segment_pra = zpa.ApplicationSegmentPRA("thisApplicationSegmentPRA",
+        this_application_segment_pra = zpa.ApplicationSegmentPRA("this",
+            name="Example",
             description="Example",
             enabled=True,
             health_reporting="ON_ACCESS",
@@ -387,7 +394,7 @@ class PRAConsole(pulumi.CustomResource):
             ],
             domain_names=["rdp_pra.example.com"],
             segment_group_id=this_segment_group.id,
-            common_apps_dto={
+            common_apps_dtos=[{
                 "apps_configs": [{
                     "name": "rdp_pra",
                     "domain": "rdp_pra.example.com",
@@ -397,26 +404,29 @@ class PRAConsole(pulumi.CustomResource):
                     "enabled": True,
                     "app_types": ["SECURE_REMOTE_ACCESS"],
                 }],
-            })
-        this_application_segment_by_type = zpa.get_application_segment_by_type(application_type="SECURE_REMOTE_ACCESS",
+            }])
+        this = zpa.get_application_segment_by_type(application_type="SECURE_REMOTE_ACCESS",
             name="rdp_pra")
-        this_ba_certificate = zpa.get_ba_certificate(name="pra01.example.com")
+        # Retrieves the Browser Access Certificate
+        this_get_ba_certificate = zpa.get_ba_certificate(name="pra01.example.com")
         # Creates PRA Portal"
         this1 = zpa.PRAPortal("this1",
+            name="pra01.example.com",
             description="pra01.example.com",
             enabled=True,
             domain="pra01.example.com",
-            certificate_id=this_ba_certificate.id,
+            certificate_id=this_get_ba_certificate.id,
             user_notification="Created with Terraform",
             user_notification_enabled=True)
-        ssh_pra = zpa.PRAConsole("sshPra",
+        ssh_pra = zpa.PRAConsole("ssh_pra",
+            name="ssh_console",
             description="Created with Terraform",
             enabled=True,
-            pra_application={
-                "id": this_application_segment_by_type.id,
-            },
+            pra_applications=[{
+                "id": this.id,
+            }],
             pra_portals=[{
-                "ids": [zpa_pra_portal_controller["this"]["id"]],
+                "ids": [this_zpa_pra_portal_controller["id"]],
             }])
         ```
 
@@ -460,7 +470,7 @@ class PRAConsole(pulumi.CustomResource):
                  icon_text: Optional[pulumi.Input[builtins.str]] = None,
                  microtenant_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 pra_application: Optional[pulumi.Input[Union['PRAConsolePraApplicationArgs', 'PRAConsolePraApplicationArgsDict']]] = None,
+                 pra_applications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PRAConsolePraApplicationArgs', 'PRAConsolePraApplicationArgsDict']]]]] = None,
                  pra_portals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PRAConsolePraPortalArgs', 'PRAConsolePraPortalArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -476,9 +486,9 @@ class PRAConsole(pulumi.CustomResource):
             __props__.__dict__["icon_text"] = icon_text
             __props__.__dict__["microtenant_id"] = microtenant_id
             __props__.__dict__["name"] = name
-            if pra_application is None and not opts.urn:
-                raise TypeError("Missing required property 'pra_application'")
-            __props__.__dict__["pra_application"] = pra_application
+            if pra_applications is None and not opts.urn:
+                raise TypeError("Missing required property 'pra_applications'")
+            __props__.__dict__["pra_applications"] = pra_applications
             if pra_portals is None and not opts.urn:
                 raise TypeError("Missing required property 'pra_portals'")
             __props__.__dict__["pra_portals"] = pra_portals
@@ -499,7 +509,7 @@ class PRAConsole(pulumi.CustomResource):
             icon_text: Optional[pulumi.Input[builtins.str]] = None,
             microtenant_id: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
-            pra_application: Optional[pulumi.Input[Union['PRAConsolePraApplicationArgs', 'PRAConsolePraApplicationArgsDict']]] = None,
+            pra_applications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PRAConsolePraApplicationArgs', 'PRAConsolePraApplicationArgsDict']]]]] = None,
             pra_portals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PRAConsolePraPortalArgs', 'PRAConsolePraPortalArgsDict']]]]] = None) -> 'PRAConsole':
         """
         Get an existing PRAConsole resource's state with the given name, id, and optional extra
@@ -524,7 +534,7 @@ class PRAConsole(pulumi.CustomResource):
         __props__.__dict__["icon_text"] = icon_text
         __props__.__dict__["microtenant_id"] = microtenant_id
         __props__.__dict__["name"] = name
-        __props__.__dict__["pra_application"] = pra_application
+        __props__.__dict__["pra_applications"] = pra_applications
         __props__.__dict__["pra_portals"] = pra_portals
         return PRAConsole(resource_name, opts=opts, __props__=__props__)
 
@@ -570,9 +580,9 @@ class PRAConsole(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter(name="praApplication")
-    def pra_application(self) -> pulumi.Output['outputs.PRAConsolePraApplication']:
-        return pulumi.get(self, "pra_application")
+    @pulumi.getter(name="praApplications")
+    def pra_applications(self) -> pulumi.Output[Sequence['outputs.PRAConsolePraApplication']]:
+        return pulumi.get(self, "pra_applications")
 
     @property
     @pulumi.getter(name="praPortals")

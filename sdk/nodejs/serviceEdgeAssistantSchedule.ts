@@ -22,10 +22,10 @@ import * as utilities from "./utilities";
  *
  * const _this = new zpa.ServiceEdgeAssistantSchedule("this", {
  *     customerId: "123456789101112",
- *     deleteDisabled: true,
- *     enabled: true,
  *     frequency: "days",
  *     frequencyInterval: "5",
+ *     enabled: true,
+ *     deleteDisabled: true,
  * });
  * ```
  *
@@ -36,10 +36,10 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * const _this = new zpa.ServiceEdgeAssistantSchedule("this", {
- *     deleteDisabled: true,
- *     enabled: true,
  *     frequency: "days",
  *     frequencyInterval: "5",
+ *     enabled: true,
+ *     deleteDisabled: true,
  * });
  * ```
  *

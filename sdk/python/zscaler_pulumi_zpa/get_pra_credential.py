@@ -169,16 +169,6 @@ def get_pra_credential(id: Optional[builtins.str] = None,
 
     **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import zscaler_pulumi_zpa as zpa
-
-    # Retrieves PRA Credential By ID
-    this = zpa.PRACredential("this")
-    ```
-
 
     :param builtins.str name: - (Optional) The name of the privileged credential.
     """
@@ -212,16 +202,6 @@ def get_pra_credential_output(id: Optional[pulumi.Input[Optional[builtins.str]]]
     The **zpa_pra_credential_controller** data source to get information about a privileged remote access credential created in the Zscaler Private Access cloud.
 
     **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import zscaler_pulumi_zpa as zpa
-
-    # Retrieves PRA Credential By ID
-    this = zpa.PRACredential("this")
-    ```
 
 
     :param builtins.str name: - (Optional) The name of the privileged credential.

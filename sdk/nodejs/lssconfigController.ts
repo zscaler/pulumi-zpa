@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // Get Log Type Format - "App Connector Metrics"
  * const zpnAstComprehensiveStats = zpa.getLSSLogTypeFormats({
  *     logType: "zpn_ast_comprehensive_stats",
  * });
@@ -27,7 +28,7 @@ import * as utilities from "./utilities";
  * const _this = zpa.getAppConnectorGroup({
  *     name: "Example100",
  * });
- * const lssAppConnectorMetrics = new zpa.LSSConfigController("lssAppConnectorMetrics", {
+ * const lssAppConnectorMetrics = new zpa.LSSConfigController("lss_app_connector_metrics", {
  *     config: {
  *         name: "LSS App Connector Metrics",
  *         description: "LSS App Connector Metrics",

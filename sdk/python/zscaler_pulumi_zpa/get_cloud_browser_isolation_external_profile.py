@@ -154,6 +154,7 @@ def get_cloud_browser_isolation_external_profile(id: Optional[builtins.str] = No
     import pulumi
     import pulumi_zpa as zpa
 
+    # Retrieve CBI External Profile
     this = zpa.get_cloud_browser_isolation_external_profile(name="Example")
     ```
     """
@@ -191,6 +192,7 @@ def get_cloud_browser_isolation_external_profile_output(id: Optional[pulumi.Inpu
     import pulumi
     import pulumi_zpa as zpa
 
+    # Retrieve CBI External Profile
     this = zpa.get_cloud_browser_isolation_external_profile(name="Example")
     ```
     """

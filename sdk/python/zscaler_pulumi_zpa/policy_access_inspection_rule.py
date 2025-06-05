@@ -649,17 +649,18 @@ class PolicyAccessInspectionRule(pulumi.CustomResource):
 
         #Create Inspection Access Rule
         this = zpa.PolicyAccessInspectionRule("this",
+            name="Example",
             description="Example",
             action="INSPECT",
             operator="AND",
-            policy_set_id=data["zpa_policy_type"]["inspection_policy"]["id"],
-            zpn_inspection_profile_id=zpa_inspection_profile["this"]["id"],
+            policy_set_id=inspection_policy["id"],
+            zpn_inspection_profile_id=this_zpa_inspection_profile["id"],
             conditions=[{
                 "operator": "OR",
                 "operands": [{
                     "object_type": "APP",
                     "lhs": "id",
-                    "rhs": zpa_application_segment_inspection["this"]["id"],
+                    "rhs": this_zpa_application_segment_inspection["id"],
                 }],
             }])
         ```
@@ -671,9 +672,11 @@ class PolicyAccessInspectionRule(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
+        # Retrieve Inspection policy type
         inspection_policy = zpa.get_policy_type(policy_type="INSPECTION_POLICY")
         #Create Inspection Access Rule
         this = zpa.PolicyAccessInspectionRule("this",
+            name="Example",
             description="Example",
             action="BYPASS_INSPECT",
             rule_order="1",
@@ -684,7 +687,7 @@ class PolicyAccessInspectionRule(pulumi.CustomResource):
                 "operands": [{
                     "object_type": "APP",
                     "lhs": "id",
-                    "rhs": zpa_application_segment_inspection["this"]["id"],
+                    "rhs": this_zpa_application_segment_inspection["id"],
                 }],
             }])
         ```
@@ -754,17 +757,18 @@ class PolicyAccessInspectionRule(pulumi.CustomResource):
 
         #Create Inspection Access Rule
         this = zpa.PolicyAccessInspectionRule("this",
+            name="Example",
             description="Example",
             action="INSPECT",
             operator="AND",
-            policy_set_id=data["zpa_policy_type"]["inspection_policy"]["id"],
-            zpn_inspection_profile_id=zpa_inspection_profile["this"]["id"],
+            policy_set_id=inspection_policy["id"],
+            zpn_inspection_profile_id=this_zpa_inspection_profile["id"],
             conditions=[{
                 "operator": "OR",
                 "operands": [{
                     "object_type": "APP",
                     "lhs": "id",
-                    "rhs": zpa_application_segment_inspection["this"]["id"],
+                    "rhs": this_zpa_application_segment_inspection["id"],
                 }],
             }])
         ```
@@ -776,9 +780,11 @@ class PolicyAccessInspectionRule(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
+        # Retrieve Inspection policy type
         inspection_policy = zpa.get_policy_type(policy_type="INSPECTION_POLICY")
         #Create Inspection Access Rule
         this = zpa.PolicyAccessInspectionRule("this",
+            name="Example",
             description="Example",
             action="BYPASS_INSPECT",
             rule_order="1",
@@ -789,7 +795,7 @@ class PolicyAccessInspectionRule(pulumi.CustomResource):
                 "operands": [{
                     "object_type": "APP",
                     "lhs": "id",
-                    "rhs": zpa_application_segment_inspection["this"]["id"],
+                    "rhs": this_zpa_application_segment_inspection["id"],
                 }],
             }])
         ```

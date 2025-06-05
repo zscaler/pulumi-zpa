@@ -230,21 +230,29 @@ class PolicyBrowserProtectionRule(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        this_id_p_controller = zpa.get_id_p_controller(name="Idp_Name")
+        # Retrieve Policy Types
+        # Retrieve Identity Provider ID
+        this = zpa.get_id_p_controller(name="Idp_Name")
+        # Retrieve SAML Attribute ID
         email_user_sso = zpa.get_saml_attribute(name="Email_Users",
             idp_name="Idp_Name")
+        # Retrieve SAML Attribute ID
         group_user = zpa.get_saml_attribute(name="GroupName_Users",
             idp_name="Idp_Name")
+        # Retrieve SCIM Group ID
         a000 = zpa.get_scim_groups(name="A000",
             idp_name="Idp_Name")
+        # Retrieve SCIM Group ID
         b000 = zpa.get_scim_groups(name="B000",
             idp_name="Idp_Name")
         # Create Segment Group
-        this_segment_group = zpa.SegmentGroup("thisSegmentGroup",
+        this_segment_group = zpa.SegmentGroup("this",
+            name="Example",
             description="Example",
             enabled=True)
         # Create Policy Access Rule V2
-        this_policy_browser_protection_rule = zpa.PolicyBrowserProtectionRule("thisPolicyBrowserProtectionRule",
+        this_policy_browser_protection_rule = zpa.PolicyBrowserProtectionRule("this",
+            name="Example",
             description="Example",
             action="MONITOR",
             conditions=[
@@ -276,11 +284,11 @@ class PolicyBrowserProtectionRule(pulumi.CustomResource):
                             "entry_values": [
                                 {
                                     "rhs": a000.id,
-                                    "lhs": this_id_p_controller.id,
+                                    "lhs": this.id,
                                 },
                                 {
                                     "rhs": b000.id,
-                                    "lhs": this_id_p_controller.id,
+                                    "lhs": this.id,
                                 },
                             ],
                         },
@@ -310,21 +318,29 @@ class PolicyBrowserProtectionRule(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        this_id_p_controller = zpa.get_id_p_controller(name="Idp_Name")
+        # Retrieve Policy Types
+        # Retrieve Identity Provider ID
+        this = zpa.get_id_p_controller(name="Idp_Name")
+        # Retrieve SAML Attribute ID
         email_user_sso = zpa.get_saml_attribute(name="Email_Users",
             idp_name="Idp_Name")
+        # Retrieve SAML Attribute ID
         group_user = zpa.get_saml_attribute(name="GroupName_Users",
             idp_name="Idp_Name")
+        # Retrieve SCIM Group ID
         a000 = zpa.get_scim_groups(name="A000",
             idp_name="Idp_Name")
+        # Retrieve SCIM Group ID
         b000 = zpa.get_scim_groups(name="B000",
             idp_name="Idp_Name")
         # Create Segment Group
-        this_segment_group = zpa.SegmentGroup("thisSegmentGroup",
+        this_segment_group = zpa.SegmentGroup("this",
+            name="Example",
             description="Example",
             enabled=True)
         # Create Policy Access Rule V2
-        this_policy_browser_protection_rule = zpa.PolicyBrowserProtectionRule("thisPolicyBrowserProtectionRule",
+        this_policy_browser_protection_rule = zpa.PolicyBrowserProtectionRule("this",
+            name="Example",
             description="Example",
             action="DO_NOT_MONITOR",
             conditions=[
@@ -356,11 +372,11 @@ class PolicyBrowserProtectionRule(pulumi.CustomResource):
                             "entry_values": [
                                 {
                                     "rhs": a000.id,
-                                    "lhs": this_id_p_controller.id,
+                                    "lhs": this.id,
                                 },
                                 {
                                     "rhs": b000.id,
-                                    "lhs": this_id_p_controller.id,
+                                    "lhs": this.id,
                                 },
                             ],
                         },
@@ -450,21 +466,29 @@ class PolicyBrowserProtectionRule(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        this_id_p_controller = zpa.get_id_p_controller(name="Idp_Name")
+        # Retrieve Policy Types
+        # Retrieve Identity Provider ID
+        this = zpa.get_id_p_controller(name="Idp_Name")
+        # Retrieve SAML Attribute ID
         email_user_sso = zpa.get_saml_attribute(name="Email_Users",
             idp_name="Idp_Name")
+        # Retrieve SAML Attribute ID
         group_user = zpa.get_saml_attribute(name="GroupName_Users",
             idp_name="Idp_Name")
+        # Retrieve SCIM Group ID
         a000 = zpa.get_scim_groups(name="A000",
             idp_name="Idp_Name")
+        # Retrieve SCIM Group ID
         b000 = zpa.get_scim_groups(name="B000",
             idp_name="Idp_Name")
         # Create Segment Group
-        this_segment_group = zpa.SegmentGroup("thisSegmentGroup",
+        this_segment_group = zpa.SegmentGroup("this",
+            name="Example",
             description="Example",
             enabled=True)
         # Create Policy Access Rule V2
-        this_policy_browser_protection_rule = zpa.PolicyBrowserProtectionRule("thisPolicyBrowserProtectionRule",
+        this_policy_browser_protection_rule = zpa.PolicyBrowserProtectionRule("this",
+            name="Example",
             description="Example",
             action="MONITOR",
             conditions=[
@@ -496,11 +520,11 @@ class PolicyBrowserProtectionRule(pulumi.CustomResource):
                             "entry_values": [
                                 {
                                     "rhs": a000.id,
-                                    "lhs": this_id_p_controller.id,
+                                    "lhs": this.id,
                                 },
                                 {
                                     "rhs": b000.id,
-                                    "lhs": this_id_p_controller.id,
+                                    "lhs": this.id,
                                 },
                             ],
                         },
@@ -530,21 +554,29 @@ class PolicyBrowserProtectionRule(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        this_id_p_controller = zpa.get_id_p_controller(name="Idp_Name")
+        # Retrieve Policy Types
+        # Retrieve Identity Provider ID
+        this = zpa.get_id_p_controller(name="Idp_Name")
+        # Retrieve SAML Attribute ID
         email_user_sso = zpa.get_saml_attribute(name="Email_Users",
             idp_name="Idp_Name")
+        # Retrieve SAML Attribute ID
         group_user = zpa.get_saml_attribute(name="GroupName_Users",
             idp_name="Idp_Name")
+        # Retrieve SCIM Group ID
         a000 = zpa.get_scim_groups(name="A000",
             idp_name="Idp_Name")
+        # Retrieve SCIM Group ID
         b000 = zpa.get_scim_groups(name="B000",
             idp_name="Idp_Name")
         # Create Segment Group
-        this_segment_group = zpa.SegmentGroup("thisSegmentGroup",
+        this_segment_group = zpa.SegmentGroup("this",
+            name="Example",
             description="Example",
             enabled=True)
         # Create Policy Access Rule V2
-        this_policy_browser_protection_rule = zpa.PolicyBrowserProtectionRule("thisPolicyBrowserProtectionRule",
+        this_policy_browser_protection_rule = zpa.PolicyBrowserProtectionRule("this",
+            name="Example",
             description="Example",
             action="DO_NOT_MONITOR",
             conditions=[
@@ -576,11 +608,11 @@ class PolicyBrowserProtectionRule(pulumi.CustomResource):
                             "entry_values": [
                                 {
                                     "rhs": a000.id,
-                                    "lhs": this_id_p_controller.id,
+                                    "lhs": this.id,
                                 },
                                 {
                                     "rhs": b000.id,
-                                    "lhs": this_id_p_controller.id,
+                                    "lhs": this.id,
                                 },
                             ],
                         },

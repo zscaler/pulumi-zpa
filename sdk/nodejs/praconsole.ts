@@ -19,12 +19,14 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // Creates Segment Group for Application Segment"
- * const thisSegmentGroup = new zpa.SegmentGroup("thisSegmentGroup", {
+ * const thisSegmentGroup = new zpa.SegmentGroup("this", {
+ *     name: "Example",
  *     description: "Example",
  *     enabled: true,
  * });
  * // Creates Privileged Remote Access Application Segment"
- * const thisApplicationSegmentPRA = new zpa.ApplicationSegmentPRA("thisApplicationSegmentPRA", {
+ * const thisApplicationSegmentPRA = new zpa.ApplicationSegmentPRA("this", {
+ *     name: "Example",
  *     description: "Example",
  *     enabled: true,
  *     healthReporting: "ON_ACCESS",
@@ -36,7 +38,7 @@ import * as utilities from "./utilities";
  *     ],
  *     domainNames: ["rdp_pra.example.com"],
  *     segmentGroupId: thisSegmentGroup.id,
- *     commonAppsDto: {
+ *     commonAppsDtos: [{
  *         appsConfigs: [{
  *             name: "rdp_pra",
  *             domain: "rdp_pra.example.com",
@@ -46,32 +48,35 @@ import * as utilities from "./utilities";
  *             enabled: true,
  *             appTypes: ["SECURE_REMOTE_ACCESS"],
  *         }],
- *     },
+ *     }],
  * });
- * const thisApplicationSegmentByType = zpa.getApplicationSegmentByType({
+ * const _this = zpa.getApplicationSegmentByType({
  *     applicationType: "SECURE_REMOTE_ACCESS",
  *     name: "rdp_pra",
  * });
- * const thisBaCertificate = zpa.getBaCertificate({
+ * // Retrieves the Browser Access Certificate
+ * const thisGetBaCertificate = zpa.getBaCertificate({
  *     name: "pra01.example.com",
  * });
  * // Creates PRA Portal"
  * const this1 = new zpa.PRAPortal("this1", {
+ *     name: "pra01.example.com",
  *     description: "pra01.example.com",
  *     enabled: true,
  *     domain: "pra01.example.com",
- *     certificateId: thisBaCertificate.then(thisBaCertificate => thisBaCertificate.id),
+ *     certificateId: thisGetBaCertificate.then(thisGetBaCertificate => thisGetBaCertificate.id),
  *     userNotification: "Created with Terraform",
  *     userNotificationEnabled: true,
  * });
- * const sshPra = new zpa.PRAConsole("sshPra", {
+ * const sshPra = new zpa.PRAConsole("ssh_pra", {
+ *     name: "ssh_console",
  *     description: "Created with Terraform",
  *     enabled: true,
- *     praApplication: {
- *         id: thisApplicationSegmentByType.then(thisApplicationSegmentByType => thisApplicationSegmentByType.id),
- *     },
+ *     praApplications: [{
+ *         id: _this.then(_this => _this.id),
+ *     }],
  *     praPortals: [{
- *         ids: [zpa_pra_portal_controller["this"].id],
+ *         ids: [thisZpaPraPortalController.id],
  *     }],
  * });
  * ```
@@ -145,7 +150,7 @@ export class PRAConsole extends pulumi.CustomResource {
      * The name of the privileged console
      */
     public readonly name!: pulumi.Output<string>;
-    public readonly praApplication!: pulumi.Output<outputs.PRAConsolePraApplication>;
+    public readonly praApplications!: pulumi.Output<outputs.PRAConsolePraApplication[]>;
     public readonly praPortals!: pulumi.Output<outputs.PRAConsolePraPortal[]>;
 
     /**
@@ -166,12 +171,12 @@ export class PRAConsole extends pulumi.CustomResource {
             resourceInputs["iconText"] = state ? state.iconText : undefined;
             resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["praApplication"] = state ? state.praApplication : undefined;
+            resourceInputs["praApplications"] = state ? state.praApplications : undefined;
             resourceInputs["praPortals"] = state ? state.praPortals : undefined;
         } else {
             const args = argsOrState as PRAConsoleArgs | undefined;
-            if ((!args || args.praApplication === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'praApplication'");
+            if ((!args || args.praApplications === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'praApplications'");
             }
             if ((!args || args.praPortals === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'praPortals'");
@@ -181,7 +186,7 @@ export class PRAConsole extends pulumi.CustomResource {
             resourceInputs["iconText"] = args ? args.iconText : undefined;
             resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["praApplication"] = args ? args.praApplication : undefined;
+            resourceInputs["praApplications"] = args ? args.praApplications : undefined;
             resourceInputs["praPortals"] = args ? args.praPortals : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -216,7 +221,7 @@ export interface PRAConsoleState {
      * The name of the privileged console
      */
     name?: pulumi.Input<string>;
-    praApplication?: pulumi.Input<inputs.PRAConsolePraApplication>;
+    praApplications?: pulumi.Input<pulumi.Input<inputs.PRAConsolePraApplication>[]>;
     praPortals?: pulumi.Input<pulumi.Input<inputs.PRAConsolePraPortal>[]>;
 }
 
@@ -245,6 +250,6 @@ export interface PRAConsoleArgs {
      * The name of the privileged console
      */
     name?: pulumi.Input<string>;
-    praApplication: pulumi.Input<inputs.PRAConsolePraApplication>;
+    praApplications: pulumi.Input<pulumi.Input<inputs.PRAConsolePraApplication>[]>;
     praPortals: pulumi.Input<pulumi.Input<inputs.PRAConsolePraPortal>[]>;
 }

@@ -26,7 +26,7 @@ class ApplicationSegmentPRAArgs:
                  segment_group_id: pulumi.Input[builtins.str],
                  bypass_on_reauth: Optional[pulumi.Input[builtins.bool]] = None,
                  bypass_type: Optional[pulumi.Input[builtins.str]] = None,
-                 common_apps_dto: Optional[pulumi.Input['ApplicationSegmentPRACommonAppsDtoArgs']] = None,
+                 common_apps_dtos: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentPRACommonAppsDtoArgs']]]] = None,
                  config_space: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  double_encrypt: Optional[pulumi.Input[builtins.bool]] = None,
@@ -71,8 +71,8 @@ class ApplicationSegmentPRAArgs:
             pulumi.set(__self__, "bypass_on_reauth", bypass_on_reauth)
         if bypass_type is not None:
             pulumi.set(__self__, "bypass_type", bypass_type)
-        if common_apps_dto is not None:
-            pulumi.set(__self__, "common_apps_dto", common_apps_dto)
+        if common_apps_dtos is not None:
+            pulumi.set(__self__, "common_apps_dtos", common_apps_dtos)
         if config_space is not None:
             pulumi.set(__self__, "config_space", config_space)
         if description is not None:
@@ -162,13 +162,13 @@ class ApplicationSegmentPRAArgs:
         pulumi.set(self, "bypass_type", value)
 
     @property
-    @pulumi.getter(name="commonAppsDto")
-    def common_apps_dto(self) -> Optional[pulumi.Input['ApplicationSegmentPRACommonAppsDtoArgs']]:
-        return pulumi.get(self, "common_apps_dto")
+    @pulumi.getter(name="commonAppsDtos")
+    def common_apps_dtos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentPRACommonAppsDtoArgs']]]]:
+        return pulumi.get(self, "common_apps_dtos")
 
-    @common_apps_dto.setter
-    def common_apps_dto(self, value: Optional[pulumi.Input['ApplicationSegmentPRACommonAppsDtoArgs']]):
-        pulumi.set(self, "common_apps_dto", value)
+    @common_apps_dtos.setter
+    def common_apps_dtos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentPRACommonAppsDtoArgs']]]]):
+        pulumi.set(self, "common_apps_dtos", value)
 
     @property
     @pulumi.getter(name="configSpace")
@@ -402,7 +402,7 @@ class _ApplicationSegmentPRAState:
     def __init__(__self__, *,
                  bypass_on_reauth: Optional[pulumi.Input[builtins.bool]] = None,
                  bypass_type: Optional[pulumi.Input[builtins.str]] = None,
-                 common_apps_dto: Optional[pulumi.Input['ApplicationSegmentPRACommonAppsDtoArgs']] = None,
+                 common_apps_dtos: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentPRACommonAppsDtoArgs']]]] = None,
                  config_space: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -447,8 +447,8 @@ class _ApplicationSegmentPRAState:
             pulumi.set(__self__, "bypass_on_reauth", bypass_on_reauth)
         if bypass_type is not None:
             pulumi.set(__self__, "bypass_type", bypass_type)
-        if common_apps_dto is not None:
-            pulumi.set(__self__, "common_apps_dto", common_apps_dto)
+        if common_apps_dtos is not None:
+            pulumi.set(__self__, "common_apps_dtos", common_apps_dtos)
         if config_space is not None:
             pulumi.set(__self__, "config_space", config_space)
         if description is not None:
@@ -521,13 +521,13 @@ class _ApplicationSegmentPRAState:
         pulumi.set(self, "bypass_type", value)
 
     @property
-    @pulumi.getter(name="commonAppsDto")
-    def common_apps_dto(self) -> Optional[pulumi.Input['ApplicationSegmentPRACommonAppsDtoArgs']]:
-        return pulumi.get(self, "common_apps_dto")
+    @pulumi.getter(name="commonAppsDtos")
+    def common_apps_dtos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentPRACommonAppsDtoArgs']]]]:
+        return pulumi.get(self, "common_apps_dtos")
 
-    @common_apps_dto.setter
-    def common_apps_dto(self, value: Optional[pulumi.Input['ApplicationSegmentPRACommonAppsDtoArgs']]):
-        pulumi.set(self, "common_apps_dto", value)
+    @common_apps_dtos.setter
+    def common_apps_dtos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentPRACommonAppsDtoArgs']]]]):
+        pulumi.set(self, "common_apps_dtos", value)
 
     @property
     @pulumi.getter(name="configSpace")
@@ -785,7 +785,7 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bypass_on_reauth: Optional[pulumi.Input[builtins.bool]] = None,
                  bypass_type: Optional[pulumi.Input[builtins.str]] = None,
-                 common_apps_dto: Optional[pulumi.Input[Union['ApplicationSegmentPRACommonAppsDtoArgs', 'ApplicationSegmentPRACommonAppsDtoArgsDict']]] = None,
+                 common_apps_dtos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentPRACommonAppsDtoArgs', 'ApplicationSegmentPRACommonAppsDtoArgsDict']]]]] = None,
                  config_space: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -824,6 +824,7 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         this = zpa.ApplicationSegmentPRA("this",
+            name="PRA_Example",
             description="PRA_Example",
             enabled=True,
             health_reporting="ON_ACCESS",
@@ -839,11 +840,11 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
                 "ssh_pra.example.com",
                 "rdp_pra.example.com",
             ],
-            segment_group_id=zpa_segment_group["this"]["id"],
+            segment_group_id=this_zpa_segment_group["id"],
             server_groups=[{
-                "ids": [zpa_server_group["this"]["id"]],
+                "ids": [this_zpa_server_group["id"]],
             }],
-            common_apps_dto={
+            common_apps_dtos=[{
                 "apps_configs": [
                     {
                         "domain": "ssh_pra.example.com",
@@ -861,7 +862,7 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
                         "app_types": ["SECURE_REMOTE_ACCESS"],
                     },
                 ],
-            })
+            }])
         ```
 
         ## Import
@@ -917,6 +918,7 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         this = zpa.ApplicationSegmentPRA("this",
+            name="PRA_Example",
             description="PRA_Example",
             enabled=True,
             health_reporting="ON_ACCESS",
@@ -932,11 +934,11 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
                 "ssh_pra.example.com",
                 "rdp_pra.example.com",
             ],
-            segment_group_id=zpa_segment_group["this"]["id"],
+            segment_group_id=this_zpa_segment_group["id"],
             server_groups=[{
-                "ids": [zpa_server_group["this"]["id"]],
+                "ids": [this_zpa_server_group["id"]],
             }],
-            common_apps_dto={
+            common_apps_dtos=[{
                 "apps_configs": [
                     {
                         "domain": "ssh_pra.example.com",
@@ -954,7 +956,7 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
                         "app_types": ["SECURE_REMOTE_ACCESS"],
                     },
                 ],
-            })
+            }])
         ```
 
         ## Import
@@ -992,7 +994,7 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bypass_on_reauth: Optional[pulumi.Input[builtins.bool]] = None,
                  bypass_type: Optional[pulumi.Input[builtins.str]] = None,
-                 common_apps_dto: Optional[pulumi.Input[Union['ApplicationSegmentPRACommonAppsDtoArgs', 'ApplicationSegmentPRACommonAppsDtoArgsDict']]] = None,
+                 common_apps_dtos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentPRACommonAppsDtoArgs', 'ApplicationSegmentPRACommonAppsDtoArgsDict']]]]] = None,
                  config_space: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -1028,7 +1030,7 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
 
             __props__.__dict__["bypass_on_reauth"] = bypass_on_reauth
             __props__.__dict__["bypass_type"] = bypass_type
-            __props__.__dict__["common_apps_dto"] = common_apps_dto
+            __props__.__dict__["common_apps_dtos"] = common_apps_dtos
             __props__.__dict__["config_space"] = config_space
             __props__.__dict__["description"] = description
             if domain_names is None and not opts.urn:
@@ -1069,7 +1071,7 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             bypass_on_reauth: Optional[pulumi.Input[builtins.bool]] = None,
             bypass_type: Optional[pulumi.Input[builtins.str]] = None,
-            common_apps_dto: Optional[pulumi.Input[Union['ApplicationSegmentPRACommonAppsDtoArgs', 'ApplicationSegmentPRACommonAppsDtoArgsDict']]] = None,
+            common_apps_dtos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentPRACommonAppsDtoArgs', 'ApplicationSegmentPRACommonAppsDtoArgsDict']]]]] = None,
             config_space: Optional[pulumi.Input[builtins.str]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
             domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -1121,7 +1123,7 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
 
         __props__.__dict__["bypass_on_reauth"] = bypass_on_reauth
         __props__.__dict__["bypass_type"] = bypass_type
-        __props__.__dict__["common_apps_dto"] = common_apps_dto
+        __props__.__dict__["common_apps_dtos"] = common_apps_dtos
         __props__.__dict__["config_space"] = config_space
         __props__.__dict__["description"] = description
         __props__.__dict__["domain_names"] = domain_names
@@ -1163,9 +1165,9 @@ class ApplicationSegmentPRA(pulumi.CustomResource):
         return pulumi.get(self, "bypass_type")
 
     @property
-    @pulumi.getter(name="commonAppsDto")
-    def common_apps_dto(self) -> pulumi.Output['outputs.ApplicationSegmentPRACommonAppsDto']:
-        return pulumi.get(self, "common_apps_dto")
+    @pulumi.getter(name="commonAppsDtos")
+    def common_apps_dtos(self) -> pulumi.Output[Sequence['outputs.ApplicationSegmentPRACommonAppsDto']]:
+        return pulumi.get(self, "common_apps_dtos")
 
     @property
     @pulumi.getter(name="configSpace")

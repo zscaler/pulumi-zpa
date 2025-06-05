@@ -321,6 +321,7 @@ def get_service_edge_group(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA Service Edge Group Data Source by name
     foo = zpa.get_service_edge_group(name="DataCenter")
     ```
 
@@ -328,6 +329,7 @@ def get_service_edge_group(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA Service Edge Group Data Source by ID
     foo = zpa.get_service_edge_group(id="123456789")
     ```
     """
@@ -388,6 +390,7 @@ def get_service_edge_group_output(id: Optional[pulumi.Input[Optional[builtins.st
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA Service Edge Group Data Source by name
     foo = zpa.get_service_edge_group(name="DataCenter")
     ```
 
@@ -395,6 +398,7 @@ def get_service_edge_group_output(id: Optional[pulumi.Input[Optional[builtins.st
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA Service Edge Group Data Source by ID
     foo = zpa.get_service_edge_group(id="123456789")
     ```
     """

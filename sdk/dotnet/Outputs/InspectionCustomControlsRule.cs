@@ -14,7 +14,7 @@ namespace Zscaler.Zpa.Outputs
     [OutputType]
     public sealed class InspectionCustomControlsRule
     {
-        public readonly Outputs.InspectionCustomControlsRuleConditions? Conditions;
+        public readonly ImmutableArray<Outputs.InspectionCustomControlsRuleCondition> Conditions;
         /// <summary>
         /// Name of the rules. If rules.type is set to REQUEST_HEADERS, REQUEST_COOKIES, or RESPONSE_HEADERS, the rules.name field is required.
         /// </summary>
@@ -26,7 +26,7 @@ namespace Zscaler.Zpa.Outputs
 
         [OutputConstructor]
         private InspectionCustomControlsRule(
-            Outputs.InspectionCustomControlsRuleConditions? conditions,
+            ImmutableArray<Outputs.InspectionCustomControlsRuleCondition> conditions,
 
             ImmutableArray<string> names,
 

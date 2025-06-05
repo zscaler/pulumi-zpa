@@ -363,11 +363,12 @@ class PRACredential(pulumi.CustomResource):
 
         # Creates Credential of Type "USERNAME_PASSWORD"
         this = zpa.PRACredential("this",
-            credential_type="USERNAME_PASSWORD",
+            name="John Doe",
             description="Created with Terraform",
-            password="",
+            credential_type="USERNAME_PASSWORD",
             user_domain="acme.com",
-            username="jdoe")
+            username="jdoe",
+            password="")
         ```
 
         ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE #########\\
@@ -378,15 +379,15 @@ class PRACredential(pulumi.CustomResource):
 
         # Creates Credential of Type "SSH_KEY"
         this = zpa.PRACredential("this",
-            credential_type="SSH_KEY",
+            name="John Doe",
             description="Created with Terraform",
+            credential_type="SSH_KEY",
+            user_domain="acme.com",
+            username="jdoe",
             private_key=\"\"\"-----BEGIN PRIVATE KEY-----
         MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEjc8pPoobS0l6
         -----END PRIVATE KEY-----
-
-        \"\"\",
-            user_domain="acme.com",
-            username="jdoe")
+        \"\"\")
         ```
 
         ## Import
@@ -444,11 +445,12 @@ class PRACredential(pulumi.CustomResource):
 
         # Creates Credential of Type "USERNAME_PASSWORD"
         this = zpa.PRACredential("this",
-            credential_type="USERNAME_PASSWORD",
+            name="John Doe",
             description="Created with Terraform",
-            password="",
+            credential_type="USERNAME_PASSWORD",
             user_domain="acme.com",
-            username="jdoe")
+            username="jdoe",
+            password="")
         ```
 
         ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE #########\\
@@ -459,15 +461,15 @@ class PRACredential(pulumi.CustomResource):
 
         # Creates Credential of Type "SSH_KEY"
         this = zpa.PRACredential("this",
-            credential_type="SSH_KEY",
+            name="John Doe",
             description="Created with Terraform",
+            credential_type="SSH_KEY",
+            user_domain="acme.com",
+            username="jdoe",
             private_key=\"\"\"-----BEGIN PRIVATE KEY-----
         MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEjc8pPoobS0l6
         -----END PRIVATE KEY-----
-
-        \"\"\",
-            user_domain="acme.com",
-            username="jdoe")
+        \"\"\")
         ```
 
         ## Import

@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example1 = zpa.getPostureProfile({
  *     name: "CrowdStrike_ZPA_ZTA_40",
  * });
@@ -27,6 +28,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example2 = zpa.getPostureProfile({
  *     name: "Detect SentinelOne",
  * });
@@ -36,6 +38,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example3 = zpa.getPostureProfile({
  *     name: "domain_joined",
  * });
@@ -47,6 +50,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example1 = zpa.getPostureProfile({
  *     name: "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
  * });
@@ -58,6 +62,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example1 = zpa.getPostureProfile({
  *     name: "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
  * });
@@ -108,6 +113,7 @@ export interface GetPostureProfileResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example1 = zpa.getPostureProfile({
  *     name: "CrowdStrike_ZPA_ZTA_40",
  * });
@@ -117,6 +123,7 @@ export interface GetPostureProfileResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example2 = zpa.getPostureProfile({
  *     name: "Detect SentinelOne",
  * });
@@ -126,6 +133,7 @@ export interface GetPostureProfileResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example3 = zpa.getPostureProfile({
  *     name: "domain_joined",
  * });
@@ -137,6 +145,7 @@ export interface GetPostureProfileResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example1 = zpa.getPostureProfile({
  *     name: "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
  * });
@@ -148,6 +157,7 @@ export interface GetPostureProfileResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example1 = zpa.getPostureProfile({
  *     name: "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
  * });

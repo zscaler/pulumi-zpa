@@ -110,6 +110,40 @@ class PolicyAccessReorderRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### 1
+
+        ```python
+        import pulumi
+        import zscaler_pulumi_zpa as zpa
+
+        example001 = zpa.PolicyAccessRule("example001",
+            name="example001",
+            description="example001",
+            action="ALLOW",
+            operator="AND")
+        example002 = zpa.PolicyAccessRule("example002",
+            name="example002",
+            description="example002",
+            action="ALLOW",
+            operator="AND")
+        rule_orders = [
+            {
+                "id": example001.id,
+                "order": 1,
+            },
+            {
+                "id": example002.id,
+                "order": 2,
+            },
+        ]
+        access_policy_reorder = zpa.PolicyAccessReorderRule("access_policy_reorder",
+            rules=[{"key": k, "value": v} for k, v in rule_orders].apply(lambda entries: [{
+                "id": entry["value"]["id"],
+                "order": entry["value"]["order"],
+            } for entry in entries]),
+            policy_type="ACCESS_POLICY")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyAccessReorderRuleRuleArgs', 'PolicyAccessReorderRuleRuleArgsDict']]]] rules: List of rules and their orders
@@ -131,6 +165,40 @@ class PolicyAccessReorderRule(pulumi.CustomResource):
         ⚠️ **WARNING:**: Updating the rule order of an access policy configured using `Zscaler Deception` is not supported. When changing the rule order of a regular access policy and there is an access policy configured using Deception, the rule order of the regular access policy must be greater than the rule order for an access policy configured using Deception. Please refer to the [Zscaler API Documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api#:~:text=Updating%20the%20rule,configured%20using%20Deception.) for further details.
 
         ## Example Usage
+
+        ### 1
+
+        ```python
+        import pulumi
+        import zscaler_pulumi_zpa as zpa
+
+        example001 = zpa.PolicyAccessRule("example001",
+            name="example001",
+            description="example001",
+            action="ALLOW",
+            operator="AND")
+        example002 = zpa.PolicyAccessRule("example002",
+            name="example002",
+            description="example002",
+            action="ALLOW",
+            operator="AND")
+        rule_orders = [
+            {
+                "id": example001.id,
+                "order": 1,
+            },
+            {
+                "id": example002.id,
+                "order": 2,
+            },
+        ]
+        access_policy_reorder = zpa.PolicyAccessReorderRule("access_policy_reorder",
+            rules=[{"key": k, "value": v} for k, v in rule_orders].apply(lambda entries: [{
+                "id": entry["value"]["id"],
+                "order": entry["value"]["order"],
+            } for entry in entries]),
+            policy_type="ACCESS_POLICY")
+        ```
 
         :param str resource_name: The name of the resource.
         :param PolicyAccessReorderRuleArgs args: The arguments to use to populate this resource's properties.

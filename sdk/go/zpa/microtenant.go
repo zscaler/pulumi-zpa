@@ -18,40 +18,6 @@ import (
 //
 // ⚠️ **WARNING:**: This feature is in limited availability and requires additional license. To learn more, contact Zscaler Support or your local account team.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// // ZPA Microtenant Controller resource
-// this, err := zpa.NewMicrotenant(ctx, "this", &zpa.MicrotenantArgs{
-// Description: pulumi.String("Microtenant_A"),
-// Enabled: pulumi.Bool(true),
-// CriteriaAttribute: pulumi.String("AuthDomain"),
-// CriteriaAttributeValues: pulumi.StringArray{
-// pulumi.String("acme.com"),
-// },
-// PrivilegedApprovalsEnabled: pulumi.Bool(true),
-// })
-// if err != nil {
-// return err
-// }
-// ctx.Export("zpaMicrotenantController1", this.Users.ApplyT(func(users []zpa.MicrotenantUser) ([]map[string]interface{}, error) {
-// return "TODO: For expression", nil
-// }).(pulumi.[]map[string]interface{}Output))
-// return nil
-// })
-// }
-// ```
-//
 // ## Import
 //
 // Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.

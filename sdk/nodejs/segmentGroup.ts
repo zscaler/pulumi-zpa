@@ -14,7 +14,8 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Segment Group resource
- * const testSegmentGroup = new zpa.SegmentGroup("testSegmentGroup", {
+ * const testSegmentGroup = new zpa.SegmentGroup("test_segment_group", {
+ *     name: "test1-segment-group",
  *     description: "test1-segment-group",
  *     enabled: true,
  * });

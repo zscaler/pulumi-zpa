@@ -12,9 +12,10 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Application Server resource (IP Address)
- * const testAppServer = new zpa.ApplicationServer("testAppServer", {
- *     address: "192.168.1.1",
+ * const testAppServer = new zpa.ApplicationServer("test_app_server", {
+ *     name: "test1-app-server",
  *     description: "test1-app-server",
+ *     address: "192.168.1.1",
  *     enabled: true,
  * });
  * ```
@@ -24,9 +25,10 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Application Server resource (FQDN Address)
- * const testAppServer = new zpa.ApplicationServer("testAppServer", {
- *     address: "server1.acme.com",
+ * const testAppServer = new zpa.ApplicationServer("test_app_server", {
+ *     name: "test1-app-server",
  *     description: "test1-app-server",
+ *     address: "server1.acme.com",
  *     enabled: true,
  * });
  * ```

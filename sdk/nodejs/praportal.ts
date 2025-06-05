@@ -18,14 +18,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * const thisBaCertificate = zpa.getBaCertificate({
+ * // Retrieves Browser Access Certificate
+ * const _this = zpa.getBaCertificate({
  *     name: "portal.acme.com",
  * });
- * const thisPRAPortal = new zpa.PRAPortal("thisPRAPortal", {
+ * const thisPRAPortal = new zpa.PRAPortal("this", {
+ *     name: "portal.acme.com",
  *     description: "portal.acme.com",
  *     enabled: true,
  *     domain: "portal.acme.com",
- *     certificateId: thisBaCertificate.then(thisBaCertificate => thisBaCertificate.id),
+ *     certificateId: _this.then(_this => _this.id),
  *     userNotification: "Created with Terraform",
  *     userNotificationEnabled: true,
  * });
@@ -38,15 +40,16 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * const _this = new zpa.PRAPortal("this", {
+ *     name: "server1.acme.com",
  *     description: "server1.acme.com",
- *     domain: "server1-acme.com.pra.d.zscalerportal.net",
  *     enabled: true,
+ *     domain: "server1-acme.com.pra.d.zscalerportal.net",
+ *     userNotification: "Created with Terraform",
+ *     userNotificationEnabled: true,
+ *     extLabel: "server1",
  *     extDomain: "acme.com",
  *     extDomainName: "acme.com.pra.d.zscalerportal.net",
  *     extDomainTranslation: "acme.com",
- *     extLabel: "server1",
- *     userNotification: "Created with Terraform",
- *     userNotificationEnabled: true,
  * });
  * ```
  *
@@ -56,15 +59,16 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * const _this = new zpa.PRAPortal("this", {
+ *     name: "Server1 PRA01",
  *     description: "Server1 PRA01 Description",
- *     domain: "server1-acme.com.pra.d.zscalerportal.net",
  *     enabled: true,
+ *     domain: "server1-acme.com.pra.d.zscalerportal.net",
+ *     userNotification: "Created with Terraform",
+ *     userNotificationEnabled: true,
+ *     extLabel: "server1",
  *     extDomain: "acme.com",
  *     extDomainName: "acme.com.pra.d.zscalerportal.net",
  *     extDomainTranslation: "acme.com",
- *     extLabel: "server1",
- *     userNotification: "Created with Terraform",
- *     userNotificationEnabled: true,
  *     userPortalGid: "145262059234265326",
  * });
  * ```

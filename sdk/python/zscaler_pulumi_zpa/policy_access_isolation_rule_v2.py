@@ -261,21 +261,28 @@ class PolicyAccessIsolationRuleV2(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        this_isolation_profile = zpa.get_isolation_profile(name="zpa_isolation_profile")
-        this_id_p_controller = zpa.get_id_p_controller(name="Idp_Name")
+        # Get Isolation Profile ID
+        this = zpa.get_isolation_profile(name="zpa_isolation_profile")
+        # Retrieve Identity Provider ID
+        this_get_id_p_controller = zpa.get_id_p_controller(name="Idp_Name")
+        # Retrieve SAML Attribute ID
         email_user_sso = zpa.get_saml_attribute(name="Email_Users",
             idp_name="Idp_Name")
+        # Retrieve SAML Attribute ID
         group_user = zpa.get_saml_attribute(name="GroupName_Users",
             idp_name="Idp_Name")
+        # Retrieve SCIM Group ID
         a000 = zpa.get_scim_groups(name="A000",
             idp_name="Idp_Name")
+        # Retrieve SCIM Group ID
         b000 = zpa.get_scim_groups(name="B000",
             idp_name="Idp_Name")
         # Create Policy Access Isolation Rule V2
-        this_policy_access_isolation_rule_v2 = zpa.PolicyAccessIsolationRuleV2("thisPolicyAccessIsolationRuleV2",
+        this_policy_access_isolation_rule_v2 = zpa.PolicyAccessIsolationRuleV2("this",
+            name="Example",
             description="Example",
             action="ISOLATE",
-            zpn_isolation_profile_id=this_isolation_profile.id,
+            zpn_isolation_profile_id=this.id,
             conditions=[
                 {
                     "operator": "OR",
@@ -305,11 +312,11 @@ class PolicyAccessIsolationRuleV2(pulumi.CustomResource):
                             "entry_values": [
                                 {
                                     "rhs": a000.id,
-                                    "lhs": this_id_p_controller.id,
+                                    "lhs": this_get_id_p_controller.id,
                                 },
                                 {
                                     "rhs": b000.id,
-                                    "lhs": this_id_p_controller.id,
+                                    "lhs": this_get_id_p_controller.id,
                                 },
                             ],
                         },
@@ -378,21 +385,28 @@ class PolicyAccessIsolationRuleV2(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        this_isolation_profile = zpa.get_isolation_profile(name="zpa_isolation_profile")
-        this_id_p_controller = zpa.get_id_p_controller(name="Idp_Name")
+        # Get Isolation Profile ID
+        this = zpa.get_isolation_profile(name="zpa_isolation_profile")
+        # Retrieve Identity Provider ID
+        this_get_id_p_controller = zpa.get_id_p_controller(name="Idp_Name")
+        # Retrieve SAML Attribute ID
         email_user_sso = zpa.get_saml_attribute(name="Email_Users",
             idp_name="Idp_Name")
+        # Retrieve SAML Attribute ID
         group_user = zpa.get_saml_attribute(name="GroupName_Users",
             idp_name="Idp_Name")
+        # Retrieve SCIM Group ID
         a000 = zpa.get_scim_groups(name="A000",
             idp_name="Idp_Name")
+        # Retrieve SCIM Group ID
         b000 = zpa.get_scim_groups(name="B000",
             idp_name="Idp_Name")
         # Create Policy Access Isolation Rule V2
-        this_policy_access_isolation_rule_v2 = zpa.PolicyAccessIsolationRuleV2("thisPolicyAccessIsolationRuleV2",
+        this_policy_access_isolation_rule_v2 = zpa.PolicyAccessIsolationRuleV2("this",
+            name="Example",
             description="Example",
             action="ISOLATE",
-            zpn_isolation_profile_id=this_isolation_profile.id,
+            zpn_isolation_profile_id=this.id,
             conditions=[
                 {
                     "operator": "OR",
@@ -422,11 +436,11 @@ class PolicyAccessIsolationRuleV2(pulumi.CustomResource):
                             "entry_values": [
                                 {
                                     "rhs": a000.id,
-                                    "lhs": this_id_p_controller.id,
+                                    "lhs": this_get_id_p_controller.id,
                                 },
                                 {
                                     "rhs": b000.id,
-                                    "lhs": this_id_p_controller.id,
+                                    "lhs": this_get_id_p_controller.id,
                                 },
                             ],
                         },

@@ -26,7 +26,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a App Connector Group
-//			exampleConnectorGroup, err := zpa.NewConnectorGroup(ctx, "exampleConnectorGroup", &zpa.ConnectorGroupArgs{
+//			exampleConnectorGroup, err := zpa.NewConnectorGroup(ctx, "example", &zpa.ConnectorGroupArgs{
+//				Name:                   pulumi.String("Example"),
 //				Description:            pulumi.String("Example"),
 //				Enabled:                pulumi.Bool(true),
 //				CityCountry:            pulumi.String("San Jose, CA"),
@@ -44,7 +45,8 @@ import (
 //				return err
 //			}
 //			// Create a Server Group resource with Dynamic Discovery Enabled
-//			_, err = zpa.NewServerGroup(ctx, "exampleServerGroup", &zpa.ServerGroupArgs{
+//			_, err = zpa.NewServerGroup(ctx, "example", &zpa.ServerGroupArgs{
+//				Name:             pulumi.String("Example"),
 //				Description:      pulumi.String("Example"),
 //				Enabled:          pulumi.Bool(true),
 //				DynamicDiscovery: pulumi.Bool(true),
@@ -80,7 +82,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create an application server
-//			exampleApplicationServer, err := zpa.NewApplicationServer(ctx, "exampleApplicationServer", &zpa.ApplicationServerArgs{
+//			exampleApplicationServer, err := zpa.NewApplicationServer(ctx, "example", &zpa.ApplicationServerArgs{
+//				Name:        pulumi.String("Example"),
 //				Description: pulumi.String("Example"),
 //				Address:     pulumi.String("server.example.com"),
 //				Enabled:     pulumi.Bool(true),
@@ -89,7 +92,8 @@ import (
 //				return err
 //			}
 //			// Create a App Connector Group
-//			exampleConnectorGroup, err := zpa.NewConnectorGroup(ctx, "exampleConnectorGroup", &zpa.ConnectorGroupArgs{
+//			exampleConnectorGroup, err := zpa.NewConnectorGroup(ctx, "example", &zpa.ConnectorGroupArgs{
+//				Name:                   pulumi.String("Example"),
 //				Description:            pulumi.String("Example"),
 //				Enabled:                pulumi.Bool(true),
 //				CityCountry:            pulumi.String("San Jose, CA"),
@@ -107,7 +111,8 @@ import (
 //				return err
 //			}
 //			// ZPA Server Group resource with Dynamic Discovery Disabled
-//			_, err = zpa.NewServerGroup(ctx, "exampleServerGroup", &zpa.ServerGroupArgs{
+//			_, err = zpa.NewServerGroup(ctx, "example", &zpa.ServerGroupArgs{
+//				Name:             pulumi.String("Example"),
 //				Description:      pulumi.String("Example"),
 //				Enabled:          pulumi.Bool(true),
 //				DynamicDiscovery: pulumi.Bool(false),
@@ -127,7 +132,7 @@ import (
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				exampleConnectorGroup,
-//				zpa_application_server.Server,
+//				server,
 //			}))
 //			if err != nil {
 //				return err

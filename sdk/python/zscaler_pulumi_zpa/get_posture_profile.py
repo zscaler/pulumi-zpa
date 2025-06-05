@@ -144,6 +144,7 @@ def get_posture_profile(name: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA Posture Profile Data Source
     example1 = zpa.get_posture_profile(name="CrowdStrike_ZPA_ZTA_40")
     ```
 
@@ -151,6 +152,7 @@ def get_posture_profile(name: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA Posture Profile Data Source
     example2 = zpa.get_posture_profile(name="Detect SentinelOne")
     ```
 
@@ -158,6 +160,7 @@ def get_posture_profile(name: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA Posture Profile Data Source
     example3 = zpa.get_posture_profile(name="domain_joined")
     ```
 
@@ -167,6 +170,7 @@ def get_posture_profile(name: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA Posture Profile Data Source
     example1 = zpa.get_posture_profile(name="CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)")
     ```
 
@@ -176,6 +180,7 @@ def get_posture_profile(name: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA Posture Profile Data Source
     example1 = zpa.get_posture_profile(name="CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)")
     pulumi.export("zpaPostureProfile", example1.posture_udid)
     ```
@@ -212,6 +217,7 @@ def get_posture_profile_output(name: Optional[pulumi.Input[Optional[builtins.str
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA Posture Profile Data Source
     example1 = zpa.get_posture_profile(name="CrowdStrike_ZPA_ZTA_40")
     ```
 
@@ -219,6 +225,7 @@ def get_posture_profile_output(name: Optional[pulumi.Input[Optional[builtins.str
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA Posture Profile Data Source
     example2 = zpa.get_posture_profile(name="Detect SentinelOne")
     ```
 
@@ -226,6 +233,7 @@ def get_posture_profile_output(name: Optional[pulumi.Input[Optional[builtins.str
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA Posture Profile Data Source
     example3 = zpa.get_posture_profile(name="domain_joined")
     ```
 
@@ -235,6 +243,7 @@ def get_posture_profile_output(name: Optional[pulumi.Input[Optional[builtins.str
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA Posture Profile Data Source
     example1 = zpa.get_posture_profile(name="CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)")
     ```
 
@@ -244,6 +253,7 @@ def get_posture_profile_output(name: Optional[pulumi.Input[Optional[builtins.str
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA Posture Profile Data Source
     example1 = zpa.get_posture_profile(name="CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)")
     pulumi.export("zpaPostureProfile", example1.posture_udid)
     ```

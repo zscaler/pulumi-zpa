@@ -21,6 +21,62 @@ namespace Zscaler.Zpa
     /// ⚠️ **WARNING:**: Updating the rule order of an access policy configured using `Zscaler Deception` is not supported. When changing the rule order of a regular access policy and there is an access policy configured using Deception, the rule order of the regular access policy must be greater than the rule order for an access policy configured using Deception. Please refer to the [Zscaler API Documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api#:~:text=Updating%20the%20rule,configured%20using%20Deception.) for further details.
     /// 
     /// ## Example Usage
+    /// 
+    /// ### 1
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Zscaler.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example001 = new Zpa.PolicyAccessRule("example001", new()
+    ///     {
+    ///         Name = "example001",
+    ///         Description = "example001",
+    ///         Action = "ALLOW",
+    ///         Operator = "AND",
+    ///     });
+    /// 
+    ///     var example002 = new Zpa.PolicyAccessRule("example002", new()
+    ///     {
+    ///         Name = "example002",
+    ///         Description = "example002",
+    ///         Action = "ALLOW",
+    ///         Operator = "AND",
+    ///     });
+    /// 
+    ///     var ruleOrders = new[]
+    ///     {
+    ///         
+    ///         {
+    ///             { "id", example001.Id },
+    ///             { "order", 1 },
+    ///         },
+    ///         
+    ///         {
+    ///             { "id", example002.Id },
+    ///             { "order", 2 },
+    ///         },
+    ///     };
+    /// 
+    ///     var accessPolicyReorder = new Zpa.PolicyAccessReorderRule("access_policy_reorder", new()
+    ///     {
+    ///         Rules = ruleOrders.Select((v, k) =&gt; new { Key = k, Value = v }).Apply(entries =&gt; entries.Select(entry =&gt; 
+    ///         {
+    ///             return 
+    ///             {
+    ///                 { "id", entry.Value.Id },
+    ///                 { "order", entry.Value.Order },
+    ///             };
+    ///         }).ToList()),
+    ///         PolicyType = "ACCESS_POLICY",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [ZpaResourceType("zpa:index/policyAccessReorderRule:PolicyAccessReorderRule")]
     public partial class PolicyAccessReorderRule : global::Pulumi.CustomResource

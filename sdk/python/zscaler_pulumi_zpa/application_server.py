@@ -262,9 +262,10 @@ class ApplicationServer(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # ZPA Application Server resource (IP Address)
-        test_app_server = zpa.ApplicationServer("testAppServer",
-            address="192.168.1.1",
+        test_app_server = zpa.ApplicationServer("test_app_server",
+            name="test1-app-server",
             description="test1-app-server",
+            address="192.168.1.1",
             enabled=True)
         ```
 
@@ -273,9 +274,10 @@ class ApplicationServer(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # ZPA Application Server resource (FQDN Address)
-        test_app_server = zpa.ApplicationServer("testAppServer",
-            address="server1.acme.com",
+        test_app_server = zpa.ApplicationServer("test_app_server",
+            name="test1-app-server",
             description="test1-app-server",
+            address="server1.acme.com",
             enabled=True)
         ```
 
@@ -321,9 +323,10 @@ class ApplicationServer(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # ZPA Application Server resource (IP Address)
-        test_app_server = zpa.ApplicationServer("testAppServer",
-            address="192.168.1.1",
+        test_app_server = zpa.ApplicationServer("test_app_server",
+            name="test1-app-server",
             description="test1-app-server",
+            address="192.168.1.1",
             enabled=True)
         ```
 
@@ -332,9 +335,10 @@ class ApplicationServer(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # ZPA Application Server resource (FQDN Address)
-        test_app_server = zpa.ApplicationServer("testAppServer",
-            address="server1.acme.com",
+        test_app_server = zpa.ApplicationServer("test_app_server",
+            name="test1-app-server",
             description="test1-app-server",
+            address="server1.acme.com",
             enabled=True)
         ```
 

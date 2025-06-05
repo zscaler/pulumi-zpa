@@ -73,6 +73,8 @@ class ProviderArgs:
             client_secret = _utilities.get_env('ZSCALER_CLIENT_SECRET')
         if client_secret is not None:
             pulumi.set(__self__, "client_secret", client_secret)
+        if customer_id is None:
+            customer_id = _utilities.get_env('ZPA_CUSTOMER_ID')
         if customer_id is not None:
             pulumi.set(__self__, "customer_id", customer_id)
         if http_proxy is not None:
@@ -471,6 +473,8 @@ class Provider(pulumi.ProviderResource):
             if client_secret is None:
                 client_secret = _utilities.get_env('ZSCALER_CLIENT_SECRET')
             __props__.__dict__["client_secret"] = None if client_secret is None else pulumi.Output.secret(client_secret)
+            if customer_id is None:
+                customer_id = _utilities.get_env('ZPA_CUSTOMER_ID')
             __props__.__dict__["customer_id"] = None if customer_id is None else pulumi.Output.secret(customer_id)
             __props__.__dict__["http_proxy"] = http_proxy
             __props__.__dict__["max_retries"] = pulumi.Output.from_input(max_retries).apply(pulumi.runtime.to_json) if max_retries is not None else None

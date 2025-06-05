@@ -36,6 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Service Edge Group Data Source by name
 //			_, err := zpa.LookupServiceEdgeGroup(ctx, &zpa.LookupServiceEdgeGroupArgs{
 //				Name: pulumi.StringRef("DataCenter"),
 //			}, nil)
@@ -60,6 +61,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Service Edge Group Data Source by ID
 //			_, err := zpa.LookupServiceEdgeGroup(ctx, &zpa.LookupServiceEdgeGroupArgs{
 //				Id: pulumi.StringRef("123456789"),
 //			}, nil)

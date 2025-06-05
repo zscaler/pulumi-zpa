@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA PRA Portal Data Source
  * const _this = zpa.getPRAPortal({
  *     name: "Example",
  * });
@@ -89,6 +90,7 @@ export interface GetPRAPortalResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA PRA Portal Data Source
  * const _this = zpa.getPRAPortal({
  *     name: "Example",
  * });

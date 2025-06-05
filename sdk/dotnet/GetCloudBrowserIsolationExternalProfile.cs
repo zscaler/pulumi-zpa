@@ -29,6 +29,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Retrieve CBI External Profile
         ///     var @this = Zpa.GetCloudBrowserIsolationExternalProfile.Invoke(new()
         ///     {
         ///         Name = "Example",
@@ -57,6 +58,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Retrieve CBI External Profile
         ///     var @this = Zpa.GetCloudBrowserIsolationExternalProfile.Invoke(new()
         ///     {
         ///         Name = "Example",
@@ -85,6 +87,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Retrieve CBI External Profile
         ///     var @this = Zpa.GetCloudBrowserIsolationExternalProfile.Invoke(new()
         ///     {
         ///         Name = "Example",

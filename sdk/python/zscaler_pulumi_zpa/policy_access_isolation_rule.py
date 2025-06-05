@@ -646,9 +646,11 @@ class PolicyAccessIsolationRule(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
+        # Get Isolation Profile ID
         isolation_profile = zpa.get_isolation_profile(name="zpa_isolation_profile")
         #Create Client Isolation Access Rule
         this = zpa.PolicyAccessIsolationRule("this",
+            name="Example_Isolation_Policy",
             description="Example_Isolation_Policy",
             action="ISOLATE",
             operator="AND",
@@ -727,9 +729,11 @@ class PolicyAccessIsolationRule(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
+        # Get Isolation Profile ID
         isolation_profile = zpa.get_isolation_profile(name="zpa_isolation_profile")
         #Create Client Isolation Access Rule
         this = zpa.PolicyAccessIsolationRule("this",
+            name="Example_Isolation_Policy",
             description="Example_Isolation_Policy",
             action="ISOLATE",
             operator="AND",

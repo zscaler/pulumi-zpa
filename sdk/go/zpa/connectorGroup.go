@@ -30,19 +30,20 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a App Connector Group
 //			_, err := zpa.NewConnectorGroup(ctx, "example", &zpa.ConnectorGroupArgs{
+//				Name:                   pulumi.String("Example"),
+//				Description:            pulumi.String("Example"),
+//				Enabled:                pulumi.Bool(true),
 //				CityCountry:            pulumi.String("San Jose, CA"),
 //				CountryCode:            pulumi.String("US"),
-//				Description:            pulumi.String("Example"),
-//				DnsQueryType:           pulumi.String("IPV4_IPV6"),
-//				Enabled:                pulumi.Bool(true),
 //				Latitude:               pulumi.String("37.338"),
-//				Location:               pulumi.String("San Jose, CA, US"),
 //				Longitude:              pulumi.String("-121.8863"),
-//				OverrideVersionProfile: pulumi.Bool(true),
+//				Location:               pulumi.String("San Jose, CA, US"),
 //				UpgradeDay:             pulumi.String("SUNDAY"),
 //				UpgradeTimeInSecs:      pulumi.String("66600"),
-//				UseInDrMode:            pulumi.Bool(true),
+//				OverrideVersionProfile: pulumi.Bool(true),
 //				VersionProfileName:     pulumi.String("New Release"),
+//				DnsQueryType:           pulumi.String("IPV4_IPV6"),
+//				UseInDrMode:            pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -73,6 +74,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a App Connector Group
 //			_, err := zpa.NewConnectorGroup(ctx, "example", &zpa.ConnectorGroupArgs{
+//				Name:                   pulumi.String("Example"),
 //				Description:            pulumi.String("Example"),
 //				Enabled:                pulumi.Bool(true),
 //				CityCountry:            pulumi.String("San Jose, CA"),
@@ -83,7 +85,7 @@ import (
 //				UpgradeDay:             pulumi.String("SUNDAY"),
 //				UpgradeTimeInSecs:      pulumi.String("66600"),
 //				OverrideVersionProfile: pulumi.Bool(true),
-//				VersionProfileId:       pulumi.Any(data.Zpa_customer_version_profile.This.Id),
+//				VersionProfileId:       pulumi.Any(this.Id),
 //				DnsQueryType:           pulumi.String("IPV4_IPV6"),
 //				UseInDrMode:            pulumi.Bool(true),
 //			})

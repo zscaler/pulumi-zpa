@@ -240,16 +240,18 @@ def get_provisioning_key(association_type: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    example = zpa.get_provisioning_key(association_type="CONNECTOR_GRP",
-        name="Provisioning_Key")
+    # ZPA Provisioning Key for "CONNECTOR_GRP"
+    example = zpa.get_provisioning_key(name="Provisioning_Key",
+        association_type="CONNECTOR_GRP")
     ```
 
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
-    example = zpa.get_provisioning_key(association_type="SERVICE_EDGE_GRP",
-        name="Provisioning_Key")
+    # ZPA Provisioning Key for "SERVICE_EDGE_GRP"
+    example = zpa.get_provisioning_key(name="Provisioning_Key",
+        association_type="SERVICE_EDGE_GRP")
     ```
     """
     __args__ = dict()
@@ -296,16 +298,18 @@ def get_provisioning_key_output(association_type: Optional[pulumi.Input[builtins
     import pulumi
     import pulumi_zpa as zpa
 
-    example = zpa.get_provisioning_key(association_type="CONNECTOR_GRP",
-        name="Provisioning_Key")
+    # ZPA Provisioning Key for "CONNECTOR_GRP"
+    example = zpa.get_provisioning_key(name="Provisioning_Key",
+        association_type="CONNECTOR_GRP")
     ```
 
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
-    example = zpa.get_provisioning_key(association_type="SERVICE_EDGE_GRP",
-        name="Provisioning_Key")
+    # ZPA Provisioning Key for "SERVICE_EDGE_GRP"
+    example = zpa.get_provisioning_key(name="Provisioning_Key",
+        association_type="SERVICE_EDGE_GRP")
     ```
     """
     __args__ = dict()

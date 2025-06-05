@@ -388,14 +388,13 @@ func Provider() tfbridge.ProviderInfo {
 			// section, or refer to the AWS provider. Delete this section if there are
 			// no overlay files.
 			//Overlay: &tfbridge.OverlayInfo{},
+			RespectSchemaVersion: true,
 		},
 		Python: &tfbridge.PythonInfo{
-			PackageName: "zscaler_pulumi_zpa",
-
 			// List any Python dependencies and their version ranges
-			Requires: map[string]string{
-				"pulumi": ">=3.0.0,<4.0.0",
-			},
+			PackageName:          "zscaler_pulumi_zpa",
+			PyProject:            struct{ Enabled bool }{true},
+			RespectSchemaVersion: true,
 		},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
@@ -405,9 +404,11 @@ func Provider() tfbridge.ProviderInfo {
 				zpaPkg,
 			),
 			GenerateResourceContainerTypes: true,
+			RespectSchemaVersion:           true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
-			RootNamespace: "Zscaler",
+			RootNamespace:        "Zscaler",
+			RespectSchemaVersion: true,
 
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",

@@ -95,19 +95,6 @@ class CloudBrowserIsolationCertificate(pulumi.CustomResource):
 
         The **zpa_cloud_browser_isolation_certificate** resource creates a Cloud Browser Isolation certificate. This resource can then be used when creating a CBI External Profile `CloudBrowserIsolationExternalProfile`.`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import zscaler_pulumi_zpa as zpa
-
-        # Retrieve CBI Banner ID
-        this_cloud_browser_isolation_certificate = zpa.CloudBrowserIsolationCertificate("thisCloudBrowserIsolationCertificate", pem=(lambda path: open(path).read())("cert.pem"))
-        this_index_cloud_browser_isolation_certificate_cloud_browser_isolation_certificate = zpa.CloudBrowserIsolationCertificate("thisIndex/cloudBrowserIsolationCertificateCloudBrowserIsolationCertificate", pem=\"\"\"    -----BEGIN CERTIFICATE-----
-            MIIFYDCCBEigAwIBAgIQQAF3ITfU6UK47naqPGQKtzANBgkqhkiG9w0BAQsFADA/
-        \"\"\")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -121,19 +108,6 @@ class CloudBrowserIsolationCertificate(pulumi.CustomResource):
         * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
 
         The **zpa_cloud_browser_isolation_certificate** resource creates a Cloud Browser Isolation certificate. This resource can then be used when creating a CBI External Profile `CloudBrowserIsolationExternalProfile`.`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import zscaler_pulumi_zpa as zpa
-
-        # Retrieve CBI Banner ID
-        this_cloud_browser_isolation_certificate = zpa.CloudBrowserIsolationCertificate("thisCloudBrowserIsolationCertificate", pem=(lambda path: open(path).read())("cert.pem"))
-        this_index_cloud_browser_isolation_certificate_cloud_browser_isolation_certificate = zpa.CloudBrowserIsolationCertificate("thisIndex/cloudBrowserIsolationCertificateCloudBrowserIsolationCertificate", pem=\"\"\"    -----BEGIN CERTIFICATE-----
-            MIIFYDCCBEigAwIBAgIQQAF3ITfU6UK47naqPGQKtzANBgkqhkiG9w0BAQsFADA/
-        \"\"\")
-        ```
 
         :param str resource_name: The name of the resource.
         :param CloudBrowserIsolationCertificateArgs args: The arguments to use to populate this resource's properties.

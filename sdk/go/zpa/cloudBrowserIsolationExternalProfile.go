@@ -30,76 +30,77 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thisCloudBrowserIsolationBanner, err := zpa.LookupCloudBrowserIsolationBanner(ctx, &zpa.LookupCloudBrowserIsolationBannerArgs{
+//			// Retrieve CBI Banner ID
+//			this, err := zpa.LookupCloudBrowserIsolationBanner(ctx, &zpa.LookupCloudBrowserIsolationBannerArgs{
 //				Name: pulumi.StringRef("Default"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			// Retrieve Primary CBI Region ID
 //			singapore, err := zpa.GetCloudBrowserIsolationRegion(ctx, &zpa.GetCloudBrowserIsolationRegionArgs{
 //				Name: pulumi.StringRef("Singapore"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			// Retrieve Secondary CBI Region ID
 //			_, err = zpa.GetCloudBrowserIsolationRegion(ctx, &zpa.GetCloudBrowserIsolationRegionArgs{
 //				Name: pulumi.StringRef("Frankfurt"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			thisCloudBrowserIsolationCertificate, err := zpa.LookupCloudBrowserIsolationCertificate(ctx, &zpa.LookupCloudBrowserIsolationCertificateArgs{
+//			// Retrieve CBI Certificate ID
+//			thisGetCloudBrowserIsolationCertificate, err := zpa.LookupCloudBrowserIsolationCertificate(ctx, &zpa.LookupCloudBrowserIsolationCertificateArgs{
 //				Name: pulumi.StringRef("Zscaler Root Certificate"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = zpa.NewCloudBrowserIsolationExternalProfile(ctx, "thisCloudBrowserIsolationExternalProfile", &zpa.CloudBrowserIsolationExternalProfileArgs{
+//			_, err = zpa.NewCloudBrowserIsolationExternalProfile(ctx, "this", &zpa.CloudBrowserIsolationExternalProfileArgs{
+//				Name:        pulumi.String("CBI_Profile_Example"),
 //				Description: pulumi.String("CBI_Profile_Example"),
-//				BannerId:    pulumi.String(thisCloudBrowserIsolationBanner.Id),
+//				BannerId:    pulumi.String(this.Id),
 //				RegionIds: pulumi.StringArray{
 //					pulumi.String(singapore.Id),
 //				},
 //				CertificateIds: pulumi.StringArray{
-//					pulumi.String(thisCloudBrowserIsolationCertificate.Id),
+//					pulumi.String(thisGetCloudBrowserIsolationCertificate.Id),
 //				},
-//				UserExperiences: zpa.CloudBrowserIsolationExternalProfileUserExperienceArray{
-//					&zpa.CloudBrowserIsolationExternalProfileUserExperienceArgs{
-//						ForwardToZia: &zpa.CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs{
-//							Enabled:        pulumi.Bool(true),
-//							OrganizationId: pulumi.String("***********"),
-//							CloudName:      pulumi.String("<cloud_name>"),
-//							PacFileUrl:     pulumi.String("https://pac.<cloud_name>/<cloud_name>/proxy.pac"),
-//						},
-//						BrowserInBrowser:    pulumi.Bool(true),
-//						PersistIsolationBar: pulumi.Bool(true),
-//						Translate:           pulumi.Bool(true),
-//						SessionPersistence:  pulumi.Bool(true),
+//				UserExperience: &zpa.CloudBrowserIsolationExternalProfileUserExperienceArgs{
+//					ForwardToZia: &zpa.CloudBrowserIsolationExternalProfileUserExperienceForwardToZiaArgs{
+//						Enabled:        pulumi.Bool(true),
+//						OrganizationId: pulumi.String("***********"),
+//						CloudName:      pulumi.String("<cloud_name>"),
+//						PacFileUrl:     pulumi.String("https://pac.<cloud_name>/<cloud_name>/proxy.pac"),
 //					},
+//					BrowserInBrowser:    pulumi.Bool(true),
+//					PersistIsolationBar: pulumi.Bool(true),
+//					Translate:           pulumi.Bool(true),
+//					SessionPersistence:  pulumi.Bool(true),
 //				},
-//				SecurityControls: zpa.CloudBrowserIsolationExternalProfileSecurityControlArray{
-//					&zpa.CloudBrowserIsolationExternalProfileSecurityControlArgs{
-//						CopyPaste:          pulumi.String("all"),
-//						UploadDownload:     pulumi.String("upstream"),
-//						DocumentViewer:     pulumi.Bool(true),
-//						LocalRender:        pulumi.Bool(true),
-//						AllowPrinting:      pulumi.Bool(true),
-//						RestrictKeystrokes: pulumi.Bool(true),
-//						FlattenedPdf:       pulumi.Bool(true),
-//						DeepLink: &zpa.CloudBrowserIsolationExternalProfileSecurityControlDeepLinkArgs{
-//							Enabled: pulumi.Bool(true),
-//							Applications: pulumi.StringArray{
-//								pulumi.String("test1"),
-//								pulumi.String("test"),
-//							},
+//				SecurityControls: &zpa.CloudBrowserIsolationExternalProfileSecurityControlsArgs{
+//					CopyPaste:          pulumi.String("all"),
+//					UploadDownload:     pulumi.String("upstream"),
+//					DocumentViewer:     pulumi.Bool(true),
+//					LocalRender:        pulumi.Bool(true),
+//					AllowPrinting:      pulumi.Bool(true),
+//					RestrictKeystrokes: pulumi.Bool(true),
+//					FlattenedPdf:       pulumi.Bool(true),
+//					DeepLink: &zpa.CloudBrowserIsolationExternalProfileSecurityControlsDeepLinkArgs{
+//						Enabled: pulumi.Bool(true),
+//						Applications: pulumi.StringArray{
+//							pulumi.String("test1"),
+//							pulumi.String("test"),
 //						},
-//						Watermark: &zpa.CloudBrowserIsolationExternalProfileSecurityControlWatermarkArgs{
-//							Enabled:       pulumi.Bool(true),
-//							ShowUserId:    pulumi.Bool(true),
-//							ShowTimestamp: pulumi.Bool(true),
-//							ShowMessage:   pulumi.Bool(true),
-//							Message:       pulumi.String("Zscaler CBI"),
-//						},
+//					},
+//					Watermark: &zpa.CloudBrowserIsolationExternalProfileSecurityControlsWatermarkArgs{
+//						Enabled:       pulumi.Bool(true),
+//						ShowUserId:    pulumi.Bool(true),
+//						ShowTimestamp: pulumi.Bool(true),
+//						ShowMessage:   pulumi.Bool(true),
+//						Message:       pulumi.String("Zscaler CBI"),
 //					},
 //				},
 //				DebugMode: &zpa.CloudBrowserIsolationExternalProfileDebugModeArgs{
@@ -125,9 +126,9 @@ type CloudBrowserIsolationExternalProfile struct {
 	Description    pulumi.StringPtrOutput                                 `pulumi:"description"`
 	Name           pulumi.StringOutput                                    `pulumi:"name"`
 	// This field defines the list of region IDs.
-	RegionIds        pulumi.StringArrayOutput                                       `pulumi:"regionIds"`
-	SecurityControls CloudBrowserIsolationExternalProfileSecurityControlArrayOutput `pulumi:"securityControls"`
-	UserExperiences  CloudBrowserIsolationExternalProfileUserExperienceArrayOutput  `pulumi:"userExperiences"`
+	RegionIds        pulumi.StringArrayOutput                                      `pulumi:"regionIds"`
+	SecurityControls CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput `pulumi:"securityControls"`
+	UserExperience   CloudBrowserIsolationExternalProfileUserExperienceOutput      `pulumi:"userExperience"`
 }
 
 // NewCloudBrowserIsolationExternalProfile registers a new resource with the given unique name, arguments, and options.
@@ -171,8 +172,8 @@ type cloudBrowserIsolationExternalProfileState struct {
 	Name           *string                                        `pulumi:"name"`
 	// This field defines the list of region IDs.
 	RegionIds        []string                                              `pulumi:"regionIds"`
-	SecurityControls []CloudBrowserIsolationExternalProfileSecurityControl `pulumi:"securityControls"`
-	UserExperiences  []CloudBrowserIsolationExternalProfileUserExperience  `pulumi:"userExperiences"`
+	SecurityControls *CloudBrowserIsolationExternalProfileSecurityControls `pulumi:"securityControls"`
+	UserExperience   *CloudBrowserIsolationExternalProfileUserExperience   `pulumi:"userExperience"`
 }
 
 type CloudBrowserIsolationExternalProfileState struct {
@@ -184,8 +185,8 @@ type CloudBrowserIsolationExternalProfileState struct {
 	Name           pulumi.StringPtrInput
 	// This field defines the list of region IDs.
 	RegionIds        pulumi.StringArrayInput
-	SecurityControls CloudBrowserIsolationExternalProfileSecurityControlArrayInput
-	UserExperiences  CloudBrowserIsolationExternalProfileUserExperienceArrayInput
+	SecurityControls CloudBrowserIsolationExternalProfileSecurityControlsPtrInput
+	UserExperience   CloudBrowserIsolationExternalProfileUserExperiencePtrInput
 }
 
 func (CloudBrowserIsolationExternalProfileState) ElementType() reflect.Type {
@@ -201,8 +202,8 @@ type cloudBrowserIsolationExternalProfileArgs struct {
 	Name           *string                                        `pulumi:"name"`
 	// This field defines the list of region IDs.
 	RegionIds        []string                                              `pulumi:"regionIds"`
-	SecurityControls []CloudBrowserIsolationExternalProfileSecurityControl `pulumi:"securityControls"`
-	UserExperiences  []CloudBrowserIsolationExternalProfileUserExperience  `pulumi:"userExperiences"`
+	SecurityControls *CloudBrowserIsolationExternalProfileSecurityControls `pulumi:"securityControls"`
+	UserExperience   *CloudBrowserIsolationExternalProfileUserExperience   `pulumi:"userExperience"`
 }
 
 // The set of arguments for constructing a CloudBrowserIsolationExternalProfile resource.
@@ -215,8 +216,8 @@ type CloudBrowserIsolationExternalProfileArgs struct {
 	Name           pulumi.StringPtrInput
 	// This field defines the list of region IDs.
 	RegionIds        pulumi.StringArrayInput
-	SecurityControls CloudBrowserIsolationExternalProfileSecurityControlArrayInput
-	UserExperiences  CloudBrowserIsolationExternalProfileUserExperienceArrayInput
+	SecurityControls CloudBrowserIsolationExternalProfileSecurityControlsPtrInput
+	UserExperience   CloudBrowserIsolationExternalProfileUserExperiencePtrInput
 }
 
 func (CloudBrowserIsolationExternalProfileArgs) ElementType() reflect.Type {
@@ -334,16 +335,16 @@ func (o CloudBrowserIsolationExternalProfileOutput) RegionIds() pulumi.StringArr
 	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfile) pulumi.StringArrayOutput { return v.RegionIds }).(pulumi.StringArrayOutput)
 }
 
-func (o CloudBrowserIsolationExternalProfileOutput) SecurityControls() CloudBrowserIsolationExternalProfileSecurityControlArrayOutput {
-	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfile) CloudBrowserIsolationExternalProfileSecurityControlArrayOutput {
+func (o CloudBrowserIsolationExternalProfileOutput) SecurityControls() CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfile) CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput {
 		return v.SecurityControls
-	}).(CloudBrowserIsolationExternalProfileSecurityControlArrayOutput)
+	}).(CloudBrowserIsolationExternalProfileSecurityControlsPtrOutput)
 }
 
-func (o CloudBrowserIsolationExternalProfileOutput) UserExperiences() CloudBrowserIsolationExternalProfileUserExperienceArrayOutput {
-	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfile) CloudBrowserIsolationExternalProfileUserExperienceArrayOutput {
-		return v.UserExperiences
-	}).(CloudBrowserIsolationExternalProfileUserExperienceArrayOutput)
+func (o CloudBrowserIsolationExternalProfileOutput) UserExperience() CloudBrowserIsolationExternalProfileUserExperienceOutput {
+	return o.ApplyT(func(v *CloudBrowserIsolationExternalProfile) CloudBrowserIsolationExternalProfileUserExperienceOutput {
+		return v.UserExperience
+	}).(CloudBrowserIsolationExternalProfileUserExperienceOutput)
 }
 
 type CloudBrowserIsolationExternalProfileArrayOutput struct{ *pulumi.OutputState }

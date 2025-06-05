@@ -120,8 +120,9 @@ def get_scim_groups(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    engineering = zpa.get_scim_groups(idp_name="idp_name",
-        name="Engineering")
+    # ZPA SCIM Groups Data Source
+    engineering = zpa.get_scim_groups(name="Engineering",
+        idp_name="idp_name")
     ```
     """
     __args__ = dict()
@@ -159,8 +160,9 @@ def get_scim_groups_output(id: Optional[pulumi.Input[Optional[builtins.str]]] = 
     import pulumi
     import pulumi_zpa as zpa
 
-    engineering = zpa.get_scim_groups(idp_name="idp_name",
-        name="Engineering")
+    # ZPA SCIM Groups Data Source
+    engineering = zpa.get_scim_groups(name="Engineering",
+        idp_name="idp_name")
     ```
     """
     __args__ = dict()

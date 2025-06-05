@@ -34,16 +34,19 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Retrieve "Default" customer version profile
         ///     var @default = Zpa.GetCustomerVersionProfile.Invoke(new()
         ///     {
         ///         Name = "Default",
         ///     });
         /// 
+        ///     // Retrieve "Previous Default" customer version profile
         ///     var previousDefault = Zpa.GetCustomerVersionProfile.Invoke(new()
         ///     {
         ///         Name = "Previous Default",
         ///     });
         /// 
+        ///     // Retrieve "New Release" customer version profile
         ///     var newRelease = Zpa.GetCustomerVersionProfile.Invoke(new()
         ///     {
         ///         Name = "New Release",
@@ -77,16 +80,19 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Retrieve "Default" customer version profile
         ///     var @default = Zpa.GetCustomerVersionProfile.Invoke(new()
         ///     {
         ///         Name = "Default",
         ///     });
         /// 
+        ///     // Retrieve "Previous Default" customer version profile
         ///     var previousDefault = Zpa.GetCustomerVersionProfile.Invoke(new()
         ///     {
         ///         Name = "Previous Default",
         ///     });
         /// 
+        ///     // Retrieve "New Release" customer version profile
         ///     var newRelease = Zpa.GetCustomerVersionProfile.Invoke(new()
         ///     {
         ///         Name = "New Release",
@@ -120,16 +126,19 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Retrieve "Default" customer version profile
         ///     var @default = Zpa.GetCustomerVersionProfile.Invoke(new()
         ///     {
         ///         Name = "Default",
         ///     });
         /// 
+        ///     // Retrieve "Previous Default" customer version profile
         ///     var previousDefault = Zpa.GetCustomerVersionProfile.Invoke(new()
         ///     {
         ///         Name = "Previous Default",
         ///     });
         /// 
+        ///     // Retrieve "New Release" customer version profile
         ///     var newRelease = Zpa.GetCustomerVersionProfile.Invoke(new()
         ///     {
         ///         Name = "New Release",

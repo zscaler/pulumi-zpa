@@ -34,6 +34,7 @@ namespace Zscaler.Zpa
     /// 
     ///     var @this = new Zpa.ApplicationSegmentInspection("this", new()
     ///     {
+    ///         Name = "ZPA_Inspection_Example",
     ///         Description = "ZPA_Inspection_Example",
     ///         Enabled = true,
     ///         HealthReporting = "ON_ACCESS",
@@ -48,32 +49,35 @@ namespace Zscaler.Zpa
     ///         {
     ///             "jenkins.example.com",
     ///         },
-    ///         SegmentGroupId = zpa_segment_group.This.Id,
+    ///         SegmentGroupId = thisZpaSegmentGroup.Id,
     ///         ServerGroups = new[]
     ///         {
     ///             new Zpa.Inputs.ApplicationSegmentInspectionServerGroupArgs
     ///             {
     ///                 Ids = new[]
     ///                 {
-    ///                     zpa_server_group.This.Id,
+    ///                     thisZpaServerGroup.Id,
     ///                 },
     ///             },
     ///         },
-    ///         CommonAppsDto = new Zpa.Inputs.ApplicationSegmentInspectionCommonAppsDtoArgs
+    ///         CommonAppsDtos = new[]
     ///         {
-    ///             AppsConfigs = new[]
+    ///             new Zpa.Inputs.ApplicationSegmentInspectionCommonAppsDtoArgs
     ///             {
-    ///                 new Zpa.Inputs.ApplicationSegmentInspectionCommonAppsDtoAppsConfigArgs
+    ///                 AppsConfigs = new[]
     ///                 {
-    ///                     Name = "jenkins.example.com",
-    ///                     Domain = "jenkins.example.com",
-    ///                     ApplicationProtocol = "HTTPS",
-    ///                     ApplicationPort = "443",
-    ///                     CertificateId = jenkins.Apply(getBaCertificateResult =&gt; getBaCertificateResult.Id),
-    ///                     Enabled = true,
-    ///                     AppTypes = new[]
+    ///                     new Zpa.Inputs.ApplicationSegmentInspectionCommonAppsDtoAppsConfigArgs
     ///                     {
-    ///                         "INSPECT",
+    ///                         Name = "jenkins.example.com",
+    ///                         Domain = "jenkins.example.com",
+    ///                         ApplicationProtocol = "HTTPS",
+    ///                         ApplicationPort = "443",
+    ///                         CertificateId = jenkins.Apply(getBaCertificateResult =&gt; getBaCertificateResult.Id),
+    ///                         Enabled = true,
+    ///                         AppTypes = new[]
+    ///                         {
+    ///                             "INSPECT",
+    ///                         },
     ///                     },
     ///                 },
     ///             },
@@ -128,8 +132,8 @@ namespace Zscaler.Zpa
         [Output("bypassType")]
         public Output<string> BypassType { get; private set; } = null!;
 
-        [Output("commonAppsDto")]
-        public Output<Outputs.ApplicationSegmentInspectionCommonAppsDto> CommonAppsDto { get; private set; } = null!;
+        [Output("commonAppsDtos")]
+        public Output<ImmutableArray<Outputs.ApplicationSegmentInspectionCommonAppsDto>> CommonAppsDtos { get; private set; } = null!;
 
         [Output("configSpace")]
         public Output<string?> ConfigSpace { get; private set; } = null!;
@@ -314,8 +318,13 @@ namespace Zscaler.Zpa
         [Input("bypassType")]
         public Input<string>? BypassType { get; set; }
 
-        [Input("commonAppsDto")]
-        public Input<Inputs.ApplicationSegmentInspectionCommonAppsDtoArgs>? CommonAppsDto { get; set; }
+        [Input("commonAppsDtos")]
+        private InputList<Inputs.ApplicationSegmentInspectionCommonAppsDtoArgs>? _commonAppsDtos;
+        public InputList<Inputs.ApplicationSegmentInspectionCommonAppsDtoArgs> CommonAppsDtos
+        {
+            get => _commonAppsDtos ?? (_commonAppsDtos = new InputList<Inputs.ApplicationSegmentInspectionCommonAppsDtoArgs>());
+            set => _commonAppsDtos = value;
+        }
 
         [Input("configSpace")]
         public Input<string>? ConfigSpace { get; set; }
@@ -508,8 +517,13 @@ namespace Zscaler.Zpa
         [Input("bypassType")]
         public Input<string>? BypassType { get; set; }
 
-        [Input("commonAppsDto")]
-        public Input<Inputs.ApplicationSegmentInspectionCommonAppsDtoGetArgs>? CommonAppsDto { get; set; }
+        [Input("commonAppsDtos")]
+        private InputList<Inputs.ApplicationSegmentInspectionCommonAppsDtoGetArgs>? _commonAppsDtos;
+        public InputList<Inputs.ApplicationSegmentInspectionCommonAppsDtoGetArgs> CommonAppsDtos
+        {
+            get => _commonAppsDtos ?? (_commonAppsDtos = new InputList<Inputs.ApplicationSegmentInspectionCommonAppsDtoGetArgs>());
+            set => _commonAppsDtos = value;
+        }
 
         [Input("configSpace")]
         public Input<string>? ConfigSpace { get; set; }

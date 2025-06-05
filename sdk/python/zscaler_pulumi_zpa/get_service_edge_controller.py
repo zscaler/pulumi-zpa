@@ -444,6 +444,7 @@ def get_service_edge_controller(microtenant_id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA Service Edge Controller Data Source
     example = zpa.get_service_edge_controller(name="On-Prem-PSE")
     ```
     """
@@ -516,6 +517,7 @@ def get_service_edge_controller_output(microtenant_id: Optional[pulumi.Input[Opt
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA Service Edge Controller Data Source
     example = zpa.get_service_edge_controller(name="On-Prem-PSE")
     ```
     """

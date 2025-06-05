@@ -34,12 +34,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thisIdPController, err := zpa.GetIdPController(ctx, &zpa.GetIdPControllerArgs{
+//			// Retrieve Identity Provider ID
+//			this, err := zpa.GetIdPController(ctx, &zpa.GetIdPControllerArgs{
 //				Name: pulumi.StringRef("Idp_Name"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			// Retrieve SAML Attribute ID
 //			emailUserSso, err := zpa.GetSAMLAttribute(ctx, &zpa.GetSAMLAttributeArgs{
 //				Name:    pulumi.StringRef("Email_Users"),
 //				IdpName: pulumi.StringRef("Idp_Name"),
@@ -47,6 +49,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Retrieve SAML Attribute ID
 //			groupUser, err := zpa.GetSAMLAttribute(ctx, &zpa.GetSAMLAttributeArgs{
 //				Name:    pulumi.StringRef("GroupName_Users"),
 //				IdpName: pulumi.StringRef("Idp_Name"),
@@ -54,6 +57,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Retrieve SCIM Group ID
 //			a000, err := zpa.GetSCIMGroups(ctx, &zpa.GetSCIMGroupsArgs{
 //				Name:    pulumi.StringRef("A000"),
 //				IdpName: pulumi.StringRef("Idp_Name"),
@@ -61,6 +65,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Retrieve SCIM Group ID
 //			b000, err := zpa.GetSCIMGroups(ctx, &zpa.GetSCIMGroupsArgs{
 //				Name:    pulumi.StringRef("B000"),
 //				IdpName: pulumi.StringRef("Idp_Name"),
@@ -69,7 +74,8 @@ import (
 //				return err
 //			}
 //			// Create Segment Group
-//			thisSegmentGroup, err := zpa.NewSegmentGroup(ctx, "thisSegmentGroup", &zpa.SegmentGroupArgs{
+//			thisSegmentGroup, err := zpa.NewSegmentGroup(ctx, "this", &zpa.SegmentGroupArgs{
+//				Name:        pulumi.String("Example"),
 //				Description: pulumi.String("Example"),
 //				Enabled:     pulumi.Bool(true),
 //			})
@@ -77,7 +83,8 @@ import (
 //				return err
 //			}
 //			// Create Policy Access Rule V2
-//			_, err = zpa.NewPolicyAccessForwardingRuleV2(ctx, "thisPolicyAccessForwardingRuleV2", &zpa.PolicyAccessForwardingRuleV2Args{
+//			_, err = zpa.NewPolicyAccessForwardingRuleV2(ctx, "this", &zpa.PolicyAccessForwardingRuleV2Args{
+//				Name:        pulumi.String("Example"),
 //				Description: pulumi.String("Example"),
 //				Action:      pulumi.String("BYPASS"),
 //				Conditions: zpa.PolicyAccessForwardingRuleV2ConditionArray{
@@ -113,11 +120,11 @@ import (
 //								EntryValues: zpa.PolicyAccessForwardingRuleV2ConditionOperandEntryValueArray{
 //									&zpa.PolicyAccessForwardingRuleV2ConditionOperandEntryValueArgs{
 //										Rhs: pulumi.String(a000.Id),
-//										Lhs: pulumi.String(thisIdPController.Id),
+//										Lhs: pulumi.String(this.Id),
 //									},
 //									&zpa.PolicyAccessForwardingRuleV2ConditionOperandEntryValueArgs{
 //										Rhs: pulumi.String(b000.Id),
-//										Lhs: pulumi.String(thisIdPController.Id),
+//										Lhs: pulumi.String(this.Id),
 //									},
 //								},
 //							},

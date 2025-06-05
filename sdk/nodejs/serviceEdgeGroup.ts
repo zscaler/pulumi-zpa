@@ -21,7 +21,8 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Service Edge Group resource - Trusted Network
- * const serviceEdgeGroupSjc = new zpa.ServiceEdgeGroup("serviceEdgeGroupSjc", {
+ * const serviceEdgeGroupSjc = new zpa.ServiceEdgeGroup("service_edge_group_sjc", {
+ *     name: "Service Edge Group San Jose",
  *     description: "Service Edge Group in San Jose",
  *     enabled: true,
  *     isPublic: true,
@@ -32,7 +33,7 @@ import * as utilities from "./utilities";
  *     location: "San Jose, CA, USA",
  *     versionProfileName: "New Release",
  *     trustedNetworks: [{
- *         ids: [data.zpa_trusted_network.example.id],
+ *         ids: [example.id],
  *     }],
  * });
  * ```
@@ -42,7 +43,8 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Service Edge Group resource - No Trusted Network
- * const serviceEdgeGroupNyc = new zpa.ServiceEdgeGroup("serviceEdgeGroupNyc", {
+ * const serviceEdgeGroupNyc = new zpa.ServiceEdgeGroup("service_edge_group_nyc", {
+ *     name: "Service Edge Group New York",
  *     description: "Service Edge Group in New York",
  *     enabled: true,
  *     isPublic: true,
@@ -51,7 +53,7 @@ import * as utilities from "./utilities";
  *     latitude: "40.7128",
  *     longitude: "-73.935242",
  *     location: "New York, NY, USA",
- *     versionProfileId: data.zpa_customer_version_profile["this"].id,
+ *     versionProfileId: _this.id,
  * });
  * ```
  *
@@ -66,7 +68,8 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Service Edge Group resource - Trusted Network
- * const serviceEdgeGroupSjc = new zpa.ServiceEdgeGroup("serviceEdgeGroupSjc", {
+ * const serviceEdgeGroupSjc = new zpa.ServiceEdgeGroup("service_edge_group_sjc", {
+ *     name: "Service Edge Group San Jose",
  *     description: "Service Edge Group in San Jose",
  *     enabled: true,
  *     isPublic: true,
@@ -77,7 +80,7 @@ import * as utilities from "./utilities";
  *     location: "San Jose, CA, USA",
  *     versionProfileName: "New Release",
  *     trustedNetworks: [{
- *         ids: [data.zpa_trusted_network.example.id],
+ *         ids: [example.id],
  *     }],
  * });
  * ```
@@ -87,15 +90,16 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Service Edge Group resource - No Trusted Network
- * const serviceEdgeGroupNyc = new zpa.ServiceEdgeGroup("serviceEdgeGroupNyc", {
+ * const serviceEdgeGroupNyc = new zpa.ServiceEdgeGroup("service_edge_group_nyc", {
+ *     name: "Service Edge Group New York",
  *     description: "Service Edge Group in New York",
  *     enabled: true,
  *     isPublic: true,
- *     latitude: "40.7128",
- *     location: "New York, NY, USA",
- *     longitude: "-73.935242",
  *     upgradeDay: "SUNDAY",
  *     upgradeTimeInSecs: "66600",
+ *     latitude: "40.7128",
+ *     longitude: "-73.935242",
+ *     location: "New York, NY, USA",
  *     versionProfileName: "New Release",
  * });
  * ```
@@ -202,7 +206,7 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
      * WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
      * matching.This field will be deprecated in future versions
      */
-    public readonly serviceEdges!: pulumi.Output<outputs.ServiceEdgeGroupServiceEdge[]>;
+    public readonly serviceEdges!: pulumi.Output<outputs.ServiceEdgeGroupServiceEdges>;
     /**
      * List of trusted network IDs.
      */
@@ -362,7 +366,7 @@ export interface ServiceEdgeGroupState {
      * WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
      * matching.This field will be deprecated in future versions
      */
-    serviceEdges?: pulumi.Input<pulumi.Input<inputs.ServiceEdgeGroupServiceEdge>[]>;
+    serviceEdges?: pulumi.Input<inputs.ServiceEdgeGroupServiceEdges>;
     /**
      * List of trusted network IDs.
      */
@@ -449,7 +453,7 @@ export interface ServiceEdgeGroupArgs {
      * WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
      * matching.This field will be deprecated in future versions
      */
-    serviceEdges?: pulumi.Input<pulumi.Input<inputs.ServiceEdgeGroupServiceEdge>[]>;
+    serviceEdges?: pulumi.Input<inputs.ServiceEdgeGroupServiceEdges>;
     /**
      * List of trusted network IDs.
      */

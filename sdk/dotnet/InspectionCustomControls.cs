@@ -28,38 +28,45 @@ namespace Zscaler.Zpa
     /// {
     ///     var @this = new Zpa.InspectionCustomControls("this", new()
     ///     {
-    ///         DefaultAction = "PASS",
+    ///         Name = "Example",
     ///         Description = "Example",
+    ///         DefaultAction = "PASS",
     ///         ParanoiaLevel = "1",
+    ///         Severity = "CRITICAL",
+    ///         Type = "RESPONSE",
     ///         Rules = new[]
     ///         {
     ///             new Zpa.Inputs.InspectionCustomControlsRuleArgs
     ///             {
-    ///                 Conditions = new Zpa.Inputs.InspectionCustomControlsRuleConditionsArgs
-    ///                 {
-    ///                     Lhs = "SIZE",
-    ///                     Op = "GE",
-    ///                     Rhs = "1000",
-    ///                 },
     ///                 Names = new[]
     ///                 {
     ///                     "this",
     ///                 },
     ///                 Type = "RESPONSE_HEADERS",
+    ///                 Conditions = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.InspectionCustomControlsRuleConditionArgs
+    ///                     {
+    ///                         Lhs = "SIZE",
+    ///                         Op = "GE",
+    ///                         Rhs = "1000",
+    ///                     },
+    ///                 },
     ///             },
     ///             new Zpa.Inputs.InspectionCustomControlsRuleArgs
     ///             {
-    ///                 Conditions = new Zpa.Inputs.InspectionCustomControlsRuleConditionsArgs
-    ///                 {
-    ///                     Lhs = "SIZE",
-    ///                     Op = "GE",
-    ///                     Rhs = "1000",
-    ///                 },
     ///                 Type = "RESPONSE_BODY",
+    ///                 Conditions = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.InspectionCustomControlsRuleConditionArgs
+    ///                     {
+    ///                         Lhs = "SIZE",
+    ///                         Op = "GE",
+    ///                         Rhs = "1000",
+    ///                     },
+    ///                 },
     ///             },
     ///         },
-    ///         Severity = "CRITICAL",
-    ///         Type = "RESPONSE",
     ///     });
     /// 
     /// });
@@ -77,38 +84,45 @@ namespace Zscaler.Zpa
     /// {
     ///     var @this = new Zpa.InspectionCustomControls("this", new()
     ///     {
-    ///         DefaultAction = "BLOCK",
+    ///         Name = "Example",
     ///         Description = "Example",
+    ///         DefaultAction = "BLOCK",
     ///         ParanoiaLevel = "1",
+    ///         Severity = "CRITICAL",
+    ///         Type = "RESPONSE",
     ///         Rules = new[]
     ///         {
     ///             new Zpa.Inputs.InspectionCustomControlsRuleArgs
     ///             {
-    ///                 Conditions = new Zpa.Inputs.InspectionCustomControlsRuleConditionsArgs
-    ///                 {
-    ///                     Lhs = "SIZE",
-    ///                     Op = "GE",
-    ///                     Rhs = "1000",
-    ///                 },
     ///                 Names = new[]
     ///                 {
     ///                     "this",
     ///                 },
     ///                 Type = "RESPONSE_HEADERS",
+    ///                 Conditions = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.InspectionCustomControlsRuleConditionArgs
+    ///                     {
+    ///                         Lhs = "SIZE",
+    ///                         Op = "GE",
+    ///                         Rhs = "1000",
+    ///                     },
+    ///                 },
     ///             },
     ///             new Zpa.Inputs.InspectionCustomControlsRuleArgs
     ///             {
-    ///                 Conditions = new Zpa.Inputs.InspectionCustomControlsRuleConditionsArgs
-    ///                 {
-    ///                     Lhs = "SIZE",
-    ///                     Op = "GE",
-    ///                     Rhs = "1000",
-    ///                 },
     ///                 Type = "RESPONSE_BODY",
+    ///                 Conditions = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.InspectionCustomControlsRuleConditionArgs
+    ///                     {
+    ///                         Lhs = "SIZE",
+    ///                         Op = "GE",
+    ///                         Rhs = "1000",
+    ///                     },
+    ///                 },
     ///             },
     ///         },
-    ///         Severity = "CRITICAL",
-    ///         Type = "RESPONSE",
     ///     });
     /// 
     /// });
@@ -126,39 +140,46 @@ namespace Zscaler.Zpa
     /// {
     ///     var @this = new Zpa.InspectionCustomControls("this", new()
     ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
     ///         DefaultAction = "REDIRECT",
     ///         DefaultActionValue = "https://test.com",
-    ///         Description = "Example",
     ///         ParanoiaLevel = "1",
+    ///         Severity = "CRITICAL",
+    ///         Type = "RESPONSE",
     ///         Rules = new[]
     ///         {
     ///             new Zpa.Inputs.InspectionCustomControlsRuleArgs
     ///             {
-    ///                 Conditions = new Zpa.Inputs.InspectionCustomControlsRuleConditionsArgs
-    ///                 {
-    ///                     Lhs = "SIZE",
-    ///                     Op = "GE",
-    ///                     Rhs = "1000",
-    ///                 },
     ///                 Names = new[]
     ///                 {
     ///                     "this",
     ///                 },
     ///                 Type = "RESPONSE_HEADERS",
+    ///                 Conditions = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.InspectionCustomControlsRuleConditionArgs
+    ///                     {
+    ///                         Lhs = "SIZE",
+    ///                         Op = "GE",
+    ///                         Rhs = "1000",
+    ///                     },
+    ///                 },
     ///             },
     ///             new Zpa.Inputs.InspectionCustomControlsRuleArgs
     ///             {
-    ///                 Conditions = new Zpa.Inputs.InspectionCustomControlsRuleConditionsArgs
-    ///                 {
-    ///                     Lhs = "SIZE",
-    ///                     Op = "GE",
-    ///                     Rhs = "1000",
-    ///                 },
     ///                 Type = "RESPONSE_BODY",
+    ///                 Conditions = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.InspectionCustomControlsRuleConditionArgs
+    ///                     {
+    ///                         Lhs = "SIZE",
+    ///                         Op = "GE",
+    ///                         Rhs = "1000",
+    ///                     },
+    ///                 },
     ///             },
     ///         },
-    ///         Severity = "CRITICAL",
-    ///         Type = "RESPONSE",
     ///     });
     /// 
     /// });

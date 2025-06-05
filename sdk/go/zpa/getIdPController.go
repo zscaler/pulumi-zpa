@@ -40,6 +40,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA IdP Controller Data Source
 //			_, err := zpa.GetIdPController(ctx, &zpa.GetIdPControllerArgs{
 //				Name: pulumi.StringRef("idp_name"),
 //			}, nil)
@@ -64,6 +65,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA IdP Controller Data Source
 //			_, err := zpa.GetIdPController(ctx, &zpa.GetIdPControllerArgs{
 //				Id: pulumi.StringRef("1234567890"),
 //			}, nil)

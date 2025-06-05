@@ -257,6 +257,7 @@ def get_pra_portal(ext_domain: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA PRA Portal Data Source
     this = zpa.get_pra_portal(name="Example")
     ```
     """
@@ -314,6 +315,7 @@ def get_pra_portal_output(ext_domain: Optional[pulumi.Input[Optional[builtins.st
     import pulumi
     import pulumi_zpa as zpa
 
+    # ZPA PRA Portal Data Source
     this = zpa.get_pra_portal(name="Example")
     ```
     """

@@ -285,13 +285,14 @@ class Microtenant(pulumi.CustomResource):
 
         # ZPA Microtenant Controller resource
         this = zpa.Microtenant("this",
+            name="Microtenant_A",
             description="Microtenant_A",
             enabled=True,
             criteria_attribute="AuthDomain",
             criteria_attribute_values=["acme.com"],
             privileged_approvals_enabled=True)
         pulumi.export("zpaMicrotenantController1", this.users.apply(lambda users: [{
-            "microtenant_id": u.microtenant_id,
+            "microtenantId": u.microtenant_id,
             "username": u.username,
             "password": u.password,
         } for u in users]))
@@ -349,13 +350,14 @@ class Microtenant(pulumi.CustomResource):
 
         # ZPA Microtenant Controller resource
         this = zpa.Microtenant("this",
+            name="Microtenant_A",
             description="Microtenant_A",
             enabled=True,
             criteria_attribute="AuthDomain",
             criteria_attribute_values=["acme.com"],
             privileged_approvals_enabled=True)
         pulumi.export("zpaMicrotenantController1", this.users.apply(lambda users: [{
-            "microtenant_id": u.microtenant_id,
+            "microtenantId": u.microtenant_id,
             "username": u.username,
             "password": u.password,
         } for u in users]))

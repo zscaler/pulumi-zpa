@@ -218,10 +218,11 @@ def get_scim_attribute_header(idp_id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    given_name = zpa.get_scim_attribute_header(idp_name="IdP_Name",
-        name="name.givenName")
-    family_name = zpa.get_scim_attribute_header(idp_name="IdP_Name",
-        name="name.familyName")
+    # ZPA SCIM Attribute Header Data Source
+    given_name = zpa.get_scim_attribute_header(name="name.givenName",
+        idp_name="IdP_Name")
+    family_name = zpa.get_scim_attribute_header(name="name.familyName",
+        idp_name="IdP_Name")
     ```
     """
     __args__ = dict()
@@ -268,10 +269,11 @@ def get_scim_attribute_header_output(idp_id: Optional[pulumi.Input[Optional[buil
     import pulumi
     import pulumi_zpa as zpa
 
-    given_name = zpa.get_scim_attribute_header(idp_name="IdP_Name",
-        name="name.givenName")
-    family_name = zpa.get_scim_attribute_header(idp_name="IdP_Name",
-        name="name.familyName")
+    # ZPA SCIM Attribute Header Data Source
+    given_name = zpa.get_scim_attribute_header(name="name.givenName",
+        idp_name="IdP_Name")
+    family_name = zpa.get_scim_attribute_header(name="name.familyName",
+        idp_name="IdP_Name")
     ```
     """
     __args__ = dict()

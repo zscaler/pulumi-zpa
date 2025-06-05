@@ -23,6 +23,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Application Server Data Source by Name
         ///     var example = Zpa.GetApplicationServer.Invoke(new()
         ///     {
         ///         Name = "server.example.com",
@@ -39,6 +40,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Application Server Data Source by ID
         ///     var example = Zpa.GetApplicationServer.Invoke(new()
         ///     {
         ///         Id = "1234567890",
@@ -61,6 +63,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Application Server Data Source by Name
         ///     var example = Zpa.GetApplicationServer.Invoke(new()
         ///     {
         ///         Name = "server.example.com",
@@ -77,6 +80,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Application Server Data Source by ID
         ///     var example = Zpa.GetApplicationServer.Invoke(new()
         ///     {
         ///         Id = "1234567890",
@@ -99,6 +103,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Application Server Data Source by Name
         ///     var example = Zpa.GetApplicationServer.Invoke(new()
         ///     {
         ///         Name = "server.example.com",
@@ -115,6 +120,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Application Server Data Source by ID
         ///     var example = Zpa.GetApplicationServer.Invoke(new()
         ///     {
         ///         Id = "1234567890",

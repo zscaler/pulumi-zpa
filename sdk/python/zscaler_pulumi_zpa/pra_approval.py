@@ -23,7 +23,7 @@ __all__ = ['PRAApprovalArgs', 'PRAApproval']
 class PRAApprovalArgs:
     def __init__(__self__, *,
                  applications: pulumi.Input[Sequence[pulumi.Input['PRAApprovalApplicationArgs']]],
-                 email_ids: Optional[pulumi.Input[builtins.str]] = None,
+                 email_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  end_time: Optional[pulumi.Input[builtins.str]] = None,
                  microtenant_id: Optional[pulumi.Input[builtins.str]] = None,
                  start_time: Optional[pulumi.Input[builtins.str]] = None,
@@ -31,7 +31,7 @@ class PRAApprovalArgs:
                  working_hours: Optional[pulumi.Input[Sequence[pulumi.Input['PRAApprovalWorkingHourArgs']]]] = None):
         """
         The set of arguments for constructing a PRAApproval resource.
-        :param pulumi.Input[builtins.str] email_ids: The email address of the user that you are assigning the privileged approval to
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] email_ids: The email address of the user that you are assigning the privileged approval to
         :param pulumi.Input[builtins.str] end_time: The end date that the user no longer has access to the privileged approval
         :param pulumi.Input[builtins.str] microtenant_id: The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
                microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
@@ -63,14 +63,14 @@ class PRAApprovalArgs:
 
     @property
     @pulumi.getter(name="emailIds")
-    def email_ids(self) -> Optional[pulumi.Input[builtins.str]]:
+    def email_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
         The email address of the user that you are assigning the privileged approval to
         """
         return pulumi.get(self, "email_ids")
 
     @email_ids.setter
-    def email_ids(self, value: Optional[pulumi.Input[builtins.str]]):
+    def email_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "email_ids", value)
 
     @property
@@ -136,7 +136,7 @@ class PRAApprovalArgs:
 class _PRAApprovalState:
     def __init__(__self__, *,
                  applications: Optional[pulumi.Input[Sequence[pulumi.Input['PRAApprovalApplicationArgs']]]] = None,
-                 email_ids: Optional[pulumi.Input[builtins.str]] = None,
+                 email_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  end_time: Optional[pulumi.Input[builtins.str]] = None,
                  microtenant_id: Optional[pulumi.Input[builtins.str]] = None,
                  start_time: Optional[pulumi.Input[builtins.str]] = None,
@@ -144,7 +144,7 @@ class _PRAApprovalState:
                  working_hours: Optional[pulumi.Input[Sequence[pulumi.Input['PRAApprovalWorkingHourArgs']]]] = None):
         """
         Input properties used for looking up and filtering PRAApproval resources.
-        :param pulumi.Input[builtins.str] email_ids: The email address of the user that you are assigning the privileged approval to
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] email_ids: The email address of the user that you are assigning the privileged approval to
         :param pulumi.Input[builtins.str] end_time: The end date that the user no longer has access to the privileged approval
         :param pulumi.Input[builtins.str] microtenant_id: The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
                microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
@@ -177,14 +177,14 @@ class _PRAApprovalState:
 
     @property
     @pulumi.getter(name="emailIds")
-    def email_ids(self) -> Optional[pulumi.Input[builtins.str]]:
+    def email_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
         The email address of the user that you are assigning the privileged approval to
         """
         return pulumi.get(self, "email_ids")
 
     @email_ids.setter
-    def email_ids(self, value: Optional[pulumi.Input[builtins.str]]):
+    def email_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "email_ids", value)
 
     @property
@@ -253,7 +253,7 @@ class PRAApproval(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  applications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PRAApprovalApplicationArgs', 'PRAApprovalApplicationArgsDict']]]]] = None,
-                 email_ids: Optional[pulumi.Input[builtins.str]] = None,
+                 email_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  end_time: Optional[pulumi.Input[builtins.str]] = None,
                  microtenant_id: Optional[pulumi.Input[builtins.str]] = None,
                  start_time: Optional[pulumi.Input[builtins.str]] = None,
@@ -265,6 +265,90 @@ class PRAApproval(pulumi.CustomResource):
         * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-approvals-using-api)
 
         The **zpa_pra_approval_controller** resource creates a privileged remote access approval in the Zscaler Private Access cloud. This resource allows third-party users and contractors to be able to log in to a Privileged Remote Access (PRA) portal.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import zscaler_pulumi_zpa as zpa
+
+        # ZPA Segment Group resource
+        this_segment_group = zpa.SegmentGroup("this",
+            name="Example",
+            description="Example",
+            enabled=True)
+        # ZPA App Connector Group resource
+        this_connector_group = zpa.ConnectorGroup("this",
+            name="Example",
+            description="Example",
+            enabled=True,
+            city_country="San Jose, CA",
+            country_code="US",
+            latitude="37.338",
+            longitude="-121.8863",
+            location="San Jose, CA, US",
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            override_version_profile=True,
+            version_profile_id="0",
+            dns_query_type="IPV4")
+        # ZPA Server Group resource
+        this_server_group = zpa.ServerGroup("this",
+            name="Example",
+            description="Example",
+            enabled=True,
+            dynamic_discovery=False,
+            app_connector_groups=[{
+                "ids": [this_connector_group.id],
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[this_connector_group]))
+        # ZPA Application Segment resource
+        this = zpa.ApplicationSegment("this",
+            name="Example",
+            description="Example",
+            enabled=True,
+            health_reporting="ON_ACCESS",
+            bypass_type="NEVER",
+            is_cname_enabled=True,
+            tcp_port_ranges=[
+                "8080",
+                "8080",
+            ],
+            domain_names=["server.acme.com"],
+            segment_group_id=this_segment_group.id,
+            server_groups=[{
+                "ids": [this_server_group.id],
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[
+                    this_server_group,
+                    this_segment_group,
+                ]))
+        # Create PRA Approval Controller
+        this_pra_approval = zpa.PRAApproval("this",
+            email_ids=["jdoe@acme.com"],
+            start_time="Tue, 07 Mar 2024 11:05:30 PST",
+            end_time="Tue, 07 Jun 2024 11:05:30 PST",
+            status="FUTURE",
+            applications=[{
+                "ids": [this.id],
+            }],
+            working_hours=[{
+                "days": [
+                    "FRI",
+                    "MON",
+                    "SAT",
+                    "SUN",
+                    "THU",
+                    "TUE",
+                    "WED",
+                ],
+                "start_time": "00:10",
+                "start_time_cron": "0 0 8 ? * MON,TUE,WED,THU,FRI,SAT",
+                "end_time": "09:15",
+                "end_time_cron": "0 15 17 ? * MON,TUE,WED,THU,FRI,SAT",
+                "timezone": "America/Vancouver",
+            }])
+        ```
 
         ## Import
 
@@ -288,7 +372,7 @@ class PRAApproval(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] email_ids: The email address of the user that you are assigning the privileged approval to
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] email_ids: The email address of the user that you are assigning the privileged approval to
         :param pulumi.Input[builtins.str] end_time: The end date that the user no longer has access to the privileged approval
         :param pulumi.Input[builtins.str] microtenant_id: The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
                microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
@@ -306,6 +390,90 @@ class PRAApproval(pulumi.CustomResource):
         * [API documentation](https://help.zscaler.com/zpa/configuring-privileged-approvals-using-api)
 
         The **zpa_pra_approval_controller** resource creates a privileged remote access approval in the Zscaler Private Access cloud. This resource allows third-party users and contractors to be able to log in to a Privileged Remote Access (PRA) portal.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import zscaler_pulumi_zpa as zpa
+
+        # ZPA Segment Group resource
+        this_segment_group = zpa.SegmentGroup("this",
+            name="Example",
+            description="Example",
+            enabled=True)
+        # ZPA App Connector Group resource
+        this_connector_group = zpa.ConnectorGroup("this",
+            name="Example",
+            description="Example",
+            enabled=True,
+            city_country="San Jose, CA",
+            country_code="US",
+            latitude="37.338",
+            longitude="-121.8863",
+            location="San Jose, CA, US",
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            override_version_profile=True,
+            version_profile_id="0",
+            dns_query_type="IPV4")
+        # ZPA Server Group resource
+        this_server_group = zpa.ServerGroup("this",
+            name="Example",
+            description="Example",
+            enabled=True,
+            dynamic_discovery=False,
+            app_connector_groups=[{
+                "ids": [this_connector_group.id],
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[this_connector_group]))
+        # ZPA Application Segment resource
+        this = zpa.ApplicationSegment("this",
+            name="Example",
+            description="Example",
+            enabled=True,
+            health_reporting="ON_ACCESS",
+            bypass_type="NEVER",
+            is_cname_enabled=True,
+            tcp_port_ranges=[
+                "8080",
+                "8080",
+            ],
+            domain_names=["server.acme.com"],
+            segment_group_id=this_segment_group.id,
+            server_groups=[{
+                "ids": [this_server_group.id],
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[
+                    this_server_group,
+                    this_segment_group,
+                ]))
+        # Create PRA Approval Controller
+        this_pra_approval = zpa.PRAApproval("this",
+            email_ids=["jdoe@acme.com"],
+            start_time="Tue, 07 Mar 2024 11:05:30 PST",
+            end_time="Tue, 07 Jun 2024 11:05:30 PST",
+            status="FUTURE",
+            applications=[{
+                "ids": [this.id],
+            }],
+            working_hours=[{
+                "days": [
+                    "FRI",
+                    "MON",
+                    "SAT",
+                    "SUN",
+                    "THU",
+                    "TUE",
+                    "WED",
+                ],
+                "start_time": "00:10",
+                "start_time_cron": "0 0 8 ? * MON,TUE,WED,THU,FRI,SAT",
+                "end_time": "09:15",
+                "end_time_cron": "0 15 17 ? * MON,TUE,WED,THU,FRI,SAT",
+                "timezone": "America/Vancouver",
+            }])
+        ```
 
         ## Import
 
@@ -343,7 +511,7 @@ class PRAApproval(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  applications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PRAApprovalApplicationArgs', 'PRAApprovalApplicationArgsDict']]]]] = None,
-                 email_ids: Optional[pulumi.Input[builtins.str]] = None,
+                 email_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  end_time: Optional[pulumi.Input[builtins.str]] = None,
                  microtenant_id: Optional[pulumi.Input[builtins.str]] = None,
                  start_time: Optional[pulumi.Input[builtins.str]] = None,
@@ -380,7 +548,7 @@ class PRAApproval(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             applications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PRAApprovalApplicationArgs', 'PRAApprovalApplicationArgsDict']]]]] = None,
-            email_ids: Optional[pulumi.Input[builtins.str]] = None,
+            email_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             end_time: Optional[pulumi.Input[builtins.str]] = None,
             microtenant_id: Optional[pulumi.Input[builtins.str]] = None,
             start_time: Optional[pulumi.Input[builtins.str]] = None,
@@ -393,7 +561,7 @@ class PRAApproval(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] email_ids: The email address of the user that you are assigning the privileged approval to
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] email_ids: The email address of the user that you are assigning the privileged approval to
         :param pulumi.Input[builtins.str] end_time: The end date that the user no longer has access to the privileged approval
         :param pulumi.Input[builtins.str] microtenant_id: The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
                microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
@@ -420,7 +588,7 @@ class PRAApproval(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="emailIds")
-    def email_ids(self) -> pulumi.Output[builtins.str]:
+    def email_ids(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
         The email address of the user that you are assigning the privileged approval to
         """

@@ -38,6 +38,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Trusted Network Data Source
 //			_, err := zpa.GetTrustedNetwork(ctx, &zpa.GetTrustedNetworkArgs{
 //				Name: pulumi.StringRef("trusted_network_name"),
 //			}, nil)
@@ -64,6 +65,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Posture Profile Data Source
 //			example1, err := zpa.GetTrustedNetwork(ctx, &zpa.GetTrustedNetworkArgs{
 //				Name: pulumi.StringRef("Corporate-Network (zscalertwo.net)"),
 //			}, nil)

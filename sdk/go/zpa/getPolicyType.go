@@ -42,6 +42,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Get information for "ACCESS_POLICY" ID
 //			accessPolicy, err := zpa.GetPolicyType(ctx, &zpa.GetPolicyTypeArgs{
 //				PolicyType: pulumi.StringRef("ACCESS_POLICY"),
 //			}, nil)
@@ -67,6 +68,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Get information for "GLOBAL_POLICY" ID
 //			globalPolicy, err := zpa.GetPolicyType(ctx, &zpa.GetPolicyTypeArgs{
 //				PolicyType: pulumi.StringRef("GLOBAL_POLICY"),
 //			}, nil)
@@ -92,6 +94,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Get information for "TIMEOUT_POLICY" ID
 //			timeoutPolicy, err := zpa.GetPolicyType(ctx, &zpa.GetPolicyTypeArgs{
 //				PolicyType: pulumi.StringRef("TIMEOUT_POLICY"),
 //			}, nil)
@@ -117,6 +120,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Get information for "REAUTH_POLICY" ID
 //			reauthPolicy, err := zpa.GetPolicyType(ctx, &zpa.GetPolicyTypeArgs{
 //				PolicyType: pulumi.StringRef("REAUTH_POLICY"),
 //			}, nil)
@@ -142,6 +146,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Get information for "CLIENT_FORWARDING_POLICY" ID
 //			clientForwardingPolicy, err := zpa.GetPolicyType(ctx, &zpa.GetPolicyTypeArgs{
 //				PolicyType: pulumi.StringRef("CLIENT_FORWARDING_POLICY"),
 //			}, nil)
@@ -167,6 +172,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Get information for "INSPECTION_POLICY" ID
 //			inspectionPolicy, err := zpa.GetPolicyType(ctx, &zpa.GetPolicyTypeArgs{
 //				PolicyType: pulumi.StringRef("INSPECTION_POLICY"),
 //			}, nil)

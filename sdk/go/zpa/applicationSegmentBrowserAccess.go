@@ -27,6 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Retrieve Browser Access Certificate
 //			_, err := zpa.GetBaCertificate(ctx, &zpa.GetBaCertificateArgs{
 //				Name: pulumi.StringRef("sales.acme.com"),
 //			}, nil)
@@ -34,28 +35,30 @@ import (
 //				return err
 //			}
 //			// ZPA Segment Group resource
-//			exampleSegmentGroup, err := zpa.NewSegmentGroup(ctx, "exampleSegmentGroup", &zpa.SegmentGroupArgs{
+//			exampleSegmentGroup, err := zpa.NewSegmentGroup(ctx, "example", &zpa.SegmentGroupArgs{
+//				Name:        pulumi.String("Example"),
 //				Description: pulumi.String("Example"),
 //				Enabled:     pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleAppConnectorGroup, err := zpa.GetAppConnectorGroup(ctx, &zpa.GetAppConnectorGroupArgs{
+//			example, err := zpa.GetAppConnectorGroup(ctx, &zpa.GetAppConnectorGroupArgs{
 //				Name: pulumi.StringRef("AWS-Connector"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			// ZPA Server Group resource
-//			exampleServerGroup, err := zpa.NewServerGroup(ctx, "exampleServerGroup", &zpa.ServerGroupArgs{
+//			exampleServerGroup, err := zpa.NewServerGroup(ctx, "example", &zpa.ServerGroupArgs{
+//				Name:             pulumi.String("Example"),
 //				Description:      pulumi.String("Example"),
 //				Enabled:          pulumi.Bool(true),
 //				DynamicDiscovery: pulumi.Bool(true),
 //				AppConnectorGroups: zpa.ServerGroupAppConnectorGroupArray{
 //					&zpa.ServerGroupAppConnectorGroupArgs{
 //						Ids: pulumi.StringArray{
-//							pulumi.String(exampleAppConnectorGroup.Id),
+//							pulumi.String(example.Id),
 //						},
 //					},
 //				},
@@ -64,7 +67,8 @@ import (
 //				return err
 //			}
 //			// Create Browser Access Application
-//			_, err = zpa.NewApplicationSegmentBrowserAccess(ctx, "browserAccessApps", &zpa.ApplicationSegmentBrowserAccessArgs{
+//			_, err = zpa.NewApplicationSegmentBrowserAccess(ctx, "browser_access_apps", &zpa.ApplicationSegmentBrowserAccessArgs{
+//				Name:            pulumi.String("Browser Access Apps"),
 //				Description:     pulumi.String("Browser Access Apps"),
 //				Enabled:         pulumi.Bool(true),
 //				HealthReporting: pulumi.String("ON_ACCESS"),

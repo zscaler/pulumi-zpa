@@ -19,30 +19,31 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * const _this = new zpa.InspectionCustomControls("this", {
- *     defaultAction: "PASS",
+ *     name: "Example",
  *     description: "Example",
+ *     defaultAction: "PASS",
  *     paranoiaLevel: "1",
- *     rules: [
- *         {
- *             conditions: {
- *                 lhs: "SIZE",
- *                 op: "GE",
- *                 rhs: "1000",
- *             },
- *             names: ["this"],
- *             type: "RESPONSE_HEADERS",
- *         },
- *         {
- *             conditions: {
- *                 lhs: "SIZE",
- *                 op: "GE",
- *                 rhs: "1000",
- *             },
- *             type: "RESPONSE_BODY",
- *         },
- *     ],
  *     severity: "CRITICAL",
  *     type: "RESPONSE",
+ *     rules: [
+ *         {
+ *             names: ["this"],
+ *             type: "RESPONSE_HEADERS",
+ *             conditions: [{
+ *                 lhs: "SIZE",
+ *                 op: "GE",
+ *                 rhs: "1000",
+ *             }],
+ *         },
+ *         {
+ *             type: "RESPONSE_BODY",
+ *             conditions: [{
+ *                 lhs: "SIZE",
+ *                 op: "GE",
+ *                 rhs: "1000",
+ *             }],
+ *         },
+ *     ],
  * });
  * ```
  *
@@ -53,30 +54,31 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * const _this = new zpa.InspectionCustomControls("this", {
- *     defaultAction: "BLOCK",
+ *     name: "Example",
  *     description: "Example",
+ *     defaultAction: "BLOCK",
  *     paranoiaLevel: "1",
- *     rules: [
- *         {
- *             conditions: {
- *                 lhs: "SIZE",
- *                 op: "GE",
- *                 rhs: "1000",
- *             },
- *             names: ["this"],
- *             type: "RESPONSE_HEADERS",
- *         },
- *         {
- *             conditions: {
- *                 lhs: "SIZE",
- *                 op: "GE",
- *                 rhs: "1000",
- *             },
- *             type: "RESPONSE_BODY",
- *         },
- *     ],
  *     severity: "CRITICAL",
  *     type: "RESPONSE",
+ *     rules: [
+ *         {
+ *             names: ["this"],
+ *             type: "RESPONSE_HEADERS",
+ *             conditions: [{
+ *                 lhs: "SIZE",
+ *                 op: "GE",
+ *                 rhs: "1000",
+ *             }],
+ *         },
+ *         {
+ *             type: "RESPONSE_BODY",
+ *             conditions: [{
+ *                 lhs: "SIZE",
+ *                 op: "GE",
+ *                 rhs: "1000",
+ *             }],
+ *         },
+ *     ],
  * });
  * ```
  *
@@ -87,31 +89,32 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * const _this = new zpa.InspectionCustomControls("this", {
+ *     name: "Example",
+ *     description: "Example",
  *     defaultAction: "REDIRECT",
  *     defaultActionValue: "https://test.com",
- *     description: "Example",
  *     paranoiaLevel: "1",
- *     rules: [
- *         {
- *             conditions: {
- *                 lhs: "SIZE",
- *                 op: "GE",
- *                 rhs: "1000",
- *             },
- *             names: ["this"],
- *             type: "RESPONSE_HEADERS",
- *         },
- *         {
- *             conditions: {
- *                 lhs: "SIZE",
- *                 op: "GE",
- *                 rhs: "1000",
- *             },
- *             type: "RESPONSE_BODY",
- *         },
- *     ],
  *     severity: "CRITICAL",
  *     type: "RESPONSE",
+ *     rules: [
+ *         {
+ *             names: ["this"],
+ *             type: "RESPONSE_HEADERS",
+ *             conditions: [{
+ *                 lhs: "SIZE",
+ *                 op: "GE",
+ *                 rhs: "1000",
+ *             }],
+ *         },
+ *         {
+ *             type: "RESPONSE_BODY",
+ *             conditions: [{
+ *                 lhs: "SIZE",
+ *                 op: "GE",
+ *                 rhs: "1000",
+ *             }],
+ *         },
+ *     ],
  * });
  * ```
  *

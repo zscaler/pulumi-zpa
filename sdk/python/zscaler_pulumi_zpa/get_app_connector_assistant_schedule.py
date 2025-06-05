@@ -102,15 +102,6 @@ def get_app_connector_assistant_schedule(customer_id: Optional[builtins.str] = N
     Use the **zpa_app_connector_assistant_schedule** data source to get information about Auto Delete frequency of the App Connector for the specified customer in the Zscaler Private Access cloud.
 
     > **NOTE** - The `customer_id` attribute is optional and not required during the configuration.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_zpa as zpa
-
-    this = zpa.get_app_connector_assistant_schedule(customer_id="1234567891012")
-    ```
     """
     __args__ = dict()
     __args__['customerId'] = customer_id
@@ -135,15 +126,6 @@ def get_app_connector_assistant_schedule_output(customer_id: Optional[pulumi.Inp
     Use the **zpa_app_connector_assistant_schedule** data source to get information about Auto Delete frequency of the App Connector for the specified customer in the Zscaler Private Access cloud.
 
     > **NOTE** - The `customer_id` attribute is optional and not required during the configuration.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_zpa as zpa
-
-    this = zpa.get_app_connector_assistant_schedule(customer_id="1234567891012")
-    ```
     """
     __args__ = dict()
     __args__['customerId'] = customer_id

@@ -352,7 +352,8 @@ class ServerGroup(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # Create a App Connector Group
-        example_connector_group = zpa.ConnectorGroup("exampleConnectorGroup",
+        example_connector_group = zpa.ConnectorGroup("example",
+            name="Example",
             description="Example",
             enabled=True,
             city_country="San Jose, CA",
@@ -366,7 +367,8 @@ class ServerGroup(pulumi.CustomResource):
             version_profile_id="0",
             dns_query_type="IPV4")
         # Create a Server Group resource with Dynamic Discovery Enabled
-        example_server_group = zpa.ServerGroup("exampleServerGroup",
+        example = zpa.ServerGroup("example",
+            name="Example",
             description="Example",
             enabled=True,
             dynamic_discovery=True,
@@ -381,12 +383,14 @@ class ServerGroup(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # Create an application server
-        example_application_server = zpa.ApplicationServer("exampleApplicationServer",
+        example_application_server = zpa.ApplicationServer("example",
+            name="Example",
             description="Example",
             address="server.example.com",
             enabled=True)
         # Create a App Connector Group
-        example_connector_group = zpa.ConnectorGroup("exampleConnectorGroup",
+        example_connector_group = zpa.ConnectorGroup("example",
+            name="Example",
             description="Example",
             enabled=True,
             city_country="San Jose, CA",
@@ -400,7 +404,8 @@ class ServerGroup(pulumi.CustomResource):
             version_profile_id="0",
             dns_query_type="IPV4")
         # ZPA Server Group resource with Dynamic Discovery Disabled
-        example_server_group = zpa.ServerGroup("exampleServerGroup",
+        example = zpa.ServerGroup("example",
+            name="Example",
             description="Example",
             enabled=True,
             dynamic_discovery=False,
@@ -412,7 +417,7 @@ class ServerGroup(pulumi.CustomResource):
             }],
             opts = pulumi.ResourceOptions(depends_on=[
                     example_connector_group,
-                    zpa_application_server["server"],
+                    server,
                 ]))
         ```
 
@@ -460,7 +465,8 @@ class ServerGroup(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # Create a App Connector Group
-        example_connector_group = zpa.ConnectorGroup("exampleConnectorGroup",
+        example_connector_group = zpa.ConnectorGroup("example",
+            name="Example",
             description="Example",
             enabled=True,
             city_country="San Jose, CA",
@@ -474,7 +480,8 @@ class ServerGroup(pulumi.CustomResource):
             version_profile_id="0",
             dns_query_type="IPV4")
         # Create a Server Group resource with Dynamic Discovery Enabled
-        example_server_group = zpa.ServerGroup("exampleServerGroup",
+        example = zpa.ServerGroup("example",
+            name="Example",
             description="Example",
             enabled=True,
             dynamic_discovery=True,
@@ -489,12 +496,14 @@ class ServerGroup(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         # Create an application server
-        example_application_server = zpa.ApplicationServer("exampleApplicationServer",
+        example_application_server = zpa.ApplicationServer("example",
+            name="Example",
             description="Example",
             address="server.example.com",
             enabled=True)
         # Create a App Connector Group
-        example_connector_group = zpa.ConnectorGroup("exampleConnectorGroup",
+        example_connector_group = zpa.ConnectorGroup("example",
+            name="Example",
             description="Example",
             enabled=True,
             city_country="San Jose, CA",
@@ -508,7 +517,8 @@ class ServerGroup(pulumi.CustomResource):
             version_profile_id="0",
             dns_query_type="IPV4")
         # ZPA Server Group resource with Dynamic Discovery Disabled
-        example_server_group = zpa.ServerGroup("exampleServerGroup",
+        example = zpa.ServerGroup("example",
+            name="Example",
             description="Example",
             enabled=True,
             dynamic_discovery=False,
@@ -520,7 +530,7 @@ class ServerGroup(pulumi.CustomResource):
             }],
             opts = pulumi.ResourceOptions(depends_on=[
                     example_connector_group,
-                    zpa_application_server["server"],
+                    server,
                 ]))
         ```
 

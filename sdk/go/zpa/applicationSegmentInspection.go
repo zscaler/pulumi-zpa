@@ -38,6 +38,7 @@ import (
 //				return err
 //			}
 //			_, err = zpa.NewApplicationSegmentInspection(ctx, "this", &zpa.ApplicationSegmentInspectionArgs{
+//				Name:            pulumi.String("ZPA_Inspection_Example"),
 //				Description:     pulumi.String("ZPA_Inspection_Example"),
 //				Enabled:         pulumi.Bool(true),
 //				HealthReporting: pulumi.String("ON_ACCESS"),
@@ -50,25 +51,27 @@ import (
 //				DomainNames: pulumi.StringArray{
 //					pulumi.String("jenkins.example.com"),
 //				},
-//				SegmentGroupId: pulumi.Any(zpa_segment_group.This.Id),
+//				SegmentGroupId: pulumi.Any(thisZpaSegmentGroup.Id),
 //				ServerGroups: zpa.ApplicationSegmentInspectionServerGroupArray{
 //					&zpa.ApplicationSegmentInspectionServerGroupArgs{
 //						Ids: pulumi.StringArray{
-//							zpa_server_group.This.Id,
+//							thisZpaServerGroup.Id,
 //						},
 //					},
 //				},
-//				CommonAppsDto: &zpa.ApplicationSegmentInspectionCommonAppsDtoArgs{
-//					AppsConfigs: zpa.ApplicationSegmentInspectionCommonAppsDtoAppsConfigArray{
-//						&zpa.ApplicationSegmentInspectionCommonAppsDtoAppsConfigArgs{
-//							Name:                pulumi.String("jenkins.example.com"),
-//							Domain:              pulumi.String("jenkins.example.com"),
-//							ApplicationProtocol: pulumi.String("HTTPS"),
-//							ApplicationPort:     pulumi.String("443"),
-//							CertificateId:       pulumi.String(jenkins.Id),
-//							Enabled:             pulumi.Bool(true),
-//							AppTypes: pulumi.StringArray{
-//								pulumi.String("INSPECT"),
+//				CommonAppsDtos: zpa.ApplicationSegmentInspectionCommonAppsDtoArray{
+//					&zpa.ApplicationSegmentInspectionCommonAppsDtoArgs{
+//						AppsConfigs: zpa.ApplicationSegmentInspectionCommonAppsDtoAppsConfigArray{
+//							&zpa.ApplicationSegmentInspectionCommonAppsDtoAppsConfigArgs{
+//								Name:                pulumi.String("jenkins.example.com"),
+//								Domain:              pulumi.String("jenkins.example.com"),
+//								ApplicationProtocol: pulumi.String("HTTPS"),
+//								ApplicationPort:     pulumi.String("443"),
+//								CertificateId:       pulumi.String(jenkins.Id),
+//								Enabled:             pulumi.Bool(true),
+//								AppTypes: pulumi.StringArray{
+//									pulumi.String("INSPECT"),
+//								},
 //							},
 //						},
 //					},
@@ -112,9 +115,9 @@ type ApplicationSegmentInspection struct {
 	BypassOnReauth        pulumi.BoolOutput `pulumi:"bypassOnReauth"`
 	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
 	// The value NEVER indicates the use of the client forwarding policy.
-	BypassType    pulumi.StringOutput                             `pulumi:"bypassType"`
-	CommonAppsDto ApplicationSegmentInspectionCommonAppsDtoOutput `pulumi:"commonAppsDto"`
-	ConfigSpace   pulumi.StringPtrOutput                          `pulumi:"configSpace"`
+	BypassType     pulumi.StringOutput                                  `pulumi:"bypassType"`
+	CommonAppsDtos ApplicationSegmentInspectionCommonAppsDtoArrayOutput `pulumi:"commonAppsDtos"`
+	ConfigSpace    pulumi.StringPtrOutput                               `pulumi:"configSpace"`
 	// Description of the application.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// List of domains and IPs.
@@ -196,9 +199,9 @@ type applicationSegmentInspectionState struct {
 	BypassOnReauth        *bool `pulumi:"bypassOnReauth"`
 	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
 	// The value NEVER indicates the use of the client forwarding policy.
-	BypassType    *string                                    `pulumi:"bypassType"`
-	CommonAppsDto *ApplicationSegmentInspectionCommonAppsDto `pulumi:"commonAppsDto"`
-	ConfigSpace   *string                                    `pulumi:"configSpace"`
+	BypassType     *string                                     `pulumi:"bypassType"`
+	CommonAppsDtos []ApplicationSegmentInspectionCommonAppsDto `pulumi:"commonAppsDtos"`
+	ConfigSpace    *string                                     `pulumi:"configSpace"`
 	// Description of the application.
 	Description *string `pulumi:"description"`
 	// List of domains and IPs.
@@ -248,9 +251,9 @@ type ApplicationSegmentInspectionState struct {
 	BypassOnReauth        pulumi.BoolPtrInput
 	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
 	// The value NEVER indicates the use of the client forwarding policy.
-	BypassType    pulumi.StringPtrInput
-	CommonAppsDto ApplicationSegmentInspectionCommonAppsDtoPtrInput
-	ConfigSpace   pulumi.StringPtrInput
+	BypassType     pulumi.StringPtrInput
+	CommonAppsDtos ApplicationSegmentInspectionCommonAppsDtoArrayInput
+	ConfigSpace    pulumi.StringPtrInput
 	// Description of the application.
 	Description pulumi.StringPtrInput
 	// List of domains and IPs.
@@ -304,9 +307,9 @@ type applicationSegmentInspectionArgs struct {
 	BypassOnReauth        *bool `pulumi:"bypassOnReauth"`
 	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
 	// The value NEVER indicates the use of the client forwarding policy.
-	BypassType    *string                                    `pulumi:"bypassType"`
-	CommonAppsDto *ApplicationSegmentInspectionCommonAppsDto `pulumi:"commonAppsDto"`
-	ConfigSpace   *string                                    `pulumi:"configSpace"`
+	BypassType     *string                                     `pulumi:"bypassType"`
+	CommonAppsDtos []ApplicationSegmentInspectionCommonAppsDto `pulumi:"commonAppsDtos"`
+	ConfigSpace    *string                                     `pulumi:"configSpace"`
 	// Description of the application.
 	Description *string `pulumi:"description"`
 	// List of domains and IPs.
@@ -357,9 +360,9 @@ type ApplicationSegmentInspectionArgs struct {
 	BypassOnReauth        pulumi.BoolPtrInput
 	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
 	// The value NEVER indicates the use of the client forwarding policy.
-	BypassType    pulumi.StringPtrInput
-	CommonAppsDto ApplicationSegmentInspectionCommonAppsDtoPtrInput
-	ConfigSpace   pulumi.StringPtrInput
+	BypassType     pulumi.StringPtrInput
+	CommonAppsDtos ApplicationSegmentInspectionCommonAppsDtoArrayInput
+	ConfigSpace    pulumi.StringPtrInput
 	// Description of the application.
 	Description pulumi.StringPtrInput
 	// List of domains and IPs.
@@ -508,10 +511,10 @@ func (o ApplicationSegmentInspectionOutput) BypassType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.StringOutput { return v.BypassType }).(pulumi.StringOutput)
 }
 
-func (o ApplicationSegmentInspectionOutput) CommonAppsDto() ApplicationSegmentInspectionCommonAppsDtoOutput {
-	return o.ApplyT(func(v *ApplicationSegmentInspection) ApplicationSegmentInspectionCommonAppsDtoOutput {
-		return v.CommonAppsDto
-	}).(ApplicationSegmentInspectionCommonAppsDtoOutput)
+func (o ApplicationSegmentInspectionOutput) CommonAppsDtos() ApplicationSegmentInspectionCommonAppsDtoArrayOutput {
+	return o.ApplyT(func(v *ApplicationSegmentInspection) ApplicationSegmentInspectionCommonAppsDtoArrayOutput {
+		return v.CommonAppsDtos
+	}).(ApplicationSegmentInspectionCommonAppsDtoArrayOutput)
 }
 
 func (o ApplicationSegmentInspectionOutput) ConfigSpace() pulumi.StringPtrOutput {

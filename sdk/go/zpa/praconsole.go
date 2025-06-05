@@ -32,7 +32,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Creates Segment Group for Application Segment"
-//			thisSegmentGroup, err := zpa.NewSegmentGroup(ctx, "thisSegmentGroup", &zpa.SegmentGroupArgs{
+//			thisSegmentGroup, err := zpa.NewSegmentGroup(ctx, "this", &zpa.SegmentGroupArgs{
+//				Name:        pulumi.String("Example"),
 //				Description: pulumi.String("Example"),
 //				Enabled:     pulumi.Bool(true),
 //			})
@@ -40,7 +41,8 @@ import (
 //				return err
 //			}
 //			// Creates Privileged Remote Access Application Segment"
-//			_, err = zpa.NewApplicationSegmentPRA(ctx, "thisApplicationSegmentPRA", &zpa.ApplicationSegmentPRAArgs{
+//			_, err = zpa.NewApplicationSegmentPRA(ctx, "this", &zpa.ApplicationSegmentPRAArgs{
+//				Name:            pulumi.String("Example"),
 //				Description:     pulumi.String("Example"),
 //				Enabled:         pulumi.Bool(true),
 //				HealthReporting: pulumi.String("ON_ACCESS"),
@@ -54,17 +56,19 @@ import (
 //					pulumi.String("rdp_pra.example.com"),
 //				},
 //				SegmentGroupId: thisSegmentGroup.ID(),
-//				CommonAppsDto: &zpa.ApplicationSegmentPRACommonAppsDtoArgs{
-//					AppsConfigs: zpa.ApplicationSegmentPRACommonAppsDtoAppsConfigArray{
-//						&zpa.ApplicationSegmentPRACommonAppsDtoAppsConfigArgs{
-//							Name:                pulumi.String("rdp_pra"),
-//							Domain:              pulumi.String("rdp_pra.example.com"),
-//							ApplicationProtocol: pulumi.String("RDP"),
-//							ConnectionSecurity:  pulumi.String("ANY"),
-//							ApplicationPort:     pulumi.String("3389"),
-//							Enabled:             pulumi.Bool(true),
-//							AppTypes: pulumi.StringArray{
-//								pulumi.String("SECURE_REMOTE_ACCESS"),
+//				CommonAppsDtos: zpa.ApplicationSegmentPRACommonAppsDtoArray{
+//					&zpa.ApplicationSegmentPRACommonAppsDtoArgs{
+//						AppsConfigs: zpa.ApplicationSegmentPRACommonAppsDtoAppsConfigArray{
+//							&zpa.ApplicationSegmentPRACommonAppsDtoAppsConfigArgs{
+//								Name:                pulumi.String("rdp_pra"),
+//								Domain:              pulumi.String("rdp_pra.example.com"),
+//								ApplicationProtocol: pulumi.String("RDP"),
+//								ConnectionSecurity:  pulumi.String("ANY"),
+//								ApplicationPort:     pulumi.String("3389"),
+//								Enabled:             pulumi.Bool(true),
+//								AppTypes: pulumi.StringArray{
+//									pulumi.String("SECURE_REMOTE_ACCESS"),
+//								},
 //							},
 //						},
 //					},
@@ -73,14 +77,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			thisApplicationSegmentByType, err := zpa.GetApplicationSegmentByType(ctx, &zpa.GetApplicationSegmentByTypeArgs{
+//			this, err := zpa.GetApplicationSegmentByType(ctx, &zpa.GetApplicationSegmentByTypeArgs{
 //				ApplicationType: "SECURE_REMOTE_ACCESS",
 //				Name:            pulumi.StringRef("rdp_pra"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			thisBaCertificate, err := zpa.GetBaCertificate(ctx, &zpa.GetBaCertificateArgs{
+//			// Retrieves the Browser Access Certificate
+//			thisGetBaCertificate, err := zpa.GetBaCertificate(ctx, &zpa.GetBaCertificateArgs{
 //				Name: pulumi.StringRef("pra01.example.com"),
 //			}, nil)
 //			if err != nil {
@@ -88,26 +93,30 @@ import (
 //			}
 //			// Creates PRA Portal"
 //			_, err = zpa.NewPRAPortal(ctx, "this1", &zpa.PRAPortalArgs{
+//				Name:                    pulumi.String("pra01.example.com"),
 //				Description:             pulumi.String("pra01.example.com"),
 //				Enabled:                 pulumi.Bool(true),
 //				Domain:                  pulumi.String("pra01.example.com"),
-//				CertificateId:           pulumi.String(thisBaCertificate.Id),
+//				CertificateId:           pulumi.String(thisGetBaCertificate.Id),
 //				UserNotification:        pulumi.String("Created with Terraform"),
 //				UserNotificationEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = zpa.NewPRAConsole(ctx, "sshPra", &zpa.PRAConsoleArgs{
+//			_, err = zpa.NewPRAConsole(ctx, "ssh_pra", &zpa.PRAConsoleArgs{
+//				Name:        pulumi.String("ssh_console"),
 //				Description: pulumi.String("Created with Terraform"),
 //				Enabled:     pulumi.Bool(true),
-//				PraApplication: &zpa.PRAConsolePraApplicationArgs{
-//					Id: pulumi.String(thisApplicationSegmentByType.Id),
+//				PraApplications: zpa.PRAConsolePraApplicationArray{
+//					&zpa.PRAConsolePraApplicationArgs{
+//						Id: pulumi.String(this.Id),
+//					},
 //				},
 //				PraPortals: zpa.PRAConsolePraPortalArray{
 //					&zpa.PRAConsolePraPortalArgs{
 //						Ids: pulumi.StringArray{
-//							zpa_pra_portal_controller.This.Id,
+//							thisZpaPraPortalController.Id,
 //						},
 //					},
 //				},
@@ -153,9 +162,9 @@ type PRAConsole struct {
 	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId pulumi.StringOutput `pulumi:"microtenantId"`
 	// The name of the privileged console
-	Name           pulumi.StringOutput            `pulumi:"name"`
-	PraApplication PRAConsolePraApplicationOutput `pulumi:"praApplication"`
-	PraPortals     PRAConsolePraPortalArrayOutput `pulumi:"praPortals"`
+	Name            pulumi.StringOutput                 `pulumi:"name"`
+	PraApplications PRAConsolePraApplicationArrayOutput `pulumi:"praApplications"`
+	PraPortals      PRAConsolePraPortalArrayOutput      `pulumi:"praPortals"`
 }
 
 // NewPRAConsole registers a new resource with the given unique name, arguments, and options.
@@ -165,8 +174,8 @@ func NewPRAConsole(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.PraApplication == nil {
-		return nil, errors.New("invalid value for required argument 'PraApplication'")
+	if args.PraApplications == nil {
+		return nil, errors.New("invalid value for required argument 'PraApplications'")
 	}
 	if args.PraPortals == nil {
 		return nil, errors.New("invalid value for required argument 'PraPortals'")
@@ -210,9 +219,9 @@ type praconsoleState struct {
 	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId *string `pulumi:"microtenantId"`
 	// The name of the privileged console
-	Name           *string                   `pulumi:"name"`
-	PraApplication *PRAConsolePraApplication `pulumi:"praApplication"`
-	PraPortals     []PRAConsolePraPortal     `pulumi:"praPortals"`
+	Name            *string                    `pulumi:"name"`
+	PraApplications []PRAConsolePraApplication `pulumi:"praApplications"`
+	PraPortals      []PRAConsolePraPortal      `pulumi:"praPortals"`
 }
 
 type PRAConsoleState struct {
@@ -226,9 +235,9 @@ type PRAConsoleState struct {
 	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId pulumi.StringPtrInput
 	// The name of the privileged console
-	Name           pulumi.StringPtrInput
-	PraApplication PRAConsolePraApplicationPtrInput
-	PraPortals     PRAConsolePraPortalArrayInput
+	Name            pulumi.StringPtrInput
+	PraApplications PRAConsolePraApplicationArrayInput
+	PraPortals      PRAConsolePraPortalArrayInput
 }
 
 func (PRAConsoleState) ElementType() reflect.Type {
@@ -246,9 +255,9 @@ type praconsoleArgs struct {
 	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId *string `pulumi:"microtenantId"`
 	// The name of the privileged console
-	Name           *string                  `pulumi:"name"`
-	PraApplication PRAConsolePraApplication `pulumi:"praApplication"`
-	PraPortals     []PRAConsolePraPortal    `pulumi:"praPortals"`
+	Name            *string                    `pulumi:"name"`
+	PraApplications []PRAConsolePraApplication `pulumi:"praApplications"`
+	PraPortals      []PRAConsolePraPortal      `pulumi:"praPortals"`
 }
 
 // The set of arguments for constructing a PRAConsole resource.
@@ -263,9 +272,9 @@ type PRAConsoleArgs struct {
 	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId pulumi.StringPtrInput
 	// The name of the privileged console
-	Name           pulumi.StringPtrInput
-	PraApplication PRAConsolePraApplicationInput
-	PraPortals     PRAConsolePraPortalArrayInput
+	Name            pulumi.StringPtrInput
+	PraApplications PRAConsolePraApplicationArrayInput
+	PraPortals      PRAConsolePraPortalArrayInput
 }
 
 func (PRAConsoleArgs) ElementType() reflect.Type {
@@ -381,8 +390,8 @@ func (o PRAConsoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PRAConsole) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o PRAConsoleOutput) PraApplication() PRAConsolePraApplicationOutput {
-	return o.ApplyT(func(v *PRAConsole) PRAConsolePraApplicationOutput { return v.PraApplication }).(PRAConsolePraApplicationOutput)
+func (o PRAConsoleOutput) PraApplications() PRAConsolePraApplicationArrayOutput {
+	return o.ApplyT(func(v *PRAConsole) PRAConsolePraApplicationArrayOutput { return v.PraApplications }).(PRAConsolePraApplicationArrayOutput)
 }
 
 func (o PRAConsoleOutput) PraPortals() PRAConsolePraPortalArrayOutput {

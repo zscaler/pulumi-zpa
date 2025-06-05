@@ -18,11 +18,12 @@ import * as utilities from "./utilities";
  *
  * // Creates Credential of Type "USERNAME_PASSWORD"
  * const _this = new zpa.PRACredential("this", {
- *     credentialType: "USERNAME_PASSWORD",
+ *     name: "John Doe",
  *     description: "Created with Terraform",
- *     password: "",
+ *     credentialType: "USERNAME_PASSWORD",
  *     userDomain: "acme.com",
  *     username: "jdoe",
+ *     password: "",
  * });
  * ```
  *
@@ -34,15 +35,15 @@ import * as utilities from "./utilities";
  *
  * // Creates Credential of Type "SSH_KEY"
  * const _this = new zpa.PRACredential("this", {
- *     credentialType: "SSH_KEY",
+ *     name: "John Doe",
  *     description: "Created with Terraform",
+ *     credentialType: "SSH_KEY",
+ *     userDomain: "acme.com",
+ *     username: "jdoe",
  *     privateKey: `-----BEGIN PRIVATE KEY-----
  * MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEjc8pPoobS0l6
  * -----END PRIVATE KEY-----
- *
  * `,
- *     userDomain: "acme.com",
- *     username: "jdoe",
  * });
  * ```
  *

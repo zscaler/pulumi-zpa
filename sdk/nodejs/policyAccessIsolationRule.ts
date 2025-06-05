@@ -20,11 +20,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // Get Isolation Profile ID
  * const isolationProfile = zpa.getIsolationProfile({
  *     name: "zpa_isolation_profile",
  * });
  * //Create Client Isolation Access Rule
  * const _this = new zpa.PolicyAccessIsolationRule("this", {
+ *     name: "Example_Isolation_Policy",
  *     description: "Example_Isolation_Policy",
  *     action: "ISOLATE",
  *     operator: "AND",

@@ -17,6 +17,140 @@ import (
 //
 // The **zpa_pra_approval_controller** resource creates a privileged remote access approval in the Zscaler Private Access cloud. This resource allows third-party users and contractors to be able to log in to a Privileged Remote Access (PRA) portal.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Segment Group resource
+//			thisSegmentGroup, err := zpa.NewSegmentGroup(ctx, "this", &zpa.SegmentGroupArgs{
+//				Name:        pulumi.String("Example"),
+//				Description: pulumi.String("Example"),
+//				Enabled:     pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// ZPA App Connector Group resource
+//			thisConnectorGroup, err := zpa.NewConnectorGroup(ctx, "this", &zpa.ConnectorGroupArgs{
+//				Name:                   pulumi.String("Example"),
+//				Description:            pulumi.String("Example"),
+//				Enabled:                pulumi.Bool(true),
+//				CityCountry:            pulumi.String("San Jose, CA"),
+//				CountryCode:            pulumi.String("US"),
+//				Latitude:               pulumi.String("37.338"),
+//				Longitude:              pulumi.String("-121.8863"),
+//				Location:               pulumi.String("San Jose, CA, US"),
+//				UpgradeDay:             pulumi.String("SUNDAY"),
+//				UpgradeTimeInSecs:      pulumi.String("66600"),
+//				OverrideVersionProfile: pulumi.Bool(true),
+//				VersionProfileId:       pulumi.String("0"),
+//				DnsQueryType:           pulumi.String("IPV4"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// ZPA Server Group resource
+//			thisServerGroup, err := zpa.NewServerGroup(ctx, "this", &zpa.ServerGroupArgs{
+//				Name:             pulumi.String("Example"),
+//				Description:      pulumi.String("Example"),
+//				Enabled:          pulumi.Bool(true),
+//				DynamicDiscovery: pulumi.Bool(false),
+//				AppConnectorGroups: zpa.ServerGroupAppConnectorGroupArray{
+//					&zpa.ServerGroupAppConnectorGroupArgs{
+//						Ids: pulumi.StringArray{
+//							thisConnectorGroup.ID(),
+//						},
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				thisConnectorGroup,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// ZPA Application Segment resource
+//			this, err := zpa.NewApplicationSegment(ctx, "this", &zpa.ApplicationSegmentArgs{
+//				Name:            pulumi.String("Example"),
+//				Description:     pulumi.String("Example"),
+//				Enabled:         pulumi.Bool(true),
+//				HealthReporting: pulumi.String("ON_ACCESS"),
+//				BypassType:      pulumi.String("NEVER"),
+//				IsCnameEnabled:  pulumi.Bool(true),
+//				TcpPortRanges: pulumi.StringArray{
+//					pulumi.String("8080"),
+//					pulumi.String("8080"),
+//				},
+//				DomainNames: pulumi.StringArray{
+//					pulumi.String("server.acme.com"),
+//				},
+//				SegmentGroupId: thisSegmentGroup.ID(),
+//				ServerGroups: zpa.ApplicationSegmentServerGroupArray{
+//					&zpa.ApplicationSegmentServerGroupArgs{
+//						Ids: pulumi.StringArray{
+//							thisServerGroup.ID(),
+//						},
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				thisServerGroup,
+//				thisSegmentGroup,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// Create PRA Approval Controller
+//			_, err = zpa.NewPRAApproval(ctx, "this", &zpa.PRAApprovalArgs{
+//				EmailIds: pulumi.StringArray{
+//					pulumi.String("jdoe@acme.com"),
+//				},
+//				StartTime: pulumi.String("Tue, 07 Mar 2024 11:05:30 PST"),
+//				EndTime:   pulumi.String("Tue, 07 Jun 2024 11:05:30 PST"),
+//				Status:    pulumi.String("FUTURE"),
+//				Applications: zpa.PRAApprovalApplicationArray{
+//					&zpa.PRAApprovalApplicationArgs{
+//						Ids: pulumi.StringArray{
+//							this.ID(),
+//						},
+//					},
+//				},
+//				WorkingHours: zpa.PRAApprovalWorkingHourArray{
+//					&zpa.PRAApprovalWorkingHourArgs{
+//						Days: pulumi.StringArray{
+//							pulumi.String("FRI"),
+//							pulumi.String("MON"),
+//							pulumi.String("SAT"),
+//							pulumi.String("SUN"),
+//							pulumi.String("THU"),
+//							pulumi.String("TUE"),
+//							pulumi.String("WED"),
+//						},
+//						StartTime:     pulumi.String("00:10"),
+//						StartTimeCron: pulumi.String("0 0 8 ? * MON,TUE,WED,THU,FRI,SAT"),
+//						EndTime:       pulumi.String("09:15"),
+//						EndTimeCron:   pulumi.String("0 15 17 ? * MON,TUE,WED,THU,FRI,SAT"),
+//						Timezone:      pulumi.String("America/Vancouver"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
@@ -41,7 +175,7 @@ type PRAApproval struct {
 
 	Applications PRAApprovalApplicationArrayOutput `pulumi:"applications"`
 	// The email address of the user that you are assigning the privileged approval to
-	EmailIds pulumi.StringOutput `pulumi:"emailIds"`
+	EmailIds pulumi.StringArrayOutput `pulumi:"emailIds"`
 	// The end date that the user no longer has access to the privileged approval
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
 	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
@@ -95,7 +229,7 @@ func GetPRAApproval(ctx *pulumi.Context,
 type praapprovalState struct {
 	Applications []PRAApprovalApplication `pulumi:"applications"`
 	// The email address of the user that you are assigning the privileged approval to
-	EmailIds *string `pulumi:"emailIds"`
+	EmailIds []string `pulumi:"emailIds"`
 	// The end date that the user no longer has access to the privileged approval
 	EndTime *string `pulumi:"endTime"`
 	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
@@ -111,7 +245,7 @@ type praapprovalState struct {
 type PRAApprovalState struct {
 	Applications PRAApprovalApplicationArrayInput
 	// The email address of the user that you are assigning the privileged approval to
-	EmailIds pulumi.StringPtrInput
+	EmailIds pulumi.StringArrayInput
 	// The end date that the user no longer has access to the privileged approval
 	EndTime pulumi.StringPtrInput
 	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
@@ -131,7 +265,7 @@ func (PRAApprovalState) ElementType() reflect.Type {
 type praapprovalArgs struct {
 	Applications []PRAApprovalApplication `pulumi:"applications"`
 	// The email address of the user that you are assigning the privileged approval to
-	EmailIds *string `pulumi:"emailIds"`
+	EmailIds []string `pulumi:"emailIds"`
 	// The end date that the user no longer has access to the privileged approval
 	EndTime *string `pulumi:"endTime"`
 	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
@@ -148,7 +282,7 @@ type praapprovalArgs struct {
 type PRAApprovalArgs struct {
 	Applications PRAApprovalApplicationArrayInput
 	// The email address of the user that you are assigning the privileged approval to
-	EmailIds pulumi.StringPtrInput
+	EmailIds pulumi.StringArrayInput
 	// The end date that the user no longer has access to the privileged approval
 	EndTime pulumi.StringPtrInput
 	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
@@ -253,8 +387,8 @@ func (o PRAApprovalOutput) Applications() PRAApprovalApplicationArrayOutput {
 }
 
 // The email address of the user that you are assigning the privileged approval to
-func (o PRAApprovalOutput) EmailIds() pulumi.StringOutput {
-	return o.ApplyT(func(v *PRAApproval) pulumi.StringOutput { return v.EmailIds }).(pulumi.StringOutput)
+func (o PRAApprovalOutput) EmailIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PRAApproval) pulumi.StringArrayOutput { return v.EmailIds }).(pulumi.StringArrayOutput)
 }
 
 // The end date that the user no longer has access to the privileged approval

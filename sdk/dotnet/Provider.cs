@@ -337,6 +337,7 @@ namespace Zscaler.Zpa
         {
             ClientId = Utilities.GetEnv("ZSCALER_CLIENT_ID");
             ClientSecret = Utilities.GetEnv("ZSCALER_CLIENT_SECRET");
+            CustomerId = Utilities.GetEnv("ZPA_CUSTOMER_ID");
             PrivateKey = Utilities.GetEnv("ZSCALER_PRIVATE_KEY");
             UseLegacyClient = Utilities.GetEnvBoolean("ZSCALER_USE_LEGACY_CLIENT");
             VanityDomain = Utilities.GetEnv("ZSCALER_VANITY_DOMAIN");

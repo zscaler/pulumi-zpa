@@ -14,7 +14,12 @@ namespace Zscaler.Zpa.Inputs
     public sealed class InspectionCustomControlsRuleGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("conditions")]
-        public Input<Inputs.InspectionCustomControlsRuleConditionsGetArgs>? Conditions { get; set; }
+        private InputList<Inputs.InspectionCustomControlsRuleConditionGetArgs>? _conditions;
+        public InputList<Inputs.InspectionCustomControlsRuleConditionGetArgs> Conditions
+        {
+            get => _conditions ?? (_conditions = new InputList<Inputs.InspectionCustomControlsRuleConditionGetArgs>());
+            set => _conditions = value;
+        }
 
         [Input("names")]
         private InputList<string>? _names;

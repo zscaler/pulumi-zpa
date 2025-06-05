@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Server Group Data Source
  * const example = zpa.getServerGroup({
  *     name: "server_group_name",
  * });
@@ -66,6 +67,7 @@ export interface GetServerGroupResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Server Group Data Source
  * const example = zpa.getServerGroup({
  *     name: "server_group_name",
  * });

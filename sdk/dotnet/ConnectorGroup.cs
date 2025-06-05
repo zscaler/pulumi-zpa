@@ -26,19 +26,20 @@ namespace Zscaler.Zpa
     ///     // Create a App Connector Group
     ///     var example = new Zpa.ConnectorGroup("example", new()
     ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         Enabled = true,
     ///         CityCountry = "San Jose, CA",
     ///         CountryCode = "US",
-    ///         Description = "Example",
-    ///         DnsQueryType = "IPV4_IPV6",
-    ///         Enabled = true,
     ///         Latitude = "37.338",
-    ///         Location = "San Jose, CA, US",
     ///         Longitude = "-121.8863",
-    ///         OverrideVersionProfile = true,
+    ///         Location = "San Jose, CA, US",
     ///         UpgradeDay = "SUNDAY",
     ///         UpgradeTimeInSecs = "66600",
-    ///         UseInDrMode = true,
+    ///         OverrideVersionProfile = true,
     ///         VersionProfileName = "New Release",
+    ///         DnsQueryType = "IPV4_IPV6",
+    ///         UseInDrMode = true,
     ///     });
     /// 
     /// });
@@ -61,6 +62,7 @@ namespace Zscaler.Zpa
     ///     // Create a App Connector Group
     ///     var example = new Zpa.ConnectorGroup("example", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///         CityCountry = "San Jose, CA",
@@ -71,7 +73,7 @@ namespace Zscaler.Zpa
     ///         UpgradeDay = "SUNDAY",
     ///         UpgradeTimeInSecs = "66600",
     ///         OverrideVersionProfile = true,
-    ///         VersionProfileId = data.Zpa_customer_version_profile.This.Id,
+    ///         VersionProfileId = @this.Id,
     ///         DnsQueryType = "IPV4_IPV6",
     ///         UseInDrMode = true,
     ///     });

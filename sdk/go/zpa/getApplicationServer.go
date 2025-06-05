@@ -25,6 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Application Server Data Source by Name
 //			_, err := zpa.LookupApplicationServer(ctx, &zpa.LookupApplicationServerArgs{
 //				Name: pulumi.StringRef("server.example.com"),
 //			}, nil)
@@ -49,6 +50,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Application Server Data Source by ID
 //			_, err := zpa.LookupApplicationServer(ctx, &zpa.LookupApplicationServerArgs{
 //				Id: pulumi.StringRef("1234567890"),
 //			}, nil)

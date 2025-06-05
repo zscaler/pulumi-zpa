@@ -24,17 +24,18 @@ import * as utilities from "./utilities";
  *
  * //Create Inspection Access Rule
  * const _this = new zpa.PolicyAccessInspectionRule("this", {
+ *     name: "Example",
  *     description: "Example",
  *     action: "INSPECT",
  *     operator: "AND",
- *     policySetId: data.zpa_policy_type.inspection_policy.id,
- *     zpnInspectionProfileId: zpa_inspection_profile["this"].id,
+ *     policySetId: inspectionPolicy.id,
+ *     zpnInspectionProfileId: thisZpaInspectionProfile.id,
  *     conditions: [{
  *         operator: "OR",
  *         operands: [{
  *             objectType: "APP",
  *             lhs: "id",
- *             rhs: zpa_application_segment_inspection["this"].id,
+ *             rhs: thisZpaApplicationSegmentInspection.id,
  *         }],
  *     }],
  * });
@@ -46,11 +47,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // Retrieve Inspection policy type
  * const inspectionPolicy = zpa.getPolicyType({
  *     policyType: "INSPECTION_POLICY",
  * });
  * //Create Inspection Access Rule
  * const _this = new zpa.PolicyAccessInspectionRule("this", {
+ *     name: "Example",
  *     description: "Example",
  *     action: "BYPASS_INSPECT",
  *     ruleOrder: "1",
@@ -61,7 +64,7 @@ import * as utilities from "./utilities";
  *         operands: [{
  *             objectType: "APP",
  *             lhs: "id",
- *             rhs: zpa_application_segment_inspection["this"].id,
+ *             rhs: thisZpaApplicationSegmentInspection.id,
  *         }],
  *     }],
  * });

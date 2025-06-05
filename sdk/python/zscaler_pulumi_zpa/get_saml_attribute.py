@@ -137,16 +137,18 @@ def get_saml_attribute(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
-    email_user_sso = zpa.get_saml_attribute(idp_name="idp_name",
-        name="Email_User SSO")
+    # ZPA SAML Attribute Data Source
+    email_user_sso = zpa.get_saml_attribute(name="Email_User SSO",
+        idp_name="idp_name")
     ```
 
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
-    department = zpa.get_saml_attribute(idp_name="idp_name",
-        name="DepartmentName_IdP_Name_Users")
+    # ZPA SAML Attribute Data Source
+    department = zpa.get_saml_attribute(name="DepartmentName_IdP_Name_Users",
+        idp_name="idp_name")
     ```
     """
     __args__ = dict()
@@ -184,16 +186,18 @@ def get_saml_attribute_output(id: Optional[pulumi.Input[Optional[builtins.str]]]
     import pulumi
     import pulumi_zpa as zpa
 
-    email_user_sso = zpa.get_saml_attribute(idp_name="idp_name",
-        name="Email_User SSO")
+    # ZPA SAML Attribute Data Source
+    email_user_sso = zpa.get_saml_attribute(name="Email_User SSO",
+        idp_name="idp_name")
     ```
 
     ```python
     import pulumi
     import pulumi_zpa as zpa
 
-    department = zpa.get_saml_attribute(idp_name="idp_name",
-        name="DepartmentName_IdP_Name_Users")
+    # ZPA SAML Attribute Data Source
+    department = zpa.get_saml_attribute(name="DepartmentName_IdP_Name_Users",
+        idp_name="idp_name")
     ```
     """
     __args__ = dict()

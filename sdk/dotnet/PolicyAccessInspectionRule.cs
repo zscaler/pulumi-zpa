@@ -33,11 +33,12 @@ namespace Zscaler.Zpa
     ///     //Create Inspection Access Rule
     ///     var @this = new Zpa.PolicyAccessInspectionRule("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Action = "INSPECT",
     ///         Operator = "AND",
-    ///         PolicySetId = data.Zpa_policy_type.Inspection_policy.Id,
-    ///         ZpnInspectionProfileId = zpa_inspection_profile.This.Id,
+    ///         PolicySetId = inspectionPolicy.Id,
+    ///         ZpnInspectionProfileId = thisZpaInspectionProfile.Id,
     ///         Conditions = new[]
     ///         {
     ///             new Zpa.Inputs.PolicyAccessInspectionRuleConditionArgs
@@ -49,7 +50,7 @@ namespace Zscaler.Zpa
     ///                     {
     ///                         ObjectType = "APP",
     ///                         Lhs = "id",
-    ///                         Rhs = zpa_application_segment_inspection.This.Id,
+    ///                         Rhs = thisZpaApplicationSegmentInspection.Id,
     ///                     },
     ///                 },
     ///             },
@@ -70,6 +71,7 @@ namespace Zscaler.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // Retrieve Inspection policy type
     ///     var inspectionPolicy = Zpa.GetPolicyType.Invoke(new()
     ///     {
     ///         PolicyType = "INSPECTION_POLICY",
@@ -78,6 +80,7 @@ namespace Zscaler.Zpa
     ///     //Create Inspection Access Rule
     ///     var @this = new Zpa.PolicyAccessInspectionRule("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Action = "BYPASS_INSPECT",
     ///         RuleOrder = "1",
@@ -94,7 +97,7 @@ namespace Zscaler.Zpa
     ///                     {
     ///                         ObjectType = "APP",
     ///                         Lhs = "id",
-    ///                         Rhs = zpa_application_segment_inspection.This.Id,
+    ///                         Rhs = thisZpaApplicationSegmentInspection.Id,
     ///                     },
     ///                 },
     ///             },

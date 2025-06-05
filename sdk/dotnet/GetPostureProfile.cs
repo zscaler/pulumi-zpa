@@ -30,6 +30,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "CrowdStrike_ZPA_ZTA_40",
@@ -46,6 +47,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example2 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "Detect SentinelOne",
@@ -62,6 +64,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example3 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "domain_joined",
@@ -80,6 +83,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
@@ -98,6 +102,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
@@ -131,6 +136,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "CrowdStrike_ZPA_ZTA_40",
@@ -147,6 +153,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example2 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "Detect SentinelOne",
@@ -163,6 +170,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example3 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "domain_joined",
@@ -181,6 +189,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
@@ -199,6 +208,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
@@ -232,6 +242,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "CrowdStrike_ZPA_ZTA_40",
@@ -248,6 +259,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example2 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "Detect SentinelOne",
@@ -264,6 +276,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example3 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "domain_joined",
@@ -282,6 +295,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
@@ -300,6 +314,7 @@ namespace Zscaler.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",

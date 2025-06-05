@@ -200,6 +200,7 @@ class BrowserCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_zpa as zpa
 
+        # ZPA Browser Access Data Source
         foo = zpa.get_ba_certificate(name="example.acme.com")
         ```
 
@@ -211,15 +212,15 @@ class BrowserCertificate(pulumi.CustomResource):
 
         # ZPA Browser Access resource
         this = zpa.BrowserCertificate("this",
+            name="server.example.com",
+            description="server.example.com",
             cert_blob=\"\"\"-----BEGIN PRIVATE KEY-----
         MIIDyzCCArOgA
         -----END PRIVATE KEY-----
         -----BEGIN CERTIFICATE-----
         MIIDyzCCArOgAwIBAgIUekBD+iu64583B3u5ew7Bqj2O5cQwDQYJKoZIhvcNAQEL
         -----END CERTIFICATE-----
-
-        \"\"\",
-            description="server.example.com")
+        \"\"\")
         ```
 
         ## Let's Encrypt Certbot
@@ -265,6 +266,7 @@ class BrowserCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_zpa as zpa
 
+        # ZPA Browser Access Data Source
         foo = zpa.get_ba_certificate(name="example.acme.com")
         ```
 
@@ -276,15 +278,15 @@ class BrowserCertificate(pulumi.CustomResource):
 
         # ZPA Browser Access resource
         this = zpa.BrowserCertificate("this",
+            name="server.example.com",
+            description="server.example.com",
             cert_blob=\"\"\"-----BEGIN PRIVATE KEY-----
         MIIDyzCCArOgA
         -----END PRIVATE KEY-----
         -----BEGIN CERTIFICATE-----
         MIIDyzCCArOgAwIBAgIUekBD+iu64583B3u5ew7Bqj2O5cQwDQYJKoZIhvcNAQEL
         -----END CERTIFICATE-----
-
-        \"\"\",
-            description="server.example.com")
+        \"\"\")
         ```
 
         ## Let's Encrypt Certbot

@@ -22,6 +22,7 @@ import * as utilities from "./utilities";
  *     name: "jenkins.example.com",
  * });
  * const _this = new zpa.ApplicationSegmentInspection("this", {
+ *     name: "ZPA_Inspection_Example",
  *     description: "ZPA_Inspection_Example",
  *     enabled: true,
  *     healthReporting: "ON_ACCESS",
@@ -32,11 +33,11 @@ import * as utilities from "./utilities";
  *         "443",
  *     ],
  *     domainNames: ["jenkins.example.com"],
- *     segmentGroupId: zpa_segment_group["this"].id,
+ *     segmentGroupId: thisZpaSegmentGroup.id,
  *     serverGroups: [{
- *         ids: [zpa_server_group["this"].id],
+ *         ids: [thisZpaServerGroup.id],
  *     }],
- *     commonAppsDto: {
+ *     commonAppsDtos: [{
  *         appsConfigs: [{
  *             name: "jenkins.example.com",
  *             domain: "jenkins.example.com",
@@ -46,7 +47,7 @@ import * as utilities from "./utilities";
  *             enabled: true,
  *             appTypes: ["INSPECT"],
  *         }],
- *     },
+ *     }],
  * });
  * ```
  *
@@ -112,7 +113,7 @@ export class ApplicationSegmentInspection extends pulumi.CustomResource {
      * The value NEVER indicates the use of the client forwarding policy.
      */
     public readonly bypassType!: pulumi.Output<string>;
-    public readonly commonAppsDto!: pulumi.Output<outputs.ApplicationSegmentInspectionCommonAppsDto>;
+    public readonly commonAppsDtos!: pulumi.Output<outputs.ApplicationSegmentInspectionCommonAppsDto[]>;
     public readonly configSpace!: pulumi.Output<string | undefined>;
     /**
      * Description of the application.
@@ -193,7 +194,7 @@ export class ApplicationSegmentInspection extends pulumi.CustomResource {
             resourceInputs["autoAppProtectEnabled"] = state ? state.autoAppProtectEnabled : undefined;
             resourceInputs["bypassOnReauth"] = state ? state.bypassOnReauth : undefined;
             resourceInputs["bypassType"] = state ? state.bypassType : undefined;
-            resourceInputs["commonAppsDto"] = state ? state.commonAppsDto : undefined;
+            resourceInputs["commonAppsDtos"] = state ? state.commonAppsDtos : undefined;
             resourceInputs["configSpace"] = state ? state.configSpace : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["domainNames"] = state ? state.domainNames : undefined;
@@ -228,7 +229,7 @@ export class ApplicationSegmentInspection extends pulumi.CustomResource {
             resourceInputs["autoAppProtectEnabled"] = args ? args.autoAppProtectEnabled : undefined;
             resourceInputs["bypassOnReauth"] = args ? args.bypassOnReauth : undefined;
             resourceInputs["bypassType"] = args ? args.bypassType : undefined;
-            resourceInputs["commonAppsDto"] = args ? args.commonAppsDto : undefined;
+            resourceInputs["commonAppsDtos"] = args ? args.commonAppsDtos : undefined;
             resourceInputs["configSpace"] = args ? args.configSpace : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["domainNames"] = args ? args.domainNames : undefined;
@@ -280,7 +281,7 @@ export interface ApplicationSegmentInspectionState {
      * The value NEVER indicates the use of the client forwarding policy.
      */
     bypassType?: pulumi.Input<string>;
-    commonAppsDto?: pulumi.Input<inputs.ApplicationSegmentInspectionCommonAppsDto>;
+    commonAppsDtos?: pulumi.Input<pulumi.Input<inputs.ApplicationSegmentInspectionCommonAppsDto>[]>;
     configSpace?: pulumi.Input<string>;
     /**
      * Description of the application.
@@ -365,7 +366,7 @@ export interface ApplicationSegmentInspectionArgs {
      * The value NEVER indicates the use of the client forwarding policy.
      */
     bypassType?: pulumi.Input<string>;
-    commonAppsDto?: pulumi.Input<inputs.ApplicationSegmentInspectionCommonAppsDto>;
+    commonAppsDtos?: pulumi.Input<pulumi.Input<inputs.ApplicationSegmentInspectionCommonAppsDto>[]>;
     configSpace?: pulumi.Input<string>;
     /**
      * Description of the application.

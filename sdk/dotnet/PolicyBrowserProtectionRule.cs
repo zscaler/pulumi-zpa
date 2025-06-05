@@ -33,29 +33,35 @@ namespace Zscaler.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thisIdPController = Zpa.GetIdPController.Invoke(new()
+    ///     // Retrieve Policy Types
+    ///     // Retrieve Identity Provider ID
+    ///     var @this = Zpa.GetIdPController.Invoke(new()
     ///     {
     ///         Name = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SAML Attribute ID
     ///     var emailUserSso = Zpa.GetSAMLAttribute.Invoke(new()
     ///     {
     ///         Name = "Email_Users",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SAML Attribute ID
     ///     var groupUser = Zpa.GetSAMLAttribute.Invoke(new()
     ///     {
     ///         Name = "GroupName_Users",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SCIM Group ID
     ///     var a000 = Zpa.GetSCIMGroups.Invoke(new()
     ///     {
     ///         Name = "A000",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SCIM Group ID
     ///     var b000 = Zpa.GetSCIMGroups.Invoke(new()
     ///     {
     ///         Name = "B000",
@@ -63,15 +69,17 @@ namespace Zscaler.Zpa
     ///     });
     /// 
     ///     // Create Segment Group
-    ///     var thisSegmentGroup = new Zpa.SegmentGroup("thisSegmentGroup", new()
+    ///     var thisSegmentGroup = new Zpa.SegmentGroup("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///     });
     /// 
     ///     // Create Policy Access Rule V2
-    ///     var thisPolicyBrowserProtectionRule = new Zpa.PolicyBrowserProtectionRule("thisPolicyBrowserProtectionRule", new()
+    ///     var thisPolicyBrowserProtectionRule = new Zpa.PolicyBrowserProtectionRule("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Action = "MONITOR",
     ///         Conditions = new[]
@@ -121,12 +129,12 @@ namespace Zscaler.Zpa
     ///                             new Zpa.Inputs.PolicyBrowserProtectionRuleConditionOperandEntryValueArgs
     ///                             {
     ///                                 Rhs = a000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
-    ///                                 Lhs = thisIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                                 Lhs = @this.Apply(@this =&gt; @this.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id)),
     ///                             },
     ///                             new Zpa.Inputs.PolicyBrowserProtectionRuleConditionOperandEntryValueArgs
     ///                             {
     ///                                 Rhs = b000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
-    ///                                 Lhs = thisIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                                 Lhs = @this.Apply(@this =&gt; @this.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id)),
     ///                             },
     ///                         },
     ///                     },
@@ -179,29 +187,35 @@ namespace Zscaler.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thisIdPController = Zpa.GetIdPController.Invoke(new()
+    ///     // Retrieve Policy Types
+    ///     // Retrieve Identity Provider ID
+    ///     var @this = Zpa.GetIdPController.Invoke(new()
     ///     {
     ///         Name = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SAML Attribute ID
     ///     var emailUserSso = Zpa.GetSAMLAttribute.Invoke(new()
     ///     {
     ///         Name = "Email_Users",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SAML Attribute ID
     ///     var groupUser = Zpa.GetSAMLAttribute.Invoke(new()
     ///     {
     ///         Name = "GroupName_Users",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SCIM Group ID
     ///     var a000 = Zpa.GetSCIMGroups.Invoke(new()
     ///     {
     ///         Name = "A000",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SCIM Group ID
     ///     var b000 = Zpa.GetSCIMGroups.Invoke(new()
     ///     {
     ///         Name = "B000",
@@ -209,15 +223,17 @@ namespace Zscaler.Zpa
     ///     });
     /// 
     ///     // Create Segment Group
-    ///     var thisSegmentGroup = new Zpa.SegmentGroup("thisSegmentGroup", new()
+    ///     var thisSegmentGroup = new Zpa.SegmentGroup("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///     });
     /// 
     ///     // Create Policy Access Rule V2
-    ///     var thisPolicyBrowserProtectionRule = new Zpa.PolicyBrowserProtectionRule("thisPolicyBrowserProtectionRule", new()
+    ///     var thisPolicyBrowserProtectionRule = new Zpa.PolicyBrowserProtectionRule("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Action = "DO_NOT_MONITOR",
     ///         Conditions = new[]
@@ -267,12 +283,12 @@ namespace Zscaler.Zpa
     ///                             new Zpa.Inputs.PolicyBrowserProtectionRuleConditionOperandEntryValueArgs
     ///                             {
     ///                                 Rhs = a000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
-    ///                                 Lhs = thisIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                                 Lhs = @this.Apply(@this =&gt; @this.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id)),
     ///                             },
     ///                             new Zpa.Inputs.PolicyBrowserProtectionRuleConditionOperandEntryValueArgs
     ///                             {
     ///                                 Rhs = b000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
-    ///                                 Lhs = thisIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                                 Lhs = @this.Apply(@this =&gt; @this.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id)),
     ///                             },
     ///                         },
     ///                     },

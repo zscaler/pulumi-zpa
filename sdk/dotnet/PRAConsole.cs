@@ -28,15 +28,17 @@ namespace Zscaler.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Creates Segment Group for Application Segment"
-    ///     var thisSegmentGroup = new Zpa.SegmentGroup("thisSegmentGroup", new()
+    ///     var thisSegmentGroup = new Zpa.SegmentGroup("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///     });
     /// 
     ///     // Creates Privileged Remote Access Application Segment"
-    ///     var thisApplicationSegmentPRA = new Zpa.ApplicationSegmentPRA("thisApplicationSegmentPRA", new()
+    ///     var thisApplicationSegmentPRA = new Zpa.ApplicationSegmentPRA("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///         HealthReporting = "ON_ACCESS",
@@ -52,34 +54,38 @@ namespace Zscaler.Zpa
     ///             "rdp_pra.example.com",
     ///         },
     ///         SegmentGroupId = thisSegmentGroup.Id,
-    ///         CommonAppsDto = new Zpa.Inputs.ApplicationSegmentPRACommonAppsDtoArgs
+    ///         CommonAppsDtos = new[]
     ///         {
-    ///             AppsConfigs = new[]
+    ///             new Zpa.Inputs.ApplicationSegmentPRACommonAppsDtoArgs
     ///             {
-    ///                 new Zpa.Inputs.ApplicationSegmentPRACommonAppsDtoAppsConfigArgs
+    ///                 AppsConfigs = new[]
     ///                 {
-    ///                     Name = "rdp_pra",
-    ///                     Domain = "rdp_pra.example.com",
-    ///                     ApplicationProtocol = "RDP",
-    ///                     ConnectionSecurity = "ANY",
-    ///                     ApplicationPort = "3389",
-    ///                     Enabled = true,
-    ///                     AppTypes = new[]
+    ///                     new Zpa.Inputs.ApplicationSegmentPRACommonAppsDtoAppsConfigArgs
     ///                     {
-    ///                         "SECURE_REMOTE_ACCESS",
+    ///                         Name = "rdp_pra",
+    ///                         Domain = "rdp_pra.example.com",
+    ///                         ApplicationProtocol = "RDP",
+    ///                         ConnectionSecurity = "ANY",
+    ///                         ApplicationPort = "3389",
+    ///                         Enabled = true,
+    ///                         AppTypes = new[]
+    ///                         {
+    ///                             "SECURE_REMOTE_ACCESS",
+    ///                         },
     ///                     },
     ///                 },
     ///             },
     ///         },
     ///     });
     /// 
-    ///     var thisApplicationSegmentByType = Zpa.GetApplicationSegmentByType.Invoke(new()
+    ///     var @this = Zpa.GetApplicationSegmentByType.Invoke(new()
     ///     {
     ///         ApplicationType = "SECURE_REMOTE_ACCESS",
     ///         Name = "rdp_pra",
     ///     });
     /// 
-    ///     var thisBaCertificate = Zpa.GetBaCertificate.Invoke(new()
+    ///     // Retrieves the Browser Access Certificate
+    ///     var thisGetBaCertificate = Zpa.GetBaCertificate.Invoke(new()
     ///     {
     ///         Name = "pra01.example.com",
     ///     });
@@ -87,21 +93,26 @@ namespace Zscaler.Zpa
     ///     // Creates PRA Portal"
     ///     var this1 = new Zpa.PRAPortal("this1", new()
     ///     {
+    ///         Name = "pra01.example.com",
     ///         Description = "pra01.example.com",
     ///         Enabled = true,
     ///         Domain = "pra01.example.com",
-    ///         CertificateId = thisBaCertificate.Apply(getBaCertificateResult =&gt; getBaCertificateResult.Id),
+    ///         CertificateId = thisGetBaCertificate.Apply(getBaCertificateResult =&gt; getBaCertificateResult.Id),
     ///         UserNotification = "Created with Terraform",
     ///         UserNotificationEnabled = true,
     ///     });
     /// 
-    ///     var sshPra = new Zpa.PRAConsole("sshPra", new()
+    ///     var sshPra = new Zpa.PRAConsole("ssh_pra", new()
     ///     {
+    ///         Name = "ssh_console",
     ///         Description = "Created with Terraform",
     ///         Enabled = true,
-    ///         PraApplication = new Zpa.Inputs.PRAConsolePraApplicationArgs
+    ///         PraApplications = new[]
     ///         {
-    ///             Id = thisApplicationSegmentByType.Apply(getApplicationSegmentByTypeResult =&gt; getApplicationSegmentByTypeResult.Id),
+    ///             new Zpa.Inputs.PRAConsolePraApplicationArgs
+    ///             {
+    ///                 Id = @this.Apply(@this =&gt; @this.Apply(getApplicationSegmentByTypeResult =&gt; getApplicationSegmentByTypeResult.Id)),
+    ///             },
     ///         },
     ///         PraPortals = new[]
     ///         {
@@ -109,7 +120,7 @@ namespace Zscaler.Zpa
     ///             {
     ///                 Ids = new[]
     ///                 {
-    ///                     zpa_pra_portal_controller.This.Id,
+    ///                     thisZpaPraPortalController.Id,
     ///                 },
     ///             },
     ///         },
@@ -172,8 +183,8 @@ namespace Zscaler.Zpa
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        [Output("praApplication")]
-        public Output<Outputs.PRAConsolePraApplication> PraApplication { get; private set; } = null!;
+        [Output("praApplications")]
+        public Output<ImmutableArray<Outputs.PRAConsolePraApplication>> PraApplications { get; private set; } = null!;
 
         [Output("praPortals")]
         public Output<ImmutableArray<Outputs.PRAConsolePraPortal>> PraPortals { get; private set; } = null!;
@@ -260,8 +271,13 @@ namespace Zscaler.Zpa
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("praApplication", required: true)]
-        public Input<Inputs.PRAConsolePraApplicationArgs> PraApplication { get; set; } = null!;
+        [Input("praApplications", required: true)]
+        private InputList<Inputs.PRAConsolePraApplicationArgs>? _praApplications;
+        public InputList<Inputs.PRAConsolePraApplicationArgs> PraApplications
+        {
+            get => _praApplications ?? (_praApplications = new InputList<Inputs.PRAConsolePraApplicationArgs>());
+            set => _praApplications = value;
+        }
 
         [Input("praPortals", required: true)]
         private InputList<Inputs.PRAConsolePraPortalArgs>? _praPortals;
@@ -310,8 +326,13 @@ namespace Zscaler.Zpa
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("praApplication")]
-        public Input<Inputs.PRAConsolePraApplicationGetArgs>? PraApplication { get; set; }
+        [Input("praApplications")]
+        private InputList<Inputs.PRAConsolePraApplicationGetArgs>? _praApplications;
+        public InputList<Inputs.PRAConsolePraApplicationGetArgs> PraApplications
+        {
+            get => _praApplications ?? (_praApplications = new InputList<Inputs.PRAConsolePraApplicationGetArgs>());
+            set => _praApplications = value;
+        }
 
         [Input("praPortals")]
         private InputList<Inputs.PRAConsolePraPortalGetArgs>? _praPortals;

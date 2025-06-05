@@ -176,6 +176,7 @@ def get_policy_type(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
+    # Get information for "ACCESS_POLICY" ID
     access_policy = zpa.get_policy_type(policy_type="ACCESS_POLICY")
     pulumi.export("zpaPolicyTypeAccessPolicy", access_policy.id)
     ```
@@ -184,6 +185,7 @@ def get_policy_type(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
+    # Get information for "GLOBAL_POLICY" ID
     global_policy = zpa.get_policy_type(policy_type="GLOBAL_POLICY")
     pulumi.export("zpaPolicyTypeAccessPolicy", global_policy.id)
     ```
@@ -192,6 +194,7 @@ def get_policy_type(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
+    # Get information for "TIMEOUT_POLICY" ID
     timeout_policy = zpa.get_policy_type(policy_type="TIMEOUT_POLICY")
     pulumi.export("zpaPolicyTypeTimeoutPolicy", timeout_policy.id)
     ```
@@ -200,6 +203,7 @@ def get_policy_type(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
+    # Get information for "REAUTH_POLICY" ID
     reauth_policy = zpa.get_policy_type(policy_type="REAUTH_POLICY")
     pulumi.export("zpaPolicyTypeReauthPolicy", reauth_policy.id)
     ```
@@ -208,6 +212,7 @@ def get_policy_type(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
+    # Get information for "CLIENT_FORWARDING_POLICY" ID
     client_forwarding_policy = zpa.get_policy_type(policy_type="CLIENT_FORWARDING_POLICY")
     pulumi.export("zpaPolicyTypeClientForwardingPolicy", client_forwarding_policy.id)
     ```
@@ -216,6 +221,7 @@ def get_policy_type(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_zpa as zpa
 
+    # Get information for "INSPECTION_POLICY" ID
     inspection_policy = zpa.get_policy_type(policy_type="INSPECTION_POLICY")
     pulumi.export("zpaPolicyTypeInspectionPolicy", inspection_policy.id)
     ```
@@ -270,6 +276,7 @@ def get_policy_type_output(id: Optional[pulumi.Input[Optional[builtins.str]]] = 
     import pulumi
     import pulumi_zpa as zpa
 
+    # Get information for "ACCESS_POLICY" ID
     access_policy = zpa.get_policy_type(policy_type="ACCESS_POLICY")
     pulumi.export("zpaPolicyTypeAccessPolicy", access_policy.id)
     ```
@@ -278,6 +285,7 @@ def get_policy_type_output(id: Optional[pulumi.Input[Optional[builtins.str]]] = 
     import pulumi
     import pulumi_zpa as zpa
 
+    # Get information for "GLOBAL_POLICY" ID
     global_policy = zpa.get_policy_type(policy_type="GLOBAL_POLICY")
     pulumi.export("zpaPolicyTypeAccessPolicy", global_policy.id)
     ```
@@ -286,6 +294,7 @@ def get_policy_type_output(id: Optional[pulumi.Input[Optional[builtins.str]]] = 
     import pulumi
     import pulumi_zpa as zpa
 
+    # Get information for "TIMEOUT_POLICY" ID
     timeout_policy = zpa.get_policy_type(policy_type="TIMEOUT_POLICY")
     pulumi.export("zpaPolicyTypeTimeoutPolicy", timeout_policy.id)
     ```
@@ -294,6 +303,7 @@ def get_policy_type_output(id: Optional[pulumi.Input[Optional[builtins.str]]] = 
     import pulumi
     import pulumi_zpa as zpa
 
+    # Get information for "REAUTH_POLICY" ID
     reauth_policy = zpa.get_policy_type(policy_type="REAUTH_POLICY")
     pulumi.export("zpaPolicyTypeReauthPolicy", reauth_policy.id)
     ```
@@ -302,6 +312,7 @@ def get_policy_type_output(id: Optional[pulumi.Input[Optional[builtins.str]]] = 
     import pulumi
     import pulumi_zpa as zpa
 
+    # Get information for "CLIENT_FORWARDING_POLICY" ID
     client_forwarding_policy = zpa.get_policy_type(policy_type="CLIENT_FORWARDING_POLICY")
     pulumi.export("zpaPolicyTypeClientForwardingPolicy", client_forwarding_policy.id)
     ```
@@ -310,6 +321,7 @@ def get_policy_type_output(id: Optional[pulumi.Input[Optional[builtins.str]]] = 
     import pulumi
     import pulumi_zpa as zpa
 
+    # Get information for "INSPECTION_POLICY" ID
     inspection_policy = zpa.get_policy_type(policy_type="INSPECTION_POLICY")
     pulumi.export("zpaPolicyTypeInspectionPolicy", inspection_policy.id)
     ```

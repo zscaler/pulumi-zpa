@@ -17,31 +17,6 @@ import (
 // The **zpa_pra_credential_controller** data source to get information about a privileged remote access credential created in the Zscaler Private Access cloud.
 //
 // **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Retrieves PRA Credential By ID
-//			_, err := zpa.NewPRACredential(ctx, "this", nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupPRACredential(ctx *pulumi.Context, args *LookupPRACredentialArgs, opts ...pulumi.InvokeOption) (*LookupPRACredentialResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPRACredentialResult

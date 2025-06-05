@@ -27,7 +27,7 @@ class ApplicationSegmentInspectionArgs:
                  auto_app_protect_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  bypass_on_reauth: Optional[pulumi.Input[builtins.bool]] = None,
                  bypass_type: Optional[pulumi.Input[builtins.str]] = None,
-                 common_apps_dto: Optional[pulumi.Input['ApplicationSegmentInspectionCommonAppsDtoArgs']] = None,
+                 common_apps_dtos: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentInspectionCommonAppsDtoArgs']]]] = None,
                  config_space: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -83,8 +83,8 @@ class ApplicationSegmentInspectionArgs:
             pulumi.set(__self__, "bypass_on_reauth", bypass_on_reauth)
         if bypass_type is not None:
             pulumi.set(__self__, "bypass_type", bypass_type)
-        if common_apps_dto is not None:
-            pulumi.set(__self__, "common_apps_dto", common_apps_dto)
+        if common_apps_dtos is not None:
+            pulumi.set(__self__, "common_apps_dtos", common_apps_dtos)
         if config_space is not None:
             pulumi.set(__self__, "config_space", config_space)
         if description is not None:
@@ -192,13 +192,13 @@ class ApplicationSegmentInspectionArgs:
         pulumi.set(self, "bypass_type", value)
 
     @property
-    @pulumi.getter(name="commonAppsDto")
-    def common_apps_dto(self) -> Optional[pulumi.Input['ApplicationSegmentInspectionCommonAppsDtoArgs']]:
-        return pulumi.get(self, "common_apps_dto")
+    @pulumi.getter(name="commonAppsDtos")
+    def common_apps_dtos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentInspectionCommonAppsDtoArgs']]]]:
+        return pulumi.get(self, "common_apps_dtos")
 
-    @common_apps_dto.setter
-    def common_apps_dto(self, value: Optional[pulumi.Input['ApplicationSegmentInspectionCommonAppsDtoArgs']]):
-        pulumi.set(self, "common_apps_dto", value)
+    @common_apps_dtos.setter
+    def common_apps_dtos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentInspectionCommonAppsDtoArgs']]]]):
+        pulumi.set(self, "common_apps_dtos", value)
 
     @property
     @pulumi.getter(name="configSpace")
@@ -461,7 +461,7 @@ class _ApplicationSegmentInspectionState:
                  auto_app_protect_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  bypass_on_reauth: Optional[pulumi.Input[builtins.bool]] = None,
                  bypass_type: Optional[pulumi.Input[builtins.str]] = None,
-                 common_apps_dto: Optional[pulumi.Input['ApplicationSegmentInspectionCommonAppsDtoArgs']] = None,
+                 common_apps_dtos: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentInspectionCommonAppsDtoArgs']]]] = None,
                  config_space: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -517,8 +517,8 @@ class _ApplicationSegmentInspectionState:
             pulumi.set(__self__, "bypass_on_reauth", bypass_on_reauth)
         if bypass_type is not None:
             pulumi.set(__self__, "bypass_type", bypass_type)
-        if common_apps_dto is not None:
-            pulumi.set(__self__, "common_apps_dto", common_apps_dto)
+        if common_apps_dtos is not None:
+            pulumi.set(__self__, "common_apps_dtos", common_apps_dtos)
         if config_space is not None:
             pulumi.set(__self__, "config_space", config_space)
         if description is not None:
@@ -619,13 +619,13 @@ class _ApplicationSegmentInspectionState:
         pulumi.set(self, "bypass_type", value)
 
     @property
-    @pulumi.getter(name="commonAppsDto")
-    def common_apps_dto(self) -> Optional[pulumi.Input['ApplicationSegmentInspectionCommonAppsDtoArgs']]:
-        return pulumi.get(self, "common_apps_dto")
+    @pulumi.getter(name="commonAppsDtos")
+    def common_apps_dtos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentInspectionCommonAppsDtoArgs']]]]:
+        return pulumi.get(self, "common_apps_dtos")
 
-    @common_apps_dto.setter
-    def common_apps_dto(self, value: Optional[pulumi.Input['ApplicationSegmentInspectionCommonAppsDtoArgs']]):
-        pulumi.set(self, "common_apps_dto", value)
+    @common_apps_dtos.setter
+    def common_apps_dtos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentInspectionCommonAppsDtoArgs']]]]):
+        pulumi.set(self, "common_apps_dtos", value)
 
     @property
     @pulumi.getter(name="configSpace")
@@ -900,7 +900,7 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
                  auto_app_protect_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  bypass_on_reauth: Optional[pulumi.Input[builtins.bool]] = None,
                  bypass_type: Optional[pulumi.Input[builtins.str]] = None,
-                 common_apps_dto: Optional[pulumi.Input[Union['ApplicationSegmentInspectionCommonAppsDtoArgs', 'ApplicationSegmentInspectionCommonAppsDtoArgsDict']]] = None,
+                 common_apps_dtos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentInspectionCommonAppsDtoArgs', 'ApplicationSegmentInspectionCommonAppsDtoArgsDict']]]]] = None,
                  config_space: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -942,6 +942,7 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
 
         jenkins = zpa.get_ba_certificate(name="jenkins.example.com")
         this = zpa.ApplicationSegmentInspection("this",
+            name="ZPA_Inspection_Example",
             description="ZPA_Inspection_Example",
             enabled=True,
             health_reporting="ON_ACCESS",
@@ -952,11 +953,11 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
                 "443",
             ],
             domain_names=["jenkins.example.com"],
-            segment_group_id=zpa_segment_group["this"]["id"],
+            segment_group_id=this_zpa_segment_group["id"],
             server_groups=[{
-                "ids": [zpa_server_group["this"]["id"]],
+                "ids": [this_zpa_server_group["id"]],
             }],
-            common_apps_dto={
+            common_apps_dtos=[{
                 "apps_configs": [{
                     "name": "jenkins.example.com",
                     "domain": "jenkins.example.com",
@@ -966,7 +967,7 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
                     "enabled": True,
                     "app_types": ["INSPECT"],
                 }],
-            })
+            }])
         ```
 
         ## Import
@@ -1030,6 +1031,7 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
 
         jenkins = zpa.get_ba_certificate(name="jenkins.example.com")
         this = zpa.ApplicationSegmentInspection("this",
+            name="ZPA_Inspection_Example",
             description="ZPA_Inspection_Example",
             enabled=True,
             health_reporting="ON_ACCESS",
@@ -1040,11 +1042,11 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
                 "443",
             ],
             domain_names=["jenkins.example.com"],
-            segment_group_id=zpa_segment_group["this"]["id"],
+            segment_group_id=this_zpa_segment_group["id"],
             server_groups=[{
-                "ids": [zpa_server_group["this"]["id"]],
+                "ids": [this_zpa_server_group["id"]],
             }],
-            common_apps_dto={
+            common_apps_dtos=[{
                 "apps_configs": [{
                     "name": "jenkins.example.com",
                     "domain": "jenkins.example.com",
@@ -1054,7 +1056,7 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
                     "enabled": True,
                     "app_types": ["INSPECT"],
                 }],
-            })
+            }])
         ```
 
         ## Import
@@ -1094,7 +1096,7 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
                  auto_app_protect_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  bypass_on_reauth: Optional[pulumi.Input[builtins.bool]] = None,
                  bypass_type: Optional[pulumi.Input[builtins.str]] = None,
-                 common_apps_dto: Optional[pulumi.Input[Union['ApplicationSegmentInspectionCommonAppsDtoArgs', 'ApplicationSegmentInspectionCommonAppsDtoArgsDict']]] = None,
+                 common_apps_dtos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentInspectionCommonAppsDtoArgs', 'ApplicationSegmentInspectionCommonAppsDtoArgsDict']]]]] = None,
                  config_space: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -1133,7 +1135,7 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
             __props__.__dict__["auto_app_protect_enabled"] = auto_app_protect_enabled
             __props__.__dict__["bypass_on_reauth"] = bypass_on_reauth
             __props__.__dict__["bypass_type"] = bypass_type
-            __props__.__dict__["common_apps_dto"] = common_apps_dto
+            __props__.__dict__["common_apps_dtos"] = common_apps_dtos
             __props__.__dict__["config_space"] = config_space
             __props__.__dict__["description"] = description
             __props__.__dict__["domain_names"] = domain_names
@@ -1175,7 +1177,7 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
             auto_app_protect_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             bypass_on_reauth: Optional[pulumi.Input[builtins.bool]] = None,
             bypass_type: Optional[pulumi.Input[builtins.str]] = None,
-            common_apps_dto: Optional[pulumi.Input[Union['ApplicationSegmentInspectionCommonAppsDtoArgs', 'ApplicationSegmentInspectionCommonAppsDtoArgsDict']]] = None,
+            common_apps_dtos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentInspectionCommonAppsDtoArgs', 'ApplicationSegmentInspectionCommonAppsDtoArgsDict']]]]] = None,
             config_space: Optional[pulumi.Input[builtins.str]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
             domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -1236,7 +1238,7 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
         __props__.__dict__["auto_app_protect_enabled"] = auto_app_protect_enabled
         __props__.__dict__["bypass_on_reauth"] = bypass_on_reauth
         __props__.__dict__["bypass_type"] = bypass_type
-        __props__.__dict__["common_apps_dto"] = common_apps_dto
+        __props__.__dict__["common_apps_dtos"] = common_apps_dtos
         __props__.__dict__["config_space"] = config_space
         __props__.__dict__["description"] = description
         __props__.__dict__["domain_names"] = domain_names
@@ -1297,9 +1299,9 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
         return pulumi.get(self, "bypass_type")
 
     @property
-    @pulumi.getter(name="commonAppsDto")
-    def common_apps_dto(self) -> pulumi.Output['outputs.ApplicationSegmentInspectionCommonAppsDto']:
-        return pulumi.get(self, "common_apps_dto")
+    @pulumi.getter(name="commonAppsDtos")
+    def common_apps_dtos(self) -> pulumi.Output[Sequence['outputs.ApplicationSegmentInspectionCommonAppsDto']]:
+        return pulumi.get(self, "common_apps_dtos")
 
     @property
     @pulumi.getter(name="configSpace")

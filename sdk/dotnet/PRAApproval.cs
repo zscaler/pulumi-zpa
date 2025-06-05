@@ -16,6 +16,151 @@ namespace Zscaler.Zpa
     /// 
     /// The **zpa_pra_approval_controller** resource creates a privileged remote access approval in the Zscaler Private Access cloud. This resource allows third-party users and contractors to be able to log in to a Privileged Remote Access (PRA) portal.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Zscaler.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // ZPA Segment Group resource
+    ///     var thisSegmentGroup = new Zpa.SegmentGroup("this", new()
+    ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         Enabled = true,
+    ///     });
+    /// 
+    ///     // ZPA App Connector Group resource
+    ///     var thisConnectorGroup = new Zpa.ConnectorGroup("this", new()
+    ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         Enabled = true,
+    ///         CityCountry = "San Jose, CA",
+    ///         CountryCode = "US",
+    ///         Latitude = "37.338",
+    ///         Longitude = "-121.8863",
+    ///         Location = "San Jose, CA, US",
+    ///         UpgradeDay = "SUNDAY",
+    ///         UpgradeTimeInSecs = "66600",
+    ///         OverrideVersionProfile = true,
+    ///         VersionProfileId = "0",
+    ///         DnsQueryType = "IPV4",
+    ///     });
+    /// 
+    ///     // ZPA Server Group resource
+    ///     var thisServerGroup = new Zpa.ServerGroup("this", new()
+    ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         Enabled = true,
+    ///         DynamicDiscovery = false,
+    ///         AppConnectorGroups = new[]
+    ///         {
+    ///             new Zpa.Inputs.ServerGroupAppConnectorGroupArgs
+    ///             {
+    ///                 Ids = new[]
+    ///                 {
+    ///                     thisConnectorGroup.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             thisConnectorGroup,
+    ///         },
+    ///     });
+    /// 
+    ///     // ZPA Application Segment resource
+    ///     var @this = new Zpa.ApplicationSegment("this", new()
+    ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         Enabled = true,
+    ///         HealthReporting = "ON_ACCESS",
+    ///         BypassType = "NEVER",
+    ///         IsCnameEnabled = true,
+    ///         TcpPortRanges = new[]
+    ///         {
+    ///             "8080",
+    ///             "8080",
+    ///         },
+    ///         DomainNames = new[]
+    ///         {
+    ///             "server.acme.com",
+    ///         },
+    ///         SegmentGroupId = thisSegmentGroup.Id,
+    ///         ServerGroups = new[]
+    ///         {
+    ///             new Zpa.Inputs.ApplicationSegmentServerGroupArgs
+    ///             {
+    ///                 Ids = new[]
+    ///                 {
+    ///                     thisServerGroup.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             thisServerGroup,
+    ///             thisSegmentGroup,
+    ///         },
+    ///     });
+    /// 
+    ///     // Create PRA Approval Controller
+    ///     var thisPRAApproval = new Zpa.PRAApproval("this", new()
+    ///     {
+    ///         EmailIds = new[]
+    ///         {
+    ///             "jdoe@acme.com",
+    ///         },
+    ///         StartTime = "Tue, 07 Mar 2024 11:05:30 PST",
+    ///         EndTime = "Tue, 07 Jun 2024 11:05:30 PST",
+    ///         Status = "FUTURE",
+    ///         Applications = new[]
+    ///         {
+    ///             new Zpa.Inputs.PRAApprovalApplicationArgs
+    ///             {
+    ///                 Ids = new[]
+    ///                 {
+    ///                     @this.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///         WorkingHours = new[]
+    ///         {
+    ///             new Zpa.Inputs.PRAApprovalWorkingHourArgs
+    ///             {
+    ///                 Days = new[]
+    ///                 {
+    ///                     "FRI",
+    ///                     "MON",
+    ///                     "SAT",
+    ///                     "SUN",
+    ///                     "THU",
+    ///                     "TUE",
+    ///                     "WED",
+    ///                 },
+    ///                 StartTime = "00:10",
+    ///                 StartTimeCron = "0 0 8 ? * MON,TUE,WED,THU,FRI,SAT",
+    ///                 EndTime = "09:15",
+    ///                 EndTimeCron = "0 15 17 ? * MON,TUE,WED,THU,FRI,SAT",
+    ///                 Timezone = "America/Vancouver",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
@@ -46,7 +191,7 @@ namespace Zscaler.Zpa
         /// The email address of the user that you are assigning the privileged approval to
         /// </summary>
         [Output("emailIds")]
-        public Output<string> EmailIds { get; private set; } = null!;
+        public Output<ImmutableArray<string>> EmailIds { get; private set; } = null!;
 
         /// <summary>
         /// The end date that the user no longer has access to the privileged approval
@@ -135,11 +280,17 @@ namespace Zscaler.Zpa
             set => _applications = value;
         }
 
+        [Input("emailIds")]
+        private InputList<string>? _emailIds;
+
         /// <summary>
         /// The email address of the user that you are assigning the privileged approval to
         /// </summary>
-        [Input("emailIds")]
-        public Input<string>? EmailIds { get; set; }
+        public InputList<string> EmailIds
+        {
+            get => _emailIds ?? (_emailIds = new InputList<string>());
+            set => _emailIds = value;
+        }
 
         /// <summary>
         /// The end date that the user no longer has access to the privileged approval
@@ -190,11 +341,17 @@ namespace Zscaler.Zpa
             set => _applications = value;
         }
 
+        [Input("emailIds")]
+        private InputList<string>? _emailIds;
+
         /// <summary>
         /// The email address of the user that you are assigning the privileged approval to
         /// </summary>
-        [Input("emailIds")]
-        public Input<string>? EmailIds { get; set; }
+        public InputList<string> EmailIds
+        {
+            get => _emailIds ?? (_emailIds = new InputList<string>());
+            set => _emailIds = value;
+        }
 
         /// <summary>
         /// The end date that the user no longer has access to the privileged approval

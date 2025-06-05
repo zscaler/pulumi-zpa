@@ -24,6 +24,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Trusted Network Data Source
  * const example = zpa.getTrustedNetwork({
  *     name: "trusted_network_name",
  * });
@@ -35,6 +36,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example1 = zpa.getTrustedNetwork({
  *     name: "Corporate-Network (zscalertwo.net)",
  * });
@@ -91,6 +93,7 @@ export interface GetTrustedNetworkResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Trusted Network Data Source
  * const example = zpa.getTrustedNetwork({
  *     name: "trusted_network_name",
  * });
@@ -102,6 +105,7 @@ export interface GetTrustedNetworkResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example1 = zpa.getTrustedNetwork({
  *     name: "Corporate-Network (zscalertwo.net)",
  * });

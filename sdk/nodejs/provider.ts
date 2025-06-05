@@ -88,7 +88,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["backoff"] = pulumi.output(args ? args.backoff : undefined).apply(JSON.stringify);
             resourceInputs["clientId"] = (args ? args.clientId : undefined) ?? utilities.getEnv("ZSCALER_CLIENT_ID");
             resourceInputs["clientSecret"] = (args?.clientSecret ? pulumi.secret(args.clientSecret) : undefined) ?? utilities.getEnv("ZSCALER_CLIENT_SECRET");
-            resourceInputs["customerId"] = args?.customerId ? pulumi.secret(args.customerId) : undefined;
+            resourceInputs["customerId"] = (args?.customerId ? pulumi.secret(args.customerId) : undefined) ?? utilities.getEnv("ZPA_CUSTOMER_ID");
             resourceInputs["httpProxy"] = args ? args.httpProxy : undefined;
             resourceInputs["maxRetries"] = pulumi.output(args ? args.maxRetries : undefined).apply(JSON.stringify);
             resourceInputs["maxWaitSeconds"] = pulumi.output(args ? args.maxWaitSeconds : undefined).apply(JSON.stringify);

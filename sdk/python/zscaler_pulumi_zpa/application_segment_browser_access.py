@@ -819,22 +819,26 @@ class ApplicationSegmentBrowserAccess(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
+        # Retrieve Browser Access Certificate
         test_cert = zpa.get_ba_certificate(name="sales.acme.com")
         # ZPA Segment Group resource
-        example_segment_group = zpa.SegmentGroup("exampleSegmentGroup",
+        example_segment_group = zpa.SegmentGroup("example",
+            name="Example",
             description="Example",
             enabled=True)
-        example_app_connector_group = zpa.get_app_connector_group(name="AWS-Connector")
+        example = zpa.get_app_connector_group(name="AWS-Connector")
         # ZPA Server Group resource
-        example_server_group = zpa.ServerGroup("exampleServerGroup",
+        example_server_group = zpa.ServerGroup("example",
+            name="Example",
             description="Example",
             enabled=True,
             dynamic_discovery=True,
             app_connector_groups=[{
-                "ids": [example_app_connector_group.id],
+                "ids": [example.id],
             }])
         # Create Browser Access Application
-        browser_access_apps = zpa.ApplicationSegmentBrowserAccess("browserAccessApps",
+        browser_access_apps = zpa.ApplicationSegmentBrowserAccess("browser_access_apps",
+            name="Browser Access Apps",
             description="Browser Access Apps",
             enabled=True,
             health_reporting="ON_ACCESS",
@@ -911,22 +915,26 @@ class ApplicationSegmentBrowserAccess(pulumi.CustomResource):
         import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
+        # Retrieve Browser Access Certificate
         test_cert = zpa.get_ba_certificate(name="sales.acme.com")
         # ZPA Segment Group resource
-        example_segment_group = zpa.SegmentGroup("exampleSegmentGroup",
+        example_segment_group = zpa.SegmentGroup("example",
+            name="Example",
             description="Example",
             enabled=True)
-        example_app_connector_group = zpa.get_app_connector_group(name="AWS-Connector")
+        example = zpa.get_app_connector_group(name="AWS-Connector")
         # ZPA Server Group resource
-        example_server_group = zpa.ServerGroup("exampleServerGroup",
+        example_server_group = zpa.ServerGroup("example",
+            name="Example",
             description="Example",
             enabled=True,
             dynamic_discovery=True,
             app_connector_groups=[{
-                "ids": [example_app_connector_group.id],
+                "ids": [example.id],
             }])
         # Create Browser Access Application
-        browser_access_apps = zpa.ApplicationSegmentBrowserAccess("browserAccessApps",
+        browser_access_apps = zpa.ApplicationSegmentBrowserAccess("browser_access_apps",
+            name="Browser Access Apps",
             description="Browser Access Apps",
             enabled=True,
             health_reporting="ON_ACCESS",

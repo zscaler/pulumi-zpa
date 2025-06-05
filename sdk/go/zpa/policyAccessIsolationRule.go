@@ -32,6 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Get Isolation Profile ID
 //			isolationProfile, err := zpa.GetIsolationProfile(ctx, &zpa.GetIsolationProfileArgs{
 //				Name: pulumi.StringRef("zpa_isolation_profile"),
 //			}, nil)
@@ -40,6 +41,7 @@ import (
 //			}
 //			// Create Client Isolation Access Rule
 //			_, err = zpa.NewPolicyAccessIsolationRule(ctx, "this", &zpa.PolicyAccessIsolationRuleArgs{
+//				Name:                  pulumi.String("Example_Isolation_Policy"),
 //				Description:           pulumi.String("Example_Isolation_Policy"),
 //				Action:                pulumi.String("ISOLATE"),
 //				Operator:              pulumi.String("AND"),

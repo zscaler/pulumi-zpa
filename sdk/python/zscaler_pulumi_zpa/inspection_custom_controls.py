@@ -384,30 +384,31 @@ class InspectionCustomControls(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         this = zpa.InspectionCustomControls("this",
-            default_action="PASS",
+            name="Example",
             description="Example",
+            default_action="PASS",
             paranoia_level="1",
+            severity="CRITICAL",
+            type="RESPONSE",
             rules=[
                 {
-                    "conditions": {
-                        "lhs": "SIZE",
-                        "op": "GE",
-                        "rhs": "1000",
-                    },
                     "names": ["this"],
                     "type": "RESPONSE_HEADERS",
-                },
-                {
-                    "conditions": {
+                    "conditions": [{
                         "lhs": "SIZE",
                         "op": "GE",
                         "rhs": "1000",
-                    },
-                    "type": "RESPONSE_BODY",
+                    }],
                 },
-            ],
-            severity="CRITICAL",
-            type="RESPONSE")
+                {
+                    "type": "RESPONSE_BODY",
+                    "conditions": [{
+                        "lhs": "SIZE",
+                        "op": "GE",
+                        "rhs": "1000",
+                    }],
+                },
+            ])
         ```
 
         ## Example - Inspection Custom Control - BLOCK Action
@@ -417,30 +418,31 @@ class InspectionCustomControls(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         this = zpa.InspectionCustomControls("this",
-            default_action="BLOCK",
+            name="Example",
             description="Example",
+            default_action="BLOCK",
             paranoia_level="1",
+            severity="CRITICAL",
+            type="RESPONSE",
             rules=[
                 {
-                    "conditions": {
-                        "lhs": "SIZE",
-                        "op": "GE",
-                        "rhs": "1000",
-                    },
                     "names": ["this"],
                     "type": "RESPONSE_HEADERS",
-                },
-                {
-                    "conditions": {
+                    "conditions": [{
                         "lhs": "SIZE",
                         "op": "GE",
                         "rhs": "1000",
-                    },
-                    "type": "RESPONSE_BODY",
+                    }],
                 },
-            ],
-            severity="CRITICAL",
-            type="RESPONSE")
+                {
+                    "type": "RESPONSE_BODY",
+                    "conditions": [{
+                        "lhs": "SIZE",
+                        "op": "GE",
+                        "rhs": "1000",
+                    }],
+                },
+            ])
         ```
 
         ## Example - Inspection Custom Control - REDIRECT Action
@@ -450,31 +452,32 @@ class InspectionCustomControls(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         this = zpa.InspectionCustomControls("this",
+            name="Example",
+            description="Example",
             default_action="REDIRECT",
             default_action_value="https://test.com",
-            description="Example",
             paranoia_level="1",
+            severity="CRITICAL",
+            type="RESPONSE",
             rules=[
                 {
-                    "conditions": {
-                        "lhs": "SIZE",
-                        "op": "GE",
-                        "rhs": "1000",
-                    },
                     "names": ["this"],
                     "type": "RESPONSE_HEADERS",
-                },
-                {
-                    "conditions": {
+                    "conditions": [{
                         "lhs": "SIZE",
                         "op": "GE",
                         "rhs": "1000",
-                    },
-                    "type": "RESPONSE_BODY",
+                    }],
                 },
-            ],
-            severity="CRITICAL",
-            type="RESPONSE")
+                {
+                    "type": "RESPONSE_BODY",
+                    "conditions": [{
+                        "lhs": "SIZE",
+                        "op": "GE",
+                        "rhs": "1000",
+                    }],
+                },
+            ])
         ```
 
         ## Import
@@ -512,30 +515,31 @@ class InspectionCustomControls(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         this = zpa.InspectionCustomControls("this",
-            default_action="PASS",
+            name="Example",
             description="Example",
+            default_action="PASS",
             paranoia_level="1",
+            severity="CRITICAL",
+            type="RESPONSE",
             rules=[
                 {
-                    "conditions": {
-                        "lhs": "SIZE",
-                        "op": "GE",
-                        "rhs": "1000",
-                    },
                     "names": ["this"],
                     "type": "RESPONSE_HEADERS",
-                },
-                {
-                    "conditions": {
+                    "conditions": [{
                         "lhs": "SIZE",
                         "op": "GE",
                         "rhs": "1000",
-                    },
-                    "type": "RESPONSE_BODY",
+                    }],
                 },
-            ],
-            severity="CRITICAL",
-            type="RESPONSE")
+                {
+                    "type": "RESPONSE_BODY",
+                    "conditions": [{
+                        "lhs": "SIZE",
+                        "op": "GE",
+                        "rhs": "1000",
+                    }],
+                },
+            ])
         ```
 
         ## Example - Inspection Custom Control - BLOCK Action
@@ -545,30 +549,31 @@ class InspectionCustomControls(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         this = zpa.InspectionCustomControls("this",
-            default_action="BLOCK",
+            name="Example",
             description="Example",
+            default_action="BLOCK",
             paranoia_level="1",
+            severity="CRITICAL",
+            type="RESPONSE",
             rules=[
                 {
-                    "conditions": {
-                        "lhs": "SIZE",
-                        "op": "GE",
-                        "rhs": "1000",
-                    },
                     "names": ["this"],
                     "type": "RESPONSE_HEADERS",
-                },
-                {
-                    "conditions": {
+                    "conditions": [{
                         "lhs": "SIZE",
                         "op": "GE",
                         "rhs": "1000",
-                    },
-                    "type": "RESPONSE_BODY",
+                    }],
                 },
-            ],
-            severity="CRITICAL",
-            type="RESPONSE")
+                {
+                    "type": "RESPONSE_BODY",
+                    "conditions": [{
+                        "lhs": "SIZE",
+                        "op": "GE",
+                        "rhs": "1000",
+                    }],
+                },
+            ])
         ```
 
         ## Example - Inspection Custom Control - REDIRECT Action
@@ -578,31 +583,32 @@ class InspectionCustomControls(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         this = zpa.InspectionCustomControls("this",
+            name="Example",
+            description="Example",
             default_action="REDIRECT",
             default_action_value="https://test.com",
-            description="Example",
             paranoia_level="1",
+            severity="CRITICAL",
+            type="RESPONSE",
             rules=[
                 {
-                    "conditions": {
-                        "lhs": "SIZE",
-                        "op": "GE",
-                        "rhs": "1000",
-                    },
                     "names": ["this"],
                     "type": "RESPONSE_HEADERS",
-                },
-                {
-                    "conditions": {
+                    "conditions": [{
                         "lhs": "SIZE",
                         "op": "GE",
                         "rhs": "1000",
-                    },
-                    "type": "RESPONSE_BODY",
+                    }],
                 },
-            ],
-            severity="CRITICAL",
-            type="RESPONSE")
+                {
+                    "type": "RESPONSE_BODY",
+                    "conditions": [{
+                        "lhs": "SIZE",
+                        "op": "GE",
+                        "rhs": "1000",
+                    }],
+                },
+            ])
         ```
 
         ## Import

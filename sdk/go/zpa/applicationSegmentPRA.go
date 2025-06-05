@@ -32,6 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := zpa.NewApplicationSegmentPRA(ctx, "this", &zpa.ApplicationSegmentPRAArgs{
+//				Name:            pulumi.String("PRA_Example"),
 //				Description:     pulumi.String("PRA_Example"),
 //				Enabled:         pulumi.Bool(true),
 //				HealthReporting: pulumi.String("ON_ACCESS"),
@@ -47,33 +48,35 @@ import (
 //					pulumi.String("ssh_pra.example.com"),
 //					pulumi.String("rdp_pra.example.com"),
 //				},
-//				SegmentGroupId: pulumi.Any(zpa_segment_group.This.Id),
+//				SegmentGroupId: pulumi.Any(thisZpaSegmentGroup.Id),
 //				ServerGroups: zpa.ApplicationSegmentPRAServerGroupArray{
 //					&zpa.ApplicationSegmentPRAServerGroupArgs{
 //						Ids: pulumi.StringArray{
-//							zpa_server_group.This.Id,
+//							thisZpaServerGroup.Id,
 //						},
 //					},
 //				},
-//				CommonAppsDto: &zpa.ApplicationSegmentPRACommonAppsDtoArgs{
-//					AppsConfigs: zpa.ApplicationSegmentPRACommonAppsDtoAppsConfigArray{
-//						&zpa.ApplicationSegmentPRACommonAppsDtoAppsConfigArgs{
-//							Domain:              pulumi.String("ssh_pra.example.com"),
-//							ApplicationProtocol: pulumi.String("SSH"),
-//							ApplicationPort:     pulumi.String("22"),
-//							Enabled:             pulumi.Bool(true),
-//							AppTypes: pulumi.StringArray{
-//								pulumi.String("SECURE_REMOTE_ACCESS"),
+//				CommonAppsDtos: zpa.ApplicationSegmentPRACommonAppsDtoArray{
+//					&zpa.ApplicationSegmentPRACommonAppsDtoArgs{
+//						AppsConfigs: zpa.ApplicationSegmentPRACommonAppsDtoAppsConfigArray{
+//							&zpa.ApplicationSegmentPRACommonAppsDtoAppsConfigArgs{
+//								Domain:              pulumi.String("ssh_pra.example.com"),
+//								ApplicationProtocol: pulumi.String("SSH"),
+//								ApplicationPort:     pulumi.String("22"),
+//								Enabled:             pulumi.Bool(true),
+//								AppTypes: pulumi.StringArray{
+//									pulumi.String("SECURE_REMOTE_ACCESS"),
+//								},
 //							},
-//						},
-//						&zpa.ApplicationSegmentPRACommonAppsDtoAppsConfigArgs{
-//							Domain:              pulumi.String("rdp_pra.example.com"),
-//							ApplicationProtocol: pulumi.String("RDP"),
-//							ConnectionSecurity:  pulumi.String("ANY"),
-//							ApplicationPort:     pulumi.String("3389"),
-//							Enabled:             pulumi.Bool(true),
-//							AppTypes: pulumi.StringArray{
-//								pulumi.String("SECURE_REMOTE_ACCESS"),
+//							&zpa.ApplicationSegmentPRACommonAppsDtoAppsConfigArgs{
+//								Domain:              pulumi.String("rdp_pra.example.com"),
+//								ApplicationProtocol: pulumi.String("RDP"),
+//								ConnectionSecurity:  pulumi.String("ANY"),
+//								ApplicationPort:     pulumi.String("3389"),
+//								Enabled:             pulumi.Bool(true),
+//								AppTypes: pulumi.StringArray{
+//									pulumi.String("SECURE_REMOTE_ACCESS"),
+//								},
 //							},
 //						},
 //					},
@@ -111,9 +114,9 @@ type ApplicationSegmentPRA struct {
 	BypassOnReauth pulumi.BoolOutput `pulumi:"bypassOnReauth"`
 	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
 	// The value NEVER indicates the use of the client forwarding policy.
-	BypassType    pulumi.StringOutput                      `pulumi:"bypassType"`
-	CommonAppsDto ApplicationSegmentPRACommonAppsDtoOutput `pulumi:"commonAppsDto"`
-	ConfigSpace   pulumi.StringPtrOutput                   `pulumi:"configSpace"`
+	BypassType     pulumi.StringOutput                           `pulumi:"bypassType"`
+	CommonAppsDtos ApplicationSegmentPRACommonAppsDtoArrayOutput `pulumi:"commonAppsDtos"`
+	ConfigSpace    pulumi.StringPtrOutput                        `pulumi:"configSpace"`
 	// Description of the application.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// List of domains and IPs.
@@ -189,9 +192,9 @@ type applicationSegmentPRAState struct {
 	BypassOnReauth *bool `pulumi:"bypassOnReauth"`
 	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
 	// The value NEVER indicates the use of the client forwarding policy.
-	BypassType    *string                             `pulumi:"bypassType"`
-	CommonAppsDto *ApplicationSegmentPRACommonAppsDto `pulumi:"commonAppsDto"`
-	ConfigSpace   *string                             `pulumi:"configSpace"`
+	BypassType     *string                              `pulumi:"bypassType"`
+	CommonAppsDtos []ApplicationSegmentPRACommonAppsDto `pulumi:"commonAppsDtos"`
+	ConfigSpace    *string                              `pulumi:"configSpace"`
 	// Description of the application.
 	Description *string `pulumi:"description"`
 	// List of domains and IPs.
@@ -232,9 +235,9 @@ type ApplicationSegmentPRAState struct {
 	BypassOnReauth pulumi.BoolPtrInput
 	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
 	// The value NEVER indicates the use of the client forwarding policy.
-	BypassType    pulumi.StringPtrInput
-	CommonAppsDto ApplicationSegmentPRACommonAppsDtoPtrInput
-	ConfigSpace   pulumi.StringPtrInput
+	BypassType     pulumi.StringPtrInput
+	CommonAppsDtos ApplicationSegmentPRACommonAppsDtoArrayInput
+	ConfigSpace    pulumi.StringPtrInput
 	// Description of the application.
 	Description pulumi.StringPtrInput
 	// List of domains and IPs.
@@ -279,9 +282,9 @@ type applicationSegmentPRAArgs struct {
 	BypassOnReauth *bool `pulumi:"bypassOnReauth"`
 	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
 	// The value NEVER indicates the use of the client forwarding policy.
-	BypassType    *string                             `pulumi:"bypassType"`
-	CommonAppsDto *ApplicationSegmentPRACommonAppsDto `pulumi:"commonAppsDto"`
-	ConfigSpace   *string                             `pulumi:"configSpace"`
+	BypassType     *string                              `pulumi:"bypassType"`
+	CommonAppsDtos []ApplicationSegmentPRACommonAppsDto `pulumi:"commonAppsDtos"`
+	ConfigSpace    *string                              `pulumi:"configSpace"`
 	// Description of the application.
 	Description *string `pulumi:"description"`
 	// List of domains and IPs.
@@ -323,9 +326,9 @@ type ApplicationSegmentPRAArgs struct {
 	BypassOnReauth pulumi.BoolPtrInput
 	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
 	// The value NEVER indicates the use of the client forwarding policy.
-	BypassType    pulumi.StringPtrInput
-	CommonAppsDto ApplicationSegmentPRACommonAppsDtoPtrInput
-	ConfigSpace   pulumi.StringPtrInput
+	BypassType     pulumi.StringPtrInput
+	CommonAppsDtos ApplicationSegmentPRACommonAppsDtoArrayInput
+	ConfigSpace    pulumi.StringPtrInput
 	// Description of the application.
 	Description pulumi.StringPtrInput
 	// List of domains and IPs.
@@ -459,8 +462,8 @@ func (o ApplicationSegmentPRAOutput) BypassType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSegmentPRA) pulumi.StringOutput { return v.BypassType }).(pulumi.StringOutput)
 }
 
-func (o ApplicationSegmentPRAOutput) CommonAppsDto() ApplicationSegmentPRACommonAppsDtoOutput {
-	return o.ApplyT(func(v *ApplicationSegmentPRA) ApplicationSegmentPRACommonAppsDtoOutput { return v.CommonAppsDto }).(ApplicationSegmentPRACommonAppsDtoOutput)
+func (o ApplicationSegmentPRAOutput) CommonAppsDtos() ApplicationSegmentPRACommonAppsDtoArrayOutput {
+	return o.ApplyT(func(v *ApplicationSegmentPRA) ApplicationSegmentPRACommonAppsDtoArrayOutput { return v.CommonAppsDtos }).(ApplicationSegmentPRACommonAppsDtoArrayOutput)
 }
 
 func (o ApplicationSegmentPRAOutput) ConfigSpace() pulumi.StringPtrOutput {

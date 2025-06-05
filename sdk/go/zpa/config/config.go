@@ -44,7 +44,15 @@ func GetClientSecret(ctx *pulumi.Context) string {
 
 // zpa customer id
 func GetCustomerId(ctx *pulumi.Context) string {
-	return config.Get(ctx, "zpa:customerId")
+	v, err := config.Try(ctx, "zpa:customerId")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "ZPA_CUSTOMER_ID"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // Alternate HTTP proxy of scheme://hostname or scheme://hostname:port format

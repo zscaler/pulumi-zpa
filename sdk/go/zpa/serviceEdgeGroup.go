@@ -34,7 +34,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Service Edge Group resource - Trusted Network
-//			_, err := zpa.NewServiceEdgeGroup(ctx, "serviceEdgeGroupSjc", &zpa.ServiceEdgeGroupArgs{
+//			_, err := zpa.NewServiceEdgeGroup(ctx, "service_edge_group_sjc", &zpa.ServiceEdgeGroupArgs{
+//				Name:               pulumi.String("Service Edge Group San Jose"),
 //				Description:        pulumi.String("Service Edge Group in San Jose"),
 //				Enabled:            pulumi.Bool(true),
 //				IsPublic:           pulumi.Bool(true),
@@ -47,7 +48,7 @@ import (
 //				TrustedNetworks: zpa.ServiceEdgeGroupTrustedNetworkArray{
 //					&zpa.ServiceEdgeGroupTrustedNetworkArgs{
 //						Ids: pulumi.StringArray{
-//							data.Zpa_trusted_network.Example.Id,
+//							example.Id,
 //						},
 //					},
 //				},
@@ -74,7 +75,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Service Edge Group resource - No Trusted Network
-//			_, err := zpa.NewServiceEdgeGroup(ctx, "serviceEdgeGroupNyc", &zpa.ServiceEdgeGroupArgs{
+//			_, err := zpa.NewServiceEdgeGroup(ctx, "service_edge_group_nyc", &zpa.ServiceEdgeGroupArgs{
+//				Name:              pulumi.String("Service Edge Group New York"),
 //				Description:       pulumi.String("Service Edge Group in New York"),
 //				Enabled:           pulumi.Bool(true),
 //				IsPublic:          pulumi.Bool(true),
@@ -83,7 +85,7 @@ import (
 //				Latitude:          pulumi.String("40.7128"),
 //				Longitude:         pulumi.String("-73.935242"),
 //				Location:          pulumi.String("New York, NY, USA"),
-//				VersionProfileId:  pulumi.Any(data.Zpa_customer_version_profile.This.Id),
+//				VersionProfileId:  pulumi.Any(this.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -113,7 +115,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Service Edge Group resource - Trusted Network
-//			_, err := zpa.NewServiceEdgeGroup(ctx, "serviceEdgeGroupSjc", &zpa.ServiceEdgeGroupArgs{
+//			_, err := zpa.NewServiceEdgeGroup(ctx, "service_edge_group_sjc", &zpa.ServiceEdgeGroupArgs{
+//				Name:               pulumi.String("Service Edge Group San Jose"),
 //				Description:        pulumi.String("Service Edge Group in San Jose"),
 //				Enabled:            pulumi.Bool(true),
 //				IsPublic:           pulumi.Bool(true),
@@ -126,7 +129,7 @@ import (
 //				TrustedNetworks: zpa.ServiceEdgeGroupTrustedNetworkArray{
 //					&zpa.ServiceEdgeGroupTrustedNetworkArgs{
 //						Ids: pulumi.StringArray{
-//							data.Zpa_trusted_network.Example.Id,
+//							example.Id,
 //						},
 //					},
 //				},
@@ -153,15 +156,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Service Edge Group resource - No Trusted Network
-//			_, err := zpa.NewServiceEdgeGroup(ctx, "serviceEdgeGroupNyc", &zpa.ServiceEdgeGroupArgs{
+//			_, err := zpa.NewServiceEdgeGroup(ctx, "service_edge_group_nyc", &zpa.ServiceEdgeGroupArgs{
+//				Name:               pulumi.String("Service Edge Group New York"),
 //				Description:        pulumi.String("Service Edge Group in New York"),
 //				Enabled:            pulumi.Bool(true),
 //				IsPublic:           pulumi.Bool(true),
-//				Latitude:           pulumi.String("40.7128"),
-//				Location:           pulumi.String("New York, NY, USA"),
-//				Longitude:          pulumi.String("-73.935242"),
 //				UpgradeDay:         pulumi.String("SUNDAY"),
 //				UpgradeTimeInSecs:  pulumi.String("66600"),
+//				Latitude:           pulumi.String("40.7128"),
+//				Longitude:          pulumi.String("-73.935242"),
+//				Location:           pulumi.String("New York, NY, USA"),
 //				VersionProfileName: pulumi.String("New Release"),
 //			})
 //			if err != nil {
@@ -225,7 +229,7 @@ type ServiceEdgeGroup struct {
 	OverrideVersionProfile pulumi.BoolPtrOutput `pulumi:"overrideVersionProfile"`
 	// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
 	// matching.This field will be deprecated in future versions
-	ServiceEdges ServiceEdgeGroupServiceEdgeArrayOutput `pulumi:"serviceEdges"`
+	ServiceEdges ServiceEdgeGroupServiceEdgesOutput `pulumi:"serviceEdges"`
 	// List of trusted network IDs.
 	TrustedNetworks ServiceEdgeGroupTrustedNetworkArrayOutput `pulumi:"trustedNetworks"`
 	// Service Edges in this group will attempt to update to a newer version of the software during this specified day.
@@ -311,7 +315,7 @@ type serviceEdgeGroupState struct {
 	OverrideVersionProfile *bool `pulumi:"overrideVersionProfile"`
 	// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
 	// matching.This field will be deprecated in future versions
-	ServiceEdges []ServiceEdgeGroupServiceEdge `pulumi:"serviceEdges"`
+	ServiceEdges *ServiceEdgeGroupServiceEdges `pulumi:"serviceEdges"`
 	// List of trusted network IDs.
 	TrustedNetworks []ServiceEdgeGroupTrustedNetwork `pulumi:"trustedNetworks"`
 	// Service Edges in this group will attempt to update to a newer version of the software during this specified day.
@@ -359,7 +363,7 @@ type ServiceEdgeGroupState struct {
 	OverrideVersionProfile pulumi.BoolPtrInput
 	// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
 	// matching.This field will be deprecated in future versions
-	ServiceEdges ServiceEdgeGroupServiceEdgeArrayInput
+	ServiceEdges ServiceEdgeGroupServiceEdgesPtrInput
 	// List of trusted network IDs.
 	TrustedNetworks ServiceEdgeGroupTrustedNetworkArrayInput
 	// Service Edges in this group will attempt to update to a newer version of the software during this specified day.
@@ -411,7 +415,7 @@ type serviceEdgeGroupArgs struct {
 	OverrideVersionProfile *bool `pulumi:"overrideVersionProfile"`
 	// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
 	// matching.This field will be deprecated in future versions
-	ServiceEdges []ServiceEdgeGroupServiceEdge `pulumi:"serviceEdges"`
+	ServiceEdges *ServiceEdgeGroupServiceEdges `pulumi:"serviceEdges"`
 	// List of trusted network IDs.
 	TrustedNetworks []ServiceEdgeGroupTrustedNetwork `pulumi:"trustedNetworks"`
 	// Service Edges in this group will attempt to update to a newer version of the software during this specified day.
@@ -460,7 +464,7 @@ type ServiceEdgeGroupArgs struct {
 	OverrideVersionProfile pulumi.BoolPtrInput
 	// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
 	// matching.This field will be deprecated in future versions
-	ServiceEdges ServiceEdgeGroupServiceEdgeArrayInput
+	ServiceEdges ServiceEdgeGroupServiceEdgesPtrInput
 	// List of trusted network IDs.
 	TrustedNetworks ServiceEdgeGroupTrustedNetworkArrayInput
 	// Service Edges in this group will attempt to update to a newer version of the software during this specified day.
@@ -636,8 +640,8 @@ func (o ServiceEdgeGroupOutput) OverrideVersionProfile() pulumi.BoolPtrOutput {
 
 // WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
 // matching.This field will be deprecated in future versions
-func (o ServiceEdgeGroupOutput) ServiceEdges() ServiceEdgeGroupServiceEdgeArrayOutput {
-	return o.ApplyT(func(v *ServiceEdgeGroup) ServiceEdgeGroupServiceEdgeArrayOutput { return v.ServiceEdges }).(ServiceEdgeGroupServiceEdgeArrayOutput)
+func (o ServiceEdgeGroupOutput) ServiceEdges() ServiceEdgeGroupServiceEdgesOutput {
+	return o.ApplyT(func(v *ServiceEdgeGroup) ServiceEdgeGroupServiceEdgesOutput { return v.ServiceEdges }).(ServiceEdgeGroupServiceEdgesOutput)
 }
 
 // List of trusted network IDs.

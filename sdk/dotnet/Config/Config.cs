@@ -62,7 +62,7 @@ namespace Zscaler.Zpa
             set => _clientSecret.Set(value);
         }
 
-        private static readonly __Value<string?> _customerId = new __Value<string?>(() => __config.Get("customerId"));
+        private static readonly __Value<string?> _customerId = new __Value<string?>(() => __config.Get("customerId") ?? Utilities.GetEnv("ZPA_CUSTOMER_ID"));
         /// <summary>
         /// zpa customer id
         /// </summary>

@@ -32,6 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Service Edge Controller Data Source
 //			_, err := zpa.GetServiceEdgeController(ctx, &zpa.GetServiceEdgeControllerArgs{
 //				Name: pulumi.StringRef("On-Prem-PSE"),
 //			}, nil)

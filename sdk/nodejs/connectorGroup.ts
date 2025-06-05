@@ -15,19 +15,20 @@ import * as utilities from "./utilities";
  *
  * // Create a App Connector Group
  * const example = new zpa.ConnectorGroup("example", {
+ *     name: "Example",
+ *     description: "Example",
+ *     enabled: true,
  *     cityCountry: "San Jose, CA",
  *     countryCode: "US",
- *     description: "Example",
- *     dnsQueryType: "IPV4_IPV6",
- *     enabled: true,
  *     latitude: "37.338",
- *     location: "San Jose, CA, US",
  *     longitude: "-121.8863",
- *     overrideVersionProfile: true,
+ *     location: "San Jose, CA, US",
  *     upgradeDay: "SUNDAY",
  *     upgradeTimeInSecs: "66600",
- *     useInDrMode: true,
+ *     overrideVersionProfile: true,
  *     versionProfileName: "New Release",
+ *     dnsQueryType: "IPV4_IPV6",
+ *     useInDrMode: true,
  * });
  * ```
  *
@@ -43,6 +44,7 @@ import * as utilities from "./utilities";
  *
  * // Create a App Connector Group
  * const example = new zpa.ConnectorGroup("example", {
+ *     name: "Example",
  *     description: "Example",
  *     enabled: true,
  *     cityCountry: "San Jose, CA",
@@ -53,7 +55,7 @@ import * as utilities from "./utilities";
  *     upgradeDay: "SUNDAY",
  *     upgradeTimeInSecs: "66600",
  *     overrideVersionProfile: true,
- *     versionProfileId: data.zpa_customer_version_profile["this"].id,
+ *     versionProfileId: _this.id,
  *     dnsQueryType: "IPV4_IPV6",
  *     useInDrMode: true,
  * });

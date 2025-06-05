@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // Retrieve CBI Region ID and Name
  * const _this = zpa.getCloudBrowserIsolationRegion({
  *     name: "Singapore",
  * });
@@ -55,6 +56,7 @@ export interface GetCloudBrowserIsolationRegionResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // Retrieve CBI Region ID and Name
  * const _this = zpa.getCloudBrowserIsolationRegion({
  *     name: "Singapore",
  * });
