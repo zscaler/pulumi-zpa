@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace Zscaler.Zpa
+namespace zscaler.PulumiPackage.Zpa
 {
     public static class Config
     {
