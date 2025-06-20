@@ -214,7 +214,26 @@ def get_inspection_custom_controls(id: Optional[builtins.str] = None,
                                    name: Optional[builtins.str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInspectionCustomControlsResult:
     """
-    Use this data source to access information about an existing resource.
+    * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+
+    Use the **zpa_inspection_custom_controls** data source to get information about an inspection custom control. This data source can be associated with an inspection profile.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_zpa as zpa
+
+    example = zpa.get_inspection_custom_controls(name="ZPA_Inspection_Custom_Control")
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_zpa as zpa
+
+    example = zpa.get_inspection_custom_controls(id="1234567890")
+    ```
     """
     __args__ = dict()
     __args__['id'] = id
@@ -246,7 +265,26 @@ def get_inspection_custom_controls_output(id: Optional[pulumi.Input[Optional[bui
                                           name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInspectionCustomControlsResult]:
     """
-    Use this data source to access information about an existing resource.
+    * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+
+    Use the **zpa_inspection_custom_controls** data source to get information about an inspection custom control. This data source can be associated with an inspection profile.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_zpa as zpa
+
+    example = zpa.get_inspection_custom_controls(name="ZPA_Inspection_Custom_Control")
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_zpa as zpa
+
+    example = zpa.get_inspection_custom_controls(id="1234567890")
+    ```
     """
     __args__ = dict()
     __args__['id'] = id

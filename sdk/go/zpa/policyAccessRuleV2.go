@@ -222,20 +222,20 @@ import (
 //
 // | Object Type | LHS| RHS| VALUES
 // |----------|-----------|----------|----------
-// | APP  |   |  | “applicationSegmentId“ |
-// | APP_GROUP  |   |  | “segmentGroupId“|
-// | CLIENT_TYPE  |   |  |  “zpnClientTypeZappl“, “zpnClientTypeExporter“, “zpnClientTypeBrowserIsolation“, “zpnClientTypeIpAnchoring“, “zpnClientTypeEdgeConnector“, “zpnClientTypeBranchConnector“,  “zpnClientTypeZappPartner“, “zpnClientTypeZapp“  |
-// | EDGE_CONNECTOR_GROUP  |   |  |  “<edge_connector_id>“ |
-// | BRANCH_CONNECTOR_GROUP  |   |  |  “<branch_connector_id>“ |
-// | LOCATION   |   |  | “locationId“ |
-// | MACHINE_GRP   |   |  | “machineGroupId“ |
+// | APP  | `NA` | `NA` | “applicationSegmentId“ |
+// | APP_GROUP  | `NA`  | `NA` | “segmentGroupId“|
+// | CLIENT_TYPE  | `NA`  | `NA` |  “zpnClientTypeExporter“, “zpnClientTypeExporterNoauth“, “zpnClientTypeMachineTunnel“, “zpnClientTypeEdgeConnector“, “zpnClientTypeZiaInspection“, “zpnClientTypeVdi“, “zpnClientTypeZapp“, “zpnClientTypeSlogger“, “zpnClientTypeZappPartner“, “zpnClientTypeBrowserIsolation“, “zpnClientTypeIpAnchoring“, “zpnClientTypeBranchConnector“ |
+// | EDGE_CONNECTOR_GROUP  | `NA`  | `NA` |  “<edge_connector_id>“ |
+// | BRANCH_CONNECTOR_GROUP  | `NA` | `NA` |  “<branch_connector_id>“ |
+// | LOCATION   | `NA` | `NA` | “locationId“ |
+// | MACHINE_GRP   | `NA` | `NA` | “machineGroupId“ |
 // | SAML | “samlAttributeId“  | “attributeValueToMatch“ |
 // | SCIM | “scimAttributeId“  | “attributeValueToMatch“  |
 // | SCIM_GROUP | “scimGroupAttributeId“  | “attributeValueToMatch“  |
-// | PLATFORM | “mac“, “ios“, “windows“, “android“, “linux“ | “"true"“ / “"false"“ |
+// | PLATFORM | “mac“, “ios“, “windows“, “android“, “linux“ | “"true"“ |
 // | POSTURE | “postureUdid“  | “"true"“ / “"false"“ |
 // | TRUSTED_NETWORK | “networkId“  | “"true"“ |
-// | COUNTRY_CODE | [2 Letter ISO3166 Alpha2](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)  | “"true"“ / “"false"“ |
+// | COUNTRY_CODE | [2 Letter ISO3166 Alpha2](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)  | “"true"“ |
 // | RISK_FACTOR_TYPE | “ZIA“  | “"UNKNOWN", "LOW", "MEDIUM", "HIGH", "CRITICAL"“ |
 // | CHROME_ENTERPRISE | “managed“  | “"true" / "false"“ |
 //

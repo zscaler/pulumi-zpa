@@ -72,7 +72,10 @@ type GetPolicyClientTypeResult struct {
 	ZpnClientTypeIpAnchoring      string `pulumi:"zpnClientTypeIpAnchoring"`
 	ZpnClientTypeMachineTunnel    string `pulumi:"zpnClientTypeMachineTunnel"`
 	ZpnClientTypeSlogger          string `pulumi:"zpnClientTypeSlogger"`
+	ZpnClientTypeVdi              string `pulumi:"zpnClientTypeVdi"`
 	ZpnClientTypeZapp             string `pulumi:"zpnClientTypeZapp"`
+	ZpnClientTypeZappPartner      string `pulumi:"zpnClientTypeZappPartner"`
+	ZpnClientTypeZiaInspection    string `pulumi:"zpnClientTypeZiaInspection"`
 }
 
 func GetPolicyClientTypeOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetPolicyClientTypeResultOutput {
@@ -134,8 +137,20 @@ func (o GetPolicyClientTypeResultOutput) ZpnClientTypeSlogger() pulumi.StringOut
 	return o.ApplyT(func(v GetPolicyClientTypeResult) string { return v.ZpnClientTypeSlogger }).(pulumi.StringOutput)
 }
 
+func (o GetPolicyClientTypeResultOutput) ZpnClientTypeVdi() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyClientTypeResult) string { return v.ZpnClientTypeVdi }).(pulumi.StringOutput)
+}
+
 func (o GetPolicyClientTypeResultOutput) ZpnClientTypeZapp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyClientTypeResult) string { return v.ZpnClientTypeZapp }).(pulumi.StringOutput)
+}
+
+func (o GetPolicyClientTypeResultOutput) ZpnClientTypeZappPartner() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyClientTypeResult) string { return v.ZpnClientTypeZappPartner }).(pulumi.StringOutput)
+}
+
+func (o GetPolicyClientTypeResultOutput) ZpnClientTypeZiaInspection() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyClientTypeResult) string { return v.ZpnClientTypeZiaInspection }).(pulumi.StringOutput)
 }
 
 func init() {

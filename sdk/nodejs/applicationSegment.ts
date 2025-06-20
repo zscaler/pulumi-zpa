@@ -108,6 +108,10 @@ export class ApplicationSegment extends pulumi.CustomResource {
     public readonly segmentGroupName!: pulumi.Output<string>;
     public readonly selectConnectorCloseToApp!: pulumi.Output<boolean | undefined>;
     public readonly serverGroups!: pulumi.Output<outputs.ApplicationSegmentServerGroup[] | undefined>;
+    /**
+     * Share the Application Segment to microtenants
+     */
+    public readonly shareToMicrotenants!: pulumi.Output<string[] | undefined>;
     public readonly tcpKeepAlive!: pulumi.Output<string>;
     /**
      * tcp port range
@@ -164,6 +168,7 @@ export class ApplicationSegment extends pulumi.CustomResource {
             resourceInputs["segmentGroupName"] = state ? state.segmentGroupName : undefined;
             resourceInputs["selectConnectorCloseToApp"] = state ? state.selectConnectorCloseToApp : undefined;
             resourceInputs["serverGroups"] = state ? state.serverGroups : undefined;
+            resourceInputs["shareToMicrotenants"] = state ? state.shareToMicrotenants : undefined;
             resourceInputs["tcpKeepAlive"] = state ? state.tcpKeepAlive : undefined;
             resourceInputs["tcpPortRange"] = state ? state.tcpPortRange : undefined;
             resourceInputs["tcpPortRanges"] = state ? state.tcpPortRanges : undefined;
@@ -199,6 +204,7 @@ export class ApplicationSegment extends pulumi.CustomResource {
             resourceInputs["segmentGroupName"] = args ? args.segmentGroupName : undefined;
             resourceInputs["selectConnectorCloseToApp"] = args ? args.selectConnectorCloseToApp : undefined;
             resourceInputs["serverGroups"] = args ? args.serverGroups : undefined;
+            resourceInputs["shareToMicrotenants"] = args ? args.shareToMicrotenants : undefined;
             resourceInputs["tcpKeepAlive"] = args ? args.tcpKeepAlive : undefined;
             resourceInputs["tcpPortRange"] = args ? args.tcpPortRange : undefined;
             resourceInputs["tcpPortRanges"] = args ? args.tcpPortRanges : undefined;
@@ -270,6 +276,10 @@ export interface ApplicationSegmentState {
     segmentGroupName?: pulumi.Input<string>;
     selectConnectorCloseToApp?: pulumi.Input<boolean>;
     serverGroups?: pulumi.Input<pulumi.Input<inputs.ApplicationSegmentServerGroup>[]>;
+    /**
+     * Share the Application Segment to microtenants
+     */
+    shareToMicrotenants?: pulumi.Input<pulumi.Input<string>[]>;
     tcpKeepAlive?: pulumi.Input<string>;
     /**
      * tcp port range
@@ -349,6 +359,10 @@ export interface ApplicationSegmentArgs {
     segmentGroupName?: pulumi.Input<string>;
     selectConnectorCloseToApp?: pulumi.Input<boolean>;
     serverGroups?: pulumi.Input<pulumi.Input<inputs.ApplicationSegmentServerGroup>[]>;
+    /**
+     * Share the Application Segment to microtenants
+     */
+    shareToMicrotenants?: pulumi.Input<pulumi.Input<string>[]>;
     tcpKeepAlive?: pulumi.Input<string>;
     /**
      * tcp port range

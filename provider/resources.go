@@ -273,8 +273,8 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: zpaDataSource(zpaMod, "getApplicationSegmentInspection"),
 			},
 			"zpa_inspection_custom_controls": {
-				Tok:  zpaDataSource(zpaMod, "getInspectionCustomControls"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: zpaDataSource(zpaMod, "getInspectionCustomControls"),
+				// Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"zpa_inspection_profile": {
 				Tok: zpaDataSource(zpaMod, "getInspectionProfile"),

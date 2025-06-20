@@ -134,7 +134,10 @@ namespace zscaler.PulumiPackage.Zpa
         public readonly string ZpnClientTypeIpAnchoring;
         public readonly string ZpnClientTypeMachineTunnel;
         public readonly string ZpnClientTypeSlogger;
+        public readonly string ZpnClientTypeVdi;
         public readonly string ZpnClientTypeZapp;
+        public readonly string ZpnClientTypeZappPartner;
+        public readonly string ZpnClientTypeZiaInspection;
 
         [OutputConstructor]
         private GetPolicyClientTypeResult(
@@ -156,7 +159,13 @@ namespace zscaler.PulumiPackage.Zpa
 
             string zpnClientTypeSlogger,
 
-            string zpnClientTypeZapp)
+            string zpnClientTypeVdi,
+
+            string zpnClientTypeZapp,
+
+            string zpnClientTypeZappPartner,
+
+            string zpnClientTypeZiaInspection)
         {
             Id = id;
             ZpnClientTypeBranchConnector = zpnClientTypeBranchConnector;
@@ -167,7 +176,10 @@ namespace zscaler.PulumiPackage.Zpa
             ZpnClientTypeIpAnchoring = zpnClientTypeIpAnchoring;
             ZpnClientTypeMachineTunnel = zpnClientTypeMachineTunnel;
             ZpnClientTypeSlogger = zpnClientTypeSlogger;
+            ZpnClientTypeVdi = zpnClientTypeVdi;
             ZpnClientTypeZapp = zpnClientTypeZapp;
+            ZpnClientTypeZappPartner = zpnClientTypeZappPartner;
+            ZpnClientTypeZiaInspection = zpnClientTypeZiaInspection;
         }
     }
 }

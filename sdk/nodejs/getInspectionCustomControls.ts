@@ -6,6 +6,32 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+ *
+ * Use the **zpa_inspection_custom_controls** data source to get information about an inspection custom control. This data source can be associated with an inspection profile.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const example = zpa.getInspectionCustomControls({
+ *     name: "ZPA_Inspection_Custom_Control",
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const example = zpa.getInspectionCustomControls({
+ *     id: "1234567890",
+ * });
+ * ```
+ */
 export function getInspectionCustomControls(args?: GetInspectionCustomControlsArgs, opts?: pulumi.InvokeOptions): Promise<GetInspectionCustomControlsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -47,6 +73,32 @@ export interface GetInspectionCustomControlsResult {
     readonly type: string;
     readonly version: string;
 }
+/**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+ *
+ * Use the **zpa_inspection_custom_controls** data source to get information about an inspection custom control. This data source can be associated with an inspection profile.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const example = zpa.getInspectionCustomControls({
+ *     name: "ZPA_Inspection_Custom_Control",
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const example = zpa.getInspectionCustomControls({
+ *     id: "1234567890",
+ * });
+ * ```
+ */
 export function getInspectionCustomControlsOutput(args?: GetInspectionCustomControlsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInspectionCustomControlsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

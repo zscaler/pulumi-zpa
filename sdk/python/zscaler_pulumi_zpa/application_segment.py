@@ -46,6 +46,7 @@ class ApplicationSegmentArgs:
                  segment_group_name: Optional[pulumi.Input[builtins.str]] = None,
                  select_connector_close_to_app: Optional[pulumi.Input[builtins.bool]] = None,
                  server_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentServerGroupArgs']]]] = None,
+                 share_to_microtenants: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  tcp_keep_alive: Optional[pulumi.Input[builtins.str]] = None,
                  tcp_port_range: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentTcpPortRangeArgs']]]] = None,
                  tcp_port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -65,6 +66,7 @@ class ApplicationSegmentArgs:
         :param pulumi.Input[builtins.bool] is_cname_enabled: Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
                connectors.
         :param pulumi.Input[builtins.str] name: Name of the application.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] share_to_microtenants: Share the Application Segment to microtenants
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentTcpPortRangeArgs']]] tcp_port_range: tcp port range
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tcp_port_ranges: TCP port ranges used to access the app.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentUdpPortRangeArgs']]] udp_port_range: udp port range
@@ -117,6 +119,8 @@ class ApplicationSegmentArgs:
             pulumi.set(__self__, "select_connector_close_to_app", select_connector_close_to_app)
         if server_groups is not None:
             pulumi.set(__self__, "server_groups", server_groups)
+        if share_to_microtenants is not None:
+            pulumi.set(__self__, "share_to_microtenants", share_to_microtenants)
         if tcp_keep_alive is not None:
             pulumi.set(__self__, "tcp_keep_alive", tcp_keep_alive)
         if tcp_port_range is not None:
@@ -378,6 +382,18 @@ class ApplicationSegmentArgs:
         pulumi.set(self, "server_groups", value)
 
     @property
+    @pulumi.getter(name="shareToMicrotenants")
+    def share_to_microtenants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Share the Application Segment to microtenants
+        """
+        return pulumi.get(self, "share_to_microtenants")
+
+    @share_to_microtenants.setter
+    def share_to_microtenants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "share_to_microtenants", value)
+
+    @property
     @pulumi.getter(name="tcpKeepAlive")
     def tcp_keep_alive(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "tcp_keep_alive")
@@ -471,6 +487,7 @@ class _ApplicationSegmentState:
                  segment_group_name: Optional[pulumi.Input[builtins.str]] = None,
                  select_connector_close_to_app: Optional[pulumi.Input[builtins.bool]] = None,
                  server_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentServerGroupArgs']]]] = None,
+                 share_to_microtenants: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  tcp_keep_alive: Optional[pulumi.Input[builtins.str]] = None,
                  tcp_port_range: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentTcpPortRangeArgs']]]] = None,
                  tcp_port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -490,6 +507,7 @@ class _ApplicationSegmentState:
         :param pulumi.Input[builtins.bool] is_cname_enabled: Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
                connectors.
         :param pulumi.Input[builtins.str] name: Name of the application.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] share_to_microtenants: Share the Application Segment to microtenants
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentTcpPortRangeArgs']]] tcp_port_range: tcp port range
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tcp_port_ranges: TCP port ranges used to access the app.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentUdpPortRangeArgs']]] udp_port_range: udp port range
@@ -543,6 +561,8 @@ class _ApplicationSegmentState:
             pulumi.set(__self__, "select_connector_close_to_app", select_connector_close_to_app)
         if server_groups is not None:
             pulumi.set(__self__, "server_groups", server_groups)
+        if share_to_microtenants is not None:
+            pulumi.set(__self__, "share_to_microtenants", share_to_microtenants)
         if tcp_keep_alive is not None:
             pulumi.set(__self__, "tcp_keep_alive", tcp_keep_alive)
         if tcp_port_range is not None:
@@ -804,6 +824,18 @@ class _ApplicationSegmentState:
         pulumi.set(self, "server_groups", value)
 
     @property
+    @pulumi.getter(name="shareToMicrotenants")
+    def share_to_microtenants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Share the Application Segment to microtenants
+        """
+        return pulumi.get(self, "share_to_microtenants")
+
+    @share_to_microtenants.setter
+    def share_to_microtenants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "share_to_microtenants", value)
+
+    @property
     @pulumi.getter(name="tcpKeepAlive")
     def tcp_keep_alive(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "tcp_keep_alive")
@@ -900,6 +932,7 @@ class ApplicationSegment(pulumi.CustomResource):
                  segment_group_name: Optional[pulumi.Input[builtins.str]] = None,
                  select_connector_close_to_app: Optional[pulumi.Input[builtins.bool]] = None,
                  server_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentServerGroupArgs', 'ApplicationSegmentServerGroupArgsDict']]]]] = None,
+                 share_to_microtenants: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  tcp_keep_alive: Optional[pulumi.Input[builtins.str]] = None,
                  tcp_port_range: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentTcpPortRangeArgs', 'ApplicationSegmentTcpPortRangeArgsDict']]]]] = None,
                  tcp_port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -939,6 +972,7 @@ class ApplicationSegment(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] is_cname_enabled: Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
                connectors.
         :param pulumi.Input[builtins.str] name: Name of the application.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] share_to_microtenants: Share the Application Segment to microtenants
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentTcpPortRangeArgs', 'ApplicationSegmentTcpPortRangeArgsDict']]]] tcp_port_range: tcp port range
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tcp_port_ranges: TCP port ranges used to access the app.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentUdpPortRangeArgs', 'ApplicationSegmentUdpPortRangeArgsDict']]]] udp_port_range: udp port range
@@ -1008,6 +1042,7 @@ class ApplicationSegment(pulumi.CustomResource):
                  segment_group_name: Optional[pulumi.Input[builtins.str]] = None,
                  select_connector_close_to_app: Optional[pulumi.Input[builtins.bool]] = None,
                  server_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentServerGroupArgs', 'ApplicationSegmentServerGroupArgsDict']]]]] = None,
+                 share_to_microtenants: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  tcp_keep_alive: Optional[pulumi.Input[builtins.str]] = None,
                  tcp_port_range: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentTcpPortRangeArgs', 'ApplicationSegmentTcpPortRangeArgsDict']]]]] = None,
                  tcp_port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -1049,6 +1084,7 @@ class ApplicationSegment(pulumi.CustomResource):
             __props__.__dict__["segment_group_name"] = segment_group_name
             __props__.__dict__["select_connector_close_to_app"] = select_connector_close_to_app
             __props__.__dict__["server_groups"] = server_groups
+            __props__.__dict__["share_to_microtenants"] = share_to_microtenants
             __props__.__dict__["tcp_keep_alive"] = tcp_keep_alive
             __props__.__dict__["tcp_port_range"] = tcp_port_range
             __props__.__dict__["tcp_port_ranges"] = tcp_port_ranges
@@ -1089,6 +1125,7 @@ class ApplicationSegment(pulumi.CustomResource):
             segment_group_name: Optional[pulumi.Input[builtins.str]] = None,
             select_connector_close_to_app: Optional[pulumi.Input[builtins.bool]] = None,
             server_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentServerGroupArgs', 'ApplicationSegmentServerGroupArgsDict']]]]] = None,
+            share_to_microtenants: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             tcp_keep_alive: Optional[pulumi.Input[builtins.str]] = None,
             tcp_port_range: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentTcpPortRangeArgs', 'ApplicationSegmentTcpPortRangeArgsDict']]]]] = None,
             tcp_port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -1113,6 +1150,7 @@ class ApplicationSegment(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] is_cname_enabled: Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
                connectors.
         :param pulumi.Input[builtins.str] name: Name of the application.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] share_to_microtenants: Share the Application Segment to microtenants
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentTcpPortRangeArgs', 'ApplicationSegmentTcpPortRangeArgsDict']]]] tcp_port_range: tcp port range
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tcp_port_ranges: TCP port ranges used to access the app.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentUdpPortRangeArgs', 'ApplicationSegmentUdpPortRangeArgsDict']]]] udp_port_range: udp port range
@@ -1146,6 +1184,7 @@ class ApplicationSegment(pulumi.CustomResource):
         __props__.__dict__["segment_group_name"] = segment_group_name
         __props__.__dict__["select_connector_close_to_app"] = select_connector_close_to_app
         __props__.__dict__["server_groups"] = server_groups
+        __props__.__dict__["share_to_microtenants"] = share_to_microtenants
         __props__.__dict__["tcp_keep_alive"] = tcp_keep_alive
         __props__.__dict__["tcp_port_range"] = tcp_port_range
         __props__.__dict__["tcp_port_ranges"] = tcp_port_ranges
@@ -1304,6 +1343,14 @@ class ApplicationSegment(pulumi.CustomResource):
     @pulumi.getter(name="serverGroups")
     def server_groups(self) -> pulumi.Output[Optional[Sequence['outputs.ApplicationSegmentServerGroup']]]:
         return pulumi.get(self, "server_groups")
+
+    @property
+    @pulumi.getter(name="shareToMicrotenants")
+    def share_to_microtenants(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
+        """
+        Share the Application Segment to microtenants
+        """
+        return pulumi.get(self, "share_to_microtenants")
 
     @property
     @pulumi.getter(name="tcpKeepAlive")
