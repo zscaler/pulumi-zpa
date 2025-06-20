@@ -11,6 +11,60 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+//
+// Use the **zpa_inspection_custom_controls** data source to get information about an inspection custom control. This data source can be associated with an inspection profile.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := zpa.LookupInspectionCustomControls(ctx, &zpa.LookupInspectionCustomControlsArgs{
+//				Name: pulumi.StringRef("ZPA_Inspection_Custom_Control"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := zpa.LookupInspectionCustomControls(ctx, &zpa.LookupInspectionCustomControlsArgs{
+//				Id: pulumi.StringRef("1234567890"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupInspectionCustomControls(ctx *pulumi.Context, args *LookupInspectionCustomControlsArgs, opts ...pulumi.InvokeOption) (*LookupInspectionCustomControlsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInspectionCustomControlsResult

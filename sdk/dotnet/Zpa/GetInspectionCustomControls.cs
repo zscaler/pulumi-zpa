@@ -12,12 +12,132 @@ namespace zscaler.PulumiPackage.Zpa
 {
     public static class GetInspectionCustomControls
     {
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+        /// 
+        /// Use the **zpa_inspection_custom_controls** data source to get information about an inspection custom control. This data source can be associated with an inspection profile.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Zpa.GetInspectionCustomControls.Invoke(new()
+        ///     {
+        ///         Name = "ZPA_Inspection_Custom_Control",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Zpa.GetInspectionCustomControls.Invoke(new()
+        ///     {
+        ///         Id = "1234567890",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetInspectionCustomControlsResult> InvokeAsync(GetInspectionCustomControlsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInspectionCustomControlsResult>("zpa:index/getInspectionCustomControls:getInspectionCustomControls", args ?? new GetInspectionCustomControlsArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+        /// 
+        /// Use the **zpa_inspection_custom_controls** data source to get information about an inspection custom control. This data source can be associated with an inspection profile.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Zpa.GetInspectionCustomControls.Invoke(new()
+        ///     {
+        ///         Name = "ZPA_Inspection_Custom_Control",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Zpa.GetInspectionCustomControls.Invoke(new()
+        ///     {
+        ///         Id = "1234567890",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetInspectionCustomControlsResult> Invoke(GetInspectionCustomControlsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInspectionCustomControlsResult>("zpa:index/getInspectionCustomControls:getInspectionCustomControls", args ?? new GetInspectionCustomControlsInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-custom-controls)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-appprotection-controls-using-api)
+        /// 
+        /// Use the **zpa_inspection_custom_controls** data source to get information about an inspection custom control. This data source can be associated with an inspection profile.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Zpa.GetInspectionCustomControls.Invoke(new()
+        ///     {
+        ///         Name = "ZPA_Inspection_Custom_Control",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Zpa.GetInspectionCustomControls.Invoke(new()
+        ///     {
+        ///         Id = "1234567890",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetInspectionCustomControlsResult> Invoke(GetInspectionCustomControlsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetInspectionCustomControlsResult>("zpa:index/getInspectionCustomControls:getInspectionCustomControls", args ?? new GetInspectionCustomControlsInvokeArgs(), options.WithDefaults());
     }

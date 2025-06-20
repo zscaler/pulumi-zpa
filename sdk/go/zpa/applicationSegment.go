@@ -67,7 +67,9 @@ type ApplicationSegment struct {
 	SegmentGroupName          pulumi.StringOutput                      `pulumi:"segmentGroupName"`
 	SelectConnectorCloseToApp pulumi.BoolPtrOutput                     `pulumi:"selectConnectorCloseToApp"`
 	ServerGroups              ApplicationSegmentServerGroupArrayOutput `pulumi:"serverGroups"`
-	TcpKeepAlive              pulumi.StringOutput                      `pulumi:"tcpKeepAlive"`
+	// Share the Application Segment to microtenants
+	ShareToMicrotenants pulumi.StringArrayOutput `pulumi:"shareToMicrotenants"`
+	TcpKeepAlive        pulumi.StringOutput      `pulumi:"tcpKeepAlive"`
 	// tcp port range
 	TcpPortRange ApplicationSegmentTcpPortRangeArrayOutput `pulumi:"tcpPortRange"`
 	// TCP port ranges used to access the app.
@@ -147,7 +149,9 @@ type applicationSegmentState struct {
 	SegmentGroupName          *string                         `pulumi:"segmentGroupName"`
 	SelectConnectorCloseToApp *bool                           `pulumi:"selectConnectorCloseToApp"`
 	ServerGroups              []ApplicationSegmentServerGroup `pulumi:"serverGroups"`
-	TcpKeepAlive              *string                         `pulumi:"tcpKeepAlive"`
+	// Share the Application Segment to microtenants
+	ShareToMicrotenants []string `pulumi:"shareToMicrotenants"`
+	TcpKeepAlive        *string  `pulumi:"tcpKeepAlive"`
 	// tcp port range
 	TcpPortRange []ApplicationSegmentTcpPortRange `pulumi:"tcpPortRange"`
 	// TCP port ranges used to access the app.
@@ -195,7 +199,9 @@ type ApplicationSegmentState struct {
 	SegmentGroupName          pulumi.StringPtrInput
 	SelectConnectorCloseToApp pulumi.BoolPtrInput
 	ServerGroups              ApplicationSegmentServerGroupArrayInput
-	TcpKeepAlive              pulumi.StringPtrInput
+	// Share the Application Segment to microtenants
+	ShareToMicrotenants pulumi.StringArrayInput
+	TcpKeepAlive        pulumi.StringPtrInput
 	// tcp port range
 	TcpPortRange ApplicationSegmentTcpPortRangeArrayInput
 	// TCP port ranges used to access the app.
@@ -247,7 +253,9 @@ type applicationSegmentArgs struct {
 	SegmentGroupName          *string                         `pulumi:"segmentGroupName"`
 	SelectConnectorCloseToApp *bool                           `pulumi:"selectConnectorCloseToApp"`
 	ServerGroups              []ApplicationSegmentServerGroup `pulumi:"serverGroups"`
-	TcpKeepAlive              *string                         `pulumi:"tcpKeepAlive"`
+	// Share the Application Segment to microtenants
+	ShareToMicrotenants []string `pulumi:"shareToMicrotenants"`
+	TcpKeepAlive        *string  `pulumi:"tcpKeepAlive"`
 	// tcp port range
 	TcpPortRange []ApplicationSegmentTcpPortRange `pulumi:"tcpPortRange"`
 	// TCP port ranges used to access the app.
@@ -296,7 +304,9 @@ type ApplicationSegmentArgs struct {
 	SegmentGroupName          pulumi.StringPtrInput
 	SelectConnectorCloseToApp pulumi.BoolPtrInput
 	ServerGroups              ApplicationSegmentServerGroupArrayInput
-	TcpKeepAlive              pulumi.StringPtrInput
+	// Share the Application Segment to microtenants
+	ShareToMicrotenants pulumi.StringArrayInput
+	TcpKeepAlive        pulumi.StringPtrInput
 	// tcp port range
 	TcpPortRange ApplicationSegmentTcpPortRangeArrayInput
 	// TCP port ranges used to access the app.
@@ -500,6 +510,11 @@ func (o ApplicationSegmentOutput) SelectConnectorCloseToApp() pulumi.BoolPtrOutp
 
 func (o ApplicationSegmentOutput) ServerGroups() ApplicationSegmentServerGroupArrayOutput {
 	return o.ApplyT(func(v *ApplicationSegment) ApplicationSegmentServerGroupArrayOutput { return v.ServerGroups }).(ApplicationSegmentServerGroupArrayOutput)
+}
+
+// Share the Application Segment to microtenants
+func (o ApplicationSegmentOutput) ShareToMicrotenants() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApplicationSegment) pulumi.StringArrayOutput { return v.ShareToMicrotenants }).(pulumi.StringArrayOutput)
 }
 
 func (o ApplicationSegmentOutput) TcpKeepAlive() pulumi.StringOutput {

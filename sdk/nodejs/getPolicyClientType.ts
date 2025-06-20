@@ -52,7 +52,10 @@ export interface GetPolicyClientTypeResult {
     readonly zpnClientTypeIpAnchoring: string;
     readonly zpnClientTypeMachineTunnel: string;
     readonly zpnClientTypeSlogger: string;
+    readonly zpnClientTypeVdi: string;
     readonly zpnClientTypeZapp: string;
+    readonly zpnClientTypeZappPartner: string;
+    readonly zpnClientTypeZiaInspection: string;
 }
 /**
  * * [Official documentation](https://help.zscaler.com/zpa)

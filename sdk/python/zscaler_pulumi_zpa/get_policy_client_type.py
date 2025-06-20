@@ -27,7 +27,7 @@ class GetPolicyClientTypeResult:
     """
     A collection of values returned by getPolicyClientType.
     """
-    def __init__(__self__, id=None, zpn_client_type_branch_connector=None, zpn_client_type_browser_isolation=None, zpn_client_type_edge_connector=None, zpn_client_type_exporter=None, zpn_client_type_exporter_noauth=None, zpn_client_type_ip_anchoring=None, zpn_client_type_machine_tunnel=None, zpn_client_type_slogger=None, zpn_client_type_zapp=None):
+    def __init__(__self__, id=None, zpn_client_type_branch_connector=None, zpn_client_type_browser_isolation=None, zpn_client_type_edge_connector=None, zpn_client_type_exporter=None, zpn_client_type_exporter_noauth=None, zpn_client_type_ip_anchoring=None, zpn_client_type_machine_tunnel=None, zpn_client_type_slogger=None, zpn_client_type_vdi=None, zpn_client_type_zapp=None, zpn_client_type_zapp_partner=None, zpn_client_type_zia_inspection=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -55,9 +55,18 @@ class GetPolicyClientTypeResult:
         if zpn_client_type_slogger and not isinstance(zpn_client_type_slogger, str):
             raise TypeError("Expected argument 'zpn_client_type_slogger' to be a str")
         pulumi.set(__self__, "zpn_client_type_slogger", zpn_client_type_slogger)
+        if zpn_client_type_vdi and not isinstance(zpn_client_type_vdi, str):
+            raise TypeError("Expected argument 'zpn_client_type_vdi' to be a str")
+        pulumi.set(__self__, "zpn_client_type_vdi", zpn_client_type_vdi)
         if zpn_client_type_zapp and not isinstance(zpn_client_type_zapp, str):
             raise TypeError("Expected argument 'zpn_client_type_zapp' to be a str")
         pulumi.set(__self__, "zpn_client_type_zapp", zpn_client_type_zapp)
+        if zpn_client_type_zapp_partner and not isinstance(zpn_client_type_zapp_partner, str):
+            raise TypeError("Expected argument 'zpn_client_type_zapp_partner' to be a str")
+        pulumi.set(__self__, "zpn_client_type_zapp_partner", zpn_client_type_zapp_partner)
+        if zpn_client_type_zia_inspection and not isinstance(zpn_client_type_zia_inspection, str):
+            raise TypeError("Expected argument 'zpn_client_type_zia_inspection' to be a str")
+        pulumi.set(__self__, "zpn_client_type_zia_inspection", zpn_client_type_zia_inspection)
 
     @property
     @pulumi.getter
@@ -108,9 +117,24 @@ class GetPolicyClientTypeResult:
         return pulumi.get(self, "zpn_client_type_slogger")
 
     @property
+    @pulumi.getter(name="zpnClientTypeVdi")
+    def zpn_client_type_vdi(self) -> builtins.str:
+        return pulumi.get(self, "zpn_client_type_vdi")
+
+    @property
     @pulumi.getter(name="zpnClientTypeZapp")
     def zpn_client_type_zapp(self) -> builtins.str:
         return pulumi.get(self, "zpn_client_type_zapp")
+
+    @property
+    @pulumi.getter(name="zpnClientTypeZappPartner")
+    def zpn_client_type_zapp_partner(self) -> builtins.str:
+        return pulumi.get(self, "zpn_client_type_zapp_partner")
+
+    @property
+    @pulumi.getter(name="zpnClientTypeZiaInspection")
+    def zpn_client_type_zia_inspection(self) -> builtins.str:
+        return pulumi.get(self, "zpn_client_type_zia_inspection")
 
 
 class AwaitableGetPolicyClientTypeResult(GetPolicyClientTypeResult):
@@ -128,7 +152,10 @@ class AwaitableGetPolicyClientTypeResult(GetPolicyClientTypeResult):
             zpn_client_type_ip_anchoring=self.zpn_client_type_ip_anchoring,
             zpn_client_type_machine_tunnel=self.zpn_client_type_machine_tunnel,
             zpn_client_type_slogger=self.zpn_client_type_slogger,
-            zpn_client_type_zapp=self.zpn_client_type_zapp)
+            zpn_client_type_vdi=self.zpn_client_type_vdi,
+            zpn_client_type_zapp=self.zpn_client_type_zapp,
+            zpn_client_type_zapp_partner=self.zpn_client_type_zapp_partner,
+            zpn_client_type_zia_inspection=self.zpn_client_type_zia_inspection)
 
 
 def get_policy_client_type(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicyClientTypeResult:
@@ -172,7 +199,10 @@ def get_policy_client_type(opts: Optional[pulumi.InvokeOptions] = None) -> Await
         zpn_client_type_ip_anchoring=pulumi.get(__ret__, 'zpn_client_type_ip_anchoring'),
         zpn_client_type_machine_tunnel=pulumi.get(__ret__, 'zpn_client_type_machine_tunnel'),
         zpn_client_type_slogger=pulumi.get(__ret__, 'zpn_client_type_slogger'),
-        zpn_client_type_zapp=pulumi.get(__ret__, 'zpn_client_type_zapp'))
+        zpn_client_type_vdi=pulumi.get(__ret__, 'zpn_client_type_vdi'),
+        zpn_client_type_zapp=pulumi.get(__ret__, 'zpn_client_type_zapp'),
+        zpn_client_type_zapp_partner=pulumi.get(__ret__, 'zpn_client_type_zapp_partner'),
+        zpn_client_type_zia_inspection=pulumi.get(__ret__, 'zpn_client_type_zia_inspection'))
 def get_policy_client_type_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyClientTypeResult]:
     """
     * [Official documentation](https://help.zscaler.com/zpa)
@@ -213,4 +243,7 @@ def get_policy_client_type_output(opts: Optional[Union[pulumi.InvokeOptions, pul
         zpn_client_type_ip_anchoring=pulumi.get(__response__, 'zpn_client_type_ip_anchoring'),
         zpn_client_type_machine_tunnel=pulumi.get(__response__, 'zpn_client_type_machine_tunnel'),
         zpn_client_type_slogger=pulumi.get(__response__, 'zpn_client_type_slogger'),
-        zpn_client_type_zapp=pulumi.get(__response__, 'zpn_client_type_zapp')))
+        zpn_client_type_vdi=pulumi.get(__response__, 'zpn_client_type_vdi'),
+        zpn_client_type_zapp=pulumi.get(__response__, 'zpn_client_type_zapp'),
+        zpn_client_type_zapp_partner=pulumi.get(__response__, 'zpn_client_type_zapp_partner'),
+        zpn_client_type_zia_inspection=pulumi.get(__response__, 'zpn_client_type_zia_inspection')))

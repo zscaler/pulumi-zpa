@@ -135,6 +135,12 @@ namespace zscaler.PulumiPackage.Zpa
         [Output("serverGroups")]
         public Output<ImmutableArray<Outputs.ApplicationSegmentServerGroup>> ServerGroups { get; private set; } = null!;
 
+        /// <summary>
+        /// Share the Application Segment to microtenants
+        /// </summary>
+        [Output("shareToMicrotenants")]
+        public Output<ImmutableArray<string>> ShareToMicrotenants { get; private set; } = null!;
+
         [Output("tcpKeepAlive")]
         public Output<string> TcpKeepAlive { get; private set; } = null!;
 
@@ -326,6 +332,18 @@ namespace zscaler.PulumiPackage.Zpa
             set => _serverGroups = value;
         }
 
+        [Input("shareToMicrotenants")]
+        private InputList<string>? _shareToMicrotenants;
+
+        /// <summary>
+        /// Share the Application Segment to microtenants
+        /// </summary>
+        public InputList<string> ShareToMicrotenants
+        {
+            get => _shareToMicrotenants ?? (_shareToMicrotenants = new InputList<string>());
+            set => _shareToMicrotenants = value;
+        }
+
         [Input("tcpKeepAlive")]
         public Input<string>? TcpKeepAlive { get; set; }
 
@@ -500,6 +518,18 @@ namespace zscaler.PulumiPackage.Zpa
         {
             get => _serverGroups ?? (_serverGroups = new InputList<Inputs.ApplicationSegmentServerGroupGetArgs>());
             set => _serverGroups = value;
+        }
+
+        [Input("shareToMicrotenants")]
+        private InputList<string>? _shareToMicrotenants;
+
+        /// <summary>
+        /// Share the Application Segment to microtenants
+        /// </summary>
+        public InputList<string> ShareToMicrotenants
+        {
+            get => _shareToMicrotenants ?? (_shareToMicrotenants = new InputList<string>());
+            set => _shareToMicrotenants = value;
         }
 
         [Input("tcpKeepAlive")]

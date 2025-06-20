@@ -25,8 +25,6 @@ setup(name='zscaler_pulumi_zpa',
       long_description=readme(),
       long_description_content_type='text/markdown',
       keywords='pulumi zpa zscaler category/cloud',
-      author="Zscaler, Inc.",
-      author_email='devrel@zscaler.com',
       url='https://www.zscaler.com',
       project_urls={
           'Repository': 'https://github.com/zscaler/pulumi-zpa'
