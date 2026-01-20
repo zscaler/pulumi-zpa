@@ -217,6 +217,7 @@ func Provider() tfbridge.ProviderInfo {
 			"zpa_user_portal_aup":                          {Tok: zpaResource(zpaMod, "UserPortalAUP")},
 			"zpa_user_portal_controller":                   {Tok: zpaResource(zpaMod, "UserPortalController")},
 			"zpa_user_portal_link":                         {Tok: zpaResource(zpaMod, "UserPortalLink")},
+			"zpa_zia_cloud_config":                         {Tok: zpaResource(zpaMod, "ZIACloudConfig")},
 			"zpa_provisioning_key": {Tok: zpaResource(zpaMod, "ProvisioningKey"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					// Rename field to prevent this error in the DotNet SDK generation:
@@ -419,6 +420,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"zpa_workload_tag_group": {
 				Tok: zpaDataSource(zpaMod, "getWorkloadTagGroup"),
+			},
+			"zpa_zia_cloud_config": {
+				Tok: zpaDataSource(zpaMod, "getZIACloudConfig"),
 			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
