@@ -78,7 +78,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<bool?> FqdnDnsCheck { get; private set; } = null!;
 
         [Output("healthCheckType")]
-        public Output<string?> HealthCheckType { get; private set; } = null!;
+        public Output<string> HealthCheckType { get; private set; } = null!;
 
         /// <summary>
         /// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
@@ -99,8 +99,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<bool?> IpAnchored { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-        /// connectors.
+        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
         /// </summary>
         [Output("isCnameEnabled")]
         public Output<bool> IsCnameEnabled { get; private set; } = null!;
@@ -170,6 +169,15 @@ namespace zscaler.PulumiPackage.Zpa
 
         [Output("useInDrMode")]
         public Output<bool?> UseInDrMode { get; private set; } = null!;
+
+        /// <summary>
+        /// If set to true, designates the application segment for weighted load balancing
+        /// </summary>
+        [Output("weightedLoadBalancing")]
+        public Output<bool?> WeightedLoadBalancing { get; private set; } = null!;
+
+        [Output("zpnErIds")]
+        public Output<ImmutableArray<Outputs.ApplicationSegmentZpnErId>> ZpnErIds { get; private set; } = null!;
 
 
         /// <summary>
@@ -291,8 +299,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? IpAnchored { get; set; }
 
         /// <summary>
-        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-        /// connectors.
+        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
         /// </summary>
         [Input("isCnameEnabled")]
         public Input<bool>? IsCnameEnabled { get; set; }
@@ -398,6 +405,20 @@ namespace zscaler.PulumiPackage.Zpa
         [Input("useInDrMode")]
         public Input<bool>? UseInDrMode { get; set; }
 
+        /// <summary>
+        /// If set to true, designates the application segment for weighted load balancing
+        /// </summary>
+        [Input("weightedLoadBalancing")]
+        public Input<bool>? WeightedLoadBalancing { get; set; }
+
+        [Input("zpnErIds")]
+        private InputList<Inputs.ApplicationSegmentZpnErIdArgs>? _zpnErIds;
+        public InputList<Inputs.ApplicationSegmentZpnErIdArgs> ZpnErIds
+        {
+            get => _zpnErIds ?? (_zpnErIds = new InputList<Inputs.ApplicationSegmentZpnErIdArgs>());
+            set => _zpnErIds = value;
+        }
+
         public ApplicationSegmentArgs()
         {
         }
@@ -479,8 +500,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? IpAnchored { get; set; }
 
         /// <summary>
-        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-        /// connectors.
+        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
         /// </summary>
         [Input("isCnameEnabled")]
         public Input<bool>? IsCnameEnabled { get; set; }
@@ -585,6 +605,20 @@ namespace zscaler.PulumiPackage.Zpa
 
         [Input("useInDrMode")]
         public Input<bool>? UseInDrMode { get; set; }
+
+        /// <summary>
+        /// If set to true, designates the application segment for weighted load balancing
+        /// </summary>
+        [Input("weightedLoadBalancing")]
+        public Input<bool>? WeightedLoadBalancing { get; set; }
+
+        [Input("zpnErIds")]
+        private InputList<Inputs.ApplicationSegmentZpnErIdGetArgs>? _zpnErIds;
+        public InputList<Inputs.ApplicationSegmentZpnErIdGetArgs> ZpnErIds
+        {
+            get => _zpnErIds ?? (_zpnErIds = new InputList<Inputs.ApplicationSegmentZpnErIdGetArgs>());
+            set => _zpnErIds = value;
+        }
 
         public ApplicationSegmentState()
         {

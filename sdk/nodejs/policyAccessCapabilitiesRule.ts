@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * const thisIdPController = zpa.getIdPController({
+ * const _this = zpa.getIdPController({
  *     name: "IdP_Users",
  * });
  * const emailUserSso = zpa.getSAMLAttribute({
@@ -39,7 +39,8 @@ import * as utilities from "./utilities";
  *     name: "B000",
  *     idpName: "IdP_Users",
  * });
- * const thisPolicyAccessCapabilitiesRule = new zpa.PolicyAccessCapabilitiesRule("thisPolicyAccessCapabilitiesRule", {
+ * const thisPolicyAccessCapabilitiesRule = new zpa.PolicyAccessCapabilitiesRule("this", {
+ *     name: "Example",
  *     description: "Example",
  *     action: "CHECK_CAPABILITIES",
  *     privilegedCapabilities: {
@@ -71,11 +72,11 @@ import * as utilities from "./utilities";
  *                 entryValues: [
  *                     {
  *                         rhs: a000.then(a000 => a000.id),
- *                         lhs: thisIdPController.then(thisIdPController => thisIdPController.id),
+ *                         lhs: _this.then(_this => _this.id),
  *                     },
  *                     {
  *                         rhs: b000.then(b000 => b000.id),
- *                         lhs: thisIdPController.then(thisIdPController => thisIdPController.id),
+ *                         lhs: _this.then(_this => _this.id),
  *                     },
  *                 ],
  *             },
@@ -139,22 +140,22 @@ export class PolicyAccessCapabilitiesRule extends pulumi.CustomResource {
     /**
      * This is for providing the rule action. Supported value: `CHECK_CAPABILITIES`
      */
-    public readonly action!: pulumi.Output<string | undefined>;
+    declare public readonly action: pulumi.Output<string | undefined>;
     /**
      * This is for proviidng the set of conditions for the policy.
      */
-    public readonly conditions!: pulumi.Output<outputs.PolicyAccessCapabilitiesRuleCondition[]>;
+    declare public readonly conditions: pulumi.Output<outputs.PolicyAccessCapabilitiesRuleCondition[]>;
     /**
      * This is the description of the access policy.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly microtenantId!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly microtenantId: pulumi.Output<string>;
     /**
      * This is the name of the policy rule.
      */
-    public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly policySetId!: pulumi.Output<string>;
-    public readonly privilegedCapabilities!: pulumi.Output<outputs.PolicyAccessCapabilitiesRulePrivilegedCapabilities>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly policySetId: pulumi.Output<string>;
+    declare public readonly privilegedCapabilities: pulumi.Output<outputs.PolicyAccessCapabilitiesRulePrivilegedCapabilities>;
 
     /**
      * Create a PolicyAccessCapabilitiesRule resource with the given unique name, arguments, and options.
@@ -169,21 +170,21 @@ export class PolicyAccessCapabilitiesRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyAccessCapabilitiesRuleState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["conditions"] = state ? state.conditions : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policySetId"] = state ? state.policySetId : undefined;
-            resourceInputs["privilegedCapabilities"] = state ? state.privilegedCapabilities : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["conditions"] = state?.conditions;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["microtenantId"] = state?.microtenantId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policySetId"] = state?.policySetId;
+            resourceInputs["privilegedCapabilities"] = state?.privilegedCapabilities;
         } else {
             const args = argsOrState as PolicyAccessCapabilitiesRuleArgs | undefined;
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["conditions"] = args ? args.conditions : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["privilegedCapabilities"] = args ? args.privilegedCapabilities : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["conditions"] = args?.conditions;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["microtenantId"] = args?.microtenantId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["privilegedCapabilities"] = args?.privilegedCapabilities;
             resourceInputs["policySetId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

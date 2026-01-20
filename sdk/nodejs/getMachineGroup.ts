@@ -20,6 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Machine Group Data Source by name
  * const example = zpa.getMachineGroup({
  *     name: "MGR01",
  * });
@@ -29,6 +30,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Machine Group Data Source by id
  * const example = zpa.getMachineGroup({
  *     id: "1234567890",
  * });
@@ -84,6 +86,7 @@ export interface GetMachineGroupResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Machine Group Data Source by name
  * const example = zpa.getMachineGroup({
  *     name: "MGR01",
  * });
@@ -93,6 +96,7 @@ export interface GetMachineGroupResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Machine Group Data Source by id
  * const example = zpa.getMachineGroup({
  *     id: "1234567890",
  * });

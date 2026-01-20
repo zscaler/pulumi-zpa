@@ -20,7 +20,7 @@ namespace zscaler.PulumiPackage.Zpa
         ///     - ``zpa.PolicyAccessIsolationRule``
         ///     - ``zpa.PolicyAccessInspectionRule``
         /// 
-        /// The ``object_type`` attribute must be defined as "PLATFORM" in the policy operand condition. To learn more see the To learn more see the [Getting Platform Types for a Customer](https://help.zscaler.com/zpa/configuring-access-policies-using-api#getPlatformTypes)
+        /// The ``ObjectType`` attribute must be defined as "PLATFORM" in the policy operand condition. To learn more see the To learn more see the [Getting Platform Types for a Customer](https://help.zscaler.com/zpa/configuring-access-policies-using-api#getPlatformTypes)
         /// 
         /// &gt; **NOTE** By Default the ZPA provider will return all platform types
         /// 
@@ -50,7 +50,7 @@ namespace zscaler.PulumiPackage.Zpa
         ///     - ``zpa.PolicyAccessIsolationRule``
         ///     - ``zpa.PolicyAccessInspectionRule``
         /// 
-        /// The ``object_type`` attribute must be defined as "PLATFORM" in the policy operand condition. To learn more see the To learn more see the [Getting Platform Types for a Customer](https://help.zscaler.com/zpa/configuring-access-policies-using-api#getPlatformTypes)
+        /// The ``ObjectType`` attribute must be defined as "PLATFORM" in the policy operand condition. To learn more see the To learn more see the [Getting Platform Types for a Customer](https://help.zscaler.com/zpa/configuring-access-policies-using-api#getPlatformTypes)
         /// 
         /// &gt; **NOTE** By Default the ZPA provider will return all platform types
         /// 
@@ -80,7 +80,7 @@ namespace zscaler.PulumiPackage.Zpa
         ///     - ``zpa.PolicyAccessIsolationRule``
         ///     - ``zpa.PolicyAccessInspectionRule``
         /// 
-        /// The ``object_type`` attribute must be defined as "PLATFORM" in the policy operand condition. To learn more see the To learn more see the [Getting Platform Types for a Customer](https://help.zscaler.com/zpa/configuring-access-policies-using-api#getPlatformTypes)
+        /// The ``ObjectType`` attribute must be defined as "PLATFORM" in the policy operand condition. To learn more see the To learn more see the [Getting Platform Types for a Customer](https://help.zscaler.com/zpa/configuring-access-policies-using-api#getPlatformTypes)
         /// 
         /// &gt; **NOTE** By Default the ZPA provider will return all platform types
         /// 

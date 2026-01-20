@@ -30,10 +30,11 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA SAML Attribute Data Source
         ///     var emailUserSso = Zpa.GetSAMLAttribute.Invoke(new()
         ///     {
-        ///         IdpName = "idp_name",
         ///         Name = "Email_User SSO",
+        ///         IdpName = "idp_name",
         ///     });
         /// 
         /// });
@@ -47,10 +48,11 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA SAML Attribute Data Source
         ///     var department = Zpa.GetSAMLAttribute.Invoke(new()
         ///     {
-        ///         IdpName = "idp_name",
         ///         Name = "DepartmentName_IdP_Name_Users",
+        ///         IdpName = "idp_name",
         ///     });
         /// 
         /// });
@@ -77,10 +79,11 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA SAML Attribute Data Source
         ///     var emailUserSso = Zpa.GetSAMLAttribute.Invoke(new()
         ///     {
-        ///         IdpName = "idp_name",
         ///         Name = "Email_User SSO",
+        ///         IdpName = "idp_name",
         ///     });
         /// 
         /// });
@@ -94,10 +97,11 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA SAML Attribute Data Source
         ///     var department = Zpa.GetSAMLAttribute.Invoke(new()
         ///     {
-        ///         IdpName = "idp_name",
         ///         Name = "DepartmentName_IdP_Name_Users",
+        ///         IdpName = "idp_name",
         ///     });
         /// 
         /// });
@@ -124,10 +128,11 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA SAML Attribute Data Source
         ///     var emailUserSso = Zpa.GetSAMLAttribute.Invoke(new()
         ///     {
-        ///         IdpName = "idp_name",
         ///         Name = "Email_User SSO",
+        ///         IdpName = "idp_name",
         ///     });
         /// 
         /// });
@@ -141,10 +146,11 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA SAML Attribute Data Source
         ///     var department = Zpa.GetSAMLAttribute.Invoke(new()
         ///     {
-        ///         IdpName = "idp_name",
         ///         Name = "DepartmentName_IdP_Name_Users",
+        ///         IdpName = "idp_name",
         ///     });
         /// 
         /// });

@@ -16,7 +16,116 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// The **zpa_policy_access_rule** resource creates and manages policy access rule in the Zscaler Private Access cloud.
     /// 
-    ///   ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+    ///   ⚠️ **WARNING:**: The attribute ``RuleOrder`` is now deprecated in favor of the new resource  ``PolicyAccessRuleReorder``
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Pulumi.Zpa;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Get IdP ID
+    ///     var idpName = Zpa.GetIdPController.Invoke(new()
+    ///     {
+    ///         Name = "IdP_Name",
+    ///     });
+    /// 
+    ///     // Get SCIM Group attribute ID
+    ///     var engineering = Zpa.GetSCIMGroups.Invoke(new()
+    ///     {
+    ///         Name = "Engineering",
+    ///         IdpName = "IdP_Name",
+    ///     });
+    /// 
+    ///     //Create Policy Access Rule
+    ///     var @this = new Zpa.PolicyAccessRule("this", new()
+    ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         Action = "ALLOW",
+    ///         Operator = "AND",
+    ///         Conditions = new[]
+    ///         {
+    ///             new Zpa.Inputs.PolicyAccessRuleConditionArgs
+    ///             {
+    ///                 Operator = "OR",
+    ///                 Operands = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.PolicyAccessRuleConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "APP",
+    ///                         Lhs = "id",
+    ///                         Rhs = thisZpaApplicationSegment.Id,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Zpa.Inputs.PolicyAccessRuleConditionArgs
+    ///             {
+    ///                 Operator = "OR",
+    ///                 Operands = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.PolicyAccessRuleConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "SCIM_GROUP",
+    ///                         Lhs = idpName.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                         Rhs = engineering.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Zpa.Inputs.PolicyAccessRuleConditionArgs
+    ///             {
+    ///                 Operator = "OR",
+    ///                 Operands = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.PolicyAccessRuleConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "CHROME_ENTERPRISE",
+    ///                         EntryValues = new[]
+    ///                         {
+    ///                             
+    ///                             {
+    ///                                 { "lhs", "managed" },
+    ///                                 { "rhs", "true" },
+    ///                             },
+    ///                             
+    ///                             {
+    ///                                 { "lhs", "managed" },
+    ///                                 { "rhs", "false" },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## LHS and RHS Values
+    /// 
+    /// | Object Type | LHS| RHS
+    /// |----------|-----------|----------
+    /// | APP | ``"id"`` | ``ApplicationSegmentId`` |
+    /// | APP_GROUP | ``"id"`` | ``SegmentGroupId``|
+    /// | CLIENT_TYPE | ``"id"`` | ``ZpnClientTypeZappl``, ``ZpnClientTypeExporter``, ``ZpnClientTypeBrowserIsolation``, ``ZpnClientTypeIpAnchoring``, ``ZpnClientTypeEdgeConnector``, ``ZpnClientTypeBranchConnector``,  ``ZpnClientTypeZappPartner``, ``ZpnClientTypeZapp``  |
+    /// | EDGE_CONNECTOR_GROUP | ``"id"`` | ``&lt;edge_connector_id&gt;`` |
+    /// | IDP | ``"id"`` | ``IdentityProviderId`` |
+    /// | SAML | ``SamlAttributeId``  | ``AttributeValueToMatch`` |
+    /// | SCIM | ``ScimAttributeId``  | ``AttributeValueToMatch``  |
+    /// | SCIM_GROUP | ``ScimGroupAttributeId``  | ``AttributeValueToMatch``  |
+    /// | PLATFORM | ``Mac``, ``Ios``, ``Windows``, ``Android``, ``Linux`` | ``"true"`` / ``"false"`` |
+    /// | MACHINE_GRP | ``"id"`` | ``MachineGroupId`` |
+    /// | POSTURE | ``PostureUdid``  | ``"true"`` / ``"false"`` |
+    /// | TRUSTED_NETWORK | ``NetworkId``  | ``"true"`` |
+    /// | COUNTRY_CODE | [2 Letter ISO3166 Alpha2](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)  | ``"true"`` / ``"false"`` |
+    /// | RISK_FACTOR_TYPE | ``ZIA``  | ``"UNKNOWN", "LOW", "MEDIUM", "HIGH", "CRITICAL"`` |
+    /// | CHROME_ENTERPRISE | ``Managed``  | ``"true" / "false"`` |
     /// 
     /// ## Import
     /// 
@@ -57,7 +166,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<ImmutableArray<Outputs.PolicyAccessRuleAppServerGroup>> AppServerGroups { get; private set; } = null!;
 
         [Output("bypassDefaultRule")]
-        public Output<bool?> BypassDefaultRule { get; private set; } = null!;
+        public Output<bool> BypassDefaultRule { get; private set; } = null!;
 
         /// <summary>
         /// This is for proviidng the set of conditions for the policy.
@@ -75,7 +184,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// This is for providing a customer message for the user.
         /// </summary>
         [Output("defaultRule")]
-        public Output<bool?> DefaultRule { get; private set; } = null!;
+        public Output<bool> DefaultRule { get; private set; } = null!;
 
         /// <summary>
         /// This is the description of the access policy rule.
@@ -102,8 +211,8 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<string> Operator { get; private set; } = null!;
 
         /// <summary>
-        /// - (String) Use zpa*policy*type data source to retrieve the necessary policy Set ID `policy_set_id`
-        /// &gt; **NOTE** As of v3.2.0 the `policy_set_id` attribute is now optional, and will be automatically determined based on the policy type being configured. The attribute is being kept for backwards compatibility, but can be safely removed from existing configurations.
+        /// - (String) Use zpa*policy*type data source to retrieve the necessary policy Set ID `PolicySetId`
+        /// &gt; **NOTE** As of v3.2.0 the `PolicySetId` attribute is now optional, and will be automatically determined based on the policy type being configured. The attribute is being kept for backwards compatibility, but can be safely removed from existing configurations.
         /// </summary>
         [Output("policySetId")]
         public Output<string> PolicySetId { get; private set; } = null!;
@@ -115,7 +224,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<string> Priority { get; private set; } = null!;
 
         [Output("reauthDefaultRule")]
-        public Output<bool?> ReauthDefaultRule { get; private set; } = null!;
+        public Output<bool> ReauthDefaultRule { get; private set; } = null!;
 
         [Output("reauthIdleTimeout")]
         public Output<string?> ReauthIdleTimeout { get; private set; } = null!;
@@ -266,8 +375,8 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<string>? Operator { get; set; }
 
         /// <summary>
-        /// - (String) Use zpa*policy*type data source to retrieve the necessary policy Set ID `policy_set_id`
-        /// &gt; **NOTE** As of v3.2.0 the `policy_set_id` attribute is now optional, and will be automatically determined based on the policy type being configured. The attribute is being kept for backwards compatibility, but can be safely removed from existing configurations.
+        /// - (String) Use zpa*policy*type data source to retrieve the necessary policy Set ID `PolicySetId`
+        /// &gt; **NOTE** As of v3.2.0 the `PolicySetId` attribute is now optional, and will be automatically determined based on the policy type being configured. The attribute is being kept for backwards compatibility, but can be safely removed from existing configurations.
         /// </summary>
         [Input("policySetId")]
         public Input<string>? PolicySetId { get; set; }
@@ -391,8 +500,8 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<string>? Operator { get; set; }
 
         /// <summary>
-        /// - (String) Use zpa*policy*type data source to retrieve the necessary policy Set ID `policy_set_id`
-        /// &gt; **NOTE** As of v3.2.0 the `policy_set_id` attribute is now optional, and will be automatically determined based on the policy type being configured. The attribute is being kept for backwards compatibility, but can be safely removed from existing configurations.
+        /// - (String) Use zpa*policy*type data source to retrieve the necessary policy Set ID `PolicySetId`
+        /// &gt; **NOTE** As of v3.2.0 the `PolicySetId` attribute is now optional, and will be automatically determined based on the policy type being configured. The attribute is being kept for backwards compatibility, but can be safely removed from existing configurations.
         /// </summary>
         [Input("policySetId")]
         public Input<string>? PolicySetId { get; set; }

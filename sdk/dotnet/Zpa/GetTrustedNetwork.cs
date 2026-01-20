@@ -36,6 +36,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Trusted Network Data Source
         ///     var example = Zpa.GetTrustedNetwork.Invoke(new()
         ///     {
         ///         Name = "trusted_network_name",
@@ -54,6 +55,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetTrustedNetwork.Invoke(new()
         ///     {
         ///         Name = "Corporate-Network (zscalertwo.net)",
@@ -93,6 +95,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Trusted Network Data Source
         ///     var example = Zpa.GetTrustedNetwork.Invoke(new()
         ///     {
         ///         Name = "trusted_network_name",
@@ -111,6 +114,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetTrustedNetwork.Invoke(new()
         ///     {
         ///         Name = "Corporate-Network (zscalertwo.net)",
@@ -150,6 +154,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Trusted Network Data Source
         ///     var example = Zpa.GetTrustedNetwork.Invoke(new()
         ///     {
         ///         Name = "trusted_network_name",
@@ -168,6 +173,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetTrustedNetwork.Invoke(new()
         ///     {
         ///         Name = "Corporate-Network (zscalertwo.net)",
@@ -193,6 +199,9 @@ namespace zscaler.PulumiPackage.Zpa
         [Input("name")]
         public string? Name { get; set; }
 
+        [Input("networkId")]
+        public string? NetworkId { get; set; }
+
         public GetTrustedNetworkArgs()
         {
         }
@@ -207,6 +216,9 @@ namespace zscaler.PulumiPackage.Zpa
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("networkId")]
+        public Input<string>? NetworkId { get; set; }
+
         public GetTrustedNetworkInvokeArgs()
         {
         }
@@ -220,8 +232,8 @@ namespace zscaler.PulumiPackage.Zpa
         public readonly string CreationTime;
         public readonly string Domain;
         public readonly string? Id;
+        public readonly string ModifiedBy;
         public readonly string ModifiedTime;
-        public readonly string Modifiedby;
         public readonly string? Name;
         public readonly string NetworkId;
         public readonly string ZscalerCloud;
@@ -234,9 +246,9 @@ namespace zscaler.PulumiPackage.Zpa
 
             string? id,
 
-            string modifiedTime,
+            string modifiedBy,
 
-            string modifiedby,
+            string modifiedTime,
 
             string? name,
 
@@ -247,8 +259,8 @@ namespace zscaler.PulumiPackage.Zpa
             CreationTime = creationTime;
             Domain = domain;
             Id = id;
+            ModifiedBy = modifiedBy;
             ModifiedTime = modifiedTime;
-            Modifiedby = modifiedby;
             Name = name;
             NetworkId = networkId;
             ZscalerCloud = zscalerCloud;

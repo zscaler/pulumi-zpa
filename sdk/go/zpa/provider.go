@@ -169,13 +169,11 @@ type providerArgs struct {
 	MicrotenantId *string `pulumi:"microtenantId"`
 	// minimum seconds to wait when rate limit is hit. We use exponential backoffs when backoff is enabled.
 	MinWaitSeconds *int `pulumi:"minWaitSeconds"`
-	// Number of concurrent requests to make within a resource where bulk operations are not possible. Take note of
-	// https://help.zscaler.com/zpa/understanding-rate-limiting.
+	// Number of concurrent requests to make within a resource where bulk operations are not possible. Take note of https://help.zscaler.com/zpa/understanding-rate-limiting.
 	Parallelism *int `pulumi:"parallelism"`
 	// zpa private key
 	PrivateKey *string `pulumi:"privateKey"`
-	// Timeout for single request (in seconds) which is made to Zscaler, the default is `0` (means no limit is set). The
-	// maximum value can be `300`.
+	// Timeout for single request (in seconds) which is made to Zscaler, the default is `0` (means no limit is set). The maximum value can be `300`.
 	RequestTimeout *int `pulumi:"requestTimeout"`
 	// Enables interaction with the ZPA legacy API framework
 	UseLegacyClient *bool `pulumi:"useLegacyClient"`
@@ -213,13 +211,11 @@ type ProviderArgs struct {
 	MicrotenantId pulumi.StringPtrInput
 	// minimum seconds to wait when rate limit is hit. We use exponential backoffs when backoff is enabled.
 	MinWaitSeconds pulumi.IntPtrInput
-	// Number of concurrent requests to make within a resource where bulk operations are not possible. Take note of
-	// https://help.zscaler.com/zpa/understanding-rate-limiting.
+	// Number of concurrent requests to make within a resource where bulk operations are not possible. Take note of https://help.zscaler.com/zpa/understanding-rate-limiting.
 	Parallelism pulumi.IntPtrInput
 	// zpa private key
 	PrivateKey pulumi.StringPtrInput
-	// Timeout for single request (in seconds) which is made to Zscaler, the default is `0` (means no limit is set). The
-	// maximum value can be `300`.
+	// Timeout for single request (in seconds) which is made to Zscaler, the default is `0` (means no limit is set). The maximum value can be `300`.
 	RequestTimeout pulumi.IntPtrInput
 	// Enables interaction with the ZPA legacy API framework
 	UseLegacyClient pulumi.BoolPtrInput

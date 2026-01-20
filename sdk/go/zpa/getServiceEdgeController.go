@@ -32,6 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Service Edge Controller Data Source
 //			_, err := zpa.GetServiceEdgeController(ctx, &zpa.GetServiceEdgeControllerArgs{
 //				Name: pulumi.StringRef("On-Prem-PSE"),
 //			}, nil)
@@ -55,6 +56,7 @@ func GetServiceEdgeController(ctx *pulumi.Context, args *GetServiceEdgeControlle
 
 // A collection of arguments for invoking getServiceEdgeController.
 type GetServiceEdgeControllerArgs struct {
+	Id              *string `pulumi:"id"`
 	MicrotenantId   *string `pulumi:"microtenantId"`
 	MicrotenantName *string `pulumi:"microtenantName"`
 	Name            *string `pulumi:"name"`
@@ -118,6 +120,7 @@ func GetServiceEdgeControllerOutput(ctx *pulumi.Context, args GetServiceEdgeCont
 
 // A collection of arguments for invoking getServiceEdgeController.
 type GetServiceEdgeControllerOutputArgs struct {
+	Id              pulumi.StringPtrInput `pulumi:"id"`
 	MicrotenantId   pulumi.StringPtrInput `pulumi:"microtenantId"`
 	MicrotenantName pulumi.StringPtrInput `pulumi:"microtenantName"`
 	Name            pulumi.StringPtrInput `pulumi:"name"`

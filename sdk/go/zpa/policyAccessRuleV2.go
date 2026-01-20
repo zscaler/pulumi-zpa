@@ -34,12 +34,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thisIdPController, err := zpa.GetIdPController(ctx, &zpa.GetIdPControllerArgs{
+//			// Retrieve Policy Types
+//			// Retrieve Identity Provider ID
+//			this, err := zpa.GetIdPController(ctx, &zpa.GetIdPControllerArgs{
 //				Name: pulumi.StringRef("Idp_Name"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			// Retrieve SAML Attribute ID
 //			emailUserSso, err := zpa.GetSAMLAttribute(ctx, &zpa.GetSAMLAttributeArgs{
 //				Name:    pulumi.StringRef("Email_Users"),
 //				IdpName: pulumi.StringRef("Idp_Name"),
@@ -47,6 +50,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Retrieve SAML Attribute ID
 //			groupUser, err := zpa.GetSAMLAttribute(ctx, &zpa.GetSAMLAttributeArgs{
 //				Name:    pulumi.StringRef("GroupName_Users"),
 //				IdpName: pulumi.StringRef("Idp_Name"),
@@ -54,6 +58,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Retrieve SCIM Group ID
 //			a000, err := zpa.GetSCIMGroups(ctx, &zpa.GetSCIMGroupsArgs{
 //				Name:    pulumi.StringRef("A000"),
 //				IdpName: pulumi.StringRef("Idp_Name"),
@@ -61,6 +66,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Retrieve SCIM Group ID
 //			b000, err := zpa.GetSCIMGroups(ctx, &zpa.GetSCIMGroupsArgs{
 //				Name:    pulumi.StringRef("B000"),
 //				IdpName: pulumi.StringRef("Idp_Name"),
@@ -69,7 +75,8 @@ import (
 //				return err
 //			}
 //			// Create Segment Group
-//			thisSegmentGroup, err := zpa.NewSegmentGroup(ctx, "thisSegmentGroup", &zpa.SegmentGroupArgs{
+//			thisSegmentGroup, err := zpa.NewSegmentGroup(ctx, "this", &zpa.SegmentGroupArgs{
+//				Name:        pulumi.String("Example"),
 //				Description: pulumi.String("Example"),
 //				Enabled:     pulumi.Bool(true),
 //			})
@@ -77,7 +84,8 @@ import (
 //				return err
 //			}
 //			// Create Policy Access Rule V2
-//			_, err = zpa.NewPolicyAccessRuleV2(ctx, "thisPolicyAccessRuleV2", &zpa.PolicyAccessRuleV2Args{
+//			_, err = zpa.NewPolicyAccessRuleV2(ctx, "this", &zpa.PolicyAccessRuleV2Args{
+//				Name:        pulumi.String("Example"),
 //				Description: pulumi.String("Example"),
 //				Action:      pulumi.String("ALLOW"),
 //				Conditions: zpa.PolicyAccessRuleV2ConditionArray{
@@ -113,11 +121,11 @@ import (
 //								EntryValues: zpa.PolicyAccessRuleV2ConditionOperandEntryValueArray{
 //									&zpa.PolicyAccessRuleV2ConditionOperandEntryValueArgs{
 //										Rhs: pulumi.String(a000.Id),
-//										Lhs: pulumi.String(thisIdPController.Id),
+//										Lhs: pulumi.String(this.Id),
 //									},
 //									&zpa.PolicyAccessRuleV2ConditionOperandEntryValueArgs{
 //										Rhs: pulumi.String(b000.Id),
-//										Lhs: pulumi.String(thisIdPController.Id),
+//										Lhs: pulumi.String(this.Id),
 //									},
 //								},
 //							},
@@ -218,6 +226,177 @@ import (
 //
 // ```
 //
+// ### Configure Extranet Access Rule
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := zpa.GetLocationController(ctx, &zpa.GetLocationControllerArgs{
+//				Name:      "ExtranetLocation01 | zscalerbeta.net",
+//				ZiaErName: "NewExtranet 8432",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			thisGetLocationGroupController, err := zpa.GetLocationGroupController(ctx, &zpa.GetLocationGroupControllerArgs{
+//				LocationName: "ExtranetLocation01",
+//				ZiaErName:    "NewExtranet 8432",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			thisGetExtranetResourcePartner, err := zpa.GetExtranetResourcePartner(ctx, &zpa.GetExtranetResourcePartnerArgs{
+//				Name: pulumi.StringRef("NewExtranet 8432"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = zpa.NewPolicyAccessRuleV2(ctx, "this", &zpa.PolicyAccessRuleV2Args{
+//				Name:            pulumi.String("Extranet_Rule01"),
+//				Description:     pulumi.String("Extranet_Rule01"),
+//				Action:          pulumi.String("ALLOW"),
+//				CustomMsg:       pulumi.String("Test"),
+//				Operator:        pulumi.String("AND"),
+//				ExtranetEnabled: pulumi.Bool(true),
+//				ExtranetDtos: zpa.PolicyAccessRuleV2ExtranetDtoArray{
+//					&zpa.PolicyAccessRuleV2ExtranetDtoArgs{
+//						ZpnErId: pulumi.String(thisGetExtranetResourcePartner.Id),
+//						LocationDtos: zpa.PolicyAccessRuleV2ExtranetDtoLocationDtoArray{
+//							&zpa.PolicyAccessRuleV2ExtranetDtoLocationDtoArgs{
+//								Id: pulumi.String(this.Id),
+//							},
+//						},
+//						LocationGroupDtos: zpa.PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArray{
+//							&zpa.PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArgs{
+//								Id: pulumi.String(thisGetLocationGroupController.Id),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Configuration Location Rule
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := zpa.GetLocationControllerSummary(ctx, &zpa.GetLocationControllerSummaryArgs{
+//				Name: pulumi.StringRef("BD_CC01_US | NONE | zscalerbeta.net"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = zpa.NewPolicyAccessRuleV2(ctx, "this", &zpa.PolicyAccessRuleV2Args{
+//				Name:        pulumi.String("ExampleLocationRule"),
+//				Description: pulumi.String("ExampleLocationRule"),
+//				Action:      pulumi.String("ALLOW"),
+//				Conditions: zpa.PolicyAccessRuleV2ConditionArray{
+//					&zpa.PolicyAccessRuleV2ConditionArgs{
+//						Operator: pulumi.String("OR"),
+//						Operands: zpa.PolicyAccessRuleV2ConditionOperandArray{
+//							&zpa.PolicyAccessRuleV2ConditionOperandArgs{
+//								ObjectType: pulumi.String("LOCATION"),
+//								Values: pulumi.StringArray{
+//									pulumi.String(this.Id),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Chrome Enterprise And Chrome Posture Profile
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := zpa.GetManagedBrowserProfile(ctx, &zpa.GetManagedBrowserProfileArgs{
+//				Name: pulumi.StringRef("Profile01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = zpa.NewPolicyAccessRuleV2(ctx, "this", &zpa.PolicyAccessRuleV2Args{
+//				Name:        pulumi.String("Example_v2_100_test"),
+//				Description: pulumi.String("Example_v2_100_test"),
+//				Action:      pulumi.String("ALLOW"),
+//				CustomMsg:   pulumi.String("Test"),
+//				Operator:    pulumi.String("AND"),
+//				Conditions: zpa.PolicyAccessRuleV2ConditionArray{
+//					&zpa.PolicyAccessRuleV2ConditionArgs{
+//						Operator: pulumi.String("OR"),
+//						Operands: zpa.PolicyAccessRuleV2ConditionOperandArray{
+//							&zpa.PolicyAccessRuleV2ConditionOperandArgs{
+//								ObjectType: pulumi.String("CHROME_ENTERPRISE"),
+//								EntryValues: zpa.PolicyAccessRuleV2ConditionOperandEntryValueArray{
+//									&zpa.PolicyAccessRuleV2ConditionOperandEntryValueArgs{
+//										Lhs: pulumi.String("managed"),
+//										Rhs: pulumi.String("true"),
+//									},
+//								},
+//							},
+//							&zpa.PolicyAccessRuleV2ConditionOperandArgs{
+//								ObjectType: pulumi.String("CHROME_POSTURE_PROFILE"),
+//								Values: pulumi.StringArray{
+//									pulumi.String(this.Id),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## LHS and RHS Values
 //
 // | Object Type | LHS| RHS| VALUES
@@ -266,6 +445,10 @@ type PolicyAccessRuleV2 struct {
 	CustomMsg pulumi.StringOutput `pulumi:"customMsg"`
 	// This is the description of the access policy rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Extranet configuration for the policy rule.
+	ExtranetDtos PolicyAccessRuleV2ExtranetDtoArrayOutput `pulumi:"extranetDtos"`
+	// Indiciates if the application is designated for Extranet Application Support (true) or not (false). Extranet applications connect to a partner site or offshore development center that is not directly available on your organization’s network.
+	ExtranetEnabled pulumi.BoolPtrOutput `pulumi:"extranetEnabled"`
 	// This is the name of the policy rule.
 	Name        pulumi.StringOutput `pulumi:"name"`
 	Operator    pulumi.StringOutput `pulumi:"operator"`
@@ -313,6 +496,10 @@ type policyAccessRuleV2State struct {
 	CustomMsg *string `pulumi:"customMsg"`
 	// This is the description of the access policy rule.
 	Description *string `pulumi:"description"`
+	// Extranet configuration for the policy rule.
+	ExtranetDtos []PolicyAccessRuleV2ExtranetDto `pulumi:"extranetDtos"`
+	// Indiciates if the application is designated for Extranet Application Support (true) or not (false). Extranet applications connect to a partner site or offshore development center that is not directly available on your organization’s network.
+	ExtranetEnabled *bool `pulumi:"extranetEnabled"`
 	// This is the name of the policy rule.
 	Name        *string `pulumi:"name"`
 	Operator    *string `pulumi:"operator"`
@@ -331,6 +518,10 @@ type PolicyAccessRuleV2State struct {
 	CustomMsg pulumi.StringPtrInput
 	// This is the description of the access policy rule.
 	Description pulumi.StringPtrInput
+	// Extranet configuration for the policy rule.
+	ExtranetDtos PolicyAccessRuleV2ExtranetDtoArrayInput
+	// Indiciates if the application is designated for Extranet Application Support (true) or not (false). Extranet applications connect to a partner site or offshore development center that is not directly available on your organization’s network.
+	ExtranetEnabled pulumi.BoolPtrInput
 	// This is the name of the policy rule.
 	Name        pulumi.StringPtrInput
 	Operator    pulumi.StringPtrInput
@@ -353,6 +544,10 @@ type policyAccessRuleV2Args struct {
 	CustomMsg *string `pulumi:"customMsg"`
 	// This is the description of the access policy rule.
 	Description *string `pulumi:"description"`
+	// Extranet configuration for the policy rule.
+	ExtranetDtos []PolicyAccessRuleV2ExtranetDto `pulumi:"extranetDtos"`
+	// Indiciates if the application is designated for Extranet Application Support (true) or not (false). Extranet applications connect to a partner site or offshore development center that is not directly available on your organization’s network.
+	ExtranetEnabled *bool `pulumi:"extranetEnabled"`
 	// This is the name of the policy rule.
 	Name     *string `pulumi:"name"`
 	Operator *string `pulumi:"operator"`
@@ -371,6 +566,10 @@ type PolicyAccessRuleV2Args struct {
 	CustomMsg pulumi.StringPtrInput
 	// This is the description of the access policy rule.
 	Description pulumi.StringPtrInput
+	// Extranet configuration for the policy rule.
+	ExtranetDtos PolicyAccessRuleV2ExtranetDtoArrayInput
+	// Indiciates if the application is designated for Extranet Application Support (true) or not (false). Extranet applications connect to a partner site or offshore development center that is not directly available on your organization’s network.
+	ExtranetEnabled pulumi.BoolPtrInput
 	// This is the name of the policy rule.
 	Name     pulumi.StringPtrInput
 	Operator pulumi.StringPtrInput
@@ -492,6 +691,16 @@ func (o PolicyAccessRuleV2Output) CustomMsg() pulumi.StringOutput {
 // This is the description of the access policy rule.
 func (o PolicyAccessRuleV2Output) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyAccessRuleV2) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Extranet configuration for the policy rule.
+func (o PolicyAccessRuleV2Output) ExtranetDtos() PolicyAccessRuleV2ExtranetDtoArrayOutput {
+	return o.ApplyT(func(v *PolicyAccessRuleV2) PolicyAccessRuleV2ExtranetDtoArrayOutput { return v.ExtranetDtos }).(PolicyAccessRuleV2ExtranetDtoArrayOutput)
+}
+
+// Indiciates if the application is designated for Extranet Application Support (true) or not (false). Extranet applications connect to a partner site or offshore development center that is not directly available on your organization’s network.
+func (o PolicyAccessRuleV2Output) ExtranetEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PolicyAccessRuleV2) pulumi.BoolPtrOutput { return v.ExtranetEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // This is the name of the policy rule.

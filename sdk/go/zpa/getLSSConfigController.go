@@ -17,6 +17,33 @@ import (
 // Use the **zpa_lss_config_controller** data source to get information about a Log Streaming (LSS) configuration resource created in the Zscaler Private Access.
 //
 // **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Retrieve Log Streaming Information by ID
+//			_, err := zpa.LookupLSSConfigController(ctx, &zpa.LookupLSSConfigControllerArgs{
+//				Id: pulumi.StringRef("1234567890"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupLSSConfigController(ctx *pulumi.Context, args *LookupLSSConfigControllerArgs, opts ...pulumi.InvokeOption) (*LookupLSSConfigControllerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLSSConfigControllerResult

@@ -22,10 +22,11 @@ namespace zscaler.PulumiPackage.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // ZPA Application Server resource (IP Address)
-    ///     var testAppServer = new Zpa.ApplicationServer("testAppServer", new()
+    ///     var testAppServer = new Zpa.ApplicationServer("test_app_server", new()
     ///     {
-    ///         Address = "192.168.1.1",
+    ///         Name = "test1-app-server",
     ///         Description = "test1-app-server",
+    ///         Address = "192.168.1.1",
     ///         Enabled = true,
     ///     });
     /// 
@@ -41,11 +42,42 @@ namespace zscaler.PulumiPackage.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // ZPA Application Server resource (FQDN Address)
-    ///     var testAppServer = new Zpa.ApplicationServer("testAppServer", new()
+    ///     var testAppServer = new Zpa.ApplicationServer("test_app_server", new()
     ///     {
-    ///         Address = "server1.acme.com",
+    ///         Name = "test1-app-server",
     ///         Description = "test1-app-server",
+    ///         Address = "server1.acme.com",
     ///         Enabled = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Pulumi.Zpa;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = Zpa.GetServerGroup.Invoke(new()
+    ///     {
+    ///         Name = "Example",
+    ///     });
+    /// 
+    ///     // ZPA Application Server resource
+    ///     var testAppServer = new Zpa.ApplicationServer("test_app_server", new()
+    ///     {
+    ///         Name = "test1-app-server",
+    ///         Description = "test1-app-server",
+    ///         Address = "192.168.1.1",
+    ///         Enabled = true,
+    ///         AppServerGroupIds = new[]
+    ///         {
+    ///             example.Apply(getServerGroupResult =&gt; getServerGroupResult.Com),
+    ///         },
     ///     });
     /// 
     /// });

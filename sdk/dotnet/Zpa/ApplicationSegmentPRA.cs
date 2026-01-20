@@ -28,6 +28,7 @@ namespace zscaler.PulumiPackage.Zpa
     /// {
     ///     var @this = new Zpa.ApplicationSegmentPRA("this", new()
     ///     {
+    ///         Name = "PRA_Example",
     ///         Description = "PRA_Example",
     ///         Enabled = true,
     ///         HealthReporting = "ON_ACCESS",
@@ -45,14 +46,14 @@ namespace zscaler.PulumiPackage.Zpa
     ///             "ssh_pra.example.com",
     ///             "rdp_pra.example.com",
     ///         },
-    ///         SegmentGroupId = zpa_segment_group.This.Id,
+    ///         SegmentGroupId = thisZpaSegmentGroup.Id,
     ///         ServerGroups = new[]
     ///         {
     ///             new Zpa.Inputs.ApplicationSegmentPRAServerGroupArgs
     ///             {
     ///                 Ids = new[]
     ///                 {
-    ///                     zpa_server_group.This.Id,
+    ///                     thisZpaServerGroup.Id,
     ///                 },
     ///             },
     ///         },
@@ -118,8 +119,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<bool> BypassOnReauth { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-        /// The value NEVER indicates the use of the client forwarding policy.
+        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
         /// </summary>
         [Output("bypassType")]
         public Output<string> BypassType { get; private set; } = null!;
@@ -149,13 +149,13 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<bool> DoubleEncrypt { get; private set; } = null!;
 
         [Output("enabled")]
-        public Output<bool> Enabled { get; private set; } = null!;
+        public Output<bool?> Enabled { get; private set; } = null!;
 
         [Output("fqdnDnsCheck")]
         public Output<bool?> FqdnDnsCheck { get; private set; } = null!;
 
         [Output("healthCheckType")]
-        public Output<string?> HealthCheckType { get; private set; } = null!;
+        public Output<string> HealthCheckType { get; private set; } = null!;
 
         /// <summary>
         /// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
@@ -170,8 +170,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<bool?> IpAnchored { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-        /// connectors.
+        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
         /// </summary>
         [Output("isCnameEnabled")]
         public Output<bool> IsCnameEnabled { get; private set; } = null!;
@@ -230,6 +229,9 @@ namespace zscaler.PulumiPackage.Zpa
         [Output("useInDrMode")]
         public Output<bool> UseInDrMode { get; private set; } = null!;
 
+        [Output("zpnErIds")]
+        public Output<ImmutableArray<Outputs.ApplicationSegmentPRAZpnErId>> ZpnErIds { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ApplicationSegmentPRA resource with the given unique name, arguments, and options.
@@ -281,8 +283,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? BypassOnReauth { get; set; }
 
         /// <summary>
-        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-        /// The value NEVER indicates the use of the client forwarding policy.
+        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
         /// </summary>
         [Input("bypassType")]
         public Input<string>? BypassType { get; set; }
@@ -344,8 +345,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? IpAnchored { get; set; }
 
         /// <summary>
-        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-        /// connectors.
+        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
         /// </summary>
         [Input("isCnameEnabled")]
         public Input<bool>? IsCnameEnabled { get; set; }
@@ -433,6 +433,14 @@ namespace zscaler.PulumiPackage.Zpa
         [Input("useInDrMode")]
         public Input<bool>? UseInDrMode { get; set; }
 
+        [Input("zpnErIds")]
+        private InputList<Inputs.ApplicationSegmentPRAZpnErIdArgs>? _zpnErIds;
+        public InputList<Inputs.ApplicationSegmentPRAZpnErIdArgs> ZpnErIds
+        {
+            get => _zpnErIds ?? (_zpnErIds = new InputList<Inputs.ApplicationSegmentPRAZpnErIdArgs>());
+            set => _zpnErIds = value;
+        }
+
         public ApplicationSegmentPRAArgs()
         {
         }
@@ -445,8 +453,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? BypassOnReauth { get; set; }
 
         /// <summary>
-        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-        /// The value NEVER indicates the use of the client forwarding policy.
+        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
         /// </summary>
         [Input("bypassType")]
         public Input<string>? BypassType { get; set; }
@@ -508,8 +515,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? IpAnchored { get; set; }
 
         /// <summary>
-        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-        /// connectors.
+        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
         /// </summary>
         [Input("isCnameEnabled")]
         public Input<bool>? IsCnameEnabled { get; set; }
@@ -596,6 +602,14 @@ namespace zscaler.PulumiPackage.Zpa
 
         [Input("useInDrMode")]
         public Input<bool>? UseInDrMode { get; set; }
+
+        [Input("zpnErIds")]
+        private InputList<Inputs.ApplicationSegmentPRAZpnErIdGetArgs>? _zpnErIds;
+        public InputList<Inputs.ApplicationSegmentPRAZpnErIdGetArgs> ZpnErIds
+        {
+            get => _zpnErIds ?? (_zpnErIds = new InputList<Inputs.ApplicationSegmentPRAZpnErIdGetArgs>());
+            set => _zpnErIds = value;
+        }
 
         public ApplicationSegmentPRAState()
         {

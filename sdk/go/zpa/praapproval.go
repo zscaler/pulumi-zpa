@@ -32,7 +32,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Segment Group resource
-//			thisSegmentGroup, err := zpa.NewSegmentGroup(ctx, "thisSegmentGroup", &zpa.SegmentGroupArgs{
+//			thisSegmentGroup, err := zpa.NewSegmentGroup(ctx, "this", &zpa.SegmentGroupArgs{
+//				Name:        pulumi.String("Example"),
 //				Description: pulumi.String("Example"),
 //				Enabled:     pulumi.Bool(true),
 //			})
@@ -40,7 +41,8 @@ import (
 //				return err
 //			}
 //			// ZPA App Connector Group resource
-//			thisConnectorGroup, err := zpa.NewConnectorGroup(ctx, "thisConnectorGroup", &zpa.ConnectorGroupArgs{
+//			thisConnectorGroup, err := zpa.NewConnectorGroup(ctx, "this", &zpa.ConnectorGroupArgs{
+//				Name:                   pulumi.String("Example"),
 //				Description:            pulumi.String("Example"),
 //				Enabled:                pulumi.Bool(true),
 //				CityCountry:            pulumi.String("San Jose, CA"),
@@ -58,7 +60,8 @@ import (
 //				return err
 //			}
 //			// ZPA Server Group resource
-//			thisServerGroup, err := zpa.NewServerGroup(ctx, "thisServerGroup", &zpa.ServerGroupArgs{
+//			thisServerGroup, err := zpa.NewServerGroup(ctx, "this", &zpa.ServerGroupArgs{
+//				Name:             pulumi.String("Example"),
 //				Description:      pulumi.String("Example"),
 //				Enabled:          pulumi.Bool(true),
 //				DynamicDiscovery: pulumi.Bool(false),
@@ -76,7 +79,8 @@ import (
 //				return err
 //			}
 //			// ZPA Application Segment resource
-//			thisApplicationSegment, err := zpa.NewApplicationSegment(ctx, "thisApplicationSegment", &zpa.ApplicationSegmentArgs{
+//			this, err := zpa.NewApplicationSegment(ctx, "this", &zpa.ApplicationSegmentArgs{
+//				Name:            pulumi.String("Example"),
 //				Description:     pulumi.String("Example"),
 //				Enabled:         pulumi.Bool(true),
 //				HealthReporting: pulumi.String("ON_ACCESS"),
@@ -105,7 +109,7 @@ import (
 //				return err
 //			}
 //			// Create PRA Approval Controller
-//			_, err = zpa.NewPRAApproval(ctx, "thisPRAApproval", &zpa.PRAApprovalArgs{
+//			_, err = zpa.NewPRAApproval(ctx, "this", &zpa.PRAApprovalArgs{
 //				EmailIds: pulumi.StringArray{
 //					pulumi.String("jdoe@acme.com"),
 //				},
@@ -115,7 +119,7 @@ import (
 //				Applications: zpa.PRAApprovalApplicationArray{
 //					&zpa.PRAApprovalApplicationArgs{
 //						Ids: pulumi.StringArray{
-//							thisApplicationSegment.ID(),
+//							this.ID(),
 //						},
 //					},
 //				},
@@ -174,8 +178,7 @@ type PRAApproval struct {
 	EmailIds pulumi.StringArrayOutput `pulumi:"emailIds"`
 	// The end date that the user no longer has access to the privileged approval
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId pulumi.StringOutput `pulumi:"microtenantId"`
 	// The start date that the user has access to the privileged approval
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
@@ -228,8 +231,7 @@ type praapprovalState struct {
 	EmailIds []string `pulumi:"emailIds"`
 	// The end date that the user no longer has access to the privileged approval
 	EndTime *string `pulumi:"endTime"`
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId *string `pulumi:"microtenantId"`
 	// The start date that the user has access to the privileged approval
 	StartTime *string `pulumi:"startTime"`
@@ -244,8 +246,7 @@ type PRAApprovalState struct {
 	EmailIds pulumi.StringArrayInput
 	// The end date that the user no longer has access to the privileged approval
 	EndTime pulumi.StringPtrInput
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId pulumi.StringPtrInput
 	// The start date that the user has access to the privileged approval
 	StartTime pulumi.StringPtrInput
@@ -264,8 +265,7 @@ type praapprovalArgs struct {
 	EmailIds []string `pulumi:"emailIds"`
 	// The end date that the user no longer has access to the privileged approval
 	EndTime *string `pulumi:"endTime"`
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId *string `pulumi:"microtenantId"`
 	// The start date that the user has access to the privileged approval
 	StartTime *string `pulumi:"startTime"`
@@ -281,8 +281,7 @@ type PRAApprovalArgs struct {
 	EmailIds pulumi.StringArrayInput
 	// The end date that the user no longer has access to the privileged approval
 	EndTime pulumi.StringPtrInput
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId pulumi.StringPtrInput
 	// The start date that the user has access to the privileged approval
 	StartTime pulumi.StringPtrInput
@@ -392,8 +391,7 @@ func (o PRAApprovalOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PRAApproval) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 func (o PRAApprovalOutput) MicrotenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PRAApproval) pulumi.StringOutput { return v.MicrotenantId }).(pulumi.StringOutput)
 }

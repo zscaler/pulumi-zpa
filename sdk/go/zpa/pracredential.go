@@ -30,13 +30,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ## PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ####
 //			// Creates Credential of Type "USERNAME_PASSWORD"
 //			_, err := zpa.NewPRACredential(ctx, "this", &zpa.PRACredentialArgs{
-//				CredentialType: pulumi.String("USERNAME_PASSWORD"),
+//				Name:           pulumi.String("John Doe"),
 //				Description:    pulumi.String("Created with Terraform"),
-//				Password:       pulumi.String(""),
+//				CredentialType: pulumi.String("USERNAME_PASSWORD"),
 //				UserDomain:     pulumi.String("acme.com"),
 //				Username:       pulumi.String("jdoe"),
+//				Password:       pulumi.String(""),
 //			})
 //			if err != nil {
 //				return err
@@ -47,8 +49,6 @@ import (
 //
 // ```
 //
-// ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE #########\
-// ######### ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ##########
 // ```go
 // package main
 //
@@ -61,13 +61,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ## PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ####
 //			// Creates Credential of Type "SSH_KEY"
 //			_, err := zpa.NewPRACredential(ctx, "this", &zpa.PRACredentialArgs{
-//				CredentialType: pulumi.String("SSH_KEY"),
+//				Name:           pulumi.String("John Doe"),
 //				Description:    pulumi.String("Created with Terraform"),
-//				PrivateKey:     pulumi.String("-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEjc8pPoobS0l6\n-----END PRIVATE KEY-----\n\n"),
+//				CredentialType: pulumi.String("SSH_KEY"),
 //				UserDomain:     pulumi.String("acme.com"),
 //				Username:       pulumi.String("jdoe"),
+//				PrivateKey:     pulumi.String("-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEjc8pPoobS0l6\n-----END PRIVATE KEY-----\n"),
 //			})
 //			if err != nil {
 //				return err
@@ -100,13 +102,11 @@ import (
 type PRACredential struct {
 	pulumi.CustomResourceState
 
-	// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-	// and VNC. Each protocol type has its own credential requirements.
+	// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
 	CredentialType pulumi.StringPtrOutput `pulumi:"credentialType"`
 	// The description of the privileged credential
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId pulumi.StringOutput `pulumi:"microtenantId"`
 	// The name of the privileged credential
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -116,8 +116,7 @@ type PRACredential struct {
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The SSH private key associated with the username for the login you want to use for the privileged credential
 	PrivateKey pulumi.StringPtrOutput `pulumi:"privateKey"`
-	// The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP
-	// console that is connected to an Active Directory Domain
+	// The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP console that is connected to an Active Directory Domain
 	UserDomain pulumi.StringPtrOutput `pulumi:"userDomain"`
 	// The username for the login you want to use for the privileged credential
 	Username pulumi.StringPtrOutput `pulumi:"username"`
@@ -174,13 +173,11 @@ func GetPRACredential(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PRACredential resources.
 type pracredentialState struct {
-	// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-	// and VNC. Each protocol type has its own credential requirements.
+	// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
 	CredentialType *string `pulumi:"credentialType"`
 	// The description of the privileged credential
 	Description *string `pulumi:"description"`
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId *string `pulumi:"microtenantId"`
 	// The name of the privileged credential
 	Name *string `pulumi:"name"`
@@ -190,21 +187,18 @@ type pracredentialState struct {
 	Password *string `pulumi:"password"`
 	// The SSH private key associated with the username for the login you want to use for the privileged credential
 	PrivateKey *string `pulumi:"privateKey"`
-	// The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP
-	// console that is connected to an Active Directory Domain
+	// The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP console that is connected to an Active Directory Domain
 	UserDomain *string `pulumi:"userDomain"`
 	// The username for the login you want to use for the privileged credential
 	Username *string `pulumi:"username"`
 }
 
 type PRACredentialState struct {
-	// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-	// and VNC. Each protocol type has its own credential requirements.
+	// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
 	CredentialType pulumi.StringPtrInput
 	// The description of the privileged credential
 	Description pulumi.StringPtrInput
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId pulumi.StringPtrInput
 	// The name of the privileged credential
 	Name pulumi.StringPtrInput
@@ -214,8 +208,7 @@ type PRACredentialState struct {
 	Password pulumi.StringPtrInput
 	// The SSH private key associated with the username for the login you want to use for the privileged credential
 	PrivateKey pulumi.StringPtrInput
-	// The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP
-	// console that is connected to an Active Directory Domain
+	// The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP console that is connected to an Active Directory Domain
 	UserDomain pulumi.StringPtrInput
 	// The username for the login you want to use for the privileged credential
 	Username pulumi.StringPtrInput
@@ -226,13 +219,11 @@ func (PRACredentialState) ElementType() reflect.Type {
 }
 
 type pracredentialArgs struct {
-	// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-	// and VNC. Each protocol type has its own credential requirements.
+	// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
 	CredentialType *string `pulumi:"credentialType"`
 	// The description of the privileged credential
 	Description *string `pulumi:"description"`
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId *string `pulumi:"microtenantId"`
 	// The name of the privileged credential
 	Name *string `pulumi:"name"`
@@ -242,8 +233,7 @@ type pracredentialArgs struct {
 	Password *string `pulumi:"password"`
 	// The SSH private key associated with the username for the login you want to use for the privileged credential
 	PrivateKey *string `pulumi:"privateKey"`
-	// The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP
-	// console that is connected to an Active Directory Domain
+	// The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP console that is connected to an Active Directory Domain
 	UserDomain *string `pulumi:"userDomain"`
 	// The username for the login you want to use for the privileged credential
 	Username *string `pulumi:"username"`
@@ -251,13 +241,11 @@ type pracredentialArgs struct {
 
 // The set of arguments for constructing a PRACredential resource.
 type PRACredentialArgs struct {
-	// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-	// and VNC. Each protocol type has its own credential requirements.
+	// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
 	CredentialType pulumi.StringPtrInput
 	// The description of the privileged credential
 	Description pulumi.StringPtrInput
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId pulumi.StringPtrInput
 	// The name of the privileged credential
 	Name pulumi.StringPtrInput
@@ -267,8 +255,7 @@ type PRACredentialArgs struct {
 	Password pulumi.StringPtrInput
 	// The SSH private key associated with the username for the login you want to use for the privileged credential
 	PrivateKey pulumi.StringPtrInput
-	// The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP
-	// console that is connected to an Active Directory Domain
+	// The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP console that is connected to an Active Directory Domain
 	UserDomain pulumi.StringPtrInput
 	// The username for the login you want to use for the privileged credential
 	Username pulumi.StringPtrInput
@@ -361,8 +348,7 @@ func (o PRACredentialOutput) ToPRACredentialOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-// and VNC. Each protocol type has its own credential requirements.
+// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
 func (o PRACredentialOutput) CredentialType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PRACredential) pulumi.StringPtrOutput { return v.CredentialType }).(pulumi.StringPtrOutput)
 }
@@ -372,8 +358,7 @@ func (o PRACredentialOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PRACredential) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 func (o PRACredentialOutput) MicrotenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PRACredential) pulumi.StringOutput { return v.MicrotenantId }).(pulumi.StringOutput)
 }
@@ -398,8 +383,7 @@ func (o PRACredentialOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PRACredential) pulumi.StringPtrOutput { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
-// The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP
-// console that is connected to an Active Directory Domain
+// The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP console that is connected to an Active Directory Domain
 func (o PRACredentialOutput) UserDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PRACredential) pulumi.StringPtrOutput { return v.UserDomain }).(pulumi.StringPtrOutput)
 }

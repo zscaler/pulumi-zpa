@@ -22,10 +22,10 @@ import * as utilities from "./utilities";
  *
  * const _this = new zpa.ServiceEdgeAssistantSchedule("this", {
  *     customerId: "123456789101112",
- *     deleteDisabled: true,
- *     enabled: true,
  *     frequency: "days",
  *     frequencyInterval: "5",
+ *     enabled: true,
+ *     deleteDisabled: true,
  * });
  * ```
  *
@@ -36,10 +36,10 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * const _this = new zpa.ServiceEdgeAssistantSchedule("this", {
- *     deleteDisabled: true,
- *     enabled: true,
  *     frequency: "days",
  *     frequencyInterval: "5",
+ *     enabled: true,
+ *     deleteDisabled: true,
  * });
  * ```
  *
@@ -75,11 +75,11 @@ export class ServiceEdgeAssistantSchedule extends pulumi.CustomResource {
         return obj['__pulumiType'] === ServiceEdgeAssistantSchedule.__pulumiType;
     }
 
-    public readonly customerId!: pulumi.Output<string>;
-    public readonly deleteDisabled!: pulumi.Output<boolean | undefined>;
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
-    public readonly frequency!: pulumi.Output<string | undefined>;
-    public readonly frequencyInterval!: pulumi.Output<string | undefined>;
+    declare public readonly customerId: pulumi.Output<string>;
+    declare public readonly deleteDisabled: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
+    declare public readonly frequency: pulumi.Output<string | undefined>;
+    declare public readonly frequencyInterval: pulumi.Output<string | undefined>;
 
     /**
      * Create a ServiceEdgeAssistantSchedule resource with the given unique name, arguments, and options.
@@ -94,18 +94,18 @@ export class ServiceEdgeAssistantSchedule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceEdgeAssistantScheduleState | undefined;
-            resourceInputs["customerId"] = state ? state.customerId : undefined;
-            resourceInputs["deleteDisabled"] = state ? state.deleteDisabled : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["frequency"] = state ? state.frequency : undefined;
-            resourceInputs["frequencyInterval"] = state ? state.frequencyInterval : undefined;
+            resourceInputs["customerId"] = state?.customerId;
+            resourceInputs["deleteDisabled"] = state?.deleteDisabled;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["frequency"] = state?.frequency;
+            resourceInputs["frequencyInterval"] = state?.frequencyInterval;
         } else {
             const args = argsOrState as ServiceEdgeAssistantScheduleArgs | undefined;
-            resourceInputs["customerId"] = args ? args.customerId : undefined;
-            resourceInputs["deleteDisabled"] = args ? args.deleteDisabled : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["frequency"] = args ? args.frequency : undefined;
-            resourceInputs["frequencyInterval"] = args ? args.frequencyInterval : undefined;
+            resourceInputs["customerId"] = args?.customerId;
+            resourceInputs["deleteDisabled"] = args?.deleteDisabled;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["frequency"] = args?.frequency;
+            resourceInputs["frequencyInterval"] = args?.frequencyInterval;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceEdgeAssistantSchedule.__pulumiType, name, resourceInputs, opts);

@@ -26,21 +26,21 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     //## PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ####
     ///     // Creates Credential of Type "USERNAME_PASSWORD"
     ///     var @this = new Zpa.PRACredential("this", new()
     ///     {
-    ///         CredentialType = "USERNAME_PASSWORD",
+    ///         Name = "John Doe",
     ///         Description = "Created with Terraform",
-    ///         Password = "",
+    ///         CredentialType = "USERNAME_PASSWORD",
     ///         UserDomain = "acme.com",
     ///         Username = "jdoe",
+    ///         Password = "",
     ///     });
     /// 
     /// });
     /// ```
     /// 
-    /// ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE #########\
-    /// ######### ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ##########
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -49,18 +49,19 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     //## PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ####
     ///     // Creates Credential of Type "SSH_KEY"
     ///     var @this = new Zpa.PRACredential("this", new()
     ///     {
-    ///         CredentialType = "SSH_KEY",
+    ///         Name = "John Doe",
     ///         Description = "Created with Terraform",
+    ///         CredentialType = "SSH_KEY",
+    ///         UserDomain = "acme.com",
+    ///         Username = "jdoe",
     ///         PrivateKey = @"-----BEGIN PRIVATE KEY-----
     /// MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEjc8pPoobS0l6
     /// -----END PRIVATE KEY-----
-    /// 
     /// ",
-    ///         UserDomain = "acme.com",
-    ///         Username = "jdoe",
     ///     });
     /// 
     /// });
@@ -90,8 +91,7 @@ namespace zscaler.PulumiPackage.Zpa
     public partial class PRACredential : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-        /// and VNC. Each protocol type has its own credential requirements.
+        /// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
         /// </summary>
         [Output("credentialType")]
         public Output<string?> CredentialType { get; private set; } = null!;
@@ -103,8 +103,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-        /// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
         /// </summary>
         [Output("microtenantId")]
         public Output<string> MicrotenantId { get; private set; } = null!;
@@ -134,8 +133,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<string?> PrivateKey { get; private set; } = null!;
 
         /// <summary>
-        /// The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP
-        /// console that is connected to an Active Directory Domain
+        /// The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP console that is connected to an Active Directory Domain
         /// </summary>
         [Output("userDomain")]
         public Output<string?> UserDomain { get; private set; } = null!;
@@ -204,8 +202,7 @@ namespace zscaler.PulumiPackage.Zpa
     public sealed class PRACredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-        /// and VNC. Each protocol type has its own credential requirements.
+        /// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
         /// </summary>
         [Input("credentialType")]
         public Input<string>? CredentialType { get; set; }
@@ -217,8 +214,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-        /// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
         /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
@@ -278,8 +274,7 @@ namespace zscaler.PulumiPackage.Zpa
         }
 
         /// <summary>
-        /// The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP
-        /// console that is connected to an Active Directory Domain
+        /// The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP console that is connected to an Active Directory Domain
         /// </summary>
         [Input("userDomain")]
         public Input<string>? UserDomain { get; set; }
@@ -299,8 +294,7 @@ namespace zscaler.PulumiPackage.Zpa
     public sealed class PRACredentialState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-        /// and VNC. Each protocol type has its own credential requirements.
+        /// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
         /// </summary>
         [Input("credentialType")]
         public Input<string>? CredentialType { get; set; }
@@ -312,8 +306,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-        /// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
         /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
@@ -373,8 +366,7 @@ namespace zscaler.PulumiPackage.Zpa
         }
 
         /// <summary>
-        /// The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP
-        /// console that is connected to an Active Directory Domain
+        /// The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP console that is connected to an Active Directory Domain
         /// </summary>
         [Input("userDomain")]
         public Input<string>? UserDomain { get; set; }

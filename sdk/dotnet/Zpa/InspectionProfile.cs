@@ -19,6 +19,227 @@ namespace zscaler.PulumiPackage.Zpa
     /// **NOTE** There are several ways to set up the Inspection Profile due to its complex data structure
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Using Dynamic Blocks
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Pulumi.Zpa;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = Zpa.GetInspectionAllPredefinedControls.Invoke(new()
+    ///     {
+    ///         Version = "OWASP_CRS/3.3.0",
+    ///         GroupName = "Preprocessors",
+    ///     });
+    /// 
+    ///     var thisGetInspectionPredefinedControls = Zpa.GetInspectionPredefinedControls.Invoke(new()
+    ///     {
+    ///         Name = "Failed to parse request body",
+    ///         Version = "OWASP_CRS/3.3.0",
+    ///     });
+    /// 
+    ///     var thisInspectionProfile = new Zpa.InspectionProfile("this", new()
+    ///     {
+    ///         PredefinedControls = new[]
+    ///         {
+    ///             new Zpa.Inputs.InspectionProfilePredefinedControlArgs
+    ///             {
+    ///                 Id = thisGetInspectionPredefinedControls.Apply(getInspectionPredefinedControlsResult =&gt; getInspectionPredefinedControlsResult.Id),
+    ///                 Action = "BLOCK",
+    ///             },
+    ///         },
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         ParanoiaLevel = "1",
+    ///         PredefinedControlsVersion = "OWASP_CRS/3.3.0",
+    ///         IncarnationNumber = "6",
+    ///         ControlsInfos = new[]
+    ///         {
+    ///             new Zpa.Inputs.InspectionProfileControlsInfoArgs
+    ///             {
+    ///                 ControlType = "PREDEFINED",
+    ///             },
+    ///         },
+    ///         GlobalControlActions = new[]
+    ///         {
+    ///             "PREDEFINED:PASS",
+    ///             "CUSTOM:NONE",
+    ///             "OVERRIDE_ACTION:COMMON",
+    ///         },
+    ///         CommonGlobalOverrideActionsConfig = 
+    ///         {
+    ///             { "PREDEF_CNTRL_GLOBAL_ACTION", "PASS" },
+    ///             { "IS_OVERRIDE_ACTION_COMMON", "TRUE" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Using Locals And Dynamic Blocks
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Std = Pulumi.Std;
+    /// using Zpa = Pulumi.Zpa;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var groupNames = 
+    ///     {
+    ///         { "defaultPredefinedControls", "preprocessors" },
+    ///         { "group1", "Protocol Issues" },
+    ///         { "group2", "Environment and port scanners" },
+    ///         { "group3", "Remote Code Execution" },
+    ///         { "group4", "Remote file inclusion" },
+    ///         { "group5", "Local File Inclusion" },
+    ///         { "group6", "Request smuggling or Response split or Header injection" },
+    ///         { "group7", "PHP Injection" },
+    ///         { "group8", "XSS" },
+    ///         { "group9", "SQL Injection" },
+    ///         { "group10", "Session Fixation" },
+    ///         { "group11", "Deserialization Issues" },
+    ///         { "group12", "Anomalies" },
+    ///         { "group13", "Request smuggling or Response split or Header injection" },
+    ///     };
+    /// 
+    ///     // Dynamically create data sources using for_each
+    ///     var all = .ToDictionary(item =&gt; {
+    ///         var __key = item.Key;
+    ///         return __key;
+    ///     }, item =&gt; {
+    ///         var __value = item.Value;
+    ///         return Zpa.GetInspectionAllPredefinedControls.Invoke(new()
+    ///         {
+    ///             GroupName = __value,
+    ///         });
+    ///     });
+    /// 
+    ///     var combinedPredefinedControls = _arg0_.Result;
+    /// 
+    ///     var example = new Zpa.InspectionProfile("example", new()
+    ///     {
+    ///         PredefinedControls = .Apply(entries =&gt; entries.Select(entry =&gt; 
+    ///         {
+    ///             return 
+    ///             {
+    ///                 { "id", entry.Value.Id },
+    ///                 { "action", entry.Value.Action == "" ? entry.Value.DefaultAction : entry.Value.Action },
+    ///             };
+    ///         }).ToList()),
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         ParanoiaLevel = "2",
+    ///         IncarnationNumber = "6",
+    ///         ControlsInfos = new[]
+    ///         {
+    ///             new Zpa.Inputs.InspectionProfileControlsInfoArgs
+    ///             {
+    ///                 ControlType = "PREDEFINED",
+    ///             },
+    ///         },
+    ///         GlobalControlActions = new[]
+    ///         {
+    ///             "PREDEFINED:PASS",
+    ///             "CUSTOM:NONE",
+    ///             "OVERRIDE_ACTION:COMMON",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Using With ThreatLabz And Dynamic Blocks
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Std = Pulumi.Std;
+    /// using Zpa = Pulumi.Zpa;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var groupNames = 
+    ///     {
+    ///         { "defaultPredefinedControls", "preprocessors" },
+    ///     };
+    /// 
+    ///     // Retrieve all IDs and Actions for the preprocessors Control
+    ///     var all = .ToDictionary(item =&gt; {
+    ///         var __key = item.Key;
+    ///         return __key;
+    ///     }, item =&gt; {
+    ///         var __value = item.Value;
+    ///         return Zpa.GetInspectionAllPredefinedControls.Invoke(new()
+    ///         {
+    ///             GroupName = __value,
+    ///         });
+    ///     });
+    /// 
+    ///     var combinedPredefinedControls = _arg0_.Result;
+    /// 
+    ///     var threatLabzControls = new[]
+    ///     {
+    ///         
+    ///         {
+    ///             { "id", "1" },
+    ///             { "action", "PASS" },
+    ///         },
+    ///         
+    ///         {
+    ///             { "id", "2" },
+    ///             { "action", "PASS" },
+    ///         },
+    ///         
+    ///         {
+    ///             { "id", "3" },
+    ///             { "action", "PASS" },
+    ///         },
+    ///     };
+    /// 
+    ///     var example = new Zpa.InspectionProfile("example", new()
+    ///     {
+    ///         PredefinedControls = .Apply(entries =&gt; entries.Select(entry =&gt; 
+    ///         {
+    ///             return 
+    ///             {
+    ///                 { "id", entry.Value.Id },
+    ///                 { "action", entry.Value.Action == "" ? entry.Value.DefaultAction : entry.Value.Action },
+    ///             };
+    ///         }).ToList()),
+    ///         ThreatLabzControls = threatLabzControls.Select((v, k) =&gt; new { Key = k, Value = v }).Select(entry2 =&gt; 
+    ///         {
+    ///             return new Zpa.Inputs.InspectionProfileThreatLabzControlArgs
+    ///             {
+    ///                 Id = entry2.Value.Id,
+    ///                 Action = entry2.Value.Action,
+    ///             };
+    ///         }).ToList(),
+    ///         Name = "ThreatLabz_Inspection_Profile",
+    ///         Description = "ThreatLabz Inspection Profile",
+    ///         ParanoiaLevel = "2",
+    ///         IncarnationNumber = "6",
+    ///         ZsDefinedControlChoice = "ALL",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+    /// 
+    /// Visit
     /// </summary>
     [ZpaResourceType("zpa:index/inspectionProfile:InspectionProfile")]
     public partial class InspectionProfile : global::Pulumi.CustomResource

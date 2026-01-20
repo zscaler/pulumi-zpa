@@ -15,6 +15,145 @@ import * as utilities from "./utilities";
  * **NOTE** There are several ways to set up the Inspection Profile due to its complex data structure
  *
  * ## Example Usage
+ *
+ * ### Using Dynamic Blocks
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const _this = zpa.getInspectionAllPredefinedControls({
+ *     version: "OWASP_CRS/3.3.0",
+ *     groupName: "Preprocessors",
+ * });
+ * const thisGetInspectionPredefinedControls = zpa.getInspectionPredefinedControls({
+ *     name: "Failed to parse request body",
+ *     version: "OWASP_CRS/3.3.0",
+ * });
+ * const thisInspectionProfile = new zpa.InspectionProfile("this", {
+ *     predefinedControls: [{
+ *         id: thisGetInspectionPredefinedControls.then(thisGetInspectionPredefinedControls => thisGetInspectionPredefinedControls.id),
+ *         action: "BLOCK",
+ *     }],
+ *     name: "Example",
+ *     description: "Example",
+ *     paranoiaLevel: "1",
+ *     predefinedControlsVersion: "OWASP_CRS/3.3.0",
+ *     incarnationNumber: "6",
+ *     controlsInfos: [{
+ *         controlType: "PREDEFINED",
+ *     }],
+ *     globalControlActions: [
+ *         "PREDEFINED:PASS",
+ *         "CUSTOM:NONE",
+ *         "OVERRIDE_ACTION:COMMON",
+ *     ],
+ *     commonGlobalOverrideActionsConfig: {
+ *         PREDEF_CNTRL_GLOBAL_ACTION: "PASS",
+ *         IS_OVERRIDE_ACTION_COMMON: "TRUE",
+ *     },
+ * });
+ * ```
+ *
+ * ### Using Locals And Dynamic Blocks
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as std from "@pulumi/std";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const groupNames = {
+ *     defaultPredefinedControls: "preprocessors",
+ *     group1: "Protocol Issues",
+ *     group2: "Environment and port scanners",
+ *     group3: "Remote Code Execution",
+ *     group4: "Remote file inclusion",
+ *     group5: "Local File Inclusion",
+ *     group6: "Request smuggling or Response split or Header injection",
+ *     group7: "PHP Injection",
+ *     group8: "XSS",
+ *     group9: "SQL Injection",
+ *     group10: "Session Fixation",
+ *     group11: "Deserialization Issues",
+ *     group12: "Anomalies",
+ *     group13: "Request smuggling or Response split or Header injection",
+ * };
+ * // Dynamically create data sources using for_each
+ * const all = Object.entries(groupNames).reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: zpa.getInspectionAllPredefinedControls({
+ *     groupName: __value,
+ * }) }));
+ * const combinedPredefinedControls = _arg0_.result;
+ * const example = new zpa.InspectionProfile("example", {
+ *     predefinedControls: combinedPredefinedControls.map((v, k) => ({key: k, value: v})).apply(entries => entries.map(entry => ({
+ *         id: entry.value.id,
+ *         action: entry.value.action == "" ? entry.value.defaultAction : entry.value.action,
+ *     }))),
+ *     name: "Example",
+ *     description: "Example",
+ *     paranoiaLevel: "2",
+ *     incarnationNumber: "6",
+ *     controlsInfos: [{
+ *         controlType: "PREDEFINED",
+ *     }],
+ *     globalControlActions: [
+ *         "PREDEFINED:PASS",
+ *         "CUSTOM:NONE",
+ *         "OVERRIDE_ACTION:COMMON",
+ *     ],
+ * });
+ * ```
+ *
+ * ### Using With ThreatLabz And Dynamic Blocks
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as std from "@pulumi/std";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const groupNames = {
+ *     defaultPredefinedControls: "preprocessors",
+ * };
+ * // Retrieve all IDs and Actions for the preprocessors Control
+ * const all = Object.entries(groupNames).reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: zpa.getInspectionAllPredefinedControls({
+ *     groupName: __value,
+ * }) }));
+ * const combinedPredefinedControls = _arg0_.result;
+ * const threatLabzControls = [
+ *     {
+ *         id: "1",
+ *         action: "PASS",
+ *     },
+ *     {
+ *         id: "2",
+ *         action: "PASS",
+ *     },
+ *     {
+ *         id: "3",
+ *         action: "PASS",
+ *     },
+ * ];
+ * const example = new zpa.InspectionProfile("example", {
+ *     predefinedControls: combinedPredefinedControls.map((v, k) => ({key: k, value: v})).apply(entries => entries.map(entry => ({
+ *         id: entry.value.id,
+ *         action: entry.value.action == "" ? entry.value.defaultAction : entry.value.action,
+ *     }))),
+ *     threatLabzControls: threatLabzControls.map((v, k) => ({key: k, value: v})).map(entry2 => ({
+ *         id: entry2.value.id,
+ *         action: entry2.value.action,
+ *     })),
+ *     name: "ThreatLabz_Inspection_Profile",
+ *     description: "ThreatLabz Inspection Profile",
+ *     paranoiaLevel: "2",
+ *     incarnationNumber: "6",
+ *     zsDefinedControlChoice: "ALL",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+ *
+ * Visit
  */
 export class InspectionProfile extends pulumi.CustomResource {
     /**
@@ -44,52 +183,52 @@ export class InspectionProfile extends pulumi.CustomResource {
         return obj['__pulumiType'] === InspectionProfile.__pulumiType;
     }
 
-    public readonly apiProfile!: pulumi.Output<boolean | undefined>;
-    public readonly associateAllControls!: pulumi.Output<boolean | undefined>;
-    public readonly commonGlobalOverrideActionsConfig!: pulumi.Output<{[key: string]: string}>;
-    public readonly controlsInfos!: pulumi.Output<outputs.InspectionProfileControlsInfo[]>;
+    declare public readonly apiProfile: pulumi.Output<boolean | undefined>;
+    declare public readonly associateAllControls: pulumi.Output<boolean | undefined>;
+    declare public readonly commonGlobalOverrideActionsConfig: pulumi.Output<{[key: string]: string}>;
+    declare public readonly controlsInfos: pulumi.Output<outputs.InspectionProfileControlsInfo[]>;
     /**
      * The set of AppProtection controls used to define how inspections are managed
      */
-    public readonly customControls!: pulumi.Output<outputs.InspectionProfileCustomControl[] | undefined>;
+    declare public readonly customControls: pulumi.Output<outputs.InspectionProfileCustomControl[] | undefined>;
     /**
      * The description of the AppProtection profile
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The actions of the predefined, custom, or override controls
      */
-    public readonly globalControlActions!: pulumi.Output<string[] | undefined>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly overrideAction!: pulumi.Output<string | undefined>;
+    declare public readonly globalControlActions: pulumi.Output<string[] | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly overrideAction: pulumi.Output<string | undefined>;
     /**
      * The OWASP Predefined Paranoia Level
      */
-    public readonly paranoiaLevel!: pulumi.Output<string | undefined>;
+    declare public readonly paranoiaLevel: pulumi.Output<string | undefined>;
     /**
      * The predefined controls
      */
-    public readonly predefinedApiControls!: pulumi.Output<outputs.InspectionProfilePredefinedApiControl[] | undefined>;
+    declare public readonly predefinedApiControls: pulumi.Output<outputs.InspectionProfilePredefinedApiControl[] | undefined>;
     /**
      * The predefined controls
      */
-    public readonly predefinedControls!: pulumi.Output<outputs.InspectionProfilePredefinedControl[] | undefined>;
+    declare public readonly predefinedControls: pulumi.Output<outputs.InspectionProfilePredefinedControl[] | undefined>;
     /**
      * The protocol for the AppProtection application
      */
-    public readonly predefinedControlsVersion!: pulumi.Output<string | undefined>;
+    declare public readonly predefinedControlsVersion: pulumi.Output<string | undefined>;
     /**
      * The ThreatLabZ predefined controls
      */
-    public readonly threatLabzControls!: pulumi.Output<outputs.InspectionProfileThreatLabzControl[] | undefined>;
+    declare public readonly threatLabzControls: pulumi.Output<outputs.InspectionProfileThreatLabzControl[] | undefined>;
     /**
      * The WebSocket predefined controls
      */
-    public readonly websocketControls!: pulumi.Output<outputs.InspectionProfileWebsocketControl[] | undefined>;
+    declare public readonly websocketControls: pulumi.Output<outputs.InspectionProfileWebsocketControl[] | undefined>;
     /**
      * Indicates the user's choice for the ThreatLabZ Controls. Supported values: ALL and SPECIFIC
      */
-    public readonly zsDefinedControlChoice!: pulumi.Output<string | undefined>;
+    declare public readonly zsDefinedControlChoice: pulumi.Output<string | undefined>;
 
     /**
      * Create a InspectionProfile resource with the given unique name, arguments, and options.
@@ -104,40 +243,40 @@ export class InspectionProfile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InspectionProfileState | undefined;
-            resourceInputs["apiProfile"] = state ? state.apiProfile : undefined;
-            resourceInputs["associateAllControls"] = state ? state.associateAllControls : undefined;
-            resourceInputs["commonGlobalOverrideActionsConfig"] = state ? state.commonGlobalOverrideActionsConfig : undefined;
-            resourceInputs["controlsInfos"] = state ? state.controlsInfos : undefined;
-            resourceInputs["customControls"] = state ? state.customControls : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["globalControlActions"] = state ? state.globalControlActions : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["overrideAction"] = state ? state.overrideAction : undefined;
-            resourceInputs["paranoiaLevel"] = state ? state.paranoiaLevel : undefined;
-            resourceInputs["predefinedApiControls"] = state ? state.predefinedApiControls : undefined;
-            resourceInputs["predefinedControls"] = state ? state.predefinedControls : undefined;
-            resourceInputs["predefinedControlsVersion"] = state ? state.predefinedControlsVersion : undefined;
-            resourceInputs["threatLabzControls"] = state ? state.threatLabzControls : undefined;
-            resourceInputs["websocketControls"] = state ? state.websocketControls : undefined;
-            resourceInputs["zsDefinedControlChoice"] = state ? state.zsDefinedControlChoice : undefined;
+            resourceInputs["apiProfile"] = state?.apiProfile;
+            resourceInputs["associateAllControls"] = state?.associateAllControls;
+            resourceInputs["commonGlobalOverrideActionsConfig"] = state?.commonGlobalOverrideActionsConfig;
+            resourceInputs["controlsInfos"] = state?.controlsInfos;
+            resourceInputs["customControls"] = state?.customControls;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["globalControlActions"] = state?.globalControlActions;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["overrideAction"] = state?.overrideAction;
+            resourceInputs["paranoiaLevel"] = state?.paranoiaLevel;
+            resourceInputs["predefinedApiControls"] = state?.predefinedApiControls;
+            resourceInputs["predefinedControls"] = state?.predefinedControls;
+            resourceInputs["predefinedControlsVersion"] = state?.predefinedControlsVersion;
+            resourceInputs["threatLabzControls"] = state?.threatLabzControls;
+            resourceInputs["websocketControls"] = state?.websocketControls;
+            resourceInputs["zsDefinedControlChoice"] = state?.zsDefinedControlChoice;
         } else {
             const args = argsOrState as InspectionProfileArgs | undefined;
-            resourceInputs["apiProfile"] = args ? args.apiProfile : undefined;
-            resourceInputs["associateAllControls"] = args ? args.associateAllControls : undefined;
-            resourceInputs["commonGlobalOverrideActionsConfig"] = args ? args.commonGlobalOverrideActionsConfig : undefined;
-            resourceInputs["controlsInfos"] = args ? args.controlsInfos : undefined;
-            resourceInputs["customControls"] = args ? args.customControls : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["globalControlActions"] = args ? args.globalControlActions : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["overrideAction"] = args ? args.overrideAction : undefined;
-            resourceInputs["paranoiaLevel"] = args ? args.paranoiaLevel : undefined;
-            resourceInputs["predefinedApiControls"] = args ? args.predefinedApiControls : undefined;
-            resourceInputs["predefinedControls"] = args ? args.predefinedControls : undefined;
-            resourceInputs["predefinedControlsVersion"] = args ? args.predefinedControlsVersion : undefined;
-            resourceInputs["threatLabzControls"] = args ? args.threatLabzControls : undefined;
-            resourceInputs["websocketControls"] = args ? args.websocketControls : undefined;
-            resourceInputs["zsDefinedControlChoice"] = args ? args.zsDefinedControlChoice : undefined;
+            resourceInputs["apiProfile"] = args?.apiProfile;
+            resourceInputs["associateAllControls"] = args?.associateAllControls;
+            resourceInputs["commonGlobalOverrideActionsConfig"] = args?.commonGlobalOverrideActionsConfig;
+            resourceInputs["controlsInfos"] = args?.controlsInfos;
+            resourceInputs["customControls"] = args?.customControls;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["globalControlActions"] = args?.globalControlActions;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["overrideAction"] = args?.overrideAction;
+            resourceInputs["paranoiaLevel"] = args?.paranoiaLevel;
+            resourceInputs["predefinedApiControls"] = args?.predefinedApiControls;
+            resourceInputs["predefinedControls"] = args?.predefinedControls;
+            resourceInputs["predefinedControlsVersion"] = args?.predefinedControlsVersion;
+            resourceInputs["threatLabzControls"] = args?.threatLabzControls;
+            resourceInputs["websocketControls"] = args?.websocketControls;
+            resourceInputs["zsDefinedControlChoice"] = args?.zsDefinedControlChoice;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InspectionProfile.__pulumiType, name, resourceInputs, opts);

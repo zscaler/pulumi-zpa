@@ -24,17 +24,18 @@ import * as utilities from "./utilities";
  *
  * //Create Inspection Access Rule
  * const _this = new zpa.PolicyAccessInspectionRule("this", {
+ *     name: "Example",
  *     description: "Example",
  *     action: "INSPECT",
  *     operator: "AND",
- *     policySetId: data.zpa_policy_type.inspection_policy.id,
- *     zpnInspectionProfileId: zpa_inspection_profile["this"].id,
+ *     policySetId: inspectionPolicy.id,
+ *     zpnInspectionProfileId: thisZpaInspectionProfile.id,
  *     conditions: [{
  *         operator: "OR",
  *         operands: [{
  *             objectType: "APP",
  *             lhs: "id",
- *             rhs: zpa_application_segment_inspection["this"].id,
+ *             rhs: thisZpaApplicationSegmentInspection.id,
  *         }],
  *     }],
  * });
@@ -46,14 +47,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // Retrieve Inspection policy type
  * const inspectionPolicy = zpa.getPolicyType({
  *     policyType: "INSPECTION_POLICY",
  * });
  * //Create Inspection Access Rule
  * const _this = new zpa.PolicyAccessInspectionRule("this", {
+ *     name: "Example",
  *     description: "Example",
  *     action: "BYPASS_INSPECT",
- *     ruleOrder: "1",
+ *     ruleOrder: 1,
  *     operator: "AND",
  *     policySetId: inspectionPolicy.then(inspectionPolicy => inspectionPolicy.id),
  *     conditions: [{
@@ -61,7 +64,7 @@ import * as utilities from "./utilities";
  *         operands: [{
  *             objectType: "APP",
  *             lhs: "id",
- *             rhs: zpa_application_segment_inspection["this"].id,
+ *             rhs: thisZpaApplicationSegmentInspection.id,
  *         }],
  *     }],
  * });
@@ -129,48 +132,23 @@ export class PolicyAccessInspectionRule extends pulumi.CustomResource {
     /**
      * This is for providing the rule action.
      */
-    public readonly action!: pulumi.Output<string | undefined>;
-    /**
-     * This field defines the description of the server.
-     */
-    public readonly actionId!: pulumi.Output<string | undefined>;
-    public readonly bypassDefaultRule!: pulumi.Output<boolean | undefined>;
+    declare public readonly action: pulumi.Output<string | undefined>;
     /**
      * This is for proviidng the set of conditions for the policy.
      */
-    public readonly conditions!: pulumi.Output<outputs.PolicyAccessInspectionRuleCondition[] | undefined>;
-    /**
-     * This is for providing a customer message for the user.
-     */
-    public readonly customMsg!: pulumi.Output<string>;
-    /**
-     * This is for providing a customer message for the user.
-     */
-    public readonly defaultRule!: pulumi.Output<boolean | undefined>;
+    declare public readonly conditions: pulumi.Output<outputs.PolicyAccessInspectionRuleCondition[] | undefined>;
     /**
      * This is the description of the access policy.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly lssDefaultRule!: pulumi.Output<boolean | undefined>;
-    public readonly microtenantId!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly microtenantId: pulumi.Output<string | undefined>;
     /**
      * This is the name of the policy.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly operator!: pulumi.Output<string>;
-    public readonly policySetId!: pulumi.Output<string>;
-    public readonly policyType!: pulumi.Output<string>;
-    public readonly priority!: pulumi.Output<string>;
-    public readonly reauthDefaultRule!: pulumi.Output<boolean | undefined>;
-    public readonly reauthIdleTimeout!: pulumi.Output<string | undefined>;
-    public readonly reauthTimeout!: pulumi.Output<string | undefined>;
-    /**
-     * @deprecated The `ruleOrder` field is now deprecated for all zpa access policy resources in favor of the resource `zpa.PolicyAccessReorderRule`
-     */
-    public readonly ruleOrder!: pulumi.Output<string>;
-    public readonly zpnCbiProfileId!: pulumi.Output<string>;
-    public readonly zpnInspectionProfileId!: pulumi.Output<string>;
-    public readonly zpnIsolationProfileId!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly operator: pulumi.Output<string | undefined>;
+    declare public readonly policySetId: pulumi.Output<string>;
+    declare public readonly zpnInspectionProfileId: pulumi.Output<string | undefined>;
 
     /**
      * Create a PolicyAccessInspectionRule resource with the given unique name, arguments, and options.
@@ -185,50 +163,24 @@ export class PolicyAccessInspectionRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyAccessInspectionRuleState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["actionId"] = state ? state.actionId : undefined;
-            resourceInputs["bypassDefaultRule"] = state ? state.bypassDefaultRule : undefined;
-            resourceInputs["conditions"] = state ? state.conditions : undefined;
-            resourceInputs["customMsg"] = state ? state.customMsg : undefined;
-            resourceInputs["defaultRule"] = state ? state.defaultRule : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["lssDefaultRule"] = state ? state.lssDefaultRule : undefined;
-            resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["operator"] = state ? state.operator : undefined;
-            resourceInputs["policySetId"] = state ? state.policySetId : undefined;
-            resourceInputs["policyType"] = state ? state.policyType : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["reauthDefaultRule"] = state ? state.reauthDefaultRule : undefined;
-            resourceInputs["reauthIdleTimeout"] = state ? state.reauthIdleTimeout : undefined;
-            resourceInputs["reauthTimeout"] = state ? state.reauthTimeout : undefined;
-            resourceInputs["ruleOrder"] = state ? state.ruleOrder : undefined;
-            resourceInputs["zpnCbiProfileId"] = state ? state.zpnCbiProfileId : undefined;
-            resourceInputs["zpnInspectionProfileId"] = state ? state.zpnInspectionProfileId : undefined;
-            resourceInputs["zpnIsolationProfileId"] = state ? state.zpnIsolationProfileId : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["conditions"] = state?.conditions;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["microtenantId"] = state?.microtenantId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["operator"] = state?.operator;
+            resourceInputs["policySetId"] = state?.policySetId;
+            resourceInputs["zpnInspectionProfileId"] = state?.zpnInspectionProfileId;
         } else {
             const args = argsOrState as PolicyAccessInspectionRuleArgs | undefined;
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["actionId"] = args ? args.actionId : undefined;
-            resourceInputs["bypassDefaultRule"] = args ? args.bypassDefaultRule : undefined;
-            resourceInputs["conditions"] = args ? args.conditions : undefined;
-            resourceInputs["customMsg"] = args ? args.customMsg : undefined;
-            resourceInputs["defaultRule"] = args ? args.defaultRule : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["lssDefaultRule"] = args ? args.lssDefaultRule : undefined;
-            resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["operator"] = args ? args.operator : undefined;
-            resourceInputs["policySetId"] = args ? args.policySetId : undefined;
-            resourceInputs["policyType"] = args ? args.policyType : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["reauthDefaultRule"] = args ? args.reauthDefaultRule : undefined;
-            resourceInputs["reauthIdleTimeout"] = args ? args.reauthIdleTimeout : undefined;
-            resourceInputs["reauthTimeout"] = args ? args.reauthTimeout : undefined;
-            resourceInputs["ruleOrder"] = args ? args.ruleOrder : undefined;
-            resourceInputs["zpnCbiProfileId"] = args ? args.zpnCbiProfileId : undefined;
-            resourceInputs["zpnInspectionProfileId"] = args ? args.zpnInspectionProfileId : undefined;
-            resourceInputs["zpnIsolationProfileId"] = args ? args.zpnIsolationProfileId : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["conditions"] = args?.conditions;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["microtenantId"] = args?.microtenantId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["operator"] = args?.operator;
+            resourceInputs["policySetId"] = args?.policySetId;
+            resourceInputs["zpnInspectionProfileId"] = args?.zpnInspectionProfileId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PolicyAccessInspectionRule.__pulumiType, name, resourceInputs, opts);
@@ -244,27 +196,13 @@ export interface PolicyAccessInspectionRuleState {
      */
     action?: pulumi.Input<string>;
     /**
-     * This field defines the description of the server.
-     */
-    actionId?: pulumi.Input<string>;
-    bypassDefaultRule?: pulumi.Input<boolean>;
-    /**
      * This is for proviidng the set of conditions for the policy.
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.PolicyAccessInspectionRuleCondition>[]>;
     /**
-     * This is for providing a customer message for the user.
-     */
-    customMsg?: pulumi.Input<string>;
-    /**
-     * This is for providing a customer message for the user.
-     */
-    defaultRule?: pulumi.Input<boolean>;
-    /**
      * This is the description of the access policy.
      */
     description?: pulumi.Input<string>;
-    lssDefaultRule?: pulumi.Input<boolean>;
     microtenantId?: pulumi.Input<string>;
     /**
      * This is the name of the policy.
@@ -272,18 +210,7 @@ export interface PolicyAccessInspectionRuleState {
     name?: pulumi.Input<string>;
     operator?: pulumi.Input<string>;
     policySetId?: pulumi.Input<string>;
-    policyType?: pulumi.Input<string>;
-    priority?: pulumi.Input<string>;
-    reauthDefaultRule?: pulumi.Input<boolean>;
-    reauthIdleTimeout?: pulumi.Input<string>;
-    reauthTimeout?: pulumi.Input<string>;
-    /**
-     * @deprecated The `ruleOrder` field is now deprecated for all zpa access policy resources in favor of the resource `zpa.PolicyAccessReorderRule`
-     */
-    ruleOrder?: pulumi.Input<string>;
-    zpnCbiProfileId?: pulumi.Input<string>;
     zpnInspectionProfileId?: pulumi.Input<string>;
-    zpnIsolationProfileId?: pulumi.Input<string>;
 }
 
 /**
@@ -295,27 +222,13 @@ export interface PolicyAccessInspectionRuleArgs {
      */
     action?: pulumi.Input<string>;
     /**
-     * This field defines the description of the server.
-     */
-    actionId?: pulumi.Input<string>;
-    bypassDefaultRule?: pulumi.Input<boolean>;
-    /**
      * This is for proviidng the set of conditions for the policy.
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.PolicyAccessInspectionRuleCondition>[]>;
     /**
-     * This is for providing a customer message for the user.
-     */
-    customMsg?: pulumi.Input<string>;
-    /**
-     * This is for providing a customer message for the user.
-     */
-    defaultRule?: pulumi.Input<boolean>;
-    /**
      * This is the description of the access policy.
      */
     description?: pulumi.Input<string>;
-    lssDefaultRule?: pulumi.Input<boolean>;
     microtenantId?: pulumi.Input<string>;
     /**
      * This is the name of the policy.
@@ -323,16 +236,5 @@ export interface PolicyAccessInspectionRuleArgs {
     name?: pulumi.Input<string>;
     operator?: pulumi.Input<string>;
     policySetId?: pulumi.Input<string>;
-    policyType?: pulumi.Input<string>;
-    priority?: pulumi.Input<string>;
-    reauthDefaultRule?: pulumi.Input<boolean>;
-    reauthIdleTimeout?: pulumi.Input<string>;
-    reauthTimeout?: pulumi.Input<string>;
-    /**
-     * @deprecated The `ruleOrder` field is now deprecated for all zpa access policy resources in favor of the resource `zpa.PolicyAccessReorderRule`
-     */
-    ruleOrder?: pulumi.Input<string>;
-    zpnCbiProfileId?: pulumi.Input<string>;
     zpnInspectionProfileId?: pulumi.Input<string>;
-    zpnIsolationProfileId?: pulumi.Input<string>;
 }

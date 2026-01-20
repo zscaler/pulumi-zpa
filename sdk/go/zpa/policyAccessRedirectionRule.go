@@ -20,6 +20,47 @@ import (
 //
 // ## Example Usage
 //
+// ### REDIRECT_DEFAULT
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := zpa.NewPolicyAccessRedirectionRule(ctx, "this", &zpa.PolicyAccessRedirectionRuleArgs{
+//				Name:        pulumi.String("Example"),
+//				Description: pulumi.String("Example"),
+//				Action:      pulumi.String("REDIRECT_DEFAULT"),
+//				Conditions: zpa.PolicyAccessRedirectionRuleConditionArray{
+//					&zpa.PolicyAccessRedirectionRuleConditionArgs{
+//						Operator: pulumi.String("OR"),
+//						Operands: zpa.PolicyAccessRedirectionRuleConditionOperandArray{
+//							&zpa.PolicyAccessRedirectionRuleConditionOperandArgs{
+//								ObjectType: pulumi.String("CLIENT_TYPE"),
+//								Values: []string{
+//									"zpn_client_type_branch_connector",
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
@@ -40,13 +81,13 @@ type PolicyAccessRedirectionRule struct {
 	Action pulumi.StringPtrOutput `pulumi:"action"`
 	// This field defines the description of the server.
 	ActionId          pulumi.StringPtrOutput `pulumi:"actionId"`
-	BypassDefaultRule pulumi.BoolPtrOutput   `pulumi:"bypassDefaultRule"`
+	BypassDefaultRule pulumi.BoolOutput      `pulumi:"bypassDefaultRule"`
 	// This is for proviidng the set of conditions for the policy.
 	Conditions PolicyAccessRedirectionRuleConditionArrayOutput `pulumi:"conditions"`
 	// This is for providing a customer message for the user.
 	CustomMsg pulumi.StringOutput `pulumi:"customMsg"`
 	// This is for providing a customer message for the user.
-	DefaultRule pulumi.BoolPtrOutput `pulumi:"defaultRule"`
+	DefaultRule pulumi.BoolOutput `pulumi:"defaultRule"`
 	// This is the description of the access policy.
 	Description    pulumi.StringPtrOutput `pulumi:"description"`
 	LssDefaultRule pulumi.BoolPtrOutput   `pulumi:"lssDefaultRule"`
@@ -57,7 +98,7 @@ type PolicyAccessRedirectionRule struct {
 	PolicySetId       pulumi.StringOutput    `pulumi:"policySetId"`
 	PolicyType        pulumi.StringOutput    `pulumi:"policyType"`
 	Priority          pulumi.StringOutput    `pulumi:"priority"`
-	ReauthDefaultRule pulumi.BoolPtrOutput   `pulumi:"reauthDefaultRule"`
+	ReauthDefaultRule pulumi.BoolOutput      `pulumi:"reauthDefaultRule"`
 	ReauthIdleTimeout pulumi.StringPtrOutput `pulumi:"reauthIdleTimeout"`
 	ReauthTimeout     pulumi.StringPtrOutput `pulumi:"reauthTimeout"`
 	// Deprecated: The `ruleOrder` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`
@@ -342,8 +383,8 @@ func (o PolicyAccessRedirectionRuleOutput) ActionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyAccessRedirectionRule) pulumi.StringPtrOutput { return v.ActionId }).(pulumi.StringPtrOutput)
 }
 
-func (o PolicyAccessRedirectionRuleOutput) BypassDefaultRule() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyAccessRedirectionRule) pulumi.BoolPtrOutput { return v.BypassDefaultRule }).(pulumi.BoolPtrOutput)
+func (o PolicyAccessRedirectionRuleOutput) BypassDefaultRule() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PolicyAccessRedirectionRule) pulumi.BoolOutput { return v.BypassDefaultRule }).(pulumi.BoolOutput)
 }
 
 // This is for proviidng the set of conditions for the policy.
@@ -359,8 +400,8 @@ func (o PolicyAccessRedirectionRuleOutput) CustomMsg() pulumi.StringOutput {
 }
 
 // This is for providing a customer message for the user.
-func (o PolicyAccessRedirectionRuleOutput) DefaultRule() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyAccessRedirectionRule) pulumi.BoolPtrOutput { return v.DefaultRule }).(pulumi.BoolPtrOutput)
+func (o PolicyAccessRedirectionRuleOutput) DefaultRule() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PolicyAccessRedirectionRule) pulumi.BoolOutput { return v.DefaultRule }).(pulumi.BoolOutput)
 }
 
 // This is the description of the access policy.
@@ -397,8 +438,8 @@ func (o PolicyAccessRedirectionRuleOutput) Priority() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyAccessRedirectionRule) pulumi.StringOutput { return v.Priority }).(pulumi.StringOutput)
 }
 
-func (o PolicyAccessRedirectionRuleOutput) ReauthDefaultRule() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyAccessRedirectionRule) pulumi.BoolPtrOutput { return v.ReauthDefaultRule }).(pulumi.BoolPtrOutput)
+func (o PolicyAccessRedirectionRuleOutput) ReauthDefaultRule() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PolicyAccessRedirectionRule) pulumi.BoolOutput { return v.ReauthDefaultRule }).(pulumi.BoolOutput)
 }
 
 func (o PolicyAccessRedirectionRuleOutput) ReauthIdleTimeout() pulumi.StringPtrOutput {

@@ -55,6 +55,7 @@ func GetIsolationProfile(ctx *pulumi.Context, args *GetIsolationProfileArgs, opt
 
 // A collection of arguments for invoking getIsolationProfile.
 type GetIsolationProfileArgs struct {
+	Id *string `pulumi:"id"`
 	// - (Required) This field defines the name of the isolation profile.
 	Name *string `pulumi:"name"`
 }
@@ -68,8 +69,8 @@ type GetIsolationProfileResult struct {
 	IsolationProfileId string `pulumi:"isolationProfileId"`
 	IsolationTenantId  string `pulumi:"isolationTenantId"`
 	IsolationUrl       string `pulumi:"isolationUrl"`
+	ModifiedBy         string `pulumi:"modifiedBy"`
 	ModifiedTime       string `pulumi:"modifiedTime"`
-	Modifiedby         string `pulumi:"modifiedby"`
 	// - (Required) This field defines the name of the isolation profile.
 	Name *string `pulumi:"name"`
 }
@@ -85,6 +86,7 @@ func GetIsolationProfileOutput(ctx *pulumi.Context, args GetIsolationProfileOutp
 
 // A collection of arguments for invoking getIsolationProfile.
 type GetIsolationProfileOutputArgs struct {
+	Id pulumi.StringPtrInput `pulumi:"id"`
 	// - (Required) This field defines the name of the isolation profile.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -136,12 +138,12 @@ func (o GetIsolationProfileResultOutput) IsolationUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIsolationProfileResult) string { return v.IsolationUrl }).(pulumi.StringOutput)
 }
 
-func (o GetIsolationProfileResultOutput) ModifiedTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIsolationProfileResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
+func (o GetIsolationProfileResultOutput) ModifiedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIsolationProfileResult) string { return v.ModifiedBy }).(pulumi.StringOutput)
 }
 
-func (o GetIsolationProfileResultOutput) Modifiedby() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIsolationProfileResult) string { return v.Modifiedby }).(pulumi.StringOutput)
+func (o GetIsolationProfileResultOutput) ModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIsolationProfileResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
 
 // - (Required) This field defines the name of the isolation profile.

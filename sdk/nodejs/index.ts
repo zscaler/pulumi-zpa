@@ -25,10 +25,20 @@ export type ApplicationSegmentInspection = import("./applicationSegmentInspectio
 export const ApplicationSegmentInspection: typeof import("./applicationSegmentInspection").ApplicationSegmentInspection = null as any;
 utilities.lazyLoad(exports, ["ApplicationSegmentInspection"], () => require("./applicationSegmentInspection"));
 
+export { ApplicationSegmentMultimatchBulkArgs, ApplicationSegmentMultimatchBulkState } from "./applicationSegmentMultimatchBulk";
+export type ApplicationSegmentMultimatchBulk = import("./applicationSegmentMultimatchBulk").ApplicationSegmentMultimatchBulk;
+export const ApplicationSegmentMultimatchBulk: typeof import("./applicationSegmentMultimatchBulk").ApplicationSegmentMultimatchBulk = null as any;
+utilities.lazyLoad(exports, ["ApplicationSegmentMultimatchBulk"], () => require("./applicationSegmentMultimatchBulk"));
+
 export { ApplicationSegmentPRAArgs, ApplicationSegmentPRAState } from "./applicationSegmentPRA";
 export type ApplicationSegmentPRA = import("./applicationSegmentPRA").ApplicationSegmentPRA;
 export const ApplicationSegmentPRA: typeof import("./applicationSegmentPRA").ApplicationSegmentPRA = null as any;
 utilities.lazyLoad(exports, ["ApplicationSegmentPRA"], () => require("./applicationSegmentPRA"));
+
+export { ApplicationSegmentWeightedlbConfigArgs, ApplicationSegmentWeightedlbConfigState } from "./applicationSegmentWeightedlbConfig";
+export type ApplicationSegmentWeightedlbConfig = import("./applicationSegmentWeightedlbConfig").ApplicationSegmentWeightedlbConfig;
+export const ApplicationSegmentWeightedlbConfig: typeof import("./applicationSegmentWeightedlbConfig").ApplicationSegmentWeightedlbConfig = null as any;
+utilities.lazyLoad(exports, ["ApplicationSegmentWeightedlbConfig"], () => require("./applicationSegmentWeightedlbConfig"));
 
 export { ApplicationServerArgs, ApplicationServerState } from "./applicationServer";
 export type ApplicationServer = import("./applicationServer").ApplicationServer;
@@ -44,6 +54,11 @@ export { BrowserCertificateArgs, BrowserCertificateState } from "./browserCertif
 export type BrowserCertificate = import("./browserCertificate").BrowserCertificate;
 export const BrowserCertificate: typeof import("./browserCertificate").BrowserCertificate = null as any;
 utilities.lazyLoad(exports, ["BrowserCertificate"], () => require("./browserCertificate"));
+
+export { C2CIPRangesArgs, C2CIPRangesState } from "./c2cipranges";
+export type C2CIPRanges = import("./c2cipranges").C2CIPRanges;
+export const C2CIPRanges: typeof import("./c2cipranges").C2CIPRanges = null as any;
+utilities.lazyLoad(exports, ["C2CIPRanges"], () => require("./c2cipranges"));
 
 export { CloudBrowserIsolationBannerArgs, CloudBrowserIsolationBannerState } from "./cloudBrowserIsolationBanner";
 export type CloudBrowserIsolationBanner = import("./cloudBrowserIsolationBanner").CloudBrowserIsolationBanner;
@@ -105,10 +120,20 @@ export const getApplicationSegmentInspection: typeof import("./getApplicationSeg
 export const getApplicationSegmentInspectionOutput: typeof import("./getApplicationSegmentInspection").getApplicationSegmentInspectionOutput = null as any;
 utilities.lazyLoad(exports, ["getApplicationSegmentInspection","getApplicationSegmentInspectionOutput"], () => require("./getApplicationSegmentInspection"));
 
+export { GetApplicationSegmentMultimatchBulkArgs, GetApplicationSegmentMultimatchBulkResult, GetApplicationSegmentMultimatchBulkOutputArgs } from "./getApplicationSegmentMultimatchBulk";
+export const getApplicationSegmentMultimatchBulk: typeof import("./getApplicationSegmentMultimatchBulk").getApplicationSegmentMultimatchBulk = null as any;
+export const getApplicationSegmentMultimatchBulkOutput: typeof import("./getApplicationSegmentMultimatchBulk").getApplicationSegmentMultimatchBulkOutput = null as any;
+utilities.lazyLoad(exports, ["getApplicationSegmentMultimatchBulk","getApplicationSegmentMultimatchBulkOutput"], () => require("./getApplicationSegmentMultimatchBulk"));
+
 export { GetApplicationSegmentPRAArgs, GetApplicationSegmentPRAResult, GetApplicationSegmentPRAOutputArgs } from "./getApplicationSegmentPRA";
 export const getApplicationSegmentPRA: typeof import("./getApplicationSegmentPRA").getApplicationSegmentPRA = null as any;
 export const getApplicationSegmentPRAOutput: typeof import("./getApplicationSegmentPRA").getApplicationSegmentPRAOutput = null as any;
 utilities.lazyLoad(exports, ["getApplicationSegmentPRA","getApplicationSegmentPRAOutput"], () => require("./getApplicationSegmentPRA"));
+
+export { GetApplicationSegmentWeightedlbConfigArgs, GetApplicationSegmentWeightedlbConfigResult, GetApplicationSegmentWeightedlbConfigOutputArgs } from "./getApplicationSegmentWeightedlbConfig";
+export const getApplicationSegmentWeightedlbConfig: typeof import("./getApplicationSegmentWeightedlbConfig").getApplicationSegmentWeightedlbConfig = null as any;
+export const getApplicationSegmentWeightedlbConfigOutput: typeof import("./getApplicationSegmentWeightedlbConfig").getApplicationSegmentWeightedlbConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getApplicationSegmentWeightedlbConfig","getApplicationSegmentWeightedlbConfigOutput"], () => require("./getApplicationSegmentWeightedlbConfig"));
 
 export { GetApplicationServerArgs, GetApplicationServerResult, GetApplicationServerOutputArgs } from "./getApplicationServer";
 export const getApplicationServer: typeof import("./getApplicationServer").getApplicationServer = null as any;
@@ -119,6 +144,21 @@ export { GetBaCertificateArgs, GetBaCertificateResult, GetBaCertificateOutputArg
 export const getBaCertificate: typeof import("./getBaCertificate").getBaCertificate = null as any;
 export const getBaCertificateOutput: typeof import("./getBaCertificate").getBaCertificateOutput = null as any;
 utilities.lazyLoad(exports, ["getBaCertificate","getBaCertificateOutput"], () => require("./getBaCertificate"));
+
+export { GetBranchConnectorGroupArgs, GetBranchConnectorGroupResult, GetBranchConnectorGroupOutputArgs } from "./getBranchConnectorGroup";
+export const getBranchConnectorGroup: typeof import("./getBranchConnectorGroup").getBranchConnectorGroup = null as any;
+export const getBranchConnectorGroupOutput: typeof import("./getBranchConnectorGroup").getBranchConnectorGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getBranchConnectorGroup","getBranchConnectorGroupOutput"], () => require("./getBranchConnectorGroup"));
+
+export { GetBrowserProtectionArgs, GetBrowserProtectionResult, GetBrowserProtectionOutputArgs } from "./getBrowserProtection";
+export const getBrowserProtection: typeof import("./getBrowserProtection").getBrowserProtection = null as any;
+export const getBrowserProtectionOutput: typeof import("./getBrowserProtection").getBrowserProtectionOutput = null as any;
+utilities.lazyLoad(exports, ["getBrowserProtection","getBrowserProtectionOutput"], () => require("./getBrowserProtection"));
+
+export { GetC2CIPRangesArgs, GetC2CIPRangesResult, GetC2CIPRangesOutputArgs } from "./getC2CIPRanges";
+export const getC2CIPRanges: typeof import("./getC2CIPRanges").getC2CIPRanges = null as any;
+export const getC2CIPRangesOutput: typeof import("./getC2CIPRanges").getC2CIPRangesOutput = null as any;
+utilities.lazyLoad(exports, ["getC2CIPRanges","getC2CIPRangesOutput"], () => require("./getC2CIPRanges"));
 
 export { GetCloudBrowserIsolationBannerArgs, GetCloudBrowserIsolationBannerResult, GetCloudBrowserIsolationBannerOutputArgs } from "./getCloudBrowserIsolationBanner";
 export const getCloudBrowserIsolationBanner: typeof import("./getCloudBrowserIsolationBanner").getCloudBrowserIsolationBanner = null as any;
@@ -164,6 +204,11 @@ export { GetEnrollmentCertArgs, GetEnrollmentCertResult, GetEnrollmentCertOutput
 export const getEnrollmentCert: typeof import("./getEnrollmentCert").getEnrollmentCert = null as any;
 export const getEnrollmentCertOutput: typeof import("./getEnrollmentCert").getEnrollmentCertOutput = null as any;
 utilities.lazyLoad(exports, ["getEnrollmentCert","getEnrollmentCertOutput"], () => require("./getEnrollmentCert"));
+
+export { GetExtranetResourcePartnerArgs, GetExtranetResourcePartnerResult, GetExtranetResourcePartnerOutputArgs } from "./getExtranetResourcePartner";
+export const getExtranetResourcePartner: typeof import("./getExtranetResourcePartner").getExtranetResourcePartner = null as any;
+export const getExtranetResourcePartnerOutput: typeof import("./getExtranetResourcePartner").getExtranetResourcePartnerOutput = null as any;
+utilities.lazyLoad(exports, ["getExtranetResourcePartner","getExtranetResourcePartnerOutput"], () => require("./getExtranetResourcePartner"));
 
 export { GetIdPControllerArgs, GetIdPControllerResult, GetIdPControllerOutputArgs } from "./getIdPController";
 export const getIdPController: typeof import("./getIdPController").getIdPController = null as any;
@@ -215,10 +260,30 @@ export const getLSSStatusCodes: typeof import("./getLSSStatusCodes").getLSSStatu
 export const getLSSStatusCodesOutput: typeof import("./getLSSStatusCodes").getLSSStatusCodesOutput = null as any;
 utilities.lazyLoad(exports, ["getLSSStatusCodes","getLSSStatusCodesOutput"], () => require("./getLSSStatusCodes"));
 
+export { GetLocationControllerArgs, GetLocationControllerResult, GetLocationControllerOutputArgs } from "./getLocationController";
+export const getLocationController: typeof import("./getLocationController").getLocationController = null as any;
+export const getLocationControllerOutput: typeof import("./getLocationController").getLocationControllerOutput = null as any;
+utilities.lazyLoad(exports, ["getLocationController","getLocationControllerOutput"], () => require("./getLocationController"));
+
+export { GetLocationControllerSummaryArgs, GetLocationControllerSummaryResult, GetLocationControllerSummaryOutputArgs } from "./getLocationControllerSummary";
+export const getLocationControllerSummary: typeof import("./getLocationControllerSummary").getLocationControllerSummary = null as any;
+export const getLocationControllerSummaryOutput: typeof import("./getLocationControllerSummary").getLocationControllerSummaryOutput = null as any;
+utilities.lazyLoad(exports, ["getLocationControllerSummary","getLocationControllerSummaryOutput"], () => require("./getLocationControllerSummary"));
+
+export { GetLocationGroupControllerArgs, GetLocationGroupControllerResult, GetLocationGroupControllerOutputArgs } from "./getLocationGroupController";
+export const getLocationGroupController: typeof import("./getLocationGroupController").getLocationGroupController = null as any;
+export const getLocationGroupControllerOutput: typeof import("./getLocationGroupController").getLocationGroupControllerOutput = null as any;
+utilities.lazyLoad(exports, ["getLocationGroupController","getLocationGroupControllerOutput"], () => require("./getLocationGroupController"));
+
 export { GetMachineGroupArgs, GetMachineGroupResult, GetMachineGroupOutputArgs } from "./getMachineGroup";
 export const getMachineGroup: typeof import("./getMachineGroup").getMachineGroup = null as any;
 export const getMachineGroupOutput: typeof import("./getMachineGroup").getMachineGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getMachineGroup","getMachineGroupOutput"], () => require("./getMachineGroup"));
+
+export { GetManagedBrowserProfileArgs, GetManagedBrowserProfileResult, GetManagedBrowserProfileOutputArgs } from "./getManagedBrowserProfile";
+export const getManagedBrowserProfile: typeof import("./getManagedBrowserProfile").getManagedBrowserProfile = null as any;
+export const getManagedBrowserProfileOutput: typeof import("./getManagedBrowserProfile").getManagedBrowserProfileOutput = null as any;
+utilities.lazyLoad(exports, ["getManagedBrowserProfile","getManagedBrowserProfileOutput"], () => require("./getManagedBrowserProfile"));
 
 export { GetMicrotenantArgs, GetMicrotenantResult, GetMicrotenantOutputArgs } from "./getMicrotenant";
 export const getMicrotenant: typeof import("./getMicrotenant").getMicrotenant = null as any;
@@ -265,10 +330,25 @@ export const getPostureProfile: typeof import("./getPostureProfile").getPostureP
 export const getPostureProfileOutput: typeof import("./getPostureProfile").getPostureProfileOutput = null as any;
 utilities.lazyLoad(exports, ["getPostureProfile","getPostureProfileOutput"], () => require("./getPostureProfile"));
 
+export { GetPrivateCloudControllerArgs, GetPrivateCloudControllerResult, GetPrivateCloudControllerOutputArgs } from "./getPrivateCloudController";
+export const getPrivateCloudController: typeof import("./getPrivateCloudController").getPrivateCloudController = null as any;
+export const getPrivateCloudControllerOutput: typeof import("./getPrivateCloudController").getPrivateCloudControllerOutput = null as any;
+utilities.lazyLoad(exports, ["getPrivateCloudController","getPrivateCloudControllerOutput"], () => require("./getPrivateCloudController"));
+
+export { GetPrivateCloudGroupArgs, GetPrivateCloudGroupResult, GetPrivateCloudGroupOutputArgs } from "./getPrivateCloudGroup";
+export const getPrivateCloudGroup: typeof import("./getPrivateCloudGroup").getPrivateCloudGroup = null as any;
+export const getPrivateCloudGroupOutput: typeof import("./getPrivateCloudGroup").getPrivateCloudGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getPrivateCloudGroup","getPrivateCloudGroupOutput"], () => require("./getPrivateCloudGroup"));
+
 export { GetProvisioningKeyArgs, GetProvisioningKeyResult, GetProvisioningKeyOutputArgs } from "./getProvisioningKey";
 export const getProvisioningKey: typeof import("./getProvisioningKey").getProvisioningKey = null as any;
 export const getProvisioningKeyOutput: typeof import("./getProvisioningKey").getProvisioningKeyOutput = null as any;
 utilities.lazyLoad(exports, ["getProvisioningKey","getProvisioningKeyOutput"], () => require("./getProvisioningKey"));
+
+export { GetRiskScoreValuesArgs, GetRiskScoreValuesResult, GetRiskScoreValuesOutputArgs } from "./getRiskScoreValues";
+export const getRiskScoreValues: typeof import("./getRiskScoreValues").getRiskScoreValues = null as any;
+export const getRiskScoreValuesOutput: typeof import("./getRiskScoreValues").getRiskScoreValuesOutput = null as any;
+utilities.lazyLoad(exports, ["getRiskScoreValues","getRiskScoreValuesOutput"], () => require("./getRiskScoreValues"));
 
 export { GetSAMLAttributeArgs, GetSAMLAttributeResult, GetSAMLAttributeOutputArgs } from "./getSAMLAttribute";
 export const getSAMLAttribute: typeof import("./getSAMLAttribute").getSAMLAttribute = null as any;
@@ -314,6 +394,31 @@ export { GetTrustedNetworkArgs, GetTrustedNetworkResult, GetTrustedNetworkOutput
 export const getTrustedNetwork: typeof import("./getTrustedNetwork").getTrustedNetwork = null as any;
 export const getTrustedNetworkOutput: typeof import("./getTrustedNetwork").getTrustedNetworkOutput = null as any;
 utilities.lazyLoad(exports, ["getTrustedNetwork","getTrustedNetworkOutput"], () => require("./getTrustedNetwork"));
+
+export { GetUserPortalAUPArgs, GetUserPortalAUPResult, GetUserPortalAUPOutputArgs } from "./getUserPortalAUP";
+export const getUserPortalAUP: typeof import("./getUserPortalAUP").getUserPortalAUP = null as any;
+export const getUserPortalAUPOutput: typeof import("./getUserPortalAUP").getUserPortalAUPOutput = null as any;
+utilities.lazyLoad(exports, ["getUserPortalAUP","getUserPortalAUPOutput"], () => require("./getUserPortalAUP"));
+
+export { GetUserPortalControllerArgs, GetUserPortalControllerResult, GetUserPortalControllerOutputArgs } from "./getUserPortalController";
+export const getUserPortalController: typeof import("./getUserPortalController").getUserPortalController = null as any;
+export const getUserPortalControllerOutput: typeof import("./getUserPortalController").getUserPortalControllerOutput = null as any;
+utilities.lazyLoad(exports, ["getUserPortalController","getUserPortalControllerOutput"], () => require("./getUserPortalController"));
+
+export { GetUserPortalLinkArgs, GetUserPortalLinkResult, GetUserPortalLinkOutputArgs } from "./getUserPortalLink";
+export const getUserPortalLink: typeof import("./getUserPortalLink").getUserPortalLink = null as any;
+export const getUserPortalLinkOutput: typeof import("./getUserPortalLink").getUserPortalLinkOutput = null as any;
+utilities.lazyLoad(exports, ["getUserPortalLink","getUserPortalLinkOutput"], () => require("./getUserPortalLink"));
+
+export { GetWorkloadTagGroupArgs, GetWorkloadTagGroupResult, GetWorkloadTagGroupOutputArgs } from "./getWorkloadTagGroup";
+export const getWorkloadTagGroup: typeof import("./getWorkloadTagGroup").getWorkloadTagGroup = null as any;
+export const getWorkloadTagGroupOutput: typeof import("./getWorkloadTagGroup").getWorkloadTagGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkloadTagGroup","getWorkloadTagGroupOutput"], () => require("./getWorkloadTagGroup"));
+
+export { GetZiaCloudConfigResult } from "./getZiaCloudConfig";
+export const getZiaCloudConfig: typeof import("./getZiaCloudConfig").getZiaCloudConfig = null as any;
+export const getZiaCloudConfigOutput: typeof import("./getZiaCloudConfig").getZiaCloudConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getZiaCloudConfig","getZiaCloudConfigOutput"], () => require("./getZiaCloudConfig"));
 
 export { InspectionCustomControlsArgs, InspectionCustomControlsState } from "./inspectionCustomControls";
 export type InspectionCustomControls = import("./inspectionCustomControls").InspectionCustomControls;
@@ -410,6 +515,11 @@ export type PolicyBrowserProtectionRule = import("./policyBrowserProtectionRule"
 export const PolicyBrowserProtectionRule: typeof import("./policyBrowserProtectionRule").PolicyBrowserProtectionRule = null as any;
 utilities.lazyLoad(exports, ["PolicyBrowserProtectionRule"], () => require("./policyBrowserProtectionRule"));
 
+export { PolicyPortalAccessRuleArgs, PolicyPortalAccessRuleState } from "./policyPortalAccessRule";
+export type PolicyPortalAccessRule = import("./policyPortalAccessRule").PolicyPortalAccessRule;
+export const PolicyPortalAccessRule: typeof import("./policyPortalAccessRule").PolicyPortalAccessRule = null as any;
+utilities.lazyLoad(exports, ["PolicyPortalAccessRule"], () => require("./policyPortalAccessRule"));
+
 export { PraCredentialPoolArgs, PraCredentialPoolState } from "./praCredentialPool";
 export type PraCredentialPool = import("./praCredentialPool").PraCredentialPool;
 export const PraCredentialPool: typeof import("./praCredentialPool").PraCredentialPool = null as any;
@@ -434,6 +544,11 @@ export { PRAPortalArgs, PRAPortalState } from "./praportal";
 export type PRAPortal = import("./praportal").PRAPortal;
 export const PRAPortal: typeof import("./praportal").PRAPortal = null as any;
 utilities.lazyLoad(exports, ["PRAPortal"], () => require("./praportal"));
+
+export { PrivateCloudGroupArgs, PrivateCloudGroupState } from "./privateCloudGroup";
+export type PrivateCloudGroup = import("./privateCloudGroup").PrivateCloudGroup;
+export const PrivateCloudGroup: typeof import("./privateCloudGroup").PrivateCloudGroup = null as any;
+utilities.lazyLoad(exports, ["PrivateCloudGroup"], () => require("./privateCloudGroup"));
 
 export * from "./provider";
 import { Provider } from "./provider";
@@ -463,6 +578,26 @@ export type ServiceEdgeGroup = import("./serviceEdgeGroup").ServiceEdgeGroup;
 export const ServiceEdgeGroup: typeof import("./serviceEdgeGroup").ServiceEdgeGroup = null as any;
 utilities.lazyLoad(exports, ["ServiceEdgeGroup"], () => require("./serviceEdgeGroup"));
 
+export { UserPortalAUPArgs, UserPortalAUPState } from "./userPortalAUP";
+export type UserPortalAUP = import("./userPortalAUP").UserPortalAUP;
+export const UserPortalAUP: typeof import("./userPortalAUP").UserPortalAUP = null as any;
+utilities.lazyLoad(exports, ["UserPortalAUP"], () => require("./userPortalAUP"));
+
+export { UserPortalControllerArgs, UserPortalControllerState } from "./userPortalController";
+export type UserPortalController = import("./userPortalController").UserPortalController;
+export const UserPortalController: typeof import("./userPortalController").UserPortalController = null as any;
+utilities.lazyLoad(exports, ["UserPortalController"], () => require("./userPortalController"));
+
+export { UserPortalLinkArgs, UserPortalLinkState } from "./userPortalLink";
+export type UserPortalLink = import("./userPortalLink").UserPortalLink;
+export const UserPortalLink: typeof import("./userPortalLink").UserPortalLink = null as any;
+utilities.lazyLoad(exports, ["UserPortalLink"], () => require("./userPortalLink"));
+
+export { ZiaCloudConfigArgs, ZiaCloudConfigState } from "./ziaCloudConfig";
+export type ZiaCloudConfig = import("./ziaCloudConfig").ZiaCloudConfig;
+export const ZiaCloudConfig: typeof import("./ziaCloudConfig").ZiaCloudConfig = null as any;
+utilities.lazyLoad(exports, ["ZiaCloudConfig"], () => require("./ziaCloudConfig"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -485,14 +620,20 @@ const _module = {
                 return new ApplicationSegmentBrowserAccess(name, <any>undefined, { urn })
             case "zpa:index/applicationSegmentInspection:ApplicationSegmentInspection":
                 return new ApplicationSegmentInspection(name, <any>undefined, { urn })
+            case "zpa:index/applicationSegmentMultimatchBulk:ApplicationSegmentMultimatchBulk":
+                return new ApplicationSegmentMultimatchBulk(name, <any>undefined, { urn })
             case "zpa:index/applicationSegmentPRA:ApplicationSegmentPRA":
                 return new ApplicationSegmentPRA(name, <any>undefined, { urn })
+            case "zpa:index/applicationSegmentWeightedlbConfig:ApplicationSegmentWeightedlbConfig":
+                return new ApplicationSegmentWeightedlbConfig(name, <any>undefined, { urn })
             case "zpa:index/applicationServer:ApplicationServer":
                 return new ApplicationServer(name, <any>undefined, { urn })
             case "zpa:index/browserAccess:BrowserAccess":
                 return new BrowserAccess(name, <any>undefined, { urn })
             case "zpa:index/browserCertificate:BrowserCertificate":
                 return new BrowserCertificate(name, <any>undefined, { urn })
+            case "zpa:index/c2CIPRanges:C2CIPRanges":
+                return new C2CIPRanges(name, <any>undefined, { urn })
             case "zpa:index/cloudBrowserIsolationBanner:CloudBrowserIsolationBanner":
                 return new CloudBrowserIsolationBanner(name, <any>undefined, { urn })
             case "zpa:index/cloudBrowserIsolationCertificate:CloudBrowserIsolationCertificate":
@@ -549,8 +690,12 @@ const _module = {
                 return new PolicyAccessTimeOutRuleV2(name, <any>undefined, { urn })
             case "zpa:index/policyBrowserProtectionRule:PolicyBrowserProtectionRule":
                 return new PolicyBrowserProtectionRule(name, <any>undefined, { urn })
+            case "zpa:index/policyPortalAccessRule:PolicyPortalAccessRule":
+                return new PolicyPortalAccessRule(name, <any>undefined, { urn })
             case "zpa:index/praCredentialPool:PraCredentialPool":
                 return new PraCredentialPool(name, <any>undefined, { urn })
+            case "zpa:index/privateCloudGroup:PrivateCloudGroup":
+                return new PrivateCloudGroup(name, <any>undefined, { urn })
             case "zpa:index/provisioningKey:ProvisioningKey":
                 return new ProvisioningKey(name, <any>undefined, { urn })
             case "zpa:index/segmentGroup:SegmentGroup":
@@ -561,6 +706,14 @@ const _module = {
                 return new ServiceEdgeAssistantSchedule(name, <any>undefined, { urn })
             case "zpa:index/serviceEdgeGroup:ServiceEdgeGroup":
                 return new ServiceEdgeGroup(name, <any>undefined, { urn })
+            case "zpa:index/userPortalAUP:UserPortalAUP":
+                return new UserPortalAUP(name, <any>undefined, { urn })
+            case "zpa:index/userPortalController:UserPortalController":
+                return new UserPortalController(name, <any>undefined, { urn })
+            case "zpa:index/userPortalLink:UserPortalLink":
+                return new UserPortalLink(name, <any>undefined, { urn })
+            case "zpa:index/ziaCloudConfig:ZiaCloudConfig":
+                return new ZiaCloudConfig(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -570,10 +723,13 @@ pulumi.runtime.registerResourceModule("zpa", "index/appConnectorAssistantSchedul
 pulumi.runtime.registerResourceModule("zpa", "index/applicationSegment", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/applicationSegmentBrowserAccess", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/applicationSegmentInspection", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/applicationSegmentMultimatchBulk", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/applicationSegmentPRA", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/applicationSegmentWeightedlbConfig", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/applicationServer", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/browserAccess", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/browserCertificate", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/c2CIPRanges", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/cloudBrowserIsolationBanner", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/cloudBrowserIsolationCertificate", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/cloudBrowserIsolationExternalProfile", _module)
@@ -602,12 +758,18 @@ pulumi.runtime.registerResourceModule("zpa", "index/policyAccessRuleV2", _module
 pulumi.runtime.registerResourceModule("zpa", "index/policyAccessTimeOutRule", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/policyAccessTimeOutRuleV2", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/policyBrowserProtectionRule", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/policyPortalAccessRule", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/praCredentialPool", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/privateCloudGroup", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/provisioningKey", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/segmentGroup", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/serverGroup", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/serviceEdgeAssistantSchedule", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/serviceEdgeGroup", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/userPortalAUP", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/userPortalController", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/userPortalLink", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/ziaCloudConfig", _module)
 pulumi.runtime.registerResourcePackage("zpa", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

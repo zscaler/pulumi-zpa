@@ -27,6 +27,7 @@ export function getIsolationProfile(args?: GetIsolationProfileArgs, opts?: pulum
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getIsolationProfile:getIsolationProfile", {
+        "id": args.id,
         "name": args.name,
     }, opts);
 }
@@ -35,6 +36,7 @@ export function getIsolationProfile(args?: GetIsolationProfileArgs, opts?: pulum
  * A collection of arguments for invoking getIsolationProfile.
  */
 export interface GetIsolationProfileArgs {
+    id?: string;
     /**
      * - (Required) This field defines the name of the isolation profile.
      */
@@ -52,8 +54,8 @@ export interface GetIsolationProfileResult {
     readonly isolationProfileId: string;
     readonly isolationTenantId: string;
     readonly isolationUrl: string;
+    readonly modifiedBy: string;
     readonly modifiedTime: string;
-    readonly modifiedby: string;
     /**
      * - (Required) This field defines the name of the isolation profile.
      */
@@ -82,6 +84,7 @@ export function getIsolationProfileOutput(args?: GetIsolationProfileOutputArgs, 
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("zpa:index/getIsolationProfile:getIsolationProfile", {
+        "id": args.id,
         "name": args.name,
     }, opts);
 }
@@ -90,6 +93,7 @@ export function getIsolationProfileOutput(args?: GetIsolationProfileOutputArgs, 
  * A collection of arguments for invoking getIsolationProfile.
  */
 export interface GetIsolationProfileOutputArgs {
+    id?: pulumi.Input<string>;
     /**
      * - (Required) This field defines the name of the isolation profile.
      */

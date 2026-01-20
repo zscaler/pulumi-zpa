@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Application Server Data Source by Name
  * const example = zpa.getApplicationServer({
  *     name: "server.example.com",
  * });
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Application Server Data Source by ID
  * const example = zpa.getApplicationServer({
  *     id: "1234567890",
  * });
@@ -70,6 +72,7 @@ export interface GetApplicationServerResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Application Server Data Source by Name
  * const example = zpa.getApplicationServer({
  *     name: "server.example.com",
  * });
@@ -79,6 +82,7 @@ export interface GetApplicationServerResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Application Server Data Source by ID
  * const example = zpa.getApplicationServer({
  *     id: "1234567890",
  * });

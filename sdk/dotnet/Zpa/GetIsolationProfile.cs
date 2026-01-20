@@ -103,6 +103,9 @@ namespace zscaler.PulumiPackage.Zpa
 
     public sealed class GetIsolationProfileArgs : global::Pulumi.InvokeArgs
     {
+        [Input("id")]
+        public string? Id { get; set; }
+
         /// <summary>
         /// - (Required) This field defines the name of the isolation profile.
         /// </summary>
@@ -117,6 +120,9 @@ namespace zscaler.PulumiPackage.Zpa
 
     public sealed class GetIsolationProfileInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
         /// <summary>
         /// - (Required) This field defines the name of the isolation profile.
         /// </summary>
@@ -140,8 +146,8 @@ namespace zscaler.PulumiPackage.Zpa
         public readonly string IsolationProfileId;
         public readonly string IsolationTenantId;
         public readonly string IsolationUrl;
+        public readonly string ModifiedBy;
         public readonly string ModifiedTime;
-        public readonly string Modifiedby;
         /// <summary>
         /// - (Required) This field defines the name of the isolation profile.
         /// </summary>
@@ -163,9 +169,9 @@ namespace zscaler.PulumiPackage.Zpa
 
             string isolationUrl,
 
-            string modifiedTime,
+            string modifiedBy,
 
-            string modifiedby,
+            string modifiedTime,
 
             string? name)
         {
@@ -176,8 +182,8 @@ namespace zscaler.PulumiPackage.Zpa
             IsolationProfileId = isolationProfileId;
             IsolationTenantId = isolationTenantId;
             IsolationUrl = isolationUrl;
+            ModifiedBy = modifiedBy;
             ModifiedTime = modifiedTime;
-            Modifiedby = modifiedby;
             Name = name;
         }
     }

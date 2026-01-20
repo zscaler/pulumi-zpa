@@ -16,6 +16,117 @@ import * as utilities from "./utilities";
  *
  *   ⚠️ **WARNING:**: The attribute ``ruleOrder`` is now deprecated in favor of the new resource  ``policyAccessRuleReorder``
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const _this = zpa.getInspectionPredefinedControls({
+ *     name: "Failed to parse request body",
+ *     version: "OWASP_CRS/3.3.0",
+ * });
+ * const defaultPredefinedControls = zpa.getInspectionAllPredefinedControls({
+ *     version: "OWASP_CRS/3.3.0",
+ *     groupName: "preprocessors",
+ * });
+ * const thisInspectionProfile = new zpa.InspectionProfile("this", {
+ *     predefinedControls: [{
+ *         id: _this.then(_this => _this.id),
+ *         action: "BLOCK",
+ *     }],
+ *     name: "Example",
+ *     description: "Example",
+ *     paranoiaLevel: "1",
+ * });
+ * // Retrieve Identity Provider ID
+ * const thisGetIdPController = zpa.getIdPController({
+ *     name: "Idp_Name",
+ * });
+ * // Retrieve SAML Attribute ID
+ * const emailUserSso = zpa.getSAMLAttribute({
+ *     name: "Email_Users",
+ *     idpName: "Idp_Name",
+ * });
+ * // Retrieve SAML Attribute ID
+ * const groupUser = zpa.getSAMLAttribute({
+ *     name: "GroupName_Users",
+ *     idpName: "Idp_Name",
+ * });
+ * // Retrieve SCIM Group ID
+ * const a000 = zpa.getSCIMGroups({
+ *     name: "A000",
+ *     idpName: "Idp_Name",
+ * });
+ * // Retrieve SCIM Group ID
+ * const b000 = zpa.getSCIMGroups({
+ *     name: "B000",
+ *     idpName: "Idp_Name",
+ * });
+ * // Create Policy Access Isolation Rule V2
+ * const thisPolicyAccessInspectionRuleV2 = new zpa.PolicyAccessInspectionRuleV2("this", {
+ *     name: "Example",
+ *     description: "Example",
+ *     action: "INSPECT",
+ *     zpnInspectionProfileId: thisInspectionProfile.id,
+ *     conditions: [
+ *         {
+ *             operator: "OR",
+ *             operands: [{
+ *                 objectType: "CLIENT_TYPE",
+ *                 values: ["zpn_client_type_exporter"],
+ *             }],
+ *         },
+ *         {
+ *             operator: "OR",
+ *             operands: [
+ *                 {
+ *                     objectType: "SAML",
+ *                     entryValues: [
+ *                         {
+ *                             rhs: "user1@acme.com",
+ *                             lhs: emailUserSso.then(emailUserSso => emailUserSso.id),
+ *                         },
+ *                         {
+ *                             rhs: "A000",
+ *                             lhs: groupUser.then(groupUser => groupUser.id),
+ *                         },
+ *                     ],
+ *                 },
+ *                 {
+ *                     objectType: "SCIM_GROUP",
+ *                     entryValues: [
+ *                         {
+ *                             rhs: a000.then(a000 => a000.id),
+ *                             lhs: thisGetIdPController.then(thisGetIdPController => thisGetIdPController.id),
+ *                         },
+ *                         {
+ *                             rhs: b000.then(b000 => b000.id),
+ *                             lhs: thisGetIdPController.then(thisGetIdPController => thisGetIdPController.id),
+ *                         },
+ *                     ],
+ *                 },
+ *             ],
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## LHS and RHS Values
+ *
+ * | Object Type | LHS| RHS| VALUES
+ * |----------|-----------|----------|----------
+ * | APP  |   |  | ``applicationSegmentId`` |
+ * | APP_GROUP  |   |  | ``segmentGroupId``|
+ * | CLIENT_TYPE  |   |  |  ``zpnClientTypeZappl``, ``zpnClientTypeExporter``, ``zpnClientTypeBrowserIsolation``, ``zpnClientTypeIpAnchoring``, ``zpnClientTypeEdgeConnector``, ``zpnClientTypeBranchConnector``,  ``zpnClientTypeZappPartner``, ``zpnClientTypeZapp``  |
+ * | EDGE_CONNECTOR_GROUP  |   |  |  ``<edge_connector_id>`` |
+ * | MACHINE_GRP   |   |  | ``machineGroupId`` |
+ * | SAML | ``samlAttributeId``  | ``attributeValueToMatch`` |
+ * | SCIM | ``scimAttributeId``  | ``attributeValueToMatch``  |
+ * | SCIM_GROUP | ``scimGroupAttributeId``  | ``attributeValueToMatch``  |
+ * | PLATFORM | ``mac``, ``ios``, ``windows``, ``android``, ``linux`` | ``"true"`` / ``"false"`` |
+ * | POSTURE | ``postureUdid``  | ``"true"`` / ``"false"`` |
+ *
  * ## Import
  *
  * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
@@ -61,25 +172,25 @@ export class PolicyAccessInspectionRuleV2 extends pulumi.CustomResource {
     /**
      * This is for providing the rule action. Supported values: `INSPECT` and `BYPASS_INSPECT`.
      */
-    public readonly action!: pulumi.Output<string | undefined>;
+    declare public readonly action: pulumi.Output<string | undefined>;
     /**
      * This is for proviidng the set of conditions for the policy.
      */
-    public readonly conditions!: pulumi.Output<outputs.PolicyAccessInspectionRuleV2Condition[]>;
+    declare public readonly conditions: pulumi.Output<outputs.PolicyAccessInspectionRuleV2Condition[]>;
     /**
      * This is the description of the access policy rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly microtenantId!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly microtenantId: pulumi.Output<string>;
     /**
      * - (String) This is the name of the policy rule.
      */
-    public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly policySetId!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly policySetId: pulumi.Output<string>;
     /**
      * An inspection profile is required if the `action` is set to `INSPECT`
      */
-    public readonly zpnInspectionProfileId!: pulumi.Output<string>;
+    declare public readonly zpnInspectionProfileId: pulumi.Output<string>;
 
     /**
      * Create a PolicyAccessInspectionRuleV2 resource with the given unique name, arguments, and options.
@@ -94,21 +205,21 @@ export class PolicyAccessInspectionRuleV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyAccessInspectionRuleV2State | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["conditions"] = state ? state.conditions : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policySetId"] = state ? state.policySetId : undefined;
-            resourceInputs["zpnInspectionProfileId"] = state ? state.zpnInspectionProfileId : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["conditions"] = state?.conditions;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["microtenantId"] = state?.microtenantId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policySetId"] = state?.policySetId;
+            resourceInputs["zpnInspectionProfileId"] = state?.zpnInspectionProfileId;
         } else {
             const args = argsOrState as PolicyAccessInspectionRuleV2Args | undefined;
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["conditions"] = args ? args.conditions : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["zpnInspectionProfileId"] = args ? args.zpnInspectionProfileId : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["conditions"] = args?.conditions;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["microtenantId"] = args?.microtenantId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["zpnInspectionProfileId"] = args?.zpnInspectionProfileId;
             resourceInputs["policySetId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

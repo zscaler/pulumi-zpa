@@ -31,6 +31,7 @@ namespace zscaler.PulumiPackage.Zpa
     ///     // ZPA Microtenant Controller resource
     ///     var @this = new Zpa.Microtenant("this", new()
     ///     {
+    ///         Name = "Microtenant_A",
     ///         Description = "Microtenant_A",
     ///         Enabled = true,
     ///         CriteriaAttribute = "AuthDomain",
@@ -47,7 +48,7 @@ namespace zscaler.PulumiPackage.Zpa
     ///         {
     ///             return 
     ///             {
-    ///                 { "microtenant_id", u.MicrotenantId },
+    ///                 { "microtenantId", u.MicrotenantId },
     ///                 { "username", u.Username },
     ///                 { "password", u.Password },
     ///             };
@@ -110,8 +111,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no
-        /// Authentication Domain is selected.
+        /// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no Authentication Domain is selected.
         /// </summary>
         [Output("privilegedApprovalsEnabled")]
         public Output<bool?> PrivilegedApprovalsEnabled { get; private set; } = null!;
@@ -203,8 +203,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no
-        /// Authentication Domain is selected.
+        /// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no Authentication Domain is selected.
         /// </summary>
         [Input("privilegedApprovalsEnabled")]
         public Input<bool>? PrivilegedApprovalsEnabled { get; set; }
@@ -262,8 +261,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no
-        /// Authentication Domain is selected.
+        /// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no Authentication Domain is selected.
         /// </summary>
         [Input("privilegedApprovalsEnabled")]
         public Input<bool>? PrivilegedApprovalsEnabled { get; set; }

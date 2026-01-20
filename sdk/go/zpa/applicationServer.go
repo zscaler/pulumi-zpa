@@ -27,9 +27,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Application Server resource (IP Address)
-//			_, err := zpa.NewApplicationServer(ctx, "testAppServer", &zpa.ApplicationServerArgs{
-//				Address:     pulumi.String("192.168.1.1"),
+//			_, err := zpa.NewApplicationServer(ctx, "test_app_server", &zpa.ApplicationServerArgs{
+//				Name:        pulumi.String("test1-app-server"),
 //				Description: pulumi.String("test1-app-server"),
+//				Address:     pulumi.String("192.168.1.1"),
 //				Enabled:     pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -54,10 +55,48 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Application Server resource (FQDN Address)
-//			_, err := zpa.NewApplicationServer(ctx, "testAppServer", &zpa.ApplicationServerArgs{
-//				Address:     pulumi.String("server1.acme.com"),
+//			_, err := zpa.NewApplicationServer(ctx, "test_app_server", &zpa.ApplicationServerArgs{
+//				Name:        pulumi.String("test1-app-server"),
 //				Description: pulumi.String("test1-app-server"),
+//				Address:     pulumi.String("server1.acme.com"),
 //				Enabled:     pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := zpa.LookupServerGroup(ctx, &zpa.LookupServerGroupArgs{
+//				Name: pulumi.StringRef("Example"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// ZPA Application Server resource
+//			_, err = zpa.NewApplicationServer(ctx, "test_app_server", &zpa.ApplicationServerArgs{
+//				Name:        pulumi.String("test1-app-server"),
+//				Description: pulumi.String("test1-app-server"),
+//				Address:     pulumi.String("192.168.1.1"),
+//				Enabled:     pulumi.Bool(true),
+//				AppServerGroupIds: pulumi.StringArray{
+//					pulumi.Any(example.Com),
+//				},
 //			})
 //			if err != nil {
 //				return err

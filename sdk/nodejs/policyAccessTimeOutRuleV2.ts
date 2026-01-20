@@ -22,32 +22,39 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * const thisIdPController = zpa.getIdPController({
+ * // Retrieve Identity Provider ID
+ * const _this = zpa.getIdPController({
  *     name: "Idp_Name",
  * });
+ * // Retrieve SAML Attribute ID
  * const emailUserSso = zpa.getSAMLAttribute({
  *     name: "Email_Users",
  *     idpName: "Idp_Name",
  * });
+ * // Retrieve SAML Attribute ID
  * const groupUser = zpa.getSAMLAttribute({
  *     name: "GroupName_Users",
  *     idpName: "Idp_Name",
  * });
+ * // Retrieve SCIM Group ID
  * const a000 = zpa.getSCIMGroups({
  *     name: "A000",
  *     idpName: "Idp_Name",
  * });
+ * // Retrieve SCIM Group ID
  * const b000 = zpa.getSCIMGroups({
  *     name: "B000",
  *     idpName: "Idp_Name",
  * });
  * // Create Segment Group
- * const thisSegmentGroup = new zpa.SegmentGroup("thisSegmentGroup", {
+ * const thisSegmentGroup = new zpa.SegmentGroup("this", {
+ *     name: "Example",
  *     description: "Example",
  *     enabled: true,
  * });
  * // Create Policy Access Rule V2
- * const thisPolicyAccessTimeOutRuleV2 = new zpa.PolicyAccessTimeOutRuleV2("thisPolicyAccessTimeOutRuleV2", {
+ * const thisPolicyAccessTimeOutRuleV2 = new zpa.PolicyAccessTimeOutRuleV2("this", {
+ *     name: "Example",
  *     description: "Example",
  *     action: "RE_AUTH",
  *     reauthIdleTimeout: "10 Days",
@@ -81,11 +88,11 @@ import * as utilities from "./utilities";
  *                     entryValues: [
  *                         {
  *                             rhs: a000.then(a000 => a000.id),
- *                             lhs: thisIdPController.then(thisIdPController => thisIdPController.id),
+ *                             lhs: _this.then(_this => _this.id),
  *                         },
  *                         {
  *                             rhs: b000.then(b000 => b000.id),
- *                             lhs: thisIdPController.then(thisIdPController => thisIdPController.id),
+ *                             lhs: _this.then(_this => _this.id),
  *                         },
  *                     ],
  *                 },
@@ -169,27 +176,27 @@ export class PolicyAccessTimeOutRuleV2 extends pulumi.CustomResource {
     /**
      * This is for providing the rule action.
      */
-    public readonly action!: pulumi.Output<string | undefined>;
+    declare public readonly action: pulumi.Output<string | undefined>;
     /**
      * This is for proviidng the set of conditions for the policy.
      */
-    public readonly conditions!: pulumi.Output<outputs.PolicyAccessTimeOutRuleV2Condition[]>;
+    declare public readonly conditions: pulumi.Output<outputs.PolicyAccessTimeOutRuleV2Condition[]>;
     /**
      * This is for providing a customer message for the user.
      */
-    public readonly customMsg!: pulumi.Output<string | undefined>;
+    declare public readonly customMsg: pulumi.Output<string | undefined>;
     /**
      * This is the description of the access policy.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly microtenantId!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly microtenantId: pulumi.Output<string>;
     /**
      * This is the name of the policy.
      */
-    public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly policySetId!: pulumi.Output<string>;
-    public readonly reauthIdleTimeout!: pulumi.Output<string | undefined>;
-    public readonly reauthTimeout!: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly policySetId: pulumi.Output<string>;
+    declare public readonly reauthIdleTimeout: pulumi.Output<string | undefined>;
+    declare public readonly reauthTimeout: pulumi.Output<string | undefined>;
 
     /**
      * Create a PolicyAccessTimeOutRuleV2 resource with the given unique name, arguments, and options.
@@ -204,25 +211,25 @@ export class PolicyAccessTimeOutRuleV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyAccessTimeOutRuleV2State | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["conditions"] = state ? state.conditions : undefined;
-            resourceInputs["customMsg"] = state ? state.customMsg : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policySetId"] = state ? state.policySetId : undefined;
-            resourceInputs["reauthIdleTimeout"] = state ? state.reauthIdleTimeout : undefined;
-            resourceInputs["reauthTimeout"] = state ? state.reauthTimeout : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["conditions"] = state?.conditions;
+            resourceInputs["customMsg"] = state?.customMsg;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["microtenantId"] = state?.microtenantId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policySetId"] = state?.policySetId;
+            resourceInputs["reauthIdleTimeout"] = state?.reauthIdleTimeout;
+            resourceInputs["reauthTimeout"] = state?.reauthTimeout;
         } else {
             const args = argsOrState as PolicyAccessTimeOutRuleV2Args | undefined;
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["conditions"] = args ? args.conditions : undefined;
-            resourceInputs["customMsg"] = args ? args.customMsg : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["reauthIdleTimeout"] = args ? args.reauthIdleTimeout : undefined;
-            resourceInputs["reauthTimeout"] = args ? args.reauthTimeout : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["conditions"] = args?.conditions;
+            resourceInputs["customMsg"] = args?.customMsg;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["microtenantId"] = args?.microtenantId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["reauthIdleTimeout"] = args?.reauthIdleTimeout;
+            resourceInputs["reauthTimeout"] = args?.reauthTimeout;
             resourceInputs["policySetId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -32,6 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA PRA Portal Data Source
 //			_, err := zpa.LookupPRAPortal(ctx, &zpa.LookupPRAPortalArgs{
 //				Name: pulumi.StringRef("Example"),
 //			}, nil)
@@ -65,28 +66,29 @@ type LookupPRAPortalArgs struct {
 
 // A collection of values returned by getPRAPortal.
 type LookupPRAPortalResult struct {
-	CertificateId           string  `pulumi:"certificateId"`
-	CertificateName         string  `pulumi:"certificateName"`
-	Cname                   string  `pulumi:"cname"`
-	CreationTime            string  `pulumi:"creationTime"`
-	Description             string  `pulumi:"description"`
-	Domain                  string  `pulumi:"domain"`
-	Enabled                 bool    `pulumi:"enabled"`
-	ExtDomain               *string `pulumi:"extDomain"`
-	ExtDomainName           *string `pulumi:"extDomainName"`
-	ExtDomainTranslation    *string `pulumi:"extDomainTranslation"`
-	ExtLabel                *string `pulumi:"extLabel"`
-	GetcName                string  `pulumi:"getcName"`
-	Id                      *string `pulumi:"id"`
-	MicrotenantId           string  `pulumi:"microtenantId"`
-	MicrotenantName         string  `pulumi:"microtenantName"`
-	ModifiedBy              string  `pulumi:"modifiedBy"`
-	ModifiedTime            string  `pulumi:"modifiedTime"`
-	Name                    *string `pulumi:"name"`
-	UserNotification        string  `pulumi:"userNotification"`
-	UserNotificationEnabled bool    `pulumi:"userNotificationEnabled"`
-	UserPortalGid           string  `pulumi:"userPortalGid"`
-	UserPortalName          string  `pulumi:"userPortalName"`
+	ApprovalReviewers       []string `pulumi:"approvalReviewers"`
+	CertificateId           string   `pulumi:"certificateId"`
+	CertificateName         string   `pulumi:"certificateName"`
+	Cname                   string   `pulumi:"cname"`
+	CreationTime            string   `pulumi:"creationTime"`
+	Description             string   `pulumi:"description"`
+	Domain                  string   `pulumi:"domain"`
+	Enabled                 bool     `pulumi:"enabled"`
+	ExtDomain               *string  `pulumi:"extDomain"`
+	ExtDomainName           *string  `pulumi:"extDomainName"`
+	ExtDomainTranslation    *string  `pulumi:"extDomainTranslation"`
+	ExtLabel                *string  `pulumi:"extLabel"`
+	GetcName                string   `pulumi:"getcName"`
+	Id                      *string  `pulumi:"id"`
+	MicrotenantId           string   `pulumi:"microtenantId"`
+	MicrotenantName         string   `pulumi:"microtenantName"`
+	ModifiedBy              string   `pulumi:"modifiedBy"`
+	ModifiedTime            string   `pulumi:"modifiedTime"`
+	Name                    *string  `pulumi:"name"`
+	UserNotification        string   `pulumi:"userNotification"`
+	UserNotificationEnabled bool     `pulumi:"userNotificationEnabled"`
+	UserPortalGid           string   `pulumi:"userPortalGid"`
+	UserPortalName          string   `pulumi:"userPortalName"`
 }
 
 func LookupPRAPortalOutput(ctx *pulumi.Context, args LookupPRAPortalOutputArgs, opts ...pulumi.InvokeOption) LookupPRAPortalResultOutput {
@@ -125,6 +127,10 @@ func (o LookupPRAPortalResultOutput) ToLookupPRAPortalResultOutput() LookupPRAPo
 
 func (o LookupPRAPortalResultOutput) ToLookupPRAPortalResultOutputWithContext(ctx context.Context) LookupPRAPortalResultOutput {
 	return o
+}
+
+func (o LookupPRAPortalResultOutput) ApprovalReviewers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupPRAPortalResult) []string { return v.ApprovalReviewers }).(pulumi.StringArrayOutput)
 }
 
 func (o LookupPRAPortalResultOutput) CertificateId() pulumi.StringOutput {

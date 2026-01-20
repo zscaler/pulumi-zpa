@@ -34,6 +34,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Service Edge Group Data Source by name
         ///     var foo = Zpa.GetServiceEdgeGroup.Invoke(new()
         ///     {
         ///         Name = "DataCenter",
@@ -50,6 +51,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Service Edge Group Data Source by ID
         ///     var foo = Zpa.GetServiceEdgeGroup.Invoke(new()
         ///     {
         ///         Id = "123456789",
@@ -83,6 +85,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Service Edge Group Data Source by name
         ///     var foo = Zpa.GetServiceEdgeGroup.Invoke(new()
         ///     {
         ///         Name = "DataCenter",
@@ -99,6 +102,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Service Edge Group Data Source by ID
         ///     var foo = Zpa.GetServiceEdgeGroup.Invoke(new()
         ///     {
         ///         Id = "123456789",
@@ -132,6 +136,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Service Edge Group Data Source by name
         ///     var foo = Zpa.GetServiceEdgeGroup.Invoke(new()
         ///     {
         ///         Name = "DataCenter",
@@ -148,6 +153,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Service Edge Group Data Source by ID
         ///     var foo = Zpa.GetServiceEdgeGroup.Invoke(new()
         ///     {
         ///         Id = "123456789",
@@ -194,11 +200,13 @@ namespace zscaler.PulumiPackage.Zpa
     public sealed class GetServiceEdgeGroupResult
     {
         public readonly string AltCloud;
+        public readonly string City;
         public readonly string CityCountry;
         public readonly string CountryCode;
         public readonly string CreationTime;
         public readonly string Description;
         public readonly bool Enabled;
+        public readonly bool ExclusiveForBusinessContinuity;
         public readonly string GeoLocationId;
         public readonly bool GraceDistanceEnabled;
         public readonly string GraceDistanceValue;
@@ -211,7 +219,9 @@ namespace zscaler.PulumiPackage.Zpa
         public readonly string ModifiedBy;
         public readonly string ModifiedTime;
         public readonly string Name;
+        public readonly string NameWithoutTrim;
         public readonly bool OverrideVersionProfile;
+        public readonly bool RestrictedEntity;
         public readonly ImmutableArray<Outputs.GetServiceEdgeGroupServiceEdgeResult> ServiceEdges;
         public readonly string SiteId;
         public readonly string SiteName;
@@ -227,6 +237,8 @@ namespace zscaler.PulumiPackage.Zpa
         private GetServiceEdgeGroupResult(
             string altCloud,
 
+            string city,
+
             string cityCountry,
 
             string countryCode,
@@ -236,6 +248,8 @@ namespace zscaler.PulumiPackage.Zpa
             string description,
 
             bool enabled,
+
+            bool exclusiveForBusinessContinuity,
 
             string geoLocationId,
 
@@ -261,7 +275,11 @@ namespace zscaler.PulumiPackage.Zpa
 
             string name,
 
+            string nameWithoutTrim,
+
             bool overrideVersionProfile,
+
+            bool restrictedEntity,
 
             ImmutableArray<Outputs.GetServiceEdgeGroupServiceEdgeResult> serviceEdges,
 
@@ -284,11 +302,13 @@ namespace zscaler.PulumiPackage.Zpa
             string versionProfileVisibilityScope)
         {
             AltCloud = altCloud;
+            City = city;
             CityCountry = cityCountry;
             CountryCode = countryCode;
             CreationTime = creationTime;
             Description = description;
             Enabled = enabled;
+            ExclusiveForBusinessContinuity = exclusiveForBusinessContinuity;
             GeoLocationId = geoLocationId;
             GraceDistanceEnabled = graceDistanceEnabled;
             GraceDistanceValue = graceDistanceValue;
@@ -301,7 +321,9 @@ namespace zscaler.PulumiPackage.Zpa
             ModifiedBy = modifiedBy;
             ModifiedTime = modifiedTime;
             Name = name;
+            NameWithoutTrim = nameWithoutTrim;
             OverrideVersionProfile = overrideVersionProfile;
+            RestrictedEntity = restrictedEntity;
             ServiceEdges = serviceEdges;
             SiteId = siteId;
             SiteName = siteName;

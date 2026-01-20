@@ -16,7 +16,27 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// The **zpa_policy_forwarding_rule** resource creates a policy forwarding access rule in the Zscaler Private Access cloud.
     /// 
-    ///   ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource ``zpa.PolicyAccessReorderRule`` policy_access_rule_reorder
+    ///   ⚠️ **WARNING:**: The attribute ``RuleOrder`` is now deprecated in favor of the new resource ``zpa.PolicyAccessReorderRule`` PolicyAccessRuleReorder
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ## LHS and RHS Values
+    /// 
+    /// LHS and RHS values differ based on object types. Refer to the following table:
+    /// 
+    /// | Object Type | LHS| RHS
+    /// |----------|-----------|----------
+    /// | APP | ``"id"`` | ``ApplicationSegmentId`` |
+    /// | APP_GROUP | ``"id"`` | ``SegmentGroupId``|
+    /// | CLIENT_TYPE | ``"id"`` | ``ZpnClientTypeExporter``, ``ZpnClientTypeBrowserIsolation``, ``ZpnClientTypeIpAnchoring``, ``ZpnClientTypeEdgeConnector``, ``ZpnClientTypeBranchConnector``, ``ZpnClientTypeZappPartner``,  ``ZpnClientTypeMachineTunnel``, ``ZpnClientTypeZapp``  |
+    /// | EDGE_CONNECTOR_GROUP | ``"id"`` | ``EdgeConnectorId`` |
+    /// | MACHINE_GRP | ``"id"`` | ``MachineGroupId`` |
+    /// | POSTURE | ``PostureUdid``  | ``"true"`` / ``"false"`` |
+    /// | TRUSTED_NETWORK | ``NetworkId``  | ``"true"`` |
+    /// | IDP | ``"id"`` | ``IdentityProviderId`` |
+    /// | SAML | ``SamlAttributeId``  | ``AttributeValueToMatch`` |
+    /// | SCIM | ``ScimAttributeId``  | ``AttributeValueToMatch``  |
+    /// | SCIM_GROUP | ``ScimGroupAttributeId``  | ``AttributeValueToMatch``  |
     /// 
     /// ## Import
     /// 
@@ -48,7 +68,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<string?> ActionId { get; private set; } = null!;
 
         [Output("bypassDefaultRule")]
-        public Output<bool?> BypassDefaultRule { get; private set; } = null!;
+        public Output<bool> BypassDefaultRule { get; private set; } = null!;
 
         /// <summary>
         /// This is for proviidng the set of conditions for the policy.
@@ -66,7 +86,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// This is for providing a customer message for the user.
         /// </summary>
         [Output("defaultRule")]
-        public Output<bool?> DefaultRule { get; private set; } = null!;
+        public Output<bool> DefaultRule { get; private set; } = null!;
 
         /// <summary>
         /// This is the description of the access policy.
@@ -99,7 +119,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<string> Priority { get; private set; } = null!;
 
         [Output("reauthDefaultRule")]
-        public Output<bool?> ReauthDefaultRule { get; private set; } = null!;
+        public Output<bool> ReauthDefaultRule { get; private set; } = null!;
 
         [Output("reauthIdleTimeout")]
         public Output<string?> ReauthIdleTimeout { get; private set; } = null!;

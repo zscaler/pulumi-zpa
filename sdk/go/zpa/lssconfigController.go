@@ -30,6 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Get Log Type Format - "App Connector Metrics"
 //			zpnAstComprehensiveStats, err := zpa.GetLSSLogTypeFormats(ctx, &zpa.GetLSSLogTypeFormatsArgs{
 //				LogType: "zpn_ast_comprehensive_stats",
 //			}, nil)
@@ -48,7 +49,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = zpa.NewLSSConfigController(ctx, "lssAppConnectorMetrics", &zpa.LSSConfigControllerArgs{
+//			_, err = zpa.NewLSSConfigController(ctx, "lss_app_connector_metrics", &zpa.LSSConfigControllerArgs{
 //				Config: &zpa.LSSConfigControllerConfigArgs{
 //					Name:          pulumi.String("LSS App Connector Metrics"),
 //					Description:   pulumi.String("LSS App Connector Metrics"),

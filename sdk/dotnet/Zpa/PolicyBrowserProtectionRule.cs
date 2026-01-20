@@ -18,7 +18,7 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     ///   ⚠️ **NOTE**: This resource is recommended if your configuration requires the association of more than 1000 resource criteria per rule.
     /// 
-    ///   ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+    ///   ⚠️ **WARNING:**: The attribute ``RuleOrder`` is now deprecated in favor of the new resource  ``PolicyAccessRuleReorder``
     /// 
     /// ## Example Usage
     /// 
@@ -33,29 +33,35 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thisIdPController = Zpa.GetIdPController.Invoke(new()
+    ///     // Retrieve Policy Types
+    ///     // Retrieve Identity Provider ID
+    ///     var @this = Zpa.GetIdPController.Invoke(new()
     ///     {
     ///         Name = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SAML Attribute ID
     ///     var emailUserSso = Zpa.GetSAMLAttribute.Invoke(new()
     ///     {
     ///         Name = "Email_Users",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SAML Attribute ID
     ///     var groupUser = Zpa.GetSAMLAttribute.Invoke(new()
     ///     {
     ///         Name = "GroupName_Users",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SCIM Group ID
     ///     var a000 = Zpa.GetSCIMGroups.Invoke(new()
     ///     {
     ///         Name = "A000",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SCIM Group ID
     ///     var b000 = Zpa.GetSCIMGroups.Invoke(new()
     ///     {
     ///         Name = "B000",
@@ -63,15 +69,17 @@ namespace zscaler.PulumiPackage.Zpa
     ///     });
     /// 
     ///     // Create Segment Group
-    ///     var thisSegmentGroup = new Zpa.SegmentGroup("thisSegmentGroup", new()
+    ///     var thisSegmentGroup = new Zpa.SegmentGroup("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///     });
     /// 
     ///     // Create Policy Access Rule V2
-    ///     var thisPolicyBrowserProtectionRule = new Zpa.PolicyBrowserProtectionRule("thisPolicyBrowserProtectionRule", new()
+    ///     var thisPolicyBrowserProtectionRule = new Zpa.PolicyBrowserProtectionRule("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Action = "MONITOR",
     ///         Conditions = new[]
@@ -121,12 +129,12 @@ namespace zscaler.PulumiPackage.Zpa
     ///                             new Zpa.Inputs.PolicyBrowserProtectionRuleConditionOperandEntryValueArgs
     ///                             {
     ///                                 Rhs = a000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
-    ///                                 Lhs = thisIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                                 Lhs = @this.Apply(@this =&gt; @this.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id)),
     ///                             },
     ///                             new Zpa.Inputs.PolicyBrowserProtectionRuleConditionOperandEntryValueArgs
     ///                             {
     ///                                 Rhs = b000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
-    ///                                 Lhs = thisIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                                 Lhs = @this.Apply(@this =&gt; @this.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id)),
     ///                             },
     ///                         },
     ///                     },
@@ -179,29 +187,35 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thisIdPController = Zpa.GetIdPController.Invoke(new()
+    ///     // Retrieve Policy Types
+    ///     // Retrieve Identity Provider ID
+    ///     var @this = Zpa.GetIdPController.Invoke(new()
     ///     {
     ///         Name = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SAML Attribute ID
     ///     var emailUserSso = Zpa.GetSAMLAttribute.Invoke(new()
     ///     {
     ///         Name = "Email_Users",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SAML Attribute ID
     ///     var groupUser = Zpa.GetSAMLAttribute.Invoke(new()
     ///     {
     ///         Name = "GroupName_Users",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SCIM Group ID
     ///     var a000 = Zpa.GetSCIMGroups.Invoke(new()
     ///     {
     ///         Name = "A000",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SCIM Group ID
     ///     var b000 = Zpa.GetSCIMGroups.Invoke(new()
     ///     {
     ///         Name = "B000",
@@ -209,15 +223,17 @@ namespace zscaler.PulumiPackage.Zpa
     ///     });
     /// 
     ///     // Create Segment Group
-    ///     var thisSegmentGroup = new Zpa.SegmentGroup("thisSegmentGroup", new()
+    ///     var thisSegmentGroup = new Zpa.SegmentGroup("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///     });
     /// 
     ///     // Create Policy Access Rule V2
-    ///     var thisPolicyBrowserProtectionRule = new Zpa.PolicyBrowserProtectionRule("thisPolicyBrowserProtectionRule", new()
+    ///     var thisPolicyBrowserProtectionRule = new Zpa.PolicyBrowserProtectionRule("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Action = "DO_NOT_MONITOR",
     ///         Conditions = new[]
@@ -267,12 +283,12 @@ namespace zscaler.PulumiPackage.Zpa
     ///                             new Zpa.Inputs.PolicyBrowserProtectionRuleConditionOperandEntryValueArgs
     ///                             {
     ///                                 Rhs = a000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
-    ///                                 Lhs = thisIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                                 Lhs = @this.Apply(@this =&gt; @this.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id)),
     ///                             },
     ///                             new Zpa.Inputs.PolicyBrowserProtectionRuleConditionOperandEntryValueArgs
     ///                             {
     ///                                 Rhs = b000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
-    ///                                 Lhs = thisIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                                 Lhs = @this.Apply(@this =&gt; @this.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id)),
     ///                             },
     ///                         },
     ///                     },
@@ -318,22 +334,22 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// | Object Type | LHS| RHS| VALUES
     /// |----------|-----------|----------|----------
-    /// | APP  |   |  | ``application_segment_id`` |
-    /// | APP_GROUP  |   |  | ``segment_group_id``|
-    /// | CLIENT_TYPE  |   |  |  ``zpn_client_type_zappl``, ``zpn_client_type_exporter``, ``zpn_client_type_browser_isolation``, ``zpn_client_type_ip_anchoring``, ``zpn_client_type_edge_connector``, ``zpn_client_type_branch_connector``,  ``zpn_client_type_zapp_partner``, ``zpn_client_type_zapp``  |
+    /// | APP  |   |  | ``ApplicationSegmentId`` |
+    /// | APP_GROUP  |   |  | ``SegmentGroupId``|
+    /// | CLIENT_TYPE  |   |  |  ``ZpnClientTypeZappl``, ``ZpnClientTypeExporter``, ``ZpnClientTypeBrowserIsolation``, ``ZpnClientTypeIpAnchoring``, ``ZpnClientTypeEdgeConnector``, ``ZpnClientTypeBranchConnector``,  ``ZpnClientTypeZappPartner``, ``ZpnClientTypeZapp``  |
     /// | EDGE_CONNECTOR_GROUP  |   |  |  ``&lt;edge_connector_id&gt;`` |
     /// | BRANCH_CONNECTOR_GROUP  |   |  |  ``&lt;branch_connector_id&gt;`` |
-    /// | LOCATION   |   |  | ``location_id`` |
-    /// | MACHINE_GRP   |   |  | ``machine_group_id`` |
-    /// | SAML | ``saml_attribute_id``  | ``attribute_value_to_match`` |
-    /// | SCIM | ``scim_attribute_id``  | ``attribute_value_to_match``  |
-    /// | SCIM_GROUP | ``scim_group_attribute_id``  | ``attribute_value_to_match``  |
-    /// | PLATFORM | ``mac``, ``ios``, ``windows``, ``android``, ``linux`` | ``"true"`` / ``"false"`` |
-    /// | POSTURE | ``posture_udid``  | ``"true"`` / ``"false"`` |
-    /// | TRUSTED_NETWORK | ``network_id``  | ``"true"`` |
+    /// | LOCATION   |   |  | ``LocationId`` |
+    /// | MACHINE_GRP   |   |  | ``MachineGroupId`` |
+    /// | SAML | ``SamlAttributeId``  | ``AttributeValueToMatch`` |
+    /// | SCIM | ``ScimAttributeId``  | ``AttributeValueToMatch``  |
+    /// | SCIM_GROUP | ``ScimGroupAttributeId``  | ``AttributeValueToMatch``  |
+    /// | PLATFORM | ``Mac``, ``Ios``, ``Windows``, ``Android``, ``Linux`` | ``"true"`` / ``"false"`` |
+    /// | POSTURE | ``PostureUdid``  | ``"true"`` / ``"false"`` |
+    /// | TRUSTED_NETWORK | ``NetworkId``  | ``"true"`` |
     /// | COUNTRY_CODE | [2 Letter ISO3166 Alpha2](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)  | ``"true"`` / ``"false"`` |
     /// | RISK_FACTOR_TYPE | ``ZIA``  | ``"UNKNOWN", "LOW", "MEDIUM", "HIGH", "CRITICAL"`` |
-    /// | CHROME_ENTERPRISE | ``managed``  | ``"true" / "false"`` |
+    /// | CHROME_ENTERPRISE | ``Managed``  | ``"true" / "false"`` |
     /// 
     /// ## Import
     /// 

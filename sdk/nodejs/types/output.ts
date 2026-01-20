@@ -64,6 +64,10 @@ export interface ApplicationSegmentBrowserAccessUdpPortRange {
     to?: string;
 }
 
+export interface ApplicationSegmentBrowserAccessZpnErId {
+    ids: string[];
+}
+
 export interface ApplicationSegmentInspectionCommonAppsDto {
     appsConfigs: outputs.ApplicationSegmentInspectionCommonAppsDtoAppsConfig[];
 }
@@ -76,7 +80,6 @@ export interface ApplicationSegmentInspectionCommonAppsDtoAppsConfig {
     certificateId: string;
     description: string;
     domain: string;
-    enabled: boolean;
     inspectAppId: string;
     name: string;
     trustUntrustedCert: boolean;
@@ -104,10 +107,9 @@ export interface ApplicationSegmentPRACommonAppsDtoAppsConfig {
     appId: string;
     appTypes: string[];
     applicationPort: string;
-    applicationProtocol: string;
-    connectionSecurity: string;
-    domain: string;
-    enabled: boolean;
+    applicationProtocol?: string;
+    connectionSecurity?: string;
+    domain?: string;
     name: string;
     praAppId: string;
 }
@@ -126,6 +128,10 @@ export interface ApplicationSegmentPRAUdpPortRange {
     to?: string;
 }
 
+export interface ApplicationSegmentPRAZpnErId {
+    ids: string[];
+}
+
 export interface ApplicationSegmentServerGroup {
     ids: string[];
 }
@@ -138,6 +144,29 @@ export interface ApplicationSegmentTcpPortRange {
 export interface ApplicationSegmentUdpPortRange {
     from?: string;
     to?: string;
+}
+
+export interface ApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping {
+    /**
+     * Server group mapping identifier.
+     */
+    id: string;
+    /**
+     * Server group name.
+     */
+    name: string;
+    /**
+     * Whether the server group is passive.
+     */
+    passive: boolean;
+    /**
+     * Assigned weight for the server group.
+     */
+    weight: string;
+}
+
+export interface ApplicationSegmentZpnErId {
+    ids: string[];
 }
 
 export interface BrowserAccessClientlessApp {
@@ -199,6 +228,10 @@ export interface BrowserAccessUdpPortRange {
     to?: string;
 }
 
+export interface BrowserAccessZpnErId {
+    ids: string[];
+}
+
 export interface CloudBrowserIsolationExternalProfileDebugMode {
     allowed: boolean;
     filePassword?: string;
@@ -206,13 +239,13 @@ export interface CloudBrowserIsolationExternalProfileDebugMode {
 
 export interface CloudBrowserIsolationExternalProfileSecurityControls {
     allowPrinting: boolean;
-    copyPaste: string;
+    copyPaste?: string;
     deepLink: outputs.CloudBrowserIsolationExternalProfileSecurityControlsDeepLink;
     documentViewer: boolean;
     flattenedPdf: boolean;
     localRender: boolean;
     restrictKeystrokes: boolean;
-    uploadDownload: string;
+    uploadDownload?: string;
     watermark: outputs.CloudBrowserIsolationExternalProfileSecurityControlsWatermark;
 }
 
@@ -231,7 +264,7 @@ export interface CloudBrowserIsolationExternalProfileSecurityControlsWatermark {
 
 export interface CloudBrowserIsolationExternalProfileUserExperience {
     browserInBrowser: boolean;
-    forwardToZia: outputs.CloudBrowserIsolationExternalProfileUserExperienceForwardToZia;
+    forwardToZia?: outputs.CloudBrowserIsolationExternalProfileUserExperienceForwardToZia;
     persistIsolationBar: boolean;
     sessionPersistence: boolean;
     translate: boolean;
@@ -239,10 +272,10 @@ export interface CloudBrowserIsolationExternalProfileUserExperience {
 }
 
 export interface CloudBrowserIsolationExternalProfileUserExperienceForwardToZia {
-    cloudName: string;
-    enabled: boolean;
-    organizationId: string;
-    pacFileUrl: string;
+    cloudName?: string;
+    enabled?: boolean;
+    organizationId?: string;
+    pacFileUrl?: string;
 }
 
 export interface GetAppConnectorControllerAssistantVersion {
@@ -423,6 +456,33 @@ export interface GetApplicationSegmentInspectionUdpPortRange {
     to?: string;
 }
 
+export interface GetApplicationSegmentMultimatchBulkUnsupportedReference {
+    /**
+     * Application segment name.
+     */
+    appSegmentName: string;
+    /**
+     * List of domain names for this segment.
+     */
+    domains: string[];
+    /**
+     * Application segment ID.
+     */
+    id: string;
+    /**
+     * Current match style of the segment (EXCLUSIVE or INCLUSIVE).
+     */
+    matchStyle: string;
+    /**
+     * Microtenant name associated with this segment.
+     */
+    microtenantName: string;
+    /**
+     * List of TCP ports for this segment.
+     */
+    tcpPorts: string[];
+}
+
 export interface GetApplicationSegmentPRAServerGroup {
     ids: string[];
 }
@@ -467,6 +527,74 @@ export interface GetApplicationSegmentTcpPortRange {
 export interface GetApplicationSegmentUdpPortRange {
     from?: string;
     to?: string;
+}
+
+export interface GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping {
+    /**
+     * Server group mapping identifier.
+     */
+    id: string;
+    /**
+     * Server group name.
+     */
+    name: string;
+    /**
+     * Whether the server group is passive.
+     */
+    passive: boolean;
+    /**
+     * Assigned weight for the server group.
+     */
+    weight: string;
+}
+
+export interface GetBrowserProtectionCriteria {
+    fingerPrintCriterias: outputs.GetBrowserProtectionCriteriaFingerPrintCriteria[];
+}
+
+export interface GetBrowserProtectionCriteriaFingerPrintCriteria {
+    browsers: outputs.GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser[];
+    collectLocation: boolean;
+    fingerprintTimeout: string;
+    locations: outputs.GetBrowserProtectionCriteriaFingerPrintCriteriaLocation[];
+    systems: outputs.GetBrowserProtectionCriteriaFingerPrintCriteriaSystem[];
+}
+
+export interface GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser {
+    browserEng: boolean;
+    browserEngVer: boolean;
+    browserName: boolean;
+    browserVersion: boolean;
+    canvas: boolean;
+    flashVer: boolean;
+    fpUsrAgentStr: boolean;
+    isCookie: boolean;
+    isLocalStorage: boolean;
+    isSessStorage: boolean;
+    ja3: boolean;
+    mime: boolean;
+    plugin: boolean;
+    silverlightVer: boolean;
+}
+
+export interface GetBrowserProtectionCriteriaFingerPrintCriteriaLocation {
+    lat: boolean;
+    lon: boolean;
+}
+
+export interface GetBrowserProtectionCriteriaFingerPrintCriteriaSystem {
+    availScreenResolution: boolean;
+    cpuArch: boolean;
+    currScreenResolution: boolean;
+    font: boolean;
+    javaVer: boolean;
+    mobileDevType: boolean;
+    monitorMobile: boolean;
+    osName: boolean;
+    osVersion: boolean;
+    sysLang: boolean;
+    tz: boolean;
+    usrLang: boolean;
 }
 
 export interface GetCloudBrowserIsolationExternalProfileDebugMode {
@@ -808,6 +936,12 @@ export interface GetLSSConfigControllerPolicyRuleConditionOperand {
     rhs: string;
 }
 
+export interface GetLocationGroupControllerZiaLocation {
+    enabled: boolean;
+    id: string;
+    name: string;
+}
+
 export interface GetMachineGroupMachine {
     creationTime: string;
     description: string;
@@ -823,6 +957,15 @@ export interface GetMachineGroupMachine {
     modifiedTime: string;
     name: string;
     signingCert: {[key: string]: string};
+}
+
+export interface GetManagedBrowserProfileChromePostureProfile {
+    browserType: string;
+    creationTime: string;
+    crowdStrikeAgent: boolean;
+    id: string;
+    modifiedBy: string;
+    modifiedTime: string;
 }
 
 export interface GetMicrotenantRole {
@@ -1185,6 +1328,12 @@ export interface GetServiceEdgeGroupTrustedNetwork {
     zscalerCloud: string;
 }
 
+export interface GetUserPortalLinkUserPortal {
+    enabled: boolean;
+    id: string;
+    name: string;
+}
+
 export interface InspectionCustomControlsRule {
     conditions: outputs.InspectionCustomControlsRuleCondition[];
     /**
@@ -1306,7 +1455,7 @@ export interface LSSConfigControllerPolicyRuleResource {
      * This field defines the description of the server.
      */
     actionId?: string;
-    bypassDefaultRule?: boolean;
+    bypassDefaultRule: boolean;
     /**
      * This is for proviidng the set of conditions for the policy.
      */
@@ -1318,7 +1467,7 @@ export interface LSSConfigControllerPolicyRuleResource {
     /**
      * This is for providing a customer message for the user.
      */
-    defaultRule?: boolean;
+    defaultRule: boolean;
     /**
      * This is the description of the access policy.
      */
@@ -1334,7 +1483,7 @@ export interface LSSConfigControllerPolicyRuleResource {
     policySetId?: string;
     policyType: string;
     priority: string;
-    reauthDefaultRule?: boolean;
+    reauthDefaultRule: boolean;
     reauthIdleTimeout?: string;
     reauthTimeout?: string;
     /**
@@ -1420,7 +1569,7 @@ export interface PRAConsolePraPortal {
     /**
      * The unique identifier of the privileged portal
      */
-    ids: string[];
+    ids?: string[];
 }
 
 export interface PolicyAccessCapabilitiesRuleCondition {
@@ -1816,25 +1965,54 @@ export interface PolicyAccessRuleV2Condition {
     /**
      * This signifies the various policy criteria.
      */
-    operands: outputs.PolicyAccessRuleV2ConditionOperand[];
-    operator: string;
+    operands?: outputs.PolicyAccessRuleV2ConditionOperand[];
+    operator?: string;
 }
 
 export interface PolicyAccessRuleV2ConditionOperand {
-    entryValues: outputs.PolicyAccessRuleV2ConditionOperandEntryValue[];
+    entryValues?: outputs.PolicyAccessRuleV2ConditionOperandEntryValue[];
     /**
      * This is for specifying the policy critiera.
      */
-    objectType: string;
+    objectType?: string;
     /**
      * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
      */
-    values: string[];
+    values?: string[];
 }
 
 export interface PolicyAccessRuleV2ConditionOperandEntryValue {
-    lhs: string;
-    rhs: string;
+    lhs?: string;
+    rhs?: string;
+}
+
+export interface PolicyAccessRuleV2ExtranetDto {
+    /**
+     * List of location DTOs.
+     */
+    locationDtos?: outputs.PolicyAccessRuleV2ExtranetDtoLocationDto[];
+    /**
+     * List of location group DTOs.
+     */
+    locationGroupDtos?: outputs.PolicyAccessRuleV2ExtranetDtoLocationGroupDto[];
+    /**
+     * ZPN Extranet Resource ID.
+     */
+    zpnErId?: string;
+}
+
+export interface PolicyAccessRuleV2ExtranetDtoLocationDto {
+    /**
+     * Location ID.
+     */
+    id: string;
+}
+
+export interface PolicyAccessRuleV2ExtranetDtoLocationGroupDto {
+    /**
+     * Location Group ID.
+     */
+    id: string;
 }
 
 export interface PolicyAccessTimeOutRuleCondition {
@@ -1925,6 +2103,51 @@ export interface PolicyBrowserProtectionRuleConditionOperandEntryValue {
     rhs?: string;
 }
 
+export interface PolicyPortalAccessRuleCondition {
+    id: string;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands?: outputs.PolicyPortalAccessRuleConditionOperand[];
+    operator: string;
+}
+
+export interface PolicyPortalAccessRuleConditionOperand {
+    entryValues?: outputs.PolicyPortalAccessRuleConditionOperandEntryValue[];
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType?: string;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: string[];
+}
+
+export interface PolicyPortalAccessRuleConditionOperandEntryValue {
+    lhs?: string;
+    rhs?: string;
+}
+
+export interface PolicyPortalAccessRulePrivilegedPortalCapabilities {
+    /**
+     * Allows a User like an Admin to see all files marked Uninspected from other users in the tenant.
+     */
+    accessUninspectedFile?: boolean;
+    /**
+     * Allows a User to delete files to reclaim space. Allowing deletion will prevent auditing of the file.
+     */
+    deleteFile?: boolean;
+    /**
+     * Allows a User to request approvals
+     */
+    requestApprovals?: boolean;
+    /**
+     * Allows a User to review approvals
+     */
+    reviewApprovals?: boolean;
+}
+
 export interface PraCredentialPoolCredential {
     ids?: string[];
 }
@@ -1941,8 +2164,37 @@ export interface ServerGroupApplication {
     ids?: string[];
 }
 
+export interface ServerGroupExtranetDto {
+    /**
+     * List of location DTOs.
+     */
+    locationDtos?: outputs.ServerGroupExtranetDtoLocationDto[];
+    /**
+     * List of location group DTOs.
+     */
+    locationGroupDtos?: outputs.ServerGroupExtranetDtoLocationGroupDto[];
+    /**
+     * ZPN Extranet Resource ID.
+     */
+    zpnErId?: string;
+}
+
+export interface ServerGroupExtranetDtoLocationDto {
+    /**
+     * Location ID.
+     */
+    id: string;
+}
+
+export interface ServerGroupExtranetDtoLocationGroupDto {
+    /**
+     * Location Group ID.
+     */
+    id: string;
+}
+
 export interface ServerGroupServer {
-    ids?: string[];
+    ids: string[];
 }
 
 export interface ServiceEdgeGroupServiceEdges {
@@ -1950,6 +2202,10 @@ export interface ServiceEdgeGroupServiceEdges {
 }
 
 export interface ServiceEdgeGroupTrustedNetwork {
+    ids?: string[];
+}
+
+export interface UserPortalLinkUserPortal {
     ids?: string[];
 }
 

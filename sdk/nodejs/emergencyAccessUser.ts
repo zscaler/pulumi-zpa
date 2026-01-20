@@ -59,19 +59,19 @@ export class EmergencyAccessUser extends pulumi.CustomResource {
     /**
      * The email address of the emergency access user, as provided by the admin
      */
-    public readonly emailId!: pulumi.Output<string | undefined>;
+    declare public readonly emailId: pulumi.Output<string | undefined>;
     /**
      * The first name of the emergency access user
      */
-    public readonly firstName!: pulumi.Output<string>;
+    declare public readonly firstName: pulumi.Output<string>;
     /**
      * The last name of the emergency access user, as provided by the admin
      */
-    public readonly lastName!: pulumi.Output<string>;
+    declare public readonly lastName: pulumi.Output<string>;
     /**
      * The unique identifier of the emergency access user
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a EmergencyAccessUser resource with the given unique name, arguments, and options.
@@ -86,16 +86,16 @@ export class EmergencyAccessUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EmergencyAccessUserState | undefined;
-            resourceInputs["emailId"] = state ? state.emailId : undefined;
-            resourceInputs["firstName"] = state ? state.firstName : undefined;
-            resourceInputs["lastName"] = state ? state.lastName : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["emailId"] = state?.emailId;
+            resourceInputs["firstName"] = state?.firstName;
+            resourceInputs["lastName"] = state?.lastName;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as EmergencyAccessUserArgs | undefined;
-            resourceInputs["emailId"] = args ? args.emailId : undefined;
-            resourceInputs["firstName"] = args ? args.firstName : undefined;
-            resourceInputs["lastName"] = args ? args.lastName : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["emailId"] = args?.emailId;
+            resourceInputs["firstName"] = args?.firstName;
+            resourceInputs["lastName"] = args?.lastName;
+            resourceInputs["userId"] = args?.userId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EmergencyAccessUser.__pulumiType, name, resourceInputs, opts);

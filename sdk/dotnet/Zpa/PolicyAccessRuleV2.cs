@@ -18,7 +18,7 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     ///   ⚠️ **NOTE**: This resource is recommended if your configuration requires the association of more than 1000 resource criteria per rule.
     /// 
-    ///   ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+    ///   ⚠️ **WARNING:**: The attribute ``RuleOrder`` is now deprecated in favor of the new resource  ``PolicyAccessRuleReorder``
     /// 
     /// ## Example Usage
     /// 
@@ -31,29 +31,35 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thisIdPController = Zpa.GetIdPController.Invoke(new()
+    ///     // Retrieve Policy Types
+    ///     // Retrieve Identity Provider ID
+    ///     var @this = Zpa.GetIdPController.Invoke(new()
     ///     {
     ///         Name = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SAML Attribute ID
     ///     var emailUserSso = Zpa.GetSAMLAttribute.Invoke(new()
     ///     {
     ///         Name = "Email_Users",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SAML Attribute ID
     ///     var groupUser = Zpa.GetSAMLAttribute.Invoke(new()
     ///     {
     ///         Name = "GroupName_Users",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SCIM Group ID
     ///     var a000 = Zpa.GetSCIMGroups.Invoke(new()
     ///     {
     ///         Name = "A000",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SCIM Group ID
     ///     var b000 = Zpa.GetSCIMGroups.Invoke(new()
     ///     {
     ///         Name = "B000",
@@ -61,15 +67,17 @@ namespace zscaler.PulumiPackage.Zpa
     ///     });
     /// 
     ///     // Create Segment Group
-    ///     var thisSegmentGroup = new Zpa.SegmentGroup("thisSegmentGroup", new()
+    ///     var thisSegmentGroup = new Zpa.SegmentGroup("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///     });
     /// 
     ///     // Create Policy Access Rule V2
-    ///     var thisPolicyAccessRuleV2 = new Zpa.PolicyAccessRuleV2("thisPolicyAccessRuleV2", new()
+    ///     var thisPolicyAccessRuleV2 = new Zpa.PolicyAccessRuleV2("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Action = "ALLOW",
     ///         Conditions = new[]
@@ -119,12 +127,12 @@ namespace zscaler.PulumiPackage.Zpa
     ///                             new Zpa.Inputs.PolicyAccessRuleV2ConditionOperandEntryValueArgs
     ///                             {
     ///                                 Rhs = a000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
-    ///                                 Lhs = thisIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                                 Lhs = @this.Apply(@this =&gt; @this.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id)),
     ///                             },
     ///                             new Zpa.Inputs.PolicyAccessRuleV2ConditionOperandEntryValueArgs
     ///                             {
     ///                                 Rhs = b000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
-    ///                                 Lhs = thisIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                                 Lhs = @this.Apply(@this =&gt; @this.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id)),
     ///                             },
     ///                         },
     ///                     },
@@ -247,26 +255,190 @@ namespace zscaler.PulumiPackage.Zpa
     /// });
     /// ```
     /// 
+    /// ### Configure Extranet Access Rule
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Pulumi.Zpa;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = Zpa.GetLocationController.Invoke(new()
+    ///     {
+    ///         Name = "ExtranetLocation01 | zscalerbeta.net",
+    ///         ZiaErName = "NewExtranet 8432",
+    ///     });
+    /// 
+    ///     var thisGetLocationGroupController = Zpa.GetLocationGroupController.Invoke(new()
+    ///     {
+    ///         LocationName = "ExtranetLocation01",
+    ///         ZiaErName = "NewExtranet 8432",
+    ///     });
+    /// 
+    ///     var thisGetExtranetResourcePartner = Zpa.GetExtranetResourcePartner.Invoke(new()
+    ///     {
+    ///         Name = "NewExtranet 8432",
+    ///     });
+    /// 
+    ///     var thisPolicyAccessRuleV2 = new Zpa.PolicyAccessRuleV2("this", new()
+    ///     {
+    ///         Name = "Extranet_Rule01",
+    ///         Description = "Extranet_Rule01",
+    ///         Action = "ALLOW",
+    ///         CustomMsg = "Test",
+    ///         Operator = "AND",
+    ///         ExtranetEnabled = true,
+    ///         ExtranetDtos = new[]
+    ///         {
+    ///             new Zpa.Inputs.PolicyAccessRuleV2ExtranetDtoArgs
+    ///             {
+    ///                 ZpnErId = thisGetExtranetResourcePartner.Apply(getExtranetResourcePartnerResult =&gt; getExtranetResourcePartnerResult.Id),
+    ///                 LocationDtos = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.PolicyAccessRuleV2ExtranetDtoLocationDtoArgs
+    ///                     {
+    ///                         Id = @this.Apply(@this =&gt; @this.Apply(getLocationControllerResult =&gt; getLocationControllerResult.Id)),
+    ///                     },
+    ///                 },
+    ///                 LocationGroupDtos = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArgs
+    ///                     {
+    ///                         Id = thisGetLocationGroupController.Apply(getLocationGroupControllerResult =&gt; getLocationGroupControllerResult.Id),
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Configuration Location Rule
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Pulumi.Zpa;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = Zpa.GetLocationControllerSummary.Invoke(new()
+    ///     {
+    ///         Name = "BD_CC01_US | NONE | zscalerbeta.net",
+    ///     });
+    /// 
+    ///     var thisPolicyAccessRuleV2 = new Zpa.PolicyAccessRuleV2("this", new()
+    ///     {
+    ///         Name = "ExampleLocationRule",
+    ///         Description = "ExampleLocationRule",
+    ///         Action = "ALLOW",
+    ///         Conditions = new[]
+    ///         {
+    ///             new Zpa.Inputs.PolicyAccessRuleV2ConditionArgs
+    ///             {
+    ///                 Operator = "OR",
+    ///                 Operands = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.PolicyAccessRuleV2ConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "LOCATION",
+    ///                         Values = new[]
+    ///                         {
+    ///                             @this.Apply(@this =&gt; @this.Apply(getLocationControllerSummaryResult =&gt; getLocationControllerSummaryResult.Id)),
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Chrome Enterprise And Chrome Posture Profile
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Pulumi.Zpa;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = Zpa.GetManagedBrowserProfile.Invoke(new()
+    ///     {
+    ///         Name = "Profile01",
+    ///     });
+    /// 
+    ///     var thisPolicyAccessRuleV2 = new Zpa.PolicyAccessRuleV2("this", new()
+    ///     {
+    ///         Name = "Example_v2_100_test",
+    ///         Description = "Example_v2_100_test",
+    ///         Action = "ALLOW",
+    ///         CustomMsg = "Test",
+    ///         Operator = "AND",
+    ///         Conditions = new[]
+    ///         {
+    ///             new Zpa.Inputs.PolicyAccessRuleV2ConditionArgs
+    ///             {
+    ///                 Operator = "OR",
+    ///                 Operands = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.PolicyAccessRuleV2ConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "CHROME_ENTERPRISE",
+    ///                         EntryValues = new[]
+    ///                         {
+    ///                             new Zpa.Inputs.PolicyAccessRuleV2ConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Lhs = "managed",
+    ///                                 Rhs = "true",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Zpa.Inputs.PolicyAccessRuleV2ConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "CHROME_POSTURE_PROFILE",
+    ///                         Values = new[]
+    ///                         {
+    ///                             @this.Apply(@this =&gt; @this.Apply(getManagedBrowserProfileResult =&gt; getManagedBrowserProfileResult.Id)),
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## LHS and RHS Values
     /// 
     /// | Object Type | LHS| RHS| VALUES
     /// |----------|-----------|----------|----------
-    /// | APP  | `NA` | `NA` | ``application_segment_id`` |
-    /// | APP_GROUP  | `NA`  | `NA` | ``segment_group_id``|
-    /// | CLIENT_TYPE  | `NA`  | `NA` |  ``zpn_client_type_exporter``, ``zpn_client_type_exporter_noauth``, ``zpn_client_type_machine_tunnel``, ``zpn_client_type_edge_connector``, ``zpn_client_type_zia_inspection``, ``zpn_client_type_vdi``, ``zpn_client_type_zapp``, ``zpn_client_type_slogger``, ``zpn_client_type_zapp_partner``, ``zpn_client_type_browser_isolation``, ``zpn_client_type_ip_anchoring``, ``zpn_client_type_branch_connector`` |
+    /// | APP  | `NA` | `NA` | ``ApplicationSegmentId`` |
+    /// | APP_GROUP  | `NA`  | `NA` | ``SegmentGroupId``|
+    /// | CLIENT_TYPE  | `NA`  | `NA` |  ``ZpnClientTypeExporter``, ``ZpnClientTypeExporterNoauth``, ``ZpnClientTypeMachineTunnel``, ``ZpnClientTypeEdgeConnector``, ``ZpnClientTypeZiaInspection``, ``ZpnClientTypeVdi``, ``ZpnClientTypeZapp``, ``ZpnClientTypeSlogger``, ``ZpnClientTypeZappPartner``, ``ZpnClientTypeBrowserIsolation``, ``ZpnClientTypeIpAnchoring``, ``ZpnClientTypeBranchConnector`` |
     /// | EDGE_CONNECTOR_GROUP  | `NA`  | `NA` |  ``&lt;edge_connector_id&gt;`` |
     /// | BRANCH_CONNECTOR_GROUP  | `NA` | `NA` |  ``&lt;branch_connector_id&gt;`` |
-    /// | LOCATION   | `NA` | `NA` | ``location_id`` |
-    /// | MACHINE_GRP   | `NA` | `NA` | ``machine_group_id`` |
-    /// | SAML | ``saml_attribute_id``  | ``attribute_value_to_match`` |
-    /// | SCIM | ``scim_attribute_id``  | ``attribute_value_to_match``  |
-    /// | SCIM_GROUP | ``scim_group_attribute_id``  | ``attribute_value_to_match``  |
-    /// | PLATFORM | ``mac``, ``ios``, ``windows``, ``android``, ``linux`` | ``"true"`` |
-    /// | POSTURE | ``posture_udid``  | ``"true"`` / ``"false"`` |
-    /// | TRUSTED_NETWORK | ``network_id``  | ``"true"`` |
+    /// | LOCATION   | `NA` | `NA` | ``LocationId`` |
+    /// | MACHINE_GRP   | `NA` | `NA` | ``MachineGroupId`` |
+    /// | SAML | ``SamlAttributeId``  | ``AttributeValueToMatch`` |
+    /// | SCIM | ``ScimAttributeId``  | ``AttributeValueToMatch``  |
+    /// | SCIM_GROUP | ``ScimGroupAttributeId``  | ``AttributeValueToMatch``  |
+    /// | PLATFORM | ``Mac``, ``Ios``, ``Windows``, ``Android``, ``Linux`` | ``"true"`` |
+    /// | POSTURE | ``PostureUdid``  | ``"true"`` / ``"false"`` |
+    /// | TRUSTED_NETWORK | ``NetworkId``  | ``"true"`` |
     /// | COUNTRY_CODE | [2 Letter ISO3166 Alpha2](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)  | ``"true"`` |
     /// | RISK_FACTOR_TYPE | ``ZIA``  | ``"UNKNOWN", "LOW", "MEDIUM", "HIGH", "CRITICAL"`` |
-    /// | CHROME_ENTERPRISE | ``managed``  | ``"true" / "false"`` |
+    /// | CHROME_ENTERPRISE | ``Managed``  | ``"true" / "false"`` |
     /// 
     /// ## Import
     /// 
@@ -317,6 +489,18 @@ namespace zscaler.PulumiPackage.Zpa
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Extranet configuration for the policy rule.
+        /// </summary>
+        [Output("extranetDtos")]
+        public Output<ImmutableArray<Outputs.PolicyAccessRuleV2ExtranetDto>> ExtranetDtos { get; private set; } = null!;
+
+        /// <summary>
+        /// Indiciates if the application is designated for Extranet Application Support (true) or not (false). Extranet applications connect to a partner site or offshore development center that is not directly available on your organization’s network.
+        /// </summary>
+        [Output("extranetEnabled")]
+        public Output<bool?> ExtranetEnabled { get; private set; } = null!;
 
         /// <summary>
         /// This is the name of the policy rule.
@@ -427,6 +611,24 @@ namespace zscaler.PulumiPackage.Zpa
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("extranetDtos")]
+        private InputList<Inputs.PolicyAccessRuleV2ExtranetDtoArgs>? _extranetDtos;
+
+        /// <summary>
+        /// Extranet configuration for the policy rule.
+        /// </summary>
+        public InputList<Inputs.PolicyAccessRuleV2ExtranetDtoArgs> ExtranetDtos
+        {
+            get => _extranetDtos ?? (_extranetDtos = new InputList<Inputs.PolicyAccessRuleV2ExtranetDtoArgs>());
+            set => _extranetDtos = value;
+        }
+
+        /// <summary>
+        /// Indiciates if the application is designated for Extranet Application Support (true) or not (false). Extranet applications connect to a partner site or offshore development center that is not directly available on your organization’s network.
+        /// </summary>
+        [Input("extranetEnabled")]
+        public Input<bool>? ExtranetEnabled { get; set; }
+
         /// <summary>
         /// This is the name of the policy rule.
         /// </summary>
@@ -493,6 +695,24 @@ namespace zscaler.PulumiPackage.Zpa
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("extranetDtos")]
+        private InputList<Inputs.PolicyAccessRuleV2ExtranetDtoGetArgs>? _extranetDtos;
+
+        /// <summary>
+        /// Extranet configuration for the policy rule.
+        /// </summary>
+        public InputList<Inputs.PolicyAccessRuleV2ExtranetDtoGetArgs> ExtranetDtos
+        {
+            get => _extranetDtos ?? (_extranetDtos = new InputList<Inputs.PolicyAccessRuleV2ExtranetDtoGetArgs>());
+            set => _extranetDtos = value;
+        }
+
+        /// <summary>
+        /// Indiciates if the application is designated for Extranet Application Support (true) or not (false). Extranet applications connect to a partner site or offshore development center that is not directly available on your organization’s network.
+        /// </summary>
+        [Input("extranetEnabled")]
+        public Input<bool>? ExtranetEnabled { get; set; }
 
         /// <summary>
         /// This is the name of the policy rule.

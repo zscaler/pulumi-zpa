@@ -30,6 +30,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA PRA Portal Data Source
         ///     var @this = Zpa.GetPRAPortal.Invoke(new()
         ///     {
         ///         Name = "Example",
@@ -59,6 +60,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA PRA Portal Data Source
         ///     var @this = Zpa.GetPRAPortal.Invoke(new()
         ///     {
         ///         Name = "Example",
@@ -88,6 +90,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA PRA Portal Data Source
         ///     var @this = Zpa.GetPRAPortal.Invoke(new()
         ///     {
         ///         Name = "Example",
@@ -157,6 +160,7 @@ namespace zscaler.PulumiPackage.Zpa
     [OutputType]
     public sealed class GetPRAPortalResult
     {
+        public readonly ImmutableArray<string> ApprovalReviewers;
         public readonly string CertificateId;
         public readonly string CertificateName;
         public readonly string Cname;
@@ -182,6 +186,8 @@ namespace zscaler.PulumiPackage.Zpa
 
         [OutputConstructor]
         private GetPRAPortalResult(
+            ImmutableArray<string> approvalReviewers,
+
             string certificateId,
 
             string certificateName,
@@ -226,6 +232,7 @@ namespace zscaler.PulumiPackage.Zpa
 
             string userPortalName)
         {
+            ApprovalReviewers = approvalReviewers;
             CertificateId = certificateId;
             CertificateName = certificateName;
             Cname = cname;

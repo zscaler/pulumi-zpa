@@ -222,8 +222,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<int>? MinWaitSeconds { get; set; }
 
         /// <summary>
-        /// Number of concurrent requests to make within a resource where bulk operations are not possible. Take note of
-        /// https://help.zscaler.com/zpa/understanding-rate-limiting.
+        /// Number of concurrent requests to make within a resource where bulk operations are not possible. Take note of https://help.zscaler.com/zpa/understanding-rate-limiting.
         /// </summary>
         [Input("parallelism", json: true)]
         public Input<int>? Parallelism { get; set; }
@@ -245,8 +244,7 @@ namespace zscaler.PulumiPackage.Zpa
         }
 
         /// <summary>
-        /// Timeout for single request (in seconds) which is made to Zscaler, the default is `0` (means no limit is set). The
-        /// maximum value can be `300`.
+        /// Timeout for single request (in seconds) which is made to Zscaler, the default is `0` (means no limit is set). The maximum value can be `300`.
         /// </summary>
         [Input("requestTimeout", json: true)]
         public Input<int>? RequestTimeout { get; set; }

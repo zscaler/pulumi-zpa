@@ -27,6 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Retrieve Browser Access Certificate
 //			_, err := zpa.GetBaCertificate(ctx, &zpa.GetBaCertificateArgs{
 //				Name: pulumi.StringRef("sales.acme.com"),
 //			}, nil)
@@ -34,28 +35,30 @@ import (
 //				return err
 //			}
 //			// ZPA Segment Group resource
-//			exampleSegmentGroup, err := zpa.NewSegmentGroup(ctx, "exampleSegmentGroup", &zpa.SegmentGroupArgs{
+//			exampleSegmentGroup, err := zpa.NewSegmentGroup(ctx, "example", &zpa.SegmentGroupArgs{
+//				Name:        pulumi.String("Example"),
 //				Description: pulumi.String("Example"),
 //				Enabled:     pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleAppConnectorGroup, err := zpa.GetAppConnectorGroup(ctx, &zpa.GetAppConnectorGroupArgs{
+//			example, err := zpa.GetAppConnectorGroup(ctx, &zpa.GetAppConnectorGroupArgs{
 //				Name: pulumi.StringRef("AWS-Connector"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			// ZPA Server Group resource
-//			exampleServerGroup, err := zpa.NewServerGroup(ctx, "exampleServerGroup", &zpa.ServerGroupArgs{
+//			exampleServerGroup, err := zpa.NewServerGroup(ctx, "example", &zpa.ServerGroupArgs{
+//				Name:             pulumi.String("Example"),
 //				Description:      pulumi.String("Example"),
 //				Enabled:          pulumi.Bool(true),
 //				DynamicDiscovery: pulumi.Bool(true),
 //				AppConnectorGroups: zpa.ServerGroupAppConnectorGroupArray{
 //					&zpa.ServerGroupAppConnectorGroupArgs{
 //						Ids: pulumi.StringArray{
-//							pulumi.String(exampleAppConnectorGroup.Id),
+//							pulumi.String(example.Id),
 //						},
 //					},
 //				},
@@ -64,7 +67,8 @@ import (
 //				return err
 //			}
 //			// Create Browser Access Application
-//			_, err = zpa.NewApplicationSegmentBrowserAccess(ctx, "browserAccessApps", &zpa.ApplicationSegmentBrowserAccessArgs{
+//			_, err = zpa.NewApplicationSegmentBrowserAccess(ctx, "browser_access_apps", &zpa.ApplicationSegmentBrowserAccessArgs{
+//				Name:            pulumi.String("Browser Access Apps"),
 //				Description:     pulumi.String("Browser Access Apps"),
 //				Enabled:         pulumi.Bool(true),
 //				HealthReporting: pulumi.String("ON_ACCESS"),
@@ -128,8 +132,7 @@ import (
 type ApplicationSegmentBrowserAccess struct {
 	pulumi.CustomResourceState
 
-	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-	// The value NEVER indicates the use of the client forwarding policy.
+	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
 	BypassType     pulumi.StringPtrOutput                                  `pulumi:"bypassType"`
 	ClientlessApps ApplicationSegmentBrowserAccessClientlessAppArrayOutput `pulumi:"clientlessApps"`
 	ConfigSpace    pulumi.StringPtrOutput                                  `pulumi:"configSpace"`
@@ -138,16 +141,15 @@ type ApplicationSegmentBrowserAccess struct {
 	// List of domains and IPs.
 	DomainNames pulumi.StringArrayOutput `pulumi:"domainNames"`
 	// Whether Double Encryption is enabled or disabled for the app.
-	DoubleEncrypt   pulumi.BoolPtrOutput   `pulumi:"doubleEncrypt"`
-	Enabled         pulumi.BoolOutput      `pulumi:"enabled"`
-	FqdnDnsCheck    pulumi.BoolPtrOutput   `pulumi:"fqdnDnsCheck"`
-	HealthCheckType pulumi.StringPtrOutput `pulumi:"healthCheckType"`
+	DoubleEncrypt   pulumi.BoolPtrOutput `pulumi:"doubleEncrypt"`
+	Enabled         pulumi.BoolOutput    `pulumi:"enabled"`
+	FqdnDnsCheck    pulumi.BoolPtrOutput `pulumi:"fqdnDnsCheck"`
+	HealthCheckType pulumi.StringOutput  `pulumi:"healthCheckType"`
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting pulumi.StringPtrOutput `pulumi:"healthReporting"`
 	IcmpAccessType  pulumi.StringPtrOutput `pulumi:"icmpAccessType"`
 	IpAnchored      pulumi.BoolPtrOutput   `pulumi:"ipAnchored"`
-	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-	// connectors.
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
 	IsCnameEnabled       pulumi.BoolPtrOutput `pulumi:"isCnameEnabled"`
 	IsIncompleteDrConfig pulumi.BoolPtrOutput `pulumi:"isIncompleteDrConfig"`
 	MicrotenantId        pulumi.StringOutput  `pulumi:"microtenantId"`
@@ -166,8 +168,9 @@ type ApplicationSegmentBrowserAccess struct {
 	// udp port range
 	UdpPortRange ApplicationSegmentBrowserAccessUdpPortRangeArrayOutput `pulumi:"udpPortRange"`
 	// UDP port ranges used to access the app.
-	UdpPortRanges pulumi.StringArrayOutput `pulumi:"udpPortRanges"`
-	UseInDrMode   pulumi.BoolPtrOutput     `pulumi:"useInDrMode"`
+	UdpPortRanges pulumi.StringArrayOutput                          `pulumi:"udpPortRanges"`
+	UseInDrMode   pulumi.BoolPtrOutput                              `pulumi:"useInDrMode"`
+	ZpnErIds      ApplicationSegmentBrowserAccessZpnErIdArrayOutput `pulumi:"zpnErIds"`
 }
 
 // NewApplicationSegmentBrowserAccess registers a new resource with the given unique name, arguments, and options.
@@ -209,8 +212,7 @@ func GetApplicationSegmentBrowserAccess(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApplicationSegmentBrowserAccess resources.
 type applicationSegmentBrowserAccessState struct {
-	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-	// The value NEVER indicates the use of the client forwarding policy.
+	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
 	BypassType     *string                                        `pulumi:"bypassType"`
 	ClientlessApps []ApplicationSegmentBrowserAccessClientlessApp `pulumi:"clientlessApps"`
 	ConfigSpace    *string                                        `pulumi:"configSpace"`
@@ -227,8 +229,7 @@ type applicationSegmentBrowserAccessState struct {
 	HealthReporting *string `pulumi:"healthReporting"`
 	IcmpAccessType  *string `pulumi:"icmpAccessType"`
 	IpAnchored      *bool   `pulumi:"ipAnchored"`
-	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-	// connectors.
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
 	IsCnameEnabled       *bool   `pulumi:"isCnameEnabled"`
 	IsIncompleteDrConfig *bool   `pulumi:"isIncompleteDrConfig"`
 	MicrotenantId        *string `pulumi:"microtenantId"`
@@ -247,13 +248,13 @@ type applicationSegmentBrowserAccessState struct {
 	// udp port range
 	UdpPortRange []ApplicationSegmentBrowserAccessUdpPortRange `pulumi:"udpPortRange"`
 	// UDP port ranges used to access the app.
-	UdpPortRanges []string `pulumi:"udpPortRanges"`
-	UseInDrMode   *bool    `pulumi:"useInDrMode"`
+	UdpPortRanges []string                                 `pulumi:"udpPortRanges"`
+	UseInDrMode   *bool                                    `pulumi:"useInDrMode"`
+	ZpnErIds      []ApplicationSegmentBrowserAccessZpnErId `pulumi:"zpnErIds"`
 }
 
 type ApplicationSegmentBrowserAccessState struct {
-	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-	// The value NEVER indicates the use of the client forwarding policy.
+	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
 	BypassType     pulumi.StringPtrInput
 	ClientlessApps ApplicationSegmentBrowserAccessClientlessAppArrayInput
 	ConfigSpace    pulumi.StringPtrInput
@@ -270,8 +271,7 @@ type ApplicationSegmentBrowserAccessState struct {
 	HealthReporting pulumi.StringPtrInput
 	IcmpAccessType  pulumi.StringPtrInput
 	IpAnchored      pulumi.BoolPtrInput
-	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-	// connectors.
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
 	IsCnameEnabled       pulumi.BoolPtrInput
 	IsIncompleteDrConfig pulumi.BoolPtrInput
 	MicrotenantId        pulumi.StringPtrInput
@@ -292,6 +292,7 @@ type ApplicationSegmentBrowserAccessState struct {
 	// UDP port ranges used to access the app.
 	UdpPortRanges pulumi.StringArrayInput
 	UseInDrMode   pulumi.BoolPtrInput
+	ZpnErIds      ApplicationSegmentBrowserAccessZpnErIdArrayInput
 }
 
 func (ApplicationSegmentBrowserAccessState) ElementType() reflect.Type {
@@ -299,8 +300,7 @@ func (ApplicationSegmentBrowserAccessState) ElementType() reflect.Type {
 }
 
 type applicationSegmentBrowserAccessArgs struct {
-	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-	// The value NEVER indicates the use of the client forwarding policy.
+	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
 	BypassType     *string                                        `pulumi:"bypassType"`
 	ClientlessApps []ApplicationSegmentBrowserAccessClientlessApp `pulumi:"clientlessApps"`
 	ConfigSpace    *string                                        `pulumi:"configSpace"`
@@ -317,8 +317,7 @@ type applicationSegmentBrowserAccessArgs struct {
 	HealthReporting *string `pulumi:"healthReporting"`
 	IcmpAccessType  *string `pulumi:"icmpAccessType"`
 	IpAnchored      *bool   `pulumi:"ipAnchored"`
-	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-	// connectors.
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
 	IsCnameEnabled       *bool   `pulumi:"isCnameEnabled"`
 	IsIncompleteDrConfig *bool   `pulumi:"isIncompleteDrConfig"`
 	MicrotenantId        *string `pulumi:"microtenantId"`
@@ -337,14 +336,14 @@ type applicationSegmentBrowserAccessArgs struct {
 	// udp port range
 	UdpPortRange []ApplicationSegmentBrowserAccessUdpPortRange `pulumi:"udpPortRange"`
 	// UDP port ranges used to access the app.
-	UdpPortRanges []string `pulumi:"udpPortRanges"`
-	UseInDrMode   *bool    `pulumi:"useInDrMode"`
+	UdpPortRanges []string                                 `pulumi:"udpPortRanges"`
+	UseInDrMode   *bool                                    `pulumi:"useInDrMode"`
+	ZpnErIds      []ApplicationSegmentBrowserAccessZpnErId `pulumi:"zpnErIds"`
 }
 
 // The set of arguments for constructing a ApplicationSegmentBrowserAccess resource.
 type ApplicationSegmentBrowserAccessArgs struct {
-	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-	// The value NEVER indicates the use of the client forwarding policy.
+	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
 	BypassType     pulumi.StringPtrInput
 	ClientlessApps ApplicationSegmentBrowserAccessClientlessAppArrayInput
 	ConfigSpace    pulumi.StringPtrInput
@@ -361,8 +360,7 @@ type ApplicationSegmentBrowserAccessArgs struct {
 	HealthReporting pulumi.StringPtrInput
 	IcmpAccessType  pulumi.StringPtrInput
 	IpAnchored      pulumi.BoolPtrInput
-	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-	// connectors.
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
 	IsCnameEnabled       pulumi.BoolPtrInput
 	IsIncompleteDrConfig pulumi.BoolPtrInput
 	MicrotenantId        pulumi.StringPtrInput
@@ -383,6 +381,7 @@ type ApplicationSegmentBrowserAccessArgs struct {
 	// UDP port ranges used to access the app.
 	UdpPortRanges pulumi.StringArrayInput
 	UseInDrMode   pulumi.BoolPtrInput
+	ZpnErIds      ApplicationSegmentBrowserAccessZpnErIdArrayInput
 }
 
 func (ApplicationSegmentBrowserAccessArgs) ElementType() reflect.Type {
@@ -472,8 +471,7 @@ func (o ApplicationSegmentBrowserAccessOutput) ToApplicationSegmentBrowserAccess
 	return o
 }
 
-// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-// The value NEVER indicates the use of the client forwarding policy.
+// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
 func (o ApplicationSegmentBrowserAccessOutput) BypassType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.StringPtrOutput { return v.BypassType }).(pulumi.StringPtrOutput)
 }
@@ -511,8 +509,8 @@ func (o ApplicationSegmentBrowserAccessOutput) FqdnDnsCheck() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.BoolPtrOutput { return v.FqdnDnsCheck }).(pulumi.BoolPtrOutput)
 }
 
-func (o ApplicationSegmentBrowserAccessOutput) HealthCheckType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.StringPtrOutput { return v.HealthCheckType }).(pulumi.StringPtrOutput)
+func (o ApplicationSegmentBrowserAccessOutput) HealthCheckType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.StringOutput { return v.HealthCheckType }).(pulumi.StringOutput)
 }
 
 // Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
@@ -528,8 +526,7 @@ func (o ApplicationSegmentBrowserAccessOutput) IpAnchored() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.BoolPtrOutput { return v.IpAnchored }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-// connectors.
+// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
 func (o ApplicationSegmentBrowserAccessOutput) IsCnameEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.BoolPtrOutput { return v.IsCnameEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -599,6 +596,12 @@ func (o ApplicationSegmentBrowserAccessOutput) UdpPortRanges() pulumi.StringArra
 
 func (o ApplicationSegmentBrowserAccessOutput) UseInDrMode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) pulumi.BoolPtrOutput { return v.UseInDrMode }).(pulumi.BoolPtrOutput)
+}
+
+func (o ApplicationSegmentBrowserAccessOutput) ZpnErIds() ApplicationSegmentBrowserAccessZpnErIdArrayOutput {
+	return o.ApplyT(func(v *ApplicationSegmentBrowserAccess) ApplicationSegmentBrowserAccessZpnErIdArrayOutput {
+		return v.ZpnErIds
+	}).(ApplicationSegmentBrowserAccessZpnErIdArrayOutput)
 }
 
 type ApplicationSegmentBrowserAccessArrayOutput struct{ *pulumi.OutputState }

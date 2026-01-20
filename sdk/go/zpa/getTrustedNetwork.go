@@ -38,6 +38,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Trusted Network Data Source
 //			_, err := zpa.GetTrustedNetwork(ctx, &zpa.GetTrustedNetworkArgs{
 //				Name: pulumi.StringRef("trusted_network_name"),
 //			}, nil)
@@ -64,6 +65,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Posture Profile Data Source
 //			example1, err := zpa.GetTrustedNetwork(ctx, &zpa.GetTrustedNetworkArgs{
 //				Name: pulumi.StringRef("Corporate-Network (zscalertwo.net)"),
 //			}, nil)
@@ -88,8 +90,9 @@ func GetTrustedNetwork(ctx *pulumi.Context, args *GetTrustedNetworkArgs, opts ..
 
 // A collection of arguments for invoking getTrustedNetwork.
 type GetTrustedNetworkArgs struct {
-	Id   *string `pulumi:"id"`
-	Name *string `pulumi:"name"`
+	Id        *string `pulumi:"id"`
+	Name      *string `pulumi:"name"`
+	NetworkId *string `pulumi:"networkId"`
 }
 
 // A collection of values returned by getTrustedNetwork.
@@ -97,8 +100,8 @@ type GetTrustedNetworkResult struct {
 	CreationTime string  `pulumi:"creationTime"`
 	Domain       string  `pulumi:"domain"`
 	Id           *string `pulumi:"id"`
+	ModifiedBy   string  `pulumi:"modifiedBy"`
 	ModifiedTime string  `pulumi:"modifiedTime"`
-	Modifiedby   string  `pulumi:"modifiedby"`
 	Name         *string `pulumi:"name"`
 	NetworkId    string  `pulumi:"networkId"`
 	ZscalerCloud string  `pulumi:"zscalerCloud"`
@@ -115,8 +118,9 @@ func GetTrustedNetworkOutput(ctx *pulumi.Context, args GetTrustedNetworkOutputAr
 
 // A collection of arguments for invoking getTrustedNetwork.
 type GetTrustedNetworkOutputArgs struct {
-	Id   pulumi.StringPtrInput `pulumi:"id"`
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Id        pulumi.StringPtrInput `pulumi:"id"`
+	Name      pulumi.StringPtrInput `pulumi:"name"`
+	NetworkId pulumi.StringPtrInput `pulumi:"networkId"`
 }
 
 func (GetTrustedNetworkOutputArgs) ElementType() reflect.Type {
@@ -150,12 +154,12 @@ func (o GetTrustedNetworkResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTrustedNetworkResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-func (o GetTrustedNetworkResultOutput) ModifiedTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTrustedNetworkResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
+func (o GetTrustedNetworkResultOutput) ModifiedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrustedNetworkResult) string { return v.ModifiedBy }).(pulumi.StringOutput)
 }
 
-func (o GetTrustedNetworkResultOutput) Modifiedby() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTrustedNetworkResult) string { return v.Modifiedby }).(pulumi.StringOutput)
+func (o GetTrustedNetworkResultOutput) ModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrustedNetworkResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
 
 func (o GetTrustedNetworkResultOutput) Name() pulumi.StringPtrOutput {

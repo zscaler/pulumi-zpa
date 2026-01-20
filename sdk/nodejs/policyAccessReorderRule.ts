@@ -17,6 +17,92 @@ import * as utilities from "./utilities";
  * ⚠️ **WARNING:**: Updating the rule order of an access policy configured using `Zscaler Deception` is not supported. When changing the rule order of a regular access policy and there is an access policy configured using Deception, the rule order of the regular access policy must be greater than the rule order for an access policy configured using Deception. Please refer to the [Zscaler API Documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api#:~:text=Updating%20the%20rule,configured%20using%20Deception.) for further details.
  *
  * ## Example Usage
+ *
+ * ### 1
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const example001 = new zpa.PolicyAccessRule("example001", {
+ *     name: "example001",
+ *     description: "example001",
+ *     action: "ALLOW",
+ *     operator: "AND",
+ * });
+ * const example002 = new zpa.PolicyAccessRule("example002", {
+ *     name: "example002",
+ *     description: "example002",
+ *     action: "ALLOW",
+ *     operator: "AND",
+ * });
+ * const ruleOrders = [
+ *     {
+ *         id: example001.id,
+ *         order: 1,
+ *     },
+ *     {
+ *         id: example002.id,
+ *         order: 2,
+ *     },
+ * ];
+ * const accessPolicyReorder = new zpa.PolicyAccessReorderRule("access_policy_reorder", {
+ *     rules: ruleOrders.map((v, k) => ({key: k, value: v})).apply(entries => entries.map(entry => ({
+ *         id: entry.value.id,
+ *         order: entry.value.order,
+ *     }))),
+ *     policyType: "ACCESS_POLICY",
+ * });
+ * ```
+ *
+ * ### 2
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as std from "@pulumi/std";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const example001 = new zpa.PolicyAccessRule("example001", {
+ *     name: "example001",
+ *     description: "example001",
+ *     action: "ALLOW",
+ *     operator: "AND",
+ * });
+ * const example002 = new zpa.PolicyAccessRule("example002", {
+ *     name: "example002",
+ *     description: "example002",
+ *     action: "ALLOW",
+ *     operator: "AND",
+ * });
+ * // Define a map with rule names as keys and their desired order as values.
+ * const ruleOrderMap = {
+ *     example001: 1,
+ *     example002: 2,
+ * };
+ * const ruleOrders = [
+ *     {
+ *         id: example001.id,
+ *         order: std.lookup({
+ *             map: ruleOrderMap,
+ *             key: "example001",
+ *         }).then(invoke => invoke.result),
+ *     },
+ *     {
+ *         id: example002.id,
+ *         order: std.lookup({
+ *             map: ruleOrderMap,
+ *             key: "example002",
+ *         }).then(invoke => invoke.result),
+ *     },
+ * ];
+ * const accessPolicyReorder = new zpa.PolicyAccessReorderRule("access_policy_reorder", {
+ *     rules: ruleOrders.map((v, k) => ({key: k, value: v})).apply(entries => entries.map(entry => ({
+ *         id: entry.value.id,
+ *         order: entry.value.order,
+ *     }))),
+ *     policyType: "ACCESS_POLICY",
+ * });
+ * ```
  */
 export class PolicyAccessReorderRule extends pulumi.CustomResource {
     /**
@@ -46,11 +132,11 @@ export class PolicyAccessReorderRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === PolicyAccessReorderRule.__pulumiType;
     }
 
-    public readonly policyType!: pulumi.Output<string>;
+    declare public readonly policyType: pulumi.Output<string>;
     /**
      * List of rules and their orders
      */
-    public readonly rules!: pulumi.Output<outputs.PolicyAccessReorderRuleRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.PolicyAccessReorderRuleRule[]>;
 
     /**
      * Create a PolicyAccessReorderRule resource with the given unique name, arguments, and options.
@@ -65,18 +151,18 @@ export class PolicyAccessReorderRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyAccessReorderRuleState | undefined;
-            resourceInputs["policyType"] = state ? state.policyType : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["policyType"] = state?.policyType;
+            resourceInputs["rules"] = state?.rules;
         } else {
             const args = argsOrState as PolicyAccessReorderRuleArgs | undefined;
-            if ((!args || args.policyType === undefined) && !opts.urn) {
+            if (args?.policyType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyType'");
             }
-            if ((!args || args.rules === undefined) && !opts.urn) {
+            if (args?.rules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
-            resourceInputs["policyType"] = args ? args.policyType : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["policyType"] = args?.policyType;
+            resourceInputs["rules"] = args?.rules;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PolicyAccessReorderRule.__pulumiType, name, resourceInputs, opts);

@@ -32,7 +32,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Creates Segment Group for Application Segment"
-//			thisSegmentGroup, err := zpa.NewSegmentGroup(ctx, "thisSegmentGroup", &zpa.SegmentGroupArgs{
+//			thisSegmentGroup, err := zpa.NewSegmentGroup(ctx, "this", &zpa.SegmentGroupArgs{
+//				Name:        pulumi.String("Example"),
 //				Description: pulumi.String("Example"),
 //				Enabled:     pulumi.Bool(true),
 //			})
@@ -40,7 +41,8 @@ import (
 //				return err
 //			}
 //			// Creates Privileged Remote Access Application Segment"
-//			_, err = zpa.NewApplicationSegmentPRA(ctx, "thisApplicationSegmentPRA", &zpa.ApplicationSegmentPRAArgs{
+//			_, err = zpa.NewApplicationSegmentPRA(ctx, "this", &zpa.ApplicationSegmentPRAArgs{
+//				Name:            pulumi.String("Example"),
 //				Description:     pulumi.String("Example"),
 //				Enabled:         pulumi.Bool(true),
 //				HealthReporting: pulumi.String("ON_ACCESS"),
@@ -63,7 +65,7 @@ import (
 //								ApplicationProtocol: pulumi.String("RDP"),
 //								ConnectionSecurity:  pulumi.String("ANY"),
 //								ApplicationPort:     pulumi.String("3389"),
-//								Enabled:             pulumi.Bool(true),
+//								Enabled:             true,
 //								AppTypes: pulumi.StringArray{
 //									pulumi.String("SECURE_REMOTE_ACCESS"),
 //								},
@@ -75,14 +77,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			thisApplicationSegmentByType, err := zpa.GetApplicationSegmentByType(ctx, &zpa.GetApplicationSegmentByTypeArgs{
+//			this, err := zpa.GetApplicationSegmentByType(ctx, &zpa.GetApplicationSegmentByTypeArgs{
 //				ApplicationType: "SECURE_REMOTE_ACCESS",
 //				Name:            pulumi.StringRef("rdp_pra"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			thisBaCertificate, err := zpa.GetBaCertificate(ctx, &zpa.GetBaCertificateArgs{
+//			// Retrieves the Browser Access Certificate
+//			thisGetBaCertificate, err := zpa.GetBaCertificate(ctx, &zpa.GetBaCertificateArgs{
 //				Name: pulumi.StringRef("pra01.example.com"),
 //			}, nil)
 //			if err != nil {
@@ -90,28 +93,30 @@ import (
 //			}
 //			// Creates PRA Portal"
 //			_, err = zpa.NewPRAPortal(ctx, "this1", &zpa.PRAPortalArgs{
+//				Name:                    pulumi.String("pra01.example.com"),
 //				Description:             pulumi.String("pra01.example.com"),
 //				Enabled:                 pulumi.Bool(true),
 //				Domain:                  pulumi.String("pra01.example.com"),
-//				CertificateId:           pulumi.String(thisBaCertificate.Id),
+//				CertificateId:           pulumi.String(thisGetBaCertificate.Id),
 //				UserNotification:        pulumi.String("Created with Terraform"),
 //				UserNotificationEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = zpa.NewPRAConsole(ctx, "sshPra", &zpa.PRAConsoleArgs{
+//			_, err = zpa.NewPRAConsole(ctx, "ssh_pra", &zpa.PRAConsoleArgs{
+//				Name:        pulumi.String("ssh_console"),
 //				Description: pulumi.String("Created with Terraform"),
 //				Enabled:     pulumi.Bool(true),
 //				PraApplications: zpa.PRAConsolePraApplicationArray{
 //					&zpa.PRAConsolePraApplicationArgs{
-//						Id: pulumi.String(thisApplicationSegmentByType.Id),
+//						Id: pulumi.String(this.Id),
 //					},
 //				},
 //				PraPortals: zpa.PRAConsolePraPortalArray{
 //					&zpa.PRAConsolePraPortalArgs{
 //						Ids: pulumi.StringArray{
-//							zpa_pra_portal_controller.This.Id,
+//							thisZpaPraPortalController.Id,
 //						},
 //					},
 //				},
@@ -148,14 +153,13 @@ type PRAConsole struct {
 	pulumi.CustomResourceState
 
 	// The description of the privileged console
-	Description pulumi.StringOutput `pulumi:"description"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether or not the privileged console is enabled
-	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// The privileged console icon. The icon image is converted to base64 encoded text format
-	IconText pulumi.StringOutput `pulumi:"iconText"`
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
-	MicrotenantId pulumi.StringOutput `pulumi:"microtenantId"`
+	IconText pulumi.StringPtrOutput `pulumi:"iconText"`
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+	MicrotenantId pulumi.StringPtrOutput `pulumi:"microtenantId"`
 	// The name of the privileged console
 	Name            pulumi.StringOutput                 `pulumi:"name"`
 	PraApplications PRAConsolePraApplicationArrayOutput `pulumi:"praApplications"`
@@ -210,8 +214,7 @@ type praconsoleState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// The privileged console icon. The icon image is converted to base64 encoded text format
 	IconText *string `pulumi:"iconText"`
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId *string `pulumi:"microtenantId"`
 	// The name of the privileged console
 	Name            *string                    `pulumi:"name"`
@@ -226,8 +229,7 @@ type PRAConsoleState struct {
 	Enabled pulumi.BoolPtrInput
 	// The privileged console icon. The icon image is converted to base64 encoded text format
 	IconText pulumi.StringPtrInput
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId pulumi.StringPtrInput
 	// The name of the privileged console
 	Name            pulumi.StringPtrInput
@@ -246,8 +248,7 @@ type praconsoleArgs struct {
 	Enabled *bool `pulumi:"enabled"`
 	// The privileged console icon. The icon image is converted to base64 encoded text format
 	IconText *string `pulumi:"iconText"`
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId *string `pulumi:"microtenantId"`
 	// The name of the privileged console
 	Name            *string                    `pulumi:"name"`
@@ -263,8 +264,7 @@ type PRAConsoleArgs struct {
 	Enabled pulumi.BoolPtrInput
 	// The privileged console icon. The icon image is converted to base64 encoded text format
 	IconText pulumi.StringPtrInput
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId pulumi.StringPtrInput
 	// The name of the privileged console
 	Name            pulumi.StringPtrInput
@@ -360,24 +360,23 @@ func (o PRAConsoleOutput) ToPRAConsoleOutputWithContext(ctx context.Context) PRA
 }
 
 // The description of the privileged console
-func (o PRAConsoleOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v *PRAConsole) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+func (o PRAConsoleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PRAConsole) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Whether or not the privileged console is enabled
-func (o PRAConsoleOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *PRAConsole) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+func (o PRAConsoleOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PRAConsole) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // The privileged console icon. The icon image is converted to base64 encoded text format
-func (o PRAConsoleOutput) IconText() pulumi.StringOutput {
-	return o.ApplyT(func(v *PRAConsole) pulumi.StringOutput { return v.IconText }).(pulumi.StringOutput)
+func (o PRAConsoleOutput) IconText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PRAConsole) pulumi.StringPtrOutput { return v.IconText }).(pulumi.StringPtrOutput)
 }
 
-// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
-func (o PRAConsoleOutput) MicrotenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v *PRAConsole) pulumi.StringOutput { return v.MicrotenantId }).(pulumi.StringOutput)
+// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+func (o PRAConsoleOutput) MicrotenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PRAConsole) pulumi.StringPtrOutput { return v.MicrotenantId }).(pulumi.StringPtrOutput)
 }
 
 // The name of the privileged console

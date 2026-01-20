@@ -29,14 +29,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApplicationSegmentBrowserAccess{}
 	case "zpa:index/applicationSegmentInspection:ApplicationSegmentInspection":
 		r = &ApplicationSegmentInspection{}
+	case "zpa:index/applicationSegmentMultimatchBulk:ApplicationSegmentMultimatchBulk":
+		r = &ApplicationSegmentMultimatchBulk{}
 	case "zpa:index/applicationSegmentPRA:ApplicationSegmentPRA":
 		r = &ApplicationSegmentPRA{}
+	case "zpa:index/applicationSegmentWeightedlbConfig:ApplicationSegmentWeightedlbConfig":
+		r = &ApplicationSegmentWeightedlbConfig{}
 	case "zpa:index/applicationServer:ApplicationServer":
 		r = &ApplicationServer{}
 	case "zpa:index/browserAccess:BrowserAccess":
 		r = &BrowserAccess{}
 	case "zpa:index/browserCertificate:BrowserCertificate":
 		r = &BrowserCertificate{}
+	case "zpa:index/c2CIPRanges:C2CIPRanges":
+		r = &C2CIPRanges{}
 	case "zpa:index/cloudBrowserIsolationBanner:CloudBrowserIsolationBanner":
 		r = &CloudBrowserIsolationBanner{}
 	case "zpa:index/cloudBrowserIsolationCertificate:CloudBrowserIsolationCertificate":
@@ -93,8 +99,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PolicyAccessTimeOutRuleV2{}
 	case "zpa:index/policyBrowserProtectionRule:PolicyBrowserProtectionRule":
 		r = &PolicyBrowserProtectionRule{}
+	case "zpa:index/policyPortalAccessRule:PolicyPortalAccessRule":
+		r = &PolicyPortalAccessRule{}
 	case "zpa:index/praCredentialPool:PraCredentialPool":
 		r = &PraCredentialPool{}
+	case "zpa:index/privateCloudGroup:PrivateCloudGroup":
+		r = &PrivateCloudGroup{}
 	case "zpa:index/provisioningKey:ProvisioningKey":
 		r = &ProvisioningKey{}
 	case "zpa:index/segmentGroup:SegmentGroup":
@@ -105,6 +115,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServiceEdgeAssistantSchedule{}
 	case "zpa:index/serviceEdgeGroup:ServiceEdgeGroup":
 		r = &ServiceEdgeGroup{}
+	case "zpa:index/userPortalAUP:UserPortalAUP":
+		r = &UserPortalAUP{}
+	case "zpa:index/userPortalController:UserPortalController":
+		r = &UserPortalController{}
+	case "zpa:index/userPortalLink:UserPortalLink":
+		r = &UserPortalLink{}
+	case "zpa:index/ziaCloudConfig:ZiaCloudConfig":
+		r = &ZiaCloudConfig{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -158,7 +176,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"zpa",
+		"index/applicationSegmentMultimatchBulk",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
 		"index/applicationSegmentPRA",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/applicationSegmentWeightedlbConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -174,6 +202,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"zpa",
 		"index/browserCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/c2CIPRanges",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -318,7 +351,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"zpa",
+		"index/policyPortalAccessRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
 		"index/praCredentialPool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/privateCloudGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -344,6 +387,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"zpa",
 		"index/serviceEdgeGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/userPortalAUP",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/userPortalController",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/userPortalLink",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/ziaCloudConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

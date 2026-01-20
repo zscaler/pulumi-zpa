@@ -30,7 +30,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thisPRACredential, err := zpa.NewPRACredential(ctx, "thisPRACredential", &zpa.PRACredentialArgs{
+//			thisPRACredential, err := zpa.NewPRACredential(ctx, "this", &zpa.PRACredentialArgs{
+//				Name:           pulumi.String("John Doe"),
 //				Description:    pulumi.String("Created with Terraform"),
 //				CredentialType: pulumi.String("PASSWORD"),
 //				UserDomain:     pulumi.String("acme.com"),
@@ -40,7 +41,8 @@ import (
 //				return err
 //			}
 //			// Creates Credential Pool of Type "USERNAME_PASSWORD"
-//			_, err = zpa.NewPraCredentialPool(ctx, "thisPraCredentialPool", &zpa.PraCredentialPoolArgs{
+//			_, err = zpa.NewPraCredentialPool(ctx, "this", &zpa.PraCredentialPoolArgs{
+//				Name:           pulumi.String("PRACredentialPool01"),
 //				CredentialType: pulumi.String("USERNAME_PASSWORD"),
 //				Credentials: zpa.PraCredentialPoolCredentialArray{
 //					&zpa.PraCredentialPoolCredentialArgs{
@@ -81,13 +83,11 @@ import (
 type PraCredentialPool struct {
 	pulumi.CustomResourceState
 
-	// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-	// and VNC. Each protocol type has its own credential requirements.
+	// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
 	CredentialType pulumi.StringPtrOutput `pulumi:"credentialType"`
 	// List of PRA Credentials
 	Credentials PraCredentialPoolCredentialArrayOutput `pulumi:"credentials"`
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId pulumi.StringOutput `pulumi:"microtenantId"`
 	// The name of the privileged credential
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -123,26 +123,22 @@ func GetPraCredentialPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PraCredentialPool resources.
 type praCredentialPoolState struct {
-	// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-	// and VNC. Each protocol type has its own credential requirements.
+	// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
 	CredentialType *string `pulumi:"credentialType"`
 	// List of PRA Credentials
 	Credentials []PraCredentialPoolCredential `pulumi:"credentials"`
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId *string `pulumi:"microtenantId"`
 	// The name of the privileged credential
 	Name *string `pulumi:"name"`
 }
 
 type PraCredentialPoolState struct {
-	// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-	// and VNC. Each protocol type has its own credential requirements.
+	// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
 	CredentialType pulumi.StringPtrInput
 	// List of PRA Credentials
 	Credentials PraCredentialPoolCredentialArrayInput
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId pulumi.StringPtrInput
 	// The name of the privileged credential
 	Name pulumi.StringPtrInput
@@ -153,13 +149,11 @@ func (PraCredentialPoolState) ElementType() reflect.Type {
 }
 
 type praCredentialPoolArgs struct {
-	// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-	// and VNC. Each protocol type has its own credential requirements.
+	// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
 	CredentialType *string `pulumi:"credentialType"`
 	// List of PRA Credentials
 	Credentials []PraCredentialPoolCredential `pulumi:"credentials"`
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId *string `pulumi:"microtenantId"`
 	// The name of the privileged credential
 	Name *string `pulumi:"name"`
@@ -167,13 +161,11 @@ type praCredentialPoolArgs struct {
 
 // The set of arguments for constructing a PraCredentialPool resource.
 type PraCredentialPoolArgs struct {
-	// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-	// and VNC. Each protocol type has its own credential requirements.
+	// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
 	CredentialType pulumi.StringPtrInput
 	// List of PRA Credentials
 	Credentials PraCredentialPoolCredentialArrayInput
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 	MicrotenantId pulumi.StringPtrInput
 	// The name of the privileged credential
 	Name pulumi.StringPtrInput
@@ -266,8 +258,7 @@ func (o PraCredentialPoolOutput) ToPraCredentialPoolOutputWithContext(ctx contex
 	return o
 }
 
-// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-// and VNC. Each protocol type has its own credential requirements.
+// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
 func (o PraCredentialPoolOutput) CredentialType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PraCredentialPool) pulumi.StringPtrOutput { return v.CredentialType }).(pulumi.StringPtrOutput)
 }
@@ -277,8 +268,7 @@ func (o PraCredentialPoolOutput) Credentials() PraCredentialPoolCredentialArrayO
 	return o.ApplyT(func(v *PraCredentialPool) PraCredentialPoolCredentialArrayOutput { return v.Credentials }).(PraCredentialPoolCredentialArrayOutput)
 }
 
-// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
 func (o PraCredentialPoolOutput) MicrotenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PraCredentialPool) pulumi.StringOutput { return v.MicrotenantId }).(pulumi.StringOutput)
 }

@@ -19,12 +19,14 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Segment Group resource
- * const thisSegmentGroup = new zpa.SegmentGroup("thisSegmentGroup", {
+ * const thisSegmentGroup = new zpa.SegmentGroup("this", {
+ *     name: "Example",
  *     description: "Example",
  *     enabled: true,
  * });
  * // ZPA App Connector Group resource
- * const thisConnectorGroup = new zpa.ConnectorGroup("thisConnectorGroup", {
+ * const thisConnectorGroup = new zpa.ConnectorGroup("this", {
+ *     name: "Example",
  *     description: "Example",
  *     enabled: true,
  *     cityCountry: "San Jose, CA",
@@ -39,7 +41,8 @@ import * as utilities from "./utilities";
  *     dnsQueryType: "IPV4",
  * });
  * // ZPA Server Group resource
- * const thisServerGroup = new zpa.ServerGroup("thisServerGroup", {
+ * const thisServerGroup = new zpa.ServerGroup("this", {
+ *     name: "Example",
  *     description: "Example",
  *     enabled: true,
  *     dynamicDiscovery: false,
@@ -50,7 +53,8 @@ import * as utilities from "./utilities";
  *     dependsOn: [thisConnectorGroup],
  * });
  * // ZPA Application Segment resource
- * const thisApplicationSegment = new zpa.ApplicationSegment("thisApplicationSegment", {
+ * const _this = new zpa.ApplicationSegment("this", {
+ *     name: "Example",
  *     description: "Example",
  *     enabled: true,
  *     healthReporting: "ON_ACCESS",
@@ -72,13 +76,13 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * // Create PRA Approval Controller
- * const thisPRAApproval = new zpa.PRAApproval("thisPRAApproval", {
+ * const thisPRAApproval = new zpa.PRAApproval("this", {
  *     emailIds: ["jdoe@acme.com"],
  *     startTime: "Tue, 07 Mar 2024 11:05:30 PST",
  *     endTime: "Tue, 07 Jun 2024 11:05:30 PST",
  *     status: "FUTURE",
  *     applications: [{
- *         ids: [thisApplicationSegment.id],
+ *         ids: [_this.id],
  *     }],
  *     workingHours: [{
  *         days: [
@@ -147,29 +151,28 @@ export class PRAApproval extends pulumi.CustomResource {
         return obj['__pulumiType'] === PRAApproval.__pulumiType;
     }
 
-    public readonly applications!: pulumi.Output<outputs.PRAApprovalApplication[]>;
+    declare public readonly applications: pulumi.Output<outputs.PRAApprovalApplication[]>;
     /**
      * The email address of the user that you are assigning the privileged approval to
      */
-    public readonly emailIds!: pulumi.Output<string[]>;
+    declare public readonly emailIds: pulumi.Output<string[]>;
     /**
      * The end date that the user no longer has access to the privileged approval
      */
-    public readonly endTime!: pulumi.Output<string>;
+    declare public readonly endTime: pulumi.Output<string>;
     /**
-     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-     * microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
      */
-    public readonly microtenantId!: pulumi.Output<string>;
+    declare public readonly microtenantId: pulumi.Output<string>;
     /**
      * The start date that the user has access to the privileged approval
      */
-    public readonly startTime!: pulumi.Output<string>;
+    declare public readonly startTime: pulumi.Output<string>;
     /**
      * The status of the privileged approval
      */
-    public readonly status!: pulumi.Output<string>;
-    public readonly workingHours!: pulumi.Output<outputs.PRAApprovalWorkingHour[]>;
+    declare public readonly status: pulumi.Output<string>;
+    declare public readonly workingHours: pulumi.Output<outputs.PRAApprovalWorkingHour[]>;
 
     /**
      * Create a PRAApproval resource with the given unique name, arguments, and options.
@@ -184,25 +187,25 @@ export class PRAApproval extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PRAApprovalState | undefined;
-            resourceInputs["applications"] = state ? state.applications : undefined;
-            resourceInputs["emailIds"] = state ? state.emailIds : undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
-            resourceInputs["startTime"] = state ? state.startTime : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["workingHours"] = state ? state.workingHours : undefined;
+            resourceInputs["applications"] = state?.applications;
+            resourceInputs["emailIds"] = state?.emailIds;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["microtenantId"] = state?.microtenantId;
+            resourceInputs["startTime"] = state?.startTime;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["workingHours"] = state?.workingHours;
         } else {
             const args = argsOrState as PRAApprovalArgs | undefined;
-            if ((!args || args.applications === undefined) && !opts.urn) {
+            if (args?.applications === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applications'");
             }
-            resourceInputs["applications"] = args ? args.applications : undefined;
-            resourceInputs["emailIds"] = args ? args.emailIds : undefined;
-            resourceInputs["endTime"] = args ? args.endTime : undefined;
-            resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
-            resourceInputs["startTime"] = args ? args.startTime : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["workingHours"] = args ? args.workingHours : undefined;
+            resourceInputs["applications"] = args?.applications;
+            resourceInputs["emailIds"] = args?.emailIds;
+            resourceInputs["endTime"] = args?.endTime;
+            resourceInputs["microtenantId"] = args?.microtenantId;
+            resourceInputs["startTime"] = args?.startTime;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["workingHours"] = args?.workingHours;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "zpa:index/praApprovalController:PraApprovalController" }] };
@@ -225,8 +228,7 @@ export interface PRAApprovalState {
      */
     endTime?: pulumi.Input<string>;
     /**
-     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-     * microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
      */
     microtenantId?: pulumi.Input<string>;
     /**
@@ -254,8 +256,7 @@ export interface PRAApprovalArgs {
      */
     endTime?: pulumi.Input<string>;
     /**
-     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-     * microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
      */
     microtenantId?: pulumi.Input<string>;
     /**

@@ -16,7 +16,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// * [Official documentation](https://help.zscaler.com/zpa/about-microtenants)
         /// * [API documentation](https://help.zscaler.com/zpa/configuring-microtenants-using-api)
         /// 
-        /// The **zpa_microtenant_controller** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source allows administrators to retrieve a specific microtenant ID, which can be passed to other supported resources via the `microtenant_id` attribute.
+        /// The **zpa_microtenant_controller** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source allows administrators to retrieve a specific microtenant ID, which can be passed to other supported resources via the `MicrotenantId` attribute.
         /// 
         /// ⚠️ **WARNING:**: This feature is in limited availability and requires additional license. To learn more, contact Zscaler Support or your local account team.
         /// 
@@ -32,6 +32,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Microtenant Controller Data Source
         ///     var @this = Zpa.GetMicrotenant.Invoke(new()
         ///     {
         ///         Name = "Microtenant_A",
@@ -47,7 +48,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// * [Official documentation](https://help.zscaler.com/zpa/about-microtenants)
         /// * [API documentation](https://help.zscaler.com/zpa/configuring-microtenants-using-api)
         /// 
-        /// The **zpa_microtenant_controller** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source allows administrators to retrieve a specific microtenant ID, which can be passed to other supported resources via the `microtenant_id` attribute.
+        /// The **zpa_microtenant_controller** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source allows administrators to retrieve a specific microtenant ID, which can be passed to other supported resources via the `MicrotenantId` attribute.
         /// 
         /// ⚠️ **WARNING:**: This feature is in limited availability and requires additional license. To learn more, contact Zscaler Support or your local account team.
         /// 
@@ -63,6 +64,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Microtenant Controller Data Source
         ///     var @this = Zpa.GetMicrotenant.Invoke(new()
         ///     {
         ///         Name = "Microtenant_A",
@@ -78,7 +80,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// * [Official documentation](https://help.zscaler.com/zpa/about-microtenants)
         /// * [API documentation](https://help.zscaler.com/zpa/configuring-microtenants-using-api)
         /// 
-        /// The **zpa_microtenant_controller** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source allows administrators to retrieve a specific microtenant ID, which can be passed to other supported resources via the `microtenant_id` attribute.
+        /// The **zpa_microtenant_controller** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source allows administrators to retrieve a specific microtenant ID, which can be passed to other supported resources via the `MicrotenantId` attribute.
         /// 
         /// ⚠️ **WARNING:**: This feature is in limited availability and requires additional license. To learn more, contact Zscaler Support or your local account team.
         /// 
@@ -94,6 +96,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Microtenant Controller Data Source
         ///     var @this = Zpa.GetMicrotenant.Invoke(new()
         ///     {
         ///         Name = "Microtenant_A",

@@ -18,7 +18,7 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     ///   ⚠️ **NOTE**: This resource is recommended if your configuration requires the association of more than 1000 resource criteria per rule.
     /// 
-    ///   ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+    ///   ⚠️ **WARNING:**: The attribute ``RuleOrder`` is now deprecated in favor of the new resource  ``PolicyAccessRuleReorder``
     /// 
     /// ## Example Usage
     /// 
@@ -31,34 +31,40 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thisIsolationProfile = Zpa.GetIsolationProfile.Invoke(new()
+    ///     // Get Isolation Profile ID
+    ///     var @this = Zpa.GetIsolationProfile.Invoke(new()
     ///     {
     ///         Name = "zpa_isolation_profile",
     ///     });
     /// 
-    ///     var thisIdPController = Zpa.GetIdPController.Invoke(new()
+    ///     // Retrieve Identity Provider ID
+    ///     var thisGetIdPController = Zpa.GetIdPController.Invoke(new()
     ///     {
     ///         Name = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SAML Attribute ID
     ///     var emailUserSso = Zpa.GetSAMLAttribute.Invoke(new()
     ///     {
     ///         Name = "Email_Users",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SAML Attribute ID
     ///     var groupUser = Zpa.GetSAMLAttribute.Invoke(new()
     ///     {
     ///         Name = "GroupName_Users",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SCIM Group ID
     ///     var a000 = Zpa.GetSCIMGroups.Invoke(new()
     ///     {
     ///         Name = "A000",
     ///         IdpName = "Idp_Name",
     ///     });
     /// 
+    ///     // Retrieve SCIM Group ID
     ///     var b000 = Zpa.GetSCIMGroups.Invoke(new()
     ///     {
     ///         Name = "B000",
@@ -66,11 +72,12 @@ namespace zscaler.PulumiPackage.Zpa
     ///     });
     /// 
     ///     // Create Policy Access Isolation Rule V2
-    ///     var thisPolicyAccessIsolationRuleV2 = new Zpa.PolicyAccessIsolationRuleV2("thisPolicyAccessIsolationRuleV2", new()
+    ///     var thisPolicyAccessIsolationRuleV2 = new Zpa.PolicyAccessIsolationRuleV2("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Action = "ISOLATE",
-    ///         ZpnIsolationProfileId = thisIsolationProfile.Apply(getIsolationProfileResult =&gt; getIsolationProfileResult.Id),
+    ///         ZpnIsolationProfileId = @this.Apply(@this =&gt; @this.Apply(getIsolationProfileResult =&gt; getIsolationProfileResult.Id)),
     ///         Conditions = new[]
     ///         {
     ///             new Zpa.Inputs.PolicyAccessIsolationRuleV2ConditionArgs
@@ -118,13 +125,70 @@ namespace zscaler.PulumiPackage.Zpa
     ///                             new Zpa.Inputs.PolicyAccessIsolationRuleV2ConditionOperandEntryValueArgs
     ///                             {
     ///                                 Rhs = a000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
-    ///                                 Lhs = thisIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                                 Lhs = thisGetIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
     ///                             },
     ///                             new Zpa.Inputs.PolicyAccessIsolationRuleV2ConditionOperandEntryValueArgs
     ///                             {
     ///                                 Rhs = b000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
-    ///                                 Lhs = thisIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                                 Lhs = thisGetIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
     ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Chrome Enterprise And Chrome Posture Profile
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Pulumi.Zpa;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = Zpa.GetManagedBrowserProfile.Invoke(new()
+    ///     {
+    ///         Name = "Profile01",
+    ///     });
+    /// 
+    ///     var thisPolicyAccessIsolationRuleV2 = new Zpa.PolicyAccessIsolationRuleV2("this", new()
+    ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         Action = "ISOLATE",
+    ///         ZpnIsolationProfileId = thisZpaIsolationProfile.Id,
+    ///         Conditions = new[]
+    ///         {
+    ///             new Zpa.Inputs.PolicyAccessIsolationRuleV2ConditionArgs
+    ///             {
+    ///                 Operator = "OR",
+    ///                 Operands = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.PolicyAccessIsolationRuleV2ConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "CHROME_ENTERPRISE",
+    ///                         EntryValues = new[]
+    ///                         {
+    ///                             new Zpa.Inputs.PolicyAccessIsolationRuleV2ConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Lhs = "managed",
+    ///                                 Rhs = "true",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Zpa.Inputs.PolicyAccessIsolationRuleV2ConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "CHROME_POSTURE_PROFILE",
+    ///                         Values = new[]
+    ///                         {
+    ///                             @this.Apply(@this =&gt; @this.Apply(getManagedBrowserProfileResult =&gt; getManagedBrowserProfileResult.Id)),
     ///                         },
     ///                     },
     ///                 },
@@ -139,16 +203,16 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// | Object Type | LHS| RHS| VALUES
     /// |----------|-----------|----------|----------
-    /// | APP  |   |  | ``application_segment_id`` |
-    /// | APP_GROUP  |   |  | ``segment_group_id``|
-    /// | CLIENT_TYPE  |   |  |  ``zpn_client_type_zappl``, ``zpn_client_type_exporter``, ``zpn_client_type_browser_isolation``, ``zpn_client_type_ip_anchoring``, ``zpn_client_type_edge_connector``, ``zpn_client_type_branch_connector``,  ``zpn_client_type_zapp_partner``, ``zpn_client_type_zapp``  |
+    /// | APP  |   |  | ``ApplicationSegmentId`` |
+    /// | APP_GROUP  |   |  | ``SegmentGroupId``|
+    /// | CLIENT_TYPE  |   |  |  ``ZpnClientTypeZappl``, ``ZpnClientTypeExporter``, ``ZpnClientTypeBrowserIsolation``, ``ZpnClientTypeIpAnchoring``, ``ZpnClientTypeEdgeConnector``, ``ZpnClientTypeBranchConnector``,  ``ZpnClientTypeZappPartner``, ``ZpnClientTypeZapp``  |
     /// | EDGE_CONNECTOR_GROUP  |   |  |  ``&lt;edge_connector_id&gt;`` |
-    /// | MACHINE_GRP   |   |  | ``machine_group_id`` |
-    /// | SAML | ``saml_attribute_id``  | ``attribute_value_to_match`` |
-    /// | SCIM | ``scim_attribute_id``  | ``attribute_value_to_match``  |
-    /// | SCIM_GROUP | ``scim_group_attribute_id``  | ``attribute_value_to_match``  |
-    /// | PLATFORM | ``mac``, ``ios``, ``windows``, ``android``, ``linux`` | ``"true"`` / ``"false"`` |
-    /// | POSTURE | ``posture_udid``  | ``"true"`` / ``"false"`` |
+    /// | MACHINE_GRP   |   |  | ``MachineGroupId`` |
+    /// | SAML | ``SamlAttributeId``  | ``AttributeValueToMatch`` |
+    /// | SCIM | ``ScimAttributeId``  | ``AttributeValueToMatch``  |
+    /// | SCIM_GROUP | ``ScimGroupAttributeId``  | ``AttributeValueToMatch``  |
+    /// | PLATFORM | ``Mac``, ``Ios``, ``Windows``, ``Android``, ``Linux`` | ``"true"`` / ``"false"`` |
+    /// | POSTURE | ``PostureUdid``  | ``"true"`` / ``"false"`` |
     /// 
     /// ## Import
     /// 
@@ -198,7 +262,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<string> PolicySetId { get; private set; } = null!;
 
         /// <summary>
-        /// Use zpa*isolation*profile data source to retrieve the necessary Isolation profile ID `zpn_isolation_profile_id`
+        /// Use zpa*isolation*profile data source to retrieve the necessary Isolation profile ID `ZpnIsolationProfileId`
         /// </summary>
         [Output("zpnIsolationProfileId")]
         public Output<string> ZpnIsolationProfileId { get; private set; } = null!;
@@ -288,7 +352,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Use zpa*isolation*profile data source to retrieve the necessary Isolation profile ID `zpn_isolation_profile_id`
+        /// Use zpa*isolation*profile data source to retrieve the necessary Isolation profile ID `ZpnIsolationProfileId`
         /// </summary>
         [Input("zpnIsolationProfileId")]
         public Input<string>? ZpnIsolationProfileId { get; set; }
@@ -338,7 +402,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<string>? PolicySetId { get; set; }
 
         /// <summary>
-        /// Use zpa*isolation*profile data source to retrieve the necessary Isolation profile ID `zpn_isolation_profile_id`
+        /// Use zpa*isolation*profile data source to retrieve the necessary Isolation profile ID `ZpnIsolationProfileId`
         /// </summary>
         [Input("zpnIsolationProfileId")]
         public Input<string>? ZpnIsolationProfileId { get; set; }

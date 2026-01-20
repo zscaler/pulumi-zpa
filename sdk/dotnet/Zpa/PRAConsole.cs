@@ -28,15 +28,17 @@ namespace zscaler.PulumiPackage.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Creates Segment Group for Application Segment"
-    ///     var thisSegmentGroup = new Zpa.SegmentGroup("thisSegmentGroup", new()
+    ///     var thisSegmentGroup = new Zpa.SegmentGroup("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///     });
     /// 
     ///     // Creates Privileged Remote Access Application Segment"
-    ///     var thisApplicationSegmentPRA = new Zpa.ApplicationSegmentPRA("thisApplicationSegmentPRA", new()
+    ///     var thisApplicationSegmentPRA = new Zpa.ApplicationSegmentPRA("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///         HealthReporting = "ON_ACCESS",
@@ -76,13 +78,14 @@ namespace zscaler.PulumiPackage.Zpa
     ///         },
     ///     });
     /// 
-    ///     var thisApplicationSegmentByType = Zpa.GetApplicationSegmentByType.Invoke(new()
+    ///     var @this = Zpa.GetApplicationSegmentByType.Invoke(new()
     ///     {
     ///         ApplicationType = "SECURE_REMOTE_ACCESS",
     ///         Name = "rdp_pra",
     ///     });
     /// 
-    ///     var thisBaCertificate = Zpa.GetBaCertificate.Invoke(new()
+    ///     // Retrieves the Browser Access Certificate
+    ///     var thisGetBaCertificate = Zpa.GetBaCertificate.Invoke(new()
     ///     {
     ///         Name = "pra01.example.com",
     ///     });
@@ -90,23 +93,25 @@ namespace zscaler.PulumiPackage.Zpa
     ///     // Creates PRA Portal"
     ///     var this1 = new Zpa.PRAPortal("this1", new()
     ///     {
+    ///         Name = "pra01.example.com",
     ///         Description = "pra01.example.com",
     ///         Enabled = true,
     ///         Domain = "pra01.example.com",
-    ///         CertificateId = thisBaCertificate.Apply(getBaCertificateResult =&gt; getBaCertificateResult.Id),
+    ///         CertificateId = thisGetBaCertificate.Apply(getBaCertificateResult =&gt; getBaCertificateResult.Id),
     ///         UserNotification = "Created with Terraform",
     ///         UserNotificationEnabled = true,
     ///     });
     /// 
-    ///     var sshPra = new Zpa.PRAConsole("sshPra", new()
+    ///     var sshPra = new Zpa.PRAConsole("ssh_pra", new()
     ///     {
+    ///         Name = "ssh_console",
     ///         Description = "Created with Terraform",
     ///         Enabled = true,
     ///         PraApplications = new[]
     ///         {
     ///             new Zpa.Inputs.PRAConsolePraApplicationArgs
     ///             {
-    ///                 Id = thisApplicationSegmentByType.Apply(getApplicationSegmentByTypeResult =&gt; getApplicationSegmentByTypeResult.Id),
+    ///                 Id = @this.Apply(@this =&gt; @this.Apply(getApplicationSegmentByTypeResult =&gt; getApplicationSegmentByTypeResult.Id)),
     ///             },
     ///         },
     ///         PraPortals = new[]
@@ -115,7 +120,7 @@ namespace zscaler.PulumiPackage.Zpa
     ///             {
     ///                 Ids = new[]
     ///                 {
-    ///                     zpa_pra_portal_controller.This.Id,
+    ///                     thisZpaPraPortalController.Id,
     ///                 },
     ///             },
     ///         },
@@ -151,26 +156,25 @@ namespace zscaler.PulumiPackage.Zpa
         /// The description of the privileged console
         /// </summary>
         [Output("description")]
-        public Output<string> Description { get; private set; } = null!;
+        public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
         /// Whether or not the privileged console is enabled
         /// </summary>
         [Output("enabled")]
-        public Output<bool> Enabled { get; private set; } = null!;
+        public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
         /// The privileged console icon. The icon image is converted to base64 encoded text format
         /// </summary>
         [Output("iconText")]
-        public Output<string> IconText { get; private set; } = null!;
+        public Output<string?> IconText { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-        /// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
         /// </summary>
         [Output("microtenantId")]
-        public Output<string> MicrotenantId { get; private set; } = null!;
+        public Output<string?> MicrotenantId { get; private set; } = null!;
 
         /// <summary>
         /// The name of the privileged console
@@ -254,8 +258,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<string>? IconText { get; set; }
 
         /// <summary>
-        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-        /// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
         /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
@@ -309,8 +312,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<string>? IconText { get; set; }
 
         /// <summary>
-        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-        /// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
         /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }

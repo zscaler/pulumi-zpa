@@ -32,9 +32,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA SAML Attribute Data Source
 //			_, err := zpa.GetSAMLAttribute(ctx, &zpa.GetSAMLAttributeArgs{
-//				IdpName: pulumi.StringRef("idp_name"),
 //				Name:    pulumi.StringRef("Email_User SSO"),
+//				IdpName: pulumi.StringRef("idp_name"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -57,9 +58,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA SAML Attribute Data Source
 //			_, err := zpa.GetSAMLAttribute(ctx, &zpa.GetSAMLAttributeArgs{
-//				IdpName: pulumi.StringRef("idp_name"),
 //				Name:    pulumi.StringRef("DepartmentName_IdP_Name_Users"),
+//				IdpName: pulumi.StringRef("idp_name"),
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -32,17 +32,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thisBaCertificate, err := zpa.GetBaCertificate(ctx, &zpa.GetBaCertificateArgs{
+//			// Retrieves Browser Access Certificate
+//			this, err := zpa.GetBaCertificate(ctx, &zpa.GetBaCertificateArgs{
 //				Name: pulumi.StringRef("portal.acme.com"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = zpa.NewPRAPortal(ctx, "thisPRAPortal", &zpa.PRAPortalArgs{
+//			_, err = zpa.NewPRAPortal(ctx, "this", &zpa.PRAPortalArgs{
+//				Name:                    pulumi.String("portal.acme.com"),
 //				Description:             pulumi.String("portal.acme.com"),
 //				Enabled:                 pulumi.Bool(true),
 //				Domain:                  pulumi.String("portal.acme.com"),
-//				CertificateId:           pulumi.String(thisBaCertificate.Id),
+//				CertificateId:           pulumi.String(this.Id),
 //				UserNotification:        pulumi.String("Created with Terraform"),
 //				UserNotificationEnabled: pulumi.Bool(true),
 //			})
@@ -70,15 +72,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := zpa.NewPRAPortal(ctx, "this", &zpa.PRAPortalArgs{
+//				Name:                    pulumi.String("server1.acme.com"),
 //				Description:             pulumi.String("server1.acme.com"),
-//				Domain:                  pulumi.String("server1-acme.com.pra.d.zscalerportal.net"),
 //				Enabled:                 pulumi.Bool(true),
+//				Domain:                  pulumi.String("server1-acme.com.pra.d.zscalerportal.net"),
+//				UserNotification:        pulumi.String("Created with Terraform"),
+//				UserNotificationEnabled: pulumi.Bool(true),
+//				ExtLabel:                pulumi.String("server1"),
 //				ExtDomain:               pulumi.String("acme.com"),
 //				ExtDomainName:           pulumi.String("acme.com.pra.d.zscalerportal.net"),
 //				ExtDomainTranslation:    pulumi.String("acme.com"),
-//				ExtLabel:                pulumi.String("server1"),
-//				UserNotification:        pulumi.String("Created with Terraform"),
-//				UserNotificationEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -103,16 +106,55 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := zpa.NewPRAPortal(ctx, "this", &zpa.PRAPortalArgs{
+//				Name:                    pulumi.String("Server1 PRA01"),
 //				Description:             pulumi.String("Server1 PRA01 Description"),
-//				Domain:                  pulumi.String("server1-acme.com.pra.d.zscalerportal.net"),
 //				Enabled:                 pulumi.Bool(true),
+//				Domain:                  pulumi.String("server1-acme.com.pra.d.zscalerportal.net"),
+//				UserNotification:        pulumi.String("Created with Terraform"),
+//				UserNotificationEnabled: pulumi.Bool(true),
+//				ExtLabel:                pulumi.String("server1"),
 //				ExtDomain:               pulumi.String("acme.com"),
 //				ExtDomainName:           pulumi.String("acme.com.pra.d.zscalerportal.net"),
 //				ExtDomainTranslation:    pulumi.String("acme.com"),
-//				ExtLabel:                pulumi.String("server1"),
+//				UserPortalGid:           pulumi.String("145262059234265326"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Configuring PRA Portal with Approval Reviewer
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := zpa.NewPRAPortal(ctx, "this", &zpa.PRAPortalArgs{
+//				Name:                    pulumi.String("Server1 PRA01"),
+//				Description:             pulumi.String("Server1 PRA01 Description"),
+//				Enabled:                 pulumi.Bool(true),
+//				Domain:                  pulumi.String("server1-acme.com.pra.d.zscalerportal.net"),
 //				UserNotification:        pulumi.String("Created with Terraform"),
 //				UserNotificationEnabled: pulumi.Bool(true),
+//				ExtLabel:                pulumi.String("server1"),
+//				ExtDomain:               pulumi.String("acme.com"),
+//				ExtDomainName:           pulumi.String("acme.com.pra.d.zscalerportal.net"),
+//				ExtDomainTranslation:    pulumi.String("acme.com"),
 //				UserPortalGid:           pulumi.String("145262059234265326"),
+//				ApprovalReviewers: pulumi.StringArray{
+//					pulumi.String("jdoe@acme.com"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -145,6 +187,7 @@ import (
 type PRAPortal struct {
 	pulumi.CustomResourceState
 
+	ApprovalReviewers pulumi.StringArrayOutput `pulumi:"approvalReviewers"`
 	// The unique identifier of the certificate
 	CertificateId pulumi.StringOutput `pulumi:"certificateId"`
 	// The description of the privileged portal
@@ -153,20 +196,15 @@ type PRAPortal struct {
 	Domain pulumi.StringPtrOutput `pulumi:"domain"`
 	// Whether or not the privileged portal is enabled
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// The external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when
-	// creating a privileged portal.
+	// The external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when creating a privileged portal.
 	ExtDomain pulumi.StringPtrOutput `pulumi:"extDomain"`
 	// The domain suffix for the privileged portal URL. This field must be one of the customer's authentication domains.
 	ExtDomainName pulumi.StringPtrOutput `pulumi:"extDomainName"`
-	// The translation of the external domain name prefix of the Browser Access application that is used for Zscaler-managed
-	// certificates when creating a privileged portal.
+	// The translation of the external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when creating a privileged portal.
 	ExtDomainTranslation pulumi.StringPtrOutput `pulumi:"extDomainTranslation"`
-	// The domain prefix for the privileged portal URL. The supported string can include numbers, lower case characters, and
-	// only supports a hyphen (-).
+	// The domain prefix for the privileged portal URL. The supported string can include numbers, lower case characters, and only supports a hyphen (-).
 	ExtLabel pulumi.StringPtrOutput `pulumi:"extLabel"`
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to
-	// retrieve data from all customers associated with the tenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to retrieve data from all customers associated with the tenant.
 	MicrotenantId pulumi.StringPtrOutput `pulumi:"microtenantId"`
 	// The name of the privileged portal
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -214,6 +252,7 @@ func GetPRAPortal(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PRAPortal resources.
 type praportalState struct {
+	ApprovalReviewers []string `pulumi:"approvalReviewers"`
 	// The unique identifier of the certificate
 	CertificateId *string `pulumi:"certificateId"`
 	// The description of the privileged portal
@@ -222,20 +261,15 @@ type praportalState struct {
 	Domain *string `pulumi:"domain"`
 	// Whether or not the privileged portal is enabled
 	Enabled *bool `pulumi:"enabled"`
-	// The external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when
-	// creating a privileged portal.
+	// The external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when creating a privileged portal.
 	ExtDomain *string `pulumi:"extDomain"`
 	// The domain suffix for the privileged portal URL. This field must be one of the customer's authentication domains.
 	ExtDomainName *string `pulumi:"extDomainName"`
-	// The translation of the external domain name prefix of the Browser Access application that is used for Zscaler-managed
-	// certificates when creating a privileged portal.
+	// The translation of the external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when creating a privileged portal.
 	ExtDomainTranslation *string `pulumi:"extDomainTranslation"`
-	// The domain prefix for the privileged portal URL. The supported string can include numbers, lower case characters, and
-	// only supports a hyphen (-).
+	// The domain prefix for the privileged portal URL. The supported string can include numbers, lower case characters, and only supports a hyphen (-).
 	ExtLabel *string `pulumi:"extLabel"`
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to
-	// retrieve data from all customers associated with the tenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to retrieve data from all customers associated with the tenant.
 	MicrotenantId *string `pulumi:"microtenantId"`
 	// The name of the privileged portal
 	Name *string `pulumi:"name"`
@@ -248,6 +282,7 @@ type praportalState struct {
 }
 
 type PRAPortalState struct {
+	ApprovalReviewers pulumi.StringArrayInput
 	// The unique identifier of the certificate
 	CertificateId pulumi.StringPtrInput
 	// The description of the privileged portal
@@ -256,20 +291,15 @@ type PRAPortalState struct {
 	Domain pulumi.StringPtrInput
 	// Whether or not the privileged portal is enabled
 	Enabled pulumi.BoolPtrInput
-	// The external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when
-	// creating a privileged portal.
+	// The external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when creating a privileged portal.
 	ExtDomain pulumi.StringPtrInput
 	// The domain suffix for the privileged portal URL. This field must be one of the customer's authentication domains.
 	ExtDomainName pulumi.StringPtrInput
-	// The translation of the external domain name prefix of the Browser Access application that is used for Zscaler-managed
-	// certificates when creating a privileged portal.
+	// The translation of the external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when creating a privileged portal.
 	ExtDomainTranslation pulumi.StringPtrInput
-	// The domain prefix for the privileged portal URL. The supported string can include numbers, lower case characters, and
-	// only supports a hyphen (-).
+	// The domain prefix for the privileged portal URL. The supported string can include numbers, lower case characters, and only supports a hyphen (-).
 	ExtLabel pulumi.StringPtrInput
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to
-	// retrieve data from all customers associated with the tenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to retrieve data from all customers associated with the tenant.
 	MicrotenantId pulumi.StringPtrInput
 	// The name of the privileged portal
 	Name pulumi.StringPtrInput
@@ -286,6 +316,7 @@ func (PRAPortalState) ElementType() reflect.Type {
 }
 
 type praportalArgs struct {
+	ApprovalReviewers []string `pulumi:"approvalReviewers"`
 	// The unique identifier of the certificate
 	CertificateId *string `pulumi:"certificateId"`
 	// The description of the privileged portal
@@ -294,20 +325,15 @@ type praportalArgs struct {
 	Domain *string `pulumi:"domain"`
 	// Whether or not the privileged portal is enabled
 	Enabled *bool `pulumi:"enabled"`
-	// The external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when
-	// creating a privileged portal.
+	// The external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when creating a privileged portal.
 	ExtDomain *string `pulumi:"extDomain"`
 	// The domain suffix for the privileged portal URL. This field must be one of the customer's authentication domains.
 	ExtDomainName *string `pulumi:"extDomainName"`
-	// The translation of the external domain name prefix of the Browser Access application that is used for Zscaler-managed
-	// certificates when creating a privileged portal.
+	// The translation of the external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when creating a privileged portal.
 	ExtDomainTranslation *string `pulumi:"extDomainTranslation"`
-	// The domain prefix for the privileged portal URL. The supported string can include numbers, lower case characters, and
-	// only supports a hyphen (-).
+	// The domain prefix for the privileged portal URL. The supported string can include numbers, lower case characters, and only supports a hyphen (-).
 	ExtLabel *string `pulumi:"extLabel"`
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to
-	// retrieve data from all customers associated with the tenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to retrieve data from all customers associated with the tenant.
 	MicrotenantId *string `pulumi:"microtenantId"`
 	// The name of the privileged portal
 	Name *string `pulumi:"name"`
@@ -321,6 +347,7 @@ type praportalArgs struct {
 
 // The set of arguments for constructing a PRAPortal resource.
 type PRAPortalArgs struct {
+	ApprovalReviewers pulumi.StringArrayInput
 	// The unique identifier of the certificate
 	CertificateId pulumi.StringPtrInput
 	// The description of the privileged portal
@@ -329,20 +356,15 @@ type PRAPortalArgs struct {
 	Domain pulumi.StringPtrInput
 	// Whether or not the privileged portal is enabled
 	Enabled pulumi.BoolPtrInput
-	// The external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when
-	// creating a privileged portal.
+	// The external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when creating a privileged portal.
 	ExtDomain pulumi.StringPtrInput
 	// The domain suffix for the privileged portal URL. This field must be one of the customer's authentication domains.
 	ExtDomainName pulumi.StringPtrInput
-	// The translation of the external domain name prefix of the Browser Access application that is used for Zscaler-managed
-	// certificates when creating a privileged portal.
+	// The translation of the external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when creating a privileged portal.
 	ExtDomainTranslation pulumi.StringPtrInput
-	// The domain prefix for the privileged portal URL. The supported string can include numbers, lower case characters, and
-	// only supports a hyphen (-).
+	// The domain prefix for the privileged portal URL. The supported string can include numbers, lower case characters, and only supports a hyphen (-).
 	ExtLabel pulumi.StringPtrInput
-	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-	// microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to
-	// retrieve data from all customers associated with the tenant.
+	// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to retrieve data from all customers associated with the tenant.
 	MicrotenantId pulumi.StringPtrInput
 	// The name of the privileged portal
 	Name pulumi.StringPtrInput
@@ -441,6 +463,10 @@ func (o PRAPortalOutput) ToPRAPortalOutputWithContext(ctx context.Context) PRAPo
 	return o
 }
 
+func (o PRAPortalOutput) ApprovalReviewers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PRAPortal) pulumi.StringArrayOutput { return v.ApprovalReviewers }).(pulumi.StringArrayOutput)
+}
+
 // The unique identifier of the certificate
 func (o PRAPortalOutput) CertificateId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PRAPortal) pulumi.StringOutput { return v.CertificateId }).(pulumi.StringOutput)
@@ -461,8 +487,7 @@ func (o PRAPortalOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PRAPortal) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when
-// creating a privileged portal.
+// The external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when creating a privileged portal.
 func (o PRAPortalOutput) ExtDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PRAPortal) pulumi.StringPtrOutput { return v.ExtDomain }).(pulumi.StringPtrOutput)
 }
@@ -472,21 +497,17 @@ func (o PRAPortalOutput) ExtDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PRAPortal) pulumi.StringPtrOutput { return v.ExtDomainName }).(pulumi.StringPtrOutput)
 }
 
-// The translation of the external domain name prefix of the Browser Access application that is used for Zscaler-managed
-// certificates when creating a privileged portal.
+// The translation of the external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when creating a privileged portal.
 func (o PRAPortalOutput) ExtDomainTranslation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PRAPortal) pulumi.StringPtrOutput { return v.ExtDomainTranslation }).(pulumi.StringPtrOutput)
 }
 
-// The domain prefix for the privileged portal URL. The supported string can include numbers, lower case characters, and
-// only supports a hyphen (-).
+// The domain prefix for the privileged portal URL. The supported string can include numbers, lower case characters, and only supports a hyphen (-).
 func (o PRAPortalOutput) ExtLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PRAPortal) pulumi.StringPtrOutput { return v.ExtLabel }).(pulumi.StringPtrOutput)
 }
 
-// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-// microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to
-// retrieve data from all customers associated with the tenant.
+// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to retrieve data from all customers associated with the tenant.
 func (o PRAPortalOutput) MicrotenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PRAPortal) pulumi.StringPtrOutput { return v.MicrotenantId }).(pulumi.StringPtrOutput)
 }

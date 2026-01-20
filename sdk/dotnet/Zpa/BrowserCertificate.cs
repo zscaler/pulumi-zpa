@@ -26,6 +26,7 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // ZPA Browser Access Data Source
     ///     var foo = Zpa.GetBaCertificate.Invoke(new()
     ///     {
     ///         Name = "example.acme.com",
@@ -34,8 +35,6 @@ namespace zscaler.PulumiPackage.Zpa
     /// });
     /// ```
     /// 
-    /// ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE #########\
-    /// ######### ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ##########
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -44,18 +43,18 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // ZPA Browser Access resource
+    ///     //## PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ####
     ///     var @this = new Zpa.BrowserCertificate("this", new()
     ///     {
+    ///         Name = "server.example.com",
+    ///         Description = "server.example.com",
     ///         CertBlob = @"-----BEGIN PRIVATE KEY-----
     /// MIIDyzCCArOgA
     /// -----END PRIVATE KEY-----
     /// -----BEGIN CERTIFICATE-----
     /// MIIDyzCCArOgAwIBAgIUekBD+iu64583B3u5ew7Bqj2O5cQwDQYJKoZIhvcNAQEL
     /// -----END CERTIFICATE-----
-    /// 
     /// ",
-    ///         Description = "server.example.com",
     ///     });
     /// 
     /// });
@@ -72,8 +71,8 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// Zscaler Field          | Certbot file
     /// --------------------|--------------
-    /// `certblob`          | `cert.pem`
-    /// `certblob`          | `privkey.pem`
+    /// `Certblob`          | `cert.pem`
+    /// `Certblob`          | `privkey.pem`
     /// 
     /// ## Import
     /// 

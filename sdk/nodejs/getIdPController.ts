@@ -28,6 +28,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA IdP Controller Data Source
  * const example = zpa.getIdPController({
  *     name: "idp_name",
  * });
@@ -37,6 +38,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA IdP Controller Data Source
  * const example = zpa.getIdPController({
  *     id: "1234567890",
  * });
@@ -115,6 +117,7 @@ export interface GetIdPControllerResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA IdP Controller Data Source
  * const example = zpa.getIdPController({
  *     name: "idp_name",
  * });
@@ -124,6 +127,7 @@ export interface GetIdPControllerResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA IdP Controller Data Source
  * const example = zpa.getIdPController({
  *     id: "1234567890",
  * });

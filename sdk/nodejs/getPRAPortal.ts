@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA PRA Portal Data Source
  * const _this = zpa.getPRAPortal({
  *     name: "Example",
  * });
@@ -52,6 +53,7 @@ export interface GetPRAPortalArgs {
  * A collection of values returned by getPRAPortal.
  */
 export interface GetPRAPortalResult {
+    readonly approvalReviewers: string[];
     readonly certificateId: string;
     readonly certificateName: string;
     readonly cname: string;
@@ -89,6 +91,7 @@ export interface GetPRAPortalResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA PRA Portal Data Source
  * const _this = zpa.getPRAPortal({
  *     name: "Example",
  * });

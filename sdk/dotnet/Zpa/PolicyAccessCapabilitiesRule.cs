@@ -16,7 +16,7 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// The **zpa_policy_capabilities_rule** resource creates a policy capabilities rule in the Zscaler Private Access cloud.
     /// 
-    ///   ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+    ///   ⚠️ **WARNING:**: The attribute ``RuleOrder`` is now deprecated in favor of the new resource  ``PolicyAccessRuleReorder``
     /// 
     /// ## Example Usage
     /// 
@@ -29,7 +29,7 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thisIdPController = Zpa.GetIdPController.Invoke(new()
+    ///     var @this = Zpa.GetIdPController.Invoke(new()
     ///     {
     ///         Name = "IdP_Users",
     ///     });
@@ -58,8 +58,9 @@ namespace zscaler.PulumiPackage.Zpa
     ///         IdpName = "IdP_Users",
     ///     });
     /// 
-    ///     var thisPolicyAccessCapabilitiesRule = new Zpa.PolicyAccessCapabilitiesRule("thisPolicyAccessCapabilitiesRule", new()
+    ///     var thisPolicyAccessCapabilitiesRule = new Zpa.PolicyAccessCapabilitiesRule("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Action = "CHECK_CAPABILITIES",
     ///         PrivilegedCapabilities = new Zpa.Inputs.PolicyAccessCapabilitiesRulePrivilegedCapabilitiesArgs
@@ -103,12 +104,12 @@ namespace zscaler.PulumiPackage.Zpa
     ///                             new Zpa.Inputs.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs
     ///                             {
     ///                                 Rhs = a000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
-    ///                                 Lhs = thisIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                                 Lhs = @this.Apply(@this =&gt; @this.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id)),
     ///                             },
     ///                             new Zpa.Inputs.PolicyAccessCapabilitiesRuleConditionOperandEntryValueArgs
     ///                             {
     ///                                 Rhs = b000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
-    ///                                 Lhs = thisIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                                 Lhs = @this.Apply(@this =&gt; @this.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id)),
     ///                             },
     ///                         },
     ///                     },
@@ -124,11 +125,11 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// | Object Type | LHS| RHS| VALUES
     /// |----------|-----------|----------|----------
-    /// | APP |   |  | ``application_segment_id``
-    /// | APP_GROUP |   |  | ``segment_group_id``
-    /// | SAML | ``saml_attribute_id``  | ``attribute_value_to_match`` |
-    /// | SCIM | ``scim_attribute_id``  | ``attribute_value_to_match``  |
-    /// | SCIM_GROUP | ``scim_group_attribute_id``  | ``attribute_value_to_match``  |
+    /// | APP |   |  | ``ApplicationSegmentId``
+    /// | APP_GROUP |   |  | ``SegmentGroupId``
+    /// | SAML | ``SamlAttributeId``  | ``AttributeValueToMatch`` |
+    /// | SCIM | ``ScimAttributeId``  | ``AttributeValueToMatch``  |
+    /// | SCIM_GROUP | ``ScimGroupAttributeId``  | ``AttributeValueToMatch``  |
     /// 
     /// ## Import
     /// 

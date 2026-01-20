@@ -34,6 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Cloud Connector Group Data Source
 //			_, err := zpa.GetCloudConnectorGroup(ctx, &zpa.GetCloudConnectorGroupArgs{
 //				Name: pulumi.StringRef("AWS-Cloud"),
 //			}, nil)
@@ -58,6 +59,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Cloud Connector Group Data Source
 //			_, err := zpa.GetCloudConnectorGroup(ctx, &zpa.GetCloudConnectorGroupArgs{
 //				Id: pulumi.StringRef("1234567890"),
 //			}, nil)

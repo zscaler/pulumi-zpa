@@ -16,7 +16,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// * [Official documentation](https://help.zscaler.com/zpa/about-connectors)
         /// * [API documentation](https://help.zscaler.com/zpa/obtaining-version-profile-details-using-api)
         /// 
-        /// Use the **zpa_customer_version_profile** data source to get information about all customer version profiles from the Zscaler Private Access cloud. This data source can be associated with an App Connector Group within the parameter `version_profile_id` or `version_profile_name`
+        /// Use the **zpa_customer_version_profile** data source to get information about all customer version profiles from the Zscaler Private Access cloud. This data source can be associated with an App Connector Group within the parameter `VersionProfileId` or `VersionProfileName`
         /// 
         /// The customer version profile IDs are:
         /// 
@@ -34,16 +34,19 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Retrieve "Default" customer version profile
         ///     var @default = Zpa.GetCustomerVersionProfile.Invoke(new()
         ///     {
         ///         Name = "Default",
         ///     });
         /// 
+        ///     // Retrieve "Previous Default" customer version profile
         ///     var previousDefault = Zpa.GetCustomerVersionProfile.Invoke(new()
         ///     {
         ///         Name = "Previous Default",
         ///     });
         /// 
+        ///     // Retrieve "New Release" customer version profile
         ///     var newRelease = Zpa.GetCustomerVersionProfile.Invoke(new()
         ///     {
         ///         Name = "New Release",
@@ -59,7 +62,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// * [Official documentation](https://help.zscaler.com/zpa/about-connectors)
         /// * [API documentation](https://help.zscaler.com/zpa/obtaining-version-profile-details-using-api)
         /// 
-        /// Use the **zpa_customer_version_profile** data source to get information about all customer version profiles from the Zscaler Private Access cloud. This data source can be associated with an App Connector Group within the parameter `version_profile_id` or `version_profile_name`
+        /// Use the **zpa_customer_version_profile** data source to get information about all customer version profiles from the Zscaler Private Access cloud. This data source can be associated with an App Connector Group within the parameter `VersionProfileId` or `VersionProfileName`
         /// 
         /// The customer version profile IDs are:
         /// 
@@ -77,16 +80,19 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Retrieve "Default" customer version profile
         ///     var @default = Zpa.GetCustomerVersionProfile.Invoke(new()
         ///     {
         ///         Name = "Default",
         ///     });
         /// 
+        ///     // Retrieve "Previous Default" customer version profile
         ///     var previousDefault = Zpa.GetCustomerVersionProfile.Invoke(new()
         ///     {
         ///         Name = "Previous Default",
         ///     });
         /// 
+        ///     // Retrieve "New Release" customer version profile
         ///     var newRelease = Zpa.GetCustomerVersionProfile.Invoke(new()
         ///     {
         ///         Name = "New Release",
@@ -102,7 +108,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// * [Official documentation](https://help.zscaler.com/zpa/about-connectors)
         /// * [API documentation](https://help.zscaler.com/zpa/obtaining-version-profile-details-using-api)
         /// 
-        /// Use the **zpa_customer_version_profile** data source to get information about all customer version profiles from the Zscaler Private Access cloud. This data source can be associated with an App Connector Group within the parameter `version_profile_id` or `version_profile_name`
+        /// Use the **zpa_customer_version_profile** data source to get information about all customer version profiles from the Zscaler Private Access cloud. This data source can be associated with an App Connector Group within the parameter `VersionProfileId` or `VersionProfileName`
         /// 
         /// The customer version profile IDs are:
         /// 
@@ -120,16 +126,19 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Retrieve "Default" customer version profile
         ///     var @default = Zpa.GetCustomerVersionProfile.Invoke(new()
         ///     {
         ///         Name = "Default",
         ///     });
         /// 
+        ///     // Retrieve "Previous Default" customer version profile
         ///     var previousDefault = Zpa.GetCustomerVersionProfile.Invoke(new()
         ///     {
         ///         Name = "Previous Default",
         ///     });
         /// 
+        ///     // Retrieve "New Release" customer version profile
         ///     var newRelease = Zpa.GetCustomerVersionProfile.Invoke(new()
         ///     {
         ///         Name = "New Release",

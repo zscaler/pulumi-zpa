@@ -23,6 +23,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Server Group Data Source
         ///     var example = Zpa.GetSegmentGroup.Invoke(new()
         ///     {
         ///         Name = "segment_group_name",
@@ -45,6 +46,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Server Group Data Source
         ///     var example = Zpa.GetSegmentGroup.Invoke(new()
         ///     {
         ///         Name = "segment_group_name",
@@ -67,6 +69,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Server Group Data Source
         ///     var example = Zpa.GetSegmentGroup.Invoke(new()
         ///     {
         ///         Name = "segment_group_name",

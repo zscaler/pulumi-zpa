@@ -9,17 +9,6 @@ import * as utilities from "./utilities";
  * * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
  *
  * Use the **zpa_application_segment_by_type** data source to get all configured Application Segments by Access Type (e.g., ``BROWSER_ACCESS``, ``INSPECT``, or ``SECURE_REMOTE_ACCESS``) for the specified customer.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as zpa from "@bdzscaler/pulumi-zpa";
- *
- * const _this = zpa.getApplicationSegmentByType({
- *     applicationType: "SECURE_REMOTE_ACCESS",
- * });
- * ```
  */
 export function getApplicationSegmentByType(args: GetApplicationSegmentByTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationSegmentByTypeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -61,17 +50,6 @@ export interface GetApplicationSegmentByTypeResult {
  * * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
  *
  * Use the **zpa_application_segment_by_type** data source to get all configured Application Segments by Access Type (e.g., ``BROWSER_ACCESS``, ``INSPECT``, or ``SECURE_REMOTE_ACCESS``) for the specified customer.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as zpa from "@bdzscaler/pulumi-zpa";
- *
- * const _this = zpa.getApplicationSegmentByType({
- *     applicationType: "SECURE_REMOTE_ACCESS",
- * });
- * ```
  */
 export function getApplicationSegmentByTypeOutput(args: GetApplicationSegmentByTypeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApplicationSegmentByTypeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

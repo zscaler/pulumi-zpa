@@ -17,32 +17,6 @@ import (
 // Use the **zpa_app_connector_assistant_schedule** data source to get information about Auto Delete frequency of the App Connector for the specified customer in the Zscaler Private Access cloud.
 //
 // > **NOTE** - The `customerId` attribute is optional and not required during the configuration.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := zpa.LookupAppConnectorAssistantSchedule(ctx, &zpa.LookupAppConnectorAssistantScheduleArgs{
-//				CustomerId: pulumi.StringRef("1234567891012"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupAppConnectorAssistantSchedule(ctx *pulumi.Context, args *LookupAppConnectorAssistantScheduleArgs, opts ...pulumi.InvokeOption) (*LookupAppConnectorAssistantScheduleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppConnectorAssistantScheduleResult

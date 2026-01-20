@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // Get Log Type Format - "App Connector Metrics"
  * const zpnAstComprehensiveStats = zpa.getLSSLogTypeFormats({
  *     logType: "zpn_ast_comprehensive_stats",
  * });
@@ -27,7 +28,7 @@ import * as utilities from "./utilities";
  * const _this = zpa.getAppConnectorGroup({
  *     name: "Example100",
  * });
- * const lssAppConnectorMetrics = new zpa.LSSConfigController("lssAppConnectorMetrics", {
+ * const lssAppConnectorMetrics = new zpa.LSSConfigController("lss_app_connector_metrics", {
  *     config: {
  *         name: "LSS App Connector Metrics",
  *         description: "LSS App Connector Metrics",
@@ -92,13 +93,13 @@ export class LSSConfigController extends pulumi.CustomResource {
         return obj['__pulumiType'] === LSSConfigController.__pulumiType;
     }
 
-    public readonly config!: pulumi.Output<outputs.LSSConfigControllerConfig | undefined>;
+    declare public readonly config: pulumi.Output<outputs.LSSConfigControllerConfig | undefined>;
     /**
      * App Connector Group(s) to be added to the LSS configuration
      */
-    public readonly connectorGroups!: pulumi.Output<outputs.LSSConfigControllerConnectorGroup[] | undefined>;
-    public /*out*/ readonly policyRuleId!: pulumi.Output<string>;
-    public readonly policyRuleResource!: pulumi.Output<outputs.LSSConfigControllerPolicyRuleResource | undefined>;
+    declare public readonly connectorGroups: pulumi.Output<outputs.LSSConfigControllerConnectorGroup[] | undefined>;
+    declare public /*out*/ readonly policyRuleId: pulumi.Output<string>;
+    declare public readonly policyRuleResource: pulumi.Output<outputs.LSSConfigControllerPolicyRuleResource | undefined>;
 
     /**
      * Create a LSSConfigController resource with the given unique name, arguments, and options.
@@ -113,15 +114,15 @@ export class LSSConfigController extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LSSConfigControllerState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["connectorGroups"] = state ? state.connectorGroups : undefined;
-            resourceInputs["policyRuleId"] = state ? state.policyRuleId : undefined;
-            resourceInputs["policyRuleResource"] = state ? state.policyRuleResource : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["connectorGroups"] = state?.connectorGroups;
+            resourceInputs["policyRuleId"] = state?.policyRuleId;
+            resourceInputs["policyRuleResource"] = state?.policyRuleResource;
         } else {
             const args = argsOrState as LSSConfigControllerArgs | undefined;
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["connectorGroups"] = args ? args.connectorGroups : undefined;
-            resourceInputs["policyRuleResource"] = args ? args.policyRuleResource : undefined;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["connectorGroups"] = args?.connectorGroups;
+            resourceInputs["policyRuleResource"] = args?.policyRuleResource;
             resourceInputs["policyRuleId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

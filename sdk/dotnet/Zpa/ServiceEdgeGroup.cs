@@ -29,8 +29,9 @@ namespace zscaler.PulumiPackage.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // ZPA Service Edge Group resource - Trusted Network
-    ///     var serviceEdgeGroupSjc = new Zpa.ServiceEdgeGroup("serviceEdgeGroupSjc", new()
+    ///     var serviceEdgeGroupSjc = new Zpa.ServiceEdgeGroup("service_edge_group_sjc", new()
     ///     {
+    ///         Name = "Service Edge Group San Jose",
     ///         Description = "Service Edge Group in San Jose",
     ///         Enabled = true,
     ///         IsPublic = true,
@@ -46,7 +47,7 @@ namespace zscaler.PulumiPackage.Zpa
     ///             {
     ///                 Ids = new[]
     ///                 {
-    ///                     data.Zpa_trusted_network.Example.Id,
+    ///                     example.Id,
     ///                 },
     ///             },
     ///         },
@@ -64,8 +65,9 @@ namespace zscaler.PulumiPackage.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // ZPA Service Edge Group resource - No Trusted Network
-    ///     var serviceEdgeGroupNyc = new Zpa.ServiceEdgeGroup("serviceEdgeGroupNyc", new()
+    ///     var serviceEdgeGroupNyc = new Zpa.ServiceEdgeGroup("service_edge_group_nyc", new()
     ///     {
+    ///         Name = "Service Edge Group New York",
     ///         Description = "Service Edge Group in New York",
     ///         Enabled = true,
     ///         IsPublic = true,
@@ -74,7 +76,7 @@ namespace zscaler.PulumiPackage.Zpa
     ///         Latitude = "40.7128",
     ///         Longitude = "-73.935242",
     ///         Location = "New York, NY, USA",
-    ///         VersionProfileId = data.Zpa_customer_version_profile.This.Id,
+    ///         VersionProfileId = @this.Id,
     ///     });
     /// 
     /// });
@@ -95,8 +97,9 @@ namespace zscaler.PulumiPackage.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // ZPA Service Edge Group resource - Trusted Network
-    ///     var serviceEdgeGroupSjc = new Zpa.ServiceEdgeGroup("serviceEdgeGroupSjc", new()
+    ///     var serviceEdgeGroupSjc = new Zpa.ServiceEdgeGroup("service_edge_group_sjc", new()
     ///     {
+    ///         Name = "Service Edge Group San Jose",
     ///         Description = "Service Edge Group in San Jose",
     ///         Enabled = true,
     ///         IsPublic = true,
@@ -112,7 +115,7 @@ namespace zscaler.PulumiPackage.Zpa
     ///             {
     ///                 Ids = new[]
     ///                 {
-    ///                     data.Zpa_trusted_network.Example.Id,
+    ///                     example.Id,
     ///                 },
     ///             },
     ///         },
@@ -130,16 +133,17 @@ namespace zscaler.PulumiPackage.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // ZPA Service Edge Group resource - No Trusted Network
-    ///     var serviceEdgeGroupNyc = new Zpa.ServiceEdgeGroup("serviceEdgeGroupNyc", new()
+    ///     var serviceEdgeGroupNyc = new Zpa.ServiceEdgeGroup("service_edge_group_nyc", new()
     ///     {
+    ///         Name = "Service Edge Group New York",
     ///         Description = "Service Edge Group in New York",
     ///         Enabled = true,
     ///         IsPublic = true,
-    ///         Latitude = "40.7128",
-    ///         Location = "New York, NY, USA",
-    ///         Longitude = "-73.935242",
     ///         UpgradeDay = "SUNDAY",
     ///         UpgradeTimeInSecs = "66600",
+    ///         Latitude = "40.7128",
+    ///         Longitude = "-73.935242",
+    ///         Location = "New York, NY, USA",
     ///         VersionProfileName = "New Release",
     ///     });
     /// 
@@ -169,8 +173,14 @@ namespace zscaler.PulumiPackage.Zpa
     [ZpaResourceType("zpa:index/serviceEdgeGroup:ServiceEdgeGroup")]
     public partial class ServiceEdgeGroup : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// City for the Service Edge Group.
+        /// </summary>
+        [Output("city")]
+        public Output<string?> City { get; private set; } = null!;
+
         [Output("cityCountry")]
-        public Output<string> CityCountry { get; private set; } = null!;
+        public Output<string?> CityCountry { get; private set; } = null!;
 
         [Output("countryCode")]
         public Output<string> CountryCode { get; private set; } = null!;
@@ -188,22 +198,25 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
-        /// Public Service Edge.
+        /// Indicates whether the Service Edge Group is exclusive for business continuity.
+        /// </summary>
+        [Output("exclusiveForBusinessContinuity")]
+        public Output<bool?> ExclusiveForBusinessContinuity { get; private set; } = null!;
+
+        /// <summary>
+        /// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA Public Service Edge.
         /// </summary>
         [Output("graceDistanceEnabled")]
         public Output<bool> GraceDistanceEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
-        /// Public Service Edge
+        /// Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA Public Service Edge
         /// </summary>
         [Output("graceDistanceValue")]
         public Output<string> GraceDistanceValue { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates the grace distance unit of measure in miles or kilometers. This value is only required if grace_distance_value
-        /// is set to true
+        /// Indicates the grace distance unit of measure in miles or kilometers. This value is only required if GraceDistanceValue is set to true
         /// </summary>
         [Output("graceDistanceValueUnit")]
         public Output<string> GraceDistanceValueUnit { get; private set; } = null!;
@@ -248,8 +261,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<bool?> OverrideVersionProfile { get; private set; } = null!;
 
         /// <summary>
-        /// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
-        /// matching.This field will be deprecated in future versions
+        /// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership matching.This field will be deprecated in future versions
         /// </summary>
         [Output("serviceEdges")]
         public Output<Outputs.ServiceEdgeGroupServiceEdges> ServiceEdges { get; private set; } = null!;
@@ -282,8 +294,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<string> VersionProfileId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
-        /// overrideVersionProfile is set to true
+        /// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         /// </summary>
         [Output("versionProfileName")]
         public Output<string> VersionProfileName { get; private set; } = null!;
@@ -341,6 +352,12 @@ namespace zscaler.PulumiPackage.Zpa
 
     public sealed class ServiceEdgeGroupArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// City for the Service Edge Group.
+        /// </summary>
+        [Input("city")]
+        public Input<string>? City { get; set; }
+
         [Input("cityCountry")]
         public Input<string>? CityCountry { get; set; }
 
@@ -360,22 +377,25 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
-        /// Public Service Edge.
+        /// Indicates whether the Service Edge Group is exclusive for business continuity.
+        /// </summary>
+        [Input("exclusiveForBusinessContinuity")]
+        public Input<bool>? ExclusiveForBusinessContinuity { get; set; }
+
+        /// <summary>
+        /// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA Public Service Edge.
         /// </summary>
         [Input("graceDistanceEnabled")]
         public Input<bool>? GraceDistanceEnabled { get; set; }
 
         /// <summary>
-        /// Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
-        /// Public Service Edge
+        /// Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA Public Service Edge
         /// </summary>
         [Input("graceDistanceValue")]
         public Input<string>? GraceDistanceValue { get; set; }
 
         /// <summary>
-        /// Indicates the grace distance unit of measure in miles or kilometers. This value is only required if grace_distance_value
-        /// is set to true
+        /// Indicates the grace distance unit of measure in miles or kilometers. This value is only required if GraceDistanceValue is set to true
         /// </summary>
         [Input("graceDistanceValueUnit")]
         public Input<string>? GraceDistanceValueUnit { get; set; }
@@ -420,8 +440,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? OverrideVersionProfile { get; set; }
 
         /// <summary>
-        /// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
-        /// matching.This field will be deprecated in future versions
+        /// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership matching.This field will be deprecated in future versions
         /// </summary>
         [Input("serviceEdges")]
         public Input<Inputs.ServiceEdgeGroupServiceEdgesArgs>? ServiceEdges { get; set; }
@@ -460,8 +479,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<string>? VersionProfileId { get; set; }
 
         /// <summary>
-        /// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
-        /// overrideVersionProfile is set to true
+        /// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         /// </summary>
         [Input("versionProfileName")]
         public Input<string>? VersionProfileName { get; set; }
@@ -480,6 +498,12 @@ namespace zscaler.PulumiPackage.Zpa
 
     public sealed class ServiceEdgeGroupState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// City for the Service Edge Group.
+        /// </summary>
+        [Input("city")]
+        public Input<string>? City { get; set; }
+
         [Input("cityCountry")]
         public Input<string>? CityCountry { get; set; }
 
@@ -499,22 +523,25 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
-        /// Public Service Edge.
+        /// Indicates whether the Service Edge Group is exclusive for business continuity.
+        /// </summary>
+        [Input("exclusiveForBusinessContinuity")]
+        public Input<bool>? ExclusiveForBusinessContinuity { get; set; }
+
+        /// <summary>
+        /// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA Public Service Edge.
         /// </summary>
         [Input("graceDistanceEnabled")]
         public Input<bool>? GraceDistanceEnabled { get; set; }
 
         /// <summary>
-        /// Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
-        /// Public Service Edge
+        /// Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA Public Service Edge
         /// </summary>
         [Input("graceDistanceValue")]
         public Input<string>? GraceDistanceValue { get; set; }
 
         /// <summary>
-        /// Indicates the grace distance unit of measure in miles or kilometers. This value is only required if grace_distance_value
-        /// is set to true
+        /// Indicates the grace distance unit of measure in miles or kilometers. This value is only required if GraceDistanceValue is set to true
         /// </summary>
         [Input("graceDistanceValueUnit")]
         public Input<string>? GraceDistanceValueUnit { get; set; }
@@ -559,8 +586,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? OverrideVersionProfile { get; set; }
 
         /// <summary>
-        /// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
-        /// matching.This field will be deprecated in future versions
+        /// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership matching.This field will be deprecated in future versions
         /// </summary>
         [Input("serviceEdges")]
         public Input<Inputs.ServiceEdgeGroupServiceEdgesGetArgs>? ServiceEdges { get; set; }
@@ -599,8 +625,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<string>? VersionProfileId { get; set; }
 
         /// <summary>
-        /// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
-        /// overrideVersionProfile is set to true
+        /// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         /// </summary>
         [Input("versionProfileName")]
         public Input<string>? VersionProfileName { get; set; }

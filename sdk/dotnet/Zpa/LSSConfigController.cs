@@ -14,7 +14,7 @@ namespace zscaler.PulumiPackage.Zpa
     /// * [Official documentation](https://help.zscaler.com/zpa/about-log-streaming-service)
     /// * [API documentation](https://help.zscaler.com/zpa/configuring-log-streaming-service-configurations-using-api)
     /// 
-    /// The **zpa_lss_config_controller** resource creates and manages Log Streaming Service (LSS) in the Zscaler Private Access cloud for App Connector Metrics `zpn_ast_comprehensive_stats`.
+    /// The **zpa_lss_config_controller** resource creates and manages Log Streaming Service (LSS) in the Zscaler Private Access cloud for App Connector Metrics `ZpnAstComprehensiveStats`.
     /// 
     /// ## Example 1 - LSS App Connector Metrics - Usage
     /// 
@@ -27,6 +27,7 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // Get Log Type Format - "App Connector Metrics"
     ///     var zpnAstComprehensiveStats = Zpa.GetLSSLogTypeFormats.Invoke(new()
     ///     {
     ///         LogType = "zpn_ast_comprehensive_stats",
@@ -42,7 +43,7 @@ namespace zscaler.PulumiPackage.Zpa
     ///         Name = "Example100",
     ///     });
     /// 
-    ///     var lssAppConnectorMetrics = new Zpa.LSSConfigController("lssAppConnectorMetrics", new()
+    ///     var lssAppConnectorMetrics = new Zpa.LSSConfigController("lss_app_connector_metrics", new()
     ///     {
     ///         Config = new Zpa.Inputs.LSSConfigControllerConfigArgs
     ///         {
@@ -74,15 +75,15 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// |       Source Log Type                     |            Description                 |
     /// |-------------------------------------------|----------------------------------------|
-    /// |        `zpn_trans_log`                    |        `User Activity`                 |
-    /// |        `zpn_auth_log`                     |         `User Status`                  |
-    /// |        `zpn_ast_auth_log`                 |        `App Connector Status`          |
-    /// |        `zpn_http_trans_log`               |         `Web Browser`                  |
-    /// |        `zpn_audit_log`                    |         `Audit Logs`                   |
-    /// |        `zpn_sys_auth_log`                 |         `Private Service Edge Status`  |
-    /// |        `zpn_ast_comprehensive_stats`      |         `App Connector Metrics`        |
-    /// |        `zpn_pbroker_comprehensive_stats`  |         `Private Service Edge Metrics` |
-    /// |        `zpn_waf_http_exchanges_log`       |         `ZPA App Protection`           |
+    /// |        `ZpnTransLog`                    |        `User Activity`                 |
+    /// |        `ZpnAuthLog`                     |         `User Status`                  |
+    /// |        `ZpnAstAuthLog`                 |        `App Connector Status`          |
+    /// |        `ZpnHttpTransLog`               |         `Web Browser`                  |
+    /// |        `ZpnAuditLog`                    |         `Audit Logs`                   |
+    /// |        `ZpnSysAuthLog`                 |         `Private Service Edge Status`  |
+    /// |        `ZpnAstComprehensiveStats`      |         `App Connector Metrics`        |
+    /// |        `ZpnPbrokerComprehensiveStats`  |         `Private Service Edge Metrics` |
+    /// |        `ZpnWafHttpExchangesLog`       |         `ZPA App Protection`           |
     /// 
     /// ## Import
     /// 

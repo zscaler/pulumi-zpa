@@ -18,13 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA SCIM Attribute Header Data Source
  * const givenName = zpa.getSCIMAttributeHeader({
- *     idpName: "IdP_Name",
  *     name: "name.givenName",
+ *     idpName: "IdP_Name",
  * });
  * const familyName = zpa.getSCIMAttributeHeader({
- *     idpName: "IdP_Name",
  *     name: "name.familyName",
+ *     idpName: "IdP_Name",
  * });
  * ```
  */
@@ -32,6 +33,7 @@ export function getSCIMAttributeHeader(args?: GetSCIMAttributeHeaderArgs, opts?:
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getSCIMAttributeHeader:getSCIMAttributeHeader", {
+        "id": args.id,
         "idpId": args.idpId,
         "idpName": args.idpName,
         "name": args.name,
@@ -42,6 +44,7 @@ export function getSCIMAttributeHeader(args?: GetSCIMAttributeHeaderArgs, opts?:
  * A collection of arguments for invoking getSCIMAttributeHeader.
  */
 export interface GetSCIMAttributeHeaderArgs {
+    id?: string;
     idpId?: string;
     idpName?: string;
     name?: string;
@@ -56,7 +59,7 @@ export interface GetSCIMAttributeHeaderResult {
     readonly creationTime: string;
     readonly dataType: string;
     readonly description: string;
-    readonly id: string;
+    readonly id?: string;
     readonly idpId?: string;
     readonly idpName?: string;
     readonly modifiedTime: string;
@@ -84,13 +87,14 @@ export interface GetSCIMAttributeHeaderResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA SCIM Attribute Header Data Source
  * const givenName = zpa.getSCIMAttributeHeader({
- *     idpName: "IdP_Name",
  *     name: "name.givenName",
+ *     idpName: "IdP_Name",
  * });
  * const familyName = zpa.getSCIMAttributeHeader({
- *     idpName: "IdP_Name",
  *     name: "name.familyName",
+ *     idpName: "IdP_Name",
  * });
  * ```
  */
@@ -98,6 +102,7 @@ export function getSCIMAttributeHeaderOutput(args?: GetSCIMAttributeHeaderOutput
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("zpa:index/getSCIMAttributeHeader:getSCIMAttributeHeader", {
+        "id": args.id,
         "idpId": args.idpId,
         "idpName": args.idpName,
         "name": args.name,
@@ -108,6 +113,7 @@ export function getSCIMAttributeHeaderOutput(args?: GetSCIMAttributeHeaderOutput
  * A collection of arguments for invoking getSCIMAttributeHeader.
  */
 export interface GetSCIMAttributeHeaderOutputArgs {
+    id?: pulumi.Input<string>;
     idpId?: pulumi.Input<string>;
     idpName?: pulumi.Input<string>;
     name?: pulumi.Input<string>;

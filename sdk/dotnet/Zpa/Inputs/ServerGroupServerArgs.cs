@@ -13,7 +13,7 @@ namespace zscaler.PulumiPackage.Zpa.Inputs
 
     public sealed class ServerGroupServerArgs : global::Pulumi.ResourceArgs
     {
-        [Input("ids")]
+        [Input("ids", required: true)]
         private InputList<string>? _ids;
         public InputList<string> Ids
         {

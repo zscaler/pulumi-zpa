@@ -29,17 +29,19 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thisBaCertificate = Zpa.GetBaCertificate.Invoke(new()
+    ///     // Retrieves Browser Access Certificate
+    ///     var @this = Zpa.GetBaCertificate.Invoke(new()
     ///     {
     ///         Name = "portal.acme.com",
     ///     });
     /// 
-    ///     var thisPRAPortal = new Zpa.PRAPortal("thisPRAPortal", new()
+    ///     var thisPRAPortal = new Zpa.PRAPortal("this", new()
     ///     {
+    ///         Name = "portal.acme.com",
     ///         Description = "portal.acme.com",
     ///         Enabled = true,
     ///         Domain = "portal.acme.com",
-    ///         CertificateId = thisBaCertificate.Apply(getBaCertificateResult =&gt; getBaCertificateResult.Id),
+    ///         CertificateId = @this.Apply(@this =&gt; @this.Apply(getBaCertificateResult =&gt; getBaCertificateResult.Id)),
     ///         UserNotification = "Created with Terraform",
     ///         UserNotificationEnabled = true,
     ///     });
@@ -59,15 +61,16 @@ namespace zscaler.PulumiPackage.Zpa
     /// {
     ///     var @this = new Zpa.PRAPortal("this", new()
     ///     {
+    ///         Name = "server1.acme.com",
     ///         Description = "server1.acme.com",
-    ///         Domain = "server1-acme.com.pra.d.zscalerportal.net",
     ///         Enabled = true,
+    ///         Domain = "server1-acme.com.pra.d.zscalerportal.net",
+    ///         UserNotification = "Created with Terraform",
+    ///         UserNotificationEnabled = true,
+    ///         ExtLabel = "server1",
     ///         ExtDomain = "acme.com",
     ///         ExtDomainName = "acme.com.pra.d.zscalerportal.net",
     ///         ExtDomainTranslation = "acme.com",
-    ///         ExtLabel = "server1",
-    ///         UserNotification = "Created with Terraform",
-    ///         UserNotificationEnabled = true,
     ///     });
     /// 
     /// });
@@ -84,16 +87,48 @@ namespace zscaler.PulumiPackage.Zpa
     /// {
     ///     var @this = new Zpa.PRAPortal("this", new()
     ///     {
+    ///         Name = "Server1 PRA01",
     ///         Description = "Server1 PRA01 Description",
-    ///         Domain = "server1-acme.com.pra.d.zscalerportal.net",
     ///         Enabled = true,
+    ///         Domain = "server1-acme.com.pra.d.zscalerportal.net",
+    ///         UserNotification = "Created with Terraform",
+    ///         UserNotificationEnabled = true,
+    ///         ExtLabel = "server1",
     ///         ExtDomain = "acme.com",
     ///         ExtDomainName = "acme.com.pra.d.zscalerportal.net",
     ///         ExtDomainTranslation = "acme.com",
-    ///         ExtLabel = "server1",
+    ///         UserPortalGid = "145262059234265326",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// # Configuring PRA Portal with Approval Reviewer
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Zpa.PRAPortal("this", new()
+    ///     {
+    ///         Name = "Server1 PRA01",
+    ///         Description = "Server1 PRA01 Description",
+    ///         Enabled = true,
+    ///         Domain = "server1-acme.com.pra.d.zscalerportal.net",
     ///         UserNotification = "Created with Terraform",
     ///         UserNotificationEnabled = true,
+    ///         ExtLabel = "server1",
+    ///         ExtDomain = "acme.com",
+    ///         ExtDomainName = "acme.com.pra.d.zscalerportal.net",
+    ///         ExtDomainTranslation = "acme.com",
     ///         UserPortalGid = "145262059234265326",
+    ///         ApprovalReviewers = new[]
+    ///         {
+    ///             "jdoe@acme.com",
+    ///         },
     ///     });
     /// 
     /// });
@@ -122,6 +157,9 @@ namespace zscaler.PulumiPackage.Zpa
     [ZpaResourceType("zpa:index/pRAPortal:PRAPortal")]
     public partial class PRAPortal : global::Pulumi.CustomResource
     {
+        [Output("approvalReviewers")]
+        public Output<ImmutableArray<string>> ApprovalReviewers { get; private set; } = null!;
+
         /// <summary>
         /// The unique identifier of the certificate
         /// </summary>
@@ -147,8 +185,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// The external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when
-        /// creating a privileged portal.
+        /// The external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when creating a privileged portal.
         /// </summary>
         [Output("extDomain")]
         public Output<string?> ExtDomain { get; private set; } = null!;
@@ -160,23 +197,19 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<string?> ExtDomainName { get; private set; } = null!;
 
         /// <summary>
-        /// The translation of the external domain name prefix of the Browser Access application that is used for Zscaler-managed
-        /// certificates when creating a privileged portal.
+        /// The translation of the external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when creating a privileged portal.
         /// </summary>
         [Output("extDomainTranslation")]
         public Output<string?> ExtDomainTranslation { get; private set; } = null!;
 
         /// <summary>
-        /// The domain prefix for the privileged portal URL. The supported string can include numbers, lower case characters, and
-        /// only supports a hyphen (-).
+        /// The domain prefix for the privileged portal URL. The supported string can include numbers, lower case characters, and only supports a hyphen (-).
         /// </summary>
         [Output("extLabel")]
         public Output<string?> ExtLabel { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-        /// microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to
-        /// retrieve data from all customers associated with the tenant.
+        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to retrieve data from all customers associated with the tenant.
         /// </summary>
         [Output("microtenantId")]
         public Output<string?> MicrotenantId { get; private set; } = null!;
@@ -256,6 +289,14 @@ namespace zscaler.PulumiPackage.Zpa
 
     public sealed class PRAPortalArgs : global::Pulumi.ResourceArgs
     {
+        [Input("approvalReviewers")]
+        private InputList<string>? _approvalReviewers;
+        public InputList<string> ApprovalReviewers
+        {
+            get => _approvalReviewers ?? (_approvalReviewers = new InputList<string>());
+            set => _approvalReviewers = value;
+        }
+
         /// <summary>
         /// The unique identifier of the certificate
         /// </summary>
@@ -281,8 +322,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when
-        /// creating a privileged portal.
+        /// The external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when creating a privileged portal.
         /// </summary>
         [Input("extDomain")]
         public Input<string>? ExtDomain { get; set; }
@@ -294,23 +334,19 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<string>? ExtDomainName { get; set; }
 
         /// <summary>
-        /// The translation of the external domain name prefix of the Browser Access application that is used for Zscaler-managed
-        /// certificates when creating a privileged portal.
+        /// The translation of the external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when creating a privileged portal.
         /// </summary>
         [Input("extDomainTranslation")]
         public Input<string>? ExtDomainTranslation { get; set; }
 
         /// <summary>
-        /// The domain prefix for the privileged portal URL. The supported string can include numbers, lower case characters, and
-        /// only supports a hyphen (-).
+        /// The domain prefix for the privileged portal URL. The supported string can include numbers, lower case characters, and only supports a hyphen (-).
         /// </summary>
         [Input("extLabel")]
         public Input<string>? ExtLabel { get; set; }
 
         /// <summary>
-        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-        /// microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to
-        /// retrieve data from all customers associated with the tenant.
+        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to retrieve data from all customers associated with the tenant.
         /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
@@ -347,6 +383,14 @@ namespace zscaler.PulumiPackage.Zpa
 
     public sealed class PRAPortalState : global::Pulumi.ResourceArgs
     {
+        [Input("approvalReviewers")]
+        private InputList<string>? _approvalReviewers;
+        public InputList<string> ApprovalReviewers
+        {
+            get => _approvalReviewers ?? (_approvalReviewers = new InputList<string>());
+            set => _approvalReviewers = value;
+        }
+
         /// <summary>
         /// The unique identifier of the certificate
         /// </summary>
@@ -372,8 +416,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when
-        /// creating a privileged portal.
+        /// The external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when creating a privileged portal.
         /// </summary>
         [Input("extDomain")]
         public Input<string>? ExtDomain { get; set; }
@@ -385,23 +428,19 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<string>? ExtDomainName { get; set; }
 
         /// <summary>
-        /// The translation of the external domain name prefix of the Browser Access application that is used for Zscaler-managed
-        /// certificates when creating a privileged portal.
+        /// The translation of the external domain name prefix of the Browser Access application that is used for Zscaler-managed certificates when creating a privileged portal.
         /// </summary>
         [Input("extDomainTranslation")]
         public Input<string>? ExtDomainTranslation { get; set; }
 
         /// <summary>
-        /// The domain prefix for the privileged portal URL. The supported string can include numbers, lower case characters, and
-        /// only supports a hyphen (-).
+        /// The domain prefix for the privileged portal URL. The supported string can include numbers, lower case characters, and only supports a hyphen (-).
         /// </summary>
         [Input("extLabel")]
         public Input<string>? ExtLabel { get; set; }
 
         /// <summary>
-        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-        /// microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to
-        /// retrieve data from all customers associated with the tenant.
+        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant. Pass microtenantId as null to retrieve data from all customers associated with the tenant.
         /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }

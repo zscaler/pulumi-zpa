@@ -16,7 +16,23 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// The **zpa_policy_timeout_rule** resource creates a policy timeout rule in the Zscaler Private Access cloud.
     /// 
-    ///   ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+    ///   ⚠️ **WARNING:**: The attribute ``RuleOrder`` is now deprecated in favor of the new resource  ``PolicyAccessRuleReorder``
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ## LHS and RHS Values
+    /// 
+    /// | Object Type | LHS| RHS
+    /// |----------|-----------|----------
+    /// | APP | ``"id"`` | ``ApplicationSegmentId`` |
+    /// | APP_GROUP | ``"id"`` | ``SegmentGroupId``|
+    /// | CLIENT_TYPE | ``"id"`` | ``ZpnClientTypeExporter``, ``ZpnClientTypeBrowserIsolation``, ``ZpnClientTypeZapp``, ``ZpnClientTypeZappPartner``  |
+    /// | IDP | ``"id"`` | ``IdentityProviderId`` |
+    /// | SAML | ``SamlAttributeId``  | ``AttributeValueToMatch`` |
+    /// | SCIM | ``ScimAttributeId``  | ``AttributeValueToMatch``  |
+    /// | SCIM_GROUP | ``ScimGroupAttributeId``  | ``AttributeValueToMatch``  |
+    /// | PLATFORM | ``Mac``, ``Ios``, ``Windows``, ``Android``, ``Linux`` | ``"true"`` / ``"false"`` |
+    /// | POSTURE | ``PostureUdid``  | ``"true"`` / ``"false"`` |
     /// 
     /// ## Import
     /// 
@@ -48,7 +64,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<string?> ActionId { get; private set; } = null!;
 
         [Output("bypassDefaultRule")]
-        public Output<bool?> BypassDefaultRule { get; private set; } = null!;
+        public Output<bool> BypassDefaultRule { get; private set; } = null!;
 
         /// <summary>
         /// This is for proviidng the set of conditions for the policy.
@@ -66,7 +82,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// This is for providing a customer message for the user.
         /// </summary>
         [Output("defaultRule")]
-        public Output<bool?> DefaultRule { get; private set; } = null!;
+        public Output<bool> DefaultRule { get; private set; } = null!;
 
         /// <summary>
         /// This is the description of the access policy.
@@ -99,7 +115,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<string> Priority { get; private set; } = null!;
 
         [Output("reauthDefaultRule")]
-        public Output<bool?> ReauthDefaultRule { get; private set; } = null!;
+        public Output<bool> ReauthDefaultRule { get; private set; } = null!;
 
         [Output("reauthIdleTimeout")]
         public Output<string?> ReauthIdleTimeout { get; private set; } = null!;
