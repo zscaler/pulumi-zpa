@@ -205,12 +205,18 @@ func Provider() tfbridge.ProviderInfo {
 			"zpa_policy_redirection_rule":                  {Tok: zpaResource(zpaMod, "PolicyAccessRedirectionRule")},
 			"zpa_policy_capabilities_rule":                 {Tok: zpaResource(zpaMod, "PolicyAccessCapabilitiesRule")},
 			"zpa_policy_browser_protection_rule":           {Tok: zpaResource(zpaMod, "PolicyBrowserProtectionRule")},
+			"zpa_policy_portal_access_rule":                {Tok: zpaResource(zpaMod, "PolicyPortalAccessRule")},
 			"zpa_pra_approval_controller":                  {Tok: zpaResource(zpaMod, "PRAApproval")},
 			"zpa_pra_console_controller":                   {Tok: zpaResource(zpaMod, "PRAConsole")},
 			"zpa_pra_credential_controller":                {Tok: zpaResource(zpaMod, "PRACredential")},
 			"zpa_pra_credential_pool":                      {Tok: zpaResource(zpaMod, "PraCredentialPool")},
 			"zpa_pra_portal_controller":                    {Tok: zpaResource(zpaMod, "PRAPortal")},
 			"zpa_service_edge_assistant_schedule":          {Tok: zpaResource(zpaMod, "ServiceEdgeAssistantSchedule")},
+			"zpa_c2c_ip_ranges":                            {Tok: zpaResource(zpaMod, "C2CIPRanges")},
+			"zpa_private_cloud_group":                      {Tok: zpaResource(zpaMod, "PrivateCloudGroup")},
+			"zpa_user_portal_aup":                          {Tok: zpaResource(zpaMod, "UserPortalAUP")},
+			"zpa_user_portal_controller":                   {Tok: zpaResource(zpaMod, "UserPortalController")},
+			"zpa_user_portal_link":                         {Tok: zpaResource(zpaMod, "UserPortalLink")},
 			"zpa_provisioning_key": {Tok: zpaResource(zpaMod, "ProvisioningKey"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					// Rename field to prevent this error in the DotNet SDK generation:
@@ -371,6 +377,48 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"zpa_service_edge_assistant_schedule": {
 				Tok: zpaDataSource(zpaMod, "getServiceEdgeAssistantSchedule"),
+			},
+			"zpa_c2c_ip_ranges": {
+				Tok: zpaDataSource(zpaMod, "getC2CIPRanges"),
+			},
+			"zpa_browser_protection": {
+				Tok: zpaDataSource(zpaMod, "getBrowserProtection"),
+			},
+			"zpa_branch_connector_group": {
+				Tok: zpaDataSource(zpaMod, "getBranchConnectorGroup"),
+			},
+			"zpa_extranet_resource_partner": {
+				Tok: zpaDataSource(zpaMod, "getExtranetResourcePartner"),
+			},
+			"zpa_location_controller_summary": {
+				Tok: zpaDataSource(zpaMod, "getLocationControllerSummary"),
+			},
+			"zpa_location_controller": {
+				Tok: zpaDataSource(zpaMod, "getLocationController"),
+			},
+			"zpa_location_group_controller": {
+				Tok: zpaDataSource(zpaMod, "getLocationGroupController"),
+			},
+			"zpa_managed_browser_profile": {
+				Tok: zpaDataSource(zpaMod, "getManagedBrowserProfile"),
+			},
+			"zpa_private_cloud_controller": {
+				Tok: zpaDataSource(zpaMod, "getPrivateCloudController"),
+			},
+			"zpa_private_cloud_group": {
+				Tok: zpaDataSource(zpaMod, "getPrivateCloudGroup"),
+			},
+			"zpa_user_portal_aup": {
+				Tok: zpaDataSource(zpaMod, "getUserPortalAUP"),
+			},
+			"zpa_user_portal_controller": {
+				Tok: zpaDataSource(zpaMod, "getUserPortalController"),
+			},
+			"zpa_user_portal_link": {
+				Tok: zpaDataSource(zpaMod, "getUserPortalLink"),
+			},
+			"zpa_workload_tag_group": {
+				Tok: zpaDataSource(zpaMod, "getWorkloadTagGroup"),
 			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{

@@ -47,6 +47,16 @@
                     },
                     "udp_port_ranges": {
                         "maxItemsOne": false
+                    },
+                    "zpn_er_id": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -81,6 +91,16 @@
                     },
                     "udp_port_ranges": {
                         "maxItemsOne": false
+                    },
+                    "zpn_er_id": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -138,6 +158,15 @@
                     }
                 }
             },
+            "zpa_application_segment_multimatch_bulk": {
+                "current": "zpa:index/applicationSegmentMultimatchBulk:ApplicationSegmentMultimatchBulk",
+                "majorVersion": 1,
+                "fields": {
+                    "application_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "zpa_application_segment_pra": {
                 "current": "zpa:index/applicationSegmentPRA:ApplicationSegmentPRA",
                 "majorVersion": 1,
@@ -182,6 +211,25 @@
                         "maxItemsOne": false
                     },
                     "udp_port_ranges": {
+                        "maxItemsOne": false
+                    },
+                    "zpn_er_id": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_application_segment_weightedlb_config": {
+                "current": "zpa:index/applicationSegmentWeightedlbConfig:ApplicationSegmentWeightedlbConfig",
+                "majorVersion": 1,
+                "fields": {
+                    "application_to_server_group_mappings": {
                         "maxItemsOne": false
                     }
                 }
@@ -230,8 +278,22 @@
                     },
                     "udp_port_ranges": {
                         "maxItemsOne": false
+                    },
+                    "zpn_er_id": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
+            },
+            "zpa_c2c_ip_ranges": {
+                "current": "zpa:index/c2CIPRanges:C2CIPRanges",
+                "majorVersion": 1
             },
             "zpa_cloud_browser_isolation_banner": {
                 "current": "zpa:index/cloudBrowserIsolationBanner:CloudBrowserIsolationBanner",
@@ -493,6 +555,19 @@
                                             }
                                         }
                                     }
+                                }
+                            }
+                        }
+                    },
+                    "extranet_dto": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "location_dto": {
+                                    "maxItemsOne": false
+                                },
+                                "location_group_dto": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -768,6 +843,35 @@
                     }
                 }
             },
+            "zpa_policy_portal_access_rule": {
+                "current": "zpa:index/policyPortalAccessRule:PolicyPortalAccessRule",
+                "majorVersion": 1,
+                "fields": {
+                    "conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "operands": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "entry_values": {
+                                                "maxItemsOne": false
+                                            },
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "privileged_portal_capabilities": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "zpa_policy_redirection_rule": {
                 "current": "zpa:index/policyAccessRedirectionRule:PolicyAccessRedirectionRule",
                 "past": [
@@ -962,6 +1066,15 @@
                         "majorVersion": 0
                     }
                 ],
+                "majorVersion": 1,
+                "fields": {
+                    "approval_reviewers": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_private_cloud_group": {
+                "current": "zpa:index/privateCloudGroup:PrivateCloudGroup",
                 "majorVersion": 1
             },
             "zpa_provisioning_key": {
@@ -1001,6 +1114,19 @@
                         "elem": {
                             "fields": {
                                 "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "extranet_dto": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "location_dto": {
+                                    "maxItemsOne": false
+                                },
+                                "location_group_dto": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -1047,6 +1173,34 @@
                         }
                     }
                 }
+            },
+            "zpa_user_portal_aup": {
+                "current": "zpa:index/userPortalAUP:UserPortalAUP",
+                "majorVersion": 1
+            },
+            "zpa_user_portal_controller": {
+                "current": "zpa:index/userPortalController:UserPortalController",
+                "majorVersion": 1
+            },
+            "zpa_user_portal_link": {
+                "current": "zpa:index/userPortalLink:UserPortalLink",
+                "majorVersion": 1,
+                "fields": {
+                    "user_portals": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_zia_cloud_config": {
+                "current": "zpa:index/ziaCloudConfig:ZiaCloudConfig",
+                "majorVersion": 1
             }
         },
         "datasources": {
@@ -1196,6 +1350,28 @@
                     }
                 }
             },
+            "zpa_application_segment_multimatch_bulk": {
+                "current": "zpa:index/getApplicationSegmentMultimatchBulk:getApplicationSegmentMultimatchBulk",
+                "majorVersion": 1,
+                "fields": {
+                    "domain_names": {
+                        "maxItemsOne": false
+                    },
+                    "unsupported_references": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "domains": {
+                                    "maxItemsOne": false
+                                },
+                                "tcp_ports": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "zpa_application_segment_pra": {
                 "current": "zpa:index/getApplicationSegmentPRA:getApplicationSegmentPRA",
                 "majorVersion": 1,
@@ -1230,6 +1406,15 @@
                     }
                 }
             },
+            "zpa_application_segment_weightedlb_config": {
+                "current": "zpa:index/getApplicationSegmentWeightedlbConfig:getApplicationSegmentWeightedlbConfig",
+                "majorVersion": 1,
+                "fields": {
+                    "application_to_server_group_mappings": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "zpa_application_server": {
                 "current": "zpa:index/getApplicationServer:getApplicationServer",
                 "majorVersion": 1,
@@ -1247,6 +1432,43 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "zpa_branch_connector_group": {
+                "current": "zpa:index/getBranchConnectorGroup:getBranchConnectorGroup",
+                "majorVersion": 1
+            },
+            "zpa_browser_protection": {
+                "current": "zpa:index/getBrowserProtection:getBrowserProtection",
+                "majorVersion": 1,
+                "fields": {
+                    "criteria": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "finger_print_criteria": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "browser": {
+                                                "maxItemsOne": false
+                                            },
+                                            "location": {
+                                                "maxItemsOne": false
+                                            },
+                                            "system": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_c2c_ip_ranges": {
+                "current": "zpa:index/getC2CIPRanges:getC2CIPRanges",
+                "majorVersion": 1
             },
             "zpa_cloud_browser_isolation_banner": {
                 "current": "zpa:index/getCloudBrowserIsolationBanner:getCloudBrowserIsolationBanner",
@@ -1352,6 +1574,10 @@
             },
             "zpa_enrollment_cert": {
                 "current": "zpa:index/getEnrollmentCert:getEnrollmentCert",
+                "majorVersion": 1
+            },
+            "zpa_extranet_resource_partner": {
+                "current": "zpa:index/getExtranetResourcePartner:getExtranetResourcePartner",
                 "majorVersion": 1
             },
             "zpa_idp_controller": {
@@ -1472,6 +1698,23 @@
                 "current": "zpa:index/getIsolationProfile:getIsolationProfile",
                 "majorVersion": 1
             },
+            "zpa_location_controller": {
+                "current": "zpa:index/getLocationController:getLocationController",
+                "majorVersion": 1
+            },
+            "zpa_location_controller_summary": {
+                "current": "zpa:index/getLocationControllerSummary:getLocationControllerSummary",
+                "majorVersion": 1
+            },
+            "zpa_location_group_controller": {
+                "current": "zpa:index/getLocationGroupController:getLocationGroupController",
+                "majorVersion": 1,
+                "fields": {
+                    "zia_locations": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "zpa_lss_config_client_types": {
                 "current": "zpa:index/getLSSClientTypes:getLSSClientTypes",
                 "majorVersion": 1
@@ -1525,6 +1768,15 @@
                 "majorVersion": 1,
                 "fields": {
                     "machines": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_managed_browser_profile": {
+                "current": "zpa:index/getManagedBrowserProfile:getManagedBrowserProfile",
+                "majorVersion": 1,
+                "fields": {
+                    "chrome_posture_profile": {
                         "maxItemsOne": false
                     }
                 }
@@ -1669,6 +1921,33 @@
                         "majorVersion": 0
                     }
                 ],
+                "majorVersion": 1,
+                "fields": {
+                    "approval_reviewers": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_private_cloud_controller": {
+                "current": "zpa:index/getPrivateCloudController:getPrivateCloudController",
+                "majorVersion": 1,
+                "fields": {
+                    "ip_acl": {
+                        "maxItemsOne": false
+                    },
+                    "listen_ips": {
+                        "maxItemsOne": false
+                    },
+                    "publish_ips": {
+                        "maxItemsOne": false
+                    },
+                    "zpn_sub_module_upgrade_list": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_private_cloud_group": {
+                "current": "zpa:index/getPrivateCloudGroup:getPrivateCloudGroup",
                 "majorVersion": 1
             },
             "zpa_provisioning_key": {
@@ -1676,6 +1955,15 @@
                 "majorVersion": 1,
                 "fields": {
                     "ip_acl": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_risk_score_values": {
+                "current": "zpa:index/getRiskScoreValues:getRiskScoreValues",
+                "majorVersion": 1,
+                "fields": {
+                    "values": {
                         "maxItemsOne": false
                     }
                 }
@@ -1809,6 +2097,31 @@
             },
             "zpa_trusted_network": {
                 "current": "zpa:index/getTrustedNetwork:getTrustedNetwork",
+                "majorVersion": 1
+            },
+            "zpa_user_portal_aup": {
+                "current": "zpa:index/getUserPortalAUP:getUserPortalAUP",
+                "majorVersion": 1
+            },
+            "zpa_user_portal_controller": {
+                "current": "zpa:index/getUserPortalController:getUserPortalController",
+                "majorVersion": 1
+            },
+            "zpa_user_portal_link": {
+                "current": "zpa:index/getUserPortalLink:getUserPortalLink",
+                "majorVersion": 1,
+                "fields": {
+                    "user_portals": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_workload_tag_group": {
+                "current": "zpa:index/getWorkloadTagGroup:getWorkloadTagGroup",
+                "majorVersion": 1
+            },
+            "zpa_zia_cloud_config": {
+                "current": "zpa:index/getZiaCloudConfig:getZiaCloudConfig",
                 "majorVersion": 1
             }
         }
