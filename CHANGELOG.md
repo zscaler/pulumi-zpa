@@ -1,5 +1,42 @@
 # Changelog
 
+## 1.0.3 (January 20, 2026)
+
+### Notes
+
+- Release date: **(January 20, 2026)**
+
+- [PR #54](https://github.com/zscaler/terraform-provider-zpa/pull/54) - Upgraded to ZPA Terraform Provider [v4.3.6](https://github.com/zscaler/terraform-provider-zpa/releases/tag/v4.3.6)
+- [PR #54](https://github.com/zscaler/terraform-provider-zpa/pull/54) - Upgraded Pulumi SDKs
+
+## 1.0.1 (June 4, 2025)
+
+### Notes
+
+- Release date: **(June 4, 2025)**
+
+### Enhancements - Zscaler OneAPI Support
+
+- PR #31: The ZPA Pulumi Provider now offers support for OneAPI Oauth2 authentication through Zidentity.
+
+NOTE As of version v4.0.0, this Terraform provider offers backwards compatibility to the Zscaler legacy API framework. This is the recommended authentication method for organizations whose tenants are still not migrated to Zidentity.
+
+⚠️ WARNING: Please refer to the Index Page page for details on authentication requirements prior to upgrading your provider configuration.
+
+⚠️ WARNING: Attention Government customers. OneAPI and Zidentity is not currently supported for the following clouds: GOV and GOVUS. Refer to the Legacy API Framework section for more information on how authenticate to these environments using the legacy method.
+
+### NEW - RESOURCES, DATA SOURCES, PROPERTIES, ATTRIBUTES, ENV VARS
+
+PR #31 - Added new object_type CHROME_ENTERPRISE to the following ZPA access policy resources: zpa_policy_access_rule, and zpa_policy_access_rule_v2
+
+## 1.0.0 (June 4, 2025)
+
+### Notes
+
+- Release date: **(June 4, 2025)**
+
+* feat!: Release stable v1.0.0 BREAKING CHANGE: This release introduces a full provider refactor, including breaking API changes and support for both OneAPI and Legacy authentication methods. All previous versions (<= v0.0.12) are only compatible with the legacy Zscaler API framework and do not support OneAPI.
+
 ## 0.0.11 (May 4, 2024)
 
 ### Notes
