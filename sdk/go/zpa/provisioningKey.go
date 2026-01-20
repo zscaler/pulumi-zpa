@@ -39,8 +39,7 @@ type ProvisioningKey struct {
 	AppConnectorGroupId  pulumi.StringPtrOutput `pulumi:"appConnectorGroupId"`
 	// Read only property. Applicable only for GET calls, ignored in PUT/POST calls.
 	AppConnectorGroupName pulumi.StringOutput `pulumi:"appConnectorGroupName"`
-	// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
-	// CONNECTOR_GRP and SERVICE_EDGE_GRP.
+	// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are CONNECTOR_GRP and SERVICE_EDGE_GRP.
 	AssociationType pulumi.StringOutput `pulumi:"associationType"`
 	// Whether the provisioning key is enabled or not. Supported values: true, false
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
@@ -108,8 +107,7 @@ type provisioningKeyState struct {
 	AppConnectorGroupId  *string `pulumi:"appConnectorGroupId"`
 	// Read only property. Applicable only for GET calls, ignored in PUT/POST calls.
 	AppConnectorGroupName *string `pulumi:"appConnectorGroupName"`
-	// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
-	// CONNECTOR_GRP and SERVICE_EDGE_GRP.
+	// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are CONNECTOR_GRP and SERVICE_EDGE_GRP.
 	AssociationType *string `pulumi:"associationType"`
 	// Whether the provisioning key is enabled or not. Supported values: true, false
 	Enabled *bool `pulumi:"enabled"`
@@ -136,8 +134,7 @@ type ProvisioningKeyState struct {
 	AppConnectorGroupId  pulumi.StringPtrInput
 	// Read only property. Applicable only for GET calls, ignored in PUT/POST calls.
 	AppConnectorGroupName pulumi.StringPtrInput
-	// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
-	// CONNECTOR_GRP and SERVICE_EDGE_GRP.
+	// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are CONNECTOR_GRP and SERVICE_EDGE_GRP.
 	AssociationType pulumi.StringPtrInput
 	// Whether the provisioning key is enabled or not. Supported values: true, false
 	Enabled pulumi.BoolPtrInput
@@ -166,8 +163,7 @@ type provisioningKeyArgs struct {
 	// read only field. Ignored in PUT/POST calls.
 	ProvisioningKeyValue *string `pulumi:"ProvisioningKeyValue"`
 	AppConnectorGroupId  *string `pulumi:"appConnectorGroupId"`
-	// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
-	// CONNECTOR_GRP and SERVICE_EDGE_GRP.
+	// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are CONNECTOR_GRP and SERVICE_EDGE_GRP.
 	AssociationType string `pulumi:"associationType"`
 	// Whether the provisioning key is enabled or not. Supported values: true, false
 	Enabled *bool `pulumi:"enabled"`
@@ -193,8 +189,7 @@ type ProvisioningKeyArgs struct {
 	// read only field. Ignored in PUT/POST calls.
 	ProvisioningKeyValue pulumi.StringPtrInput
 	AppConnectorGroupId  pulumi.StringPtrInput
-	// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
-	// CONNECTOR_GRP and SERVICE_EDGE_GRP.
+	// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are CONNECTOR_GRP and SERVICE_EDGE_GRP.
 	AssociationType pulumi.StringInput
 	// Whether the provisioning key is enabled or not. Supported values: true, false
 	Enabled pulumi.BoolPtrInput
@@ -316,8 +311,7 @@ func (o ProvisioningKeyOutput) AppConnectorGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProvisioningKey) pulumi.StringOutput { return v.AppConnectorGroupName }).(pulumi.StringOutput)
 }
 
-// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
-// CONNECTOR_GRP and SERVICE_EDGE_GRP.
+// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are CONNECTOR_GRP and SERVICE_EDGE_GRP.
 func (o ProvisioningKeyOutput) AssociationType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProvisioningKey) pulumi.StringOutput { return v.AssociationType }).(pulumi.StringOutput)
 }

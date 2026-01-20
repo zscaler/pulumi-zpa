@@ -32,16 +32,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA SCIM Attribute Header Data Source
 //			_, err := zpa.GetSCIMAttributeHeader(ctx, &zpa.GetSCIMAttributeHeaderArgs{
-//				IdpName: pulumi.StringRef("IdP_Name"),
 //				Name:    pulumi.StringRef("name.givenName"),
+//				IdpName: pulumi.StringRef("IdP_Name"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = zpa.GetSCIMAttributeHeader(ctx, &zpa.GetSCIMAttributeHeaderArgs{
-//				IdpName: pulumi.StringRef("IdP_Name"),
 //				Name:    pulumi.StringRef("name.familyName"),
+//				IdpName: pulumi.StringRef("IdP_Name"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -63,6 +64,7 @@ func GetSCIMAttributeHeader(ctx *pulumi.Context, args *GetSCIMAttributeHeaderArg
 
 // A collection of arguments for invoking getSCIMAttributeHeader.
 type GetSCIMAttributeHeaderArgs struct {
+	Id      *string `pulumi:"id"`
 	IdpId   *string `pulumi:"idpId"`
 	IdpName *string `pulumi:"idpName"`
 	Name    *string `pulumi:"name"`
@@ -75,7 +77,7 @@ type GetSCIMAttributeHeaderResult struct {
 	CreationTime    string   `pulumi:"creationTime"`
 	DataType        string   `pulumi:"dataType"`
 	Description     string   `pulumi:"description"`
-	Id              string   `pulumi:"id"`
+	Id              *string  `pulumi:"id"`
 	IdpId           *string  `pulumi:"idpId"`
 	IdpName         *string  `pulumi:"idpName"`
 	ModifiedTime    string   `pulumi:"modifiedTime"`
@@ -101,6 +103,7 @@ func GetSCIMAttributeHeaderOutput(ctx *pulumi.Context, args GetSCIMAttributeHead
 
 // A collection of arguments for invoking getSCIMAttributeHeader.
 type GetSCIMAttributeHeaderOutputArgs struct {
+	Id      pulumi.StringPtrInput `pulumi:"id"`
 	IdpId   pulumi.StringPtrInput `pulumi:"idpId"`
 	IdpName pulumi.StringPtrInput `pulumi:"idpName"`
 	Name    pulumi.StringPtrInput `pulumi:"name"`
@@ -145,8 +148,8 @@ func (o GetSCIMAttributeHeaderResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSCIMAttributeHeaderResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-func (o GetSCIMAttributeHeaderResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSCIMAttributeHeaderResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetSCIMAttributeHeaderResultOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSCIMAttributeHeaderResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 func (o GetSCIMAttributeHeaderResultOutput) IdpId() pulumi.StringPtrOutput {

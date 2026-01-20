@@ -24,6 +24,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Trusted Network Data Source
  * const example = zpa.getTrustedNetwork({
  *     name: "trusted_network_name",
  * });
@@ -35,6 +36,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example1 = zpa.getTrustedNetwork({
  *     name: "Corporate-Network (zscalertwo.net)",
  * });
@@ -47,6 +49,7 @@ export function getTrustedNetwork(args?: GetTrustedNetworkArgs, opts?: pulumi.In
     return pulumi.runtime.invoke("zpa:index/getTrustedNetwork:getTrustedNetwork", {
         "id": args.id,
         "name": args.name,
+        "networkId": args.networkId,
     }, opts);
 }
 
@@ -56,6 +59,7 @@ export function getTrustedNetwork(args?: GetTrustedNetworkArgs, opts?: pulumi.In
 export interface GetTrustedNetworkArgs {
     id?: string;
     name?: string;
+    networkId?: string;
 }
 
 /**
@@ -65,8 +69,8 @@ export interface GetTrustedNetworkResult {
     readonly creationTime: string;
     readonly domain: string;
     readonly id?: string;
+    readonly modifiedBy: string;
     readonly modifiedTime: string;
-    readonly modifiedby: string;
     readonly name?: string;
     readonly networkId: string;
     readonly zscalerCloud: string;
@@ -91,6 +95,7 @@ export interface GetTrustedNetworkResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Trusted Network Data Source
  * const example = zpa.getTrustedNetwork({
  *     name: "trusted_network_name",
  * });
@@ -102,6 +107,7 @@ export interface GetTrustedNetworkResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example1 = zpa.getTrustedNetwork({
  *     name: "Corporate-Network (zscalertwo.net)",
  * });
@@ -114,6 +120,7 @@ export function getTrustedNetworkOutput(args?: GetTrustedNetworkOutputArgs, opts
     return pulumi.runtime.invokeOutput("zpa:index/getTrustedNetwork:getTrustedNetwork", {
         "id": args.id,
         "name": args.name,
+        "networkId": args.networkId,
     }, opts);
 }
 
@@ -123,4 +130,5 @@ export function getTrustedNetworkOutput(args?: GetTrustedNetworkOutputArgs, opts
 export interface GetTrustedNetworkOutputArgs {
     id?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string>;
 }

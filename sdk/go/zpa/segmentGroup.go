@@ -26,7 +26,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Segment Group resource
-//			_, err := zpa.NewSegmentGroup(ctx, "testSegmentGroup", &zpa.SegmentGroupArgs{
+//			_, err := zpa.NewSegmentGroup(ctx, "test_segment_group", &zpa.SegmentGroupArgs{
+//				Name:        pulumi.String("test1-segment-group"),
 //				Description: pulumi.String("test1-segment-group"),
 //				Enabled:     pulumi.Bool(true),
 //			})

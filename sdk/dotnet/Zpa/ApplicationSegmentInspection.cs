@@ -34,6 +34,7 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     ///     var @this = new Zpa.ApplicationSegmentInspection("this", new()
     ///     {
+    ///         Name = "ZPA_Inspection_Example",
     ///         Description = "ZPA_Inspection_Example",
     ///         Enabled = true,
     ///         HealthReporting = "ON_ACCESS",
@@ -48,14 +49,14 @@ namespace zscaler.PulumiPackage.Zpa
     ///         {
     ///             "jenkins.example.com",
     ///         },
-    ///         SegmentGroupId = zpa_segment_group.This.Id,
+    ///         SegmentGroupId = thisZpaSegmentGroup.Id,
     ///         ServerGroups = new[]
     ///         {
     ///             new Zpa.Inputs.ApplicationSegmentInspectionServerGroupArgs
     ///             {
     ///                 Ids = new[]
     ///                 {
-    ///                     zpa_server_group.This.Id,
+    ///                     thisZpaServerGroup.Id,
     ///                 },
     ///             },
     ///         },
@@ -67,12 +68,10 @@ namespace zscaler.PulumiPackage.Zpa
     ///                 {
     ///                     new Zpa.Inputs.ApplicationSegmentInspectionCommonAppsDtoAppsConfigArgs
     ///                     {
-    ///                         Name = "jenkins.example.com",
     ///                         Domain = "jenkins.example.com",
     ///                         ApplicationProtocol = "HTTPS",
     ///                         ApplicationPort = "443",
     ///                         CertificateId = jenkins.Apply(getBaCertificateResult =&gt; getBaCertificateResult.Id),
-    ///                         Enabled = true,
     ///                         AppTypes = new[]
     ///                         {
     ///                             "INSPECT",
@@ -108,15 +107,13 @@ namespace zscaler.PulumiPackage.Zpa
     public partial class ApplicationSegmentInspection : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's
-        /// traffic to be inspected by Active Directory (AD) Protection.
+        /// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's traffic to be inspected by Active Directory (AD) Protection.
         /// </summary>
         [Output("adpEnabled")]
         public Output<bool> AdpEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by
-        /// AppProtection.
+        /// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by AppProtection.
         /// </summary>
         [Output("autoAppProtectEnabled")]
         public Output<bool> AutoAppProtectEnabled { get; private set; } = null!;
@@ -125,8 +122,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<bool> BypassOnReauth { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-        /// The value NEVER indicates the use of the client forwarding policy.
+        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
         /// </summary>
         [Output("bypassType")]
         public Output<string> BypassType { get; private set; } = null!;
@@ -162,7 +158,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<bool?> FqdnDnsCheck { get; private set; } = null!;
 
         [Output("healthCheckType")]
-        public Output<string?> HealthCheckType { get; private set; } = null!;
+        public Output<string> HealthCheckType { get; private set; } = null!;
 
         /// <summary>
         /// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
@@ -177,8 +173,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<bool?> IpAnchored { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-        /// connectors.
+        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
         /// </summary>
         [Output("isCnameEnabled")]
         public Output<bool> IsCnameEnabled { get; private set; } = null!;
@@ -294,15 +289,13 @@ namespace zscaler.PulumiPackage.Zpa
     public sealed class ApplicationSegmentInspectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's
-        /// traffic to be inspected by Active Directory (AD) Protection.
+        /// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's traffic to be inspected by Active Directory (AD) Protection.
         /// </summary>
         [Input("adpEnabled")]
         public Input<bool>? AdpEnabled { get; set; }
 
         /// <summary>
-        /// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by
-        /// AppProtection.
+        /// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by AppProtection.
         /// </summary>
         [Input("autoAppProtectEnabled")]
         public Input<bool>? AutoAppProtectEnabled { get; set; }
@@ -311,8 +304,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? BypassOnReauth { get; set; }
 
         /// <summary>
-        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-        /// The value NEVER indicates the use of the client forwarding policy.
+        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
         /// </summary>
         [Input("bypassType")]
         public Input<string>? BypassType { get; set; }
@@ -334,7 +326,7 @@ namespace zscaler.PulumiPackage.Zpa
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("domainNames")]
+        [Input("domainNames", required: true)]
         private InputList<string>? _domainNames;
 
         /// <summary>
@@ -374,8 +366,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? IpAnchored { get; set; }
 
         /// <summary>
-        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-        /// connectors.
+        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
         /// </summary>
         [Input("isCnameEnabled")]
         public Input<bool>? IsCnameEnabled { get; set; }
@@ -493,15 +484,13 @@ namespace zscaler.PulumiPackage.Zpa
     public sealed class ApplicationSegmentInspectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's
-        /// traffic to be inspected by Active Directory (AD) Protection.
+        /// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's traffic to be inspected by Active Directory (AD) Protection.
         /// </summary>
         [Input("adpEnabled")]
         public Input<bool>? AdpEnabled { get; set; }
 
         /// <summary>
-        /// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by
-        /// AppProtection.
+        /// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by AppProtection.
         /// </summary>
         [Input("autoAppProtectEnabled")]
         public Input<bool>? AutoAppProtectEnabled { get; set; }
@@ -510,8 +499,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? BypassOnReauth { get; set; }
 
         /// <summary>
-        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-        /// The value NEVER indicates the use of the client forwarding policy.
+        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
         /// </summary>
         [Input("bypassType")]
         public Input<string>? BypassType { get; set; }
@@ -573,8 +561,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? IpAnchored { get; set; }
 
         /// <summary>
-        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-        /// connectors.
+        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
         /// </summary>
         [Input("isCnameEnabled")]
         public Input<bool>? IsCnameEnabled { get; set; }

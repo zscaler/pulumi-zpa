@@ -18,6 +18,22 @@ import (
 //
 //	⚠️ **WARNING:**: The attribute ``ruleOrder`` is now deprecated in favor of the new resource  ``policyAccessRuleReorder``
 //
+// ## Example Usage
+//
+// ## LHS and RHS Values
+//
+// | Object Type | LHS| RHS
+// |----------|-----------|----------
+// | APP | “"id"“ | “applicationSegmentId“ |
+// | APP_GROUP | “"id"“ | “segmentGroupId“|
+// | CLIENT_TYPE | “"id"“ | “zpnClientTypeExporter“, “zpnClientTypeBrowserIsolation“, “zpnClientTypeZapp“, “zpnClientTypeZappPartner“  |
+// | IDP | “"id"“ | “identityProviderId“ |
+// | SAML | “samlAttributeId“  | “attributeValueToMatch“ |
+// | SCIM | “scimAttributeId“  | “attributeValueToMatch“  |
+// | SCIM_GROUP | “scimGroupAttributeId“  | “attributeValueToMatch“  |
+// | PLATFORM | “mac“, “ios“, “windows“, “android“, “linux“ | “"true"“ / “"false"“ |
+// | POSTURE | “postureUdid“  | “"true"“ / “"false"“ |
+//
 // ## Import
 //
 // Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
@@ -38,13 +54,13 @@ type PolicyAccessTimeOutRule struct {
 	Action pulumi.StringPtrOutput `pulumi:"action"`
 	// This field defines the description of the server.
 	ActionId          pulumi.StringPtrOutput `pulumi:"actionId"`
-	BypassDefaultRule pulumi.BoolPtrOutput   `pulumi:"bypassDefaultRule"`
+	BypassDefaultRule pulumi.BoolOutput      `pulumi:"bypassDefaultRule"`
 	// This is for proviidng the set of conditions for the policy.
 	Conditions PolicyAccessTimeOutRuleConditionArrayOutput `pulumi:"conditions"`
 	// This is for providing a customer message for the user.
 	CustomMsg pulumi.StringOutput `pulumi:"customMsg"`
 	// This is for providing a customer message for the user.
-	DefaultRule pulumi.BoolPtrOutput `pulumi:"defaultRule"`
+	DefaultRule pulumi.BoolOutput `pulumi:"defaultRule"`
 	// This is the description of the access policy.
 	Description    pulumi.StringPtrOutput `pulumi:"description"`
 	LssDefaultRule pulumi.BoolPtrOutput   `pulumi:"lssDefaultRule"`
@@ -55,7 +71,7 @@ type PolicyAccessTimeOutRule struct {
 	PolicySetId       pulumi.StringOutput    `pulumi:"policySetId"`
 	PolicyType        pulumi.StringOutput    `pulumi:"policyType"`
 	Priority          pulumi.StringOutput    `pulumi:"priority"`
-	ReauthDefaultRule pulumi.BoolPtrOutput   `pulumi:"reauthDefaultRule"`
+	ReauthDefaultRule pulumi.BoolOutput      `pulumi:"reauthDefaultRule"`
 	ReauthIdleTimeout pulumi.StringPtrOutput `pulumi:"reauthIdleTimeout"`
 	ReauthTimeout     pulumi.StringPtrOutput `pulumi:"reauthTimeout"`
 	// Deprecated: The `ruleOrder` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`
@@ -324,8 +340,8 @@ func (o PolicyAccessTimeOutRuleOutput) ActionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyAccessTimeOutRule) pulumi.StringPtrOutput { return v.ActionId }).(pulumi.StringPtrOutput)
 }
 
-func (o PolicyAccessTimeOutRuleOutput) BypassDefaultRule() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyAccessTimeOutRule) pulumi.BoolPtrOutput { return v.BypassDefaultRule }).(pulumi.BoolPtrOutput)
+func (o PolicyAccessTimeOutRuleOutput) BypassDefaultRule() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PolicyAccessTimeOutRule) pulumi.BoolOutput { return v.BypassDefaultRule }).(pulumi.BoolOutput)
 }
 
 // This is for proviidng the set of conditions for the policy.
@@ -339,8 +355,8 @@ func (o PolicyAccessTimeOutRuleOutput) CustomMsg() pulumi.StringOutput {
 }
 
 // This is for providing a customer message for the user.
-func (o PolicyAccessTimeOutRuleOutput) DefaultRule() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyAccessTimeOutRule) pulumi.BoolPtrOutput { return v.DefaultRule }).(pulumi.BoolPtrOutput)
+func (o PolicyAccessTimeOutRuleOutput) DefaultRule() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PolicyAccessTimeOutRule) pulumi.BoolOutput { return v.DefaultRule }).(pulumi.BoolOutput)
 }
 
 // This is the description of the access policy.
@@ -377,8 +393,8 @@ func (o PolicyAccessTimeOutRuleOutput) Priority() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyAccessTimeOutRule) pulumi.StringOutput { return v.Priority }).(pulumi.StringOutput)
 }
 
-func (o PolicyAccessTimeOutRuleOutput) ReauthDefaultRule() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyAccessTimeOutRule) pulumi.BoolPtrOutput { return v.ReauthDefaultRule }).(pulumi.BoolPtrOutput)
+func (o PolicyAccessTimeOutRuleOutput) ReauthDefaultRule() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PolicyAccessTimeOutRule) pulumi.BoolOutput { return v.ReauthDefaultRule }).(pulumi.BoolOutput)
 }
 
 func (o PolicyAccessTimeOutRuleOutput) ReauthIdleTimeout() pulumi.StringPtrOutput {

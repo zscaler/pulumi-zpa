@@ -16,7 +16,7 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// Use the **zpa_app_connector_assistant_schedule** resource sets the scheduled frequency at which the disconnected App Connectors are eligible for deletion. The supported value for frequency is days. The frequencyInterval field is the number of days after an App Connector disconnects for it to become eligible for deletion. The minimum supported value for frequencyInterval is 5.
     /// 
-    /// &gt; **NOTE** - When enabling the Assistant Schedule for the first time, you must provide the `customer_id` information. If you authenticated using environment variables and used `ZPA_CUSTOMER_ID` environment variable, you don't have to define the customer_id attribute in the HCL configuration, and the provider will automatically use the value from the environment variable `ZPA_CUSTOMER_ID`
+    /// &gt; **NOTE** - When enabling the Assistant Schedule for the first time, you must provide the `CustomerId` information. If you authenticated using environment variables and used `ZPA_CUSTOMER_ID` environment variable, you don't have to define the CustomerId attribute in the HCL configuration, and the provider will automatically use the value from the environment variable `ZPA_CUSTOMER_ID`
     /// 
     /// ## Example Usage
     /// 
@@ -33,10 +33,10 @@ namespace zscaler.PulumiPackage.Zpa
     ///     var @this = new Zpa.AppConnectorAssistantSchedule("this", new()
     ///     {
     ///         CustomerId = "123456789101112",
-    ///         DeleteDisabled = true,
-    ///         Enabled = true,
     ///         Frequency = "days",
     ///         FrequencyInterval = "5",
+    ///         Enabled = true,
+    ///         DeleteDisabled = true,
     ///     });
     /// 
     /// });
@@ -54,10 +54,10 @@ namespace zscaler.PulumiPackage.Zpa
     /// {
     ///     var @this = new Zpa.AppConnectorAssistantSchedule("this", new()
     ///     {
-    ///         DeleteDisabled = true,
-    ///         Enabled = true,
     ///         Frequency = "days",
     ///         FrequencyInterval = "5",
+    ///         Enabled = true,
+    ///         DeleteDisabled = true,
     ///     });
     /// 
     /// });

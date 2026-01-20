@@ -19,6 +19,27 @@ namespace zscaler.PulumiPackage.Zpa
         /// Use the **zpa_lss_config_controller** data source to get information about a Log Streaming (LSS) configuration resource created in the Zscaler Private Access.
         /// 
         /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// 
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Retrieve Log Streaming Information by ID
+        ///     var example = Zpa.GetLSSConfigController.Invoke(new()
+        ///     {
+        ///         Id = "1234567890",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetLSSConfigControllerResult> InvokeAsync(GetLSSConfigControllerArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLSSConfigControllerResult>("zpa:index/getLSSConfigController:getLSSConfigController", args ?? new GetLSSConfigControllerArgs(), options.WithDefaults());
@@ -30,6 +51,27 @@ namespace zscaler.PulumiPackage.Zpa
         /// Use the **zpa_lss_config_controller** data source to get information about a Log Streaming (LSS) configuration resource created in the Zscaler Private Access.
         /// 
         /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// 
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Retrieve Log Streaming Information by ID
+        ///     var example = Zpa.GetLSSConfigController.Invoke(new()
+        ///     {
+        ///         Id = "1234567890",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetLSSConfigControllerResult> Invoke(GetLSSConfigControllerInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLSSConfigControllerResult>("zpa:index/getLSSConfigController:getLSSConfigController", args ?? new GetLSSConfigControllerInvokeArgs(), options.WithDefaults());
@@ -41,6 +83,27 @@ namespace zscaler.PulumiPackage.Zpa
         /// Use the **zpa_lss_config_controller** data source to get information about a Log Streaming (LSS) configuration resource created in the Zscaler Private Access.
         /// 
         /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// 
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = Pulumi.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Retrieve Log Streaming Information by ID
+        ///     var example = Zpa.GetLSSConfigController.Invoke(new()
+        ///     {
+        ///         Id = "1234567890",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetLSSConfigControllerResult> Invoke(GetLSSConfigControllerInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetLSSConfigControllerResult>("zpa:index/getLSSConfigController:getLSSConfigController", args ?? new GetLSSConfigControllerInvokeArgs(), options.WithDefaults());

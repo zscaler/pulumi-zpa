@@ -36,6 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Service Edge Group Data Source by name
 //			_, err := zpa.LookupServiceEdgeGroup(ctx, &zpa.LookupServiceEdgeGroupArgs{
 //				Name: pulumi.StringRef("DataCenter"),
 //			}, nil)
@@ -60,6 +61,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Service Edge Group Data Source by ID
 //			_, err := zpa.LookupServiceEdgeGroup(ctx, &zpa.LookupServiceEdgeGroupArgs{
 //				Id: pulumi.StringRef("123456789"),
 //			}, nil)
@@ -89,35 +91,39 @@ type LookupServiceEdgeGroupArgs struct {
 
 // A collection of values returned by getServiceEdgeGroup.
 type LookupServiceEdgeGroupResult struct {
-	AltCloud                      string                              `pulumi:"altCloud"`
-	CityCountry                   string                              `pulumi:"cityCountry"`
-	CountryCode                   string                              `pulumi:"countryCode"`
-	CreationTime                  string                              `pulumi:"creationTime"`
-	Description                   string                              `pulumi:"description"`
-	Enabled                       bool                                `pulumi:"enabled"`
-	GeoLocationId                 string                              `pulumi:"geoLocationId"`
-	GraceDistanceEnabled          bool                                `pulumi:"graceDistanceEnabled"`
-	GraceDistanceValue            string                              `pulumi:"graceDistanceValue"`
-	GraceDistanceValueUnit        string                              `pulumi:"graceDistanceValueUnit"`
-	Id                            string                              `pulumi:"id"`
-	IsPublic                      string                              `pulumi:"isPublic"`
-	Latitude                      string                              `pulumi:"latitude"`
-	Location                      string                              `pulumi:"location"`
-	Longitude                     string                              `pulumi:"longitude"`
-	ModifiedBy                    string                              `pulumi:"modifiedBy"`
-	ModifiedTime                  string                              `pulumi:"modifiedTime"`
-	Name                          string                              `pulumi:"name"`
-	OverrideVersionProfile        bool                                `pulumi:"overrideVersionProfile"`
-	ServiceEdges                  []GetServiceEdgeGroupServiceEdge    `pulumi:"serviceEdges"`
-	SiteId                        string                              `pulumi:"siteId"`
-	SiteName                      string                              `pulumi:"siteName"`
-	TrustedNetworks               []GetServiceEdgeGroupTrustedNetwork `pulumi:"trustedNetworks"`
-	UpgradeDay                    string                              `pulumi:"upgradeDay"`
-	UpgradeTimeInSecs             string                              `pulumi:"upgradeTimeInSecs"`
-	UseInDrMode                   bool                                `pulumi:"useInDrMode"`
-	VersionProfileId              string                              `pulumi:"versionProfileId"`
-	VersionProfileName            string                              `pulumi:"versionProfileName"`
-	VersionProfileVisibilityScope string                              `pulumi:"versionProfileVisibilityScope"`
+	AltCloud                       string                              `pulumi:"altCloud"`
+	City                           string                              `pulumi:"city"`
+	CityCountry                    string                              `pulumi:"cityCountry"`
+	CountryCode                    string                              `pulumi:"countryCode"`
+	CreationTime                   string                              `pulumi:"creationTime"`
+	Description                    string                              `pulumi:"description"`
+	Enabled                        bool                                `pulumi:"enabled"`
+	ExclusiveForBusinessContinuity bool                                `pulumi:"exclusiveForBusinessContinuity"`
+	GeoLocationId                  string                              `pulumi:"geoLocationId"`
+	GraceDistanceEnabled           bool                                `pulumi:"graceDistanceEnabled"`
+	GraceDistanceValue             string                              `pulumi:"graceDistanceValue"`
+	GraceDistanceValueUnit         string                              `pulumi:"graceDistanceValueUnit"`
+	Id                             string                              `pulumi:"id"`
+	IsPublic                       string                              `pulumi:"isPublic"`
+	Latitude                       string                              `pulumi:"latitude"`
+	Location                       string                              `pulumi:"location"`
+	Longitude                      string                              `pulumi:"longitude"`
+	ModifiedBy                     string                              `pulumi:"modifiedBy"`
+	ModifiedTime                   string                              `pulumi:"modifiedTime"`
+	Name                           string                              `pulumi:"name"`
+	NameWithoutTrim                string                              `pulumi:"nameWithoutTrim"`
+	OverrideVersionProfile         bool                                `pulumi:"overrideVersionProfile"`
+	RestrictedEntity               bool                                `pulumi:"restrictedEntity"`
+	ServiceEdges                   []GetServiceEdgeGroupServiceEdge    `pulumi:"serviceEdges"`
+	SiteId                         string                              `pulumi:"siteId"`
+	SiteName                       string                              `pulumi:"siteName"`
+	TrustedNetworks                []GetServiceEdgeGroupTrustedNetwork `pulumi:"trustedNetworks"`
+	UpgradeDay                     string                              `pulumi:"upgradeDay"`
+	UpgradeTimeInSecs              string                              `pulumi:"upgradeTimeInSecs"`
+	UseInDrMode                    bool                                `pulumi:"useInDrMode"`
+	VersionProfileId               string                              `pulumi:"versionProfileId"`
+	VersionProfileName             string                              `pulumi:"versionProfileName"`
+	VersionProfileVisibilityScope  string                              `pulumi:"versionProfileVisibilityScope"`
 }
 
 func LookupServiceEdgeGroupOutput(ctx *pulumi.Context, args LookupServiceEdgeGroupOutputArgs, opts ...pulumi.InvokeOption) LookupServiceEdgeGroupResultOutput {
@@ -158,6 +164,10 @@ func (o LookupServiceEdgeGroupResultOutput) AltCloud() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.AltCloud }).(pulumi.StringOutput)
 }
 
+func (o LookupServiceEdgeGroupResultOutput) City() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.City }).(pulumi.StringOutput)
+}
+
 func (o LookupServiceEdgeGroupResultOutput) CityCountry() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.CityCountry }).(pulumi.StringOutput)
 }
@@ -176,6 +186,10 @@ func (o LookupServiceEdgeGroupResultOutput) Description() pulumi.StringOutput {
 
 func (o LookupServiceEdgeGroupResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o LookupServiceEdgeGroupResultOutput) ExclusiveForBusinessContinuity() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupServiceEdgeGroupResult) bool { return v.ExclusiveForBusinessContinuity }).(pulumi.BoolOutput)
 }
 
 func (o LookupServiceEdgeGroupResultOutput) GeoLocationId() pulumi.StringOutput {
@@ -226,8 +240,16 @@ func (o LookupServiceEdgeGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o LookupServiceEdgeGroupResultOutput) NameWithoutTrim() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceEdgeGroupResult) string { return v.NameWithoutTrim }).(pulumi.StringOutput)
+}
+
 func (o LookupServiceEdgeGroupResultOutput) OverrideVersionProfile() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServiceEdgeGroupResult) bool { return v.OverrideVersionProfile }).(pulumi.BoolOutput)
+}
+
+func (o LookupServiceEdgeGroupResultOutput) RestrictedEntity() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupServiceEdgeGroupResult) bool { return v.RestrictedEntity }).(pulumi.BoolOutput)
 }
 
 func (o LookupServiceEdgeGroupResultOutput) ServiceEdges() GetServiceEdgeGroupServiceEdgeArrayOutput {

@@ -19,30 +19,31 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * const _this = new zpa.InspectionCustomControls("this", {
- *     defaultAction: "PASS",
+ *     name: "Example",
  *     description: "Example",
+ *     defaultAction: "PASS",
  *     paranoiaLevel: "1",
- *     rules: [
- *         {
- *             conditions: [{
- *                 lhs: "SIZE",
- *                 op: "GE",
- *                 rhs: "1000",
- *             }],
- *             names: ["this"],
- *             type: "RESPONSE_HEADERS",
- *         },
- *         {
- *             conditions: [{
- *                 lhs: "SIZE",
- *                 op: "GE",
- *                 rhs: "1000",
- *             }],
- *             type: "RESPONSE_BODY",
- *         },
- *     ],
  *     severity: "CRITICAL",
  *     type: "RESPONSE",
+ *     rules: [
+ *         {
+ *             names: ["this"],
+ *             type: "RESPONSE_HEADERS",
+ *             conditions: [{
+ *                 lhs: "SIZE",
+ *                 op: "GE",
+ *                 rhs: "1000",
+ *             }],
+ *         },
+ *         {
+ *             type: "RESPONSE_BODY",
+ *             conditions: [{
+ *                 lhs: "SIZE",
+ *                 op: "GE",
+ *                 rhs: "1000",
+ *             }],
+ *         },
+ *     ],
  * });
  * ```
  *
@@ -53,30 +54,31 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * const _this = new zpa.InspectionCustomControls("this", {
- *     defaultAction: "BLOCK",
+ *     name: "Example",
  *     description: "Example",
+ *     defaultAction: "BLOCK",
  *     paranoiaLevel: "1",
- *     rules: [
- *         {
- *             conditions: [{
- *                 lhs: "SIZE",
- *                 op: "GE",
- *                 rhs: "1000",
- *             }],
- *             names: ["this"],
- *             type: "RESPONSE_HEADERS",
- *         },
- *         {
- *             conditions: [{
- *                 lhs: "SIZE",
- *                 op: "GE",
- *                 rhs: "1000",
- *             }],
- *             type: "RESPONSE_BODY",
- *         },
- *     ],
  *     severity: "CRITICAL",
  *     type: "RESPONSE",
+ *     rules: [
+ *         {
+ *             names: ["this"],
+ *             type: "RESPONSE_HEADERS",
+ *             conditions: [{
+ *                 lhs: "SIZE",
+ *                 op: "GE",
+ *                 rhs: "1000",
+ *             }],
+ *         },
+ *         {
+ *             type: "RESPONSE_BODY",
+ *             conditions: [{
+ *                 lhs: "SIZE",
+ *                 op: "GE",
+ *                 rhs: "1000",
+ *             }],
+ *         },
+ *     ],
  * });
  * ```
  *
@@ -87,31 +89,32 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * const _this = new zpa.InspectionCustomControls("this", {
+ *     name: "Example",
+ *     description: "Example",
  *     defaultAction: "REDIRECT",
  *     defaultActionValue: "https://test.com",
- *     description: "Example",
  *     paranoiaLevel: "1",
- *     rules: [
- *         {
- *             conditions: [{
- *                 lhs: "SIZE",
- *                 op: "GE",
- *                 rhs: "1000",
- *             }],
- *             names: ["this"],
- *             type: "RESPONSE_HEADERS",
- *         },
- *         {
- *             conditions: [{
- *                 lhs: "SIZE",
- *                 op: "GE",
- *                 rhs: "1000",
- *             }],
- *             type: "RESPONSE_BODY",
- *         },
- *     ],
  *     severity: "CRITICAL",
  *     type: "RESPONSE",
+ *     rules: [
+ *         {
+ *             names: ["this"],
+ *             type: "RESPONSE_HEADERS",
+ *             conditions: [{
+ *                 lhs: "SIZE",
+ *                 op: "GE",
+ *                 rhs: "1000",
+ *             }],
+ *         },
+ *         {
+ *             type: "RESPONSE_BODY",
+ *             conditions: [{
+ *                 lhs: "SIZE",
+ *                 op: "GE",
+ *                 rhs: "1000",
+ *             }],
+ *         },
+ *     ],
  * });
  * ```
  *
@@ -149,38 +152,38 @@ export class InspectionCustomControls extends pulumi.CustomResource {
         return obj['__pulumiType'] === InspectionCustomControls.__pulumiType;
     }
 
-    public readonly controlType!: pulumi.Output<string>;
+    declare public readonly controlType: pulumi.Output<string>;
     /**
      * The performed action
      */
-    public readonly defaultAction!: pulumi.Output<string | undefined>;
+    declare public readonly defaultAction: pulumi.Output<string | undefined>;
     /**
      * This is used to provide the redirect URL if the default action is set to REDIRECT
      */
-    public readonly defaultActionValue!: pulumi.Output<string>;
+    declare public readonly defaultActionValue: pulumi.Output<string>;
     /**
      * Description of the custom control
      */
-    public readonly description!: pulumi.Output<string>;
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * OWASP Predefined Paranoia Level. Range: [1-4], inclusive
      */
-    public readonly paranoiaLevel!: pulumi.Output<string>;
-    public readonly protocolType!: pulumi.Output<string>;
+    declare public readonly paranoiaLevel: pulumi.Output<string>;
+    declare public readonly protocolType: pulumi.Output<string>;
     /**
      * Rules of the custom controls applied as conditions (JSON)
      */
-    public readonly rules!: pulumi.Output<outputs.InspectionCustomControlsRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.InspectionCustomControlsRule[]>;
     /**
      * Severity of the control number
      */
-    public readonly severity!: pulumi.Output<string>;
+    declare public readonly severity: pulumi.Output<string>;
     /**
      * Rules to be applied to the request or response type
      */
-    public readonly type!: pulumi.Output<string>;
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string>;
 
     /**
      * Create a InspectionCustomControls resource with the given unique name, arguments, and options.
@@ -195,36 +198,36 @@ export class InspectionCustomControls extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InspectionCustomControlsState | undefined;
-            resourceInputs["controlType"] = state ? state.controlType : undefined;
-            resourceInputs["defaultAction"] = state ? state.defaultAction : undefined;
-            resourceInputs["defaultActionValue"] = state ? state.defaultActionValue : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["paranoiaLevel"] = state ? state.paranoiaLevel : undefined;
-            resourceInputs["protocolType"] = state ? state.protocolType : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["severity"] = state ? state.severity : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["controlType"] = state?.controlType;
+            resourceInputs["defaultAction"] = state?.defaultAction;
+            resourceInputs["defaultActionValue"] = state?.defaultActionValue;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["paranoiaLevel"] = state?.paranoiaLevel;
+            resourceInputs["protocolType"] = state?.protocolType;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["severity"] = state?.severity;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as InspectionCustomControlsArgs | undefined;
-            if ((!args || args.severity === undefined) && !opts.urn) {
+            if (args?.severity === undefined && !opts.urn) {
                 throw new Error("Missing required property 'severity'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["controlType"] = args ? args.controlType : undefined;
-            resourceInputs["defaultAction"] = args ? args.defaultAction : undefined;
-            resourceInputs["defaultActionValue"] = args ? args.defaultActionValue : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["paranoiaLevel"] = args ? args.paranoiaLevel : undefined;
-            resourceInputs["protocolType"] = args ? args.protocolType : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["severity"] = args ? args.severity : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["controlType"] = args?.controlType;
+            resourceInputs["defaultAction"] = args?.defaultAction;
+            resourceInputs["defaultActionValue"] = args?.defaultActionValue;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["paranoiaLevel"] = args?.paranoiaLevel;
+            resourceInputs["protocolType"] = args?.protocolType;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["severity"] = args?.severity;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["version"] = args?.version;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InspectionCustomControls.__pulumiType, name, resourceInputs, opts);

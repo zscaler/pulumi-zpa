@@ -18,14 +18,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * const thisPRACredential = new zpa.PRACredential("thisPRACredential", {
+ * const thisPRACredential = new zpa.PRACredential("this", {
+ *     name: "John Doe",
  *     description: "Created with Terraform",
  *     credentialType: "PASSWORD",
  *     userDomain: "acme.com",
  *     password: "",
  * });
  * // Creates Credential Pool of Type "USERNAME_PASSWORD"
- * const thisPraCredentialPool = new zpa.PraCredentialPool("thisPraCredentialPool", {
+ * const _this = new zpa.PraCredentialPool("this", {
+ *     name: "PRACredentialPool01",
  *     credentialType: "USERNAME_PASSWORD",
  *     credentials: [{
  *         ids: [thisPRACredential.id],
@@ -82,23 +84,21 @@ export class PraCredentialPool extends pulumi.CustomResource {
     }
 
     /**
-     * The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-     * and VNC. Each protocol type has its own credential requirements.
+     * The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
      */
-    public readonly credentialType!: pulumi.Output<string | undefined>;
+    declare public readonly credentialType: pulumi.Output<string | undefined>;
     /**
      * List of PRA Credentials
      */
-    public readonly credentials!: pulumi.Output<outputs.PraCredentialPoolCredential[]>;
+    declare public readonly credentials: pulumi.Output<outputs.PraCredentialPoolCredential[]>;
     /**
-     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-     * microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
      */
-    public readonly microtenantId!: pulumi.Output<string>;
+    declare public readonly microtenantId: pulumi.Output<string>;
     /**
      * The name of the privileged credential
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a PraCredentialPool resource with the given unique name, arguments, and options.
@@ -113,16 +113,16 @@ export class PraCredentialPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PraCredentialPoolState | undefined;
-            resourceInputs["credentialType"] = state ? state.credentialType : undefined;
-            resourceInputs["credentials"] = state ? state.credentials : undefined;
-            resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["credentialType"] = state?.credentialType;
+            resourceInputs["credentials"] = state?.credentials;
+            resourceInputs["microtenantId"] = state?.microtenantId;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as PraCredentialPoolArgs | undefined;
-            resourceInputs["credentialType"] = args ? args.credentialType : undefined;
-            resourceInputs["credentials"] = args ? args.credentials : undefined;
-            resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["credentialType"] = args?.credentialType;
+            resourceInputs["credentials"] = args?.credentials;
+            resourceInputs["microtenantId"] = args?.microtenantId;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PraCredentialPool.__pulumiType, name, resourceInputs, opts);
@@ -134,8 +134,7 @@ export class PraCredentialPool extends pulumi.CustomResource {
  */
 export interface PraCredentialPoolState {
     /**
-     * The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-     * and VNC. Each protocol type has its own credential requirements.
+     * The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
      */
     credentialType?: pulumi.Input<string>;
     /**
@@ -143,8 +142,7 @@ export interface PraCredentialPoolState {
      */
     credentials?: pulumi.Input<pulumi.Input<inputs.PraCredentialPoolCredential>[]>;
     /**
-     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-     * microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
      */
     microtenantId?: pulumi.Input<string>;
     /**
@@ -158,8 +156,7 @@ export interface PraCredentialPoolState {
  */
 export interface PraCredentialPoolArgs {
     /**
-     * The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-     * and VNC. Each protocol type has its own credential requirements.
+     * The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
      */
     credentialType?: pulumi.Input<string>;
     /**
@@ -167,8 +164,7 @@ export interface PraCredentialPoolArgs {
      */
     credentials?: pulumi.Input<pulumi.Input<inputs.PraCredentialPoolCredential>[]>;
     /**
-     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-     * microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
      */
     microtenantId?: pulumi.Input<string>;
     /**

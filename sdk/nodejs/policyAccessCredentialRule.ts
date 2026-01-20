@@ -14,6 +14,198 @@ import * as utilities from "./utilities";
  *
  *   ⚠️ **WARNING:**: The attribute ``ruleOrder`` is now deprecated in favor of the new resource  ``policyAccessRuleReorder``
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as std from "@pulumi/std";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const thisSegmentGroup = new zpa.SegmentGroup("this", {
+ *     name: "Example",
+ *     description: "Example",
+ *     enabled: true,
+ * });
+ * const thisApplicationSegmentPRA = new zpa.ApplicationSegmentPRA("this", {
+ *     name: "Example",
+ *     description: "Example",
+ *     enabled: true,
+ *     healthReporting: "ON_ACCESS",
+ *     bypassType: "NEVER",
+ *     isCnameEnabled: true,
+ *     tcpPortRanges: [
+ *         "22",
+ *         "22",
+ *         "3389",
+ *         "3389",
+ *     ],
+ *     domainNames: [
+ *         "ssh_pra.example.com",
+ *         "rdp_pra.example.com",
+ *     ],
+ *     segmentGroupId: thisSegmentGroup.id,
+ *     commonAppsDtos: [{
+ *         appsConfigs: [
+ *             {
+ *                 name: "rdp_pra",
+ *                 domain: "rdp_pra.example.com",
+ *                 applicationProtocol: "RDP",
+ *                 connectionSecurity: "ANY",
+ *                 applicationPort: "3389",
+ *                 enabled: true,
+ *                 appTypes: ["SECURE_REMOTE_ACCESS"],
+ *             },
+ *             {
+ *                 name: "ssh_pra",
+ *                 domain: "ssh_pra.example.com",
+ *                 applicationProtocol: "SSH",
+ *                 applicationPort: "22",
+ *                 enabled: true,
+ *                 appTypes: ["SECURE_REMOTE_ACCESS"],
+ *             },
+ *         ],
+ *     }],
+ * });
+ * const this1 = zpa.getBaCertificate({
+ *     name: "pra01.example.com",
+ * });
+ * const thisPRAPortal = new zpa.PRAPortal("this", {
+ *     name: "pra01.example.com",
+ *     description: "pra01.example.com",
+ *     enabled: true,
+ *     domain: "pra01.example.com",
+ *     certificateId: thisZpaBaCertificate.id,
+ *     userNotification: "Created with Terraform",
+ *     userNotificationEnabled: true,
+ * });
+ * const praApplicationIds = std.flattenOutput({
+ *     input: thisApplicationSegmentPRA.commonAppsDtos.apply(commonAppsDtos => commonAppsDtos.map(commonApps => (commonApps.appsConfig))),
+ * }).apply(invoke => .reduce((__obj, appDto) => ({ ...__obj, [appDto.name]: appDto.id })));
+ * const praApplicationIdSshPra = std.lookupOutput({
+ *     map: praApplicationIds,
+ *     key: "ssh_pra",
+ *     "default": "",
+ * }).apply(invoke => invoke.result);
+ * const praApplicationIdRdpPra = std.lookupOutput({
+ *     map: praApplicationIds,
+ *     key: "rdp_pra",
+ *     "default": "",
+ * }).apply(invoke => invoke.result);
+ * const sshPra = new zpa.PRAConsole("ssh_pra", {
+ *     name: "ssh_console",
+ *     description: "Created with Terraform",
+ *     enabled: true,
+ *     praApplications: [{
+ *         id: praApplicationIdSshPra,
+ *     }],
+ *     praPortals: [{
+ *         ids: [this1ZpaPraPortalController.id],
+ *     }],
+ * }, {
+ *     dependsOn: [thisApplicationSegmentPRA],
+ * });
+ * const rdpPra = new zpa.PRAConsole("rdp_pra", {
+ *     name: "rdp_console",
+ *     description: "Created with Terraform",
+ *     enabled: true,
+ *     praApplications: [{
+ *         id: praApplicationIdRdpPra,
+ *     }],
+ *     praPortals: [{
+ *         ids: [this1ZpaPraPortalController.id],
+ *     }],
+ * }, {
+ *     dependsOn: [thisApplicationSegmentPRA],
+ * });
+ * const thisPRACredential = new zpa.PRACredential("this", {
+ *     name: "John Carrow",
+ *     description: "Created with Terraform",
+ *     credentialType: "USERNAME_PASSWORD",
+ *     userDomain: "acme.com",
+ *     username: "jcarrow",
+ *     password: "",
+ * });
+ * const _this = zpa.getIdPController({
+ *     name: "Idp_Users",
+ * });
+ * const emailUserSso = zpa.getSAMLAttribute({
+ *     name: "Email_Idp_Users",
+ *     idpName: "Idp_Users",
+ * });
+ * const groupUser = zpa.getSAMLAttribute({
+ *     name: "GroupName_Idp_Users",
+ *     idpName: "Idp_Users",
+ * });
+ * const a000 = zpa.getSCIMGroups({
+ *     name: "A000",
+ *     idpName: "Idp_Users",
+ * });
+ * const b000 = zpa.getSCIMGroups({
+ *     name: "B000",
+ *     idpName: "Idp_Users",
+ * });
+ * const thisPolicyAccessCredentialRule = new zpa.PolicyAccessCredentialRule("this", {
+ *     name: "Example_Credential_Rule",
+ *     description: "Example_Credential_Rule",
+ *     action: "INJECT_CREDENTIALS",
+ *     credentials: [{
+ *         id: thisPRACredential.id,
+ *     }],
+ *     conditions: [
+ *         {
+ *             operator: "OR",
+ *             operands: [{
+ *                 objectType: "CONSOLE",
+ *                 values: [
+ *                     rdpPra.id,
+ *                     sshPra.id,
+ *                 ],
+ *             }],
+ *         },
+ *         {
+ *             operator: "OR",
+ *             operands: [
+ *                 {
+ *                     objectType: "SAML",
+ *                     entryValues: [
+ *                         {
+ *                             rhs: "user1@acme.com",
+ *                             lhs: emailUserSso.then(emailUserSso => emailUserSso.id),
+ *                         },
+ *                         {
+ *                             rhs: "A000",
+ *                             lhs: groupUser.then(groupUser => groupUser.id),
+ *                         },
+ *                     ],
+ *                 },
+ *                 {
+ *                     objectType: "SCIM_GROUP",
+ *                     entryValues: [
+ *                         {
+ *                             rhs: a000.then(a000 => a000.id),
+ *                             lhs: _this.then(_this => _this.id),
+ *                         },
+ *                         {
+ *                             rhs: b000.then(b000 => b000.id),
+ *                             lhs: _this.then(_this => _this.id),
+ *                         },
+ *                     ],
+ *                 },
+ *             ],
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## LHS and RHS Values
+ *
+ * | Object Type | LHS| RHS| VALUES
+ * |----------|-----------|----------|----------
+ * | CONSOLE |   |  | ``praConsoleId``
+ * | SAML | ``samlAttributeId``  | ``attributeValueToMatch`` |
+ * | SCIM | ``scimAttributeId``  | ``attributeValueToMatch``  |
+ * | SCIM_GROUP | ``scimGroupAttributeId``  | ``attributeValueToMatch``  |
+ *
  * ## Import
  *
  * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
@@ -59,23 +251,23 @@ export class PolicyAccessCredentialRule extends pulumi.CustomResource {
     /**
      * This is for providing the rule action.
      */
-    public readonly action!: pulumi.Output<string | undefined>;
+    declare public readonly action: pulumi.Output<string | undefined>;
     /**
      * This is for proviidng the set of conditions for the policy.
      */
-    public readonly conditions!: pulumi.Output<outputs.PolicyAccessCredentialRuleCondition[]>;
-    public readonly credentialPools!: pulumi.Output<outputs.PolicyAccessCredentialRuleCredentialPool[] | undefined>;
-    public readonly credentials!: pulumi.Output<outputs.PolicyAccessCredentialRuleCredential[] | undefined>;
+    declare public readonly conditions: pulumi.Output<outputs.PolicyAccessCredentialRuleCondition[]>;
+    declare public readonly credentialPools: pulumi.Output<outputs.PolicyAccessCredentialRuleCredentialPool[] | undefined>;
+    declare public readonly credentials: pulumi.Output<outputs.PolicyAccessCredentialRuleCredential[] | undefined>;
     /**
      * This is the description of the access policy.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly microtenantId!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly microtenantId: pulumi.Output<string>;
     /**
      * This is the name of the policy.
      */
-    public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly policySetId!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly policySetId: pulumi.Output<string>;
 
     /**
      * Create a PolicyAccessCredentialRule resource with the given unique name, arguments, and options.
@@ -90,23 +282,23 @@ export class PolicyAccessCredentialRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyAccessCredentialRuleState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["conditions"] = state ? state.conditions : undefined;
-            resourceInputs["credentialPools"] = state ? state.credentialPools : undefined;
-            resourceInputs["credentials"] = state ? state.credentials : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policySetId"] = state ? state.policySetId : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["conditions"] = state?.conditions;
+            resourceInputs["credentialPools"] = state?.credentialPools;
+            resourceInputs["credentials"] = state?.credentials;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["microtenantId"] = state?.microtenantId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policySetId"] = state?.policySetId;
         } else {
             const args = argsOrState as PolicyAccessCredentialRuleArgs | undefined;
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["conditions"] = args ? args.conditions : undefined;
-            resourceInputs["credentialPools"] = args ? args.credentialPools : undefined;
-            resourceInputs["credentials"] = args ? args.credentials : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["conditions"] = args?.conditions;
+            resourceInputs["credentialPools"] = args?.credentialPools;
+            resourceInputs["credentials"] = args?.credentials;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["microtenantId"] = args?.microtenantId;
+            resourceInputs["name"] = args?.name;
             resourceInputs["policySetId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

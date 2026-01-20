@@ -39,9 +39,6 @@ namespace zscaler.PulumiPackage.Zpa.Inputs
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
-
         [Input("inspectAppId")]
         public Input<string>? InspectAppId { get; set; }
 

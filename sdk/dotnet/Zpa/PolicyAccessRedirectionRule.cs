@@ -16,9 +16,47 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// The **zpa_policy_redirection_rule** resource creates a policy redirection access rule in the Zscaler Private Access cloud.
     /// 
-    ///   ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+    ///   ⚠️ **WARNING:**: The attribute ``RuleOrder`` is now deprecated in favor of the new resource  ``PolicyAccessRuleReorder``
     /// 
     /// ## Example Usage
+    /// 
+    /// ### REDIRECT_DEFAULT
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Zpa.PolicyAccessRedirectionRule("this", new()
+    ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         Action = "REDIRECT_DEFAULT",
+    ///         Conditions = new[]
+    ///         {
+    ///             new Zpa.Inputs.PolicyAccessRedirectionRuleConditionArgs
+    ///             {
+    ///                 Operator = "OR",
+    ///                 Operands = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.PolicyAccessRedirectionRuleConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "CLIENT_TYPE",
+    ///                         Values = new[]
+    ///                         {
+    ///                             "zpn_client_type_branch_connector",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -50,7 +88,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<string?> ActionId { get; private set; } = null!;
 
         [Output("bypassDefaultRule")]
-        public Output<bool?> BypassDefaultRule { get; private set; } = null!;
+        public Output<bool> BypassDefaultRule { get; private set; } = null!;
 
         /// <summary>
         /// This is for proviidng the set of conditions for the policy.
@@ -68,7 +106,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// This is for providing a customer message for the user.
         /// </summary>
         [Output("defaultRule")]
-        public Output<bool?> DefaultRule { get; private set; } = null!;
+        public Output<bool> DefaultRule { get; private set; } = null!;
 
         /// <summary>
         /// This is the description of the access policy.
@@ -101,7 +139,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<string> Priority { get; private set; } = null!;
 
         [Output("reauthDefaultRule")]
-        public Output<bool?> ReauthDefaultRule { get; private set; } = null!;
+        public Output<bool> ReauthDefaultRule { get; private set; } = null!;
 
         [Output("reauthIdleTimeout")]
         public Output<string?> ReauthIdleTimeout { get; private set; } = null!;

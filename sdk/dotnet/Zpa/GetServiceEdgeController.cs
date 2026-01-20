@@ -30,6 +30,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Service Edge Controller Data Source
         ///     var example = Zpa.GetServiceEdgeController.Invoke(new()
         ///     {
         ///         Name = "On-Prem-PSE",
@@ -59,6 +60,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Service Edge Controller Data Source
         ///     var example = Zpa.GetServiceEdgeController.Invoke(new()
         ///     {
         ///         Name = "On-Prem-PSE",
@@ -88,6 +90,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Service Edge Controller Data Source
         ///     var example = Zpa.GetServiceEdgeController.Invoke(new()
         ///     {
         ///         Name = "On-Prem-PSE",
@@ -103,6 +106,9 @@ namespace zscaler.PulumiPackage.Zpa
 
     public sealed class GetServiceEdgeControllerArgs : global::Pulumi.InvokeArgs
     {
+        [Input("id")]
+        public string? Id { get; set; }
+
         [Input("microtenantId")]
         public string? MicrotenantId { get; set; }
 
@@ -120,6 +126,9 @@ namespace zscaler.PulumiPackage.Zpa
 
     public sealed class GetServiceEdgeControllerInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
 

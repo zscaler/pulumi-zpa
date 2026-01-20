@@ -14,7 +14,8 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Segment Group resource
- * const testSegmentGroup = new zpa.SegmentGroup("testSegmentGroup", {
+ * const testSegmentGroup = new zpa.SegmentGroup("test_segment_group", {
+ *     name: "test1-segment-group",
  *     description: "test1-segment-group",
  *     enabled: true,
  * });
@@ -68,20 +69,20 @@ export class SegmentGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === SegmentGroup.__pulumiType;
     }
 
-    public readonly applications!: pulumi.Output<outputs.SegmentGroupApplication[]>;
+    declare public readonly applications: pulumi.Output<outputs.SegmentGroupApplication[]>;
     /**
      * Description of the app group.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether this app group is enabled or not.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
-    public readonly microtenantId!: pulumi.Output<string>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
+    declare public readonly microtenantId: pulumi.Output<string>;
     /**
      * Name of the app group.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a SegmentGroup resource with the given unique name, arguments, and options.
@@ -96,18 +97,18 @@ export class SegmentGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SegmentGroupState | undefined;
-            resourceInputs["applications"] = state ? state.applications : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["applications"] = state?.applications;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["microtenantId"] = state?.microtenantId;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as SegmentGroupArgs | undefined;
-            resourceInputs["applications"] = args ? args.applications : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["applications"] = args?.applications;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["microtenantId"] = args?.microtenantId;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SegmentGroup.__pulumiType, name, resourceInputs, opts);

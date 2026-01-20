@@ -23,10 +23,11 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Provisioning Key for "CONNECTOR_GRP"
         ///     var example = Zpa.GetProvisioningKey.Invoke(new()
         ///     {
-        ///         AssociationType = "CONNECTOR_GRP",
         ///         Name = "Provisioning_Key",
+        ///         AssociationType = "CONNECTOR_GRP",
         ///     });
         /// 
         /// });
@@ -40,10 +41,11 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Provisioning Key for "SERVICE_EDGE_GRP"
         ///     var example = Zpa.GetProvisioningKey.Invoke(new()
         ///     {
-        ///         AssociationType = "SERVICE_EDGE_GRP",
         ///         Name = "Provisioning_Key",
+        ///         AssociationType = "SERVICE_EDGE_GRP",
         ///     });
         /// 
         /// });
@@ -63,10 +65,11 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Provisioning Key for "CONNECTOR_GRP"
         ///     var example = Zpa.GetProvisioningKey.Invoke(new()
         ///     {
-        ///         AssociationType = "CONNECTOR_GRP",
         ///         Name = "Provisioning_Key",
+        ///         AssociationType = "CONNECTOR_GRP",
         ///     });
         /// 
         /// });
@@ -80,10 +83,11 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Provisioning Key for "SERVICE_EDGE_GRP"
         ///     var example = Zpa.GetProvisioningKey.Invoke(new()
         ///     {
-        ///         AssociationType = "SERVICE_EDGE_GRP",
         ///         Name = "Provisioning_Key",
+        ///         AssociationType = "SERVICE_EDGE_GRP",
         ///     });
         /// 
         /// });
@@ -103,10 +107,11 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Provisioning Key for "CONNECTOR_GRP"
         ///     var example = Zpa.GetProvisioningKey.Invoke(new()
         ///     {
-        ///         AssociationType = "CONNECTOR_GRP",
         ///         Name = "Provisioning_Key",
+        ///         AssociationType = "CONNECTOR_GRP",
         ///     });
         /// 
         /// });
@@ -120,10 +125,11 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Provisioning Key for "SERVICE_EDGE_GRP"
         ///     var example = Zpa.GetProvisioningKey.Invoke(new()
         ///     {
-        ///         AssociationType = "SERVICE_EDGE_GRP",
         ///         Name = "Provisioning_Key",
+        ///         AssociationType = "SERVICE_EDGE_GRP",
         ///     });
         /// 
         /// });

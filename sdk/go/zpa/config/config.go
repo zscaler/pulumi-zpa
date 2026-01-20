@@ -80,8 +80,7 @@ func GetMinWaitSeconds(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "zpa:minWaitSeconds")
 }
 
-// Number of concurrent requests to make within a resource where bulk operations are not possible. Take note of
-// https://help.zscaler.com/zpa/understanding-rate-limiting.
+// Number of concurrent requests to make within a resource where bulk operations are not possible. Take note of https://help.zscaler.com/zpa/understanding-rate-limiting.
 func GetParallelism(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "zpa:parallelism")
 }
@@ -99,8 +98,7 @@ func GetPrivateKey(ctx *pulumi.Context) string {
 	return value
 }
 
-// Timeout for single request (in seconds) which is made to Zscaler, the default is `0` (means no limit is set). The
-// maximum value can be `300`.
+// Timeout for single request (in seconds) which is made to Zscaler, the default is `0` (means no limit is set). The maximum value can be `300`.
 func GetRequestTimeout(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "zpa:requestTimeout")
 }

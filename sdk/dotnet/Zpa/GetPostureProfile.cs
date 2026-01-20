@@ -30,6 +30,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "CrowdStrike_ZPA_ZTA_40",
@@ -46,6 +47,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example2 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "Detect SentinelOne",
@@ -62,6 +64,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example3 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "domain_joined",
@@ -80,6 +83,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
@@ -88,7 +92,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// });
         /// ```
         /// 
-        /// &gt; **NOTE** When associating a posture profile with one of supported resources, the following parameter must be exported: ``posture_udid`` instead of the ``id`` of the resource.
+        /// &gt; **NOTE** When associating a posture profile with one of supported resources, the following parameter must be exported: ``PostureUdid`` instead of the ``Id`` of the resource.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -98,6 +102,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
@@ -131,6 +136,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "CrowdStrike_ZPA_ZTA_40",
@@ -147,6 +153,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example2 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "Detect SentinelOne",
@@ -163,6 +170,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example3 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "domain_joined",
@@ -181,6 +189,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
@@ -189,7 +198,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// });
         /// ```
         /// 
-        /// &gt; **NOTE** When associating a posture profile with one of supported resources, the following parameter must be exported: ``posture_udid`` instead of the ``id`` of the resource.
+        /// &gt; **NOTE** When associating a posture profile with one of supported resources, the following parameter must be exported: ``PostureUdid`` instead of the ``Id`` of the resource.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -199,6 +208,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
@@ -232,6 +242,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "CrowdStrike_ZPA_ZTA_40",
@@ -248,6 +259,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example2 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "Detect SentinelOne",
@@ -264,6 +276,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example3 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "domain_joined",
@@ -282,6 +295,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
@@ -290,7 +304,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// });
         /// ```
         /// 
-        /// &gt; **NOTE** When associating a posture profile with one of supported resources, the following parameter must be exported: ``posture_udid`` instead of the ``id`` of the resource.
+        /// &gt; **NOTE** When associating a posture profile with one of supported resources, the following parameter must be exported: ``PostureUdid`` instead of the ``Id`` of the resource.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -300,6 +314,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Posture Profile Data Source
         ///     var example1 = Zpa.GetPostureProfile.Invoke(new()
         ///     {
         ///         Name = "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
@@ -319,8 +334,14 @@ namespace zscaler.PulumiPackage.Zpa
 
     public sealed class GetPostureProfileArgs : global::Pulumi.InvokeArgs
     {
+        [Input("id")]
+        public string? Id { get; set; }
+
         [Input("name")]
         public string? Name { get; set; }
+
+        [Input("postureUdid")]
+        public string? PostureUdid { get; set; }
 
         public GetPostureProfileArgs()
         {
@@ -330,8 +351,14 @@ namespace zscaler.PulumiPackage.Zpa
 
     public sealed class GetPostureProfileInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("postureUdid")]
+        public Input<string>? PostureUdid { get; set; }
 
         public GetPostureProfileInvokeArgs()
         {
@@ -347,8 +374,8 @@ namespace zscaler.PulumiPackage.Zpa
         public readonly string Domain;
         public readonly string Id;
         public readonly string MasterCustomerId;
+        public readonly string ModifiedBy;
         public readonly string ModifiedTime;
-        public readonly string Modifiedby;
         public readonly string? Name;
         public readonly string PostureUdid;
         public readonly string ZscalerCloud;
@@ -364,9 +391,9 @@ namespace zscaler.PulumiPackage.Zpa
 
             string masterCustomerId,
 
-            string modifiedTime,
+            string modifiedBy,
 
-            string modifiedby,
+            string modifiedTime,
 
             string? name,
 
@@ -380,8 +407,8 @@ namespace zscaler.PulumiPackage.Zpa
             Domain = domain;
             Id = id;
             MasterCustomerId = masterCustomerId;
+            ModifiedBy = modifiedBy;
             ModifiedTime = modifiedTime;
-            Modifiedby = modifiedby;
             Name = name;
             PostureUdid = postureUdid;
             ZscalerCloud = zscalerCloud;

@@ -32,6 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Get Isolation Profile ID
 //			isolationProfile, err := zpa.GetIsolationProfile(ctx, &zpa.GetIsolationProfileArgs{
 //				Name: pulumi.StringRef("zpa_isolation_profile"),
 //			}, nil)
@@ -40,6 +41,7 @@ import (
 //			}
 //			// Create Client Isolation Access Rule
 //			_, err = zpa.NewPolicyAccessIsolationRule(ctx, "this", &zpa.PolicyAccessIsolationRuleArgs{
+//				Name:                  pulumi.String("Example_Isolation_Policy"),
 //				Description:           pulumi.String("Example_Isolation_Policy"),
 //				Action:                pulumi.String("ISOLATE"),
 //				Operator:              pulumi.String("AND"),
@@ -103,33 +105,16 @@ type PolicyAccessIsolationRule struct {
 
 	// This is for providing the rule action.
 	Action pulumi.StringPtrOutput `pulumi:"action"`
-	// This field defines the description of the server.
-	ActionId          pulumi.StringPtrOutput `pulumi:"actionId"`
-	BypassDefaultRule pulumi.BoolPtrOutput   `pulumi:"bypassDefaultRule"`
 	// This is for proviidng the set of conditions for the policy.
 	Conditions PolicyAccessIsolationRuleConditionArrayOutput `pulumi:"conditions"`
-	// This is for providing a customer message for the user.
-	CustomMsg pulumi.StringOutput `pulumi:"customMsg"`
-	// This is for providing a customer message for the user.
-	DefaultRule pulumi.BoolPtrOutput `pulumi:"defaultRule"`
 	// This is the description of the access policy.
-	Description    pulumi.StringPtrOutput `pulumi:"description"`
-	LssDefaultRule pulumi.BoolPtrOutput   `pulumi:"lssDefaultRule"`
-	MicrotenantId  pulumi.StringOutput    `pulumi:"microtenantId"`
+	Description   pulumi.StringPtrOutput `pulumi:"description"`
+	MicrotenantId pulumi.StringPtrOutput `pulumi:"microtenantId"`
 	// This is the name of the policy.
-	Name              pulumi.StringOutput    `pulumi:"name"`
-	Operator          pulumi.StringOutput    `pulumi:"operator"`
-	PolicySetId       pulumi.StringOutput    `pulumi:"policySetId"`
-	PolicyType        pulumi.StringOutput    `pulumi:"policyType"`
-	Priority          pulumi.StringOutput    `pulumi:"priority"`
-	ReauthDefaultRule pulumi.BoolPtrOutput   `pulumi:"reauthDefaultRule"`
-	ReauthIdleTimeout pulumi.StringPtrOutput `pulumi:"reauthIdleTimeout"`
-	ReauthTimeout     pulumi.StringPtrOutput `pulumi:"reauthTimeout"`
-	// Deprecated: The `ruleOrder` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`
-	RuleOrder              pulumi.StringOutput `pulumi:"ruleOrder"`
-	ZpnCbiProfileId        pulumi.StringOutput `pulumi:"zpnCbiProfileId"`
-	ZpnInspectionProfileId pulumi.StringOutput `pulumi:"zpnInspectionProfileId"`
-	ZpnIsolationProfileId  pulumi.StringOutput `pulumi:"zpnIsolationProfileId"`
+	Name                  pulumi.StringOutput    `pulumi:"name"`
+	Operator              pulumi.StringPtrOutput `pulumi:"operator"`
+	PolicySetId           pulumi.StringOutput    `pulumi:"policySetId"`
+	ZpnIsolationProfileId pulumi.StringPtrOutput `pulumi:"zpnIsolationProfileId"`
 }
 
 // NewPolicyAccessIsolationRule registers a new resource with the given unique name, arguments, and options.
@@ -164,65 +149,31 @@ func GetPolicyAccessIsolationRule(ctx *pulumi.Context,
 type policyAccessIsolationRuleState struct {
 	// This is for providing the rule action.
 	Action *string `pulumi:"action"`
-	// This field defines the description of the server.
-	ActionId          *string `pulumi:"actionId"`
-	BypassDefaultRule *bool   `pulumi:"bypassDefaultRule"`
 	// This is for proviidng the set of conditions for the policy.
 	Conditions []PolicyAccessIsolationRuleCondition `pulumi:"conditions"`
-	// This is for providing a customer message for the user.
-	CustomMsg *string `pulumi:"customMsg"`
-	// This is for providing a customer message for the user.
-	DefaultRule *bool `pulumi:"defaultRule"`
 	// This is the description of the access policy.
-	Description    *string `pulumi:"description"`
-	LssDefaultRule *bool   `pulumi:"lssDefaultRule"`
-	MicrotenantId  *string `pulumi:"microtenantId"`
+	Description   *string `pulumi:"description"`
+	MicrotenantId *string `pulumi:"microtenantId"`
 	// This is the name of the policy.
-	Name              *string `pulumi:"name"`
-	Operator          *string `pulumi:"operator"`
-	PolicySetId       *string `pulumi:"policySetId"`
-	PolicyType        *string `pulumi:"policyType"`
-	Priority          *string `pulumi:"priority"`
-	ReauthDefaultRule *bool   `pulumi:"reauthDefaultRule"`
-	ReauthIdleTimeout *string `pulumi:"reauthIdleTimeout"`
-	ReauthTimeout     *string `pulumi:"reauthTimeout"`
-	// Deprecated: The `ruleOrder` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`
-	RuleOrder              *string `pulumi:"ruleOrder"`
-	ZpnCbiProfileId        *string `pulumi:"zpnCbiProfileId"`
-	ZpnInspectionProfileId *string `pulumi:"zpnInspectionProfileId"`
-	ZpnIsolationProfileId  *string `pulumi:"zpnIsolationProfileId"`
+	Name                  *string `pulumi:"name"`
+	Operator              *string `pulumi:"operator"`
+	PolicySetId           *string `pulumi:"policySetId"`
+	ZpnIsolationProfileId *string `pulumi:"zpnIsolationProfileId"`
 }
 
 type PolicyAccessIsolationRuleState struct {
 	// This is for providing the rule action.
 	Action pulumi.StringPtrInput
-	// This field defines the description of the server.
-	ActionId          pulumi.StringPtrInput
-	BypassDefaultRule pulumi.BoolPtrInput
 	// This is for proviidng the set of conditions for the policy.
 	Conditions PolicyAccessIsolationRuleConditionArrayInput
-	// This is for providing a customer message for the user.
-	CustomMsg pulumi.StringPtrInput
-	// This is for providing a customer message for the user.
-	DefaultRule pulumi.BoolPtrInput
 	// This is the description of the access policy.
-	Description    pulumi.StringPtrInput
-	LssDefaultRule pulumi.BoolPtrInput
-	MicrotenantId  pulumi.StringPtrInput
+	Description   pulumi.StringPtrInput
+	MicrotenantId pulumi.StringPtrInput
 	// This is the name of the policy.
-	Name              pulumi.StringPtrInput
-	Operator          pulumi.StringPtrInput
-	PolicySetId       pulumi.StringPtrInput
-	PolicyType        pulumi.StringPtrInput
-	Priority          pulumi.StringPtrInput
-	ReauthDefaultRule pulumi.BoolPtrInput
-	ReauthIdleTimeout pulumi.StringPtrInput
-	ReauthTimeout     pulumi.StringPtrInput
-	// Deprecated: The `ruleOrder` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`
-	RuleOrder              pulumi.StringPtrInput
-	ZpnCbiProfileId        pulumi.StringPtrInput
-	ZpnInspectionProfileId pulumi.StringPtrInput
-	ZpnIsolationProfileId  pulumi.StringPtrInput
+	Name                  pulumi.StringPtrInput
+	Operator              pulumi.StringPtrInput
+	PolicySetId           pulumi.StringPtrInput
+	ZpnIsolationProfileId pulumi.StringPtrInput
 }
 
 func (PolicyAccessIsolationRuleState) ElementType() reflect.Type {
@@ -232,66 +183,32 @@ func (PolicyAccessIsolationRuleState) ElementType() reflect.Type {
 type policyAccessIsolationRuleArgs struct {
 	// This is for providing the rule action.
 	Action *string `pulumi:"action"`
-	// This field defines the description of the server.
-	ActionId          *string `pulumi:"actionId"`
-	BypassDefaultRule *bool   `pulumi:"bypassDefaultRule"`
 	// This is for proviidng the set of conditions for the policy.
 	Conditions []PolicyAccessIsolationRuleCondition `pulumi:"conditions"`
-	// This is for providing a customer message for the user.
-	CustomMsg *string `pulumi:"customMsg"`
-	// This is for providing a customer message for the user.
-	DefaultRule *bool `pulumi:"defaultRule"`
 	// This is the description of the access policy.
-	Description    *string `pulumi:"description"`
-	LssDefaultRule *bool   `pulumi:"lssDefaultRule"`
-	MicrotenantId  *string `pulumi:"microtenantId"`
+	Description   *string `pulumi:"description"`
+	MicrotenantId *string `pulumi:"microtenantId"`
 	// This is the name of the policy.
-	Name              *string `pulumi:"name"`
-	Operator          *string `pulumi:"operator"`
-	PolicySetId       *string `pulumi:"policySetId"`
-	PolicyType        *string `pulumi:"policyType"`
-	Priority          *string `pulumi:"priority"`
-	ReauthDefaultRule *bool   `pulumi:"reauthDefaultRule"`
-	ReauthIdleTimeout *string `pulumi:"reauthIdleTimeout"`
-	ReauthTimeout     *string `pulumi:"reauthTimeout"`
-	// Deprecated: The `ruleOrder` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`
-	RuleOrder              *string `pulumi:"ruleOrder"`
-	ZpnCbiProfileId        *string `pulumi:"zpnCbiProfileId"`
-	ZpnInspectionProfileId *string `pulumi:"zpnInspectionProfileId"`
-	ZpnIsolationProfileId  *string `pulumi:"zpnIsolationProfileId"`
+	Name                  *string `pulumi:"name"`
+	Operator              *string `pulumi:"operator"`
+	PolicySetId           *string `pulumi:"policySetId"`
+	ZpnIsolationProfileId *string `pulumi:"zpnIsolationProfileId"`
 }
 
 // The set of arguments for constructing a PolicyAccessIsolationRule resource.
 type PolicyAccessIsolationRuleArgs struct {
 	// This is for providing the rule action.
 	Action pulumi.StringPtrInput
-	// This field defines the description of the server.
-	ActionId          pulumi.StringPtrInput
-	BypassDefaultRule pulumi.BoolPtrInput
 	// This is for proviidng the set of conditions for the policy.
 	Conditions PolicyAccessIsolationRuleConditionArrayInput
-	// This is for providing a customer message for the user.
-	CustomMsg pulumi.StringPtrInput
-	// This is for providing a customer message for the user.
-	DefaultRule pulumi.BoolPtrInput
 	// This is the description of the access policy.
-	Description    pulumi.StringPtrInput
-	LssDefaultRule pulumi.BoolPtrInput
-	MicrotenantId  pulumi.StringPtrInput
+	Description   pulumi.StringPtrInput
+	MicrotenantId pulumi.StringPtrInput
 	// This is the name of the policy.
-	Name              pulumi.StringPtrInput
-	Operator          pulumi.StringPtrInput
-	PolicySetId       pulumi.StringPtrInput
-	PolicyType        pulumi.StringPtrInput
-	Priority          pulumi.StringPtrInput
-	ReauthDefaultRule pulumi.BoolPtrInput
-	ReauthIdleTimeout pulumi.StringPtrInput
-	ReauthTimeout     pulumi.StringPtrInput
-	// Deprecated: The `ruleOrder` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`
-	RuleOrder              pulumi.StringPtrInput
-	ZpnCbiProfileId        pulumi.StringPtrInput
-	ZpnInspectionProfileId pulumi.StringPtrInput
-	ZpnIsolationProfileId  pulumi.StringPtrInput
+	Name                  pulumi.StringPtrInput
+	Operator              pulumi.StringPtrInput
+	PolicySetId           pulumi.StringPtrInput
+	ZpnIsolationProfileId pulumi.StringPtrInput
 }
 
 func (PolicyAccessIsolationRuleArgs) ElementType() reflect.Type {
@@ -386,28 +303,9 @@ func (o PolicyAccessIsolationRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.StringPtrOutput { return v.Action }).(pulumi.StringPtrOutput)
 }
 
-// This field defines the description of the server.
-func (o PolicyAccessIsolationRuleOutput) ActionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.StringPtrOutput { return v.ActionId }).(pulumi.StringPtrOutput)
-}
-
-func (o PolicyAccessIsolationRuleOutput) BypassDefaultRule() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.BoolPtrOutput { return v.BypassDefaultRule }).(pulumi.BoolPtrOutput)
-}
-
 // This is for proviidng the set of conditions for the policy.
 func (o PolicyAccessIsolationRuleOutput) Conditions() PolicyAccessIsolationRuleConditionArrayOutput {
 	return o.ApplyT(func(v *PolicyAccessIsolationRule) PolicyAccessIsolationRuleConditionArrayOutput { return v.Conditions }).(PolicyAccessIsolationRuleConditionArrayOutput)
-}
-
-// This is for providing a customer message for the user.
-func (o PolicyAccessIsolationRuleOutput) CustomMsg() pulumi.StringOutput {
-	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.StringOutput { return v.CustomMsg }).(pulumi.StringOutput)
-}
-
-// This is for providing a customer message for the user.
-func (o PolicyAccessIsolationRuleOutput) DefaultRule() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.BoolPtrOutput { return v.DefaultRule }).(pulumi.BoolPtrOutput)
 }
 
 // This is the description of the access policy.
@@ -415,12 +313,8 @@ func (o PolicyAccessIsolationRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o PolicyAccessIsolationRuleOutput) LssDefaultRule() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.BoolPtrOutput { return v.LssDefaultRule }).(pulumi.BoolPtrOutput)
-}
-
-func (o PolicyAccessIsolationRuleOutput) MicrotenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.StringOutput { return v.MicrotenantId }).(pulumi.StringOutput)
+func (o PolicyAccessIsolationRuleOutput) MicrotenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.StringPtrOutput { return v.MicrotenantId }).(pulumi.StringPtrOutput)
 }
 
 // This is the name of the policy.
@@ -428,49 +322,16 @@ func (o PolicyAccessIsolationRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o PolicyAccessIsolationRuleOutput) Operator() pulumi.StringOutput {
-	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.StringOutput { return v.Operator }).(pulumi.StringOutput)
+func (o PolicyAccessIsolationRuleOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.StringPtrOutput { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
 func (o PolicyAccessIsolationRuleOutput) PolicySetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.StringOutput { return v.PolicySetId }).(pulumi.StringOutput)
 }
 
-func (o PolicyAccessIsolationRuleOutput) PolicyType() pulumi.StringOutput {
-	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.StringOutput { return v.PolicyType }).(pulumi.StringOutput)
-}
-
-func (o PolicyAccessIsolationRuleOutput) Priority() pulumi.StringOutput {
-	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.StringOutput { return v.Priority }).(pulumi.StringOutput)
-}
-
-func (o PolicyAccessIsolationRuleOutput) ReauthDefaultRule() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.BoolPtrOutput { return v.ReauthDefaultRule }).(pulumi.BoolPtrOutput)
-}
-
-func (o PolicyAccessIsolationRuleOutput) ReauthIdleTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.StringPtrOutput { return v.ReauthIdleTimeout }).(pulumi.StringPtrOutput)
-}
-
-func (o PolicyAccessIsolationRuleOutput) ReauthTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.StringPtrOutput { return v.ReauthTimeout }).(pulumi.StringPtrOutput)
-}
-
-// Deprecated: The `ruleOrder` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`
-func (o PolicyAccessIsolationRuleOutput) RuleOrder() pulumi.StringOutput {
-	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.StringOutput { return v.RuleOrder }).(pulumi.StringOutput)
-}
-
-func (o PolicyAccessIsolationRuleOutput) ZpnCbiProfileId() pulumi.StringOutput {
-	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.StringOutput { return v.ZpnCbiProfileId }).(pulumi.StringOutput)
-}
-
-func (o PolicyAccessIsolationRuleOutput) ZpnInspectionProfileId() pulumi.StringOutput {
-	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.StringOutput { return v.ZpnInspectionProfileId }).(pulumi.StringOutput)
-}
-
-func (o PolicyAccessIsolationRuleOutput) ZpnIsolationProfileId() pulumi.StringOutput {
-	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.StringOutput { return v.ZpnIsolationProfileId }).(pulumi.StringOutput)
+func (o PolicyAccessIsolationRuleOutput) ZpnIsolationProfileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyAccessIsolationRule) pulumi.StringPtrOutput { return v.ZpnIsolationProfileId }).(pulumi.StringPtrOutput)
 }
 
 type PolicyAccessIsolationRuleArrayOutput struct{ *pulumi.OutputState }

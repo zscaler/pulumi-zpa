@@ -55,14 +55,14 @@ export class CloudBrowserIsolationBanner extends pulumi.CustomResource {
         return obj['__pulumiType'] === CloudBrowserIsolationBanner.__pulumiType;
     }
 
-    public readonly banner!: pulumi.Output<boolean>;
-    public readonly logo!: pulumi.Output<string>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly notificationText!: pulumi.Output<string | undefined>;
-    public readonly notificationTitle!: pulumi.Output<string | undefined>;
-    public readonly persist!: pulumi.Output<boolean>;
-    public readonly primaryColor!: pulumi.Output<string | undefined>;
-    public readonly textColor!: pulumi.Output<string | undefined>;
+    declare public readonly banner: pulumi.Output<boolean>;
+    declare public readonly logo: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly notificationText: pulumi.Output<string | undefined>;
+    declare public readonly notificationTitle: pulumi.Output<string | undefined>;
+    declare public readonly persist: pulumi.Output<boolean>;
+    declare public readonly primaryColor: pulumi.Output<string | undefined>;
+    declare public readonly textColor: pulumi.Output<string | undefined>;
 
     /**
      * Create a CloudBrowserIsolationBanner resource with the given unique name, arguments, and options.
@@ -77,24 +77,24 @@ export class CloudBrowserIsolationBanner extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudBrowserIsolationBannerState | undefined;
-            resourceInputs["banner"] = state ? state.banner : undefined;
-            resourceInputs["logo"] = state ? state.logo : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notificationText"] = state ? state.notificationText : undefined;
-            resourceInputs["notificationTitle"] = state ? state.notificationTitle : undefined;
-            resourceInputs["persist"] = state ? state.persist : undefined;
-            resourceInputs["primaryColor"] = state ? state.primaryColor : undefined;
-            resourceInputs["textColor"] = state ? state.textColor : undefined;
+            resourceInputs["banner"] = state?.banner;
+            resourceInputs["logo"] = state?.logo;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notificationText"] = state?.notificationText;
+            resourceInputs["notificationTitle"] = state?.notificationTitle;
+            resourceInputs["persist"] = state?.persist;
+            resourceInputs["primaryColor"] = state?.primaryColor;
+            resourceInputs["textColor"] = state?.textColor;
         } else {
             const args = argsOrState as CloudBrowserIsolationBannerArgs | undefined;
-            resourceInputs["banner"] = args ? args.banner : undefined;
-            resourceInputs["logo"] = args ? args.logo : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notificationText"] = args ? args.notificationText : undefined;
-            resourceInputs["notificationTitle"] = args ? args.notificationTitle : undefined;
-            resourceInputs["persist"] = args ? args.persist : undefined;
-            resourceInputs["primaryColor"] = args ? args.primaryColor : undefined;
-            resourceInputs["textColor"] = args ? args.textColor : undefined;
+            resourceInputs["banner"] = args?.banner;
+            resourceInputs["logo"] = args?.logo;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notificationText"] = args?.notificationText;
+            resourceInputs["notificationTitle"] = args?.notificationTitle;
+            resourceInputs["persist"] = args?.persist;
+            resourceInputs["primaryColor"] = args?.primaryColor;
+            resourceInputs["textColor"] = args?.textColor;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CloudBrowserIsolationBanner.__pulumiType, name, resourceInputs, opts);

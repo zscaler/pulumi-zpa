@@ -16,7 +16,312 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// The **zpa_policy_credential_rule** resource creates a policy credential rule in the Zscaler Private Access cloud.
     /// 
-    ///   ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+    ///   ⚠️ **WARNING:**: The attribute ``RuleOrder`` is now deprecated in favor of the new resource  ``PolicyAccessRuleReorder``
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Std = Pulumi.Std;
+    /// using Zpa = Pulumi.Zpa;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var thisSegmentGroup = new Zpa.SegmentGroup("this", new()
+    ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         Enabled = true,
+    ///     });
+    /// 
+    ///     var thisApplicationSegmentPRA = new Zpa.ApplicationSegmentPRA("this", new()
+    ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         Enabled = true,
+    ///         HealthReporting = "ON_ACCESS",
+    ///         BypassType = "NEVER",
+    ///         IsCnameEnabled = true,
+    ///         TcpPortRanges = new[]
+    ///         {
+    ///             "22",
+    ///             "22",
+    ///             "3389",
+    ///             "3389",
+    ///         },
+    ///         DomainNames = new[]
+    ///         {
+    ///             "ssh_pra.example.com",
+    ///             "rdp_pra.example.com",
+    ///         },
+    ///         SegmentGroupId = thisSegmentGroup.Id,
+    ///         CommonAppsDtos = new[]
+    ///         {
+    ///             new Zpa.Inputs.ApplicationSegmentPRACommonAppsDtoArgs
+    ///             {
+    ///                 AppsConfigs = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.ApplicationSegmentPRACommonAppsDtoAppsConfigArgs
+    ///                     {
+    ///                         Name = "rdp_pra",
+    ///                         Domain = "rdp_pra.example.com",
+    ///                         ApplicationProtocol = "RDP",
+    ///                         ConnectionSecurity = "ANY",
+    ///                         ApplicationPort = "3389",
+    ///                         Enabled = true,
+    ///                         AppTypes = new[]
+    ///                         {
+    ///                             "SECURE_REMOTE_ACCESS",
+    ///                         },
+    ///                     },
+    ///                     new Zpa.Inputs.ApplicationSegmentPRACommonAppsDtoAppsConfigArgs
+    ///                     {
+    ///                         Name = "ssh_pra",
+    ///                         Domain = "ssh_pra.example.com",
+    ///                         ApplicationProtocol = "SSH",
+    ///                         ApplicationPort = "22",
+    ///                         Enabled = true,
+    ///                         AppTypes = new[]
+    ///                         {
+    ///                             "SECURE_REMOTE_ACCESS",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var this1 = Zpa.GetBaCertificate.Invoke(new()
+    ///     {
+    ///         Name = "pra01.example.com",
+    ///     });
+    /// 
+    ///     var thisPRAPortal = new Zpa.PRAPortal("this", new()
+    ///     {
+    ///         Name = "pra01.example.com",
+    ///         Description = "pra01.example.com",
+    ///         Enabled = true,
+    ///         Domain = "pra01.example.com",
+    ///         CertificateId = thisZpaBaCertificate.Id,
+    ///         UserNotification = "Created with Terraform",
+    ///         UserNotificationEnabled = true,
+    ///     });
+    /// 
+    ///     var praApplicationIds = Std.Flatten.Invoke(new()
+    ///     {
+    ///         Input = thisApplicationSegmentPRA.CommonAppsDtos.Apply(commonAppsDtos =&gt; commonAppsDtos.Select(commonApps =&gt; 
+    ///         {
+    ///             return commonApps.AppsConfig;
+    ///         }).ToList()),
+    ///     }).Apply(invoke =&gt; .ToDictionary(item =&gt; {
+    ///         var appDto = item.Value;
+    ///         return appDto.Name;
+    ///     }, item =&gt; {
+    ///         var appDto = item.Value;
+    ///         return appDto.Id;
+    ///     }));
+    /// 
+    ///     var praApplicationIdSshPra = Std.Lookup.Invoke(new()
+    ///     {
+    ///         Map = praApplicationIds,
+    ///         Key = "ssh_pra",
+    ///         Default = "",
+    ///     }).Apply(invoke =&gt; invoke.Result);
+    /// 
+    ///     var praApplicationIdRdpPra = Std.Lookup.Invoke(new()
+    ///     {
+    ///         Map = praApplicationIds,
+    ///         Key = "rdp_pra",
+    ///         Default = "",
+    ///     }).Apply(invoke =&gt; invoke.Result);
+    /// 
+    ///     var sshPra = new Zpa.PRAConsole("ssh_pra", new()
+    ///     {
+    ///         Name = "ssh_console",
+    ///         Description = "Created with Terraform",
+    ///         Enabled = true,
+    ///         PraApplications = new[]
+    ///         {
+    ///             new Zpa.Inputs.PRAConsolePraApplicationArgs
+    ///             {
+    ///                 Id = praApplicationIdSshPra,
+    ///             },
+    ///         },
+    ///         PraPortals = new[]
+    ///         {
+    ///             new Zpa.Inputs.PRAConsolePraPortalArgs
+    ///             {
+    ///                 Ids = new[]
+    ///                 {
+    ///                     this1ZpaPraPortalController.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             thisApplicationSegmentPRA,
+    ///         },
+    ///     });
+    /// 
+    ///     var rdpPra = new Zpa.PRAConsole("rdp_pra", new()
+    ///     {
+    ///         Name = "rdp_console",
+    ///         Description = "Created with Terraform",
+    ///         Enabled = true,
+    ///         PraApplications = new[]
+    ///         {
+    ///             new Zpa.Inputs.PRAConsolePraApplicationArgs
+    ///             {
+    ///                 Id = praApplicationIdRdpPra,
+    ///             },
+    ///         },
+    ///         PraPortals = new[]
+    ///         {
+    ///             new Zpa.Inputs.PRAConsolePraPortalArgs
+    ///             {
+    ///                 Ids = new[]
+    ///                 {
+    ///                     this1ZpaPraPortalController.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             thisApplicationSegmentPRA,
+    ///         },
+    ///     });
+    /// 
+    ///     var thisPRACredential = new Zpa.PRACredential("this", new()
+    ///     {
+    ///         Name = "John Carrow",
+    ///         Description = "Created with Terraform",
+    ///         CredentialType = "USERNAME_PASSWORD",
+    ///         UserDomain = "acme.com",
+    ///         Username = "jcarrow",
+    ///         Password = "",
+    ///     });
+    /// 
+    ///     var @this = Zpa.GetIdPController.Invoke(new()
+    ///     {
+    ///         Name = "Idp_Users",
+    ///     });
+    /// 
+    ///     var emailUserSso = Zpa.GetSAMLAttribute.Invoke(new()
+    ///     {
+    ///         Name = "Email_Idp_Users",
+    ///         IdpName = "Idp_Users",
+    ///     });
+    /// 
+    ///     var groupUser = Zpa.GetSAMLAttribute.Invoke(new()
+    ///     {
+    ///         Name = "GroupName_Idp_Users",
+    ///         IdpName = "Idp_Users",
+    ///     });
+    /// 
+    ///     var a000 = Zpa.GetSCIMGroups.Invoke(new()
+    ///     {
+    ///         Name = "A000",
+    ///         IdpName = "Idp_Users",
+    ///     });
+    /// 
+    ///     var b000 = Zpa.GetSCIMGroups.Invoke(new()
+    ///     {
+    ///         Name = "B000",
+    ///         IdpName = "Idp_Users",
+    ///     });
+    /// 
+    ///     var thisPolicyAccessCredentialRule = new Zpa.PolicyAccessCredentialRule("this", new()
+    ///     {
+    ///         Name = "Example_Credential_Rule",
+    ///         Description = "Example_Credential_Rule",
+    ///         Action = "INJECT_CREDENTIALS",
+    ///         Credentials = new[]
+    ///         {
+    ///             new Zpa.Inputs.PolicyAccessCredentialRuleCredentialArgs
+    ///             {
+    ///                 Id = thisPRACredential.Id,
+    ///             },
+    ///         },
+    ///         Conditions = new[]
+    ///         {
+    ///             new Zpa.Inputs.PolicyAccessCredentialRuleConditionArgs
+    ///             {
+    ///                 Operator = "OR",
+    ///                 Operands = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.PolicyAccessCredentialRuleConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "CONSOLE",
+    ///                         Values = new[]
+    ///                         {
+    ///                             rdpPra.Id,
+    ///                             sshPra.Id,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Zpa.Inputs.PolicyAccessCredentialRuleConditionArgs
+    ///             {
+    ///                 Operator = "OR",
+    ///                 Operands = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.PolicyAccessCredentialRuleConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "SAML",
+    ///                         EntryValues = new[]
+    ///                         {
+    ///                             new Zpa.Inputs.PolicyAccessCredentialRuleConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Rhs = "user1@acme.com",
+    ///                                 Lhs = emailUserSso.Apply(getSAMLAttributeResult =&gt; getSAMLAttributeResult.Id),
+    ///                             },
+    ///                             new Zpa.Inputs.PolicyAccessCredentialRuleConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Rhs = "A000",
+    ///                                 Lhs = groupUser.Apply(getSAMLAttributeResult =&gt; getSAMLAttributeResult.Id),
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Zpa.Inputs.PolicyAccessCredentialRuleConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "SCIM_GROUP",
+    ///                         EntryValues = new[]
+    ///                         {
+    ///                             new Zpa.Inputs.PolicyAccessCredentialRuleConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Rhs = a000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
+    ///                                 Lhs = @this.Apply(@this =&gt; @this.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id)),
+    ///                             },
+    ///                             new Zpa.Inputs.PolicyAccessCredentialRuleConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Rhs = b000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
+    ///                                 Lhs = @this.Apply(@this =&gt; @this.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id)),
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## LHS and RHS Values
+    /// 
+    /// | Object Type | LHS| RHS| VALUES
+    /// |----------|-----------|----------|----------
+    /// | CONSOLE |   |  | ``PraConsoleId``
+    /// | SAML | ``SamlAttributeId``  | ``AttributeValueToMatch`` |
+    /// | SCIM | ``ScimAttributeId``  | ``AttributeValueToMatch``  |
+    /// | SCIM_GROUP | ``ScimGroupAttributeId``  | ``AttributeValueToMatch``  |
     /// 
     /// ## Import
     /// 

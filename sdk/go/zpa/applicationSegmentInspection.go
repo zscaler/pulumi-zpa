@@ -38,6 +38,7 @@ import (
 //				return err
 //			}
 //			_, err = zpa.NewApplicationSegmentInspection(ctx, "this", &zpa.ApplicationSegmentInspectionArgs{
+//				Name:            pulumi.String("ZPA_Inspection_Example"),
 //				Description:     pulumi.String("ZPA_Inspection_Example"),
 //				Enabled:         pulumi.Bool(true),
 //				HealthReporting: pulumi.String("ON_ACCESS"),
@@ -50,11 +51,11 @@ import (
 //				DomainNames: pulumi.StringArray{
 //					pulumi.String("jenkins.example.com"),
 //				},
-//				SegmentGroupId: pulumi.Any(zpa_segment_group.This.Id),
+//				SegmentGroupId: pulumi.Any(thisZpaSegmentGroup.Id),
 //				ServerGroups: zpa.ApplicationSegmentInspectionServerGroupArray{
 //					&zpa.ApplicationSegmentInspectionServerGroupArgs{
 //						Ids: pulumi.StringArray{
-//							zpa_server_group.This.Id,
+//							thisZpaServerGroup.Id,
 //						},
 //					},
 //				},
@@ -62,12 +63,10 @@ import (
 //					&zpa.ApplicationSegmentInspectionCommonAppsDtoArgs{
 //						AppsConfigs: zpa.ApplicationSegmentInspectionCommonAppsDtoAppsConfigArray{
 //							&zpa.ApplicationSegmentInspectionCommonAppsDtoAppsConfigArgs{
-//								Name:                pulumi.String("jenkins.example.com"),
 //								Domain:              pulumi.String("jenkins.example.com"),
 //								ApplicationProtocol: pulumi.String("HTTPS"),
 //								ApplicationPort:     pulumi.String("443"),
 //								CertificateId:       pulumi.String(jenkins.Id),
-//								Enabled:             pulumi.Bool(true),
 //								AppTypes: pulumi.StringArray{
 //									pulumi.String("INSPECT"),
 //								},
@@ -105,15 +104,12 @@ import (
 type ApplicationSegmentInspection struct {
 	pulumi.CustomResourceState
 
-	// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's
-	// traffic to be inspected by Active Directory (AD) Protection.
+	// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's traffic to be inspected by Active Directory (AD) Protection.
 	AdpEnabled pulumi.BoolOutput `pulumi:"adpEnabled"`
-	// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by
-	// AppProtection.
+	// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by AppProtection.
 	AutoAppProtectEnabled pulumi.BoolOutput `pulumi:"autoAppProtectEnabled"`
 	BypassOnReauth        pulumi.BoolOutput `pulumi:"bypassOnReauth"`
-	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-	// The value NEVER indicates the use of the client forwarding policy.
+	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
 	BypassType     pulumi.StringOutput                                  `pulumi:"bypassType"`
 	CommonAppsDtos ApplicationSegmentInspectionCommonAppsDtoArrayOutput `pulumi:"commonAppsDtos"`
 	ConfigSpace    pulumi.StringPtrOutput                               `pulumi:"configSpace"`
@@ -122,16 +118,15 @@ type ApplicationSegmentInspection struct {
 	// List of domains and IPs.
 	DomainNames pulumi.StringArrayOutput `pulumi:"domainNames"`
 	// Whether Double Encryption is enabled or disabled for the app.
-	DoubleEncrypt   pulumi.BoolOutput      `pulumi:"doubleEncrypt"`
-	Enabled         pulumi.BoolOutput      `pulumi:"enabled"`
-	FqdnDnsCheck    pulumi.BoolPtrOutput   `pulumi:"fqdnDnsCheck"`
-	HealthCheckType pulumi.StringPtrOutput `pulumi:"healthCheckType"`
+	DoubleEncrypt   pulumi.BoolOutput    `pulumi:"doubleEncrypt"`
+	Enabled         pulumi.BoolOutput    `pulumi:"enabled"`
+	FqdnDnsCheck    pulumi.BoolPtrOutput `pulumi:"fqdnDnsCheck"`
+	HealthCheckType pulumi.StringOutput  `pulumi:"healthCheckType"`
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting pulumi.StringPtrOutput `pulumi:"healthReporting"`
 	IcmpAccessType  pulumi.StringOutput    `pulumi:"icmpAccessType"`
 	IpAnchored      pulumi.BoolPtrOutput   `pulumi:"ipAnchored"`
-	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-	// connectors.
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
 	IsCnameEnabled       pulumi.BoolOutput    `pulumi:"isCnameEnabled"`
 	IsIncompleteDrConfig pulumi.BoolPtrOutput `pulumi:"isIncompleteDrConfig"`
 	// Name of the application.
@@ -163,6 +158,9 @@ func NewApplicationSegmentInspection(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DomainNames == nil {
+		return nil, errors.New("invalid value for required argument 'DomainNames'")
+	}
 	if args.SegmentGroupId == nil {
 		return nil, errors.New("invalid value for required argument 'SegmentGroupId'")
 	}
@@ -189,15 +187,12 @@ func GetApplicationSegmentInspection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApplicationSegmentInspection resources.
 type applicationSegmentInspectionState struct {
-	// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's
-	// traffic to be inspected by Active Directory (AD) Protection.
+	// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's traffic to be inspected by Active Directory (AD) Protection.
 	AdpEnabled *bool `pulumi:"adpEnabled"`
-	// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by
-	// AppProtection.
+	// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by AppProtection.
 	AutoAppProtectEnabled *bool `pulumi:"autoAppProtectEnabled"`
 	BypassOnReauth        *bool `pulumi:"bypassOnReauth"`
-	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-	// The value NEVER indicates the use of the client forwarding policy.
+	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
 	BypassType     *string                                     `pulumi:"bypassType"`
 	CommonAppsDtos []ApplicationSegmentInspectionCommonAppsDto `pulumi:"commonAppsDtos"`
 	ConfigSpace    *string                                     `pulumi:"configSpace"`
@@ -214,8 +209,7 @@ type applicationSegmentInspectionState struct {
 	HealthReporting *string `pulumi:"healthReporting"`
 	IcmpAccessType  *string `pulumi:"icmpAccessType"`
 	IpAnchored      *bool   `pulumi:"ipAnchored"`
-	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-	// connectors.
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
 	IsCnameEnabled       *bool `pulumi:"isCnameEnabled"`
 	IsIncompleteDrConfig *bool `pulumi:"isIncompleteDrConfig"`
 	// Name of the application.
@@ -241,15 +235,12 @@ type applicationSegmentInspectionState struct {
 }
 
 type ApplicationSegmentInspectionState struct {
-	// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's
-	// traffic to be inspected by Active Directory (AD) Protection.
+	// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's traffic to be inspected by Active Directory (AD) Protection.
 	AdpEnabled pulumi.BoolPtrInput
-	// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by
-	// AppProtection.
+	// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by AppProtection.
 	AutoAppProtectEnabled pulumi.BoolPtrInput
 	BypassOnReauth        pulumi.BoolPtrInput
-	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-	// The value NEVER indicates the use of the client forwarding policy.
+	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
 	BypassType     pulumi.StringPtrInput
 	CommonAppsDtos ApplicationSegmentInspectionCommonAppsDtoArrayInput
 	ConfigSpace    pulumi.StringPtrInput
@@ -266,8 +257,7 @@ type ApplicationSegmentInspectionState struct {
 	HealthReporting pulumi.StringPtrInput
 	IcmpAccessType  pulumi.StringPtrInput
 	IpAnchored      pulumi.BoolPtrInput
-	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-	// connectors.
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
 	IsCnameEnabled       pulumi.BoolPtrInput
 	IsIncompleteDrConfig pulumi.BoolPtrInput
 	// Name of the application.
@@ -297,15 +287,12 @@ func (ApplicationSegmentInspectionState) ElementType() reflect.Type {
 }
 
 type applicationSegmentInspectionArgs struct {
-	// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's
-	// traffic to be inspected by Active Directory (AD) Protection.
+	// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's traffic to be inspected by Active Directory (AD) Protection.
 	AdpEnabled *bool `pulumi:"adpEnabled"`
-	// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by
-	// AppProtection.
+	// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by AppProtection.
 	AutoAppProtectEnabled *bool `pulumi:"autoAppProtectEnabled"`
 	BypassOnReauth        *bool `pulumi:"bypassOnReauth"`
-	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-	// The value NEVER indicates the use of the client forwarding policy.
+	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
 	BypassType     *string                                     `pulumi:"bypassType"`
 	CommonAppsDtos []ApplicationSegmentInspectionCommonAppsDto `pulumi:"commonAppsDtos"`
 	ConfigSpace    *string                                     `pulumi:"configSpace"`
@@ -322,8 +309,7 @@ type applicationSegmentInspectionArgs struct {
 	HealthReporting *string `pulumi:"healthReporting"`
 	IcmpAccessType  *string `pulumi:"icmpAccessType"`
 	IpAnchored      *bool   `pulumi:"ipAnchored"`
-	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-	// connectors.
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
 	IsCnameEnabled       *bool `pulumi:"isCnameEnabled"`
 	IsIncompleteDrConfig *bool `pulumi:"isIncompleteDrConfig"`
 	// Name of the application.
@@ -350,15 +336,12 @@ type applicationSegmentInspectionArgs struct {
 
 // The set of arguments for constructing a ApplicationSegmentInspection resource.
 type ApplicationSegmentInspectionArgs struct {
-	// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's
-	// traffic to be inspected by Active Directory (AD) Protection.
+	// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's traffic to be inspected by Active Directory (AD) Protection.
 	AdpEnabled pulumi.BoolPtrInput
-	// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by
-	// AppProtection.
+	// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by AppProtection.
 	AutoAppProtectEnabled pulumi.BoolPtrInput
 	BypassOnReauth        pulumi.BoolPtrInput
-	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-	// The value NEVER indicates the use of the client forwarding policy.
+	// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
 	BypassType     pulumi.StringPtrInput
 	CommonAppsDtos ApplicationSegmentInspectionCommonAppsDtoArrayInput
 	ConfigSpace    pulumi.StringPtrInput
@@ -375,8 +358,7 @@ type ApplicationSegmentInspectionArgs struct {
 	HealthReporting pulumi.StringPtrInput
 	IcmpAccessType  pulumi.StringPtrInput
 	IpAnchored      pulumi.BoolPtrInput
-	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-	// connectors.
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
 	IsCnameEnabled       pulumi.BoolPtrInput
 	IsIncompleteDrConfig pulumi.BoolPtrInput
 	// Name of the application.
@@ -488,14 +470,12 @@ func (o ApplicationSegmentInspectionOutput) ToApplicationSegmentInspectionOutput
 	return o
 }
 
-// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's
-// traffic to be inspected by Active Directory (AD) Protection.
+// Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's traffic to be inspected by Active Directory (AD) Protection.
 func (o ApplicationSegmentInspectionOutput) AdpEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.BoolOutput { return v.AdpEnabled }).(pulumi.BoolOutput)
 }
 
-// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by
-// AppProtection.
+// If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by AppProtection.
 func (o ApplicationSegmentInspectionOutput) AutoAppProtectEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.BoolOutput { return v.AutoAppProtectEnabled }).(pulumi.BoolOutput)
 }
@@ -504,8 +484,7 @@ func (o ApplicationSegmentInspectionOutput) BypassOnReauth() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.BoolOutput { return v.BypassOnReauth }).(pulumi.BoolOutput)
 }
 
-// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-// The value NEVER indicates the use of the client forwarding policy.
+// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
 func (o ApplicationSegmentInspectionOutput) BypassType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.StringOutput { return v.BypassType }).(pulumi.StringOutput)
 }
@@ -543,8 +522,8 @@ func (o ApplicationSegmentInspectionOutput) FqdnDnsCheck() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.BoolPtrOutput { return v.FqdnDnsCheck }).(pulumi.BoolPtrOutput)
 }
 
-func (o ApplicationSegmentInspectionOutput) HealthCheckType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.StringPtrOutput { return v.HealthCheckType }).(pulumi.StringPtrOutput)
+func (o ApplicationSegmentInspectionOutput) HealthCheckType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.StringOutput { return v.HealthCheckType }).(pulumi.StringOutput)
 }
 
 // Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
@@ -560,8 +539,7 @@ func (o ApplicationSegmentInspectionOutput) IpAnchored() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.BoolPtrOutput { return v.IpAnchored }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-// connectors.
+// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
 func (o ApplicationSegmentInspectionOutput) IsCnameEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.BoolOutput { return v.IsCnameEnabled }).(pulumi.BoolOutput)
 }

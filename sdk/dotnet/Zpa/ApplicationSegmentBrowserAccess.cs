@@ -23,26 +23,29 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // Retrieve Browser Access Certificate
     ///     var testCert = Zpa.GetBaCertificate.Invoke(new()
     ///     {
     ///         Name = "sales.acme.com",
     ///     });
     /// 
     ///     // ZPA Segment Group resource
-    ///     var exampleSegmentGroup = new Zpa.SegmentGroup("exampleSegmentGroup", new()
+    ///     var exampleSegmentGroup = new Zpa.SegmentGroup("example", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///     });
     /// 
-    ///     var exampleAppConnectorGroup = Zpa.GetAppConnectorGroup.Invoke(new()
+    ///     var example = Zpa.GetAppConnectorGroup.Invoke(new()
     ///     {
     ///         Name = "AWS-Connector",
     ///     });
     /// 
     ///     // ZPA Server Group resource
-    ///     var exampleServerGroup = new Zpa.ServerGroup("exampleServerGroup", new()
+    ///     var exampleServerGroup = new Zpa.ServerGroup("example", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///         DynamicDiscovery = true,
@@ -52,15 +55,16 @@ namespace zscaler.PulumiPackage.Zpa
     ///             {
     ///                 Ids = new[]
     ///                 {
-    ///                     exampleAppConnectorGroup.Apply(getAppConnectorGroupResult =&gt; getAppConnectorGroupResult.Id),
+    ///                     example.Apply(getAppConnectorGroupResult =&gt; getAppConnectorGroupResult.Id),
     ///                 },
     ///             },
     ///         },
     ///     });
     /// 
     ///     // Create Browser Access Application
-    ///     var browserAccessApps = new Zpa.ApplicationSegmentBrowserAccess("browserAccessApps", new()
+    ///     var browserAccessApps = new Zpa.ApplicationSegmentBrowserAccess("browser_access_apps", new()
     ///     {
+    ///         Name = "Browser Access Apps",
     ///         Description = "Browser Access Apps",
     ///         Enabled = true,
     ///         HealthReporting = "ON_ACCESS",
@@ -128,8 +132,7 @@ namespace zscaler.PulumiPackage.Zpa
     public partial class ApplicationSegmentBrowserAccess : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-        /// The value NEVER indicates the use of the client forwarding policy.
+        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
         /// </summary>
         [Output("bypassType")]
         public Output<string?> BypassType { get; private set; } = null!;
@@ -165,7 +168,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<bool?> FqdnDnsCheck { get; private set; } = null!;
 
         [Output("healthCheckType")]
-        public Output<string?> HealthCheckType { get; private set; } = null!;
+        public Output<string> HealthCheckType { get; private set; } = null!;
 
         /// <summary>
         /// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
@@ -180,8 +183,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<bool?> IpAnchored { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-        /// connectors.
+        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
         /// </summary>
         [Output("isCnameEnabled")]
         public Output<bool?> IsCnameEnabled { get; private set; } = null!;
@@ -243,6 +245,9 @@ namespace zscaler.PulumiPackage.Zpa
         [Output("useInDrMode")]
         public Output<bool?> UseInDrMode { get; private set; } = null!;
 
+        [Output("zpnErIds")]
+        public Output<ImmutableArray<Outputs.ApplicationSegmentBrowserAccessZpnErId>> ZpnErIds { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ApplicationSegmentBrowserAccess resource with the given unique name, arguments, and options.
@@ -291,8 +296,7 @@ namespace zscaler.PulumiPackage.Zpa
     public sealed class ApplicationSegmentBrowserAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-        /// The value NEVER indicates the use of the client forwarding policy.
+        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
         /// </summary>
         [Input("bypassType")]
         public Input<string>? BypassType { get; set; }
@@ -354,8 +358,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? IpAnchored { get; set; }
 
         /// <summary>
-        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-        /// connectors.
+        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
         /// </summary>
         [Input("isCnameEnabled")]
         public Input<bool>? IsCnameEnabled { get; set; }
@@ -446,6 +449,14 @@ namespace zscaler.PulumiPackage.Zpa
         [Input("useInDrMode")]
         public Input<bool>? UseInDrMode { get; set; }
 
+        [Input("zpnErIds")]
+        private InputList<Inputs.ApplicationSegmentBrowserAccessZpnErIdArgs>? _zpnErIds;
+        public InputList<Inputs.ApplicationSegmentBrowserAccessZpnErIdArgs> ZpnErIds
+        {
+            get => _zpnErIds ?? (_zpnErIds = new InputList<Inputs.ApplicationSegmentBrowserAccessZpnErIdArgs>());
+            set => _zpnErIds = value;
+        }
+
         public ApplicationSegmentBrowserAccessArgs()
         {
         }
@@ -455,8 +466,7 @@ namespace zscaler.PulumiPackage.Zpa
     public sealed class ApplicationSegmentBrowserAccessState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-        /// The value NEVER indicates the use of the client forwarding policy.
+        /// Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
         /// </summary>
         [Input("bypassType")]
         public Input<string>? BypassType { get; set; }
@@ -518,8 +528,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? IpAnchored { get; set; }
 
         /// <summary>
-        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-        /// connectors.
+        /// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
         /// </summary>
         [Input("isCnameEnabled")]
         public Input<bool>? IsCnameEnabled { get; set; }
@@ -609,6 +618,14 @@ namespace zscaler.PulumiPackage.Zpa
 
         [Input("useInDrMode")]
         public Input<bool>? UseInDrMode { get; set; }
+
+        [Input("zpnErIds")]
+        private InputList<Inputs.ApplicationSegmentBrowserAccessZpnErIdGetArgs>? _zpnErIds;
+        public InputList<Inputs.ApplicationSegmentBrowserAccessZpnErIdGetArgs> ZpnErIds
+        {
+            get => _zpnErIds ?? (_zpnErIds = new InputList<Inputs.ApplicationSegmentBrowserAccessZpnErIdGetArgs>());
+            set => _zpnErIds = value;
+        }
 
         public ApplicationSegmentBrowserAccessState()
         {

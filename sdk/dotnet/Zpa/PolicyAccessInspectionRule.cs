@@ -16,7 +16,7 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// The **zpa_policy_inspection_rule** resource creates a policy inspection access rule in the Zscaler Private Access cloud.
     /// 
-    ///   ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource ``zpa.PolicyAccessReorderRule`` policy_access_rule_reorder
+    ///   ⚠️ **WARNING:**: The attribute ``RuleOrder`` is now deprecated in favor of the new resource ``zpa.PolicyAccessReorderRule`` PolicyAccessRuleReorder
     /// 
     /// ## Example Usage
     /// 
@@ -33,11 +33,12 @@ namespace zscaler.PulumiPackage.Zpa
     ///     //Create Inspection Access Rule
     ///     var @this = new Zpa.PolicyAccessInspectionRule("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Action = "INSPECT",
     ///         Operator = "AND",
-    ///         PolicySetId = data.Zpa_policy_type.Inspection_policy.Id,
-    ///         ZpnInspectionProfileId = zpa_inspection_profile.This.Id,
+    ///         PolicySetId = inspectionPolicy.Id,
+    ///         ZpnInspectionProfileId = thisZpaInspectionProfile.Id,
     ///         Conditions = new[]
     ///         {
     ///             new Zpa.Inputs.PolicyAccessInspectionRuleConditionArgs
@@ -49,7 +50,7 @@ namespace zscaler.PulumiPackage.Zpa
     ///                     {
     ///                         ObjectType = "APP",
     ///                         Lhs = "id",
-    ///                         Rhs = zpa_application_segment_inspection.This.Id,
+    ///                         Rhs = thisZpaApplicationSegmentInspection.Id,
     ///                     },
     ///                 },
     ///             },
@@ -70,6 +71,7 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // Retrieve Inspection policy type
     ///     var inspectionPolicy = Zpa.GetPolicyType.Invoke(new()
     ///     {
     ///         PolicyType = "INSPECTION_POLICY",
@@ -78,9 +80,10 @@ namespace zscaler.PulumiPackage.Zpa
     ///     //Create Inspection Access Rule
     ///     var @this = new Zpa.PolicyAccessInspectionRule("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Action = "BYPASS_INSPECT",
-    ///         RuleOrder = "1",
+    ///         RuleOrder = 1,
     ///         Operator = "AND",
     ///         PolicySetId = inspectionPolicy.Apply(getPolicyTypeResult =&gt; getPolicyTypeResult.Id),
     ///         Conditions = new[]
@@ -94,7 +97,7 @@ namespace zscaler.PulumiPackage.Zpa
     ///                     {
     ///                         ObjectType = "APP",
     ///                         Lhs = "id",
-    ///                         Rhs = zpa_application_segment_inspection.This.Id,
+    ///                         Rhs = thisZpaApplicationSegmentInspection.Id,
     ///                     },
     ///                 },
     ///             },
@@ -108,18 +111,18 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// | Object Type | LHS| RHS
     /// |----------|-----------|----------
-    /// | APP | ``"id"`` | ``application_segment_id`` |
-    /// | APP_GROUP | ``"id"`` | ``segment_group_id``|
-    /// | CLIENT_TYPE | ``"id"`` | ``zpn_client_type_zappl``, ``zpn_client_type_exporter``, ``zpn_client_type_browser_isolation``, ``zpn_client_type_ip_anchoring``, ``zpn_client_type_edge_connector``, ``zpn_client_type_branch_connector``,  ``zpn_client_type_zapp_partner``, ``zpn_client_type_zapp``  |
-    /// | EDGE_CONNECTOR_GROUP | ``"id"`` | ``edge_connector_id`` |
-    /// | IDP | ``"id"`` | ``identity_provider_id`` |
-    /// | SAML | ``saml_attribute_id``  | ``attribute_value_to_match`` |
-    /// | SCIM | ``scim_attribute_id``  | ``attribute_value_to_match``  |
-    /// | SCIM_GROUP | ``scim_group_attribute_id``  | ``attribute_value_to_match``  |
-    /// | PLATFORM | ``mac``, ``ios``, ``windows``, ``android``, ``linux`` | ``"true"`` / ``"false"`` |
-    /// | MACHINE_GRP | ``"id"`` | ``machine_group_id`` |
-    /// | POSTURE | ``posture_udid``  | ``"true"`` / ``"false"`` |
-    /// | TRUSTED_NETWORK | ``network_id``  | ``"true"`` |
+    /// | APP | ``"id"`` | ``ApplicationSegmentId`` |
+    /// | APP_GROUP | ``"id"`` | ``SegmentGroupId``|
+    /// | CLIENT_TYPE | ``"id"`` | ``ZpnClientTypeZappl``, ``ZpnClientTypeExporter``, ``ZpnClientTypeBrowserIsolation``, ``ZpnClientTypeIpAnchoring``, ``ZpnClientTypeEdgeConnector``, ``ZpnClientTypeBranchConnector``,  ``ZpnClientTypeZappPartner``, ``ZpnClientTypeZapp``  |
+    /// | EDGE_CONNECTOR_GROUP | ``"id"`` | ``EdgeConnectorId`` |
+    /// | IDP | ``"id"`` | ``IdentityProviderId`` |
+    /// | SAML | ``SamlAttributeId``  | ``AttributeValueToMatch`` |
+    /// | SCIM | ``ScimAttributeId``  | ``AttributeValueToMatch``  |
+    /// | SCIM_GROUP | ``ScimGroupAttributeId``  | ``AttributeValueToMatch``  |
+    /// | PLATFORM | ``Mac``, ``Ios``, ``Windows``, ``Android``, ``Linux`` | ``"true"`` / ``"false"`` |
+    /// | MACHINE_GRP | ``"id"`` | ``MachineGroupId`` |
+    /// | POSTURE | ``PostureUdid``  | ``"true"`` / ``"false"`` |
+    /// | TRUSTED_NETWORK | ``NetworkId``  | ``"true"`` |
     /// 
     /// ## Import
     /// 
@@ -145,31 +148,10 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<string?> Action { get; private set; } = null!;
 
         /// <summary>
-        /// This field defines the description of the server.
-        /// </summary>
-        [Output("actionId")]
-        public Output<string?> ActionId { get; private set; } = null!;
-
-        [Output("bypassDefaultRule")]
-        public Output<bool?> BypassDefaultRule { get; private set; } = null!;
-
-        /// <summary>
         /// This is for proviidng the set of conditions for the policy.
         /// </summary>
         [Output("conditions")]
         public Output<ImmutableArray<Outputs.PolicyAccessInspectionRuleCondition>> Conditions { get; private set; } = null!;
-
-        /// <summary>
-        /// This is for providing a customer message for the user.
-        /// </summary>
-        [Output("customMsg")]
-        public Output<string> CustomMsg { get; private set; } = null!;
-
-        /// <summary>
-        /// This is for providing a customer message for the user.
-        /// </summary>
-        [Output("defaultRule")]
-        public Output<bool?> DefaultRule { get; private set; } = null!;
 
         /// <summary>
         /// This is the description of the access policy.
@@ -177,11 +159,8 @@ namespace zscaler.PulumiPackage.Zpa
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        [Output("lssDefaultRule")]
-        public Output<bool?> LssDefaultRule { get; private set; } = null!;
-
         [Output("microtenantId")]
-        public Output<string> MicrotenantId { get; private set; } = null!;
+        public Output<string?> MicrotenantId { get; private set; } = null!;
 
         /// <summary>
         /// This is the name of the policy.
@@ -190,37 +169,13 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<string> Name { get; private set; } = null!;
 
         [Output("operator")]
-        public Output<string> Operator { get; private set; } = null!;
+        public Output<string?> Operator { get; private set; } = null!;
 
         [Output("policySetId")]
         public Output<string> PolicySetId { get; private set; } = null!;
 
-        [Output("policyType")]
-        public Output<string> PolicyType { get; private set; } = null!;
-
-        [Output("priority")]
-        public Output<string> Priority { get; private set; } = null!;
-
-        [Output("reauthDefaultRule")]
-        public Output<bool?> ReauthDefaultRule { get; private set; } = null!;
-
-        [Output("reauthIdleTimeout")]
-        public Output<string?> ReauthIdleTimeout { get; private set; } = null!;
-
-        [Output("reauthTimeout")]
-        public Output<string?> ReauthTimeout { get; private set; } = null!;
-
-        [Output("ruleOrder")]
-        public Output<string> RuleOrder { get; private set; } = null!;
-
-        [Output("zpnCbiProfileId")]
-        public Output<string> ZpnCbiProfileId { get; private set; } = null!;
-
         [Output("zpnInspectionProfileId")]
-        public Output<string> ZpnInspectionProfileId { get; private set; } = null!;
-
-        [Output("zpnIsolationProfileId")]
-        public Output<string> ZpnIsolationProfileId { get; private set; } = null!;
+        public Output<string?> ZpnInspectionProfileId { get; private set; } = null!;
 
 
         /// <summary>
@@ -275,15 +230,6 @@ namespace zscaler.PulumiPackage.Zpa
         [Input("action")]
         public Input<string>? Action { get; set; }
 
-        /// <summary>
-        /// This field defines the description of the server.
-        /// </summary>
-        [Input("actionId")]
-        public Input<string>? ActionId { get; set; }
-
-        [Input("bypassDefaultRule")]
-        public Input<bool>? BypassDefaultRule { get; set; }
-
         [Input("conditions")]
         private InputList<Inputs.PolicyAccessInspectionRuleConditionArgs>? _conditions;
 
@@ -297,25 +243,10 @@ namespace zscaler.PulumiPackage.Zpa
         }
 
         /// <summary>
-        /// This is for providing a customer message for the user.
-        /// </summary>
-        [Input("customMsg")]
-        public Input<string>? CustomMsg { get; set; }
-
-        /// <summary>
-        /// This is for providing a customer message for the user.
-        /// </summary>
-        [Input("defaultRule")]
-        public Input<bool>? DefaultRule { get; set; }
-
-        /// <summary>
         /// This is the description of the access policy.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        [Input("lssDefaultRule")]
-        public Input<bool>? LssDefaultRule { get; set; }
 
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
@@ -332,32 +263,8 @@ namespace zscaler.PulumiPackage.Zpa
         [Input("policySetId")]
         public Input<string>? PolicySetId { get; set; }
 
-        [Input("policyType")]
-        public Input<string>? PolicyType { get; set; }
-
-        [Input("priority")]
-        public Input<string>? Priority { get; set; }
-
-        [Input("reauthDefaultRule")]
-        public Input<bool>? ReauthDefaultRule { get; set; }
-
-        [Input("reauthIdleTimeout")]
-        public Input<string>? ReauthIdleTimeout { get; set; }
-
-        [Input("reauthTimeout")]
-        public Input<string>? ReauthTimeout { get; set; }
-
-        [Input("ruleOrder")]
-        public Input<string>? RuleOrder { get; set; }
-
-        [Input("zpnCbiProfileId")]
-        public Input<string>? ZpnCbiProfileId { get; set; }
-
         [Input("zpnInspectionProfileId")]
         public Input<string>? ZpnInspectionProfileId { get; set; }
-
-        [Input("zpnIsolationProfileId")]
-        public Input<string>? ZpnIsolationProfileId { get; set; }
 
         public PolicyAccessInspectionRuleArgs()
         {
@@ -373,15 +280,6 @@ namespace zscaler.PulumiPackage.Zpa
         [Input("action")]
         public Input<string>? Action { get; set; }
 
-        /// <summary>
-        /// This field defines the description of the server.
-        /// </summary>
-        [Input("actionId")]
-        public Input<string>? ActionId { get; set; }
-
-        [Input("bypassDefaultRule")]
-        public Input<bool>? BypassDefaultRule { get; set; }
-
         [Input("conditions")]
         private InputList<Inputs.PolicyAccessInspectionRuleConditionGetArgs>? _conditions;
 
@@ -395,25 +293,10 @@ namespace zscaler.PulumiPackage.Zpa
         }
 
         /// <summary>
-        /// This is for providing a customer message for the user.
-        /// </summary>
-        [Input("customMsg")]
-        public Input<string>? CustomMsg { get; set; }
-
-        /// <summary>
-        /// This is for providing a customer message for the user.
-        /// </summary>
-        [Input("defaultRule")]
-        public Input<bool>? DefaultRule { get; set; }
-
-        /// <summary>
         /// This is the description of the access policy.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        [Input("lssDefaultRule")]
-        public Input<bool>? LssDefaultRule { get; set; }
 
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
@@ -430,32 +313,8 @@ namespace zscaler.PulumiPackage.Zpa
         [Input("policySetId")]
         public Input<string>? PolicySetId { get; set; }
 
-        [Input("policyType")]
-        public Input<string>? PolicyType { get; set; }
-
-        [Input("priority")]
-        public Input<string>? Priority { get; set; }
-
-        [Input("reauthDefaultRule")]
-        public Input<bool>? ReauthDefaultRule { get; set; }
-
-        [Input("reauthIdleTimeout")]
-        public Input<string>? ReauthIdleTimeout { get; set; }
-
-        [Input("reauthTimeout")]
-        public Input<string>? ReauthTimeout { get; set; }
-
-        [Input("ruleOrder")]
-        public Input<string>? RuleOrder { get; set; }
-
-        [Input("zpnCbiProfileId")]
-        public Input<string>? ZpnCbiProfileId { get; set; }
-
         [Input("zpnInspectionProfileId")]
         public Input<string>? ZpnInspectionProfileId { get; set; }
-
-        [Input("zpnIsolationProfileId")]
-        public Input<string>? ZpnIsolationProfileId { get; set; }
 
         public PolicyAccessInspectionRuleState()
         {

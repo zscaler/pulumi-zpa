@@ -18,6 +18,111 @@ import (
 //
 //	⚠️ **WARNING:**: The attribute ``ruleOrder`` is now deprecated in favor of the new resource  ``policyAccessRuleReorder``
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Get IdP ID
+//			idpName, err := zpa.GetIdPController(ctx, &zpa.GetIdPControllerArgs{
+//				Name: pulumi.StringRef("IdP_Name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Get SCIM Group attribute ID
+//			engineering, err := zpa.GetSCIMGroups(ctx, &zpa.GetSCIMGroupsArgs{
+//				Name:    pulumi.StringRef("Engineering"),
+//				IdpName: pulumi.StringRef("IdP_Name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Create Policy Access Rule
+//			_, err = zpa.NewPolicyAccessRule(ctx, "this", &zpa.PolicyAccessRuleArgs{
+//				Name:        pulumi.String("Example"),
+//				Description: pulumi.String("Example"),
+//				Action:      pulumi.String("ALLOW"),
+//				Operator:    pulumi.String("AND"),
+//				Conditions: zpa.PolicyAccessRuleConditionArray{
+//					&zpa.PolicyAccessRuleConditionArgs{
+//						Operator: pulumi.String("OR"),
+//						Operands: zpa.PolicyAccessRuleConditionOperandArray{
+//							&zpa.PolicyAccessRuleConditionOperandArgs{
+//								ObjectType: pulumi.String("APP"),
+//								Lhs:        pulumi.String("id"),
+//								Rhs:        pulumi.Any(thisZpaApplicationSegment.Id),
+//							},
+//						},
+//					},
+//					&zpa.PolicyAccessRuleConditionArgs{
+//						Operator: pulumi.String("OR"),
+//						Operands: zpa.PolicyAccessRuleConditionOperandArray{
+//							&zpa.PolicyAccessRuleConditionOperandArgs{
+//								ObjectType: pulumi.String("SCIM_GROUP"),
+//								Lhs:        pulumi.String(idpName.Id),
+//								Rhs:        pulumi.String(engineering.Id),
+//							},
+//						},
+//					},
+//					&zpa.PolicyAccessRuleConditionArgs{
+//						Operator: pulumi.String("OR"),
+//						Operands: zpa.PolicyAccessRuleConditionOperandArray{
+//							&zpa.PolicyAccessRuleConditionOperandArgs{
+//								ObjectType: pulumi.String("CHROME_ENTERPRISE"),
+//								EntryValues: []map[string]interface{}{
+//									map[string]interface{}{
+//										"lhs": "managed",
+//										"rhs": "true",
+//									},
+//									map[string]interface{}{
+//										"lhs": "managed",
+//										"rhs": "false",
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## LHS and RHS Values
+//
+// | Object Type | LHS| RHS
+// |----------|-----------|----------
+// | APP | “"id"“ | “applicationSegmentId“ |
+// | APP_GROUP | “"id"“ | “segmentGroupId“|
+// | CLIENT_TYPE | “"id"“ | “zpnClientTypeZappl“, “zpnClientTypeExporter“, “zpnClientTypeBrowserIsolation“, “zpnClientTypeIpAnchoring“, “zpnClientTypeEdgeConnector“, “zpnClientTypeBranchConnector“,  “zpnClientTypeZappPartner“, “zpnClientTypeZapp“  |
+// | EDGE_CONNECTOR_GROUP | “"id"“ | “<edge_connector_id>“ |
+// | IDP | “"id"“ | “identityProviderId“ |
+// | SAML | “samlAttributeId“  | “attributeValueToMatch“ |
+// | SCIM | “scimAttributeId“  | “attributeValueToMatch“  |
+// | SCIM_GROUP | “scimGroupAttributeId“  | “attributeValueToMatch“  |
+// | PLATFORM | “mac“, “ios“, “windows“, “android“, “linux“ | “"true"“ / “"false"“ |
+// | MACHINE_GRP | “"id"“ | “machineGroupId“ |
+// | POSTURE | “postureUdid“  | “"true"“ / “"false"“ |
+// | TRUSTED_NETWORK | “networkId“  | “"true"“ |
+// | COUNTRY_CODE | [2 Letter ISO3166 Alpha2](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)  | “"true"“ / “"false"“ |
+// | RISK_FACTOR_TYPE | “ZIA“  | “"UNKNOWN", "LOW", "MEDIUM", "HIGH", "CRITICAL"“ |
+// | CHROME_ENTERPRISE | “managed“  | “"true" / "false"“ |
+//
 // ## Import
 //
 // Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
@@ -41,13 +146,13 @@ type PolicyAccessRule struct {
 	AppConnectorGroups PolicyAccessRuleAppConnectorGroupArrayOutput `pulumi:"appConnectorGroups"`
 	// List of the server group IDs.
 	AppServerGroups   PolicyAccessRuleAppServerGroupArrayOutput `pulumi:"appServerGroups"`
-	BypassDefaultRule pulumi.BoolPtrOutput                      `pulumi:"bypassDefaultRule"`
+	BypassDefaultRule pulumi.BoolOutput                         `pulumi:"bypassDefaultRule"`
 	// This is for proviidng the set of conditions for the policy.
 	Conditions PolicyAccessRuleConditionArrayOutput `pulumi:"conditions"`
 	// This is for providing a customer message for the user.
 	CustomMsg pulumi.StringOutput `pulumi:"customMsg"`
 	// This is for providing a customer message for the user.
-	DefaultRule pulumi.BoolPtrOutput `pulumi:"defaultRule"`
+	DefaultRule pulumi.BoolOutput `pulumi:"defaultRule"`
 	// This is the description of the access policy rule.
 	Description    pulumi.StringPtrOutput `pulumi:"description"`
 	LssDefaultRule pulumi.BoolPtrOutput   `pulumi:"lssDefaultRule"`
@@ -61,7 +166,7 @@ type PolicyAccessRule struct {
 	PolicySetId       pulumi.StringOutput    `pulumi:"policySetId"`
 	PolicyType        pulumi.StringOutput    `pulumi:"policyType"`
 	Priority          pulumi.StringOutput    `pulumi:"priority"`
-	ReauthDefaultRule pulumi.BoolPtrOutput   `pulumi:"reauthDefaultRule"`
+	ReauthDefaultRule pulumi.BoolOutput      `pulumi:"reauthDefaultRule"`
 	ReauthIdleTimeout pulumi.StringPtrOutput `pulumi:"reauthIdleTimeout"`
 	ReauthTimeout     pulumi.StringPtrOutput `pulumi:"reauthTimeout"`
 	// Deprecated: The `ruleOrder` field is now deprecated for all zpa access policy resources in favor of the resource `PolicyAccessReorderRule`
@@ -363,8 +468,8 @@ func (o PolicyAccessRuleOutput) AppServerGroups() PolicyAccessRuleAppServerGroup
 	return o.ApplyT(func(v *PolicyAccessRule) PolicyAccessRuleAppServerGroupArrayOutput { return v.AppServerGroups }).(PolicyAccessRuleAppServerGroupArrayOutput)
 }
 
-func (o PolicyAccessRuleOutput) BypassDefaultRule() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyAccessRule) pulumi.BoolPtrOutput { return v.BypassDefaultRule }).(pulumi.BoolPtrOutput)
+func (o PolicyAccessRuleOutput) BypassDefaultRule() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PolicyAccessRule) pulumi.BoolOutput { return v.BypassDefaultRule }).(pulumi.BoolOutput)
 }
 
 // This is for proviidng the set of conditions for the policy.
@@ -378,8 +483,8 @@ func (o PolicyAccessRuleOutput) CustomMsg() pulumi.StringOutput {
 }
 
 // This is for providing a customer message for the user.
-func (o PolicyAccessRuleOutput) DefaultRule() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyAccessRule) pulumi.BoolPtrOutput { return v.DefaultRule }).(pulumi.BoolPtrOutput)
+func (o PolicyAccessRuleOutput) DefaultRule() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PolicyAccessRule) pulumi.BoolOutput { return v.DefaultRule }).(pulumi.BoolOutput)
 }
 
 // This is the description of the access policy rule.
@@ -419,8 +524,8 @@ func (o PolicyAccessRuleOutput) Priority() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyAccessRule) pulumi.StringOutput { return v.Priority }).(pulumi.StringOutput)
 }
 
-func (o PolicyAccessRuleOutput) ReauthDefaultRule() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyAccessRule) pulumi.BoolPtrOutput { return v.ReauthDefaultRule }).(pulumi.BoolPtrOutput)
+func (o PolicyAccessRuleOutput) ReauthDefaultRule() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PolicyAccessRule) pulumi.BoolOutput { return v.ReauthDefaultRule }).(pulumi.BoolOutput)
 }
 
 func (o PolicyAccessRuleOutput) ReauthIdleTimeout() pulumi.StringPtrOutput {

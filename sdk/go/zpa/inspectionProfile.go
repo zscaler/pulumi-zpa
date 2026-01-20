@@ -19,6 +19,80 @@ import (
 // **NOTE** There are several ways to set up the Inspection Profile due to its complex data structure
 //
 // ## Example Usage
+//
+// ### Using Dynamic Blocks
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := zpa.GetInspectionAllPredefinedControls(ctx, &zpa.GetInspectionAllPredefinedControlsArgs{
+//				Version:   pulumi.StringRef("OWASP_CRS/3.3.0"),
+//				GroupName: pulumi.StringRef("Preprocessors"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			thisGetInspectionPredefinedControls, err := zpa.GetInspectionPredefinedControls(ctx, &zpa.GetInspectionPredefinedControlsArgs{
+//				Name:    pulumi.StringRef("Failed to parse request body"),
+//				Version: pulumi.StringRef("OWASP_CRS/3.3.0"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = zpa.NewInspectionProfile(ctx, "this", &zpa.InspectionProfileArgs{
+//				PredefinedControls: zpa.InspectionProfilePredefinedControlArray{
+//					&zpa.InspectionProfilePredefinedControlArgs{
+//						Id:     pulumi.String(thisGetInspectionPredefinedControls.Id),
+//						Action: pulumi.String("BLOCK"),
+//					},
+//				},
+//				Name:                      pulumi.String("Example"),
+//				Description:               pulumi.String("Example"),
+//				ParanoiaLevel:             pulumi.String("1"),
+//				PredefinedControlsVersion: pulumi.String("OWASP_CRS/3.3.0"),
+//				IncarnationNumber:         "6",
+//				ControlsInfos: zpa.InspectionProfileControlsInfoArray{
+//					&zpa.InspectionProfileControlsInfoArgs{
+//						ControlType: pulumi.String("PREDEFINED"),
+//					},
+//				},
+//				GlobalControlActions: pulumi.StringArray{
+//					pulumi.String("PREDEFINED:PASS"),
+//					pulumi.String("CUSTOM:NONE"),
+//					pulumi.String("OVERRIDE_ACTION:COMMON"),
+//				},
+//				CommonGlobalOverrideActionsConfig: pulumi.StringMap{
+//					"PREDEF_CNTRL_GLOBAL_ACTION": pulumi.String("PASS"),
+//					"IS_OVERRIDE_ACTION_COMMON":  pulumi.String("TRUE"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Using Locals And Dynamic Blocks
+//
+// ### Using With ThreatLabz And Dynamic Blocks
+//
+// ## Import
+//
+// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
+//
+// Visit
 type InspectionProfile struct {
 	pulumi.CustomResourceState
 

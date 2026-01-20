@@ -32,6 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Posture Profile Data Source
 //			_, err := zpa.GetPostureProfile(ctx, &zpa.GetPostureProfileArgs{
 //				Name: pulumi.StringRef("CrowdStrike_ZPA_ZTA_40"),
 //			}, nil)
@@ -56,6 +57,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Posture Profile Data Source
 //			_, err := zpa.GetPostureProfile(ctx, &zpa.GetPostureProfileArgs{
 //				Name: pulumi.StringRef("Detect SentinelOne"),
 //			}, nil)
@@ -80,6 +82,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Posture Profile Data Source
 //			_, err := zpa.GetPostureProfile(ctx, &zpa.GetPostureProfileArgs{
 //				Name: pulumi.StringRef("domain_joined"),
 //			}, nil)
@@ -106,6 +109,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Posture Profile Data Source
 //			_, err := zpa.GetPostureProfile(ctx, &zpa.GetPostureProfileArgs{
 //				Name: pulumi.StringRef("CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)"),
 //			}, nil)
@@ -132,6 +136,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Posture Profile Data Source
 //			example1, err := zpa.GetPostureProfile(ctx, &zpa.GetPostureProfileArgs{
 //				Name: pulumi.StringRef("CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)"),
 //			}, nil)
@@ -156,7 +161,9 @@ func GetPostureProfile(ctx *pulumi.Context, args *GetPostureProfileArgs, opts ..
 
 // A collection of arguments for invoking getPostureProfile.
 type GetPostureProfileArgs struct {
-	Name *string `pulumi:"name"`
+	Id          *string `pulumi:"id"`
+	Name        *string `pulumi:"name"`
+	PostureUdid *string `pulumi:"postureUdid"`
 }
 
 // A collection of values returned by getPostureProfile.
@@ -165,8 +172,8 @@ type GetPostureProfileResult struct {
 	Domain            string  `pulumi:"domain"`
 	Id                string  `pulumi:"id"`
 	MasterCustomerId  string  `pulumi:"masterCustomerId"`
+	ModifiedBy        string  `pulumi:"modifiedBy"`
 	ModifiedTime      string  `pulumi:"modifiedTime"`
-	Modifiedby        string  `pulumi:"modifiedby"`
 	Name              *string `pulumi:"name"`
 	PostureUdid       string  `pulumi:"postureUdid"`
 	ZscalerCloud      string  `pulumi:"zscalerCloud"`
@@ -184,7 +191,9 @@ func GetPostureProfileOutput(ctx *pulumi.Context, args GetPostureProfileOutputAr
 
 // A collection of arguments for invoking getPostureProfile.
 type GetPostureProfileOutputArgs struct {
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Id          pulumi.StringPtrInput `pulumi:"id"`
+	Name        pulumi.StringPtrInput `pulumi:"name"`
+	PostureUdid pulumi.StringPtrInput `pulumi:"postureUdid"`
 }
 
 func (GetPostureProfileOutputArgs) ElementType() reflect.Type {
@@ -222,12 +231,12 @@ func (o GetPostureProfileResultOutput) MasterCustomerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostureProfileResult) string { return v.MasterCustomerId }).(pulumi.StringOutput)
 }
 
-func (o GetPostureProfileResultOutput) ModifiedTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPostureProfileResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
+func (o GetPostureProfileResultOutput) ModifiedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostureProfileResult) string { return v.ModifiedBy }).(pulumi.StringOutput)
 }
 
-func (o GetPostureProfileResultOutput) Modifiedby() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPostureProfileResult) string { return v.Modifiedby }).(pulumi.StringOutput)
+func (o GetPostureProfileResultOutput) ModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostureProfileResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
 
 func (o GetPostureProfileResultOutput) Name() pulumi.StringPtrOutput {

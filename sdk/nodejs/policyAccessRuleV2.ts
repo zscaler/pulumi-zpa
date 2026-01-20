@@ -22,32 +22,40 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * const thisIdPController = zpa.getIdPController({
+ * // Retrieve Policy Types
+ * // Retrieve Identity Provider ID
+ * const _this = zpa.getIdPController({
  *     name: "Idp_Name",
  * });
+ * // Retrieve SAML Attribute ID
  * const emailUserSso = zpa.getSAMLAttribute({
  *     name: "Email_Users",
  *     idpName: "Idp_Name",
  * });
+ * // Retrieve SAML Attribute ID
  * const groupUser = zpa.getSAMLAttribute({
  *     name: "GroupName_Users",
  *     idpName: "Idp_Name",
  * });
+ * // Retrieve SCIM Group ID
  * const a000 = zpa.getSCIMGroups({
  *     name: "A000",
  *     idpName: "Idp_Name",
  * });
+ * // Retrieve SCIM Group ID
  * const b000 = zpa.getSCIMGroups({
  *     name: "B000",
  *     idpName: "Idp_Name",
  * });
  * // Create Segment Group
- * const thisSegmentGroup = new zpa.SegmentGroup("thisSegmentGroup", {
+ * const thisSegmentGroup = new zpa.SegmentGroup("this", {
+ *     name: "Example",
  *     description: "Example",
  *     enabled: true,
  * });
  * // Create Policy Access Rule V2
- * const thisPolicyAccessRuleV2 = new zpa.PolicyAccessRuleV2("thisPolicyAccessRuleV2", {
+ * const thisPolicyAccessRuleV2 = new zpa.PolicyAccessRuleV2("this", {
+ *     name: "Example",
  *     description: "Example",
  *     action: "ALLOW",
  *     conditions: [
@@ -79,11 +87,11 @@ import * as utilities from "./utilities";
  *                     entryValues: [
  *                         {
  *                             rhs: a000.then(a000 => a000.id),
- *                             lhs: thisIdPController.then(thisIdPController => thisIdPController.id),
+ *                             lhs: _this.then(_this => _this.id),
  *                         },
  *                         {
  *                             rhs: b000.then(b000 => b000.id),
- *                             lhs: thisIdPController.then(thisIdPController => thisIdPController.id),
+ *                             lhs: _this.then(_this => _this.id),
  *                         },
  *                     ],
  *                 },
@@ -169,6 +177,99 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Configure Extranet Access Rule
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const _this = zpa.getLocationController({
+ *     name: "ExtranetLocation01 | zscalerbeta.net",
+ *     ziaErName: "NewExtranet 8432",
+ * });
+ * const thisGetLocationGroupController = zpa.getLocationGroupController({
+ *     locationName: "ExtranetLocation01",
+ *     ziaErName: "NewExtranet 8432",
+ * });
+ * const thisGetExtranetResourcePartner = zpa.getExtranetResourcePartner({
+ *     name: "NewExtranet 8432",
+ * });
+ * const thisPolicyAccessRuleV2 = new zpa.PolicyAccessRuleV2("this", {
+ *     name: "Extranet_Rule01",
+ *     description: "Extranet_Rule01",
+ *     action: "ALLOW",
+ *     customMsg: "Test",
+ *     operator: "AND",
+ *     extranetEnabled: true,
+ *     extranetDtos: [{
+ *         zpnErId: thisGetExtranetResourcePartner.then(thisGetExtranetResourcePartner => thisGetExtranetResourcePartner.id),
+ *         locationDtos: [{
+ *             id: _this.then(_this => _this.id),
+ *         }],
+ *         locationGroupDtos: [{
+ *             id: thisGetLocationGroupController.then(thisGetLocationGroupController => thisGetLocationGroupController.id),
+ *         }],
+ *     }],
+ * });
+ * ```
+ *
+ * ### Configuration Location Rule
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const _this = zpa.getLocationControllerSummary({
+ *     name: "BD_CC01_US | NONE | zscalerbeta.net",
+ * });
+ * const thisPolicyAccessRuleV2 = new zpa.PolicyAccessRuleV2("this", {
+ *     name: "ExampleLocationRule",
+ *     description: "ExampleLocationRule",
+ *     action: "ALLOW",
+ *     conditions: [{
+ *         operator: "OR",
+ *         operands: [{
+ *             objectType: "LOCATION",
+ *             values: [_this.then(_this => _this.id)],
+ *         }],
+ *     }],
+ * });
+ * ```
+ *
+ * ### Chrome Enterprise And Chrome Posture Profile
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const _this = zpa.getManagedBrowserProfile({
+ *     name: "Profile01",
+ * });
+ * const thisPolicyAccessRuleV2 = new zpa.PolicyAccessRuleV2("this", {
+ *     name: "Example_v2_100_test",
+ *     description: "Example_v2_100_test",
+ *     action: "ALLOW",
+ *     customMsg: "Test",
+ *     operator: "AND",
+ *     conditions: [{
+ *         operator: "OR",
+ *         operands: [
+ *             {
+ *                 objectType: "CHROME_ENTERPRISE",
+ *                 entryValues: [{
+ *                     lhs: "managed",
+ *                     rhs: "true",
+ *                 }],
+ *             },
+ *             {
+ *                 objectType: "CHROME_POSTURE_PROFILE",
+ *                 values: [_this.then(_this => _this.id)],
+ *             },
+ *         ],
+ *     }],
+ * });
+ * ```
+ *
  * ## LHS and RHS Values
  *
  * | Object Type | LHS| RHS| VALUES
@@ -235,30 +336,38 @@ export class PolicyAccessRuleV2 extends pulumi.CustomResource {
     /**
      * This is for providing the rule action. Supported values: `ALLOW`, `DENY`, and `REQUIRE_APPROVAL`
      */
-    public readonly action!: pulumi.Output<string | undefined>;
-    public readonly appConnectorGroups!: pulumi.Output<outputs.PolicyAccessRuleV2AppConnectorGroup[] | undefined>;
+    declare public readonly action: pulumi.Output<string | undefined>;
+    declare public readonly appConnectorGroups: pulumi.Output<outputs.PolicyAccessRuleV2AppConnectorGroup[] | undefined>;
     /**
      * List of the server group IDs.
      */
-    public readonly appServerGroups!: pulumi.Output<outputs.PolicyAccessRuleV2AppServerGroup[] | undefined>;
+    declare public readonly appServerGroups: pulumi.Output<outputs.PolicyAccessRuleV2AppServerGroup[] | undefined>;
     /**
      * This is for proviidng the set of conditions for the policy.
      */
-    public readonly conditions!: pulumi.Output<outputs.PolicyAccessRuleV2Condition[]>;
+    declare public readonly conditions: pulumi.Output<outputs.PolicyAccessRuleV2Condition[] | undefined>;
     /**
      * This is for providing a customer message for the user.
      */
-    public readonly customMsg!: pulumi.Output<string>;
+    declare public readonly customMsg: pulumi.Output<string>;
     /**
      * This is the description of the access policy rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * Extranet configuration for the policy rule.
+     */
+    declare public readonly extranetDtos: pulumi.Output<outputs.PolicyAccessRuleV2ExtranetDto[] | undefined>;
+    /**
+     * Indiciates if the application is designated for Extranet Application Support (true) or not (false). Extranet applications connect to a partner site or offshore development center that is not directly available on your organization’s network.
+     */
+    declare public readonly extranetEnabled: pulumi.Output<boolean | undefined>;
     /**
      * This is the name of the policy rule.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly operator!: pulumi.Output<string>;
-    public /*out*/ readonly policySetId!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly operator: pulumi.Output<string>;
+    declare public /*out*/ readonly policySetId: pulumi.Output<string>;
 
     /**
      * Create a PolicyAccessRuleV2 resource with the given unique name, arguments, and options.
@@ -273,25 +382,29 @@ export class PolicyAccessRuleV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyAccessRuleV2State | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["appConnectorGroups"] = state ? state.appConnectorGroups : undefined;
-            resourceInputs["appServerGroups"] = state ? state.appServerGroups : undefined;
-            resourceInputs["conditions"] = state ? state.conditions : undefined;
-            resourceInputs["customMsg"] = state ? state.customMsg : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["operator"] = state ? state.operator : undefined;
-            resourceInputs["policySetId"] = state ? state.policySetId : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["appConnectorGroups"] = state?.appConnectorGroups;
+            resourceInputs["appServerGroups"] = state?.appServerGroups;
+            resourceInputs["conditions"] = state?.conditions;
+            resourceInputs["customMsg"] = state?.customMsg;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["extranetDtos"] = state?.extranetDtos;
+            resourceInputs["extranetEnabled"] = state?.extranetEnabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["operator"] = state?.operator;
+            resourceInputs["policySetId"] = state?.policySetId;
         } else {
             const args = argsOrState as PolicyAccessRuleV2Args | undefined;
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["appConnectorGroups"] = args ? args.appConnectorGroups : undefined;
-            resourceInputs["appServerGroups"] = args ? args.appServerGroups : undefined;
-            resourceInputs["conditions"] = args ? args.conditions : undefined;
-            resourceInputs["customMsg"] = args ? args.customMsg : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["operator"] = args ? args.operator : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["appConnectorGroups"] = args?.appConnectorGroups;
+            resourceInputs["appServerGroups"] = args?.appServerGroups;
+            resourceInputs["conditions"] = args?.conditions;
+            resourceInputs["customMsg"] = args?.customMsg;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["extranetDtos"] = args?.extranetDtos;
+            resourceInputs["extranetEnabled"] = args?.extranetEnabled;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["operator"] = args?.operator;
             resourceInputs["policySetId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -325,6 +438,14 @@ export interface PolicyAccessRuleV2State {
      */
     description?: pulumi.Input<string>;
     /**
+     * Extranet configuration for the policy rule.
+     */
+    extranetDtos?: pulumi.Input<pulumi.Input<inputs.PolicyAccessRuleV2ExtranetDto>[]>;
+    /**
+     * Indiciates if the application is designated for Extranet Application Support (true) or not (false). Extranet applications connect to a partner site or offshore development center that is not directly available on your organization’s network.
+     */
+    extranetEnabled?: pulumi.Input<boolean>;
+    /**
      * This is the name of the policy rule.
      */
     name?: pulumi.Input<string>;
@@ -357,6 +478,14 @@ export interface PolicyAccessRuleV2Args {
      * This is the description of the access policy rule.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Extranet configuration for the policy rule.
+     */
+    extranetDtos?: pulumi.Input<pulumi.Input<inputs.PolicyAccessRuleV2ExtranetDto>[]>;
+    /**
+     * Indiciates if the application is designated for Extranet Application Support (true) or not (false). Extranet applications connect to a partner site or offshore development center that is not directly available on your organization’s network.
+     */
+    extranetEnabled?: pulumi.Input<boolean>;
     /**
      * This is the name of the policy rule.
      */

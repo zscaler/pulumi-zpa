@@ -15,7 +15,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// <summary>
         /// * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
         /// 
-        /// Use the **zpa_cloud_browser_isolation_external_profile** data source to get information about Cloud Browser Isolation external profile. This data source information can then be used in as part of `zpa.PolicyAccessIsolationRule` when the `action` attribute is set to `ISOLATE`.
+        /// Use the **zpa_cloud_browser_isolation_external_profile** data source to get information about Cloud Browser Isolation external profile. This data source information can then be used in as part of `zpa.PolicyAccessIsolationRule` when the `Action` attribute is set to `ISOLATE`.
         /// 
         /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
         /// 
@@ -29,6 +29,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Retrieve CBI External Profile
         ///     var @this = Zpa.GetCloudBrowserIsolationExternalProfile.Invoke(new()
         ///     {
         ///         Name = "Example",
@@ -43,7 +44,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// <summary>
         /// * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
         /// 
-        /// Use the **zpa_cloud_browser_isolation_external_profile** data source to get information about Cloud Browser Isolation external profile. This data source information can then be used in as part of `zpa.PolicyAccessIsolationRule` when the `action` attribute is set to `ISOLATE`.
+        /// Use the **zpa_cloud_browser_isolation_external_profile** data source to get information about Cloud Browser Isolation external profile. This data source information can then be used in as part of `zpa.PolicyAccessIsolationRule` when the `Action` attribute is set to `ISOLATE`.
         /// 
         /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
         /// 
@@ -57,6 +58,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Retrieve CBI External Profile
         ///     var @this = Zpa.GetCloudBrowserIsolationExternalProfile.Invoke(new()
         ///     {
         ///         Name = "Example",
@@ -71,7 +73,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// <summary>
         /// * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
         /// 
-        /// Use the **zpa_cloud_browser_isolation_external_profile** data source to get information about Cloud Browser Isolation external profile. This data source information can then be used in as part of `zpa.PolicyAccessIsolationRule` when the `action` attribute is set to `ISOLATE`.
+        /// Use the **zpa_cloud_browser_isolation_external_profile** data source to get information about Cloud Browser Isolation external profile. This data source information can then be used in as part of `zpa.PolicyAccessIsolationRule` when the `Action` attribute is set to `ISOLATE`.
         /// 
         /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
         /// 
@@ -85,6 +87,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Retrieve CBI External Profile
         ///     var @this = Zpa.GetCloudBrowserIsolationExternalProfile.Invoke(new()
         ///     {
         ///         Name = "Example",

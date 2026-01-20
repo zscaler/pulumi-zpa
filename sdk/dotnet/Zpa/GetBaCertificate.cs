@@ -30,6 +30,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Browser Access Data Source
         ///     var foo = Zpa.GetBaCertificate.Invoke(new()
         ///     {
         ///         Name = "example.acme.com",
@@ -46,6 +47,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Browser Access Data Source
         ///     var foo = Zpa.GetBaCertificate.Invoke(new()
         ///     {
         ///         Id = "1234567890",
@@ -75,6 +77,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Browser Access Data Source
         ///     var foo = Zpa.GetBaCertificate.Invoke(new()
         ///     {
         ///         Name = "example.acme.com",
@@ -91,6 +94,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Browser Access Data Source
         ///     var foo = Zpa.GetBaCertificate.Invoke(new()
         ///     {
         ///         Id = "1234567890",
@@ -120,6 +124,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Browser Access Data Source
         ///     var foo = Zpa.GetBaCertificate.Invoke(new()
         ///     {
         ///         Name = "example.acme.com",
@@ -136,6 +141,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Browser Access Data Source
         ///     var foo = Zpa.GetBaCertificate.Invoke(new()
         ///     {
         ///         Id = "1234567890",

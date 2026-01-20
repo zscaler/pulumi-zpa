@@ -20,7 +20,6 @@ namespace zscaler.PulumiPackage.Zpa.Outputs
         public readonly string? ApplicationProtocol;
         public readonly string? ConnectionSecurity;
         public readonly string? Domain;
-        public readonly bool? Enabled;
         public readonly string? Name;
         public readonly string? PraAppId;
 
@@ -38,8 +37,6 @@ namespace zscaler.PulumiPackage.Zpa.Outputs
 
             string? domain,
 
-            bool? enabled,
-
             string? name,
 
             string? praAppId)
@@ -50,7 +47,6 @@ namespace zscaler.PulumiPackage.Zpa.Outputs
             ApplicationProtocol = applicationProtocol;
             ConnectionSecurity = connectionSecurity;
             Domain = domain;
-            Enabled = enabled;
             Name = name;
             PraAppId = praAppId;
         }

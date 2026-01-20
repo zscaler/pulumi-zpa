@@ -16,33 +16,34 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * //## PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ####
  * // Creates Credential of Type "USERNAME_PASSWORD"
  * const _this = new zpa.PRACredential("this", {
- *     credentialType: "USERNAME_PASSWORD",
+ *     name: "John Doe",
  *     description: "Created with Terraform",
- *     password: "",
+ *     credentialType: "USERNAME_PASSWORD",
  *     userDomain: "acme.com",
  *     username: "jdoe",
+ *     password: "",
  * });
  * ```
  *
- * ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE #########\
- * ######### ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ##########
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * //## PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ####
  * // Creates Credential of Type "SSH_KEY"
  * const _this = new zpa.PRACredential("this", {
- *     credentialType: "SSH_KEY",
+ *     name: "John Doe",
  *     description: "Created with Terraform",
+ *     credentialType: "SSH_KEY",
+ *     userDomain: "acme.com",
+ *     username: "jdoe",
  *     privateKey: `-----BEGIN PRIVATE KEY-----
  * MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEjc8pPoobS0l6
  * -----END PRIVATE KEY-----
- *
  * `,
- *     userDomain: "acme.com",
- *     username: "jdoe",
  * });
  * ```
  *
@@ -95,44 +96,41 @@ export class PRACredential extends pulumi.CustomResource {
     }
 
     /**
-     * The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-     * and VNC. Each protocol type has its own credential requirements.
+     * The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
      */
-    public readonly credentialType!: pulumi.Output<string | undefined>;
+    declare public readonly credentialType: pulumi.Output<string | undefined>;
     /**
      * The description of the privileged credential
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-     * microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
      */
-    public readonly microtenantId!: pulumi.Output<string>;
+    declare public readonly microtenantId: pulumi.Output<string>;
     /**
      * The name of the privileged credential
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The password that is used to protect the SSH private key. This field is optional
      */
-    public readonly passphrase!: pulumi.Output<string | undefined>;
+    declare public readonly passphrase: pulumi.Output<string | undefined>;
     /**
      * The password associated with the username for the login you want to use for the privileged credential
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The SSH private key associated with the username for the login you want to use for the privileged credential
      */
-    public readonly privateKey!: pulumi.Output<string | undefined>;
+    declare public readonly privateKey: pulumi.Output<string | undefined>;
     /**
-     * The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP
-     * console that is connected to an Active Directory Domain
+     * The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP console that is connected to an Active Directory Domain
      */
-    public readonly userDomain!: pulumi.Output<string | undefined>;
+    declare public readonly userDomain: pulumi.Output<string | undefined>;
     /**
      * The username for the login you want to use for the privileged credential
      */
-    public readonly username!: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string | undefined>;
 
     /**
      * Create a PRACredential resource with the given unique name, arguments, and options.
@@ -147,26 +145,26 @@ export class PRACredential extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PRACredentialState | undefined;
-            resourceInputs["credentialType"] = state ? state.credentialType : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["passphrase"] = state ? state.passphrase : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
-            resourceInputs["userDomain"] = state ? state.userDomain : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["credentialType"] = state?.credentialType;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["microtenantId"] = state?.microtenantId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["passphrase"] = state?.passphrase;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["privateKey"] = state?.privateKey;
+            resourceInputs["userDomain"] = state?.userDomain;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as PRACredentialArgs | undefined;
-            resourceInputs["credentialType"] = args ? args.credentialType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["credentialType"] = args?.credentialType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["microtenantId"] = args?.microtenantId;
+            resourceInputs["name"] = args?.name;
             resourceInputs["passphrase"] = args?.passphrase ? pulumi.secret(args.passphrase) : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
-            resourceInputs["userDomain"] = args ? args.userDomain : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["userDomain"] = args?.userDomain;
+            resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "zpa:index/praCredentialController:PraCredentialController" }] };
@@ -182,8 +180,7 @@ export class PRACredential extends pulumi.CustomResource {
  */
 export interface PRACredentialState {
     /**
-     * The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-     * and VNC. Each protocol type has its own credential requirements.
+     * The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
      */
     credentialType?: pulumi.Input<string>;
     /**
@@ -191,8 +188,7 @@ export interface PRACredentialState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-     * microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
      */
     microtenantId?: pulumi.Input<string>;
     /**
@@ -212,8 +208,7 @@ export interface PRACredentialState {
      */
     privateKey?: pulumi.Input<string>;
     /**
-     * The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP
-     * console that is connected to an Active Directory Domain
+     * The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP console that is connected to an Active Directory Domain
      */
     userDomain?: pulumi.Input<string>;
     /**
@@ -227,8 +222,7 @@ export interface PRACredentialState {
  */
 export interface PRACredentialArgs {
     /**
-     * The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-     * and VNC. Each protocol type has its own credential requirements.
+     * The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
      */
     credentialType?: pulumi.Input<string>;
     /**
@@ -236,8 +230,7 @@ export interface PRACredentialArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-     * microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
      */
     microtenantId?: pulumi.Input<string>;
     /**
@@ -257,8 +250,7 @@ export interface PRACredentialArgs {
      */
     privateKey?: pulumi.Input<string>;
     /**
-     * The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP
-     * console that is connected to an Active Directory Domain
+     * The domain name associated with the username. The domain name only needs to be specified with logging in to an RDP console that is connected to an Active Directory Domain
      */
     userDomain?: pulumi.Input<string>;
     /**

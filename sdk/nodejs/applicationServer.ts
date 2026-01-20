@@ -12,9 +12,10 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Application Server resource (IP Address)
- * const testAppServer = new zpa.ApplicationServer("testAppServer", {
- *     address: "192.168.1.1",
+ * const testAppServer = new zpa.ApplicationServer("test_app_server", {
+ *     name: "test1-app-server",
  *     description: "test1-app-server",
+ *     address: "192.168.1.1",
  *     enabled: true,
  * });
  * ```
@@ -24,10 +25,28 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Application Server resource (FQDN Address)
- * const testAppServer = new zpa.ApplicationServer("testAppServer", {
- *     address: "server1.acme.com",
+ * const testAppServer = new zpa.ApplicationServer("test_app_server", {
+ *     name: "test1-app-server",
  *     description: "test1-app-server",
+ *     address: "server1.acme.com",
  *     enabled: true,
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const example = zpa.getServerGroup({
+ *     name: "Example",
+ * });
+ * // ZPA Application Server resource
+ * const testAppServer = new zpa.ApplicationServer("test_app_server", {
+ *     name: "test1-app-server",
+ *     description: "test1-app-server",
+ *     address: "192.168.1.1",
+ *     enabled: true,
+ *     appServerGroupIds: [example.then(example => example.com)],
  * });
  * ```
  *
@@ -82,25 +101,25 @@ export class ApplicationServer extends pulumi.CustomResource {
     /**
      * This field defines the domain or IP address of the server.
      */
-    public readonly address!: pulumi.Output<string>;
+    declare public readonly address: pulumi.Output<string>;
     /**
      * This field defines the list of server groups IDs.
      */
-    public readonly appServerGroupIds!: pulumi.Output<string[]>;
-    public readonly configSpace!: pulumi.Output<string | undefined>;
+    declare public readonly appServerGroupIds: pulumi.Output<string[]>;
+    declare public readonly configSpace: pulumi.Output<string | undefined>;
     /**
      * This field defines the description of the server.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * This field defines the status of the server.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
-    public readonly microtenantId!: pulumi.Output<string>;
+    declare public readonly enabled: pulumi.Output<boolean>;
+    declare public readonly microtenantId: pulumi.Output<string>;
     /**
      * This field defines the name of the server.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a ApplicationServer resource with the given unique name, arguments, and options.
@@ -115,25 +134,25 @@ export class ApplicationServer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationServerState | undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["appServerGroupIds"] = state ? state.appServerGroupIds : undefined;
-            resourceInputs["configSpace"] = state ? state.configSpace : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["appServerGroupIds"] = state?.appServerGroupIds;
+            resourceInputs["configSpace"] = state?.configSpace;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["microtenantId"] = state?.microtenantId;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as ApplicationServerArgs | undefined;
-            if ((!args || args.address === undefined) && !opts.urn) {
+            if (args?.address === undefined && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["appServerGroupIds"] = args ? args.appServerGroupIds : undefined;
-            resourceInputs["configSpace"] = args ? args.configSpace : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["appServerGroupIds"] = args?.appServerGroupIds;
+            resourceInputs["configSpace"] = args?.configSpace;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["microtenantId"] = args?.microtenantId;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApplicationServer.__pulumiType, name, resourceInputs, opts);

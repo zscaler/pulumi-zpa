@@ -22,6 +22,7 @@ import * as utilities from "./utilities";
  *
  * // ZPA Microtenant Controller resource
  * const _this = new zpa.Microtenant("this", {
+ *     name: "Microtenant_A",
  *     description: "Microtenant_A",
  *     enabled: true,
  *     criteriaAttribute: "AuthDomain",
@@ -29,7 +30,7 @@ import * as utilities from "./utilities";
  *     privilegedApprovalsEnabled: true,
  * });
  * export const zpaMicrotenantController1 = _this.users.apply(users => users.map(u => ({
- *     microtenant_id: u.microtenantId,
+ *     microtenantId: u.microtenantId,
  *     username: u.username,
  *     password: u.password,
  * })));
@@ -86,29 +87,28 @@ export class Microtenant extends pulumi.CustomResource {
     /**
      * - (Required) Type of authentication criteria for the microtenant
      */
-    public readonly criteriaAttribute!: pulumi.Output<string | undefined>;
+    declare public readonly criteriaAttribute: pulumi.Output<string | undefined>;
     /**
      * - (Required) The domain associated with the respective microtenant controller resource
      */
-    public readonly criteriaAttributeValues!: pulumi.Output<string[]>;
+    declare public readonly criteriaAttributeValues: pulumi.Output<string[]>;
     /**
      * The description of the Microtenant.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether or not the Microtenant is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * - (Required) Name of the microtenant controller.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
-     * Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no
-     * Authentication Domain is selected.
+     * Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no Authentication Domain is selected.
      */
-    public readonly privilegedApprovalsEnabled!: pulumi.Output<boolean | undefined>;
-    public readonly users!: pulumi.Output<outputs.MicrotenantUser[]>;
+    declare public readonly privilegedApprovalsEnabled: pulumi.Output<boolean | undefined>;
+    declare public readonly users: pulumi.Output<outputs.MicrotenantUser[]>;
 
     /**
      * Create a Microtenant resource with the given unique name, arguments, and options.
@@ -123,22 +123,22 @@ export class Microtenant extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MicrotenantState | undefined;
-            resourceInputs["criteriaAttribute"] = state ? state.criteriaAttribute : undefined;
-            resourceInputs["criteriaAttributeValues"] = state ? state.criteriaAttributeValues : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["privilegedApprovalsEnabled"] = state ? state.privilegedApprovalsEnabled : undefined;
-            resourceInputs["users"] = state ? state.users : undefined;
+            resourceInputs["criteriaAttribute"] = state?.criteriaAttribute;
+            resourceInputs["criteriaAttributeValues"] = state?.criteriaAttributeValues;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["privilegedApprovalsEnabled"] = state?.privilegedApprovalsEnabled;
+            resourceInputs["users"] = state?.users;
         } else {
             const args = argsOrState as MicrotenantArgs | undefined;
-            resourceInputs["criteriaAttribute"] = args ? args.criteriaAttribute : undefined;
-            resourceInputs["criteriaAttributeValues"] = args ? args.criteriaAttributeValues : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["privilegedApprovalsEnabled"] = args ? args.privilegedApprovalsEnabled : undefined;
-            resourceInputs["users"] = args ? args.users : undefined;
+            resourceInputs["criteriaAttribute"] = args?.criteriaAttribute;
+            resourceInputs["criteriaAttributeValues"] = args?.criteriaAttributeValues;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["privilegedApprovalsEnabled"] = args?.privilegedApprovalsEnabled;
+            resourceInputs["users"] = args?.users;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Microtenant.__pulumiType, name, resourceInputs, opts);
@@ -170,8 +170,7 @@ export interface MicrotenantState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no
-     * Authentication Domain is selected.
+     * Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no Authentication Domain is selected.
      */
     privilegedApprovalsEnabled?: pulumi.Input<boolean>;
     users?: pulumi.Input<pulumi.Input<inputs.MicrotenantUser>[]>;
@@ -202,8 +201,7 @@ export interface MicrotenantArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no
-     * Authentication Domain is selected.
+     * Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no Authentication Domain is selected.
      */
     privilegedApprovalsEnabled?: pulumi.Input<boolean>;
     users?: pulumi.Input<pulumi.Input<inputs.MicrotenantUser>[]>;

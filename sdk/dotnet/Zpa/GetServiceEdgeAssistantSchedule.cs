@@ -18,25 +18,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// Use the **zpa_service_edge_assistant_schedule** data source to get information about Auto Delete frequency of the Service Edge for the specified customer in the Zscaler Private Access cloud.
         /// 
-        /// &gt; **NOTE** - The `customer_id` attribute is optional and not required during the configuration.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = Zpa.GetServiceEdgeAssistantSchedule.Invoke(new()
-        ///     {
-        ///         CustomerId = "1234567891012",
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// &gt; **NOTE** - The `CustomerId` attribute is optional and not required during the configuration.
         /// </summary>
         public static Task<GetServiceEdgeAssistantScheduleResult> InvokeAsync(GetServiceEdgeAssistantScheduleArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceEdgeAssistantScheduleResult>("zpa:index/getServiceEdgeAssistantSchedule:getServiceEdgeAssistantSchedule", args ?? new GetServiceEdgeAssistantScheduleArgs(), options.WithDefaults());
@@ -47,25 +29,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// Use the **zpa_service_edge_assistant_schedule** data source to get information about Auto Delete frequency of the Service Edge for the specified customer in the Zscaler Private Access cloud.
         /// 
-        /// &gt; **NOTE** - The `customer_id` attribute is optional and not required during the configuration.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = Zpa.GetServiceEdgeAssistantSchedule.Invoke(new()
-        ///     {
-        ///         CustomerId = "1234567891012",
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// &gt; **NOTE** - The `CustomerId` attribute is optional and not required during the configuration.
         /// </summary>
         public static Output<GetServiceEdgeAssistantScheduleResult> Invoke(GetServiceEdgeAssistantScheduleInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceEdgeAssistantScheduleResult>("zpa:index/getServiceEdgeAssistantSchedule:getServiceEdgeAssistantSchedule", args ?? new GetServiceEdgeAssistantScheduleInvokeArgs(), options.WithDefaults());
@@ -76,25 +40,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// Use the **zpa_service_edge_assistant_schedule** data source to get information about Auto Delete frequency of the Service Edge for the specified customer in the Zscaler Private Access cloud.
         /// 
-        /// &gt; **NOTE** - The `customer_id` attribute is optional and not required during the configuration.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = Zpa.GetServiceEdgeAssistantSchedule.Invoke(new()
-        ///     {
-        ///         CustomerId = "1234567891012",
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// &gt; **NOTE** - The `CustomerId` attribute is optional and not required during the configuration.
         /// </summary>
         public static Output<GetServiceEdgeAssistantScheduleResult> Invoke(GetServiceEdgeAssistantScheduleInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceEdgeAssistantScheduleResult>("zpa:index/getServiceEdgeAssistantSchedule:getServiceEdgeAssistantSchedule", args ?? new GetServiceEdgeAssistantScheduleInvokeArgs(), options.WithDefaults());

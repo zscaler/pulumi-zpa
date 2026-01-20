@@ -25,6 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Server Group Data Source
 //			_, err := zpa.LookupServerGroup(ctx, &zpa.LookupServerGroupArgs{
 //				Name: pulumi.StringRef("server_group_name"),
 //			}, nil)

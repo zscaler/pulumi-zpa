@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example1 = zpa.getPostureProfile({
  *     name: "CrowdStrike_ZPA_ZTA_40",
  * });
@@ -27,6 +28,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example2 = zpa.getPostureProfile({
  *     name: "Detect SentinelOne",
  * });
@@ -36,6 +38,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example3 = zpa.getPostureProfile({
  *     name: "domain_joined",
  * });
@@ -47,6 +50,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example1 = zpa.getPostureProfile({
  *     name: "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
  * });
@@ -58,6 +62,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example1 = zpa.getPostureProfile({
  *     name: "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
  * });
@@ -68,7 +73,9 @@ export function getPostureProfile(args?: GetPostureProfileArgs, opts?: pulumi.In
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getPostureProfile:getPostureProfile", {
+        "id": args.id,
         "name": args.name,
+        "postureUdid": args.postureUdid,
     }, opts);
 }
 
@@ -76,7 +83,9 @@ export function getPostureProfile(args?: GetPostureProfileArgs, opts?: pulumi.In
  * A collection of arguments for invoking getPostureProfile.
  */
 export interface GetPostureProfileArgs {
+    id?: string;
     name?: string;
+    postureUdid?: string;
 }
 
 /**
@@ -87,8 +96,8 @@ export interface GetPostureProfileResult {
     readonly domain: string;
     readonly id: string;
     readonly masterCustomerId: string;
+    readonly modifiedBy: string;
     readonly modifiedTime: string;
-    readonly modifiedby: string;
     readonly name?: string;
     readonly postureUdid: string;
     readonly zscalerCloud: string;
@@ -108,6 +117,7 @@ export interface GetPostureProfileResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example1 = zpa.getPostureProfile({
  *     name: "CrowdStrike_ZPA_ZTA_40",
  * });
@@ -117,6 +127,7 @@ export interface GetPostureProfileResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example2 = zpa.getPostureProfile({
  *     name: "Detect SentinelOne",
  * });
@@ -126,6 +137,7 @@ export interface GetPostureProfileResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example3 = zpa.getPostureProfile({
  *     name: "domain_joined",
  * });
@@ -137,6 +149,7 @@ export interface GetPostureProfileResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example1 = zpa.getPostureProfile({
  *     name: "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
  * });
@@ -148,6 +161,7 @@ export interface GetPostureProfileResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Posture Profile Data Source
  * const example1 = zpa.getPostureProfile({
  *     name: "CrowdStrike_ZPA_ZTA_40 (zscalertwo.net)",
  * });
@@ -158,7 +172,9 @@ export function getPostureProfileOutput(args?: GetPostureProfileOutputArgs, opts
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("zpa:index/getPostureProfile:getPostureProfile", {
+        "id": args.id,
         "name": args.name,
+        "postureUdid": args.postureUdid,
     }, opts);
 }
 
@@ -166,5 +182,7 @@ export function getPostureProfileOutput(args?: GetPostureProfileOutputArgs, opts
  * A collection of arguments for invoking getPostureProfile.
  */
 export interface GetPostureProfileOutputArgs {
+    id?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
+    postureUdid?: pulumi.Input<string>;
 }

@@ -13,7 +13,7 @@ namespace zscaler.PulumiPackage.Zpa
     /// <summary>
     /// * [Official documentation](https://help.zscaler.com/isolation/about-custom-root-certificates-cloud-browser-isolation)
     /// 
-    /// The **zpa_cloud_browser_isolation_external_profile** resource creates a Cloud Browser Isolation external profile. This resource can then be used in as part of `zpa.PolicyAccessIsolationRule` when the `action` attribute is set to `ISOLATE`.
+    /// The **zpa_cloud_browser_isolation_external_profile** resource creates a Cloud Browser Isolation external profile. This resource can then be used in as part of `zpa.PolicyAccessIsolationRule` when the `Action` attribute is set to `ISOLATE`.
     /// 
     /// ## Example Usage
     /// 
@@ -26,37 +26,42 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thisCloudBrowserIsolationBanner = Zpa.GetCloudBrowserIsolationBanner.Invoke(new()
+    ///     // Retrieve CBI Banner ID
+    ///     var @this = Zpa.GetCloudBrowserIsolationBanner.Invoke(new()
     ///     {
     ///         Name = "Default",
     ///     });
     /// 
+    ///     // Retrieve Primary CBI Region ID
     ///     var singapore = Zpa.GetCloudBrowserIsolationRegion.Invoke(new()
     ///     {
     ///         Name = "Singapore",
     ///     });
     /// 
+    ///     // Retrieve Secondary CBI Region ID
     ///     var frankfurt = Zpa.GetCloudBrowserIsolationRegion.Invoke(new()
     ///     {
     ///         Name = "Frankfurt",
     ///     });
     /// 
-    ///     var thisCloudBrowserIsolationCertificate = Zpa.GetCloudBrowserIsolationCertificate.Invoke(new()
+    ///     // Retrieve CBI Certificate ID
+    ///     var thisGetCloudBrowserIsolationCertificate = Zpa.GetCloudBrowserIsolationCertificate.Invoke(new()
     ///     {
     ///         Name = "Zscaler Root Certificate",
     ///     });
     /// 
-    ///     var thisCloudBrowserIsolationExternalProfile = new Zpa.CloudBrowserIsolationExternalProfile("thisCloudBrowserIsolationExternalProfile", new()
+    ///     var thisCloudBrowserIsolationExternalProfile = new Zpa.CloudBrowserIsolationExternalProfile("this", new()
     ///     {
+    ///         Name = "CBI_Profile_Example",
     ///         Description = "CBI_Profile_Example",
-    ///         BannerId = thisCloudBrowserIsolationBanner.Apply(getCloudBrowserIsolationBannerResult =&gt; getCloudBrowserIsolationBannerResult.Id),
+    ///         BannerId = @this.Apply(@this =&gt; @this.Apply(getCloudBrowserIsolationBannerResult =&gt; getCloudBrowserIsolationBannerResult.Id)),
     ///         RegionIds = new[]
     ///         {
     ///             singapore.Apply(getCloudBrowserIsolationRegionResult =&gt; getCloudBrowserIsolationRegionResult.Id),
     ///         },
     ///         CertificateIds = new[]
     ///         {
-    ///             thisCloudBrowserIsolationCertificate.Apply(getCloudBrowserIsolationCertificateResult =&gt; getCloudBrowserIsolationCertificateResult.Id),
+    ///             thisGetCloudBrowserIsolationCertificate.Apply(getCloudBrowserIsolationCertificateResult =&gt; getCloudBrowserIsolationCertificateResult.Id),
     ///         },
     ///         UserExperience = new Zpa.Inputs.CloudBrowserIsolationExternalProfileUserExperienceArgs
     ///         {

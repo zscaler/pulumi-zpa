@@ -21,7 +21,8 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Service Edge Group resource - Trusted Network
- * const serviceEdgeGroupSjc = new zpa.ServiceEdgeGroup("serviceEdgeGroupSjc", {
+ * const serviceEdgeGroupSjc = new zpa.ServiceEdgeGroup("service_edge_group_sjc", {
+ *     name: "Service Edge Group San Jose",
  *     description: "Service Edge Group in San Jose",
  *     enabled: true,
  *     isPublic: true,
@@ -32,7 +33,7 @@ import * as utilities from "./utilities";
  *     location: "San Jose, CA, USA",
  *     versionProfileName: "New Release",
  *     trustedNetworks: [{
- *         ids: [data.zpa_trusted_network.example.id],
+ *         ids: [example.id],
  *     }],
  * });
  * ```
@@ -42,7 +43,8 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Service Edge Group resource - No Trusted Network
- * const serviceEdgeGroupNyc = new zpa.ServiceEdgeGroup("serviceEdgeGroupNyc", {
+ * const serviceEdgeGroupNyc = new zpa.ServiceEdgeGroup("service_edge_group_nyc", {
+ *     name: "Service Edge Group New York",
  *     description: "Service Edge Group in New York",
  *     enabled: true,
  *     isPublic: true,
@@ -51,7 +53,7 @@ import * as utilities from "./utilities";
  *     latitude: "40.7128",
  *     longitude: "-73.935242",
  *     location: "New York, NY, USA",
- *     versionProfileId: data.zpa_customer_version_profile["this"].id,
+ *     versionProfileId: _this.id,
  * });
  * ```
  *
@@ -66,7 +68,8 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Service Edge Group resource - Trusted Network
- * const serviceEdgeGroupSjc = new zpa.ServiceEdgeGroup("serviceEdgeGroupSjc", {
+ * const serviceEdgeGroupSjc = new zpa.ServiceEdgeGroup("service_edge_group_sjc", {
+ *     name: "Service Edge Group San Jose",
  *     description: "Service Edge Group in San Jose",
  *     enabled: true,
  *     isPublic: true,
@@ -77,7 +80,7 @@ import * as utilities from "./utilities";
  *     location: "San Jose, CA, USA",
  *     versionProfileName: "New Release",
  *     trustedNetworks: [{
- *         ids: [data.zpa_trusted_network.example.id],
+ *         ids: [example.id],
  *     }],
  * });
  * ```
@@ -87,15 +90,16 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Service Edge Group resource - No Trusted Network
- * const serviceEdgeGroupNyc = new zpa.ServiceEdgeGroup("serviceEdgeGroupNyc", {
+ * const serviceEdgeGroupNyc = new zpa.ServiceEdgeGroup("service_edge_group_nyc", {
+ *     name: "Service Edge Group New York",
  *     description: "Service Edge Group in New York",
  *     enabled: true,
  *     isPublic: true,
- *     latitude: "40.7128",
- *     location: "New York, NY, USA",
- *     longitude: "-73.935242",
  *     upgradeDay: "SUNDAY",
  *     upgradeTimeInSecs: "66600",
+ *     latitude: "40.7128",
+ *     longitude: "-73.935242",
+ *     location: "New York, NY, USA",
  *     versionProfileName: "New Release",
  * });
  * ```
@@ -148,87 +152,90 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === ServiceEdgeGroup.__pulumiType;
     }
 
-    public readonly cityCountry!: pulumi.Output<string>;
-    public readonly countryCode!: pulumi.Output<string>;
+    /**
+     * City for the Service Edge Group.
+     */
+    declare public readonly city: pulumi.Output<string | undefined>;
+    declare public readonly cityCountry: pulumi.Output<string | undefined>;
+    declare public readonly countryCode: pulumi.Output<string>;
     /**
      * Description of the Service Edge Group.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether this Service Edge Group is enabled or not.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
-     * If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
-     * Public Service Edge.
+     * Indicates whether the Service Edge Group is exclusive for business continuity.
      */
-    public readonly graceDistanceEnabled!: pulumi.Output<boolean>;
+    declare public readonly exclusiveForBusinessContinuity: pulumi.Output<boolean | undefined>;
     /**
-     * Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
-     * Public Service Edge
+     * If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA Public Service Edge.
      */
-    public readonly graceDistanceValue!: pulumi.Output<string>;
+    declare public readonly graceDistanceEnabled: pulumi.Output<boolean>;
     /**
-     * Indicates the grace distance unit of measure in miles or kilometers. This value is only required if graceDistanceValue
-     * is set to true
+     * Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA Public Service Edge
      */
-    public readonly graceDistanceValueUnit!: pulumi.Output<string>;
+    declare public readonly graceDistanceValue: pulumi.Output<string>;
+    /**
+     * Indicates the grace distance unit of measure in miles or kilometers. This value is only required if graceDistanceValue is set to true
+     */
+    declare public readonly graceDistanceValueUnit: pulumi.Output<string>;
     /**
      * Enable or disable public access for the Service Edge Group.
      */
-    public readonly isPublic!: pulumi.Output<boolean | undefined>;
+    declare public readonly isPublic: pulumi.Output<boolean | undefined>;
     /**
      * Latitude for the Service Edge Group.
      */
-    public readonly latitude!: pulumi.Output<string>;
+    declare public readonly latitude: pulumi.Output<string>;
     /**
      * Location for the Service Edge Group.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Longitude for the Service Edge Group.
      */
-    public readonly longitude!: pulumi.Output<string>;
-    public readonly microtenantId!: pulumi.Output<string>;
+    declare public readonly longitude: pulumi.Output<string>;
+    declare public readonly microtenantId: pulumi.Output<string>;
     /**
      * Name of the Service Edge Group.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Whether the default version profile of the App Connector Group is applied or overridden.
      */
-    public readonly overrideVersionProfile!: pulumi.Output<boolean | undefined>;
+    declare public readonly overrideVersionProfile: pulumi.Output<boolean | undefined>;
     /**
-     * WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
-     * matching.This field will be deprecated in future versions
+     * WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership matching.This field will be deprecated in future versions
      */
-    public readonly serviceEdges!: pulumi.Output<outputs.ServiceEdgeGroupServiceEdges>;
+    declare public readonly serviceEdges: pulumi.Output<outputs.ServiceEdgeGroupServiceEdges>;
     /**
      * List of trusted network IDs.
      */
-    public readonly trustedNetworks!: pulumi.Output<outputs.ServiceEdgeGroupTrustedNetwork[] | undefined>;
+    declare public readonly trustedNetworks: pulumi.Output<outputs.ServiceEdgeGroupTrustedNetwork[] | undefined>;
     /**
      * Service Edges in this group will attempt to update to a newer version of the software during this specified day.
      */
-    public readonly upgradeDay!: pulumi.Output<string | undefined>;
+    declare public readonly upgradeDay: pulumi.Output<string | undefined>;
     /**
      * Service Edges in this group will attempt to update to a newer version of the software during this specified time.
      */
-    public readonly upgradeTimeInSecs!: pulumi.Output<string | undefined>;
-    public readonly useInDrMode!: pulumi.Output<boolean>;
+    declare public readonly upgradeTimeInSecs: pulumi.Output<string | undefined>;
+    declare public readonly useInDrMode: pulumi.Output<boolean>;
     /**
      * ID of the version profile.
      */
-    public readonly versionProfileId!: pulumi.Output<string>;
+    declare public readonly versionProfileId: pulumi.Output<string>;
     /**
-     * Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
-     * overrideVersionProfile is set to true
+     * Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
      */
-    public readonly versionProfileName!: pulumi.Output<string>;
+    declare public readonly versionProfileName: pulumi.Output<string>;
     /**
      * ID of the version profile.
      */
-    public readonly versionProfileVisibilityScope!: pulumi.Output<string>;
+    declare public readonly versionProfileVisibilityScope: pulumi.Output<string>;
 
     /**
      * Create a ServiceEdgeGroup resource with the given unique name, arguments, and options.
@@ -243,61 +250,65 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceEdgeGroupState | undefined;
-            resourceInputs["cityCountry"] = state ? state.cityCountry : undefined;
-            resourceInputs["countryCode"] = state ? state.countryCode : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["graceDistanceEnabled"] = state ? state.graceDistanceEnabled : undefined;
-            resourceInputs["graceDistanceValue"] = state ? state.graceDistanceValue : undefined;
-            resourceInputs["graceDistanceValueUnit"] = state ? state.graceDistanceValueUnit : undefined;
-            resourceInputs["isPublic"] = state ? state.isPublic : undefined;
-            resourceInputs["latitude"] = state ? state.latitude : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["longitude"] = state ? state.longitude : undefined;
-            resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["overrideVersionProfile"] = state ? state.overrideVersionProfile : undefined;
-            resourceInputs["serviceEdges"] = state ? state.serviceEdges : undefined;
-            resourceInputs["trustedNetworks"] = state ? state.trustedNetworks : undefined;
-            resourceInputs["upgradeDay"] = state ? state.upgradeDay : undefined;
-            resourceInputs["upgradeTimeInSecs"] = state ? state.upgradeTimeInSecs : undefined;
-            resourceInputs["useInDrMode"] = state ? state.useInDrMode : undefined;
-            resourceInputs["versionProfileId"] = state ? state.versionProfileId : undefined;
-            resourceInputs["versionProfileName"] = state ? state.versionProfileName : undefined;
-            resourceInputs["versionProfileVisibilityScope"] = state ? state.versionProfileVisibilityScope : undefined;
+            resourceInputs["city"] = state?.city;
+            resourceInputs["cityCountry"] = state?.cityCountry;
+            resourceInputs["countryCode"] = state?.countryCode;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["exclusiveForBusinessContinuity"] = state?.exclusiveForBusinessContinuity;
+            resourceInputs["graceDistanceEnabled"] = state?.graceDistanceEnabled;
+            resourceInputs["graceDistanceValue"] = state?.graceDistanceValue;
+            resourceInputs["graceDistanceValueUnit"] = state?.graceDistanceValueUnit;
+            resourceInputs["isPublic"] = state?.isPublic;
+            resourceInputs["latitude"] = state?.latitude;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["longitude"] = state?.longitude;
+            resourceInputs["microtenantId"] = state?.microtenantId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["overrideVersionProfile"] = state?.overrideVersionProfile;
+            resourceInputs["serviceEdges"] = state?.serviceEdges;
+            resourceInputs["trustedNetworks"] = state?.trustedNetworks;
+            resourceInputs["upgradeDay"] = state?.upgradeDay;
+            resourceInputs["upgradeTimeInSecs"] = state?.upgradeTimeInSecs;
+            resourceInputs["useInDrMode"] = state?.useInDrMode;
+            resourceInputs["versionProfileId"] = state?.versionProfileId;
+            resourceInputs["versionProfileName"] = state?.versionProfileName;
+            resourceInputs["versionProfileVisibilityScope"] = state?.versionProfileVisibilityScope;
         } else {
             const args = argsOrState as ServiceEdgeGroupArgs | undefined;
-            if ((!args || args.latitude === undefined) && !opts.urn) {
+            if (args?.latitude === undefined && !opts.urn) {
                 throw new Error("Missing required property 'latitude'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.longitude === undefined) && !opts.urn) {
+            if (args?.longitude === undefined && !opts.urn) {
                 throw new Error("Missing required property 'longitude'");
             }
-            resourceInputs["cityCountry"] = args ? args.cityCountry : undefined;
-            resourceInputs["countryCode"] = args ? args.countryCode : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["graceDistanceEnabled"] = args ? args.graceDistanceEnabled : undefined;
-            resourceInputs["graceDistanceValue"] = args ? args.graceDistanceValue : undefined;
-            resourceInputs["graceDistanceValueUnit"] = args ? args.graceDistanceValueUnit : undefined;
-            resourceInputs["isPublic"] = args ? args.isPublic : undefined;
-            resourceInputs["latitude"] = args ? args.latitude : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["longitude"] = args ? args.longitude : undefined;
-            resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["overrideVersionProfile"] = args ? args.overrideVersionProfile : undefined;
-            resourceInputs["serviceEdges"] = args ? args.serviceEdges : undefined;
-            resourceInputs["trustedNetworks"] = args ? args.trustedNetworks : undefined;
-            resourceInputs["upgradeDay"] = args ? args.upgradeDay : undefined;
-            resourceInputs["upgradeTimeInSecs"] = args ? args.upgradeTimeInSecs : undefined;
-            resourceInputs["useInDrMode"] = args ? args.useInDrMode : undefined;
-            resourceInputs["versionProfileId"] = args ? args.versionProfileId : undefined;
-            resourceInputs["versionProfileName"] = args ? args.versionProfileName : undefined;
-            resourceInputs["versionProfileVisibilityScope"] = args ? args.versionProfileVisibilityScope : undefined;
+            resourceInputs["city"] = args?.city;
+            resourceInputs["cityCountry"] = args?.cityCountry;
+            resourceInputs["countryCode"] = args?.countryCode;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["exclusiveForBusinessContinuity"] = args?.exclusiveForBusinessContinuity;
+            resourceInputs["graceDistanceEnabled"] = args?.graceDistanceEnabled;
+            resourceInputs["graceDistanceValue"] = args?.graceDistanceValue;
+            resourceInputs["graceDistanceValueUnit"] = args?.graceDistanceValueUnit;
+            resourceInputs["isPublic"] = args?.isPublic;
+            resourceInputs["latitude"] = args?.latitude;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["longitude"] = args?.longitude;
+            resourceInputs["microtenantId"] = args?.microtenantId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["overrideVersionProfile"] = args?.overrideVersionProfile;
+            resourceInputs["serviceEdges"] = args?.serviceEdges;
+            resourceInputs["trustedNetworks"] = args?.trustedNetworks;
+            resourceInputs["upgradeDay"] = args?.upgradeDay;
+            resourceInputs["upgradeTimeInSecs"] = args?.upgradeTimeInSecs;
+            resourceInputs["useInDrMode"] = args?.useInDrMode;
+            resourceInputs["versionProfileId"] = args?.versionProfileId;
+            resourceInputs["versionProfileName"] = args?.versionProfileName;
+            resourceInputs["versionProfileVisibilityScope"] = args?.versionProfileVisibilityScope;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceEdgeGroup.__pulumiType, name, resourceInputs, opts);
@@ -308,6 +319,10 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ServiceEdgeGroup resources.
  */
 export interface ServiceEdgeGroupState {
+    /**
+     * City for the Service Edge Group.
+     */
+    city?: pulumi.Input<string>;
     cityCountry?: pulumi.Input<string>;
     countryCode?: pulumi.Input<string>;
     /**
@@ -319,18 +334,19 @@ export interface ServiceEdgeGroupState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
-     * Public Service Edge.
+     * Indicates whether the Service Edge Group is exclusive for business continuity.
+     */
+    exclusiveForBusinessContinuity?: pulumi.Input<boolean>;
+    /**
+     * If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA Public Service Edge.
      */
     graceDistanceEnabled?: pulumi.Input<boolean>;
     /**
-     * Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
-     * Public Service Edge
+     * Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA Public Service Edge
      */
     graceDistanceValue?: pulumi.Input<string>;
     /**
-     * Indicates the grace distance unit of measure in miles or kilometers. This value is only required if graceDistanceValue
-     * is set to true
+     * Indicates the grace distance unit of measure in miles or kilometers. This value is only required if graceDistanceValue is set to true
      */
     graceDistanceValueUnit?: pulumi.Input<string>;
     /**
@@ -359,8 +375,7 @@ export interface ServiceEdgeGroupState {
      */
     overrideVersionProfile?: pulumi.Input<boolean>;
     /**
-     * WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
-     * matching.This field will be deprecated in future versions
+     * WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership matching.This field will be deprecated in future versions
      */
     serviceEdges?: pulumi.Input<inputs.ServiceEdgeGroupServiceEdges>;
     /**
@@ -381,8 +396,7 @@ export interface ServiceEdgeGroupState {
      */
     versionProfileId?: pulumi.Input<string>;
     /**
-     * Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
-     * overrideVersionProfile is set to true
+     * Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
      */
     versionProfileName?: pulumi.Input<string>;
     /**
@@ -395,6 +409,10 @@ export interface ServiceEdgeGroupState {
  * The set of arguments for constructing a ServiceEdgeGroup resource.
  */
 export interface ServiceEdgeGroupArgs {
+    /**
+     * City for the Service Edge Group.
+     */
+    city?: pulumi.Input<string>;
     cityCountry?: pulumi.Input<string>;
     countryCode?: pulumi.Input<string>;
     /**
@@ -406,18 +424,19 @@ export interface ServiceEdgeGroupArgs {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
-     * Public Service Edge.
+     * Indicates whether the Service Edge Group is exclusive for business continuity.
+     */
+    exclusiveForBusinessContinuity?: pulumi.Input<boolean>;
+    /**
+     * If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA Public Service Edge.
      */
     graceDistanceEnabled?: pulumi.Input<boolean>;
     /**
-     * Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
-     * Public Service Edge
+     * Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA Public Service Edge
      */
     graceDistanceValue?: pulumi.Input<string>;
     /**
-     * Indicates the grace distance unit of measure in miles or kilometers. This value is only required if graceDistanceValue
-     * is set to true
+     * Indicates the grace distance unit of measure in miles or kilometers. This value is only required if graceDistanceValue is set to true
      */
     graceDistanceValueUnit?: pulumi.Input<string>;
     /**
@@ -446,8 +465,7 @@ export interface ServiceEdgeGroupArgs {
      */
     overrideVersionProfile?: pulumi.Input<boolean>;
     /**
-     * WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
-     * matching.This field will be deprecated in future versions
+     * WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership matching.This field will be deprecated in future versions
      */
     serviceEdges?: pulumi.Input<inputs.ServiceEdgeGroupServiceEdges>;
     /**
@@ -468,8 +486,7 @@ export interface ServiceEdgeGroupArgs {
      */
     versionProfileId?: pulumi.Input<string>;
     /**
-     * Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
-     * overrideVersionProfile is set to true
+     * Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
      */
     versionProfileName?: pulumi.Input<string>;
     /**

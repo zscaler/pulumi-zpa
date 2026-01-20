@@ -20,6 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Service Edge Controller Data Source
  * const example = zpa.getServiceEdgeController({
  *     name: "On-Prem-PSE",
  * });
@@ -29,6 +30,7 @@ export function getServiceEdgeController(args?: GetServiceEdgeControllerArgs, op
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("zpa:index/getServiceEdgeController:getServiceEdgeController", {
+        "id": args.id,
         "microtenantId": args.microtenantId,
         "microtenantName": args.microtenantName,
         "name": args.name,
@@ -39,6 +41,7 @@ export function getServiceEdgeController(args?: GetServiceEdgeControllerArgs, op
  * A collection of arguments for invoking getServiceEdgeController.
  */
 export interface GetServiceEdgeControllerArgs {
+    id?: string;
     microtenantId?: string;
     microtenantName?: string;
     name?: string;
@@ -106,6 +109,7 @@ export interface GetServiceEdgeControllerResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Service Edge Controller Data Source
  * const example = zpa.getServiceEdgeController({
  *     name: "On-Prem-PSE",
  * });
@@ -115,6 +119,7 @@ export function getServiceEdgeControllerOutput(args?: GetServiceEdgeControllerOu
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("zpa:index/getServiceEdgeController:getServiceEdgeController", {
+        "id": args.id,
         "microtenantId": args.microtenantId,
         "microtenantName": args.microtenantName,
         "name": args.name,
@@ -125,6 +130,7 @@ export function getServiceEdgeControllerOutput(args?: GetServiceEdgeControllerOu
  * A collection of arguments for invoking getServiceEdgeController.
  */
 export interface GetServiceEdgeControllerOutputArgs {
+    id?: pulumi.Input<string>;
     microtenantId?: pulumi.Input<string>;
     microtenantName?: pulumi.Input<string>;
     name?: pulumi.Input<string>;

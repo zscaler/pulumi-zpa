@@ -13,6 +13,18 @@ import * as utilities from "./utilities";
  * Use the **zpa_lss_config_controller** data source to get information about a Log Streaming (LSS) configuration resource created in the Zscaler Private Access.
  *
  * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * // Retrieve Log Streaming Information by ID
+ * const example = zpa.getLSSConfigController({
+ *     id: "1234567890",
+ * });
+ * ```
  */
 export function getLSSConfigController(args?: GetLSSConfigControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetLSSConfigControllerResult> {
     args = args || {};
@@ -47,6 +59,18 @@ export interface GetLSSConfigControllerResult {
  * Use the **zpa_lss_config_controller** data source to get information about a Log Streaming (LSS) configuration resource created in the Zscaler Private Access.
  *
  * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * // Retrieve Log Streaming Information by ID
+ * const example = zpa.getLSSConfigController({
+ *     id: "1234567890",
+ * });
+ * ```
  */
 export function getLSSConfigControllerOutput(args?: GetLSSConfigControllerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLSSConfigControllerResult> {
     args = args || {};

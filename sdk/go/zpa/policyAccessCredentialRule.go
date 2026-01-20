@@ -18,6 +18,17 @@ import (
 //
 //	⚠️ **WARNING:**: The attribute ``ruleOrder`` is now deprecated in favor of the new resource  ``policyAccessRuleReorder``
 //
+// ## Example Usage
+//
+// ## LHS and RHS Values
+//
+// | Object Type | LHS| RHS| VALUES
+// |----------|-----------|----------|----------
+// | CONSOLE |   |  | “praConsoleId“
+// | SAML | “samlAttributeId“  | “attributeValueToMatch“ |
+// | SCIM | “scimAttributeId“  | “attributeValueToMatch“  |
+// | SCIM_GROUP | “scimGroupAttributeId“  | “attributeValueToMatch“  |
+//
 // ## Import
 //
 // Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.

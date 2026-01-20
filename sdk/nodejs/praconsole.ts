@@ -19,12 +19,14 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // Creates Segment Group for Application Segment"
- * const thisSegmentGroup = new zpa.SegmentGroup("thisSegmentGroup", {
+ * const thisSegmentGroup = new zpa.SegmentGroup("this", {
+ *     name: "Example",
  *     description: "Example",
  *     enabled: true,
  * });
  * // Creates Privileged Remote Access Application Segment"
- * const thisApplicationSegmentPRA = new zpa.ApplicationSegmentPRA("thisApplicationSegmentPRA", {
+ * const thisApplicationSegmentPRA = new zpa.ApplicationSegmentPRA("this", {
+ *     name: "Example",
  *     description: "Example",
  *     enabled: true,
  *     healthReporting: "ON_ACCESS",
@@ -48,30 +50,33 @@ import * as utilities from "./utilities";
  *         }],
  *     }],
  * });
- * const thisApplicationSegmentByType = zpa.getApplicationSegmentByType({
+ * const _this = zpa.getApplicationSegmentByType({
  *     applicationType: "SECURE_REMOTE_ACCESS",
  *     name: "rdp_pra",
  * });
- * const thisBaCertificate = zpa.getBaCertificate({
+ * // Retrieves the Browser Access Certificate
+ * const thisGetBaCertificate = zpa.getBaCertificate({
  *     name: "pra01.example.com",
  * });
  * // Creates PRA Portal"
  * const this1 = new zpa.PRAPortal("this1", {
+ *     name: "pra01.example.com",
  *     description: "pra01.example.com",
  *     enabled: true,
  *     domain: "pra01.example.com",
- *     certificateId: thisBaCertificate.then(thisBaCertificate => thisBaCertificate.id),
+ *     certificateId: thisGetBaCertificate.then(thisGetBaCertificate => thisGetBaCertificate.id),
  *     userNotification: "Created with Terraform",
  *     userNotificationEnabled: true,
  * });
- * const sshPra = new zpa.PRAConsole("sshPra", {
+ * const sshPra = new zpa.PRAConsole("ssh_pra", {
+ *     name: "ssh_console",
  *     description: "Created with Terraform",
  *     enabled: true,
  *     praApplications: [{
- *         id: thisApplicationSegmentByType.then(thisApplicationSegmentByType => thisApplicationSegmentByType.id),
+ *         id: _this.then(_this => _this.id),
  *     }],
  *     praPortals: [{
- *         ids: [zpa_pra_portal_controller["this"].id],
+ *         ids: [thisZpaPraPortalController.id],
  *     }],
  * });
  * ```
@@ -127,26 +132,25 @@ export class PRAConsole extends pulumi.CustomResource {
     /**
      * The description of the privileged console
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether or not the privileged console is enabled
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * The privileged console icon. The icon image is converted to base64 encoded text format
      */
-    public readonly iconText!: pulumi.Output<string>;
+    declare public readonly iconText: pulumi.Output<string | undefined>;
     /**
-     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-     * microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
      */
-    public readonly microtenantId!: pulumi.Output<string>;
+    declare public readonly microtenantId: pulumi.Output<string | undefined>;
     /**
      * The name of the privileged console
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly praApplications!: pulumi.Output<outputs.PRAConsolePraApplication[]>;
-    public readonly praPortals!: pulumi.Output<outputs.PRAConsolePraPortal[]>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly praApplications: pulumi.Output<outputs.PRAConsolePraApplication[]>;
+    declare public readonly praPortals: pulumi.Output<outputs.PRAConsolePraPortal[]>;
 
     /**
      * Create a PRAConsole resource with the given unique name, arguments, and options.
@@ -161,28 +165,28 @@ export class PRAConsole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PRAConsoleState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["iconText"] = state ? state.iconText : undefined;
-            resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["praApplications"] = state ? state.praApplications : undefined;
-            resourceInputs["praPortals"] = state ? state.praPortals : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["iconText"] = state?.iconText;
+            resourceInputs["microtenantId"] = state?.microtenantId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["praApplications"] = state?.praApplications;
+            resourceInputs["praPortals"] = state?.praPortals;
         } else {
             const args = argsOrState as PRAConsoleArgs | undefined;
-            if ((!args || args.praApplications === undefined) && !opts.urn) {
+            if (args?.praApplications === undefined && !opts.urn) {
                 throw new Error("Missing required property 'praApplications'");
             }
-            if ((!args || args.praPortals === undefined) && !opts.urn) {
+            if (args?.praPortals === undefined && !opts.urn) {
                 throw new Error("Missing required property 'praPortals'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["iconText"] = args ? args.iconText : undefined;
-            resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["praApplications"] = args ? args.praApplications : undefined;
-            resourceInputs["praPortals"] = args ? args.praPortals : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["iconText"] = args?.iconText;
+            resourceInputs["microtenantId"] = args?.microtenantId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["praApplications"] = args?.praApplications;
+            resourceInputs["praPortals"] = args?.praPortals;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "zpa:index/praConsoleController:PraConsoleController" }] };
@@ -208,8 +212,7 @@ export interface PRAConsoleState {
      */
     iconText?: pulumi.Input<string>;
     /**
-     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-     * microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
      */
     microtenantId?: pulumi.Input<string>;
     /**
@@ -237,8 +240,7 @@ export interface PRAConsoleArgs {
      */
     iconText?: pulumi.Input<string>;
     /**
-     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-     * microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+     * The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
      */
     microtenantId?: pulumi.Input<string>;
     /**

@@ -1,0 +1,3 @@
+name: zpa
+description: A Pulumi resource provider for zpa.
+language: python

@@ -27,15 +27,17 @@ namespace zscaler.PulumiPackage.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // ZPA Segment Group resource
-    ///     var thisSegmentGroup = new Zpa.SegmentGroup("thisSegmentGroup", new()
+    ///     var thisSegmentGroup = new Zpa.SegmentGroup("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///     });
     /// 
     ///     // ZPA App Connector Group resource
-    ///     var thisConnectorGroup = new Zpa.ConnectorGroup("thisConnectorGroup", new()
+    ///     var thisConnectorGroup = new Zpa.ConnectorGroup("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///         CityCountry = "San Jose, CA",
@@ -51,8 +53,9 @@ namespace zscaler.PulumiPackage.Zpa
     ///     });
     /// 
     ///     // ZPA Server Group resource
-    ///     var thisServerGroup = new Zpa.ServerGroup("thisServerGroup", new()
+    ///     var thisServerGroup = new Zpa.ServerGroup("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///         DynamicDiscovery = false,
@@ -75,8 +78,9 @@ namespace zscaler.PulumiPackage.Zpa
     ///     });
     /// 
     ///     // ZPA Application Segment resource
-    ///     var thisApplicationSegment = new Zpa.ApplicationSegment("thisApplicationSegment", new()
+    ///     var @this = new Zpa.ApplicationSegment("this", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///         HealthReporting = "ON_ACCESS",
@@ -112,7 +116,7 @@ namespace zscaler.PulumiPackage.Zpa
     ///     });
     /// 
     ///     // Create PRA Approval Controller
-    ///     var thisPRAApproval = new Zpa.PRAApproval("thisPRAApproval", new()
+    ///     var thisPRAApproval = new Zpa.PRAApproval("this", new()
     ///     {
     ///         EmailIds = new[]
     ///         {
@@ -127,7 +131,7 @@ namespace zscaler.PulumiPackage.Zpa
     ///             {
     ///                 Ids = new[]
     ///                 {
-    ///                     thisApplicationSegment.Id,
+    ///                     @this.Id,
     ///                 },
     ///             },
     ///         },
@@ -196,8 +200,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<string> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-        /// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
         /// </summary>
         [Output("microtenantId")]
         public Output<string> MicrotenantId { get; private set; } = null!;
@@ -295,8 +298,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<string>? EndTime { get; set; }
 
         /// <summary>
-        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-        /// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
         /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
@@ -356,8 +358,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<string>? EndTime { get; set; }
 
         /// <summary>
-        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-        /// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
         /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }

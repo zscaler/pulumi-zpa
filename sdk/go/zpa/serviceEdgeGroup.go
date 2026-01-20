@@ -34,7 +34,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Service Edge Group resource - Trusted Network
-//			_, err := zpa.NewServiceEdgeGroup(ctx, "serviceEdgeGroupSjc", &zpa.ServiceEdgeGroupArgs{
+//			_, err := zpa.NewServiceEdgeGroup(ctx, "service_edge_group_sjc", &zpa.ServiceEdgeGroupArgs{
+//				Name:               pulumi.String("Service Edge Group San Jose"),
 //				Description:        pulumi.String("Service Edge Group in San Jose"),
 //				Enabled:            pulumi.Bool(true),
 //				IsPublic:           pulumi.Bool(true),
@@ -47,7 +48,7 @@ import (
 //				TrustedNetworks: zpa.ServiceEdgeGroupTrustedNetworkArray{
 //					&zpa.ServiceEdgeGroupTrustedNetworkArgs{
 //						Ids: pulumi.StringArray{
-//							data.Zpa_trusted_network.Example.Id,
+//							example.Id,
 //						},
 //					},
 //				},
@@ -74,7 +75,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Service Edge Group resource - No Trusted Network
-//			_, err := zpa.NewServiceEdgeGroup(ctx, "serviceEdgeGroupNyc", &zpa.ServiceEdgeGroupArgs{
+//			_, err := zpa.NewServiceEdgeGroup(ctx, "service_edge_group_nyc", &zpa.ServiceEdgeGroupArgs{
+//				Name:              pulumi.String("Service Edge Group New York"),
 //				Description:       pulumi.String("Service Edge Group in New York"),
 //				Enabled:           pulumi.Bool(true),
 //				IsPublic:          pulumi.Bool(true),
@@ -83,7 +85,7 @@ import (
 //				Latitude:          pulumi.String("40.7128"),
 //				Longitude:         pulumi.String("-73.935242"),
 //				Location:          pulumi.String("New York, NY, USA"),
-//				VersionProfileId:  pulumi.Any(data.Zpa_customer_version_profile.This.Id),
+//				VersionProfileId:  pulumi.Any(this.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -113,7 +115,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Service Edge Group resource - Trusted Network
-//			_, err := zpa.NewServiceEdgeGroup(ctx, "serviceEdgeGroupSjc", &zpa.ServiceEdgeGroupArgs{
+//			_, err := zpa.NewServiceEdgeGroup(ctx, "service_edge_group_sjc", &zpa.ServiceEdgeGroupArgs{
+//				Name:               pulumi.String("Service Edge Group San Jose"),
 //				Description:        pulumi.String("Service Edge Group in San Jose"),
 //				Enabled:            pulumi.Bool(true),
 //				IsPublic:           pulumi.Bool(true),
@@ -126,7 +129,7 @@ import (
 //				TrustedNetworks: zpa.ServiceEdgeGroupTrustedNetworkArray{
 //					&zpa.ServiceEdgeGroupTrustedNetworkArgs{
 //						Ids: pulumi.StringArray{
-//							data.Zpa_trusted_network.Example.Id,
+//							example.Id,
 //						},
 //					},
 //				},
@@ -153,15 +156,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Service Edge Group resource - No Trusted Network
-//			_, err := zpa.NewServiceEdgeGroup(ctx, "serviceEdgeGroupNyc", &zpa.ServiceEdgeGroupArgs{
+//			_, err := zpa.NewServiceEdgeGroup(ctx, "service_edge_group_nyc", &zpa.ServiceEdgeGroupArgs{
+//				Name:               pulumi.String("Service Edge Group New York"),
 //				Description:        pulumi.String("Service Edge Group in New York"),
 //				Enabled:            pulumi.Bool(true),
 //				IsPublic:           pulumi.Bool(true),
-//				Latitude:           pulumi.String("40.7128"),
-//				Location:           pulumi.String("New York, NY, USA"),
-//				Longitude:          pulumi.String("-73.935242"),
 //				UpgradeDay:         pulumi.String("SUNDAY"),
 //				UpgradeTimeInSecs:  pulumi.String("66600"),
+//				Latitude:           pulumi.String("40.7128"),
+//				Longitude:          pulumi.String("-73.935242"),
+//				Location:           pulumi.String("New York, NY, USA"),
 //				VersionProfileName: pulumi.String("New Release"),
 //			})
 //			if err != nil {
@@ -195,20 +199,21 @@ import (
 type ServiceEdgeGroup struct {
 	pulumi.CustomResourceState
 
-	CityCountry pulumi.StringOutput `pulumi:"cityCountry"`
-	CountryCode pulumi.StringOutput `pulumi:"countryCode"`
+	// City for the Service Edge Group.
+	City        pulumi.StringPtrOutput `pulumi:"city"`
+	CityCountry pulumi.StringPtrOutput `pulumi:"cityCountry"`
+	CountryCode pulumi.StringOutput    `pulumi:"countryCode"`
 	// Description of the Service Edge Group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether this Service Edge Group is enabled or not.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
-	// Public Service Edge.
+	// Indicates whether the Service Edge Group is exclusive for business continuity.
+	ExclusiveForBusinessContinuity pulumi.BoolPtrOutput `pulumi:"exclusiveForBusinessContinuity"`
+	// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA Public Service Edge.
 	GraceDistanceEnabled pulumi.BoolOutput `pulumi:"graceDistanceEnabled"`
-	// Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
-	// Public Service Edge
+	// Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA Public Service Edge
 	GraceDistanceValue pulumi.StringOutput `pulumi:"graceDistanceValue"`
-	// Indicates the grace distance unit of measure in miles or kilometers. This value is only required if graceDistanceValue
-	// is set to true
+	// Indicates the grace distance unit of measure in miles or kilometers. This value is only required if graceDistanceValue is set to true
 	GraceDistanceValueUnit pulumi.StringOutput `pulumi:"graceDistanceValueUnit"`
 	// Enable or disable public access for the Service Edge Group.
 	IsPublic pulumi.BoolPtrOutput `pulumi:"isPublic"`
@@ -223,8 +228,7 @@ type ServiceEdgeGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Whether the default version profile of the App Connector Group is applied or overridden.
 	OverrideVersionProfile pulumi.BoolPtrOutput `pulumi:"overrideVersionProfile"`
-	// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
-	// matching.This field will be deprecated in future versions
+	// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership matching.This field will be deprecated in future versions
 	ServiceEdges ServiceEdgeGroupServiceEdgesOutput `pulumi:"serviceEdges"`
 	// List of trusted network IDs.
 	TrustedNetworks ServiceEdgeGroupTrustedNetworkArrayOutput `pulumi:"trustedNetworks"`
@@ -235,8 +239,7 @@ type ServiceEdgeGroup struct {
 	UseInDrMode       pulumi.BoolOutput      `pulumi:"useInDrMode"`
 	// ID of the version profile.
 	VersionProfileId pulumi.StringOutput `pulumi:"versionProfileId"`
-	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
-	// overrideVersionProfile is set to true
+	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
 	VersionProfileName pulumi.StringOutput `pulumi:"versionProfileName"`
 	// ID of the version profile.
 	VersionProfileVisibilityScope pulumi.StringOutput `pulumi:"versionProfileVisibilityScope"`
@@ -281,20 +284,21 @@ func GetServiceEdgeGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceEdgeGroup resources.
 type serviceEdgeGroupState struct {
+	// City for the Service Edge Group.
+	City        *string `pulumi:"city"`
 	CityCountry *string `pulumi:"cityCountry"`
 	CountryCode *string `pulumi:"countryCode"`
 	// Description of the Service Edge Group.
 	Description *string `pulumi:"description"`
 	// Whether this Service Edge Group is enabled or not.
 	Enabled *bool `pulumi:"enabled"`
-	// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
-	// Public Service Edge.
+	// Indicates whether the Service Edge Group is exclusive for business continuity.
+	ExclusiveForBusinessContinuity *bool `pulumi:"exclusiveForBusinessContinuity"`
+	// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA Public Service Edge.
 	GraceDistanceEnabled *bool `pulumi:"graceDistanceEnabled"`
-	// Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
-	// Public Service Edge
+	// Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA Public Service Edge
 	GraceDistanceValue *string `pulumi:"graceDistanceValue"`
-	// Indicates the grace distance unit of measure in miles or kilometers. This value is only required if graceDistanceValue
-	// is set to true
+	// Indicates the grace distance unit of measure in miles or kilometers. This value is only required if graceDistanceValue is set to true
 	GraceDistanceValueUnit *string `pulumi:"graceDistanceValueUnit"`
 	// Enable or disable public access for the Service Edge Group.
 	IsPublic *bool `pulumi:"isPublic"`
@@ -309,8 +313,7 @@ type serviceEdgeGroupState struct {
 	Name *string `pulumi:"name"`
 	// Whether the default version profile of the App Connector Group is applied or overridden.
 	OverrideVersionProfile *bool `pulumi:"overrideVersionProfile"`
-	// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
-	// matching.This field will be deprecated in future versions
+	// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership matching.This field will be deprecated in future versions
 	ServiceEdges *ServiceEdgeGroupServiceEdges `pulumi:"serviceEdges"`
 	// List of trusted network IDs.
 	TrustedNetworks []ServiceEdgeGroupTrustedNetwork `pulumi:"trustedNetworks"`
@@ -321,28 +324,28 @@ type serviceEdgeGroupState struct {
 	UseInDrMode       *bool   `pulumi:"useInDrMode"`
 	// ID of the version profile.
 	VersionProfileId *string `pulumi:"versionProfileId"`
-	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
-	// overrideVersionProfile is set to true
+	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
 	VersionProfileName *string `pulumi:"versionProfileName"`
 	// ID of the version profile.
 	VersionProfileVisibilityScope *string `pulumi:"versionProfileVisibilityScope"`
 }
 
 type ServiceEdgeGroupState struct {
+	// City for the Service Edge Group.
+	City        pulumi.StringPtrInput
 	CityCountry pulumi.StringPtrInput
 	CountryCode pulumi.StringPtrInput
 	// Description of the Service Edge Group.
 	Description pulumi.StringPtrInput
 	// Whether this Service Edge Group is enabled or not.
 	Enabled pulumi.BoolPtrInput
-	// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
-	// Public Service Edge.
+	// Indicates whether the Service Edge Group is exclusive for business continuity.
+	ExclusiveForBusinessContinuity pulumi.BoolPtrInput
+	// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA Public Service Edge.
 	GraceDistanceEnabled pulumi.BoolPtrInput
-	// Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
-	// Public Service Edge
+	// Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA Public Service Edge
 	GraceDistanceValue pulumi.StringPtrInput
-	// Indicates the grace distance unit of measure in miles or kilometers. This value is only required if graceDistanceValue
-	// is set to true
+	// Indicates the grace distance unit of measure in miles or kilometers. This value is only required if graceDistanceValue is set to true
 	GraceDistanceValueUnit pulumi.StringPtrInput
 	// Enable or disable public access for the Service Edge Group.
 	IsPublic pulumi.BoolPtrInput
@@ -357,8 +360,7 @@ type ServiceEdgeGroupState struct {
 	Name pulumi.StringPtrInput
 	// Whether the default version profile of the App Connector Group is applied or overridden.
 	OverrideVersionProfile pulumi.BoolPtrInput
-	// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
-	// matching.This field will be deprecated in future versions
+	// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership matching.This field will be deprecated in future versions
 	ServiceEdges ServiceEdgeGroupServiceEdgesPtrInput
 	// List of trusted network IDs.
 	TrustedNetworks ServiceEdgeGroupTrustedNetworkArrayInput
@@ -369,8 +371,7 @@ type ServiceEdgeGroupState struct {
 	UseInDrMode       pulumi.BoolPtrInput
 	// ID of the version profile.
 	VersionProfileId pulumi.StringPtrInput
-	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
-	// overrideVersionProfile is set to true
+	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
 	VersionProfileName pulumi.StringPtrInput
 	// ID of the version profile.
 	VersionProfileVisibilityScope pulumi.StringPtrInput
@@ -381,20 +382,21 @@ func (ServiceEdgeGroupState) ElementType() reflect.Type {
 }
 
 type serviceEdgeGroupArgs struct {
+	// City for the Service Edge Group.
+	City        *string `pulumi:"city"`
 	CityCountry *string `pulumi:"cityCountry"`
 	CountryCode *string `pulumi:"countryCode"`
 	// Description of the Service Edge Group.
 	Description *string `pulumi:"description"`
 	// Whether this Service Edge Group is enabled or not.
 	Enabled *bool `pulumi:"enabled"`
-	// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
-	// Public Service Edge.
+	// Indicates whether the Service Edge Group is exclusive for business continuity.
+	ExclusiveForBusinessContinuity *bool `pulumi:"exclusiveForBusinessContinuity"`
+	// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA Public Service Edge.
 	GraceDistanceEnabled *bool `pulumi:"graceDistanceEnabled"`
-	// Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
-	// Public Service Edge
+	// Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA Public Service Edge
 	GraceDistanceValue *string `pulumi:"graceDistanceValue"`
-	// Indicates the grace distance unit of measure in miles or kilometers. This value is only required if graceDistanceValue
-	// is set to true
+	// Indicates the grace distance unit of measure in miles or kilometers. This value is only required if graceDistanceValue is set to true
 	GraceDistanceValueUnit *string `pulumi:"graceDistanceValueUnit"`
 	// Enable or disable public access for the Service Edge Group.
 	IsPublic *bool `pulumi:"isPublic"`
@@ -409,8 +411,7 @@ type serviceEdgeGroupArgs struct {
 	Name *string `pulumi:"name"`
 	// Whether the default version profile of the App Connector Group is applied or overridden.
 	OverrideVersionProfile *bool `pulumi:"overrideVersionProfile"`
-	// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
-	// matching.This field will be deprecated in future versions
+	// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership matching.This field will be deprecated in future versions
 	ServiceEdges *ServiceEdgeGroupServiceEdges `pulumi:"serviceEdges"`
 	// List of trusted network IDs.
 	TrustedNetworks []ServiceEdgeGroupTrustedNetwork `pulumi:"trustedNetworks"`
@@ -421,8 +422,7 @@ type serviceEdgeGroupArgs struct {
 	UseInDrMode       *bool   `pulumi:"useInDrMode"`
 	// ID of the version profile.
 	VersionProfileId *string `pulumi:"versionProfileId"`
-	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
-	// overrideVersionProfile is set to true
+	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
 	VersionProfileName *string `pulumi:"versionProfileName"`
 	// ID of the version profile.
 	VersionProfileVisibilityScope *string `pulumi:"versionProfileVisibilityScope"`
@@ -430,20 +430,21 @@ type serviceEdgeGroupArgs struct {
 
 // The set of arguments for constructing a ServiceEdgeGroup resource.
 type ServiceEdgeGroupArgs struct {
+	// City for the Service Edge Group.
+	City        pulumi.StringPtrInput
 	CityCountry pulumi.StringPtrInput
 	CountryCode pulumi.StringPtrInput
 	// Description of the Service Edge Group.
 	Description pulumi.StringPtrInput
 	// Whether this Service Edge Group is enabled or not.
 	Enabled pulumi.BoolPtrInput
-	// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
-	// Public Service Edge.
+	// Indicates whether the Service Edge Group is exclusive for business continuity.
+	ExclusiveForBusinessContinuity pulumi.BoolPtrInput
+	// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA Public Service Edge.
 	GraceDistanceEnabled pulumi.BoolPtrInput
-	// Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
-	// Public Service Edge
+	// Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA Public Service Edge
 	GraceDistanceValue pulumi.StringPtrInput
-	// Indicates the grace distance unit of measure in miles or kilometers. This value is only required if graceDistanceValue
-	// is set to true
+	// Indicates the grace distance unit of measure in miles or kilometers. This value is only required if graceDistanceValue is set to true
 	GraceDistanceValueUnit pulumi.StringPtrInput
 	// Enable or disable public access for the Service Edge Group.
 	IsPublic pulumi.BoolPtrInput
@@ -458,8 +459,7 @@ type ServiceEdgeGroupArgs struct {
 	Name pulumi.StringPtrInput
 	// Whether the default version profile of the App Connector Group is applied or overridden.
 	OverrideVersionProfile pulumi.BoolPtrInput
-	// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
-	// matching.This field will be deprecated in future versions
+	// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership matching.This field will be deprecated in future versions
 	ServiceEdges ServiceEdgeGroupServiceEdgesPtrInput
 	// List of trusted network IDs.
 	TrustedNetworks ServiceEdgeGroupTrustedNetworkArrayInput
@@ -470,8 +470,7 @@ type ServiceEdgeGroupArgs struct {
 	UseInDrMode       pulumi.BoolPtrInput
 	// ID of the version profile.
 	VersionProfileId pulumi.StringPtrInput
-	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
-	// overrideVersionProfile is set to true
+	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
 	VersionProfileName pulumi.StringPtrInput
 	// ID of the version profile.
 	VersionProfileVisibilityScope pulumi.StringPtrInput
@@ -564,8 +563,13 @@ func (o ServiceEdgeGroupOutput) ToServiceEdgeGroupOutputWithContext(ctx context.
 	return o
 }
 
-func (o ServiceEdgeGroupOutput) CityCountry() pulumi.StringOutput {
-	return o.ApplyT(func(v *ServiceEdgeGroup) pulumi.StringOutput { return v.CityCountry }).(pulumi.StringOutput)
+// City for the Service Edge Group.
+func (o ServiceEdgeGroupOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceEdgeGroup) pulumi.StringPtrOutput { return v.City }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceEdgeGroupOutput) CityCountry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceEdgeGroup) pulumi.StringPtrOutput { return v.CityCountry }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceEdgeGroupOutput) CountryCode() pulumi.StringOutput {
@@ -582,20 +586,22 @@ func (o ServiceEdgeGroupOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceEdgeGroup) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA
-// Public Service Edge.
+// Indicates whether the Service Edge Group is exclusive for business continuity.
+func (o ServiceEdgeGroupOutput) ExclusiveForBusinessContinuity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceEdgeGroup) pulumi.BoolPtrOutput { return v.ExclusiveForBusinessContinuity }).(pulumi.BoolPtrOutput)
+}
+
+// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA Public Service Edge.
 func (o ServiceEdgeGroupOutput) GraceDistanceEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServiceEdgeGroup) pulumi.BoolOutput { return v.GraceDistanceEnabled }).(pulumi.BoolOutput)
 }
 
-// Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA
-// Public Service Edge
+// Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA Public Service Edge
 func (o ServiceEdgeGroupOutput) GraceDistanceValue() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceEdgeGroup) pulumi.StringOutput { return v.GraceDistanceValue }).(pulumi.StringOutput)
 }
 
-// Indicates the grace distance unit of measure in miles or kilometers. This value is only required if graceDistanceValue
-// is set to true
+// Indicates the grace distance unit of measure in miles or kilometers. This value is only required if graceDistanceValue is set to true
 func (o ServiceEdgeGroupOutput) GraceDistanceValueUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceEdgeGroup) pulumi.StringOutput { return v.GraceDistanceValueUnit }).(pulumi.StringOutput)
 }
@@ -634,8 +640,7 @@ func (o ServiceEdgeGroupOutput) OverrideVersionProfile() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceEdgeGroup) pulumi.BoolPtrOutput { return v.OverrideVersionProfile }).(pulumi.BoolPtrOutput)
 }
 
-// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership
-// matching.This field will be deprecated in future versions
+// WARNING: Service edge membership is managed externally. Specifying this field will enforce exact membership matching.This field will be deprecated in future versions
 func (o ServiceEdgeGroupOutput) ServiceEdges() ServiceEdgeGroupServiceEdgesOutput {
 	return o.ApplyT(func(v *ServiceEdgeGroup) ServiceEdgeGroupServiceEdgesOutput { return v.ServiceEdges }).(ServiceEdgeGroupServiceEdgesOutput)
 }
@@ -664,8 +669,7 @@ func (o ServiceEdgeGroupOutput) VersionProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceEdgeGroup) pulumi.StringOutput { return v.VersionProfileId }).(pulumi.StringOutput)
 }
 
-// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
-// overrideVersionProfile is set to true
+// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
 func (o ServiceEdgeGroupOutput) VersionProfileName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceEdgeGroup) pulumi.StringOutput { return v.VersionProfileName }).(pulumi.StringOutput)
 }

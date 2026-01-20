@@ -14,6 +14,84 @@ import * as utilities from "./utilities";
  *
  *   ⚠️ **WARNING:**: The attribute ``ruleOrder`` is now deprecated in favor of the new resource  ``policyAccessRuleReorder``
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * // Get IdP ID
+ * const idpName = zpa.getIdPController({
+ *     name: "IdP_Name",
+ * });
+ * // Get SCIM Group attribute ID
+ * const engineering = zpa.getSCIMGroups({
+ *     name: "Engineering",
+ *     idpName: "IdP_Name",
+ * });
+ * //Create Policy Access Rule
+ * const _this = new zpa.PolicyAccessRule("this", {
+ *     name: "Example",
+ *     description: "Example",
+ *     action: "ALLOW",
+ *     operator: "AND",
+ *     conditions: [
+ *         {
+ *             operator: "OR",
+ *             operands: [{
+ *                 objectType: "APP",
+ *                 lhs: "id",
+ *                 rhs: thisZpaApplicationSegment.id,
+ *             }],
+ *         },
+ *         {
+ *             operator: "OR",
+ *             operands: [{
+ *                 objectType: "SCIM_GROUP",
+ *                 lhs: idpName.then(idpName => idpName.id),
+ *                 rhs: engineering.then(engineering => engineering.id),
+ *             }],
+ *         },
+ *         {
+ *             operator: "OR",
+ *             operands: [{
+ *                 objectType: "CHROME_ENTERPRISE",
+ *                 entryValues: [
+ *                     {
+ *                         lhs: "managed",
+ *                         rhs: "true",
+ *                     },
+ *                     {
+ *                         lhs: "managed",
+ *                         rhs: "false",
+ *                     },
+ *                 ],
+ *             }],
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## LHS and RHS Values
+ *
+ * | Object Type | LHS| RHS
+ * |----------|-----------|----------
+ * | APP | ``"id"`` | ``applicationSegmentId`` |
+ * | APP_GROUP | ``"id"`` | ``segmentGroupId``|
+ * | CLIENT_TYPE | ``"id"`` | ``zpnClientTypeZappl``, ``zpnClientTypeExporter``, ``zpnClientTypeBrowserIsolation``, ``zpnClientTypeIpAnchoring``, ``zpnClientTypeEdgeConnector``, ``zpnClientTypeBranchConnector``,  ``zpnClientTypeZappPartner``, ``zpnClientTypeZapp``  |
+ * | EDGE_CONNECTOR_GROUP | ``"id"`` | ``<edge_connector_id>`` |
+ * | IDP | ``"id"`` | ``identityProviderId`` |
+ * | SAML | ``samlAttributeId``  | ``attributeValueToMatch`` |
+ * | SCIM | ``scimAttributeId``  | ``attributeValueToMatch``  |
+ * | SCIM_GROUP | ``scimGroupAttributeId``  | ``attributeValueToMatch``  |
+ * | PLATFORM | ``mac``, ``ios``, ``windows``, ``android``, ``linux`` | ``"true"`` / ``"false"`` |
+ * | MACHINE_GRP | ``"id"`` | ``machineGroupId`` |
+ * | POSTURE | ``postureUdid``  | ``"true"`` / ``"false"`` |
+ * | TRUSTED_NETWORK | ``networkId``  | ``"true"`` |
+ * | COUNTRY_CODE | [2 Letter ISO3166 Alpha2](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)  | ``"true"`` / ``"false"`` |
+ * | RISK_FACTOR_TYPE | ``ZIA``  | ``"UNKNOWN", "LOW", "MEDIUM", "HIGH", "CRITICAL"`` |
+ * | CHROME_ENTERPRISE | ``managed``  | ``"true" / "false"`` |
+ *
  * ## Import
  *
  * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
@@ -59,60 +137,60 @@ export class PolicyAccessRule extends pulumi.CustomResource {
     /**
      * This is for providing the rule action. Supported values: `ALLOW`, `DENY`, and `REQUIRE_APPROVAL`
      */
-    public readonly action!: pulumi.Output<string | undefined>;
+    declare public readonly action: pulumi.Output<string | undefined>;
     /**
      * This field defines the description of the server.
      */
-    public readonly actionId!: pulumi.Output<string | undefined>;
-    public readonly appConnectorGroups!: pulumi.Output<outputs.PolicyAccessRuleAppConnectorGroup[] | undefined>;
+    declare public readonly actionId: pulumi.Output<string | undefined>;
+    declare public readonly appConnectorGroups: pulumi.Output<outputs.PolicyAccessRuleAppConnectorGroup[] | undefined>;
     /**
      * List of the server group IDs.
      */
-    public readonly appServerGroups!: pulumi.Output<outputs.PolicyAccessRuleAppServerGroup[] | undefined>;
-    public readonly bypassDefaultRule!: pulumi.Output<boolean | undefined>;
+    declare public readonly appServerGroups: pulumi.Output<outputs.PolicyAccessRuleAppServerGroup[] | undefined>;
+    declare public readonly bypassDefaultRule: pulumi.Output<boolean>;
     /**
      * This is for proviidng the set of conditions for the policy.
      */
-    public readonly conditions!: pulumi.Output<outputs.PolicyAccessRuleCondition[] | undefined>;
+    declare public readonly conditions: pulumi.Output<outputs.PolicyAccessRuleCondition[] | undefined>;
     /**
      * This is for providing a customer message for the user.
      */
-    public readonly customMsg!: pulumi.Output<string>;
+    declare public readonly customMsg: pulumi.Output<string>;
     /**
      * This is for providing a customer message for the user.
      */
-    public readonly defaultRule!: pulumi.Output<boolean | undefined>;
+    declare public readonly defaultRule: pulumi.Output<boolean>;
     /**
      * This is the description of the access policy rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly lssDefaultRule!: pulumi.Output<boolean | undefined>;
-    public readonly microtenantId!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly lssDefaultRule: pulumi.Output<boolean | undefined>;
+    declare public readonly microtenantId: pulumi.Output<string>;
     /**
      * This is the name of the policy rule.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Supported values: `AND`, `OR`
      */
-    public readonly operator!: pulumi.Output<string>;
+    declare public readonly operator: pulumi.Output<string>;
     /**
      * - (String) Use zpa*policy*type data source to retrieve the necessary policy Set ID `policySetId`
      * > **NOTE** As of v3.2.0 the `policySetId` attribute is now optional, and will be automatically determined based on the policy type being configured. The attribute is being kept for backwards compatibility, but can be safely removed from existing configurations.
      */
-    public readonly policySetId!: pulumi.Output<string>;
-    public readonly policyType!: pulumi.Output<string>;
-    public readonly priority!: pulumi.Output<string>;
-    public readonly reauthDefaultRule!: pulumi.Output<boolean | undefined>;
-    public readonly reauthIdleTimeout!: pulumi.Output<string | undefined>;
-    public readonly reauthTimeout!: pulumi.Output<string | undefined>;
+    declare public readonly policySetId: pulumi.Output<string>;
+    declare public readonly policyType: pulumi.Output<string>;
+    declare public readonly priority: pulumi.Output<string>;
+    declare public readonly reauthDefaultRule: pulumi.Output<boolean>;
+    declare public readonly reauthIdleTimeout: pulumi.Output<string | undefined>;
+    declare public readonly reauthTimeout: pulumi.Output<string | undefined>;
     /**
      * @deprecated The `ruleOrder` field is now deprecated for all zpa access policy resources in favor of the resource `zpa.PolicyAccessReorderRule`
      */
-    public readonly ruleOrder!: pulumi.Output<string>;
-    public readonly zpnCbiProfileId!: pulumi.Output<string>;
-    public readonly zpnInspectionProfileId!: pulumi.Output<string>;
-    public readonly zpnIsolationProfileId!: pulumi.Output<string>;
+    declare public readonly ruleOrder: pulumi.Output<string>;
+    declare public readonly zpnCbiProfileId: pulumi.Output<string>;
+    declare public readonly zpnInspectionProfileId: pulumi.Output<string>;
+    declare public readonly zpnIsolationProfileId: pulumi.Output<string>;
 
     /**
      * Create a PolicyAccessRule resource with the given unique name, arguments, and options.
@@ -127,54 +205,54 @@ export class PolicyAccessRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyAccessRuleState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["actionId"] = state ? state.actionId : undefined;
-            resourceInputs["appConnectorGroups"] = state ? state.appConnectorGroups : undefined;
-            resourceInputs["appServerGroups"] = state ? state.appServerGroups : undefined;
-            resourceInputs["bypassDefaultRule"] = state ? state.bypassDefaultRule : undefined;
-            resourceInputs["conditions"] = state ? state.conditions : undefined;
-            resourceInputs["customMsg"] = state ? state.customMsg : undefined;
-            resourceInputs["defaultRule"] = state ? state.defaultRule : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["lssDefaultRule"] = state ? state.lssDefaultRule : undefined;
-            resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["operator"] = state ? state.operator : undefined;
-            resourceInputs["policySetId"] = state ? state.policySetId : undefined;
-            resourceInputs["policyType"] = state ? state.policyType : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["reauthDefaultRule"] = state ? state.reauthDefaultRule : undefined;
-            resourceInputs["reauthIdleTimeout"] = state ? state.reauthIdleTimeout : undefined;
-            resourceInputs["reauthTimeout"] = state ? state.reauthTimeout : undefined;
-            resourceInputs["ruleOrder"] = state ? state.ruleOrder : undefined;
-            resourceInputs["zpnCbiProfileId"] = state ? state.zpnCbiProfileId : undefined;
-            resourceInputs["zpnInspectionProfileId"] = state ? state.zpnInspectionProfileId : undefined;
-            resourceInputs["zpnIsolationProfileId"] = state ? state.zpnIsolationProfileId : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["actionId"] = state?.actionId;
+            resourceInputs["appConnectorGroups"] = state?.appConnectorGroups;
+            resourceInputs["appServerGroups"] = state?.appServerGroups;
+            resourceInputs["bypassDefaultRule"] = state?.bypassDefaultRule;
+            resourceInputs["conditions"] = state?.conditions;
+            resourceInputs["customMsg"] = state?.customMsg;
+            resourceInputs["defaultRule"] = state?.defaultRule;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["lssDefaultRule"] = state?.lssDefaultRule;
+            resourceInputs["microtenantId"] = state?.microtenantId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["operator"] = state?.operator;
+            resourceInputs["policySetId"] = state?.policySetId;
+            resourceInputs["policyType"] = state?.policyType;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["reauthDefaultRule"] = state?.reauthDefaultRule;
+            resourceInputs["reauthIdleTimeout"] = state?.reauthIdleTimeout;
+            resourceInputs["reauthTimeout"] = state?.reauthTimeout;
+            resourceInputs["ruleOrder"] = state?.ruleOrder;
+            resourceInputs["zpnCbiProfileId"] = state?.zpnCbiProfileId;
+            resourceInputs["zpnInspectionProfileId"] = state?.zpnInspectionProfileId;
+            resourceInputs["zpnIsolationProfileId"] = state?.zpnIsolationProfileId;
         } else {
             const args = argsOrState as PolicyAccessRuleArgs | undefined;
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["actionId"] = args ? args.actionId : undefined;
-            resourceInputs["appConnectorGroups"] = args ? args.appConnectorGroups : undefined;
-            resourceInputs["appServerGroups"] = args ? args.appServerGroups : undefined;
-            resourceInputs["bypassDefaultRule"] = args ? args.bypassDefaultRule : undefined;
-            resourceInputs["conditions"] = args ? args.conditions : undefined;
-            resourceInputs["customMsg"] = args ? args.customMsg : undefined;
-            resourceInputs["defaultRule"] = args ? args.defaultRule : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["lssDefaultRule"] = args ? args.lssDefaultRule : undefined;
-            resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["operator"] = args ? args.operator : undefined;
-            resourceInputs["policySetId"] = args ? args.policySetId : undefined;
-            resourceInputs["policyType"] = args ? args.policyType : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["reauthDefaultRule"] = args ? args.reauthDefaultRule : undefined;
-            resourceInputs["reauthIdleTimeout"] = args ? args.reauthIdleTimeout : undefined;
-            resourceInputs["reauthTimeout"] = args ? args.reauthTimeout : undefined;
-            resourceInputs["ruleOrder"] = args ? args.ruleOrder : undefined;
-            resourceInputs["zpnCbiProfileId"] = args ? args.zpnCbiProfileId : undefined;
-            resourceInputs["zpnInspectionProfileId"] = args ? args.zpnInspectionProfileId : undefined;
-            resourceInputs["zpnIsolationProfileId"] = args ? args.zpnIsolationProfileId : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["actionId"] = args?.actionId;
+            resourceInputs["appConnectorGroups"] = args?.appConnectorGroups;
+            resourceInputs["appServerGroups"] = args?.appServerGroups;
+            resourceInputs["bypassDefaultRule"] = args?.bypassDefaultRule;
+            resourceInputs["conditions"] = args?.conditions;
+            resourceInputs["customMsg"] = args?.customMsg;
+            resourceInputs["defaultRule"] = args?.defaultRule;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["lssDefaultRule"] = args?.lssDefaultRule;
+            resourceInputs["microtenantId"] = args?.microtenantId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["operator"] = args?.operator;
+            resourceInputs["policySetId"] = args?.policySetId;
+            resourceInputs["policyType"] = args?.policyType;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["reauthDefaultRule"] = args?.reauthDefaultRule;
+            resourceInputs["reauthIdleTimeout"] = args?.reauthIdleTimeout;
+            resourceInputs["reauthTimeout"] = args?.reauthTimeout;
+            resourceInputs["ruleOrder"] = args?.ruleOrder;
+            resourceInputs["zpnCbiProfileId"] = args?.zpnCbiProfileId;
+            resourceInputs["zpnInspectionProfileId"] = args?.zpnInspectionProfileId;
+            resourceInputs["zpnIsolationProfileId"] = args?.zpnIsolationProfileId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PolicyAccessRule.__pulumiType, name, resourceInputs, opts);

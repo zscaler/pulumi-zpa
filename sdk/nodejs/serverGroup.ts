@@ -9,12 +9,15 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ### Dynamic Discovery Enabled
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // Create a App Connector Group
- * const exampleConnectorGroup = new zpa.ConnectorGroup("exampleConnectorGroup", {
+ * const exampleConnectorGroup = new zpa.ConnectorGroup("example", {
+ *     name: "Example",
  *     description: "Example",
  *     enabled: true,
  *     cityCountry: "San Jose, CA",
@@ -28,8 +31,8 @@ import * as utilities from "./utilities";
  *     versionProfileId: "0",
  *     dnsQueryType: "IPV4",
  * });
- * // Create a Server Group resource with Dynamic Discovery Enabled
- * const exampleServerGroup = new zpa.ServerGroup("exampleServerGroup", {
+ * const example = new zpa.ServerGroup("example", {
+ *     name: "Example",
  *     description: "Example",
  *     enabled: true,
  *     dynamicDiscovery: true,
@@ -41,18 +44,22 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Dynamic Discovery Disabled
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // Create an application server
- * const exampleApplicationServer = new zpa.ApplicationServer("exampleApplicationServer", {
+ * const exampleApplicationServer = new zpa.ApplicationServer("example", {
+ *     name: "Example",
  *     description: "Example",
  *     address: "server.example.com",
  *     enabled: true,
  * });
  * // Create a App Connector Group
- * const exampleConnectorGroup = new zpa.ConnectorGroup("exampleConnectorGroup", {
+ * const exampleConnectorGroup = new zpa.ConnectorGroup("example", {
+ *     name: "Example",
  *     description: "Example",
  *     enabled: true,
  *     cityCountry: "San Jose, CA",
@@ -66,8 +73,8 @@ import * as utilities from "./utilities";
  *     versionProfileId: "0",
  *     dnsQueryType: "IPV4",
  * });
- * // ZPA Server Group resource with Dynamic Discovery Disabled
- * const exampleServerGroup = new zpa.ServerGroup("exampleServerGroup", {
+ * const example = new zpa.ServerGroup("example", {
+ *     name: "Example",
  *     description: "Example",
  *     enabled: true,
  *     dynamicDiscovery: false,
@@ -80,8 +87,42 @@ import * as utilities from "./utilities";
  * }, {
  *     dependsOn: [
  *         exampleConnectorGroup,
- *         zpa_application_server.server,
+ *         server,
  *     ],
+ * });
+ * ```
+ * ### Extranet Configuration
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const _this = zpa.getLocationController({
+ *     name: "ExtranetLocation01 | zscalerbeta.net",
+ *     ziaErName: "NewExtranet 8432",
+ * });
+ * const thisGetLocationGroupController = zpa.getLocationGroupController({
+ *     locationName: "ExtranetLocation01",
+ *     ziaErName: "NewExtranet 8432",
+ * });
+ * const thisGetExtranetResourcePartner = zpa.getExtranetResourcePartner({
+ *     name: "NewExtranet 8432",
+ * });
+ * const example = new zpa.ServerGroup("example", {
+ *     name: "Example",
+ *     description: "Example",
+ *     enabled: true,
+ *     dynamicDiscovery: true,
+ *     extranetEnabled: true,
+ *     extranetDtos: [{
+ *         zpnErId: thisGetExtranetResourcePartner.then(thisGetExtranetResourcePartner => thisGetExtranetResourcePartner.id),
+ *         locationDtos: [{
+ *             id: _this.then(_this => _this.id),
+ *         }],
+ *         locationGroupDtos: [{
+ *             id: thisGetLocationGroupController.then(thisGetLocationGroupController => thisGetLocationGroupController.id),
+ *         }],
+ *     }],
  * });
  * ```
  *
@@ -133,35 +174,42 @@ export class ServerGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === ServerGroup.__pulumiType;
     }
 
-    public readonly appConnectorGroups!: pulumi.Output<outputs.ServerGroupAppConnectorGroup[] | undefined>;
+    declare public readonly appConnectorGroups: pulumi.Output<outputs.ServerGroupAppConnectorGroup[] | undefined>;
     /**
      * This field is a json array of app-connector-id only.
      */
-    public readonly applications!: pulumi.Output<outputs.ServerGroupApplication[]>;
-    public readonly configSpace!: pulumi.Output<string | undefined>;
+    declare public readonly applications: pulumi.Output<outputs.ServerGroupApplication[]>;
+    declare public readonly configSpace: pulumi.Output<string | undefined>;
     /**
      * This field is the description of the server group.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * This field controls dynamic discovery of the servers.
      */
-    public readonly dynamicDiscovery!: pulumi.Output<boolean | undefined>;
+    declare public readonly dynamicDiscovery: pulumi.Output<boolean | undefined>;
     /**
      * This field defines if the server group is enabled or disabled.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
-    public readonly ipAnchored!: pulumi.Output<boolean | undefined>;
-    public readonly microtenantId!: pulumi.Output<string>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
+    /**
+     * Extranet configuration for the policy rule.
+     */
+    declare public readonly extranetDtos: pulumi.Output<outputs.ServerGroupExtranetDto[] | undefined>;
+    /**
+     * Enable extranet for this policy rule.
+     */
+    declare public readonly extranetEnabled: pulumi.Output<boolean | undefined>;
+    declare public readonly ipAnchored: pulumi.Output<boolean | undefined>;
+    declare public readonly microtenantId: pulumi.Output<string>;
     /**
      * This field defines the name of the server group.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
-     * This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
-     * only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
+     * This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
      */
-    public readonly servers!: pulumi.Output<outputs.ServerGroupServer[]>;
+    declare public readonly servers: pulumi.Output<outputs.ServerGroupServer[] | undefined>;
 
     /**
      * Create a ServerGroup resource with the given unique name, arguments, and options.
@@ -176,28 +224,32 @@ export class ServerGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerGroupState | undefined;
-            resourceInputs["appConnectorGroups"] = state ? state.appConnectorGroups : undefined;
-            resourceInputs["applications"] = state ? state.applications : undefined;
-            resourceInputs["configSpace"] = state ? state.configSpace : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dynamicDiscovery"] = state ? state.dynamicDiscovery : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["ipAnchored"] = state ? state.ipAnchored : undefined;
-            resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["servers"] = state ? state.servers : undefined;
+            resourceInputs["appConnectorGroups"] = state?.appConnectorGroups;
+            resourceInputs["applications"] = state?.applications;
+            resourceInputs["configSpace"] = state?.configSpace;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dynamicDiscovery"] = state?.dynamicDiscovery;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["extranetDtos"] = state?.extranetDtos;
+            resourceInputs["extranetEnabled"] = state?.extranetEnabled;
+            resourceInputs["ipAnchored"] = state?.ipAnchored;
+            resourceInputs["microtenantId"] = state?.microtenantId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["servers"] = state?.servers;
         } else {
             const args = argsOrState as ServerGroupArgs | undefined;
-            resourceInputs["appConnectorGroups"] = args ? args.appConnectorGroups : undefined;
-            resourceInputs["applications"] = args ? args.applications : undefined;
-            resourceInputs["configSpace"] = args ? args.configSpace : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dynamicDiscovery"] = args ? args.dynamicDiscovery : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["ipAnchored"] = args ? args.ipAnchored : undefined;
-            resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["servers"] = args ? args.servers : undefined;
+            resourceInputs["appConnectorGroups"] = args?.appConnectorGroups;
+            resourceInputs["applications"] = args?.applications;
+            resourceInputs["configSpace"] = args?.configSpace;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dynamicDiscovery"] = args?.dynamicDiscovery;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["extranetDtos"] = args?.extranetDtos;
+            resourceInputs["extranetEnabled"] = args?.extranetEnabled;
+            resourceInputs["ipAnchored"] = args?.ipAnchored;
+            resourceInputs["microtenantId"] = args?.microtenantId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["servers"] = args?.servers;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServerGroup.__pulumiType, name, resourceInputs, opts);
@@ -226,6 +278,14 @@ export interface ServerGroupState {
      * This field defines if the server group is enabled or disabled.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Extranet configuration for the policy rule.
+     */
+    extranetDtos?: pulumi.Input<pulumi.Input<inputs.ServerGroupExtranetDto>[]>;
+    /**
+     * Enable extranet for this policy rule.
+     */
+    extranetEnabled?: pulumi.Input<boolean>;
     ipAnchored?: pulumi.Input<boolean>;
     microtenantId?: pulumi.Input<string>;
     /**
@@ -233,8 +293,7 @@ export interface ServerGroupState {
      */
     name?: pulumi.Input<string>;
     /**
-     * This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
-     * only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
+     * This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
      */
     servers?: pulumi.Input<pulumi.Input<inputs.ServerGroupServer>[]>;
 }
@@ -261,6 +320,14 @@ export interface ServerGroupArgs {
      * This field defines if the server group is enabled or disabled.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Extranet configuration for the policy rule.
+     */
+    extranetDtos?: pulumi.Input<pulumi.Input<inputs.ServerGroupExtranetDto>[]>;
+    /**
+     * Enable extranet for this policy rule.
+     */
+    extranetEnabled?: pulumi.Input<boolean>;
     ipAnchored?: pulumi.Input<boolean>;
     microtenantId?: pulumi.Input<string>;
     /**
@@ -268,8 +335,7 @@ export interface ServerGroupArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
-     * only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
+     * This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
      */
     servers?: pulumi.Input<pulumi.Input<inputs.ServerGroupServer>[]>;
 }

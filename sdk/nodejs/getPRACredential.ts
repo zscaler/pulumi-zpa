@@ -11,16 +11,6 @@ import * as utilities from "./utilities";
  * The **zpa_pra_credential_controller** data source to get information about a privileged remote access credential created in the Zscaler Private Access cloud.
  *
  * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as zpa from "@bdzscaler/pulumi-zpa";
- *
- * // Retrieves PRA Credential By ID
- * const _this = new zpa.PRACredential("this", {});
- * ```
  */
 export function getPRACredential(args?: GetPRACredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetPRACredentialResult> {
     args = args || {};
@@ -70,16 +60,6 @@ export interface GetPRACredentialResult {
  * The **zpa_pra_credential_controller** data source to get information about a privileged remote access credential created in the Zscaler Private Access cloud.
  *
  * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as zpa from "@bdzscaler/pulumi-zpa";
- *
- * // Retrieves PRA Credential By ID
- * const _this = new zpa.PRACredential("this", {});
- * ```
  */
 export function getPRACredentialOutput(args?: GetPRACredentialOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPRACredentialResult> {
     args = args || {};

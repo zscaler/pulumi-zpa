@@ -22,6 +22,7 @@ import * as utilities from "./utilities";
  *     name: "jenkins.example.com",
  * });
  * const _this = new zpa.ApplicationSegmentInspection("this", {
+ *     name: "ZPA_Inspection_Example",
  *     description: "ZPA_Inspection_Example",
  *     enabled: true,
  *     healthReporting: "ON_ACCESS",
@@ -32,18 +33,16 @@ import * as utilities from "./utilities";
  *         "443",
  *     ],
  *     domainNames: ["jenkins.example.com"],
- *     segmentGroupId: zpa_segment_group["this"].id,
+ *     segmentGroupId: thisZpaSegmentGroup.id,
  *     serverGroups: [{
- *         ids: [zpa_server_group["this"].id],
+ *         ids: [thisZpaServerGroup.id],
  *     }],
  *     commonAppsDtos: [{
  *         appsConfigs: [{
- *             name: "jenkins.example.com",
  *             domain: "jenkins.example.com",
  *             applicationProtocol: "HTTPS",
  *             applicationPort: "443",
  *             certificateId: jenkins.then(jenkins => jenkins.id),
- *             enabled: true,
  *             appTypes: ["INSPECT"],
  *         }],
  *     }],
@@ -97,84 +96,80 @@ export class ApplicationSegmentInspection extends pulumi.CustomResource {
     }
 
     /**
-     * Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's
-     * traffic to be inspected by Active Directory (AD) Protection.
+     * Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's traffic to be inspected by Active Directory (AD) Protection.
      */
-    public readonly adpEnabled!: pulumi.Output<boolean>;
+    declare public readonly adpEnabled: pulumi.Output<boolean>;
     /**
-     * If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by
-     * AppProtection.
+     * If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by AppProtection.
      */
-    public readonly autoAppProtectEnabled!: pulumi.Output<boolean>;
-    public readonly bypassOnReauth!: pulumi.Output<boolean>;
+    declare public readonly autoAppProtectEnabled: pulumi.Output<boolean>;
+    declare public readonly bypassOnReauth: pulumi.Output<boolean>;
     /**
-     * Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-     * The value NEVER indicates the use of the client forwarding policy.
+     * Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
      */
-    public readonly bypassType!: pulumi.Output<string>;
-    public readonly commonAppsDtos!: pulumi.Output<outputs.ApplicationSegmentInspectionCommonAppsDto[]>;
-    public readonly configSpace!: pulumi.Output<string | undefined>;
+    declare public readonly bypassType: pulumi.Output<string>;
+    declare public readonly commonAppsDtos: pulumi.Output<outputs.ApplicationSegmentInspectionCommonAppsDto[]>;
+    declare public readonly configSpace: pulumi.Output<string | undefined>;
     /**
      * Description of the application.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * List of domains and IPs.
      */
-    public readonly domainNames!: pulumi.Output<string[]>;
+    declare public readonly domainNames: pulumi.Output<string[]>;
     /**
      * Whether Double Encryption is enabled or disabled for the app.
      */
-    public readonly doubleEncrypt!: pulumi.Output<boolean>;
-    public readonly enabled!: pulumi.Output<boolean>;
-    public readonly fqdnDnsCheck!: pulumi.Output<boolean | undefined>;
-    public readonly healthCheckType!: pulumi.Output<string | undefined>;
+    declare public readonly doubleEncrypt: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
+    declare public readonly fqdnDnsCheck: pulumi.Output<boolean | undefined>;
+    declare public readonly healthCheckType: pulumi.Output<string>;
     /**
      * Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
      */
-    public readonly healthReporting!: pulumi.Output<string | undefined>;
-    public readonly icmpAccessType!: pulumi.Output<string>;
-    public readonly ipAnchored!: pulumi.Output<boolean | undefined>;
+    declare public readonly healthReporting: pulumi.Output<string | undefined>;
+    declare public readonly icmpAccessType: pulumi.Output<string>;
+    declare public readonly ipAnchored: pulumi.Output<boolean | undefined>;
     /**
-     * Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-     * connectors.
+     * Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
      */
-    public readonly isCnameEnabled!: pulumi.Output<boolean>;
-    public readonly isIncompleteDrConfig!: pulumi.Output<boolean | undefined>;
+    declare public readonly isCnameEnabled: pulumi.Output<boolean>;
+    declare public readonly isIncompleteDrConfig: pulumi.Output<boolean | undefined>;
     /**
      * Name of the application.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly passiveHealthEnabled!: pulumi.Output<boolean>;
-    public readonly segmentGroupId!: pulumi.Output<string>;
-    public readonly selectConnectorCloseToApp!: pulumi.Output<boolean | undefined>;
-    public readonly serverGroups!: pulumi.Output<outputs.ApplicationSegmentInspectionServerGroup[] | undefined>;
-    public readonly tcpKeepAlive!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly passiveHealthEnabled: pulumi.Output<boolean>;
+    declare public readonly segmentGroupId: pulumi.Output<string>;
+    declare public readonly selectConnectorCloseToApp: pulumi.Output<boolean | undefined>;
+    declare public readonly serverGroups: pulumi.Output<outputs.ApplicationSegmentInspectionServerGroup[] | undefined>;
+    declare public readonly tcpKeepAlive: pulumi.Output<string>;
     /**
      * tcp port range
      */
-    public readonly tcpPortRange!: pulumi.Output<outputs.ApplicationSegmentInspectionTcpPortRange[]>;
+    declare public readonly tcpPortRange: pulumi.Output<outputs.ApplicationSegmentInspectionTcpPortRange[]>;
     /**
      * TCP port ranges used to access the app.
      */
-    public readonly tcpPortRanges!: pulumi.Output<string[]>;
+    declare public readonly tcpPortRanges: pulumi.Output<string[]>;
     /**
      * TCP port ranges used to access the app.
      */
-    public readonly tcpProtocols!: pulumi.Output<string[]>;
+    declare public readonly tcpProtocols: pulumi.Output<string[]>;
     /**
      * udp port range
      */
-    public readonly udpPortRange!: pulumi.Output<outputs.ApplicationSegmentInspectionUdpPortRange[]>;
+    declare public readonly udpPortRange: pulumi.Output<outputs.ApplicationSegmentInspectionUdpPortRange[]>;
     /**
      * UDP port ranges used to access the app.
      */
-    public readonly udpPortRanges!: pulumi.Output<string[]>;
+    declare public readonly udpPortRanges: pulumi.Output<string[]>;
     /**
      * TCP port ranges used to access the app.
      */
-    public readonly udpProtocols!: pulumi.Output<string[]>;
-    public readonly useInDrMode!: pulumi.Output<boolean | undefined>;
+    declare public readonly udpProtocols: pulumi.Output<string[]>;
+    declare public readonly useInDrMode: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ApplicationSegmentInspection resource with the given unique name, arguments, and options.
@@ -189,71 +184,74 @@ export class ApplicationSegmentInspection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationSegmentInspectionState | undefined;
-            resourceInputs["adpEnabled"] = state ? state.adpEnabled : undefined;
-            resourceInputs["autoAppProtectEnabled"] = state ? state.autoAppProtectEnabled : undefined;
-            resourceInputs["bypassOnReauth"] = state ? state.bypassOnReauth : undefined;
-            resourceInputs["bypassType"] = state ? state.bypassType : undefined;
-            resourceInputs["commonAppsDtos"] = state ? state.commonAppsDtos : undefined;
-            resourceInputs["configSpace"] = state ? state.configSpace : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["domainNames"] = state ? state.domainNames : undefined;
-            resourceInputs["doubleEncrypt"] = state ? state.doubleEncrypt : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["fqdnDnsCheck"] = state ? state.fqdnDnsCheck : undefined;
-            resourceInputs["healthCheckType"] = state ? state.healthCheckType : undefined;
-            resourceInputs["healthReporting"] = state ? state.healthReporting : undefined;
-            resourceInputs["icmpAccessType"] = state ? state.icmpAccessType : undefined;
-            resourceInputs["ipAnchored"] = state ? state.ipAnchored : undefined;
-            resourceInputs["isCnameEnabled"] = state ? state.isCnameEnabled : undefined;
-            resourceInputs["isIncompleteDrConfig"] = state ? state.isIncompleteDrConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["passiveHealthEnabled"] = state ? state.passiveHealthEnabled : undefined;
-            resourceInputs["segmentGroupId"] = state ? state.segmentGroupId : undefined;
-            resourceInputs["selectConnectorCloseToApp"] = state ? state.selectConnectorCloseToApp : undefined;
-            resourceInputs["serverGroups"] = state ? state.serverGroups : undefined;
-            resourceInputs["tcpKeepAlive"] = state ? state.tcpKeepAlive : undefined;
-            resourceInputs["tcpPortRange"] = state ? state.tcpPortRange : undefined;
-            resourceInputs["tcpPortRanges"] = state ? state.tcpPortRanges : undefined;
-            resourceInputs["tcpProtocols"] = state ? state.tcpProtocols : undefined;
-            resourceInputs["udpPortRange"] = state ? state.udpPortRange : undefined;
-            resourceInputs["udpPortRanges"] = state ? state.udpPortRanges : undefined;
-            resourceInputs["udpProtocols"] = state ? state.udpProtocols : undefined;
-            resourceInputs["useInDrMode"] = state ? state.useInDrMode : undefined;
+            resourceInputs["adpEnabled"] = state?.adpEnabled;
+            resourceInputs["autoAppProtectEnabled"] = state?.autoAppProtectEnabled;
+            resourceInputs["bypassOnReauth"] = state?.bypassOnReauth;
+            resourceInputs["bypassType"] = state?.bypassType;
+            resourceInputs["commonAppsDtos"] = state?.commonAppsDtos;
+            resourceInputs["configSpace"] = state?.configSpace;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["domainNames"] = state?.domainNames;
+            resourceInputs["doubleEncrypt"] = state?.doubleEncrypt;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["fqdnDnsCheck"] = state?.fqdnDnsCheck;
+            resourceInputs["healthCheckType"] = state?.healthCheckType;
+            resourceInputs["healthReporting"] = state?.healthReporting;
+            resourceInputs["icmpAccessType"] = state?.icmpAccessType;
+            resourceInputs["ipAnchored"] = state?.ipAnchored;
+            resourceInputs["isCnameEnabled"] = state?.isCnameEnabled;
+            resourceInputs["isIncompleteDrConfig"] = state?.isIncompleteDrConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["passiveHealthEnabled"] = state?.passiveHealthEnabled;
+            resourceInputs["segmentGroupId"] = state?.segmentGroupId;
+            resourceInputs["selectConnectorCloseToApp"] = state?.selectConnectorCloseToApp;
+            resourceInputs["serverGroups"] = state?.serverGroups;
+            resourceInputs["tcpKeepAlive"] = state?.tcpKeepAlive;
+            resourceInputs["tcpPortRange"] = state?.tcpPortRange;
+            resourceInputs["tcpPortRanges"] = state?.tcpPortRanges;
+            resourceInputs["tcpProtocols"] = state?.tcpProtocols;
+            resourceInputs["udpPortRange"] = state?.udpPortRange;
+            resourceInputs["udpPortRanges"] = state?.udpPortRanges;
+            resourceInputs["udpProtocols"] = state?.udpProtocols;
+            resourceInputs["useInDrMode"] = state?.useInDrMode;
         } else {
             const args = argsOrState as ApplicationSegmentInspectionArgs | undefined;
-            if ((!args || args.segmentGroupId === undefined) && !opts.urn) {
+            if (args?.domainNames === undefined && !opts.urn) {
+                throw new Error("Missing required property 'domainNames'");
+            }
+            if (args?.segmentGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'segmentGroupId'");
             }
-            resourceInputs["adpEnabled"] = args ? args.adpEnabled : undefined;
-            resourceInputs["autoAppProtectEnabled"] = args ? args.autoAppProtectEnabled : undefined;
-            resourceInputs["bypassOnReauth"] = args ? args.bypassOnReauth : undefined;
-            resourceInputs["bypassType"] = args ? args.bypassType : undefined;
-            resourceInputs["commonAppsDtos"] = args ? args.commonAppsDtos : undefined;
-            resourceInputs["configSpace"] = args ? args.configSpace : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["domainNames"] = args ? args.domainNames : undefined;
-            resourceInputs["doubleEncrypt"] = args ? args.doubleEncrypt : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["fqdnDnsCheck"] = args ? args.fqdnDnsCheck : undefined;
-            resourceInputs["healthCheckType"] = args ? args.healthCheckType : undefined;
-            resourceInputs["healthReporting"] = args ? args.healthReporting : undefined;
-            resourceInputs["icmpAccessType"] = args ? args.icmpAccessType : undefined;
-            resourceInputs["ipAnchored"] = args ? args.ipAnchored : undefined;
-            resourceInputs["isCnameEnabled"] = args ? args.isCnameEnabled : undefined;
-            resourceInputs["isIncompleteDrConfig"] = args ? args.isIncompleteDrConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["passiveHealthEnabled"] = args ? args.passiveHealthEnabled : undefined;
-            resourceInputs["segmentGroupId"] = args ? args.segmentGroupId : undefined;
-            resourceInputs["selectConnectorCloseToApp"] = args ? args.selectConnectorCloseToApp : undefined;
-            resourceInputs["serverGroups"] = args ? args.serverGroups : undefined;
-            resourceInputs["tcpKeepAlive"] = args ? args.tcpKeepAlive : undefined;
-            resourceInputs["tcpPortRange"] = args ? args.tcpPortRange : undefined;
-            resourceInputs["tcpPortRanges"] = args ? args.tcpPortRanges : undefined;
-            resourceInputs["tcpProtocols"] = args ? args.tcpProtocols : undefined;
-            resourceInputs["udpPortRange"] = args ? args.udpPortRange : undefined;
-            resourceInputs["udpPortRanges"] = args ? args.udpPortRanges : undefined;
-            resourceInputs["udpProtocols"] = args ? args.udpProtocols : undefined;
-            resourceInputs["useInDrMode"] = args ? args.useInDrMode : undefined;
+            resourceInputs["adpEnabled"] = args?.adpEnabled;
+            resourceInputs["autoAppProtectEnabled"] = args?.autoAppProtectEnabled;
+            resourceInputs["bypassOnReauth"] = args?.bypassOnReauth;
+            resourceInputs["bypassType"] = args?.bypassType;
+            resourceInputs["commonAppsDtos"] = args?.commonAppsDtos;
+            resourceInputs["configSpace"] = args?.configSpace;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["domainNames"] = args?.domainNames;
+            resourceInputs["doubleEncrypt"] = args?.doubleEncrypt;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["fqdnDnsCheck"] = args?.fqdnDnsCheck;
+            resourceInputs["healthCheckType"] = args?.healthCheckType;
+            resourceInputs["healthReporting"] = args?.healthReporting;
+            resourceInputs["icmpAccessType"] = args?.icmpAccessType;
+            resourceInputs["ipAnchored"] = args?.ipAnchored;
+            resourceInputs["isCnameEnabled"] = args?.isCnameEnabled;
+            resourceInputs["isIncompleteDrConfig"] = args?.isIncompleteDrConfig;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["passiveHealthEnabled"] = args?.passiveHealthEnabled;
+            resourceInputs["segmentGroupId"] = args?.segmentGroupId;
+            resourceInputs["selectConnectorCloseToApp"] = args?.selectConnectorCloseToApp;
+            resourceInputs["serverGroups"] = args?.serverGroups;
+            resourceInputs["tcpKeepAlive"] = args?.tcpKeepAlive;
+            resourceInputs["tcpPortRange"] = args?.tcpPortRange;
+            resourceInputs["tcpPortRanges"] = args?.tcpPortRanges;
+            resourceInputs["tcpProtocols"] = args?.tcpProtocols;
+            resourceInputs["udpPortRange"] = args?.udpPortRange;
+            resourceInputs["udpPortRanges"] = args?.udpPortRanges;
+            resourceInputs["udpProtocols"] = args?.udpProtocols;
+            resourceInputs["useInDrMode"] = args?.useInDrMode;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApplicationSegmentInspection.__pulumiType, name, resourceInputs, opts);
@@ -265,19 +263,16 @@ export class ApplicationSegmentInspection extends pulumi.CustomResource {
  */
 export interface ApplicationSegmentInspectionState {
     /**
-     * Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's
-     * traffic to be inspected by Active Directory (AD) Protection.
+     * Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's traffic to be inspected by Active Directory (AD) Protection.
      */
     adpEnabled?: pulumi.Input<boolean>;
     /**
-     * If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by
-     * AppProtection.
+     * If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by AppProtection.
      */
     autoAppProtectEnabled?: pulumi.Input<boolean>;
     bypassOnReauth?: pulumi.Input<boolean>;
     /**
-     * Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-     * The value NEVER indicates the use of the client forwarding policy.
+     * Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
      */
     bypassType?: pulumi.Input<string>;
     commonAppsDtos?: pulumi.Input<pulumi.Input<inputs.ApplicationSegmentInspectionCommonAppsDto>[]>;
@@ -304,8 +299,7 @@ export interface ApplicationSegmentInspectionState {
     icmpAccessType?: pulumi.Input<string>;
     ipAnchored?: pulumi.Input<boolean>;
     /**
-     * Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-     * connectors.
+     * Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
      */
     isCnameEnabled?: pulumi.Input<boolean>;
     isIncompleteDrConfig?: pulumi.Input<boolean>;
@@ -350,19 +344,16 @@ export interface ApplicationSegmentInspectionState {
  */
 export interface ApplicationSegmentInspectionArgs {
     /**
-     * Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's
-     * traffic to be inspected by Active Directory (AD) Protection.
+     * Indicates if Active Directory Inspection is enabled or not for the application. This allows the application segment's traffic to be inspected by Active Directory (AD) Protection.
      */
     adpEnabled?: pulumi.Input<boolean>;
     /**
-     * If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by
-     * AppProtection.
+     * If autoAppProtectEnabled is set to true, this field indicates if the application segment’s traffic is inspected by AppProtection.
      */
     autoAppProtectEnabled?: pulumi.Input<boolean>;
     bypassOnReauth?: pulumi.Input<boolean>;
     /**
-     * Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET.
-     * The value NEVER indicates the use of the client forwarding policy.
+     * Indicates whether users can bypass ZPA to access applications. Default: NEVER. Supported values: ALWAYS, NEVER, ON_NET. The value NEVER indicates the use of the client forwarding policy.
      */
     bypassType?: pulumi.Input<string>;
     commonAppsDtos?: pulumi.Input<pulumi.Input<inputs.ApplicationSegmentInspectionCommonAppsDto>[]>;
@@ -374,7 +365,7 @@ export interface ApplicationSegmentInspectionArgs {
     /**
      * List of domains and IPs.
      */
-    domainNames?: pulumi.Input<pulumi.Input<string>[]>;
+    domainNames: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether Double Encryption is enabled or disabled for the app.
      */
@@ -389,8 +380,7 @@ export interface ApplicationSegmentInspectionArgs {
     icmpAccessType?: pulumi.Input<string>;
     ipAnchored?: pulumi.Input<boolean>;
     /**
-     * Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-     * connectors.
+     * Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
      */
     isCnameEnabled?: pulumi.Input<boolean>;
     isIncompleteDrConfig?: pulumi.Input<boolean>;

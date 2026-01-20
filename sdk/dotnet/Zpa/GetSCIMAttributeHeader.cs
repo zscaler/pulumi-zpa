@@ -30,16 +30,17 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA SCIM Attribute Header Data Source
         ///     var givenName = Zpa.GetSCIMAttributeHeader.Invoke(new()
         ///     {
-        ///         IdpName = "IdP_Name",
         ///         Name = "name.givenName",
+        ///         IdpName = "IdP_Name",
         ///     });
         /// 
         ///     var familyName = Zpa.GetSCIMAttributeHeader.Invoke(new()
         ///     {
-        ///         IdpName = "IdP_Name",
         ///         Name = "name.familyName",
+        ///         IdpName = "IdP_Name",
         ///     });
         /// 
         /// });
@@ -66,16 +67,17 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA SCIM Attribute Header Data Source
         ///     var givenName = Zpa.GetSCIMAttributeHeader.Invoke(new()
         ///     {
-        ///         IdpName = "IdP_Name",
         ///         Name = "name.givenName",
+        ///         IdpName = "IdP_Name",
         ///     });
         /// 
         ///     var familyName = Zpa.GetSCIMAttributeHeader.Invoke(new()
         ///     {
-        ///         IdpName = "IdP_Name",
         ///         Name = "name.familyName",
+        ///         IdpName = "IdP_Name",
         ///     });
         /// 
         /// });
@@ -102,16 +104,17 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA SCIM Attribute Header Data Source
         ///     var givenName = Zpa.GetSCIMAttributeHeader.Invoke(new()
         ///     {
-        ///         IdpName = "IdP_Name",
         ///         Name = "name.givenName",
+        ///         IdpName = "IdP_Name",
         ///     });
         /// 
         ///     var familyName = Zpa.GetSCIMAttributeHeader.Invoke(new()
         ///     {
-        ///         IdpName = "IdP_Name",
         ///         Name = "name.familyName",
+        ///         IdpName = "IdP_Name",
         ///     });
         /// 
         /// });
@@ -124,6 +127,9 @@ namespace zscaler.PulumiPackage.Zpa
 
     public sealed class GetSCIMAttributeHeaderArgs : global::Pulumi.InvokeArgs
     {
+        [Input("id")]
+        public string? Id { get; set; }
+
         [Input("idpId")]
         public string? IdpId { get; set; }
 
@@ -141,6 +147,9 @@ namespace zscaler.PulumiPackage.Zpa
 
     public sealed class GetSCIMAttributeHeaderInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
         [Input("idpId")]
         public Input<string>? IdpId { get; set; }
 
@@ -165,7 +174,7 @@ namespace zscaler.PulumiPackage.Zpa
         public readonly string CreationTime;
         public readonly string DataType;
         public readonly string Description;
-        public readonly string Id;
+        public readonly string? Id;
         public readonly string? IdpId;
         public readonly string? IdpName;
         public readonly string ModifiedTime;
@@ -191,7 +200,7 @@ namespace zscaler.PulumiPackage.Zpa
 
             string description,
 
-            string id,
+            string? id,
 
             string? idpId,
 

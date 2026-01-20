@@ -16,28 +16,27 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Browser Access Data Source
  * const foo = zpa.getBaCertificate({
  *     name: "example.acme.com",
  * });
  * ```
  *
- * ######### PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE #########\
- * ######### ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ##########
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Browser Access resource
+ * //## PASSWORDS OR RELATED CREDENTIALS ATTRIBUTES IN THIS FILE ARE FOR EXAMPLE ONLY AND NOT USED IN PRODUCTION SYSTEMS ####
  * const _this = new zpa.BrowserCertificate("this", {
+ *     name: "server.example.com",
+ *     description: "server.example.com",
  *     certBlob: `-----BEGIN PRIVATE KEY-----
  * MIIDyzCCArOgA
  * -----END PRIVATE KEY-----
  * -----BEGIN CERTIFICATE-----
  * MIIDyzCCArOgAwIBAgIUekBD+iu64583B3u5ew7Bqj2O5cQwDQYJKoZIhvcNAQEL
  * -----END CERTIFICATE-----
- *
  * `,
- *     description: "server.example.com",
  * });
  * ```
  *
@@ -90,23 +89,23 @@ export class BrowserCertificate extends pulumi.CustomResource {
     /**
      * The description of the certificate
      */
-    public readonly certBlob!: pulumi.Output<string | undefined>;
+    declare public readonly certBlob: pulumi.Output<string | undefined>;
     /**
      * The certificate text in PEM format
      */
-    public /*out*/ readonly certificate!: pulumi.Output<string>;
+    declare public /*out*/ readonly certificate: pulumi.Output<string>;
     /**
      * The description of the certificate
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The unique identifier of the Microtenant
      */
-    public readonly microtenantId!: pulumi.Output<string>;
+    declare public readonly microtenantId: pulumi.Output<string>;
     /**
      * The name of the certificate.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a BrowserCertificate resource with the given unique name, arguments, and options.
@@ -121,17 +120,17 @@ export class BrowserCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BrowserCertificateState | undefined;
-            resourceInputs["certBlob"] = state ? state.certBlob : undefined;
-            resourceInputs["certificate"] = state ? state.certificate : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["certBlob"] = state?.certBlob;
+            resourceInputs["certificate"] = state?.certificate;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["microtenantId"] = state?.microtenantId;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as BrowserCertificateArgs | undefined;
-            resourceInputs["certBlob"] = args ? args.certBlob : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["certBlob"] = args?.certBlob;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["microtenantId"] = args?.microtenantId;
+            resourceInputs["name"] = args?.name;
             resourceInputs["certificate"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

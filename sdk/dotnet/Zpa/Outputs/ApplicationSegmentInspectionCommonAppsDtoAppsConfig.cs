@@ -21,7 +21,6 @@ namespace zscaler.PulumiPackage.Zpa.Outputs
         public readonly string? CertificateId;
         public readonly string? Description;
         public readonly string? Domain;
-        public readonly bool? Enabled;
         public readonly string? InspectAppId;
         public readonly string? Name;
         public readonly bool? TrustUntrustedCert;
@@ -42,8 +41,6 @@ namespace zscaler.PulumiPackage.Zpa.Outputs
 
             string? domain,
 
-            bool? enabled,
-
             string? inspectAppId,
 
             string? name,
@@ -57,7 +54,6 @@ namespace zscaler.PulumiPackage.Zpa.Outputs
             CertificateId = certificateId;
             Description = description;
             Domain = domain;
-            Enabled = enabled;
             InspectAppId = inspectAppId;
             Name = name;
             TrustUntrustedCert = trustUntrustedCert;

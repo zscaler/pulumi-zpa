@@ -124,8 +124,7 @@ namespace zscaler.PulumiPackage.Zpa
 
         private static readonly __Value<int?> _parallelism = new __Value<int?>(() => __config.GetInt32("parallelism"));
         /// <summary>
-        /// Number of concurrent requests to make within a resource where bulk operations are not possible. Take note of
-        /// https://help.zscaler.com/zpa/understanding-rate-limiting.
+        /// Number of concurrent requests to make within a resource where bulk operations are not possible. Take note of https://help.zscaler.com/zpa/understanding-rate-limiting.
         /// </summary>
         public static int? Parallelism
         {
@@ -145,8 +144,7 @@ namespace zscaler.PulumiPackage.Zpa
 
         private static readonly __Value<int?> _requestTimeout = new __Value<int?>(() => __config.GetInt32("requestTimeout"));
         /// <summary>
-        /// Timeout for single request (in seconds) which is made to Zscaler, the default is `0` (means no limit is set). The
-        /// maximum value can be `300`.
+        /// Timeout for single request (in seconds) which is made to Zscaler, the default is `0` (means no limit is set). The maximum value can be `300`.
         /// </summary>
         public static int? RequestTimeout
         {

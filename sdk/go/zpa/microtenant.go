@@ -20,38 +20,6 @@ import (
 //
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// // ZPA Microtenant Controller resource
-// this, err := zpa.NewMicrotenant(ctx, "this", &zpa.MicrotenantArgs{
-// Description: pulumi.String("Microtenant_A"),
-// Enabled: pulumi.Bool(true),
-// CriteriaAttribute: pulumi.String("AuthDomain"),
-// CriteriaAttributeValues: pulumi.StringArray{
-// pulumi.String("acme.com"),
-// },
-// PrivilegedApprovalsEnabled: pulumi.Bool(true),
-// })
-// if err != nil {
-// return err
-// }
-// ctx.Export("zpaMicrotenantController1", this.Users.ApplyT(func(users []zpa.MicrotenantUser) ([]map[string]interface{}, error) {
-// return "TODO: For expression", nil
-// }).(pulumi.[]map[string]interface{}Output))
-// return nil
-// })
-// }
-// ```
-//
 // ## Import
 //
 // Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
@@ -84,8 +52,7 @@ type Microtenant struct {
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// - (Required) Name of the microtenant controller.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no
-	// Authentication Domain is selected.
+	// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no Authentication Domain is selected.
 	PrivilegedApprovalsEnabled pulumi.BoolPtrOutput       `pulumi:"privilegedApprovalsEnabled"`
 	Users                      MicrotenantUserArrayOutput `pulumi:"users"`
 }
@@ -130,8 +97,7 @@ type microtenantState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// - (Required) Name of the microtenant controller.
 	Name *string `pulumi:"name"`
-	// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no
-	// Authentication Domain is selected.
+	// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no Authentication Domain is selected.
 	PrivilegedApprovalsEnabled *bool             `pulumi:"privilegedApprovalsEnabled"`
 	Users                      []MicrotenantUser `pulumi:"users"`
 }
@@ -147,8 +113,7 @@ type MicrotenantState struct {
 	Enabled pulumi.BoolPtrInput
 	// - (Required) Name of the microtenant controller.
 	Name pulumi.StringPtrInput
-	// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no
-	// Authentication Domain is selected.
+	// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no Authentication Domain is selected.
 	PrivilegedApprovalsEnabled pulumi.BoolPtrInput
 	Users                      MicrotenantUserArrayInput
 }
@@ -168,8 +133,7 @@ type microtenantArgs struct {
 	Enabled *bool `pulumi:"enabled"`
 	// - (Required) Name of the microtenant controller.
 	Name *string `pulumi:"name"`
-	// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no
-	// Authentication Domain is selected.
+	// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no Authentication Domain is selected.
 	PrivilegedApprovalsEnabled *bool             `pulumi:"privilegedApprovalsEnabled"`
 	Users                      []MicrotenantUser `pulumi:"users"`
 }
@@ -186,8 +150,7 @@ type MicrotenantArgs struct {
 	Enabled pulumi.BoolPtrInput
 	// - (Required) Name of the microtenant controller.
 	Name pulumi.StringPtrInput
-	// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no
-	// Authentication Domain is selected.
+	// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no Authentication Domain is selected.
 	PrivilegedApprovalsEnabled pulumi.BoolPtrInput
 	Users                      MicrotenantUserArrayInput
 }
@@ -304,8 +267,7 @@ func (o MicrotenantOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Microtenant) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no
-// Authentication Domain is selected.
+// Indicates if Privileged Approvals is enabled (true) for the Microtenant. This allows approval-based access even if no Authentication Domain is selected.
 func (o MicrotenantOutput) PrivilegedApprovalsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Microtenant) pulumi.BoolPtrOutput { return v.PrivilegedApprovalsEnabled }).(pulumi.BoolPtrOutput)
 }

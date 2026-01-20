@@ -80,16 +80,16 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// The following arguments are supported:
         /// 
-        /// * `log_type` - (Required) The type of log to be exported.
-        ///   * `zpn_trans_log`
-        ///   * `zpn_auth_log`
-        ///   * `zpn_ast_auth_log`
-        ///   * `zpn_http_trans_log`
-        ///   * `zpn_audit_log`
-        ///   * `zpn_sys_auth_log`
-        ///   * `zpn_ast_comprehensive_stats`
-        ///   * `zpn_waf_http_exchanges_log`
-        ///   * `zpn_pbroker_comprehensive_stats`
+        /// * `LogType` - (Required) The type of log to be exported.
+        ///   * `ZpnTransLog`
+        ///   * `ZpnAuthLog`
+        ///   * `ZpnAstAuthLog`
+        ///   * `ZpnHttpTransLog`
+        ///   * `ZpnAuditLog`
+        ///   * `ZpnSysAuthLog`
+        ///   * `ZpnAstComprehensiveStats`
+        ///   * `ZpnWafHttpExchangesLog`
+        ///   * `ZpnPbrokerComprehensiveStats`
         /// </summary>
         public static Task<GetLSSLogTypeFormatsResult> InvokeAsync(GetLSSLogTypeFormatsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLSSLogTypeFormatsResult>("zpa:index/getLSSLogTypeFormats:getLSSLogTypeFormats", args ?? new GetLSSLogTypeFormatsArgs(), options.WithDefaults());
@@ -162,16 +162,16 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// The following arguments are supported:
         /// 
-        /// * `log_type` - (Required) The type of log to be exported.
-        ///   * `zpn_trans_log`
-        ///   * `zpn_auth_log`
-        ///   * `zpn_ast_auth_log`
-        ///   * `zpn_http_trans_log`
-        ///   * `zpn_audit_log`
-        ///   * `zpn_sys_auth_log`
-        ///   * `zpn_ast_comprehensive_stats`
-        ///   * `zpn_waf_http_exchanges_log`
-        ///   * `zpn_pbroker_comprehensive_stats`
+        /// * `LogType` - (Required) The type of log to be exported.
+        ///   * `ZpnTransLog`
+        ///   * `ZpnAuthLog`
+        ///   * `ZpnAstAuthLog`
+        ///   * `ZpnHttpTransLog`
+        ///   * `ZpnAuditLog`
+        ///   * `ZpnSysAuthLog`
+        ///   * `ZpnAstComprehensiveStats`
+        ///   * `ZpnWafHttpExchangesLog`
+        ///   * `ZpnPbrokerComprehensiveStats`
         /// </summary>
         public static Output<GetLSSLogTypeFormatsResult> Invoke(GetLSSLogTypeFormatsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLSSLogTypeFormatsResult>("zpa:index/getLSSLogTypeFormats:getLSSLogTypeFormats", args ?? new GetLSSLogTypeFormatsInvokeArgs(), options.WithDefaults());
@@ -244,16 +244,16 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// The following arguments are supported:
         /// 
-        /// * `log_type` - (Required) The type of log to be exported.
-        ///   * `zpn_trans_log`
-        ///   * `zpn_auth_log`
-        ///   * `zpn_ast_auth_log`
-        ///   * `zpn_http_trans_log`
-        ///   * `zpn_audit_log`
-        ///   * `zpn_sys_auth_log`
-        ///   * `zpn_ast_comprehensive_stats`
-        ///   * `zpn_waf_http_exchanges_log`
-        ///   * `zpn_pbroker_comprehensive_stats`
+        /// * `LogType` - (Required) The type of log to be exported.
+        ///   * `ZpnTransLog`
+        ///   * `ZpnAuthLog`
+        ///   * `ZpnAstAuthLog`
+        ///   * `ZpnHttpTransLog`
+        ///   * `ZpnAuditLog`
+        ///   * `ZpnSysAuthLog`
+        ///   * `ZpnAstComprehensiveStats`
+        ///   * `ZpnWafHttpExchangesLog`
+        ///   * `ZpnPbrokerComprehensiveStats`
         /// </summary>
         public static Output<GetLSSLogTypeFormatsResult> Invoke(GetLSSLogTypeFormatsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetLSSLogTypeFormatsResult>("zpa:index/getLSSLogTypeFormats:getLSSLogTypeFormats", args ?? new GetLSSLogTypeFormatsInvokeArgs(), options.WithDefaults());

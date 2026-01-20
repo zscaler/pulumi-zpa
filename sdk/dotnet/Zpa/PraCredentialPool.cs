@@ -26,8 +26,9 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thisPRACredential = new Zpa.PRACredential("thisPRACredential", new()
+    ///     var thisPRACredential = new Zpa.PRACredential("this", new()
     ///     {
+    ///         Name = "John Doe",
     ///         Description = "Created with Terraform",
     ///         CredentialType = "PASSWORD",
     ///         UserDomain = "acme.com",
@@ -35,8 +36,9 @@ namespace zscaler.PulumiPackage.Zpa
     ///     });
     /// 
     ///     // Creates Credential Pool of Type "USERNAME_PASSWORD"
-    ///     var thisPraCredentialPool = new Zpa.PraCredentialPool("thisPraCredentialPool", new()
+    ///     var @this = new Zpa.PraCredentialPool("this", new()
     ///     {
+    ///         Name = "PRACredentialPool01",
     ///         CredentialType = "USERNAME_PASSWORD",
     ///         Credentials = new[]
     ///         {
@@ -77,8 +79,7 @@ namespace zscaler.PulumiPackage.Zpa
     public partial class PraCredentialPool : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-        /// and VNC. Each protocol type has its own credential requirements.
+        /// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
         /// </summary>
         [Output("credentialType")]
         public Output<string?> CredentialType { get; private set; } = null!;
@@ -90,8 +91,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<ImmutableArray<Outputs.PraCredentialPoolCredential>> Credentials { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-        /// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
         /// </summary>
         [Output("microtenantId")]
         public Output<string> MicrotenantId { get; private set; } = null!;
@@ -150,8 +150,7 @@ namespace zscaler.PulumiPackage.Zpa
     public sealed class PraCredentialPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-        /// and VNC. Each protocol type has its own credential requirements.
+        /// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
         /// </summary>
         [Input("credentialType")]
         public Input<string>? CredentialType { get; set; }
@@ -169,8 +168,7 @@ namespace zscaler.PulumiPackage.Zpa
         }
 
         /// <summary>
-        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-        /// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
         /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }
@@ -190,8 +188,7 @@ namespace zscaler.PulumiPackage.Zpa
     public sealed class PraCredentialPoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP,
-        /// and VNC. Each protocol type has its own credential requirements.
+        /// The protocol type that was designated for that particular privileged credential. The protocol type options are SSH, RDP, and VNC. Each protocol type has its own credential requirements.
         /// </summary>
         [Input("credentialType")]
         public Input<string>? CredentialType { get; set; }
@@ -209,8 +206,7 @@ namespace zscaler.PulumiPackage.Zpa
         }
 
         /// <summary>
-        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass
-        /// microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
+        /// The unique identifier of the Microtenant for the ZPA tenant. If you are within the Default Microtenant, pass microtenantId as 0 when making requests to retrieve data from the Default Microtenant.
         /// </summary>
         [Input("microtenantId")]
         public Input<string>? MicrotenantId { get; set; }

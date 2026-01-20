@@ -50,8 +50,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<string> AppConnectorGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
-        /// CONNECTOR_GRP and SERVICE_EDGE_GRP.
+        /// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are CONNECTOR_GRP and SERVICE_EDGE_GRP.
         /// </summary>
         [Output("associationType")]
         public Output<string> AssociationType { get; private set; } = null!;
@@ -164,8 +163,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<string>? AppConnectorGroupId { get; set; }
 
         /// <summary>
-        /// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
-        /// CONNECTOR_GRP and SERVICE_EDGE_GRP.
+        /// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are CONNECTOR_GRP and SERVICE_EDGE_GRP.
         /// </summary>
         [Input("associationType", required: true)]
         public Input<string> AssociationType { get; set; } = null!;
@@ -250,8 +248,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<string>? AppConnectorGroupName { get; set; }
 
         /// <summary>
-        /// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
-        /// CONNECTOR_GRP and SERVICE_EDGE_GRP.
+        /// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are CONNECTOR_GRP and SERVICE_EDGE_GRP.
         /// </summary>
         [Input("associationType")]
         public Input<string>? AssociationType { get; set; }

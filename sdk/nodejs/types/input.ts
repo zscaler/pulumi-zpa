@@ -64,6 +64,10 @@ export interface ApplicationSegmentBrowserAccessUdpPortRange {
     to?: pulumi.Input<string>;
 }
 
+export interface ApplicationSegmentBrowserAccessZpnErId {
+    ids: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface ApplicationSegmentInspectionCommonAppsDto {
     appsConfigs?: pulumi.Input<pulumi.Input<inputs.ApplicationSegmentInspectionCommonAppsDtoAppsConfig>[]>;
 }
@@ -76,7 +80,6 @@ export interface ApplicationSegmentInspectionCommonAppsDtoAppsConfig {
     certificateId?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
     domain?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
     inspectAppId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     trustUntrustedCert?: pulumi.Input<boolean>;
@@ -107,7 +110,6 @@ export interface ApplicationSegmentPRACommonAppsDtoAppsConfig {
     applicationProtocol?: pulumi.Input<string>;
     connectionSecurity?: pulumi.Input<string>;
     domain?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
     praAppId?: pulumi.Input<string>;
 }
@@ -126,6 +128,10 @@ export interface ApplicationSegmentPRAUdpPortRange {
     to?: pulumi.Input<string>;
 }
 
+export interface ApplicationSegmentPRAZpnErId {
+    ids: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface ApplicationSegmentServerGroup {
     ids: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -138,6 +144,29 @@ export interface ApplicationSegmentTcpPortRange {
 export interface ApplicationSegmentUdpPortRange {
     from?: pulumi.Input<string>;
     to?: pulumi.Input<string>;
+}
+
+export interface ApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping {
+    /**
+     * Server group mapping identifier.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Server group name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Whether the server group is passive.
+     */
+    passive?: pulumi.Input<boolean>;
+    /**
+     * Assigned weight for the server group.
+     */
+    weight?: pulumi.Input<string>;
+}
+
+export interface ApplicationSegmentZpnErId {
+    ids: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface BrowserAccessClientlessApp {
@@ -197,6 +226,10 @@ export interface BrowserAccessTcpPortRange {
 export interface BrowserAccessUdpPortRange {
     from?: pulumi.Input<string>;
     to?: pulumi.Input<string>;
+}
+
+export interface BrowserAccessZpnErId {
+    ids: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface CloudBrowserIsolationExternalProfileDebugMode {
@@ -1013,6 +1046,35 @@ export interface PolicyAccessRuleV2ConditionOperandEntryValue {
     rhs?: pulumi.Input<string>;
 }
 
+export interface PolicyAccessRuleV2ExtranetDto {
+    /**
+     * List of location DTOs.
+     */
+    locationDtos?: pulumi.Input<pulumi.Input<inputs.PolicyAccessRuleV2ExtranetDtoLocationDto>[]>;
+    /**
+     * List of location group DTOs.
+     */
+    locationGroupDtos?: pulumi.Input<pulumi.Input<inputs.PolicyAccessRuleV2ExtranetDtoLocationGroupDto>[]>;
+    /**
+     * ZPN Extranet Resource ID.
+     */
+    zpnErId?: pulumi.Input<string>;
+}
+
+export interface PolicyAccessRuleV2ExtranetDtoLocationDto {
+    /**
+     * Location ID.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface PolicyAccessRuleV2ExtranetDtoLocationGroupDto {
+    /**
+     * Location Group ID.
+     */
+    id: pulumi.Input<string>;
+}
+
 export interface PolicyAccessTimeOutRuleCondition {
     id?: pulumi.Input<string>;
     microtenantId?: pulumi.Input<string>;
@@ -1101,6 +1163,51 @@ export interface PolicyBrowserProtectionRuleConditionOperandEntryValue {
     rhs?: pulumi.Input<string>;
 }
 
+export interface PolicyPortalAccessRuleCondition {
+    id?: pulumi.Input<string>;
+    /**
+     * This signifies the various policy criteria.
+     */
+    operands?: pulumi.Input<pulumi.Input<inputs.PolicyPortalAccessRuleConditionOperand>[]>;
+    operator?: pulumi.Input<string>;
+}
+
+export interface PolicyPortalAccessRuleConditionOperand {
+    entryValues?: pulumi.Input<pulumi.Input<inputs.PolicyPortalAccessRuleConditionOperandEntryValue>[]>;
+    /**
+     * This is for specifying the policy critiera.
+     */
+    objectType?: pulumi.Input<string>;
+    /**
+     * This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PolicyPortalAccessRuleConditionOperandEntryValue {
+    lhs?: pulumi.Input<string>;
+    rhs?: pulumi.Input<string>;
+}
+
+export interface PolicyPortalAccessRulePrivilegedPortalCapabilities {
+    /**
+     * Allows a User like an Admin to see all files marked Uninspected from other users in the tenant.
+     */
+    accessUninspectedFile?: pulumi.Input<boolean>;
+    /**
+     * Allows a User to delete files to reclaim space. Allowing deletion will prevent auditing of the file.
+     */
+    deleteFile?: pulumi.Input<boolean>;
+    /**
+     * Allows a User to request approvals
+     */
+    requestApprovals?: pulumi.Input<boolean>;
+    /**
+     * Allows a User to review approvals
+     */
+    reviewApprovals?: pulumi.Input<boolean>;
+}
+
 export interface PraCredentialPoolCredential {
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -1117,8 +1224,37 @@ export interface ServerGroupApplication {
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface ServerGroupExtranetDto {
+    /**
+     * List of location DTOs.
+     */
+    locationDtos?: pulumi.Input<pulumi.Input<inputs.ServerGroupExtranetDtoLocationDto>[]>;
+    /**
+     * List of location group DTOs.
+     */
+    locationGroupDtos?: pulumi.Input<pulumi.Input<inputs.ServerGroupExtranetDtoLocationGroupDto>[]>;
+    /**
+     * ZPN Extranet Resource ID.
+     */
+    zpnErId?: pulumi.Input<string>;
+}
+
+export interface ServerGroupExtranetDtoLocationDto {
+    /**
+     * Location ID.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface ServerGroupExtranetDtoLocationGroupDto {
+    /**
+     * Location Group ID.
+     */
+    id: pulumi.Input<string>;
+}
+
 export interface ServerGroupServer {
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ServiceEdgeGroupServiceEdges {
@@ -1126,5 +1262,9 @@ export interface ServiceEdgeGroupServiceEdges {
 }
 
 export interface ServiceEdgeGroupTrustedNetwork {
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface UserPortalLinkUserPortal {
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }

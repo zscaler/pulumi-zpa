@@ -17,23 +17,28 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * const thisCloudBrowserIsolationBanner = zpa.getCloudBrowserIsolationBanner({
+ * // Retrieve CBI Banner ID
+ * const _this = zpa.getCloudBrowserIsolationBanner({
  *     name: "Default",
  * });
+ * // Retrieve Primary CBI Region ID
  * const singapore = zpa.getCloudBrowserIsolationRegion({
  *     name: "Singapore",
  * });
+ * // Retrieve Secondary CBI Region ID
  * const frankfurt = zpa.getCloudBrowserIsolationRegion({
  *     name: "Frankfurt",
  * });
- * const thisCloudBrowserIsolationCertificate = zpa.getCloudBrowserIsolationCertificate({
+ * // Retrieve CBI Certificate ID
+ * const thisGetCloudBrowserIsolationCertificate = zpa.getCloudBrowserIsolationCertificate({
  *     name: "Zscaler Root Certificate",
  * });
- * const thisCloudBrowserIsolationExternalProfile = new zpa.CloudBrowserIsolationExternalProfile("thisCloudBrowserIsolationExternalProfile", {
+ * const thisCloudBrowserIsolationExternalProfile = new zpa.CloudBrowserIsolationExternalProfile("this", {
+ *     name: "CBI_Profile_Example",
  *     description: "CBI_Profile_Example",
- *     bannerId: thisCloudBrowserIsolationBanner.then(thisCloudBrowserIsolationBanner => thisCloudBrowserIsolationBanner.id),
+ *     bannerId: _this.then(_this => _this.id),
  *     regionIds: [singapore.then(singapore => singapore.id)],
- *     certificateIds: [thisCloudBrowserIsolationCertificate.then(thisCloudBrowserIsolationCertificate => thisCloudBrowserIsolationCertificate.id)],
+ *     certificateIds: [thisGetCloudBrowserIsolationCertificate.then(thisGetCloudBrowserIsolationCertificate => thisGetCloudBrowserIsolationCertificate.id)],
  *     userExperience: {
  *         forwardToZia: {
  *             enabled: true,
@@ -104,20 +109,20 @@ export class CloudBrowserIsolationExternalProfile extends pulumi.CustomResource 
         return obj['__pulumiType'] === CloudBrowserIsolationExternalProfile.__pulumiType;
     }
 
-    public readonly bannerId!: pulumi.Output<string>;
+    declare public readonly bannerId: pulumi.Output<string>;
     /**
      * This field defines the list of certificate IDs.
      */
-    public readonly certificateIds!: pulumi.Output<string[] | undefined>;
-    public readonly debugMode!: pulumi.Output<outputs.CloudBrowserIsolationExternalProfileDebugMode | undefined>;
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly certificateIds: pulumi.Output<string[] | undefined>;
+    declare public readonly debugMode: pulumi.Output<outputs.CloudBrowserIsolationExternalProfileDebugMode | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * This field defines the list of region IDs.
      */
-    public readonly regionIds!: pulumi.Output<string[] | undefined>;
-    public readonly securityControls!: pulumi.Output<outputs.CloudBrowserIsolationExternalProfileSecurityControls | undefined>;
-    public readonly userExperience!: pulumi.Output<outputs.CloudBrowserIsolationExternalProfileUserExperience>;
+    declare public readonly regionIds: pulumi.Output<string[] | undefined>;
+    declare public readonly securityControls: pulumi.Output<outputs.CloudBrowserIsolationExternalProfileSecurityControls | undefined>;
+    declare public readonly userExperience: pulumi.Output<outputs.CloudBrowserIsolationExternalProfileUserExperience>;
 
     /**
      * Create a CloudBrowserIsolationExternalProfile resource with the given unique name, arguments, and options.
@@ -132,27 +137,27 @@ export class CloudBrowserIsolationExternalProfile extends pulumi.CustomResource 
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudBrowserIsolationExternalProfileState | undefined;
-            resourceInputs["bannerId"] = state ? state.bannerId : undefined;
-            resourceInputs["certificateIds"] = state ? state.certificateIds : undefined;
-            resourceInputs["debugMode"] = state ? state.debugMode : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["regionIds"] = state ? state.regionIds : undefined;
-            resourceInputs["securityControls"] = state ? state.securityControls : undefined;
-            resourceInputs["userExperience"] = state ? state.userExperience : undefined;
+            resourceInputs["bannerId"] = state?.bannerId;
+            resourceInputs["certificateIds"] = state?.certificateIds;
+            resourceInputs["debugMode"] = state?.debugMode;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["regionIds"] = state?.regionIds;
+            resourceInputs["securityControls"] = state?.securityControls;
+            resourceInputs["userExperience"] = state?.userExperience;
         } else {
             const args = argsOrState as CloudBrowserIsolationExternalProfileArgs | undefined;
-            if ((!args || args.bannerId === undefined) && !opts.urn) {
+            if (args?.bannerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bannerId'");
             }
-            resourceInputs["bannerId"] = args ? args.bannerId : undefined;
-            resourceInputs["certificateIds"] = args ? args.certificateIds : undefined;
-            resourceInputs["debugMode"] = args ? args.debugMode : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["regionIds"] = args ? args.regionIds : undefined;
-            resourceInputs["securityControls"] = args ? args.securityControls : undefined;
-            resourceInputs["userExperience"] = args ? args.userExperience : undefined;
+            resourceInputs["bannerId"] = args?.bannerId;
+            resourceInputs["certificateIds"] = args?.certificateIds;
+            resourceInputs["debugMode"] = args?.debugMode;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["regionIds"] = args?.regionIds;
+            resourceInputs["securityControls"] = args?.securityControls;
+            resourceInputs["userExperience"] = args?.userExperience;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CloudBrowserIsolationExternalProfile.__pulumiType, name, resourceInputs, opts);

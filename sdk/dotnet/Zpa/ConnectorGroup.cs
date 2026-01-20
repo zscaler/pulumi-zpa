@@ -26,19 +26,20 @@ namespace zscaler.PulumiPackage.Zpa
     ///     // Create a App Connector Group
     ///     var example = new Zpa.ConnectorGroup("example", new()
     ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         Enabled = true,
     ///         CityCountry = "San Jose, CA",
     ///         CountryCode = "US",
-    ///         Description = "Example",
-    ///         DnsQueryType = "IPV4_IPV6",
-    ///         Enabled = true,
     ///         Latitude = "37.338",
-    ///         Location = "San Jose, CA, US",
     ///         Longitude = "-121.8863",
-    ///         OverrideVersionProfile = true,
+    ///         Location = "San Jose, CA, US",
     ///         UpgradeDay = "SUNDAY",
     ///         UpgradeTimeInSecs = "66600",
-    ///         UseInDrMode = true,
+    ///         OverrideVersionProfile = true,
     ///         VersionProfileName = "New Release",
+    ///         DnsQueryType = "IPV4_IPV6",
+    ///         UseInDrMode = true,
     ///     });
     /// 
     /// });
@@ -46,21 +47,24 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// ### Using Version Profile ID
     /// 
-    /// data "zpa.getCustomerVersionProfile" "this" {
-    ///   name = "New Release"
-    /// }
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
+    /// using Zpa = Pulumi.Zpa;
     /// using Zpa = zscaler.PulumiPackage.Zpa;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @this = Zpa.GetCustomerVersionProfile.Invoke(new()
+    ///     {
+    ///         Name = "New Release",
+    ///     });
+    /// 
     ///     // Create a App Connector Group
     ///     var example = new Zpa.ConnectorGroup("example", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///         CityCountry = "San Jose, CA",
@@ -71,7 +75,7 @@ namespace zscaler.PulumiPackage.Zpa
     ///         UpgradeDay = "SUNDAY",
     ///         UpgradeTimeInSecs = "66600",
     ///         OverrideVersionProfile = true,
-    ///         VersionProfileId = data.Zpa_customer_version_profile.This.Id,
+    ///         VersionProfileId = @this.Apply(@this =&gt; @this.Apply(getCustomerVersionProfileResult =&gt; getCustomerVersionProfileResult.Id)),
     ///         DnsQueryType = "IPV4_IPV6",
     ///         UseInDrMode = true,
     ///     });
@@ -101,10 +105,10 @@ namespace zscaler.PulumiPackage.Zpa
     public partial class ConnectorGroup : global::Pulumi.CustomResource
     {
         [Output("cityCountry")]
-        public Output<string> CityCountry { get; private set; } = null!;
+        public Output<string?> CityCountry { get; private set; } = null!;
 
         [Output("countryCode")]
-        public Output<string> CountryCode { get; private set; } = null!;
+        public Output<string?> CountryCode { get; private set; } = null!;
 
         /// <summary>
         /// Description of the App Connector Group
@@ -122,7 +126,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// Whether this App Connector Group is enabled or not
         /// </summary>
         [Output("enabled")]
-        public Output<bool> Enabled { get; private set; } = null!;
+        public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
         /// Latitude of the App Connector Group. Integer or decimal. With values in the range of -90 to 90
@@ -146,7 +150,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// Whether or not the App Connector Group is configured for the Log Streaming Service (LSS)
         /// </summary>
         [Output("lssAppConnectorGroup")]
-        public Output<bool> LssAppConnectorGroup { get; private set; } = null!;
+        public Output<bool?> LssAppConnectorGroup { get; private set; } = null!;
 
         [Output("microtenantId")]
         public Output<string> MicrotenantId { get; private set; } = null!;
@@ -167,37 +171,31 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<bool> PraEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
-        /// and tcpQuickAckReadAssistant fields must all share the same value.
+        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value.
         /// </summary>
         [Output("tcpQuickAckApp")]
         public Output<bool> TcpQuickAckApp { get; private set; } = null!;
 
         /// <summary>
-        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
-        /// and tcpQuickAckReadAssistant fields must all share the same value.
+        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value.
         /// </summary>
         [Output("tcpQuickAckAssistant")]
         public Output<bool> TcpQuickAckAssistant { get; private set; } = null!;
 
         /// <summary>
-        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
-        /// and tcpQuickAckReadAssistant fields must all share the same value.
+        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value.
         /// </summary>
         [Output("tcpQuickAckReadAssistant")]
         public Output<bool> TcpQuickAckReadAssistant { get; private set; } = null!;
 
         /// <summary>
-        /// App Connectors in this group will attempt to update to a newer version of the software during this specified day. List
-        /// of valid days (i.e., Sunday, Monday)
+        /// App Connectors in this group will attempt to update to a newer version of the software during this specified day. List of valid days (i.e., Sunday, Monday)
         /// </summary>
         [Output("upgradeDay")]
         public Output<string?> UpgradeDay { get; private set; } = null!;
 
         /// <summary>
-        /// App Connectors in this group will attempt to update to a newer version of the software during this specified time.
-        /// Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute
-        /// intervals
+        /// App Connectors in this group will attempt to update to a newer version of the software during this specified time. Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute intervals
         /// </summary>
         [Output("upgradeTimeInSecs")]
         public Output<string?> UpgradeTimeInSecs { get; private set; } = null!;
@@ -206,15 +204,13 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<bool> UseInDrMode { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
-        /// overrideVersionProfile is set to true
+        /// ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         /// </summary>
         [Output("versionProfileId")]
         public Output<string> VersionProfileId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
-        /// overrideVersionProfile is set to true
+        /// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         /// </summary>
         [Output("versionProfileName")]
         public Output<string> VersionProfileName { get; private set; } = null!;
@@ -336,37 +332,31 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? PraEnabled { get; set; }
 
         /// <summary>
-        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
-        /// and tcpQuickAckReadAssistant fields must all share the same value.
+        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value.
         /// </summary>
         [Input("tcpQuickAckApp")]
         public Input<bool>? TcpQuickAckApp { get; set; }
 
         /// <summary>
-        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
-        /// and tcpQuickAckReadAssistant fields must all share the same value.
+        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value.
         /// </summary>
         [Input("tcpQuickAckAssistant")]
         public Input<bool>? TcpQuickAckAssistant { get; set; }
 
         /// <summary>
-        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
-        /// and tcpQuickAckReadAssistant fields must all share the same value.
+        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value.
         /// </summary>
         [Input("tcpQuickAckReadAssistant")]
         public Input<bool>? TcpQuickAckReadAssistant { get; set; }
 
         /// <summary>
-        /// App Connectors in this group will attempt to update to a newer version of the software during this specified day. List
-        /// of valid days (i.e., Sunday, Monday)
+        /// App Connectors in this group will attempt to update to a newer version of the software during this specified day. List of valid days (i.e., Sunday, Monday)
         /// </summary>
         [Input("upgradeDay")]
         public Input<string>? UpgradeDay { get; set; }
 
         /// <summary>
-        /// App Connectors in this group will attempt to update to a newer version of the software during this specified time.
-        /// Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute
-        /// intervals
+        /// App Connectors in this group will attempt to update to a newer version of the software during this specified time. Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute intervals
         /// </summary>
         [Input("upgradeTimeInSecs")]
         public Input<string>? UpgradeTimeInSecs { get; set; }
@@ -375,15 +365,13 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? UseInDrMode { get; set; }
 
         /// <summary>
-        /// ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
-        /// overrideVersionProfile is set to true
+        /// ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         /// </summary>
         [Input("versionProfileId")]
         public Input<string>? VersionProfileId { get; set; }
 
         /// <summary>
-        /// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
-        /// overrideVersionProfile is set to true
+        /// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         /// </summary>
         [Input("versionProfileName")]
         public Input<string>? VersionProfileName { get; set; }
@@ -466,37 +454,31 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? PraEnabled { get; set; }
 
         /// <summary>
-        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
-        /// and tcpQuickAckReadAssistant fields must all share the same value.
+        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value.
         /// </summary>
         [Input("tcpQuickAckApp")]
         public Input<bool>? TcpQuickAckApp { get; set; }
 
         /// <summary>
-        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
-        /// and tcpQuickAckReadAssistant fields must all share the same value.
+        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value.
         /// </summary>
         [Input("tcpQuickAckAssistant")]
         public Input<bool>? TcpQuickAckAssistant { get; set; }
 
         /// <summary>
-        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant,
-        /// and tcpQuickAckReadAssistant fields must all share the same value.
+        /// Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value.
         /// </summary>
         [Input("tcpQuickAckReadAssistant")]
         public Input<bool>? TcpQuickAckReadAssistant { get; set; }
 
         /// <summary>
-        /// App Connectors in this group will attempt to update to a newer version of the software during this specified day. List
-        /// of valid days (i.e., Sunday, Monday)
+        /// App Connectors in this group will attempt to update to a newer version of the software during this specified day. List of valid days (i.e., Sunday, Monday)
         /// </summary>
         [Input("upgradeDay")]
         public Input<string>? UpgradeDay { get; set; }
 
         /// <summary>
-        /// App Connectors in this group will attempt to update to a newer version of the software during this specified time.
-        /// Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute
-        /// intervals
+        /// App Connectors in this group will attempt to update to a newer version of the software during this specified time. Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute intervals
         /// </summary>
         [Input("upgradeTimeInSecs")]
         public Input<string>? UpgradeTimeInSecs { get; set; }
@@ -505,15 +487,13 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? UseInDrMode { get; set; }
 
         /// <summary>
-        /// ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
-        /// overrideVersionProfile is set to true
+        /// ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         /// </summary>
         [Input("versionProfileId")]
         public Input<string>? VersionProfileId { get; set; }
 
         /// <summary>
-        /// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for
-        /// overrideVersionProfile is set to true
+        /// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         /// </summary>
         [Input("versionProfileName")]
         public Input<string>? VersionProfileName { get; set; }

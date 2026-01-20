@@ -512,6 +512,100 @@ func (o ApplicationSegmentBrowserAccessUdpPortRangeArrayOutput) Index(i pulumi.I
 	}).(ApplicationSegmentBrowserAccessUdpPortRangeOutput)
 }
 
+type ApplicationSegmentBrowserAccessZpnErId struct {
+	Ids []string `pulumi:"ids"`
+}
+
+// ApplicationSegmentBrowserAccessZpnErIdInput is an input type that accepts ApplicationSegmentBrowserAccessZpnErIdArgs and ApplicationSegmentBrowserAccessZpnErIdOutput values.
+// You can construct a concrete instance of `ApplicationSegmentBrowserAccessZpnErIdInput` via:
+//
+//	ApplicationSegmentBrowserAccessZpnErIdArgs{...}
+type ApplicationSegmentBrowserAccessZpnErIdInput interface {
+	pulumi.Input
+
+	ToApplicationSegmentBrowserAccessZpnErIdOutput() ApplicationSegmentBrowserAccessZpnErIdOutput
+	ToApplicationSegmentBrowserAccessZpnErIdOutputWithContext(context.Context) ApplicationSegmentBrowserAccessZpnErIdOutput
+}
+
+type ApplicationSegmentBrowserAccessZpnErIdArgs struct {
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (ApplicationSegmentBrowserAccessZpnErIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationSegmentBrowserAccessZpnErId)(nil)).Elem()
+}
+
+func (i ApplicationSegmentBrowserAccessZpnErIdArgs) ToApplicationSegmentBrowserAccessZpnErIdOutput() ApplicationSegmentBrowserAccessZpnErIdOutput {
+	return i.ToApplicationSegmentBrowserAccessZpnErIdOutputWithContext(context.Background())
+}
+
+func (i ApplicationSegmentBrowserAccessZpnErIdArgs) ToApplicationSegmentBrowserAccessZpnErIdOutputWithContext(ctx context.Context) ApplicationSegmentBrowserAccessZpnErIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSegmentBrowserAccessZpnErIdOutput)
+}
+
+// ApplicationSegmentBrowserAccessZpnErIdArrayInput is an input type that accepts ApplicationSegmentBrowserAccessZpnErIdArray and ApplicationSegmentBrowserAccessZpnErIdArrayOutput values.
+// You can construct a concrete instance of `ApplicationSegmentBrowserAccessZpnErIdArrayInput` via:
+//
+//	ApplicationSegmentBrowserAccessZpnErIdArray{ ApplicationSegmentBrowserAccessZpnErIdArgs{...} }
+type ApplicationSegmentBrowserAccessZpnErIdArrayInput interface {
+	pulumi.Input
+
+	ToApplicationSegmentBrowserAccessZpnErIdArrayOutput() ApplicationSegmentBrowserAccessZpnErIdArrayOutput
+	ToApplicationSegmentBrowserAccessZpnErIdArrayOutputWithContext(context.Context) ApplicationSegmentBrowserAccessZpnErIdArrayOutput
+}
+
+type ApplicationSegmentBrowserAccessZpnErIdArray []ApplicationSegmentBrowserAccessZpnErIdInput
+
+func (ApplicationSegmentBrowserAccessZpnErIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationSegmentBrowserAccessZpnErId)(nil)).Elem()
+}
+
+func (i ApplicationSegmentBrowserAccessZpnErIdArray) ToApplicationSegmentBrowserAccessZpnErIdArrayOutput() ApplicationSegmentBrowserAccessZpnErIdArrayOutput {
+	return i.ToApplicationSegmentBrowserAccessZpnErIdArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationSegmentBrowserAccessZpnErIdArray) ToApplicationSegmentBrowserAccessZpnErIdArrayOutputWithContext(ctx context.Context) ApplicationSegmentBrowserAccessZpnErIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSegmentBrowserAccessZpnErIdArrayOutput)
+}
+
+type ApplicationSegmentBrowserAccessZpnErIdOutput struct{ *pulumi.OutputState }
+
+func (ApplicationSegmentBrowserAccessZpnErIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationSegmentBrowserAccessZpnErId)(nil)).Elem()
+}
+
+func (o ApplicationSegmentBrowserAccessZpnErIdOutput) ToApplicationSegmentBrowserAccessZpnErIdOutput() ApplicationSegmentBrowserAccessZpnErIdOutput {
+	return o
+}
+
+func (o ApplicationSegmentBrowserAccessZpnErIdOutput) ToApplicationSegmentBrowserAccessZpnErIdOutputWithContext(ctx context.Context) ApplicationSegmentBrowserAccessZpnErIdOutput {
+	return o
+}
+
+func (o ApplicationSegmentBrowserAccessZpnErIdOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApplicationSegmentBrowserAccessZpnErId) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type ApplicationSegmentBrowserAccessZpnErIdArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationSegmentBrowserAccessZpnErIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationSegmentBrowserAccessZpnErId)(nil)).Elem()
+}
+
+func (o ApplicationSegmentBrowserAccessZpnErIdArrayOutput) ToApplicationSegmentBrowserAccessZpnErIdArrayOutput() ApplicationSegmentBrowserAccessZpnErIdArrayOutput {
+	return o
+}
+
+func (o ApplicationSegmentBrowserAccessZpnErIdArrayOutput) ToApplicationSegmentBrowserAccessZpnErIdArrayOutputWithContext(ctx context.Context) ApplicationSegmentBrowserAccessZpnErIdArrayOutput {
+	return o
+}
+
+func (o ApplicationSegmentBrowserAccessZpnErIdArrayOutput) Index(i pulumi.IntInput) ApplicationSegmentBrowserAccessZpnErIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationSegmentBrowserAccessZpnErId {
+		return vs[0].([]ApplicationSegmentBrowserAccessZpnErId)[vs[1].(int)]
+	}).(ApplicationSegmentBrowserAccessZpnErIdOutput)
+}
+
 type ApplicationSegmentInspectionCommonAppsDto struct {
 	AppsConfigs []ApplicationSegmentInspectionCommonAppsDtoAppsConfig `pulumi:"appsConfigs"`
 }
@@ -616,7 +710,6 @@ type ApplicationSegmentInspectionCommonAppsDtoAppsConfig struct {
 	CertificateId       *string  `pulumi:"certificateId"`
 	Description         *string  `pulumi:"description"`
 	Domain              *string  `pulumi:"domain"`
-	Enabled             *bool    `pulumi:"enabled"`
 	InspectAppId        *string  `pulumi:"inspectAppId"`
 	Name                *string  `pulumi:"name"`
 	TrustUntrustedCert  *bool    `pulumi:"trustUntrustedCert"`
@@ -641,7 +734,6 @@ type ApplicationSegmentInspectionCommonAppsDtoAppsConfigArgs struct {
 	CertificateId       pulumi.StringPtrInput   `pulumi:"certificateId"`
 	Description         pulumi.StringPtrInput   `pulumi:"description"`
 	Domain              pulumi.StringPtrInput   `pulumi:"domain"`
-	Enabled             pulumi.BoolPtrInput     `pulumi:"enabled"`
 	InspectAppId        pulumi.StringPtrInput   `pulumi:"inspectAppId"`
 	Name                pulumi.StringPtrInput   `pulumi:"name"`
 	TrustUntrustedCert  pulumi.BoolPtrInput     `pulumi:"trustUntrustedCert"`
@@ -724,10 +816,6 @@ func (o ApplicationSegmentInspectionCommonAppsDtoAppsConfigOutput) Description()
 
 func (o ApplicationSegmentInspectionCommonAppsDtoAppsConfigOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationSegmentInspectionCommonAppsDtoAppsConfig) *string { return v.Domain }).(pulumi.StringPtrOutput)
-}
-
-func (o ApplicationSegmentInspectionCommonAppsDtoAppsConfigOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ApplicationSegmentInspectionCommonAppsDtoAppsConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o ApplicationSegmentInspectionCommonAppsDtoAppsConfigOutput) InspectAppId() pulumi.StringPtrOutput {
@@ -1159,7 +1247,6 @@ type ApplicationSegmentPRACommonAppsDtoAppsConfig struct {
 	ApplicationProtocol *string  `pulumi:"applicationProtocol"`
 	ConnectionSecurity  *string  `pulumi:"connectionSecurity"`
 	Domain              *string  `pulumi:"domain"`
-	Enabled             *bool    `pulumi:"enabled"`
 	Name                *string  `pulumi:"name"`
 	PraAppId            *string  `pulumi:"praAppId"`
 }
@@ -1182,7 +1269,6 @@ type ApplicationSegmentPRACommonAppsDtoAppsConfigArgs struct {
 	ApplicationProtocol pulumi.StringPtrInput   `pulumi:"applicationProtocol"`
 	ConnectionSecurity  pulumi.StringPtrInput   `pulumi:"connectionSecurity"`
 	Domain              pulumi.StringPtrInput   `pulumi:"domain"`
-	Enabled             pulumi.BoolPtrInput     `pulumi:"enabled"`
 	Name                pulumi.StringPtrInput   `pulumi:"name"`
 	PraAppId            pulumi.StringPtrInput   `pulumi:"praAppId"`
 }
@@ -1260,10 +1346,6 @@ func (o ApplicationSegmentPRACommonAppsDtoAppsConfigOutput) ConnectionSecurity()
 
 func (o ApplicationSegmentPRACommonAppsDtoAppsConfigOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationSegmentPRACommonAppsDtoAppsConfig) *string { return v.Domain }).(pulumi.StringPtrOutput)
-}
-
-func (o ApplicationSegmentPRACommonAppsDtoAppsConfigOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ApplicationSegmentPRACommonAppsDtoAppsConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o ApplicationSegmentPRACommonAppsDtoAppsConfigOutput) Name() pulumi.StringPtrOutput {
@@ -1588,6 +1670,100 @@ func (o ApplicationSegmentPRAUdpPortRangeArrayOutput) Index(i pulumi.IntInput) A
 	}).(ApplicationSegmentPRAUdpPortRangeOutput)
 }
 
+type ApplicationSegmentPRAZpnErId struct {
+	Ids []string `pulumi:"ids"`
+}
+
+// ApplicationSegmentPRAZpnErIdInput is an input type that accepts ApplicationSegmentPRAZpnErIdArgs and ApplicationSegmentPRAZpnErIdOutput values.
+// You can construct a concrete instance of `ApplicationSegmentPRAZpnErIdInput` via:
+//
+//	ApplicationSegmentPRAZpnErIdArgs{...}
+type ApplicationSegmentPRAZpnErIdInput interface {
+	pulumi.Input
+
+	ToApplicationSegmentPRAZpnErIdOutput() ApplicationSegmentPRAZpnErIdOutput
+	ToApplicationSegmentPRAZpnErIdOutputWithContext(context.Context) ApplicationSegmentPRAZpnErIdOutput
+}
+
+type ApplicationSegmentPRAZpnErIdArgs struct {
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (ApplicationSegmentPRAZpnErIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationSegmentPRAZpnErId)(nil)).Elem()
+}
+
+func (i ApplicationSegmentPRAZpnErIdArgs) ToApplicationSegmentPRAZpnErIdOutput() ApplicationSegmentPRAZpnErIdOutput {
+	return i.ToApplicationSegmentPRAZpnErIdOutputWithContext(context.Background())
+}
+
+func (i ApplicationSegmentPRAZpnErIdArgs) ToApplicationSegmentPRAZpnErIdOutputWithContext(ctx context.Context) ApplicationSegmentPRAZpnErIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSegmentPRAZpnErIdOutput)
+}
+
+// ApplicationSegmentPRAZpnErIdArrayInput is an input type that accepts ApplicationSegmentPRAZpnErIdArray and ApplicationSegmentPRAZpnErIdArrayOutput values.
+// You can construct a concrete instance of `ApplicationSegmentPRAZpnErIdArrayInput` via:
+//
+//	ApplicationSegmentPRAZpnErIdArray{ ApplicationSegmentPRAZpnErIdArgs{...} }
+type ApplicationSegmentPRAZpnErIdArrayInput interface {
+	pulumi.Input
+
+	ToApplicationSegmentPRAZpnErIdArrayOutput() ApplicationSegmentPRAZpnErIdArrayOutput
+	ToApplicationSegmentPRAZpnErIdArrayOutputWithContext(context.Context) ApplicationSegmentPRAZpnErIdArrayOutput
+}
+
+type ApplicationSegmentPRAZpnErIdArray []ApplicationSegmentPRAZpnErIdInput
+
+func (ApplicationSegmentPRAZpnErIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationSegmentPRAZpnErId)(nil)).Elem()
+}
+
+func (i ApplicationSegmentPRAZpnErIdArray) ToApplicationSegmentPRAZpnErIdArrayOutput() ApplicationSegmentPRAZpnErIdArrayOutput {
+	return i.ToApplicationSegmentPRAZpnErIdArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationSegmentPRAZpnErIdArray) ToApplicationSegmentPRAZpnErIdArrayOutputWithContext(ctx context.Context) ApplicationSegmentPRAZpnErIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSegmentPRAZpnErIdArrayOutput)
+}
+
+type ApplicationSegmentPRAZpnErIdOutput struct{ *pulumi.OutputState }
+
+func (ApplicationSegmentPRAZpnErIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationSegmentPRAZpnErId)(nil)).Elem()
+}
+
+func (o ApplicationSegmentPRAZpnErIdOutput) ToApplicationSegmentPRAZpnErIdOutput() ApplicationSegmentPRAZpnErIdOutput {
+	return o
+}
+
+func (o ApplicationSegmentPRAZpnErIdOutput) ToApplicationSegmentPRAZpnErIdOutputWithContext(ctx context.Context) ApplicationSegmentPRAZpnErIdOutput {
+	return o
+}
+
+func (o ApplicationSegmentPRAZpnErIdOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApplicationSegmentPRAZpnErId) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type ApplicationSegmentPRAZpnErIdArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationSegmentPRAZpnErIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationSegmentPRAZpnErId)(nil)).Elem()
+}
+
+func (o ApplicationSegmentPRAZpnErIdArrayOutput) ToApplicationSegmentPRAZpnErIdArrayOutput() ApplicationSegmentPRAZpnErIdArrayOutput {
+	return o
+}
+
+func (o ApplicationSegmentPRAZpnErIdArrayOutput) ToApplicationSegmentPRAZpnErIdArrayOutputWithContext(ctx context.Context) ApplicationSegmentPRAZpnErIdArrayOutput {
+	return o
+}
+
+func (o ApplicationSegmentPRAZpnErIdArrayOutput) Index(i pulumi.IntInput) ApplicationSegmentPRAZpnErIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationSegmentPRAZpnErId {
+		return vs[0].([]ApplicationSegmentPRAZpnErId)[vs[1].(int)]
+	}).(ApplicationSegmentPRAZpnErIdOutput)
+}
+
 type ApplicationSegmentServerGroup struct {
 	Ids []string `pulumi:"ids"`
 }
@@ -1880,6 +2056,224 @@ func (o ApplicationSegmentUdpPortRangeArrayOutput) Index(i pulumi.IntInput) Appl
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationSegmentUdpPortRange {
 		return vs[0].([]ApplicationSegmentUdpPortRange)[vs[1].(int)]
 	}).(ApplicationSegmentUdpPortRangeOutput)
+}
+
+type ApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping struct {
+	// Server group mapping identifier.
+	Id *string `pulumi:"id"`
+	// Server group name.
+	Name *string `pulumi:"name"`
+	// Whether the server group is passive.
+	Passive *bool `pulumi:"passive"`
+	// Assigned weight for the server group.
+	Weight *string `pulumi:"weight"`
+}
+
+// ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingInput is an input type that accepts ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArgs and ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput values.
+// You can construct a concrete instance of `ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingInput` via:
+//
+//	ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArgs{...}
+type ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingInput interface {
+	pulumi.Input
+
+	ToApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput() ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput
+	ToApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutputWithContext(context.Context) ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput
+}
+
+type ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArgs struct {
+	// Server group mapping identifier.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Server group name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Whether the server group is passive.
+	Passive pulumi.BoolPtrInput `pulumi:"passive"`
+	// Assigned weight for the server group.
+	Weight pulumi.StringPtrInput `pulumi:"weight"`
+}
+
+func (ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping)(nil)).Elem()
+}
+
+func (i ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArgs) ToApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput() ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput {
+	return i.ToApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutputWithContext(context.Background())
+}
+
+func (i ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArgs) ToApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutputWithContext(ctx context.Context) ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput)
+}
+
+// ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayInput is an input type that accepts ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArray and ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput values.
+// You can construct a concrete instance of `ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayInput` via:
+//
+//	ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArray{ ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArgs{...} }
+type ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayInput interface {
+	pulumi.Input
+
+	ToApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput() ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput
+	ToApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutputWithContext(context.Context) ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput
+}
+
+type ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArray []ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingInput
+
+func (ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping)(nil)).Elem()
+}
+
+func (i ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArray) ToApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput() ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput {
+	return i.ToApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArray) ToApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutputWithContext(ctx context.Context) ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput)
+}
+
+type ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput struct{ *pulumi.OutputState }
+
+func (ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping)(nil)).Elem()
+}
+
+func (o ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput) ToApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput() ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput {
+	return o
+}
+
+func (o ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput) ToApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutputWithContext(ctx context.Context) ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput {
+	return o
+}
+
+// Server group mapping identifier.
+func (o ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Server group name.
+func (o ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Whether the server group is passive.
+func (o ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput) Passive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping) *bool { return v.Passive }).(pulumi.BoolPtrOutput)
+}
+
+// Assigned weight for the server group.
+func (o ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput) Weight() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping) *string { return v.Weight }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping)(nil)).Elem()
+}
+
+func (o ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput) ToApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput() ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput {
+	return o
+}
+
+func (o ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput) ToApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutputWithContext(ctx context.Context) ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput {
+	return o
+}
+
+func (o ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput) Index(i pulumi.IntInput) ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping {
+		return vs[0].([]ApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping)[vs[1].(int)]
+	}).(ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput)
+}
+
+type ApplicationSegmentZpnErId struct {
+	Ids []string `pulumi:"ids"`
+}
+
+// ApplicationSegmentZpnErIdInput is an input type that accepts ApplicationSegmentZpnErIdArgs and ApplicationSegmentZpnErIdOutput values.
+// You can construct a concrete instance of `ApplicationSegmentZpnErIdInput` via:
+//
+//	ApplicationSegmentZpnErIdArgs{...}
+type ApplicationSegmentZpnErIdInput interface {
+	pulumi.Input
+
+	ToApplicationSegmentZpnErIdOutput() ApplicationSegmentZpnErIdOutput
+	ToApplicationSegmentZpnErIdOutputWithContext(context.Context) ApplicationSegmentZpnErIdOutput
+}
+
+type ApplicationSegmentZpnErIdArgs struct {
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (ApplicationSegmentZpnErIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationSegmentZpnErId)(nil)).Elem()
+}
+
+func (i ApplicationSegmentZpnErIdArgs) ToApplicationSegmentZpnErIdOutput() ApplicationSegmentZpnErIdOutput {
+	return i.ToApplicationSegmentZpnErIdOutputWithContext(context.Background())
+}
+
+func (i ApplicationSegmentZpnErIdArgs) ToApplicationSegmentZpnErIdOutputWithContext(ctx context.Context) ApplicationSegmentZpnErIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSegmentZpnErIdOutput)
+}
+
+// ApplicationSegmentZpnErIdArrayInput is an input type that accepts ApplicationSegmentZpnErIdArray and ApplicationSegmentZpnErIdArrayOutput values.
+// You can construct a concrete instance of `ApplicationSegmentZpnErIdArrayInput` via:
+//
+//	ApplicationSegmentZpnErIdArray{ ApplicationSegmentZpnErIdArgs{...} }
+type ApplicationSegmentZpnErIdArrayInput interface {
+	pulumi.Input
+
+	ToApplicationSegmentZpnErIdArrayOutput() ApplicationSegmentZpnErIdArrayOutput
+	ToApplicationSegmentZpnErIdArrayOutputWithContext(context.Context) ApplicationSegmentZpnErIdArrayOutput
+}
+
+type ApplicationSegmentZpnErIdArray []ApplicationSegmentZpnErIdInput
+
+func (ApplicationSegmentZpnErIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationSegmentZpnErId)(nil)).Elem()
+}
+
+func (i ApplicationSegmentZpnErIdArray) ToApplicationSegmentZpnErIdArrayOutput() ApplicationSegmentZpnErIdArrayOutput {
+	return i.ToApplicationSegmentZpnErIdArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationSegmentZpnErIdArray) ToApplicationSegmentZpnErIdArrayOutputWithContext(ctx context.Context) ApplicationSegmentZpnErIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSegmentZpnErIdArrayOutput)
+}
+
+type ApplicationSegmentZpnErIdOutput struct{ *pulumi.OutputState }
+
+func (ApplicationSegmentZpnErIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationSegmentZpnErId)(nil)).Elem()
+}
+
+func (o ApplicationSegmentZpnErIdOutput) ToApplicationSegmentZpnErIdOutput() ApplicationSegmentZpnErIdOutput {
+	return o
+}
+
+func (o ApplicationSegmentZpnErIdOutput) ToApplicationSegmentZpnErIdOutputWithContext(ctx context.Context) ApplicationSegmentZpnErIdOutput {
+	return o
+}
+
+func (o ApplicationSegmentZpnErIdOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApplicationSegmentZpnErId) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type ApplicationSegmentZpnErIdArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationSegmentZpnErIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationSegmentZpnErId)(nil)).Elem()
+}
+
+func (o ApplicationSegmentZpnErIdArrayOutput) ToApplicationSegmentZpnErIdArrayOutput() ApplicationSegmentZpnErIdArrayOutput {
+	return o
+}
+
+func (o ApplicationSegmentZpnErIdArrayOutput) ToApplicationSegmentZpnErIdArrayOutputWithContext(ctx context.Context) ApplicationSegmentZpnErIdArrayOutput {
+	return o
+}
+
+func (o ApplicationSegmentZpnErIdArrayOutput) Index(i pulumi.IntInput) ApplicationSegmentZpnErIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationSegmentZpnErId {
+		return vs[0].([]ApplicationSegmentZpnErId)[vs[1].(int)]
+	}).(ApplicationSegmentZpnErIdOutput)
 }
 
 type BrowserAccessClientlessApp struct {
@@ -2379,6 +2773,100 @@ func (o BrowserAccessUdpPortRangeArrayOutput) Index(i pulumi.IntInput) BrowserAc
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BrowserAccessUdpPortRange {
 		return vs[0].([]BrowserAccessUdpPortRange)[vs[1].(int)]
 	}).(BrowserAccessUdpPortRangeOutput)
+}
+
+type BrowserAccessZpnErId struct {
+	Ids []string `pulumi:"ids"`
+}
+
+// BrowserAccessZpnErIdInput is an input type that accepts BrowserAccessZpnErIdArgs and BrowserAccessZpnErIdOutput values.
+// You can construct a concrete instance of `BrowserAccessZpnErIdInput` via:
+//
+//	BrowserAccessZpnErIdArgs{...}
+type BrowserAccessZpnErIdInput interface {
+	pulumi.Input
+
+	ToBrowserAccessZpnErIdOutput() BrowserAccessZpnErIdOutput
+	ToBrowserAccessZpnErIdOutputWithContext(context.Context) BrowserAccessZpnErIdOutput
+}
+
+type BrowserAccessZpnErIdArgs struct {
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (BrowserAccessZpnErIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BrowserAccessZpnErId)(nil)).Elem()
+}
+
+func (i BrowserAccessZpnErIdArgs) ToBrowserAccessZpnErIdOutput() BrowserAccessZpnErIdOutput {
+	return i.ToBrowserAccessZpnErIdOutputWithContext(context.Background())
+}
+
+func (i BrowserAccessZpnErIdArgs) ToBrowserAccessZpnErIdOutputWithContext(ctx context.Context) BrowserAccessZpnErIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrowserAccessZpnErIdOutput)
+}
+
+// BrowserAccessZpnErIdArrayInput is an input type that accepts BrowserAccessZpnErIdArray and BrowserAccessZpnErIdArrayOutput values.
+// You can construct a concrete instance of `BrowserAccessZpnErIdArrayInput` via:
+//
+//	BrowserAccessZpnErIdArray{ BrowserAccessZpnErIdArgs{...} }
+type BrowserAccessZpnErIdArrayInput interface {
+	pulumi.Input
+
+	ToBrowserAccessZpnErIdArrayOutput() BrowserAccessZpnErIdArrayOutput
+	ToBrowserAccessZpnErIdArrayOutputWithContext(context.Context) BrowserAccessZpnErIdArrayOutput
+}
+
+type BrowserAccessZpnErIdArray []BrowserAccessZpnErIdInput
+
+func (BrowserAccessZpnErIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BrowserAccessZpnErId)(nil)).Elem()
+}
+
+func (i BrowserAccessZpnErIdArray) ToBrowserAccessZpnErIdArrayOutput() BrowserAccessZpnErIdArrayOutput {
+	return i.ToBrowserAccessZpnErIdArrayOutputWithContext(context.Background())
+}
+
+func (i BrowserAccessZpnErIdArray) ToBrowserAccessZpnErIdArrayOutputWithContext(ctx context.Context) BrowserAccessZpnErIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrowserAccessZpnErIdArrayOutput)
+}
+
+type BrowserAccessZpnErIdOutput struct{ *pulumi.OutputState }
+
+func (BrowserAccessZpnErIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BrowserAccessZpnErId)(nil)).Elem()
+}
+
+func (o BrowserAccessZpnErIdOutput) ToBrowserAccessZpnErIdOutput() BrowserAccessZpnErIdOutput {
+	return o
+}
+
+func (o BrowserAccessZpnErIdOutput) ToBrowserAccessZpnErIdOutputWithContext(ctx context.Context) BrowserAccessZpnErIdOutput {
+	return o
+}
+
+func (o BrowserAccessZpnErIdOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BrowserAccessZpnErId) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type BrowserAccessZpnErIdArrayOutput struct{ *pulumi.OutputState }
+
+func (BrowserAccessZpnErIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BrowserAccessZpnErId)(nil)).Elem()
+}
+
+func (o BrowserAccessZpnErIdArrayOutput) ToBrowserAccessZpnErIdArrayOutput() BrowserAccessZpnErIdArrayOutput {
+	return o
+}
+
+func (o BrowserAccessZpnErIdArrayOutput) ToBrowserAccessZpnErIdArrayOutputWithContext(ctx context.Context) BrowserAccessZpnErIdArrayOutput {
+	return o
+}
+
+func (o BrowserAccessZpnErIdArrayOutput) Index(i pulumi.IntInput) BrowserAccessZpnErIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BrowserAccessZpnErId {
+		return vs[0].([]BrowserAccessZpnErId)[vs[1].(int)]
+	}).(BrowserAccessZpnErIdOutput)
 }
 
 type CloudBrowserIsolationExternalProfileDebugMode struct {
@@ -10468,6 +10956,319 @@ func (o PolicyAccessRuleV2ConditionOperandEntryValueArrayOutput) Index(i pulumi.
 	}).(PolicyAccessRuleV2ConditionOperandEntryValueOutput)
 }
 
+type PolicyAccessRuleV2ExtranetDto struct {
+	// List of location DTOs.
+	LocationDtos []PolicyAccessRuleV2ExtranetDtoLocationDto `pulumi:"locationDtos"`
+	// List of location group DTOs.
+	LocationGroupDtos []PolicyAccessRuleV2ExtranetDtoLocationGroupDto `pulumi:"locationGroupDtos"`
+	// ZPN Extranet Resource ID.
+	ZpnErId *string `pulumi:"zpnErId"`
+}
+
+// PolicyAccessRuleV2ExtranetDtoInput is an input type that accepts PolicyAccessRuleV2ExtranetDtoArgs and PolicyAccessRuleV2ExtranetDtoOutput values.
+// You can construct a concrete instance of `PolicyAccessRuleV2ExtranetDtoInput` via:
+//
+//	PolicyAccessRuleV2ExtranetDtoArgs{...}
+type PolicyAccessRuleV2ExtranetDtoInput interface {
+	pulumi.Input
+
+	ToPolicyAccessRuleV2ExtranetDtoOutput() PolicyAccessRuleV2ExtranetDtoOutput
+	ToPolicyAccessRuleV2ExtranetDtoOutputWithContext(context.Context) PolicyAccessRuleV2ExtranetDtoOutput
+}
+
+type PolicyAccessRuleV2ExtranetDtoArgs struct {
+	// List of location DTOs.
+	LocationDtos PolicyAccessRuleV2ExtranetDtoLocationDtoArrayInput `pulumi:"locationDtos"`
+	// List of location group DTOs.
+	LocationGroupDtos PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayInput `pulumi:"locationGroupDtos"`
+	// ZPN Extranet Resource ID.
+	ZpnErId pulumi.StringPtrInput `pulumi:"zpnErId"`
+}
+
+func (PolicyAccessRuleV2ExtranetDtoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAccessRuleV2ExtranetDto)(nil)).Elem()
+}
+
+func (i PolicyAccessRuleV2ExtranetDtoArgs) ToPolicyAccessRuleV2ExtranetDtoOutput() PolicyAccessRuleV2ExtranetDtoOutput {
+	return i.ToPolicyAccessRuleV2ExtranetDtoOutputWithContext(context.Background())
+}
+
+func (i PolicyAccessRuleV2ExtranetDtoArgs) ToPolicyAccessRuleV2ExtranetDtoOutputWithContext(ctx context.Context) PolicyAccessRuleV2ExtranetDtoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAccessRuleV2ExtranetDtoOutput)
+}
+
+// PolicyAccessRuleV2ExtranetDtoArrayInput is an input type that accepts PolicyAccessRuleV2ExtranetDtoArray and PolicyAccessRuleV2ExtranetDtoArrayOutput values.
+// You can construct a concrete instance of `PolicyAccessRuleV2ExtranetDtoArrayInput` via:
+//
+//	PolicyAccessRuleV2ExtranetDtoArray{ PolicyAccessRuleV2ExtranetDtoArgs{...} }
+type PolicyAccessRuleV2ExtranetDtoArrayInput interface {
+	pulumi.Input
+
+	ToPolicyAccessRuleV2ExtranetDtoArrayOutput() PolicyAccessRuleV2ExtranetDtoArrayOutput
+	ToPolicyAccessRuleV2ExtranetDtoArrayOutputWithContext(context.Context) PolicyAccessRuleV2ExtranetDtoArrayOutput
+}
+
+type PolicyAccessRuleV2ExtranetDtoArray []PolicyAccessRuleV2ExtranetDtoInput
+
+func (PolicyAccessRuleV2ExtranetDtoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyAccessRuleV2ExtranetDto)(nil)).Elem()
+}
+
+func (i PolicyAccessRuleV2ExtranetDtoArray) ToPolicyAccessRuleV2ExtranetDtoArrayOutput() PolicyAccessRuleV2ExtranetDtoArrayOutput {
+	return i.ToPolicyAccessRuleV2ExtranetDtoArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyAccessRuleV2ExtranetDtoArray) ToPolicyAccessRuleV2ExtranetDtoArrayOutputWithContext(ctx context.Context) PolicyAccessRuleV2ExtranetDtoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAccessRuleV2ExtranetDtoArrayOutput)
+}
+
+type PolicyAccessRuleV2ExtranetDtoOutput struct{ *pulumi.OutputState }
+
+func (PolicyAccessRuleV2ExtranetDtoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAccessRuleV2ExtranetDto)(nil)).Elem()
+}
+
+func (o PolicyAccessRuleV2ExtranetDtoOutput) ToPolicyAccessRuleV2ExtranetDtoOutput() PolicyAccessRuleV2ExtranetDtoOutput {
+	return o
+}
+
+func (o PolicyAccessRuleV2ExtranetDtoOutput) ToPolicyAccessRuleV2ExtranetDtoOutputWithContext(ctx context.Context) PolicyAccessRuleV2ExtranetDtoOutput {
+	return o
+}
+
+// List of location DTOs.
+func (o PolicyAccessRuleV2ExtranetDtoOutput) LocationDtos() PolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutput {
+	return o.ApplyT(func(v PolicyAccessRuleV2ExtranetDto) []PolicyAccessRuleV2ExtranetDtoLocationDto {
+		return v.LocationDtos
+	}).(PolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutput)
+}
+
+// List of location group DTOs.
+func (o PolicyAccessRuleV2ExtranetDtoOutput) LocationGroupDtos() PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutput {
+	return o.ApplyT(func(v PolicyAccessRuleV2ExtranetDto) []PolicyAccessRuleV2ExtranetDtoLocationGroupDto {
+		return v.LocationGroupDtos
+	}).(PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutput)
+}
+
+// ZPN Extranet Resource ID.
+func (o PolicyAccessRuleV2ExtranetDtoOutput) ZpnErId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyAccessRuleV2ExtranetDto) *string { return v.ZpnErId }).(pulumi.StringPtrOutput)
+}
+
+type PolicyAccessRuleV2ExtranetDtoArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyAccessRuleV2ExtranetDtoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyAccessRuleV2ExtranetDto)(nil)).Elem()
+}
+
+func (o PolicyAccessRuleV2ExtranetDtoArrayOutput) ToPolicyAccessRuleV2ExtranetDtoArrayOutput() PolicyAccessRuleV2ExtranetDtoArrayOutput {
+	return o
+}
+
+func (o PolicyAccessRuleV2ExtranetDtoArrayOutput) ToPolicyAccessRuleV2ExtranetDtoArrayOutputWithContext(ctx context.Context) PolicyAccessRuleV2ExtranetDtoArrayOutput {
+	return o
+}
+
+func (o PolicyAccessRuleV2ExtranetDtoArrayOutput) Index(i pulumi.IntInput) PolicyAccessRuleV2ExtranetDtoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyAccessRuleV2ExtranetDto {
+		return vs[0].([]PolicyAccessRuleV2ExtranetDto)[vs[1].(int)]
+	}).(PolicyAccessRuleV2ExtranetDtoOutput)
+}
+
+type PolicyAccessRuleV2ExtranetDtoLocationDto struct {
+	// Location ID.
+	Id string `pulumi:"id"`
+}
+
+// PolicyAccessRuleV2ExtranetDtoLocationDtoInput is an input type that accepts PolicyAccessRuleV2ExtranetDtoLocationDtoArgs and PolicyAccessRuleV2ExtranetDtoLocationDtoOutput values.
+// You can construct a concrete instance of `PolicyAccessRuleV2ExtranetDtoLocationDtoInput` via:
+//
+//	PolicyAccessRuleV2ExtranetDtoLocationDtoArgs{...}
+type PolicyAccessRuleV2ExtranetDtoLocationDtoInput interface {
+	pulumi.Input
+
+	ToPolicyAccessRuleV2ExtranetDtoLocationDtoOutput() PolicyAccessRuleV2ExtranetDtoLocationDtoOutput
+	ToPolicyAccessRuleV2ExtranetDtoLocationDtoOutputWithContext(context.Context) PolicyAccessRuleV2ExtranetDtoLocationDtoOutput
+}
+
+type PolicyAccessRuleV2ExtranetDtoLocationDtoArgs struct {
+	// Location ID.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (PolicyAccessRuleV2ExtranetDtoLocationDtoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAccessRuleV2ExtranetDtoLocationDto)(nil)).Elem()
+}
+
+func (i PolicyAccessRuleV2ExtranetDtoLocationDtoArgs) ToPolicyAccessRuleV2ExtranetDtoLocationDtoOutput() PolicyAccessRuleV2ExtranetDtoLocationDtoOutput {
+	return i.ToPolicyAccessRuleV2ExtranetDtoLocationDtoOutputWithContext(context.Background())
+}
+
+func (i PolicyAccessRuleV2ExtranetDtoLocationDtoArgs) ToPolicyAccessRuleV2ExtranetDtoLocationDtoOutputWithContext(ctx context.Context) PolicyAccessRuleV2ExtranetDtoLocationDtoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAccessRuleV2ExtranetDtoLocationDtoOutput)
+}
+
+// PolicyAccessRuleV2ExtranetDtoLocationDtoArrayInput is an input type that accepts PolicyAccessRuleV2ExtranetDtoLocationDtoArray and PolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutput values.
+// You can construct a concrete instance of `PolicyAccessRuleV2ExtranetDtoLocationDtoArrayInput` via:
+//
+//	PolicyAccessRuleV2ExtranetDtoLocationDtoArray{ PolicyAccessRuleV2ExtranetDtoLocationDtoArgs{...} }
+type PolicyAccessRuleV2ExtranetDtoLocationDtoArrayInput interface {
+	pulumi.Input
+
+	ToPolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutput() PolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutput
+	ToPolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutputWithContext(context.Context) PolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutput
+}
+
+type PolicyAccessRuleV2ExtranetDtoLocationDtoArray []PolicyAccessRuleV2ExtranetDtoLocationDtoInput
+
+func (PolicyAccessRuleV2ExtranetDtoLocationDtoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyAccessRuleV2ExtranetDtoLocationDto)(nil)).Elem()
+}
+
+func (i PolicyAccessRuleV2ExtranetDtoLocationDtoArray) ToPolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutput() PolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutput {
+	return i.ToPolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyAccessRuleV2ExtranetDtoLocationDtoArray) ToPolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutputWithContext(ctx context.Context) PolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutput)
+}
+
+type PolicyAccessRuleV2ExtranetDtoLocationDtoOutput struct{ *pulumi.OutputState }
+
+func (PolicyAccessRuleV2ExtranetDtoLocationDtoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAccessRuleV2ExtranetDtoLocationDto)(nil)).Elem()
+}
+
+func (o PolicyAccessRuleV2ExtranetDtoLocationDtoOutput) ToPolicyAccessRuleV2ExtranetDtoLocationDtoOutput() PolicyAccessRuleV2ExtranetDtoLocationDtoOutput {
+	return o
+}
+
+func (o PolicyAccessRuleV2ExtranetDtoLocationDtoOutput) ToPolicyAccessRuleV2ExtranetDtoLocationDtoOutputWithContext(ctx context.Context) PolicyAccessRuleV2ExtranetDtoLocationDtoOutput {
+	return o
+}
+
+// Location ID.
+func (o PolicyAccessRuleV2ExtranetDtoLocationDtoOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyAccessRuleV2ExtranetDtoLocationDto) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type PolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyAccessRuleV2ExtranetDtoLocationDto)(nil)).Elem()
+}
+
+func (o PolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutput) ToPolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutput() PolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutput {
+	return o
+}
+
+func (o PolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutput) ToPolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutputWithContext(ctx context.Context) PolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutput {
+	return o
+}
+
+func (o PolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutput) Index(i pulumi.IntInput) PolicyAccessRuleV2ExtranetDtoLocationDtoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyAccessRuleV2ExtranetDtoLocationDto {
+		return vs[0].([]PolicyAccessRuleV2ExtranetDtoLocationDto)[vs[1].(int)]
+	}).(PolicyAccessRuleV2ExtranetDtoLocationDtoOutput)
+}
+
+type PolicyAccessRuleV2ExtranetDtoLocationGroupDto struct {
+	// Location Group ID.
+	Id string `pulumi:"id"`
+}
+
+// PolicyAccessRuleV2ExtranetDtoLocationGroupDtoInput is an input type that accepts PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArgs and PolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutput values.
+// You can construct a concrete instance of `PolicyAccessRuleV2ExtranetDtoLocationGroupDtoInput` via:
+//
+//	PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArgs{...}
+type PolicyAccessRuleV2ExtranetDtoLocationGroupDtoInput interface {
+	pulumi.Input
+
+	ToPolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutput() PolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutput
+	ToPolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutputWithContext(context.Context) PolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutput
+}
+
+type PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArgs struct {
+	// Location Group ID.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAccessRuleV2ExtranetDtoLocationGroupDto)(nil)).Elem()
+}
+
+func (i PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArgs) ToPolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutput() PolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutput {
+	return i.ToPolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutputWithContext(context.Background())
+}
+
+func (i PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArgs) ToPolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutputWithContext(ctx context.Context) PolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutput)
+}
+
+// PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayInput is an input type that accepts PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArray and PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutput values.
+// You can construct a concrete instance of `PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayInput` via:
+//
+//	PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArray{ PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArgs{...} }
+type PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayInput interface {
+	pulumi.Input
+
+	ToPolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutput() PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutput
+	ToPolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutputWithContext(context.Context) PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutput
+}
+
+type PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArray []PolicyAccessRuleV2ExtranetDtoLocationGroupDtoInput
+
+func (PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyAccessRuleV2ExtranetDtoLocationGroupDto)(nil)).Elem()
+}
+
+func (i PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArray) ToPolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutput() PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutput {
+	return i.ToPolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArray) ToPolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutputWithContext(ctx context.Context) PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutput)
+}
+
+type PolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutput struct{ *pulumi.OutputState }
+
+func (PolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAccessRuleV2ExtranetDtoLocationGroupDto)(nil)).Elem()
+}
+
+func (o PolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutput) ToPolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutput() PolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutput {
+	return o
+}
+
+func (o PolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutput) ToPolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutputWithContext(ctx context.Context) PolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutput {
+	return o
+}
+
+// Location Group ID.
+func (o PolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyAccessRuleV2ExtranetDtoLocationGroupDto) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyAccessRuleV2ExtranetDtoLocationGroupDto)(nil)).Elem()
+}
+
+func (o PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutput) ToPolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutput() PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutput {
+	return o
+}
+
+func (o PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutput) ToPolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutputWithContext(ctx context.Context) PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutput {
+	return o
+}
+
+func (o PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutput) Index(i pulumi.IntInput) PolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyAccessRuleV2ExtranetDtoLocationGroupDto {
+		return vs[0].([]PolicyAccessRuleV2ExtranetDtoLocationGroupDto)[vs[1].(int)]
+	}).(PolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutput)
+}
+
 type PolicyAccessTimeOutRuleCondition struct {
 	Id            *string `pulumi:"id"`
 	MicrotenantId *string `pulumi:"microtenantId"`
@@ -11384,6 +12185,523 @@ func (o PolicyBrowserProtectionRuleConditionOperandEntryValueArrayOutput) Index(
 	}).(PolicyBrowserProtectionRuleConditionOperandEntryValueOutput)
 }
 
+type PolicyPortalAccessRuleCondition struct {
+	Id *string `pulumi:"id"`
+	// This signifies the various policy criteria.
+	Operands []PolicyPortalAccessRuleConditionOperand `pulumi:"operands"`
+	Operator *string                                  `pulumi:"operator"`
+}
+
+// PolicyPortalAccessRuleConditionInput is an input type that accepts PolicyPortalAccessRuleConditionArgs and PolicyPortalAccessRuleConditionOutput values.
+// You can construct a concrete instance of `PolicyPortalAccessRuleConditionInput` via:
+//
+//	PolicyPortalAccessRuleConditionArgs{...}
+type PolicyPortalAccessRuleConditionInput interface {
+	pulumi.Input
+
+	ToPolicyPortalAccessRuleConditionOutput() PolicyPortalAccessRuleConditionOutput
+	ToPolicyPortalAccessRuleConditionOutputWithContext(context.Context) PolicyPortalAccessRuleConditionOutput
+}
+
+type PolicyPortalAccessRuleConditionArgs struct {
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// This signifies the various policy criteria.
+	Operands PolicyPortalAccessRuleConditionOperandArrayInput `pulumi:"operands"`
+	Operator pulumi.StringPtrInput                            `pulumi:"operator"`
+}
+
+func (PolicyPortalAccessRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyPortalAccessRuleCondition)(nil)).Elem()
+}
+
+func (i PolicyPortalAccessRuleConditionArgs) ToPolicyPortalAccessRuleConditionOutput() PolicyPortalAccessRuleConditionOutput {
+	return i.ToPolicyPortalAccessRuleConditionOutputWithContext(context.Background())
+}
+
+func (i PolicyPortalAccessRuleConditionArgs) ToPolicyPortalAccessRuleConditionOutputWithContext(ctx context.Context) PolicyPortalAccessRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPortalAccessRuleConditionOutput)
+}
+
+// PolicyPortalAccessRuleConditionArrayInput is an input type that accepts PolicyPortalAccessRuleConditionArray and PolicyPortalAccessRuleConditionArrayOutput values.
+// You can construct a concrete instance of `PolicyPortalAccessRuleConditionArrayInput` via:
+//
+//	PolicyPortalAccessRuleConditionArray{ PolicyPortalAccessRuleConditionArgs{...} }
+type PolicyPortalAccessRuleConditionArrayInput interface {
+	pulumi.Input
+
+	ToPolicyPortalAccessRuleConditionArrayOutput() PolicyPortalAccessRuleConditionArrayOutput
+	ToPolicyPortalAccessRuleConditionArrayOutputWithContext(context.Context) PolicyPortalAccessRuleConditionArrayOutput
+}
+
+type PolicyPortalAccessRuleConditionArray []PolicyPortalAccessRuleConditionInput
+
+func (PolicyPortalAccessRuleConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyPortalAccessRuleCondition)(nil)).Elem()
+}
+
+func (i PolicyPortalAccessRuleConditionArray) ToPolicyPortalAccessRuleConditionArrayOutput() PolicyPortalAccessRuleConditionArrayOutput {
+	return i.ToPolicyPortalAccessRuleConditionArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyPortalAccessRuleConditionArray) ToPolicyPortalAccessRuleConditionArrayOutputWithContext(ctx context.Context) PolicyPortalAccessRuleConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPortalAccessRuleConditionArrayOutput)
+}
+
+type PolicyPortalAccessRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (PolicyPortalAccessRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyPortalAccessRuleCondition)(nil)).Elem()
+}
+
+func (o PolicyPortalAccessRuleConditionOutput) ToPolicyPortalAccessRuleConditionOutput() PolicyPortalAccessRuleConditionOutput {
+	return o
+}
+
+func (o PolicyPortalAccessRuleConditionOutput) ToPolicyPortalAccessRuleConditionOutputWithContext(ctx context.Context) PolicyPortalAccessRuleConditionOutput {
+	return o
+}
+
+func (o PolicyPortalAccessRuleConditionOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyPortalAccessRuleCondition) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// This signifies the various policy criteria.
+func (o PolicyPortalAccessRuleConditionOutput) Operands() PolicyPortalAccessRuleConditionOperandArrayOutput {
+	return o.ApplyT(func(v PolicyPortalAccessRuleCondition) []PolicyPortalAccessRuleConditionOperand { return v.Operands }).(PolicyPortalAccessRuleConditionOperandArrayOutput)
+}
+
+func (o PolicyPortalAccessRuleConditionOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyPortalAccessRuleCondition) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+type PolicyPortalAccessRuleConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyPortalAccessRuleConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyPortalAccessRuleCondition)(nil)).Elem()
+}
+
+func (o PolicyPortalAccessRuleConditionArrayOutput) ToPolicyPortalAccessRuleConditionArrayOutput() PolicyPortalAccessRuleConditionArrayOutput {
+	return o
+}
+
+func (o PolicyPortalAccessRuleConditionArrayOutput) ToPolicyPortalAccessRuleConditionArrayOutputWithContext(ctx context.Context) PolicyPortalAccessRuleConditionArrayOutput {
+	return o
+}
+
+func (o PolicyPortalAccessRuleConditionArrayOutput) Index(i pulumi.IntInput) PolicyPortalAccessRuleConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyPortalAccessRuleCondition {
+		return vs[0].([]PolicyPortalAccessRuleCondition)[vs[1].(int)]
+	}).(PolicyPortalAccessRuleConditionOutput)
+}
+
+type PolicyPortalAccessRuleConditionOperand struct {
+	EntryValues []PolicyPortalAccessRuleConditionOperandEntryValue `pulumi:"entryValues"`
+	// This is for specifying the policy critiera.
+	ObjectType *string `pulumi:"objectType"`
+	// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+	Values []string `pulumi:"values"`
+}
+
+// PolicyPortalAccessRuleConditionOperandInput is an input type that accepts PolicyPortalAccessRuleConditionOperandArgs and PolicyPortalAccessRuleConditionOperandOutput values.
+// You can construct a concrete instance of `PolicyPortalAccessRuleConditionOperandInput` via:
+//
+//	PolicyPortalAccessRuleConditionOperandArgs{...}
+type PolicyPortalAccessRuleConditionOperandInput interface {
+	pulumi.Input
+
+	ToPolicyPortalAccessRuleConditionOperandOutput() PolicyPortalAccessRuleConditionOperandOutput
+	ToPolicyPortalAccessRuleConditionOperandOutputWithContext(context.Context) PolicyPortalAccessRuleConditionOperandOutput
+}
+
+type PolicyPortalAccessRuleConditionOperandArgs struct {
+	EntryValues PolicyPortalAccessRuleConditionOperandEntryValueArrayInput `pulumi:"entryValues"`
+	// This is for specifying the policy critiera.
+	ObjectType pulumi.StringPtrInput `pulumi:"objectType"`
+	// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (PolicyPortalAccessRuleConditionOperandArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyPortalAccessRuleConditionOperand)(nil)).Elem()
+}
+
+func (i PolicyPortalAccessRuleConditionOperandArgs) ToPolicyPortalAccessRuleConditionOperandOutput() PolicyPortalAccessRuleConditionOperandOutput {
+	return i.ToPolicyPortalAccessRuleConditionOperandOutputWithContext(context.Background())
+}
+
+func (i PolicyPortalAccessRuleConditionOperandArgs) ToPolicyPortalAccessRuleConditionOperandOutputWithContext(ctx context.Context) PolicyPortalAccessRuleConditionOperandOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPortalAccessRuleConditionOperandOutput)
+}
+
+// PolicyPortalAccessRuleConditionOperandArrayInput is an input type that accepts PolicyPortalAccessRuleConditionOperandArray and PolicyPortalAccessRuleConditionOperandArrayOutput values.
+// You can construct a concrete instance of `PolicyPortalAccessRuleConditionOperandArrayInput` via:
+//
+//	PolicyPortalAccessRuleConditionOperandArray{ PolicyPortalAccessRuleConditionOperandArgs{...} }
+type PolicyPortalAccessRuleConditionOperandArrayInput interface {
+	pulumi.Input
+
+	ToPolicyPortalAccessRuleConditionOperandArrayOutput() PolicyPortalAccessRuleConditionOperandArrayOutput
+	ToPolicyPortalAccessRuleConditionOperandArrayOutputWithContext(context.Context) PolicyPortalAccessRuleConditionOperandArrayOutput
+}
+
+type PolicyPortalAccessRuleConditionOperandArray []PolicyPortalAccessRuleConditionOperandInput
+
+func (PolicyPortalAccessRuleConditionOperandArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyPortalAccessRuleConditionOperand)(nil)).Elem()
+}
+
+func (i PolicyPortalAccessRuleConditionOperandArray) ToPolicyPortalAccessRuleConditionOperandArrayOutput() PolicyPortalAccessRuleConditionOperandArrayOutput {
+	return i.ToPolicyPortalAccessRuleConditionOperandArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyPortalAccessRuleConditionOperandArray) ToPolicyPortalAccessRuleConditionOperandArrayOutputWithContext(ctx context.Context) PolicyPortalAccessRuleConditionOperandArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPortalAccessRuleConditionOperandArrayOutput)
+}
+
+type PolicyPortalAccessRuleConditionOperandOutput struct{ *pulumi.OutputState }
+
+func (PolicyPortalAccessRuleConditionOperandOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyPortalAccessRuleConditionOperand)(nil)).Elem()
+}
+
+func (o PolicyPortalAccessRuleConditionOperandOutput) ToPolicyPortalAccessRuleConditionOperandOutput() PolicyPortalAccessRuleConditionOperandOutput {
+	return o
+}
+
+func (o PolicyPortalAccessRuleConditionOperandOutput) ToPolicyPortalAccessRuleConditionOperandOutputWithContext(ctx context.Context) PolicyPortalAccessRuleConditionOperandOutput {
+	return o
+}
+
+func (o PolicyPortalAccessRuleConditionOperandOutput) EntryValues() PolicyPortalAccessRuleConditionOperandEntryValueArrayOutput {
+	return o.ApplyT(func(v PolicyPortalAccessRuleConditionOperand) []PolicyPortalAccessRuleConditionOperandEntryValue {
+		return v.EntryValues
+	}).(PolicyPortalAccessRuleConditionOperandEntryValueArrayOutput)
+}
+
+// This is for specifying the policy critiera.
+func (o PolicyPortalAccessRuleConditionOperandOutput) ObjectType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyPortalAccessRuleConditionOperand) *string { return v.ObjectType }).(pulumi.StringPtrOutput)
+}
+
+// This denotes a list of values for the given object type. The value depend upon the key. If rhs is defined this list will be ignored
+func (o PolicyPortalAccessRuleConditionOperandOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PolicyPortalAccessRuleConditionOperand) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type PolicyPortalAccessRuleConditionOperandArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyPortalAccessRuleConditionOperandArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyPortalAccessRuleConditionOperand)(nil)).Elem()
+}
+
+func (o PolicyPortalAccessRuleConditionOperandArrayOutput) ToPolicyPortalAccessRuleConditionOperandArrayOutput() PolicyPortalAccessRuleConditionOperandArrayOutput {
+	return o
+}
+
+func (o PolicyPortalAccessRuleConditionOperandArrayOutput) ToPolicyPortalAccessRuleConditionOperandArrayOutputWithContext(ctx context.Context) PolicyPortalAccessRuleConditionOperandArrayOutput {
+	return o
+}
+
+func (o PolicyPortalAccessRuleConditionOperandArrayOutput) Index(i pulumi.IntInput) PolicyPortalAccessRuleConditionOperandOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyPortalAccessRuleConditionOperand {
+		return vs[0].([]PolicyPortalAccessRuleConditionOperand)[vs[1].(int)]
+	}).(PolicyPortalAccessRuleConditionOperandOutput)
+}
+
+type PolicyPortalAccessRuleConditionOperandEntryValue struct {
+	Lhs *string `pulumi:"lhs"`
+	Rhs *string `pulumi:"rhs"`
+}
+
+// PolicyPortalAccessRuleConditionOperandEntryValueInput is an input type that accepts PolicyPortalAccessRuleConditionOperandEntryValueArgs and PolicyPortalAccessRuleConditionOperandEntryValueOutput values.
+// You can construct a concrete instance of `PolicyPortalAccessRuleConditionOperandEntryValueInput` via:
+//
+//	PolicyPortalAccessRuleConditionOperandEntryValueArgs{...}
+type PolicyPortalAccessRuleConditionOperandEntryValueInput interface {
+	pulumi.Input
+
+	ToPolicyPortalAccessRuleConditionOperandEntryValueOutput() PolicyPortalAccessRuleConditionOperandEntryValueOutput
+	ToPolicyPortalAccessRuleConditionOperandEntryValueOutputWithContext(context.Context) PolicyPortalAccessRuleConditionOperandEntryValueOutput
+}
+
+type PolicyPortalAccessRuleConditionOperandEntryValueArgs struct {
+	Lhs pulumi.StringPtrInput `pulumi:"lhs"`
+	Rhs pulumi.StringPtrInput `pulumi:"rhs"`
+}
+
+func (PolicyPortalAccessRuleConditionOperandEntryValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyPortalAccessRuleConditionOperandEntryValue)(nil)).Elem()
+}
+
+func (i PolicyPortalAccessRuleConditionOperandEntryValueArgs) ToPolicyPortalAccessRuleConditionOperandEntryValueOutput() PolicyPortalAccessRuleConditionOperandEntryValueOutput {
+	return i.ToPolicyPortalAccessRuleConditionOperandEntryValueOutputWithContext(context.Background())
+}
+
+func (i PolicyPortalAccessRuleConditionOperandEntryValueArgs) ToPolicyPortalAccessRuleConditionOperandEntryValueOutputWithContext(ctx context.Context) PolicyPortalAccessRuleConditionOperandEntryValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPortalAccessRuleConditionOperandEntryValueOutput)
+}
+
+// PolicyPortalAccessRuleConditionOperandEntryValueArrayInput is an input type that accepts PolicyPortalAccessRuleConditionOperandEntryValueArray and PolicyPortalAccessRuleConditionOperandEntryValueArrayOutput values.
+// You can construct a concrete instance of `PolicyPortalAccessRuleConditionOperandEntryValueArrayInput` via:
+//
+//	PolicyPortalAccessRuleConditionOperandEntryValueArray{ PolicyPortalAccessRuleConditionOperandEntryValueArgs{...} }
+type PolicyPortalAccessRuleConditionOperandEntryValueArrayInput interface {
+	pulumi.Input
+
+	ToPolicyPortalAccessRuleConditionOperandEntryValueArrayOutput() PolicyPortalAccessRuleConditionOperandEntryValueArrayOutput
+	ToPolicyPortalAccessRuleConditionOperandEntryValueArrayOutputWithContext(context.Context) PolicyPortalAccessRuleConditionOperandEntryValueArrayOutput
+}
+
+type PolicyPortalAccessRuleConditionOperandEntryValueArray []PolicyPortalAccessRuleConditionOperandEntryValueInput
+
+func (PolicyPortalAccessRuleConditionOperandEntryValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyPortalAccessRuleConditionOperandEntryValue)(nil)).Elem()
+}
+
+func (i PolicyPortalAccessRuleConditionOperandEntryValueArray) ToPolicyPortalAccessRuleConditionOperandEntryValueArrayOutput() PolicyPortalAccessRuleConditionOperandEntryValueArrayOutput {
+	return i.ToPolicyPortalAccessRuleConditionOperandEntryValueArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyPortalAccessRuleConditionOperandEntryValueArray) ToPolicyPortalAccessRuleConditionOperandEntryValueArrayOutputWithContext(ctx context.Context) PolicyPortalAccessRuleConditionOperandEntryValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPortalAccessRuleConditionOperandEntryValueArrayOutput)
+}
+
+type PolicyPortalAccessRuleConditionOperandEntryValueOutput struct{ *pulumi.OutputState }
+
+func (PolicyPortalAccessRuleConditionOperandEntryValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyPortalAccessRuleConditionOperandEntryValue)(nil)).Elem()
+}
+
+func (o PolicyPortalAccessRuleConditionOperandEntryValueOutput) ToPolicyPortalAccessRuleConditionOperandEntryValueOutput() PolicyPortalAccessRuleConditionOperandEntryValueOutput {
+	return o
+}
+
+func (o PolicyPortalAccessRuleConditionOperandEntryValueOutput) ToPolicyPortalAccessRuleConditionOperandEntryValueOutputWithContext(ctx context.Context) PolicyPortalAccessRuleConditionOperandEntryValueOutput {
+	return o
+}
+
+func (o PolicyPortalAccessRuleConditionOperandEntryValueOutput) Lhs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyPortalAccessRuleConditionOperandEntryValue) *string { return v.Lhs }).(pulumi.StringPtrOutput)
+}
+
+func (o PolicyPortalAccessRuleConditionOperandEntryValueOutput) Rhs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyPortalAccessRuleConditionOperandEntryValue) *string { return v.Rhs }).(pulumi.StringPtrOutput)
+}
+
+type PolicyPortalAccessRuleConditionOperandEntryValueArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyPortalAccessRuleConditionOperandEntryValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyPortalAccessRuleConditionOperandEntryValue)(nil)).Elem()
+}
+
+func (o PolicyPortalAccessRuleConditionOperandEntryValueArrayOutput) ToPolicyPortalAccessRuleConditionOperandEntryValueArrayOutput() PolicyPortalAccessRuleConditionOperandEntryValueArrayOutput {
+	return o
+}
+
+func (o PolicyPortalAccessRuleConditionOperandEntryValueArrayOutput) ToPolicyPortalAccessRuleConditionOperandEntryValueArrayOutputWithContext(ctx context.Context) PolicyPortalAccessRuleConditionOperandEntryValueArrayOutput {
+	return o
+}
+
+func (o PolicyPortalAccessRuleConditionOperandEntryValueArrayOutput) Index(i pulumi.IntInput) PolicyPortalAccessRuleConditionOperandEntryValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyPortalAccessRuleConditionOperandEntryValue {
+		return vs[0].([]PolicyPortalAccessRuleConditionOperandEntryValue)[vs[1].(int)]
+	}).(PolicyPortalAccessRuleConditionOperandEntryValueOutput)
+}
+
+type PolicyPortalAccessRulePrivilegedPortalCapabilities struct {
+	// Allows a User like an Admin to see all files marked Uninspected from other users in the tenant.
+	AccessUninspectedFile *bool `pulumi:"accessUninspectedFile"`
+	// Allows a User to delete files to reclaim space. Allowing deletion will prevent auditing of the file.
+	DeleteFile *bool `pulumi:"deleteFile"`
+	// Allows a User to request approvals
+	RequestApprovals *bool `pulumi:"requestApprovals"`
+	// Allows a User to review approvals
+	ReviewApprovals *bool `pulumi:"reviewApprovals"`
+}
+
+// PolicyPortalAccessRulePrivilegedPortalCapabilitiesInput is an input type that accepts PolicyPortalAccessRulePrivilegedPortalCapabilitiesArgs and PolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput values.
+// You can construct a concrete instance of `PolicyPortalAccessRulePrivilegedPortalCapabilitiesInput` via:
+//
+//	PolicyPortalAccessRulePrivilegedPortalCapabilitiesArgs{...}
+type PolicyPortalAccessRulePrivilegedPortalCapabilitiesInput interface {
+	pulumi.Input
+
+	ToPolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput() PolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput
+	ToPolicyPortalAccessRulePrivilegedPortalCapabilitiesOutputWithContext(context.Context) PolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput
+}
+
+type PolicyPortalAccessRulePrivilegedPortalCapabilitiesArgs struct {
+	// Allows a User like an Admin to see all files marked Uninspected from other users in the tenant.
+	AccessUninspectedFile pulumi.BoolPtrInput `pulumi:"accessUninspectedFile"`
+	// Allows a User to delete files to reclaim space. Allowing deletion will prevent auditing of the file.
+	DeleteFile pulumi.BoolPtrInput `pulumi:"deleteFile"`
+	// Allows a User to request approvals
+	RequestApprovals pulumi.BoolPtrInput `pulumi:"requestApprovals"`
+	// Allows a User to review approvals
+	ReviewApprovals pulumi.BoolPtrInput `pulumi:"reviewApprovals"`
+}
+
+func (PolicyPortalAccessRulePrivilegedPortalCapabilitiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyPortalAccessRulePrivilegedPortalCapabilities)(nil)).Elem()
+}
+
+func (i PolicyPortalAccessRulePrivilegedPortalCapabilitiesArgs) ToPolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput() PolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput {
+	return i.ToPolicyPortalAccessRulePrivilegedPortalCapabilitiesOutputWithContext(context.Background())
+}
+
+func (i PolicyPortalAccessRulePrivilegedPortalCapabilitiesArgs) ToPolicyPortalAccessRulePrivilegedPortalCapabilitiesOutputWithContext(ctx context.Context) PolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput)
+}
+
+func (i PolicyPortalAccessRulePrivilegedPortalCapabilitiesArgs) ToPolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput() PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput {
+	return i.ToPolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutputWithContext(context.Background())
+}
+
+func (i PolicyPortalAccessRulePrivilegedPortalCapabilitiesArgs) ToPolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutputWithContext(ctx context.Context) PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput).ToPolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutputWithContext(ctx)
+}
+
+// PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrInput is an input type that accepts PolicyPortalAccessRulePrivilegedPortalCapabilitiesArgs, PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtr and PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput values.
+// You can construct a concrete instance of `PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrInput` via:
+//
+//	        PolicyPortalAccessRulePrivilegedPortalCapabilitiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrInput interface {
+	pulumi.Input
+
+	ToPolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput() PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput
+	ToPolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutputWithContext(context.Context) PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput
+}
+
+type policyPortalAccessRulePrivilegedPortalCapabilitiesPtrType PolicyPortalAccessRulePrivilegedPortalCapabilitiesArgs
+
+func PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtr(v *PolicyPortalAccessRulePrivilegedPortalCapabilitiesArgs) PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrInput {
+	return (*policyPortalAccessRulePrivilegedPortalCapabilitiesPtrType)(v)
+}
+
+func (*policyPortalAccessRulePrivilegedPortalCapabilitiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyPortalAccessRulePrivilegedPortalCapabilities)(nil)).Elem()
+}
+
+func (i *policyPortalAccessRulePrivilegedPortalCapabilitiesPtrType) ToPolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput() PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput {
+	return i.ToPolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutputWithContext(context.Background())
+}
+
+func (i *policyPortalAccessRulePrivilegedPortalCapabilitiesPtrType) ToPolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutputWithContext(ctx context.Context) PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput)
+}
+
+type PolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput struct{ *pulumi.OutputState }
+
+func (PolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyPortalAccessRulePrivilegedPortalCapabilities)(nil)).Elem()
+}
+
+func (o PolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput) ToPolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput() PolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput {
+	return o
+}
+
+func (o PolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput) ToPolicyPortalAccessRulePrivilegedPortalCapabilitiesOutputWithContext(ctx context.Context) PolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput {
+	return o
+}
+
+func (o PolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput) ToPolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput() PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput {
+	return o.ToPolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput) ToPolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutputWithContext(ctx context.Context) PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyPortalAccessRulePrivilegedPortalCapabilities) *PolicyPortalAccessRulePrivilegedPortalCapabilities {
+		return &v
+	}).(PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput)
+}
+
+// Allows a User like an Admin to see all files marked Uninspected from other users in the tenant.
+func (o PolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput) AccessUninspectedFile() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PolicyPortalAccessRulePrivilegedPortalCapabilities) *bool { return v.AccessUninspectedFile }).(pulumi.BoolPtrOutput)
+}
+
+// Allows a User to delete files to reclaim space. Allowing deletion will prevent auditing of the file.
+func (o PolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput) DeleteFile() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PolicyPortalAccessRulePrivilegedPortalCapabilities) *bool { return v.DeleteFile }).(pulumi.BoolPtrOutput)
+}
+
+// Allows a User to request approvals
+func (o PolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput) RequestApprovals() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PolicyPortalAccessRulePrivilegedPortalCapabilities) *bool { return v.RequestApprovals }).(pulumi.BoolPtrOutput)
+}
+
+// Allows a User to review approvals
+func (o PolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput) ReviewApprovals() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PolicyPortalAccessRulePrivilegedPortalCapabilities) *bool { return v.ReviewApprovals }).(pulumi.BoolPtrOutput)
+}
+
+type PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyPortalAccessRulePrivilegedPortalCapabilities)(nil)).Elem()
+}
+
+func (o PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput) ToPolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput() PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput {
+	return o
+}
+
+func (o PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput) ToPolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutputWithContext(ctx context.Context) PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput {
+	return o
+}
+
+func (o PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput) Elem() PolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput {
+	return o.ApplyT(func(v *PolicyPortalAccessRulePrivilegedPortalCapabilities) PolicyPortalAccessRulePrivilegedPortalCapabilities {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyPortalAccessRulePrivilegedPortalCapabilities
+		return ret
+	}).(PolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput)
+}
+
+// Allows a User like an Admin to see all files marked Uninspected from other users in the tenant.
+func (o PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput) AccessUninspectedFile() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PolicyPortalAccessRulePrivilegedPortalCapabilities) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AccessUninspectedFile
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allows a User to delete files to reclaim space. Allowing deletion will prevent auditing of the file.
+func (o PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput) DeleteFile() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PolicyPortalAccessRulePrivilegedPortalCapabilities) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteFile
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allows a User to request approvals
+func (o PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput) RequestApprovals() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PolicyPortalAccessRulePrivilegedPortalCapabilities) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequestApprovals
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allows a User to review approvals
+func (o PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput) ReviewApprovals() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PolicyPortalAccessRulePrivilegedPortalCapabilities) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReviewApprovals
+	}).(pulumi.BoolPtrOutput)
+}
+
 type PraCredentialPoolCredential struct {
 	Ids []string `pulumi:"ids"`
 }
@@ -11760,6 +13078,315 @@ func (o ServerGroupApplicationArrayOutput) Index(i pulumi.IntInput) ServerGroupA
 	}).(ServerGroupApplicationOutput)
 }
 
+type ServerGroupExtranetDto struct {
+	// List of location DTOs.
+	LocationDtos []ServerGroupExtranetDtoLocationDto `pulumi:"locationDtos"`
+	// List of location group DTOs.
+	LocationGroupDtos []ServerGroupExtranetDtoLocationGroupDto `pulumi:"locationGroupDtos"`
+	// ZPN Extranet Resource ID.
+	ZpnErId *string `pulumi:"zpnErId"`
+}
+
+// ServerGroupExtranetDtoInput is an input type that accepts ServerGroupExtranetDtoArgs and ServerGroupExtranetDtoOutput values.
+// You can construct a concrete instance of `ServerGroupExtranetDtoInput` via:
+//
+//	ServerGroupExtranetDtoArgs{...}
+type ServerGroupExtranetDtoInput interface {
+	pulumi.Input
+
+	ToServerGroupExtranetDtoOutput() ServerGroupExtranetDtoOutput
+	ToServerGroupExtranetDtoOutputWithContext(context.Context) ServerGroupExtranetDtoOutput
+}
+
+type ServerGroupExtranetDtoArgs struct {
+	// List of location DTOs.
+	LocationDtos ServerGroupExtranetDtoLocationDtoArrayInput `pulumi:"locationDtos"`
+	// List of location group DTOs.
+	LocationGroupDtos ServerGroupExtranetDtoLocationGroupDtoArrayInput `pulumi:"locationGroupDtos"`
+	// ZPN Extranet Resource ID.
+	ZpnErId pulumi.StringPtrInput `pulumi:"zpnErId"`
+}
+
+func (ServerGroupExtranetDtoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupExtranetDto)(nil)).Elem()
+}
+
+func (i ServerGroupExtranetDtoArgs) ToServerGroupExtranetDtoOutput() ServerGroupExtranetDtoOutput {
+	return i.ToServerGroupExtranetDtoOutputWithContext(context.Background())
+}
+
+func (i ServerGroupExtranetDtoArgs) ToServerGroupExtranetDtoOutputWithContext(ctx context.Context) ServerGroupExtranetDtoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupExtranetDtoOutput)
+}
+
+// ServerGroupExtranetDtoArrayInput is an input type that accepts ServerGroupExtranetDtoArray and ServerGroupExtranetDtoArrayOutput values.
+// You can construct a concrete instance of `ServerGroupExtranetDtoArrayInput` via:
+//
+//	ServerGroupExtranetDtoArray{ ServerGroupExtranetDtoArgs{...} }
+type ServerGroupExtranetDtoArrayInput interface {
+	pulumi.Input
+
+	ToServerGroupExtranetDtoArrayOutput() ServerGroupExtranetDtoArrayOutput
+	ToServerGroupExtranetDtoArrayOutputWithContext(context.Context) ServerGroupExtranetDtoArrayOutput
+}
+
+type ServerGroupExtranetDtoArray []ServerGroupExtranetDtoInput
+
+func (ServerGroupExtranetDtoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerGroupExtranetDto)(nil)).Elem()
+}
+
+func (i ServerGroupExtranetDtoArray) ToServerGroupExtranetDtoArrayOutput() ServerGroupExtranetDtoArrayOutput {
+	return i.ToServerGroupExtranetDtoArrayOutputWithContext(context.Background())
+}
+
+func (i ServerGroupExtranetDtoArray) ToServerGroupExtranetDtoArrayOutputWithContext(ctx context.Context) ServerGroupExtranetDtoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupExtranetDtoArrayOutput)
+}
+
+type ServerGroupExtranetDtoOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupExtranetDtoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupExtranetDto)(nil)).Elem()
+}
+
+func (o ServerGroupExtranetDtoOutput) ToServerGroupExtranetDtoOutput() ServerGroupExtranetDtoOutput {
+	return o
+}
+
+func (o ServerGroupExtranetDtoOutput) ToServerGroupExtranetDtoOutputWithContext(ctx context.Context) ServerGroupExtranetDtoOutput {
+	return o
+}
+
+// List of location DTOs.
+func (o ServerGroupExtranetDtoOutput) LocationDtos() ServerGroupExtranetDtoLocationDtoArrayOutput {
+	return o.ApplyT(func(v ServerGroupExtranetDto) []ServerGroupExtranetDtoLocationDto { return v.LocationDtos }).(ServerGroupExtranetDtoLocationDtoArrayOutput)
+}
+
+// List of location group DTOs.
+func (o ServerGroupExtranetDtoOutput) LocationGroupDtos() ServerGroupExtranetDtoLocationGroupDtoArrayOutput {
+	return o.ApplyT(func(v ServerGroupExtranetDto) []ServerGroupExtranetDtoLocationGroupDto { return v.LocationGroupDtos }).(ServerGroupExtranetDtoLocationGroupDtoArrayOutput)
+}
+
+// ZPN Extranet Resource ID.
+func (o ServerGroupExtranetDtoOutput) ZpnErId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupExtranetDto) *string { return v.ZpnErId }).(pulumi.StringPtrOutput)
+}
+
+type ServerGroupExtranetDtoArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupExtranetDtoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerGroupExtranetDto)(nil)).Elem()
+}
+
+func (o ServerGroupExtranetDtoArrayOutput) ToServerGroupExtranetDtoArrayOutput() ServerGroupExtranetDtoArrayOutput {
+	return o
+}
+
+func (o ServerGroupExtranetDtoArrayOutput) ToServerGroupExtranetDtoArrayOutputWithContext(ctx context.Context) ServerGroupExtranetDtoArrayOutput {
+	return o
+}
+
+func (o ServerGroupExtranetDtoArrayOutput) Index(i pulumi.IntInput) ServerGroupExtranetDtoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerGroupExtranetDto {
+		return vs[0].([]ServerGroupExtranetDto)[vs[1].(int)]
+	}).(ServerGroupExtranetDtoOutput)
+}
+
+type ServerGroupExtranetDtoLocationDto struct {
+	// Location ID.
+	Id string `pulumi:"id"`
+}
+
+// ServerGroupExtranetDtoLocationDtoInput is an input type that accepts ServerGroupExtranetDtoLocationDtoArgs and ServerGroupExtranetDtoLocationDtoOutput values.
+// You can construct a concrete instance of `ServerGroupExtranetDtoLocationDtoInput` via:
+//
+//	ServerGroupExtranetDtoLocationDtoArgs{...}
+type ServerGroupExtranetDtoLocationDtoInput interface {
+	pulumi.Input
+
+	ToServerGroupExtranetDtoLocationDtoOutput() ServerGroupExtranetDtoLocationDtoOutput
+	ToServerGroupExtranetDtoLocationDtoOutputWithContext(context.Context) ServerGroupExtranetDtoLocationDtoOutput
+}
+
+type ServerGroupExtranetDtoLocationDtoArgs struct {
+	// Location ID.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (ServerGroupExtranetDtoLocationDtoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupExtranetDtoLocationDto)(nil)).Elem()
+}
+
+func (i ServerGroupExtranetDtoLocationDtoArgs) ToServerGroupExtranetDtoLocationDtoOutput() ServerGroupExtranetDtoLocationDtoOutput {
+	return i.ToServerGroupExtranetDtoLocationDtoOutputWithContext(context.Background())
+}
+
+func (i ServerGroupExtranetDtoLocationDtoArgs) ToServerGroupExtranetDtoLocationDtoOutputWithContext(ctx context.Context) ServerGroupExtranetDtoLocationDtoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupExtranetDtoLocationDtoOutput)
+}
+
+// ServerGroupExtranetDtoLocationDtoArrayInput is an input type that accepts ServerGroupExtranetDtoLocationDtoArray and ServerGroupExtranetDtoLocationDtoArrayOutput values.
+// You can construct a concrete instance of `ServerGroupExtranetDtoLocationDtoArrayInput` via:
+//
+//	ServerGroupExtranetDtoLocationDtoArray{ ServerGroupExtranetDtoLocationDtoArgs{...} }
+type ServerGroupExtranetDtoLocationDtoArrayInput interface {
+	pulumi.Input
+
+	ToServerGroupExtranetDtoLocationDtoArrayOutput() ServerGroupExtranetDtoLocationDtoArrayOutput
+	ToServerGroupExtranetDtoLocationDtoArrayOutputWithContext(context.Context) ServerGroupExtranetDtoLocationDtoArrayOutput
+}
+
+type ServerGroupExtranetDtoLocationDtoArray []ServerGroupExtranetDtoLocationDtoInput
+
+func (ServerGroupExtranetDtoLocationDtoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerGroupExtranetDtoLocationDto)(nil)).Elem()
+}
+
+func (i ServerGroupExtranetDtoLocationDtoArray) ToServerGroupExtranetDtoLocationDtoArrayOutput() ServerGroupExtranetDtoLocationDtoArrayOutput {
+	return i.ToServerGroupExtranetDtoLocationDtoArrayOutputWithContext(context.Background())
+}
+
+func (i ServerGroupExtranetDtoLocationDtoArray) ToServerGroupExtranetDtoLocationDtoArrayOutputWithContext(ctx context.Context) ServerGroupExtranetDtoLocationDtoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupExtranetDtoLocationDtoArrayOutput)
+}
+
+type ServerGroupExtranetDtoLocationDtoOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupExtranetDtoLocationDtoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupExtranetDtoLocationDto)(nil)).Elem()
+}
+
+func (o ServerGroupExtranetDtoLocationDtoOutput) ToServerGroupExtranetDtoLocationDtoOutput() ServerGroupExtranetDtoLocationDtoOutput {
+	return o
+}
+
+func (o ServerGroupExtranetDtoLocationDtoOutput) ToServerGroupExtranetDtoLocationDtoOutputWithContext(ctx context.Context) ServerGroupExtranetDtoLocationDtoOutput {
+	return o
+}
+
+// Location ID.
+func (o ServerGroupExtranetDtoLocationDtoOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerGroupExtranetDtoLocationDto) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type ServerGroupExtranetDtoLocationDtoArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupExtranetDtoLocationDtoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerGroupExtranetDtoLocationDto)(nil)).Elem()
+}
+
+func (o ServerGroupExtranetDtoLocationDtoArrayOutput) ToServerGroupExtranetDtoLocationDtoArrayOutput() ServerGroupExtranetDtoLocationDtoArrayOutput {
+	return o
+}
+
+func (o ServerGroupExtranetDtoLocationDtoArrayOutput) ToServerGroupExtranetDtoLocationDtoArrayOutputWithContext(ctx context.Context) ServerGroupExtranetDtoLocationDtoArrayOutput {
+	return o
+}
+
+func (o ServerGroupExtranetDtoLocationDtoArrayOutput) Index(i pulumi.IntInput) ServerGroupExtranetDtoLocationDtoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerGroupExtranetDtoLocationDto {
+		return vs[0].([]ServerGroupExtranetDtoLocationDto)[vs[1].(int)]
+	}).(ServerGroupExtranetDtoLocationDtoOutput)
+}
+
+type ServerGroupExtranetDtoLocationGroupDto struct {
+	// Location Group ID.
+	Id string `pulumi:"id"`
+}
+
+// ServerGroupExtranetDtoLocationGroupDtoInput is an input type that accepts ServerGroupExtranetDtoLocationGroupDtoArgs and ServerGroupExtranetDtoLocationGroupDtoOutput values.
+// You can construct a concrete instance of `ServerGroupExtranetDtoLocationGroupDtoInput` via:
+//
+//	ServerGroupExtranetDtoLocationGroupDtoArgs{...}
+type ServerGroupExtranetDtoLocationGroupDtoInput interface {
+	pulumi.Input
+
+	ToServerGroupExtranetDtoLocationGroupDtoOutput() ServerGroupExtranetDtoLocationGroupDtoOutput
+	ToServerGroupExtranetDtoLocationGroupDtoOutputWithContext(context.Context) ServerGroupExtranetDtoLocationGroupDtoOutput
+}
+
+type ServerGroupExtranetDtoLocationGroupDtoArgs struct {
+	// Location Group ID.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (ServerGroupExtranetDtoLocationGroupDtoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupExtranetDtoLocationGroupDto)(nil)).Elem()
+}
+
+func (i ServerGroupExtranetDtoLocationGroupDtoArgs) ToServerGroupExtranetDtoLocationGroupDtoOutput() ServerGroupExtranetDtoLocationGroupDtoOutput {
+	return i.ToServerGroupExtranetDtoLocationGroupDtoOutputWithContext(context.Background())
+}
+
+func (i ServerGroupExtranetDtoLocationGroupDtoArgs) ToServerGroupExtranetDtoLocationGroupDtoOutputWithContext(ctx context.Context) ServerGroupExtranetDtoLocationGroupDtoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupExtranetDtoLocationGroupDtoOutput)
+}
+
+// ServerGroupExtranetDtoLocationGroupDtoArrayInput is an input type that accepts ServerGroupExtranetDtoLocationGroupDtoArray and ServerGroupExtranetDtoLocationGroupDtoArrayOutput values.
+// You can construct a concrete instance of `ServerGroupExtranetDtoLocationGroupDtoArrayInput` via:
+//
+//	ServerGroupExtranetDtoLocationGroupDtoArray{ ServerGroupExtranetDtoLocationGroupDtoArgs{...} }
+type ServerGroupExtranetDtoLocationGroupDtoArrayInput interface {
+	pulumi.Input
+
+	ToServerGroupExtranetDtoLocationGroupDtoArrayOutput() ServerGroupExtranetDtoLocationGroupDtoArrayOutput
+	ToServerGroupExtranetDtoLocationGroupDtoArrayOutputWithContext(context.Context) ServerGroupExtranetDtoLocationGroupDtoArrayOutput
+}
+
+type ServerGroupExtranetDtoLocationGroupDtoArray []ServerGroupExtranetDtoLocationGroupDtoInput
+
+func (ServerGroupExtranetDtoLocationGroupDtoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerGroupExtranetDtoLocationGroupDto)(nil)).Elem()
+}
+
+func (i ServerGroupExtranetDtoLocationGroupDtoArray) ToServerGroupExtranetDtoLocationGroupDtoArrayOutput() ServerGroupExtranetDtoLocationGroupDtoArrayOutput {
+	return i.ToServerGroupExtranetDtoLocationGroupDtoArrayOutputWithContext(context.Background())
+}
+
+func (i ServerGroupExtranetDtoLocationGroupDtoArray) ToServerGroupExtranetDtoLocationGroupDtoArrayOutputWithContext(ctx context.Context) ServerGroupExtranetDtoLocationGroupDtoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupExtranetDtoLocationGroupDtoArrayOutput)
+}
+
+type ServerGroupExtranetDtoLocationGroupDtoOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupExtranetDtoLocationGroupDtoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupExtranetDtoLocationGroupDto)(nil)).Elem()
+}
+
+func (o ServerGroupExtranetDtoLocationGroupDtoOutput) ToServerGroupExtranetDtoLocationGroupDtoOutput() ServerGroupExtranetDtoLocationGroupDtoOutput {
+	return o
+}
+
+func (o ServerGroupExtranetDtoLocationGroupDtoOutput) ToServerGroupExtranetDtoLocationGroupDtoOutputWithContext(ctx context.Context) ServerGroupExtranetDtoLocationGroupDtoOutput {
+	return o
+}
+
+// Location Group ID.
+func (o ServerGroupExtranetDtoLocationGroupDtoOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerGroupExtranetDtoLocationGroupDto) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type ServerGroupExtranetDtoLocationGroupDtoArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupExtranetDtoLocationGroupDtoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerGroupExtranetDtoLocationGroupDto)(nil)).Elem()
+}
+
+func (o ServerGroupExtranetDtoLocationGroupDtoArrayOutput) ToServerGroupExtranetDtoLocationGroupDtoArrayOutput() ServerGroupExtranetDtoLocationGroupDtoArrayOutput {
+	return o
+}
+
+func (o ServerGroupExtranetDtoLocationGroupDtoArrayOutput) ToServerGroupExtranetDtoLocationGroupDtoArrayOutputWithContext(ctx context.Context) ServerGroupExtranetDtoLocationGroupDtoArrayOutput {
+	return o
+}
+
+func (o ServerGroupExtranetDtoLocationGroupDtoArrayOutput) Index(i pulumi.IntInput) ServerGroupExtranetDtoLocationGroupDtoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerGroupExtranetDtoLocationGroupDto {
+		return vs[0].([]ServerGroupExtranetDtoLocationGroupDto)[vs[1].(int)]
+	}).(ServerGroupExtranetDtoLocationGroupDtoOutput)
+}
+
 type ServerGroupServer struct {
 	Ids []string `pulumi:"ids"`
 }
@@ -12079,6 +13706,100 @@ func (o ServiceEdgeGroupTrustedNetworkArrayOutput) Index(i pulumi.IntInput) Serv
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceEdgeGroupTrustedNetwork {
 		return vs[0].([]ServiceEdgeGroupTrustedNetwork)[vs[1].(int)]
 	}).(ServiceEdgeGroupTrustedNetworkOutput)
+}
+
+type UserPortalLinkUserPortal struct {
+	Ids []string `pulumi:"ids"`
+}
+
+// UserPortalLinkUserPortalInput is an input type that accepts UserPortalLinkUserPortalArgs and UserPortalLinkUserPortalOutput values.
+// You can construct a concrete instance of `UserPortalLinkUserPortalInput` via:
+//
+//	UserPortalLinkUserPortalArgs{...}
+type UserPortalLinkUserPortalInput interface {
+	pulumi.Input
+
+	ToUserPortalLinkUserPortalOutput() UserPortalLinkUserPortalOutput
+	ToUserPortalLinkUserPortalOutputWithContext(context.Context) UserPortalLinkUserPortalOutput
+}
+
+type UserPortalLinkUserPortalArgs struct {
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (UserPortalLinkUserPortalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPortalLinkUserPortal)(nil)).Elem()
+}
+
+func (i UserPortalLinkUserPortalArgs) ToUserPortalLinkUserPortalOutput() UserPortalLinkUserPortalOutput {
+	return i.ToUserPortalLinkUserPortalOutputWithContext(context.Background())
+}
+
+func (i UserPortalLinkUserPortalArgs) ToUserPortalLinkUserPortalOutputWithContext(ctx context.Context) UserPortalLinkUserPortalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPortalLinkUserPortalOutput)
+}
+
+// UserPortalLinkUserPortalArrayInput is an input type that accepts UserPortalLinkUserPortalArray and UserPortalLinkUserPortalArrayOutput values.
+// You can construct a concrete instance of `UserPortalLinkUserPortalArrayInput` via:
+//
+//	UserPortalLinkUserPortalArray{ UserPortalLinkUserPortalArgs{...} }
+type UserPortalLinkUserPortalArrayInput interface {
+	pulumi.Input
+
+	ToUserPortalLinkUserPortalArrayOutput() UserPortalLinkUserPortalArrayOutput
+	ToUserPortalLinkUserPortalArrayOutputWithContext(context.Context) UserPortalLinkUserPortalArrayOutput
+}
+
+type UserPortalLinkUserPortalArray []UserPortalLinkUserPortalInput
+
+func (UserPortalLinkUserPortalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserPortalLinkUserPortal)(nil)).Elem()
+}
+
+func (i UserPortalLinkUserPortalArray) ToUserPortalLinkUserPortalArrayOutput() UserPortalLinkUserPortalArrayOutput {
+	return i.ToUserPortalLinkUserPortalArrayOutputWithContext(context.Background())
+}
+
+func (i UserPortalLinkUserPortalArray) ToUserPortalLinkUserPortalArrayOutputWithContext(ctx context.Context) UserPortalLinkUserPortalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPortalLinkUserPortalArrayOutput)
+}
+
+type UserPortalLinkUserPortalOutput struct{ *pulumi.OutputState }
+
+func (UserPortalLinkUserPortalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPortalLinkUserPortal)(nil)).Elem()
+}
+
+func (o UserPortalLinkUserPortalOutput) ToUserPortalLinkUserPortalOutput() UserPortalLinkUserPortalOutput {
+	return o
+}
+
+func (o UserPortalLinkUserPortalOutput) ToUserPortalLinkUserPortalOutputWithContext(ctx context.Context) UserPortalLinkUserPortalOutput {
+	return o
+}
+
+func (o UserPortalLinkUserPortalOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UserPortalLinkUserPortal) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type UserPortalLinkUserPortalArrayOutput struct{ *pulumi.OutputState }
+
+func (UserPortalLinkUserPortalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserPortalLinkUserPortal)(nil)).Elem()
+}
+
+func (o UserPortalLinkUserPortalArrayOutput) ToUserPortalLinkUserPortalArrayOutput() UserPortalLinkUserPortalArrayOutput {
+	return o
+}
+
+func (o UserPortalLinkUserPortalArrayOutput) ToUserPortalLinkUserPortalArrayOutputWithContext(ctx context.Context) UserPortalLinkUserPortalArrayOutput {
+	return o
+}
+
+func (o UserPortalLinkUserPortalArrayOutput) Index(i pulumi.IntInput) UserPortalLinkUserPortalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserPortalLinkUserPortal {
+		return vs[0].([]UserPortalLinkUserPortal)[vs[1].(int)]
+	}).(UserPortalLinkUserPortalOutput)
 }
 
 type GetAppConnectorControllerAssistantVersion struct {
@@ -13914,6 +15635,148 @@ func (o GetApplicationSegmentInspectionUdpPortRangeArrayOutput) Index(i pulumi.I
 	}).(GetApplicationSegmentInspectionUdpPortRangeOutput)
 }
 
+type GetApplicationSegmentMultimatchBulkUnsupportedReference struct {
+	// Application segment name.
+	AppSegmentName string `pulumi:"appSegmentName"`
+	// List of domain names for this segment.
+	Domains []string `pulumi:"domains"`
+	// Application segment ID.
+	Id string `pulumi:"id"`
+	// Current match style of the segment (EXCLUSIVE or INCLUSIVE).
+	MatchStyle string `pulumi:"matchStyle"`
+	// Microtenant name associated with this segment.
+	MicrotenantName string `pulumi:"microtenantName"`
+	// List of TCP ports for this segment.
+	TcpPorts []string `pulumi:"tcpPorts"`
+}
+
+// GetApplicationSegmentMultimatchBulkUnsupportedReferenceInput is an input type that accepts GetApplicationSegmentMultimatchBulkUnsupportedReferenceArgs and GetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput values.
+// You can construct a concrete instance of `GetApplicationSegmentMultimatchBulkUnsupportedReferenceInput` via:
+//
+//	GetApplicationSegmentMultimatchBulkUnsupportedReferenceArgs{...}
+type GetApplicationSegmentMultimatchBulkUnsupportedReferenceInput interface {
+	pulumi.Input
+
+	ToGetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput() GetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput
+	ToGetApplicationSegmentMultimatchBulkUnsupportedReferenceOutputWithContext(context.Context) GetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput
+}
+
+type GetApplicationSegmentMultimatchBulkUnsupportedReferenceArgs struct {
+	// Application segment name.
+	AppSegmentName pulumi.StringInput `pulumi:"appSegmentName"`
+	// List of domain names for this segment.
+	Domains pulumi.StringArrayInput `pulumi:"domains"`
+	// Application segment ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Current match style of the segment (EXCLUSIVE or INCLUSIVE).
+	MatchStyle pulumi.StringInput `pulumi:"matchStyle"`
+	// Microtenant name associated with this segment.
+	MicrotenantName pulumi.StringInput `pulumi:"microtenantName"`
+	// List of TCP ports for this segment.
+	TcpPorts pulumi.StringArrayInput `pulumi:"tcpPorts"`
+}
+
+func (GetApplicationSegmentMultimatchBulkUnsupportedReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationSegmentMultimatchBulkUnsupportedReference)(nil)).Elem()
+}
+
+func (i GetApplicationSegmentMultimatchBulkUnsupportedReferenceArgs) ToGetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput() GetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput {
+	return i.ToGetApplicationSegmentMultimatchBulkUnsupportedReferenceOutputWithContext(context.Background())
+}
+
+func (i GetApplicationSegmentMultimatchBulkUnsupportedReferenceArgs) ToGetApplicationSegmentMultimatchBulkUnsupportedReferenceOutputWithContext(ctx context.Context) GetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput)
+}
+
+// GetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayInput is an input type that accepts GetApplicationSegmentMultimatchBulkUnsupportedReferenceArray and GetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayOutput values.
+// You can construct a concrete instance of `GetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayInput` via:
+//
+//	GetApplicationSegmentMultimatchBulkUnsupportedReferenceArray{ GetApplicationSegmentMultimatchBulkUnsupportedReferenceArgs{...} }
+type GetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayOutput() GetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayOutput
+	ToGetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayOutputWithContext(context.Context) GetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayOutput
+}
+
+type GetApplicationSegmentMultimatchBulkUnsupportedReferenceArray []GetApplicationSegmentMultimatchBulkUnsupportedReferenceInput
+
+func (GetApplicationSegmentMultimatchBulkUnsupportedReferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationSegmentMultimatchBulkUnsupportedReference)(nil)).Elem()
+}
+
+func (i GetApplicationSegmentMultimatchBulkUnsupportedReferenceArray) ToGetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayOutput() GetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayOutput {
+	return i.ToGetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationSegmentMultimatchBulkUnsupportedReferenceArray) ToGetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayOutputWithContext(ctx context.Context) GetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayOutput)
+}
+
+type GetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationSegmentMultimatchBulkUnsupportedReference)(nil)).Elem()
+}
+
+func (o GetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput) ToGetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput() GetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput {
+	return o
+}
+
+func (o GetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput) ToGetApplicationSegmentMultimatchBulkUnsupportedReferenceOutputWithContext(ctx context.Context) GetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput {
+	return o
+}
+
+// Application segment name.
+func (o GetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput) AppSegmentName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationSegmentMultimatchBulkUnsupportedReference) string { return v.AppSegmentName }).(pulumi.StringOutput)
+}
+
+// List of domain names for this segment.
+func (o GetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationSegmentMultimatchBulkUnsupportedReference) []string { return v.Domains }).(pulumi.StringArrayOutput)
+}
+
+// Application segment ID.
+func (o GetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationSegmentMultimatchBulkUnsupportedReference) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Current match style of the segment (EXCLUSIVE or INCLUSIVE).
+func (o GetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput) MatchStyle() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationSegmentMultimatchBulkUnsupportedReference) string { return v.MatchStyle }).(pulumi.StringOutput)
+}
+
+// Microtenant name associated with this segment.
+func (o GetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput) MicrotenantName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationSegmentMultimatchBulkUnsupportedReference) string { return v.MicrotenantName }).(pulumi.StringOutput)
+}
+
+// List of TCP ports for this segment.
+func (o GetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput) TcpPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationSegmentMultimatchBulkUnsupportedReference) []string { return v.TcpPorts }).(pulumi.StringArrayOutput)
+}
+
+type GetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationSegmentMultimatchBulkUnsupportedReference)(nil)).Elem()
+}
+
+func (o GetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayOutput) ToGetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayOutput() GetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayOutput {
+	return o
+}
+
+func (o GetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayOutput) ToGetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayOutputWithContext(ctx context.Context) GetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayOutput {
+	return o
+}
+
+func (o GetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayOutput) Index(i pulumi.IntInput) GetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationSegmentMultimatchBulkUnsupportedReference {
+		return vs[0].([]GetApplicationSegmentMultimatchBulkUnsupportedReference)[vs[1].(int)]
+	}).(GetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput)
+}
+
 type GetApplicationSegmentPRAServerGroup struct {
 	Ids []string `pulumi:"ids"`
 }
@@ -14678,6 +16541,782 @@ func (o GetApplicationSegmentUdpPortRangeArrayOutput) Index(i pulumi.IntInput) G
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationSegmentUdpPortRange {
 		return vs[0].([]GetApplicationSegmentUdpPortRange)[vs[1].(int)]
 	}).(GetApplicationSegmentUdpPortRangeOutput)
+}
+
+type GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping struct {
+	// Server group mapping identifier.
+	Id string `pulumi:"id"`
+	// Server group name.
+	Name string `pulumi:"name"`
+	// Whether the server group is passive.
+	Passive bool `pulumi:"passive"`
+	// Assigned weight for the server group.
+	Weight string `pulumi:"weight"`
+}
+
+// GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingInput is an input type that accepts GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArgs and GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput values.
+// You can construct a concrete instance of `GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingInput` via:
+//
+//	GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArgs{...}
+type GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingInput interface {
+	pulumi.Input
+
+	ToGetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput() GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput
+	ToGetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutputWithContext(context.Context) GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput
+}
+
+type GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArgs struct {
+	// Server group mapping identifier.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Server group name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Whether the server group is passive.
+	Passive pulumi.BoolInput `pulumi:"passive"`
+	// Assigned weight for the server group.
+	Weight pulumi.StringInput `pulumi:"weight"`
+}
+
+func (GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping)(nil)).Elem()
+}
+
+func (i GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArgs) ToGetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput() GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput {
+	return i.ToGetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutputWithContext(context.Background())
+}
+
+func (i GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArgs) ToGetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutputWithContext(ctx context.Context) GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput)
+}
+
+// GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayInput is an input type that accepts GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArray and GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput values.
+// You can construct a concrete instance of `GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayInput` via:
+//
+//	GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArray{ GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArgs{...} }
+type GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput() GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput
+	ToGetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutputWithContext(context.Context) GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput
+}
+
+type GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArray []GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingInput
+
+func (GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping)(nil)).Elem()
+}
+
+func (i GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArray) ToGetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput() GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput {
+	return i.ToGetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArray) ToGetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutputWithContext(ctx context.Context) GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput)
+}
+
+type GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping)(nil)).Elem()
+}
+
+func (o GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput) ToGetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput() GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput {
+	return o
+}
+
+func (o GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput) ToGetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutputWithContext(ctx context.Context) GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput {
+	return o
+}
+
+// Server group mapping identifier.
+func (o GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Server group name.
+func (o GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether the server group is passive.
+func (o GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput) Passive() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping) bool { return v.Passive }).(pulumi.BoolOutput)
+}
+
+// Assigned weight for the server group.
+func (o GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput) Weight() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping) string { return v.Weight }).(pulumi.StringOutput)
+}
+
+type GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping)(nil)).Elem()
+}
+
+func (o GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput) ToGetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput() GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput {
+	return o
+}
+
+func (o GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput) ToGetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutputWithContext(ctx context.Context) GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput {
+	return o
+}
+
+func (o GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput) Index(i pulumi.IntInput) GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping {
+		return vs[0].([]GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMapping)[vs[1].(int)]
+	}).(GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput)
+}
+
+type GetBrowserProtectionCriteria struct {
+	FingerPrintCriterias []GetBrowserProtectionCriteriaFingerPrintCriteria `pulumi:"fingerPrintCriterias"`
+}
+
+// GetBrowserProtectionCriteriaInput is an input type that accepts GetBrowserProtectionCriteriaArgs and GetBrowserProtectionCriteriaOutput values.
+// You can construct a concrete instance of `GetBrowserProtectionCriteriaInput` via:
+//
+//	GetBrowserProtectionCriteriaArgs{...}
+type GetBrowserProtectionCriteriaInput interface {
+	pulumi.Input
+
+	ToGetBrowserProtectionCriteriaOutput() GetBrowserProtectionCriteriaOutput
+	ToGetBrowserProtectionCriteriaOutputWithContext(context.Context) GetBrowserProtectionCriteriaOutput
+}
+
+type GetBrowserProtectionCriteriaArgs struct {
+	FingerPrintCriterias GetBrowserProtectionCriteriaFingerPrintCriteriaArrayInput `pulumi:"fingerPrintCriterias"`
+}
+
+func (GetBrowserProtectionCriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrowserProtectionCriteria)(nil)).Elem()
+}
+
+func (i GetBrowserProtectionCriteriaArgs) ToGetBrowserProtectionCriteriaOutput() GetBrowserProtectionCriteriaOutput {
+	return i.ToGetBrowserProtectionCriteriaOutputWithContext(context.Background())
+}
+
+func (i GetBrowserProtectionCriteriaArgs) ToGetBrowserProtectionCriteriaOutputWithContext(ctx context.Context) GetBrowserProtectionCriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrowserProtectionCriteriaOutput)
+}
+
+// GetBrowserProtectionCriteriaArrayInput is an input type that accepts GetBrowserProtectionCriteriaArray and GetBrowserProtectionCriteriaArrayOutput values.
+// You can construct a concrete instance of `GetBrowserProtectionCriteriaArrayInput` via:
+//
+//	GetBrowserProtectionCriteriaArray{ GetBrowserProtectionCriteriaArgs{...} }
+type GetBrowserProtectionCriteriaArrayInput interface {
+	pulumi.Input
+
+	ToGetBrowserProtectionCriteriaArrayOutput() GetBrowserProtectionCriteriaArrayOutput
+	ToGetBrowserProtectionCriteriaArrayOutputWithContext(context.Context) GetBrowserProtectionCriteriaArrayOutput
+}
+
+type GetBrowserProtectionCriteriaArray []GetBrowserProtectionCriteriaInput
+
+func (GetBrowserProtectionCriteriaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrowserProtectionCriteria)(nil)).Elem()
+}
+
+func (i GetBrowserProtectionCriteriaArray) ToGetBrowserProtectionCriteriaArrayOutput() GetBrowserProtectionCriteriaArrayOutput {
+	return i.ToGetBrowserProtectionCriteriaArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrowserProtectionCriteriaArray) ToGetBrowserProtectionCriteriaArrayOutputWithContext(ctx context.Context) GetBrowserProtectionCriteriaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrowserProtectionCriteriaArrayOutput)
+}
+
+type GetBrowserProtectionCriteriaOutput struct{ *pulumi.OutputState }
+
+func (GetBrowserProtectionCriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrowserProtectionCriteria)(nil)).Elem()
+}
+
+func (o GetBrowserProtectionCriteriaOutput) ToGetBrowserProtectionCriteriaOutput() GetBrowserProtectionCriteriaOutput {
+	return o
+}
+
+func (o GetBrowserProtectionCriteriaOutput) ToGetBrowserProtectionCriteriaOutputWithContext(ctx context.Context) GetBrowserProtectionCriteriaOutput {
+	return o
+}
+
+func (o GetBrowserProtectionCriteriaOutput) FingerPrintCriterias() GetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteria) []GetBrowserProtectionCriteriaFingerPrintCriteria {
+		return v.FingerPrintCriterias
+	}).(GetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutput)
+}
+
+type GetBrowserProtectionCriteriaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrowserProtectionCriteriaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrowserProtectionCriteria)(nil)).Elem()
+}
+
+func (o GetBrowserProtectionCriteriaArrayOutput) ToGetBrowserProtectionCriteriaArrayOutput() GetBrowserProtectionCriteriaArrayOutput {
+	return o
+}
+
+func (o GetBrowserProtectionCriteriaArrayOutput) ToGetBrowserProtectionCriteriaArrayOutputWithContext(ctx context.Context) GetBrowserProtectionCriteriaArrayOutput {
+	return o
+}
+
+func (o GetBrowserProtectionCriteriaArrayOutput) Index(i pulumi.IntInput) GetBrowserProtectionCriteriaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrowserProtectionCriteria {
+		return vs[0].([]GetBrowserProtectionCriteria)[vs[1].(int)]
+	}).(GetBrowserProtectionCriteriaOutput)
+}
+
+type GetBrowserProtectionCriteriaFingerPrintCriteria struct {
+	Browsers           []GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser  `pulumi:"browsers"`
+	CollectLocation    bool                                                      `pulumi:"collectLocation"`
+	FingerprintTimeout string                                                    `pulumi:"fingerprintTimeout"`
+	Locations          []GetBrowserProtectionCriteriaFingerPrintCriteriaLocation `pulumi:"locations"`
+	Systems            []GetBrowserProtectionCriteriaFingerPrintCriteriaSystem   `pulumi:"systems"`
+}
+
+// GetBrowserProtectionCriteriaFingerPrintCriteriaInput is an input type that accepts GetBrowserProtectionCriteriaFingerPrintCriteriaArgs and GetBrowserProtectionCriteriaFingerPrintCriteriaOutput values.
+// You can construct a concrete instance of `GetBrowserProtectionCriteriaFingerPrintCriteriaInput` via:
+//
+//	GetBrowserProtectionCriteriaFingerPrintCriteriaArgs{...}
+type GetBrowserProtectionCriteriaFingerPrintCriteriaInput interface {
+	pulumi.Input
+
+	ToGetBrowserProtectionCriteriaFingerPrintCriteriaOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaOutput
+	ToGetBrowserProtectionCriteriaFingerPrintCriteriaOutputWithContext(context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaOutput
+}
+
+type GetBrowserProtectionCriteriaFingerPrintCriteriaArgs struct {
+	Browsers           GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayInput  `pulumi:"browsers"`
+	CollectLocation    pulumi.BoolInput                                                  `pulumi:"collectLocation"`
+	FingerprintTimeout pulumi.StringInput                                                `pulumi:"fingerprintTimeout"`
+	Locations          GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayInput `pulumi:"locations"`
+	Systems            GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayInput   `pulumi:"systems"`
+}
+
+func (GetBrowserProtectionCriteriaFingerPrintCriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrowserProtectionCriteriaFingerPrintCriteria)(nil)).Elem()
+}
+
+func (i GetBrowserProtectionCriteriaFingerPrintCriteriaArgs) ToGetBrowserProtectionCriteriaFingerPrintCriteriaOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaOutput {
+	return i.ToGetBrowserProtectionCriteriaFingerPrintCriteriaOutputWithContext(context.Background())
+}
+
+func (i GetBrowserProtectionCriteriaFingerPrintCriteriaArgs) ToGetBrowserProtectionCriteriaFingerPrintCriteriaOutputWithContext(ctx context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrowserProtectionCriteriaFingerPrintCriteriaOutput)
+}
+
+// GetBrowserProtectionCriteriaFingerPrintCriteriaArrayInput is an input type that accepts GetBrowserProtectionCriteriaFingerPrintCriteriaArray and GetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutput values.
+// You can construct a concrete instance of `GetBrowserProtectionCriteriaFingerPrintCriteriaArrayInput` via:
+//
+//	GetBrowserProtectionCriteriaFingerPrintCriteriaArray{ GetBrowserProtectionCriteriaFingerPrintCriteriaArgs{...} }
+type GetBrowserProtectionCriteriaFingerPrintCriteriaArrayInput interface {
+	pulumi.Input
+
+	ToGetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutput
+	ToGetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutputWithContext(context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutput
+}
+
+type GetBrowserProtectionCriteriaFingerPrintCriteriaArray []GetBrowserProtectionCriteriaFingerPrintCriteriaInput
+
+func (GetBrowserProtectionCriteriaFingerPrintCriteriaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrowserProtectionCriteriaFingerPrintCriteria)(nil)).Elem()
+}
+
+func (i GetBrowserProtectionCriteriaFingerPrintCriteriaArray) ToGetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutput {
+	return i.ToGetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrowserProtectionCriteriaFingerPrintCriteriaArray) ToGetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutputWithContext(ctx context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutput)
+}
+
+type GetBrowserProtectionCriteriaFingerPrintCriteriaOutput struct{ *pulumi.OutputState }
+
+func (GetBrowserProtectionCriteriaFingerPrintCriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrowserProtectionCriteriaFingerPrintCriteria)(nil)).Elem()
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaOutput) ToGetBrowserProtectionCriteriaFingerPrintCriteriaOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaOutput {
+	return o
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaOutput) ToGetBrowserProtectionCriteriaFingerPrintCriteriaOutputWithContext(ctx context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaOutput {
+	return o
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaOutput) Browsers() GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteria) []GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser {
+		return v.Browsers
+	}).(GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaOutput) CollectLocation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteria) bool { return v.CollectLocation }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaOutput) FingerprintTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteria) string { return v.FingerprintTimeout }).(pulumi.StringOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaOutput) Locations() GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteria) []GetBrowserProtectionCriteriaFingerPrintCriteriaLocation {
+		return v.Locations
+	}).(GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaOutput) Systems() GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteria) []GetBrowserProtectionCriteriaFingerPrintCriteriaSystem {
+		return v.Systems
+	}).(GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutput)
+}
+
+type GetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrowserProtectionCriteriaFingerPrintCriteria)(nil)).Elem()
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutput) ToGetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutput {
+	return o
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutput) ToGetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutputWithContext(ctx context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutput {
+	return o
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutput) Index(i pulumi.IntInput) GetBrowserProtectionCriteriaFingerPrintCriteriaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrowserProtectionCriteriaFingerPrintCriteria {
+		return vs[0].([]GetBrowserProtectionCriteriaFingerPrintCriteria)[vs[1].(int)]
+	}).(GetBrowserProtectionCriteriaFingerPrintCriteriaOutput)
+}
+
+type GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser struct {
+	BrowserEng     bool `pulumi:"browserEng"`
+	BrowserEngVer  bool `pulumi:"browserEngVer"`
+	BrowserName    bool `pulumi:"browserName"`
+	BrowserVersion bool `pulumi:"browserVersion"`
+	Canvas         bool `pulumi:"canvas"`
+	FlashVer       bool `pulumi:"flashVer"`
+	FpUsrAgentStr  bool `pulumi:"fpUsrAgentStr"`
+	IsCookie       bool `pulumi:"isCookie"`
+	IsLocalStorage bool `pulumi:"isLocalStorage"`
+	IsSessStorage  bool `pulumi:"isSessStorage"`
+	Ja3            bool `pulumi:"ja3"`
+	Mime           bool `pulumi:"mime"`
+	Plugin         bool `pulumi:"plugin"`
+	SilverlightVer bool `pulumi:"silverlightVer"`
+}
+
+// GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserInput is an input type that accepts GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArgs and GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput values.
+// You can construct a concrete instance of `GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserInput` via:
+//
+//	GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArgs{...}
+type GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserInput interface {
+	pulumi.Input
+
+	ToGetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput
+	ToGetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutputWithContext(context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput
+}
+
+type GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArgs struct {
+	BrowserEng     pulumi.BoolInput `pulumi:"browserEng"`
+	BrowserEngVer  pulumi.BoolInput `pulumi:"browserEngVer"`
+	BrowserName    pulumi.BoolInput `pulumi:"browserName"`
+	BrowserVersion pulumi.BoolInput `pulumi:"browserVersion"`
+	Canvas         pulumi.BoolInput `pulumi:"canvas"`
+	FlashVer       pulumi.BoolInput `pulumi:"flashVer"`
+	FpUsrAgentStr  pulumi.BoolInput `pulumi:"fpUsrAgentStr"`
+	IsCookie       pulumi.BoolInput `pulumi:"isCookie"`
+	IsLocalStorage pulumi.BoolInput `pulumi:"isLocalStorage"`
+	IsSessStorage  pulumi.BoolInput `pulumi:"isSessStorage"`
+	Ja3            pulumi.BoolInput `pulumi:"ja3"`
+	Mime           pulumi.BoolInput `pulumi:"mime"`
+	Plugin         pulumi.BoolInput `pulumi:"plugin"`
+	SilverlightVer pulumi.BoolInput `pulumi:"silverlightVer"`
+}
+
+func (GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser)(nil)).Elem()
+}
+
+func (i GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArgs) ToGetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput {
+	return i.ToGetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutputWithContext(context.Background())
+}
+
+func (i GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArgs) ToGetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutputWithContext(ctx context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput)
+}
+
+// GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayInput is an input type that accepts GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArray and GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutput values.
+// You can construct a concrete instance of `GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayInput` via:
+//
+//	GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArray{ GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArgs{...} }
+type GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayInput interface {
+	pulumi.Input
+
+	ToGetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutput
+	ToGetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutputWithContext(context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutput
+}
+
+type GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArray []GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserInput
+
+func (GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser)(nil)).Elem()
+}
+
+func (i GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArray) ToGetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutput {
+	return i.ToGetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArray) ToGetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutputWithContext(ctx context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutput)
+}
+
+type GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput struct{ *pulumi.OutputState }
+
+func (GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser)(nil)).Elem()
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput) ToGetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput {
+	return o
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput) ToGetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutputWithContext(ctx context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput {
+	return o
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput) BrowserEng() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser) bool { return v.BrowserEng }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput) BrowserEngVer() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser) bool { return v.BrowserEngVer }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput) BrowserName() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser) bool { return v.BrowserName }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput) BrowserVersion() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser) bool { return v.BrowserVersion }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput) Canvas() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser) bool { return v.Canvas }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput) FlashVer() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser) bool { return v.FlashVer }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput) FpUsrAgentStr() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser) bool { return v.FpUsrAgentStr }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput) IsCookie() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser) bool { return v.IsCookie }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput) IsLocalStorage() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser) bool { return v.IsLocalStorage }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput) IsSessStorage() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser) bool { return v.IsSessStorage }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput) Ja3() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser) bool { return v.Ja3 }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput) Mime() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser) bool { return v.Mime }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput) Plugin() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser) bool { return v.Plugin }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput) SilverlightVer() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser) bool { return v.SilverlightVer }).(pulumi.BoolOutput)
+}
+
+type GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser)(nil)).Elem()
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutput) ToGetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutput {
+	return o
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutput) ToGetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutputWithContext(ctx context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutput {
+	return o
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutput) Index(i pulumi.IntInput) GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser {
+		return vs[0].([]GetBrowserProtectionCriteriaFingerPrintCriteriaBrowser)[vs[1].(int)]
+	}).(GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput)
+}
+
+type GetBrowserProtectionCriteriaFingerPrintCriteriaLocation struct {
+	Lat bool `pulumi:"lat"`
+	Lon bool `pulumi:"lon"`
+}
+
+// GetBrowserProtectionCriteriaFingerPrintCriteriaLocationInput is an input type that accepts GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArgs and GetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutput values.
+// You can construct a concrete instance of `GetBrowserProtectionCriteriaFingerPrintCriteriaLocationInput` via:
+//
+//	GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArgs{...}
+type GetBrowserProtectionCriteriaFingerPrintCriteriaLocationInput interface {
+	pulumi.Input
+
+	ToGetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutput
+	ToGetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutputWithContext(context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutput
+}
+
+type GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArgs struct {
+	Lat pulumi.BoolInput `pulumi:"lat"`
+	Lon pulumi.BoolInput `pulumi:"lon"`
+}
+
+func (GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrowserProtectionCriteriaFingerPrintCriteriaLocation)(nil)).Elem()
+}
+
+func (i GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArgs) ToGetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutput {
+	return i.ToGetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutputWithContext(context.Background())
+}
+
+func (i GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArgs) ToGetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutputWithContext(ctx context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutput)
+}
+
+// GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayInput is an input type that accepts GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArray and GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutput values.
+// You can construct a concrete instance of `GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayInput` via:
+//
+//	GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArray{ GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArgs{...} }
+type GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayInput interface {
+	pulumi.Input
+
+	ToGetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutput
+	ToGetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutputWithContext(context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutput
+}
+
+type GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArray []GetBrowserProtectionCriteriaFingerPrintCriteriaLocationInput
+
+func (GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrowserProtectionCriteriaFingerPrintCriteriaLocation)(nil)).Elem()
+}
+
+func (i GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArray) ToGetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutput {
+	return i.ToGetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArray) ToGetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutputWithContext(ctx context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutput)
+}
+
+type GetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutput struct{ *pulumi.OutputState }
+
+func (GetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrowserProtectionCriteriaFingerPrintCriteriaLocation)(nil)).Elem()
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutput) ToGetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutput {
+	return o
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutput) ToGetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutputWithContext(ctx context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutput {
+	return o
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutput) Lat() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaLocation) bool { return v.Lat }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutput) Lon() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaLocation) bool { return v.Lon }).(pulumi.BoolOutput)
+}
+
+type GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrowserProtectionCriteriaFingerPrintCriteriaLocation)(nil)).Elem()
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutput) ToGetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutput {
+	return o
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutput) ToGetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutputWithContext(ctx context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutput {
+	return o
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutput) Index(i pulumi.IntInput) GetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrowserProtectionCriteriaFingerPrintCriteriaLocation {
+		return vs[0].([]GetBrowserProtectionCriteriaFingerPrintCriteriaLocation)[vs[1].(int)]
+	}).(GetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutput)
+}
+
+type GetBrowserProtectionCriteriaFingerPrintCriteriaSystem struct {
+	AvailScreenResolution bool `pulumi:"availScreenResolution"`
+	CpuArch               bool `pulumi:"cpuArch"`
+	CurrScreenResolution  bool `pulumi:"currScreenResolution"`
+	Font                  bool `pulumi:"font"`
+	JavaVer               bool `pulumi:"javaVer"`
+	MobileDevType         bool `pulumi:"mobileDevType"`
+	MonitorMobile         bool `pulumi:"monitorMobile"`
+	OsName                bool `pulumi:"osName"`
+	OsVersion             bool `pulumi:"osVersion"`
+	SysLang               bool `pulumi:"sysLang"`
+	Tz                    bool `pulumi:"tz"`
+	UsrLang               bool `pulumi:"usrLang"`
+}
+
+// GetBrowserProtectionCriteriaFingerPrintCriteriaSystemInput is an input type that accepts GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArgs and GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput values.
+// You can construct a concrete instance of `GetBrowserProtectionCriteriaFingerPrintCriteriaSystemInput` via:
+//
+//	GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArgs{...}
+type GetBrowserProtectionCriteriaFingerPrintCriteriaSystemInput interface {
+	pulumi.Input
+
+	ToGetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput
+	ToGetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutputWithContext(context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput
+}
+
+type GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArgs struct {
+	AvailScreenResolution pulumi.BoolInput `pulumi:"availScreenResolution"`
+	CpuArch               pulumi.BoolInput `pulumi:"cpuArch"`
+	CurrScreenResolution  pulumi.BoolInput `pulumi:"currScreenResolution"`
+	Font                  pulumi.BoolInput `pulumi:"font"`
+	JavaVer               pulumi.BoolInput `pulumi:"javaVer"`
+	MobileDevType         pulumi.BoolInput `pulumi:"mobileDevType"`
+	MonitorMobile         pulumi.BoolInput `pulumi:"monitorMobile"`
+	OsName                pulumi.BoolInput `pulumi:"osName"`
+	OsVersion             pulumi.BoolInput `pulumi:"osVersion"`
+	SysLang               pulumi.BoolInput `pulumi:"sysLang"`
+	Tz                    pulumi.BoolInput `pulumi:"tz"`
+	UsrLang               pulumi.BoolInput `pulumi:"usrLang"`
+}
+
+func (GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrowserProtectionCriteriaFingerPrintCriteriaSystem)(nil)).Elem()
+}
+
+func (i GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArgs) ToGetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput {
+	return i.ToGetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutputWithContext(context.Background())
+}
+
+func (i GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArgs) ToGetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutputWithContext(ctx context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput)
+}
+
+// GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayInput is an input type that accepts GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArray and GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutput values.
+// You can construct a concrete instance of `GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayInput` via:
+//
+//	GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArray{ GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArgs{...} }
+type GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayInput interface {
+	pulumi.Input
+
+	ToGetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutput
+	ToGetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutputWithContext(context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutput
+}
+
+type GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArray []GetBrowserProtectionCriteriaFingerPrintCriteriaSystemInput
+
+func (GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrowserProtectionCriteriaFingerPrintCriteriaSystem)(nil)).Elem()
+}
+
+func (i GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArray) ToGetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutput {
+	return i.ToGetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArray) ToGetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutputWithContext(ctx context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutput)
+}
+
+type GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput struct{ *pulumi.OutputState }
+
+func (GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrowserProtectionCriteriaFingerPrintCriteriaSystem)(nil)).Elem()
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput) ToGetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput {
+	return o
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput) ToGetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutputWithContext(ctx context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput {
+	return o
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput) AvailScreenResolution() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaSystem) bool { return v.AvailScreenResolution }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput) CpuArch() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaSystem) bool { return v.CpuArch }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput) CurrScreenResolution() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaSystem) bool { return v.CurrScreenResolution }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput) Font() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaSystem) bool { return v.Font }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput) JavaVer() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaSystem) bool { return v.JavaVer }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput) MobileDevType() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaSystem) bool { return v.MobileDevType }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput) MonitorMobile() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaSystem) bool { return v.MonitorMobile }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput) OsName() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaSystem) bool { return v.OsName }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput) OsVersion() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaSystem) bool { return v.OsVersion }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput) SysLang() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaSystem) bool { return v.SysLang }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput) Tz() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaSystem) bool { return v.Tz }).(pulumi.BoolOutput)
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput) UsrLang() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrowserProtectionCriteriaFingerPrintCriteriaSystem) bool { return v.UsrLang }).(pulumi.BoolOutput)
+}
+
+type GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrowserProtectionCriteriaFingerPrintCriteriaSystem)(nil)).Elem()
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutput) ToGetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutput() GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutput {
+	return o
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutput) ToGetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutputWithContext(ctx context.Context) GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutput {
+	return o
+}
+
+func (o GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutput) Index(i pulumi.IntInput) GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrowserProtectionCriteriaFingerPrintCriteriaSystem {
+		return vs[0].([]GetBrowserProtectionCriteriaFingerPrintCriteriaSystem)[vs[1].(int)]
+	}).(GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput)
 }
 
 type GetCloudBrowserIsolationExternalProfileDebugMode struct {
@@ -18943,6 +21582,112 @@ func (o GetLSSConfigControllerPolicyRuleConditionOperandArrayOutput) Index(i pul
 	}).(GetLSSConfigControllerPolicyRuleConditionOperandOutput)
 }
 
+type GetLocationGroupControllerZiaLocation struct {
+	Enabled bool   `pulumi:"enabled"`
+	Id      string `pulumi:"id"`
+	Name    string `pulumi:"name"`
+}
+
+// GetLocationGroupControllerZiaLocationInput is an input type that accepts GetLocationGroupControllerZiaLocationArgs and GetLocationGroupControllerZiaLocationOutput values.
+// You can construct a concrete instance of `GetLocationGroupControllerZiaLocationInput` via:
+//
+//	GetLocationGroupControllerZiaLocationArgs{...}
+type GetLocationGroupControllerZiaLocationInput interface {
+	pulumi.Input
+
+	ToGetLocationGroupControllerZiaLocationOutput() GetLocationGroupControllerZiaLocationOutput
+	ToGetLocationGroupControllerZiaLocationOutputWithContext(context.Context) GetLocationGroupControllerZiaLocationOutput
+}
+
+type GetLocationGroupControllerZiaLocationArgs struct {
+	Enabled pulumi.BoolInput   `pulumi:"enabled"`
+	Id      pulumi.StringInput `pulumi:"id"`
+	Name    pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetLocationGroupControllerZiaLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocationGroupControllerZiaLocation)(nil)).Elem()
+}
+
+func (i GetLocationGroupControllerZiaLocationArgs) ToGetLocationGroupControllerZiaLocationOutput() GetLocationGroupControllerZiaLocationOutput {
+	return i.ToGetLocationGroupControllerZiaLocationOutputWithContext(context.Background())
+}
+
+func (i GetLocationGroupControllerZiaLocationArgs) ToGetLocationGroupControllerZiaLocationOutputWithContext(ctx context.Context) GetLocationGroupControllerZiaLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLocationGroupControllerZiaLocationOutput)
+}
+
+// GetLocationGroupControllerZiaLocationArrayInput is an input type that accepts GetLocationGroupControllerZiaLocationArray and GetLocationGroupControllerZiaLocationArrayOutput values.
+// You can construct a concrete instance of `GetLocationGroupControllerZiaLocationArrayInput` via:
+//
+//	GetLocationGroupControllerZiaLocationArray{ GetLocationGroupControllerZiaLocationArgs{...} }
+type GetLocationGroupControllerZiaLocationArrayInput interface {
+	pulumi.Input
+
+	ToGetLocationGroupControllerZiaLocationArrayOutput() GetLocationGroupControllerZiaLocationArrayOutput
+	ToGetLocationGroupControllerZiaLocationArrayOutputWithContext(context.Context) GetLocationGroupControllerZiaLocationArrayOutput
+}
+
+type GetLocationGroupControllerZiaLocationArray []GetLocationGroupControllerZiaLocationInput
+
+func (GetLocationGroupControllerZiaLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLocationGroupControllerZiaLocation)(nil)).Elem()
+}
+
+func (i GetLocationGroupControllerZiaLocationArray) ToGetLocationGroupControllerZiaLocationArrayOutput() GetLocationGroupControllerZiaLocationArrayOutput {
+	return i.ToGetLocationGroupControllerZiaLocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetLocationGroupControllerZiaLocationArray) ToGetLocationGroupControllerZiaLocationArrayOutputWithContext(ctx context.Context) GetLocationGroupControllerZiaLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLocationGroupControllerZiaLocationArrayOutput)
+}
+
+type GetLocationGroupControllerZiaLocationOutput struct{ *pulumi.OutputState }
+
+func (GetLocationGroupControllerZiaLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocationGroupControllerZiaLocation)(nil)).Elem()
+}
+
+func (o GetLocationGroupControllerZiaLocationOutput) ToGetLocationGroupControllerZiaLocationOutput() GetLocationGroupControllerZiaLocationOutput {
+	return o
+}
+
+func (o GetLocationGroupControllerZiaLocationOutput) ToGetLocationGroupControllerZiaLocationOutputWithContext(ctx context.Context) GetLocationGroupControllerZiaLocationOutput {
+	return o
+}
+
+func (o GetLocationGroupControllerZiaLocationOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetLocationGroupControllerZiaLocation) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetLocationGroupControllerZiaLocationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocationGroupControllerZiaLocation) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetLocationGroupControllerZiaLocationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocationGroupControllerZiaLocation) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetLocationGroupControllerZiaLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLocationGroupControllerZiaLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLocationGroupControllerZiaLocation)(nil)).Elem()
+}
+
+func (o GetLocationGroupControllerZiaLocationArrayOutput) ToGetLocationGroupControllerZiaLocationArrayOutput() GetLocationGroupControllerZiaLocationArrayOutput {
+	return o
+}
+
+func (o GetLocationGroupControllerZiaLocationArrayOutput) ToGetLocationGroupControllerZiaLocationArrayOutputWithContext(ctx context.Context) GetLocationGroupControllerZiaLocationArrayOutput {
+	return o
+}
+
+func (o GetLocationGroupControllerZiaLocationArrayOutput) Index(i pulumi.IntInput) GetLocationGroupControllerZiaLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLocationGroupControllerZiaLocation {
+		return vs[0].([]GetLocationGroupControllerZiaLocation)[vs[1].(int)]
+	}).(GetLocationGroupControllerZiaLocationOutput)
+}
+
 type GetMachineGroupMachine struct {
 	CreationTime     string            `pulumi:"creationTime"`
 	Description      string            `pulumi:"description"`
@@ -19113,6 +21858,130 @@ func (o GetMachineGroupMachineArrayOutput) Index(i pulumi.IntInput) GetMachineGr
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMachineGroupMachine {
 		return vs[0].([]GetMachineGroupMachine)[vs[1].(int)]
 	}).(GetMachineGroupMachineOutput)
+}
+
+type GetManagedBrowserProfileChromePostureProfile struct {
+	BrowserType      string `pulumi:"browserType"`
+	CreationTime     string `pulumi:"creationTime"`
+	CrowdStrikeAgent bool   `pulumi:"crowdStrikeAgent"`
+	Id               string `pulumi:"id"`
+	ModifiedBy       string `pulumi:"modifiedBy"`
+	ModifiedTime     string `pulumi:"modifiedTime"`
+}
+
+// GetManagedBrowserProfileChromePostureProfileInput is an input type that accepts GetManagedBrowserProfileChromePostureProfileArgs and GetManagedBrowserProfileChromePostureProfileOutput values.
+// You can construct a concrete instance of `GetManagedBrowserProfileChromePostureProfileInput` via:
+//
+//	GetManagedBrowserProfileChromePostureProfileArgs{...}
+type GetManagedBrowserProfileChromePostureProfileInput interface {
+	pulumi.Input
+
+	ToGetManagedBrowserProfileChromePostureProfileOutput() GetManagedBrowserProfileChromePostureProfileOutput
+	ToGetManagedBrowserProfileChromePostureProfileOutputWithContext(context.Context) GetManagedBrowserProfileChromePostureProfileOutput
+}
+
+type GetManagedBrowserProfileChromePostureProfileArgs struct {
+	BrowserType      pulumi.StringInput `pulumi:"browserType"`
+	CreationTime     pulumi.StringInput `pulumi:"creationTime"`
+	CrowdStrikeAgent pulumi.BoolInput   `pulumi:"crowdStrikeAgent"`
+	Id               pulumi.StringInput `pulumi:"id"`
+	ModifiedBy       pulumi.StringInput `pulumi:"modifiedBy"`
+	ModifiedTime     pulumi.StringInput `pulumi:"modifiedTime"`
+}
+
+func (GetManagedBrowserProfileChromePostureProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetManagedBrowserProfileChromePostureProfile)(nil)).Elem()
+}
+
+func (i GetManagedBrowserProfileChromePostureProfileArgs) ToGetManagedBrowserProfileChromePostureProfileOutput() GetManagedBrowserProfileChromePostureProfileOutput {
+	return i.ToGetManagedBrowserProfileChromePostureProfileOutputWithContext(context.Background())
+}
+
+func (i GetManagedBrowserProfileChromePostureProfileArgs) ToGetManagedBrowserProfileChromePostureProfileOutputWithContext(ctx context.Context) GetManagedBrowserProfileChromePostureProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetManagedBrowserProfileChromePostureProfileOutput)
+}
+
+// GetManagedBrowserProfileChromePostureProfileArrayInput is an input type that accepts GetManagedBrowserProfileChromePostureProfileArray and GetManagedBrowserProfileChromePostureProfileArrayOutput values.
+// You can construct a concrete instance of `GetManagedBrowserProfileChromePostureProfileArrayInput` via:
+//
+//	GetManagedBrowserProfileChromePostureProfileArray{ GetManagedBrowserProfileChromePostureProfileArgs{...} }
+type GetManagedBrowserProfileChromePostureProfileArrayInput interface {
+	pulumi.Input
+
+	ToGetManagedBrowserProfileChromePostureProfileArrayOutput() GetManagedBrowserProfileChromePostureProfileArrayOutput
+	ToGetManagedBrowserProfileChromePostureProfileArrayOutputWithContext(context.Context) GetManagedBrowserProfileChromePostureProfileArrayOutput
+}
+
+type GetManagedBrowserProfileChromePostureProfileArray []GetManagedBrowserProfileChromePostureProfileInput
+
+func (GetManagedBrowserProfileChromePostureProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetManagedBrowserProfileChromePostureProfile)(nil)).Elem()
+}
+
+func (i GetManagedBrowserProfileChromePostureProfileArray) ToGetManagedBrowserProfileChromePostureProfileArrayOutput() GetManagedBrowserProfileChromePostureProfileArrayOutput {
+	return i.ToGetManagedBrowserProfileChromePostureProfileArrayOutputWithContext(context.Background())
+}
+
+func (i GetManagedBrowserProfileChromePostureProfileArray) ToGetManagedBrowserProfileChromePostureProfileArrayOutputWithContext(ctx context.Context) GetManagedBrowserProfileChromePostureProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetManagedBrowserProfileChromePostureProfileArrayOutput)
+}
+
+type GetManagedBrowserProfileChromePostureProfileOutput struct{ *pulumi.OutputState }
+
+func (GetManagedBrowserProfileChromePostureProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetManagedBrowserProfileChromePostureProfile)(nil)).Elem()
+}
+
+func (o GetManagedBrowserProfileChromePostureProfileOutput) ToGetManagedBrowserProfileChromePostureProfileOutput() GetManagedBrowserProfileChromePostureProfileOutput {
+	return o
+}
+
+func (o GetManagedBrowserProfileChromePostureProfileOutput) ToGetManagedBrowserProfileChromePostureProfileOutputWithContext(ctx context.Context) GetManagedBrowserProfileChromePostureProfileOutput {
+	return o
+}
+
+func (o GetManagedBrowserProfileChromePostureProfileOutput) BrowserType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedBrowserProfileChromePostureProfile) string { return v.BrowserType }).(pulumi.StringOutput)
+}
+
+func (o GetManagedBrowserProfileChromePostureProfileOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedBrowserProfileChromePostureProfile) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+func (o GetManagedBrowserProfileChromePostureProfileOutput) CrowdStrikeAgent() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetManagedBrowserProfileChromePostureProfile) bool { return v.CrowdStrikeAgent }).(pulumi.BoolOutput)
+}
+
+func (o GetManagedBrowserProfileChromePostureProfileOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedBrowserProfileChromePostureProfile) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetManagedBrowserProfileChromePostureProfileOutput) ModifiedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedBrowserProfileChromePostureProfile) string { return v.ModifiedBy }).(pulumi.StringOutput)
+}
+
+func (o GetManagedBrowserProfileChromePostureProfileOutput) ModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedBrowserProfileChromePostureProfile) string { return v.ModifiedTime }).(pulumi.StringOutput)
+}
+
+type GetManagedBrowserProfileChromePostureProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetManagedBrowserProfileChromePostureProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetManagedBrowserProfileChromePostureProfile)(nil)).Elem()
+}
+
+func (o GetManagedBrowserProfileChromePostureProfileArrayOutput) ToGetManagedBrowserProfileChromePostureProfileArrayOutput() GetManagedBrowserProfileChromePostureProfileArrayOutput {
+	return o
+}
+
+func (o GetManagedBrowserProfileChromePostureProfileArrayOutput) ToGetManagedBrowserProfileChromePostureProfileArrayOutputWithContext(ctx context.Context) GetManagedBrowserProfileChromePostureProfileArrayOutput {
+	return o
+}
+
+func (o GetManagedBrowserProfileChromePostureProfileArrayOutput) Index(i pulumi.IntInput) GetManagedBrowserProfileChromePostureProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetManagedBrowserProfileChromePostureProfile {
+		return vs[0].([]GetManagedBrowserProfileChromePostureProfile)[vs[1].(int)]
+	}).(GetManagedBrowserProfileChromePostureProfileOutput)
 }
 
 type GetMicrotenantRole struct {
@@ -22497,6 +25366,112 @@ func (o GetServiceEdgeGroupTrustedNetworkArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetServiceEdgeGroupTrustedNetworkOutput)
 }
 
+type GetUserPortalLinkUserPortal struct {
+	Enabled bool   `pulumi:"enabled"`
+	Id      string `pulumi:"id"`
+	Name    string `pulumi:"name"`
+}
+
+// GetUserPortalLinkUserPortalInput is an input type that accepts GetUserPortalLinkUserPortalArgs and GetUserPortalLinkUserPortalOutput values.
+// You can construct a concrete instance of `GetUserPortalLinkUserPortalInput` via:
+//
+//	GetUserPortalLinkUserPortalArgs{...}
+type GetUserPortalLinkUserPortalInput interface {
+	pulumi.Input
+
+	ToGetUserPortalLinkUserPortalOutput() GetUserPortalLinkUserPortalOutput
+	ToGetUserPortalLinkUserPortalOutputWithContext(context.Context) GetUserPortalLinkUserPortalOutput
+}
+
+type GetUserPortalLinkUserPortalArgs struct {
+	Enabled pulumi.BoolInput   `pulumi:"enabled"`
+	Id      pulumi.StringInput `pulumi:"id"`
+	Name    pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetUserPortalLinkUserPortalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserPortalLinkUserPortal)(nil)).Elem()
+}
+
+func (i GetUserPortalLinkUserPortalArgs) ToGetUserPortalLinkUserPortalOutput() GetUserPortalLinkUserPortalOutput {
+	return i.ToGetUserPortalLinkUserPortalOutputWithContext(context.Background())
+}
+
+func (i GetUserPortalLinkUserPortalArgs) ToGetUserPortalLinkUserPortalOutputWithContext(ctx context.Context) GetUserPortalLinkUserPortalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserPortalLinkUserPortalOutput)
+}
+
+// GetUserPortalLinkUserPortalArrayInput is an input type that accepts GetUserPortalLinkUserPortalArray and GetUserPortalLinkUserPortalArrayOutput values.
+// You can construct a concrete instance of `GetUserPortalLinkUserPortalArrayInput` via:
+//
+//	GetUserPortalLinkUserPortalArray{ GetUserPortalLinkUserPortalArgs{...} }
+type GetUserPortalLinkUserPortalArrayInput interface {
+	pulumi.Input
+
+	ToGetUserPortalLinkUserPortalArrayOutput() GetUserPortalLinkUserPortalArrayOutput
+	ToGetUserPortalLinkUserPortalArrayOutputWithContext(context.Context) GetUserPortalLinkUserPortalArrayOutput
+}
+
+type GetUserPortalLinkUserPortalArray []GetUserPortalLinkUserPortalInput
+
+func (GetUserPortalLinkUserPortalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserPortalLinkUserPortal)(nil)).Elem()
+}
+
+func (i GetUserPortalLinkUserPortalArray) ToGetUserPortalLinkUserPortalArrayOutput() GetUserPortalLinkUserPortalArrayOutput {
+	return i.ToGetUserPortalLinkUserPortalArrayOutputWithContext(context.Background())
+}
+
+func (i GetUserPortalLinkUserPortalArray) ToGetUserPortalLinkUserPortalArrayOutputWithContext(ctx context.Context) GetUserPortalLinkUserPortalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserPortalLinkUserPortalArrayOutput)
+}
+
+type GetUserPortalLinkUserPortalOutput struct{ *pulumi.OutputState }
+
+func (GetUserPortalLinkUserPortalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserPortalLinkUserPortal)(nil)).Elem()
+}
+
+func (o GetUserPortalLinkUserPortalOutput) ToGetUserPortalLinkUserPortalOutput() GetUserPortalLinkUserPortalOutput {
+	return o
+}
+
+func (o GetUserPortalLinkUserPortalOutput) ToGetUserPortalLinkUserPortalOutputWithContext(ctx context.Context) GetUserPortalLinkUserPortalOutput {
+	return o
+}
+
+func (o GetUserPortalLinkUserPortalOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetUserPortalLinkUserPortal) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetUserPortalLinkUserPortalOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserPortalLinkUserPortal) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetUserPortalLinkUserPortalOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserPortalLinkUserPortal) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetUserPortalLinkUserPortalArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUserPortalLinkUserPortalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserPortalLinkUserPortal)(nil)).Elem()
+}
+
+func (o GetUserPortalLinkUserPortalArrayOutput) ToGetUserPortalLinkUserPortalArrayOutput() GetUserPortalLinkUserPortalArrayOutput {
+	return o
+}
+
+func (o GetUserPortalLinkUserPortalArrayOutput) ToGetUserPortalLinkUserPortalArrayOutputWithContext(ctx context.Context) GetUserPortalLinkUserPortalArrayOutput {
+	return o
+}
+
+func (o GetUserPortalLinkUserPortalArrayOutput) Index(i pulumi.IntInput) GetUserPortalLinkUserPortalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUserPortalLinkUserPortal {
+		return vs[0].([]GetUserPortalLinkUserPortal)[vs[1].(int)]
+	}).(GetUserPortalLinkUserPortalOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentBrowserAccessClientlessAppInput)(nil)).Elem(), ApplicationSegmentBrowserAccessClientlessAppArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentBrowserAccessClientlessAppArrayInput)(nil)).Elem(), ApplicationSegmentBrowserAccessClientlessAppArray{})
@@ -22506,6 +25481,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentBrowserAccessTcpPortRangeArrayInput)(nil)).Elem(), ApplicationSegmentBrowserAccessTcpPortRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentBrowserAccessUdpPortRangeInput)(nil)).Elem(), ApplicationSegmentBrowserAccessUdpPortRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentBrowserAccessUdpPortRangeArrayInput)(nil)).Elem(), ApplicationSegmentBrowserAccessUdpPortRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentBrowserAccessZpnErIdInput)(nil)).Elem(), ApplicationSegmentBrowserAccessZpnErIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentBrowserAccessZpnErIdArrayInput)(nil)).Elem(), ApplicationSegmentBrowserAccessZpnErIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentInspectionCommonAppsDtoInput)(nil)).Elem(), ApplicationSegmentInspectionCommonAppsDtoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentInspectionCommonAppsDtoArrayInput)(nil)).Elem(), ApplicationSegmentInspectionCommonAppsDtoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentInspectionCommonAppsDtoAppsConfigInput)(nil)).Elem(), ApplicationSegmentInspectionCommonAppsDtoAppsConfigArgs{})
@@ -22526,12 +25503,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentPRATcpPortRangeArrayInput)(nil)).Elem(), ApplicationSegmentPRATcpPortRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentPRAUdpPortRangeInput)(nil)).Elem(), ApplicationSegmentPRAUdpPortRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentPRAUdpPortRangeArrayInput)(nil)).Elem(), ApplicationSegmentPRAUdpPortRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentPRAZpnErIdInput)(nil)).Elem(), ApplicationSegmentPRAZpnErIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentPRAZpnErIdArrayInput)(nil)).Elem(), ApplicationSegmentPRAZpnErIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentServerGroupInput)(nil)).Elem(), ApplicationSegmentServerGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentServerGroupArrayInput)(nil)).Elem(), ApplicationSegmentServerGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentTcpPortRangeInput)(nil)).Elem(), ApplicationSegmentTcpPortRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentTcpPortRangeArrayInput)(nil)).Elem(), ApplicationSegmentTcpPortRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentUdpPortRangeInput)(nil)).Elem(), ApplicationSegmentUdpPortRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentUdpPortRangeArrayInput)(nil)).Elem(), ApplicationSegmentUdpPortRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingInput)(nil)).Elem(), ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayInput)(nil)).Elem(), ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentZpnErIdInput)(nil)).Elem(), ApplicationSegmentZpnErIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSegmentZpnErIdArrayInput)(nil)).Elem(), ApplicationSegmentZpnErIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BrowserAccessClientlessAppInput)(nil)).Elem(), BrowserAccessClientlessAppArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BrowserAccessClientlessAppArrayInput)(nil)).Elem(), BrowserAccessClientlessAppArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BrowserAccessServerGroupInput)(nil)).Elem(), BrowserAccessServerGroupArgs{})
@@ -22540,6 +25523,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BrowserAccessTcpPortRangeArrayInput)(nil)).Elem(), BrowserAccessTcpPortRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BrowserAccessUdpPortRangeInput)(nil)).Elem(), BrowserAccessUdpPortRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BrowserAccessUdpPortRangeArrayInput)(nil)).Elem(), BrowserAccessUdpPortRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BrowserAccessZpnErIdInput)(nil)).Elem(), BrowserAccessZpnErIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BrowserAccessZpnErIdArrayInput)(nil)).Elem(), BrowserAccessZpnErIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileDebugModeInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileDebugModeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileDebugModePtrInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileDebugModeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudBrowserIsolationExternalProfileSecurityControlsInput)(nil)).Elem(), CloudBrowserIsolationExternalProfileSecurityControlsArgs{})
@@ -22664,6 +25649,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessRuleV2ConditionOperandArrayInput)(nil)).Elem(), PolicyAccessRuleV2ConditionOperandArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessRuleV2ConditionOperandEntryValueInput)(nil)).Elem(), PolicyAccessRuleV2ConditionOperandEntryValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessRuleV2ConditionOperandEntryValueArrayInput)(nil)).Elem(), PolicyAccessRuleV2ConditionOperandEntryValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessRuleV2ExtranetDtoInput)(nil)).Elem(), PolicyAccessRuleV2ExtranetDtoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessRuleV2ExtranetDtoArrayInput)(nil)).Elem(), PolicyAccessRuleV2ExtranetDtoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessRuleV2ExtranetDtoLocationDtoInput)(nil)).Elem(), PolicyAccessRuleV2ExtranetDtoLocationDtoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessRuleV2ExtranetDtoLocationDtoArrayInput)(nil)).Elem(), PolicyAccessRuleV2ExtranetDtoLocationDtoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessRuleV2ExtranetDtoLocationGroupDtoInput)(nil)).Elem(), PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayInput)(nil)).Elem(), PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessTimeOutRuleConditionInput)(nil)).Elem(), PolicyAccessTimeOutRuleConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessTimeOutRuleConditionArrayInput)(nil)).Elem(), PolicyAccessTimeOutRuleConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAccessTimeOutRuleConditionOperandInput)(nil)).Elem(), PolicyAccessTimeOutRuleConditionOperandArgs{})
@@ -22680,6 +25671,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBrowserProtectionRuleConditionOperandArrayInput)(nil)).Elem(), PolicyBrowserProtectionRuleConditionOperandArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBrowserProtectionRuleConditionOperandEntryValueInput)(nil)).Elem(), PolicyBrowserProtectionRuleConditionOperandEntryValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBrowserProtectionRuleConditionOperandEntryValueArrayInput)(nil)).Elem(), PolicyBrowserProtectionRuleConditionOperandEntryValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyPortalAccessRuleConditionInput)(nil)).Elem(), PolicyPortalAccessRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyPortalAccessRuleConditionArrayInput)(nil)).Elem(), PolicyPortalAccessRuleConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyPortalAccessRuleConditionOperandInput)(nil)).Elem(), PolicyPortalAccessRuleConditionOperandArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyPortalAccessRuleConditionOperandArrayInput)(nil)).Elem(), PolicyPortalAccessRuleConditionOperandArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyPortalAccessRuleConditionOperandEntryValueInput)(nil)).Elem(), PolicyPortalAccessRuleConditionOperandEntryValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyPortalAccessRuleConditionOperandEntryValueArrayInput)(nil)).Elem(), PolicyPortalAccessRuleConditionOperandEntryValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyPortalAccessRulePrivilegedPortalCapabilitiesInput)(nil)).Elem(), PolicyPortalAccessRulePrivilegedPortalCapabilitiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrInput)(nil)).Elem(), PolicyPortalAccessRulePrivilegedPortalCapabilitiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PraCredentialPoolCredentialInput)(nil)).Elem(), PraCredentialPoolCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PraCredentialPoolCredentialArrayInput)(nil)).Elem(), PraCredentialPoolCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentGroupApplicationInput)(nil)).Elem(), SegmentGroupApplicationArgs{})
@@ -22688,12 +25687,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupAppConnectorGroupArrayInput)(nil)).Elem(), ServerGroupAppConnectorGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupApplicationInput)(nil)).Elem(), ServerGroupApplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupApplicationArrayInput)(nil)).Elem(), ServerGroupApplicationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupExtranetDtoInput)(nil)).Elem(), ServerGroupExtranetDtoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupExtranetDtoArrayInput)(nil)).Elem(), ServerGroupExtranetDtoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupExtranetDtoLocationDtoInput)(nil)).Elem(), ServerGroupExtranetDtoLocationDtoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupExtranetDtoLocationDtoArrayInput)(nil)).Elem(), ServerGroupExtranetDtoLocationDtoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupExtranetDtoLocationGroupDtoInput)(nil)).Elem(), ServerGroupExtranetDtoLocationGroupDtoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupExtranetDtoLocationGroupDtoArrayInput)(nil)).Elem(), ServerGroupExtranetDtoLocationGroupDtoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupServerInput)(nil)).Elem(), ServerGroupServerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupServerArrayInput)(nil)).Elem(), ServerGroupServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceEdgeGroupServiceEdgesInput)(nil)).Elem(), ServiceEdgeGroupServiceEdgesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceEdgeGroupServiceEdgesPtrInput)(nil)).Elem(), ServiceEdgeGroupServiceEdgesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceEdgeGroupTrustedNetworkInput)(nil)).Elem(), ServiceEdgeGroupTrustedNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceEdgeGroupTrustedNetworkArrayInput)(nil)).Elem(), ServiceEdgeGroupTrustedNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserPortalLinkUserPortalInput)(nil)).Elem(), UserPortalLinkUserPortalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserPortalLinkUserPortalArrayInput)(nil)).Elem(), UserPortalLinkUserPortalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppConnectorControllerAssistantVersionInput)(nil)).Elem(), GetAppConnectorControllerAssistantVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppConnectorControllerAssistantVersionArrayInput)(nil)).Elem(), GetAppConnectorControllerAssistantVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppConnectorControllerZpnSubModuleUpgradeListInput)(nil)).Elem(), GetAppConnectorControllerZpnSubModuleUpgradeListArgs{})
@@ -22718,6 +25725,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationSegmentInspectionTcpPortRangeArrayInput)(nil)).Elem(), GetApplicationSegmentInspectionTcpPortRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationSegmentInspectionUdpPortRangeInput)(nil)).Elem(), GetApplicationSegmentInspectionUdpPortRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationSegmentInspectionUdpPortRangeArrayInput)(nil)).Elem(), GetApplicationSegmentInspectionUdpPortRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationSegmentMultimatchBulkUnsupportedReferenceInput)(nil)).Elem(), GetApplicationSegmentMultimatchBulkUnsupportedReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayInput)(nil)).Elem(), GetApplicationSegmentMultimatchBulkUnsupportedReferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationSegmentPRAServerGroupInput)(nil)).Elem(), GetApplicationSegmentPRAServerGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationSegmentPRAServerGroupArrayInput)(nil)).Elem(), GetApplicationSegmentPRAServerGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationSegmentPRASraAppInput)(nil)).Elem(), GetApplicationSegmentPRASraAppArgs{})
@@ -22732,6 +25741,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationSegmentTcpPortRangeArrayInput)(nil)).Elem(), GetApplicationSegmentTcpPortRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationSegmentUdpPortRangeInput)(nil)).Elem(), GetApplicationSegmentUdpPortRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationSegmentUdpPortRangeArrayInput)(nil)).Elem(), GetApplicationSegmentUdpPortRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingInput)(nil)).Elem(), GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayInput)(nil)).Elem(), GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrowserProtectionCriteriaInput)(nil)).Elem(), GetBrowserProtectionCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrowserProtectionCriteriaArrayInput)(nil)).Elem(), GetBrowserProtectionCriteriaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrowserProtectionCriteriaFingerPrintCriteriaInput)(nil)).Elem(), GetBrowserProtectionCriteriaFingerPrintCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrowserProtectionCriteriaFingerPrintCriteriaArrayInput)(nil)).Elem(), GetBrowserProtectionCriteriaFingerPrintCriteriaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserInput)(nil)).Elem(), GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayInput)(nil)).Elem(), GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrowserProtectionCriteriaFingerPrintCriteriaLocationInput)(nil)).Elem(), GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayInput)(nil)).Elem(), GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrowserProtectionCriteriaFingerPrintCriteriaSystemInput)(nil)).Elem(), GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayInput)(nil)).Elem(), GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileDebugModeInput)(nil)).Elem(), GetCloudBrowserIsolationExternalProfileDebugModeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileDebugModeArrayInput)(nil)).Elem(), GetCloudBrowserIsolationExternalProfileDebugModeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudBrowserIsolationExternalProfileRegionInput)(nil)).Elem(), GetCloudBrowserIsolationExternalProfileRegionArgs{})
@@ -22798,8 +25819,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLSSConfigControllerPolicyRuleConditionArrayInput)(nil)).Elem(), GetLSSConfigControllerPolicyRuleConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLSSConfigControllerPolicyRuleConditionOperandInput)(nil)).Elem(), GetLSSConfigControllerPolicyRuleConditionOperandArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLSSConfigControllerPolicyRuleConditionOperandArrayInput)(nil)).Elem(), GetLSSConfigControllerPolicyRuleConditionOperandArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLocationGroupControllerZiaLocationInput)(nil)).Elem(), GetLocationGroupControllerZiaLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLocationGroupControllerZiaLocationArrayInput)(nil)).Elem(), GetLocationGroupControllerZiaLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineGroupMachineInput)(nil)).Elem(), GetMachineGroupMachineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineGroupMachineArrayInput)(nil)).Elem(), GetMachineGroupMachineArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedBrowserProfileChromePostureProfileInput)(nil)).Elem(), GetManagedBrowserProfileChromePostureProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedBrowserProfileChromePostureProfileArrayInput)(nil)).Elem(), GetManagedBrowserProfileChromePostureProfileArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrotenantRoleInput)(nil)).Elem(), GetMicrotenantRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrotenantRoleArrayInput)(nil)).Elem(), GetMicrotenantRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrotenantUserInput)(nil)).Elem(), GetMicrotenantUserArgs{})
@@ -22840,6 +25865,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceEdgeGroupServiceEdgePrivateBrokerVersionZpnSubModuleUpgradeArrayInput)(nil)).Elem(), GetServiceEdgeGroupServiceEdgePrivateBrokerVersionZpnSubModuleUpgradeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceEdgeGroupTrustedNetworkInput)(nil)).Elem(), GetServiceEdgeGroupTrustedNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceEdgeGroupTrustedNetworkArrayInput)(nil)).Elem(), GetServiceEdgeGroupTrustedNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPortalLinkUserPortalInput)(nil)).Elem(), GetUserPortalLinkUserPortalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPortalLinkUserPortalArrayInput)(nil)).Elem(), GetUserPortalLinkUserPortalArray{})
 	pulumi.RegisterOutputType(ApplicationSegmentBrowserAccessClientlessAppOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentBrowserAccessClientlessAppArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentBrowserAccessServerGroupOutput{})
@@ -22848,6 +25875,8 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationSegmentBrowserAccessTcpPortRangeArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentBrowserAccessUdpPortRangeOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentBrowserAccessUdpPortRangeArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationSegmentBrowserAccessZpnErIdOutput{})
+	pulumi.RegisterOutputType(ApplicationSegmentBrowserAccessZpnErIdArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentInspectionCommonAppsDtoOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentInspectionCommonAppsDtoArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentInspectionCommonAppsDtoAppsConfigOutput{})
@@ -22868,12 +25897,18 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationSegmentPRATcpPortRangeArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentPRAUdpPortRangeOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentPRAUdpPortRangeArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationSegmentPRAZpnErIdOutput{})
+	pulumi.RegisterOutputType(ApplicationSegmentPRAZpnErIdArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentServerGroupOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentServerGroupArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentTcpPortRangeOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentTcpPortRangeArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentUdpPortRangeOutput{})
 	pulumi.RegisterOutputType(ApplicationSegmentUdpPortRangeArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput{})
+	pulumi.RegisterOutputType(ApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationSegmentZpnErIdOutput{})
+	pulumi.RegisterOutputType(ApplicationSegmentZpnErIdArrayOutput{})
 	pulumi.RegisterOutputType(BrowserAccessClientlessAppOutput{})
 	pulumi.RegisterOutputType(BrowserAccessClientlessAppArrayOutput{})
 	pulumi.RegisterOutputType(BrowserAccessServerGroupOutput{})
@@ -22882,6 +25917,8 @@ func init() {
 	pulumi.RegisterOutputType(BrowserAccessTcpPortRangeArrayOutput{})
 	pulumi.RegisterOutputType(BrowserAccessUdpPortRangeOutput{})
 	pulumi.RegisterOutputType(BrowserAccessUdpPortRangeArrayOutput{})
+	pulumi.RegisterOutputType(BrowserAccessZpnErIdOutput{})
+	pulumi.RegisterOutputType(BrowserAccessZpnErIdArrayOutput{})
 	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileDebugModeOutput{})
 	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileDebugModePtrOutput{})
 	pulumi.RegisterOutputType(CloudBrowserIsolationExternalProfileSecurityControlsOutput{})
@@ -23006,6 +26043,12 @@ func init() {
 	pulumi.RegisterOutputType(PolicyAccessRuleV2ConditionOperandArrayOutput{})
 	pulumi.RegisterOutputType(PolicyAccessRuleV2ConditionOperandEntryValueOutput{})
 	pulumi.RegisterOutputType(PolicyAccessRuleV2ConditionOperandEntryValueArrayOutput{})
+	pulumi.RegisterOutputType(PolicyAccessRuleV2ExtranetDtoOutput{})
+	pulumi.RegisterOutputType(PolicyAccessRuleV2ExtranetDtoArrayOutput{})
+	pulumi.RegisterOutputType(PolicyAccessRuleV2ExtranetDtoLocationDtoOutput{})
+	pulumi.RegisterOutputType(PolicyAccessRuleV2ExtranetDtoLocationDtoArrayOutput{})
+	pulumi.RegisterOutputType(PolicyAccessRuleV2ExtranetDtoLocationGroupDtoOutput{})
+	pulumi.RegisterOutputType(PolicyAccessRuleV2ExtranetDtoLocationGroupDtoArrayOutput{})
 	pulumi.RegisterOutputType(PolicyAccessTimeOutRuleConditionOutput{})
 	pulumi.RegisterOutputType(PolicyAccessTimeOutRuleConditionArrayOutput{})
 	pulumi.RegisterOutputType(PolicyAccessTimeOutRuleConditionOperandOutput{})
@@ -23022,6 +26065,14 @@ func init() {
 	pulumi.RegisterOutputType(PolicyBrowserProtectionRuleConditionOperandArrayOutput{})
 	pulumi.RegisterOutputType(PolicyBrowserProtectionRuleConditionOperandEntryValueOutput{})
 	pulumi.RegisterOutputType(PolicyBrowserProtectionRuleConditionOperandEntryValueArrayOutput{})
+	pulumi.RegisterOutputType(PolicyPortalAccessRuleConditionOutput{})
+	pulumi.RegisterOutputType(PolicyPortalAccessRuleConditionArrayOutput{})
+	pulumi.RegisterOutputType(PolicyPortalAccessRuleConditionOperandOutput{})
+	pulumi.RegisterOutputType(PolicyPortalAccessRuleConditionOperandArrayOutput{})
+	pulumi.RegisterOutputType(PolicyPortalAccessRuleConditionOperandEntryValueOutput{})
+	pulumi.RegisterOutputType(PolicyPortalAccessRuleConditionOperandEntryValueArrayOutput{})
+	pulumi.RegisterOutputType(PolicyPortalAccessRulePrivilegedPortalCapabilitiesOutput{})
+	pulumi.RegisterOutputType(PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput{})
 	pulumi.RegisterOutputType(PraCredentialPoolCredentialOutput{})
 	pulumi.RegisterOutputType(PraCredentialPoolCredentialArrayOutput{})
 	pulumi.RegisterOutputType(SegmentGroupApplicationOutput{})
@@ -23030,12 +26081,20 @@ func init() {
 	pulumi.RegisterOutputType(ServerGroupAppConnectorGroupArrayOutput{})
 	pulumi.RegisterOutputType(ServerGroupApplicationOutput{})
 	pulumi.RegisterOutputType(ServerGroupApplicationArrayOutput{})
+	pulumi.RegisterOutputType(ServerGroupExtranetDtoOutput{})
+	pulumi.RegisterOutputType(ServerGroupExtranetDtoArrayOutput{})
+	pulumi.RegisterOutputType(ServerGroupExtranetDtoLocationDtoOutput{})
+	pulumi.RegisterOutputType(ServerGroupExtranetDtoLocationDtoArrayOutput{})
+	pulumi.RegisterOutputType(ServerGroupExtranetDtoLocationGroupDtoOutput{})
+	pulumi.RegisterOutputType(ServerGroupExtranetDtoLocationGroupDtoArrayOutput{})
 	pulumi.RegisterOutputType(ServerGroupServerOutput{})
 	pulumi.RegisterOutputType(ServerGroupServerArrayOutput{})
 	pulumi.RegisterOutputType(ServiceEdgeGroupServiceEdgesOutput{})
 	pulumi.RegisterOutputType(ServiceEdgeGroupServiceEdgesPtrOutput{})
 	pulumi.RegisterOutputType(ServiceEdgeGroupTrustedNetworkOutput{})
 	pulumi.RegisterOutputType(ServiceEdgeGroupTrustedNetworkArrayOutput{})
+	pulumi.RegisterOutputType(UserPortalLinkUserPortalOutput{})
+	pulumi.RegisterOutputType(UserPortalLinkUserPortalArrayOutput{})
 	pulumi.RegisterOutputType(GetAppConnectorControllerAssistantVersionOutput{})
 	pulumi.RegisterOutputType(GetAppConnectorControllerAssistantVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetAppConnectorControllerZpnSubModuleUpgradeListOutput{})
@@ -23060,6 +26119,8 @@ func init() {
 	pulumi.RegisterOutputType(GetApplicationSegmentInspectionTcpPortRangeArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationSegmentInspectionUdpPortRangeOutput{})
 	pulumi.RegisterOutputType(GetApplicationSegmentInspectionUdpPortRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationSegmentMultimatchBulkUnsupportedReferenceOutput{})
+	pulumi.RegisterOutputType(GetApplicationSegmentMultimatchBulkUnsupportedReferenceArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationSegmentPRAServerGroupOutput{})
 	pulumi.RegisterOutputType(GetApplicationSegmentPRAServerGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationSegmentPRASraAppOutput{})
@@ -23074,6 +26135,18 @@ func init() {
 	pulumi.RegisterOutputType(GetApplicationSegmentTcpPortRangeArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationSegmentUdpPortRangeOutput{})
 	pulumi.RegisterOutputType(GetApplicationSegmentUdpPortRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingOutput{})
+	pulumi.RegisterOutputType(GetApplicationSegmentWeightedlbConfigApplicationToServerGroupMappingArrayOutput{})
+	pulumi.RegisterOutputType(GetBrowserProtectionCriteriaOutput{})
+	pulumi.RegisterOutputType(GetBrowserProtectionCriteriaArrayOutput{})
+	pulumi.RegisterOutputType(GetBrowserProtectionCriteriaFingerPrintCriteriaOutput{})
+	pulumi.RegisterOutputType(GetBrowserProtectionCriteriaFingerPrintCriteriaArrayOutput{})
+	pulumi.RegisterOutputType(GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserOutput{})
+	pulumi.RegisterOutputType(GetBrowserProtectionCriteriaFingerPrintCriteriaBrowserArrayOutput{})
+	pulumi.RegisterOutputType(GetBrowserProtectionCriteriaFingerPrintCriteriaLocationOutput{})
+	pulumi.RegisterOutputType(GetBrowserProtectionCriteriaFingerPrintCriteriaLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetBrowserProtectionCriteriaFingerPrintCriteriaSystemOutput{})
+	pulumi.RegisterOutputType(GetBrowserProtectionCriteriaFingerPrintCriteriaSystemArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudBrowserIsolationExternalProfileDebugModeOutput{})
 	pulumi.RegisterOutputType(GetCloudBrowserIsolationExternalProfileDebugModeArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudBrowserIsolationExternalProfileRegionOutput{})
@@ -23140,8 +26213,12 @@ func init() {
 	pulumi.RegisterOutputType(GetLSSConfigControllerPolicyRuleConditionArrayOutput{})
 	pulumi.RegisterOutputType(GetLSSConfigControllerPolicyRuleConditionOperandOutput{})
 	pulumi.RegisterOutputType(GetLSSConfigControllerPolicyRuleConditionOperandArrayOutput{})
+	pulumi.RegisterOutputType(GetLocationGroupControllerZiaLocationOutput{})
+	pulumi.RegisterOutputType(GetLocationGroupControllerZiaLocationArrayOutput{})
 	pulumi.RegisterOutputType(GetMachineGroupMachineOutput{})
 	pulumi.RegisterOutputType(GetMachineGroupMachineArrayOutput{})
+	pulumi.RegisterOutputType(GetManagedBrowserProfileChromePostureProfileOutput{})
+	pulumi.RegisterOutputType(GetManagedBrowserProfileChromePostureProfileArrayOutput{})
 	pulumi.RegisterOutputType(GetMicrotenantRoleOutput{})
 	pulumi.RegisterOutputType(GetMicrotenantRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetMicrotenantUserOutput{})
@@ -23182,4 +26259,6 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceEdgeGroupServiceEdgePrivateBrokerVersionZpnSubModuleUpgradeArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceEdgeGroupTrustedNetworkOutput{})
 	pulumi.RegisterOutputType(GetServiceEdgeGroupTrustedNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetUserPortalLinkUserPortalOutput{})
+	pulumi.RegisterOutputType(GetUserPortalLinkUserPortalArrayOutput{})
 }

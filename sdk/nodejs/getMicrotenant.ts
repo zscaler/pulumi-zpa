@@ -22,6 +22,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Microtenant Controller Data Source
  * const _this = zpa.getMicrotenant({
  *     name: "Microtenant_A",
  * });
@@ -85,6 +86,7 @@ export interface GetMicrotenantResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Microtenant Controller Data Source
  * const _this = zpa.getMicrotenant({
  *     name: "Microtenant_A",
  * });

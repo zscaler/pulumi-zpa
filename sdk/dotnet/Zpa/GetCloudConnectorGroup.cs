@@ -32,6 +32,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Cloud Connector Group Data Source
         ///     var foo = Zpa.GetCloudConnectorGroup.Invoke(new()
         ///     {
         ///         Name = "AWS-Cloud",
@@ -48,6 +49,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Cloud Connector Group Data Source
         ///     var foo = Zpa.GetCloudConnectorGroup.Invoke(new()
         ///     {
         ///         Id = "1234567890",
@@ -79,6 +81,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Cloud Connector Group Data Source
         ///     var foo = Zpa.GetCloudConnectorGroup.Invoke(new()
         ///     {
         ///         Name = "AWS-Cloud",
@@ -95,6 +98,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Cloud Connector Group Data Source
         ///     var foo = Zpa.GetCloudConnectorGroup.Invoke(new()
         ///     {
         ///         Id = "1234567890",
@@ -126,6 +130,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Cloud Connector Group Data Source
         ///     var foo = Zpa.GetCloudConnectorGroup.Invoke(new()
         ///     {
         ///         Name = "AWS-Cloud",
@@ -142,6 +147,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // ZPA Cloud Connector Group Data Source
         ///     var foo = Zpa.GetCloudConnectorGroup.Invoke(new()
         ///     {
         ///         Id = "1234567890",

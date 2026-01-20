@@ -13,6 +13,8 @@ import (
 
 // ## Example Usage
 //
+// ### Dynamic Discovery Enabled
+//
 // ```go
 // package main
 //
@@ -26,7 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a App Connector Group
-//			exampleConnectorGroup, err := zpa.NewConnectorGroup(ctx, "exampleConnectorGroup", &zpa.ConnectorGroupArgs{
+//			exampleConnectorGroup, err := zpa.NewConnectorGroup(ctx, "example", &zpa.ConnectorGroupArgs{
+//				Name:                   pulumi.String("Example"),
 //				Description:            pulumi.String("Example"),
 //				Enabled:                pulumi.Bool(true),
 //				CityCountry:            pulumi.String("San Jose, CA"),
@@ -43,8 +46,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// Create a Server Group resource with Dynamic Discovery Enabled
-//			_, err = zpa.NewServerGroup(ctx, "exampleServerGroup", &zpa.ServerGroupArgs{
+//			_, err = zpa.NewServerGroup(ctx, "example", &zpa.ServerGroupArgs{
+//				Name:             pulumi.String("Example"),
 //				Description:      pulumi.String("Example"),
 //				Enabled:          pulumi.Bool(true),
 //				DynamicDiscovery: pulumi.Bool(true),
@@ -67,6 +70,8 @@ import (
 //
 // ```
 //
+// ### Dynamic Discovery Disabled
+//
 // ```go
 // package main
 //
@@ -80,7 +85,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create an application server
-//			exampleApplicationServer, err := zpa.NewApplicationServer(ctx, "exampleApplicationServer", &zpa.ApplicationServerArgs{
+//			exampleApplicationServer, err := zpa.NewApplicationServer(ctx, "example", &zpa.ApplicationServerArgs{
+//				Name:        pulumi.String("Example"),
 //				Description: pulumi.String("Example"),
 //				Address:     pulumi.String("server.example.com"),
 //				Enabled:     pulumi.Bool(true),
@@ -89,7 +95,8 @@ import (
 //				return err
 //			}
 //			// Create a App Connector Group
-//			exampleConnectorGroup, err := zpa.NewConnectorGroup(ctx, "exampleConnectorGroup", &zpa.ConnectorGroupArgs{
+//			exampleConnectorGroup, err := zpa.NewConnectorGroup(ctx, "example", &zpa.ConnectorGroupArgs{
+//				Name:                   pulumi.String("Example"),
 //				Description:            pulumi.String("Example"),
 //				Enabled:                pulumi.Bool(true),
 //				CityCountry:            pulumi.String("San Jose, CA"),
@@ -106,8 +113,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// ZPA Server Group resource with Dynamic Discovery Disabled
-//			_, err = zpa.NewServerGroup(ctx, "exampleServerGroup", &zpa.ServerGroupArgs{
+//			_, err = zpa.NewServerGroup(ctx, "example", &zpa.ServerGroupArgs{
+//				Name:             pulumi.String("Example"),
 //				Description:      pulumi.String("Example"),
 //				Enabled:          pulumi.Bool(true),
 //				DynamicDiscovery: pulumi.Bool(false),
@@ -127,8 +134,72 @@ import (
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				exampleConnectorGroup,
-//				zpa_application_server.Server,
+//				server,
 //			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Extranet Configuration
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := zpa.GetLocationController(ctx, &zpa.GetLocationControllerArgs{
+//				Name:      "ExtranetLocation01 | zscalerbeta.net",
+//				ZiaErName: "NewExtranet 8432",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			thisGetLocationGroupController, err := zpa.GetLocationGroupController(ctx, &zpa.GetLocationGroupControllerArgs{
+//				LocationName: "ExtranetLocation01",
+//				ZiaErName:    "NewExtranet 8432",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			thisGetExtranetResourcePartner, err := zpa.GetExtranetResourcePartner(ctx, &zpa.GetExtranetResourcePartnerArgs{
+//				Name: pulumi.StringRef("NewExtranet 8432"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = zpa.NewServerGroup(ctx, "example", &zpa.ServerGroupArgs{
+//				Name:             pulumi.String("Example"),
+//				Description:      pulumi.String("Example"),
+//				Enabled:          pulumi.Bool(true),
+//				DynamicDiscovery: pulumi.Bool(true),
+//				ExtranetEnabled:  pulumi.Bool(true),
+//				ExtranetDtos: zpa.ServerGroupExtranetDtoArray{
+//					&zpa.ServerGroupExtranetDtoArgs{
+//						ZpnErId: pulumi.String(thisGetExtranetResourcePartner.Id),
+//						LocationDtos: zpa.ServerGroupExtranetDtoLocationDtoArray{
+//							&zpa.ServerGroupExtranetDtoLocationDtoArgs{
+//								Id: pulumi.String(this.Id),
+//							},
+//						},
+//						LocationGroupDtos: zpa.ServerGroupExtranetDtoLocationGroupDtoArray{
+//							&zpa.ServerGroupExtranetDtoLocationGroupDtoArgs{
+//								Id: pulumi.String(thisGetLocationGroupController.Id),
+//							},
+//						},
+//					},
+//				},
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -169,13 +240,16 @@ type ServerGroup struct {
 	// This field controls dynamic discovery of the servers.
 	DynamicDiscovery pulumi.BoolPtrOutput `pulumi:"dynamicDiscovery"`
 	// This field defines if the server group is enabled or disabled.
-	Enabled       pulumi.BoolPtrOutput `pulumi:"enabled"`
-	IpAnchored    pulumi.BoolPtrOutput `pulumi:"ipAnchored"`
-	MicrotenantId pulumi.StringOutput  `pulumi:"microtenantId"`
+	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// Extranet configuration for the policy rule.
+	ExtranetDtos ServerGroupExtranetDtoArrayOutput `pulumi:"extranetDtos"`
+	// Enable extranet for this policy rule.
+	ExtranetEnabled pulumi.BoolPtrOutput `pulumi:"extranetEnabled"`
+	IpAnchored      pulumi.BoolPtrOutput `pulumi:"ipAnchored"`
+	MicrotenantId   pulumi.StringOutput  `pulumi:"microtenantId"`
 	// This field defines the name of the server group.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
-	// only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
+	// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
 	Servers ServerGroupServerArrayOutput `pulumi:"servers"`
 }
 
@@ -218,13 +292,16 @@ type serverGroupState struct {
 	// This field controls dynamic discovery of the servers.
 	DynamicDiscovery *bool `pulumi:"dynamicDiscovery"`
 	// This field defines if the server group is enabled or disabled.
-	Enabled       *bool   `pulumi:"enabled"`
-	IpAnchored    *bool   `pulumi:"ipAnchored"`
-	MicrotenantId *string `pulumi:"microtenantId"`
+	Enabled *bool `pulumi:"enabled"`
+	// Extranet configuration for the policy rule.
+	ExtranetDtos []ServerGroupExtranetDto `pulumi:"extranetDtos"`
+	// Enable extranet for this policy rule.
+	ExtranetEnabled *bool   `pulumi:"extranetEnabled"`
+	IpAnchored      *bool   `pulumi:"ipAnchored"`
+	MicrotenantId   *string `pulumi:"microtenantId"`
 	// This field defines the name of the server group.
 	Name *string `pulumi:"name"`
-	// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
-	// only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
+	// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
 	Servers []ServerGroupServer `pulumi:"servers"`
 }
 
@@ -238,13 +315,16 @@ type ServerGroupState struct {
 	// This field controls dynamic discovery of the servers.
 	DynamicDiscovery pulumi.BoolPtrInput
 	// This field defines if the server group is enabled or disabled.
-	Enabled       pulumi.BoolPtrInput
-	IpAnchored    pulumi.BoolPtrInput
-	MicrotenantId pulumi.StringPtrInput
+	Enabled pulumi.BoolPtrInput
+	// Extranet configuration for the policy rule.
+	ExtranetDtos ServerGroupExtranetDtoArrayInput
+	// Enable extranet for this policy rule.
+	ExtranetEnabled pulumi.BoolPtrInput
+	IpAnchored      pulumi.BoolPtrInput
+	MicrotenantId   pulumi.StringPtrInput
 	// This field defines the name of the server group.
 	Name pulumi.StringPtrInput
-	// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
-	// only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
+	// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
 	Servers ServerGroupServerArrayInput
 }
 
@@ -262,13 +342,16 @@ type serverGroupArgs struct {
 	// This field controls dynamic discovery of the servers.
 	DynamicDiscovery *bool `pulumi:"dynamicDiscovery"`
 	// This field defines if the server group is enabled or disabled.
-	Enabled       *bool   `pulumi:"enabled"`
-	IpAnchored    *bool   `pulumi:"ipAnchored"`
-	MicrotenantId *string `pulumi:"microtenantId"`
+	Enabled *bool `pulumi:"enabled"`
+	// Extranet configuration for the policy rule.
+	ExtranetDtos []ServerGroupExtranetDto `pulumi:"extranetDtos"`
+	// Enable extranet for this policy rule.
+	ExtranetEnabled *bool   `pulumi:"extranetEnabled"`
+	IpAnchored      *bool   `pulumi:"ipAnchored"`
+	MicrotenantId   *string `pulumi:"microtenantId"`
 	// This field defines the name of the server group.
 	Name *string `pulumi:"name"`
-	// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
-	// only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
+	// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
 	Servers []ServerGroupServer `pulumi:"servers"`
 }
 
@@ -283,13 +366,16 @@ type ServerGroupArgs struct {
 	// This field controls dynamic discovery of the servers.
 	DynamicDiscovery pulumi.BoolPtrInput
 	// This field defines if the server group is enabled or disabled.
-	Enabled       pulumi.BoolPtrInput
-	IpAnchored    pulumi.BoolPtrInput
-	MicrotenantId pulumi.StringPtrInput
+	Enabled pulumi.BoolPtrInput
+	// Extranet configuration for the policy rule.
+	ExtranetDtos ServerGroupExtranetDtoArrayInput
+	// Enable extranet for this policy rule.
+	ExtranetEnabled pulumi.BoolPtrInput
+	IpAnchored      pulumi.BoolPtrInput
+	MicrotenantId   pulumi.StringPtrInput
 	// This field defines the name of the server group.
 	Name pulumi.StringPtrInput
-	// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
-	// only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
+	// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
 	Servers ServerGroupServerArrayInput
 }
 
@@ -408,6 +494,16 @@ func (o ServerGroupOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Extranet configuration for the policy rule.
+func (o ServerGroupOutput) ExtranetDtos() ServerGroupExtranetDtoArrayOutput {
+	return o.ApplyT(func(v *ServerGroup) ServerGroupExtranetDtoArrayOutput { return v.ExtranetDtos }).(ServerGroupExtranetDtoArrayOutput)
+}
+
+// Enable extranet for this policy rule.
+func (o ServerGroupOutput) ExtranetEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.BoolPtrOutput { return v.ExtranetEnabled }).(pulumi.BoolPtrOutput)
+}
+
 func (o ServerGroupOutput) IpAnchored() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.BoolPtrOutput { return v.IpAnchored }).(pulumi.BoolPtrOutput)
 }
@@ -421,8 +517,7 @@ func (o ServerGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
-// only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
+// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
 func (o ServerGroupOutput) Servers() ServerGroupServerArrayOutput {
 	return o.ApplyT(func(v *ServerGroup) ServerGroupServerArrayOutput { return v.Servers }).(ServerGroupServerArrayOutput)
 }

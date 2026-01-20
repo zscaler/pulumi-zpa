@@ -34,18 +34,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thisIsolationProfile, err := zpa.GetIsolationProfile(ctx, &zpa.GetIsolationProfileArgs{
+//			// Get Isolation Profile ID
+//			this, err := zpa.GetIsolationProfile(ctx, &zpa.GetIsolationProfileArgs{
 //				Name: pulumi.StringRef("zpa_isolation_profile"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			thisIdPController, err := zpa.GetIdPController(ctx, &zpa.GetIdPControllerArgs{
+//			// Retrieve Identity Provider ID
+//			thisGetIdPController, err := zpa.GetIdPController(ctx, &zpa.GetIdPControllerArgs{
 //				Name: pulumi.StringRef("Idp_Name"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			// Retrieve SAML Attribute ID
 //			emailUserSso, err := zpa.GetSAMLAttribute(ctx, &zpa.GetSAMLAttributeArgs{
 //				Name:    pulumi.StringRef("Email_Users"),
 //				IdpName: pulumi.StringRef("Idp_Name"),
@@ -53,6 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Retrieve SAML Attribute ID
 //			groupUser, err := zpa.GetSAMLAttribute(ctx, &zpa.GetSAMLAttributeArgs{
 //				Name:    pulumi.StringRef("GroupName_Users"),
 //				IdpName: pulumi.StringRef("Idp_Name"),
@@ -60,6 +64,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Retrieve SCIM Group ID
 //			a000, err := zpa.GetSCIMGroups(ctx, &zpa.GetSCIMGroupsArgs{
 //				Name:    pulumi.StringRef("A000"),
 //				IdpName: pulumi.StringRef("Idp_Name"),
@@ -67,6 +72,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Retrieve SCIM Group ID
 //			b000, err := zpa.GetSCIMGroups(ctx, &zpa.GetSCIMGroupsArgs{
 //				Name:    pulumi.StringRef("B000"),
 //				IdpName: pulumi.StringRef("Idp_Name"),
@@ -75,10 +81,11 @@ import (
 //				return err
 //			}
 //			// Create Policy Access Isolation Rule V2
-//			_, err = zpa.NewPolicyAccessIsolationRuleV2(ctx, "thisPolicyAccessIsolationRuleV2", &zpa.PolicyAccessIsolationRuleV2Args{
+//			_, err = zpa.NewPolicyAccessIsolationRuleV2(ctx, "this", &zpa.PolicyAccessIsolationRuleV2Args{
+//				Name:                  pulumi.String("Example"),
 //				Description:           pulumi.String("Example"),
 //				Action:                pulumi.String("ISOLATE"),
-//				ZpnIsolationProfileId: pulumi.String(thisIsolationProfile.Id),
+//				ZpnIsolationProfileId: pulumi.String(this.Id),
 //				Conditions: zpa.PolicyAccessIsolationRuleV2ConditionArray{
 //					&zpa.PolicyAccessIsolationRuleV2ConditionArgs{
 //						Operator: pulumi.String("OR"),
@@ -112,12 +119,69 @@ import (
 //								EntryValues: zpa.PolicyAccessIsolationRuleV2ConditionOperandEntryValueArray{
 //									&zpa.PolicyAccessIsolationRuleV2ConditionOperandEntryValueArgs{
 //										Rhs: pulumi.String(a000.Id),
-//										Lhs: pulumi.String(thisIdPController.Id),
+//										Lhs: pulumi.String(thisGetIdPController.Id),
 //									},
 //									&zpa.PolicyAccessIsolationRuleV2ConditionOperandEntryValueArgs{
 //										Rhs: pulumi.String(b000.Id),
-//										Lhs: pulumi.String(thisIdPController.Id),
+//										Lhs: pulumi.String(thisGetIdPController.Id),
 //									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Chrome Enterprise And Chrome Posture Profile
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := zpa.GetManagedBrowserProfile(ctx, &zpa.GetManagedBrowserProfileArgs{
+//				Name: pulumi.StringRef("Profile01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = zpa.NewPolicyAccessIsolationRuleV2(ctx, "this", &zpa.PolicyAccessIsolationRuleV2Args{
+//				Name:                  pulumi.String("Example"),
+//				Description:           pulumi.String("Example"),
+//				Action:                pulumi.String("ISOLATE"),
+//				ZpnIsolationProfileId: pulumi.Any(thisZpaIsolationProfile.Id),
+//				Conditions: zpa.PolicyAccessIsolationRuleV2ConditionArray{
+//					&zpa.PolicyAccessIsolationRuleV2ConditionArgs{
+//						Operator: pulumi.String("OR"),
+//						Operands: zpa.PolicyAccessIsolationRuleV2ConditionOperandArray{
+//							&zpa.PolicyAccessIsolationRuleV2ConditionOperandArgs{
+//								ObjectType: pulumi.String("CHROME_ENTERPRISE"),
+//								EntryValues: zpa.PolicyAccessIsolationRuleV2ConditionOperandEntryValueArray{
+//									&zpa.PolicyAccessIsolationRuleV2ConditionOperandEntryValueArgs{
+//										Lhs: pulumi.String("managed"),
+//										Rhs: pulumi.String("true"),
+//									},
+//								},
+//							},
+//							&zpa.PolicyAccessIsolationRuleV2ConditionOperandArgs{
+//								ObjectType: pulumi.String("CHROME_POSTURE_PROFILE"),
+//								Values: pulumi.StringArray{
+//									pulumi.String(this.Id),
 //								},
 //							},
 //						},

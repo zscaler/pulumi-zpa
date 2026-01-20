@@ -24,6 +24,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Service Edge Group Data Source by name
  * const foo = zpa.getServiceEdgeGroup({
  *     name: "DataCenter",
  * });
@@ -33,6 +34,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Service Edge Group Data Source by ID
  * const foo = zpa.getServiceEdgeGroup({
  *     id: "123456789",
  * });
@@ -60,11 +62,13 @@ export interface GetServiceEdgeGroupArgs {
  */
 export interface GetServiceEdgeGroupResult {
     readonly altCloud: string;
+    readonly city: string;
     readonly cityCountry: string;
     readonly countryCode: string;
     readonly creationTime: string;
     readonly description: string;
     readonly enabled: boolean;
+    readonly exclusiveForBusinessContinuity: boolean;
     readonly geoLocationId: string;
     readonly graceDistanceEnabled: boolean;
     readonly graceDistanceValue: string;
@@ -77,7 +81,9 @@ export interface GetServiceEdgeGroupResult {
     readonly modifiedBy: string;
     readonly modifiedTime: string;
     readonly name: string;
+    readonly nameWithoutTrim: string;
     readonly overrideVersionProfile: boolean;
+    readonly restrictedEntity: boolean;
     readonly serviceEdges: outputs.GetServiceEdgeGroupServiceEdge[];
     readonly siteId: string;
     readonly siteName: string;
@@ -107,6 +113,7 @@ export interface GetServiceEdgeGroupResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Service Edge Group Data Source by name
  * const foo = zpa.getServiceEdgeGroup({
  *     name: "DataCenter",
  * });
@@ -116,6 +123,7 @@ export interface GetServiceEdgeGroupResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * // ZPA Service Edge Group Data Source by ID
  * const foo = zpa.getServiceEdgeGroup({
  *     id: "123456789",
  * });

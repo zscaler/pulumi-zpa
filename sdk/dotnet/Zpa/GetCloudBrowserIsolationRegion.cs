@@ -13,7 +13,7 @@ namespace zscaler.PulumiPackage.Zpa
     public static class GetCloudBrowserIsolationRegion
     {
         /// <summary>
-        /// Use the **zpa_cloud_browser_isolation_region** data source to get information about Cloud Browser Isolation regions such as ID and Name. This data source information is required as part of the attribute `region_ids` when creating an Cloud Browser Isolation External Profile ``zpa.CloudBrowserIsolationExternalProfile``
+        /// Use the **zpa_cloud_browser_isolation_region** data source to get information about Cloud Browser Isolation regions such as ID and Name. This data source information is required as part of the attribute `RegionIds` when creating an Cloud Browser Isolation External Profile ``zpa.CloudBrowserIsolationExternalProfile``
         /// 
         /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
         /// 
@@ -27,6 +27,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Retrieve CBI Region ID and Name
         ///     var @this = Zpa.GetCloudBrowserIsolationRegion.Invoke(new()
         ///     {
         ///         Name = "Singapore",
@@ -39,7 +40,7 @@ namespace zscaler.PulumiPackage.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCloudBrowserIsolationRegionResult>("zpa:index/getCloudBrowserIsolationRegion:getCloudBrowserIsolationRegion", args ?? new GetCloudBrowserIsolationRegionArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use the **zpa_cloud_browser_isolation_region** data source to get information about Cloud Browser Isolation regions such as ID and Name. This data source information is required as part of the attribute `region_ids` when creating an Cloud Browser Isolation External Profile ``zpa.CloudBrowserIsolationExternalProfile``
+        /// Use the **zpa_cloud_browser_isolation_region** data source to get information about Cloud Browser Isolation regions such as ID and Name. This data source information is required as part of the attribute `RegionIds` when creating an Cloud Browser Isolation External Profile ``zpa.CloudBrowserIsolationExternalProfile``
         /// 
         /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
         /// 
@@ -53,6 +54,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Retrieve CBI Region ID and Name
         ///     var @this = Zpa.GetCloudBrowserIsolationRegion.Invoke(new()
         ///     {
         ///         Name = "Singapore",
@@ -65,7 +67,7 @@ namespace zscaler.PulumiPackage.Zpa
             => global::Pulumi.Deployment.Instance.Invoke<GetCloudBrowserIsolationRegionResult>("zpa:index/getCloudBrowserIsolationRegion:getCloudBrowserIsolationRegion", args ?? new GetCloudBrowserIsolationRegionInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use the **zpa_cloud_browser_isolation_region** data source to get information about Cloud Browser Isolation regions such as ID and Name. This data source information is required as part of the attribute `region_ids` when creating an Cloud Browser Isolation External Profile ``zpa.CloudBrowserIsolationExternalProfile``
+        /// Use the **zpa_cloud_browser_isolation_region** data source to get information about Cloud Browser Isolation regions such as ID and Name. This data source information is required as part of the attribute `RegionIds` when creating an Cloud Browser Isolation External Profile ``zpa.CloudBrowserIsolationExternalProfile``
         /// 
         /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
         /// 
@@ -79,6 +81,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Retrieve CBI Region ID and Name
         ///     var @this = Zpa.GetCloudBrowserIsolationRegion.Invoke(new()
         ///     {
         ///         Name = "Singapore",

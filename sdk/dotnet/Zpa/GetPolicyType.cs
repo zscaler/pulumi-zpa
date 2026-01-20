@@ -16,14 +16,14 @@ namespace zscaler.PulumiPackage.Zpa
         /// * [Official documentation](https://help.zscaler.com/zpa/about-access-policy)
         /// * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api)
         /// 
-        /// Use the **zpa_policy_type** data source to get information about an a ``policy_set_id`` and ``policy_type``. This data source is required when creating:
+        /// Use the **zpa_policy_type** data source to get information about an a ``PolicySetId`` and ``PolicyType``. This data source is required when creating:
         /// 
         /// 1. Access policy Rules
         /// 2. Access policy timeout rules
         /// 3. Access policy forwarding rules
         /// 4. Access policy inspection rules
         /// 
-        /// &gt; **NOTE** The parameters ``policy_set_id`` is required in all circumstances and is exported when checking for the policy_type parameter. The policy_type value is used for differentiating the policy types, in the request endpoint. The supported values are:
+        /// &gt; **NOTE** The parameters ``PolicySetId`` is required in all circumstances and is exported when checking for the PolicyType parameter. The PolicyType value is used for differentiating the policy types, in the request endpoint. The supported values are:
         /// 
         /// * ``ACCESS_POLICY/GLOBAL_POLICY``
         /// * ``TIMEOUT_POLICY/REAUTH_POLICY``
@@ -40,6 +40,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Get information for "ACCESS_POLICY" ID
         ///     var accessPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "ACCESS_POLICY",
@@ -60,6 +61,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Get information for "GLOBAL_POLICY" ID
         ///     var globalPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "GLOBAL_POLICY",
@@ -80,6 +82,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Get information for "TIMEOUT_POLICY" ID
         ///     var timeoutPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "TIMEOUT_POLICY",
@@ -100,6 +103,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Get information for "REAUTH_POLICY" ID
         ///     var reauthPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "REAUTH_POLICY",
@@ -120,6 +124,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Get information for "CLIENT_FORWARDING_POLICY" ID
         ///     var clientForwardingPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "CLIENT_FORWARDING_POLICY",
@@ -140,6 +145,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Get information for "INSPECTION_POLICY" ID
         ///     var inspectionPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "INSPECTION_POLICY",
@@ -159,14 +165,14 @@ namespace zscaler.PulumiPackage.Zpa
         /// * [Official documentation](https://help.zscaler.com/zpa/about-access-policy)
         /// * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api)
         /// 
-        /// Use the **zpa_policy_type** data source to get information about an a ``policy_set_id`` and ``policy_type``. This data source is required when creating:
+        /// Use the **zpa_policy_type** data source to get information about an a ``PolicySetId`` and ``PolicyType``. This data source is required when creating:
         /// 
         /// 1. Access policy Rules
         /// 2. Access policy timeout rules
         /// 3. Access policy forwarding rules
         /// 4. Access policy inspection rules
         /// 
-        /// &gt; **NOTE** The parameters ``policy_set_id`` is required in all circumstances and is exported when checking for the policy_type parameter. The policy_type value is used for differentiating the policy types, in the request endpoint. The supported values are:
+        /// &gt; **NOTE** The parameters ``PolicySetId`` is required in all circumstances and is exported when checking for the PolicyType parameter. The PolicyType value is used for differentiating the policy types, in the request endpoint. The supported values are:
         /// 
         /// * ``ACCESS_POLICY/GLOBAL_POLICY``
         /// * ``TIMEOUT_POLICY/REAUTH_POLICY``
@@ -183,6 +189,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Get information for "ACCESS_POLICY" ID
         ///     var accessPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "ACCESS_POLICY",
@@ -203,6 +210,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Get information for "GLOBAL_POLICY" ID
         ///     var globalPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "GLOBAL_POLICY",
@@ -223,6 +231,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Get information for "TIMEOUT_POLICY" ID
         ///     var timeoutPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "TIMEOUT_POLICY",
@@ -243,6 +252,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Get information for "REAUTH_POLICY" ID
         ///     var reauthPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "REAUTH_POLICY",
@@ -263,6 +273,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Get information for "CLIENT_FORWARDING_POLICY" ID
         ///     var clientForwardingPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "CLIENT_FORWARDING_POLICY",
@@ -283,6 +294,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Get information for "INSPECTION_POLICY" ID
         ///     var inspectionPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "INSPECTION_POLICY",
@@ -302,14 +314,14 @@ namespace zscaler.PulumiPackage.Zpa
         /// * [Official documentation](https://help.zscaler.com/zpa/about-access-policy)
         /// * [API documentation](https://help.zscaler.com/zpa/configuring-access-policies-using-api)
         /// 
-        /// Use the **zpa_policy_type** data source to get information about an a ``policy_set_id`` and ``policy_type``. This data source is required when creating:
+        /// Use the **zpa_policy_type** data source to get information about an a ``PolicySetId`` and ``PolicyType``. This data source is required when creating:
         /// 
         /// 1. Access policy Rules
         /// 2. Access policy timeout rules
         /// 3. Access policy forwarding rules
         /// 4. Access policy inspection rules
         /// 
-        /// &gt; **NOTE** The parameters ``policy_set_id`` is required in all circumstances and is exported when checking for the policy_type parameter. The policy_type value is used for differentiating the policy types, in the request endpoint. The supported values are:
+        /// &gt; **NOTE** The parameters ``PolicySetId`` is required in all circumstances and is exported when checking for the PolicyType parameter. The PolicyType value is used for differentiating the policy types, in the request endpoint. The supported values are:
         /// 
         /// * ``ACCESS_POLICY/GLOBAL_POLICY``
         /// * ``TIMEOUT_POLICY/REAUTH_POLICY``
@@ -326,6 +338,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Get information for "ACCESS_POLICY" ID
         ///     var accessPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "ACCESS_POLICY",
@@ -346,6 +359,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Get information for "GLOBAL_POLICY" ID
         ///     var globalPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "GLOBAL_POLICY",
@@ -366,6 +380,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Get information for "TIMEOUT_POLICY" ID
         ///     var timeoutPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "TIMEOUT_POLICY",
@@ -386,6 +401,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Get information for "REAUTH_POLICY" ID
         ///     var reauthPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "REAUTH_POLICY",
@@ -406,6 +422,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Get information for "CLIENT_FORWARDING_POLICY" ID
         ///     var clientForwardingPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "CLIENT_FORWARDING_POLICY",
@@ -426,6 +443,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Get information for "INSPECTION_POLICY" ID
         ///     var inspectionPolicy = Zpa.GetPolicyType.Invoke(new()
         ///     {
         ///         PolicyType = "INSPECTION_POLICY",

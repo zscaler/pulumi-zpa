@@ -13,6 +13,8 @@ namespace zscaler.PulumiPackage.Zpa
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ### Dynamic Discovery Enabled
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -22,8 +24,9 @@ namespace zscaler.PulumiPackage.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a App Connector Group
-    ///     var exampleConnectorGroup = new Zpa.ConnectorGroup("exampleConnectorGroup", new()
+    ///     var exampleConnectorGroup = new Zpa.ConnectorGroup("example", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///         CityCountry = "San Jose, CA",
@@ -38,9 +41,9 @@ namespace zscaler.PulumiPackage.Zpa
     ///         DnsQueryType = "IPV4",
     ///     });
     /// 
-    ///     // Create a Server Group resource with Dynamic Discovery Enabled
-    ///     var exampleServerGroup = new Zpa.ServerGroup("exampleServerGroup", new()
+    ///     var example = new Zpa.ServerGroup("example", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///         DynamicDiscovery = true,
@@ -65,6 +68,8 @@ namespace zscaler.PulumiPackage.Zpa
     /// });
     /// ```
     /// 
+    /// ### Dynamic Discovery Disabled
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -74,16 +79,18 @@ namespace zscaler.PulumiPackage.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create an application server
-    ///     var exampleApplicationServer = new Zpa.ApplicationServer("exampleApplicationServer", new()
+    ///     var exampleApplicationServer = new Zpa.ApplicationServer("example", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Address = "server.example.com",
     ///         Enabled = true,
     ///     });
     /// 
     ///     // Create a App Connector Group
-    ///     var exampleConnectorGroup = new Zpa.ConnectorGroup("exampleConnectorGroup", new()
+    ///     var exampleConnectorGroup = new Zpa.ConnectorGroup("example", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///         CityCountry = "San Jose, CA",
@@ -98,9 +105,9 @@ namespace zscaler.PulumiPackage.Zpa
     ///         DnsQueryType = "IPV4",
     ///     });
     /// 
-    ///     // ZPA Server Group resource with Dynamic Discovery Disabled
-    ///     var exampleServerGroup = new Zpa.ServerGroup("exampleServerGroup", new()
+    ///     var example = new Zpa.ServerGroup("example", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "Example",
     ///         Enabled = true,
     ///         DynamicDiscovery = false,
@@ -129,7 +136,67 @@ namespace zscaler.PulumiPackage.Zpa
     ///         DependsOn =
     ///         {
     ///             exampleConnectorGroup,
-    ///             zpa_application_server.Server,
+    ///             server,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Extranet Configuration
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Pulumi.Zpa;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = Zpa.GetLocationController.Invoke(new()
+    ///     {
+    ///         Name = "ExtranetLocation01 | zscalerbeta.net",
+    ///         ZiaErName = "NewExtranet 8432",
+    ///     });
+    /// 
+    ///     var thisGetLocationGroupController = Zpa.GetLocationGroupController.Invoke(new()
+    ///     {
+    ///         LocationName = "ExtranetLocation01",
+    ///         ZiaErName = "NewExtranet 8432",
+    ///     });
+    /// 
+    ///     var thisGetExtranetResourcePartner = Zpa.GetExtranetResourcePartner.Invoke(new()
+    ///     {
+    ///         Name = "NewExtranet 8432",
+    ///     });
+    /// 
+    ///     var example = new Zpa.ServerGroup("example", new()
+    ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         Enabled = true,
+    ///         DynamicDiscovery = true,
+    ///         ExtranetEnabled = true,
+    ///         ExtranetDtos = new[]
+    ///         {
+    ///             new Zpa.Inputs.ServerGroupExtranetDtoArgs
+    ///             {
+    ///                 ZpnErId = thisGetExtranetResourcePartner.Apply(getExtranetResourcePartnerResult =&gt; getExtranetResourcePartnerResult.Id),
+    ///                 LocationDtos = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.ServerGroupExtranetDtoLocationDtoArgs
+    ///                     {
+    ///                         Id = @this.Apply(@this =&gt; @this.Apply(getLocationControllerResult =&gt; getLocationControllerResult.Id)),
+    ///                     },
+    ///                 },
+    ///                 LocationGroupDtos = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.ServerGroupExtranetDtoLocationGroupDtoArgs
+    ///                     {
+    ///                         Id = thisGetLocationGroupController.Apply(getLocationGroupControllerResult =&gt; getLocationGroupControllerResult.Id),
+    ///                     },
+    ///                 },
+    ///             },
     ///         },
     ///     });
     /// 
@@ -189,6 +256,18 @@ namespace zscaler.PulumiPackage.Zpa
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
+        /// <summary>
+        /// Extranet configuration for the policy rule.
+        /// </summary>
+        [Output("extranetDtos")]
+        public Output<ImmutableArray<Outputs.ServerGroupExtranetDto>> ExtranetDtos { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable extranet for this policy rule.
+        /// </summary>
+        [Output("extranetEnabled")]
+        public Output<bool?> ExtranetEnabled { get; private set; } = null!;
+
         [Output("ipAnchored")]
         public Output<bool?> IpAnchored { get; private set; } = null!;
 
@@ -202,8 +281,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
-        /// only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
+        /// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
         /// </summary>
         [Output("servers")]
         public Output<ImmutableArray<Outputs.ServerGroupServer>> Servers { get; private set; } = null!;
@@ -296,6 +374,24 @@ namespace zscaler.PulumiPackage.Zpa
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        [Input("extranetDtos")]
+        private InputList<Inputs.ServerGroupExtranetDtoArgs>? _extranetDtos;
+
+        /// <summary>
+        /// Extranet configuration for the policy rule.
+        /// </summary>
+        public InputList<Inputs.ServerGroupExtranetDtoArgs> ExtranetDtos
+        {
+            get => _extranetDtos ?? (_extranetDtos = new InputList<Inputs.ServerGroupExtranetDtoArgs>());
+            set => _extranetDtos = value;
+        }
+
+        /// <summary>
+        /// Enable extranet for this policy rule.
+        /// </summary>
+        [Input("extranetEnabled")]
+        public Input<bool>? ExtranetEnabled { get; set; }
+
         [Input("ipAnchored")]
         public Input<bool>? IpAnchored { get; set; }
 
@@ -312,8 +408,7 @@ namespace zscaler.PulumiPackage.Zpa
         private InputList<Inputs.ServerGroupServerArgs>? _servers;
 
         /// <summary>
-        /// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
-        /// only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
+        /// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
         /// </summary>
         public InputList<Inputs.ServerGroupServerArgs> Servers
         {
@@ -370,6 +465,24 @@ namespace zscaler.PulumiPackage.Zpa
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        [Input("extranetDtos")]
+        private InputList<Inputs.ServerGroupExtranetDtoGetArgs>? _extranetDtos;
+
+        /// <summary>
+        /// Extranet configuration for the policy rule.
+        /// </summary>
+        public InputList<Inputs.ServerGroupExtranetDtoGetArgs> ExtranetDtos
+        {
+            get => _extranetDtos ?? (_extranetDtos = new InputList<Inputs.ServerGroupExtranetDtoGetArgs>());
+            set => _extranetDtos = value;
+        }
+
+        /// <summary>
+        /// Enable extranet for this policy rule.
+        /// </summary>
+        [Input("extranetEnabled")]
+        public Input<bool>? ExtranetEnabled { get; set; }
+
         [Input("ipAnchored")]
         public Input<bool>? IpAnchored { get; set; }
 
@@ -386,8 +499,7 @@ namespace zscaler.PulumiPackage.Zpa
         private InputList<Inputs.ServerGroupServerGetArgs>? _servers;
 
         /// <summary>
-        /// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required
-        /// only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
+        /// This field is a list of servers that are applicable only when dynamic discovery is disabled. Server name is required only in cases where the new servers need to be created in this API. For existing servers, pass only the serverId.
         /// </summary>
         public InputList<Inputs.ServerGroupServerGetArgs> Servers
         {

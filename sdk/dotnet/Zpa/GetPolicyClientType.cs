@@ -23,11 +23,11 @@ namespace zscaler.PulumiPackage.Zpa
         ///     - ``zpa.PolicyAccessIsolationRule``
         ///     - ``zpa.PolicyAccessInspectionRule``
         /// 
-        /// The ``object_type`` attribute must be defined as "CLIENT_TYPE" in the policy operand condition. To learn more see the To learn more see the [Getting Details of All Client Types](https://help.zscaler.com/zpa/configuring-access-policies-using-api#getClientTypes)
+        /// The ``ObjectType`` attribute must be defined as "CLIENT_TYPE" in the policy operand condition. To learn more see the To learn more see the [Getting Details of All Client Types](https://help.zscaler.com/zpa/configuring-access-policies-using-api#getClientTypes)
         /// 
         /// &gt; **NOTE** By Default the ZPA provider will return all client types
         /// 
-        /// &gt; **NOTE** When defining a ``zpa.PolicyAccessIsolationRule`` policy the ``object_type`` "CLIENT_TYPE" is mandatory and ``zpn_client_type_exporter`` is the only supported value.
+        /// &gt; **NOTE** When defining a ``zpa.PolicyAccessIsolationRule`` policy the ``ObjectType`` "CLIENT_TYPE" is mandatory and ``ZpnClientTypeExporter`` is the only supported value.
         /// 
         /// ## Example Usage
         /// 
@@ -58,11 +58,11 @@ namespace zscaler.PulumiPackage.Zpa
         ///     - ``zpa.PolicyAccessIsolationRule``
         ///     - ``zpa.PolicyAccessInspectionRule``
         /// 
-        /// The ``object_type`` attribute must be defined as "CLIENT_TYPE" in the policy operand condition. To learn more see the To learn more see the [Getting Details of All Client Types](https://help.zscaler.com/zpa/configuring-access-policies-using-api#getClientTypes)
+        /// The ``ObjectType`` attribute must be defined as "CLIENT_TYPE" in the policy operand condition. To learn more see the To learn more see the [Getting Details of All Client Types](https://help.zscaler.com/zpa/configuring-access-policies-using-api#getClientTypes)
         /// 
         /// &gt; **NOTE** By Default the ZPA provider will return all client types
         /// 
-        /// &gt; **NOTE** When defining a ``zpa.PolicyAccessIsolationRule`` policy the ``object_type`` "CLIENT_TYPE" is mandatory and ``zpn_client_type_exporter`` is the only supported value.
+        /// &gt; **NOTE** When defining a ``zpa.PolicyAccessIsolationRule`` policy the ``ObjectType`` "CLIENT_TYPE" is mandatory and ``ZpnClientTypeExporter`` is the only supported value.
         /// 
         /// ## Example Usage
         /// 
@@ -93,11 +93,11 @@ namespace zscaler.PulumiPackage.Zpa
         ///     - ``zpa.PolicyAccessIsolationRule``
         ///     - ``zpa.PolicyAccessInspectionRule``
         /// 
-        /// The ``object_type`` attribute must be defined as "CLIENT_TYPE" in the policy operand condition. To learn more see the To learn more see the [Getting Details of All Client Types](https://help.zscaler.com/zpa/configuring-access-policies-using-api#getClientTypes)
+        /// The ``ObjectType`` attribute must be defined as "CLIENT_TYPE" in the policy operand condition. To learn more see the To learn more see the [Getting Details of All Client Types](https://help.zscaler.com/zpa/configuring-access-policies-using-api#getClientTypes)
         /// 
         /// &gt; **NOTE** By Default the ZPA provider will return all client types
         /// 
-        /// &gt; **NOTE** When defining a ``zpa.PolicyAccessIsolationRule`` policy the ``object_type`` "CLIENT_TYPE" is mandatory and ``zpn_client_type_exporter`` is the only supported value.
+        /// &gt; **NOTE** When defining a ``zpa.PolicyAccessIsolationRule`` policy the ``ObjectType`` "CLIENT_TYPE" is mandatory and ``ZpnClientTypeExporter`` is the only supported value.
         /// 
         /// ## Example Usage
         /// 

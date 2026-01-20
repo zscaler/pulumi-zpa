@@ -45,17 +45,16 @@ type ApplicationSegment struct {
 	// Whether Double Encryption is enabled or disabled for the app.
 	DoubleEncrypt pulumi.BoolPtrOutput `pulumi:"doubleEncrypt"`
 	// Whether this application is enabled or not.
-	Enabled         pulumi.BoolPtrOutput   `pulumi:"enabled"`
-	FqdnDnsCheck    pulumi.BoolPtrOutput   `pulumi:"fqdnDnsCheck"`
-	HealthCheckType pulumi.StringPtrOutput `pulumi:"healthCheckType"`
+	Enabled         pulumi.BoolPtrOutput `pulumi:"enabled"`
+	FqdnDnsCheck    pulumi.BoolPtrOutput `pulumi:"fqdnDnsCheck"`
+	HealthCheckType pulumi.StringOutput  `pulumi:"healthCheckType"`
 	// Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
 	HealthReporting pulumi.StringPtrOutput `pulumi:"healthReporting"`
 	IcmpAccessType  pulumi.StringPtrOutput `pulumi:"icmpAccessType"`
 	// Indicates if Inspect Traffic with ZIA is enabled for the application.
 	InspectTrafficWithZia pulumi.BoolPtrOutput `pulumi:"inspectTrafficWithZia"`
 	IpAnchored            pulumi.BoolPtrOutput `pulumi:"ipAnchored"`
-	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-	// connectors.
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
 	IsCnameEnabled       pulumi.BoolOutput      `pulumi:"isCnameEnabled"`
 	IsIncompleteDrConfig pulumi.BoolPtrOutput   `pulumi:"isIncompleteDrConfig"`
 	MatchStyle           pulumi.StringOutput    `pulumi:"matchStyle"`
@@ -79,6 +78,9 @@ type ApplicationSegment struct {
 	// UDP port ranges used to access the app.
 	UdpPortRanges pulumi.StringArrayOutput `pulumi:"udpPortRanges"`
 	UseInDrMode   pulumi.BoolPtrOutput     `pulumi:"useInDrMode"`
+	// If set to true, designates the application segment for weighted load balancing
+	WeightedLoadBalancing pulumi.BoolPtrOutput                 `pulumi:"weightedLoadBalancing"`
+	ZpnErIds              ApplicationSegmentZpnErIdArrayOutput `pulumi:"zpnErIds"`
 }
 
 // NewApplicationSegment registers a new resource with the given unique name, arguments, and options.
@@ -136,8 +138,7 @@ type applicationSegmentState struct {
 	// Indicates if Inspect Traffic with ZIA is enabled for the application.
 	InspectTrafficWithZia *bool `pulumi:"inspectTrafficWithZia"`
 	IpAnchored            *bool `pulumi:"ipAnchored"`
-	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-	// connectors.
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
 	IsCnameEnabled       *bool   `pulumi:"isCnameEnabled"`
 	IsIncompleteDrConfig *bool   `pulumi:"isIncompleteDrConfig"`
 	MatchStyle           *string `pulumi:"matchStyle"`
@@ -161,6 +162,9 @@ type applicationSegmentState struct {
 	// UDP port ranges used to access the app.
 	UdpPortRanges []string `pulumi:"udpPortRanges"`
 	UseInDrMode   *bool    `pulumi:"useInDrMode"`
+	// If set to true, designates the application segment for weighted load balancing
+	WeightedLoadBalancing *bool                       `pulumi:"weightedLoadBalancing"`
+	ZpnErIds              []ApplicationSegmentZpnErId `pulumi:"zpnErIds"`
 }
 
 type ApplicationSegmentState struct {
@@ -186,8 +190,7 @@ type ApplicationSegmentState struct {
 	// Indicates if Inspect Traffic with ZIA is enabled for the application.
 	InspectTrafficWithZia pulumi.BoolPtrInput
 	IpAnchored            pulumi.BoolPtrInput
-	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-	// connectors.
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
 	IsCnameEnabled       pulumi.BoolPtrInput
 	IsIncompleteDrConfig pulumi.BoolPtrInput
 	MatchStyle           pulumi.StringPtrInput
@@ -211,6 +214,9 @@ type ApplicationSegmentState struct {
 	// UDP port ranges used to access the app.
 	UdpPortRanges pulumi.StringArrayInput
 	UseInDrMode   pulumi.BoolPtrInput
+	// If set to true, designates the application segment for weighted load balancing
+	WeightedLoadBalancing pulumi.BoolPtrInput
+	ZpnErIds              ApplicationSegmentZpnErIdArrayInput
 }
 
 func (ApplicationSegmentState) ElementType() reflect.Type {
@@ -240,8 +246,7 @@ type applicationSegmentArgs struct {
 	// Indicates if Inspect Traffic with ZIA is enabled for the application.
 	InspectTrafficWithZia *bool `pulumi:"inspectTrafficWithZia"`
 	IpAnchored            *bool `pulumi:"ipAnchored"`
-	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-	// connectors.
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
 	IsCnameEnabled       *bool   `pulumi:"isCnameEnabled"`
 	IsIncompleteDrConfig *bool   `pulumi:"isIncompleteDrConfig"`
 	MatchStyle           *string `pulumi:"matchStyle"`
@@ -265,6 +270,9 @@ type applicationSegmentArgs struct {
 	// UDP port ranges used to access the app.
 	UdpPortRanges []string `pulumi:"udpPortRanges"`
 	UseInDrMode   *bool    `pulumi:"useInDrMode"`
+	// If set to true, designates the application segment for weighted load balancing
+	WeightedLoadBalancing *bool                       `pulumi:"weightedLoadBalancing"`
+	ZpnErIds              []ApplicationSegmentZpnErId `pulumi:"zpnErIds"`
 }
 
 // The set of arguments for constructing a ApplicationSegment resource.
@@ -291,8 +299,7 @@ type ApplicationSegmentArgs struct {
 	// Indicates if Inspect Traffic with ZIA is enabled for the application.
 	InspectTrafficWithZia pulumi.BoolPtrInput
 	IpAnchored            pulumi.BoolPtrInput
-	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-	// connectors.
+	// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
 	IsCnameEnabled       pulumi.BoolPtrInput
 	IsIncompleteDrConfig pulumi.BoolPtrInput
 	MatchStyle           pulumi.StringPtrInput
@@ -316,6 +323,9 @@ type ApplicationSegmentArgs struct {
 	// UDP port ranges used to access the app.
 	UdpPortRanges pulumi.StringArrayInput
 	UseInDrMode   pulumi.BoolPtrInput
+	// If set to true, designates the application segment for weighted load balancing
+	WeightedLoadBalancing pulumi.BoolPtrInput
+	ZpnErIds              ApplicationSegmentZpnErIdArrayInput
 }
 
 func (ApplicationSegmentArgs) ElementType() reflect.Type {
@@ -447,8 +457,8 @@ func (o ApplicationSegmentOutput) FqdnDnsCheck() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.BoolPtrOutput { return v.FqdnDnsCheck }).(pulumi.BoolPtrOutput)
 }
 
-func (o ApplicationSegmentOutput) HealthCheckType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApplicationSegment) pulumi.StringPtrOutput { return v.HealthCheckType }).(pulumi.StringPtrOutput)
+func (o ApplicationSegmentOutput) HealthCheckType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationSegment) pulumi.StringOutput { return v.HealthCheckType }).(pulumi.StringOutput)
 }
 
 // Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
@@ -469,8 +479,7 @@ func (o ApplicationSegmentOutput) IpAnchored() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.BoolPtrOutput { return v.IpAnchored }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the
-// connectors.
+// Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
 func (o ApplicationSegmentOutput) IsCnameEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.BoolOutput { return v.IsCnameEnabled }).(pulumi.BoolOutput)
 }
@@ -543,6 +552,15 @@ func (o ApplicationSegmentOutput) UdpPortRanges() pulumi.StringArrayOutput {
 
 func (o ApplicationSegmentOutput) UseInDrMode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.BoolPtrOutput { return v.UseInDrMode }).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, designates the application segment for weighted load balancing
+func (o ApplicationSegmentOutput) WeightedLoadBalancing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationSegment) pulumi.BoolPtrOutput { return v.WeightedLoadBalancing }).(pulumi.BoolPtrOutput)
+}
+
+func (o ApplicationSegmentOutput) ZpnErIds() ApplicationSegmentZpnErIdArrayOutput {
+	return o.ApplyT(func(v *ApplicationSegment) ApplicationSegmentZpnErIdArrayOutput { return v.ZpnErIds }).(ApplicationSegmentZpnErIdArrayOutput)
 }
 
 type ApplicationSegmentArrayOutput struct{ *pulumi.OutputState }

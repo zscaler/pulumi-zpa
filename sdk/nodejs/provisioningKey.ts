@@ -56,48 +56,47 @@ export class ProvisioningKey extends pulumi.CustomResource {
     /**
      * read only field. Ignored in PUT/POST calls.
      */
-    public readonly ProvisioningKeyValue!: pulumi.Output<string>;
-    public readonly appConnectorGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly ProvisioningKeyValue: pulumi.Output<string>;
+    declare public readonly appConnectorGroupId: pulumi.Output<string | undefined>;
     /**
      * Read only property. Applicable only for GET calls, ignored in PUT/POST calls.
      */
-    public /*out*/ readonly appConnectorGroupName!: pulumi.Output<string>;
+    declare public /*out*/ readonly appConnectorGroupName: pulumi.Output<string>;
     /**
-     * Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
-     * CONNECTOR_GRP and SERVICE_EDGE_GRP.
+     * Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are CONNECTOR_GRP and SERVICE_EDGE_GRP.
      */
-    public readonly associationType!: pulumi.Output<string>;
+    declare public readonly associationType: pulumi.Output<string>;
     /**
      * Whether the provisioning key is enabled or not. Supported values: true, false
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * ID of the enrollment certificate that can be used for this provisioning key.
      */
-    public readonly enrollmentCertId!: pulumi.Output<string>;
-    public readonly ipAcls!: pulumi.Output<string[] | undefined>;
+    declare public readonly enrollmentCertId: pulumi.Output<string>;
+    declare public readonly ipAcls: pulumi.Output<string[] | undefined>;
     /**
      * The maximum number of instances where this provisioning key can be used for enrolling an App Connector or Service Edge.
      */
-    public readonly maxUsage!: pulumi.Output<string>;
-    public readonly microtenantId!: pulumi.Output<string>;
+    declare public readonly maxUsage: pulumi.Output<string>;
+    declare public readonly microtenantId: pulumi.Output<string>;
     /**
      * Name of the provisioning key.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly uiConfig!: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly uiConfig: pulumi.Output<string | undefined>;
     /**
      * The provisioning key utilization count.
      */
-    public readonly usageCount!: pulumi.Output<string>;
+    declare public readonly usageCount: pulumi.Output<string>;
     /**
      * ID of the existing App Connector or Service Edge Group.
      */
-    public readonly zcomponentId!: pulumi.Output<string>;
+    declare public readonly zcomponentId: pulumi.Output<string>;
     /**
      * Read only property. Applicable only for GET calls, ignored in PUT/POST calls.
      */
-    public readonly zcomponentName!: pulumi.Output<string>;
+    declare public readonly zcomponentName: pulumi.Output<string>;
 
     /**
      * Create a ProvisioningKey resource with the given unique name, arguments, and options.
@@ -112,47 +111,47 @@ export class ProvisioningKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProvisioningKeyState | undefined;
-            resourceInputs["ProvisioningKeyValue"] = state ? state.ProvisioningKeyValue : undefined;
-            resourceInputs["appConnectorGroupId"] = state ? state.appConnectorGroupId : undefined;
-            resourceInputs["appConnectorGroupName"] = state ? state.appConnectorGroupName : undefined;
-            resourceInputs["associationType"] = state ? state.associationType : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["enrollmentCertId"] = state ? state.enrollmentCertId : undefined;
-            resourceInputs["ipAcls"] = state ? state.ipAcls : undefined;
-            resourceInputs["maxUsage"] = state ? state.maxUsage : undefined;
-            resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["uiConfig"] = state ? state.uiConfig : undefined;
-            resourceInputs["usageCount"] = state ? state.usageCount : undefined;
-            resourceInputs["zcomponentId"] = state ? state.zcomponentId : undefined;
-            resourceInputs["zcomponentName"] = state ? state.zcomponentName : undefined;
+            resourceInputs["ProvisioningKeyValue"] = state?.ProvisioningKeyValue;
+            resourceInputs["appConnectorGroupId"] = state?.appConnectorGroupId;
+            resourceInputs["appConnectorGroupName"] = state?.appConnectorGroupName;
+            resourceInputs["associationType"] = state?.associationType;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["enrollmentCertId"] = state?.enrollmentCertId;
+            resourceInputs["ipAcls"] = state?.ipAcls;
+            resourceInputs["maxUsage"] = state?.maxUsage;
+            resourceInputs["microtenantId"] = state?.microtenantId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["uiConfig"] = state?.uiConfig;
+            resourceInputs["usageCount"] = state?.usageCount;
+            resourceInputs["zcomponentId"] = state?.zcomponentId;
+            resourceInputs["zcomponentName"] = state?.zcomponentName;
         } else {
             const args = argsOrState as ProvisioningKeyArgs | undefined;
-            if ((!args || args.associationType === undefined) && !opts.urn) {
+            if (args?.associationType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'associationType'");
             }
-            if ((!args || args.enrollmentCertId === undefined) && !opts.urn) {
+            if (args?.enrollmentCertId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enrollmentCertId'");
             }
-            if ((!args || args.maxUsage === undefined) && !opts.urn) {
+            if (args?.maxUsage === undefined && !opts.urn) {
                 throw new Error("Missing required property 'maxUsage'");
             }
-            if ((!args || args.zcomponentId === undefined) && !opts.urn) {
+            if (args?.zcomponentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zcomponentId'");
             }
-            resourceInputs["ProvisioningKeyValue"] = args ? args.ProvisioningKeyValue : undefined;
-            resourceInputs["appConnectorGroupId"] = args ? args.appConnectorGroupId : undefined;
-            resourceInputs["associationType"] = args ? args.associationType : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["enrollmentCertId"] = args ? args.enrollmentCertId : undefined;
-            resourceInputs["ipAcls"] = args ? args.ipAcls : undefined;
-            resourceInputs["maxUsage"] = args ? args.maxUsage : undefined;
-            resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["uiConfig"] = args ? args.uiConfig : undefined;
-            resourceInputs["usageCount"] = args ? args.usageCount : undefined;
-            resourceInputs["zcomponentId"] = args ? args.zcomponentId : undefined;
-            resourceInputs["zcomponentName"] = args ? args.zcomponentName : undefined;
+            resourceInputs["ProvisioningKeyValue"] = args?.ProvisioningKeyValue;
+            resourceInputs["appConnectorGroupId"] = args?.appConnectorGroupId;
+            resourceInputs["associationType"] = args?.associationType;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["enrollmentCertId"] = args?.enrollmentCertId;
+            resourceInputs["ipAcls"] = args?.ipAcls;
+            resourceInputs["maxUsage"] = args?.maxUsage;
+            resourceInputs["microtenantId"] = args?.microtenantId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["uiConfig"] = args?.uiConfig;
+            resourceInputs["usageCount"] = args?.usageCount;
+            resourceInputs["zcomponentId"] = args?.zcomponentId;
+            resourceInputs["zcomponentName"] = args?.zcomponentName;
             resourceInputs["appConnectorGroupName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -174,8 +173,7 @@ export interface ProvisioningKeyState {
      */
     appConnectorGroupName?: pulumi.Input<string>;
     /**
-     * Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
-     * CONNECTOR_GRP and SERVICE_EDGE_GRP.
+     * Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are CONNECTOR_GRP and SERVICE_EDGE_GRP.
      */
     associationType?: pulumi.Input<string>;
     /**
@@ -221,8 +219,7 @@ export interface ProvisioningKeyArgs {
     ProvisioningKeyValue?: pulumi.Input<string>;
     appConnectorGroupId?: pulumi.Input<string>;
     /**
-     * Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are
-     * CONNECTOR_GRP and SERVICE_EDGE_GRP.
+     * Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are CONNECTOR_GRP and SERVICE_EDGE_GRP.
      */
     associationType: pulumi.Input<string>;
     /**

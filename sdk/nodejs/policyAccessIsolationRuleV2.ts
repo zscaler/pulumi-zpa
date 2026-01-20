@@ -22,33 +22,40 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * const thisIsolationProfile = zpa.getIsolationProfile({
+ * // Get Isolation Profile ID
+ * const _this = zpa.getIsolationProfile({
  *     name: "zpa_isolation_profile",
  * });
- * const thisIdPController = zpa.getIdPController({
+ * // Retrieve Identity Provider ID
+ * const thisGetIdPController = zpa.getIdPController({
  *     name: "Idp_Name",
  * });
+ * // Retrieve SAML Attribute ID
  * const emailUserSso = zpa.getSAMLAttribute({
  *     name: "Email_Users",
  *     idpName: "Idp_Name",
  * });
+ * // Retrieve SAML Attribute ID
  * const groupUser = zpa.getSAMLAttribute({
  *     name: "GroupName_Users",
  *     idpName: "Idp_Name",
  * });
+ * // Retrieve SCIM Group ID
  * const a000 = zpa.getSCIMGroups({
  *     name: "A000",
  *     idpName: "Idp_Name",
  * });
+ * // Retrieve SCIM Group ID
  * const b000 = zpa.getSCIMGroups({
  *     name: "B000",
  *     idpName: "Idp_Name",
  * });
  * // Create Policy Access Isolation Rule V2
- * const thisPolicyAccessIsolationRuleV2 = new zpa.PolicyAccessIsolationRuleV2("thisPolicyAccessIsolationRuleV2", {
+ * const thisPolicyAccessIsolationRuleV2 = new zpa.PolicyAccessIsolationRuleV2("this", {
+ *     name: "Example",
  *     description: "Example",
  *     action: "ISOLATE",
- *     zpnIsolationProfileId: thisIsolationProfile.then(thisIsolationProfile => thisIsolationProfile.id),
+ *     zpnIsolationProfileId: _this.then(_this => _this.id),
  *     conditions: [
  *         {
  *             operator: "OR",
@@ -78,17 +85,50 @@ import * as utilities from "./utilities";
  *                     entryValues: [
  *                         {
  *                             rhs: a000.then(a000 => a000.id),
- *                             lhs: thisIdPController.then(thisIdPController => thisIdPController.id),
+ *                             lhs: thisGetIdPController.then(thisGetIdPController => thisGetIdPController.id),
  *                         },
  *                         {
  *                             rhs: b000.then(b000 => b000.id),
- *                             lhs: thisIdPController.then(thisIdPController => thisIdPController.id),
+ *                             lhs: thisGetIdPController.then(thisGetIdPController => thisGetIdPController.id),
  *                         },
  *                     ],
  *                 },
  *             ],
  *         },
  *     ],
+ * });
+ * ```
+ *
+ * ### Chrome Enterprise And Chrome Posture Profile
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const _this = zpa.getManagedBrowserProfile({
+ *     name: "Profile01",
+ * });
+ * const thisPolicyAccessIsolationRuleV2 = new zpa.PolicyAccessIsolationRuleV2("this", {
+ *     name: "Example",
+ *     description: "Example",
+ *     action: "ISOLATE",
+ *     zpnIsolationProfileId: thisZpaIsolationProfile.id,
+ *     conditions: [{
+ *         operator: "OR",
+ *         operands: [
+ *             {
+ *                 objectType: "CHROME_ENTERPRISE",
+ *                 entryValues: [{
+ *                     lhs: "managed",
+ *                     rhs: "true",
+ *                 }],
+ *             },
+ *             {
+ *                 objectType: "CHROME_POSTURE_PROFILE",
+ *                 values: [_this.then(_this => _this.id)],
+ *             },
+ *         ],
+ *     }],
  * });
  * ```
  *
@@ -152,25 +192,25 @@ export class PolicyAccessIsolationRuleV2 extends pulumi.CustomResource {
     /**
      * This is for providing the rule action. Supported values: `ISOLATE` Default.
      */
-    public readonly action!: pulumi.Output<string | undefined>;
+    declare public readonly action: pulumi.Output<string | undefined>;
     /**
      * This is for proviidng the set of conditions for the policy.
      */
-    public readonly conditions!: pulumi.Output<outputs.PolicyAccessIsolationRuleV2Condition[]>;
+    declare public readonly conditions: pulumi.Output<outputs.PolicyAccessIsolationRuleV2Condition[]>;
     /**
      * This is the description of the access policy rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly microtenantId!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly microtenantId: pulumi.Output<string>;
     /**
      * This is the name of the policy rule.
      */
-    public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly policySetId!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly policySetId: pulumi.Output<string>;
     /**
      * Use zpa*isolation*profile data source to retrieve the necessary Isolation profile ID `zpnIsolationProfileId`
      */
-    public readonly zpnIsolationProfileId!: pulumi.Output<string>;
+    declare public readonly zpnIsolationProfileId: pulumi.Output<string>;
 
     /**
      * Create a PolicyAccessIsolationRuleV2 resource with the given unique name, arguments, and options.
@@ -185,21 +225,21 @@ export class PolicyAccessIsolationRuleV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyAccessIsolationRuleV2State | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["conditions"] = state ? state.conditions : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["microtenantId"] = state ? state.microtenantId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policySetId"] = state ? state.policySetId : undefined;
-            resourceInputs["zpnIsolationProfileId"] = state ? state.zpnIsolationProfileId : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["conditions"] = state?.conditions;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["microtenantId"] = state?.microtenantId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policySetId"] = state?.policySetId;
+            resourceInputs["zpnIsolationProfileId"] = state?.zpnIsolationProfileId;
         } else {
             const args = argsOrState as PolicyAccessIsolationRuleV2Args | undefined;
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["conditions"] = args ? args.conditions : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["microtenantId"] = args ? args.microtenantId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["zpnIsolationProfileId"] = args ? args.zpnIsolationProfileId : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["conditions"] = args?.conditions;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["microtenantId"] = args?.microtenantId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["zpnIsolationProfileId"] = args?.zpnIsolationProfileId;
             resourceInputs["policySetId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

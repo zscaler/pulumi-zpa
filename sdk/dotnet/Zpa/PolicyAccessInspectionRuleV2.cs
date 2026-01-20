@@ -18,7 +18,165 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     ///   ⚠️ **NOTE**: This resource is recommended if your configuration requires the association of more than 1000 resource criteria per rule.
     /// 
-    ///   ⚠️ **WARNING:**: The attribute ``rule_order`` is now deprecated in favor of the new resource  ``policy_access_rule_reorder``
+    ///   ⚠️ **WARNING:**: The attribute ``RuleOrder`` is now deprecated in favor of the new resource  ``PolicyAccessRuleReorder``
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = Pulumi.Zpa;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = Zpa.GetInspectionPredefinedControls.Invoke(new()
+    ///     {
+    ///         Name = "Failed to parse request body",
+    ///         Version = "OWASP_CRS/3.3.0",
+    ///     });
+    /// 
+    ///     var defaultPredefinedControls = Zpa.GetInspectionAllPredefinedControls.Invoke(new()
+    ///     {
+    ///         Version = "OWASP_CRS/3.3.0",
+    ///         GroupName = "preprocessors",
+    ///     });
+    /// 
+    ///     var thisInspectionProfile = new Zpa.InspectionProfile("this", new()
+    ///     {
+    ///         PredefinedControls = new[]
+    ///         {
+    ///             new Zpa.Inputs.InspectionProfilePredefinedControlArgs
+    ///             {
+    ///                 Id = @this.Apply(@this =&gt; @this.Apply(getInspectionPredefinedControlsResult =&gt; getInspectionPredefinedControlsResult.Id)),
+    ///                 Action = "BLOCK",
+    ///             },
+    ///         },
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         ParanoiaLevel = "1",
+    ///     });
+    /// 
+    ///     // Retrieve Identity Provider ID
+    ///     var thisGetIdPController = Zpa.GetIdPController.Invoke(new()
+    ///     {
+    ///         Name = "Idp_Name",
+    ///     });
+    /// 
+    ///     // Retrieve SAML Attribute ID
+    ///     var emailUserSso = Zpa.GetSAMLAttribute.Invoke(new()
+    ///     {
+    ///         Name = "Email_Users",
+    ///         IdpName = "Idp_Name",
+    ///     });
+    /// 
+    ///     // Retrieve SAML Attribute ID
+    ///     var groupUser = Zpa.GetSAMLAttribute.Invoke(new()
+    ///     {
+    ///         Name = "GroupName_Users",
+    ///         IdpName = "Idp_Name",
+    ///     });
+    /// 
+    ///     // Retrieve SCIM Group ID
+    ///     var a000 = Zpa.GetSCIMGroups.Invoke(new()
+    ///     {
+    ///         Name = "A000",
+    ///         IdpName = "Idp_Name",
+    ///     });
+    /// 
+    ///     // Retrieve SCIM Group ID
+    ///     var b000 = Zpa.GetSCIMGroups.Invoke(new()
+    ///     {
+    ///         Name = "B000",
+    ///         IdpName = "Idp_Name",
+    ///     });
+    /// 
+    ///     // Create Policy Access Isolation Rule V2
+    ///     var thisPolicyAccessInspectionRuleV2 = new Zpa.PolicyAccessInspectionRuleV2("this", new()
+    ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         Action = "INSPECT",
+    ///         ZpnInspectionProfileId = thisInspectionProfile.Id,
+    ///         Conditions = new[]
+    ///         {
+    ///             new Zpa.Inputs.PolicyAccessInspectionRuleV2ConditionArgs
+    ///             {
+    ///                 Operator = "OR",
+    ///                 Operands = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.PolicyAccessInspectionRuleV2ConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "CLIENT_TYPE",
+    ///                         Values = new[]
+    ///                         {
+    ///                             "zpn_client_type_exporter",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Zpa.Inputs.PolicyAccessInspectionRuleV2ConditionArgs
+    ///             {
+    ///                 Operator = "OR",
+    ///                 Operands = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.PolicyAccessInspectionRuleV2ConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "SAML",
+    ///                         EntryValues = new[]
+    ///                         {
+    ///                             new Zpa.Inputs.PolicyAccessInspectionRuleV2ConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Rhs = "user1@acme.com",
+    ///                                 Lhs = emailUserSso.Apply(getSAMLAttributeResult =&gt; getSAMLAttributeResult.Id),
+    ///                             },
+    ///                             new Zpa.Inputs.PolicyAccessInspectionRuleV2ConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Rhs = "A000",
+    ///                                 Lhs = groupUser.Apply(getSAMLAttributeResult =&gt; getSAMLAttributeResult.Id),
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Zpa.Inputs.PolicyAccessInspectionRuleV2ConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "SCIM_GROUP",
+    ///                         EntryValues = new[]
+    ///                         {
+    ///                             new Zpa.Inputs.PolicyAccessInspectionRuleV2ConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Rhs = a000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
+    ///                                 Lhs = thisGetIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                             },
+    ///                             new Zpa.Inputs.PolicyAccessInspectionRuleV2ConditionOperandEntryValueArgs
+    ///                             {
+    ///                                 Rhs = b000.Apply(getSCIMGroupsResult =&gt; getSCIMGroupsResult.Id),
+    ///                                 Lhs = thisGetIdPController.Apply(getIdPControllerResult =&gt; getIdPControllerResult.Id),
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## LHS and RHS Values
+    /// 
+    /// | Object Type | LHS| RHS| VALUES
+    /// |----------|-----------|----------|----------
+    /// | APP  |   |  | ``ApplicationSegmentId`` |
+    /// | APP_GROUP  |   |  | ``SegmentGroupId``|
+    /// | CLIENT_TYPE  |   |  |  ``ZpnClientTypeZappl``, ``ZpnClientTypeExporter``, ``ZpnClientTypeBrowserIsolation``, ``ZpnClientTypeIpAnchoring``, ``ZpnClientTypeEdgeConnector``, ``ZpnClientTypeBranchConnector``,  ``ZpnClientTypeZappPartner``, ``ZpnClientTypeZapp``  |
+    /// | EDGE_CONNECTOR_GROUP  |   |  |  ``&lt;edge_connector_id&gt;`` |
+    /// | MACHINE_GRP   |   |  | ``MachineGroupId`` |
+    /// | SAML | ``SamlAttributeId``  | ``AttributeValueToMatch`` |
+    /// | SCIM | ``ScimAttributeId``  | ``AttributeValueToMatch``  |
+    /// | SCIM_GROUP | ``ScimGroupAttributeId``  | ``AttributeValueToMatch``  |
+    /// | PLATFORM | ``Mac``, ``Ios``, ``Windows``, ``Android``, ``Linux`` | ``"true"`` / ``"false"`` |
+    /// | POSTURE | ``PostureUdid``  | ``"true"`` / ``"false"`` |
     /// 
     /// ## Import
     /// 
@@ -68,7 +226,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<string> PolicySetId { get; private set; } = null!;
 
         /// <summary>
-        /// An inspection profile is required if the `action` is set to `INSPECT`
+        /// An inspection profile is required if the `Action` is set to `INSPECT`
         /// </summary>
         [Output("zpnInspectionProfileId")]
         public Output<string> ZpnInspectionProfileId { get; private set; } = null!;
@@ -158,7 +316,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// An inspection profile is required if the `action` is set to `INSPECT`
+        /// An inspection profile is required if the `Action` is set to `INSPECT`
         /// </summary>
         [Input("zpnInspectionProfileId")]
         public Input<string>? ZpnInspectionProfileId { get; set; }
@@ -208,7 +366,7 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<string>? PolicySetId { get; set; }
 
         /// <summary>
-        /// An inspection profile is required if the `action` is set to `INSPECT`
+        /// An inspection profile is required if the `Action` is set to `INSPECT`
         /// </summary>
         [Input("zpnInspectionProfileId")]
         public Input<string>? ZpnInspectionProfileId { get; set; }

@@ -31,6 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Retrieve CBI Region ID and Name
 //			_, err := zpa.LookupCloudBrowserIsolationBanner(ctx, &zpa.LookupCloudBrowserIsolationBannerArgs{
 //				Name: pulumi.StringRef("Default"),
 //			}, nil)
