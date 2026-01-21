@@ -83,6 +83,7 @@ jobs:
           - nodejs
           - python
           - dotnet
+          - go
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4.1.7
@@ -130,6 +131,10 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4.1.7
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@v1.12.0
+        with:
+          repo: pulumi/pulumictl
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
@@ -142,13 +147,34 @@ jobs:
       - name: Get version
         id: get_version
         run: echo "version=$(pulumictl get version --language generic)" >> $GITHUB_OUTPUT
+      - name: Download Go SDK
+        uses: actions/download-artifact@v4
+        with:
+          name: go-sdk.tar.gz
+          path: sdk/
+      - name: Extract Go SDK
+        shell: bash
+        run: tar -zxf sdk/go-sdk.tar.gz -C sdk/go
       - name: Publish SDKs
         uses: pulumi/pulumi-package-publisher@v0.0.23
         with:
-          sdk: all,!java
+          sdk: all,!java,!go
           version: ${{ steps.get_version.outputs.version }}
         env:
           PYPI_USERNAME: ${{ env.PYPI_USERNAME }}
           PYPI_PASSWORD: ${{ env.PYPI_PASSWORD }}
           NODE_AUTH_TOKEN: ${{ env.NPM_TOKEN }}
           NUGET_PUBLISH_KEY: ${{ env.NUGET_PUBLISH_KEY }}
+      - name: Publish Go SDK
+        uses: pulumi/publish-go-sdk-action@v1
+        with:
+          repository: ${{ github.repository }}
+          base-ref: ${{ github.sha }}
+          source: sdk
+          path: sdk
+          version: ${{ steps.get_version.outputs.version }}
+          additive: false
+          files: |
+            go.*
+            go/**
+            !*.tar.gz
