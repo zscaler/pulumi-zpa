@@ -72,15 +72,20 @@ jobs:
               sha: context.sha
             })
 
-  publish_sdk:
-    name: Publish SDKs
+  build_sdk:
+    name: Build SDKs
     runs-on: ubuntu-latest
     needs: publish_binary
+    strategy:
+      fail-fast: true
+      matrix:
+        language:
+          - nodejs
+          - python
+          - dotnet
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4.1.7
-      # - name: Unshallow clone for tags
-      #   run: git fetch --prune --unshallow --tags
       - name: Install Go
         uses: actions/setup-go@v5
         with:
@@ -92,6 +97,40 @@ jobs:
       - name: Install Pulumi CLI
         uses: pulumi/actions@v4
       - name: Setup Node
+        if: matrix.language == 'nodejs'
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODEVERSION }}
+      - name: Setup DotNet
+        if: matrix.language == 'dotnet'
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNETVERSION }}
+      - name: Setup Python
+        if: matrix.language == 'python'
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHONVERSION }}
+      - name: Build SDK
+        run: make build_${{ matrix.language }}
+      - name: Compress SDK folder
+        shell: bash
+        run: tar -zcf sdk/${{ matrix.language }}.tar.gz -C sdk/${{ matrix.language }} .
+      - name: Upload SDK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.language }}-sdk.tar.gz
+          path: sdk/${{ matrix.language }}.tar.gz
+          retention-days: 1
+
+  publish_sdk:
+    name: Publish SDKs
+    runs-on: ubuntu-latest
+    needs: build_sdk
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4.1.7
+      - name: Setup Node
         uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODEVERSION }}
@@ -100,19 +139,9 @@ jobs:
       - name: Configure npm for granular token
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
-      - name: Setup DotNet
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: ${{ env.DOTNETVERSION }}
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ env.PYTHONVERSION }}
       - name: Get version
         id: get_version
         run: echo "version=$(pulumictl get version --language generic)" >> $GITHUB_OUTPUT
-      - name: Build SDKs
-        run: make build_sdks
       - name: Publish SDKs
         uses: pulumi/pulumi-package-publisher@v0.0.23
         with:
