@@ -96,6 +96,10 @@ jobs:
         with:
           node-version: ${{ env.NODEVERSION }}
           registry-url: https://registry.npmjs.org
+          always-auth: true
+      - name: Configure npm for granular token
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
       - name: Setup DotNet
         uses: actions/setup-dotnet@v4
         with:
