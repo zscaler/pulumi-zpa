@@ -151,10 +151,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: go-sdk.tar.gz
-          path: sdk/
+          path: ${{ github.workspace }}/sdk/
       - name: Extract Go SDK
         shell: bash
-        run: tar -zxf sdk/go-sdk.tar.gz -C sdk/go
+        run: |
+          mkdir -p sdk/go
+          tar -zxf ${{ github.workspace }}/sdk/go-sdk.tar.gz -C ${{ github.workspace }}/sdk/go
       - name: Publish SDKs
         uses: pulumi/pulumi-package-publisher@v0.0.23
         with:
