@@ -15,16 +15,16 @@ else:
 from . import _utilities
 
 __all__ = [
-    'GetZiaCloudConfigResult',
-    'AwaitableGetZiaCloudConfigResult',
+    'GetZIACloudConfigResult',
+    'AwaitableGetZIACloudConfigResult',
     'get_zia_cloud_config',
     'get_zia_cloud_config_output',
 ]
 
 @pulumi.output_type
-class GetZiaCloudConfigResult:
+class GetZIACloudConfigResult:
     """
-    A collection of values returned by getZiaCloudConfig.
+    A collection of values returned by getZIACloudConfig.
     """
     def __init__(__self__, id=None, zia_cloud_domain=None, zia_username=None):
         if id and not isinstance(id, str):
@@ -56,18 +56,18 @@ class GetZiaCloudConfigResult:
         return pulumi.get(self, "zia_username")
 
 
-class AwaitableGetZiaCloudConfigResult(GetZiaCloudConfigResult):
+class AwaitableGetZIACloudConfigResult(GetZIACloudConfigResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetZiaCloudConfigResult(
+        return GetZIACloudConfigResult(
             id=self.id,
             zia_cloud_domain=self.zia_cloud_domain,
             zia_username=self.zia_username)
 
 
-def get_zia_cloud_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZiaCloudConfigResult:
+def get_zia_cloud_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZIACloudConfigResult:
     """
     The **zpa_zia_cloud_config** retrieve configures the Zscaler Cloud Sandbox Settings in the Zscaler Private Access cloud.
 
@@ -84,13 +84,13 @@ def get_zia_cloud_config(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitab
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('zpa:index/getZiaCloudConfig:getZiaCloudConfig', __args__, opts=opts, typ=GetZiaCloudConfigResult).value
+    __ret__ = pulumi.runtime.invoke('zpa:index/getZIACloudConfig:getZIACloudConfig', __args__, opts=opts, typ=GetZIACloudConfigResult).value
 
-    return AwaitableGetZiaCloudConfigResult(
+    return AwaitableGetZIACloudConfigResult(
         id=pulumi.get(__ret__, 'id'),
         zia_cloud_domain=pulumi.get(__ret__, 'zia_cloud_domain'),
         zia_username=pulumi.get(__ret__, 'zia_username'))
-def get_zia_cloud_config_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZiaCloudConfigResult]:
+def get_zia_cloud_config_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZIACloudConfigResult]:
     """
     The **zpa_zia_cloud_config** retrieve configures the Zscaler Cloud Sandbox Settings in the Zscaler Private Access cloud.
 
@@ -107,8 +107,8 @@ def get_zia_cloud_config_output(opts: Optional[Union[pulumi.InvokeOptions, pulum
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('zpa:index/getZiaCloudConfig:getZiaCloudConfig', __args__, opts=opts, typ=GetZiaCloudConfigResult)
-    return __ret__.apply(lambda __response__: GetZiaCloudConfigResult(
+    __ret__ = pulumi.runtime.invoke_output('zpa:index/getZIACloudConfig:getZIACloudConfig', __args__, opts=opts, typ=GetZIACloudConfigResult)
+    return __ret__.apply(lambda __response__: GetZIACloudConfigResult(
         id=pulumi.get(__response__, 'id'),
         zia_cloud_domain=pulumi.get(__response__, 'zia_cloud_domain'),
         zia_username=pulumi.get(__response__, 'zia_username')))

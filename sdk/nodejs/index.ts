@@ -415,10 +415,10 @@ export const getWorkloadTagGroup: typeof import("./getWorkloadTagGroup").getWork
 export const getWorkloadTagGroupOutput: typeof import("./getWorkloadTagGroup").getWorkloadTagGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkloadTagGroup","getWorkloadTagGroupOutput"], () => require("./getWorkloadTagGroup"));
 
-export { GetZiaCloudConfigResult } from "./getZiaCloudConfig";
-export const getZiaCloudConfig: typeof import("./getZiaCloudConfig").getZiaCloudConfig = null as any;
-export const getZiaCloudConfigOutput: typeof import("./getZiaCloudConfig").getZiaCloudConfigOutput = null as any;
-utilities.lazyLoad(exports, ["getZiaCloudConfig","getZiaCloudConfigOutput"], () => require("./getZiaCloudConfig"));
+export { GetZIACloudConfigResult } from "./getZIACloudConfig";
+export const getZIACloudConfig: typeof import("./getZIACloudConfig").getZIACloudConfig = null as any;
+export const getZIACloudConfigOutput: typeof import("./getZIACloudConfig").getZIACloudConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getZIACloudConfig","getZIACloudConfigOutput"], () => require("./getZIACloudConfig"));
 
 export { InspectionCustomControlsArgs, InspectionCustomControlsState } from "./inspectionCustomControls";
 export type InspectionCustomControls = import("./inspectionCustomControls").InspectionCustomControls;
@@ -593,10 +593,10 @@ export type UserPortalLink = import("./userPortalLink").UserPortalLink;
 export const UserPortalLink: typeof import("./userPortalLink").UserPortalLink = null as any;
 utilities.lazyLoad(exports, ["UserPortalLink"], () => require("./userPortalLink"));
 
-export { ZiaCloudConfigArgs, ZiaCloudConfigState } from "./ziaCloudConfig";
-export type ZiaCloudConfig = import("./ziaCloudConfig").ZiaCloudConfig;
-export const ZiaCloudConfig: typeof import("./ziaCloudConfig").ZiaCloudConfig = null as any;
-utilities.lazyLoad(exports, ["ZiaCloudConfig"], () => require("./ziaCloudConfig"));
+export { ZIACloudConfigArgs, ZIACloudConfigState } from "./ziacloudConfig";
+export type ZIACloudConfig = import("./ziacloudConfig").ZIACloudConfig;
+export const ZIACloudConfig: typeof import("./ziacloudConfig").ZIACloudConfig = null as any;
+utilities.lazyLoad(exports, ["ZIACloudConfig"], () => require("./ziacloudConfig"));
 
 
 // Export sub-modules:
@@ -712,8 +712,8 @@ const _module = {
                 return new UserPortalController(name, <any>undefined, { urn })
             case "zpa:index/userPortalLink:UserPortalLink":
                 return new UserPortalLink(name, <any>undefined, { urn })
-            case "zpa:index/ziaCloudConfig:ZiaCloudConfig":
-                return new ZiaCloudConfig(name, <any>undefined, { urn })
+            case "zpa:index/zIACloudConfig:ZIACloudConfig":
+                return new ZIACloudConfig(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -769,7 +769,7 @@ pulumi.runtime.registerResourceModule("zpa", "index/serviceEdgeGroup", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/userPortalAUP", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/userPortalController", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/userPortalLink", _module)
-pulumi.runtime.registerResourceModule("zpa", "index/ziaCloudConfig", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/zIACloudConfig", _module)
 pulumi.runtime.registerResourcePackage("zpa", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

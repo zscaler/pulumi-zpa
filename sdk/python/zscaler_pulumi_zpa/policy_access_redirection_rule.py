@@ -834,8 +834,6 @@ class PolicyAccessRedirectionRule(pulumi.CustomResource):
             __props__.__dict__["zpn_cbi_profile_id"] = zpn_cbi_profile_id
             __props__.__dict__["zpn_inspection_profile_id"] = zpn_inspection_profile_id
             __props__.__dict__["zpn_isolation_profile_id"] = zpn_isolation_profile_id
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="zpa:index/policyRedirectionRule:PolicyRedirectionRule")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(PolicyAccessRedirectionRule, __self__).__init__(
             'zpa:index/policyAccessRedirectionRule:PolicyAccessRedirectionRule',
             resource_name,

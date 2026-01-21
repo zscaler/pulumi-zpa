@@ -534,8 +534,6 @@ class PolicyAccessInspectionRuleV2(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["zpn_inspection_profile_id"] = zpn_inspection_profile_id
             __props__.__dict__["policy_set_id"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="zpa:index/policyInspectionRuleV2:PolicyInspectionRuleV2")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(PolicyAccessInspectionRuleV2, __self__).__init__(
             'zpa:index/policyAccessInspectionRuleV2:PolicyAccessInspectionRuleV2',
             resource_name,

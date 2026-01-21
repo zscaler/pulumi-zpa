@@ -241,8 +241,6 @@ export class PRAPortal extends pulumi.CustomResource {
             resourceInputs["userPortalGid"] = args?.userPortalGid;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "zpa:index/praPortalController:PraPortalController" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PRAPortal.__pulumiType, name, resourceInputs, opts);
     }
 }

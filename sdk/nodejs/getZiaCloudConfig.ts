@@ -15,19 +15,19 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * const _this = zpa.getZiaCloudConfig({});
+ * const _this = zpa.getZIACloudConfig({});
  * ```
  */
-export function getZiaCloudConfig(opts?: pulumi.InvokeOptions): Promise<GetZiaCloudConfigResult> {
+export function getZIACloudConfig(opts?: pulumi.InvokeOptions): Promise<GetZIACloudConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("zpa:index/getZiaCloudConfig:getZiaCloudConfig", {
+    return pulumi.runtime.invoke("zpa:index/getZIACloudConfig:getZIACloudConfig", {
     }, opts);
 }
 
 /**
- * A collection of values returned by getZiaCloudConfig.
+ * A collection of values returned by getZIACloudConfig.
  */
-export interface GetZiaCloudConfigResult {
+export interface GetZIACloudConfigResult {
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -46,11 +46,11 @@ export interface GetZiaCloudConfigResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * const _this = zpa.getZiaCloudConfig({});
+ * const _this = zpa.getZIACloudConfig({});
  * ```
  */
-export function getZiaCloudConfigOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZiaCloudConfigResult> {
+export function getZIACloudConfigOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZIACloudConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("zpa:index/getZiaCloudConfig:getZiaCloudConfig", {
+    return pulumi.runtime.invokeOutput("zpa:index/getZIACloudConfig:getZIACloudConfig", {
     }, opts);
 }

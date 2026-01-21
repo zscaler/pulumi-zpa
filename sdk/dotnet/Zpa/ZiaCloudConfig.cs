@@ -27,7 +27,7 @@ namespace zscaler.PulumiPackage.Zpa
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     //######## PASSWORDS IN THIS FILE ARE FAKE AND NOT USED IN PRODUCTION SYSTEMS #########
-    ///     var @this = new Zpa.ZiaCloudConfig("this", new()
+    ///     var @this = new Zpa.ZIACloudConfig("this", new()
     ///     {
     ///         ZiaUsername = "",
     ///         ZiaPassword = "",
@@ -50,17 +50,17 @@ namespace zscaler.PulumiPackage.Zpa
     /// For example:
     /// 
     /// ```sh
-    /// $ pulumi import zpa:index/ziaCloudConfig:ZiaCloudConfig example &lt;zia_cloud_config&gt;
+    /// $ pulumi import zpa:index/zIACloudConfig:ZIACloudConfig example &lt;zia_cloud_config&gt;
     /// ```
     /// 
     /// or
     /// 
     /// ```sh
-    /// $ pulumi import zpa:index/ziaCloudConfig:ZiaCloudConfig example &lt;zia_cloud_config&gt;
+    /// $ pulumi import zpa:index/zIACloudConfig:ZIACloudConfig example &lt;zia_cloud_config&gt;
     /// ```
     /// </summary>
-    [ZpaResourceType("zpa:index/ziaCloudConfig:ZiaCloudConfig")]
-    public partial class ZiaCloudConfig : global::Pulumi.CustomResource
+    [ZpaResourceType("zpa:index/zIACloudConfig:ZIACloudConfig")]
+    public partial class ZIACloudConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// - (String) The supported ZIA cloud name. Supported values are:
@@ -94,19 +94,19 @@ namespace zscaler.PulumiPackage.Zpa
 
 
         /// <summary>
-        /// Create a ZiaCloudConfig resource with the given unique name, arguments, and options.
+        /// Create a ZIACloudConfig resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ZiaCloudConfig(string name, ZiaCloudConfigArgs args, CustomResourceOptions? options = null)
-            : base("zpa:index/ziaCloudConfig:ZiaCloudConfig", name, args ?? new ZiaCloudConfigArgs(), MakeResourceOptions(options, ""))
+        public ZIACloudConfig(string name, ZIACloudConfigArgs args, CustomResourceOptions? options = null)
+            : base("zpa:index/zIACloudConfig:ZIACloudConfig", name, args ?? new ZIACloudConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private ZiaCloudConfig(string name, Input<string> id, ZiaCloudConfigState? state = null, CustomResourceOptions? options = null)
-            : base("zpa:index/ziaCloudConfig:ZiaCloudConfig", name, state, MakeResourceOptions(options, id))
+        private ZIACloudConfig(string name, Input<string> id, ZIACloudConfigState? state = null, CustomResourceOptions? options = null)
+            : base("zpa:index/zIACloudConfig:ZIACloudConfig", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -129,7 +129,7 @@ namespace zscaler.PulumiPackage.Zpa
             return merged;
         }
         /// <summary>
-        /// Get an existing ZiaCloudConfig resource's state with the given name, ID, and optional extra
+        /// Get an existing ZIACloudConfig resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -137,13 +137,13 @@ namespace zscaler.PulumiPackage.Zpa
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static ZiaCloudConfig Get(string name, Input<string> id, ZiaCloudConfigState? state = null, CustomResourceOptions? options = null)
+        public static ZIACloudConfig Get(string name, Input<string> id, ZIACloudConfigState? state = null, CustomResourceOptions? options = null)
         {
-            return new ZiaCloudConfig(name, id, state, options);
+            return new ZIACloudConfig(name, id, state, options);
         }
     }
 
-    public sealed class ZiaCloudConfigArgs : global::Pulumi.ResourceArgs
+    public sealed class ZIACloudConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// - (String) The supported ZIA cloud name. Supported values are:
@@ -205,13 +205,13 @@ namespace zscaler.PulumiPackage.Zpa
         [Input("ziaUsername", required: true)]
         public Input<string> ZiaUsername { get; set; } = null!;
 
-        public ZiaCloudConfigArgs()
+        public ZIACloudConfigArgs()
         {
         }
-        public static new ZiaCloudConfigArgs Empty => new ZiaCloudConfigArgs();
+        public static new ZIACloudConfigArgs Empty => new ZIACloudConfigArgs();
     }
 
-    public sealed class ZiaCloudConfigState : global::Pulumi.ResourceArgs
+    public sealed class ZIACloudConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// - (String) The supported ZIA cloud name. Supported values are:
@@ -273,9 +273,9 @@ namespace zscaler.PulumiPackage.Zpa
         [Input("ziaUsername")]
         public Input<string>? ZiaUsername { get; set; }
 
-        public ZiaCloudConfigState()
+        public ZIACloudConfigState()
         {
         }
-        public static new ZiaCloudConfigState Empty => new ZiaCloudConfigState();
+        public static new ZIACloudConfigState Empty => new ZIACloudConfigState();
     }
 }

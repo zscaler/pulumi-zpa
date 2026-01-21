@@ -243,8 +243,6 @@ export class PolicyAccessIsolationRuleV2 extends pulumi.CustomResource {
             resourceInputs["policySetId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "zpa:index/policyIsolationRuleV2:PolicyIsolationRuleV2" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PolicyAccessIsolationRuleV2.__pulumiType, name, resourceInputs, opts);
     }
 }

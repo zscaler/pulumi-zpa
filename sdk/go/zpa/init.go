@@ -121,8 +121,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &UserPortalController{}
 	case "zpa:index/userPortalLink:UserPortalLink":
 		r = &UserPortalLink{}
-	case "zpa:index/ziaCloudConfig:ZiaCloudConfig":
-		r = &ZiaCloudConfig{}
+	case "zpa:index/zIACloudConfig:ZIACloudConfig":
+		r = &ZIACloudConfig{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -406,7 +406,7 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"zpa",
-		"index/ziaCloudConfig",
+		"index/zIACloudConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

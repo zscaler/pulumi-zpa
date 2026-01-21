@@ -249,12 +249,6 @@ func NewPolicyAccessIsolationRuleV2(ctx *pulumi.Context,
 		args = &PolicyAccessIsolationRuleV2Args{}
 	}
 
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("zpa:index/policyIsolationRuleV2:PolicyIsolationRuleV2"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PolicyAccessIsolationRuleV2
 	err := ctx.RegisterResource("zpa:index/policyAccessIsolationRuleV2:PolicyAccessIsolationRuleV2", name, args, &resource, opts...)

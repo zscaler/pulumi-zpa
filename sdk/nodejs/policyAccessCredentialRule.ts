@@ -302,8 +302,6 @@ export class PolicyAccessCredentialRule extends pulumi.CustomResource {
             resourceInputs["policySetId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "zpa:index/policyCredentialRule:PolicyCredentialRule" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PolicyAccessCredentialRule.__pulumiType, name, resourceInputs, opts);
     }
 }

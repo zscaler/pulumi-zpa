@@ -223,8 +223,6 @@ export class PolicyAccessInspectionRuleV2 extends pulumi.CustomResource {
             resourceInputs["policySetId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "zpa:index/policyInspectionRuleV2:PolicyInspectionRuleV2" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PolicyAccessInspectionRuleV2.__pulumiType, name, resourceInputs, opts);
     }
 }

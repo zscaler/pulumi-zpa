@@ -10,7 +10,7 @@ using Pulumi;
 
 namespace zscaler.PulumiPackage.Zpa
 {
-    public static class GetZiaCloudConfig
+    public static class GetZIACloudConfig
     {
         /// <summary>
         /// The **zpa_zia_cloud_config** retrieve configures the Zscaler Cloud Sandbox Settings in the Zscaler Private Access cloud.
@@ -27,13 +27,13 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Zpa.GetZiaCloudConfig.Invoke();
+        ///     var @this = Zpa.GetZIACloudConfig.Invoke();
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZiaCloudConfigResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetZiaCloudConfigResult>("zpa:index/getZiaCloudConfig:getZiaCloudConfig", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetZIACloudConfigResult> InvokeAsync(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetZIACloudConfigResult>("zpa:index/getZIACloudConfig:getZIACloudConfig", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
         /// The **zpa_zia_cloud_config** retrieve configures the Zscaler Cloud Sandbox Settings in the Zscaler Private Access cloud.
@@ -50,13 +50,13 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Zpa.GetZiaCloudConfig.Invoke();
+        ///     var @this = Zpa.GetZIACloudConfig.Invoke();
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZiaCloudConfigResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetZiaCloudConfigResult>("zpa:index/getZiaCloudConfig:getZiaCloudConfig", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetZIACloudConfigResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetZIACloudConfigResult>("zpa:index/getZIACloudConfig:getZIACloudConfig", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
         /// The **zpa_zia_cloud_config** retrieve configures the Zscaler Cloud Sandbox Settings in the Zscaler Private Access cloud.
@@ -73,18 +73,18 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Zpa.GetZiaCloudConfig.Invoke();
+        ///     var @this = Zpa.GetZIACloudConfig.Invoke();
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZiaCloudConfigResult> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetZiaCloudConfigResult>("zpa:index/getZiaCloudConfig:getZiaCloudConfig", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetZIACloudConfigResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetZIACloudConfigResult>("zpa:index/getZIACloudConfig:getZIACloudConfig", InvokeArgs.Empty, options.WithDefaults());
     }
 
 
     [OutputType]
-    public sealed class GetZiaCloudConfigResult
+    public sealed class GetZIACloudConfigResult
     {
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -94,7 +94,7 @@ namespace zscaler.PulumiPackage.Zpa
         public readonly string ZiaUsername;
 
         [OutputConstructor]
-        private GetZiaCloudConfigResult(
+        private GetZIACloudConfigResult(
             string id,
 
             string ziaCloudDomain,

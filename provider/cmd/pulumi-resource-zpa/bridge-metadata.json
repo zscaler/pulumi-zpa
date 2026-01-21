@@ -3,13 +3,6 @@
         "resources": {
             "zpa_app_connector_assistant_schedule": {
                 "current": "zpa:index/appConnectorAssistantSchedule:AppConnectorAssistantSchedule",
-                "past": [
-                    {
-                        "name": "zpa:index/assistantSchedule:AssistantSchedule",
-                        "inCodegen": true,
-                        "majorVersion": 0
-                    }
-                ],
                 "majorVersion": 1
             },
             "zpa_app_connector_group": {
@@ -602,13 +595,6 @@
             },
             "zpa_policy_capabilities_rule": {
                 "current": "zpa:index/policyAccessCapabilitiesRule:PolicyAccessCapabilitiesRule",
-                "past": [
-                    {
-                        "name": "zpa:index/policyCapabilitiesRule:PolicyCapabilitiesRule",
-                        "inCodegen": true,
-                        "majorVersion": 0
-                    }
-                ],
                 "majorVersion": 1,
                 "fields": {
                     "conditions": {
@@ -638,13 +624,6 @@
             },
             "zpa_policy_credential_rule": {
                 "current": "zpa:index/policyAccessCredentialRule:PolicyAccessCredentialRule",
-                "past": [
-                    {
-                        "name": "zpa:index/policyCredentialRule:PolicyCredentialRule",
-                        "inCodegen": true,
-                        "majorVersion": 0
-                    }
-                ],
                 "majorVersion": 1,
                 "fields": {
                     "conditions": {
@@ -700,13 +679,6 @@
             },
             "zpa_policy_forwarding_rule_v2": {
                 "current": "zpa:index/policyAccessForwardingRuleV2:PolicyAccessForwardingRuleV2",
-                "past": [
-                    {
-                        "name": "zpa:index/policyForwardingRuleV2:PolicyForwardingRuleV2",
-                        "inCodegen": true,
-                        "majorVersion": 0
-                    }
-                ],
                 "majorVersion": 1,
                 "fields": {
                     "conditions": {
@@ -756,13 +728,6 @@
             },
             "zpa_policy_inspection_rule_v2": {
                 "current": "zpa:index/policyAccessInspectionRuleV2:PolicyAccessInspectionRuleV2",
-                "past": [
-                    {
-                        "name": "zpa:index/policyInspectionRuleV2:PolicyInspectionRuleV2",
-                        "inCodegen": true,
-                        "majorVersion": 0
-                    }
-                ],
                 "majorVersion": 1,
                 "fields": {
                     "conditions": {
@@ -812,13 +777,6 @@
             },
             "zpa_policy_isolation_rule_v2": {
                 "current": "zpa:index/policyAccessIsolationRuleV2:PolicyAccessIsolationRuleV2",
-                "past": [
-                    {
-                        "name": "zpa:index/policyIsolationRuleV2:PolicyIsolationRuleV2",
-                        "inCodegen": true,
-                        "majorVersion": 0
-                    }
-                ],
                 "majorVersion": 1,
                 "fields": {
                     "conditions": {
@@ -874,13 +832,6 @@
             },
             "zpa_policy_redirection_rule": {
                 "current": "zpa:index/policyAccessRedirectionRule:PolicyAccessRedirectionRule",
-                "past": [
-                    {
-                        "name": "zpa:index/policyRedirectionRule:PolicyRedirectionRule",
-                        "inCodegen": true,
-                        "majorVersion": 0
-                    }
-                ],
                 "majorVersion": 1,
                 "fields": {
                     "conditions": {
@@ -937,13 +888,6 @@
             },
             "zpa_policy_timeout_rule_v2": {
                 "current": "zpa:index/policyAccessTimeOutRuleV2:PolicyAccessTimeOutRuleV2",
-                "past": [
-                    {
-                        "name": "zpa:index/policyTimeoutRuleV2:PolicyTimeoutRuleV2",
-                        "inCodegen": true,
-                        "majorVersion": 0
-                    }
-                ],
                 "majorVersion": 1,
                 "fields": {
                     "conditions": {
@@ -970,13 +914,6 @@
             },
             "zpa_pra_approval_controller": {
                 "current": "zpa:index/pRAApproval:PRAApproval",
-                "past": [
-                    {
-                        "name": "zpa:index/praApprovalController:PraApprovalController",
-                        "inCodegen": true,
-                        "majorVersion": 0
-                    }
-                ],
                 "majorVersion": 1,
                 "fields": {
                     "applications": {
@@ -1006,13 +943,6 @@
             },
             "zpa_pra_console_controller": {
                 "current": "zpa:index/pRAConsole:PRAConsole",
-                "past": [
-                    {
-                        "name": "zpa:index/praConsoleController:PraConsoleController",
-                        "inCodegen": true,
-                        "majorVersion": 0
-                    }
-                ],
                 "majorVersion": 1,
                 "fields": {
                     "pra_application": {
@@ -1032,13 +962,6 @@
             },
             "zpa_pra_credential_controller": {
                 "current": "zpa:index/pRACredential:PRACredential",
-                "past": [
-                    {
-                        "name": "zpa:index/praCredentialController:PraCredentialController",
-                        "inCodegen": true,
-                        "majorVersion": 0
-                    }
-                ],
                 "majorVersion": 1
             },
             "zpa_pra_credential_pool": {
@@ -1059,13 +982,6 @@
             },
             "zpa_pra_portal_controller": {
                 "current": "zpa:index/pRAPortal:PRAPortal",
-                "past": [
-                    {
-                        "name": "zpa:index/praPortalController:PraPortalController",
-                        "inCodegen": true,
-                        "majorVersion": 0
-                    }
-                ],
                 "majorVersion": 1,
                 "fields": {
                     "approval_reviewers": {
@@ -1199,7 +1115,7 @@
                 }
             },
             "zpa_zia_cloud_config": {
-                "current": "zpa:index/ziaCloudConfig:ZiaCloudConfig",
+                "current": "zpa:index/zIACloudConfig:ZIACloudConfig",
                 "majorVersion": 1
             }
         },
@@ -1214,13 +1130,6 @@
             },
             "zpa_app_connector_assistant_schedule": {
                 "current": "zpa:index/getAppConnectorAssistantSchedule:getAppConnectorAssistantSchedule",
-                "past": [
-                    {
-                        "name": "zpa:index/getAssistantSchedule:getAssistantSchedule",
-                        "inCodegen": true,
-                        "majorVersion": 0
-                    }
-                ],
                 "majorVersion": 1
             },
             "zpa_app_connector_controller": {
@@ -1832,13 +1741,6 @@
             },
             "zpa_pra_approval_controller": {
                 "current": "zpa:index/getPRAApproval:getPRAApproval",
-                "past": [
-                    {
-                        "name": "zpa:index/getPraApprovalController:getPraApprovalController",
-                        "inCodegen": true,
-                        "majorVersion": 0
-                    }
-                ],
                 "majorVersion": 1,
                 "fields": {
                     "applications": {
@@ -1861,13 +1763,6 @@
             },
             "zpa_pra_console_controller": {
                 "current": "zpa:index/getPRAConsole:getPRAConsole",
-                "past": [
-                    {
-                        "name": "zpa:index/getPraConsoleController:getPraConsoleController",
-                        "inCodegen": true,
-                        "majorVersion": 0
-                    }
-                ],
                 "majorVersion": 1,
                 "fields": {
                     "pra_application": {
@@ -1880,24 +1775,10 @@
             },
             "zpa_pra_credential_controller": {
                 "current": "zpa:index/getPRACredential:getPRACredential",
-                "past": [
-                    {
-                        "name": "zpa:index/getPraCredentialController:getPraCredentialController",
-                        "inCodegen": true,
-                        "majorVersion": 0
-                    }
-                ],
                 "majorVersion": 1
             },
             "zpa_pra_credential_pool": {
                 "current": "zpa:index/getCredentialPool:getCredentialPool",
-                "past": [
-                    {
-                        "name": "zpa:index/getPraCredentialPool:getPraCredentialPool",
-                        "inCodegen": true,
-                        "majorVersion": 0
-                    }
-                ],
                 "majorVersion": 1,
                 "fields": {
                     "credentials": {
@@ -1914,13 +1795,6 @@
             },
             "zpa_pra_portal_controller": {
                 "current": "zpa:index/getPRAPortal:getPRAPortal",
-                "past": [
-                    {
-                        "name": "zpa:index/getPraPortalController:getPraPortalController",
-                        "inCodegen": true,
-                        "majorVersion": 0
-                    }
-                ],
                 "majorVersion": 1,
                 "fields": {
                     "approval_reviewers": {
@@ -2121,73 +1995,10 @@
                 "majorVersion": 1
             },
             "zpa_zia_cloud_config": {
-                "current": "zpa:index/getZiaCloudConfig:getZiaCloudConfig",
+                "current": "zpa:index/getZIACloudConfig:getZIACloudConfig",
                 "majorVersion": 1
             }
         }
     },
-    "auto-settings": {
-        "resources": {
-            "zpa_app_connector_assistant_schedule": {
-                "renames": [
-                    "zpa:index/assistantSchedule:AssistantSchedule"
-                ]
-            },
-            "zpa_policy_capabilities_rule": {
-                "renames": [
-                    "zpa:index/policyCapabilitiesRule:PolicyCapabilitiesRule"
-                ]
-            },
-            "zpa_policy_credential_rule": {
-                "renames": [
-                    "zpa:index/policyCredentialRule:PolicyCredentialRule"
-                ]
-            },
-            "zpa_policy_forwarding_rule_v2": {
-                "renames": [
-                    "zpa:index/policyForwardingRuleV2:PolicyForwardingRuleV2"
-                ]
-            },
-            "zpa_policy_inspection_rule_v2": {
-                "renames": [
-                    "zpa:index/policyInspectionRuleV2:PolicyInspectionRuleV2"
-                ]
-            },
-            "zpa_policy_isolation_rule_v2": {
-                "renames": [
-                    "zpa:index/policyIsolationRuleV2:PolicyIsolationRuleV2"
-                ]
-            },
-            "zpa_policy_redirection_rule": {
-                "renames": [
-                    "zpa:index/policyRedirectionRule:PolicyRedirectionRule"
-                ]
-            },
-            "zpa_policy_timeout_rule_v2": {
-                "renames": [
-                    "zpa:index/policyTimeoutRuleV2:PolicyTimeoutRuleV2"
-                ]
-            },
-            "zpa_pra_approval_controller": {
-                "renames": [
-                    "zpa:index/praApprovalController:PraApprovalController"
-                ]
-            },
-            "zpa_pra_console_controller": {
-                "renames": [
-                    "zpa:index/praConsoleController:PraConsoleController"
-                ]
-            },
-            "zpa_pra_credential_controller": {
-                "renames": [
-                    "zpa:index/praCredentialController:PraCredentialController"
-                ]
-            },
-            "zpa_pra_portal_controller": {
-                "renames": [
-                    "zpa:index/praPortalController:PraPortalController"
-                ]
-            }
-        }
-    }
+    "auto-settings": {}
 }

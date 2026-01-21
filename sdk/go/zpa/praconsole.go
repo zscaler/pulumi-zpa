@@ -179,12 +179,6 @@ func NewPRAConsole(ctx *pulumi.Context,
 	if args.PraPortals == nil {
 		return nil, errors.New("invalid value for required argument 'PraPortals'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("zpa:index/praConsoleController:PraConsoleController"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PRAConsole
 	err := ctx.RegisterResource("zpa:index/pRAConsole:PRAConsole", name, args, &resource, opts...)

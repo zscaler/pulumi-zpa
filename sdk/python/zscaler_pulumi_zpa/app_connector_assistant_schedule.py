@@ -289,8 +289,6 @@ class AppConnectorAssistantSchedule(pulumi.CustomResource):
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["frequency"] = frequency
             __props__.__dict__["frequency_interval"] = frequency_interval
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="zpa:index/assistantSchedule:AssistantSchedule")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AppConnectorAssistantSchedule, __self__).__init__(
             'zpa:index/appConnectorAssistantSchedule:AppConnectorAssistantSchedule',
             resource_name,

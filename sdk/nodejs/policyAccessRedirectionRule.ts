@@ -189,8 +189,6 @@ export class PolicyAccessRedirectionRule extends pulumi.CustomResource {
             resourceInputs["zpnIsolationProfileId"] = args?.zpnIsolationProfileId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "zpa:index/policyRedirectionRule:PolicyRedirectionRule" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PolicyAccessRedirectionRule.__pulumiType, name, resourceInputs, opts);
     }
 }

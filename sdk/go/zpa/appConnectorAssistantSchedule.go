@@ -99,12 +99,6 @@ func NewAppConnectorAssistantSchedule(ctx *pulumi.Context,
 		args = &AppConnectorAssistantScheduleArgs{}
 	}
 
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("zpa:index/assistantSchedule:AssistantSchedule"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AppConnectorAssistantSchedule
 	err := ctx.RegisterResource("zpa:index/appConnectorAssistantSchedule:AppConnectorAssistantSchedule", name, args, &resource, opts...)

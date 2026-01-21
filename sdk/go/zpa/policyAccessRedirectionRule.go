@@ -117,12 +117,6 @@ func NewPolicyAccessRedirectionRule(ctx *pulumi.Context,
 		args = &PolicyAccessRedirectionRuleArgs{}
 	}
 
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("zpa:index/policyRedirectionRule:PolicyRedirectionRule"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PolicyAccessRedirectionRule
 	err := ctx.RegisterResource("zpa:index/policyAccessRedirectionRule:PolicyAccessRedirectionRule", name, args, &resource, opts...)

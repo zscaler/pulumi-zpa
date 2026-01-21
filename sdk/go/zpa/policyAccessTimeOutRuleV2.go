@@ -213,12 +213,6 @@ func NewPolicyAccessTimeOutRuleV2(ctx *pulumi.Context,
 		args = &PolicyAccessTimeOutRuleV2Args{}
 	}
 
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("zpa:index/policyTimeoutRuleV2:PolicyTimeoutRuleV2"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PolicyAccessTimeOutRuleV2
 	err := ctx.RegisterResource("zpa:index/policyAccessTimeOutRuleV2:PolicyAccessTimeOutRuleV2", name, args, &resource, opts...)

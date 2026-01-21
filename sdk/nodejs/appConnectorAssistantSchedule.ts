@@ -108,8 +108,6 @@ export class AppConnectorAssistantSchedule extends pulumi.CustomResource {
             resourceInputs["frequencyInterval"] = args?.frequencyInterval;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "zpa:index/assistantSchedule:AssistantSchedule" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AppConnectorAssistantSchedule.__pulumiType, name, resourceInputs, opts);
     }
 }

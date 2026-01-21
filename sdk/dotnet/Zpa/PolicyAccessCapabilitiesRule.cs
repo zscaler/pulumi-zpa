@@ -205,10 +205,6 @@ namespace zscaler.PulumiPackage.Zpa
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/zscaler",
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "zpa:index/policyCapabilitiesRule:PolicyCapabilitiesRule" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

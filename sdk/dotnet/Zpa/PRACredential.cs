@@ -168,10 +168,6 @@ namespace zscaler.PulumiPackage.Zpa
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/zscaler",
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "zpa:index/praCredentialController:PraCredentialController" },
-                },
                 AdditionalSecretOutputs =
                 {
                     "passphrase",
