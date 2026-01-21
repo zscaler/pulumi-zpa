@@ -529,8 +529,6 @@ class PRAApproval(pulumi.CustomResource):
             __props__.__dict__["start_time"] = start_time
             __props__.__dict__["status"] = status
             __props__.__dict__["working_hours"] = working_hours
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="zpa:index/praApprovalController:PraApprovalController")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(PRAApproval, __self__).__init__(
             'zpa:index/pRAApproval:PRAApproval',
             resource_name,

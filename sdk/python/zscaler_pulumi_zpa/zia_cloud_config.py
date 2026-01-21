@@ -14,10 +14,10 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
-__all__ = ['ZiaCloudConfigArgs', 'ZiaCloudConfig']
+__all__ = ['ZIACloudConfigArgs', 'ZIACloudConfig']
 
 @pulumi.input_type
-class ZiaCloudConfigArgs:
+class ZIACloudConfigArgs:
     def __init__(__self__, *,
                  zia_cloud_domain: pulumi.Input[_builtins.str],
                  zia_cloud_service_api_key: pulumi.Input[_builtins.str],
@@ -25,7 +25,7 @@ class ZiaCloudConfigArgs:
                  zia_sandbox_api_token: pulumi.Input[_builtins.str],
                  zia_username: pulumi.Input[_builtins.str]):
         """
-        The set of arguments for constructing a ZiaCloudConfig resource.
+        The set of arguments for constructing a ZIACloudConfig resource.
         :param pulumi.Input[_builtins.str] zia_cloud_domain: - (String) The supported ZIA cloud name. Supported values are:
         :param pulumi.Input[_builtins.str] zia_cloud_service_api_key: - (String) The ZIA Cloud service api key
         :param pulumi.Input[_builtins.str] zia_password: - (String) The ZIA admin password with permission to use the api key
@@ -100,7 +100,7 @@ class ZiaCloudConfigArgs:
 
 
 @pulumi.input_type
-class _ZiaCloudConfigState:
+class _ZIACloudConfigState:
     def __init__(__self__, *,
                  zia_cloud_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  zia_cloud_service_api_key: Optional[pulumi.Input[_builtins.str]] = None,
@@ -108,7 +108,7 @@ class _ZiaCloudConfigState:
                  zia_sandbox_api_token: Optional[pulumi.Input[_builtins.str]] = None,
                  zia_username: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        Input properties used for looking up and filtering ZiaCloudConfig resources.
+        Input properties used for looking up and filtering ZIACloudConfig resources.
         :param pulumi.Input[_builtins.str] zia_cloud_domain: - (String) The supported ZIA cloud name. Supported values are:
         :param pulumi.Input[_builtins.str] zia_cloud_service_api_key: - (String) The ZIA Cloud service api key
         :param pulumi.Input[_builtins.str] zia_password: - (String) The ZIA admin password with permission to use the api key
@@ -187,8 +187,8 @@ class _ZiaCloudConfigState:
         pulumi.set(self, "zia_username", value)
 
 
-@pulumi.type_token("zpa:index/ziaCloudConfig:ZiaCloudConfig")
-class ZiaCloudConfig(pulumi.CustomResource):
+@pulumi.type_token("zpa:index/zIACloudConfig:ZIACloudConfig")
+class ZIACloudConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -212,7 +212,7 @@ class ZiaCloudConfig(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         ######### PASSWORDS IN THIS FILE ARE FAKE AND NOT USED IN PRODUCTION SYSTEMS #########
-        this = zpa.ZiaCloudConfig("this",
+        this = zpa.ZIACloudConfig("this",
             zia_username="",
             zia_password="",
             zia_cloud_service_api_key="",
@@ -231,13 +231,13 @@ class ZiaCloudConfig(pulumi.CustomResource):
         For example:
 
         ```sh
-        $ pulumi import zpa:index/ziaCloudConfig:ZiaCloudConfig example <zia_cloud_config>
+        $ pulumi import zpa:index/zIACloudConfig:ZIACloudConfig example <zia_cloud_config>
         ```
 
         or
 
         ```sh
-        $ pulumi import zpa:index/ziaCloudConfig:ZiaCloudConfig example <zia_cloud_config>
+        $ pulumi import zpa:index/zIACloudConfig:ZIACloudConfig example <zia_cloud_config>
         ```
 
         :param str resource_name: The name of the resource.
@@ -252,7 +252,7 @@ class ZiaCloudConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ZiaCloudConfigArgs,
+                 args: ZIACloudConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         * [Official documentation](https://help.zscaler.com/zpa/about-user-portals)
@@ -267,7 +267,7 @@ class ZiaCloudConfig(pulumi.CustomResource):
         import zscaler_pulumi_zpa as zpa
 
         ######### PASSWORDS IN THIS FILE ARE FAKE AND NOT USED IN PRODUCTION SYSTEMS #########
-        this = zpa.ZiaCloudConfig("this",
+        this = zpa.ZIACloudConfig("this",
             zia_username="",
             zia_password="",
             zia_cloud_service_api_key="",
@@ -286,22 +286,22 @@ class ZiaCloudConfig(pulumi.CustomResource):
         For example:
 
         ```sh
-        $ pulumi import zpa:index/ziaCloudConfig:ZiaCloudConfig example <zia_cloud_config>
+        $ pulumi import zpa:index/zIACloudConfig:ZIACloudConfig example <zia_cloud_config>
         ```
 
         or
 
         ```sh
-        $ pulumi import zpa:index/ziaCloudConfig:ZiaCloudConfig example <zia_cloud_config>
+        $ pulumi import zpa:index/zIACloudConfig:ZIACloudConfig example <zia_cloud_config>
         ```
 
         :param str resource_name: The name of the resource.
-        :param ZiaCloudConfigArgs args: The arguments to use to populate this resource's properties.
+        :param ZIACloudConfigArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ZiaCloudConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ZIACloudConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -322,7 +322,7 @@ class ZiaCloudConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ZiaCloudConfigArgs.__new__(ZiaCloudConfigArgs)
+            __props__ = ZIACloudConfigArgs.__new__(ZIACloudConfigArgs)
 
             if zia_cloud_domain is None and not opts.urn:
                 raise TypeError("Missing required property 'zia_cloud_domain'")
@@ -341,8 +341,8 @@ class ZiaCloudConfig(pulumi.CustomResource):
             __props__.__dict__["zia_username"] = zia_username
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["ziaCloudServiceApiKey", "ziaPassword", "ziaSandboxApiToken"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
-        super(ZiaCloudConfig, __self__).__init__(
-            'zpa:index/ziaCloudConfig:ZiaCloudConfig',
+        super(ZIACloudConfig, __self__).__init__(
+            'zpa:index/zIACloudConfig:ZIACloudConfig',
             resource_name,
             __props__,
             opts)
@@ -355,9 +355,9 @@ class ZiaCloudConfig(pulumi.CustomResource):
             zia_cloud_service_api_key: Optional[pulumi.Input[_builtins.str]] = None,
             zia_password: Optional[pulumi.Input[_builtins.str]] = None,
             zia_sandbox_api_token: Optional[pulumi.Input[_builtins.str]] = None,
-            zia_username: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZiaCloudConfig':
+            zia_username: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZIACloudConfig':
         """
-        Get an existing ZiaCloudConfig resource's state with the given name, id, and optional extra
+        Get an existing ZIACloudConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -371,14 +371,14 @@ class ZiaCloudConfig(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _ZiaCloudConfigState.__new__(_ZiaCloudConfigState)
+        __props__ = _ZIACloudConfigState.__new__(_ZIACloudConfigState)
 
         __props__.__dict__["zia_cloud_domain"] = zia_cloud_domain
         __props__.__dict__["zia_cloud_service_api_key"] = zia_cloud_service_api_key
         __props__.__dict__["zia_password"] = zia_password
         __props__.__dict__["zia_sandbox_api_token"] = zia_sandbox_api_token
         __props__.__dict__["zia_username"] = zia_username
-        return ZiaCloudConfig(resource_name, opts=opts, __props__=__props__)
+        return ZIACloudConfig(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="ziaCloudDomain")

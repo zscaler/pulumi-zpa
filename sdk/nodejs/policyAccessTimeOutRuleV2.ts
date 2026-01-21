@@ -233,8 +233,6 @@ export class PolicyAccessTimeOutRuleV2 extends pulumi.CustomResource {
             resourceInputs["policySetId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "zpa:index/policyTimeoutRuleV2:PolicyTimeoutRuleV2" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PolicyAccessTimeOutRuleV2.__pulumiType, name, resourceInputs, opts);
     }
 }

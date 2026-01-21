@@ -518,8 +518,6 @@ class PRACredential(pulumi.CustomResource):
             __props__.__dict__["private_key"] = None if private_key is None else pulumi.Output.secret(private_key)
             __props__.__dict__["user_domain"] = user_domain
             __props__.__dict__["username"] = username
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="zpa:index/praCredentialController:PraCredentialController")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["passphrase", "password", "privateKey"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(PRACredential, __self__).__init__(

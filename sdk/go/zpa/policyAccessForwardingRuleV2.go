@@ -207,12 +207,6 @@ func NewPolicyAccessForwardingRuleV2(ctx *pulumi.Context,
 		args = &PolicyAccessForwardingRuleV2Args{}
 	}
 
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("zpa:index/policyForwardingRuleV2:PolicyForwardingRuleV2"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PolicyAccessForwardingRuleV2
 	err := ctx.RegisterResource("zpa:index/policyAccessForwardingRuleV2:PolicyAccessForwardingRuleV2", name, args, &resource, opts...)

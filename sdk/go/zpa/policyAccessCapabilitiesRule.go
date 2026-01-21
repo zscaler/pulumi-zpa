@@ -167,12 +167,6 @@ func NewPolicyAccessCapabilitiesRule(ctx *pulumi.Context,
 		args = &PolicyAccessCapabilitiesRuleArgs{}
 	}
 
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("zpa:index/policyCapabilitiesRule:PolicyCapabilitiesRule"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PolicyAccessCapabilitiesRule
 	err := ctx.RegisterResource("zpa:index/policyAccessCapabilitiesRule:PolicyAccessCapabilitiesRule", name, args, &resource, opts...)

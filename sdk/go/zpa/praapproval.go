@@ -197,12 +197,6 @@ func NewPRAApproval(ctx *pulumi.Context,
 	if args.Applications == nil {
 		return nil, errors.New("invalid value for required argument 'Applications'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("zpa:index/praApprovalController:PraApprovalController"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PRAApproval
 	err := ctx.RegisterResource("zpa:index/pRAApproval:PRAApproval", name, args, &resource, opts...)

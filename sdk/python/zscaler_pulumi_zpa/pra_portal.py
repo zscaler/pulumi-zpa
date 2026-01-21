@@ -777,8 +777,6 @@ class PRAPortal(pulumi.CustomResource):
             __props__.__dict__["user_notification"] = user_notification
             __props__.__dict__["user_notification_enabled"] = user_notification_enabled
             __props__.__dict__["user_portal_gid"] = user_portal_gid
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="zpa:index/praPortalController:PraPortalController")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(PRAPortal, __self__).__init__(
             'zpa:index/pRAPortal:PRAPortal',
             resource_name,

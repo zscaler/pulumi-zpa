@@ -223,12 +223,6 @@ func NewPRAPortal(ctx *pulumi.Context,
 		args = &PRAPortalArgs{}
 	}
 
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("zpa:index/praPortalController:PraPortalController"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PRAPortal
 	err := ctx.RegisterResource("zpa:index/pRAPortal:PRAPortal", name, args, &resource, opts...)

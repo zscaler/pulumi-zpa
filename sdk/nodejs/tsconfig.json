@@ -97,7 +97,7 @@
         "getUserPortalController.ts",
         "getUserPortalLink.ts",
         "getWorkloadTagGroup.ts",
-        "getZiaCloudConfig.ts",
+        "getZIACloudConfig.ts",
         "index.ts",
         "inspectionCustomControls.ts",
         "inspectionProfile.ts",
@@ -138,6 +138,6 @@
         "userPortalController.ts",
         "userPortalLink.ts",
         "utilities.ts",
-        "ziaCloudConfig.ts"
+        "ziacloudConfig.ts"
     ]
 }

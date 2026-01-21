@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * //######## PASSWORDS IN THIS FILE ARE FAKE AND NOT USED IN PRODUCTION SYSTEMS #########
- * const _this = new zpa.ZiaCloudConfig("this", {
+ * const _this = new zpa.ZIACloudConfig("this", {
  *     ziaUsername: "",
  *     ziaPassword: "",
  *     ziaCloudServiceApiKey: "",
@@ -37,18 +37,18 @@ import * as utilities from "./utilities";
  * For example:
  *
  * ```sh
- * $ pulumi import zpa:index/ziaCloudConfig:ZiaCloudConfig example <zia_cloud_config>
+ * $ pulumi import zpa:index/zIACloudConfig:ZIACloudConfig example <zia_cloud_config>
  * ```
  *
  * or
  *
  * ```sh
- * $ pulumi import zpa:index/ziaCloudConfig:ZiaCloudConfig example <zia_cloud_config>
+ * $ pulumi import zpa:index/zIACloudConfig:ZIACloudConfig example <zia_cloud_config>
  * ```
  */
-export class ZiaCloudConfig extends pulumi.CustomResource {
+export class ZIACloudConfig extends pulumi.CustomResource {
     /**
-     * Get an existing ZiaCloudConfig resource's state with the given name, ID, and optional extra
+     * Get an existing ZIACloudConfig resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -56,22 +56,22 @@ export class ZiaCloudConfig extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZiaCloudConfigState, opts?: pulumi.CustomResourceOptions): ZiaCloudConfig {
-        return new ZiaCloudConfig(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZIACloudConfigState, opts?: pulumi.CustomResourceOptions): ZIACloudConfig {
+        return new ZIACloudConfig(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'zpa:index/ziaCloudConfig:ZiaCloudConfig';
+    public static readonly __pulumiType = 'zpa:index/zIACloudConfig:ZIACloudConfig';
 
     /**
-     * Returns true if the given object is an instance of ZiaCloudConfig.  This is designed to work even
+     * Returns true if the given object is an instance of ZIACloudConfig.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is ZiaCloudConfig {
+    public static isInstance(obj: any): obj is ZIACloudConfig {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === ZiaCloudConfig.__pulumiType;
+        return obj['__pulumiType'] === ZIACloudConfig.__pulumiType;
     }
 
     /**
@@ -96,25 +96,25 @@ export class ZiaCloudConfig extends pulumi.CustomResource {
     declare public readonly ziaUsername: pulumi.Output<string>;
 
     /**
-     * Create a ZiaCloudConfig resource with the given unique name, arguments, and options.
+     * Create a ZIACloudConfig resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ZiaCloudConfigArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: ZiaCloudConfigArgs | ZiaCloudConfigState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: ZIACloudConfigArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ZIACloudConfigArgs | ZIACloudConfigState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as ZiaCloudConfigState | undefined;
+            const state = argsOrState as ZIACloudConfigState | undefined;
             resourceInputs["ziaCloudDomain"] = state?.ziaCloudDomain;
             resourceInputs["ziaCloudServiceApiKey"] = state?.ziaCloudServiceApiKey;
             resourceInputs["ziaPassword"] = state?.ziaPassword;
             resourceInputs["ziaSandboxApiToken"] = state?.ziaSandboxApiToken;
             resourceInputs["ziaUsername"] = state?.ziaUsername;
         } else {
-            const args = argsOrState as ZiaCloudConfigArgs | undefined;
+            const args = argsOrState as ZIACloudConfigArgs | undefined;
             if (args?.ziaCloudDomain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ziaCloudDomain'");
             }
@@ -139,14 +139,14 @@ export class ZiaCloudConfig extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["ziaCloudServiceApiKey", "ziaPassword", "ziaSandboxApiToken"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(ZiaCloudConfig.__pulumiType, name, resourceInputs, opts);
+        super(ZIACloudConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering ZiaCloudConfig resources.
+ * Input properties used for looking up and filtering ZIACloudConfig resources.
  */
-export interface ZiaCloudConfigState {
+export interface ZIACloudConfigState {
     /**
      * - (String) The supported ZIA cloud name. Supported values are:
      */
@@ -170,9 +170,9 @@ export interface ZiaCloudConfigState {
 }
 
 /**
- * The set of arguments for constructing a ZiaCloudConfig resource.
+ * The set of arguments for constructing a ZIACloudConfig resource.
  */
-export interface ZiaCloudConfigArgs {
+export interface ZIACloudConfigArgs {
     /**
      * - (String) The supported ZIA cloud name. Supported values are:
      */

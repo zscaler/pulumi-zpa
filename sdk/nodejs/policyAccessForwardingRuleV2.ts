@@ -219,8 +219,6 @@ export class PolicyAccessForwardingRuleV2 extends pulumi.CustomResource {
             resourceInputs["policySetId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "zpa:index/policyForwardingRuleV2:PolicyForwardingRuleV2" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PolicyAccessForwardingRuleV2.__pulumiType, name, resourceInputs, opts);
     }
 }

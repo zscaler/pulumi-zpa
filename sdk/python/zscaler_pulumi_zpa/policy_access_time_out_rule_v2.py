@@ -604,8 +604,6 @@ class PolicyAccessTimeOutRuleV2(pulumi.CustomResource):
             __props__.__dict__["reauth_idle_timeout"] = reauth_idle_timeout
             __props__.__dict__["reauth_timeout"] = reauth_timeout
             __props__.__dict__["policy_set_id"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="zpa:index/policyTimeoutRuleV2:PolicyTimeoutRuleV2")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(PolicyAccessTimeOutRuleV2, __self__).__init__(
             'zpa:index/policyAccessTimeOutRuleV2:PolicyAccessTimeOutRuleV2',
             resource_name,

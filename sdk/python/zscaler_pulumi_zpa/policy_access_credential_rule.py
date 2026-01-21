@@ -688,8 +688,6 @@ class PolicyAccessCredentialRule(pulumi.CustomResource):
             __props__.__dict__["microtenant_id"] = microtenant_id
             __props__.__dict__["name"] = name
             __props__.__dict__["policy_set_id"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="zpa:index/policyCredentialRule:PolicyCredentialRule")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(PolicyAccessCredentialRule, __self__).__init__(
             'zpa:index/policyAccessCredentialRule:PolicyAccessCredentialRule',
             resource_name,

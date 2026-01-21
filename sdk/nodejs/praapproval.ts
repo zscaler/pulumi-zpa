@@ -208,8 +208,6 @@ export class PRAApproval extends pulumi.CustomResource {
             resourceInputs["workingHours"] = args?.workingHours;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "zpa:index/praApprovalController:PraApprovalController" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PRAApproval.__pulumiType, name, resourceInputs, opts);
     }
 }

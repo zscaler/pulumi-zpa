@@ -129,12 +129,6 @@ func NewPRACredential(ctx *pulumi.Context,
 		args = &PRACredentialArgs{}
 	}
 
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("zpa:index/praCredentialController:PraCredentialController"),
-		},
-	})
-	opts = append(opts, aliases)
 	if args.Passphrase != nil {
 		args.Passphrase = pulumi.ToSecret(args.Passphrase).(pulumi.StringPtrInput)
 	}

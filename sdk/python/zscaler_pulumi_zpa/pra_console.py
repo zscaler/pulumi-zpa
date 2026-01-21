@@ -486,8 +486,6 @@ class PRAConsole(pulumi.CustomResource):
             if pra_portals is None and not opts.urn:
                 raise TypeError("Missing required property 'pra_portals'")
             __props__.__dict__["pra_portals"] = pra_portals
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="zpa:index/praConsoleController:PraConsoleController")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(PRAConsole, __self__).__init__(
             'zpa:index/pRAConsole:PRAConsole',
             resource_name,

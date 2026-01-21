@@ -540,10 +540,10 @@ _utilities.register(
  },
  {
   "pkg": "zpa",
-  "mod": "index/ziaCloudConfig",
+  "mod": "index/zIACloudConfig",
   "fqn": "zscaler_pulumi_zpa",
   "classes": {
-   "zpa:index/ziaCloudConfig:ZiaCloudConfig": "ZiaCloudConfig"
+   "zpa:index/zIACloudConfig:ZIACloudConfig": "ZIACloudConfig"
   }
  }
 ]

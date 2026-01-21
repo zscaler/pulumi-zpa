@@ -189,8 +189,6 @@ export class PRAConsole extends pulumi.CustomResource {
             resourceInputs["praPortals"] = args?.praPortals;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "zpa:index/praConsoleController:PraConsoleController" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PRAConsole.__pulumiType, name, resourceInputs, opts);
     }
 }

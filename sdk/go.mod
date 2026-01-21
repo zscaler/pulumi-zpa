@@ -2,7 +2,7 @@ module github.com/zscaler/pulumi-zpa/sdk
 
 go 1.24.0
 
-toolchain go1.24.7
+toolchain go1.24.6
 
 require (
 	github.com/blang/semver v3.5.1+incompatible

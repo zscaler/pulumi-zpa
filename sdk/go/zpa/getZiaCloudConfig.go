@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := zpa.LookupZiaCloudConfig(ctx, map[string]interface{}{}, nil)
+//			_, err := zpa.LookupZIACloudConfig(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -38,59 +38,59 @@ import (
 //	}
 //
 // ```
-func LookupZiaCloudConfig(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupZiaCloudConfigResult, error) {
+func LookupZIACloudConfig(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupZIACloudConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv LookupZiaCloudConfigResult
-	err := ctx.Invoke("zpa:index/getZiaCloudConfig:getZiaCloudConfig", nil, &rv, opts...)
+	var rv LookupZIACloudConfigResult
+	err := ctx.Invoke("zpa:index/getZIACloudConfig:getZIACloudConfig", nil, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
-// A collection of values returned by getZiaCloudConfig.
-type LookupZiaCloudConfigResult struct {
+// A collection of values returned by getZIACloudConfig.
+type LookupZIACloudConfigResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id             string `pulumi:"id"`
 	ZiaCloudDomain string `pulumi:"ziaCloudDomain"`
 	ZiaUsername    string `pulumi:"ziaUsername"`
 }
 
-func LookupZiaCloudConfigOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupZiaCloudConfigResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (LookupZiaCloudConfigResultOutput, error) {
+func LookupZIACloudConfigOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupZIACloudConfigResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (LookupZIACloudConfigResultOutput, error) {
 		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("zpa:index/getZiaCloudConfig:getZiaCloudConfig", nil, LookupZiaCloudConfigResultOutput{}, options).(LookupZiaCloudConfigResultOutput), nil
-	}).(LookupZiaCloudConfigResultOutput)
+		return ctx.InvokeOutput("zpa:index/getZIACloudConfig:getZIACloudConfig", nil, LookupZIACloudConfigResultOutput{}, options).(LookupZIACloudConfigResultOutput), nil
+	}).(LookupZIACloudConfigResultOutput)
 }
 
-// A collection of values returned by getZiaCloudConfig.
-type LookupZiaCloudConfigResultOutput struct{ *pulumi.OutputState }
+// A collection of values returned by getZIACloudConfig.
+type LookupZIACloudConfigResultOutput struct{ *pulumi.OutputState }
 
-func (LookupZiaCloudConfigResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupZiaCloudConfigResult)(nil)).Elem()
+func (LookupZIACloudConfigResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupZIACloudConfigResult)(nil)).Elem()
 }
 
-func (o LookupZiaCloudConfigResultOutput) ToLookupZiaCloudConfigResultOutput() LookupZiaCloudConfigResultOutput {
+func (o LookupZIACloudConfigResultOutput) ToLookupZIACloudConfigResultOutput() LookupZIACloudConfigResultOutput {
 	return o
 }
 
-func (o LookupZiaCloudConfigResultOutput) ToLookupZiaCloudConfigResultOutputWithContext(ctx context.Context) LookupZiaCloudConfigResultOutput {
+func (o LookupZIACloudConfigResultOutput) ToLookupZIACloudConfigResultOutputWithContext(ctx context.Context) LookupZIACloudConfigResultOutput {
 	return o
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o LookupZiaCloudConfigResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZiaCloudConfigResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupZIACloudConfigResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZIACloudConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupZiaCloudConfigResultOutput) ZiaCloudDomain() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZiaCloudConfigResult) string { return v.ZiaCloudDomain }).(pulumi.StringOutput)
+func (o LookupZIACloudConfigResultOutput) ZiaCloudDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZIACloudConfigResult) string { return v.ZiaCloudDomain }).(pulumi.StringOutput)
 }
 
-func (o LookupZiaCloudConfigResultOutput) ZiaUsername() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZiaCloudConfigResult) string { return v.ZiaUsername }).(pulumi.StringOutput)
+func (o LookupZIACloudConfigResultOutput) ZiaUsername() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZIACloudConfigResult) string { return v.ZiaUsername }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupZiaCloudConfigResultOutput{})
+	pulumi.RegisterOutputType(LookupZIACloudConfigResultOutput{})
 }

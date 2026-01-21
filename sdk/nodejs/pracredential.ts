@@ -167,8 +167,6 @@ export class PRACredential extends pulumi.CustomResource {
             resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "zpa:index/praCredentialController:PraCredentialController" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         const secretOpts = { additionalSecretOutputs: ["passphrase", "password", "privateKey"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(PRACredential.__pulumiType, name, resourceInputs, opts);

@@ -32,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ######## PASSWORDS IN THIS FILE ARE FAKE AND NOT USED IN PRODUCTION SYSTEMS #########
-//			_, err := zpa.NewZiaCloudConfig(ctx, "this", &zpa.ZiaCloudConfigArgs{
+//			_, err := zpa.NewZIACloudConfig(ctx, "this", &zpa.ZIACloudConfigArgs{
 //				ZiaUsername:           pulumi.String(""),
 //				ZiaPassword:           pulumi.String(""),
 //				ZiaCloudServiceApiKey: pulumi.String(""),
@@ -59,15 +59,15 @@ import (
 // For example:
 //
 // ```sh
-// $ pulumi import zpa:index/ziaCloudConfig:ZiaCloudConfig example <zia_cloud_config>
+// $ pulumi import zpa:index/zIACloudConfig:ZIACloudConfig example <zia_cloud_config>
 // ```
 //
 // or
 //
 // ```sh
-// $ pulumi import zpa:index/ziaCloudConfig:ZiaCloudConfig example <zia_cloud_config>
+// $ pulumi import zpa:index/zIACloudConfig:ZIACloudConfig example <zia_cloud_config>
 // ```
-type ZiaCloudConfig struct {
+type ZIACloudConfig struct {
 	pulumi.CustomResourceState
 
 	// - (String) The supported ZIA cloud name. Supported values are:
@@ -82,9 +82,9 @@ type ZiaCloudConfig struct {
 	ZiaUsername pulumi.StringOutput `pulumi:"ziaUsername"`
 }
 
-// NewZiaCloudConfig registers a new resource with the given unique name, arguments, and options.
-func NewZiaCloudConfig(ctx *pulumi.Context,
-	name string, args *ZiaCloudConfigArgs, opts ...pulumi.ResourceOption) (*ZiaCloudConfig, error) {
+// NewZIACloudConfig registers a new resource with the given unique name, arguments, and options.
+func NewZIACloudConfig(ctx *pulumi.Context,
+	name string, args *ZIACloudConfigArgs, opts ...pulumi.ResourceOption) (*ZIACloudConfig, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -120,28 +120,28 @@ func NewZiaCloudConfig(ctx *pulumi.Context,
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource ZiaCloudConfig
-	err := ctx.RegisterResource("zpa:index/ziaCloudConfig:ZiaCloudConfig", name, args, &resource, opts...)
+	var resource ZIACloudConfig
+	err := ctx.RegisterResource("zpa:index/zIACloudConfig:ZIACloudConfig", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetZiaCloudConfig gets an existing ZiaCloudConfig resource's state with the given name, ID, and optional
+// GetZIACloudConfig gets an existing ZIACloudConfig resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetZiaCloudConfig(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *ZiaCloudConfigState, opts ...pulumi.ResourceOption) (*ZiaCloudConfig, error) {
-	var resource ZiaCloudConfig
-	err := ctx.ReadResource("zpa:index/ziaCloudConfig:ZiaCloudConfig", name, id, state, &resource, opts...)
+func GetZIACloudConfig(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *ZIACloudConfigState, opts ...pulumi.ResourceOption) (*ZIACloudConfig, error) {
+	var resource ZIACloudConfig
+	err := ctx.ReadResource("zpa:index/zIACloudConfig:ZIACloudConfig", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering ZiaCloudConfig resources.
-type ziaCloudConfigState struct {
+// Input properties used for looking up and filtering ZIACloudConfig resources.
+type ziacloudConfigState struct {
 	// - (String) The supported ZIA cloud name. Supported values are:
 	ZiaCloudDomain *string `pulumi:"ziaCloudDomain"`
 	// - (String) The ZIA Cloud service api key
@@ -154,7 +154,7 @@ type ziaCloudConfigState struct {
 	ZiaUsername *string `pulumi:"ziaUsername"`
 }
 
-type ZiaCloudConfigState struct {
+type ZIACloudConfigState struct {
 	// - (String) The supported ZIA cloud name. Supported values are:
 	ZiaCloudDomain pulumi.StringPtrInput
 	// - (String) The ZIA Cloud service api key
@@ -167,11 +167,11 @@ type ZiaCloudConfigState struct {
 	ZiaUsername pulumi.StringPtrInput
 }
 
-func (ZiaCloudConfigState) ElementType() reflect.Type {
-	return reflect.TypeOf((*ziaCloudConfigState)(nil)).Elem()
+func (ZIACloudConfigState) ElementType() reflect.Type {
+	return reflect.TypeOf((*ziacloudConfigState)(nil)).Elem()
 }
 
-type ziaCloudConfigArgs struct {
+type ziacloudConfigArgs struct {
 	// - (String) The supported ZIA cloud name. Supported values are:
 	ZiaCloudDomain string `pulumi:"ziaCloudDomain"`
 	// - (String) The ZIA Cloud service api key
@@ -184,8 +184,8 @@ type ziaCloudConfigArgs struct {
 	ZiaUsername string `pulumi:"ziaUsername"`
 }
 
-// The set of arguments for constructing a ZiaCloudConfig resource.
-type ZiaCloudConfigArgs struct {
+// The set of arguments for constructing a ZIACloudConfig resource.
+type ZIACloudConfigArgs struct {
 	// - (String) The supported ZIA cloud name. Supported values are:
 	ZiaCloudDomain pulumi.StringInput
 	// - (String) The ZIA Cloud service api key
@@ -198,163 +198,163 @@ type ZiaCloudConfigArgs struct {
 	ZiaUsername pulumi.StringInput
 }
 
-func (ZiaCloudConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ziaCloudConfigArgs)(nil)).Elem()
+func (ZIACloudConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ziacloudConfigArgs)(nil)).Elem()
 }
 
-type ZiaCloudConfigInput interface {
+type ZIACloudConfigInput interface {
 	pulumi.Input
 
-	ToZiaCloudConfigOutput() ZiaCloudConfigOutput
-	ToZiaCloudConfigOutputWithContext(ctx context.Context) ZiaCloudConfigOutput
+	ToZIACloudConfigOutput() ZIACloudConfigOutput
+	ToZIACloudConfigOutputWithContext(ctx context.Context) ZIACloudConfigOutput
 }
 
-func (*ZiaCloudConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZiaCloudConfig)(nil)).Elem()
+func (*ZIACloudConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZIACloudConfig)(nil)).Elem()
 }
 
-func (i *ZiaCloudConfig) ToZiaCloudConfigOutput() ZiaCloudConfigOutput {
-	return i.ToZiaCloudConfigOutputWithContext(context.Background())
+func (i *ZIACloudConfig) ToZIACloudConfigOutput() ZIACloudConfigOutput {
+	return i.ToZIACloudConfigOutputWithContext(context.Background())
 }
 
-func (i *ZiaCloudConfig) ToZiaCloudConfigOutputWithContext(ctx context.Context) ZiaCloudConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZiaCloudConfigOutput)
+func (i *ZIACloudConfig) ToZIACloudConfigOutputWithContext(ctx context.Context) ZIACloudConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZIACloudConfigOutput)
 }
 
-// ZiaCloudConfigArrayInput is an input type that accepts ZiaCloudConfigArray and ZiaCloudConfigArrayOutput values.
-// You can construct a concrete instance of `ZiaCloudConfigArrayInput` via:
+// ZIACloudConfigArrayInput is an input type that accepts ZIACloudConfigArray and ZIACloudConfigArrayOutput values.
+// You can construct a concrete instance of `ZIACloudConfigArrayInput` via:
 //
-//	ZiaCloudConfigArray{ ZiaCloudConfigArgs{...} }
-type ZiaCloudConfigArrayInput interface {
+//	ZIACloudConfigArray{ ZIACloudConfigArgs{...} }
+type ZIACloudConfigArrayInput interface {
 	pulumi.Input
 
-	ToZiaCloudConfigArrayOutput() ZiaCloudConfigArrayOutput
-	ToZiaCloudConfigArrayOutputWithContext(context.Context) ZiaCloudConfigArrayOutput
+	ToZIACloudConfigArrayOutput() ZIACloudConfigArrayOutput
+	ToZIACloudConfigArrayOutputWithContext(context.Context) ZIACloudConfigArrayOutput
 }
 
-type ZiaCloudConfigArray []ZiaCloudConfigInput
+type ZIACloudConfigArray []ZIACloudConfigInput
 
-func (ZiaCloudConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*ZiaCloudConfig)(nil)).Elem()
+func (ZIACloudConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*ZIACloudConfig)(nil)).Elem()
 }
 
-func (i ZiaCloudConfigArray) ToZiaCloudConfigArrayOutput() ZiaCloudConfigArrayOutput {
-	return i.ToZiaCloudConfigArrayOutputWithContext(context.Background())
+func (i ZIACloudConfigArray) ToZIACloudConfigArrayOutput() ZIACloudConfigArrayOutput {
+	return i.ToZIACloudConfigArrayOutputWithContext(context.Background())
 }
 
-func (i ZiaCloudConfigArray) ToZiaCloudConfigArrayOutputWithContext(ctx context.Context) ZiaCloudConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZiaCloudConfigArrayOutput)
+func (i ZIACloudConfigArray) ToZIACloudConfigArrayOutputWithContext(ctx context.Context) ZIACloudConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZIACloudConfigArrayOutput)
 }
 
-// ZiaCloudConfigMapInput is an input type that accepts ZiaCloudConfigMap and ZiaCloudConfigMapOutput values.
-// You can construct a concrete instance of `ZiaCloudConfigMapInput` via:
+// ZIACloudConfigMapInput is an input type that accepts ZIACloudConfigMap and ZIACloudConfigMapOutput values.
+// You can construct a concrete instance of `ZIACloudConfigMapInput` via:
 //
-//	ZiaCloudConfigMap{ "key": ZiaCloudConfigArgs{...} }
-type ZiaCloudConfigMapInput interface {
+//	ZIACloudConfigMap{ "key": ZIACloudConfigArgs{...} }
+type ZIACloudConfigMapInput interface {
 	pulumi.Input
 
-	ToZiaCloudConfigMapOutput() ZiaCloudConfigMapOutput
-	ToZiaCloudConfigMapOutputWithContext(context.Context) ZiaCloudConfigMapOutput
+	ToZIACloudConfigMapOutput() ZIACloudConfigMapOutput
+	ToZIACloudConfigMapOutputWithContext(context.Context) ZIACloudConfigMapOutput
 }
 
-type ZiaCloudConfigMap map[string]ZiaCloudConfigInput
+type ZIACloudConfigMap map[string]ZIACloudConfigInput
 
-func (ZiaCloudConfigMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*ZiaCloudConfig)(nil)).Elem()
+func (ZIACloudConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*ZIACloudConfig)(nil)).Elem()
 }
 
-func (i ZiaCloudConfigMap) ToZiaCloudConfigMapOutput() ZiaCloudConfigMapOutput {
-	return i.ToZiaCloudConfigMapOutputWithContext(context.Background())
+func (i ZIACloudConfigMap) ToZIACloudConfigMapOutput() ZIACloudConfigMapOutput {
+	return i.ToZIACloudConfigMapOutputWithContext(context.Background())
 }
 
-func (i ZiaCloudConfigMap) ToZiaCloudConfigMapOutputWithContext(ctx context.Context) ZiaCloudConfigMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZiaCloudConfigMapOutput)
+func (i ZIACloudConfigMap) ToZIACloudConfigMapOutputWithContext(ctx context.Context) ZIACloudConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZIACloudConfigMapOutput)
 }
 
-type ZiaCloudConfigOutput struct{ *pulumi.OutputState }
+type ZIACloudConfigOutput struct{ *pulumi.OutputState }
 
-func (ZiaCloudConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZiaCloudConfig)(nil)).Elem()
+func (ZIACloudConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZIACloudConfig)(nil)).Elem()
 }
 
-func (o ZiaCloudConfigOutput) ToZiaCloudConfigOutput() ZiaCloudConfigOutput {
+func (o ZIACloudConfigOutput) ToZIACloudConfigOutput() ZIACloudConfigOutput {
 	return o
 }
 
-func (o ZiaCloudConfigOutput) ToZiaCloudConfigOutputWithContext(ctx context.Context) ZiaCloudConfigOutput {
+func (o ZIACloudConfigOutput) ToZIACloudConfigOutputWithContext(ctx context.Context) ZIACloudConfigOutput {
 	return o
 }
 
 // - (String) The supported ZIA cloud name. Supported values are:
-func (o ZiaCloudConfigOutput) ZiaCloudDomain() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZiaCloudConfig) pulumi.StringOutput { return v.ZiaCloudDomain }).(pulumi.StringOutput)
+func (o ZIACloudConfigOutput) ZiaCloudDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZIACloudConfig) pulumi.StringOutput { return v.ZiaCloudDomain }).(pulumi.StringOutput)
 }
 
 // - (String) The ZIA Cloud service api key
-func (o ZiaCloudConfigOutput) ZiaCloudServiceApiKey() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZiaCloudConfig) pulumi.StringOutput { return v.ZiaCloudServiceApiKey }).(pulumi.StringOutput)
+func (o ZIACloudConfigOutput) ZiaCloudServiceApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZIACloudConfig) pulumi.StringOutput { return v.ZiaCloudServiceApiKey }).(pulumi.StringOutput)
 }
 
 // - (String) The ZIA admin password with permission to use the api key
-func (o ZiaCloudConfigOutput) ZiaPassword() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZiaCloudConfig) pulumi.StringOutput { return v.ZiaPassword }).(pulumi.StringOutput)
+func (o ZIACloudConfigOutput) ZiaPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZIACloudConfig) pulumi.StringOutput { return v.ZiaPassword }).(pulumi.StringOutput)
 }
 
 // - (String) The ZIA Sandbox API token
-func (o ZiaCloudConfigOutput) ZiaSandboxApiToken() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZiaCloudConfig) pulumi.StringOutput { return v.ZiaSandboxApiToken }).(pulumi.StringOutput)
+func (o ZIACloudConfigOutput) ZiaSandboxApiToken() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZIACloudConfig) pulumi.StringOutput { return v.ZiaSandboxApiToken }).(pulumi.StringOutput)
 }
 
 // - (String) The ZIA admin username with permission to use the api key
-func (o ZiaCloudConfigOutput) ZiaUsername() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZiaCloudConfig) pulumi.StringOutput { return v.ZiaUsername }).(pulumi.StringOutput)
+func (o ZIACloudConfigOutput) ZiaUsername() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZIACloudConfig) pulumi.StringOutput { return v.ZiaUsername }).(pulumi.StringOutput)
 }
 
-type ZiaCloudConfigArrayOutput struct{ *pulumi.OutputState }
+type ZIACloudConfigArrayOutput struct{ *pulumi.OutputState }
 
-func (ZiaCloudConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*ZiaCloudConfig)(nil)).Elem()
+func (ZIACloudConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*ZIACloudConfig)(nil)).Elem()
 }
 
-func (o ZiaCloudConfigArrayOutput) ToZiaCloudConfigArrayOutput() ZiaCloudConfigArrayOutput {
+func (o ZIACloudConfigArrayOutput) ToZIACloudConfigArrayOutput() ZIACloudConfigArrayOutput {
 	return o
 }
 
-func (o ZiaCloudConfigArrayOutput) ToZiaCloudConfigArrayOutputWithContext(ctx context.Context) ZiaCloudConfigArrayOutput {
+func (o ZIACloudConfigArrayOutput) ToZIACloudConfigArrayOutputWithContext(ctx context.Context) ZIACloudConfigArrayOutput {
 	return o
 }
 
-func (o ZiaCloudConfigArrayOutput) Index(i pulumi.IntInput) ZiaCloudConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ZiaCloudConfig {
-		return vs[0].([]*ZiaCloudConfig)[vs[1].(int)]
-	}).(ZiaCloudConfigOutput)
+func (o ZIACloudConfigArrayOutput) Index(i pulumi.IntInput) ZIACloudConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ZIACloudConfig {
+		return vs[0].([]*ZIACloudConfig)[vs[1].(int)]
+	}).(ZIACloudConfigOutput)
 }
 
-type ZiaCloudConfigMapOutput struct{ *pulumi.OutputState }
+type ZIACloudConfigMapOutput struct{ *pulumi.OutputState }
 
-func (ZiaCloudConfigMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*ZiaCloudConfig)(nil)).Elem()
+func (ZIACloudConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*ZIACloudConfig)(nil)).Elem()
 }
 
-func (o ZiaCloudConfigMapOutput) ToZiaCloudConfigMapOutput() ZiaCloudConfigMapOutput {
+func (o ZIACloudConfigMapOutput) ToZIACloudConfigMapOutput() ZIACloudConfigMapOutput {
 	return o
 }
 
-func (o ZiaCloudConfigMapOutput) ToZiaCloudConfigMapOutputWithContext(ctx context.Context) ZiaCloudConfigMapOutput {
+func (o ZIACloudConfigMapOutput) ToZIACloudConfigMapOutputWithContext(ctx context.Context) ZIACloudConfigMapOutput {
 	return o
 }
 
-func (o ZiaCloudConfigMapOutput) MapIndex(k pulumi.StringInput) ZiaCloudConfigOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ZiaCloudConfig {
-		return vs[0].(map[string]*ZiaCloudConfig)[vs[1].(string)]
-	}).(ZiaCloudConfigOutput)
+func (o ZIACloudConfigMapOutput) MapIndex(k pulumi.StringInput) ZIACloudConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ZIACloudConfig {
+		return vs[0].(map[string]*ZIACloudConfig)[vs[1].(string)]
+	}).(ZIACloudConfigOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*ZiaCloudConfigInput)(nil)).Elem(), &ZiaCloudConfig{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZiaCloudConfigArrayInput)(nil)).Elem(), ZiaCloudConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZiaCloudConfigMapInput)(nil)).Elem(), ZiaCloudConfigMap{})
-	pulumi.RegisterOutputType(ZiaCloudConfigOutput{})
-	pulumi.RegisterOutputType(ZiaCloudConfigArrayOutput{})
-	pulumi.RegisterOutputType(ZiaCloudConfigMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZIACloudConfigInput)(nil)).Elem(), &ZIACloudConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZIACloudConfigArrayInput)(nil)).Elem(), ZIACloudConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZIACloudConfigMapInput)(nil)).Elem(), ZIACloudConfigMap{})
+	pulumi.RegisterOutputType(ZIACloudConfigOutput{})
+	pulumi.RegisterOutputType(ZIACloudConfigArrayOutput{})
+	pulumi.RegisterOutputType(ZIACloudConfigMapOutput{})
 }

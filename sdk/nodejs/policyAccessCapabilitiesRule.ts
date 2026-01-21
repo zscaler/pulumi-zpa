@@ -188,8 +188,6 @@ export class PolicyAccessCapabilitiesRule extends pulumi.CustomResource {
             resourceInputs["policySetId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "zpa:index/policyCapabilitiesRule:PolicyCapabilitiesRule" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PolicyAccessCapabilitiesRule.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -66,12 +66,6 @@ func NewPolicyAccessCredentialRule(ctx *pulumi.Context,
 		args = &PolicyAccessCredentialRuleArgs{}
 	}
 
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("zpa:index/policyCredentialRule:PolicyCredentialRule"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PolicyAccessCredentialRule
 	err := ctx.RegisterResource("zpa:index/policyAccessCredentialRule:PolicyAccessCredentialRule", name, args, &resource, opts...)
