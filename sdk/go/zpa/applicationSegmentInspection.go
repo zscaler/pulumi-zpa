@@ -87,8 +87,7 @@ import (
 // ## Import
 //
 // Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-//
-// # Visit
+// Visit
 //
 // Inspection Application Segment can be imported by using `<APPLICATION SEGMENT ID>` or `<APPLICATION SEGMENT NAME>` as the import ID.
 //
@@ -130,8 +129,10 @@ type ApplicationSegmentInspection struct {
 	IsCnameEnabled       pulumi.BoolOutput    `pulumi:"isCnameEnabled"`
 	IsIncompleteDrConfig pulumi.BoolPtrOutput `pulumi:"isIncompleteDrConfig"`
 	// Name of the application.
-	Name                      pulumi.StringOutput                                `pulumi:"name"`
-	PassiveHealthEnabled      pulumi.BoolOutput                                  `pulumi:"passiveHealthEnabled"`
+	Name                 pulumi.StringOutput `pulumi:"name"`
+	PassiveHealthEnabled pulumi.BoolOutput   `pulumi:"passiveHealthEnabled"`
+	// Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled).
+	PolicyStyle               pulumi.BoolPtrOutput                               `pulumi:"policyStyle"`
 	SegmentGroupId            pulumi.StringOutput                                `pulumi:"segmentGroupId"`
 	SelectConnectorCloseToApp pulumi.BoolPtrOutput                               `pulumi:"selectConnectorCloseToApp"`
 	ServerGroups              ApplicationSegmentInspectionServerGroupArrayOutput `pulumi:"serverGroups"`
@@ -213,8 +214,10 @@ type applicationSegmentInspectionState struct {
 	IsCnameEnabled       *bool `pulumi:"isCnameEnabled"`
 	IsIncompleteDrConfig *bool `pulumi:"isIncompleteDrConfig"`
 	// Name of the application.
-	Name                      *string                                   `pulumi:"name"`
-	PassiveHealthEnabled      *bool                                     `pulumi:"passiveHealthEnabled"`
+	Name                 *string `pulumi:"name"`
+	PassiveHealthEnabled *bool   `pulumi:"passiveHealthEnabled"`
+	// Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled).
+	PolicyStyle               *bool                                     `pulumi:"policyStyle"`
 	SegmentGroupId            *string                                   `pulumi:"segmentGroupId"`
 	SelectConnectorCloseToApp *bool                                     `pulumi:"selectConnectorCloseToApp"`
 	ServerGroups              []ApplicationSegmentInspectionServerGroup `pulumi:"serverGroups"`
@@ -261,8 +264,10 @@ type ApplicationSegmentInspectionState struct {
 	IsCnameEnabled       pulumi.BoolPtrInput
 	IsIncompleteDrConfig pulumi.BoolPtrInput
 	// Name of the application.
-	Name                      pulumi.StringPtrInput
-	PassiveHealthEnabled      pulumi.BoolPtrInput
+	Name                 pulumi.StringPtrInput
+	PassiveHealthEnabled pulumi.BoolPtrInput
+	// Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled).
+	PolicyStyle               pulumi.BoolPtrInput
 	SegmentGroupId            pulumi.StringPtrInput
 	SelectConnectorCloseToApp pulumi.BoolPtrInput
 	ServerGroups              ApplicationSegmentInspectionServerGroupArrayInput
@@ -313,8 +318,10 @@ type applicationSegmentInspectionArgs struct {
 	IsCnameEnabled       *bool `pulumi:"isCnameEnabled"`
 	IsIncompleteDrConfig *bool `pulumi:"isIncompleteDrConfig"`
 	// Name of the application.
-	Name                      *string                                   `pulumi:"name"`
-	PassiveHealthEnabled      *bool                                     `pulumi:"passiveHealthEnabled"`
+	Name                 *string `pulumi:"name"`
+	PassiveHealthEnabled *bool   `pulumi:"passiveHealthEnabled"`
+	// Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled).
+	PolicyStyle               *bool                                     `pulumi:"policyStyle"`
 	SegmentGroupId            string                                    `pulumi:"segmentGroupId"`
 	SelectConnectorCloseToApp *bool                                     `pulumi:"selectConnectorCloseToApp"`
 	ServerGroups              []ApplicationSegmentInspectionServerGroup `pulumi:"serverGroups"`
@@ -362,8 +369,10 @@ type ApplicationSegmentInspectionArgs struct {
 	IsCnameEnabled       pulumi.BoolPtrInput
 	IsIncompleteDrConfig pulumi.BoolPtrInput
 	// Name of the application.
-	Name                      pulumi.StringPtrInput
-	PassiveHealthEnabled      pulumi.BoolPtrInput
+	Name                 pulumi.StringPtrInput
+	PassiveHealthEnabled pulumi.BoolPtrInput
+	// Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled).
+	PolicyStyle               pulumi.BoolPtrInput
 	SegmentGroupId            pulumi.StringInput
 	SelectConnectorCloseToApp pulumi.BoolPtrInput
 	ServerGroups              ApplicationSegmentInspectionServerGroupArrayInput
@@ -555,6 +564,11 @@ func (o ApplicationSegmentInspectionOutput) Name() pulumi.StringOutput {
 
 func (o ApplicationSegmentInspectionOutput) PassiveHealthEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.BoolOutput { return v.PassiveHealthEnabled }).(pulumi.BoolOutput)
+}
+
+// Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled).
+func (o ApplicationSegmentInspectionOutput) PolicyStyle() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationSegmentInspection) pulumi.BoolPtrOutput { return v.PolicyStyle }).(pulumi.BoolPtrOutput)
 }
 
 func (o ApplicationSegmentInspectionOutput) SegmentGroupId() pulumi.StringOutput {

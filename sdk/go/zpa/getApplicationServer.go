@@ -11,6 +11,19 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-servers)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-servers-using-api)
+//
+// Use the **zpa_application_server** data source to get information about an application server created in the Zscaler Private Access cloud. This data source must be used in the following circumstances:
+//
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
+// 1. Server Group (When Dynamic Discovery is set to false)
+//
+// ## Zenith Community - ZPA Application Server
+//
+// ![ZPA Terraform provider Video Series Ep5 - Application Server](https://community.zscaler.com/zenith/s/question/0D54u00009evlEgCAI/video-terraform-provider-video-series-ep5-zpa-application-server)
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Application Server Data Source by Name
-//			_, err := zpa.LookupApplicationServer(ctx, &zpa.LookupApplicationServerArgs{
+//			_, err := zpa.GetApplicationServer(ctx, &zpa.LookupApplicationServerArgs{
 //				Name: pulumi.StringRef("server.example.com"),
 //			}, nil)
 //			if err != nil {
@@ -51,7 +64,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Application Server Data Source by ID
-//			_, err := zpa.LookupApplicationServer(ctx, &zpa.LookupApplicationServerArgs{
+//			_, err := zpa.GetApplicationServer(ctx, &zpa.LookupApplicationServerArgs{
 //				Id: pulumi.StringRef("1234567890"),
 //			}, nil)
 //			if err != nil {

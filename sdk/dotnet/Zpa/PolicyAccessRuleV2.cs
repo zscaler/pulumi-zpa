@@ -26,7 +26,6 @@ namespace zscaler.PulumiPackage.Zpa
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Zpa = Pulumi.Zpa;
     /// using Zpa = zscaler.PulumiPackage.Zpa;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -261,7 +260,6 @@ namespace zscaler.PulumiPackage.Zpa
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Zpa = Pulumi.Zpa;
     /// using Zpa = zscaler.PulumiPackage.Zpa;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -323,7 +321,6 @@ namespace zscaler.PulumiPackage.Zpa
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Zpa = Pulumi.Zpa;
     /// using Zpa = zscaler.PulumiPackage.Zpa;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -367,7 +364,6 @@ namespace zscaler.PulumiPackage.Zpa
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Zpa = Pulumi.Zpa;
     /// using Zpa = zscaler.PulumiPackage.Zpa;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -443,7 +439,6 @@ namespace zscaler.PulumiPackage.Zpa
     /// ## Import
     /// 
     /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-    /// 
     /// Visit
     /// 
     /// Policy access rule can be imported by using `&lt;RULE ID&gt;` as the import ID.

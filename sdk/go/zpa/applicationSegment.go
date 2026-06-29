@@ -12,11 +12,225 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-applications)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
+//
+// The **zpa_application_segment** resource creates an application segment in the Zscaler Private Access cloud. This resource can then be referenced in an access policy rule, access policy timeout rule or access policy client forwarding rule.
+//
+// ## Zenith Community - ZPA Application Segment
+//
+// ![ZPA Terraform provider Video Series Ep7 - Application Segment](https://community.zscaler.com/zenith/s/question/0D54u00009evlEXCAY/video-zpa-terraform-provider-video-series-ep7-zpa-application-segment)
+//
+// ## Example 1 Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ZPA Segment Group resource
+//			thisSegmentGroup, err := zpa.NewSegmentGroup(ctx, "this", &zpa.SegmentGroupArgs{
+//				Name:        pulumi.String("Example"),
+//				Description: pulumi.String("Example"),
+//				Enabled:     pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// ZPA App Connector Group resource
+//			thisConnectorGroup, err := zpa.NewConnectorGroup(ctx, "this", &zpa.ConnectorGroupArgs{
+//				Name:                   pulumi.String("Example"),
+//				Description:            pulumi.String("Example"),
+//				Enabled:                pulumi.Bool(true),
+//				CityCountry:            pulumi.String("San Jose, CA"),
+//				CountryCode:            pulumi.String("US"),
+//				Latitude:               pulumi.String("37.338"),
+//				Longitude:              pulumi.String("-121.8863"),
+//				Location:               pulumi.String("San Jose, CA, US"),
+//				UpgradeDay:             pulumi.String("SUNDAY"),
+//				UpgradeTimeInSecs:      pulumi.String("66600"),
+//				OverrideVersionProfile: pulumi.Bool(true),
+//				VersionProfileId:       pulumi.String("0"),
+//				DnsQueryType:           pulumi.String("IPV4"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// ZPA Server Group resource
+//			thisServerGroup, err := zpa.NewServerGroup(ctx, "this", &zpa.ServerGroupArgs{
+//				Name:             pulumi.String("Example"),
+//				Description:      pulumi.String("Example"),
+//				Enabled:          pulumi.Bool(true),
+//				DynamicDiscovery: pulumi.Bool(false),
+//				AppConnectorGroups: zpa.ServerGroupAppConnectorGroupArray{
+//					&zpa.ServerGroupAppConnectorGroupArgs{
+//						Ids: pulumi.StringArray{
+//							thisConnectorGroup.ID(),
+//						},
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				thisConnectorGroup,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// ZPA Application Segment resource
+//			_, err = zpa.NewApplicationSegment(ctx, "this", &zpa.ApplicationSegmentArgs{
+//				Name:            pulumi.String("Example"),
+//				Description:     pulumi.String("Example"),
+//				Enabled:         pulumi.Bool(true),
+//				HealthReporting: pulumi.String("ON_ACCESS"),
+//				BypassType:      pulumi.String("NEVER"),
+//				IsCnameEnabled:  pulumi.Bool(true),
+//				TcpPortRanges: pulumi.StringArray{
+//					pulumi.String("8080"),
+//					pulumi.String("8080"),
+//				},
+//				DomainNames: pulumi.StringArray{
+//					pulumi.String("server.acme.com"),
+//				},
+//				SegmentGroupId: thisSegmentGroup.ID(),
+//				ServerGroups: zpa.ApplicationSegmentServerGroupArray{
+//					&zpa.ApplicationSegmentServerGroupArgs{
+//						Ids: pulumi.StringArray{
+//							thisServerGroup.ID(),
+//						},
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				thisServerGroup,
+//				thisSegmentGroup,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Example 2 Usage
+//
+// ## Example 3 Usage - Application Segment Extranet Configuration
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := zpa.GetLocationController(ctx, &zpa.GetLocationControllerArgs{
+//				Name:      "ExtranetLocation01 | zscalerbeta.net",
+//				ZiaErName: "NewExtranet 8432",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			thisGetLocationGroupController, err := zpa.GetLocationGroupController(ctx, &zpa.GetLocationGroupControllerArgs{
+//				LocationName: "ExtranetLocation01",
+//				ZiaErName:    "NewExtranet 8432",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			thisGetExtranetResourcePartner, err := zpa.GetExtranetResourcePartner(ctx, &zpa.GetExtranetResourcePartnerArgs{
+//				Name: pulumi.StringRef("NewExtranet 8432"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			thisSegmentGroup, err := zpa.NewSegmentGroup(ctx, "this", &zpa.SegmentGroupArgs{
+//				Name:        pulumi.String("Example"),
+//				Description: pulumi.String("Example"),
+//				Enabled:     pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thisServerGroup, err := zpa.NewServerGroup(ctx, "this", &zpa.ServerGroupArgs{
+//				Name:             pulumi.String("Example"),
+//				Description:      pulumi.String("Example"),
+//				Enabled:          pulumi.Bool(true),
+//				DynamicDiscovery: pulumi.Bool(true),
+//				ExtranetEnabled:  pulumi.Bool(true),
+//				ExtranetDtos: zpa.ServerGroupExtranetDtoArray{
+//					&zpa.ServerGroupExtranetDtoArgs{
+//						ZpnErId: pulumi.String(thisGetExtranetResourcePartner.Id),
+//						LocationDtos: zpa.ServerGroupExtranetDtoLocationDtoArray{
+//							&zpa.ServerGroupExtranetDtoLocationDtoArgs{
+//								Id: pulumi.String(this.Id),
+//							},
+//						},
+//						LocationGroupDtos: zpa.ServerGroupExtranetDtoLocationGroupDtoArray{
+//							&zpa.ServerGroupExtranetDtoLocationGroupDtoArgs{
+//								Id: pulumi.String(thisGetLocationGroupController.Id),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = zpa.NewApplicationSegment(ctx, "this", &zpa.ApplicationSegmentArgs{
+//				Name:            pulumi.String("app01.acme.com"),
+//				Description:     pulumi.String("app01.acme.com"),
+//				Enabled:         pulumi.Bool(true),
+//				HealthReporting: pulumi.String("NONE"),
+//				HealthCheckType: pulumi.String("NONE"),
+//				BypassType:      pulumi.String("NEVER"),
+//				IsCnameEnabled:  pulumi.Bool(true),
+//				TcpPortRanges: pulumi.StringArray{
+//					pulumi.String("8080"),
+//					pulumi.String("8080"),
+//				},
+//				DomainNames: pulumi.StringArray{
+//					pulumi.String("app01.acme.com"),
+//				},
+//				SegmentGroupId: thisSegmentGroup.ID(),
+//				ServerGroups: zpa.ApplicationSegmentServerGroupArray{
+//					&zpa.ApplicationSegmentServerGroupArgs{
+//						Ids: pulumi.StringArray{
+//							thisServerGroup.ID(),
+//						},
+//					},
+//				},
+//				ZpnErIds: zpa.ApplicationSegmentZpnErIdArray{
+//					&zpa.ApplicationSegmentZpnErIdArgs{
+//						Ids: pulumi.StringArray{
+//							pulumi.String(thisGetExtranetResourcePartner.Id),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-//
-// # Visit
+// Visit
 //
 // Application Segment can be imported by using `<APPLICATION SEGMENT ID>` or `<APPLICATION SEGMENT NAME>` as the import ID.
 //
@@ -60,8 +274,10 @@ type ApplicationSegment struct {
 	MatchStyle           pulumi.StringOutput    `pulumi:"matchStyle"`
 	MicrotenantId        pulumi.StringPtrOutput `pulumi:"microtenantId"`
 	// Name of the application.
-	Name                      pulumi.StringOutput                      `pulumi:"name"`
-	PassiveHealthEnabled      pulumi.BoolOutput                        `pulumi:"passiveHealthEnabled"`
+	Name                 pulumi.StringOutput `pulumi:"name"`
+	PassiveHealthEnabled pulumi.BoolOutput   `pulumi:"passiveHealthEnabled"`
+	// Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled). Default: disabled.
+	PolicyStyle               pulumi.BoolPtrOutput                     `pulumi:"policyStyle"`
 	SegmentGroupId            pulumi.StringOutput                      `pulumi:"segmentGroupId"`
 	SegmentGroupName          pulumi.StringOutput                      `pulumi:"segmentGroupName"`
 	SelectConnectorCloseToApp pulumi.BoolPtrOutput                     `pulumi:"selectConnectorCloseToApp"`
@@ -144,8 +360,10 @@ type applicationSegmentState struct {
 	MatchStyle           *string `pulumi:"matchStyle"`
 	MicrotenantId        *string `pulumi:"microtenantId"`
 	// Name of the application.
-	Name                      *string                         `pulumi:"name"`
-	PassiveHealthEnabled      *bool                           `pulumi:"passiveHealthEnabled"`
+	Name                 *string `pulumi:"name"`
+	PassiveHealthEnabled *bool   `pulumi:"passiveHealthEnabled"`
+	// Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled). Default: disabled.
+	PolicyStyle               *bool                           `pulumi:"policyStyle"`
 	SegmentGroupId            *string                         `pulumi:"segmentGroupId"`
 	SegmentGroupName          *string                         `pulumi:"segmentGroupName"`
 	SelectConnectorCloseToApp *bool                           `pulumi:"selectConnectorCloseToApp"`
@@ -196,8 +414,10 @@ type ApplicationSegmentState struct {
 	MatchStyle           pulumi.StringPtrInput
 	MicrotenantId        pulumi.StringPtrInput
 	// Name of the application.
-	Name                      pulumi.StringPtrInput
-	PassiveHealthEnabled      pulumi.BoolPtrInput
+	Name                 pulumi.StringPtrInput
+	PassiveHealthEnabled pulumi.BoolPtrInput
+	// Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled). Default: disabled.
+	PolicyStyle               pulumi.BoolPtrInput
 	SegmentGroupId            pulumi.StringPtrInput
 	SegmentGroupName          pulumi.StringPtrInput
 	SelectConnectorCloseToApp pulumi.BoolPtrInput
@@ -252,8 +472,10 @@ type applicationSegmentArgs struct {
 	MatchStyle           *string `pulumi:"matchStyle"`
 	MicrotenantId        *string `pulumi:"microtenantId"`
 	// Name of the application.
-	Name                      *string                         `pulumi:"name"`
-	PassiveHealthEnabled      *bool                           `pulumi:"passiveHealthEnabled"`
+	Name                 *string `pulumi:"name"`
+	PassiveHealthEnabled *bool   `pulumi:"passiveHealthEnabled"`
+	// Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled). Default: disabled.
+	PolicyStyle               *bool                           `pulumi:"policyStyle"`
 	SegmentGroupId            *string                         `pulumi:"segmentGroupId"`
 	SegmentGroupName          *string                         `pulumi:"segmentGroupName"`
 	SelectConnectorCloseToApp *bool                           `pulumi:"selectConnectorCloseToApp"`
@@ -305,8 +527,10 @@ type ApplicationSegmentArgs struct {
 	MatchStyle           pulumi.StringPtrInput
 	MicrotenantId        pulumi.StringPtrInput
 	// Name of the application.
-	Name                      pulumi.StringPtrInput
-	PassiveHealthEnabled      pulumi.BoolPtrInput
+	Name                 pulumi.StringPtrInput
+	PassiveHealthEnabled pulumi.BoolPtrInput
+	// Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled). Default: disabled.
+	PolicyStyle               pulumi.BoolPtrInput
 	SegmentGroupId            pulumi.StringPtrInput
 	SegmentGroupName          pulumi.StringPtrInput
 	SelectConnectorCloseToApp pulumi.BoolPtrInput
@@ -503,6 +727,11 @@ func (o ApplicationSegmentOutput) Name() pulumi.StringOutput {
 
 func (o ApplicationSegmentOutput) PassiveHealthEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSegment) pulumi.BoolOutput { return v.PassiveHealthEnabled }).(pulumi.BoolOutput)
+}
+
+// Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled). Default: disabled.
+func (o ApplicationSegmentOutput) PolicyStyle() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationSegment) pulumi.BoolPtrOutput { return v.PolicyStyle }).(pulumi.BoolPtrOutput)
 }
 
 func (o ApplicationSegmentOutput) SegmentGroupId() pulumi.StringOutput {

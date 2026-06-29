@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := zpa.LookupInspectionProfile(ctx, &zpa.LookupInspectionProfileArgs{
+//			_, err := zpa.GetInspectionProfile(ctx, &zpa.LookupInspectionProfileArgs{
 //				Name: pulumi.StringRef("Example"),
 //			}, nil)
 //			if err != nil {

@@ -12,6 +12,111 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-browser-access)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-browser-access-application-segments-using-api)
+//
+// The **zpa_application_segment_browser_access** creates and manages a browser access application segment resource in the Zscaler Private Access cloud. This resource can then be referenced in an access policy rule, access policy timeout rule or access policy client forwarding rule.
+//
+// ## Zenith Community - ZPA Browser Access Application Segment
+//
+// ![ZPA Terraform provider Video Series Ep8 - Browser Access Application Segment](https://community.zscaler.com/zenith/s/question/0D54u00009evlEGCAY/zpa-terraform-provider-video-series-ep8-zpa-browser-access-application-segment)
+//
+// ## Example  - Using Custom Certificate
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Retrieve Browser Access Certificate
+//			testCert, err := zpa.GetBaCertificate(ctx, &zpa.GetBaCertificateArgs{
+//				Name: pulumi.StringRef("sales.acme.com"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// ZPA Segment Group resource
+//			exampleSegmentGroup, err := zpa.NewSegmentGroup(ctx, "example", &zpa.SegmentGroupArgs{
+//				Name:        pulumi.String("Example"),
+//				Description: pulumi.String("Example"),
+//				Enabled:     pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			example, err := zpa.GetAppConnectorGroup(ctx, &zpa.GetAppConnectorGroupArgs{
+//				Name: pulumi.StringRef("AWS-Connector"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// ZPA Server Group resource
+//			exampleServerGroup, err := zpa.NewServerGroup(ctx, "example", &zpa.ServerGroupArgs{
+//				Name:             pulumi.String("Example"),
+//				Description:      pulumi.String("Example"),
+//				Enabled:          pulumi.Bool(true),
+//				DynamicDiscovery: pulumi.Bool(true),
+//				AppConnectorGroups: zpa.ServerGroupAppConnectorGroupArray{
+//					&zpa.ServerGroupAppConnectorGroupArgs{
+//						Ids: pulumi.StringArray{
+//							pulumi.String(example.Id),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create Browser Access Application
+//			_, err = zpa.NewApplicationSegmentBrowserAccess(ctx, "browser_access_apps", &zpa.ApplicationSegmentBrowserAccessArgs{
+//				Name:            pulumi.String("Browser Access Apps"),
+//				Description:     pulumi.String("Browser Access Apps"),
+//				Enabled:         pulumi.Bool(true),
+//				HealthReporting: pulumi.String("ON_ACCESS"),
+//				BypassType:      pulumi.String("NEVER"),
+//				TcpPortRanges: pulumi.StringArray{
+//					pulumi.String("80"),
+//					pulumi.String("80"),
+//				},
+//				DomainNames: pulumi.StringArray{
+//					pulumi.String("sales.acme.com"),
+//				},
+//				SegmentGroupId: exampleSegmentGroup.ID(),
+//				ClientlessApps: zpa.ApplicationSegmentBrowserAccessClientlessAppArray{
+//					&zpa.ApplicationSegmentBrowserAccessClientlessAppArgs{
+//						Name:                pulumi.String("sales.acme.com"),
+//						ApplicationProtocol: pulumi.String("HTTP"),
+//						ApplicationPort:     pulumi.String("80"),
+//						CertificateId:       pulumi.String(testCert.Id),
+//						TrustUntrustedCert:  pulumi.Bool(true),
+//						Enabled:             pulumi.Bool(true),
+//						Domain:              pulumi.String("sales.acme.com"),
+//					},
+//				},
+//				ServerGroups: zpa.ApplicationSegmentBrowserAccessServerGroupArray{
+//					&zpa.ApplicationSegmentBrowserAccessServerGroupArgs{
+//						Ids: pulumi.StringArray{
+//							exampleServerGroup.ID(),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Example Usage
 //
 // ### Zscaler Managed Certificate
@@ -113,8 +218,7 @@ import (
 // ## Import
 //
 // Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-//
-// # Visit
+// Visit
 //
 // **zpa_application_segment_browser_access** Application Segment Browser Access can be imported by using <`BROWSER ACCESS ID`> or `<<BROWSER ACCESS NAME>` as the import ID.
 //

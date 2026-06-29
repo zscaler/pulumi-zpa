@@ -14,6 +14,8 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ### Basic Usage
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
@@ -28,6 +30,38 @@ import * as utilities from "./utilities";
  *     idpName: "IdP_Name",
  * });
  * ```
+ *
+ * ### Using SCIM Attributes in Policy Rules
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * // Fetch SCIM attribute header
+ * const displayName = zpa.getSCIMAttributeHeader({
+ *     name: "DisplayName",
+ *     idpName: "IdP_Name",
+ * });
+ * export const displayNameValues = displayName.then(displayName => displayName.values);
+ * // Use in policy access rule
+ * const scimRule = new zpa.PolicyAccessRule("scim_rule", {
+ *     name: "SCIM-based Access Rule",
+ *     description: "Allow access based on SCIM DisplayName attribute",
+ *     action: "ALLOW",
+ *     operator: "AND",
+ *     conditions: [{
+ *         operator: "OR",
+ *         operands: [{
+ *             objectType: "SCIM",
+ *             idpId: displayName.then(displayName => displayName.idpId),
+ *             lhs: displayName.then(displayName => displayName.id),
+ *             rhs: "John Smith",
+ *         }],
+ *     }],
+ * });
+ * ```
+ *
+ * **Note**: When using SCIM attributes in policy rules, the `rhs` value must exactly match one of the values available in the `values` attribute. Use the output to see all available values for the SCIM attribute.
  */
 export function getSCIMAttributeHeader(args?: GetSCIMAttributeHeaderArgs, opts?: pulumi.InvokeOptions): Promise<GetSCIMAttributeHeaderResult> {
     args = args || {};
@@ -83,6 +117,8 @@ export interface GetSCIMAttributeHeaderResult {
  *
  * ## Example Usage
  *
+ * ### Basic Usage
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
@@ -97,6 +133,38 @@ export interface GetSCIMAttributeHeaderResult {
  *     idpName: "IdP_Name",
  * });
  * ```
+ *
+ * ### Using SCIM Attributes in Policy Rules
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * // Fetch SCIM attribute header
+ * const displayName = zpa.getSCIMAttributeHeader({
+ *     name: "DisplayName",
+ *     idpName: "IdP_Name",
+ * });
+ * export const displayNameValues = displayName.then(displayName => displayName.values);
+ * // Use in policy access rule
+ * const scimRule = new zpa.PolicyAccessRule("scim_rule", {
+ *     name: "SCIM-based Access Rule",
+ *     description: "Allow access based on SCIM DisplayName attribute",
+ *     action: "ALLOW",
+ *     operator: "AND",
+ *     conditions: [{
+ *         operator: "OR",
+ *         operands: [{
+ *             objectType: "SCIM",
+ *             idpId: displayName.then(displayName => displayName.idpId),
+ *             lhs: displayName.then(displayName => displayName.id),
+ *             rhs: "John Smith",
+ *         }],
+ *     }],
+ * });
+ * ```
+ *
+ * **Note**: When using SCIM attributes in policy rules, the `rhs` value must exactly match one of the values available in the `values` attribute. Use the output to see all available values for the SCIM attribute.
  */
 export function getSCIMAttributeHeaderOutput(args?: GetSCIMAttributeHeaderOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSCIMAttributeHeaderResult> {
     args = args || {};

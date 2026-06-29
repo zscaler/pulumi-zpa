@@ -223,7 +223,6 @@ class ZIACloudConfig(pulumi.CustomResource):
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         **zpa_zia_cloud_config** can be imported by using `<ZIA_CLOUD_CONFIG>` as the import ID.
@@ -278,7 +277,6 @@ class ZIACloudConfig(pulumi.CustomResource):
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         **zpa_zia_cloud_config** can be imported by using `<ZIA_CLOUD_CONFIG>` as the import ID.

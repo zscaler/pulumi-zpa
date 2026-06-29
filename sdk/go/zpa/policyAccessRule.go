@@ -20,6 +20,8 @@ import (
 //
 // ## Example Usage
 //
+// ### Basic Example with SCIM Group
+//
 // ```go
 // package main
 //
@@ -103,6 +105,60 @@ import (
 //
 // ```
 //
+// ### Example with SCIM Attribute Values
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Get SCIM attribute header for a specific attribute
+//			displayName, err := zpa.GetSCIMAttributeHeader(ctx, &zpa.GetSCIMAttributeHeaderArgs{
+//				Name:    pulumi.StringRef("DisplayName"),
+//				IdpName: pulumi.StringRef("IdP_Name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("availableValues", displayName.Values)
+//			// Create Policy Access Rule using SCIM attribute value
+//			_, err = zpa.NewPolicyAccessRule(ctx, "scim_example", &zpa.PolicyAccessRuleArgs{
+//				Name:        pulumi.String("SCIM Attribute Example"),
+//				Description: pulumi.String("Policy rule filtering by SCIM attribute value"),
+//				Action:      pulumi.String("ALLOW"),
+//				Operator:    pulumi.String("AND"),
+//				Conditions: zpa.PolicyAccessRuleConditionArray{
+//					&zpa.PolicyAccessRuleConditionArgs{
+//						Operator: pulumi.String("OR"),
+//						Operands: zpa.PolicyAccessRuleConditionOperandArray{
+//							&zpa.PolicyAccessRuleConditionOperandArgs{
+//								ObjectType: pulumi.String("SCIM"),
+//								IdpId:      pulumi.String(displayName.IdpId),
+//								Lhs:        pulumi.String(displayName.Id),
+//								Rhs:        pulumi.String("John Smith"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// **Note**: When using SCIM attributes, the `rhs` value must match one of the values available in the SCIM attribute's values list. You can reference the `values` attribute from the `getSCIMAttributeHeader` data source to see available options.
+//
 // ## LHS and RHS Values
 //
 // | Object Type | LHS| RHS
@@ -126,8 +182,7 @@ import (
 // ## Import
 //
 // Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-//
-// # Visit
+// Visit
 //
 // Policy access rule can be imported by using `<POLICY ACCESS RULE ID>` as the import ID.
 //

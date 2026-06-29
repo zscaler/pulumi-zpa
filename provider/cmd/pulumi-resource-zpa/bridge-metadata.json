@@ -7,7 +7,12 @@
             },
             "zpa_app_connector_group": {
                 "current": "zpa:index/connectorGroup:ConnectorGroup",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "user_codes": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "zpa_application_segment": {
                 "current": "zpa:index/applicationSegment:ApplicationSegment",
@@ -989,9 +994,63 @@
                     }
                 }
             },
+            "zpa_private_cloud": {
+                "current": "zpa:index/privateCloud:PrivateCloud",
+                "majorVersion": 1,
+                "fields": {
+                    "assistant_groups_ids": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "private_broker_group_ids": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "siem_ids": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "site_controller_group_ids": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "zpn_fire_drill_site": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "zpa_private_cloud_group": {
                 "current": "zpa:index/privateCloudGroup:PrivateCloudGroup",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "user_codes": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "zpa_provisioning_key": {
                 "current": "zpa:index/provisioningKey:ProvisioningKey",
@@ -1087,8 +1146,33 @@
                                 }
                             }
                         }
+                    },
+                    "user_codes": {
+                        "maxItemsOne": false
                     }
                 }
+            },
+            "zpa_tag_group": {
+                "current": "zpa:index/tagGroup:TagGroup",
+                "majorVersion": 1,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_tag_key": {
+                "current": "zpa:index/tagKey:TagKey",
+                "majorVersion": 1,
+                "fields": {
+                    "tag_values": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_tag_namespace": {
+                "current": "zpa:index/tagNamespace:TagNamespace",
+                "majorVersion": 1
             },
             "zpa_user_portal_aup": {
                 "current": "zpa:index/userPortalAUP:UserPortalAUP",
@@ -1802,6 +1886,30 @@
                     }
                 }
             },
+            "zpa_private_cloud": {
+                "current": "zpa:index/getPrivateCloud:getPrivateCloud",
+                "majorVersion": 1,
+                "fields": {
+                    "assistant_groups_ids": {
+                        "maxItemsOne": false
+                    },
+                    "private_broker_group_ids": {
+                        "maxItemsOne": false
+                    },
+                    "private_exporter_group_ids": {
+                        "maxItemsOne": false
+                    },
+                    "siem_ids": {
+                        "maxItemsOne": false
+                    },
+                    "site_controller_group_ids": {
+                        "maxItemsOne": false
+                    },
+                    "zpn_fire_drill_site": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "zpa_private_cloud_controller": {
                 "current": "zpa:index/getPrivateCloudController:getPrivateCloudController",
                 "majorVersion": 1,
@@ -1968,6 +2076,41 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "zpa_tag_group": {
+                "current": "zpa:index/getTagGroup:getTagGroup",
+                "majorVersion": 1,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "namespace": {
+                                    "maxItemsOne": false
+                                },
+                                "tag_key": {
+                                    "maxItemsOne": false
+                                },
+                                "tag_value": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "zpa_tag_key": {
+                "current": "zpa:index/getTagKey:getTagKey",
+                "majorVersion": 1,
+                "fields": {
+                    "tag_values": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "zpa_tag_namespace": {
+                "current": "zpa:index/getTagNamespace:getTagNamespace",
+                "majorVersion": 1
             },
             "zpa_trusted_network": {
                 "current": "zpa:index/getTrustedNetwork:getTrustedNetwork",

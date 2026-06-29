@@ -13,13 +13,24 @@ namespace zscaler.PulumiPackage.Zpa
     public static class GetServerGroup
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-server-groups)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-server-groups-using-api)
+        /// 
+        /// Use the **zpa_server_group** data source to get information about a server group created in the Zscaler Private Access cloud. This data source can then be referenced in an application segment, application server and Access Policy rule.
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Zenith Community - ZPA Server Groups
+        /// 
+        /// ![ZPA Terraform provider Video Series Ep4 - Server Groups](https://community.zscaler.com/zenith/s/question/0D54u00009evlEmCAI/video-zpa-terraform-provider-video-series-ep4-server-groups)
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -36,13 +47,24 @@ namespace zscaler.PulumiPackage.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerGroupResult>("zpa:index/getServerGroup:getServerGroup", args ?? new GetServerGroupArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-server-groups)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-server-groups-using-api)
+        /// 
+        /// Use the **zpa_server_group** data source to get information about a server group created in the Zscaler Private Access cloud. This data source can then be referenced in an application segment, application server and Access Policy rule.
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Zenith Community - ZPA Server Groups
+        /// 
+        /// ![ZPA Terraform provider Video Series Ep4 - Server Groups](https://community.zscaler.com/zenith/s/question/0D54u00009evlEmCAI/video-zpa-terraform-provider-video-series-ep4-server-groups)
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -59,13 +81,24 @@ namespace zscaler.PulumiPackage.Zpa
             => global::Pulumi.Deployment.Instance.Invoke<GetServerGroupResult>("zpa:index/getServerGroup:getServerGroup", args ?? new GetServerGroupInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-server-groups)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-server-groups-using-api)
+        /// 
+        /// Use the **zpa_server_group** data source to get information about a server group created in the Zscaler Private Access cloud. This data source can then be referenced in an application segment, application server and Access Policy rule.
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Zenith Community - ZPA Server Groups
+        /// 
+        /// ![ZPA Terraform provider Video Series Ep4 - Server Groups](https://community.zscaler.com/zenith/s/question/0D54u00009evlEmCAI/video-zpa-terraform-provider-video-series-ep4-server-groups)
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {

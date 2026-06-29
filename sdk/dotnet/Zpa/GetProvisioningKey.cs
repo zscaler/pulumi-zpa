@@ -13,20 +13,38 @@ namespace zscaler.PulumiPackage.Zpa
     public static class GetProvisioningKey
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-connector-provisioning-keys)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-provisioning-keys-using-api)
+        /// 
+        /// Use the **zpa_provisioning_key** data source to get information about a provisioning key in the Zscaler Private Access portal or via API. This data source can be referenced in the following ZPA resources:
+        /// 
+        /// * App Connector Groups
+        /// * Service Edge Groups
+        /// 
+        /// &gt; **NOTE** The ``AssociationType`` parameter is required in order to distinguish between ``CONNECTOR_GRP`` and ``SERVICE_EDGE_GRP``
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Zenith Community - ZPA Provisioning Keys
+        /// 
+        /// ![ZPA Terraform provider Video Series Ep3 - Provisioning Keys](https://community.zscaler.com/zenith/s/question/0D54u00009evlEnCAI/video-zpa-terraform-provider-video-series-ep3-provisioning-keys)
+        /// 
         /// ## Example Usage
+        /// 
+        /// ### Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // ZPA Provisioning Key for "CONNECTOR_GRP"
-        ///     var example = Zpa.GetProvisioningKey.Invoke(new()
+        ///     var connectorKey = Zpa.GetProvisioningKey.Invoke(new()
         ///     {
-        ///         Name = "Provisioning_Key",
+        ///         Name = "Connector_Provisioning_Key",
         ///         AssociationType = "CONNECTOR_GRP",
         ///     });
         /// 
@@ -37,38 +55,107 @@ namespace zscaler.PulumiPackage.Zpa
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // ZPA Provisioning Key for "SERVICE_EDGE_GRP"
-        ///     var example = Zpa.GetProvisioningKey.Invoke(new()
+        ///     var serviceEdgeKey = Zpa.GetProvisioningKey.Invoke(new()
         ///     {
-        ///         Name = "Provisioning_Key",
+        ///         Name = "ServiceEdge_Provisioning_Key",
         ///         AssociationType = "SERVICE_EDGE_GRP",
         ///     });
         /// 
         /// });
+        /// ```
+        /// 
+        /// ### Accessing the Provisioning Key Value
+        /// 
+        /// The provisioning key value is marked as sensitive and can be accessed using outputs or resource references:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Command = Pulumi.Command;
+        /// using Null = Pulumi.Null;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Retrieve existing provisioning key
+        ///     var existing = Zpa.GetProvisioningKey.Invoke(new()
+        ///     {
+        ///         Name = "Production_Connector_Key",
+        ///         AssociationType = "CONNECTOR_GRP",
+        ///     });
+        /// 
+        ///     // Use in automation
+        ///     var deployConnector = new Null.Resource("deploy_connector");
+        /// 
+        ///     var deployConnectorProvisioner0 = new Command.Local.Command("deployConnectorProvisioner0", new()
+        ///     {
+        ///         Create = $"deploy-connector.sh {existing.Apply(getProvisioningKeyResult =&gt; getProvisioningKeyResult.ProvisioningKey)}",
+        ///     }, new CustomResourceOptions
+        ///     {
+        ///         DependsOn =
+        ///         {
+        ///             deployConnector,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["provisioningKeyValue"] = existing.Apply(getProvisioningKeyResult =&gt; getProvisioningKeyResult.ProvisioningKey),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// To retrieve the key value:
+        /// ```bash
+        /// # View the provisioning key
+        /// terraform output provisioning_key_value
+        /// 
+        /// # Or get it programmatically
+        /// terraform output -json provisioning_key_value | jq -r .
         /// ```
         /// </summary>
         public static Task<GetProvisioningKeyResult> InvokeAsync(GetProvisioningKeyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProvisioningKeyResult>("zpa:index/getProvisioningKey:getProvisioningKey", args ?? new GetProvisioningKeyArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-connector-provisioning-keys)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-provisioning-keys-using-api)
+        /// 
+        /// Use the **zpa_provisioning_key** data source to get information about a provisioning key in the Zscaler Private Access portal or via API. This data source can be referenced in the following ZPA resources:
+        /// 
+        /// * App Connector Groups
+        /// * Service Edge Groups
+        /// 
+        /// &gt; **NOTE** The ``AssociationType`` parameter is required in order to distinguish between ``CONNECTOR_GRP`` and ``SERVICE_EDGE_GRP``
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Zenith Community - ZPA Provisioning Keys
+        /// 
+        /// ![ZPA Terraform provider Video Series Ep3 - Provisioning Keys](https://community.zscaler.com/zenith/s/question/0D54u00009evlEnCAI/video-zpa-terraform-provider-video-series-ep3-provisioning-keys)
+        /// 
         /// ## Example Usage
+        /// 
+        /// ### Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // ZPA Provisioning Key for "CONNECTOR_GRP"
-        ///     var example = Zpa.GetProvisioningKey.Invoke(new()
+        ///     var connectorKey = Zpa.GetProvisioningKey.Invoke(new()
         ///     {
-        ///         Name = "Provisioning_Key",
+        ///         Name = "Connector_Provisioning_Key",
         ///         AssociationType = "CONNECTOR_GRP",
         ///     });
         /// 
@@ -79,38 +166,107 @@ namespace zscaler.PulumiPackage.Zpa
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // ZPA Provisioning Key for "SERVICE_EDGE_GRP"
-        ///     var example = Zpa.GetProvisioningKey.Invoke(new()
+        ///     var serviceEdgeKey = Zpa.GetProvisioningKey.Invoke(new()
         ///     {
-        ///         Name = "Provisioning_Key",
+        ///         Name = "ServiceEdge_Provisioning_Key",
         ///         AssociationType = "SERVICE_EDGE_GRP",
         ///     });
         /// 
         /// });
+        /// ```
+        /// 
+        /// ### Accessing the Provisioning Key Value
+        /// 
+        /// The provisioning key value is marked as sensitive and can be accessed using outputs or resource references:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Command = Pulumi.Command;
+        /// using Null = Pulumi.Null;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Retrieve existing provisioning key
+        ///     var existing = Zpa.GetProvisioningKey.Invoke(new()
+        ///     {
+        ///         Name = "Production_Connector_Key",
+        ///         AssociationType = "CONNECTOR_GRP",
+        ///     });
+        /// 
+        ///     // Use in automation
+        ///     var deployConnector = new Null.Resource("deploy_connector");
+        /// 
+        ///     var deployConnectorProvisioner0 = new Command.Local.Command("deployConnectorProvisioner0", new()
+        ///     {
+        ///         Create = $"deploy-connector.sh {existing.Apply(getProvisioningKeyResult =&gt; getProvisioningKeyResult.ProvisioningKey)}",
+        ///     }, new CustomResourceOptions
+        ///     {
+        ///         DependsOn =
+        ///         {
+        ///             deployConnector,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["provisioningKeyValue"] = existing.Apply(getProvisioningKeyResult =&gt; getProvisioningKeyResult.ProvisioningKey),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// To retrieve the key value:
+        /// ```bash
+        /// # View the provisioning key
+        /// terraform output provisioning_key_value
+        /// 
+        /// # Or get it programmatically
+        /// terraform output -json provisioning_key_value | jq -r .
         /// ```
         /// </summary>
         public static Output<GetProvisioningKeyResult> Invoke(GetProvisioningKeyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProvisioningKeyResult>("zpa:index/getProvisioningKey:getProvisioningKey", args ?? new GetProvisioningKeyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-connector-provisioning-keys)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-provisioning-keys-using-api)
+        /// 
+        /// Use the **zpa_provisioning_key** data source to get information about a provisioning key in the Zscaler Private Access portal or via API. This data source can be referenced in the following ZPA resources:
+        /// 
+        /// * App Connector Groups
+        /// * Service Edge Groups
+        /// 
+        /// &gt; **NOTE** The ``AssociationType`` parameter is required in order to distinguish between ``CONNECTOR_GRP`` and ``SERVICE_EDGE_GRP``
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Zenith Community - ZPA Provisioning Keys
+        /// 
+        /// ![ZPA Terraform provider Video Series Ep3 - Provisioning Keys](https://community.zscaler.com/zenith/s/question/0D54u00009evlEnCAI/video-zpa-terraform-provider-video-series-ep3-provisioning-keys)
+        /// 
         /// ## Example Usage
+        /// 
+        /// ### Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // ZPA Provisioning Key for "CONNECTOR_GRP"
-        ///     var example = Zpa.GetProvisioningKey.Invoke(new()
+        ///     var connectorKey = Zpa.GetProvisioningKey.Invoke(new()
         ///     {
-        ///         Name = "Provisioning_Key",
+        ///         Name = "Connector_Provisioning_Key",
         ///         AssociationType = "CONNECTOR_GRP",
         ///     });
         /// 
@@ -121,18 +277,69 @@ namespace zscaler.PulumiPackage.Zpa
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // ZPA Provisioning Key for "SERVICE_EDGE_GRP"
-        ///     var example = Zpa.GetProvisioningKey.Invoke(new()
+        ///     var serviceEdgeKey = Zpa.GetProvisioningKey.Invoke(new()
         ///     {
-        ///         Name = "Provisioning_Key",
+        ///         Name = "ServiceEdge_Provisioning_Key",
         ///         AssociationType = "SERVICE_EDGE_GRP",
         ///     });
         /// 
         /// });
+        /// ```
+        /// 
+        /// ### Accessing the Provisioning Key Value
+        /// 
+        /// The provisioning key value is marked as sensitive and can be accessed using outputs or resource references:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Command = Pulumi.Command;
+        /// using Null = Pulumi.Null;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Retrieve existing provisioning key
+        ///     var existing = Zpa.GetProvisioningKey.Invoke(new()
+        ///     {
+        ///         Name = "Production_Connector_Key",
+        ///         AssociationType = "CONNECTOR_GRP",
+        ///     });
+        /// 
+        ///     // Use in automation
+        ///     var deployConnector = new Null.Resource("deploy_connector");
+        /// 
+        ///     var deployConnectorProvisioner0 = new Command.Local.Command("deployConnectorProvisioner0", new()
+        ///     {
+        ///         Create = $"deploy-connector.sh {existing.Apply(getProvisioningKeyResult =&gt; getProvisioningKeyResult.ProvisioningKey)}",
+        ///     }, new CustomResourceOptions
+        ///     {
+        ///         DependsOn =
+        ///         {
+        ///             deployConnector,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["provisioningKeyValue"] = existing.Apply(getProvisioningKeyResult =&gt; getProvisioningKeyResult.ProvisioningKey),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// To retrieve the key value:
+        /// ```bash
+        /// # View the provisioning key
+        /// terraform output provisioning_key_value
+        /// 
+        /// # Or get it programmatically
+        /// terraform output -json provisioning_key_value | jq -r .
         /// ```
         /// </summary>
         public static Output<GetProvisioningKeyResult> Invoke(GetProvisioningKeyInvokeArgs args, InvokeOutputOptions options)

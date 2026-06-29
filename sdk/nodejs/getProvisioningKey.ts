@@ -5,15 +5,33 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-connector-provisioning-keys)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-provisioning-keys-using-api)
+ *
+ * Use the **zpa_provisioning_key** data source to get information about a provisioning key in the Zscaler Private Access portal or via API. This data source can be referenced in the following ZPA resources:
+ *
+ * * App Connector Groups
+ * * Service Edge Groups
+ *
+ * > **NOTE** The ``associationType`` parameter is required in order to distinguish between ``CONNECTOR_GRP`` and ``SERVICE_EDGE_GRP``
+ *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
+ * ## Zenith Community - ZPA Provisioning Keys
+ *
+ * ![ZPA Terraform provider Video Series Ep3 - Provisioning Keys](https://community.zscaler.com/zenith/s/question/0D54u00009evlEnCAI/video-zpa-terraform-provider-video-series-ep3-provisioning-keys)
+ *
  * ## Example Usage
+ *
+ * ### Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Provisioning Key for "CONNECTOR_GRP"
- * const example = zpa.getProvisioningKey({
- *     name: "Provisioning_Key",
+ * const connectorKey = zpa.getProvisioningKey({
+ *     name: "Connector_Provisioning_Key",
  *     associationType: "CONNECTOR_GRP",
  * });
  * ```
@@ -23,11 +41,36 @@ import * as utilities from "./utilities";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Provisioning Key for "SERVICE_EDGE_GRP"
- * const example = zpa.getProvisioningKey({
- *     name: "Provisioning_Key",
+ * const serviceEdgeKey = zpa.getProvisioningKey({
+ *     name: "ServiceEdge_Provisioning_Key",
  *     associationType: "SERVICE_EDGE_GRP",
  * });
  * ```
+ *
+ * ### Accessing the Provisioning Key Value
+ *
+ * The provisioning key value is marked as sensitive and can be accessed using outputs or resource references:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as _null from "@pulumi/null";
+ * import * as command from "@pulumi/command";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * // Retrieve existing provisioning key
+ * const existing = zpa.getProvisioningKey({
+ *     name: "Production_Connector_Key",
+ *     associationType: "CONNECTOR_GRP",
+ * });
+ * export const provisioningKeyValue = existing.then(existing => existing.provisioningKey);
+ * // Use in automation
+ * const deployConnector = new _null.Resource("deploy_connector", {});
+ * const deployConnectorProvisioner0 = new command.local.Command("deployConnectorProvisioner0", {create: existing.then(existing => `deploy-connector.sh ${existing.provisioningKey}`)}, {
+ *     dependsOn: [deployConnector],
+ * });
+ * ```
+ *
+ * To retrieve the key value:
  */
 export function getProvisioningKey(args: GetProvisioningKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetProvisioningKeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -78,15 +121,33 @@ export interface GetProvisioningKeyResult {
     readonly zcomponentName: string;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-connector-provisioning-keys)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-provisioning-keys-using-api)
+ *
+ * Use the **zpa_provisioning_key** data source to get information about a provisioning key in the Zscaler Private Access portal or via API. This data source can be referenced in the following ZPA resources:
+ *
+ * * App Connector Groups
+ * * Service Edge Groups
+ *
+ * > **NOTE** The ``associationType`` parameter is required in order to distinguish between ``CONNECTOR_GRP`` and ``SERVICE_EDGE_GRP``
+ *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
+ * ## Zenith Community - ZPA Provisioning Keys
+ *
+ * ![ZPA Terraform provider Video Series Ep3 - Provisioning Keys](https://community.zscaler.com/zenith/s/question/0D54u00009evlEnCAI/video-zpa-terraform-provider-video-series-ep3-provisioning-keys)
+ *
  * ## Example Usage
+ *
+ * ### Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Provisioning Key for "CONNECTOR_GRP"
- * const example = zpa.getProvisioningKey({
- *     name: "Provisioning_Key",
+ * const connectorKey = zpa.getProvisioningKey({
+ *     name: "Connector_Provisioning_Key",
  *     associationType: "CONNECTOR_GRP",
  * });
  * ```
@@ -96,11 +157,36 @@ export interface GetProvisioningKeyResult {
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
  * // ZPA Provisioning Key for "SERVICE_EDGE_GRP"
- * const example = zpa.getProvisioningKey({
- *     name: "Provisioning_Key",
+ * const serviceEdgeKey = zpa.getProvisioningKey({
+ *     name: "ServiceEdge_Provisioning_Key",
  *     associationType: "SERVICE_EDGE_GRP",
  * });
  * ```
+ *
+ * ### Accessing the Provisioning Key Value
+ *
+ * The provisioning key value is marked as sensitive and can be accessed using outputs or resource references:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as _null from "@pulumi/null";
+ * import * as command from "@pulumi/command";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * // Retrieve existing provisioning key
+ * const existing = zpa.getProvisioningKey({
+ *     name: "Production_Connector_Key",
+ *     associationType: "CONNECTOR_GRP",
+ * });
+ * export const provisioningKeyValue = existing.then(existing => existing.provisioningKey);
+ * // Use in automation
+ * const deployConnector = new _null.Resource("deploy_connector", {});
+ * const deployConnectorProvisioner0 = new command.local.Command("deployConnectorProvisioner0", {create: existing.then(existing => `deploy-connector.sh ${existing.provisioningKey}`)}, {
+ *     dependsOn: [deployConnector],
+ * });
+ * ```
+ *
+ * To retrieve the key value:
  */
 export function getProvisioningKeyOutput(args: GetProvisioningKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProvisioningKeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -306,6 +306,21 @@ def get_app_connector_group(id: Optional[_builtins.str] = None,
                             override_version_profile: Optional[_builtins.bool] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppConnectorGroupResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-connector-groups)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-app-connector-groups-using-api)
+
+    Use the **zpa_app_connector_group** data source to get information about a app connector group in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group. This data source can then be referenced in the following resources:
+
+    **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+
+    * Create a server group
+    * Provisioning Key
+    * Access policy rule
+
+    ## Zenith Community - ZPA App Connector Group
+
+    ![ZPA Terraform provider Video Series Ep2 - Connector Groups](https://community.zscaler.com/zenith/s/question/0D54u00009evlEoCAI/video-zpa-terraform-provider-video-series-ep2-connector-groups)
+
     ## Example Usage
 
     ```python
@@ -370,6 +385,21 @@ def get_app_connector_group_output(id: Optional[pulumi.Input[Optional[_builtins.
                                    override_version_profile: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppConnectorGroupResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-connector-groups)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-app-connector-groups-using-api)
+
+    Use the **zpa_app_connector_group** data source to get information about a app connector group in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group. This data source can then be referenced in the following resources:
+
+    **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+
+    * Create a server group
+    * Provisioning Key
+    * Access policy rule
+
+    ## Zenith Community - ZPA App Connector Group
+
+    ![ZPA Terraform provider Video Series Ep2 - Connector Groups](https://community.zscaler.com/zenith/s/question/0D54u00009evlEoCAI/video-zpa-terraform-provider-video-series-ep2-connector-groups)
+
     ## Example Usage
 
     ```python

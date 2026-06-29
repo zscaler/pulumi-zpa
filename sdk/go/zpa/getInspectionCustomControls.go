@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := zpa.LookupInspectionCustomControls(ctx, &zpa.LookupInspectionCustomControlsArgs{
+//			_, err := zpa.GetInspectionCustomControls(ctx, &zpa.LookupInspectionCustomControlsArgs{
 //				Name: pulumi.StringRef("ZPA_Inspection_Custom_Control"),
 //			}, nil)
 //			if err != nil {
@@ -54,7 +54,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := zpa.LookupInspectionCustomControls(ctx, &zpa.LookupInspectionCustomControlsArgs{
+//			_, err := zpa.GetInspectionCustomControls(ctx, &zpa.LookupInspectionCustomControlsArgs{
 //				Id: pulumi.StringRef("1234567890"),
 //			}, nil)
 //			if err != nil {

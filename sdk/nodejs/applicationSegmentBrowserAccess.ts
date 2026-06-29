@@ -7,6 +7,72 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-browser-access)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-browser-access-application-segments-using-api)
+ *
+ * The **zpa_application_segment_browser_access** creates and manages a browser access application segment resource in the Zscaler Private Access cloud. This resource can then be referenced in an access policy rule, access policy timeout rule or access policy client forwarding rule.
+ *
+ * ## Zenith Community - ZPA Browser Access Application Segment
+ *
+ * ![ZPA Terraform provider Video Series Ep8 - Browser Access Application Segment](https://community.zscaler.com/zenith/s/question/0D54u00009evlEGCAY/zpa-terraform-provider-video-series-ep8-zpa-browser-access-application-segment)
+ *
+ * ## Example  - Using Custom Certificate
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * // Retrieve Browser Access Certificate
+ * const testCert = zpa.getBaCertificate({
+ *     name: "sales.acme.com",
+ * });
+ * // ZPA Segment Group resource
+ * const exampleSegmentGroup = new zpa.SegmentGroup("example", {
+ *     name: "Example",
+ *     description: "Example",
+ *     enabled: true,
+ * });
+ * const example = zpa.getAppConnectorGroup({
+ *     name: "AWS-Connector",
+ * });
+ * // ZPA Server Group resource
+ * const exampleServerGroup = new zpa.ServerGroup("example", {
+ *     name: "Example",
+ *     description: "Example",
+ *     enabled: true,
+ *     dynamicDiscovery: true,
+ *     appConnectorGroups: [{
+ *         ids: [example.then(example => example.id)],
+ *     }],
+ * });
+ * // Create Browser Access Application
+ * const browserAccessApps = new zpa.ApplicationSegmentBrowserAccess("browser_access_apps", {
+ *     name: "Browser Access Apps",
+ *     description: "Browser Access Apps",
+ *     enabled: true,
+ *     healthReporting: "ON_ACCESS",
+ *     bypassType: "NEVER",
+ *     tcpPortRanges: [
+ *         "80",
+ *         "80",
+ *     ],
+ *     domainNames: ["sales.acme.com"],
+ *     segmentGroupId: exampleSegmentGroup.id,
+ *     clientlessApps: [{
+ *         name: "sales.acme.com",
+ *         applicationProtocol: "HTTP",
+ *         applicationPort: "80",
+ *         certificateId: testCert.then(testCert => testCert.id),
+ *         trustUntrustedCert: true,
+ *         enabled: true,
+ *         domain: "sales.acme.com",
+ *     }],
+ *     serverGroups: [{
+ *         ids: [exampleServerGroup.id],
+ *     }],
+ * });
+ * ```
+ *
  * ## Example Usage
  *
  * ### Zscaler Managed Certificate
@@ -69,7 +135,6 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
- *
  * Visit
  *
  * **zpa_application_segment_browser_access** Application Segment Browser Access can be imported by using <`BROWSER ACCESS ID`> or `<<BROWSER ACCESS NAME>` as the import ID.

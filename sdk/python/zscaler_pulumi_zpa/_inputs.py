@@ -223,6 +223,16 @@ __all__ = [
     'PolicyPortalAccessRulePrivilegedPortalCapabilitiesArgsDict',
     'PraCredentialPoolCredentialArgs',
     'PraCredentialPoolCredentialArgsDict',
+    'PrivateCloudAssistantGroupsIdsArgs',
+    'PrivateCloudAssistantGroupsIdsArgsDict',
+    'PrivateCloudPrivateBrokerGroupIdsArgs',
+    'PrivateCloudPrivateBrokerGroupIdsArgsDict',
+    'PrivateCloudSiemIdsArgs',
+    'PrivateCloudSiemIdsArgsDict',
+    'PrivateCloudSiteControllerGroupIdsArgs',
+    'PrivateCloudSiteControllerGroupIdsArgsDict',
+    'PrivateCloudZpnFireDrillSiteArgs',
+    'PrivateCloudZpnFireDrillSiteArgsDict',
     'SegmentGroupApplicationArgs',
     'SegmentGroupApplicationArgsDict',
     'ServerGroupAppConnectorGroupArgs',
@@ -241,6 +251,8 @@ __all__ = [
     'ServiceEdgeGroupServiceEdgesArgsDict',
     'ServiceEdgeGroupTrustedNetworkArgs',
     'ServiceEdgeGroupTrustedNetworkArgsDict',
+    'TagKeyTagValueArgs',
+    'TagKeyTagValueArgsDict',
     'UserPortalLinkUserPortalArgs',
     'UserPortalLinkUserPortalArgsDict',
     'GetApplicationSegmentBrowserAccessTcpPortRangeArgs',
@@ -6997,6 +7009,160 @@ class PraCredentialPoolCredentialArgs:
 
 
 if not MYPY:
+    class PrivateCloudAssistantGroupsIdsArgsDict(TypedDict):
+        ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+elif False:
+    PrivateCloudAssistantGroupsIdsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PrivateCloudAssistantGroupsIdsArgs:
+    def __init__(__self__, *,
+                 ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "ids")
+
+    @ids.setter
+    def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ids", value)
+
+
+if not MYPY:
+    class PrivateCloudPrivateBrokerGroupIdsArgsDict(TypedDict):
+        ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+elif False:
+    PrivateCloudPrivateBrokerGroupIdsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PrivateCloudPrivateBrokerGroupIdsArgs:
+    def __init__(__self__, *,
+                 ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "ids")
+
+    @ids.setter
+    def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ids", value)
+
+
+if not MYPY:
+    class PrivateCloudSiemIdsArgsDict(TypedDict):
+        ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+elif False:
+    PrivateCloudSiemIdsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PrivateCloudSiemIdsArgs:
+    def __init__(__self__, *,
+                 ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "ids")
+
+    @ids.setter
+    def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ids", value)
+
+
+if not MYPY:
+    class PrivateCloudSiteControllerGroupIdsArgsDict(TypedDict):
+        ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+elif False:
+    PrivateCloudSiteControllerGroupIdsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PrivateCloudSiteControllerGroupIdsArgs:
+    def __init__(__self__, *,
+                 ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "ids")
+
+    @ids.setter
+    def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ids", value)
+
+
+if not MYPY:
+    class PrivateCloudZpnFireDrillSiteArgsDict(TypedDict):
+        fire_drill_interval: NotRequired[pulumi.Input[_builtins.str]]
+        fire_drill_interval_time_unit: NotRequired[pulumi.Input[_builtins.str]]
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        microtenant_id: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    PrivateCloudZpnFireDrillSiteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PrivateCloudZpnFireDrillSiteArgs:
+    def __init__(__self__, *,
+                 fire_drill_interval: Optional[pulumi.Input[_builtins.str]] = None,
+                 fire_drill_interval_time_unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 id: Optional[pulumi.Input[_builtins.str]] = None,
+                 microtenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+        if fire_drill_interval is not None:
+            pulumi.set(__self__, "fire_drill_interval", fire_drill_interval)
+        if fire_drill_interval_time_unit is not None:
+            pulumi.set(__self__, "fire_drill_interval_time_unit", fire_drill_interval_time_unit)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if microtenant_id is not None:
+            pulumi.set(__self__, "microtenant_id", microtenant_id)
+
+    @_builtins.property
+    @pulumi.getter(name="fireDrillInterval")
+    def fire_drill_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "fire_drill_interval")
+
+    @fire_drill_interval.setter
+    def fire_drill_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "fire_drill_interval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fireDrillIntervalTimeUnit")
+    def fire_drill_interval_time_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "fire_drill_interval_time_unit")
+
+    @fire_drill_interval_time_unit.setter
+    def fire_drill_interval_time_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "fire_drill_interval_time_unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="microtenantId")
+    def microtenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "microtenant_id")
+
+    @microtenant_id.setter
+    def microtenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "microtenant_id", value)
+
+
+if not MYPY:
     class SegmentGroupApplicationArgsDict(TypedDict):
         id: NotRequired[pulumi.Input[_builtins.str]]
 elif False:
@@ -7264,6 +7430,57 @@ class ServiceEdgeGroupTrustedNetworkArgs:
     @ids.setter
     def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ids", value)
+
+
+if not MYPY:
+    class TagKeyTagValueArgsDict(TypedDict):
+        name: pulumi.Input[_builtins.str]
+        """
+        The name of the tag value.
+        """
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The ID of the tag value.
+        """
+elif False:
+    TagKeyTagValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TagKeyTagValueArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The name of the tag value.
+        :param pulumi.Input[_builtins.str] id: The ID of the tag value.
+        """
+        pulumi.set(__self__, "name", name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the tag value.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the tag value.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
 
 
 if not MYPY:

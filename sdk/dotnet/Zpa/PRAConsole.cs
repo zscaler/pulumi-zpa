@@ -22,7 +22,6 @@ namespace zscaler.PulumiPackage.Zpa
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Zpa = Pulumi.Zpa;
     /// using Zpa = zscaler.PulumiPackage.Zpa;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -132,7 +131,6 @@ namespace zscaler.PulumiPackage.Zpa
     /// ## Import
     /// 
     /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-    /// 
     /// Visit
     /// 
     /// **pra_credential_controller** can be imported by using `&lt;CONSOLE ID&gt;` or `&lt;CONSOLE NAME&gt;` as the import ID.

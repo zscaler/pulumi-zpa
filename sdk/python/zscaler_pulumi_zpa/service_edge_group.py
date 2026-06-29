@@ -29,6 +29,7 @@ class ServiceEdgeGroupArgs:
                  country_code: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enrollment_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
                  exclusive_for_business_continuity: Optional[pulumi.Input[_builtins.bool]] = None,
                  grace_distance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  grace_distance_value: Optional[pulumi.Input[_builtins.str]] = None,
@@ -42,6 +43,7 @@ class ServiceEdgeGroupArgs:
                  upgrade_day: Optional[pulumi.Input[_builtins.str]] = None,
                  upgrade_time_in_secs: Optional[pulumi.Input[_builtins.str]] = None,
                  use_in_dr_mode: Optional[pulumi.Input[_builtins.bool]] = None,
+                 user_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
                  version_profile_name: Optional[pulumi.Input[_builtins.str]] = None,
                  version_profile_visibility_scope: Optional[pulumi.Input[_builtins.str]] = None):
@@ -53,6 +55,7 @@ class ServiceEdgeGroupArgs:
         :param pulumi.Input[_builtins.str] city: City for the Service Edge Group.
         :param pulumi.Input[_builtins.str] description: Description of the Service Edge Group.
         :param pulumi.Input[_builtins.bool] enabled: Whether this Service Edge Group is enabled or not.
+        :param pulumi.Input[_builtins.str] enrollment_cert_id: ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Service Edge' enrollment certificate by name.
         :param pulumi.Input[_builtins.bool] exclusive_for_business_continuity: Indicates whether the Service Edge Group is exclusive for business continuity.
         :param pulumi.Input[_builtins.bool] grace_distance_enabled: If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA Public Service Edge.
         :param pulumi.Input[_builtins.str] grace_distance_value: Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA Public Service Edge
@@ -64,6 +67,7 @@ class ServiceEdgeGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServiceEdgeGroupTrustedNetworkArgs']]] trusted_networks: List of trusted network IDs.
         :param pulumi.Input[_builtins.str] upgrade_day: Service Edges in this group will attempt to update to a newer version of the software during this specified day.
         :param pulumi.Input[_builtins.str] upgrade_time_in_secs: Service Edges in this group will attempt to update to a newer version of the software during this specified time.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_codes: User codes from deployed Service Edge VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the service edges. These codes are obtained from the Service Edge VM after deployment.
         :param pulumi.Input[_builtins.str] version_profile_id: ID of the version profile.
         :param pulumi.Input[_builtins.str] version_profile_name: Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         :param pulumi.Input[_builtins.str] version_profile_visibility_scope: ID of the version profile.
@@ -81,6 +85,8 @@ class ServiceEdgeGroupArgs:
             pulumi.set(__self__, "description", description)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if enrollment_cert_id is not None:
+            pulumi.set(__self__, "enrollment_cert_id", enrollment_cert_id)
         if exclusive_for_business_continuity is not None:
             pulumi.set(__self__, "exclusive_for_business_continuity", exclusive_for_business_continuity)
         if grace_distance_enabled is not None:
@@ -107,6 +113,8 @@ class ServiceEdgeGroupArgs:
             pulumi.set(__self__, "upgrade_time_in_secs", upgrade_time_in_secs)
         if use_in_dr_mode is not None:
             pulumi.set(__self__, "use_in_dr_mode", use_in_dr_mode)
+        if user_codes is not None:
+            pulumi.set(__self__, "user_codes", user_codes)
         if version_profile_id is not None:
             pulumi.set(__self__, "version_profile_id", version_profile_id)
         if version_profile_name is not None:
@@ -203,6 +211,18 @@ class ServiceEdgeGroupArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enrollmentCertId")
+    def enrollment_cert_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Service Edge' enrollment certificate by name.
+        """
+        return pulumi.get(self, "enrollment_cert_id")
+
+    @enrollment_cert_id.setter
+    def enrollment_cert_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "enrollment_cert_id", value)
 
     @_builtins.property
     @pulumi.getter(name="exclusiveForBusinessContinuity")
@@ -355,6 +375,18 @@ class ServiceEdgeGroupArgs:
         pulumi.set(self, "use_in_dr_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="userCodes")
+    def user_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        User codes from deployed Service Edge VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the service edges. These codes are obtained from the Service Edge VM after deployment.
+        """
+        return pulumi.get(self, "user_codes")
+
+    @user_codes.setter
+    def user_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "user_codes", value)
+
+    @_builtins.property
     @pulumi.getter(name="versionProfileId")
     def version_profile_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -399,6 +431,7 @@ class _ServiceEdgeGroupState:
                  country_code: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enrollment_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
                  exclusive_for_business_continuity: Optional[pulumi.Input[_builtins.bool]] = None,
                  grace_distance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  grace_distance_value: Optional[pulumi.Input[_builtins.str]] = None,
@@ -415,6 +448,7 @@ class _ServiceEdgeGroupState:
                  upgrade_day: Optional[pulumi.Input[_builtins.str]] = None,
                  upgrade_time_in_secs: Optional[pulumi.Input[_builtins.str]] = None,
                  use_in_dr_mode: Optional[pulumi.Input[_builtins.bool]] = None,
+                 user_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
                  version_profile_name: Optional[pulumi.Input[_builtins.str]] = None,
                  version_profile_visibility_scope: Optional[pulumi.Input[_builtins.str]] = None):
@@ -423,6 +457,7 @@ class _ServiceEdgeGroupState:
         :param pulumi.Input[_builtins.str] city: City for the Service Edge Group.
         :param pulumi.Input[_builtins.str] description: Description of the Service Edge Group.
         :param pulumi.Input[_builtins.bool] enabled: Whether this Service Edge Group is enabled or not.
+        :param pulumi.Input[_builtins.str] enrollment_cert_id: ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Service Edge' enrollment certificate by name.
         :param pulumi.Input[_builtins.bool] exclusive_for_business_continuity: Indicates whether the Service Edge Group is exclusive for business continuity.
         :param pulumi.Input[_builtins.bool] grace_distance_enabled: If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA Public Service Edge.
         :param pulumi.Input[_builtins.str] grace_distance_value: Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA Public Service Edge
@@ -437,6 +472,7 @@ class _ServiceEdgeGroupState:
         :param pulumi.Input[Sequence[pulumi.Input['ServiceEdgeGroupTrustedNetworkArgs']]] trusted_networks: List of trusted network IDs.
         :param pulumi.Input[_builtins.str] upgrade_day: Service Edges in this group will attempt to update to a newer version of the software during this specified day.
         :param pulumi.Input[_builtins.str] upgrade_time_in_secs: Service Edges in this group will attempt to update to a newer version of the software during this specified time.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_codes: User codes from deployed Service Edge VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the service edges. These codes are obtained from the Service Edge VM after deployment.
         :param pulumi.Input[_builtins.str] version_profile_id: ID of the version profile.
         :param pulumi.Input[_builtins.str] version_profile_name: Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         :param pulumi.Input[_builtins.str] version_profile_visibility_scope: ID of the version profile.
@@ -451,6 +487,8 @@ class _ServiceEdgeGroupState:
             pulumi.set(__self__, "description", description)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if enrollment_cert_id is not None:
+            pulumi.set(__self__, "enrollment_cert_id", enrollment_cert_id)
         if exclusive_for_business_continuity is not None:
             pulumi.set(__self__, "exclusive_for_business_continuity", exclusive_for_business_continuity)
         if grace_distance_enabled is not None:
@@ -483,6 +521,8 @@ class _ServiceEdgeGroupState:
             pulumi.set(__self__, "upgrade_time_in_secs", upgrade_time_in_secs)
         if use_in_dr_mode is not None:
             pulumi.set(__self__, "use_in_dr_mode", use_in_dr_mode)
+        if user_codes is not None:
+            pulumi.set(__self__, "user_codes", user_codes)
         if version_profile_id is not None:
             pulumi.set(__self__, "version_profile_id", version_profile_id)
         if version_profile_name is not None:
@@ -543,6 +583,18 @@ class _ServiceEdgeGroupState:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enrollmentCertId")
+    def enrollment_cert_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Service Edge' enrollment certificate by name.
+        """
+        return pulumi.get(self, "enrollment_cert_id")
+
+    @enrollment_cert_id.setter
+    def enrollment_cert_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "enrollment_cert_id", value)
 
     @_builtins.property
     @pulumi.getter(name="exclusiveForBusinessContinuity")
@@ -731,6 +783,18 @@ class _ServiceEdgeGroupState:
         pulumi.set(self, "use_in_dr_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="userCodes")
+    def user_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        User codes from deployed Service Edge VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the service edges. These codes are obtained from the Service Edge VM after deployment.
+        """
+        return pulumi.get(self, "user_codes")
+
+    @user_codes.setter
+    def user_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "user_codes", value)
+
+    @_builtins.property
     @pulumi.getter(name="versionProfileId")
     def version_profile_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -778,6 +842,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
                  country_code: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enrollment_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
                  exclusive_for_business_continuity: Optional[pulumi.Input[_builtins.bool]] = None,
                  grace_distance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  grace_distance_value: Optional[pulumi.Input[_builtins.str]] = None,
@@ -794,17 +859,143 @@ class ServiceEdgeGroup(pulumi.CustomResource):
                  upgrade_day: Optional[pulumi.Input[_builtins.str]] = None,
                  upgrade_time_in_secs: Optional[pulumi.Input[_builtins.str]] = None,
                  use_in_dr_mode: Optional[pulumi.Input[_builtins.bool]] = None,
+                 user_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
                  version_profile_name: Optional[pulumi.Input[_builtins.str]] = None,
                  version_profile_visibility_scope: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         * [Official documentation](https://help.zscaler.com/zpa/about-zpa-private-service-edge-groups)
-        * [API documentation](https://help.zscaler.com/zpa/configuring-zpa-private-service-edge-groups-using-api)
+        * [API documentation](https://automate.zscaler.com/docs/docs/api-reference-and-guides/api-reference/zpa/private-service-edge-group-management)
 
         The **zpa_service_edge_group** resource creates a service edge group in the Zscaler Private Access cloud. This resource can then be referenced in a service edge connector.
 
+        ## Service Edge Onboarding Methods
+
+        ZPA Private Service Edges can be onboarded into ZPA in two ways. This resource supports both:
+
+        1. **OAuth2 user codes** *(recommended for new deployments)* - Set `user_codes` with the codes generated on each Service Edge VM. The provider creates the group and then calls the OAuth2 user code verification API to enroll the Service Edges.
+        2. **Provisioning key** *(legacy / still supported)* - Create the group with this resource, then create a `ProvisioningKey` referencing it. The key is then injected into the Service Edge VM at deployment time.
+
+        In **both** methods, the Service Edge enrollment requires an `enrollment_cert_id`. You can either:
+        - Set `enrollment_cert_id` explicitly using the `get_enrollment_cert` data source, or
+        - Omit it entirely - the provider will automatically look up the **"Service Edge"** enrollment certificate by name and populate the ID for you.
+
+        ***
+
         ## Example Usage
+
+        ### OAuth2 Enrollment With User Codes (Explicit Enrollment Certificate)
+
+        Set the enrollment certificate explicitly and provide the user codes displayed on the Service Edge VMs after deployment. The provider will create the group and then call the user code verification API to complete enrollment.
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        service_edge = zpa.get_enrollment_cert(name="Service Edge")
+        example = zpa.ServiceEdgeGroup("example",
+            name="Service Edge Group San Jose",
+            description="Service Edge Group in San Jose",
+            enabled=True,
+            is_public=True,
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            latitude="37.3382082",
+            longitude="-121.8863286",
+            location="San Jose, CA, USA",
+            version_profile_name="New Release",
+            enrollment_cert_id=service_edge.id,
+            user_codes=[
+                "CODE_FROM_VM_1",
+                "CODE_FROM_VM_2",
+            ])
+        ```
+
+        ### OAuth2 Enrollment With User Codes (Auto-Resolved Enrollment Certificate)
+
+        Omit `enrollment_cert_id` entirely and the provider will automatically resolve the **"Service Edge"** enrollment certificate for you. This is the simplest configuration and is functionally equivalent to the explicit example above.
+
+        ```python
+        import pulumi
+        import zscaler_pulumi_zpa as zpa
+
+        example = zpa.ServiceEdgeGroup("example",
+            name="Service Edge Group San Jose",
+            description="Service Edge Group in San Jose",
+            enabled=True,
+            is_public=True,
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            latitude="37.3382082",
+            longitude="-121.8863286",
+            location="San Jose, CA, USA",
+            version_profile_name="New Release",
+            user_codes=[
+                "CODE_FROM_VM_1",
+                "CODE_FROM_VM_2",
+            ])
+        ```
+
+        ### Enrolling Service Edges Via Provisioning Key (Explicit Enrollment Certificate)
+
+        Create the Service Edge Group, then create a `ProvisioningKey` that references the group's ID. The provisioning key is then injected into the Service Edge VM at deployment time.
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        service_edge = zpa.get_enrollment_cert(name="Service Edge")
+        example = zpa.ServiceEdgeGroup("example",
+            name="Service Edge Group San Jose",
+            description="Service Edge Group in San Jose",
+            enabled=True,
+            is_public=True,
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            latitude="37.3382082",
+            longitude="-121.8863286",
+            location="San Jose, CA, USA",
+            version_profile_name="New Release",
+            enrollment_cert_id=service_edge.id)
+        example_provisioning_key = zpa.ProvisioningKey("example",
+            name="ProvisioningKey01",
+            association_type="SERVICE_EDGE_GRP",
+            max_usage="10",
+            enrollment_cert_id=service_edge.id,
+            zcomponent_id=example.id)
+        ```
+
+        ### Enrolling Service Edges Via Provisioning Key (Auto-Resolved Enrollment Certificate)
+
+        For the Service Edge Group, you can omit `enrollment_cert_id` and let the provider auto-resolve it. The `ProvisioningKey` resource still requires `enrollment_cert_id` to be set explicitly.
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        service_edge = zpa.get_enrollment_cert(name="Service Edge")
+        example = zpa.ServiceEdgeGroup("example",
+            name="Service Edge Group San Jose",
+            description="Service Edge Group in San Jose",
+            enabled=True,
+            is_public=True,
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            latitude="37.3382082",
+            longitude="-121.8863286",
+            location="San Jose, CA, USA",
+            version_profile_name="New Release")
+        example_provisioning_key = zpa.ProvisioningKey("example",
+            name="ProvisioningKey01",
+            association_type="SERVICE_EDGE_GRP",
+            max_usage="10",
+            enrollment_cert_id=service_edge.id,
+            zcomponent_id=example.id)
+        ```
 
         ### Using Version Profile Name
 
@@ -829,55 +1020,14 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             }])
         ```
 
-        ```python
-        import pulumi
-        import zscaler_pulumi_zpa as zpa
-
-        # ZPA Service Edge Group resource - No Trusted Network
-        service_edge_group_nyc = zpa.ServiceEdgeGroup("service_edge_group_nyc",
-            name="Service Edge Group New York",
-            description="Service Edge Group in New York",
-            enabled=True,
-            is_public=True,
-            upgrade_day="SUNDAY",
-            upgrade_time_in_secs="66600",
-            latitude="40.7128",
-            longitude="-73.935242",
-            location="New York, NY, USA",
-            version_profile_id=this["id"])
-        ```
-
         ### Using Version Profile ID
 
-        data "get_customer_version_profile" "this" {
-          name = "New Release"
-        }
-
         ```python
         import pulumi
+        import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        # ZPA Service Edge Group resource - Trusted Network
-        service_edge_group_sjc = zpa.ServiceEdgeGroup("service_edge_group_sjc",
-            name="Service Edge Group San Jose",
-            description="Service Edge Group in San Jose",
-            enabled=True,
-            is_public=True,
-            upgrade_day="SUNDAY",
-            upgrade_time_in_secs="66600",
-            latitude="37.3382082",
-            longitude="-121.8863286",
-            location="San Jose, CA, USA",
-            version_profile_name="New Release",
-            trusted_networks=[{
-                "ids": [example["id"]],
-            }])
-        ```
-
-        ```python
-        import pulumi
-        import zscaler_pulumi_zpa as zpa
-
+        this = zpa.get_customer_version_profile(name="New Release")
         # ZPA Service Edge Group resource - No Trusted Network
         service_edge_group_nyc = zpa.ServiceEdgeGroup("service_edge_group_nyc",
             name="Service Edge Group New York",
@@ -889,13 +1039,12 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             latitude="40.7128",
             longitude="-73.935242",
             location="New York, NY, USA",
-            version_profile_name="New Release")
+            version_profile_id=this.id)
         ```
 
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         Service Edge Group can be imported; use `<SERVER EDGE GROUP ID>` or `<SERVER EDGE GROUP NAME>` as the import ID.
@@ -917,6 +1066,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] city: City for the Service Edge Group.
         :param pulumi.Input[_builtins.str] description: Description of the Service Edge Group.
         :param pulumi.Input[_builtins.bool] enabled: Whether this Service Edge Group is enabled or not.
+        :param pulumi.Input[_builtins.str] enrollment_cert_id: ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Service Edge' enrollment certificate by name.
         :param pulumi.Input[_builtins.bool] exclusive_for_business_continuity: Indicates whether the Service Edge Group is exclusive for business continuity.
         :param pulumi.Input[_builtins.bool] grace_distance_enabled: If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA Public Service Edge.
         :param pulumi.Input[_builtins.str] grace_distance_value: Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA Public Service Edge
@@ -931,6 +1081,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceEdgeGroupTrustedNetworkArgs', 'ServiceEdgeGroupTrustedNetworkArgsDict']]]] trusted_networks: List of trusted network IDs.
         :param pulumi.Input[_builtins.str] upgrade_day: Service Edges in this group will attempt to update to a newer version of the software during this specified day.
         :param pulumi.Input[_builtins.str] upgrade_time_in_secs: Service Edges in this group will attempt to update to a newer version of the software during this specified time.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_codes: User codes from deployed Service Edge VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the service edges. These codes are obtained from the Service Edge VM after deployment.
         :param pulumi.Input[_builtins.str] version_profile_id: ID of the version profile.
         :param pulumi.Input[_builtins.str] version_profile_name: Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         :param pulumi.Input[_builtins.str] version_profile_visibility_scope: ID of the version profile.
@@ -943,11 +1094,136 @@ class ServiceEdgeGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         * [Official documentation](https://help.zscaler.com/zpa/about-zpa-private-service-edge-groups)
-        * [API documentation](https://help.zscaler.com/zpa/configuring-zpa-private-service-edge-groups-using-api)
+        * [API documentation](https://automate.zscaler.com/docs/docs/api-reference-and-guides/api-reference/zpa/private-service-edge-group-management)
 
         The **zpa_service_edge_group** resource creates a service edge group in the Zscaler Private Access cloud. This resource can then be referenced in a service edge connector.
 
+        ## Service Edge Onboarding Methods
+
+        ZPA Private Service Edges can be onboarded into ZPA in two ways. This resource supports both:
+
+        1. **OAuth2 user codes** *(recommended for new deployments)* - Set `user_codes` with the codes generated on each Service Edge VM. The provider creates the group and then calls the OAuth2 user code verification API to enroll the Service Edges.
+        2. **Provisioning key** *(legacy / still supported)* - Create the group with this resource, then create a `ProvisioningKey` referencing it. The key is then injected into the Service Edge VM at deployment time.
+
+        In **both** methods, the Service Edge enrollment requires an `enrollment_cert_id`. You can either:
+        - Set `enrollment_cert_id` explicitly using the `get_enrollment_cert` data source, or
+        - Omit it entirely - the provider will automatically look up the **"Service Edge"** enrollment certificate by name and populate the ID for you.
+
+        ***
+
         ## Example Usage
+
+        ### OAuth2 Enrollment With User Codes (Explicit Enrollment Certificate)
+
+        Set the enrollment certificate explicitly and provide the user codes displayed on the Service Edge VMs after deployment. The provider will create the group and then call the user code verification API to complete enrollment.
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        service_edge = zpa.get_enrollment_cert(name="Service Edge")
+        example = zpa.ServiceEdgeGroup("example",
+            name="Service Edge Group San Jose",
+            description="Service Edge Group in San Jose",
+            enabled=True,
+            is_public=True,
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            latitude="37.3382082",
+            longitude="-121.8863286",
+            location="San Jose, CA, USA",
+            version_profile_name="New Release",
+            enrollment_cert_id=service_edge.id,
+            user_codes=[
+                "CODE_FROM_VM_1",
+                "CODE_FROM_VM_2",
+            ])
+        ```
+
+        ### OAuth2 Enrollment With User Codes (Auto-Resolved Enrollment Certificate)
+
+        Omit `enrollment_cert_id` entirely and the provider will automatically resolve the **"Service Edge"** enrollment certificate for you. This is the simplest configuration and is functionally equivalent to the explicit example above.
+
+        ```python
+        import pulumi
+        import zscaler_pulumi_zpa as zpa
+
+        example = zpa.ServiceEdgeGroup("example",
+            name="Service Edge Group San Jose",
+            description="Service Edge Group in San Jose",
+            enabled=True,
+            is_public=True,
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            latitude="37.3382082",
+            longitude="-121.8863286",
+            location="San Jose, CA, USA",
+            version_profile_name="New Release",
+            user_codes=[
+                "CODE_FROM_VM_1",
+                "CODE_FROM_VM_2",
+            ])
+        ```
+
+        ### Enrolling Service Edges Via Provisioning Key (Explicit Enrollment Certificate)
+
+        Create the Service Edge Group, then create a `ProvisioningKey` that references the group's ID. The provisioning key is then injected into the Service Edge VM at deployment time.
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        service_edge = zpa.get_enrollment_cert(name="Service Edge")
+        example = zpa.ServiceEdgeGroup("example",
+            name="Service Edge Group San Jose",
+            description="Service Edge Group in San Jose",
+            enabled=True,
+            is_public=True,
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            latitude="37.3382082",
+            longitude="-121.8863286",
+            location="San Jose, CA, USA",
+            version_profile_name="New Release",
+            enrollment_cert_id=service_edge.id)
+        example_provisioning_key = zpa.ProvisioningKey("example",
+            name="ProvisioningKey01",
+            association_type="SERVICE_EDGE_GRP",
+            max_usage="10",
+            enrollment_cert_id=service_edge.id,
+            zcomponent_id=example.id)
+        ```
+
+        ### Enrolling Service Edges Via Provisioning Key (Auto-Resolved Enrollment Certificate)
+
+        For the Service Edge Group, you can omit `enrollment_cert_id` and let the provider auto-resolve it. The `ProvisioningKey` resource still requires `enrollment_cert_id` to be set explicitly.
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        service_edge = zpa.get_enrollment_cert(name="Service Edge")
+        example = zpa.ServiceEdgeGroup("example",
+            name="Service Edge Group San Jose",
+            description="Service Edge Group in San Jose",
+            enabled=True,
+            is_public=True,
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            latitude="37.3382082",
+            longitude="-121.8863286",
+            location="San Jose, CA, USA",
+            version_profile_name="New Release")
+        example_provisioning_key = zpa.ProvisioningKey("example",
+            name="ProvisioningKey01",
+            association_type="SERVICE_EDGE_GRP",
+            max_usage="10",
+            enrollment_cert_id=service_edge.id,
+            zcomponent_id=example.id)
+        ```
 
         ### Using Version Profile Name
 
@@ -972,55 +1248,14 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             }])
         ```
 
-        ```python
-        import pulumi
-        import zscaler_pulumi_zpa as zpa
-
-        # ZPA Service Edge Group resource - No Trusted Network
-        service_edge_group_nyc = zpa.ServiceEdgeGroup("service_edge_group_nyc",
-            name="Service Edge Group New York",
-            description="Service Edge Group in New York",
-            enabled=True,
-            is_public=True,
-            upgrade_day="SUNDAY",
-            upgrade_time_in_secs="66600",
-            latitude="40.7128",
-            longitude="-73.935242",
-            location="New York, NY, USA",
-            version_profile_id=this["id"])
-        ```
-
         ### Using Version Profile ID
 
-        data "get_customer_version_profile" "this" {
-          name = "New Release"
-        }
-
         ```python
         import pulumi
+        import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        # ZPA Service Edge Group resource - Trusted Network
-        service_edge_group_sjc = zpa.ServiceEdgeGroup("service_edge_group_sjc",
-            name="Service Edge Group San Jose",
-            description="Service Edge Group in San Jose",
-            enabled=True,
-            is_public=True,
-            upgrade_day="SUNDAY",
-            upgrade_time_in_secs="66600",
-            latitude="37.3382082",
-            longitude="-121.8863286",
-            location="San Jose, CA, USA",
-            version_profile_name="New Release",
-            trusted_networks=[{
-                "ids": [example["id"]],
-            }])
-        ```
-
-        ```python
-        import pulumi
-        import zscaler_pulumi_zpa as zpa
-
+        this = zpa.get_customer_version_profile(name="New Release")
         # ZPA Service Edge Group resource - No Trusted Network
         service_edge_group_nyc = zpa.ServiceEdgeGroup("service_edge_group_nyc",
             name="Service Edge Group New York",
@@ -1032,13 +1267,12 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             latitude="40.7128",
             longitude="-73.935242",
             location="New York, NY, USA",
-            version_profile_name="New Release")
+            version_profile_id=this.id)
         ```
 
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         Service Edge Group can be imported; use `<SERVER EDGE GROUP ID>` or `<SERVER EDGE GROUP NAME>` as the import ID.
@@ -1075,6 +1309,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
                  country_code: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enrollment_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
                  exclusive_for_business_continuity: Optional[pulumi.Input[_builtins.bool]] = None,
                  grace_distance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  grace_distance_value: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1091,6 +1326,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
                  upgrade_day: Optional[pulumi.Input[_builtins.str]] = None,
                  upgrade_time_in_secs: Optional[pulumi.Input[_builtins.str]] = None,
                  use_in_dr_mode: Optional[pulumi.Input[_builtins.bool]] = None,
+                 user_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
                  version_profile_name: Optional[pulumi.Input[_builtins.str]] = None,
                  version_profile_visibility_scope: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1108,6 +1344,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             __props__.__dict__["country_code"] = country_code
             __props__.__dict__["description"] = description
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["enrollment_cert_id"] = enrollment_cert_id
             __props__.__dict__["exclusive_for_business_continuity"] = exclusive_for_business_continuity
             __props__.__dict__["grace_distance_enabled"] = grace_distance_enabled
             __props__.__dict__["grace_distance_value"] = grace_distance_value
@@ -1130,6 +1367,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             __props__.__dict__["upgrade_day"] = upgrade_day
             __props__.__dict__["upgrade_time_in_secs"] = upgrade_time_in_secs
             __props__.__dict__["use_in_dr_mode"] = use_in_dr_mode
+            __props__.__dict__["user_codes"] = user_codes
             __props__.__dict__["version_profile_id"] = version_profile_id
             __props__.__dict__["version_profile_name"] = version_profile_name
             __props__.__dict__["version_profile_visibility_scope"] = version_profile_visibility_scope
@@ -1148,6 +1386,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             country_code: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+            enrollment_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
             exclusive_for_business_continuity: Optional[pulumi.Input[_builtins.bool]] = None,
             grace_distance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             grace_distance_value: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1164,6 +1403,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
             upgrade_day: Optional[pulumi.Input[_builtins.str]] = None,
             upgrade_time_in_secs: Optional[pulumi.Input[_builtins.str]] = None,
             use_in_dr_mode: Optional[pulumi.Input[_builtins.bool]] = None,
+            user_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             version_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
             version_profile_name: Optional[pulumi.Input[_builtins.str]] = None,
             version_profile_visibility_scope: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServiceEdgeGroup':
@@ -1177,6 +1417,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] city: City for the Service Edge Group.
         :param pulumi.Input[_builtins.str] description: Description of the Service Edge Group.
         :param pulumi.Input[_builtins.bool] enabled: Whether this Service Edge Group is enabled or not.
+        :param pulumi.Input[_builtins.str] enrollment_cert_id: ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Service Edge' enrollment certificate by name.
         :param pulumi.Input[_builtins.bool] exclusive_for_business_continuity: Indicates whether the Service Edge Group is exclusive for business continuity.
         :param pulumi.Input[_builtins.bool] grace_distance_enabled: If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA Public Service Edge.
         :param pulumi.Input[_builtins.str] grace_distance_value: Indicates the maximum distance in miles or kilometers to ZPA Private Service Edge groups that would override a ZPA Public Service Edge
@@ -1191,6 +1432,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceEdgeGroupTrustedNetworkArgs', 'ServiceEdgeGroupTrustedNetworkArgsDict']]]] trusted_networks: List of trusted network IDs.
         :param pulumi.Input[_builtins.str] upgrade_day: Service Edges in this group will attempt to update to a newer version of the software during this specified day.
         :param pulumi.Input[_builtins.str] upgrade_time_in_secs: Service Edges in this group will attempt to update to a newer version of the software during this specified time.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_codes: User codes from deployed Service Edge VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the service edges. These codes are obtained from the Service Edge VM after deployment.
         :param pulumi.Input[_builtins.str] version_profile_id: ID of the version profile.
         :param pulumi.Input[_builtins.str] version_profile_name: Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         :param pulumi.Input[_builtins.str] version_profile_visibility_scope: ID of the version profile.
@@ -1204,6 +1446,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         __props__.__dict__["country_code"] = country_code
         __props__.__dict__["description"] = description
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["enrollment_cert_id"] = enrollment_cert_id
         __props__.__dict__["exclusive_for_business_continuity"] = exclusive_for_business_continuity
         __props__.__dict__["grace_distance_enabled"] = grace_distance_enabled
         __props__.__dict__["grace_distance_value"] = grace_distance_value
@@ -1220,6 +1463,7 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         __props__.__dict__["upgrade_day"] = upgrade_day
         __props__.__dict__["upgrade_time_in_secs"] = upgrade_time_in_secs
         __props__.__dict__["use_in_dr_mode"] = use_in_dr_mode
+        __props__.__dict__["user_codes"] = user_codes
         __props__.__dict__["version_profile_id"] = version_profile_id
         __props__.__dict__["version_profile_name"] = version_profile_name
         __props__.__dict__["version_profile_visibility_scope"] = version_profile_visibility_scope
@@ -1258,6 +1502,14 @@ class ServiceEdgeGroup(pulumi.CustomResource):
         Whether this Service Edge Group is enabled or not.
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="enrollmentCertId")
+    def enrollment_cert_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Service Edge' enrollment certificate by name.
+        """
+        return pulumi.get(self, "enrollment_cert_id")
 
     @_builtins.property
     @pulumi.getter(name="exclusiveForBusinessContinuity")
@@ -1380,6 +1632,14 @@ class ServiceEdgeGroup(pulumi.CustomResource):
     @pulumi.getter(name="useInDrMode")
     def use_in_dr_mode(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "use_in_dr_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="userCodes")
+    def user_codes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        User codes from deployed Service Edge VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the service edges. These codes are obtained from the Service Edge VM after deployment.
+        """
+        return pulumi.get(self, "user_codes")
 
     @_builtins.property
     @pulumi.getter(name="versionProfileId")

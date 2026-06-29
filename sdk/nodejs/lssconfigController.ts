@@ -62,7 +62,6 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
- *
  * Visit
  */
 export class LSSConfigController extends pulumi.CustomResource {

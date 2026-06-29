@@ -20,6 +20,8 @@ import (
 //
 // ## Example Usage
 //
+// ### Basic Usage
+//
 // ```go
 // package main
 //
@@ -52,6 +54,60 @@ import (
 //	}
 //
 // ```
+//
+// ### Using SCIM Attributes in Policy Rules
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Fetch SCIM attribute header
+//			displayName, err := zpa.GetSCIMAttributeHeader(ctx, &zpa.GetSCIMAttributeHeaderArgs{
+//				Name:    pulumi.StringRef("DisplayName"),
+//				IdpName: pulumi.StringRef("IdP_Name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("displayNameValues", displayName.Values)
+//			// Use in policy access rule
+//			_, err = zpa.NewPolicyAccessRule(ctx, "scim_rule", &zpa.PolicyAccessRuleArgs{
+//				Name:        pulumi.String("SCIM-based Access Rule"),
+//				Description: pulumi.String("Allow access based on SCIM DisplayName attribute"),
+//				Action:      pulumi.String("ALLOW"),
+//				Operator:    pulumi.String("AND"),
+//				Conditions: zpa.PolicyAccessRuleConditionArray{
+//					&zpa.PolicyAccessRuleConditionArgs{
+//						Operator: pulumi.String("OR"),
+//						Operands: zpa.PolicyAccessRuleConditionOperandArray{
+//							&zpa.PolicyAccessRuleConditionOperandArgs{
+//								ObjectType: pulumi.String("SCIM"),
+//								IdpId:      pulumi.String(displayName.IdpId),
+//								Lhs:        pulumi.String(displayName.Id),
+//								Rhs:        pulumi.String("John Smith"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// **Note**: When using SCIM attributes in policy rules, the `rhs` value must exactly match one of the values available in the `values` attribute. Use the output to see all available values for the SCIM attribute.
 func GetSCIMAttributeHeader(ctx *pulumi.Context, args *GetSCIMAttributeHeaderArgs, opts ...pulumi.InvokeOption) (*GetSCIMAttributeHeaderResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSCIMAttributeHeaderResult

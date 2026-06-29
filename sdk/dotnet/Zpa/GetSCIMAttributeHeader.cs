@@ -22,11 +22,13 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// ## Example Usage
         /// 
+        /// ### Basic Usage
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -45,6 +47,58 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// });
         /// ```
+        /// 
+        /// ### Using SCIM Attributes in Policy Rules
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Fetch SCIM attribute header
+        ///     var displayName = Zpa.GetSCIMAttributeHeader.Invoke(new()
+        ///     {
+        ///         Name = "DisplayName",
+        ///         IdpName = "IdP_Name",
+        ///     });
+        /// 
+        ///     // Use in policy access rule
+        ///     var scimRule = new Zpa.PolicyAccessRule("scim_rule", new()
+        ///     {
+        ///         Name = "SCIM-based Access Rule",
+        ///         Description = "Allow access based on SCIM DisplayName attribute",
+        ///         Action = "ALLOW",
+        ///         Operator = "AND",
+        ///         Conditions = new[]
+        ///         {
+        ///             new Zpa.Inputs.PolicyAccessRuleConditionArgs
+        ///             {
+        ///                 Operator = "OR",
+        ///                 Operands = new[]
+        ///                 {
+        ///                     new Zpa.Inputs.PolicyAccessRuleConditionOperandArgs
+        ///                     {
+        ///                         ObjectType = "SCIM",
+        ///                         IdpId = displayName.Apply(getSCIMAttributeHeaderResult =&gt; getSCIMAttributeHeaderResult.IdpId),
+        ///                         Lhs = displayName.Apply(getSCIMAttributeHeaderResult =&gt; getSCIMAttributeHeaderResult.Id),
+        ///                         Rhs = "John Smith",
+        ///                     },
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["displayNameValues"] = displayName.Apply(getSCIMAttributeHeaderResult =&gt; getSCIMAttributeHeaderResult.Values),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// **Note**: When using SCIM attributes in policy rules, the `Rhs` value must exactly match one of the values available in the `Values` attribute. Use the output to see all available values for the SCIM attribute.
         /// </summary>
         public static Task<GetSCIMAttributeHeaderResult> InvokeAsync(GetSCIMAttributeHeaderArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSCIMAttributeHeaderResult>("zpa:index/getSCIMAttributeHeader:getSCIMAttributeHeader", args ?? new GetSCIMAttributeHeaderArgs(), options.WithDefaults());
@@ -59,11 +113,13 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// ## Example Usage
         /// 
+        /// ### Basic Usage
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -82,6 +138,58 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// });
         /// ```
+        /// 
+        /// ### Using SCIM Attributes in Policy Rules
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Fetch SCIM attribute header
+        ///     var displayName = Zpa.GetSCIMAttributeHeader.Invoke(new()
+        ///     {
+        ///         Name = "DisplayName",
+        ///         IdpName = "IdP_Name",
+        ///     });
+        /// 
+        ///     // Use in policy access rule
+        ///     var scimRule = new Zpa.PolicyAccessRule("scim_rule", new()
+        ///     {
+        ///         Name = "SCIM-based Access Rule",
+        ///         Description = "Allow access based on SCIM DisplayName attribute",
+        ///         Action = "ALLOW",
+        ///         Operator = "AND",
+        ///         Conditions = new[]
+        ///         {
+        ///             new Zpa.Inputs.PolicyAccessRuleConditionArgs
+        ///             {
+        ///                 Operator = "OR",
+        ///                 Operands = new[]
+        ///                 {
+        ///                     new Zpa.Inputs.PolicyAccessRuleConditionOperandArgs
+        ///                     {
+        ///                         ObjectType = "SCIM",
+        ///                         IdpId = displayName.Apply(getSCIMAttributeHeaderResult =&gt; getSCIMAttributeHeaderResult.IdpId),
+        ///                         Lhs = displayName.Apply(getSCIMAttributeHeaderResult =&gt; getSCIMAttributeHeaderResult.Id),
+        ///                         Rhs = "John Smith",
+        ///                     },
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["displayNameValues"] = displayName.Apply(getSCIMAttributeHeaderResult =&gt; getSCIMAttributeHeaderResult.Values),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// **Note**: When using SCIM attributes in policy rules, the `Rhs` value must exactly match one of the values available in the `Values` attribute. Use the output to see all available values for the SCIM attribute.
         /// </summary>
         public static Output<GetSCIMAttributeHeaderResult> Invoke(GetSCIMAttributeHeaderInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSCIMAttributeHeaderResult>("zpa:index/getSCIMAttributeHeader:getSCIMAttributeHeader", args ?? new GetSCIMAttributeHeaderInvokeArgs(), options.WithDefaults());
@@ -96,11 +204,13 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// ## Example Usage
         /// 
+        /// ### Basic Usage
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -119,6 +229,58 @@ namespace zscaler.PulumiPackage.Zpa
         /// 
         /// });
         /// ```
+        /// 
+        /// ### Using SCIM Attributes in Policy Rules
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Fetch SCIM attribute header
+        ///     var displayName = Zpa.GetSCIMAttributeHeader.Invoke(new()
+        ///     {
+        ///         Name = "DisplayName",
+        ///         IdpName = "IdP_Name",
+        ///     });
+        /// 
+        ///     // Use in policy access rule
+        ///     var scimRule = new Zpa.PolicyAccessRule("scim_rule", new()
+        ///     {
+        ///         Name = "SCIM-based Access Rule",
+        ///         Description = "Allow access based on SCIM DisplayName attribute",
+        ///         Action = "ALLOW",
+        ///         Operator = "AND",
+        ///         Conditions = new[]
+        ///         {
+        ///             new Zpa.Inputs.PolicyAccessRuleConditionArgs
+        ///             {
+        ///                 Operator = "OR",
+        ///                 Operands = new[]
+        ///                 {
+        ///                     new Zpa.Inputs.PolicyAccessRuleConditionOperandArgs
+        ///                     {
+        ///                         ObjectType = "SCIM",
+        ///                         IdpId = displayName.Apply(getSCIMAttributeHeaderResult =&gt; getSCIMAttributeHeaderResult.IdpId),
+        ///                         Lhs = displayName.Apply(getSCIMAttributeHeaderResult =&gt; getSCIMAttributeHeaderResult.Id),
+        ///                         Rhs = "John Smith",
+        ///                     },
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["displayNameValues"] = displayName.Apply(getSCIMAttributeHeaderResult =&gt; getSCIMAttributeHeaderResult.Values),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// **Note**: When using SCIM attributes in policy rules, the `Rhs` value must exactly match one of the values available in the `Values` attribute. Use the output to see all available values for the SCIM attribute.
         /// </summary>
         public static Output<GetSCIMAttributeHeaderResult> Invoke(GetSCIMAttributeHeaderInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSCIMAttributeHeaderResult>("zpa:index/getSCIMAttributeHeader:getSCIMAttributeHeader", args ?? new GetSCIMAttributeHeaderInvokeArgs(), options.WithDefaults());

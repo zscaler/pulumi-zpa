@@ -13,11 +13,220 @@ import (
 )
 
 // * [Official documentation](https://help.zscaler.com/zpa/about-zpa-private-service-edge-groups)
-// * [API documentation](https://help.zscaler.com/zpa/configuring-zpa-private-service-edge-groups-using-api)
+// * [API documentation](https://automate.zscaler.com/docs/docs/api-reference-and-guides/api-reference/zpa/private-service-edge-group-management)
 //
 // The **zpa_service_edge_group** resource creates a service edge group in the Zscaler Private Access cloud. This resource can then be referenced in a service edge connector.
 //
+// ## Service Edge Onboarding Methods
+//
+// ZPA Private Service Edges can be onboarded into ZPA in two ways. This resource supports both:
+//
+// 1. **OAuth2 user codes** *(recommended for new deployments)* - Set `userCodes` with the codes generated on each Service Edge VM. The provider creates the group and then calls the OAuth2 user code verification API to enroll the Service Edges.
+// 2. **Provisioning key** *(legacy / still supported)* - Create the group with this resource, then create a `ProvisioningKey` referencing it. The key is then injected into the Service Edge VM at deployment time.
+//
+// In **both** methods, the Service Edge enrollment requires an `enrollmentCertId`. You can either:
+// - Set `enrollmentCertId` explicitly using the `getEnrollmentCert` data source, or
+// - Omit it entirely - the provider will automatically look up the **"Service Edge"** enrollment certificate by name and populate the ID for you.
+//
+// ***
+//
 // ## Example Usage
+//
+// ### OAuth2 Enrollment With User Codes (Explicit Enrollment Certificate)
+//
+// Set the enrollment certificate explicitly and provide the user codes displayed on the Service Edge VMs after deployment. The provider will create the group and then call the user code verification API to complete enrollment.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			serviceEdge, err := zpa.GetEnrollmentCert(ctx, &zpa.GetEnrollmentCertArgs{
+//				Name: pulumi.StringRef("Service Edge"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = zpa.NewServiceEdgeGroup(ctx, "example", &zpa.ServiceEdgeGroupArgs{
+//				Name:               pulumi.String("Service Edge Group San Jose"),
+//				Description:        pulumi.String("Service Edge Group in San Jose"),
+//				Enabled:            pulumi.Bool(true),
+//				IsPublic:           pulumi.Bool(true),
+//				UpgradeDay:         pulumi.String("SUNDAY"),
+//				UpgradeTimeInSecs:  pulumi.String("66600"),
+//				Latitude:           pulumi.String("37.3382082"),
+//				Longitude:          pulumi.String("-121.8863286"),
+//				Location:           pulumi.String("San Jose, CA, USA"),
+//				VersionProfileName: pulumi.String("New Release"),
+//				EnrollmentCertId:   pulumi.String(serviceEdge.Id),
+//				UserCodes: pulumi.StringArray{
+//					pulumi.String("CODE_FROM_VM_1"),
+//					pulumi.String("CODE_FROM_VM_2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### OAuth2 Enrollment With User Codes (Auto-Resolved Enrollment Certificate)
+//
+// Omit `enrollmentCertId` entirely and the provider will automatically resolve the **"Service Edge"** enrollment certificate for you. This is the simplest configuration and is functionally equivalent to the explicit example above.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := zpa.NewServiceEdgeGroup(ctx, "example", &zpa.ServiceEdgeGroupArgs{
+//				Name:               pulumi.String("Service Edge Group San Jose"),
+//				Description:        pulumi.String("Service Edge Group in San Jose"),
+//				Enabled:            pulumi.Bool(true),
+//				IsPublic:           pulumi.Bool(true),
+//				UpgradeDay:         pulumi.String("SUNDAY"),
+//				UpgradeTimeInSecs:  pulumi.String("66600"),
+//				Latitude:           pulumi.String("37.3382082"),
+//				Longitude:          pulumi.String("-121.8863286"),
+//				Location:           pulumi.String("San Jose, CA, USA"),
+//				VersionProfileName: pulumi.String("New Release"),
+//				UserCodes: pulumi.StringArray{
+//					pulumi.String("CODE_FROM_VM_1"),
+//					pulumi.String("CODE_FROM_VM_2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Enrolling Service Edges Via Provisioning Key (Explicit Enrollment Certificate)
+//
+// Create the Service Edge Group, then create a `ProvisioningKey` that references the group's ID. The provisioning key is then injected into the Service Edge VM at deployment time.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			serviceEdge, err := zpa.GetEnrollmentCert(ctx, &zpa.GetEnrollmentCertArgs{
+//				Name: pulumi.StringRef("Service Edge"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			example, err := zpa.NewServiceEdgeGroup(ctx, "example", &zpa.ServiceEdgeGroupArgs{
+//				Name:               pulumi.String("Service Edge Group San Jose"),
+//				Description:        pulumi.String("Service Edge Group in San Jose"),
+//				Enabled:            pulumi.Bool(true),
+//				IsPublic:           pulumi.Bool(true),
+//				UpgradeDay:         pulumi.String("SUNDAY"),
+//				UpgradeTimeInSecs:  pulumi.String("66600"),
+//				Latitude:           pulumi.String("37.3382082"),
+//				Longitude:          pulumi.String("-121.8863286"),
+//				Location:           pulumi.String("San Jose, CA, USA"),
+//				VersionProfileName: pulumi.String("New Release"),
+//				EnrollmentCertId:   pulumi.String(serviceEdge.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = zpa.NewProvisioningKey(ctx, "example", &zpa.ProvisioningKeyArgs{
+//				Name:             pulumi.String("ProvisioningKey01"),
+//				AssociationType:  pulumi.String("SERVICE_EDGE_GRP"),
+//				MaxUsage:         pulumi.String("10"),
+//				EnrollmentCertId: pulumi.String(serviceEdge.Id),
+//				ZcomponentId:     example.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Enrolling Service Edges Via Provisioning Key (Auto-Resolved Enrollment Certificate)
+//
+// For the Service Edge Group, you can omit `enrollmentCertId` and let the provider auto-resolve it. The `ProvisioningKey` resource still requires `enrollmentCertId` to be set explicitly.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			serviceEdge, err := zpa.GetEnrollmentCert(ctx, &zpa.GetEnrollmentCertArgs{
+//				Name: pulumi.StringRef("Service Edge"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			example, err := zpa.NewServiceEdgeGroup(ctx, "example", &zpa.ServiceEdgeGroupArgs{
+//				Name:               pulumi.String("Service Edge Group San Jose"),
+//				Description:        pulumi.String("Service Edge Group in San Jose"),
+//				Enabled:            pulumi.Bool(true),
+//				IsPublic:           pulumi.Bool(true),
+//				UpgradeDay:         pulumi.String("SUNDAY"),
+//				UpgradeTimeInSecs:  pulumi.String("66600"),
+//				Latitude:           pulumi.String("37.3382082"),
+//				Longitude:          pulumi.String("-121.8863286"),
+//				Location:           pulumi.String("San Jose, CA, USA"),
+//				VersionProfileName: pulumi.String("New Release"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = zpa.NewProvisioningKey(ctx, "example", &zpa.ProvisioningKeyArgs{
+//				Name:             pulumi.String("ProvisioningKey01"),
+//				AssociationType:  pulumi.String("SERVICE_EDGE_GRP"),
+//				MaxUsage:         pulumi.String("10"),
+//				EnrollmentCertId: pulumi.String(serviceEdge.Id),
+//				ZcomponentId:     example.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ### Using Version Profile Name
 //
@@ -62,6 +271,8 @@ import (
 //
 // ```
 //
+// ### Using Version Profile ID
+//
 // ```go
 // package main
 //
@@ -74,8 +285,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := zpa.GetCustomerVersionProfile(ctx, &zpa.GetCustomerVersionProfileArgs{
+//				Name: "New Release",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			// ZPA Service Edge Group resource - No Trusted Network
-//			_, err := zpa.NewServiceEdgeGroup(ctx, "service_edge_group_nyc", &zpa.ServiceEdgeGroupArgs{
+//			_, err = zpa.NewServiceEdgeGroup(ctx, "service_edge_group_nyc", &zpa.ServiceEdgeGroupArgs{
 //				Name:              pulumi.String("Service Edge Group New York"),
 //				Description:       pulumi.String("Service Edge Group in New York"),
 //				Enabled:           pulumi.Bool(true),
@@ -85,88 +302,7 @@ import (
 //				Latitude:          pulumi.String("40.7128"),
 //				Longitude:         pulumi.String("-73.935242"),
 //				Location:          pulumi.String("New York, NY, USA"),
-//				VersionProfileId:  pulumi.Any(this.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Using Version Profile ID
-//
-//	data "getCustomerVersionProfile" "this" {
-//	  name = "New Release"
-//	}
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ZPA Service Edge Group resource - Trusted Network
-//			_, err := zpa.NewServiceEdgeGroup(ctx, "service_edge_group_sjc", &zpa.ServiceEdgeGroupArgs{
-//				Name:               pulumi.String("Service Edge Group San Jose"),
-//				Description:        pulumi.String("Service Edge Group in San Jose"),
-//				Enabled:            pulumi.Bool(true),
-//				IsPublic:           pulumi.Bool(true),
-//				UpgradeDay:         pulumi.String("SUNDAY"),
-//				UpgradeTimeInSecs:  pulumi.String("66600"),
-//				Latitude:           pulumi.String("37.3382082"),
-//				Longitude:          pulumi.String("-121.8863286"),
-//				Location:           pulumi.String("San Jose, CA, USA"),
-//				VersionProfileName: pulumi.String("New Release"),
-//				TrustedNetworks: zpa.ServiceEdgeGroupTrustedNetworkArray{
-//					&zpa.ServiceEdgeGroupTrustedNetworkArgs{
-//						Ids: pulumi.StringArray{
-//							example.Id,
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// ZPA Service Edge Group resource - No Trusted Network
-//			_, err := zpa.NewServiceEdgeGroup(ctx, "service_edge_group_nyc", &zpa.ServiceEdgeGroupArgs{
-//				Name:               pulumi.String("Service Edge Group New York"),
-//				Description:        pulumi.String("Service Edge Group in New York"),
-//				Enabled:            pulumi.Bool(true),
-//				IsPublic:           pulumi.Bool(true),
-//				UpgradeDay:         pulumi.String("SUNDAY"),
-//				UpgradeTimeInSecs:  pulumi.String("66600"),
-//				Latitude:           pulumi.String("40.7128"),
-//				Longitude:          pulumi.String("-73.935242"),
-//				Location:           pulumi.String("New York, NY, USA"),
-//				VersionProfileName: pulumi.String("New Release"),
+//				VersionProfileId:  pulumi.String(this.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -180,8 +316,7 @@ import (
 // ## Import
 //
 // Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-//
-// # Visit
+// Visit
 //
 // Service Edge Group can be imported; use `<SERVER EDGE GROUP ID>` or `<SERVER EDGE GROUP NAME>` as the import ID.
 //
@@ -207,6 +342,8 @@ type ServiceEdgeGroup struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether this Service Edge Group is enabled or not.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Service Edge' enrollment certificate by name.
+	EnrollmentCertId pulumi.StringOutput `pulumi:"enrollmentCertId"`
 	// Indicates whether the Service Edge Group is exclusive for business continuity.
 	ExclusiveForBusinessContinuity pulumi.BoolPtrOutput `pulumi:"exclusiveForBusinessContinuity"`
 	// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA Public Service Edge.
@@ -237,6 +374,8 @@ type ServiceEdgeGroup struct {
 	// Service Edges in this group will attempt to update to a newer version of the software during this specified time.
 	UpgradeTimeInSecs pulumi.StringPtrOutput `pulumi:"upgradeTimeInSecs"`
 	UseInDrMode       pulumi.BoolOutput      `pulumi:"useInDrMode"`
+	// User codes from deployed Service Edge VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the service edges. These codes are obtained from the Service Edge VM after deployment.
+	UserCodes pulumi.StringArrayOutput `pulumi:"userCodes"`
 	// ID of the version profile.
 	VersionProfileId pulumi.StringOutput `pulumi:"versionProfileId"`
 	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
@@ -292,6 +431,8 @@ type serviceEdgeGroupState struct {
 	Description *string `pulumi:"description"`
 	// Whether this Service Edge Group is enabled or not.
 	Enabled *bool `pulumi:"enabled"`
+	// ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Service Edge' enrollment certificate by name.
+	EnrollmentCertId *string `pulumi:"enrollmentCertId"`
 	// Indicates whether the Service Edge Group is exclusive for business continuity.
 	ExclusiveForBusinessContinuity *bool `pulumi:"exclusiveForBusinessContinuity"`
 	// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA Public Service Edge.
@@ -322,6 +463,8 @@ type serviceEdgeGroupState struct {
 	// Service Edges in this group will attempt to update to a newer version of the software during this specified time.
 	UpgradeTimeInSecs *string `pulumi:"upgradeTimeInSecs"`
 	UseInDrMode       *bool   `pulumi:"useInDrMode"`
+	// User codes from deployed Service Edge VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the service edges. These codes are obtained from the Service Edge VM after deployment.
+	UserCodes []string `pulumi:"userCodes"`
 	// ID of the version profile.
 	VersionProfileId *string `pulumi:"versionProfileId"`
 	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
@@ -339,6 +482,8 @@ type ServiceEdgeGroupState struct {
 	Description pulumi.StringPtrInput
 	// Whether this Service Edge Group is enabled or not.
 	Enabled pulumi.BoolPtrInput
+	// ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Service Edge' enrollment certificate by name.
+	EnrollmentCertId pulumi.StringPtrInput
 	// Indicates whether the Service Edge Group is exclusive for business continuity.
 	ExclusiveForBusinessContinuity pulumi.BoolPtrInput
 	// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA Public Service Edge.
@@ -369,6 +514,8 @@ type ServiceEdgeGroupState struct {
 	// Service Edges in this group will attempt to update to a newer version of the software during this specified time.
 	UpgradeTimeInSecs pulumi.StringPtrInput
 	UseInDrMode       pulumi.BoolPtrInput
+	// User codes from deployed Service Edge VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the service edges. These codes are obtained from the Service Edge VM after deployment.
+	UserCodes pulumi.StringArrayInput
 	// ID of the version profile.
 	VersionProfileId pulumi.StringPtrInput
 	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
@@ -390,6 +537,8 @@ type serviceEdgeGroupArgs struct {
 	Description *string `pulumi:"description"`
 	// Whether this Service Edge Group is enabled or not.
 	Enabled *bool `pulumi:"enabled"`
+	// ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Service Edge' enrollment certificate by name.
+	EnrollmentCertId *string `pulumi:"enrollmentCertId"`
 	// Indicates whether the Service Edge Group is exclusive for business continuity.
 	ExclusiveForBusinessContinuity *bool `pulumi:"exclusiveForBusinessContinuity"`
 	// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA Public Service Edge.
@@ -420,6 +569,8 @@ type serviceEdgeGroupArgs struct {
 	// Service Edges in this group will attempt to update to a newer version of the software during this specified time.
 	UpgradeTimeInSecs *string `pulumi:"upgradeTimeInSecs"`
 	UseInDrMode       *bool   `pulumi:"useInDrMode"`
+	// User codes from deployed Service Edge VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the service edges. These codes are obtained from the Service Edge VM after deployment.
+	UserCodes []string `pulumi:"userCodes"`
 	// ID of the version profile.
 	VersionProfileId *string `pulumi:"versionProfileId"`
 	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
@@ -438,6 +589,8 @@ type ServiceEdgeGroupArgs struct {
 	Description pulumi.StringPtrInput
 	// Whether this Service Edge Group is enabled or not.
 	Enabled pulumi.BoolPtrInput
+	// ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Service Edge' enrollment certificate by name.
+	EnrollmentCertId pulumi.StringPtrInput
 	// Indicates whether the Service Edge Group is exclusive for business continuity.
 	ExclusiveForBusinessContinuity pulumi.BoolPtrInput
 	// If enabled, allows ZPA Private Service Edge Groups within the specified distance to be prioritized over a closer ZPA Public Service Edge.
@@ -468,6 +621,8 @@ type ServiceEdgeGroupArgs struct {
 	// Service Edges in this group will attempt to update to a newer version of the software during this specified time.
 	UpgradeTimeInSecs pulumi.StringPtrInput
 	UseInDrMode       pulumi.BoolPtrInput
+	// User codes from deployed Service Edge VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the service edges. These codes are obtained from the Service Edge VM after deployment.
+	UserCodes pulumi.StringArrayInput
 	// ID of the version profile.
 	VersionProfileId pulumi.StringPtrInput
 	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
@@ -586,6 +741,11 @@ func (o ServiceEdgeGroupOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceEdgeGroup) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Service Edge' enrollment certificate by name.
+func (o ServiceEdgeGroupOutput) EnrollmentCertId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceEdgeGroup) pulumi.StringOutput { return v.EnrollmentCertId }).(pulumi.StringOutput)
+}
+
 // Indicates whether the Service Edge Group is exclusive for business continuity.
 func (o ServiceEdgeGroupOutput) ExclusiveForBusinessContinuity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceEdgeGroup) pulumi.BoolPtrOutput { return v.ExclusiveForBusinessContinuity }).(pulumi.BoolPtrOutput)
@@ -662,6 +822,11 @@ func (o ServiceEdgeGroupOutput) UpgradeTimeInSecs() pulumi.StringPtrOutput {
 
 func (o ServiceEdgeGroupOutput) UseInDrMode() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServiceEdgeGroup) pulumi.BoolOutput { return v.UseInDrMode }).(pulumi.BoolOutput)
+}
+
+// User codes from deployed Service Edge VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the service edges. These codes are obtained from the Service Edge VM after deployment.
+func (o ServiceEdgeGroupOutput) UserCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceEdgeGroup) pulumi.StringArrayOutput { return v.UserCodes }).(pulumi.StringArrayOutput)
 }
 
 // ID of the version profile.

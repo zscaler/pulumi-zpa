@@ -11,6 +11,17 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-segment-groups)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-segment-groups-using-api)
+//
+// Use the **zpa_segment_group** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source can then be referenced in an application segment or Access Policy rule.
+//
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
+// ## Zenith Community - ZPA Segment Group
+//
+// ![ZPA Terraform provider Video Series Ep6 - Segment Group](https://community.zscaler.com/zenith/s/question/0D54u00009evlEfCAI/video-zpa-terraform-provider-video-series-ep6-zpa-segment-group)
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Server Group Data Source
-//			_, err := zpa.LookupSegmentGroup(ctx, &zpa.LookupSegmentGroupArgs{
+//			_, err := zpa.GetSegmentGroup(ctx, &zpa.LookupSegmentGroupArgs{
 //				Name: pulumi.StringRef("segment_group_name"),
 //			}, nil)
 //			if err != nil {

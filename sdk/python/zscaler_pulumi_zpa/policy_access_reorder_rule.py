@@ -136,10 +136,10 @@ class PolicyAccessReorderRule(pulumi.CustomResource):
             },
         ]
         access_policy_reorder = zpa.PolicyAccessReorderRule("access_policy_reorder",
-            rules=[{"key": k, "value": v} for k, v in rule_orders].apply(lambda entries: [{
-                "id": entry["value"]["id"],
-                "order": entry["value"]["order"],
-            } for entry in entries]),
+            rules=[{
+                "id": entry["id"],
+                "order": str(entry["order"]),
+            } for entry in rule_orders],
             policy_type="ACCESS_POLICY")
         ```
 
@@ -178,10 +178,114 @@ class PolicyAccessReorderRule(pulumi.CustomResource):
             },
         ]
         access_policy_reorder = zpa.PolicyAccessReorderRule("access_policy_reorder",
-            rules=[{"key": k, "value": v} for k, v in rule_orders].apply(lambda entries: [{
-                "id": entry["value"]["id"],
-                "order": entry["value"]["order"],
-            } for entry in entries]),
+            rules=[{
+                "id": entry["id"],
+                "order": output(entry["order"]).apply(lambda x: str(x)),
+            } for entry in rule_orders],
+            policy_type="ACCESS_POLICY")
+        ```
+
+        ### 4 - Similar To Example 3 - No YAML File
+
+        ```python
+        import pulumi
+        from typing import Any
+        import pulumi_std as std
+        import zscaler_pulumi_zpa as zpa
+
+        def try_(*fns):
+            for fn in fns:
+                try:
+                    result = fn()
+                    return result
+                except:
+                    continue
+            return None
+
+
+        config = pulumi.Config()
+        # Configuration for policy rules
+        policy_config = config.get_object("policyConfig")
+        if policy_config is None:
+            policy_config = {
+                "policies": [
+                    {
+                        "action": "ALLOW",
+                        "description": "example001",
+                        "name": "example001",
+                    },
+                    {
+                        "action": "DENY",
+                        "description": "example002",
+                        "name": "example002",
+                    },
+                    {
+                        "action": "ALLOW",
+                        "description": "example003",
+                        "name": "example003",
+                    },
+                    {
+                        "action": "DENY",
+                        "description": "example004",
+                        "name": "example004",
+                    },
+                    {
+                        "action": "ALLOW",
+                        "description": "example005",
+                        "name": "example005",
+                    },
+                    {
+                        "action": "DENY",
+                        "description": "example006",
+                        "name": "example006",
+                    },
+                    {
+                        "action": "ALLOW",
+                        "description": "example007",
+                        "name": "example007",
+                    },
+                    {
+                        "action": "DENY",
+                        "description": "example008",
+                        "name": "example008",
+                    },
+                    {
+                        "action": "ALLOW",
+                        "description": "example009",
+                        "name": "example009",
+                    },
+                    {
+                        "action": "DENY",
+                        "description": "example010",
+                        "name": "example010",
+                    },
+                ],
+            }
+        policies = {policy["name"]: std.merge(input=[
+            policy,
+            {
+                "ruleNumber": index + 1,
+            },
+        ]).result for index, policy in enumerate(policy_config["policies"])}
+        rules: list[Any] = []
+        for range in [{"key": k, "value": v} for [k, v] in enumerate({rule.name: rule for rule in policies.values()})]:
+            rules.append(zpa.PolicyAccessRule(f"rules-{range['key']}",
+                name=range["value"]["name"],
+                action=range["value"]["action"],
+                description=range["value"]["description"],
+                custom_msg=try_(
+                    lambda: range["value"]["customMsg"],
+                    lambda: None
+                ),
+                operator=try_(
+                    lambda: range["value"]["operator"],
+                    lambda: "AND"
+                )))
+        access_policy_reorder = zpa.PolicyAccessReorderRule("access_policy_reorder",
+            rules=[{
+                "id": rules[key].id,
+                "order": output(entry["ruleNumber"]).apply(lambda x: str(x)),
+            } for key, entry in sorted(policies.items())],
             policy_type="ACCESS_POLICY")
         ```
 
@@ -234,10 +338,10 @@ class PolicyAccessReorderRule(pulumi.CustomResource):
             },
         ]
         access_policy_reorder = zpa.PolicyAccessReorderRule("access_policy_reorder",
-            rules=[{"key": k, "value": v} for k, v in rule_orders].apply(lambda entries: [{
-                "id": entry["value"]["id"],
-                "order": entry["value"]["order"],
-            } for entry in entries]),
+            rules=[{
+                "id": entry["id"],
+                "order": str(entry["order"]),
+            } for entry in rule_orders],
             policy_type="ACCESS_POLICY")
         ```
 
@@ -276,10 +380,114 @@ class PolicyAccessReorderRule(pulumi.CustomResource):
             },
         ]
         access_policy_reorder = zpa.PolicyAccessReorderRule("access_policy_reorder",
-            rules=[{"key": k, "value": v} for k, v in rule_orders].apply(lambda entries: [{
-                "id": entry["value"]["id"],
-                "order": entry["value"]["order"],
-            } for entry in entries]),
+            rules=[{
+                "id": entry["id"],
+                "order": output(entry["order"]).apply(lambda x: str(x)),
+            } for entry in rule_orders],
+            policy_type="ACCESS_POLICY")
+        ```
+
+        ### 4 - Similar To Example 3 - No YAML File
+
+        ```python
+        import pulumi
+        from typing import Any
+        import pulumi_std as std
+        import zscaler_pulumi_zpa as zpa
+
+        def try_(*fns):
+            for fn in fns:
+                try:
+                    result = fn()
+                    return result
+                except:
+                    continue
+            return None
+
+
+        config = pulumi.Config()
+        # Configuration for policy rules
+        policy_config = config.get_object("policyConfig")
+        if policy_config is None:
+            policy_config = {
+                "policies": [
+                    {
+                        "action": "ALLOW",
+                        "description": "example001",
+                        "name": "example001",
+                    },
+                    {
+                        "action": "DENY",
+                        "description": "example002",
+                        "name": "example002",
+                    },
+                    {
+                        "action": "ALLOW",
+                        "description": "example003",
+                        "name": "example003",
+                    },
+                    {
+                        "action": "DENY",
+                        "description": "example004",
+                        "name": "example004",
+                    },
+                    {
+                        "action": "ALLOW",
+                        "description": "example005",
+                        "name": "example005",
+                    },
+                    {
+                        "action": "DENY",
+                        "description": "example006",
+                        "name": "example006",
+                    },
+                    {
+                        "action": "ALLOW",
+                        "description": "example007",
+                        "name": "example007",
+                    },
+                    {
+                        "action": "DENY",
+                        "description": "example008",
+                        "name": "example008",
+                    },
+                    {
+                        "action": "ALLOW",
+                        "description": "example009",
+                        "name": "example009",
+                    },
+                    {
+                        "action": "DENY",
+                        "description": "example010",
+                        "name": "example010",
+                    },
+                ],
+            }
+        policies = {policy["name"]: std.merge(input=[
+            policy,
+            {
+                "ruleNumber": index + 1,
+            },
+        ]).result for index, policy in enumerate(policy_config["policies"])}
+        rules: list[Any] = []
+        for range in [{"key": k, "value": v} for [k, v] in enumerate({rule.name: rule for rule in policies.values()})]:
+            rules.append(zpa.PolicyAccessRule(f"rules-{range['key']}",
+                name=range["value"]["name"],
+                action=range["value"]["action"],
+                description=range["value"]["description"],
+                custom_msg=try_(
+                    lambda: range["value"]["customMsg"],
+                    lambda: None
+                ),
+                operator=try_(
+                    lambda: range["value"]["operator"],
+                    lambda: "AND"
+                )))
+        access_policy_reorder = zpa.PolicyAccessReorderRule("access_policy_reorder",
+            rules=[{
+                "id": rules[key].id,
+                "order": output(entry["ruleNumber"]).apply(lambda x: str(x)),
+            } for key, entry in sorted(policies.items())],
             policy_type="ACCESS_POLICY")
         ```
 

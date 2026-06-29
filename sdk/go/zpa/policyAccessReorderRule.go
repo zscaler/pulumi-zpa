@@ -26,6 +26,8 @@ import (
 // ### 1
 //
 // ### 2
+//
+// ### 4 - Similar To Example 3 - No YAML File
 type PolicyAccessReorderRule struct {
 	pulumi.CustomResourceState
 

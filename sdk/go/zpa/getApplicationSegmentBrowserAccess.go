@@ -11,6 +11,17 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-browser-access)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-browser-access-application-segments-using-api)
+//
+// Use the **zpa_application_segment_browser_access** data source to get information about a browser access application segment created in the Zscaler Private Access cloud. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
+//
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
+// ## Zenith Community - ZPA Browser Access Application Segment
+//
+// ![ZPA Terraform provider Video Series Ep8 - Browser Access Application Segment](https://community.zscaler.com/zenith/s/question/0D54u00009evlEGCAY/zpa-terraform-provider-video-series-ep8-zpa-browser-access-application-segment)
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Application Segment Browser Access Data Source
-//			_, err := zpa.LookupApplicationSegmentBrowserAccess(ctx, &zpa.LookupApplicationSegmentBrowserAccessArgs{
+//			_, err := zpa.GetApplicationSegmentBrowserAccess(ctx, &zpa.LookupApplicationSegmentBrowserAccessArgs{
 //				Name: pulumi.StringRef("example"),
 //			}, nil)
 //			if err != nil {
@@ -51,7 +62,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Application Segment Browser Access Data Source
-//			_, err := zpa.LookupApplicationSegmentBrowserAccess(ctx, &zpa.LookupApplicationSegmentBrowserAccessArgs{
+//			_, err := zpa.GetApplicationSegmentBrowserAccess(ctx, &zpa.LookupApplicationSegmentBrowserAccessArgs{
 //				Id: pulumi.StringRef("123456789"),
 //			}, nil)
 //			if err != nil {

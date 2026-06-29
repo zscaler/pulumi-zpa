@@ -33,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Retrieve Log Streaming Information by ID
-//			_, err := zpa.LookupLSSConfigController(ctx, &zpa.LookupLSSConfigControllerArgs{
+//			_, err := zpa.GetLSSConfigController(ctx, &zpa.LookupLSSConfigControllerArgs{
 //				Id: pulumi.StringRef("1234567890"),
 //			}, nil)
 //			if err != nil {

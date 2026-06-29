@@ -103,6 +103,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PolicyPortalAccessRule{}
 	case "zpa:index/praCredentialPool:PraCredentialPool":
 		r = &PraCredentialPool{}
+	case "zpa:index/privateCloud:PrivateCloud":
+		r = &PrivateCloud{}
 	case "zpa:index/privateCloudGroup:PrivateCloudGroup":
 		r = &PrivateCloudGroup{}
 	case "zpa:index/provisioningKey:ProvisioningKey":
@@ -115,6 +117,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServiceEdgeAssistantSchedule{}
 	case "zpa:index/serviceEdgeGroup:ServiceEdgeGroup":
 		r = &ServiceEdgeGroup{}
+	case "zpa:index/tagGroup:TagGroup":
+		r = &TagGroup{}
+	case "zpa:index/tagKey:TagKey":
+		r = &TagKey{}
+	case "zpa:index/tagNamespace:TagNamespace":
+		r = &TagNamespace{}
 	case "zpa:index/userPortalAUP:UserPortalAUP":
 		r = &UserPortalAUP{}
 	case "zpa:index/userPortalController:UserPortalController":
@@ -361,6 +369,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"zpa",
+		"index/privateCloud",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
 		"index/privateCloudGroup",
 		&module{version},
 	)
@@ -387,6 +400,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"zpa",
 		"index/serviceEdgeGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/tagGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/tagKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"zpa",
+		"index/tagNamespace",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

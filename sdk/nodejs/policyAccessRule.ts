@@ -16,6 +16,8 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ### Basic Example with SCIM Group
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
@@ -72,6 +74,38 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Example with SCIM Attribute Values
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * // Get SCIM attribute header for a specific attribute
+ * const displayName = zpa.getSCIMAttributeHeader({
+ *     name: "DisplayName",
+ *     idpName: "IdP_Name",
+ * });
+ * export const availableValues = displayName.then(displayName => displayName.values);
+ * // Create Policy Access Rule using SCIM attribute value
+ * const scimExample = new zpa.PolicyAccessRule("scim_example", {
+ *     name: "SCIM Attribute Example",
+ *     description: "Policy rule filtering by SCIM attribute value",
+ *     action: "ALLOW",
+ *     operator: "AND",
+ *     conditions: [{
+ *         operator: "OR",
+ *         operands: [{
+ *             objectType: "SCIM",
+ *             idpId: displayName.then(displayName => displayName.idpId),
+ *             lhs: displayName.then(displayName => displayName.id),
+ *             rhs: "John Smith",
+ *         }],
+ *     }],
+ * });
+ * ```
+ *
+ * **Note**: When using SCIM attributes, the `rhs` value must match one of the values available in the SCIM attribute's values list. You can reference the `values` attribute from the `zpa.getSCIMAttributeHeader` data source to see available options.
+ *
  * ## LHS and RHS Values
  *
  * | Object Type | LHS| RHS
@@ -95,7 +129,6 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
- *
  * Visit
  *
  * Policy access rule can be imported by using `<POLICY ACCESS RULE ID>` as the import ID.

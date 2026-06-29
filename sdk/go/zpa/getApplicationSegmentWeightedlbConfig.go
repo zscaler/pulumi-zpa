@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := zpa.LookupApplicationSegmentWeightedlbConfig(ctx, &zpa.LookupApplicationSegmentWeightedlbConfigArgs{
+//			_, err := zpa.GetApplicationSegmentWeightedlbConfig(ctx, &zpa.LookupApplicationSegmentWeightedlbConfigArgs{
 //				ApplicationName: pulumi.StringRef("app02"),
 //			}, nil)
 //			if err != nil {

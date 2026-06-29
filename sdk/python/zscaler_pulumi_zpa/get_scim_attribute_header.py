@@ -214,6 +214,8 @@ def get_scim_attribute_header(id: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ### Basic Usage
+
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -224,6 +226,36 @@ def get_scim_attribute_header(id: Optional[_builtins.str] = None,
     family_name = zpa.get_scim_attribute_header(name="name.familyName",
         idp_name="IdP_Name")
     ```
+
+    ### Using SCIM Attributes in Policy Rules
+
+    ```python
+    import pulumi
+    import pulumi_zpa as zpa
+    import zscaler_pulumi_zpa as zpa
+
+    # Fetch SCIM attribute header
+    display_name = zpa.get_scim_attribute_header(name="DisplayName",
+        idp_name="IdP_Name")
+    pulumi.export("displayNameValues", display_name.values)
+    # Use in policy access rule
+    scim_rule = zpa.PolicyAccessRule("scim_rule",
+        name="SCIM-based Access Rule",
+        description="Allow access based on SCIM DisplayName attribute",
+        action="ALLOW",
+        operator="AND",
+        conditions=[{
+            "operator": "OR",
+            "operands": [{
+                "object_type": "SCIM",
+                "idp_id": display_name.idp_id,
+                "lhs": display_name.id,
+                "rhs": "John Smith",
+            }],
+        }])
+    ```
+
+    **Note**: When using SCIM attributes in policy rules, the `rhs` value must exactly match one of the values available in the `values` attribute. Use the output to see all available values for the SCIM attribute.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -267,6 +299,8 @@ def get_scim_attribute_header_output(id: Optional[pulumi.Input[Optional[_builtin
 
     ## Example Usage
 
+    ### Basic Usage
+
     ```python
     import pulumi
     import pulumi_zpa as zpa
@@ -277,6 +311,36 @@ def get_scim_attribute_header_output(id: Optional[pulumi.Input[Optional[_builtin
     family_name = zpa.get_scim_attribute_header(name="name.familyName",
         idp_name="IdP_Name")
     ```
+
+    ### Using SCIM Attributes in Policy Rules
+
+    ```python
+    import pulumi
+    import pulumi_zpa as zpa
+    import zscaler_pulumi_zpa as zpa
+
+    # Fetch SCIM attribute header
+    display_name = zpa.get_scim_attribute_header(name="DisplayName",
+        idp_name="IdP_Name")
+    pulumi.export("displayNameValues", display_name.values)
+    # Use in policy access rule
+    scim_rule = zpa.PolicyAccessRule("scim_rule",
+        name="SCIM-based Access Rule",
+        description="Allow access based on SCIM DisplayName attribute",
+        action="ALLOW",
+        operator="AND",
+        conditions=[{
+            "operator": "OR",
+            "operands": [{
+                "object_type": "SCIM",
+                "idp_id": display_name.idp_id,
+                "lhs": display_name.id,
+                "rhs": "John Smith",
+            }],
+        }])
+    ```
+
+    **Note**: When using SCIM attributes in policy rules, the `rhs` value must exactly match one of the values available in the `values` attribute. Use the output to see all available values for the SCIM attribute.
     """
     __args__ = dict()
     __args__['id'] = id

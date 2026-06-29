@@ -354,7 +354,6 @@ class PolicyAccessInspectionRule(pulumi.CustomResource):
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         Policy Access Inspection Rule can be imported by using `<POLICY INSPECTION RULE ID>` as the import ID.
@@ -459,7 +458,6 @@ class PolicyAccessInspectionRule(pulumi.CustomResource):
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         Policy Access Inspection Rule can be imported by using `<POLICY INSPECTION RULE ID>` as the import ID.

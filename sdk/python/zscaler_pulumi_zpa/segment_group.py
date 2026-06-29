@@ -191,6 +191,15 @@ class SegmentGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        * [Official documentation](https://help.zscaler.com/zpa/about-segment-groups)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-segment-groups-using-api)
+
+        The **zpa_segment_group** resource creates a segment group in the Zscaler Private Access cloud. This resource can then be referenced in an access policy rule or application segment resource.
+
+        ## Zenith Community - ZPA Segment Group
+
+        ![ZPA Terraform provider Video Series Ep6 - Segment Group](https://community.zscaler.com/zenith/s/question/0D54u00009evlEfCAI/video-zpa-terraform-provider-video-series-ep6-zpa-segment-group)
+
         ## Example Usage
 
         ```python
@@ -207,7 +216,6 @@ class SegmentGroup(pulumi.CustomResource):
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         **segment_group** can be imported by using `<SEGMENT GROUP ID>` or `<SEGMENT GROUP NAME>` as the import ID.
@@ -237,6 +245,15 @@ class SegmentGroup(pulumi.CustomResource):
                  args: Optional[SegmentGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        * [Official documentation](https://help.zscaler.com/zpa/about-segment-groups)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-segment-groups-using-api)
+
+        The **zpa_segment_group** resource creates a segment group in the Zscaler Private Access cloud. This resource can then be referenced in an access policy rule or application segment resource.
+
+        ## Zenith Community - ZPA Segment Group
+
+        ![ZPA Terraform provider Video Series Ep6 - Segment Group](https://community.zscaler.com/zenith/s/question/0D54u00009evlEfCAI/video-zpa-terraform-provider-video-series-ep6-zpa-segment-group)
+
         ## Example Usage
 
         ```python
@@ -253,7 +270,6 @@ class SegmentGroup(pulumi.CustomResource):
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         **segment_group** can be imported by using `<SEGMENT GROUP ID>` or `<SEGMENT GROUP NAME>` as the import ID.

@@ -21,6 +21,7 @@ __all__ = ['UserPortalLinkArgs', 'UserPortalLink']
 @pulumi.input_type
 class UserPortalLinkArgs:
     def __init__(__self__, *,
+                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  icon_text: Optional[pulumi.Input[_builtins.str]] = None,
@@ -32,6 +33,7 @@ class UserPortalLinkArgs:
                  user_portals: Optional[pulumi.Input[Sequence[pulumi.Input['UserPortalLinkUserPortalArgs']]]] = None):
         """
         The set of arguments for constructing a UserPortalLink resource.
+        :param pulumi.Input[_builtins.str] application_id: Application ID for the User Portal Link
         :param pulumi.Input[_builtins.str] description: Description of the User Portal Link
         :param pulumi.Input[_builtins.bool] enabled: Whether this User Portal Link is enabled or not
         :param pulumi.Input[_builtins.str] icon_text: Icon text for the User Portal Link
@@ -42,6 +44,8 @@ class UserPortalLinkArgs:
         :param pulumi.Input[_builtins.str] protocol: Protocol for the User Portal Link
         :param pulumi.Input[Sequence[pulumi.Input['UserPortalLinkUserPortalArgs']]] user_portals: List of User Portals
         """
+        if application_id is not None:
+            pulumi.set(__self__, "application_id", application_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enabled is not None:
@@ -60,6 +64,18 @@ class UserPortalLinkArgs:
             pulumi.set(__self__, "protocol", protocol)
         if user_portals is not None:
             pulumi.set(__self__, "user_portals", user_portals)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Application ID for the User Portal Link
+        """
+        return pulumi.get(self, "application_id")
+
+    @application_id.setter
+    def application_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "application_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -173,6 +189,7 @@ class UserPortalLinkArgs:
 @pulumi.input_type
 class _UserPortalLinkState:
     def __init__(__self__, *,
+                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  icon_text: Optional[pulumi.Input[_builtins.str]] = None,
@@ -184,6 +201,7 @@ class _UserPortalLinkState:
                  user_portals: Optional[pulumi.Input[Sequence[pulumi.Input['UserPortalLinkUserPortalArgs']]]] = None):
         """
         Input properties used for looking up and filtering UserPortalLink resources.
+        :param pulumi.Input[_builtins.str] application_id: Application ID for the User Portal Link
         :param pulumi.Input[_builtins.str] description: Description of the User Portal Link
         :param pulumi.Input[_builtins.bool] enabled: Whether this User Portal Link is enabled or not
         :param pulumi.Input[_builtins.str] icon_text: Icon text for the User Portal Link
@@ -194,6 +212,8 @@ class _UserPortalLinkState:
         :param pulumi.Input[_builtins.str] protocol: Protocol for the User Portal Link
         :param pulumi.Input[Sequence[pulumi.Input['UserPortalLinkUserPortalArgs']]] user_portals: List of User Portals
         """
+        if application_id is not None:
+            pulumi.set(__self__, "application_id", application_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enabled is not None:
@@ -212,6 +232,18 @@ class _UserPortalLinkState:
             pulumi.set(__self__, "protocol", protocol)
         if user_portals is not None:
             pulumi.set(__self__, "user_portals", user_portals)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Application ID for the User Portal Link
+        """
+        return pulumi.get(self, "application_id")
+
+    @application_id.setter
+    def application_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "application_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -328,6 +360,7 @@ class UserPortalLink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  icon_text: Optional[pulumi.Input[_builtins.str]] = None,
@@ -348,15 +381,18 @@ class UserPortalLink(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        this = zpa.UserPortalLink("this",
+        this = zpa.get_application_segment(name="AppPortal01")
+        this_user_portal_link = zpa.UserPortalLink("this",
             name="server1.example.com",
             description="server1.example.com",
             enabled=True,
             link="server1.example.com",
             icon_text="",
             protocol="https://",
+            application_id=this.id,
             user_portals=[{
                 "ids": [this_zpa_user_portal_controller["id"]],
             }])
@@ -365,7 +401,6 @@ class UserPortalLink(pulumi.CustomResource):
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         **user_portal_controller** can be imported by using `<USER PORTAL ID>` or `<USER PORTAL NAME>` as the import ID.
@@ -384,6 +419,7 @@ class UserPortalLink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] application_id: Application ID for the User Portal Link
         :param pulumi.Input[_builtins.str] description: Description of the User Portal Link
         :param pulumi.Input[_builtins.bool] enabled: Whether this User Portal Link is enabled or not
         :param pulumi.Input[_builtins.str] icon_text: Icon text for the User Portal Link
@@ -410,15 +446,18 @@ class UserPortalLink(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
-        this = zpa.UserPortalLink("this",
+        this = zpa.get_application_segment(name="AppPortal01")
+        this_user_portal_link = zpa.UserPortalLink("this",
             name="server1.example.com",
             description="server1.example.com",
             enabled=True,
             link="server1.example.com",
             icon_text="",
             protocol="https://",
+            application_id=this.id,
             user_portals=[{
                 "ids": [this_zpa_user_portal_controller["id"]],
             }])
@@ -427,7 +466,6 @@ class UserPortalLink(pulumi.CustomResource):
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         **user_portal_controller** can be imported by using `<USER PORTAL ID>` or `<USER PORTAL NAME>` as the import ID.
@@ -459,6 +497,7 @@ class UserPortalLink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  icon_text: Optional[pulumi.Input[_builtins.str]] = None,
@@ -477,6 +516,7 @@ class UserPortalLink(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = UserPortalLinkArgs.__new__(UserPortalLinkArgs)
 
+            __props__.__dict__["application_id"] = application_id
             __props__.__dict__["description"] = description
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["icon_text"] = icon_text
@@ -496,6 +536,7 @@ class UserPortalLink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            application_id: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             icon_text: Optional[pulumi.Input[_builtins.str]] = None,
@@ -512,6 +553,7 @@ class UserPortalLink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] application_id: Application ID for the User Portal Link
         :param pulumi.Input[_builtins.str] description: Description of the User Portal Link
         :param pulumi.Input[_builtins.bool] enabled: Whether this User Portal Link is enabled or not
         :param pulumi.Input[_builtins.str] icon_text: Icon text for the User Portal Link
@@ -526,6 +568,7 @@ class UserPortalLink(pulumi.CustomResource):
 
         __props__ = _UserPortalLinkState.__new__(_UserPortalLinkState)
 
+        __props__.__dict__["application_id"] = application_id
         __props__.__dict__["description"] = description
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["icon_text"] = icon_text
@@ -536,6 +579,14 @@ class UserPortalLink(pulumi.CustomResource):
         __props__.__dict__["protocol"] = protocol
         __props__.__dict__["user_portals"] = user_portals
         return UserPortalLink(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Application ID for the User Portal Link
+        """
+        return pulumi.get(self, "application_id")
 
     @_builtins.property
     @pulumi.getter

@@ -80,7 +80,7 @@ import * as utilities from "./utilities";
  * });
  * const praApplicationIds = std.flattenOutput({
  *     input: thisApplicationSegmentPRA.commonAppsDtos.apply(commonAppsDtos => commonAppsDtos.map(commonApps => (commonApps.appsConfig))),
- * }).apply(invoke => .reduce((__obj, appDto) => ({ ...__obj, [appDto.name]: appDto.id })));
+ * }).apply(invoke => .reduce((__obj, appDto) => ({ ...__obj, [String(appDto.name)]: appDto.id }), {}));
  * const praApplicationIdSshPra = std.lookupOutput({
  *     map: praApplicationIds,
  *     key: "ssh_pra",
@@ -209,7 +209,6 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
- *
  * Visit
  *
  * Policy access credential can be imported by using `<POLICY CREDENTIAL ID>` as the import ID.

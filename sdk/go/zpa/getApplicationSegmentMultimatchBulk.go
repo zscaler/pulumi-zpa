@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := zpa.LookupApplicationSegmentMultimatchBulk(ctx, &zpa.LookupApplicationSegmentMultimatchBulkArgs{
+//			_, err := zpa.GetApplicationSegmentMultimatchBulk(ctx, &zpa.LookupApplicationSegmentMultimatchBulkArgs{
 //				DomainNames: []string{
 //					"server1.bd-hashicorp.com",
 //					"server2.bd-hashicorp.com",

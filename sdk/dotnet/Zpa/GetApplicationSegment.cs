@@ -13,13 +13,24 @@ namespace zscaler.PulumiPackage.Zpa
     public static class GetApplicationSegment
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-applications)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
+        /// 
+        /// Use the **zpa_application_segment** data source to get information about a application segment created in the Zscaler Private Access cloud. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Zenith Community - ZPA Application Segment
+        /// 
+        /// ![ZPA Terraform provider Video Series Ep7 - Application Segment](https://community.zscaler.com/zenith/s/question/0D54u00009evlEXCAY/video-zpa-terraform-provider-video-series-ep7-zpa-application-segment)
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -36,7 +47,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -53,13 +64,24 @@ namespace zscaler.PulumiPackage.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationSegmentResult>("zpa:index/getApplicationSegment:getApplicationSegment", args ?? new GetApplicationSegmentArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-applications)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
+        /// 
+        /// Use the **zpa_application_segment** data source to get information about a application segment created in the Zscaler Private Access cloud. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Zenith Community - ZPA Application Segment
+        /// 
+        /// ![ZPA Terraform provider Video Series Ep7 - Application Segment](https://community.zscaler.com/zenith/s/question/0D54u00009evlEXCAY/video-zpa-terraform-provider-video-series-ep7-zpa-application-segment)
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -76,7 +98,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -93,13 +115,24 @@ namespace zscaler.PulumiPackage.Zpa
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationSegmentResult>("zpa:index/getApplicationSegment:getApplicationSegment", args ?? new GetApplicationSegmentInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-applications)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
+        /// 
+        /// Use the **zpa_application_segment** data source to get information about a application segment created in the Zscaler Private Access cloud. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// ## Zenith Community - ZPA Application Segment
+        /// 
+        /// ![ZPA Terraform provider Video Series Ep7 - Application Segment](https://community.zscaler.com/zenith/s/question/0D54u00009evlEXCAY/video-zpa-terraform-provider-video-series-ep7-zpa-application-segment)
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -116,7 +149,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {

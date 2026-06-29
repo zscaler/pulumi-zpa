@@ -18,13 +18,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * const _this = new zpa.UserPortalLink("this", {
+ * const _this = zpa.getApplicationSegment({
+ *     name: "AppPortal01",
+ * });
+ * const thisUserPortalLink = new zpa.UserPortalLink("this", {
  *     name: "server1.example.com",
  *     description: "server1.example.com",
  *     enabled: true,
  *     link: "server1.example.com",
  *     iconText: "",
  *     protocol: "https://",
+ *     applicationId: _this.then(_this => _this.id),
  *     userPortals: [{
  *         ids: [thisZpaUserPortalController.id],
  *     }],
@@ -34,7 +38,6 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
- *
  * Visit
  *
  * **user_portal_controller** can be imported by using `<USER PORTAL ID>` or `<USER PORTAL NAME>` as the import ID.
@@ -79,6 +82,10 @@ export class UserPortalLink extends pulumi.CustomResource {
         return obj['__pulumiType'] === UserPortalLink.__pulumiType;
     }
 
+    /**
+     * Application ID for the User Portal Link
+     */
+    declare public readonly applicationId: pulumi.Output<string | undefined>;
     /**
      * Description of the User Portal Link
      */
@@ -129,6 +136,7 @@ export class UserPortalLink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserPortalLinkState | undefined;
+            resourceInputs["applicationId"] = state?.applicationId;
             resourceInputs["description"] = state?.description;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["iconText"] = state?.iconText;
@@ -140,6 +148,7 @@ export class UserPortalLink extends pulumi.CustomResource {
             resourceInputs["userPortals"] = state?.userPortals;
         } else {
             const args = argsOrState as UserPortalLinkArgs | undefined;
+            resourceInputs["applicationId"] = args?.applicationId;
             resourceInputs["description"] = args?.description;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["iconText"] = args?.iconText;
@@ -159,6 +168,10 @@ export class UserPortalLink extends pulumi.CustomResource {
  * Input properties used for looking up and filtering UserPortalLink resources.
  */
 export interface UserPortalLinkState {
+    /**
+     * Application ID for the User Portal Link
+     */
+    applicationId?: pulumi.Input<string>;
     /**
      * Description of the User Portal Link
      */
@@ -201,6 +214,10 @@ export interface UserPortalLinkState {
  * The set of arguments for constructing a UserPortalLink resource.
  */
 export interface UserPortalLinkArgs {
+    /**
+     * Application ID for the User Portal Link
+     */
+    applicationId?: pulumi.Input<string>;
     /**
      * Description of the User Portal Link
      */

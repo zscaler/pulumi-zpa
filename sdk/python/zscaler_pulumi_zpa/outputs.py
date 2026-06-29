@@ -120,6 +120,11 @@ __all__ = [
     'PolicyPortalAccessRuleConditionOperandEntryValue',
     'PolicyPortalAccessRulePrivilegedPortalCapabilities',
     'PraCredentialPoolCredential',
+    'PrivateCloudAssistantGroupsIds',
+    'PrivateCloudPrivateBrokerGroupIds',
+    'PrivateCloudSiemIds',
+    'PrivateCloudSiteControllerGroupIds',
+    'PrivateCloudZpnFireDrillSite',
     'SegmentGroupApplication',
     'ServerGroupAppConnectorGroup',
     'ServerGroupApplication',
@@ -129,6 +134,7 @@ __all__ = [
     'ServerGroupServer',
     'ServiceEdgeGroupServiceEdges',
     'ServiceEdgeGroupTrustedNetwork',
+    'TagKeyTagValue',
     'UserPortalLinkUserPortal',
     'GetAppConnectorControllerAssistantVersionResult',
     'GetAppConnectorControllerZpnSubModuleUpgradeListResult',
@@ -201,6 +207,12 @@ __all__ = [
     'GetPolicyTypeRuleResult',
     'GetPolicyTypeRuleConditionResult',
     'GetPolicyTypeRuleConditionOperandResult',
+    'GetPrivateCloudAssistantGroupsIdResult',
+    'GetPrivateCloudPrivateBrokerGroupIdResult',
+    'GetPrivateCloudPrivateExporterGroupIdResult',
+    'GetPrivateCloudSiemIdResult',
+    'GetPrivateCloudSiteControllerGroupIdResult',
+    'GetPrivateCloudZpnFireDrillSiteResult',
     'GetSegmentGroupApplicationResult',
     'GetSegmentGroupApplicationServerGroupResult',
     'GetServerGroupAppConnectorGroupResult',
@@ -212,6 +224,11 @@ __all__ = [
     'GetServiceEdgeGroupServiceEdgePrivateBrokerVersionResult',
     'GetServiceEdgeGroupServiceEdgePrivateBrokerVersionZpnSubModuleUpgradeResult',
     'GetServiceEdgeGroupTrustedNetworkResult',
+    'GetTagGroupTagResult',
+    'GetTagGroupTagNamespaceResult',
+    'GetTagGroupTagTagKeyResult',
+    'GetTagGroupTagTagValueResult',
+    'GetTagKeyTagValueResult',
     'GetUserPortalLinkUserPortalResult',
 ]
 
@@ -5370,6 +5387,116 @@ class PraCredentialPoolCredential(dict):
 
 
 @pulumi.output_type
+class PrivateCloudAssistantGroupsIds(dict):
+    def __init__(__self__, *,
+                 ids: Optional[Sequence[_builtins.str]] = None):
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class PrivateCloudPrivateBrokerGroupIds(dict):
+    def __init__(__self__, *,
+                 ids: Optional[Sequence[_builtins.str]] = None):
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class PrivateCloudSiemIds(dict):
+    def __init__(__self__, *,
+                 ids: Optional[Sequence[_builtins.str]] = None):
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class PrivateCloudSiteControllerGroupIds(dict):
+    def __init__(__self__, *,
+                 ids: Optional[Sequence[_builtins.str]] = None):
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class PrivateCloudZpnFireDrillSite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fireDrillInterval":
+            suggest = "fire_drill_interval"
+        elif key == "fireDrillIntervalTimeUnit":
+            suggest = "fire_drill_interval_time_unit"
+        elif key == "microtenantId":
+            suggest = "microtenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateCloudZpnFireDrillSite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateCloudZpnFireDrillSite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateCloudZpnFireDrillSite.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fire_drill_interval: Optional[_builtins.str] = None,
+                 fire_drill_interval_time_unit: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 microtenant_id: Optional[_builtins.str] = None):
+        if fire_drill_interval is not None:
+            pulumi.set(__self__, "fire_drill_interval", fire_drill_interval)
+        if fire_drill_interval_time_unit is not None:
+            pulumi.set(__self__, "fire_drill_interval_time_unit", fire_drill_interval_time_unit)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if microtenant_id is not None:
+            pulumi.set(__self__, "microtenant_id", microtenant_id)
+
+    @_builtins.property
+    @pulumi.getter(name="fireDrillInterval")
+    def fire_drill_interval(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "fire_drill_interval")
+
+    @_builtins.property
+    @pulumi.getter(name="fireDrillIntervalTimeUnit")
+    def fire_drill_interval_time_unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "fire_drill_interval_time_unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="microtenantId")
+    def microtenant_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "microtenant_id")
+
+
+@pulumi.output_type
 class SegmentGroupApplication(dict):
     def __init__(__self__, *,
                  id: Optional[_builtins.str] = None):
@@ -5543,6 +5670,36 @@ class ServiceEdgeGroupTrustedNetwork(dict):
     @pulumi.getter
     def ids(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class TagKeyTagValue(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the tag value.
+        :param _builtins.str id: The ID of the tag value.
+        """
+        pulumi.set(__self__, "name", name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the tag value.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the tag value.
+        """
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type
@@ -9796,6 +9953,197 @@ class GetPolicyTypeRuleConditionOperandResult(dict):
 
 
 @pulumi.output_type
+class GetPrivateCloudAssistantGroupsIdResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 id: _builtins.str,
+                 name: _builtins.str):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetPrivateCloudPrivateBrokerGroupIdResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 id: _builtins.str,
+                 name: _builtins.str):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetPrivateCloudPrivateExporterGroupIdResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 id: _builtins.str,
+                 name: _builtins.str):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetPrivateCloudSiemIdResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 id: _builtins.str,
+                 name: _builtins.str):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetPrivateCloudSiteControllerGroupIdResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 id: _builtins.str,
+                 name: _builtins.str):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetPrivateCloudZpnFireDrillSiteResult(dict):
+    def __init__(__self__, *,
+                 creation_time: _builtins.str,
+                 fire_drill_interval: _builtins.str,
+                 fire_drill_interval_time_unit: _builtins.str,
+                 id: _builtins.str,
+                 microtenant_id: _builtins.str,
+                 microtenant_name: _builtins.str,
+                 modified_by: _builtins.str,
+                 modified_time: _builtins.str):
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "fire_drill_interval", fire_drill_interval)
+        pulumi.set(__self__, "fire_drill_interval_time_unit", fire_drill_interval_time_unit)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "microtenant_id", microtenant_id)
+        pulumi.set(__self__, "microtenant_name", microtenant_name)
+        pulumi.set(__self__, "modified_by", modified_by)
+        pulumi.set(__self__, "modified_time", modified_time)
+
+    @_builtins.property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> _builtins.str:
+        return pulumi.get(self, "creation_time")
+
+    @_builtins.property
+    @pulumi.getter(name="fireDrillInterval")
+    def fire_drill_interval(self) -> _builtins.str:
+        return pulumi.get(self, "fire_drill_interval")
+
+    @_builtins.property
+    @pulumi.getter(name="fireDrillIntervalTimeUnit")
+    def fire_drill_interval_time_unit(self) -> _builtins.str:
+        return pulumi.get(self, "fire_drill_interval_time_unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="microtenantId")
+    def microtenant_id(self) -> _builtins.str:
+        return pulumi.get(self, "microtenant_id")
+
+    @_builtins.property
+    @pulumi.getter(name="microtenantName")
+    def microtenant_name(self) -> _builtins.str:
+        return pulumi.get(self, "microtenant_name")
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedBy")
+    def modified_by(self) -> _builtins.str:
+        return pulumi.get(self, "modified_by")
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedTime")
+    def modified_time(self) -> _builtins.str:
+        return pulumi.get(self, "modified_time")
+
+
+@pulumi.output_type
 class GetSegmentGroupApplicationResult(dict):
     def __init__(__self__, *,
                  bypass_type: _builtins.str,
@@ -11041,6 +11389,195 @@ class GetServiceEdgeGroupTrustedNetworkResult(dict):
     @pulumi.getter(name="zscalerCloud")
     def zscaler_cloud(self) -> _builtins.str:
         return pulumi.get(self, "zscaler_cloud")
+
+
+@pulumi.output_type
+class GetTagGroupTagResult(dict):
+    def __init__(__self__, *,
+                 namespaces: Sequence['outputs.GetTagGroupTagNamespaceResult'],
+                 origin: _builtins.str,
+                 tag_keys: Sequence['outputs.GetTagGroupTagTagKeyResult'],
+                 tag_values: Sequence['outputs.GetTagGroupTagTagValueResult']):
+        """
+        :param Sequence['GetTagGroupTagNamespaceArgs'] namespaces: A list containing the tag namespace details:
+        :param _builtins.str origin: The origin of the tag.
+        :param Sequence['GetTagGroupTagTagKeyArgs'] tag_keys: A list containing the tag key details:
+        :param Sequence['GetTagGroupTagTagValueArgs'] tag_values: A list containing the tag value details:
+        """
+        pulumi.set(__self__, "namespaces", namespaces)
+        pulumi.set(__self__, "origin", origin)
+        pulumi.set(__self__, "tag_keys", tag_keys)
+        pulumi.set(__self__, "tag_values", tag_values)
+
+    @_builtins.property
+    @pulumi.getter
+    def namespaces(self) -> Sequence['outputs.GetTagGroupTagNamespaceResult']:
+        """
+        A list containing the tag namespace details:
+        """
+        return pulumi.get(self, "namespaces")
+
+    @_builtins.property
+    @pulumi.getter
+    def origin(self) -> _builtins.str:
+        """
+        The origin of the tag.
+        """
+        return pulumi.get(self, "origin")
+
+    @_builtins.property
+    @pulumi.getter(name="tagKeys")
+    def tag_keys(self) -> Sequence['outputs.GetTagGroupTagTagKeyResult']:
+        """
+        A list containing the tag key details:
+        """
+        return pulumi.get(self, "tag_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="tagValues")
+    def tag_values(self) -> Sequence['outputs.GetTagGroupTagTagValueResult']:
+        """
+        A list containing the tag value details:
+        """
+        return pulumi.get(self, "tag_values")
+
+
+@pulumi.output_type
+class GetTagGroupTagNamespaceResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 id: _builtins.str,
+                 name: _builtins.str):
+        """
+        :param _builtins.bool enabled: Whether the tag key is enabled.
+        :param _builtins.str id: The ID of the tag group.
+        :param _builtins.str name: The name of the tag group.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the tag key is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the tag group.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the tag group.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetTagGroupTagTagKeyResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 id: _builtins.str,
+                 name: _builtins.str):
+        """
+        :param _builtins.bool enabled: Whether the tag key is enabled.
+        :param _builtins.str id: The ID of the tag group.
+        :param _builtins.str name: The name of the tag group.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the tag key is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the tag group.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the tag group.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetTagGroupTagTagValueResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 name: _builtins.str):
+        """
+        :param _builtins.str id: The ID of the tag group.
+        :param _builtins.str name: The name of the tag group.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the tag group.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the tag group.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetTagKeyTagValueResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 name: _builtins.str):
+        """
+        :param _builtins.str id: The ID of the tag key.
+        :param _builtins.str name: The name of the tag key.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the tag key.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the tag key.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

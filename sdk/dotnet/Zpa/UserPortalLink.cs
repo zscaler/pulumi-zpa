@@ -26,7 +26,12 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Zpa.UserPortalLink("this", new()
+    ///     var @this = Zpa.GetApplicationSegment.Invoke(new()
+    ///     {
+    ///         Name = "AppPortal01",
+    ///     });
+    /// 
+    ///     var thisUserPortalLink = new Zpa.UserPortalLink("this", new()
     ///     {
     ///         Name = "server1.example.com",
     ///         Description = "server1.example.com",
@@ -34,6 +39,7 @@ namespace zscaler.PulumiPackage.Zpa
     ///         Link = "server1.example.com",
     ///         IconText = "",
     ///         Protocol = "https://",
+    ///         ApplicationId = @this.Apply(@this =&gt; @this.Apply(getApplicationSegmentResult =&gt; getApplicationSegmentResult.Id)),
     ///         UserPortals = new[]
     ///         {
     ///             new Zpa.Inputs.UserPortalLinkUserPortalArgs
@@ -52,7 +58,6 @@ namespace zscaler.PulumiPackage.Zpa
     /// ## Import
     /// 
     /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-    /// 
     /// Visit
     /// 
     /// **user_portal_controller** can be imported by using `&lt;USER PORTAL ID&gt;` or `&lt;USER PORTAL NAME&gt;` as the import ID.
@@ -72,6 +77,12 @@ namespace zscaler.PulumiPackage.Zpa
     [ZpaResourceType("zpa:index/userPortalLink:UserPortalLink")]
     public partial class UserPortalLink : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Application ID for the User Portal Link
+        /// </summary>
+        [Output("applicationId")]
+        public Output<string?> ApplicationId { get; private set; } = null!;
+
         /// <summary>
         /// Description of the User Portal Link
         /// </summary>
@@ -174,6 +185,12 @@ namespace zscaler.PulumiPackage.Zpa
     public sealed class UserPortalLinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Application ID for the User Portal Link
+        /// </summary>
+        [Input("applicationId")]
+        public Input<string>? ApplicationId { get; set; }
+
+        /// <summary>
         /// Description of the User Portal Link
         /// </summary>
         [Input("description")]
@@ -241,6 +258,12 @@ namespace zscaler.PulumiPackage.Zpa
 
     public sealed class UserPortalLinkState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Application ID for the User Portal Link
+        /// </summary>
+        [Input("applicationId")]
+        public Input<string>? ApplicationId { get; set; }
+
         /// <summary>
         /// Description of the User Portal Link
         /// </summary>

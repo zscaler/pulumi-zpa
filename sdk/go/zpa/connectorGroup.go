@@ -12,7 +12,229 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-connector-groups)
+// * [API documentation](https://automate.zscaler.com/docs/docs/api-reference-and-guides/api-reference/zpa/app-connector-group-management)
+//
+// The **zpa_app_connector_group** resource creates a and manages app connector groups in the Zscaler Private Access (ZPA) cloud. This resource can then be associated with the following resources: server groups, log receivers and access policies.
+//
+// ## Zenith Community - ZPA App Connector Group
+//
+// ![ZPA Terraform provider Video Series Ep2 - Connector Groups](https://community.zscaler.com/zenith/s/question/0D54u00009evlEoCAI/video-zpa-terraform-provider-video-series-ep2-connector-groups)
+//
+// ## App Connector Onboarding Methods
+//
+// App Connectors can be onboarded into ZPA in two ways. This resource supports both:
+//
+// 1. **OAuth2 user codes** *(recommended for new deployments)* - Set `userCodes` with the codes generated on each App Connector VM. The provider creates the group and then calls the OAuth2 user code verification API to enroll the connectors.
+// 2. **Provisioning key** *(legacy / still supported)* - Create the group with this resource, then create a `ProvisioningKey` referencing it. The key is then injected into the App Connector VM at deployment time.
+//
+// In **both** methods, the App Connector enrollment requires an `enrollmentCertId`. You can either:
+// - Set `enrollmentCertId` explicitly using the `getEnrollmentCert` data source, or
+// - Omit it entirely - the provider will automatically look up the **"Connector"** enrollment certificate by name and populate the ID for you.
+//
+// ***
+//
 // ## Example Usage
+//
+// ### OAuth2 Enrollment With User Codes (Explicit Enrollment Certificate)
+//
+// Set the enrollment certificate explicitly and provide the user codes displayed on the App Connector VMs after deployment. The provider will create the group and then call the user code verification API to complete enrollment.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			connector, err := zpa.GetEnrollmentCert(ctx, &zpa.GetEnrollmentCertArgs{
+//				Name: pulumi.StringRef("Connector"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = zpa.NewConnectorGroup(ctx, "example", &zpa.ConnectorGroupArgs{
+//				Name:              pulumi.String("Example"),
+//				Description:       pulumi.String("Example"),
+//				Enabled:           pulumi.Bool(true),
+//				CityCountry:       pulumi.String("San Jose, CA"),
+//				CountryCode:       pulumi.String("US"),
+//				Latitude:          pulumi.String("37.338"),
+//				Longitude:         pulumi.String("-121.8863"),
+//				Location:          pulumi.String("San Jose, CA, US"),
+//				UpgradeDay:        pulumi.String("SUNDAY"),
+//				UpgradeTimeInSecs: pulumi.String("66600"),
+//				DnsQueryType:      pulumi.String("IPV4_IPV6"),
+//				EnrollmentCertId:  pulumi.String(connector.Id),
+//				UserCodes: pulumi.StringArray{
+//					pulumi.String("CODE_FROM_VM_1"),
+//					pulumi.String("CODE_FROM_VM_2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### OAuth2 Enrollment With User Codes (Auto-Resolved Enrollment Certificate)
+//
+// Omit `enrollmentCertId` entirely and the provider will automatically resolve the **"Connector"** enrollment certificate for you. This is the simplest configuration and is functionally equivalent to the explicit example above.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := zpa.NewConnectorGroup(ctx, "example", &zpa.ConnectorGroupArgs{
+//				Name:              pulumi.String("Example"),
+//				Description:       pulumi.String("Example"),
+//				Enabled:           pulumi.Bool(true),
+//				CityCountry:       pulumi.String("San Jose, CA"),
+//				CountryCode:       pulumi.String("US"),
+//				Latitude:          pulumi.String("37.338"),
+//				Longitude:         pulumi.String("-121.8863"),
+//				Location:          pulumi.String("San Jose, CA, US"),
+//				UpgradeDay:        pulumi.String("SUNDAY"),
+//				UpgradeTimeInSecs: pulumi.String("66600"),
+//				DnsQueryType:      pulumi.String("IPV4_IPV6"),
+//				UserCodes: pulumi.StringArray{
+//					pulumi.String("CODE_FROM_VM_1"),
+//					pulumi.String("CODE_FROM_VM_2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Enrolling App Connectors Via Provisioning Key (Explicit Enrollment Certificate)
+//
+// Create the App Connector Group, then create a `ProvisioningKey` that references the group's ID. The provisioning key is then injected into the App Connector VM at deployment time.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			connector, err := zpa.GetEnrollmentCert(ctx, &zpa.GetEnrollmentCertArgs{
+//				Name: pulumi.StringRef("Connector"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			example, err := zpa.NewConnectorGroup(ctx, "example", &zpa.ConnectorGroupArgs{
+//				Name:              pulumi.String("Example"),
+//				Description:       pulumi.String("Example"),
+//				Enabled:           pulumi.Bool(true),
+//				CityCountry:       pulumi.String("San Jose, CA"),
+//				CountryCode:       pulumi.String("US"),
+//				Latitude:          pulumi.String("37.338"),
+//				Longitude:         pulumi.String("-121.8863"),
+//				Location:          pulumi.String("San Jose, CA, US"),
+//				UpgradeDay:        pulumi.String("SUNDAY"),
+//				UpgradeTimeInSecs: pulumi.String("66600"),
+//				DnsQueryType:      pulumi.String("IPV4_IPV6"),
+//				EnrollmentCertId:  pulumi.String(connector.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = zpa.NewProvisioningKey(ctx, "example", &zpa.ProvisioningKeyArgs{
+//				Name:             pulumi.String("ProvisioningKey01"),
+//				AssociationType:  pulumi.String("CONNECTOR_GRP"),
+//				MaxUsage:         pulumi.String("10"),
+//				EnrollmentCertId: pulumi.String(connector.Id),
+//				ZcomponentId:     example.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Enrolling App Connectors Via Provisioning Key (Auto-Resolved Enrollment Certificate)
+//
+// For the App Connector Group, you can omit `enrollmentCertId` and let the provider auto-resolve it. The `ProvisioningKey` resource still requires `enrollmentCertId` to be set explicitly.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			connector, err := zpa.GetEnrollmentCert(ctx, &zpa.GetEnrollmentCertArgs{
+//				Name: pulumi.StringRef("Connector"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			example, err := zpa.NewConnectorGroup(ctx, "example", &zpa.ConnectorGroupArgs{
+//				Name:              pulumi.String("Example"),
+//				Description:       pulumi.String("Example"),
+//				Enabled:           pulumi.Bool(true),
+//				CityCountry:       pulumi.String("San Jose, CA"),
+//				CountryCode:       pulumi.String("US"),
+//				Latitude:          pulumi.String("37.338"),
+//				Longitude:         pulumi.String("-121.8863"),
+//				Location:          pulumi.String("San Jose, CA, US"),
+//				UpgradeDay:        pulumi.String("SUNDAY"),
+//				UpgradeTimeInSecs: pulumi.String("66600"),
+//				DnsQueryType:      pulumi.String("IPV4_IPV6"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = zpa.NewProvisioningKey(ctx, "example", &zpa.ProvisioningKeyArgs{
+//				Name:             pulumi.String("ProvisioningKey01"),
+//				AssociationType:  pulumi.String("CONNECTOR_GRP"),
+//				MaxUsage:         pulumi.String("10"),
+//				EnrollmentCertId: pulumi.String(connector.Id),
+//				ZcomponentId:     example.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ### Using Version Profile Name
 //
@@ -103,8 +325,7 @@ import (
 // ## Import
 //
 // Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-//
-// # Visit
+// Visit
 //
 // App Connector Group can be imported by using `<APP CONNECTOR GROUP ID>` or `<APP CONNECTOR GROUP NAME>`as the import ID.
 //
@@ -122,12 +343,16 @@ type ConnectorGroup struct {
 
 	CityCountry pulumi.StringPtrOutput `pulumi:"cityCountry"`
 	CountryCode pulumi.StringPtrOutput `pulumi:"countryCode"`
+	// Indicates the host data center information using a maximum of 64 characters. The Data Center Hosting information is used for the Quarterly Business Review Insights.
+	DcHostingInfo pulumi.StringOutput `pulumi:"dcHostingInfo"`
 	// Description of the App Connector Group
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether to enable IPv4 or IPv6, or both, for DNS resolution of all applications in the App Connector Group
 	DnsQueryType pulumi.StringPtrOutput `pulumi:"dnsQueryType"`
 	// Whether this App Connector Group is enabled or not
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
+	EnrollmentCertId pulumi.StringOutput `pulumi:"enrollmentCertId"`
 	// Latitude of the App Connector Group. Integer or decimal. With values in the range of -90 to 90
 	Latitude pulumi.StringOutput `pulumi:"latitude"`
 	// Location of the App Connector Group
@@ -153,6 +378,8 @@ type ConnectorGroup struct {
 	// App Connectors in this group will attempt to update to a newer version of the software during this specified time. Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute intervals
 	UpgradeTimeInSecs pulumi.StringPtrOutput `pulumi:"upgradeTimeInSecs"`
 	UseInDrMode       pulumi.BoolOutput      `pulumi:"useInDrMode"`
+	// User codes from deployed App Connector VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the connectors. These codes are obtained from the App Connector VM after deployment.
+	UserCodes pulumi.StringArrayOutput `pulumi:"userCodes"`
 	// ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
 	VersionProfileId pulumi.StringOutput `pulumi:"versionProfileId"`
 	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
@@ -201,12 +428,16 @@ func GetConnectorGroup(ctx *pulumi.Context,
 type connectorGroupState struct {
 	CityCountry *string `pulumi:"cityCountry"`
 	CountryCode *string `pulumi:"countryCode"`
+	// Indicates the host data center information using a maximum of 64 characters. The Data Center Hosting information is used for the Quarterly Business Review Insights.
+	DcHostingInfo *string `pulumi:"dcHostingInfo"`
 	// Description of the App Connector Group
 	Description *string `pulumi:"description"`
 	// Whether to enable IPv4 or IPv6, or both, for DNS resolution of all applications in the App Connector Group
 	DnsQueryType *string `pulumi:"dnsQueryType"`
 	// Whether this App Connector Group is enabled or not
 	Enabled *bool `pulumi:"enabled"`
+	// ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
+	EnrollmentCertId *string `pulumi:"enrollmentCertId"`
 	// Latitude of the App Connector Group. Integer or decimal. With values in the range of -90 to 90
 	Latitude *string `pulumi:"latitude"`
 	// Location of the App Connector Group
@@ -232,6 +463,8 @@ type connectorGroupState struct {
 	// App Connectors in this group will attempt to update to a newer version of the software during this specified time. Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute intervals
 	UpgradeTimeInSecs *string `pulumi:"upgradeTimeInSecs"`
 	UseInDrMode       *bool   `pulumi:"useInDrMode"`
+	// User codes from deployed App Connector VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the connectors. These codes are obtained from the App Connector VM after deployment.
+	UserCodes []string `pulumi:"userCodes"`
 	// ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
 	VersionProfileId *string `pulumi:"versionProfileId"`
 	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
@@ -242,12 +475,16 @@ type connectorGroupState struct {
 type ConnectorGroupState struct {
 	CityCountry pulumi.StringPtrInput
 	CountryCode pulumi.StringPtrInput
+	// Indicates the host data center information using a maximum of 64 characters. The Data Center Hosting information is used for the Quarterly Business Review Insights.
+	DcHostingInfo pulumi.StringPtrInput
 	// Description of the App Connector Group
 	Description pulumi.StringPtrInput
 	// Whether to enable IPv4 or IPv6, or both, for DNS resolution of all applications in the App Connector Group
 	DnsQueryType pulumi.StringPtrInput
 	// Whether this App Connector Group is enabled or not
 	Enabled pulumi.BoolPtrInput
+	// ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
+	EnrollmentCertId pulumi.StringPtrInput
 	// Latitude of the App Connector Group. Integer or decimal. With values in the range of -90 to 90
 	Latitude pulumi.StringPtrInput
 	// Location of the App Connector Group
@@ -273,6 +510,8 @@ type ConnectorGroupState struct {
 	// App Connectors in this group will attempt to update to a newer version of the software during this specified time. Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute intervals
 	UpgradeTimeInSecs pulumi.StringPtrInput
 	UseInDrMode       pulumi.BoolPtrInput
+	// User codes from deployed App Connector VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the connectors. These codes are obtained from the App Connector VM after deployment.
+	UserCodes pulumi.StringArrayInput
 	// ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
 	VersionProfileId pulumi.StringPtrInput
 	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
@@ -287,12 +526,16 @@ func (ConnectorGroupState) ElementType() reflect.Type {
 type connectorGroupArgs struct {
 	CityCountry *string `pulumi:"cityCountry"`
 	CountryCode *string `pulumi:"countryCode"`
+	// Indicates the host data center information using a maximum of 64 characters. The Data Center Hosting information is used for the Quarterly Business Review Insights.
+	DcHostingInfo *string `pulumi:"dcHostingInfo"`
 	// Description of the App Connector Group
 	Description *string `pulumi:"description"`
 	// Whether to enable IPv4 or IPv6, or both, for DNS resolution of all applications in the App Connector Group
 	DnsQueryType *string `pulumi:"dnsQueryType"`
 	// Whether this App Connector Group is enabled or not
 	Enabled *bool `pulumi:"enabled"`
+	// ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
+	EnrollmentCertId *string `pulumi:"enrollmentCertId"`
 	// Latitude of the App Connector Group. Integer or decimal. With values in the range of -90 to 90
 	Latitude string `pulumi:"latitude"`
 	// Location of the App Connector Group
@@ -318,6 +561,8 @@ type connectorGroupArgs struct {
 	// App Connectors in this group will attempt to update to a newer version of the software during this specified time. Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute intervals
 	UpgradeTimeInSecs *string `pulumi:"upgradeTimeInSecs"`
 	UseInDrMode       *bool   `pulumi:"useInDrMode"`
+	// User codes from deployed App Connector VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the connectors. These codes are obtained from the App Connector VM after deployment.
+	UserCodes []string `pulumi:"userCodes"`
 	// ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
 	VersionProfileId *string `pulumi:"versionProfileId"`
 	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
@@ -329,12 +574,16 @@ type connectorGroupArgs struct {
 type ConnectorGroupArgs struct {
 	CityCountry pulumi.StringPtrInput
 	CountryCode pulumi.StringPtrInput
+	// Indicates the host data center information using a maximum of 64 characters. The Data Center Hosting information is used for the Quarterly Business Review Insights.
+	DcHostingInfo pulumi.StringPtrInput
 	// Description of the App Connector Group
 	Description pulumi.StringPtrInput
 	// Whether to enable IPv4 or IPv6, or both, for DNS resolution of all applications in the App Connector Group
 	DnsQueryType pulumi.StringPtrInput
 	// Whether this App Connector Group is enabled or not
 	Enabled pulumi.BoolPtrInput
+	// ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
+	EnrollmentCertId pulumi.StringPtrInput
 	// Latitude of the App Connector Group. Integer or decimal. With values in the range of -90 to 90
 	Latitude pulumi.StringInput
 	// Location of the App Connector Group
@@ -360,6 +609,8 @@ type ConnectorGroupArgs struct {
 	// App Connectors in this group will attempt to update to a newer version of the software during this specified time. Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute intervals
 	UpgradeTimeInSecs pulumi.StringPtrInput
 	UseInDrMode       pulumi.BoolPtrInput
+	// User codes from deployed App Connector VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the connectors. These codes are obtained from the App Connector VM after deployment.
+	UserCodes pulumi.StringArrayInput
 	// ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
 	VersionProfileId pulumi.StringPtrInput
 	// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
@@ -462,6 +713,11 @@ func (o ConnectorGroupOutput) CountryCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.StringPtrOutput { return v.CountryCode }).(pulumi.StringPtrOutput)
 }
 
+// Indicates the host data center information using a maximum of 64 characters. The Data Center Hosting information is used for the Quarterly Business Review Insights.
+func (o ConnectorGroupOutput) DcHostingInfo() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectorGroup) pulumi.StringOutput { return v.DcHostingInfo }).(pulumi.StringOutput)
+}
+
 // Description of the App Connector Group
 func (o ConnectorGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -475,6 +731,11 @@ func (o ConnectorGroupOutput) DnsQueryType() pulumi.StringPtrOutput {
 // Whether this App Connector Group is enabled or not
 func (o ConnectorGroupOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
+func (o ConnectorGroupOutput) EnrollmentCertId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectorGroup) pulumi.StringOutput { return v.EnrollmentCertId }).(pulumi.StringOutput)
 }
 
 // Latitude of the App Connector Group. Integer or decimal. With values in the range of -90 to 90
@@ -542,6 +803,11 @@ func (o ConnectorGroupOutput) UpgradeTimeInSecs() pulumi.StringPtrOutput {
 
 func (o ConnectorGroupOutput) UseInDrMode() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ConnectorGroup) pulumi.BoolOutput { return v.UseInDrMode }).(pulumi.BoolOutput)
+}
+
+// User codes from deployed App Connector VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the connectors. These codes are obtained from the App Connector VM after deployment.
+func (o ConnectorGroupOutput) UserCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorGroup) pulumi.StringArrayOutput { return v.UserCodes }).(pulumi.StringArrayOutput)
 }
 
 // ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true

@@ -52,7 +52,6 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
- *
  * Visit
  *
  * Inspection Application Segment can be imported by using `<APPLICATION SEGMENT ID>` or `<APPLICATION SEGMENT NAME>` as the import ID.
@@ -141,6 +140,10 @@ export class ApplicationSegmentInspection extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     declare public readonly passiveHealthEnabled: pulumi.Output<boolean>;
+    /**
+     * Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled).
+     */
+    declare public readonly policyStyle: pulumi.Output<boolean | undefined>;
     declare public readonly segmentGroupId: pulumi.Output<string>;
     declare public readonly selectConnectorCloseToApp: pulumi.Output<boolean | undefined>;
     declare public readonly serverGroups: pulumi.Output<outputs.ApplicationSegmentInspectionServerGroup[] | undefined>;
@@ -203,6 +206,7 @@ export class ApplicationSegmentInspection extends pulumi.CustomResource {
             resourceInputs["isIncompleteDrConfig"] = state?.isIncompleteDrConfig;
             resourceInputs["name"] = state?.name;
             resourceInputs["passiveHealthEnabled"] = state?.passiveHealthEnabled;
+            resourceInputs["policyStyle"] = state?.policyStyle;
             resourceInputs["segmentGroupId"] = state?.segmentGroupId;
             resourceInputs["selectConnectorCloseToApp"] = state?.selectConnectorCloseToApp;
             resourceInputs["serverGroups"] = state?.serverGroups;
@@ -241,6 +245,7 @@ export class ApplicationSegmentInspection extends pulumi.CustomResource {
             resourceInputs["isIncompleteDrConfig"] = args?.isIncompleteDrConfig;
             resourceInputs["name"] = args?.name;
             resourceInputs["passiveHealthEnabled"] = args?.passiveHealthEnabled;
+            resourceInputs["policyStyle"] = args?.policyStyle;
             resourceInputs["segmentGroupId"] = args?.segmentGroupId;
             resourceInputs["selectConnectorCloseToApp"] = args?.selectConnectorCloseToApp;
             resourceInputs["serverGroups"] = args?.serverGroups;
@@ -308,6 +313,10 @@ export interface ApplicationSegmentInspectionState {
      */
     name?: pulumi.Input<string>;
     passiveHealthEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled).
+     */
+    policyStyle?: pulumi.Input<boolean>;
     segmentGroupId?: pulumi.Input<string>;
     selectConnectorCloseToApp?: pulumi.Input<boolean>;
     serverGroups?: pulumi.Input<pulumi.Input<inputs.ApplicationSegmentInspectionServerGroup>[]>;
@@ -389,6 +398,10 @@ export interface ApplicationSegmentInspectionArgs {
      */
     name?: pulumi.Input<string>;
     passiveHealthEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled).
+     */
+    policyStyle?: pulumi.Input<boolean>;
     segmentGroupId: pulumi.Input<string>;
     selectConnectorCloseToApp?: pulumi.Input<boolean>;
     serverGroups?: pulumi.Input<pulumi.Input<inputs.ApplicationSegmentInspectionServerGroup>[]>;

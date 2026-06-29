@@ -718,6 +718,8 @@ class PolicyAccessRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Basic Example with SCIM Group
+
         ```python
         import pulumi
         import pulumi_zpa as zpa
@@ -770,6 +772,36 @@ class PolicyAccessRule(pulumi.CustomResource):
             ])
         ```
 
+        ### Example with SCIM Attribute Values
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        # Get SCIM attribute header for a specific attribute
+        display_name = zpa.get_scim_attribute_header(name="DisplayName",
+            idp_name="IdP_Name")
+        pulumi.export("availableValues", display_name.values)
+        # Create Policy Access Rule using SCIM attribute value
+        scim_example = zpa.PolicyAccessRule("scim_example",
+            name="SCIM Attribute Example",
+            description="Policy rule filtering by SCIM attribute value",
+            action="ALLOW",
+            operator="AND",
+            conditions=[{
+                "operator": "OR",
+                "operands": [{
+                    "object_type": "SCIM",
+                    "idp_id": display_name.idp_id,
+                    "lhs": display_name.id,
+                    "rhs": "John Smith",
+                }],
+            }])
+        ```
+
+        **Note**: When using SCIM attributes, the `rhs` value must match one of the values available in the SCIM attribute's values list. You can reference the `values` attribute from the `get_scim_attribute_header` data source to see available options.
+
         ## LHS and RHS Values
 
         | Object Type | LHS| RHS
@@ -793,7 +825,6 @@ class PolicyAccessRule(pulumi.CustomResource):
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         Policy access rule can be imported by using `<POLICY ACCESS RULE ID>` as the import ID.
@@ -834,6 +865,8 @@ class PolicyAccessRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Basic Example with SCIM Group
+
         ```python
         import pulumi
         import pulumi_zpa as zpa
@@ -886,6 +919,36 @@ class PolicyAccessRule(pulumi.CustomResource):
             ])
         ```
 
+        ### Example with SCIM Attribute Values
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        # Get SCIM attribute header for a specific attribute
+        display_name = zpa.get_scim_attribute_header(name="DisplayName",
+            idp_name="IdP_Name")
+        pulumi.export("availableValues", display_name.values)
+        # Create Policy Access Rule using SCIM attribute value
+        scim_example = zpa.PolicyAccessRule("scim_example",
+            name="SCIM Attribute Example",
+            description="Policy rule filtering by SCIM attribute value",
+            action="ALLOW",
+            operator="AND",
+            conditions=[{
+                "operator": "OR",
+                "operands": [{
+                    "object_type": "SCIM",
+                    "idp_id": display_name.idp_id,
+                    "lhs": display_name.id,
+                    "rhs": "John Smith",
+                }],
+            }])
+        ```
+
+        **Note**: When using SCIM attributes, the `rhs` value must match one of the values available in the SCIM attribute's values list. You can reference the `values` attribute from the `get_scim_attribute_header` data source to see available options.
+
         ## LHS and RHS Values
 
         | Object Type | LHS| RHS
@@ -909,7 +972,6 @@ class PolicyAccessRule(pulumi.CustomResource):
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         Policy access rule can be imported by using `<POLICY ACCESS RULE ID>` as the import ID.

@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * The `zpa_emergency_access_user` do not support resource import.
+ * The `zpa.EmergencyAccessUser` do not support resource import.
  */
 export class EmergencyAccessUser extends pulumi.CustomResource {
     /**

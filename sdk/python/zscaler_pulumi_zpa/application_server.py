@@ -254,6 +254,15 @@ class ApplicationServer(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        * [Official documentation](https://help.zscaler.com/zpa/about-servers)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-servers-using-api)
+
+        The **zpa_application_server** resource creates an application server in the Zscaler Private Access cloud. This resource can then be referenced in a server group.
+
+        ## Zenith Community - ZPA Application Server
+
+        ![ZPA Terraform provider Video Series Ep5 - Application Server](https://community.zscaler.com/zenith/s/question/0D54u00009evlEgCAI/video-terraform-provider-video-series-ep5-zpa-application-server)
+
         ## Example Usage
 
         ```python
@@ -292,13 +301,12 @@ class ApplicationServer(pulumi.CustomResource):
             description="test1-app-server",
             address="192.168.1.1",
             enabled=True,
-            app_server_group_ids=[example.com])
+            app_server_group_ids=[output(example.com).apply(lambda x: str(x))])
         ```
 
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         Application Server can be imported by using `<APPLICATION SERVER ID>` or `<APPLICATION SERVER NAME>` as the import ID
@@ -330,6 +338,15 @@ class ApplicationServer(pulumi.CustomResource):
                  args: ApplicationServerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        * [Official documentation](https://help.zscaler.com/zpa/about-servers)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-servers-using-api)
+
+        The **zpa_application_server** resource creates an application server in the Zscaler Private Access cloud. This resource can then be referenced in a server group.
+
+        ## Zenith Community - ZPA Application Server
+
+        ![ZPA Terraform provider Video Series Ep5 - Application Server](https://community.zscaler.com/zenith/s/question/0D54u00009evlEgCAI/video-terraform-provider-video-series-ep5-zpa-application-server)
+
         ## Example Usage
 
         ```python
@@ -368,13 +385,12 @@ class ApplicationServer(pulumi.CustomResource):
             description="test1-app-server",
             address="192.168.1.1",
             enabled=True,
-            app_server_group_ids=[example.com])
+            app_server_group_ids=[output(example.com).apply(lambda x: str(x))])
         ```
 
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         Application Server can be imported by using `<APPLICATION SERVER ID>` or `<APPLICATION SERVER NAME>` as the import ID

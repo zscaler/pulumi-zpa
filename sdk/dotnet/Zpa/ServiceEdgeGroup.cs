@@ -12,11 +12,185 @@ namespace zscaler.PulumiPackage.Zpa
 {
     /// <summary>
     /// * [Official documentation](https://help.zscaler.com/zpa/about-zpa-private-service-edge-groups)
-    /// * [API documentation](https://help.zscaler.com/zpa/configuring-zpa-private-service-edge-groups-using-api)
+    /// * [API documentation](https://automate.zscaler.com/docs/docs/api-reference-and-guides/api-reference/zpa/private-service-edge-group-management)
     /// 
     /// The **zpa_service_edge_group** resource creates a service edge group in the Zscaler Private Access cloud. This resource can then be referenced in a service edge connector.
     /// 
+    /// ## Service Edge Onboarding Methods
+    /// 
+    /// ZPA Private Service Edges can be onboarded into ZPA in two ways. This resource supports both:
+    /// 
+    /// 1. **OAuth2 user codes** *(recommended for new deployments)* - Set `UserCodes` with the codes generated on each Service Edge VM. The provider creates the group and then calls the OAuth2 user code verification API to enroll the Service Edges.
+    /// 2. **Provisioning key** *(legacy / still supported)* - Create the group with this resource, then create a `zpa.ProvisioningKey` referencing it. The key is then injected into the Service Edge VM at deployment time.
+    /// 
+    /// In **both** methods, the Service Edge enrollment requires an `EnrollmentCertId`. You can either:
+    /// - Set `EnrollmentCertId` explicitly using the `zpa.getEnrollmentCert` data source, or
+    /// - Omit it entirely - the provider will automatically look up the **"Service Edge"** enrollment certificate by name and populate the ID for you.
+    /// 
+    /// ***
+    /// 
     /// ## Example Usage
+    /// 
+    /// ### OAuth2 Enrollment With User Codes (Explicit Enrollment Certificate)
+    /// 
+    /// Set the enrollment certificate explicitly and provide the user codes displayed on the Service Edge VMs after deployment. The provider will create the group and then call the user code verification API to complete enrollment.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var serviceEdge = Zpa.GetEnrollmentCert.Invoke(new()
+    ///     {
+    ///         Name = "Service Edge",
+    ///     });
+    /// 
+    ///     var example = new Zpa.ServiceEdgeGroup("example", new()
+    ///     {
+    ///         Name = "Service Edge Group San Jose",
+    ///         Description = "Service Edge Group in San Jose",
+    ///         Enabled = true,
+    ///         IsPublic = true,
+    ///         UpgradeDay = "SUNDAY",
+    ///         UpgradeTimeInSecs = "66600",
+    ///         Latitude = "37.3382082",
+    ///         Longitude = "-121.8863286",
+    ///         Location = "San Jose, CA, USA",
+    ///         VersionProfileName = "New Release",
+    ///         EnrollmentCertId = serviceEdge.Apply(getEnrollmentCertResult =&gt; getEnrollmentCertResult.Id),
+    ///         UserCodes = new[]
+    ///         {
+    ///             "CODE_FROM_VM_1",
+    ///             "CODE_FROM_VM_2",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### OAuth2 Enrollment With User Codes (Auto-Resolved Enrollment Certificate)
+    /// 
+    /// Omit `EnrollmentCertId` entirely and the provider will automatically resolve the **"Service Edge"** enrollment certificate for you. This is the simplest configuration and is functionally equivalent to the explicit example above.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Zpa.ServiceEdgeGroup("example", new()
+    ///     {
+    ///         Name = "Service Edge Group San Jose",
+    ///         Description = "Service Edge Group in San Jose",
+    ///         Enabled = true,
+    ///         IsPublic = true,
+    ///         UpgradeDay = "SUNDAY",
+    ///         UpgradeTimeInSecs = "66600",
+    ///         Latitude = "37.3382082",
+    ///         Longitude = "-121.8863286",
+    ///         Location = "San Jose, CA, USA",
+    ///         VersionProfileName = "New Release",
+    ///         UserCodes = new[]
+    ///         {
+    ///             "CODE_FROM_VM_1",
+    ///             "CODE_FROM_VM_2",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Enrolling Service Edges Via Provisioning Key (Explicit Enrollment Certificate)
+    /// 
+    /// Create the Service Edge Group, then create a `zpa.ProvisioningKey` that references the group's ID. The provisioning key is then injected into the Service Edge VM at deployment time.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var serviceEdge = Zpa.GetEnrollmentCert.Invoke(new()
+    ///     {
+    ///         Name = "Service Edge",
+    ///     });
+    /// 
+    ///     var example = new Zpa.ServiceEdgeGroup("example", new()
+    ///     {
+    ///         Name = "Service Edge Group San Jose",
+    ///         Description = "Service Edge Group in San Jose",
+    ///         Enabled = true,
+    ///         IsPublic = true,
+    ///         UpgradeDay = "SUNDAY",
+    ///         UpgradeTimeInSecs = "66600",
+    ///         Latitude = "37.3382082",
+    ///         Longitude = "-121.8863286",
+    ///         Location = "San Jose, CA, USA",
+    ///         VersionProfileName = "New Release",
+    ///         EnrollmentCertId = serviceEdge.Apply(getEnrollmentCertResult =&gt; getEnrollmentCertResult.Id),
+    ///     });
+    /// 
+    ///     var exampleProvisioningKey = new Zpa.ProvisioningKey("example", new()
+    ///     {
+    ///         Name = "ProvisioningKey01",
+    ///         AssociationType = "SERVICE_EDGE_GRP",
+    ///         MaxUsage = "10",
+    ///         EnrollmentCertId = serviceEdge.Apply(getEnrollmentCertResult =&gt; getEnrollmentCertResult.Id),
+    ///         ZcomponentId = example.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Enrolling Service Edges Via Provisioning Key (Auto-Resolved Enrollment Certificate)
+    /// 
+    /// For the Service Edge Group, you can omit `EnrollmentCertId` and let the provider auto-resolve it. The `zpa.ProvisioningKey` resource still requires `EnrollmentCertId` to be set explicitly.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var serviceEdge = Zpa.GetEnrollmentCert.Invoke(new()
+    ///     {
+    ///         Name = "Service Edge",
+    ///     });
+    /// 
+    ///     var example = new Zpa.ServiceEdgeGroup("example", new()
+    ///     {
+    ///         Name = "Service Edge Group San Jose",
+    ///         Description = "Service Edge Group in San Jose",
+    ///         Enabled = true,
+    ///         IsPublic = true,
+    ///         UpgradeDay = "SUNDAY",
+    ///         UpgradeTimeInSecs = "66600",
+    ///         Latitude = "37.3382082",
+    ///         Longitude = "-121.8863286",
+    ///         Location = "San Jose, CA, USA",
+    ///         VersionProfileName = "New Release",
+    ///     });
+    /// 
+    ///     var exampleProvisioningKey = new Zpa.ProvisioningKey("example", new()
+    ///     {
+    ///         Name = "ProvisioningKey01",
+    ///         AssociationType = "SERVICE_EDGE_GRP",
+    ///         MaxUsage = "10",
+    ///         EnrollmentCertId = serviceEdge.Apply(getEnrollmentCertResult =&gt; getEnrollmentCertResult.Id),
+    ///         ZcomponentId = example.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ### Using Version Profile Name
     /// 
@@ -56,38 +230,8 @@ namespace zscaler.PulumiPackage.Zpa
     /// });
     /// ```
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Zpa = zscaler.PulumiPackage.Zpa;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // ZPA Service Edge Group resource - No Trusted Network
-    ///     var serviceEdgeGroupNyc = new Zpa.ServiceEdgeGroup("service_edge_group_nyc", new()
-    ///     {
-    ///         Name = "Service Edge Group New York",
-    ///         Description = "Service Edge Group in New York",
-    ///         Enabled = true,
-    ///         IsPublic = true,
-    ///         UpgradeDay = "SUNDAY",
-    ///         UpgradeTimeInSecs = "66600",
-    ///         Latitude = "40.7128",
-    ///         Longitude = "-73.935242",
-    ///         Location = "New York, NY, USA",
-    ///         VersionProfileId = @this.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ### Using Version Profile ID
     /// 
-    /// data "zpa.getCustomerVersionProfile" "this" {
-    ///   name = "New Release"
-    /// }
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -96,42 +240,11 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // ZPA Service Edge Group resource - Trusted Network
-    ///     var serviceEdgeGroupSjc = new Zpa.ServiceEdgeGroup("service_edge_group_sjc", new()
+    ///     var @this = Zpa.GetCustomerVersionProfile.Invoke(new()
     ///     {
-    ///         Name = "Service Edge Group San Jose",
-    ///         Description = "Service Edge Group in San Jose",
-    ///         Enabled = true,
-    ///         IsPublic = true,
-    ///         UpgradeDay = "SUNDAY",
-    ///         UpgradeTimeInSecs = "66600",
-    ///         Latitude = "37.3382082",
-    ///         Longitude = "-121.8863286",
-    ///         Location = "San Jose, CA, USA",
-    ///         VersionProfileName = "New Release",
-    ///         TrustedNetworks = new[]
-    ///         {
-    ///             new Zpa.Inputs.ServiceEdgeGroupTrustedNetworkArgs
-    ///             {
-    ///                 Ids = new[]
-    ///                 {
-    ///                     example.Id,
-    ///                 },
-    ///             },
-    ///         },
+    ///         Name = "New Release",
     ///     });
     /// 
-    /// });
-    /// ```
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Zpa = zscaler.PulumiPackage.Zpa;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
     ///     // ZPA Service Edge Group resource - No Trusted Network
     ///     var serviceEdgeGroupNyc = new Zpa.ServiceEdgeGroup("service_edge_group_nyc", new()
     ///     {
@@ -144,7 +257,7 @@ namespace zscaler.PulumiPackage.Zpa
     ///         Latitude = "40.7128",
     ///         Longitude = "-73.935242",
     ///         Location = "New York, NY, USA",
-    ///         VersionProfileName = "New Release",
+    ///         VersionProfileId = @this.Apply(@this =&gt; @this.Apply(getCustomerVersionProfileResult =&gt; getCustomerVersionProfileResult.Id)),
     ///     });
     /// 
     /// });
@@ -153,7 +266,6 @@ namespace zscaler.PulumiPackage.Zpa
     /// ## Import
     /// 
     /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-    /// 
     /// Visit
     /// 
     /// Service Edge Group can be imported; use `&lt;SERVER EDGE GROUP ID&gt;` or `&lt;SERVER EDGE GROUP NAME&gt;` as the import ID.
@@ -196,6 +308,12 @@ namespace zscaler.PulumiPackage.Zpa
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Service Edge' enrollment certificate by name.
+        /// </summary>
+        [Output("enrollmentCertId")]
+        public Output<string> EnrollmentCertId { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether the Service Edge Group is exclusive for business continuity.
@@ -288,6 +406,12 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<bool> UseInDrMode { get; private set; } = null!;
 
         /// <summary>
+        /// User codes from deployed Service Edge VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the service edges. These codes are obtained from the Service Edge VM after deployment.
+        /// </summary>
+        [Output("userCodes")]
+        public Output<ImmutableArray<string>> UserCodes { get; private set; } = null!;
+
+        /// <summary>
         /// ID of the version profile.
         /// </summary>
         [Output("versionProfileId")]
@@ -375,6 +499,12 @@ namespace zscaler.PulumiPackage.Zpa
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Service Edge' enrollment certificate by name.
+        /// </summary>
+        [Input("enrollmentCertId")]
+        public Input<string>? EnrollmentCertId { get; set; }
 
         /// <summary>
         /// Indicates whether the Service Edge Group is exclusive for business continuity.
@@ -472,6 +602,18 @@ namespace zscaler.PulumiPackage.Zpa
         [Input("useInDrMode")]
         public Input<bool>? UseInDrMode { get; set; }
 
+        [Input("userCodes")]
+        private InputList<string>? _userCodes;
+
+        /// <summary>
+        /// User codes from deployed Service Edge VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the service edges. These codes are obtained from the Service Edge VM after deployment.
+        /// </summary>
+        public InputList<string> UserCodes
+        {
+            get => _userCodes ?? (_userCodes = new InputList<string>());
+            set => _userCodes = value;
+        }
+
         /// <summary>
         /// ID of the version profile.
         /// </summary>
@@ -521,6 +663,12 @@ namespace zscaler.PulumiPackage.Zpa
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Service Edge' enrollment certificate by name.
+        /// </summary>
+        [Input("enrollmentCertId")]
+        public Input<string>? EnrollmentCertId { get; set; }
 
         /// <summary>
         /// Indicates whether the Service Edge Group is exclusive for business continuity.
@@ -617,6 +765,18 @@ namespace zscaler.PulumiPackage.Zpa
 
         [Input("useInDrMode")]
         public Input<bool>? UseInDrMode { get; set; }
+
+        [Input("userCodes")]
+        private InputList<string>? _userCodes;
+
+        /// <summary>
+        /// User codes from deployed Service Edge VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the service edges. These codes are obtained from the Service Edge VM after deployment.
+        /// </summary>
+        public InputList<string> UserCodes
+        {
+            get => _userCodes ?? (_userCodes = new InputList<string>());
+            set => _userCodes = value;
+        }
 
         /// <summary>
         /// ID of the version profile.
