@@ -7,6 +7,17 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-server-groups)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-server-groups-using-api)
+ *
+ * Use the **zpa_server_group** data source to get information about a server group created in the Zscaler Private Access cloud. This data source can then be referenced in an application segment, application server and Access Policy rule.
+ *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
+ * ## Zenith Community - ZPA Server Groups
+ *
+ * ![ZPA Terraform provider Video Series Ep4 - Server Groups](https://community.zscaler.com/zenith/s/question/0D54u00009evlEmCAI/video-zpa-terraform-provider-video-series-ep4-server-groups)
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -61,6 +72,17 @@ export interface GetServerGroupResult {
     readonly servers: outputs.GetServerGroupServer[];
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-server-groups)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-server-groups-using-api)
+ *
+ * Use the **zpa_server_group** data source to get information about a server group created in the Zscaler Private Access cloud. This data source can then be referenced in an application segment, application server and Access Policy rule.
+ *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
+ * ## Zenith Community - ZPA Server Groups
+ *
+ * ![ZPA Terraform provider Video Series Ep4 - Server Groups](https://community.zscaler.com/zenith/s/question/0D54u00009evlEmCAI/video-zpa-terraform-provider-video-series-ep4-server-groups)
+ *
  * ## Example Usage
  *
  * ```typescript

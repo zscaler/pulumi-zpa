@@ -13,13 +13,28 @@ namespace zscaler.PulumiPackage.Zpa
     public static class GetAppConnectorGroup
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-connector-groups)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-app-connector-groups-using-api)
+        /// 
+        /// Use the **zpa_app_connector_group** data source to get information about a app connector group in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group. This data source can then be referenced in the following resources:
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// * Create a server group
+        /// * Provisioning Key
+        /// * Access policy rule
+        /// 
+        /// ## Zenith Community - ZPA App Connector Group
+        /// 
+        /// ![ZPA Terraform provider Video Series Ep2 - Connector Groups](https://community.zscaler.com/zenith/s/question/0D54u00009evlEoCAI/video-zpa-terraform-provider-video-series-ep2-connector-groups)
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -36,7 +51,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -53,13 +68,28 @@ namespace zscaler.PulumiPackage.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppConnectorGroupResult>("zpa:index/getAppConnectorGroup:getAppConnectorGroup", args ?? new GetAppConnectorGroupArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-connector-groups)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-app-connector-groups-using-api)
+        /// 
+        /// Use the **zpa_app_connector_group** data source to get information about a app connector group in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group. This data source can then be referenced in the following resources:
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// * Create a server group
+        /// * Provisioning Key
+        /// * Access policy rule
+        /// 
+        /// ## Zenith Community - ZPA App Connector Group
+        /// 
+        /// ![ZPA Terraform provider Video Series Ep2 - Connector Groups](https://community.zscaler.com/zenith/s/question/0D54u00009evlEoCAI/video-zpa-terraform-provider-video-series-ep2-connector-groups)
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -76,7 +106,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -93,13 +123,28 @@ namespace zscaler.PulumiPackage.Zpa
             => global::Pulumi.Deployment.Instance.Invoke<GetAppConnectorGroupResult>("zpa:index/getAppConnectorGroup:getAppConnectorGroup", args ?? new GetAppConnectorGroupInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-connector-groups)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-app-connector-groups-using-api)
+        /// 
+        /// Use the **zpa_app_connector_group** data source to get information about a app connector group in the Zscaler Private Access cloud. This data source can then be referenced in an App Connector Group. This data source can then be referenced in the following resources:
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// * Create a server group
+        /// * Provisioning Key
+        /// * Access policy rule
+        /// 
+        /// ## Zenith Community - ZPA App Connector Group
+        /// 
+        /// ![ZPA Terraform provider Video Series Ep2 - Connector Groups](https://community.zscaler.com/zenith/s/question/0D54u00009evlEoCAI/video-zpa-terraform-provider-video-series-ep2-connector-groups)
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -116,7 +161,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {

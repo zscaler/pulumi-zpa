@@ -70,7 +70,6 @@ namespace zscaler.PulumiPackage.Zpa
     /// ## Import
     /// 
     /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-    /// 
     /// Visit
     /// 
     /// **pra_credential_controller** can be imported by using `&lt;CREDENTIAL ID&gt;` or `&lt;CREDENTIAL NAME&gt;` as the import ID.

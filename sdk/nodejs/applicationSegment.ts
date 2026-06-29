@@ -7,10 +7,146 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-applications)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
+ *
+ * The **zpa_application_segment** resource creates an application segment in the Zscaler Private Access cloud. This resource can then be referenced in an access policy rule, access policy timeout rule or access policy client forwarding rule.
+ *
+ * ## Zenith Community - ZPA Application Segment
+ *
+ * ![ZPA Terraform provider Video Series Ep7 - Application Segment](https://community.zscaler.com/zenith/s/question/0D54u00009evlEXCAY/video-zpa-terraform-provider-video-series-ep7-zpa-application-segment)
+ *
+ * ## Example 1 Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * // ZPA Segment Group resource
+ * const thisSegmentGroup = new zpa.SegmentGroup("this", {
+ *     name: "Example",
+ *     description: "Example",
+ *     enabled: true,
+ * });
+ * // ZPA App Connector Group resource
+ * const thisConnectorGroup = new zpa.ConnectorGroup("this", {
+ *     name: "Example",
+ *     description: "Example",
+ *     enabled: true,
+ *     cityCountry: "San Jose, CA",
+ *     countryCode: "US",
+ *     latitude: "37.338",
+ *     longitude: "-121.8863",
+ *     location: "San Jose, CA, US",
+ *     upgradeDay: "SUNDAY",
+ *     upgradeTimeInSecs: "66600",
+ *     overrideVersionProfile: true,
+ *     versionProfileId: "0",
+ *     dnsQueryType: "IPV4",
+ * });
+ * // ZPA Server Group resource
+ * const thisServerGroup = new zpa.ServerGroup("this", {
+ *     name: "Example",
+ *     description: "Example",
+ *     enabled: true,
+ *     dynamicDiscovery: false,
+ *     appConnectorGroups: [{
+ *         ids: [thisConnectorGroup.id],
+ *     }],
+ * }, {
+ *     dependsOn: [thisConnectorGroup],
+ * });
+ * // ZPA Application Segment resource
+ * const _this = new zpa.ApplicationSegment("this", {
+ *     name: "Example",
+ *     description: "Example",
+ *     enabled: true,
+ *     healthReporting: "ON_ACCESS",
+ *     bypassType: "NEVER",
+ *     isCnameEnabled: true,
+ *     tcpPortRanges: [
+ *         "8080",
+ *         "8080",
+ *     ],
+ *     domainNames: ["server.acme.com"],
+ *     segmentGroupId: thisSegmentGroup.id,
+ *     serverGroups: [{
+ *         ids: [thisServerGroup.id],
+ *     }],
+ * }, {
+ *     dependsOn: [
+ *         thisServerGroup,
+ *         thisSegmentGroup,
+ *     ],
+ * });
+ * ```
+ *
+ * ## Example 2 Usage
+ *
+ * ## Example 3 Usage - Application Segment Extranet Configuration
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const _this = zpa.getLocationController({
+ *     name: "ExtranetLocation01 | zscalerbeta.net",
+ *     ziaErName: "NewExtranet 8432",
+ * });
+ * const thisGetLocationGroupController = zpa.getLocationGroupController({
+ *     locationName: "ExtranetLocation01",
+ *     ziaErName: "NewExtranet 8432",
+ * });
+ * const thisGetExtranetResourcePartner = zpa.getExtranetResourcePartner({
+ *     name: "NewExtranet 8432",
+ * });
+ * const thisSegmentGroup = new zpa.SegmentGroup("this", {
+ *     name: "Example",
+ *     description: "Example",
+ *     enabled: true,
+ * });
+ * const thisServerGroup = new zpa.ServerGroup("this", {
+ *     name: "Example",
+ *     description: "Example",
+ *     enabled: true,
+ *     dynamicDiscovery: true,
+ *     extranetEnabled: true,
+ *     extranetDtos: [{
+ *         zpnErId: thisGetExtranetResourcePartner.then(thisGetExtranetResourcePartner => thisGetExtranetResourcePartner.id),
+ *         locationDtos: [{
+ *             id: _this.then(_this => _this.id),
+ *         }],
+ *         locationGroupDtos: [{
+ *             id: thisGetLocationGroupController.then(thisGetLocationGroupController => thisGetLocationGroupController.id),
+ *         }],
+ *     }],
+ * });
+ * const thisApplicationSegment = new zpa.ApplicationSegment("this", {
+ *     name: "app01.acme.com",
+ *     description: "app01.acme.com",
+ *     enabled: true,
+ *     healthReporting: "NONE",
+ *     healthCheckType: "NONE",
+ *     bypassType: "NEVER",
+ *     isCnameEnabled: true,
+ *     tcpPortRanges: [
+ *         "8080",
+ *         "8080",
+ *     ],
+ *     domainNames: ["app01.acme.com"],
+ *     segmentGroupId: thisSegmentGroup.id,
+ *     serverGroups: [{
+ *         ids: [thisServerGroup.id],
+ *     }],
+ *     zpnErIds: [{
+ *         ids: [thisGetExtranetResourcePartner.then(thisGetExtranetResourcePartner => thisGetExtranetResourcePartner.id)],
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
- *
  * Visit
  *
  * Application Segment can be imported by using `<APPLICATION SEGMENT ID>` or `<APPLICATION SEGMENT NAME>` as the import ID.
@@ -103,6 +239,10 @@ export class ApplicationSegment extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     declare public readonly passiveHealthEnabled: pulumi.Output<boolean>;
+    /**
+     * Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled). Default: disabled.
+     */
+    declare public readonly policyStyle: pulumi.Output<boolean | undefined>;
     declare public readonly segmentGroupId: pulumi.Output<string>;
     declare public readonly segmentGroupName: pulumi.Output<string>;
     declare public readonly selectConnectorCloseToApp: pulumi.Output<boolean | undefined>;
@@ -168,6 +308,7 @@ export class ApplicationSegment extends pulumi.CustomResource {
             resourceInputs["microtenantId"] = state?.microtenantId;
             resourceInputs["name"] = state?.name;
             resourceInputs["passiveHealthEnabled"] = state?.passiveHealthEnabled;
+            resourceInputs["policyStyle"] = state?.policyStyle;
             resourceInputs["segmentGroupId"] = state?.segmentGroupId;
             resourceInputs["segmentGroupName"] = state?.segmentGroupName;
             resourceInputs["selectConnectorCloseToApp"] = state?.selectConnectorCloseToApp;
@@ -206,6 +347,7 @@ export class ApplicationSegment extends pulumi.CustomResource {
             resourceInputs["microtenantId"] = args?.microtenantId;
             resourceInputs["name"] = args?.name;
             resourceInputs["passiveHealthEnabled"] = args?.passiveHealthEnabled;
+            resourceInputs["policyStyle"] = args?.policyStyle;
             resourceInputs["segmentGroupId"] = args?.segmentGroupId;
             resourceInputs["segmentGroupName"] = args?.segmentGroupName;
             resourceInputs["selectConnectorCloseToApp"] = args?.selectConnectorCloseToApp;
@@ -279,6 +421,10 @@ export interface ApplicationSegmentState {
      */
     name?: pulumi.Input<string>;
     passiveHealthEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled). Default: disabled.
+     */
+    policyStyle?: pulumi.Input<boolean>;
     segmentGroupId?: pulumi.Input<string>;
     segmentGroupName?: pulumi.Input<string>;
     selectConnectorCloseToApp?: pulumi.Input<boolean>;
@@ -366,6 +512,10 @@ export interface ApplicationSegmentArgs {
      */
     name?: pulumi.Input<string>;
     passiveHealthEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled). Default: disabled.
+     */
+    policyStyle?: pulumi.Input<boolean>;
     segmentGroupId?: pulumi.Input<string>;
     segmentGroupName?: pulumi.Input<string>;
     selectConnectorCloseToApp?: pulumi.Input<boolean>;

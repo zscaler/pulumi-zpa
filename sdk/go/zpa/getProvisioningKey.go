@@ -11,7 +11,25 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-connector-provisioning-keys)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-provisioning-keys-using-api)
+//
+// Use the **zpa_provisioning_key** data source to get information about a provisioning key in the Zscaler Private Access portal or via API. This data source can be referenced in the following ZPA resources:
+//
+// * App Connector Groups
+// * Service Edge Groups
+//
+// > **NOTE** The “associationType“ parameter is required in order to distinguish between “CONNECTOR_GRP“ and “SERVICE_EDGE_GRP“
+//
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
+// ## Zenith Community - ZPA Provisioning Keys
+//
+// ![ZPA Terraform provider Video Series Ep3 - Provisioning Keys](https://community.zscaler.com/zenith/s/question/0D54u00009evlEnCAI/video-zpa-terraform-provider-video-series-ep3-provisioning-keys)
+//
 // ## Example Usage
+//
+// ### Basic Usage
 //
 // ```go
 // package main
@@ -26,8 +44,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Provisioning Key for "CONNECTOR_GRP"
-//			_, err := zpa.LookupProvisioningKey(ctx, &zpa.LookupProvisioningKeyArgs{
-//				Name:            pulumi.StringRef("Provisioning_Key"),
+//			_, err := zpa.GetProvisioningKey(ctx, &zpa.LookupProvisioningKeyArgs{
+//				Name:            pulumi.StringRef("Connector_Provisioning_Key"),
 //				AssociationType: "CONNECTOR_GRP",
 //			}, nil)
 //			if err != nil {
@@ -52,8 +70,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Provisioning Key for "SERVICE_EDGE_GRP"
-//			_, err := zpa.LookupProvisioningKey(ctx, &zpa.LookupProvisioningKeyArgs{
-//				Name:            pulumi.StringRef("Provisioning_Key"),
+//			_, err := zpa.GetProvisioningKey(ctx, &zpa.LookupProvisioningKeyArgs{
+//				Name:            pulumi.StringRef("ServiceEdge_Provisioning_Key"),
 //				AssociationType: "SERVICE_EDGE_GRP",
 //			}, nil)
 //			if err != nil {
@@ -64,6 +82,54 @@ import (
 //	}
 //
 // ```
+//
+// ### Accessing the Provisioning Key Value
+//
+// The provisioning key value is marked as sensitive and can be accessed using outputs or resource references:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-command/sdk/go/command/local"
+//	"github.com/pulumi/pulumi-null/sdk/go/null"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Retrieve existing provisioning key
+//			existing, err := zpa.GetProvisioningKey(ctx, &zpa.LookupProvisioningKeyArgs{
+//				Name:            pulumi.StringRef("Production_Connector_Key"),
+//				AssociationType: "CONNECTOR_GRP",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("provisioningKeyValue", existing.ProvisioningKey)
+//			// Use in automation
+//			deployConnector, err := null.NewResource(ctx, "deploy_connector", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = local.NewCommand(ctx, "deployConnectorProvisioner0", &local.CommandArgs{
+//				Create: pulumi.Sprintf("deploy-connector.sh %v", existing.ProvisioningKey),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				deployConnector,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// To retrieve the key value:
 func LookupProvisioningKey(ctx *pulumi.Context, args *LookupProvisioningKeyArgs, opts ...pulumi.InvokeOption) (*LookupProvisioningKeyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProvisioningKeyResult

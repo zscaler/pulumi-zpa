@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := zpa.LookupUserPortalAUP(ctx, &zpa.LookupUserPortalAUPArgs{
+//			_, err := zpa.GetUserPortalAUP(ctx, &zpa.LookupUserPortalAUPArgs{
 //				Name: pulumi.StringRef("server1.example.com"),
 //			}, nil)
 //			if err != nil {
@@ -58,7 +58,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := zpa.LookupUserPortalAUP(ctx, &zpa.LookupUserPortalAUPArgs{
+//			_, err := zpa.GetUserPortalAUP(ctx, &zpa.LookupUserPortalAUPArgs{
 //				Id: pulumi.StringRef("256456856"),
 //			}, nil)
 //			if err != nil {

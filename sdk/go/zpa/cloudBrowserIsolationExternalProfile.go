@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Retrieve CBI Banner ID
-//			this, err := zpa.LookupCloudBrowserIsolationBanner(ctx, &zpa.LookupCloudBrowserIsolationBannerArgs{
+//			this, err := zpa.GetCloudBrowserIsolationBanner(ctx, &zpa.LookupCloudBrowserIsolationBannerArgs{
 //				Name: pulumi.StringRef("Default"),
 //			}, nil)
 //			if err != nil {
@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			// Retrieve CBI Certificate ID
-//			thisGetCloudBrowserIsolationCertificate, err := zpa.LookupCloudBrowserIsolationCertificate(ctx, &zpa.LookupCloudBrowserIsolationCertificateArgs{
+//			thisGetCloudBrowserIsolationCertificate, err := zpa.GetCloudBrowserIsolationCertificate(ctx, &zpa.LookupCloudBrowserIsolationCertificateArgs{
 //				Name: pulumi.StringRef("Zscaler Root Certificate"),
 //			}, nil)
 //			if err != nil {

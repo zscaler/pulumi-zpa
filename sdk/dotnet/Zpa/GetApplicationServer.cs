@@ -13,13 +13,26 @@ namespace zscaler.PulumiPackage.Zpa
     public static class GetApplicationServer
     {
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-servers)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-servers-using-api)
+        /// 
+        /// Use the **zpa_application_server** data source to get information about an application server created in the Zscaler Private Access cloud. This data source must be used in the following circumstances:
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// 1. Server Group (When Dynamic Discovery is set to false)
+        /// 
+        /// ## Zenith Community - ZPA Application Server
+        /// 
+        /// ![ZPA Terraform provider Video Series Ep5 - Application Server](https://community.zscaler.com/zenith/s/question/0D54u00009evlEgCAI/video-terraform-provider-video-series-ep5-zpa-application-server)
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -36,7 +49,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -53,13 +66,26 @@ namespace zscaler.PulumiPackage.Zpa
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationServerResult>("zpa:index/getApplicationServer:getApplicationServer", args ?? new GetApplicationServerArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-servers)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-servers-using-api)
+        /// 
+        /// Use the **zpa_application_server** data source to get information about an application server created in the Zscaler Private Access cloud. This data source must be used in the following circumstances:
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// 1. Server Group (When Dynamic Discovery is set to false)
+        /// 
+        /// ## Zenith Community - ZPA Application Server
+        /// 
+        /// ![ZPA Terraform provider Video Series Ep5 - Application Server](https://community.zscaler.com/zenith/s/question/0D54u00009evlEgCAI/video-terraform-provider-video-series-ep5-zpa-application-server)
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -76,7 +102,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -93,13 +119,26 @@ namespace zscaler.PulumiPackage.Zpa
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationServerResult>("zpa:index/getApplicationServer:getApplicationServer", args ?? new GetApplicationServerInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// * [Official documentation](https://help.zscaler.com/zpa/about-servers)
+        /// * [API documentation](https://help.zscaler.com/zpa/configuring-servers-using-api)
+        /// 
+        /// Use the **zpa_application_server** data source to get information about an application server created in the Zscaler Private Access cloud. This data source must be used in the following circumstances:
+        /// 
+        /// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+        /// 
+        /// 1. Server Group (When Dynamic Discovery is set to false)
+        /// 
+        /// ## Zenith Community - ZPA Application Server
+        /// 
+        /// ![ZPA Terraform provider Video Series Ep5 - Application Server](https://community.zscaler.com/zenith/s/question/0D54u00009evlEgCAI/video-terraform-provider-video-series-ep5-zpa-application-server)
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -116,7 +155,7 @@ namespace zscaler.PulumiPackage.Zpa
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Zpa = Pulumi.Zpa;
+        /// using Zpa = zscaler.PulumiPackage.Zpa;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {

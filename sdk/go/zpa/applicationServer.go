@@ -12,6 +12,15 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-servers)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-servers-using-api)
+//
+// The **zpa_application_server** resource creates an application server in the Zscaler Private Access cloud. This resource can then be referenced in a server group.
+//
+// ## Zenith Community - ZPA Application Server
+//
+// ![ZPA Terraform provider Video Series Ep5 - Application Server](https://community.zscaler.com/zenith/s/question/0D54u00009evlEgCAI/video-terraform-provider-video-series-ep5-zpa-application-server)
+//
 // ## Example Usage
 //
 // ```go
@@ -82,7 +91,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := zpa.LookupServerGroup(ctx, &zpa.LookupServerGroupArgs{
+//			example, err := zpa.GetServerGroup(ctx, &zpa.LookupServerGroupArgs{
 //				Name: pulumi.StringRef("Example"),
 //			}, nil)
 //			if err != nil {
@@ -110,8 +119,7 @@ import (
 // ## Import
 //
 // Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-//
-// # Visit
+// Visit
 //
 // Application Server can be imported by using `<APPLICATION SERVER ID>` or `<APPLICATION SERVER NAME>` as the import ID
 //

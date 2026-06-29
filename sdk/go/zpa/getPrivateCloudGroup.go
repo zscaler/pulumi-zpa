@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Private Cloud Group Data Source
-//			_, err := zpa.LookupPrivateCloudGroup(ctx, &zpa.LookupPrivateCloudGroupArgs{
+//			_, err := zpa.GetPrivateCloudGroup(ctx, &zpa.LookupPrivateCloudGroupArgs{
 //				Name: pulumi.StringRef("DataCenter"),
 //			}, nil)
 //			if err != nil {
@@ -56,7 +56,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Private Cloud Group Data Source
-//			_, err := zpa.LookupPrivateCloudGroup(ctx, &zpa.LookupPrivateCloudGroupArgs{
+//			_, err := zpa.GetPrivateCloudGroup(ctx, &zpa.LookupPrivateCloudGroupArgs{
 //				Id: pulumi.StringRef("123456789"),
 //			}, nil)
 //			if err != nil {

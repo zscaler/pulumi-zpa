@@ -47,7 +47,7 @@ import (
 //
 // ## Import
 //
-// The `zpa_emergency_access_user` do not support resource import.
+// The `EmergencyAccessUser` do not support resource import.
 type EmergencyAccessUser struct {
 	pulumi.CustomResourceState
 

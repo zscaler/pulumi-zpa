@@ -330,6 +330,11 @@ export const getPostureProfile: typeof import("./getPostureProfile").getPostureP
 export const getPostureProfileOutput: typeof import("./getPostureProfile").getPostureProfileOutput = null as any;
 utilities.lazyLoad(exports, ["getPostureProfile","getPostureProfileOutput"], () => require("./getPostureProfile"));
 
+export { GetPrivateCloudArgs, GetPrivateCloudResult, GetPrivateCloudOutputArgs } from "./getPrivateCloud";
+export const getPrivateCloud: typeof import("./getPrivateCloud").getPrivateCloud = null as any;
+export const getPrivateCloudOutput: typeof import("./getPrivateCloud").getPrivateCloudOutput = null as any;
+utilities.lazyLoad(exports, ["getPrivateCloud","getPrivateCloudOutput"], () => require("./getPrivateCloud"));
+
 export { GetPrivateCloudControllerArgs, GetPrivateCloudControllerResult, GetPrivateCloudControllerOutputArgs } from "./getPrivateCloudController";
 export const getPrivateCloudController: typeof import("./getPrivateCloudController").getPrivateCloudController = null as any;
 export const getPrivateCloudControllerOutput: typeof import("./getPrivateCloudController").getPrivateCloudControllerOutput = null as any;
@@ -389,6 +394,21 @@ export { GetServiceEdgeGroupArgs, GetServiceEdgeGroupResult, GetServiceEdgeGroup
 export const getServiceEdgeGroup: typeof import("./getServiceEdgeGroup").getServiceEdgeGroup = null as any;
 export const getServiceEdgeGroupOutput: typeof import("./getServiceEdgeGroup").getServiceEdgeGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceEdgeGroup","getServiceEdgeGroupOutput"], () => require("./getServiceEdgeGroup"));
+
+export { GetTagGroupArgs, GetTagGroupResult, GetTagGroupOutputArgs } from "./getTagGroup";
+export const getTagGroup: typeof import("./getTagGroup").getTagGroup = null as any;
+export const getTagGroupOutput: typeof import("./getTagGroup").getTagGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getTagGroup","getTagGroupOutput"], () => require("./getTagGroup"));
+
+export { GetTagKeyArgs, GetTagKeyResult, GetTagKeyOutputArgs } from "./getTagKey";
+export const getTagKey: typeof import("./getTagKey").getTagKey = null as any;
+export const getTagKeyOutput: typeof import("./getTagKey").getTagKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getTagKey","getTagKeyOutput"], () => require("./getTagKey"));
+
+export { GetTagNamespaceArgs, GetTagNamespaceResult, GetTagNamespaceOutputArgs } from "./getTagNamespace";
+export const getTagNamespace: typeof import("./getTagNamespace").getTagNamespace = null as any;
+export const getTagNamespaceOutput: typeof import("./getTagNamespace").getTagNamespaceOutput = null as any;
+utilities.lazyLoad(exports, ["getTagNamespace","getTagNamespaceOutput"], () => require("./getTagNamespace"));
 
 export { GetTrustedNetworkArgs, GetTrustedNetworkResult, GetTrustedNetworkOutputArgs } from "./getTrustedNetwork";
 export const getTrustedNetwork: typeof import("./getTrustedNetwork").getTrustedNetwork = null as any;
@@ -545,6 +565,11 @@ export type PRAPortal = import("./praportal").PRAPortal;
 export const PRAPortal: typeof import("./praportal").PRAPortal = null as any;
 utilities.lazyLoad(exports, ["PRAPortal"], () => require("./praportal"));
 
+export { PrivateCloudArgs, PrivateCloudState } from "./privateCloud";
+export type PrivateCloud = import("./privateCloud").PrivateCloud;
+export const PrivateCloud: typeof import("./privateCloud").PrivateCloud = null as any;
+utilities.lazyLoad(exports, ["PrivateCloud"], () => require("./privateCloud"));
+
 export { PrivateCloudGroupArgs, PrivateCloudGroupState } from "./privateCloudGroup";
 export type PrivateCloudGroup = import("./privateCloudGroup").PrivateCloudGroup;
 export const PrivateCloudGroup: typeof import("./privateCloudGroup").PrivateCloudGroup = null as any;
@@ -577,6 +602,21 @@ export { ServiceEdgeGroupArgs, ServiceEdgeGroupState } from "./serviceEdgeGroup"
 export type ServiceEdgeGroup = import("./serviceEdgeGroup").ServiceEdgeGroup;
 export const ServiceEdgeGroup: typeof import("./serviceEdgeGroup").ServiceEdgeGroup = null as any;
 utilities.lazyLoad(exports, ["ServiceEdgeGroup"], () => require("./serviceEdgeGroup"));
+
+export { TagGroupArgs, TagGroupState } from "./tagGroup";
+export type TagGroup = import("./tagGroup").TagGroup;
+export const TagGroup: typeof import("./tagGroup").TagGroup = null as any;
+utilities.lazyLoad(exports, ["TagGroup"], () => require("./tagGroup"));
+
+export { TagKeyArgs, TagKeyState } from "./tagKey";
+export type TagKey = import("./tagKey").TagKey;
+export const TagKey: typeof import("./tagKey").TagKey = null as any;
+utilities.lazyLoad(exports, ["TagKey"], () => require("./tagKey"));
+
+export { TagNamespaceArgs, TagNamespaceState } from "./tagNamespace";
+export type TagNamespace = import("./tagNamespace").TagNamespace;
+export const TagNamespace: typeof import("./tagNamespace").TagNamespace = null as any;
+utilities.lazyLoad(exports, ["TagNamespace"], () => require("./tagNamespace"));
 
 export { UserPortalAUPArgs, UserPortalAUPState } from "./userPortalAUP";
 export type UserPortalAUP = import("./userPortalAUP").UserPortalAUP;
@@ -694,6 +734,8 @@ const _module = {
                 return new PolicyPortalAccessRule(name, <any>undefined, { urn })
             case "zpa:index/praCredentialPool:PraCredentialPool":
                 return new PraCredentialPool(name, <any>undefined, { urn })
+            case "zpa:index/privateCloud:PrivateCloud":
+                return new PrivateCloud(name, <any>undefined, { urn })
             case "zpa:index/privateCloudGroup:PrivateCloudGroup":
                 return new PrivateCloudGroup(name, <any>undefined, { urn })
             case "zpa:index/provisioningKey:ProvisioningKey":
@@ -706,6 +748,12 @@ const _module = {
                 return new ServiceEdgeAssistantSchedule(name, <any>undefined, { urn })
             case "zpa:index/serviceEdgeGroup:ServiceEdgeGroup":
                 return new ServiceEdgeGroup(name, <any>undefined, { urn })
+            case "zpa:index/tagGroup:TagGroup":
+                return new TagGroup(name, <any>undefined, { urn })
+            case "zpa:index/tagKey:TagKey":
+                return new TagKey(name, <any>undefined, { urn })
+            case "zpa:index/tagNamespace:TagNamespace":
+                return new TagNamespace(name, <any>undefined, { urn })
             case "zpa:index/userPortalAUP:UserPortalAUP":
                 return new UserPortalAUP(name, <any>undefined, { urn })
             case "zpa:index/userPortalController:UserPortalController":
@@ -760,12 +808,16 @@ pulumi.runtime.registerResourceModule("zpa", "index/policyAccessTimeOutRuleV2", 
 pulumi.runtime.registerResourceModule("zpa", "index/policyBrowserProtectionRule", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/policyPortalAccessRule", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/praCredentialPool", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/privateCloud", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/privateCloudGroup", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/provisioningKey", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/segmentGroup", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/serverGroup", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/serviceEdgeAssistantSchedule", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/serviceEdgeGroup", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/tagGroup", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/tagKey", _module)
+pulumi.runtime.registerResourceModule("zpa", "index/tagNamespace", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/userPortalAUP", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/userPortalController", _module)
 pulumi.runtime.registerResourceModule("zpa", "index/userPortalLink", _module)

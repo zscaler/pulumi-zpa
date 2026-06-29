@@ -11,6 +11,17 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-applications)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
+//
+// Use the **zpa_application_segment** data source to get information about a application segment created in the Zscaler Private Access cloud. This data source can then be referenced in an Access Policy, Timeout policy, Forwarding Policy, Inspection Policy or Isolation Policy.
+//
+// **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+//
+// ## Zenith Community - ZPA Application Segment
+//
+// ![ZPA Terraform provider Video Series Ep7 - Application Segment](https://community.zscaler.com/zenith/s/question/0D54u00009evlEXCAY/video-zpa-terraform-provider-video-series-ep7-zpa-application-segment)
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Application Segment Data Source
-//			_, err := zpa.LookupApplicationSegment(ctx, &zpa.LookupApplicationSegmentArgs{
+//			_, err := zpa.GetApplicationSegment(ctx, &zpa.LookupApplicationSegmentArgs{
 //				Name: pulumi.StringRef("example"),
 //			}, nil)
 //			if err != nil {
@@ -51,7 +62,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Application Segment Data Source
-//			_, err := zpa.LookupApplicationSegment(ctx, &zpa.LookupApplicationSegmentArgs{
+//			_, err := zpa.GetApplicationSegment(ctx, &zpa.LookupApplicationSegmentArgs{
 //				Id: pulumi.StringRef("123456789"),
 //			}, nil)
 //			if err != nil {

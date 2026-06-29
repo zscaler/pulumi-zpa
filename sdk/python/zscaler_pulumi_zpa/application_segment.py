@@ -41,6 +41,7 @@ class ApplicationSegmentArgs:
                  microtenant_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  passive_health_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 policy_style: Optional[pulumi.Input[_builtins.bool]] = None,
                  segment_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  segment_group_name: Optional[pulumi.Input[_builtins.str]] = None,
                  select_connector_close_to_app: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -66,6 +67,7 @@ class ApplicationSegmentArgs:
         :param pulumi.Input[_builtins.bool] inspect_traffic_with_zia: Indicates if Inspect Traffic with ZIA is enabled for the application.
         :param pulumi.Input[_builtins.bool] is_cname_enabled: Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
         :param pulumi.Input[_builtins.str] name: Name of the application.
+        :param pulumi.Input[_builtins.bool] policy_style: Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled). Default: disabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] share_to_microtenants: Share the Application Segment to microtenants
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentTcpPortRangeArgs']]] tcp_port_range: tcp port range
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tcp_port_ranges: TCP port ranges used to access the app.
@@ -112,6 +114,8 @@ class ApplicationSegmentArgs:
             pulumi.set(__self__, "name", name)
         if passive_health_enabled is not None:
             pulumi.set(__self__, "passive_health_enabled", passive_health_enabled)
+        if policy_style is not None:
+            pulumi.set(__self__, "policy_style", policy_style)
         if segment_group_id is not None:
             pulumi.set(__self__, "segment_group_id", segment_group_id)
         if segment_group_name is not None:
@@ -350,6 +354,18 @@ class ApplicationSegmentArgs:
         pulumi.set(self, "passive_health_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="policyStyle")
+    def policy_style(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled). Default: disabled.
+        """
+        return pulumi.get(self, "policy_style")
+
+    @policy_style.setter
+    def policy_style(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "policy_style", value)
+
+    @_builtins.property
     @pulumi.getter(name="segmentGroupId")
     def segment_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "segment_group_id")
@@ -508,6 +524,7 @@ class _ApplicationSegmentState:
                  microtenant_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  passive_health_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 policy_style: Optional[pulumi.Input[_builtins.bool]] = None,
                  segment_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  segment_group_name: Optional[pulumi.Input[_builtins.str]] = None,
                  select_connector_close_to_app: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -533,6 +550,7 @@ class _ApplicationSegmentState:
         :param pulumi.Input[_builtins.bool] inspect_traffic_with_zia: Indicates if Inspect Traffic with ZIA is enabled for the application.
         :param pulumi.Input[_builtins.bool] is_cname_enabled: Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
         :param pulumi.Input[_builtins.str] name: Name of the application.
+        :param pulumi.Input[_builtins.bool] policy_style: Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled). Default: disabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] share_to_microtenants: Share the Application Segment to microtenants
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentTcpPortRangeArgs']]] tcp_port_range: tcp port range
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tcp_port_ranges: TCP port ranges used to access the app.
@@ -580,6 +598,8 @@ class _ApplicationSegmentState:
             pulumi.set(__self__, "name", name)
         if passive_health_enabled is not None:
             pulumi.set(__self__, "passive_health_enabled", passive_health_enabled)
+        if policy_style is not None:
+            pulumi.set(__self__, "policy_style", policy_style)
         if segment_group_id is not None:
             pulumi.set(__self__, "segment_group_id", segment_group_id)
         if segment_group_name is not None:
@@ -818,6 +838,18 @@ class _ApplicationSegmentState:
         pulumi.set(self, "passive_health_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="policyStyle")
+    def policy_style(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled). Default: disabled.
+        """
+        return pulumi.get(self, "policy_style")
+
+    @policy_style.setter
+    def policy_style(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "policy_style", value)
+
+    @_builtins.property
     @pulumi.getter(name="segmentGroupId")
     def segment_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "segment_group_id")
@@ -979,6 +1011,7 @@ class ApplicationSegment(pulumi.CustomResource):
                  microtenant_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  passive_health_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 policy_style: Optional[pulumi.Input[_builtins.bool]] = None,
                  segment_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  segment_group_name: Optional[pulumi.Input[_builtins.str]] = None,
                  select_connector_close_to_app: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -994,10 +1027,132 @@ class ApplicationSegment(pulumi.CustomResource):
                  zpn_er_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentZpnErIdArgs', 'ApplicationSegmentZpnErIdArgsDict']]]]] = None,
                  __props__=None):
         """
+        * [Official documentation](https://help.zscaler.com/zpa/about-applications)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
+
+        The **zpa_application_segment** resource creates an application segment in the Zscaler Private Access cloud. This resource can then be referenced in an access policy rule, access policy timeout rule or access policy client forwarding rule.
+
+        ## Zenith Community - ZPA Application Segment
+
+        ![ZPA Terraform provider Video Series Ep7 - Application Segment](https://community.zscaler.com/zenith/s/question/0D54u00009evlEXCAY/video-zpa-terraform-provider-video-series-ep7-zpa-application-segment)
+
+        ## Example 1 Usage
+
+        ```python
+        import pulumi
+        import zscaler_pulumi_zpa as zpa
+
+        # ZPA Segment Group resource
+        this_segment_group = zpa.SegmentGroup("this",
+            name="Example",
+            description="Example",
+            enabled=True)
+        # ZPA App Connector Group resource
+        this_connector_group = zpa.ConnectorGroup("this",
+            name="Example",
+            description="Example",
+            enabled=True,
+            city_country="San Jose, CA",
+            country_code="US",
+            latitude="37.338",
+            longitude="-121.8863",
+            location="San Jose, CA, US",
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            override_version_profile=True,
+            version_profile_id="0",
+            dns_query_type="IPV4")
+        # ZPA Server Group resource
+        this_server_group = zpa.ServerGroup("this",
+            name="Example",
+            description="Example",
+            enabled=True,
+            dynamic_discovery=False,
+            app_connector_groups=[{
+                "ids": [this_connector_group.id],
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[this_connector_group]))
+        # ZPA Application Segment resource
+        this = zpa.ApplicationSegment("this",
+            name="Example",
+            description="Example",
+            enabled=True,
+            health_reporting="ON_ACCESS",
+            bypass_type="NEVER",
+            is_cname_enabled=True,
+            tcp_port_ranges=[
+                "8080",
+                "8080",
+            ],
+            domain_names=["server.acme.com"],
+            segment_group_id=this_segment_group.id,
+            server_groups=[{
+                "ids": [this_server_group.id],
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[
+                    this_server_group,
+                    this_segment_group,
+                ]))
+        ```
+
+        ## Example 2 Usage
+
+        ## Example 3 Usage - Application Segment Extranet Configuration
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        this = zpa.get_location_controller(name="ExtranetLocation01 | zscalerbeta.net",
+            zia_er_name="NewExtranet 8432")
+        this_get_location_group_controller = zpa.get_location_group_controller(location_name="ExtranetLocation01",
+            zia_er_name="NewExtranet 8432")
+        this_get_extranet_resource_partner = zpa.get_extranet_resource_partner(name="NewExtranet 8432")
+        this_segment_group = zpa.SegmentGroup("this",
+            name="Example",
+            description="Example",
+            enabled=True)
+        this_server_group = zpa.ServerGroup("this",
+            name="Example",
+            description="Example",
+            enabled=True,
+            dynamic_discovery=True,
+            extranet_enabled=True,
+            extranet_dtos=[{
+                "zpn_er_id": this_get_extranet_resource_partner.id,
+                "location_dtos": [{
+                    "id": this.id,
+                }],
+                "location_group_dtos": [{
+                    "id": this_get_location_group_controller.id,
+                }],
+            }])
+        this_application_segment = zpa.ApplicationSegment("this",
+            name="app01.acme.com",
+            description="app01.acme.com",
+            enabled=True,
+            health_reporting="NONE",
+            health_check_type="NONE",
+            bypass_type="NEVER",
+            is_cname_enabled=True,
+            tcp_port_ranges=[
+                "8080",
+                "8080",
+            ],
+            domain_names=["app01.acme.com"],
+            segment_group_id=this_segment_group.id,
+            server_groups=[{
+                "ids": [this_server_group.id],
+            }],
+            zpn_er_ids=[{
+                "ids": [this_get_extranet_resource_partner.id],
+            }])
+        ```
+
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         Application Segment can be imported by using `<APPLICATION SEGMENT ID>` or `<APPLICATION SEGMENT NAME>` as the import ID.
@@ -1024,6 +1179,7 @@ class ApplicationSegment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] inspect_traffic_with_zia: Indicates if Inspect Traffic with ZIA is enabled for the application.
         :param pulumi.Input[_builtins.bool] is_cname_enabled: Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
         :param pulumi.Input[_builtins.str] name: Name of the application.
+        :param pulumi.Input[_builtins.bool] policy_style: Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled). Default: disabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] share_to_microtenants: Share the Application Segment to microtenants
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentTcpPortRangeArgs', 'ApplicationSegmentTcpPortRangeArgsDict']]]] tcp_port_range: tcp port range
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tcp_port_ranges: TCP port ranges used to access the app.
@@ -1038,10 +1194,132 @@ class ApplicationSegment(pulumi.CustomResource):
                  args: ApplicationSegmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        * [Official documentation](https://help.zscaler.com/zpa/about-applications)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
+
+        The **zpa_application_segment** resource creates an application segment in the Zscaler Private Access cloud. This resource can then be referenced in an access policy rule, access policy timeout rule or access policy client forwarding rule.
+
+        ## Zenith Community - ZPA Application Segment
+
+        ![ZPA Terraform provider Video Series Ep7 - Application Segment](https://community.zscaler.com/zenith/s/question/0D54u00009evlEXCAY/video-zpa-terraform-provider-video-series-ep7-zpa-application-segment)
+
+        ## Example 1 Usage
+
+        ```python
+        import pulumi
+        import zscaler_pulumi_zpa as zpa
+
+        # ZPA Segment Group resource
+        this_segment_group = zpa.SegmentGroup("this",
+            name="Example",
+            description="Example",
+            enabled=True)
+        # ZPA App Connector Group resource
+        this_connector_group = zpa.ConnectorGroup("this",
+            name="Example",
+            description="Example",
+            enabled=True,
+            city_country="San Jose, CA",
+            country_code="US",
+            latitude="37.338",
+            longitude="-121.8863",
+            location="San Jose, CA, US",
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            override_version_profile=True,
+            version_profile_id="0",
+            dns_query_type="IPV4")
+        # ZPA Server Group resource
+        this_server_group = zpa.ServerGroup("this",
+            name="Example",
+            description="Example",
+            enabled=True,
+            dynamic_discovery=False,
+            app_connector_groups=[{
+                "ids": [this_connector_group.id],
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[this_connector_group]))
+        # ZPA Application Segment resource
+        this = zpa.ApplicationSegment("this",
+            name="Example",
+            description="Example",
+            enabled=True,
+            health_reporting="ON_ACCESS",
+            bypass_type="NEVER",
+            is_cname_enabled=True,
+            tcp_port_ranges=[
+                "8080",
+                "8080",
+            ],
+            domain_names=["server.acme.com"],
+            segment_group_id=this_segment_group.id,
+            server_groups=[{
+                "ids": [this_server_group.id],
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[
+                    this_server_group,
+                    this_segment_group,
+                ]))
+        ```
+
+        ## Example 2 Usage
+
+        ## Example 3 Usage - Application Segment Extranet Configuration
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        this = zpa.get_location_controller(name="ExtranetLocation01 | zscalerbeta.net",
+            zia_er_name="NewExtranet 8432")
+        this_get_location_group_controller = zpa.get_location_group_controller(location_name="ExtranetLocation01",
+            zia_er_name="NewExtranet 8432")
+        this_get_extranet_resource_partner = zpa.get_extranet_resource_partner(name="NewExtranet 8432")
+        this_segment_group = zpa.SegmentGroup("this",
+            name="Example",
+            description="Example",
+            enabled=True)
+        this_server_group = zpa.ServerGroup("this",
+            name="Example",
+            description="Example",
+            enabled=True,
+            dynamic_discovery=True,
+            extranet_enabled=True,
+            extranet_dtos=[{
+                "zpn_er_id": this_get_extranet_resource_partner.id,
+                "location_dtos": [{
+                    "id": this.id,
+                }],
+                "location_group_dtos": [{
+                    "id": this_get_location_group_controller.id,
+                }],
+            }])
+        this_application_segment = zpa.ApplicationSegment("this",
+            name="app01.acme.com",
+            description="app01.acme.com",
+            enabled=True,
+            health_reporting="NONE",
+            health_check_type="NONE",
+            bypass_type="NEVER",
+            is_cname_enabled=True,
+            tcp_port_ranges=[
+                "8080",
+                "8080",
+            ],
+            domain_names=["app01.acme.com"],
+            segment_group_id=this_segment_group.id,
+            server_groups=[{
+                "ids": [this_server_group.id],
+            }],
+            zpn_er_ids=[{
+                "ids": [this_get_extranet_resource_partner.id],
+            }])
+        ```
+
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         Application Segment can be imported by using `<APPLICATION SEGMENT ID>` or `<APPLICATION SEGMENT NAME>` as the import ID.
@@ -1091,6 +1369,7 @@ class ApplicationSegment(pulumi.CustomResource):
                  microtenant_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  passive_health_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 policy_style: Optional[pulumi.Input[_builtins.bool]] = None,
                  segment_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  segment_group_name: Optional[pulumi.Input[_builtins.str]] = None,
                  select_connector_close_to_app: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1135,6 +1414,7 @@ class ApplicationSegment(pulumi.CustomResource):
             __props__.__dict__["microtenant_id"] = microtenant_id
             __props__.__dict__["name"] = name
             __props__.__dict__["passive_health_enabled"] = passive_health_enabled
+            __props__.__dict__["policy_style"] = policy_style
             __props__.__dict__["segment_group_id"] = segment_group_id
             __props__.__dict__["segment_group_name"] = segment_group_name
             __props__.__dict__["select_connector_close_to_app"] = select_connector_close_to_app
@@ -1178,6 +1458,7 @@ class ApplicationSegment(pulumi.CustomResource):
             microtenant_id: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             passive_health_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+            policy_style: Optional[pulumi.Input[_builtins.bool]] = None,
             segment_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             segment_group_name: Optional[pulumi.Input[_builtins.str]] = None,
             select_connector_close_to_app: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1208,6 +1489,7 @@ class ApplicationSegment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] inspect_traffic_with_zia: Indicates if Inspect Traffic with ZIA is enabled for the application.
         :param pulumi.Input[_builtins.bool] is_cname_enabled: Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
         :param pulumi.Input[_builtins.str] name: Name of the application.
+        :param pulumi.Input[_builtins.bool] policy_style: Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled). Default: disabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] share_to_microtenants: Share the Application Segment to microtenants
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentTcpPortRangeArgs', 'ApplicationSegmentTcpPortRangeArgsDict']]]] tcp_port_range: tcp port range
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tcp_port_ranges: TCP port ranges used to access the app.
@@ -1239,6 +1521,7 @@ class ApplicationSegment(pulumi.CustomResource):
         __props__.__dict__["microtenant_id"] = microtenant_id
         __props__.__dict__["name"] = name
         __props__.__dict__["passive_health_enabled"] = passive_health_enabled
+        __props__.__dict__["policy_style"] = policy_style
         __props__.__dict__["segment_group_id"] = segment_group_id
         __props__.__dict__["segment_group_name"] = segment_group_name
         __props__.__dict__["select_connector_close_to_app"] = select_connector_close_to_app
@@ -1383,6 +1666,14 @@ class ApplicationSegment(pulumi.CustomResource):
     @pulumi.getter(name="passiveHealthEnabled")
     def passive_health_enabled(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "passive_health_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="policyStyle")
+    def policy_style(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled). Default: disabled.
+        """
+        return pulumi.get(self, "policy_style")
 
     @_builtins.property
     @pulumi.getter(name="segmentGroupId")

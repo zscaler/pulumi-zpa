@@ -70,7 +70,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := zpa.LookupUserPortalController(ctx, &zpa.LookupUserPortalControllerArgs{
+//			_, err := zpa.GetUserPortalController(ctx, &zpa.LookupUserPortalControllerArgs{
 //				Name: pulumi.StringRef("UserPortal01"),
 //			}, nil)
 //			if err != nil {

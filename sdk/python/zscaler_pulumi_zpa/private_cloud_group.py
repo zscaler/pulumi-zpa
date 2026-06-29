@@ -23,6 +23,7 @@ class PrivateCloudGroupArgs:
                  country_code: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enrollment_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
                  is_public: Optional[pulumi.Input[_builtins.str]] = None,
                  latitude: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -30,16 +31,18 @@ class PrivateCloudGroupArgs:
                  microtenant_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  override_version_profile: Optional[pulumi.Input[_builtins.bool]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  upgrade_day: Optional[pulumi.Input[_builtins.str]] = None,
                  upgrade_time_in_secs: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_profile_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 user_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 version_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 version_profile_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PrivateCloudGroup resource.
         :param pulumi.Input[_builtins.str] city_country: - City and country of the Private Cloud Group
         :param pulumi.Input[_builtins.str] country_code: - Country code of the Private Cloud Group
         :param pulumi.Input[_builtins.str] description: - Description of the Private Cloud Group
         :param pulumi.Input[_builtins.bool] enabled: - Whether this Private Cloud Group is enabled or not
+        :param pulumi.Input[_builtins.str] enrollment_cert_id: ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
         :param pulumi.Input[_builtins.str] is_public: - Whether the Private Cloud Group is public
         :param pulumi.Input[_builtins.str] latitude: - Latitude of the Private Cloud Group. Integer or decimal. With values in the range of -90 to 90
         :param pulumi.Input[_builtins.str] location: - Location of the Private Cloud Group
@@ -47,10 +50,11 @@ class PrivateCloudGroupArgs:
         :param pulumi.Input[_builtins.str] microtenant_id: - Microtenant ID for the Private Cloud Group
         :param pulumi.Input[_builtins.str] name: - Name of the Private Cloud Group
         :param pulumi.Input[_builtins.bool] override_version_profile: - Whether the default version profile of the Private Cloud Group is applied or overridden
-        :param pulumi.Input[_builtins.str] site_id: - Site ID for the Private Cloud Group
         :param pulumi.Input[_builtins.str] upgrade_day: - Private Cloud Controllers in this group will attempt to update to a newer version of the software during this specified day. Supported values: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`
         :param pulumi.Input[_builtins.str] upgrade_time_in_secs: - Private Cloud Controllers in this group will attempt to update to a newer version of the software during this specified time. Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute intervals
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_codes: User codes from deployed Private Cloud Controllers for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the Private Cloud Controllers. These codes are obtained from the Private Cloud Controller VM after deployment.
         :param pulumi.Input[_builtins.str] version_profile_id: - ID of the version profile for the Private Cloud Group
+        :param pulumi.Input[_builtins.str] version_profile_name: Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         """
         if city_country is not None:
             pulumi.set(__self__, "city_country", city_country)
@@ -60,6 +64,8 @@ class PrivateCloudGroupArgs:
             pulumi.set(__self__, "description", description)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if enrollment_cert_id is not None:
+            pulumi.set(__self__, "enrollment_cert_id", enrollment_cert_id)
         if is_public is not None:
             pulumi.set(__self__, "is_public", is_public)
         if latitude is not None:
@@ -74,14 +80,16 @@ class PrivateCloudGroupArgs:
             pulumi.set(__self__, "name", name)
         if override_version_profile is not None:
             pulumi.set(__self__, "override_version_profile", override_version_profile)
-        if site_id is not None:
-            pulumi.set(__self__, "site_id", site_id)
         if upgrade_day is not None:
             pulumi.set(__self__, "upgrade_day", upgrade_day)
         if upgrade_time_in_secs is not None:
             pulumi.set(__self__, "upgrade_time_in_secs", upgrade_time_in_secs)
+        if user_codes is not None:
+            pulumi.set(__self__, "user_codes", user_codes)
         if version_profile_id is not None:
             pulumi.set(__self__, "version_profile_id", version_profile_id)
+        if version_profile_name is not None:
+            pulumi.set(__self__, "version_profile_name", version_profile_name)
 
     @_builtins.property
     @pulumi.getter(name="cityCountry")
@@ -130,6 +138,18 @@ class PrivateCloudGroupArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enrollmentCertId")
+    def enrollment_cert_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
+        """
+        return pulumi.get(self, "enrollment_cert_id")
+
+    @enrollment_cert_id.setter
+    def enrollment_cert_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "enrollment_cert_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isPublic")
@@ -216,18 +236,6 @@ class PrivateCloudGroupArgs:
         pulumi.set(self, "override_version_profile", value)
 
     @_builtins.property
-    @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        - Site ID for the Private Cloud Group
-        """
-        return pulumi.get(self, "site_id")
-
-    @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "site_id", value)
-
-    @_builtins.property
     @pulumi.getter(name="upgradeDay")
     def upgrade_day(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -252,6 +260,18 @@ class PrivateCloudGroupArgs:
         pulumi.set(self, "upgrade_time_in_secs", value)
 
     @_builtins.property
+    @pulumi.getter(name="userCodes")
+    def user_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        User codes from deployed Private Cloud Controllers for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the Private Cloud Controllers. These codes are obtained from the Private Cloud Controller VM after deployment.
+        """
+        return pulumi.get(self, "user_codes")
+
+    @user_codes.setter
+    def user_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "user_codes", value)
+
+    @_builtins.property
     @pulumi.getter(name="versionProfileId")
     def version_profile_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -262,6 +282,18 @@ class PrivateCloudGroupArgs:
     @version_profile_id.setter
     def version_profile_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "version_profile_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="versionProfileName")
+    def version_profile_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
+        """
+        return pulumi.get(self, "version_profile_name")
+
+    @version_profile_name.setter
+    def version_profile_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "version_profile_name", value)
 
 
 @pulumi.input_type
@@ -271,6 +303,7 @@ class _PrivateCloudGroupState:
                  country_code: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enrollment_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
                  is_public: Optional[pulumi.Input[_builtins.str]] = None,
                  latitude: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -278,16 +311,18 @@ class _PrivateCloudGroupState:
                  microtenant_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  override_version_profile: Optional[pulumi.Input[_builtins.bool]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  upgrade_day: Optional[pulumi.Input[_builtins.str]] = None,
                  upgrade_time_in_secs: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_profile_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 user_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 version_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 version_profile_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PrivateCloudGroup resources.
         :param pulumi.Input[_builtins.str] city_country: - City and country of the Private Cloud Group
         :param pulumi.Input[_builtins.str] country_code: - Country code of the Private Cloud Group
         :param pulumi.Input[_builtins.str] description: - Description of the Private Cloud Group
         :param pulumi.Input[_builtins.bool] enabled: - Whether this Private Cloud Group is enabled or not
+        :param pulumi.Input[_builtins.str] enrollment_cert_id: ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
         :param pulumi.Input[_builtins.str] is_public: - Whether the Private Cloud Group is public
         :param pulumi.Input[_builtins.str] latitude: - Latitude of the Private Cloud Group. Integer or decimal. With values in the range of -90 to 90
         :param pulumi.Input[_builtins.str] location: - Location of the Private Cloud Group
@@ -295,10 +330,11 @@ class _PrivateCloudGroupState:
         :param pulumi.Input[_builtins.str] microtenant_id: - Microtenant ID for the Private Cloud Group
         :param pulumi.Input[_builtins.str] name: - Name of the Private Cloud Group
         :param pulumi.Input[_builtins.bool] override_version_profile: - Whether the default version profile of the Private Cloud Group is applied or overridden
-        :param pulumi.Input[_builtins.str] site_id: - Site ID for the Private Cloud Group
         :param pulumi.Input[_builtins.str] upgrade_day: - Private Cloud Controllers in this group will attempt to update to a newer version of the software during this specified day. Supported values: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`
         :param pulumi.Input[_builtins.str] upgrade_time_in_secs: - Private Cloud Controllers in this group will attempt to update to a newer version of the software during this specified time. Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute intervals
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_codes: User codes from deployed Private Cloud Controllers for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the Private Cloud Controllers. These codes are obtained from the Private Cloud Controller VM after deployment.
         :param pulumi.Input[_builtins.str] version_profile_id: - ID of the version profile for the Private Cloud Group
+        :param pulumi.Input[_builtins.str] version_profile_name: Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         """
         if city_country is not None:
             pulumi.set(__self__, "city_country", city_country)
@@ -308,6 +344,8 @@ class _PrivateCloudGroupState:
             pulumi.set(__self__, "description", description)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if enrollment_cert_id is not None:
+            pulumi.set(__self__, "enrollment_cert_id", enrollment_cert_id)
         if is_public is not None:
             pulumi.set(__self__, "is_public", is_public)
         if latitude is not None:
@@ -322,14 +360,16 @@ class _PrivateCloudGroupState:
             pulumi.set(__self__, "name", name)
         if override_version_profile is not None:
             pulumi.set(__self__, "override_version_profile", override_version_profile)
-        if site_id is not None:
-            pulumi.set(__self__, "site_id", site_id)
         if upgrade_day is not None:
             pulumi.set(__self__, "upgrade_day", upgrade_day)
         if upgrade_time_in_secs is not None:
             pulumi.set(__self__, "upgrade_time_in_secs", upgrade_time_in_secs)
+        if user_codes is not None:
+            pulumi.set(__self__, "user_codes", user_codes)
         if version_profile_id is not None:
             pulumi.set(__self__, "version_profile_id", version_profile_id)
+        if version_profile_name is not None:
+            pulumi.set(__self__, "version_profile_name", version_profile_name)
 
     @_builtins.property
     @pulumi.getter(name="cityCountry")
@@ -378,6 +418,18 @@ class _PrivateCloudGroupState:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enrollmentCertId")
+    def enrollment_cert_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
+        """
+        return pulumi.get(self, "enrollment_cert_id")
+
+    @enrollment_cert_id.setter
+    def enrollment_cert_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "enrollment_cert_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isPublic")
@@ -464,18 +516,6 @@ class _PrivateCloudGroupState:
         pulumi.set(self, "override_version_profile", value)
 
     @_builtins.property
-    @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        - Site ID for the Private Cloud Group
-        """
-        return pulumi.get(self, "site_id")
-
-    @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "site_id", value)
-
-    @_builtins.property
     @pulumi.getter(name="upgradeDay")
     def upgrade_day(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -500,6 +540,18 @@ class _PrivateCloudGroupState:
         pulumi.set(self, "upgrade_time_in_secs", value)
 
     @_builtins.property
+    @pulumi.getter(name="userCodes")
+    def user_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        User codes from deployed Private Cloud Controllers for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the Private Cloud Controllers. These codes are obtained from the Private Cloud Controller VM after deployment.
+        """
+        return pulumi.get(self, "user_codes")
+
+    @user_codes.setter
+    def user_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "user_codes", value)
+
+    @_builtins.property
     @pulumi.getter(name="versionProfileId")
     def version_profile_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -510,6 +562,18 @@ class _PrivateCloudGroupState:
     @version_profile_id.setter
     def version_profile_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "version_profile_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="versionProfileName")
+    def version_profile_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
+        """
+        return pulumi.get(self, "version_profile_name")
+
+    @version_profile_name.setter
+    def version_profile_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "version_profile_name", value)
 
 
 @pulumi.type_token("zpa:index/privateCloudGroup:PrivateCloudGroup")
@@ -522,6 +586,7 @@ class PrivateCloudGroup(pulumi.CustomResource):
                  country_code: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enrollment_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
                  is_public: Optional[pulumi.Input[_builtins.str]] = None,
                  latitude: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -529,10 +594,11 @@ class PrivateCloudGroup(pulumi.CustomResource):
                  microtenant_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  override_version_profile: Optional[pulumi.Input[_builtins.bool]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  upgrade_day: Optional[pulumi.Input[_builtins.str]] = None,
                  upgrade_time_in_secs: Optional[pulumi.Input[_builtins.str]] = None,
+                 user_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 version_profile_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         * [Official documentation](https://help.zscaler.com/zpa/about-private-cloud-controller-groups)
@@ -540,12 +606,29 @@ class PrivateCloudGroup(pulumi.CustomResource):
 
         The **zpa_private_cloud_group** resource creates a private cloud group in the Zscaler Private Access cloud.
 
+        ## Private Cloud Connector Onboarding Methods
+
+        Private Cloud Connectors can be onboarded into ZPA in two ways. This resource supports both:
+
+        1. **OAuth2 user codes** *(recommended for new deployments)* - Set `user_codes` with the codes generated on each Private Cloud Connector VM. The provider creates the group and then calls the OAuth2 user code verification API to enroll the connectors.
+        2. **Provisioning key** *(legacy / still supported)* - Create the group with this resource, then create a `ProvisioningKey` referencing it. The key is then injected into the Private Cloud Connector VM at deployment time.
+
+        In **both** methods, the Private Cloud Connector enrollment requires an `enrollment_cert_id`. You can either:
+        - Set `enrollment_cert_id` explicitly using the `get_enrollment_cert` data source, or
+        - Omit it entirely - the provider will automatically look up the **"Connector"** enrollment certificate by name and populate the ID for you.
+
         ## Example Usage
+
+        ### OAuth2 Enrollment With User Codes (Explicit Enrollment Certificate)
+
+        Set the enrollment certificate explicitly and provide the user codes displayed on the Private Cloud Connector VMs after deployment. The provider will create the group and then call the user code verification API to complete enrollment.
 
         ```python
         import pulumi
+        import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
+        connector = zpa.get_enrollment_cert(name="Connector")
         this = zpa.PrivateCloudGroup("this",
             name="PrivateCloudGroup01",
             description="Example private cloud group",
@@ -559,13 +642,77 @@ class PrivateCloudGroup(pulumi.CustomResource):
             site_id="72058304855088543",
             version_profile_id="0",
             override_version_profile=True,
-            is_public="TRUE")
+            is_public="TRUE",
+            enrollment_cert_id=connector.id,
+            user_codes=[
+                "CODE_FROM_VM_1",
+                "CODE_FROM_VM_2",
+            ])
+        ```
+
+        ### OAuth2 Enrollment With User Codes (Auto-Resolved Enrollment Certificate)
+
+        Omit `enrollment_cert_id` entirely and the provider will automatically resolve the **"Connector"** enrollment certificate for you. This is the simplest configuration and is functionally equivalent to the explicit example above.
+
+        ```python
+        import pulumi
+        import zscaler_pulumi_zpa as zpa
+
+        example = zpa.PrivateCloudGroup("example",
+            name="PrivateCloudGroup01",
+            description="Example private cloud group",
+            enabled=True,
+            country_code="US",
+            city_country="San Jose, US",
+            latitude="37.33874",
+            longitude="-121.8852525",
+            location="San Jose, CA, USA",
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            site_id="72058304855088543",
+            version_profile_id="0",
+            override_version_profile=True,
+            is_public="TRUE",
+            user_codes=[
+                "CODE_FROM_VM_1",
+                "CODE_FROM_VM_2",
+            ])
+        ```
+
+        ### Enrolling Private Cloud Connectors Via Provisioning Key (Explicit Enrollment Certificate)
+
+        Create the Private Cloud Connector Group, then create a `ProvisioningKey` that references the group's ID. The provisioning key is then injected into the Private Cloud Connector VM at deployment time.
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        connector = zpa.get_enrollment_cert(name="Connector")
+        example = zpa.PrivateCloudGroup("example",
+            name="Example",
+            description="Example",
+            enabled=True,
+            city_country="San Jose, CA",
+            country_code="US",
+            latitude="37.338",
+            longitude="-121.8863",
+            location="San Jose, CA, US",
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            dns_query_type="IPV4_IPV6",
+            enrollment_cert_id=connector.id)
+        example_provisioning_key = zpa.ProvisioningKey("example",
+            name="ProvisioningKey01",
+            association_type="CONNECTOR_GRP",
+            max_usage="10",
+            enrollment_cert_id=connector.id,
+            zcomponent_id=example.id)
         ```
 
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         Private Cloud Group can be imported by using `<GROUP ID>` or `<GROUP NAME>` as the import ID.
@@ -586,6 +733,7 @@ class PrivateCloudGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] country_code: - Country code of the Private Cloud Group
         :param pulumi.Input[_builtins.str] description: - Description of the Private Cloud Group
         :param pulumi.Input[_builtins.bool] enabled: - Whether this Private Cloud Group is enabled or not
+        :param pulumi.Input[_builtins.str] enrollment_cert_id: ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
         :param pulumi.Input[_builtins.str] is_public: - Whether the Private Cloud Group is public
         :param pulumi.Input[_builtins.str] latitude: - Latitude of the Private Cloud Group. Integer or decimal. With values in the range of -90 to 90
         :param pulumi.Input[_builtins.str] location: - Location of the Private Cloud Group
@@ -593,10 +741,11 @@ class PrivateCloudGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] microtenant_id: - Microtenant ID for the Private Cloud Group
         :param pulumi.Input[_builtins.str] name: - Name of the Private Cloud Group
         :param pulumi.Input[_builtins.bool] override_version_profile: - Whether the default version profile of the Private Cloud Group is applied or overridden
-        :param pulumi.Input[_builtins.str] site_id: - Site ID for the Private Cloud Group
         :param pulumi.Input[_builtins.str] upgrade_day: - Private Cloud Controllers in this group will attempt to update to a newer version of the software during this specified day. Supported values: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`
         :param pulumi.Input[_builtins.str] upgrade_time_in_secs: - Private Cloud Controllers in this group will attempt to update to a newer version of the software during this specified time. Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute intervals
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_codes: User codes from deployed Private Cloud Controllers for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the Private Cloud Controllers. These codes are obtained from the Private Cloud Controller VM after deployment.
         :param pulumi.Input[_builtins.str] version_profile_id: - ID of the version profile for the Private Cloud Group
+        :param pulumi.Input[_builtins.str] version_profile_name: Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         """
         ...
     @overload
@@ -610,12 +759,29 @@ class PrivateCloudGroup(pulumi.CustomResource):
 
         The **zpa_private_cloud_group** resource creates a private cloud group in the Zscaler Private Access cloud.
 
+        ## Private Cloud Connector Onboarding Methods
+
+        Private Cloud Connectors can be onboarded into ZPA in two ways. This resource supports both:
+
+        1. **OAuth2 user codes** *(recommended for new deployments)* - Set `user_codes` with the codes generated on each Private Cloud Connector VM. The provider creates the group and then calls the OAuth2 user code verification API to enroll the connectors.
+        2. **Provisioning key** *(legacy / still supported)* - Create the group with this resource, then create a `ProvisioningKey` referencing it. The key is then injected into the Private Cloud Connector VM at deployment time.
+
+        In **both** methods, the Private Cloud Connector enrollment requires an `enrollment_cert_id`. You can either:
+        - Set `enrollment_cert_id` explicitly using the `get_enrollment_cert` data source, or
+        - Omit it entirely - the provider will automatically look up the **"Connector"** enrollment certificate by name and populate the ID for you.
+
         ## Example Usage
+
+        ### OAuth2 Enrollment With User Codes (Explicit Enrollment Certificate)
+
+        Set the enrollment certificate explicitly and provide the user codes displayed on the Private Cloud Connector VMs after deployment. The provider will create the group and then call the user code verification API to complete enrollment.
 
         ```python
         import pulumi
+        import pulumi_zpa as zpa
         import zscaler_pulumi_zpa as zpa
 
+        connector = zpa.get_enrollment_cert(name="Connector")
         this = zpa.PrivateCloudGroup("this",
             name="PrivateCloudGroup01",
             description="Example private cloud group",
@@ -629,13 +795,77 @@ class PrivateCloudGroup(pulumi.CustomResource):
             site_id="72058304855088543",
             version_profile_id="0",
             override_version_profile=True,
-            is_public="TRUE")
+            is_public="TRUE",
+            enrollment_cert_id=connector.id,
+            user_codes=[
+                "CODE_FROM_VM_1",
+                "CODE_FROM_VM_2",
+            ])
+        ```
+
+        ### OAuth2 Enrollment With User Codes (Auto-Resolved Enrollment Certificate)
+
+        Omit `enrollment_cert_id` entirely and the provider will automatically resolve the **"Connector"** enrollment certificate for you. This is the simplest configuration and is functionally equivalent to the explicit example above.
+
+        ```python
+        import pulumi
+        import zscaler_pulumi_zpa as zpa
+
+        example = zpa.PrivateCloudGroup("example",
+            name="PrivateCloudGroup01",
+            description="Example private cloud group",
+            enabled=True,
+            country_code="US",
+            city_country="San Jose, US",
+            latitude="37.33874",
+            longitude="-121.8852525",
+            location="San Jose, CA, USA",
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            site_id="72058304855088543",
+            version_profile_id="0",
+            override_version_profile=True,
+            is_public="TRUE",
+            user_codes=[
+                "CODE_FROM_VM_1",
+                "CODE_FROM_VM_2",
+            ])
+        ```
+
+        ### Enrolling Private Cloud Connectors Via Provisioning Key (Explicit Enrollment Certificate)
+
+        Create the Private Cloud Connector Group, then create a `ProvisioningKey` that references the group's ID. The provisioning key is then injected into the Private Cloud Connector VM at deployment time.
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        connector = zpa.get_enrollment_cert(name="Connector")
+        example = zpa.PrivateCloudGroup("example",
+            name="Example",
+            description="Example",
+            enabled=True,
+            city_country="San Jose, CA",
+            country_code="US",
+            latitude="37.338",
+            longitude="-121.8863",
+            location="San Jose, CA, US",
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            dns_query_type="IPV4_IPV6",
+            enrollment_cert_id=connector.id)
+        example_provisioning_key = zpa.ProvisioningKey("example",
+            name="ProvisioningKey01",
+            association_type="CONNECTOR_GRP",
+            max_usage="10",
+            enrollment_cert_id=connector.id,
+            zcomponent_id=example.id)
         ```
 
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         Private Cloud Group can be imported by using `<GROUP ID>` or `<GROUP NAME>` as the import ID.
@@ -669,6 +899,7 @@ class PrivateCloudGroup(pulumi.CustomResource):
                  country_code: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enrollment_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
                  is_public: Optional[pulumi.Input[_builtins.str]] = None,
                  latitude: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -676,10 +907,11 @@ class PrivateCloudGroup(pulumi.CustomResource):
                  microtenant_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  override_version_profile: Optional[pulumi.Input[_builtins.bool]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  upgrade_day: Optional[pulumi.Input[_builtins.str]] = None,
                  upgrade_time_in_secs: Optional[pulumi.Input[_builtins.str]] = None,
+                 user_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 version_profile_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -693,6 +925,7 @@ class PrivateCloudGroup(pulumi.CustomResource):
             __props__.__dict__["country_code"] = country_code
             __props__.__dict__["description"] = description
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["enrollment_cert_id"] = enrollment_cert_id
             __props__.__dict__["is_public"] = is_public
             __props__.__dict__["latitude"] = latitude
             __props__.__dict__["location"] = location
@@ -700,10 +933,11 @@ class PrivateCloudGroup(pulumi.CustomResource):
             __props__.__dict__["microtenant_id"] = microtenant_id
             __props__.__dict__["name"] = name
             __props__.__dict__["override_version_profile"] = override_version_profile
-            __props__.__dict__["site_id"] = site_id
             __props__.__dict__["upgrade_day"] = upgrade_day
             __props__.__dict__["upgrade_time_in_secs"] = upgrade_time_in_secs
+            __props__.__dict__["user_codes"] = user_codes
             __props__.__dict__["version_profile_id"] = version_profile_id
+            __props__.__dict__["version_profile_name"] = version_profile_name
         super(PrivateCloudGroup, __self__).__init__(
             'zpa:index/privateCloudGroup:PrivateCloudGroup',
             resource_name,
@@ -718,6 +952,7 @@ class PrivateCloudGroup(pulumi.CustomResource):
             country_code: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+            enrollment_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
             is_public: Optional[pulumi.Input[_builtins.str]] = None,
             latitude: Optional[pulumi.Input[_builtins.str]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -725,10 +960,11 @@ class PrivateCloudGroup(pulumi.CustomResource):
             microtenant_id: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             override_version_profile: Optional[pulumi.Input[_builtins.bool]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
             upgrade_day: Optional[pulumi.Input[_builtins.str]] = None,
             upgrade_time_in_secs: Optional[pulumi.Input[_builtins.str]] = None,
-            version_profile_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'PrivateCloudGroup':
+            user_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            version_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
+            version_profile_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'PrivateCloudGroup':
         """
         Get an existing PrivateCloudGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -740,6 +976,7 @@ class PrivateCloudGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] country_code: - Country code of the Private Cloud Group
         :param pulumi.Input[_builtins.str] description: - Description of the Private Cloud Group
         :param pulumi.Input[_builtins.bool] enabled: - Whether this Private Cloud Group is enabled or not
+        :param pulumi.Input[_builtins.str] enrollment_cert_id: ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
         :param pulumi.Input[_builtins.str] is_public: - Whether the Private Cloud Group is public
         :param pulumi.Input[_builtins.str] latitude: - Latitude of the Private Cloud Group. Integer or decimal. With values in the range of -90 to 90
         :param pulumi.Input[_builtins.str] location: - Location of the Private Cloud Group
@@ -747,10 +984,11 @@ class PrivateCloudGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] microtenant_id: - Microtenant ID for the Private Cloud Group
         :param pulumi.Input[_builtins.str] name: - Name of the Private Cloud Group
         :param pulumi.Input[_builtins.bool] override_version_profile: - Whether the default version profile of the Private Cloud Group is applied or overridden
-        :param pulumi.Input[_builtins.str] site_id: - Site ID for the Private Cloud Group
         :param pulumi.Input[_builtins.str] upgrade_day: - Private Cloud Controllers in this group will attempt to update to a newer version of the software during this specified day. Supported values: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`
         :param pulumi.Input[_builtins.str] upgrade_time_in_secs: - Private Cloud Controllers in this group will attempt to update to a newer version of the software during this specified time. Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute intervals
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_codes: User codes from deployed Private Cloud Controllers for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the Private Cloud Controllers. These codes are obtained from the Private Cloud Controller VM after deployment.
         :param pulumi.Input[_builtins.str] version_profile_id: - ID of the version profile for the Private Cloud Group
+        :param pulumi.Input[_builtins.str] version_profile_name: Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -760,6 +998,7 @@ class PrivateCloudGroup(pulumi.CustomResource):
         __props__.__dict__["country_code"] = country_code
         __props__.__dict__["description"] = description
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["enrollment_cert_id"] = enrollment_cert_id
         __props__.__dict__["is_public"] = is_public
         __props__.__dict__["latitude"] = latitude
         __props__.__dict__["location"] = location
@@ -767,10 +1006,11 @@ class PrivateCloudGroup(pulumi.CustomResource):
         __props__.__dict__["microtenant_id"] = microtenant_id
         __props__.__dict__["name"] = name
         __props__.__dict__["override_version_profile"] = override_version_profile
-        __props__.__dict__["site_id"] = site_id
         __props__.__dict__["upgrade_day"] = upgrade_day
         __props__.__dict__["upgrade_time_in_secs"] = upgrade_time_in_secs
+        __props__.__dict__["user_codes"] = user_codes
         __props__.__dict__["version_profile_id"] = version_profile_id
+        __props__.__dict__["version_profile_name"] = version_profile_name
         return PrivateCloudGroup(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -804,6 +1044,14 @@ class PrivateCloudGroup(pulumi.CustomResource):
         - Whether this Private Cloud Group is enabled or not
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="enrollmentCertId")
+    def enrollment_cert_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
+        """
+        return pulumi.get(self, "enrollment_cert_id")
 
     @_builtins.property
     @pulumi.getter(name="isPublic")
@@ -862,14 +1110,6 @@ class PrivateCloudGroup(pulumi.CustomResource):
         return pulumi.get(self, "override_version_profile")
 
     @_builtins.property
-    @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        - Site ID for the Private Cloud Group
-        """
-        return pulumi.get(self, "site_id")
-
-    @_builtins.property
     @pulumi.getter(name="upgradeDay")
     def upgrade_day(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -886,10 +1126,26 @@ class PrivateCloudGroup(pulumi.CustomResource):
         return pulumi.get(self, "upgrade_time_in_secs")
 
     @_builtins.property
+    @pulumi.getter(name="userCodes")
+    def user_codes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        User codes from deployed Private Cloud Controllers for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the Private Cloud Controllers. These codes are obtained from the Private Cloud Controller VM after deployment.
+        """
+        return pulumi.get(self, "user_codes")
+
+    @_builtins.property
     @pulumi.getter(name="versionProfileId")
-    def version_profile_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def version_profile_id(self) -> pulumi.Output[_builtins.str]:
         """
         - ID of the version profile for the Private Cloud Group
         """
         return pulumi.get(self, "version_profile_id")
+
+    @_builtins.property
+    @pulumi.getter(name="versionProfileName")
+    def version_profile_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
+        """
+        return pulumi.get(self, "version_profile_name")
 

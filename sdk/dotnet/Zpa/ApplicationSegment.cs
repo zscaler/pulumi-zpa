@@ -11,10 +11,230 @@ using Pulumi;
 namespace zscaler.PulumiPackage.Zpa
 {
     /// <summary>
+    /// * [Official documentation](https://help.zscaler.com/zpa/about-applications)
+    /// * [API documentation](https://help.zscaler.com/zpa/configuring-application-segments-using-api)
+    /// 
+    /// The **zpa_application_segment** resource creates an application segment in the Zscaler Private Access cloud. This resource can then be referenced in an access policy rule, access policy timeout rule or access policy client forwarding rule.
+    /// 
+    /// ## Zenith Community - ZPA Application Segment
+    /// 
+    /// ![ZPA Terraform provider Video Series Ep7 - Application Segment](https://community.zscaler.com/zenith/s/question/0D54u00009evlEXCAY/video-zpa-terraform-provider-video-series-ep7-zpa-application-segment)
+    /// 
+    /// ## Example 1 Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // ZPA Segment Group resource
+    ///     var thisSegmentGroup = new Zpa.SegmentGroup("this", new()
+    ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         Enabled = true,
+    ///     });
+    /// 
+    ///     // ZPA App Connector Group resource
+    ///     var thisConnectorGroup = new Zpa.ConnectorGroup("this", new()
+    ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         Enabled = true,
+    ///         CityCountry = "San Jose, CA",
+    ///         CountryCode = "US",
+    ///         Latitude = "37.338",
+    ///         Longitude = "-121.8863",
+    ///         Location = "San Jose, CA, US",
+    ///         UpgradeDay = "SUNDAY",
+    ///         UpgradeTimeInSecs = "66600",
+    ///         OverrideVersionProfile = true,
+    ///         VersionProfileId = "0",
+    ///         DnsQueryType = "IPV4",
+    ///     });
+    /// 
+    ///     // ZPA Server Group resource
+    ///     var thisServerGroup = new Zpa.ServerGroup("this", new()
+    ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         Enabled = true,
+    ///         DynamicDiscovery = false,
+    ///         AppConnectorGroups = new[]
+    ///         {
+    ///             new Zpa.Inputs.ServerGroupAppConnectorGroupArgs
+    ///             {
+    ///                 Ids = new[]
+    ///                 {
+    ///                     thisConnectorGroup.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             thisConnectorGroup,
+    ///         },
+    ///     });
+    /// 
+    ///     // ZPA Application Segment resource
+    ///     var @this = new Zpa.ApplicationSegment("this", new()
+    ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         Enabled = true,
+    ///         HealthReporting = "ON_ACCESS",
+    ///         BypassType = "NEVER",
+    ///         IsCnameEnabled = true,
+    ///         TcpPortRanges = new[]
+    ///         {
+    ///             "8080",
+    ///             "8080",
+    ///         },
+    ///         DomainNames = new[]
+    ///         {
+    ///             "server.acme.com",
+    ///         },
+    ///         SegmentGroupId = thisSegmentGroup.Id,
+    ///         ServerGroups = new[]
+    ///         {
+    ///             new Zpa.Inputs.ApplicationSegmentServerGroupArgs
+    ///             {
+    ///                 Ids = new[]
+    ///                 {
+    ///                     thisServerGroup.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             thisServerGroup,
+    ///             thisSegmentGroup,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Example 2 Usage
+    /// 
+    /// ## Example 3 Usage - Application Segment Extranet Configuration
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = Zpa.GetLocationController.Invoke(new()
+    ///     {
+    ///         Name = "ExtranetLocation01 | zscalerbeta.net",
+    ///         ZiaErName = "NewExtranet 8432",
+    ///     });
+    /// 
+    ///     var thisGetLocationGroupController = Zpa.GetLocationGroupController.Invoke(new()
+    ///     {
+    ///         LocationName = "ExtranetLocation01",
+    ///         ZiaErName = "NewExtranet 8432",
+    ///     });
+    /// 
+    ///     var thisGetExtranetResourcePartner = Zpa.GetExtranetResourcePartner.Invoke(new()
+    ///     {
+    ///         Name = "NewExtranet 8432",
+    ///     });
+    /// 
+    ///     var thisSegmentGroup = new Zpa.SegmentGroup("this", new()
+    ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         Enabled = true,
+    ///     });
+    /// 
+    ///     var thisServerGroup = new Zpa.ServerGroup("this", new()
+    ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         Enabled = true,
+    ///         DynamicDiscovery = true,
+    ///         ExtranetEnabled = true,
+    ///         ExtranetDtos = new[]
+    ///         {
+    ///             new Zpa.Inputs.ServerGroupExtranetDtoArgs
+    ///             {
+    ///                 ZpnErId = thisGetExtranetResourcePartner.Apply(getExtranetResourcePartnerResult =&gt; getExtranetResourcePartnerResult.Id),
+    ///                 LocationDtos = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.ServerGroupExtranetDtoLocationDtoArgs
+    ///                     {
+    ///                         Id = @this.Apply(@this =&gt; @this.Apply(getLocationControllerResult =&gt; getLocationControllerResult.Id)),
+    ///                     },
+    ///                 },
+    ///                 LocationGroupDtos = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.ServerGroupExtranetDtoLocationGroupDtoArgs
+    ///                     {
+    ///                         Id = thisGetLocationGroupController.Apply(getLocationGroupControllerResult =&gt; getLocationGroupControllerResult.Id),
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var thisApplicationSegment = new Zpa.ApplicationSegment("this", new()
+    ///     {
+    ///         Name = "app01.acme.com",
+    ///         Description = "app01.acme.com",
+    ///         Enabled = true,
+    ///         HealthReporting = "NONE",
+    ///         HealthCheckType = "NONE",
+    ///         BypassType = "NEVER",
+    ///         IsCnameEnabled = true,
+    ///         TcpPortRanges = new[]
+    ///         {
+    ///             "8080",
+    ///             "8080",
+    ///         },
+    ///         DomainNames = new[]
+    ///         {
+    ///             "app01.acme.com",
+    ///         },
+    ///         SegmentGroupId = thisSegmentGroup.Id,
+    ///         ServerGroups = new[]
+    ///         {
+    ///             new Zpa.Inputs.ApplicationSegmentServerGroupArgs
+    ///             {
+    ///                 Ids = new[]
+    ///                 {
+    ///                     thisServerGroup.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///         ZpnErIds = new[]
+    ///         {
+    ///             new Zpa.Inputs.ApplicationSegmentZpnErIdArgs
+    ///             {
+    ///                 Ids = new[]
+    ///                 {
+    ///                     thisGetExtranetResourcePartner.Apply(getExtranetResourcePartnerResult =&gt; getExtranetResourcePartnerResult.Id),
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-    /// 
     /// Visit
     /// 
     /// Application Segment can be imported by using `&lt;APPLICATION SEGMENT ID&gt;` or `&lt;APPLICATION SEGMENT NAME&gt;` as the import ID.
@@ -121,6 +341,12 @@ namespace zscaler.PulumiPackage.Zpa
 
         [Output("passiveHealthEnabled")]
         public Output<bool> PassiveHealthEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled). Default: disabled.
+        /// </summary>
+        [Output("policyStyle")]
+        public Output<bool?> PolicyStyle { get; private set; } = null!;
 
         [Output("segmentGroupId")]
         public Output<string> SegmentGroupId { get; private set; } = null!;
@@ -322,6 +548,12 @@ namespace zscaler.PulumiPackage.Zpa
         [Input("passiveHealthEnabled")]
         public Input<bool>? PassiveHealthEnabled { get; set; }
 
+        /// <summary>
+        /// Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled). Default: disabled.
+        /// </summary>
+        [Input("policyStyle")]
+        public Input<bool>? PolicyStyle { get; set; }
+
         [Input("segmentGroupId")]
         public Input<string>? SegmentGroupId { get; set; }
 
@@ -522,6 +754,12 @@ namespace zscaler.PulumiPackage.Zpa
 
         [Input("passiveHealthEnabled")]
         public Input<bool>? PassiveHealthEnabled { get; set; }
+
+        /// <summary>
+        /// Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled). Default: disabled.
+        /// </summary>
+        [Input("policyStyle")]
+        public Input<bool>? PolicyStyle { get; set; }
 
         [Input("segmentGroupId")]
         public Input<string>? SegmentGroupId { get; set; }

@@ -32,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Retrieve CBI External Profile
-//			_, err := zpa.LookupCloudBrowserIsolationExternalProfile(ctx, &zpa.LookupCloudBrowserIsolationExternalProfileArgs{
+//			_, err := zpa.GetCloudBrowserIsolationExternalProfile(ctx, &zpa.LookupCloudBrowserIsolationExternalProfileArgs{
 //				Name: pulumi.StringRef("Example"),
 //			}, nil)
 //			if err != nil {

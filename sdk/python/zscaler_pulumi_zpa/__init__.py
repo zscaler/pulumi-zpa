@@ -71,6 +71,7 @@ from .get_pra_approval import *
 from .get_pra_console import *
 from .get_pra_credential import *
 from .get_pra_portal import *
+from .get_private_cloud import *
 from .get_private_cloud_controller import *
 from .get_private_cloud_group import *
 from .get_provisioning_key import *
@@ -83,6 +84,9 @@ from .get_server_group import *
 from .get_service_edge_assistant_schedule import *
 from .get_service_edge_controller import *
 from .get_service_edge_group import *
+from .get_tag_group import *
+from .get_tag_key import *
+from .get_tag_namespace import *
 from .get_trusted_network import *
 from .get_user_portal_aup import *
 from .get_user_portal_controller import *
@@ -114,6 +118,7 @@ from .pra_console import *
 from .pra_credential import *
 from .pra_credential_pool import *
 from .pra_portal import *
+from .private_cloud import *
 from .private_cloud_group import *
 from .provider import *
 from .provisioning_key import *
@@ -121,6 +126,9 @@ from .segment_group import *
 from .server_group import *
 from .service_edge_assistant_schedule import *
 from .service_edge_group import *
+from .tag_group import *
+from .tag_key import *
+from .tag_namespace import *
 from .user_portal_aup import *
 from .user_portal_controller import *
 from .user_portal_link import *
@@ -468,6 +476,14 @@ _utilities.register(
  },
  {
   "pkg": "zpa",
+  "mod": "index/privateCloud",
+  "fqn": "zscaler_pulumi_zpa",
+  "classes": {
+   "zpa:index/privateCloud:PrivateCloud": "PrivateCloud"
+  }
+ },
+ {
+  "pkg": "zpa",
   "mod": "index/privateCloudGroup",
   "fqn": "zscaler_pulumi_zpa",
   "classes": {
@@ -512,6 +528,30 @@ _utilities.register(
   "fqn": "zscaler_pulumi_zpa",
   "classes": {
    "zpa:index/serviceEdgeGroup:ServiceEdgeGroup": "ServiceEdgeGroup"
+  }
+ },
+ {
+  "pkg": "zpa",
+  "mod": "index/tagGroup",
+  "fqn": "zscaler_pulumi_zpa",
+  "classes": {
+   "zpa:index/tagGroup:TagGroup": "TagGroup"
+  }
+ },
+ {
+  "pkg": "zpa",
+  "mod": "index/tagKey",
+  "fqn": "zscaler_pulumi_zpa",
+  "classes": {
+   "zpa:index/tagKey:TagKey": "TagKey"
+  }
+ },
+ {
+  "pkg": "zpa",
+  "mod": "index/tagNamespace",
+  "fqn": "zscaler_pulumi_zpa",
+  "classes": {
+   "zpa:index/tagNamespace:TagNamespace": "TagNamespace"
   }
  },
  {

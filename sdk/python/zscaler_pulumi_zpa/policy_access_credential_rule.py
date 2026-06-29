@@ -328,7 +328,7 @@ class PolicyAccessCredentialRule(pulumi.CustomResource):
             certificate_id=this_zpa_ba_certificate["id"],
             user_notification="Created with Terraform",
             user_notification_enabled=True)
-        pra_application_ids = std.flatten_output(input=this_application_segment_pra.common_apps_dtos.apply(lambda common_apps_dtos: [common_apps.apps_config for commonApps in common_apps_dtos])).apply(lambda invoke: {app_dto["name"]: app_dto["id"] for appDto in invoke.result})
+        pra_application_ids = std.flatten_output(input=this_application_segment_pra.common_apps_dtos.apply(lambda common_apps_dtos: [common_apps.apps_config for commonApps in common_apps_dtos])).apply(lambda invoke: {str(app_dto["name"]): app_dto["id"] for appDto in invoke.result})
         pra_application_id_ssh_pra = std.lookup_output(map=pra_application_ids,
             key="ssh_pra",
             default="").apply(lambda invoke: invoke.result)
@@ -437,7 +437,6 @@ class PolicyAccessCredentialRule(pulumi.CustomResource):
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         Policy access credential can be imported by using `<POLICY CREDENTIAL ID>` as the import ID.
@@ -529,7 +528,7 @@ class PolicyAccessCredentialRule(pulumi.CustomResource):
             certificate_id=this_zpa_ba_certificate["id"],
             user_notification="Created with Terraform",
             user_notification_enabled=True)
-        pra_application_ids = std.flatten_output(input=this_application_segment_pra.common_apps_dtos.apply(lambda common_apps_dtos: [common_apps.apps_config for commonApps in common_apps_dtos])).apply(lambda invoke: {app_dto["name"]: app_dto["id"] for appDto in invoke.result})
+        pra_application_ids = std.flatten_output(input=this_application_segment_pra.common_apps_dtos.apply(lambda common_apps_dtos: [common_apps.apps_config for commonApps in common_apps_dtos])).apply(lambda invoke: {str(app_dto["name"]): app_dto["id"] for appDto in invoke.result})
         pra_application_id_ssh_pra = std.lookup_output(map=pra_application_ids,
             key="ssh_pra",
             default="").apply(lambda invoke: invoke.result)
@@ -638,7 +637,6 @@ class PolicyAccessCredentialRule(pulumi.CustomResource):
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         Policy access credential can be imported by using `<POLICY CREDENTIAL ID>` as the import ID.

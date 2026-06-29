@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Inspection Application Segment Data Source
-//			_, err := zpa.LookupApplicationSegmentInspection(ctx, &zpa.LookupApplicationSegmentInspectionArgs{
+//			_, err := zpa.GetApplicationSegmentInspection(ctx, &zpa.LookupApplicationSegmentInspectionArgs{
 //				Name: pulumi.StringRef("ZPA_Inspection_Example"),
 //			}, nil)
 //			if err != nil {
@@ -55,7 +55,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA Inspection Application Segment Data Source
-//			_, err := zpa.LookupApplicationSegmentInspection(ctx, &zpa.LookupApplicationSegmentInspectionArgs{
+//			_, err := zpa.GetApplicationSegmentInspection(ctx, &zpa.LookupApplicationSegmentInspectionArgs{
 //				Id: pulumi.StringRef("123456789"),
 //			}, nil)
 //			if err != nil {

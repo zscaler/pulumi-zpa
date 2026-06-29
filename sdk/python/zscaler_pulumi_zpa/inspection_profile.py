@@ -591,13 +591,13 @@ class InspectionProfile(pulumi.CustomResource):
             "group13": "Request smuggling or Response split or Header injection",
         }
         # Dynamically create data sources using for_each
-        all = {__key: zpa.get_inspection_all_predefined_controls(group_name=__value) for __key, __value in group_names}
-        combined_predefined_controls = std.flatten(input=[ds.list for ds in all]).result
+        all = {__key: zpa.get_inspection_all_predefined_controls(group_name=__value) for __key, __value in sorted(group_names.items())}
+        combined_predefined_controls = std.flatten(input=[ds.list for ds in all.values()]).result
         example = zpa.InspectionProfile("example",
-            predefined_controls=[{"key": k, "value": v} for k, v in combined_predefined_controls].apply(lambda entries: [{
-                "id": entry["value"]["id"],
-                "action": entry["value"]["defaultAction"] if entry["value"]["action"] == "" else entry["value"]["action"],
-            } for entry in entries]),
+            predefined_controls=[{
+                "id": entry["id"],
+                "action": entry["defaultAction"] if entry["action"] == "" else entry["action"],
+            } for entry in combined_predefined_controls],
             name="Example",
             description="Example",
             paranoia_level="2",
@@ -624,8 +624,8 @@ class InspectionProfile(pulumi.CustomResource):
             "defaultPredefinedControls": "preprocessors",
         }
         # Retrieve all IDs and Actions for the preprocessors Control
-        all = {__key: zpa.get_inspection_all_predefined_controls(group_name=__value) for __key, __value in group_names}
-        combined_predefined_controls = std.flatten(input=[ds.list for ds in all]).result
+        all = {__key: zpa.get_inspection_all_predefined_controls(group_name=__value) for __key, __value in sorted(group_names.items())}
+        combined_predefined_controls = std.flatten(input=[ds.list for ds in all.values()]).result
         threat_labz_controls = [
             {
                 "id": "1",
@@ -641,14 +641,14 @@ class InspectionProfile(pulumi.CustomResource):
             },
         ]
         example = zpa.InspectionProfile("example",
-            predefined_controls=[{"key": k, "value": v} for k, v in combined_predefined_controls].apply(lambda entries: [{
-                "id": entry["value"]["id"],
-                "action": entry["value"]["defaultAction"] if entry["value"]["action"] == "" else entry["value"]["action"],
-            } for entry in entries]),
+            predefined_controls=[{
+                "id": entry["id"],
+                "action": entry["defaultAction"] if entry["action"] == "" else entry["action"],
+            } for entry in combined_predefined_controls],
             threat_labz_controls=[{
-                "id": entry2["value"]["id"],
-                "action": entry2["value"]["action"],
-            } for entry2 in [{"key": k, "value": v} for k, v in threat_labz_controls]],
+                "id": entry2["id"],
+                "action": entry2["action"],
+            } for entry2 in threat_labz_controls],
             name="ThreatLabz_Inspection_Profile",
             description="ThreatLabz Inspection Profile",
             paranoia_level="2",
@@ -659,7 +659,6 @@ class InspectionProfile(pulumi.CustomResource):
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         :param str resource_name: The name of the resource.
@@ -751,13 +750,13 @@ class InspectionProfile(pulumi.CustomResource):
             "group13": "Request smuggling or Response split or Header injection",
         }
         # Dynamically create data sources using for_each
-        all = {__key: zpa.get_inspection_all_predefined_controls(group_name=__value) for __key, __value in group_names}
-        combined_predefined_controls = std.flatten(input=[ds.list for ds in all]).result
+        all = {__key: zpa.get_inspection_all_predefined_controls(group_name=__value) for __key, __value in sorted(group_names.items())}
+        combined_predefined_controls = std.flatten(input=[ds.list for ds in all.values()]).result
         example = zpa.InspectionProfile("example",
-            predefined_controls=[{"key": k, "value": v} for k, v in combined_predefined_controls].apply(lambda entries: [{
-                "id": entry["value"]["id"],
-                "action": entry["value"]["defaultAction"] if entry["value"]["action"] == "" else entry["value"]["action"],
-            } for entry in entries]),
+            predefined_controls=[{
+                "id": entry["id"],
+                "action": entry["defaultAction"] if entry["action"] == "" else entry["action"],
+            } for entry in combined_predefined_controls],
             name="Example",
             description="Example",
             paranoia_level="2",
@@ -784,8 +783,8 @@ class InspectionProfile(pulumi.CustomResource):
             "defaultPredefinedControls": "preprocessors",
         }
         # Retrieve all IDs and Actions for the preprocessors Control
-        all = {__key: zpa.get_inspection_all_predefined_controls(group_name=__value) for __key, __value in group_names}
-        combined_predefined_controls = std.flatten(input=[ds.list for ds in all]).result
+        all = {__key: zpa.get_inspection_all_predefined_controls(group_name=__value) for __key, __value in sorted(group_names.items())}
+        combined_predefined_controls = std.flatten(input=[ds.list for ds in all.values()]).result
         threat_labz_controls = [
             {
                 "id": "1",
@@ -801,14 +800,14 @@ class InspectionProfile(pulumi.CustomResource):
             },
         ]
         example = zpa.InspectionProfile("example",
-            predefined_controls=[{"key": k, "value": v} for k, v in combined_predefined_controls].apply(lambda entries: [{
-                "id": entry["value"]["id"],
-                "action": entry["value"]["defaultAction"] if entry["value"]["action"] == "" else entry["value"]["action"],
-            } for entry in entries]),
+            predefined_controls=[{
+                "id": entry["id"],
+                "action": entry["defaultAction"] if entry["action"] == "" else entry["action"],
+            } for entry in combined_predefined_controls],
             threat_labz_controls=[{
-                "id": entry2["value"]["id"],
-                "action": entry2["value"]["action"],
-            } for entry2 in [{"key": k, "value": v} for k, v in threat_labz_controls]],
+                "id": entry2["id"],
+                "action": entry2["action"],
+            } for entry2 in threat_labz_controls],
             name="ThreatLabz_Inspection_Profile",
             description="ThreatLabz Inspection Profile",
             paranoia_level="2",
@@ -819,7 +818,6 @@ class InspectionProfile(pulumi.CustomResource):
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         :param str resource_name: The name of the resource.

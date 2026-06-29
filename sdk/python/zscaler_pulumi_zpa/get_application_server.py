@@ -151,6 +151,19 @@ def get_application_server(id: Optional[_builtins.str] = None,
                            name: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApplicationServerResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-servers)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-servers-using-api)
+
+    Use the **zpa_application_server** data source to get information about an application server created in the Zscaler Private Access cloud. This data source must be used in the following circumstances:
+
+    **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+
+    1. Server Group (When Dynamic Discovery is set to false)
+
+    ## Zenith Community - ZPA Application Server
+
+    ![ZPA Terraform provider Video Series Ep5 - Application Server](https://community.zscaler.com/zenith/s/question/0D54u00009evlEgCAI/video-terraform-provider-video-series-ep5-zpa-application-server)
+
     ## Example Usage
 
     ```python
@@ -196,6 +209,19 @@ def get_application_server_output(id: Optional[pulumi.Input[Optional[_builtins.s
                                   name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApplicationServerResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-servers)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-servers-using-api)
+
+    Use the **zpa_application_server** data source to get information about an application server created in the Zscaler Private Access cloud. This data source must be used in the following circumstances:
+
+    **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+
+    1. Server Group (When Dynamic Discovery is set to false)
+
+    ## Zenith Community - ZPA Application Server
+
+    ![ZPA Terraform provider Video Series Ep5 - Application Server](https://community.zscaler.com/zenith/s/question/0D54u00009evlEgCAI/video-terraform-provider-video-series-ep5-zpa-application-server)
+
     ## Example Usage
 
     ```python

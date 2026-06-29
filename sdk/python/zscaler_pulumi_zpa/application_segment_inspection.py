@@ -41,6 +41,7 @@ class ApplicationSegmentInspectionArgs:
                  is_incomplete_dr_config: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  passive_health_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 policy_style: Optional[pulumi.Input[_builtins.bool]] = None,
                  select_connector_close_to_app: Optional[pulumi.Input[_builtins.bool]] = None,
                  server_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentInspectionServerGroupArgs']]]] = None,
                  tcp_keep_alive: Optional[pulumi.Input[_builtins.str]] = None,
@@ -62,6 +63,7 @@ class ApplicationSegmentInspectionArgs:
         :param pulumi.Input[_builtins.str] health_reporting: Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
         :param pulumi.Input[_builtins.bool] is_cname_enabled: Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
         :param pulumi.Input[_builtins.str] name: Name of the application.
+        :param pulumi.Input[_builtins.bool] policy_style: Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled).
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentInspectionTcpPortRangeArgs']]] tcp_port_range: tcp port range
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tcp_port_ranges: TCP port ranges used to access the app.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tcp_protocols: TCP port ranges used to access the app.
@@ -107,6 +109,8 @@ class ApplicationSegmentInspectionArgs:
             pulumi.set(__self__, "name", name)
         if passive_health_enabled is not None:
             pulumi.set(__self__, "passive_health_enabled", passive_health_enabled)
+        if policy_style is not None:
+            pulumi.set(__self__, "policy_style", policy_style)
         if select_connector_close_to_app is not None:
             pulumi.set(__self__, "select_connector_close_to_app", select_connector_close_to_app)
         if server_groups is not None:
@@ -336,6 +340,18 @@ class ApplicationSegmentInspectionArgs:
         pulumi.set(self, "passive_health_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="policyStyle")
+    def policy_style(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled).
+        """
+        return pulumi.get(self, "policy_style")
+
+    @policy_style.setter
+    def policy_style(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "policy_style", value)
+
+    @_builtins.property
     @pulumi.getter(name="selectConnectorCloseToApp")
     def select_connector_close_to_app(self) -> Optional[pulumi.Input[_builtins.bool]]:
         return pulumi.get(self, "select_connector_close_to_app")
@@ -466,6 +482,7 @@ class _ApplicationSegmentInspectionState:
                  is_incomplete_dr_config: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  passive_health_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 policy_style: Optional[pulumi.Input[_builtins.bool]] = None,
                  segment_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  select_connector_close_to_app: Optional[pulumi.Input[_builtins.bool]] = None,
                  server_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentInspectionServerGroupArgs']]]] = None,
@@ -488,6 +505,7 @@ class _ApplicationSegmentInspectionState:
         :param pulumi.Input[_builtins.str] health_reporting: Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
         :param pulumi.Input[_builtins.bool] is_cname_enabled: Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
         :param pulumi.Input[_builtins.str] name: Name of the application.
+        :param pulumi.Input[_builtins.bool] policy_style: Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled).
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationSegmentInspectionTcpPortRangeArgs']]] tcp_port_range: tcp port range
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tcp_port_ranges: TCP port ranges used to access the app.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tcp_protocols: TCP port ranges used to access the app.
@@ -533,6 +551,8 @@ class _ApplicationSegmentInspectionState:
             pulumi.set(__self__, "name", name)
         if passive_health_enabled is not None:
             pulumi.set(__self__, "passive_health_enabled", passive_health_enabled)
+        if policy_style is not None:
+            pulumi.set(__self__, "policy_style", policy_style)
         if segment_group_id is not None:
             pulumi.set(__self__, "segment_group_id", segment_group_id)
         if select_connector_close_to_app is not None:
@@ -755,6 +775,18 @@ class _ApplicationSegmentInspectionState:
         pulumi.set(self, "passive_health_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="policyStyle")
+    def policy_style(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled).
+        """
+        return pulumi.get(self, "policy_style")
+
+    @policy_style.setter
+    def policy_style(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "policy_style", value)
+
+    @_builtins.property
     @pulumi.getter(name="segmentGroupId")
     def segment_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "segment_group_id")
@@ -897,6 +929,7 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
                  is_incomplete_dr_config: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  passive_health_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 policy_style: Optional[pulumi.Input[_builtins.bool]] = None,
                  segment_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  select_connector_close_to_app: Optional[pulumi.Input[_builtins.bool]] = None,
                  server_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentInspectionServerGroupArgs', 'ApplicationSegmentInspectionServerGroupArgsDict']]]]] = None,
@@ -953,7 +986,6 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         Inspection Application Segment can be imported by using `<APPLICATION SEGMENT ID>` or `<APPLICATION SEGMENT NAME>` as the import ID.
@@ -979,6 +1011,7 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] health_reporting: Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
         :param pulumi.Input[_builtins.bool] is_cname_enabled: Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
         :param pulumi.Input[_builtins.str] name: Name of the application.
+        :param pulumi.Input[_builtins.bool] policy_style: Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled).
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentInspectionTcpPortRangeArgs', 'ApplicationSegmentInspectionTcpPortRangeArgsDict']]]] tcp_port_range: tcp port range
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tcp_port_ranges: TCP port ranges used to access the app.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tcp_protocols: TCP port ranges used to access the app.
@@ -1036,7 +1069,6 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         Inspection Application Segment can be imported by using `<APPLICATION SEGMENT ID>` or `<APPLICATION SEGMENT NAME>` as the import ID.
@@ -1085,6 +1117,7 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
                  is_incomplete_dr_config: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  passive_health_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 policy_style: Optional[pulumi.Input[_builtins.bool]] = None,
                  segment_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  select_connector_close_to_app: Optional[pulumi.Input[_builtins.bool]] = None,
                  server_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentInspectionServerGroupArgs', 'ApplicationSegmentInspectionServerGroupArgsDict']]]]] = None,
@@ -1126,6 +1159,7 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
             __props__.__dict__["is_incomplete_dr_config"] = is_incomplete_dr_config
             __props__.__dict__["name"] = name
             __props__.__dict__["passive_health_enabled"] = passive_health_enabled
+            __props__.__dict__["policy_style"] = policy_style
             if segment_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'segment_group_id'")
             __props__.__dict__["segment_group_id"] = segment_group_id
@@ -1168,6 +1202,7 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
             is_incomplete_dr_config: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             passive_health_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+            policy_style: Optional[pulumi.Input[_builtins.bool]] = None,
             segment_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             select_connector_close_to_app: Optional[pulumi.Input[_builtins.bool]] = None,
             server_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentInspectionServerGroupArgs', 'ApplicationSegmentInspectionServerGroupArgsDict']]]]] = None,
@@ -1195,6 +1230,7 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] health_reporting: Whether health reporting for the app is Continuous or On Access. Supported values: NONE, ON_ACCESS, CONTINUOUS.
         :param pulumi.Input[_builtins.bool] is_cname_enabled: Indicates if the Zscaler Client Connector (formerly Zscaler App or Z App) receives CNAME DNS records from the connectors.
         :param pulumi.Input[_builtins.str] name: Name of the application.
+        :param pulumi.Input[_builtins.bool] policy_style: Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled).
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationSegmentInspectionTcpPortRangeArgs', 'ApplicationSegmentInspectionTcpPortRangeArgsDict']]]] tcp_port_range: tcp port range
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tcp_port_ranges: TCP port ranges used to access the app.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tcp_protocols: TCP port ranges used to access the app.
@@ -1225,6 +1261,7 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
         __props__.__dict__["is_incomplete_dr_config"] = is_incomplete_dr_config
         __props__.__dict__["name"] = name
         __props__.__dict__["passive_health_enabled"] = passive_health_enabled
+        __props__.__dict__["policy_style"] = policy_style
         __props__.__dict__["segment_group_id"] = segment_group_id
         __props__.__dict__["select_connector_close_to_app"] = select_connector_close_to_app
         __props__.__dict__["server_groups"] = server_groups
@@ -1359,6 +1396,14 @@ class ApplicationSegmentInspection(pulumi.CustomResource):
     @pulumi.getter(name="passiveHealthEnabled")
     def passive_health_enabled(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "passive_health_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="policyStyle")
+    def policy_style(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled).
+        """
+        return pulumi.get(self, "policy_style")
 
     @_builtins.property
     @pulumi.getter(name="segmentGroupId")

@@ -30,13 +30,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := zpa.NewUserPortalLink(ctx, "this", &zpa.UserPortalLinkArgs{
-//				Name:        pulumi.String("server1.example.com"),
-//				Description: pulumi.String("server1.example.com"),
-//				Enabled:     pulumi.Bool(true),
-//				Link:        pulumi.String("server1.example.com"),
-//				IconText:    pulumi.String(""),
-//				Protocol:    pulumi.String("https://"),
+//			this, err := zpa.GetApplicationSegment(ctx, &zpa.LookupApplicationSegmentArgs{
+//				Name: pulumi.StringRef("AppPortal01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = zpa.NewUserPortalLink(ctx, "this", &zpa.UserPortalLinkArgs{
+//				Name:          pulumi.String("server1.example.com"),
+//				Description:   pulumi.String("server1.example.com"),
+//				Enabled:       pulumi.Bool(true),
+//				Link:          pulumi.String("server1.example.com"),
+//				IconText:      pulumi.String(""),
+//				Protocol:      pulumi.String("https://"),
+//				ApplicationId: pulumi.String(this.Id),
 //				UserPortals: zpa.UserPortalLinkUserPortalArray{
 //					&zpa.UserPortalLinkUserPortalArgs{
 //						Ids: pulumi.StringArray{
@@ -57,8 +64,7 @@ import (
 // ## Import
 //
 // Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-//
-// # Visit
+// Visit
 //
 // **user_portal_controller** can be imported by using `<USER PORTAL ID>` or `<USER PORTAL NAME>` as the import ID.
 //
@@ -76,6 +82,8 @@ import (
 type UserPortalLink struct {
 	pulumi.CustomResourceState
 
+	// Application ID for the User Portal Link
+	ApplicationId pulumi.StringPtrOutput `pulumi:"applicationId"`
 	// Description of the User Portal Link
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether this User Portal Link is enabled or not
@@ -126,6 +134,8 @@ func GetUserPortalLink(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UserPortalLink resources.
 type userPortalLinkState struct {
+	// Application ID for the User Portal Link
+	ApplicationId *string `pulumi:"applicationId"`
 	// Description of the User Portal Link
 	Description *string `pulumi:"description"`
 	// Whether this User Portal Link is enabled or not
@@ -147,6 +157,8 @@ type userPortalLinkState struct {
 }
 
 type UserPortalLinkState struct {
+	// Application ID for the User Portal Link
+	ApplicationId pulumi.StringPtrInput
 	// Description of the User Portal Link
 	Description pulumi.StringPtrInput
 	// Whether this User Portal Link is enabled or not
@@ -172,6 +184,8 @@ func (UserPortalLinkState) ElementType() reflect.Type {
 }
 
 type userPortalLinkArgs struct {
+	// Application ID for the User Portal Link
+	ApplicationId *string `pulumi:"applicationId"`
 	// Description of the User Portal Link
 	Description *string `pulumi:"description"`
 	// Whether this User Portal Link is enabled or not
@@ -194,6 +208,8 @@ type userPortalLinkArgs struct {
 
 // The set of arguments for constructing a UserPortalLink resource.
 type UserPortalLinkArgs struct {
+	// Application ID for the User Portal Link
+	ApplicationId pulumi.StringPtrInput
 	// Description of the User Portal Link
 	Description pulumi.StringPtrInput
 	// Whether this User Portal Link is enabled or not
@@ -299,6 +315,11 @@ func (o UserPortalLinkOutput) ToUserPortalLinkOutput() UserPortalLinkOutput {
 
 func (o UserPortalLinkOutput) ToUserPortalLinkOutputWithContext(ctx context.Context) UserPortalLinkOutput {
 	return o
+}
+
+// Application ID for the User Portal Link
+func (o UserPortalLinkOutput) ApplicationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserPortalLink) pulumi.StringPtrOutput { return v.ApplicationId }).(pulumi.StringPtrOutput)
 }
 
 // Description of the User Portal Link

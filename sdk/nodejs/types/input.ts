@@ -1212,6 +1212,29 @@ export interface PraCredentialPoolCredential {
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface PrivateCloudAssistantGroupsIds {
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PrivateCloudPrivateBrokerGroupIds {
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PrivateCloudSiemIds {
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PrivateCloudSiteControllerGroupIds {
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PrivateCloudZpnFireDrillSite {
+    fireDrillInterval?: pulumi.Input<string>;
+    fireDrillIntervalTimeUnit?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    microtenantId?: pulumi.Input<string>;
+}
+
 export interface SegmentGroupApplication {
     id?: pulumi.Input<string>;
 }
@@ -1263,6 +1286,17 @@ export interface ServiceEdgeGroupServiceEdges {
 
 export interface ServiceEdgeGroupTrustedNetwork {
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface TagKeyTagValue {
+    /**
+     * The ID of the tag value.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The name of the tag value.
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface UserPortalLinkUserPortal {

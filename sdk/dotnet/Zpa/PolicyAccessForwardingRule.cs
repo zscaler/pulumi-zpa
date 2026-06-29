@@ -41,7 +41,6 @@ namespace zscaler.PulumiPackage.Zpa
     /// ## Import
     /// 
     /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-    /// 
     /// Visit
     /// 
     /// Policy Access Forwarding Rule can be imported by using `&lt;POLICY FORWARDING RULE ID&gt;` as the import ID.

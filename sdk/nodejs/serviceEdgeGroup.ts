@@ -8,11 +8,145 @@ import * as utilities from "./utilities";
 
 /**
  * * [Official documentation](https://help.zscaler.com/zpa/about-zpa-private-service-edge-groups)
- * * [API documentation](https://help.zscaler.com/zpa/configuring-zpa-private-service-edge-groups-using-api)
+ * * [API documentation](https://automate.zscaler.com/docs/docs/api-reference-and-guides/api-reference/zpa/private-service-edge-group-management)
  *
  * The **zpa_service_edge_group** resource creates a service edge group in the Zscaler Private Access cloud. This resource can then be referenced in a service edge connector.
  *
+ * ## Service Edge Onboarding Methods
+ *
+ * ZPA Private Service Edges can be onboarded into ZPA in two ways. This resource supports both:
+ *
+ * 1. **OAuth2 user codes** *(recommended for new deployments)* - Set `userCodes` with the codes generated on each Service Edge VM. The provider creates the group and then calls the OAuth2 user code verification API to enroll the Service Edges.
+ * 2. **Provisioning key** *(legacy / still supported)* - Create the group with this resource, then create a `zpa.ProvisioningKey` referencing it. The key is then injected into the Service Edge VM at deployment time.
+ *
+ * In **both** methods, the Service Edge enrollment requires an `enrollmentCertId`. You can either:
+ * - Set `enrollmentCertId` explicitly using the `zpa.getEnrollmentCert` data source, or
+ * - Omit it entirely - the provider will automatically look up the **"Service Edge"** enrollment certificate by name and populate the ID for you.
+ *
+ * ***
+ *
  * ## Example Usage
+ *
+ * ### OAuth2 Enrollment With User Codes (Explicit Enrollment Certificate)
+ *
+ * Set the enrollment certificate explicitly and provide the user codes displayed on the Service Edge VMs after deployment. The provider will create the group and then call the user code verification API to complete enrollment.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const serviceEdge = zpa.getEnrollmentCert({
+ *     name: "Service Edge",
+ * });
+ * const example = new zpa.ServiceEdgeGroup("example", {
+ *     name: "Service Edge Group San Jose",
+ *     description: "Service Edge Group in San Jose",
+ *     enabled: true,
+ *     isPublic: true,
+ *     upgradeDay: "SUNDAY",
+ *     upgradeTimeInSecs: "66600",
+ *     latitude: "37.3382082",
+ *     longitude: "-121.8863286",
+ *     location: "San Jose, CA, USA",
+ *     versionProfileName: "New Release",
+ *     enrollmentCertId: serviceEdge.then(serviceEdge => serviceEdge.id),
+ *     userCodes: [
+ *         "CODE_FROM_VM_1",
+ *         "CODE_FROM_VM_2",
+ *     ],
+ * });
+ * ```
+ *
+ * ### OAuth2 Enrollment With User Codes (Auto-Resolved Enrollment Certificate)
+ *
+ * Omit `enrollmentCertId` entirely and the provider will automatically resolve the **"Service Edge"** enrollment certificate for you. This is the simplest configuration and is functionally equivalent to the explicit example above.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const example = new zpa.ServiceEdgeGroup("example", {
+ *     name: "Service Edge Group San Jose",
+ *     description: "Service Edge Group in San Jose",
+ *     enabled: true,
+ *     isPublic: true,
+ *     upgradeDay: "SUNDAY",
+ *     upgradeTimeInSecs: "66600",
+ *     latitude: "37.3382082",
+ *     longitude: "-121.8863286",
+ *     location: "San Jose, CA, USA",
+ *     versionProfileName: "New Release",
+ *     userCodes: [
+ *         "CODE_FROM_VM_1",
+ *         "CODE_FROM_VM_2",
+ *     ],
+ * });
+ * ```
+ *
+ * ### Enrolling Service Edges Via Provisioning Key (Explicit Enrollment Certificate)
+ *
+ * Create the Service Edge Group, then create a `zpa.ProvisioningKey` that references the group's ID. The provisioning key is then injected into the Service Edge VM at deployment time.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const serviceEdge = zpa.getEnrollmentCert({
+ *     name: "Service Edge",
+ * });
+ * const example = new zpa.ServiceEdgeGroup("example", {
+ *     name: "Service Edge Group San Jose",
+ *     description: "Service Edge Group in San Jose",
+ *     enabled: true,
+ *     isPublic: true,
+ *     upgradeDay: "SUNDAY",
+ *     upgradeTimeInSecs: "66600",
+ *     latitude: "37.3382082",
+ *     longitude: "-121.8863286",
+ *     location: "San Jose, CA, USA",
+ *     versionProfileName: "New Release",
+ *     enrollmentCertId: serviceEdge.then(serviceEdge => serviceEdge.id),
+ * });
+ * const exampleProvisioningKey = new zpa.ProvisioningKey("example", {
+ *     name: "ProvisioningKey01",
+ *     associationType: "SERVICE_EDGE_GRP",
+ *     maxUsage: "10",
+ *     enrollmentCertId: serviceEdge.then(serviceEdge => serviceEdge.id),
+ *     zcomponentId: example.id,
+ * });
+ * ```
+ *
+ * ### Enrolling Service Edges Via Provisioning Key (Auto-Resolved Enrollment Certificate)
+ *
+ * For the Service Edge Group, you can omit `enrollmentCertId` and let the provider auto-resolve it. The `zpa.ProvisioningKey` resource still requires `enrollmentCertId` to be set explicitly.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const serviceEdge = zpa.getEnrollmentCert({
+ *     name: "Service Edge",
+ * });
+ * const example = new zpa.ServiceEdgeGroup("example", {
+ *     name: "Service Edge Group San Jose",
+ *     description: "Service Edge Group in San Jose",
+ *     enabled: true,
+ *     isPublic: true,
+ *     upgradeDay: "SUNDAY",
+ *     upgradeTimeInSecs: "66600",
+ *     latitude: "37.3382082",
+ *     longitude: "-121.8863286",
+ *     location: "San Jose, CA, USA",
+ *     versionProfileName: "New Release",
+ * });
+ * const exampleProvisioningKey = new zpa.ProvisioningKey("example", {
+ *     name: "ProvisioningKey01",
+ *     associationType: "SERVICE_EDGE_GRP",
+ *     maxUsage: "10",
+ *     enrollmentCertId: serviceEdge.then(serviceEdge => serviceEdge.id),
+ *     zcomponentId: example.id,
+ * });
+ * ```
  *
  * ### Using Version Profile Name
  *
@@ -38,57 +172,15 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as zpa from "@bdzscaler/pulumi-zpa";
- *
- * // ZPA Service Edge Group resource - No Trusted Network
- * const serviceEdgeGroupNyc = new zpa.ServiceEdgeGroup("service_edge_group_nyc", {
- *     name: "Service Edge Group New York",
- *     description: "Service Edge Group in New York",
- *     enabled: true,
- *     isPublic: true,
- *     upgradeDay: "SUNDAY",
- *     upgradeTimeInSecs: "66600",
- *     latitude: "40.7128",
- *     longitude: "-73.935242",
- *     location: "New York, NY, USA",
- *     versionProfileId: _this.id,
- * });
- * ```
- *
  * ### Using Version Profile ID
  *
- * data "zpa.getCustomerVersionProfile" "this" {
- *   name = "New Release"
- * }
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
- * // ZPA Service Edge Group resource - Trusted Network
- * const serviceEdgeGroupSjc = new zpa.ServiceEdgeGroup("service_edge_group_sjc", {
- *     name: "Service Edge Group San Jose",
- *     description: "Service Edge Group in San Jose",
- *     enabled: true,
- *     isPublic: true,
- *     upgradeDay: "SUNDAY",
- *     upgradeTimeInSecs: "66600",
- *     latitude: "37.3382082",
- *     longitude: "-121.8863286",
- *     location: "San Jose, CA, USA",
- *     versionProfileName: "New Release",
- *     trustedNetworks: [{
- *         ids: [example.id],
- *     }],
+ * const _this = zpa.getCustomerVersionProfile({
+ *     name: "New Release",
  * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as zpa from "@bdzscaler/pulumi-zpa";
- *
  * // ZPA Service Edge Group resource - No Trusted Network
  * const serviceEdgeGroupNyc = new zpa.ServiceEdgeGroup("service_edge_group_nyc", {
  *     name: "Service Edge Group New York",
@@ -100,14 +192,13 @@ import * as utilities from "./utilities";
  *     latitude: "40.7128",
  *     longitude: "-73.935242",
  *     location: "New York, NY, USA",
- *     versionProfileName: "New Release",
+ *     versionProfileId: _this.then(_this => _this.id),
  * });
  * ```
  *
  * ## Import
  *
  * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
- *
  * Visit
  *
  * Service Edge Group can be imported; use `<SERVER EDGE GROUP ID>` or `<SERVER EDGE GROUP NAME>` as the import ID.
@@ -167,6 +258,10 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
      */
     declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
+     * ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Service Edge' enrollment certificate by name.
+     */
+    declare public readonly enrollmentCertId: pulumi.Output<string>;
+    /**
      * Indicates whether the Service Edge Group is exclusive for business continuity.
      */
     declare public readonly exclusiveForBusinessContinuity: pulumi.Output<boolean | undefined>;
@@ -225,6 +320,10 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
     declare public readonly upgradeTimeInSecs: pulumi.Output<string | undefined>;
     declare public readonly useInDrMode: pulumi.Output<boolean>;
     /**
+     * User codes from deployed Service Edge VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the service edges. These codes are obtained from the Service Edge VM after deployment.
+     */
+    declare public readonly userCodes: pulumi.Output<string[] | undefined>;
+    /**
      * ID of the version profile.
      */
     declare public readonly versionProfileId: pulumi.Output<string>;
@@ -255,6 +354,7 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
             resourceInputs["countryCode"] = state?.countryCode;
             resourceInputs["description"] = state?.description;
             resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["enrollmentCertId"] = state?.enrollmentCertId;
             resourceInputs["exclusiveForBusinessContinuity"] = state?.exclusiveForBusinessContinuity;
             resourceInputs["graceDistanceEnabled"] = state?.graceDistanceEnabled;
             resourceInputs["graceDistanceValue"] = state?.graceDistanceValue;
@@ -271,6 +371,7 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
             resourceInputs["upgradeDay"] = state?.upgradeDay;
             resourceInputs["upgradeTimeInSecs"] = state?.upgradeTimeInSecs;
             resourceInputs["useInDrMode"] = state?.useInDrMode;
+            resourceInputs["userCodes"] = state?.userCodes;
             resourceInputs["versionProfileId"] = state?.versionProfileId;
             resourceInputs["versionProfileName"] = state?.versionProfileName;
             resourceInputs["versionProfileVisibilityScope"] = state?.versionProfileVisibilityScope;
@@ -290,6 +391,7 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
             resourceInputs["countryCode"] = args?.countryCode;
             resourceInputs["description"] = args?.description;
             resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["enrollmentCertId"] = args?.enrollmentCertId;
             resourceInputs["exclusiveForBusinessContinuity"] = args?.exclusiveForBusinessContinuity;
             resourceInputs["graceDistanceEnabled"] = args?.graceDistanceEnabled;
             resourceInputs["graceDistanceValue"] = args?.graceDistanceValue;
@@ -306,6 +408,7 @@ export class ServiceEdgeGroup extends pulumi.CustomResource {
             resourceInputs["upgradeDay"] = args?.upgradeDay;
             resourceInputs["upgradeTimeInSecs"] = args?.upgradeTimeInSecs;
             resourceInputs["useInDrMode"] = args?.useInDrMode;
+            resourceInputs["userCodes"] = args?.userCodes;
             resourceInputs["versionProfileId"] = args?.versionProfileId;
             resourceInputs["versionProfileName"] = args?.versionProfileName;
             resourceInputs["versionProfileVisibilityScope"] = args?.versionProfileVisibilityScope;
@@ -333,6 +436,10 @@ export interface ServiceEdgeGroupState {
      * Whether this Service Edge Group is enabled or not.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Service Edge' enrollment certificate by name.
+     */
+    enrollmentCertId?: pulumi.Input<string>;
     /**
      * Indicates whether the Service Edge Group is exclusive for business continuity.
      */
@@ -392,6 +499,10 @@ export interface ServiceEdgeGroupState {
     upgradeTimeInSecs?: pulumi.Input<string>;
     useInDrMode?: pulumi.Input<boolean>;
     /**
+     * User codes from deployed Service Edge VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the service edges. These codes are obtained from the Service Edge VM after deployment.
+     */
+    userCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * ID of the version profile.
      */
     versionProfileId?: pulumi.Input<string>;
@@ -423,6 +534,10 @@ export interface ServiceEdgeGroupArgs {
      * Whether this Service Edge Group is enabled or not.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Service Edge' enrollment certificate by name.
+     */
+    enrollmentCertId?: pulumi.Input<string>;
     /**
      * Indicates whether the Service Edge Group is exclusive for business continuity.
      */
@@ -481,6 +596,10 @@ export interface ServiceEdgeGroupArgs {
      */
     upgradeTimeInSecs?: pulumi.Input<string>;
     useInDrMode?: pulumi.Input<boolean>;
+    /**
+     * User codes from deployed Service Edge VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the service edges. These codes are obtained from the Service Edge VM after deployment.
+     */
+    userCodes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * ID of the version profile.
      */

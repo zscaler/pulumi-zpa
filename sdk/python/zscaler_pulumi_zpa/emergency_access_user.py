@@ -192,7 +192,7 @@ class EmergencyAccessUser(pulumi.CustomResource):
 
         ## Import
 
-        The `zpa_emergency_access_user` do not support resource import.
+        The `EmergencyAccessUser` do not support resource import.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -228,7 +228,7 @@ class EmergencyAccessUser(pulumi.CustomResource):
 
         ## Import
 
-        The `zpa_emergency_access_user` do not support resource import.
+        The `EmergencyAccessUser` do not support resource import.
 
         :param str resource_name: The name of the resource.
         :param EmergencyAccessUserArgs args: The arguments to use to populate this resource's properties.

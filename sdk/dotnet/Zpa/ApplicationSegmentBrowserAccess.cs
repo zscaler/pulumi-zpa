@@ -11,6 +11,109 @@ using Pulumi;
 namespace zscaler.PulumiPackage.Zpa
 {
     /// <summary>
+    /// * [Official documentation](https://help.zscaler.com/zpa/about-browser-access)
+    /// * [API documentation](https://help.zscaler.com/zpa/configuring-browser-access-application-segments-using-api)
+    /// 
+    /// The **zpa_application_segment_browser_access** creates and manages a browser access application segment resource in the Zscaler Private Access cloud. This resource can then be referenced in an access policy rule, access policy timeout rule or access policy client forwarding rule.
+    /// 
+    /// ## Zenith Community - ZPA Browser Access Application Segment
+    /// 
+    /// ![ZPA Terraform provider Video Series Ep8 - Browser Access Application Segment](https://community.zscaler.com/zenith/s/question/0D54u00009evlEGCAY/zpa-terraform-provider-video-series-ep8-zpa-browser-access-application-segment)
+    /// 
+    /// ## Example  - Using Custom Certificate
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Retrieve Browser Access Certificate
+    ///     var testCert = Zpa.GetBaCertificate.Invoke(new()
+    ///     {
+    ///         Name = "sales.acme.com",
+    ///     });
+    /// 
+    ///     // ZPA Segment Group resource
+    ///     var exampleSegmentGroup = new Zpa.SegmentGroup("example", new()
+    ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         Enabled = true,
+    ///     });
+    /// 
+    ///     var example = Zpa.GetAppConnectorGroup.Invoke(new()
+    ///     {
+    ///         Name = "AWS-Connector",
+    ///     });
+    /// 
+    ///     // ZPA Server Group resource
+    ///     var exampleServerGroup = new Zpa.ServerGroup("example", new()
+    ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         Enabled = true,
+    ///         DynamicDiscovery = true,
+    ///         AppConnectorGroups = new[]
+    ///         {
+    ///             new Zpa.Inputs.ServerGroupAppConnectorGroupArgs
+    ///             {
+    ///                 Ids = new[]
+    ///                 {
+    ///                     example.Apply(getAppConnectorGroupResult =&gt; getAppConnectorGroupResult.Id),
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Create Browser Access Application
+    ///     var browserAccessApps = new Zpa.ApplicationSegmentBrowserAccess("browser_access_apps", new()
+    ///     {
+    ///         Name = "Browser Access Apps",
+    ///         Description = "Browser Access Apps",
+    ///         Enabled = true,
+    ///         HealthReporting = "ON_ACCESS",
+    ///         BypassType = "NEVER",
+    ///         TcpPortRanges = new[]
+    ///         {
+    ///             "80",
+    ///             "80",
+    ///         },
+    ///         DomainNames = new[]
+    ///         {
+    ///             "sales.acme.com",
+    ///         },
+    ///         SegmentGroupId = exampleSegmentGroup.Id,
+    ///         ClientlessApps = new[]
+    ///         {
+    ///             new Zpa.Inputs.ApplicationSegmentBrowserAccessClientlessAppArgs
+    ///             {
+    ///                 Name = "sales.acme.com",
+    ///                 ApplicationProtocol = "HTTP",
+    ///                 ApplicationPort = "80",
+    ///                 CertificateId = testCert.Apply(getBaCertificateResult =&gt; getBaCertificateResult.Id),
+    ///                 TrustUntrustedCert = true,
+    ///                 Enabled = true,
+    ///                 Domain = "sales.acme.com",
+    ///             },
+    ///         },
+    ///         ServerGroups = new[]
+    ///         {
+    ///             new Zpa.Inputs.ApplicationSegmentBrowserAccessServerGroupArgs
+    ///             {
+    ///                 Ids = new[]
+    ///                 {
+    ///                     exampleServerGroup.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Example Usage
     /// 
     /// ### Zscaler Managed Certificate
@@ -18,7 +121,6 @@ namespace zscaler.PulumiPackage.Zpa
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Zpa = Pulumi.Zpa;
     /// using Zpa = zscaler.PulumiPackage.Zpa;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -111,7 +213,6 @@ namespace zscaler.PulumiPackage.Zpa
     /// ## Import
     /// 
     /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-    /// 
     /// Visit
     /// 
     /// **zpa_application_segment_browser_access** Application Segment Browser Access can be imported by using &lt;`BROWSER ACCESS ID`&gt; or `&lt;&lt;BROWSER ACCESS NAME&gt;` as the import ID.

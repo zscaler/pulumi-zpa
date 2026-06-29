@@ -12796,6 +12796,650 @@ func (o PraCredentialPoolCredentialArrayOutput) Index(i pulumi.IntInput) PraCred
 	}).(PraCredentialPoolCredentialOutput)
 }
 
+type PrivateCloudAssistantGroupsIds struct {
+	Ids []string `pulumi:"ids"`
+}
+
+// PrivateCloudAssistantGroupsIdsInput is an input type that accepts PrivateCloudAssistantGroupsIdsArgs and PrivateCloudAssistantGroupsIdsOutput values.
+// You can construct a concrete instance of `PrivateCloudAssistantGroupsIdsInput` via:
+//
+//	PrivateCloudAssistantGroupsIdsArgs{...}
+type PrivateCloudAssistantGroupsIdsInput interface {
+	pulumi.Input
+
+	ToPrivateCloudAssistantGroupsIdsOutput() PrivateCloudAssistantGroupsIdsOutput
+	ToPrivateCloudAssistantGroupsIdsOutputWithContext(context.Context) PrivateCloudAssistantGroupsIdsOutput
+}
+
+type PrivateCloudAssistantGroupsIdsArgs struct {
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (PrivateCloudAssistantGroupsIdsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudAssistantGroupsIds)(nil)).Elem()
+}
+
+func (i PrivateCloudAssistantGroupsIdsArgs) ToPrivateCloudAssistantGroupsIdsOutput() PrivateCloudAssistantGroupsIdsOutput {
+	return i.ToPrivateCloudAssistantGroupsIdsOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudAssistantGroupsIdsArgs) ToPrivateCloudAssistantGroupsIdsOutputWithContext(ctx context.Context) PrivateCloudAssistantGroupsIdsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudAssistantGroupsIdsOutput)
+}
+
+func (i PrivateCloudAssistantGroupsIdsArgs) ToPrivateCloudAssistantGroupsIdsPtrOutput() PrivateCloudAssistantGroupsIdsPtrOutput {
+	return i.ToPrivateCloudAssistantGroupsIdsPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudAssistantGroupsIdsArgs) ToPrivateCloudAssistantGroupsIdsPtrOutputWithContext(ctx context.Context) PrivateCloudAssistantGroupsIdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudAssistantGroupsIdsOutput).ToPrivateCloudAssistantGroupsIdsPtrOutputWithContext(ctx)
+}
+
+// PrivateCloudAssistantGroupsIdsPtrInput is an input type that accepts PrivateCloudAssistantGroupsIdsArgs, PrivateCloudAssistantGroupsIdsPtr and PrivateCloudAssistantGroupsIdsPtrOutput values.
+// You can construct a concrete instance of `PrivateCloudAssistantGroupsIdsPtrInput` via:
+//
+//	        PrivateCloudAssistantGroupsIdsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateCloudAssistantGroupsIdsPtrInput interface {
+	pulumi.Input
+
+	ToPrivateCloudAssistantGroupsIdsPtrOutput() PrivateCloudAssistantGroupsIdsPtrOutput
+	ToPrivateCloudAssistantGroupsIdsPtrOutputWithContext(context.Context) PrivateCloudAssistantGroupsIdsPtrOutput
+}
+
+type privateCloudAssistantGroupsIdsPtrType PrivateCloudAssistantGroupsIdsArgs
+
+func PrivateCloudAssistantGroupsIdsPtr(v *PrivateCloudAssistantGroupsIdsArgs) PrivateCloudAssistantGroupsIdsPtrInput {
+	return (*privateCloudAssistantGroupsIdsPtrType)(v)
+}
+
+func (*privateCloudAssistantGroupsIdsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateCloudAssistantGroupsIds)(nil)).Elem()
+}
+
+func (i *privateCloudAssistantGroupsIdsPtrType) ToPrivateCloudAssistantGroupsIdsPtrOutput() PrivateCloudAssistantGroupsIdsPtrOutput {
+	return i.ToPrivateCloudAssistantGroupsIdsPtrOutputWithContext(context.Background())
+}
+
+func (i *privateCloudAssistantGroupsIdsPtrType) ToPrivateCloudAssistantGroupsIdsPtrOutputWithContext(ctx context.Context) PrivateCloudAssistantGroupsIdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudAssistantGroupsIdsPtrOutput)
+}
+
+type PrivateCloudAssistantGroupsIdsOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudAssistantGroupsIdsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudAssistantGroupsIds)(nil)).Elem()
+}
+
+func (o PrivateCloudAssistantGroupsIdsOutput) ToPrivateCloudAssistantGroupsIdsOutput() PrivateCloudAssistantGroupsIdsOutput {
+	return o
+}
+
+func (o PrivateCloudAssistantGroupsIdsOutput) ToPrivateCloudAssistantGroupsIdsOutputWithContext(ctx context.Context) PrivateCloudAssistantGroupsIdsOutput {
+	return o
+}
+
+func (o PrivateCloudAssistantGroupsIdsOutput) ToPrivateCloudAssistantGroupsIdsPtrOutput() PrivateCloudAssistantGroupsIdsPtrOutput {
+	return o.ToPrivateCloudAssistantGroupsIdsPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateCloudAssistantGroupsIdsOutput) ToPrivateCloudAssistantGroupsIdsPtrOutputWithContext(ctx context.Context) PrivateCloudAssistantGroupsIdsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateCloudAssistantGroupsIds) *PrivateCloudAssistantGroupsIds {
+		return &v
+	}).(PrivateCloudAssistantGroupsIdsPtrOutput)
+}
+
+func (o PrivateCloudAssistantGroupsIdsOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateCloudAssistantGroupsIds) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type PrivateCloudAssistantGroupsIdsPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudAssistantGroupsIdsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateCloudAssistantGroupsIds)(nil)).Elem()
+}
+
+func (o PrivateCloudAssistantGroupsIdsPtrOutput) ToPrivateCloudAssistantGroupsIdsPtrOutput() PrivateCloudAssistantGroupsIdsPtrOutput {
+	return o
+}
+
+func (o PrivateCloudAssistantGroupsIdsPtrOutput) ToPrivateCloudAssistantGroupsIdsPtrOutputWithContext(ctx context.Context) PrivateCloudAssistantGroupsIdsPtrOutput {
+	return o
+}
+
+func (o PrivateCloudAssistantGroupsIdsPtrOutput) Elem() PrivateCloudAssistantGroupsIdsOutput {
+	return o.ApplyT(func(v *PrivateCloudAssistantGroupsIds) PrivateCloudAssistantGroupsIds {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateCloudAssistantGroupsIds
+		return ret
+	}).(PrivateCloudAssistantGroupsIdsOutput)
+}
+
+func (o PrivateCloudAssistantGroupsIdsPtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PrivateCloudAssistantGroupsIds) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
+type PrivateCloudPrivateBrokerGroupIds struct {
+	Ids []string `pulumi:"ids"`
+}
+
+// PrivateCloudPrivateBrokerGroupIdsInput is an input type that accepts PrivateCloudPrivateBrokerGroupIdsArgs and PrivateCloudPrivateBrokerGroupIdsOutput values.
+// You can construct a concrete instance of `PrivateCloudPrivateBrokerGroupIdsInput` via:
+//
+//	PrivateCloudPrivateBrokerGroupIdsArgs{...}
+type PrivateCloudPrivateBrokerGroupIdsInput interface {
+	pulumi.Input
+
+	ToPrivateCloudPrivateBrokerGroupIdsOutput() PrivateCloudPrivateBrokerGroupIdsOutput
+	ToPrivateCloudPrivateBrokerGroupIdsOutputWithContext(context.Context) PrivateCloudPrivateBrokerGroupIdsOutput
+}
+
+type PrivateCloudPrivateBrokerGroupIdsArgs struct {
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (PrivateCloudPrivateBrokerGroupIdsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudPrivateBrokerGroupIds)(nil)).Elem()
+}
+
+func (i PrivateCloudPrivateBrokerGroupIdsArgs) ToPrivateCloudPrivateBrokerGroupIdsOutput() PrivateCloudPrivateBrokerGroupIdsOutput {
+	return i.ToPrivateCloudPrivateBrokerGroupIdsOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudPrivateBrokerGroupIdsArgs) ToPrivateCloudPrivateBrokerGroupIdsOutputWithContext(ctx context.Context) PrivateCloudPrivateBrokerGroupIdsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudPrivateBrokerGroupIdsOutput)
+}
+
+func (i PrivateCloudPrivateBrokerGroupIdsArgs) ToPrivateCloudPrivateBrokerGroupIdsPtrOutput() PrivateCloudPrivateBrokerGroupIdsPtrOutput {
+	return i.ToPrivateCloudPrivateBrokerGroupIdsPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudPrivateBrokerGroupIdsArgs) ToPrivateCloudPrivateBrokerGroupIdsPtrOutputWithContext(ctx context.Context) PrivateCloudPrivateBrokerGroupIdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudPrivateBrokerGroupIdsOutput).ToPrivateCloudPrivateBrokerGroupIdsPtrOutputWithContext(ctx)
+}
+
+// PrivateCloudPrivateBrokerGroupIdsPtrInput is an input type that accepts PrivateCloudPrivateBrokerGroupIdsArgs, PrivateCloudPrivateBrokerGroupIdsPtr and PrivateCloudPrivateBrokerGroupIdsPtrOutput values.
+// You can construct a concrete instance of `PrivateCloudPrivateBrokerGroupIdsPtrInput` via:
+//
+//	        PrivateCloudPrivateBrokerGroupIdsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateCloudPrivateBrokerGroupIdsPtrInput interface {
+	pulumi.Input
+
+	ToPrivateCloudPrivateBrokerGroupIdsPtrOutput() PrivateCloudPrivateBrokerGroupIdsPtrOutput
+	ToPrivateCloudPrivateBrokerGroupIdsPtrOutputWithContext(context.Context) PrivateCloudPrivateBrokerGroupIdsPtrOutput
+}
+
+type privateCloudPrivateBrokerGroupIdsPtrType PrivateCloudPrivateBrokerGroupIdsArgs
+
+func PrivateCloudPrivateBrokerGroupIdsPtr(v *PrivateCloudPrivateBrokerGroupIdsArgs) PrivateCloudPrivateBrokerGroupIdsPtrInput {
+	return (*privateCloudPrivateBrokerGroupIdsPtrType)(v)
+}
+
+func (*privateCloudPrivateBrokerGroupIdsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateCloudPrivateBrokerGroupIds)(nil)).Elem()
+}
+
+func (i *privateCloudPrivateBrokerGroupIdsPtrType) ToPrivateCloudPrivateBrokerGroupIdsPtrOutput() PrivateCloudPrivateBrokerGroupIdsPtrOutput {
+	return i.ToPrivateCloudPrivateBrokerGroupIdsPtrOutputWithContext(context.Background())
+}
+
+func (i *privateCloudPrivateBrokerGroupIdsPtrType) ToPrivateCloudPrivateBrokerGroupIdsPtrOutputWithContext(ctx context.Context) PrivateCloudPrivateBrokerGroupIdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudPrivateBrokerGroupIdsPtrOutput)
+}
+
+type PrivateCloudPrivateBrokerGroupIdsOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudPrivateBrokerGroupIdsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudPrivateBrokerGroupIds)(nil)).Elem()
+}
+
+func (o PrivateCloudPrivateBrokerGroupIdsOutput) ToPrivateCloudPrivateBrokerGroupIdsOutput() PrivateCloudPrivateBrokerGroupIdsOutput {
+	return o
+}
+
+func (o PrivateCloudPrivateBrokerGroupIdsOutput) ToPrivateCloudPrivateBrokerGroupIdsOutputWithContext(ctx context.Context) PrivateCloudPrivateBrokerGroupIdsOutput {
+	return o
+}
+
+func (o PrivateCloudPrivateBrokerGroupIdsOutput) ToPrivateCloudPrivateBrokerGroupIdsPtrOutput() PrivateCloudPrivateBrokerGroupIdsPtrOutput {
+	return o.ToPrivateCloudPrivateBrokerGroupIdsPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateCloudPrivateBrokerGroupIdsOutput) ToPrivateCloudPrivateBrokerGroupIdsPtrOutputWithContext(ctx context.Context) PrivateCloudPrivateBrokerGroupIdsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateCloudPrivateBrokerGroupIds) *PrivateCloudPrivateBrokerGroupIds {
+		return &v
+	}).(PrivateCloudPrivateBrokerGroupIdsPtrOutput)
+}
+
+func (o PrivateCloudPrivateBrokerGroupIdsOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateCloudPrivateBrokerGroupIds) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type PrivateCloudPrivateBrokerGroupIdsPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudPrivateBrokerGroupIdsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateCloudPrivateBrokerGroupIds)(nil)).Elem()
+}
+
+func (o PrivateCloudPrivateBrokerGroupIdsPtrOutput) ToPrivateCloudPrivateBrokerGroupIdsPtrOutput() PrivateCloudPrivateBrokerGroupIdsPtrOutput {
+	return o
+}
+
+func (o PrivateCloudPrivateBrokerGroupIdsPtrOutput) ToPrivateCloudPrivateBrokerGroupIdsPtrOutputWithContext(ctx context.Context) PrivateCloudPrivateBrokerGroupIdsPtrOutput {
+	return o
+}
+
+func (o PrivateCloudPrivateBrokerGroupIdsPtrOutput) Elem() PrivateCloudPrivateBrokerGroupIdsOutput {
+	return o.ApplyT(func(v *PrivateCloudPrivateBrokerGroupIds) PrivateCloudPrivateBrokerGroupIds {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateCloudPrivateBrokerGroupIds
+		return ret
+	}).(PrivateCloudPrivateBrokerGroupIdsOutput)
+}
+
+func (o PrivateCloudPrivateBrokerGroupIdsPtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PrivateCloudPrivateBrokerGroupIds) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
+type PrivateCloudSiemIds struct {
+	Ids []string `pulumi:"ids"`
+}
+
+// PrivateCloudSiemIdsInput is an input type that accepts PrivateCloudSiemIdsArgs and PrivateCloudSiemIdsOutput values.
+// You can construct a concrete instance of `PrivateCloudSiemIdsInput` via:
+//
+//	PrivateCloudSiemIdsArgs{...}
+type PrivateCloudSiemIdsInput interface {
+	pulumi.Input
+
+	ToPrivateCloudSiemIdsOutput() PrivateCloudSiemIdsOutput
+	ToPrivateCloudSiemIdsOutputWithContext(context.Context) PrivateCloudSiemIdsOutput
+}
+
+type PrivateCloudSiemIdsArgs struct {
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (PrivateCloudSiemIdsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudSiemIds)(nil)).Elem()
+}
+
+func (i PrivateCloudSiemIdsArgs) ToPrivateCloudSiemIdsOutput() PrivateCloudSiemIdsOutput {
+	return i.ToPrivateCloudSiemIdsOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudSiemIdsArgs) ToPrivateCloudSiemIdsOutputWithContext(ctx context.Context) PrivateCloudSiemIdsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudSiemIdsOutput)
+}
+
+func (i PrivateCloudSiemIdsArgs) ToPrivateCloudSiemIdsPtrOutput() PrivateCloudSiemIdsPtrOutput {
+	return i.ToPrivateCloudSiemIdsPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudSiemIdsArgs) ToPrivateCloudSiemIdsPtrOutputWithContext(ctx context.Context) PrivateCloudSiemIdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudSiemIdsOutput).ToPrivateCloudSiemIdsPtrOutputWithContext(ctx)
+}
+
+// PrivateCloudSiemIdsPtrInput is an input type that accepts PrivateCloudSiemIdsArgs, PrivateCloudSiemIdsPtr and PrivateCloudSiemIdsPtrOutput values.
+// You can construct a concrete instance of `PrivateCloudSiemIdsPtrInput` via:
+//
+//	        PrivateCloudSiemIdsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateCloudSiemIdsPtrInput interface {
+	pulumi.Input
+
+	ToPrivateCloudSiemIdsPtrOutput() PrivateCloudSiemIdsPtrOutput
+	ToPrivateCloudSiemIdsPtrOutputWithContext(context.Context) PrivateCloudSiemIdsPtrOutput
+}
+
+type privateCloudSiemIdsPtrType PrivateCloudSiemIdsArgs
+
+func PrivateCloudSiemIdsPtr(v *PrivateCloudSiemIdsArgs) PrivateCloudSiemIdsPtrInput {
+	return (*privateCloudSiemIdsPtrType)(v)
+}
+
+func (*privateCloudSiemIdsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateCloudSiemIds)(nil)).Elem()
+}
+
+func (i *privateCloudSiemIdsPtrType) ToPrivateCloudSiemIdsPtrOutput() PrivateCloudSiemIdsPtrOutput {
+	return i.ToPrivateCloudSiemIdsPtrOutputWithContext(context.Background())
+}
+
+func (i *privateCloudSiemIdsPtrType) ToPrivateCloudSiemIdsPtrOutputWithContext(ctx context.Context) PrivateCloudSiemIdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudSiemIdsPtrOutput)
+}
+
+type PrivateCloudSiemIdsOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudSiemIdsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudSiemIds)(nil)).Elem()
+}
+
+func (o PrivateCloudSiemIdsOutput) ToPrivateCloudSiemIdsOutput() PrivateCloudSiemIdsOutput {
+	return o
+}
+
+func (o PrivateCloudSiemIdsOutput) ToPrivateCloudSiemIdsOutputWithContext(ctx context.Context) PrivateCloudSiemIdsOutput {
+	return o
+}
+
+func (o PrivateCloudSiemIdsOutput) ToPrivateCloudSiemIdsPtrOutput() PrivateCloudSiemIdsPtrOutput {
+	return o.ToPrivateCloudSiemIdsPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateCloudSiemIdsOutput) ToPrivateCloudSiemIdsPtrOutputWithContext(ctx context.Context) PrivateCloudSiemIdsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateCloudSiemIds) *PrivateCloudSiemIds {
+		return &v
+	}).(PrivateCloudSiemIdsPtrOutput)
+}
+
+func (o PrivateCloudSiemIdsOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateCloudSiemIds) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type PrivateCloudSiemIdsPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudSiemIdsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateCloudSiemIds)(nil)).Elem()
+}
+
+func (o PrivateCloudSiemIdsPtrOutput) ToPrivateCloudSiemIdsPtrOutput() PrivateCloudSiemIdsPtrOutput {
+	return o
+}
+
+func (o PrivateCloudSiemIdsPtrOutput) ToPrivateCloudSiemIdsPtrOutputWithContext(ctx context.Context) PrivateCloudSiemIdsPtrOutput {
+	return o
+}
+
+func (o PrivateCloudSiemIdsPtrOutput) Elem() PrivateCloudSiemIdsOutput {
+	return o.ApplyT(func(v *PrivateCloudSiemIds) PrivateCloudSiemIds {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateCloudSiemIds
+		return ret
+	}).(PrivateCloudSiemIdsOutput)
+}
+
+func (o PrivateCloudSiemIdsPtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PrivateCloudSiemIds) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
+type PrivateCloudSiteControllerGroupIds struct {
+	Ids []string `pulumi:"ids"`
+}
+
+// PrivateCloudSiteControllerGroupIdsInput is an input type that accepts PrivateCloudSiteControllerGroupIdsArgs and PrivateCloudSiteControllerGroupIdsOutput values.
+// You can construct a concrete instance of `PrivateCloudSiteControllerGroupIdsInput` via:
+//
+//	PrivateCloudSiteControllerGroupIdsArgs{...}
+type PrivateCloudSiteControllerGroupIdsInput interface {
+	pulumi.Input
+
+	ToPrivateCloudSiteControllerGroupIdsOutput() PrivateCloudSiteControllerGroupIdsOutput
+	ToPrivateCloudSiteControllerGroupIdsOutputWithContext(context.Context) PrivateCloudSiteControllerGroupIdsOutput
+}
+
+type PrivateCloudSiteControllerGroupIdsArgs struct {
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (PrivateCloudSiteControllerGroupIdsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudSiteControllerGroupIds)(nil)).Elem()
+}
+
+func (i PrivateCloudSiteControllerGroupIdsArgs) ToPrivateCloudSiteControllerGroupIdsOutput() PrivateCloudSiteControllerGroupIdsOutput {
+	return i.ToPrivateCloudSiteControllerGroupIdsOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudSiteControllerGroupIdsArgs) ToPrivateCloudSiteControllerGroupIdsOutputWithContext(ctx context.Context) PrivateCloudSiteControllerGroupIdsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudSiteControllerGroupIdsOutput)
+}
+
+func (i PrivateCloudSiteControllerGroupIdsArgs) ToPrivateCloudSiteControllerGroupIdsPtrOutput() PrivateCloudSiteControllerGroupIdsPtrOutput {
+	return i.ToPrivateCloudSiteControllerGroupIdsPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudSiteControllerGroupIdsArgs) ToPrivateCloudSiteControllerGroupIdsPtrOutputWithContext(ctx context.Context) PrivateCloudSiteControllerGroupIdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudSiteControllerGroupIdsOutput).ToPrivateCloudSiteControllerGroupIdsPtrOutputWithContext(ctx)
+}
+
+// PrivateCloudSiteControllerGroupIdsPtrInput is an input type that accepts PrivateCloudSiteControllerGroupIdsArgs, PrivateCloudSiteControllerGroupIdsPtr and PrivateCloudSiteControllerGroupIdsPtrOutput values.
+// You can construct a concrete instance of `PrivateCloudSiteControllerGroupIdsPtrInput` via:
+//
+//	        PrivateCloudSiteControllerGroupIdsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateCloudSiteControllerGroupIdsPtrInput interface {
+	pulumi.Input
+
+	ToPrivateCloudSiteControllerGroupIdsPtrOutput() PrivateCloudSiteControllerGroupIdsPtrOutput
+	ToPrivateCloudSiteControllerGroupIdsPtrOutputWithContext(context.Context) PrivateCloudSiteControllerGroupIdsPtrOutput
+}
+
+type privateCloudSiteControllerGroupIdsPtrType PrivateCloudSiteControllerGroupIdsArgs
+
+func PrivateCloudSiteControllerGroupIdsPtr(v *PrivateCloudSiteControllerGroupIdsArgs) PrivateCloudSiteControllerGroupIdsPtrInput {
+	return (*privateCloudSiteControllerGroupIdsPtrType)(v)
+}
+
+func (*privateCloudSiteControllerGroupIdsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateCloudSiteControllerGroupIds)(nil)).Elem()
+}
+
+func (i *privateCloudSiteControllerGroupIdsPtrType) ToPrivateCloudSiteControllerGroupIdsPtrOutput() PrivateCloudSiteControllerGroupIdsPtrOutput {
+	return i.ToPrivateCloudSiteControllerGroupIdsPtrOutputWithContext(context.Background())
+}
+
+func (i *privateCloudSiteControllerGroupIdsPtrType) ToPrivateCloudSiteControllerGroupIdsPtrOutputWithContext(ctx context.Context) PrivateCloudSiteControllerGroupIdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudSiteControllerGroupIdsPtrOutput)
+}
+
+type PrivateCloudSiteControllerGroupIdsOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudSiteControllerGroupIdsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudSiteControllerGroupIds)(nil)).Elem()
+}
+
+func (o PrivateCloudSiteControllerGroupIdsOutput) ToPrivateCloudSiteControllerGroupIdsOutput() PrivateCloudSiteControllerGroupIdsOutput {
+	return o
+}
+
+func (o PrivateCloudSiteControllerGroupIdsOutput) ToPrivateCloudSiteControllerGroupIdsOutputWithContext(ctx context.Context) PrivateCloudSiteControllerGroupIdsOutput {
+	return o
+}
+
+func (o PrivateCloudSiteControllerGroupIdsOutput) ToPrivateCloudSiteControllerGroupIdsPtrOutput() PrivateCloudSiteControllerGroupIdsPtrOutput {
+	return o.ToPrivateCloudSiteControllerGroupIdsPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateCloudSiteControllerGroupIdsOutput) ToPrivateCloudSiteControllerGroupIdsPtrOutputWithContext(ctx context.Context) PrivateCloudSiteControllerGroupIdsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateCloudSiteControllerGroupIds) *PrivateCloudSiteControllerGroupIds {
+		return &v
+	}).(PrivateCloudSiteControllerGroupIdsPtrOutput)
+}
+
+func (o PrivateCloudSiteControllerGroupIdsOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateCloudSiteControllerGroupIds) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type PrivateCloudSiteControllerGroupIdsPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudSiteControllerGroupIdsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateCloudSiteControllerGroupIds)(nil)).Elem()
+}
+
+func (o PrivateCloudSiteControllerGroupIdsPtrOutput) ToPrivateCloudSiteControllerGroupIdsPtrOutput() PrivateCloudSiteControllerGroupIdsPtrOutput {
+	return o
+}
+
+func (o PrivateCloudSiteControllerGroupIdsPtrOutput) ToPrivateCloudSiteControllerGroupIdsPtrOutputWithContext(ctx context.Context) PrivateCloudSiteControllerGroupIdsPtrOutput {
+	return o
+}
+
+func (o PrivateCloudSiteControllerGroupIdsPtrOutput) Elem() PrivateCloudSiteControllerGroupIdsOutput {
+	return o.ApplyT(func(v *PrivateCloudSiteControllerGroupIds) PrivateCloudSiteControllerGroupIds {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateCloudSiteControllerGroupIds
+		return ret
+	}).(PrivateCloudSiteControllerGroupIdsOutput)
+}
+
+func (o PrivateCloudSiteControllerGroupIdsPtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PrivateCloudSiteControllerGroupIds) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
+type PrivateCloudZpnFireDrillSite struct {
+	FireDrillInterval         *string `pulumi:"fireDrillInterval"`
+	FireDrillIntervalTimeUnit *string `pulumi:"fireDrillIntervalTimeUnit"`
+	Id                        *string `pulumi:"id"`
+	MicrotenantId             *string `pulumi:"microtenantId"`
+}
+
+// PrivateCloudZpnFireDrillSiteInput is an input type that accepts PrivateCloudZpnFireDrillSiteArgs and PrivateCloudZpnFireDrillSiteOutput values.
+// You can construct a concrete instance of `PrivateCloudZpnFireDrillSiteInput` via:
+//
+//	PrivateCloudZpnFireDrillSiteArgs{...}
+type PrivateCloudZpnFireDrillSiteInput interface {
+	pulumi.Input
+
+	ToPrivateCloudZpnFireDrillSiteOutput() PrivateCloudZpnFireDrillSiteOutput
+	ToPrivateCloudZpnFireDrillSiteOutputWithContext(context.Context) PrivateCloudZpnFireDrillSiteOutput
+}
+
+type PrivateCloudZpnFireDrillSiteArgs struct {
+	FireDrillInterval         pulumi.StringPtrInput `pulumi:"fireDrillInterval"`
+	FireDrillIntervalTimeUnit pulumi.StringPtrInput `pulumi:"fireDrillIntervalTimeUnit"`
+	Id                        pulumi.StringPtrInput `pulumi:"id"`
+	MicrotenantId             pulumi.StringPtrInput `pulumi:"microtenantId"`
+}
+
+func (PrivateCloudZpnFireDrillSiteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudZpnFireDrillSite)(nil)).Elem()
+}
+
+func (i PrivateCloudZpnFireDrillSiteArgs) ToPrivateCloudZpnFireDrillSiteOutput() PrivateCloudZpnFireDrillSiteOutput {
+	return i.ToPrivateCloudZpnFireDrillSiteOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudZpnFireDrillSiteArgs) ToPrivateCloudZpnFireDrillSiteOutputWithContext(ctx context.Context) PrivateCloudZpnFireDrillSiteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudZpnFireDrillSiteOutput)
+}
+
+// PrivateCloudZpnFireDrillSiteArrayInput is an input type that accepts PrivateCloudZpnFireDrillSiteArray and PrivateCloudZpnFireDrillSiteArrayOutput values.
+// You can construct a concrete instance of `PrivateCloudZpnFireDrillSiteArrayInput` via:
+//
+//	PrivateCloudZpnFireDrillSiteArray{ PrivateCloudZpnFireDrillSiteArgs{...} }
+type PrivateCloudZpnFireDrillSiteArrayInput interface {
+	pulumi.Input
+
+	ToPrivateCloudZpnFireDrillSiteArrayOutput() PrivateCloudZpnFireDrillSiteArrayOutput
+	ToPrivateCloudZpnFireDrillSiteArrayOutputWithContext(context.Context) PrivateCloudZpnFireDrillSiteArrayOutput
+}
+
+type PrivateCloudZpnFireDrillSiteArray []PrivateCloudZpnFireDrillSiteInput
+
+func (PrivateCloudZpnFireDrillSiteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateCloudZpnFireDrillSite)(nil)).Elem()
+}
+
+func (i PrivateCloudZpnFireDrillSiteArray) ToPrivateCloudZpnFireDrillSiteArrayOutput() PrivateCloudZpnFireDrillSiteArrayOutput {
+	return i.ToPrivateCloudZpnFireDrillSiteArrayOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudZpnFireDrillSiteArray) ToPrivateCloudZpnFireDrillSiteArrayOutputWithContext(ctx context.Context) PrivateCloudZpnFireDrillSiteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudZpnFireDrillSiteArrayOutput)
+}
+
+type PrivateCloudZpnFireDrillSiteOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudZpnFireDrillSiteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudZpnFireDrillSite)(nil)).Elem()
+}
+
+func (o PrivateCloudZpnFireDrillSiteOutput) ToPrivateCloudZpnFireDrillSiteOutput() PrivateCloudZpnFireDrillSiteOutput {
+	return o
+}
+
+func (o PrivateCloudZpnFireDrillSiteOutput) ToPrivateCloudZpnFireDrillSiteOutputWithContext(ctx context.Context) PrivateCloudZpnFireDrillSiteOutput {
+	return o
+}
+
+func (o PrivateCloudZpnFireDrillSiteOutput) FireDrillInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateCloudZpnFireDrillSite) *string { return v.FireDrillInterval }).(pulumi.StringPtrOutput)
+}
+
+func (o PrivateCloudZpnFireDrillSiteOutput) FireDrillIntervalTimeUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateCloudZpnFireDrillSite) *string { return v.FireDrillIntervalTimeUnit }).(pulumi.StringPtrOutput)
+}
+
+func (o PrivateCloudZpnFireDrillSiteOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateCloudZpnFireDrillSite) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o PrivateCloudZpnFireDrillSiteOutput) MicrotenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateCloudZpnFireDrillSite) *string { return v.MicrotenantId }).(pulumi.StringPtrOutput)
+}
+
+type PrivateCloudZpnFireDrillSiteArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudZpnFireDrillSiteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateCloudZpnFireDrillSite)(nil)).Elem()
+}
+
+func (o PrivateCloudZpnFireDrillSiteArrayOutput) ToPrivateCloudZpnFireDrillSiteArrayOutput() PrivateCloudZpnFireDrillSiteArrayOutput {
+	return o
+}
+
+func (o PrivateCloudZpnFireDrillSiteArrayOutput) ToPrivateCloudZpnFireDrillSiteArrayOutputWithContext(ctx context.Context) PrivateCloudZpnFireDrillSiteArrayOutput {
+	return o
+}
+
+func (o PrivateCloudZpnFireDrillSiteArrayOutput) Index(i pulumi.IntInput) PrivateCloudZpnFireDrillSiteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateCloudZpnFireDrillSite {
+		return vs[0].([]PrivateCloudZpnFireDrillSite)[vs[1].(int)]
+	}).(PrivateCloudZpnFireDrillSiteOutput)
+}
+
 type SegmentGroupApplication struct {
 	Id *string `pulumi:"id"`
 }
@@ -13706,6 +14350,112 @@ func (o ServiceEdgeGroupTrustedNetworkArrayOutput) Index(i pulumi.IntInput) Serv
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceEdgeGroupTrustedNetwork {
 		return vs[0].([]ServiceEdgeGroupTrustedNetwork)[vs[1].(int)]
 	}).(ServiceEdgeGroupTrustedNetworkOutput)
+}
+
+type TagKeyTagValue struct {
+	// The ID of the tag value.
+	Id *string `pulumi:"id"`
+	// The name of the tag value.
+	Name string `pulumi:"name"`
+}
+
+// TagKeyTagValueInput is an input type that accepts TagKeyTagValueArgs and TagKeyTagValueOutput values.
+// You can construct a concrete instance of `TagKeyTagValueInput` via:
+//
+//	TagKeyTagValueArgs{...}
+type TagKeyTagValueInput interface {
+	pulumi.Input
+
+	ToTagKeyTagValueOutput() TagKeyTagValueOutput
+	ToTagKeyTagValueOutputWithContext(context.Context) TagKeyTagValueOutput
+}
+
+type TagKeyTagValueArgs struct {
+	// The ID of the tag value.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The name of the tag value.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (TagKeyTagValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagKeyTagValue)(nil)).Elem()
+}
+
+func (i TagKeyTagValueArgs) ToTagKeyTagValueOutput() TagKeyTagValueOutput {
+	return i.ToTagKeyTagValueOutputWithContext(context.Background())
+}
+
+func (i TagKeyTagValueArgs) ToTagKeyTagValueOutputWithContext(ctx context.Context) TagKeyTagValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagKeyTagValueOutput)
+}
+
+// TagKeyTagValueArrayInput is an input type that accepts TagKeyTagValueArray and TagKeyTagValueArrayOutput values.
+// You can construct a concrete instance of `TagKeyTagValueArrayInput` via:
+//
+//	TagKeyTagValueArray{ TagKeyTagValueArgs{...} }
+type TagKeyTagValueArrayInput interface {
+	pulumi.Input
+
+	ToTagKeyTagValueArrayOutput() TagKeyTagValueArrayOutput
+	ToTagKeyTagValueArrayOutputWithContext(context.Context) TagKeyTagValueArrayOutput
+}
+
+type TagKeyTagValueArray []TagKeyTagValueInput
+
+func (TagKeyTagValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TagKeyTagValue)(nil)).Elem()
+}
+
+func (i TagKeyTagValueArray) ToTagKeyTagValueArrayOutput() TagKeyTagValueArrayOutput {
+	return i.ToTagKeyTagValueArrayOutputWithContext(context.Background())
+}
+
+func (i TagKeyTagValueArray) ToTagKeyTagValueArrayOutputWithContext(ctx context.Context) TagKeyTagValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagKeyTagValueArrayOutput)
+}
+
+type TagKeyTagValueOutput struct{ *pulumi.OutputState }
+
+func (TagKeyTagValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagKeyTagValue)(nil)).Elem()
+}
+
+func (o TagKeyTagValueOutput) ToTagKeyTagValueOutput() TagKeyTagValueOutput {
+	return o
+}
+
+func (o TagKeyTagValueOutput) ToTagKeyTagValueOutputWithContext(ctx context.Context) TagKeyTagValueOutput {
+	return o
+}
+
+// The ID of the tag value.
+func (o TagKeyTagValueOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TagKeyTagValue) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The name of the tag value.
+func (o TagKeyTagValueOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v TagKeyTagValue) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type TagKeyTagValueArrayOutput struct{ *pulumi.OutputState }
+
+func (TagKeyTagValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TagKeyTagValue)(nil)).Elem()
+}
+
+func (o TagKeyTagValueArrayOutput) ToTagKeyTagValueArrayOutput() TagKeyTagValueArrayOutput {
+	return o
+}
+
+func (o TagKeyTagValueArrayOutput) ToTagKeyTagValueArrayOutputWithContext(ctx context.Context) TagKeyTagValueArrayOutput {
+	return o
+}
+
+func (o TagKeyTagValueArrayOutput) Index(i pulumi.IntInput) TagKeyTagValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TagKeyTagValue {
+		return vs[0].([]TagKeyTagValue)[vs[1].(int)]
+	}).(TagKeyTagValueOutput)
 }
 
 type UserPortalLinkUserPortal struct {
@@ -23346,6 +24096,672 @@ func (o GetPolicyTypeRuleConditionOperandArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetPolicyTypeRuleConditionOperandOutput)
 }
 
+type GetPrivateCloudAssistantGroupsId struct {
+	Enabled bool   `pulumi:"enabled"`
+	Id      string `pulumi:"id"`
+	Name    string `pulumi:"name"`
+}
+
+// GetPrivateCloudAssistantGroupsIdInput is an input type that accepts GetPrivateCloudAssistantGroupsIdArgs and GetPrivateCloudAssistantGroupsIdOutput values.
+// You can construct a concrete instance of `GetPrivateCloudAssistantGroupsIdInput` via:
+//
+//	GetPrivateCloudAssistantGroupsIdArgs{...}
+type GetPrivateCloudAssistantGroupsIdInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudAssistantGroupsIdOutput() GetPrivateCloudAssistantGroupsIdOutput
+	ToGetPrivateCloudAssistantGroupsIdOutputWithContext(context.Context) GetPrivateCloudAssistantGroupsIdOutput
+}
+
+type GetPrivateCloudAssistantGroupsIdArgs struct {
+	Enabled pulumi.BoolInput   `pulumi:"enabled"`
+	Id      pulumi.StringInput `pulumi:"id"`
+	Name    pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetPrivateCloudAssistantGroupsIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudAssistantGroupsId)(nil)).Elem()
+}
+
+func (i GetPrivateCloudAssistantGroupsIdArgs) ToGetPrivateCloudAssistantGroupsIdOutput() GetPrivateCloudAssistantGroupsIdOutput {
+	return i.ToGetPrivateCloudAssistantGroupsIdOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudAssistantGroupsIdArgs) ToGetPrivateCloudAssistantGroupsIdOutputWithContext(ctx context.Context) GetPrivateCloudAssistantGroupsIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudAssistantGroupsIdOutput)
+}
+
+// GetPrivateCloudAssistantGroupsIdArrayInput is an input type that accepts GetPrivateCloudAssistantGroupsIdArray and GetPrivateCloudAssistantGroupsIdArrayOutput values.
+// You can construct a concrete instance of `GetPrivateCloudAssistantGroupsIdArrayInput` via:
+//
+//	GetPrivateCloudAssistantGroupsIdArray{ GetPrivateCloudAssistantGroupsIdArgs{...} }
+type GetPrivateCloudAssistantGroupsIdArrayInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudAssistantGroupsIdArrayOutput() GetPrivateCloudAssistantGroupsIdArrayOutput
+	ToGetPrivateCloudAssistantGroupsIdArrayOutputWithContext(context.Context) GetPrivateCloudAssistantGroupsIdArrayOutput
+}
+
+type GetPrivateCloudAssistantGroupsIdArray []GetPrivateCloudAssistantGroupsIdInput
+
+func (GetPrivateCloudAssistantGroupsIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudAssistantGroupsId)(nil)).Elem()
+}
+
+func (i GetPrivateCloudAssistantGroupsIdArray) ToGetPrivateCloudAssistantGroupsIdArrayOutput() GetPrivateCloudAssistantGroupsIdArrayOutput {
+	return i.ToGetPrivateCloudAssistantGroupsIdArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudAssistantGroupsIdArray) ToGetPrivateCloudAssistantGroupsIdArrayOutputWithContext(ctx context.Context) GetPrivateCloudAssistantGroupsIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudAssistantGroupsIdArrayOutput)
+}
+
+type GetPrivateCloudAssistantGroupsIdOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudAssistantGroupsIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudAssistantGroupsId)(nil)).Elem()
+}
+
+func (o GetPrivateCloudAssistantGroupsIdOutput) ToGetPrivateCloudAssistantGroupsIdOutput() GetPrivateCloudAssistantGroupsIdOutput {
+	return o
+}
+
+func (o GetPrivateCloudAssistantGroupsIdOutput) ToGetPrivateCloudAssistantGroupsIdOutputWithContext(ctx context.Context) GetPrivateCloudAssistantGroupsIdOutput {
+	return o
+}
+
+func (o GetPrivateCloudAssistantGroupsIdOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPrivateCloudAssistantGroupsId) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetPrivateCloudAssistantGroupsIdOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudAssistantGroupsId) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudAssistantGroupsIdOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudAssistantGroupsId) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetPrivateCloudAssistantGroupsIdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudAssistantGroupsIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudAssistantGroupsId)(nil)).Elem()
+}
+
+func (o GetPrivateCloudAssistantGroupsIdArrayOutput) ToGetPrivateCloudAssistantGroupsIdArrayOutput() GetPrivateCloudAssistantGroupsIdArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudAssistantGroupsIdArrayOutput) ToGetPrivateCloudAssistantGroupsIdArrayOutputWithContext(ctx context.Context) GetPrivateCloudAssistantGroupsIdArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudAssistantGroupsIdArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudAssistantGroupsIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivateCloudAssistantGroupsId {
+		return vs[0].([]GetPrivateCloudAssistantGroupsId)[vs[1].(int)]
+	}).(GetPrivateCloudAssistantGroupsIdOutput)
+}
+
+type GetPrivateCloudPrivateBrokerGroupId struct {
+	Enabled bool   `pulumi:"enabled"`
+	Id      string `pulumi:"id"`
+	Name    string `pulumi:"name"`
+}
+
+// GetPrivateCloudPrivateBrokerGroupIdInput is an input type that accepts GetPrivateCloudPrivateBrokerGroupIdArgs and GetPrivateCloudPrivateBrokerGroupIdOutput values.
+// You can construct a concrete instance of `GetPrivateCloudPrivateBrokerGroupIdInput` via:
+//
+//	GetPrivateCloudPrivateBrokerGroupIdArgs{...}
+type GetPrivateCloudPrivateBrokerGroupIdInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudPrivateBrokerGroupIdOutput() GetPrivateCloudPrivateBrokerGroupIdOutput
+	ToGetPrivateCloudPrivateBrokerGroupIdOutputWithContext(context.Context) GetPrivateCloudPrivateBrokerGroupIdOutput
+}
+
+type GetPrivateCloudPrivateBrokerGroupIdArgs struct {
+	Enabled pulumi.BoolInput   `pulumi:"enabled"`
+	Id      pulumi.StringInput `pulumi:"id"`
+	Name    pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetPrivateCloudPrivateBrokerGroupIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudPrivateBrokerGroupId)(nil)).Elem()
+}
+
+func (i GetPrivateCloudPrivateBrokerGroupIdArgs) ToGetPrivateCloudPrivateBrokerGroupIdOutput() GetPrivateCloudPrivateBrokerGroupIdOutput {
+	return i.ToGetPrivateCloudPrivateBrokerGroupIdOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudPrivateBrokerGroupIdArgs) ToGetPrivateCloudPrivateBrokerGroupIdOutputWithContext(ctx context.Context) GetPrivateCloudPrivateBrokerGroupIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudPrivateBrokerGroupIdOutput)
+}
+
+// GetPrivateCloudPrivateBrokerGroupIdArrayInput is an input type that accepts GetPrivateCloudPrivateBrokerGroupIdArray and GetPrivateCloudPrivateBrokerGroupIdArrayOutput values.
+// You can construct a concrete instance of `GetPrivateCloudPrivateBrokerGroupIdArrayInput` via:
+//
+//	GetPrivateCloudPrivateBrokerGroupIdArray{ GetPrivateCloudPrivateBrokerGroupIdArgs{...} }
+type GetPrivateCloudPrivateBrokerGroupIdArrayInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudPrivateBrokerGroupIdArrayOutput() GetPrivateCloudPrivateBrokerGroupIdArrayOutput
+	ToGetPrivateCloudPrivateBrokerGroupIdArrayOutputWithContext(context.Context) GetPrivateCloudPrivateBrokerGroupIdArrayOutput
+}
+
+type GetPrivateCloudPrivateBrokerGroupIdArray []GetPrivateCloudPrivateBrokerGroupIdInput
+
+func (GetPrivateCloudPrivateBrokerGroupIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudPrivateBrokerGroupId)(nil)).Elem()
+}
+
+func (i GetPrivateCloudPrivateBrokerGroupIdArray) ToGetPrivateCloudPrivateBrokerGroupIdArrayOutput() GetPrivateCloudPrivateBrokerGroupIdArrayOutput {
+	return i.ToGetPrivateCloudPrivateBrokerGroupIdArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudPrivateBrokerGroupIdArray) ToGetPrivateCloudPrivateBrokerGroupIdArrayOutputWithContext(ctx context.Context) GetPrivateCloudPrivateBrokerGroupIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudPrivateBrokerGroupIdArrayOutput)
+}
+
+type GetPrivateCloudPrivateBrokerGroupIdOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudPrivateBrokerGroupIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudPrivateBrokerGroupId)(nil)).Elem()
+}
+
+func (o GetPrivateCloudPrivateBrokerGroupIdOutput) ToGetPrivateCloudPrivateBrokerGroupIdOutput() GetPrivateCloudPrivateBrokerGroupIdOutput {
+	return o
+}
+
+func (o GetPrivateCloudPrivateBrokerGroupIdOutput) ToGetPrivateCloudPrivateBrokerGroupIdOutputWithContext(ctx context.Context) GetPrivateCloudPrivateBrokerGroupIdOutput {
+	return o
+}
+
+func (o GetPrivateCloudPrivateBrokerGroupIdOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPrivateCloudPrivateBrokerGroupId) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetPrivateCloudPrivateBrokerGroupIdOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudPrivateBrokerGroupId) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudPrivateBrokerGroupIdOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudPrivateBrokerGroupId) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetPrivateCloudPrivateBrokerGroupIdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudPrivateBrokerGroupIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudPrivateBrokerGroupId)(nil)).Elem()
+}
+
+func (o GetPrivateCloudPrivateBrokerGroupIdArrayOutput) ToGetPrivateCloudPrivateBrokerGroupIdArrayOutput() GetPrivateCloudPrivateBrokerGroupIdArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudPrivateBrokerGroupIdArrayOutput) ToGetPrivateCloudPrivateBrokerGroupIdArrayOutputWithContext(ctx context.Context) GetPrivateCloudPrivateBrokerGroupIdArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudPrivateBrokerGroupIdArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudPrivateBrokerGroupIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivateCloudPrivateBrokerGroupId {
+		return vs[0].([]GetPrivateCloudPrivateBrokerGroupId)[vs[1].(int)]
+	}).(GetPrivateCloudPrivateBrokerGroupIdOutput)
+}
+
+type GetPrivateCloudPrivateExporterGroupId struct {
+	Enabled bool   `pulumi:"enabled"`
+	Id      string `pulumi:"id"`
+	Name    string `pulumi:"name"`
+}
+
+// GetPrivateCloudPrivateExporterGroupIdInput is an input type that accepts GetPrivateCloudPrivateExporterGroupIdArgs and GetPrivateCloudPrivateExporterGroupIdOutput values.
+// You can construct a concrete instance of `GetPrivateCloudPrivateExporterGroupIdInput` via:
+//
+//	GetPrivateCloudPrivateExporterGroupIdArgs{...}
+type GetPrivateCloudPrivateExporterGroupIdInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudPrivateExporterGroupIdOutput() GetPrivateCloudPrivateExporterGroupIdOutput
+	ToGetPrivateCloudPrivateExporterGroupIdOutputWithContext(context.Context) GetPrivateCloudPrivateExporterGroupIdOutput
+}
+
+type GetPrivateCloudPrivateExporterGroupIdArgs struct {
+	Enabled pulumi.BoolInput   `pulumi:"enabled"`
+	Id      pulumi.StringInput `pulumi:"id"`
+	Name    pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetPrivateCloudPrivateExporterGroupIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudPrivateExporterGroupId)(nil)).Elem()
+}
+
+func (i GetPrivateCloudPrivateExporterGroupIdArgs) ToGetPrivateCloudPrivateExporterGroupIdOutput() GetPrivateCloudPrivateExporterGroupIdOutput {
+	return i.ToGetPrivateCloudPrivateExporterGroupIdOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudPrivateExporterGroupIdArgs) ToGetPrivateCloudPrivateExporterGroupIdOutputWithContext(ctx context.Context) GetPrivateCloudPrivateExporterGroupIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudPrivateExporterGroupIdOutput)
+}
+
+// GetPrivateCloudPrivateExporterGroupIdArrayInput is an input type that accepts GetPrivateCloudPrivateExporterGroupIdArray and GetPrivateCloudPrivateExporterGroupIdArrayOutput values.
+// You can construct a concrete instance of `GetPrivateCloudPrivateExporterGroupIdArrayInput` via:
+//
+//	GetPrivateCloudPrivateExporterGroupIdArray{ GetPrivateCloudPrivateExporterGroupIdArgs{...} }
+type GetPrivateCloudPrivateExporterGroupIdArrayInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudPrivateExporterGroupIdArrayOutput() GetPrivateCloudPrivateExporterGroupIdArrayOutput
+	ToGetPrivateCloudPrivateExporterGroupIdArrayOutputWithContext(context.Context) GetPrivateCloudPrivateExporterGroupIdArrayOutput
+}
+
+type GetPrivateCloudPrivateExporterGroupIdArray []GetPrivateCloudPrivateExporterGroupIdInput
+
+func (GetPrivateCloudPrivateExporterGroupIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudPrivateExporterGroupId)(nil)).Elem()
+}
+
+func (i GetPrivateCloudPrivateExporterGroupIdArray) ToGetPrivateCloudPrivateExporterGroupIdArrayOutput() GetPrivateCloudPrivateExporterGroupIdArrayOutput {
+	return i.ToGetPrivateCloudPrivateExporterGroupIdArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudPrivateExporterGroupIdArray) ToGetPrivateCloudPrivateExporterGroupIdArrayOutputWithContext(ctx context.Context) GetPrivateCloudPrivateExporterGroupIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudPrivateExporterGroupIdArrayOutput)
+}
+
+type GetPrivateCloudPrivateExporterGroupIdOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudPrivateExporterGroupIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudPrivateExporterGroupId)(nil)).Elem()
+}
+
+func (o GetPrivateCloudPrivateExporterGroupIdOutput) ToGetPrivateCloudPrivateExporterGroupIdOutput() GetPrivateCloudPrivateExporterGroupIdOutput {
+	return o
+}
+
+func (o GetPrivateCloudPrivateExporterGroupIdOutput) ToGetPrivateCloudPrivateExporterGroupIdOutputWithContext(ctx context.Context) GetPrivateCloudPrivateExporterGroupIdOutput {
+	return o
+}
+
+func (o GetPrivateCloudPrivateExporterGroupIdOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPrivateCloudPrivateExporterGroupId) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetPrivateCloudPrivateExporterGroupIdOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudPrivateExporterGroupId) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudPrivateExporterGroupIdOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudPrivateExporterGroupId) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetPrivateCloudPrivateExporterGroupIdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudPrivateExporterGroupIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudPrivateExporterGroupId)(nil)).Elem()
+}
+
+func (o GetPrivateCloudPrivateExporterGroupIdArrayOutput) ToGetPrivateCloudPrivateExporterGroupIdArrayOutput() GetPrivateCloudPrivateExporterGroupIdArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudPrivateExporterGroupIdArrayOutput) ToGetPrivateCloudPrivateExporterGroupIdArrayOutputWithContext(ctx context.Context) GetPrivateCloudPrivateExporterGroupIdArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudPrivateExporterGroupIdArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudPrivateExporterGroupIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivateCloudPrivateExporterGroupId {
+		return vs[0].([]GetPrivateCloudPrivateExporterGroupId)[vs[1].(int)]
+	}).(GetPrivateCloudPrivateExporterGroupIdOutput)
+}
+
+type GetPrivateCloudSiemId struct {
+	Enabled bool   `pulumi:"enabled"`
+	Id      string `pulumi:"id"`
+	Name    string `pulumi:"name"`
+}
+
+// GetPrivateCloudSiemIdInput is an input type that accepts GetPrivateCloudSiemIdArgs and GetPrivateCloudSiemIdOutput values.
+// You can construct a concrete instance of `GetPrivateCloudSiemIdInput` via:
+//
+//	GetPrivateCloudSiemIdArgs{...}
+type GetPrivateCloudSiemIdInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudSiemIdOutput() GetPrivateCloudSiemIdOutput
+	ToGetPrivateCloudSiemIdOutputWithContext(context.Context) GetPrivateCloudSiemIdOutput
+}
+
+type GetPrivateCloudSiemIdArgs struct {
+	Enabled pulumi.BoolInput   `pulumi:"enabled"`
+	Id      pulumi.StringInput `pulumi:"id"`
+	Name    pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetPrivateCloudSiemIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudSiemId)(nil)).Elem()
+}
+
+func (i GetPrivateCloudSiemIdArgs) ToGetPrivateCloudSiemIdOutput() GetPrivateCloudSiemIdOutput {
+	return i.ToGetPrivateCloudSiemIdOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudSiemIdArgs) ToGetPrivateCloudSiemIdOutputWithContext(ctx context.Context) GetPrivateCloudSiemIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudSiemIdOutput)
+}
+
+// GetPrivateCloudSiemIdArrayInput is an input type that accepts GetPrivateCloudSiemIdArray and GetPrivateCloudSiemIdArrayOutput values.
+// You can construct a concrete instance of `GetPrivateCloudSiemIdArrayInput` via:
+//
+//	GetPrivateCloudSiemIdArray{ GetPrivateCloudSiemIdArgs{...} }
+type GetPrivateCloudSiemIdArrayInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudSiemIdArrayOutput() GetPrivateCloudSiemIdArrayOutput
+	ToGetPrivateCloudSiemIdArrayOutputWithContext(context.Context) GetPrivateCloudSiemIdArrayOutput
+}
+
+type GetPrivateCloudSiemIdArray []GetPrivateCloudSiemIdInput
+
+func (GetPrivateCloudSiemIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudSiemId)(nil)).Elem()
+}
+
+func (i GetPrivateCloudSiemIdArray) ToGetPrivateCloudSiemIdArrayOutput() GetPrivateCloudSiemIdArrayOutput {
+	return i.ToGetPrivateCloudSiemIdArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudSiemIdArray) ToGetPrivateCloudSiemIdArrayOutputWithContext(ctx context.Context) GetPrivateCloudSiemIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudSiemIdArrayOutput)
+}
+
+type GetPrivateCloudSiemIdOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudSiemIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudSiemId)(nil)).Elem()
+}
+
+func (o GetPrivateCloudSiemIdOutput) ToGetPrivateCloudSiemIdOutput() GetPrivateCloudSiemIdOutput {
+	return o
+}
+
+func (o GetPrivateCloudSiemIdOutput) ToGetPrivateCloudSiemIdOutputWithContext(ctx context.Context) GetPrivateCloudSiemIdOutput {
+	return o
+}
+
+func (o GetPrivateCloudSiemIdOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPrivateCloudSiemId) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetPrivateCloudSiemIdOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudSiemId) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudSiemIdOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudSiemId) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetPrivateCloudSiemIdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudSiemIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudSiemId)(nil)).Elem()
+}
+
+func (o GetPrivateCloudSiemIdArrayOutput) ToGetPrivateCloudSiemIdArrayOutput() GetPrivateCloudSiemIdArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudSiemIdArrayOutput) ToGetPrivateCloudSiemIdArrayOutputWithContext(ctx context.Context) GetPrivateCloudSiemIdArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudSiemIdArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudSiemIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivateCloudSiemId {
+		return vs[0].([]GetPrivateCloudSiemId)[vs[1].(int)]
+	}).(GetPrivateCloudSiemIdOutput)
+}
+
+type GetPrivateCloudSiteControllerGroupId struct {
+	Enabled bool   `pulumi:"enabled"`
+	Id      string `pulumi:"id"`
+	Name    string `pulumi:"name"`
+}
+
+// GetPrivateCloudSiteControllerGroupIdInput is an input type that accepts GetPrivateCloudSiteControllerGroupIdArgs and GetPrivateCloudSiteControllerGroupIdOutput values.
+// You can construct a concrete instance of `GetPrivateCloudSiteControllerGroupIdInput` via:
+//
+//	GetPrivateCloudSiteControllerGroupIdArgs{...}
+type GetPrivateCloudSiteControllerGroupIdInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudSiteControllerGroupIdOutput() GetPrivateCloudSiteControllerGroupIdOutput
+	ToGetPrivateCloudSiteControllerGroupIdOutputWithContext(context.Context) GetPrivateCloudSiteControllerGroupIdOutput
+}
+
+type GetPrivateCloudSiteControllerGroupIdArgs struct {
+	Enabled pulumi.BoolInput   `pulumi:"enabled"`
+	Id      pulumi.StringInput `pulumi:"id"`
+	Name    pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetPrivateCloudSiteControllerGroupIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudSiteControllerGroupId)(nil)).Elem()
+}
+
+func (i GetPrivateCloudSiteControllerGroupIdArgs) ToGetPrivateCloudSiteControllerGroupIdOutput() GetPrivateCloudSiteControllerGroupIdOutput {
+	return i.ToGetPrivateCloudSiteControllerGroupIdOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudSiteControllerGroupIdArgs) ToGetPrivateCloudSiteControllerGroupIdOutputWithContext(ctx context.Context) GetPrivateCloudSiteControllerGroupIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudSiteControllerGroupIdOutput)
+}
+
+// GetPrivateCloudSiteControllerGroupIdArrayInput is an input type that accepts GetPrivateCloudSiteControllerGroupIdArray and GetPrivateCloudSiteControllerGroupIdArrayOutput values.
+// You can construct a concrete instance of `GetPrivateCloudSiteControllerGroupIdArrayInput` via:
+//
+//	GetPrivateCloudSiteControllerGroupIdArray{ GetPrivateCloudSiteControllerGroupIdArgs{...} }
+type GetPrivateCloudSiteControllerGroupIdArrayInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudSiteControllerGroupIdArrayOutput() GetPrivateCloudSiteControllerGroupIdArrayOutput
+	ToGetPrivateCloudSiteControllerGroupIdArrayOutputWithContext(context.Context) GetPrivateCloudSiteControllerGroupIdArrayOutput
+}
+
+type GetPrivateCloudSiteControllerGroupIdArray []GetPrivateCloudSiteControllerGroupIdInput
+
+func (GetPrivateCloudSiteControllerGroupIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudSiteControllerGroupId)(nil)).Elem()
+}
+
+func (i GetPrivateCloudSiteControllerGroupIdArray) ToGetPrivateCloudSiteControllerGroupIdArrayOutput() GetPrivateCloudSiteControllerGroupIdArrayOutput {
+	return i.ToGetPrivateCloudSiteControllerGroupIdArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudSiteControllerGroupIdArray) ToGetPrivateCloudSiteControllerGroupIdArrayOutputWithContext(ctx context.Context) GetPrivateCloudSiteControllerGroupIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudSiteControllerGroupIdArrayOutput)
+}
+
+type GetPrivateCloudSiteControllerGroupIdOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudSiteControllerGroupIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudSiteControllerGroupId)(nil)).Elem()
+}
+
+func (o GetPrivateCloudSiteControllerGroupIdOutput) ToGetPrivateCloudSiteControllerGroupIdOutput() GetPrivateCloudSiteControllerGroupIdOutput {
+	return o
+}
+
+func (o GetPrivateCloudSiteControllerGroupIdOutput) ToGetPrivateCloudSiteControllerGroupIdOutputWithContext(ctx context.Context) GetPrivateCloudSiteControllerGroupIdOutput {
+	return o
+}
+
+func (o GetPrivateCloudSiteControllerGroupIdOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPrivateCloudSiteControllerGroupId) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetPrivateCloudSiteControllerGroupIdOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudSiteControllerGroupId) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudSiteControllerGroupIdOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudSiteControllerGroupId) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetPrivateCloudSiteControllerGroupIdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudSiteControllerGroupIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudSiteControllerGroupId)(nil)).Elem()
+}
+
+func (o GetPrivateCloudSiteControllerGroupIdArrayOutput) ToGetPrivateCloudSiteControllerGroupIdArrayOutput() GetPrivateCloudSiteControllerGroupIdArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudSiteControllerGroupIdArrayOutput) ToGetPrivateCloudSiteControllerGroupIdArrayOutputWithContext(ctx context.Context) GetPrivateCloudSiteControllerGroupIdArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudSiteControllerGroupIdArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudSiteControllerGroupIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivateCloudSiteControllerGroupId {
+		return vs[0].([]GetPrivateCloudSiteControllerGroupId)[vs[1].(int)]
+	}).(GetPrivateCloudSiteControllerGroupIdOutput)
+}
+
+type GetPrivateCloudZpnFireDrillSite struct {
+	CreationTime              string `pulumi:"creationTime"`
+	FireDrillInterval         string `pulumi:"fireDrillInterval"`
+	FireDrillIntervalTimeUnit string `pulumi:"fireDrillIntervalTimeUnit"`
+	Id                        string `pulumi:"id"`
+	MicrotenantId             string `pulumi:"microtenantId"`
+	MicrotenantName           string `pulumi:"microtenantName"`
+	ModifiedBy                string `pulumi:"modifiedBy"`
+	ModifiedTime              string `pulumi:"modifiedTime"`
+}
+
+// GetPrivateCloudZpnFireDrillSiteInput is an input type that accepts GetPrivateCloudZpnFireDrillSiteArgs and GetPrivateCloudZpnFireDrillSiteOutput values.
+// You can construct a concrete instance of `GetPrivateCloudZpnFireDrillSiteInput` via:
+//
+//	GetPrivateCloudZpnFireDrillSiteArgs{...}
+type GetPrivateCloudZpnFireDrillSiteInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudZpnFireDrillSiteOutput() GetPrivateCloudZpnFireDrillSiteOutput
+	ToGetPrivateCloudZpnFireDrillSiteOutputWithContext(context.Context) GetPrivateCloudZpnFireDrillSiteOutput
+}
+
+type GetPrivateCloudZpnFireDrillSiteArgs struct {
+	CreationTime              pulumi.StringInput `pulumi:"creationTime"`
+	FireDrillInterval         pulumi.StringInput `pulumi:"fireDrillInterval"`
+	FireDrillIntervalTimeUnit pulumi.StringInput `pulumi:"fireDrillIntervalTimeUnit"`
+	Id                        pulumi.StringInput `pulumi:"id"`
+	MicrotenantId             pulumi.StringInput `pulumi:"microtenantId"`
+	MicrotenantName           pulumi.StringInput `pulumi:"microtenantName"`
+	ModifiedBy                pulumi.StringInput `pulumi:"modifiedBy"`
+	ModifiedTime              pulumi.StringInput `pulumi:"modifiedTime"`
+}
+
+func (GetPrivateCloudZpnFireDrillSiteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudZpnFireDrillSite)(nil)).Elem()
+}
+
+func (i GetPrivateCloudZpnFireDrillSiteArgs) ToGetPrivateCloudZpnFireDrillSiteOutput() GetPrivateCloudZpnFireDrillSiteOutput {
+	return i.ToGetPrivateCloudZpnFireDrillSiteOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudZpnFireDrillSiteArgs) ToGetPrivateCloudZpnFireDrillSiteOutputWithContext(ctx context.Context) GetPrivateCloudZpnFireDrillSiteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudZpnFireDrillSiteOutput)
+}
+
+// GetPrivateCloudZpnFireDrillSiteArrayInput is an input type that accepts GetPrivateCloudZpnFireDrillSiteArray and GetPrivateCloudZpnFireDrillSiteArrayOutput values.
+// You can construct a concrete instance of `GetPrivateCloudZpnFireDrillSiteArrayInput` via:
+//
+//	GetPrivateCloudZpnFireDrillSiteArray{ GetPrivateCloudZpnFireDrillSiteArgs{...} }
+type GetPrivateCloudZpnFireDrillSiteArrayInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudZpnFireDrillSiteArrayOutput() GetPrivateCloudZpnFireDrillSiteArrayOutput
+	ToGetPrivateCloudZpnFireDrillSiteArrayOutputWithContext(context.Context) GetPrivateCloudZpnFireDrillSiteArrayOutput
+}
+
+type GetPrivateCloudZpnFireDrillSiteArray []GetPrivateCloudZpnFireDrillSiteInput
+
+func (GetPrivateCloudZpnFireDrillSiteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudZpnFireDrillSite)(nil)).Elem()
+}
+
+func (i GetPrivateCloudZpnFireDrillSiteArray) ToGetPrivateCloudZpnFireDrillSiteArrayOutput() GetPrivateCloudZpnFireDrillSiteArrayOutput {
+	return i.ToGetPrivateCloudZpnFireDrillSiteArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudZpnFireDrillSiteArray) ToGetPrivateCloudZpnFireDrillSiteArrayOutputWithContext(ctx context.Context) GetPrivateCloudZpnFireDrillSiteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudZpnFireDrillSiteArrayOutput)
+}
+
+type GetPrivateCloudZpnFireDrillSiteOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudZpnFireDrillSiteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudZpnFireDrillSite)(nil)).Elem()
+}
+
+func (o GetPrivateCloudZpnFireDrillSiteOutput) ToGetPrivateCloudZpnFireDrillSiteOutput() GetPrivateCloudZpnFireDrillSiteOutput {
+	return o
+}
+
+func (o GetPrivateCloudZpnFireDrillSiteOutput) ToGetPrivateCloudZpnFireDrillSiteOutputWithContext(ctx context.Context) GetPrivateCloudZpnFireDrillSiteOutput {
+	return o
+}
+
+func (o GetPrivateCloudZpnFireDrillSiteOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudZpnFireDrillSite) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudZpnFireDrillSiteOutput) FireDrillInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudZpnFireDrillSite) string { return v.FireDrillInterval }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudZpnFireDrillSiteOutput) FireDrillIntervalTimeUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudZpnFireDrillSite) string { return v.FireDrillIntervalTimeUnit }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudZpnFireDrillSiteOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudZpnFireDrillSite) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudZpnFireDrillSiteOutput) MicrotenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudZpnFireDrillSite) string { return v.MicrotenantId }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudZpnFireDrillSiteOutput) MicrotenantName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudZpnFireDrillSite) string { return v.MicrotenantName }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudZpnFireDrillSiteOutput) ModifiedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudZpnFireDrillSite) string { return v.ModifiedBy }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudZpnFireDrillSiteOutput) ModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudZpnFireDrillSite) string { return v.ModifiedTime }).(pulumi.StringOutput)
+}
+
+type GetPrivateCloudZpnFireDrillSiteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudZpnFireDrillSiteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudZpnFireDrillSite)(nil)).Elem()
+}
+
+func (o GetPrivateCloudZpnFireDrillSiteArrayOutput) ToGetPrivateCloudZpnFireDrillSiteArrayOutput() GetPrivateCloudZpnFireDrillSiteArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudZpnFireDrillSiteArrayOutput) ToGetPrivateCloudZpnFireDrillSiteArrayOutputWithContext(ctx context.Context) GetPrivateCloudZpnFireDrillSiteArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudZpnFireDrillSiteArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudZpnFireDrillSiteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivateCloudZpnFireDrillSite {
+		return vs[0].([]GetPrivateCloudZpnFireDrillSite)[vs[1].(int)]
+	}).(GetPrivateCloudZpnFireDrillSiteOutput)
+}
+
 type GetSegmentGroupApplication struct {
 	BypassType           string                                  `pulumi:"bypassType"`
 	ConfigSpace          string                                  `pulumi:"configSpace"`
@@ -25366,6 +26782,572 @@ func (o GetServiceEdgeGroupTrustedNetworkArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetServiceEdgeGroupTrustedNetworkOutput)
 }
 
+type GetTagGroupTag struct {
+	// A list containing the tag namespace details:
+	Namespaces []GetTagGroupTagNamespace `pulumi:"namespaces"`
+	// The origin of the tag.
+	Origin string `pulumi:"origin"`
+	// A list containing the tag key details:
+	TagKeys []GetTagGroupTagTagKey `pulumi:"tagKeys"`
+	// A list containing the tag value details:
+	TagValues []GetTagGroupTagTagValue `pulumi:"tagValues"`
+}
+
+// GetTagGroupTagInput is an input type that accepts GetTagGroupTagArgs and GetTagGroupTagOutput values.
+// You can construct a concrete instance of `GetTagGroupTagInput` via:
+//
+//	GetTagGroupTagArgs{...}
+type GetTagGroupTagInput interface {
+	pulumi.Input
+
+	ToGetTagGroupTagOutput() GetTagGroupTagOutput
+	ToGetTagGroupTagOutputWithContext(context.Context) GetTagGroupTagOutput
+}
+
+type GetTagGroupTagArgs struct {
+	// A list containing the tag namespace details:
+	Namespaces GetTagGroupTagNamespaceArrayInput `pulumi:"namespaces"`
+	// The origin of the tag.
+	Origin pulumi.StringInput `pulumi:"origin"`
+	// A list containing the tag key details:
+	TagKeys GetTagGroupTagTagKeyArrayInput `pulumi:"tagKeys"`
+	// A list containing the tag value details:
+	TagValues GetTagGroupTagTagValueArrayInput `pulumi:"tagValues"`
+}
+
+func (GetTagGroupTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagGroupTag)(nil)).Elem()
+}
+
+func (i GetTagGroupTagArgs) ToGetTagGroupTagOutput() GetTagGroupTagOutput {
+	return i.ToGetTagGroupTagOutputWithContext(context.Background())
+}
+
+func (i GetTagGroupTagArgs) ToGetTagGroupTagOutputWithContext(ctx context.Context) GetTagGroupTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagGroupTagOutput)
+}
+
+// GetTagGroupTagArrayInput is an input type that accepts GetTagGroupTagArray and GetTagGroupTagArrayOutput values.
+// You can construct a concrete instance of `GetTagGroupTagArrayInput` via:
+//
+//	GetTagGroupTagArray{ GetTagGroupTagArgs{...} }
+type GetTagGroupTagArrayInput interface {
+	pulumi.Input
+
+	ToGetTagGroupTagArrayOutput() GetTagGroupTagArrayOutput
+	ToGetTagGroupTagArrayOutputWithContext(context.Context) GetTagGroupTagArrayOutput
+}
+
+type GetTagGroupTagArray []GetTagGroupTagInput
+
+func (GetTagGroupTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagGroupTag)(nil)).Elem()
+}
+
+func (i GetTagGroupTagArray) ToGetTagGroupTagArrayOutput() GetTagGroupTagArrayOutput {
+	return i.ToGetTagGroupTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetTagGroupTagArray) ToGetTagGroupTagArrayOutputWithContext(ctx context.Context) GetTagGroupTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagGroupTagArrayOutput)
+}
+
+type GetTagGroupTagOutput struct{ *pulumi.OutputState }
+
+func (GetTagGroupTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagGroupTag)(nil)).Elem()
+}
+
+func (o GetTagGroupTagOutput) ToGetTagGroupTagOutput() GetTagGroupTagOutput {
+	return o
+}
+
+func (o GetTagGroupTagOutput) ToGetTagGroupTagOutputWithContext(ctx context.Context) GetTagGroupTagOutput {
+	return o
+}
+
+// A list containing the tag namespace details:
+func (o GetTagGroupTagOutput) Namespaces() GetTagGroupTagNamespaceArrayOutput {
+	return o.ApplyT(func(v GetTagGroupTag) []GetTagGroupTagNamespace { return v.Namespaces }).(GetTagGroupTagNamespaceArrayOutput)
+}
+
+// The origin of the tag.
+func (o GetTagGroupTagOutput) Origin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagGroupTag) string { return v.Origin }).(pulumi.StringOutput)
+}
+
+// A list containing the tag key details:
+func (o GetTagGroupTagOutput) TagKeys() GetTagGroupTagTagKeyArrayOutput {
+	return o.ApplyT(func(v GetTagGroupTag) []GetTagGroupTagTagKey { return v.TagKeys }).(GetTagGroupTagTagKeyArrayOutput)
+}
+
+// A list containing the tag value details:
+func (o GetTagGroupTagOutput) TagValues() GetTagGroupTagTagValueArrayOutput {
+	return o.ApplyT(func(v GetTagGroupTag) []GetTagGroupTagTagValue { return v.TagValues }).(GetTagGroupTagTagValueArrayOutput)
+}
+
+type GetTagGroupTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTagGroupTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagGroupTag)(nil)).Elem()
+}
+
+func (o GetTagGroupTagArrayOutput) ToGetTagGroupTagArrayOutput() GetTagGroupTagArrayOutput {
+	return o
+}
+
+func (o GetTagGroupTagArrayOutput) ToGetTagGroupTagArrayOutputWithContext(ctx context.Context) GetTagGroupTagArrayOutput {
+	return o
+}
+
+func (o GetTagGroupTagArrayOutput) Index(i pulumi.IntInput) GetTagGroupTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTagGroupTag {
+		return vs[0].([]GetTagGroupTag)[vs[1].(int)]
+	}).(GetTagGroupTagOutput)
+}
+
+type GetTagGroupTagNamespace struct {
+	// Whether the tag key is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// The ID of the tag group.
+	Id string `pulumi:"id"`
+	// The name of the tag group.
+	Name string `pulumi:"name"`
+}
+
+// GetTagGroupTagNamespaceInput is an input type that accepts GetTagGroupTagNamespaceArgs and GetTagGroupTagNamespaceOutput values.
+// You can construct a concrete instance of `GetTagGroupTagNamespaceInput` via:
+//
+//	GetTagGroupTagNamespaceArgs{...}
+type GetTagGroupTagNamespaceInput interface {
+	pulumi.Input
+
+	ToGetTagGroupTagNamespaceOutput() GetTagGroupTagNamespaceOutput
+	ToGetTagGroupTagNamespaceOutputWithContext(context.Context) GetTagGroupTagNamespaceOutput
+}
+
+type GetTagGroupTagNamespaceArgs struct {
+	// Whether the tag key is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The ID of the tag group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the tag group.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetTagGroupTagNamespaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagGroupTagNamespace)(nil)).Elem()
+}
+
+func (i GetTagGroupTagNamespaceArgs) ToGetTagGroupTagNamespaceOutput() GetTagGroupTagNamespaceOutput {
+	return i.ToGetTagGroupTagNamespaceOutputWithContext(context.Background())
+}
+
+func (i GetTagGroupTagNamespaceArgs) ToGetTagGroupTagNamespaceOutputWithContext(ctx context.Context) GetTagGroupTagNamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagGroupTagNamespaceOutput)
+}
+
+// GetTagGroupTagNamespaceArrayInput is an input type that accepts GetTagGroupTagNamespaceArray and GetTagGroupTagNamespaceArrayOutput values.
+// You can construct a concrete instance of `GetTagGroupTagNamespaceArrayInput` via:
+//
+//	GetTagGroupTagNamespaceArray{ GetTagGroupTagNamespaceArgs{...} }
+type GetTagGroupTagNamespaceArrayInput interface {
+	pulumi.Input
+
+	ToGetTagGroupTagNamespaceArrayOutput() GetTagGroupTagNamespaceArrayOutput
+	ToGetTagGroupTagNamespaceArrayOutputWithContext(context.Context) GetTagGroupTagNamespaceArrayOutput
+}
+
+type GetTagGroupTagNamespaceArray []GetTagGroupTagNamespaceInput
+
+func (GetTagGroupTagNamespaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagGroupTagNamespace)(nil)).Elem()
+}
+
+func (i GetTagGroupTagNamespaceArray) ToGetTagGroupTagNamespaceArrayOutput() GetTagGroupTagNamespaceArrayOutput {
+	return i.ToGetTagGroupTagNamespaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetTagGroupTagNamespaceArray) ToGetTagGroupTagNamespaceArrayOutputWithContext(ctx context.Context) GetTagGroupTagNamespaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagGroupTagNamespaceArrayOutput)
+}
+
+type GetTagGroupTagNamespaceOutput struct{ *pulumi.OutputState }
+
+func (GetTagGroupTagNamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagGroupTagNamespace)(nil)).Elem()
+}
+
+func (o GetTagGroupTagNamespaceOutput) ToGetTagGroupTagNamespaceOutput() GetTagGroupTagNamespaceOutput {
+	return o
+}
+
+func (o GetTagGroupTagNamespaceOutput) ToGetTagGroupTagNamespaceOutputWithContext(ctx context.Context) GetTagGroupTagNamespaceOutput {
+	return o
+}
+
+// Whether the tag key is enabled.
+func (o GetTagGroupTagNamespaceOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTagGroupTagNamespace) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The ID of the tag group.
+func (o GetTagGroupTagNamespaceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagGroupTagNamespace) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the tag group.
+func (o GetTagGroupTagNamespaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagGroupTagNamespace) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetTagGroupTagNamespaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTagGroupTagNamespaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagGroupTagNamespace)(nil)).Elem()
+}
+
+func (o GetTagGroupTagNamespaceArrayOutput) ToGetTagGroupTagNamespaceArrayOutput() GetTagGroupTagNamespaceArrayOutput {
+	return o
+}
+
+func (o GetTagGroupTagNamespaceArrayOutput) ToGetTagGroupTagNamespaceArrayOutputWithContext(ctx context.Context) GetTagGroupTagNamespaceArrayOutput {
+	return o
+}
+
+func (o GetTagGroupTagNamespaceArrayOutput) Index(i pulumi.IntInput) GetTagGroupTagNamespaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTagGroupTagNamespace {
+		return vs[0].([]GetTagGroupTagNamespace)[vs[1].(int)]
+	}).(GetTagGroupTagNamespaceOutput)
+}
+
+type GetTagGroupTagTagKey struct {
+	// Whether the tag key is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// The ID of the tag group.
+	Id string `pulumi:"id"`
+	// The name of the tag group.
+	Name string `pulumi:"name"`
+}
+
+// GetTagGroupTagTagKeyInput is an input type that accepts GetTagGroupTagTagKeyArgs and GetTagGroupTagTagKeyOutput values.
+// You can construct a concrete instance of `GetTagGroupTagTagKeyInput` via:
+//
+//	GetTagGroupTagTagKeyArgs{...}
+type GetTagGroupTagTagKeyInput interface {
+	pulumi.Input
+
+	ToGetTagGroupTagTagKeyOutput() GetTagGroupTagTagKeyOutput
+	ToGetTagGroupTagTagKeyOutputWithContext(context.Context) GetTagGroupTagTagKeyOutput
+}
+
+type GetTagGroupTagTagKeyArgs struct {
+	// Whether the tag key is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The ID of the tag group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the tag group.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetTagGroupTagTagKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagGroupTagTagKey)(nil)).Elem()
+}
+
+func (i GetTagGroupTagTagKeyArgs) ToGetTagGroupTagTagKeyOutput() GetTagGroupTagTagKeyOutput {
+	return i.ToGetTagGroupTagTagKeyOutputWithContext(context.Background())
+}
+
+func (i GetTagGroupTagTagKeyArgs) ToGetTagGroupTagTagKeyOutputWithContext(ctx context.Context) GetTagGroupTagTagKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagGroupTagTagKeyOutput)
+}
+
+// GetTagGroupTagTagKeyArrayInput is an input type that accepts GetTagGroupTagTagKeyArray and GetTagGroupTagTagKeyArrayOutput values.
+// You can construct a concrete instance of `GetTagGroupTagTagKeyArrayInput` via:
+//
+//	GetTagGroupTagTagKeyArray{ GetTagGroupTagTagKeyArgs{...} }
+type GetTagGroupTagTagKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetTagGroupTagTagKeyArrayOutput() GetTagGroupTagTagKeyArrayOutput
+	ToGetTagGroupTagTagKeyArrayOutputWithContext(context.Context) GetTagGroupTagTagKeyArrayOutput
+}
+
+type GetTagGroupTagTagKeyArray []GetTagGroupTagTagKeyInput
+
+func (GetTagGroupTagTagKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagGroupTagTagKey)(nil)).Elem()
+}
+
+func (i GetTagGroupTagTagKeyArray) ToGetTagGroupTagTagKeyArrayOutput() GetTagGroupTagTagKeyArrayOutput {
+	return i.ToGetTagGroupTagTagKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetTagGroupTagTagKeyArray) ToGetTagGroupTagTagKeyArrayOutputWithContext(ctx context.Context) GetTagGroupTagTagKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagGroupTagTagKeyArrayOutput)
+}
+
+type GetTagGroupTagTagKeyOutput struct{ *pulumi.OutputState }
+
+func (GetTagGroupTagTagKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagGroupTagTagKey)(nil)).Elem()
+}
+
+func (o GetTagGroupTagTagKeyOutput) ToGetTagGroupTagTagKeyOutput() GetTagGroupTagTagKeyOutput {
+	return o
+}
+
+func (o GetTagGroupTagTagKeyOutput) ToGetTagGroupTagTagKeyOutputWithContext(ctx context.Context) GetTagGroupTagTagKeyOutput {
+	return o
+}
+
+// Whether the tag key is enabled.
+func (o GetTagGroupTagTagKeyOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTagGroupTagTagKey) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The ID of the tag group.
+func (o GetTagGroupTagTagKeyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagGroupTagTagKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the tag group.
+func (o GetTagGroupTagTagKeyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagGroupTagTagKey) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetTagGroupTagTagKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTagGroupTagTagKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagGroupTagTagKey)(nil)).Elem()
+}
+
+func (o GetTagGroupTagTagKeyArrayOutput) ToGetTagGroupTagTagKeyArrayOutput() GetTagGroupTagTagKeyArrayOutput {
+	return o
+}
+
+func (o GetTagGroupTagTagKeyArrayOutput) ToGetTagGroupTagTagKeyArrayOutputWithContext(ctx context.Context) GetTagGroupTagTagKeyArrayOutput {
+	return o
+}
+
+func (o GetTagGroupTagTagKeyArrayOutput) Index(i pulumi.IntInput) GetTagGroupTagTagKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTagGroupTagTagKey {
+		return vs[0].([]GetTagGroupTagTagKey)[vs[1].(int)]
+	}).(GetTagGroupTagTagKeyOutput)
+}
+
+type GetTagGroupTagTagValue struct {
+	// The ID of the tag group.
+	Id string `pulumi:"id"`
+	// The name of the tag group.
+	Name string `pulumi:"name"`
+}
+
+// GetTagGroupTagTagValueInput is an input type that accepts GetTagGroupTagTagValueArgs and GetTagGroupTagTagValueOutput values.
+// You can construct a concrete instance of `GetTagGroupTagTagValueInput` via:
+//
+//	GetTagGroupTagTagValueArgs{...}
+type GetTagGroupTagTagValueInput interface {
+	pulumi.Input
+
+	ToGetTagGroupTagTagValueOutput() GetTagGroupTagTagValueOutput
+	ToGetTagGroupTagTagValueOutputWithContext(context.Context) GetTagGroupTagTagValueOutput
+}
+
+type GetTagGroupTagTagValueArgs struct {
+	// The ID of the tag group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the tag group.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetTagGroupTagTagValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagGroupTagTagValue)(nil)).Elem()
+}
+
+func (i GetTagGroupTagTagValueArgs) ToGetTagGroupTagTagValueOutput() GetTagGroupTagTagValueOutput {
+	return i.ToGetTagGroupTagTagValueOutputWithContext(context.Background())
+}
+
+func (i GetTagGroupTagTagValueArgs) ToGetTagGroupTagTagValueOutputWithContext(ctx context.Context) GetTagGroupTagTagValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagGroupTagTagValueOutput)
+}
+
+// GetTagGroupTagTagValueArrayInput is an input type that accepts GetTagGroupTagTagValueArray and GetTagGroupTagTagValueArrayOutput values.
+// You can construct a concrete instance of `GetTagGroupTagTagValueArrayInput` via:
+//
+//	GetTagGroupTagTagValueArray{ GetTagGroupTagTagValueArgs{...} }
+type GetTagGroupTagTagValueArrayInput interface {
+	pulumi.Input
+
+	ToGetTagGroupTagTagValueArrayOutput() GetTagGroupTagTagValueArrayOutput
+	ToGetTagGroupTagTagValueArrayOutputWithContext(context.Context) GetTagGroupTagTagValueArrayOutput
+}
+
+type GetTagGroupTagTagValueArray []GetTagGroupTagTagValueInput
+
+func (GetTagGroupTagTagValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagGroupTagTagValue)(nil)).Elem()
+}
+
+func (i GetTagGroupTagTagValueArray) ToGetTagGroupTagTagValueArrayOutput() GetTagGroupTagTagValueArrayOutput {
+	return i.ToGetTagGroupTagTagValueArrayOutputWithContext(context.Background())
+}
+
+func (i GetTagGroupTagTagValueArray) ToGetTagGroupTagTagValueArrayOutputWithContext(ctx context.Context) GetTagGroupTagTagValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagGroupTagTagValueArrayOutput)
+}
+
+type GetTagGroupTagTagValueOutput struct{ *pulumi.OutputState }
+
+func (GetTagGroupTagTagValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagGroupTagTagValue)(nil)).Elem()
+}
+
+func (o GetTagGroupTagTagValueOutput) ToGetTagGroupTagTagValueOutput() GetTagGroupTagTagValueOutput {
+	return o
+}
+
+func (o GetTagGroupTagTagValueOutput) ToGetTagGroupTagTagValueOutputWithContext(ctx context.Context) GetTagGroupTagTagValueOutput {
+	return o
+}
+
+// The ID of the tag group.
+func (o GetTagGroupTagTagValueOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagGroupTagTagValue) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the tag group.
+func (o GetTagGroupTagTagValueOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagGroupTagTagValue) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetTagGroupTagTagValueArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTagGroupTagTagValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagGroupTagTagValue)(nil)).Elem()
+}
+
+func (o GetTagGroupTagTagValueArrayOutput) ToGetTagGroupTagTagValueArrayOutput() GetTagGroupTagTagValueArrayOutput {
+	return o
+}
+
+func (o GetTagGroupTagTagValueArrayOutput) ToGetTagGroupTagTagValueArrayOutputWithContext(ctx context.Context) GetTagGroupTagTagValueArrayOutput {
+	return o
+}
+
+func (o GetTagGroupTagTagValueArrayOutput) Index(i pulumi.IntInput) GetTagGroupTagTagValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTagGroupTagTagValue {
+		return vs[0].([]GetTagGroupTagTagValue)[vs[1].(int)]
+	}).(GetTagGroupTagTagValueOutput)
+}
+
+type GetTagKeyTagValue struct {
+	// The ID of the tag key.
+	Id string `pulumi:"id"`
+	// The name of the tag key.
+	Name string `pulumi:"name"`
+}
+
+// GetTagKeyTagValueInput is an input type that accepts GetTagKeyTagValueArgs and GetTagKeyTagValueOutput values.
+// You can construct a concrete instance of `GetTagKeyTagValueInput` via:
+//
+//	GetTagKeyTagValueArgs{...}
+type GetTagKeyTagValueInput interface {
+	pulumi.Input
+
+	ToGetTagKeyTagValueOutput() GetTagKeyTagValueOutput
+	ToGetTagKeyTagValueOutputWithContext(context.Context) GetTagKeyTagValueOutput
+}
+
+type GetTagKeyTagValueArgs struct {
+	// The ID of the tag key.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the tag key.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetTagKeyTagValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagKeyTagValue)(nil)).Elem()
+}
+
+func (i GetTagKeyTagValueArgs) ToGetTagKeyTagValueOutput() GetTagKeyTagValueOutput {
+	return i.ToGetTagKeyTagValueOutputWithContext(context.Background())
+}
+
+func (i GetTagKeyTagValueArgs) ToGetTagKeyTagValueOutputWithContext(ctx context.Context) GetTagKeyTagValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagKeyTagValueOutput)
+}
+
+// GetTagKeyTagValueArrayInput is an input type that accepts GetTagKeyTagValueArray and GetTagKeyTagValueArrayOutput values.
+// You can construct a concrete instance of `GetTagKeyTagValueArrayInput` via:
+//
+//	GetTagKeyTagValueArray{ GetTagKeyTagValueArgs{...} }
+type GetTagKeyTagValueArrayInput interface {
+	pulumi.Input
+
+	ToGetTagKeyTagValueArrayOutput() GetTagKeyTagValueArrayOutput
+	ToGetTagKeyTagValueArrayOutputWithContext(context.Context) GetTagKeyTagValueArrayOutput
+}
+
+type GetTagKeyTagValueArray []GetTagKeyTagValueInput
+
+func (GetTagKeyTagValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagKeyTagValue)(nil)).Elem()
+}
+
+func (i GetTagKeyTagValueArray) ToGetTagKeyTagValueArrayOutput() GetTagKeyTagValueArrayOutput {
+	return i.ToGetTagKeyTagValueArrayOutputWithContext(context.Background())
+}
+
+func (i GetTagKeyTagValueArray) ToGetTagKeyTagValueArrayOutputWithContext(ctx context.Context) GetTagKeyTagValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagKeyTagValueArrayOutput)
+}
+
+type GetTagKeyTagValueOutput struct{ *pulumi.OutputState }
+
+func (GetTagKeyTagValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagKeyTagValue)(nil)).Elem()
+}
+
+func (o GetTagKeyTagValueOutput) ToGetTagKeyTagValueOutput() GetTagKeyTagValueOutput {
+	return o
+}
+
+func (o GetTagKeyTagValueOutput) ToGetTagKeyTagValueOutputWithContext(ctx context.Context) GetTagKeyTagValueOutput {
+	return o
+}
+
+// The ID of the tag key.
+func (o GetTagKeyTagValueOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagKeyTagValue) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the tag key.
+func (o GetTagKeyTagValueOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagKeyTagValue) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetTagKeyTagValueArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTagKeyTagValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagKeyTagValue)(nil)).Elem()
+}
+
+func (o GetTagKeyTagValueArrayOutput) ToGetTagKeyTagValueArrayOutput() GetTagKeyTagValueArrayOutput {
+	return o
+}
+
+func (o GetTagKeyTagValueArrayOutput) ToGetTagKeyTagValueArrayOutputWithContext(ctx context.Context) GetTagKeyTagValueArrayOutput {
+	return o
+}
+
+func (o GetTagKeyTagValueArrayOutput) Index(i pulumi.IntInput) GetTagKeyTagValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTagKeyTagValue {
+		return vs[0].([]GetTagKeyTagValue)[vs[1].(int)]
+	}).(GetTagKeyTagValueOutput)
+}
+
 type GetUserPortalLinkUserPortal struct {
 	Enabled bool   `pulumi:"enabled"`
 	Id      string `pulumi:"id"`
@@ -25681,6 +27663,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrInput)(nil)).Elem(), PolicyPortalAccessRulePrivilegedPortalCapabilitiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PraCredentialPoolCredentialInput)(nil)).Elem(), PraCredentialPoolCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PraCredentialPoolCredentialArrayInput)(nil)).Elem(), PraCredentialPoolCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudAssistantGroupsIdsInput)(nil)).Elem(), PrivateCloudAssistantGroupsIdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudAssistantGroupsIdsPtrInput)(nil)).Elem(), PrivateCloudAssistantGroupsIdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudPrivateBrokerGroupIdsInput)(nil)).Elem(), PrivateCloudPrivateBrokerGroupIdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudPrivateBrokerGroupIdsPtrInput)(nil)).Elem(), PrivateCloudPrivateBrokerGroupIdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudSiemIdsInput)(nil)).Elem(), PrivateCloudSiemIdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudSiemIdsPtrInput)(nil)).Elem(), PrivateCloudSiemIdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudSiteControllerGroupIdsInput)(nil)).Elem(), PrivateCloudSiteControllerGroupIdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudSiteControllerGroupIdsPtrInput)(nil)).Elem(), PrivateCloudSiteControllerGroupIdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudZpnFireDrillSiteInput)(nil)).Elem(), PrivateCloudZpnFireDrillSiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudZpnFireDrillSiteArrayInput)(nil)).Elem(), PrivateCloudZpnFireDrillSiteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentGroupApplicationInput)(nil)).Elem(), SegmentGroupApplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentGroupApplicationArrayInput)(nil)).Elem(), SegmentGroupApplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupAppConnectorGroupInput)(nil)).Elem(), ServerGroupAppConnectorGroupArgs{})
@@ -25699,6 +27691,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceEdgeGroupServiceEdgesPtrInput)(nil)).Elem(), ServiceEdgeGroupServiceEdgesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceEdgeGroupTrustedNetworkInput)(nil)).Elem(), ServiceEdgeGroupTrustedNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceEdgeGroupTrustedNetworkArrayInput)(nil)).Elem(), ServiceEdgeGroupTrustedNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyTagValueInput)(nil)).Elem(), TagKeyTagValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyTagValueArrayInput)(nil)).Elem(), TagKeyTagValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserPortalLinkUserPortalInput)(nil)).Elem(), UserPortalLinkUserPortalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserPortalLinkUserPortalArrayInput)(nil)).Elem(), UserPortalLinkUserPortalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppConnectorControllerAssistantVersionInput)(nil)).Elem(), GetAppConnectorControllerAssistantVersionArgs{})
@@ -25843,6 +27837,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyTypeRuleConditionArrayInput)(nil)).Elem(), GetPolicyTypeRuleConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyTypeRuleConditionOperandInput)(nil)).Elem(), GetPolicyTypeRuleConditionOperandArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyTypeRuleConditionOperandArrayInput)(nil)).Elem(), GetPolicyTypeRuleConditionOperandArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudAssistantGroupsIdInput)(nil)).Elem(), GetPrivateCloudAssistantGroupsIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudAssistantGroupsIdArrayInput)(nil)).Elem(), GetPrivateCloudAssistantGroupsIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudPrivateBrokerGroupIdInput)(nil)).Elem(), GetPrivateCloudPrivateBrokerGroupIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudPrivateBrokerGroupIdArrayInput)(nil)).Elem(), GetPrivateCloudPrivateBrokerGroupIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudPrivateExporterGroupIdInput)(nil)).Elem(), GetPrivateCloudPrivateExporterGroupIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudPrivateExporterGroupIdArrayInput)(nil)).Elem(), GetPrivateCloudPrivateExporterGroupIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudSiemIdInput)(nil)).Elem(), GetPrivateCloudSiemIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudSiemIdArrayInput)(nil)).Elem(), GetPrivateCloudSiemIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudSiteControllerGroupIdInput)(nil)).Elem(), GetPrivateCloudSiteControllerGroupIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudSiteControllerGroupIdArrayInput)(nil)).Elem(), GetPrivateCloudSiteControllerGroupIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudZpnFireDrillSiteInput)(nil)).Elem(), GetPrivateCloudZpnFireDrillSiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudZpnFireDrillSiteArrayInput)(nil)).Elem(), GetPrivateCloudZpnFireDrillSiteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSegmentGroupApplicationInput)(nil)).Elem(), GetSegmentGroupApplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSegmentGroupApplicationArrayInput)(nil)).Elem(), GetSegmentGroupApplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSegmentGroupApplicationServerGroupInput)(nil)).Elem(), GetSegmentGroupApplicationServerGroupArgs{})
@@ -25865,6 +27871,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceEdgeGroupServiceEdgePrivateBrokerVersionZpnSubModuleUpgradeArrayInput)(nil)).Elem(), GetServiceEdgeGroupServiceEdgePrivateBrokerVersionZpnSubModuleUpgradeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceEdgeGroupTrustedNetworkInput)(nil)).Elem(), GetServiceEdgeGroupTrustedNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceEdgeGroupTrustedNetworkArrayInput)(nil)).Elem(), GetServiceEdgeGroupTrustedNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagGroupTagInput)(nil)).Elem(), GetTagGroupTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagGroupTagArrayInput)(nil)).Elem(), GetTagGroupTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagGroupTagNamespaceInput)(nil)).Elem(), GetTagGroupTagNamespaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagGroupTagNamespaceArrayInput)(nil)).Elem(), GetTagGroupTagNamespaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagGroupTagTagKeyInput)(nil)).Elem(), GetTagGroupTagTagKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagGroupTagTagKeyArrayInput)(nil)).Elem(), GetTagGroupTagTagKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagGroupTagTagValueInput)(nil)).Elem(), GetTagGroupTagTagValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagGroupTagTagValueArrayInput)(nil)).Elem(), GetTagGroupTagTagValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagKeyTagValueInput)(nil)).Elem(), GetTagKeyTagValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagKeyTagValueArrayInput)(nil)).Elem(), GetTagKeyTagValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPortalLinkUserPortalInput)(nil)).Elem(), GetUserPortalLinkUserPortalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPortalLinkUserPortalArrayInput)(nil)).Elem(), GetUserPortalLinkUserPortalArray{})
 	pulumi.RegisterOutputType(ApplicationSegmentBrowserAccessClientlessAppOutput{})
@@ -26075,6 +28091,16 @@ func init() {
 	pulumi.RegisterOutputType(PolicyPortalAccessRulePrivilegedPortalCapabilitiesPtrOutput{})
 	pulumi.RegisterOutputType(PraCredentialPoolCredentialOutput{})
 	pulumi.RegisterOutputType(PraCredentialPoolCredentialArrayOutput{})
+	pulumi.RegisterOutputType(PrivateCloudAssistantGroupsIdsOutput{})
+	pulumi.RegisterOutputType(PrivateCloudAssistantGroupsIdsPtrOutput{})
+	pulumi.RegisterOutputType(PrivateCloudPrivateBrokerGroupIdsOutput{})
+	pulumi.RegisterOutputType(PrivateCloudPrivateBrokerGroupIdsPtrOutput{})
+	pulumi.RegisterOutputType(PrivateCloudSiemIdsOutput{})
+	pulumi.RegisterOutputType(PrivateCloudSiemIdsPtrOutput{})
+	pulumi.RegisterOutputType(PrivateCloudSiteControllerGroupIdsOutput{})
+	pulumi.RegisterOutputType(PrivateCloudSiteControllerGroupIdsPtrOutput{})
+	pulumi.RegisterOutputType(PrivateCloudZpnFireDrillSiteOutput{})
+	pulumi.RegisterOutputType(PrivateCloudZpnFireDrillSiteArrayOutput{})
 	pulumi.RegisterOutputType(SegmentGroupApplicationOutput{})
 	pulumi.RegisterOutputType(SegmentGroupApplicationArrayOutput{})
 	pulumi.RegisterOutputType(ServerGroupAppConnectorGroupOutput{})
@@ -26093,6 +28119,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceEdgeGroupServiceEdgesPtrOutput{})
 	pulumi.RegisterOutputType(ServiceEdgeGroupTrustedNetworkOutput{})
 	pulumi.RegisterOutputType(ServiceEdgeGroupTrustedNetworkArrayOutput{})
+	pulumi.RegisterOutputType(TagKeyTagValueOutput{})
+	pulumi.RegisterOutputType(TagKeyTagValueArrayOutput{})
 	pulumi.RegisterOutputType(UserPortalLinkUserPortalOutput{})
 	pulumi.RegisterOutputType(UserPortalLinkUserPortalArrayOutput{})
 	pulumi.RegisterOutputType(GetAppConnectorControllerAssistantVersionOutput{})
@@ -26237,6 +28265,18 @@ func init() {
 	pulumi.RegisterOutputType(GetPolicyTypeRuleConditionArrayOutput{})
 	pulumi.RegisterOutputType(GetPolicyTypeRuleConditionOperandOutput{})
 	pulumi.RegisterOutputType(GetPolicyTypeRuleConditionOperandArrayOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudAssistantGroupsIdOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudAssistantGroupsIdArrayOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudPrivateBrokerGroupIdOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudPrivateBrokerGroupIdArrayOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudPrivateExporterGroupIdOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudPrivateExporterGroupIdArrayOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudSiemIdOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudSiemIdArrayOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudSiteControllerGroupIdOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudSiteControllerGroupIdArrayOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudZpnFireDrillSiteOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudZpnFireDrillSiteArrayOutput{})
 	pulumi.RegisterOutputType(GetSegmentGroupApplicationOutput{})
 	pulumi.RegisterOutputType(GetSegmentGroupApplicationArrayOutput{})
 	pulumi.RegisterOutputType(GetSegmentGroupApplicationServerGroupOutput{})
@@ -26259,6 +28299,16 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceEdgeGroupServiceEdgePrivateBrokerVersionZpnSubModuleUpgradeArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceEdgeGroupTrustedNetworkOutput{})
 	pulumi.RegisterOutputType(GetServiceEdgeGroupTrustedNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetTagGroupTagOutput{})
+	pulumi.RegisterOutputType(GetTagGroupTagArrayOutput{})
+	pulumi.RegisterOutputType(GetTagGroupTagNamespaceOutput{})
+	pulumi.RegisterOutputType(GetTagGroupTagNamespaceArrayOutput{})
+	pulumi.RegisterOutputType(GetTagGroupTagTagKeyOutput{})
+	pulumi.RegisterOutputType(GetTagGroupTagTagKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetTagGroupTagTagValueOutput{})
+	pulumi.RegisterOutputType(GetTagGroupTagTagValueArrayOutput{})
+	pulumi.RegisterOutputType(GetTagKeyTagValueOutput{})
+	pulumi.RegisterOutputType(GetTagKeyTagValueArrayOutput{})
 	pulumi.RegisterOutputType(GetUserPortalLinkUserPortalOutput{})
 	pulumi.RegisterOutputType(GetUserPortalLinkUserPortalArrayOutput{})
 }

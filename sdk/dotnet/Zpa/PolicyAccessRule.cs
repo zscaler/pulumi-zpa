@@ -20,11 +20,12 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// ## Example Usage
     /// 
+    /// ### Basic Example with SCIM Group
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Zpa = Pulumi.Zpa;
     /// using Zpa = zscaler.PulumiPackage.Zpa;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -107,6 +108,58 @@ namespace zscaler.PulumiPackage.Zpa
     /// });
     /// ```
     /// 
+    /// ### Example with SCIM Attribute Values
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Get SCIM attribute header for a specific attribute
+    ///     var displayName = Zpa.GetSCIMAttributeHeader.Invoke(new()
+    ///     {
+    ///         Name = "DisplayName",
+    ///         IdpName = "IdP_Name",
+    ///     });
+    /// 
+    ///     // Create Policy Access Rule using SCIM attribute value
+    ///     var scimExample = new Zpa.PolicyAccessRule("scim_example", new()
+    ///     {
+    ///         Name = "SCIM Attribute Example",
+    ///         Description = "Policy rule filtering by SCIM attribute value",
+    ///         Action = "ALLOW",
+    ///         Operator = "AND",
+    ///         Conditions = new[]
+    ///         {
+    ///             new Zpa.Inputs.PolicyAccessRuleConditionArgs
+    ///             {
+    ///                 Operator = "OR",
+    ///                 Operands = new[]
+    ///                 {
+    ///                     new Zpa.Inputs.PolicyAccessRuleConditionOperandArgs
+    ///                     {
+    ///                         ObjectType = "SCIM",
+    ///                         IdpId = displayName.Apply(getSCIMAttributeHeaderResult =&gt; getSCIMAttributeHeaderResult.IdpId),
+    ///                         Lhs = displayName.Apply(getSCIMAttributeHeaderResult =&gt; getSCIMAttributeHeaderResult.Id),
+    ///                         Rhs = "John Smith",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["availableValues"] = displayName.Apply(getSCIMAttributeHeaderResult =&gt; getSCIMAttributeHeaderResult.Values),
+    ///     };
+    /// });
+    /// ```
+    /// 
+    /// **Note**: When using SCIM attributes, the `Rhs` value must match one of the values available in the SCIM attribute's values list. You can reference the `Values` attribute from the `zpa.getSCIMAttributeHeader` data source to see available options.
+    /// 
     /// ## LHS and RHS Values
     /// 
     /// | Object Type | LHS| RHS
@@ -130,7 +183,6 @@ namespace zscaler.PulumiPackage.Zpa
     /// ## Import
     /// 
     /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-    /// 
     /// Visit
     /// 
     /// Policy access rule can be imported by using `&lt;POLICY ACCESS RULE ID&gt;` as the import ID.

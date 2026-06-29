@@ -1125,6 +1125,47 @@ export interface GetPolicyTypeRuleConditionOperand {
     rhs: string;
 }
 
+export interface GetPrivateCloudAssistantGroupsId {
+    enabled: boolean;
+    id: string;
+    name: string;
+}
+
+export interface GetPrivateCloudPrivateBrokerGroupId {
+    enabled: boolean;
+    id: string;
+    name: string;
+}
+
+export interface GetPrivateCloudPrivateExporterGroupId {
+    enabled: boolean;
+    id: string;
+    name: string;
+}
+
+export interface GetPrivateCloudSiemId {
+    enabled: boolean;
+    id: string;
+    name: string;
+}
+
+export interface GetPrivateCloudSiteControllerGroupId {
+    enabled: boolean;
+    id: string;
+    name: string;
+}
+
+export interface GetPrivateCloudZpnFireDrillSite {
+    creationTime: string;
+    fireDrillInterval: string;
+    fireDrillIntervalTimeUnit: string;
+    id: string;
+    microtenantId: string;
+    microtenantName: string;
+    modifiedBy: string;
+    modifiedTime: string;
+}
+
 export interface GetSegmentGroupApplication {
     bypassType: string;
     configSpace: string;
@@ -1326,6 +1367,77 @@ export interface GetServiceEdgeGroupTrustedNetwork {
     name: string;
     networkId: string;
     zscalerCloud: string;
+}
+
+export interface GetTagGroupTag {
+    /**
+     * A list containing the tag namespace details:
+     */
+    namespaces: outputs.GetTagGroupTagNamespace[];
+    /**
+     * The origin of the tag.
+     */
+    origin: string;
+    /**
+     * A list containing the tag key details:
+     */
+    tagKeys: outputs.GetTagGroupTagTagKey[];
+    /**
+     * A list containing the tag value details:
+     */
+    tagValues: outputs.GetTagGroupTagTagValue[];
+}
+
+export interface GetTagGroupTagNamespace {
+    /**
+     * Whether the tag key is enabled.
+     */
+    enabled: boolean;
+    /**
+     * The ID of the tag group.
+     */
+    id: string;
+    /**
+     * The name of the tag group.
+     */
+    name: string;
+}
+
+export interface GetTagGroupTagTagKey {
+    /**
+     * Whether the tag key is enabled.
+     */
+    enabled: boolean;
+    /**
+     * The ID of the tag group.
+     */
+    id: string;
+    /**
+     * The name of the tag group.
+     */
+    name: string;
+}
+
+export interface GetTagGroupTagTagValue {
+    /**
+     * The ID of the tag group.
+     */
+    id: string;
+    /**
+     * The name of the tag group.
+     */
+    name: string;
+}
+
+export interface GetTagKeyTagValue {
+    /**
+     * The ID of the tag key.
+     */
+    id: string;
+    /**
+     * The name of the tag key.
+     */
+    name: string;
 }
 
 export interface GetUserPortalLinkUserPortal {
@@ -2152,6 +2264,29 @@ export interface PraCredentialPoolCredential {
     ids?: string[];
 }
 
+export interface PrivateCloudAssistantGroupsIds {
+    ids?: string[];
+}
+
+export interface PrivateCloudPrivateBrokerGroupIds {
+    ids?: string[];
+}
+
+export interface PrivateCloudSiemIds {
+    ids?: string[];
+}
+
+export interface PrivateCloudSiteControllerGroupIds {
+    ids?: string[];
+}
+
+export interface PrivateCloudZpnFireDrillSite {
+    fireDrillInterval?: string;
+    fireDrillIntervalTimeUnit?: string;
+    id?: string;
+    microtenantId?: string;
+}
+
 export interface SegmentGroupApplication {
     id?: string;
 }
@@ -2203,6 +2338,17 @@ export interface ServiceEdgeGroupServiceEdges {
 
 export interface ServiceEdgeGroupTrustedNetwork {
     ids?: string[];
+}
+
+export interface TagKeyTagValue {
+    /**
+     * The ID of the tag value.
+     */
+    id: string;
+    /**
+     * The name of the tag value.
+     */
+    name: string;
 }
 
 export interface UserPortalLinkUserPortal {

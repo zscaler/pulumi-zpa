@@ -11,10 +11,172 @@ using Pulumi;
 namespace zscaler.PulumiPackage.Zpa
 {
     /// <summary>
+    /// * [Official documentation](https://help.zscaler.com/zpa/about-connector-provisioning-keys)
+    /// * [API documentation](https://help.zscaler.com/zpa/configuring-provisioning-keys-using-api)
+    /// 
+    /// The **zpa_provisioning_key** resource provides creates a provisioning key in the Zscaler Private Access portal. This resource can then be referenced in the following ZPA resources:
+    /// 
+    /// * App Connector Groups
+    /// * Service Edge Groups
+    /// 
+    /// ## Zenith Community - ZPA Provisioning Keys
+    /// 
+    /// ![ZPA Terraform provider Video Series Ep3 - Provisioning Keys](https://community.zscaler.com/zenith/s/question/0D54u00009evlEnCAI/video-zpa-terraform-provider-video-series-ep3-provisioning-keys)
+    /// 
+    /// ## Service Edge Provisioning Key Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Retrieve the Service Edge Enrollment Certificate
+    ///     var serviceEdge = Zpa.GetEnrollmentCert.Invoke(new()
+    ///     {
+    ///         Name = "Service Edge",
+    ///     });
+    /// 
+    ///     // Create a Service Edge Group
+    ///     var serviceEdgeGroupNyc = new Zpa.ServiceEdgeGroup("service_edge_group_nyc", new()
+    ///     {
+    ///         Name = "Service Edge Group New York",
+    ///         Description = "Service Edge Group New York",
+    ///         UpgradeDay = "SUNDAY",
+    ///         UpgradeTimeInSecs = "66600",
+    ///         Latitude = "40.7128",
+    ///         Longitude = "-73.935242",
+    ///         Location = "New York, NY, USA",
+    ///         VersionProfileId = "0",
+    ///     });
+    /// 
+    ///     // Create Provisioning Key for Service Edge Group
+    ///     var testProvisioningKey = new Zpa.ProvisioningKey("test_provisioning_key", new()
+    ///     {
+    ///         Name = "test-provisioning-key",
+    ///         AssociationType = "SERVICE_EDGE_GRP",
+    ///         MaxUsage = "10",
+    ///         EnrollmentCertId = serviceEdge.Apply(getEnrollmentCertResult =&gt; getEnrollmentCertResult.Id),
+    ///         ZcomponentId = serviceEdgeGroupNyc.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Accessing the Provisioning Key
+    /// 
+    /// The provisioning key value is required to onboard App Connector or Service Edge devices. The attribute is marked as sensitive to prevent accidental exposure in logs and console output, but it remains accessible through Terraform outputs and resource references.
+    /// 
+    /// ### Method 1: Using Terraform Output (Recommended)
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create provisioning key
+    ///     var connectorKey = new Zpa.ProvisioningKey("connector_key", new()
+    ///     {
+    ///         Name = "connector-provisioning-key",
+    ///         AssociationType = "CONNECTOR_GRP",
+    ///         MaxUsage = "10",
+    ///         EnrollmentCertId = connector.Id,
+    ///         ZcomponentId = example.Id,
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["connectorProvisioningKey"] = connectorKey.ProvisioningKeyValue,
+    ///     };
+    /// });
+    /// ```
+    /// 
+    /// To retrieve the key value, use:
+    /// 
+    /// ### Method 2: Reference in Other Resources
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Command = Pulumi.Command;
+    /// using Null = Pulumi.Null;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Use the provisioning key in automation scripts or other resources
+    ///     var appConnectorDeployment = new Null.Resource("app_connector_deployment");
+    /// 
+    ///     var appConnectorDeploymentProvisioner0 = new Command.Local.Command("appConnectorDeploymentProvisioner0", new()
+    ///     {
+    ///         Create = $"deploy-app-connector.sh {connectorKey.ProvisioningKey}",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             appConnectorDeployment,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Method 3: Using Data Source (For Existing Keys)
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // If the provisioning key already exists, use the data source
+    ///     var existingKey = Zpa.GetProvisioningKey.Invoke(new()
+    ///     {
+    ///         Name = "existing-connector-key",
+    ///         AssociationType = "CONNECTOR_GRP",
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["existingProvisioningKey"] = existingKey.Apply(getProvisioningKeyResult =&gt; getProvisioningKeyResult.ProvisioningKey),
+    ///     };
+    /// });
+    /// ```
+    /// 
+    /// ### Security Considerations
+    /// 
+    /// ⚠️ **Important Notes on Provisioning Key Security:**
+    /// 
+    /// 1. **State File Storage**: The provisioning key is stored in the Terraform state file. This is standard Terraform behavior for all resource attributes, including sensitive ones. The state file should be:
+    ///    - Stored in a secure backend (e.g., Terraform Cloud, AWS S3 with encryption, Azure Blob Storage)
+    ///    - Access-controlled using appropriate IAM policies
+    ///    - Never committed to version control
+    /// 
+    /// 2. **Why the Key is in State**: The provisioning key must be stored in state because:
+    ///    - It's returned by the ZPA API and is required for App Connector/Service Edge onboarding
+    ///    - Terraform needs to track the value to detect drift and manage the resource lifecycle
+    ///    - Users need programmatic access to deploy connectors
+    /// 
+    /// 3. **API Behavior**: The ZPA API returns the provisioning key in clear text because it's a necessary operational value, not a secret like passwords or API tokens. It's used for device enrollment, similar to a registration token.
+    /// 
+    /// 4. **Best Practices**:
+    ///    - Use remote state backends with encryption at rest
+    ///    - Implement state locking to prevent concurrent modifications
+    ///    - Rotate provisioning keys periodically by creating new keys and updating deployments
+    ///    - Use `MaxUsage` limits to control key reuse
+    ///    - Monitor `UsageCount` to detect unauthorized usage
+    ///    - Enable `IpAcl` to restrict where the key can be used from
+    /// 
     /// ## Import
     /// 
     /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-    /// 
     /// Visit
     /// 
     /// Provisioning key can be imported by using `&lt;PROVISIONING KEY ID&gt;` or `&lt;PROVISIONING KEY NAME&gt;` as the import ID.
@@ -35,7 +197,7 @@ namespace zscaler.PulumiPackage.Zpa
     public partial class ProvisioningKey : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// read only field. Ignored in PUT/POST calls.
+        /// The provisioning key returned by the API. This value is required to onboard App Connector or Service Edge devices. Although marked as sensitive to prevent exposure in logs and console output, the value is stored in the Terraform state file and can be retrieved using 'terraform output' or by referencing the attribute in other resources.
         /// </summary>
         [Output("ProvisioningKeyValue")]
         public Output<string> ProvisioningKeyValue { get; private set; } = null!;
@@ -85,6 +247,9 @@ namespace zscaler.PulumiPackage.Zpa
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("provisioningKeyId")]
+        public Output<string> ProvisioningKeyId { get; private set; } = null!;
+
         [Output("uiConfig")]
         public Output<string?> UiConfig { get; private set; } = null!;
 
@@ -130,6 +295,10 @@ namespace zscaler.PulumiPackage.Zpa
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/zscaler",
+                AdditionalSecretOutputs =
+                {
+                    "ProvisioningKeyValue",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -153,12 +322,6 @@ namespace zscaler.PulumiPackage.Zpa
 
     public sealed class ProvisioningKeyArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// read only field. Ignored in PUT/POST calls.
-        /// </summary>
-        [Input("ProvisioningKeyValue")]
-        public Input<string>? ProvisioningKeyValue { get; set; }
-
         [Input("appConnectorGroupId")]
         public Input<string>? AppConnectorGroupId { get; set; }
 
@@ -203,6 +366,9 @@ namespace zscaler.PulumiPackage.Zpa
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("provisioningKeyId")]
+        public Input<string>? ProvisioningKeyId { get; set; }
+
         [Input("uiConfig")]
         public Input<string>? UiConfig { get; set; }
 
@@ -232,11 +398,21 @@ namespace zscaler.PulumiPackage.Zpa
 
     public sealed class ProvisioningKeyState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// read only field. Ignored in PUT/POST calls.
-        /// </summary>
         [Input("ProvisioningKeyValue")]
-        public Input<string>? ProvisioningKeyValue { get; set; }
+        private Input<string>? _ProvisioningKeyValue;
+
+        /// <summary>
+        /// The provisioning key returned by the API. This value is required to onboard App Connector or Service Edge devices. Although marked as sensitive to prevent exposure in logs and console output, the value is stored in the Terraform state file and can be retrieved using 'terraform output' or by referencing the attribute in other resources.
+        /// </summary>
+        public Input<string>? ProvisioningKeyValue
+        {
+            get => _ProvisioningKeyValue;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _ProvisioningKeyValue = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("appConnectorGroupId")]
         public Input<string>? AppConnectorGroupId { get; set; }
@@ -287,6 +463,9 @@ namespace zscaler.PulumiPackage.Zpa
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("provisioningKeyId")]
+        public Input<string>? ProvisioningKeyId { get; set; }
 
         [Input("uiConfig")]
         public Input<string>? UiConfig { get; set; }

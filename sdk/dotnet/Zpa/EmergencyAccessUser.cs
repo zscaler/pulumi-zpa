@@ -39,7 +39,7 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// ## Import
     /// 
-    /// The `zpa_emergency_access_user` do not support resource import.
+    /// The `zpa.EmergencyAccessUser` do not support resource import.
     /// </summary>
     [ZpaResourceType("zpa:index/emergencyAccessUser:EmergencyAccessUser")]
     public partial class EmergencyAccessUser : global::Pulumi.CustomResource

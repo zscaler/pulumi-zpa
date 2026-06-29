@@ -64,14 +64,14 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     ///     var accessPolicyReorder = new Zpa.PolicyAccessReorderRule("access_policy_reorder", new()
     ///     {
-    ///         Rules = ruleOrders.Select((v, k) =&gt; new { Key = k, Value = v }).Apply(entries =&gt; entries.Select(entry =&gt; 
+    ///         Rules = ruleOrders.Select(entry =&gt; 
     ///         {
-    ///             return 
+    ///             return new Zpa.Inputs.PolicyAccessReorderRuleRuleArgs
     ///             {
-    ///                 { "id", entry.Value.Id },
-    ///                 { "order", entry.Value.Order },
+    ///                 Id = entry.Id,
+    ///                 Order = entry.Order,
     ///             };
-    ///         }).ToList()),
+    ///         }).ToList(),
     ///         PolicyType = "ACCESS_POLICY",
     ///     });
     /// 
@@ -136,19 +136,21 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     ///     var accessPolicyReorder = new Zpa.PolicyAccessReorderRule("access_policy_reorder", new()
     ///     {
-    ///         Rules = ruleOrders.Select((v, k) =&gt; new { Key = k, Value = v }).Apply(entries =&gt; entries.Select(entry =&gt; 
+    ///         Rules = ruleOrders.Select(entry =&gt; 
     ///         {
-    ///             return 
+    ///             return new Zpa.Inputs.PolicyAccessReorderRuleRuleArgs
     ///             {
-    ///                 { "id", entry.Value.Id },
-    ///                 { "order", entry.Value.Order },
+    ///                 Id = entry.Id,
+    ///                 Order = entry.Order,
     ///             };
-    ///         }).ToList()),
+    ///         }).ToList(),
     ///         PolicyType = "ACCESS_POLICY",
     ///     });
     /// 
     /// });
     /// ```
+    /// 
+    /// ### 4 - Similar To Example 3 - No YAML File
     /// </summary>
     [ZpaResourceType("zpa:index/policyAccessReorderRule:PolicyAccessReorderRule")]
     public partial class PolicyAccessReorderRule : global::Pulumi.CustomResource

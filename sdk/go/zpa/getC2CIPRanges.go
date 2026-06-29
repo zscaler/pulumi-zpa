@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA C2C IP Ranges Data Source by Name
-//			_, err := zpa.LookupC2CIPRanges(ctx, &zpa.LookupC2CIPRangesArgs{
+//			_, err := zpa.GetC2CIPRanges(ctx, &zpa.LookupC2CIPRangesArgs{
 //				Name: pulumi.StringRef("Range01"),
 //			}, nil)
 //			if err != nil {
@@ -56,7 +56,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA C2C IP Ranges Data Source by ID
-//			_, err := zpa.LookupC2CIPRanges(ctx, &zpa.LookupC2CIPRangesArgs{
+//			_, err := zpa.GetC2CIPRanges(ctx, &zpa.LookupC2CIPRangesArgs{
 //				Id: pulumi.StringRef("1234567890"),
 //			}, nil)
 //			if err != nil {

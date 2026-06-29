@@ -133,8 +133,7 @@ import (
 // ## Import
 //
 // Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-//
-// # Visit
+// Visit
 //
 // **pra_credential_controller** can be imported by using `<CONSOLE ID>` or `<CONSOLE NAME>` as the import ID.
 //

@@ -12,11 +12,199 @@ import (
 	"github.com/zscaler/pulumi-zpa/sdk/go/zpa/internal"
 )
 
+// * [Official documentation](https://help.zscaler.com/zpa/about-connector-provisioning-keys)
+// * [API documentation](https://help.zscaler.com/zpa/configuring-provisioning-keys-using-api)
+//
+// The **zpa_provisioning_key** resource provides creates a provisioning key in the Zscaler Private Access portal. This resource can then be referenced in the following ZPA resources:
+//
+// * App Connector Groups
+// * Service Edge Groups
+//
+// ## Zenith Community - ZPA Provisioning Keys
+//
+// ![ZPA Terraform provider Video Series Ep3 - Provisioning Keys](https://community.zscaler.com/zenith/s/question/0D54u00009evlEnCAI/video-zpa-terraform-provider-video-series-ep3-provisioning-keys)
+//
+// ## Service Edge Provisioning Key Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Retrieve the Service Edge Enrollment Certificate
+//			serviceEdge, err := zpa.GetEnrollmentCert(ctx, &zpa.GetEnrollmentCertArgs{
+//				Name: pulumi.StringRef("Service Edge"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Create a Service Edge Group
+//			serviceEdgeGroupNyc, err := zpa.NewServiceEdgeGroup(ctx, "service_edge_group_nyc", &zpa.ServiceEdgeGroupArgs{
+//				Name:              pulumi.String("Service Edge Group New York"),
+//				Description:       pulumi.String("Service Edge Group New York"),
+//				UpgradeDay:        pulumi.String("SUNDAY"),
+//				UpgradeTimeInSecs: pulumi.String("66600"),
+//				Latitude:          pulumi.String("40.7128"),
+//				Longitude:         pulumi.String("-73.935242"),
+//				Location:          pulumi.String("New York, NY, USA"),
+//				VersionProfileId:  pulumi.String("0"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create Provisioning Key for Service Edge Group
+//			_, err = zpa.NewProvisioningKey(ctx, "test_provisioning_key", &zpa.ProvisioningKeyArgs{
+//				Name:             pulumi.String("test-provisioning-key"),
+//				AssociationType:  pulumi.String("SERVICE_EDGE_GRP"),
+//				MaxUsage:         pulumi.String("10"),
+//				EnrollmentCertId: pulumi.String(serviceEdge.Id),
+//				ZcomponentId:     serviceEdgeGroupNyc.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Accessing the Provisioning Key
+//
+// The provisioning key value is required to onboard App Connector or Service Edge devices. The attribute is marked as sensitive to prevent accidental exposure in logs and console output, but it remains accessible through Terraform outputs and resource references.
+//
+// ### Method 1: Using Terraform Output (Recommended)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create provisioning key
+//			connectorKey, err := zpa.NewProvisioningKey(ctx, "connector_key", &zpa.ProvisioningKeyArgs{
+//				Name:             pulumi.String("connector-provisioning-key"),
+//				AssociationType:  pulumi.String("CONNECTOR_GRP"),
+//				MaxUsage:         pulumi.String("10"),
+//				EnrollmentCertId: pulumi.Any(connector.Id),
+//				ZcomponentId:     pulumi.Any(example.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("connectorProvisioningKey", connectorKey.ProvisioningKeyValue)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// To retrieve the key value, use:
+//
+// ### Method 2: Reference in Other Resources
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-command/sdk/go/command/local"
+//	"github.com/pulumi/pulumi-null/sdk/go/null"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Use the provisioning key in automation scripts or other resources
+//			appConnectorDeployment, err := null.NewResource(ctx, "app_connector_deployment", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = local.NewCommand(ctx, "appConnectorDeploymentProvisioner0", &local.CommandArgs{
+//				Create: pulumi.Sprintf("deploy-app-connector.sh %v", connectorKey.ProvisioningKey),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				appConnectorDeployment,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Method 3: Using Data Source (For Existing Keys)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/zscaler/pulumi-zpa/sdk/go/zpa"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// If the provisioning key already exists, use the data source
+//			existingKey, err := zpa.GetProvisioningKey(ctx, &zpa.LookupProvisioningKeyArgs{
+//				Name:            pulumi.StringRef("existing-connector-key"),
+//				AssociationType: "CONNECTOR_GRP",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("existingProvisioningKey", existingKey.ProvisioningKey)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Security Considerations
+//
+// ⚠️ **Important Notes on Provisioning Key Security:**
+//
+// 1. **State File Storage**: The provisioning key is stored in the Terraform state file. This is standard Terraform behavior for all resource attributes, including sensitive ones. The state file should be:
+//   - Stored in a secure backend (e.g., Terraform Cloud, AWS S3 with encryption, Azure Blob Storage)
+//   - Access-controlled using appropriate IAM policies
+//   - Never committed to version control
+//
+// 2. **Why the Key is in State**: The provisioning key must be stored in state because:
+//   - It's returned by the ZPA API and is required for App Connector/Service Edge onboarding
+//   - Terraform needs to track the value to detect drift and manage the resource lifecycle
+//   - Users need programmatic access to deploy connectors
+//
+// 3. **API Behavior**: The ZPA API returns the provisioning key in clear text because it's a necessary operational value, not a secret like passwords or API tokens. It's used for device enrollment, similar to a registration token.
+//
+// 4. **Best Practices**:
+//   - Use remote state backends with encryption at rest
+//   - Implement state locking to prevent concurrent modifications
+//   - Rotate provisioning keys periodically by creating new keys and updating deployments
+//   - Use `maxUsage` limits to control key reuse
+//   - Monitor `usageCount` to detect unauthorized usage
+//   - Enable `ipAcl` to restrict where the key can be used from
+//
 // ## Import
 //
 // Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-//
-// # Visit
+// Visit
 //
 // Provisioning key can be imported by using `<PROVISIONING KEY ID>` or `<PROVISIONING KEY NAME>` as the import ID.
 //
@@ -34,7 +222,7 @@ import (
 type ProvisioningKey struct {
 	pulumi.CustomResourceState
 
-	// read only field. Ignored in PUT/POST calls.
+	// The provisioning key returned by the API. This value is required to onboard App Connector or Service Edge devices. Although marked as sensitive to prevent exposure in logs and console output, the value is stored in the Terraform state file and can be retrieved using 'terraform output' or by referencing the attribute in other resources.
 	ProvisioningKeyValue pulumi.StringOutput    `pulumi:"ProvisioningKeyValue"`
 	AppConnectorGroupId  pulumi.StringPtrOutput `pulumi:"appConnectorGroupId"`
 	// Read only property. Applicable only for GET calls, ignored in PUT/POST calls.
@@ -50,8 +238,9 @@ type ProvisioningKey struct {
 	MaxUsage      pulumi.StringOutput `pulumi:"maxUsage"`
 	MicrotenantId pulumi.StringOutput `pulumi:"microtenantId"`
 	// Name of the provisioning key.
-	Name     pulumi.StringOutput    `pulumi:"name"`
-	UiConfig pulumi.StringPtrOutput `pulumi:"uiConfig"`
+	Name              pulumi.StringOutput    `pulumi:"name"`
+	ProvisioningKeyId pulumi.StringOutput    `pulumi:"provisioningKeyId"`
+	UiConfig          pulumi.StringPtrOutput `pulumi:"uiConfig"`
 	// The provisioning key utilization count.
 	UsageCount pulumi.StringOutput `pulumi:"usageCount"`
 	// ID of the existing App Connector or Service Edge Group.
@@ -79,6 +268,10 @@ func NewProvisioningKey(ctx *pulumi.Context,
 	if args.ZcomponentId == nil {
 		return nil, errors.New("invalid value for required argument 'ZcomponentId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"ProvisioningKeyValue",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProvisioningKey
 	err := ctx.RegisterResource("zpa:index/provisioningKey:ProvisioningKey", name, args, &resource, opts...)
@@ -102,7 +295,7 @@ func GetProvisioningKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProvisioningKey resources.
 type provisioningKeyState struct {
-	// read only field. Ignored in PUT/POST calls.
+	// The provisioning key returned by the API. This value is required to onboard App Connector or Service Edge devices. Although marked as sensitive to prevent exposure in logs and console output, the value is stored in the Terraform state file and can be retrieved using 'terraform output' or by referencing the attribute in other resources.
 	ProvisioningKeyValue *string `pulumi:"ProvisioningKeyValue"`
 	AppConnectorGroupId  *string `pulumi:"appConnectorGroupId"`
 	// Read only property. Applicable only for GET calls, ignored in PUT/POST calls.
@@ -118,8 +311,9 @@ type provisioningKeyState struct {
 	MaxUsage      *string `pulumi:"maxUsage"`
 	MicrotenantId *string `pulumi:"microtenantId"`
 	// Name of the provisioning key.
-	Name     *string `pulumi:"name"`
-	UiConfig *string `pulumi:"uiConfig"`
+	Name              *string `pulumi:"name"`
+	ProvisioningKeyId *string `pulumi:"provisioningKeyId"`
+	UiConfig          *string `pulumi:"uiConfig"`
 	// The provisioning key utilization count.
 	UsageCount *string `pulumi:"usageCount"`
 	// ID of the existing App Connector or Service Edge Group.
@@ -129,7 +323,7 @@ type provisioningKeyState struct {
 }
 
 type ProvisioningKeyState struct {
-	// read only field. Ignored in PUT/POST calls.
+	// The provisioning key returned by the API. This value is required to onboard App Connector or Service Edge devices. Although marked as sensitive to prevent exposure in logs and console output, the value is stored in the Terraform state file and can be retrieved using 'terraform output' or by referencing the attribute in other resources.
 	ProvisioningKeyValue pulumi.StringPtrInput
 	AppConnectorGroupId  pulumi.StringPtrInput
 	// Read only property. Applicable only for GET calls, ignored in PUT/POST calls.
@@ -145,8 +339,9 @@ type ProvisioningKeyState struct {
 	MaxUsage      pulumi.StringPtrInput
 	MicrotenantId pulumi.StringPtrInput
 	// Name of the provisioning key.
-	Name     pulumi.StringPtrInput
-	UiConfig pulumi.StringPtrInput
+	Name              pulumi.StringPtrInput
+	ProvisioningKeyId pulumi.StringPtrInput
+	UiConfig          pulumi.StringPtrInput
 	// The provisioning key utilization count.
 	UsageCount pulumi.StringPtrInput
 	// ID of the existing App Connector or Service Edge Group.
@@ -160,9 +355,7 @@ func (ProvisioningKeyState) ElementType() reflect.Type {
 }
 
 type provisioningKeyArgs struct {
-	// read only field. Ignored in PUT/POST calls.
-	ProvisioningKeyValue *string `pulumi:"ProvisioningKeyValue"`
-	AppConnectorGroupId  *string `pulumi:"appConnectorGroupId"`
+	AppConnectorGroupId *string `pulumi:"appConnectorGroupId"`
 	// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are CONNECTOR_GRP and SERVICE_EDGE_GRP.
 	AssociationType string `pulumi:"associationType"`
 	// Whether the provisioning key is enabled or not. Supported values: true, false
@@ -174,8 +367,9 @@ type provisioningKeyArgs struct {
 	MaxUsage      string  `pulumi:"maxUsage"`
 	MicrotenantId *string `pulumi:"microtenantId"`
 	// Name of the provisioning key.
-	Name     *string `pulumi:"name"`
-	UiConfig *string `pulumi:"uiConfig"`
+	Name              *string `pulumi:"name"`
+	ProvisioningKeyId *string `pulumi:"provisioningKeyId"`
+	UiConfig          *string `pulumi:"uiConfig"`
 	// The provisioning key utilization count.
 	UsageCount *string `pulumi:"usageCount"`
 	// ID of the existing App Connector or Service Edge Group.
@@ -186,9 +380,7 @@ type provisioningKeyArgs struct {
 
 // The set of arguments for constructing a ProvisioningKey resource.
 type ProvisioningKeyArgs struct {
-	// read only field. Ignored in PUT/POST calls.
-	ProvisioningKeyValue pulumi.StringPtrInput
-	AppConnectorGroupId  pulumi.StringPtrInput
+	AppConnectorGroupId pulumi.StringPtrInput
 	// Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are CONNECTOR_GRP and SERVICE_EDGE_GRP.
 	AssociationType pulumi.StringInput
 	// Whether the provisioning key is enabled or not. Supported values: true, false
@@ -200,8 +392,9 @@ type ProvisioningKeyArgs struct {
 	MaxUsage      pulumi.StringInput
 	MicrotenantId pulumi.StringPtrInput
 	// Name of the provisioning key.
-	Name     pulumi.StringPtrInput
-	UiConfig pulumi.StringPtrInput
+	Name              pulumi.StringPtrInput
+	ProvisioningKeyId pulumi.StringPtrInput
+	UiConfig          pulumi.StringPtrInput
 	// The provisioning key utilization count.
 	UsageCount pulumi.StringPtrInput
 	// ID of the existing App Connector or Service Edge Group.
@@ -297,7 +490,7 @@ func (o ProvisioningKeyOutput) ToProvisioningKeyOutputWithContext(ctx context.Co
 	return o
 }
 
-// read only field. Ignored in PUT/POST calls.
+// The provisioning key returned by the API. This value is required to onboard App Connector or Service Edge devices. Although marked as sensitive to prevent exposure in logs and console output, the value is stored in the Terraform state file and can be retrieved using 'terraform output' or by referencing the attribute in other resources.
 func (o ProvisioningKeyOutput) ProvisioningKeyValue() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProvisioningKey) pulumi.StringOutput { return v.ProvisioningKeyValue }).(pulumi.StringOutput)
 }
@@ -342,6 +535,10 @@ func (o ProvisioningKeyOutput) MicrotenantId() pulumi.StringOutput {
 // Name of the provisioning key.
 func (o ProvisioningKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProvisioningKey) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ProvisioningKeyOutput) ProvisioningKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProvisioningKey) pulumi.StringOutput { return v.ProvisioningKeyId }).(pulumi.StringOutput)
 }
 
 func (o ProvisioningKeyOutput) UiConfig() pulumi.StringPtrOutput {

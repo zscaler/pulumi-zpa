@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := zpa.LookupUserPortalLink(ctx, &zpa.LookupUserPortalLinkArgs{
+//			_, err := zpa.GetUserPortalLink(ctx, &zpa.LookupUserPortalLinkArgs{
 //				Name: pulumi.StringRef("server1.example.com"),
 //			}, nil)
 //			if err != nil {

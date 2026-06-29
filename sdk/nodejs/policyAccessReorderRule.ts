@@ -47,10 +47,10 @@ import * as utilities from "./utilities";
  *     },
  * ];
  * const accessPolicyReorder = new zpa.PolicyAccessReorderRule("access_policy_reorder", {
- *     rules: ruleOrders.map((v, k) => ({key: k, value: v})).apply(entries => entries.map(entry => ({
- *         id: entry.value.id,
- *         order: entry.value.order,
- *     }))),
+ *     rules: ruleOrders.map(entry => ({
+ *         id: entry.id,
+ *         order: String(entry.order),
+ *     })),
  *     policyType: "ACCESS_POLICY",
  * });
  * ```
@@ -96,12 +96,128 @@ import * as utilities from "./utilities";
  *     },
  * ];
  * const accessPolicyReorder = new zpa.PolicyAccessReorderRule("access_policy_reorder", {
- *     rules: ruleOrders.map((v, k) => ({key: k, value: v})).apply(entries => entries.map(entry => ({
- *         id: entry.value.id,
- *         order: entry.value.order,
- *     }))),
+ *     rules: ruleOrders.map(entry => ({
+ *         id: entry.id,
+ *         order: output(entry.order).apply(x =>String(x)),
+ *     })),
  *     policyType: "ACCESS_POLICY",
  * });
+ * ```
+ *
+ * ### 4 - Similar To Example 3 - No YAML File
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as std from "@pulumi/std";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * function try_(
+ * 	...fns: Array<() => any>
+ * ): any {
+ * 	for (const fn of fns) {
+ * 		try {
+ * 			const result = fn();
+ * 			if (result === undefined) {
+ * 				continue;
+ * 			}
+ * 			return result;
+ * 		} catch (e) {
+ * 			continue;
+ * 		}
+ * 	}
+ * 	throw new Error("try: all parameters failed");
+ * }
+ *
+ *
+ * export = async () => {
+ *     const config = new pulumi.Config();
+ *     // Configuration for policy rules
+ *     const policyConfig = config.getObject<{policies?: Array<{action?: string, description?: string, name?: string}>}>("policyConfig") || {
+ *         policies: [
+ *             {
+ *                 action: "ALLOW",
+ *                 description: "example001",
+ *                 name: "example001",
+ *             },
+ *             {
+ *                 action: "DENY",
+ *                 description: "example002",
+ *                 name: "example002",
+ *             },
+ *             {
+ *                 action: "ALLOW",
+ *                 description: "example003",
+ *                 name: "example003",
+ *             },
+ *             {
+ *                 action: "DENY",
+ *                 description: "example004",
+ *                 name: "example004",
+ *             },
+ *             {
+ *                 action: "ALLOW",
+ *                 description: "example005",
+ *                 name: "example005",
+ *             },
+ *             {
+ *                 action: "DENY",
+ *                 description: "example006",
+ *                 name: "example006",
+ *             },
+ *             {
+ *                 action: "ALLOW",
+ *                 description: "example007",
+ *                 name: "example007",
+ *             },
+ *             {
+ *                 action: "DENY",
+ *                 description: "example008",
+ *                 name: "example008",
+ *             },
+ *             {
+ *                 action: "ALLOW",
+ *                 description: "example009",
+ *                 name: "example009",
+ *             },
+ *             {
+ *                 action: "DENY",
+ *                 description: "example010",
+ *                 name: "example010",
+ *             },
+ *         ],
+ *     };
+ *     const policies = .reduce((__obj, [index, policy]) => ({ ...__obj, [policy.name]: (await std.merge({
+ *         input: [
+ *             policy,
+ *             {
+ *                 ruleNumber: index + 1,
+ *             },
+ *         ],
+ *     })).result }), {});
+ *     const rules: zpa.PolicyAccessRule[] = [];
+ *     for (const range of Object.entries(Object.values(policies).reduce((__obj, rule) => ({ ...__obj, [rule?.name]: rule }), {})).sort().map(([k, v]) => ({key: k, value: v}))) {
+ *         rules.push(new zpa.PolicyAccessRule(`rules-${range.key}`, {
+ *             name: range.value?.name,
+ *             action: range.value?.action,
+ *             description: range.value?.description,
+ *             customMsg: try_(
+ *                 () => range.value?.customMsg,
+ *                 () => null
+ *             ),
+ *             operator: try_(
+ *                 () => range.value?.operator,
+ *                 () => "AND"
+ *             ),
+ *         }));
+ *     }
+ *     const accessPolicyReorder = new zpa.PolicyAccessReorderRule("access_policy_reorder", {
+ *         rules: Object.entries(policies).sort().map(([key, entry]) => ({
+ *             id: rules[key].id,
+ *             order: output(entry?.ruleNumber).apply(x =>String(x)),
+ *         })),
+ *         policyType: "ACCESS_POLICY",
+ *     });
+ * }
  * ```
  */
 export class PolicyAccessReorderRule extends pulumi.CustomResource {

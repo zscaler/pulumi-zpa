@@ -16,7 +16,22 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// The **zpa_private_cloud_group** resource creates a private cloud group in the Zscaler Private Access cloud.
     /// 
+    /// ## Private Cloud Connector Onboarding Methods
+    /// 
+    /// Private Cloud Connectors can be onboarded into ZPA in two ways. This resource supports both:
+    /// 
+    /// 1. **OAuth2 user codes** *(recommended for new deployments)* - Set `UserCodes` with the codes generated on each Private Cloud Connector VM. The provider creates the group and then calls the OAuth2 user code verification API to enroll the connectors.
+    /// 2. **Provisioning key** *(legacy / still supported)* - Create the group with this resource, then create a `zpa.ProvisioningKey` referencing it. The key is then injected into the Private Cloud Connector VM at deployment time.
+    /// 
+    /// In **both** methods, the Private Cloud Connector enrollment requires an `EnrollmentCertId`. You can either:
+    /// - Set `EnrollmentCertId` explicitly using the `zpa.getEnrollmentCert` data source, or
+    /// - Omit it entirely - the provider will automatically look up the **"Connector"** enrollment certificate by name and populate the ID for you.
+    /// 
     /// ## Example Usage
+    /// 
+    /// ### OAuth2 Enrollment With User Codes (Explicit Enrollment Certificate)
+    /// 
+    /// Set the enrollment certificate explicitly and provide the user codes displayed on the Private Cloud Connector VMs after deployment. The provider will create the group and then call the user code verification API to complete enrollment.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -26,6 +41,11 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var connector = Zpa.GetEnrollmentCert.Invoke(new()
+    ///     {
+    ///         Name = "Connector",
+    ///     });
+    /// 
     ///     var @this = new Zpa.PrivateCloudGroup("this", new()
     ///     {
     ///         Name = "PrivateCloudGroup01",
@@ -41,6 +61,95 @@ namespace zscaler.PulumiPackage.Zpa
     ///         VersionProfileId = "0",
     ///         OverrideVersionProfile = true,
     ///         IsPublic = "TRUE",
+    ///         EnrollmentCertId = connector.Apply(getEnrollmentCertResult =&gt; getEnrollmentCertResult.Id),
+    ///         UserCodes = new[]
+    ///         {
+    ///             "CODE_FROM_VM_1",
+    ///             "CODE_FROM_VM_2",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### OAuth2 Enrollment With User Codes (Auto-Resolved Enrollment Certificate)
+    /// 
+    /// Omit `EnrollmentCertId` entirely and the provider will automatically resolve the **"Connector"** enrollment certificate for you. This is the simplest configuration and is functionally equivalent to the explicit example above.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Zpa.PrivateCloudGroup("example", new()
+    ///     {
+    ///         Name = "PrivateCloudGroup01",
+    ///         Description = "Example private cloud group",
+    ///         Enabled = true,
+    ///         CountryCode = "US",
+    ///         CityCountry = "San Jose, US",
+    ///         Latitude = "37.33874",
+    ///         Longitude = "-121.8852525",
+    ///         Location = "San Jose, CA, USA",
+    ///         UpgradeDay = "SUNDAY",
+    ///         UpgradeTimeInSecs = "66600",
+    ///         SiteId = "72058304855088543",
+    ///         VersionProfileId = "0",
+    ///         OverrideVersionProfile = true,
+    ///         IsPublic = "TRUE",
+    ///         UserCodes = new[]
+    ///         {
+    ///             "CODE_FROM_VM_1",
+    ///             "CODE_FROM_VM_2",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Enrolling Private Cloud Connectors Via Provisioning Key (Explicit Enrollment Certificate)
+    /// 
+    /// Create the Private Cloud Connector Group, then create a `zpa.ProvisioningKey` that references the group's ID. The provisioning key is then injected into the Private Cloud Connector VM at deployment time.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Zpa = zscaler.PulumiPackage.Zpa;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var connector = Zpa.GetEnrollmentCert.Invoke(new()
+    ///     {
+    ///         Name = "Connector",
+    ///     });
+    /// 
+    ///     var example = new Zpa.PrivateCloudGroup("example", new()
+    ///     {
+    ///         Name = "Example",
+    ///         Description = "Example",
+    ///         Enabled = true,
+    ///         CityCountry = "San Jose, CA",
+    ///         CountryCode = "US",
+    ///         Latitude = "37.338",
+    ///         Longitude = "-121.8863",
+    ///         Location = "San Jose, CA, US",
+    ///         UpgradeDay = "SUNDAY",
+    ///         UpgradeTimeInSecs = "66600",
+    ///         DnsQueryType = "IPV4_IPV6",
+    ///         EnrollmentCertId = connector.Apply(getEnrollmentCertResult =&gt; getEnrollmentCertResult.Id),
+    ///     });
+    /// 
+    ///     var exampleProvisioningKey = new Zpa.ProvisioningKey("example", new()
+    ///     {
+    ///         Name = "ProvisioningKey01",
+    ///         AssociationType = "CONNECTOR_GRP",
+    ///         MaxUsage = "10",
+    ///         EnrollmentCertId = connector.Apply(getEnrollmentCertResult =&gt; getEnrollmentCertResult.Id),
+    ///         ZcomponentId = example.Id,
     ///     });
     /// 
     /// });
@@ -49,7 +158,6 @@ namespace zscaler.PulumiPackage.Zpa
     /// ## Import
     /// 
     /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-    /// 
     /// Visit
     /// 
     /// Private Cloud Group can be imported by using `&lt;GROUP ID&gt;` or `&lt;GROUP NAME&gt;` as the import ID.
@@ -90,6 +198,12 @@ namespace zscaler.PulumiPackage.Zpa
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
+        /// </summary>
+        [Output("enrollmentCertId")]
+        public Output<string> EnrollmentCertId { get; private set; } = null!;
 
         /// <summary>
         /// - Whether the Private Cloud Group is public
@@ -134,12 +248,6 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<bool?> OverrideVersionProfile { get; private set; } = null!;
 
         /// <summary>
-        /// - Site ID for the Private Cloud Group
-        /// </summary>
-        [Output("siteId")]
-        public Output<string?> SiteId { get; private set; } = null!;
-
-        /// <summary>
         /// - Private Cloud Controllers in this group will attempt to update to a newer version of the software during this specified day. Supported values: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`
         /// </summary>
         [Output("upgradeDay")]
@@ -152,10 +260,22 @@ namespace zscaler.PulumiPackage.Zpa
         public Output<string?> UpgradeTimeInSecs { get; private set; } = null!;
 
         /// <summary>
+        /// User codes from deployed Private Cloud Controllers for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the Private Cloud Controllers. These codes are obtained from the Private Cloud Controller VM after deployment.
+        /// </summary>
+        [Output("userCodes")]
+        public Output<ImmutableArray<string>> UserCodes { get; private set; } = null!;
+
+        /// <summary>
         /// - ID of the version profile for the Private Cloud Group
         /// </summary>
         [Output("versionProfileId")]
-        public Output<string?> VersionProfileId { get; private set; } = null!;
+        public Output<string> VersionProfileId { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
+        /// </summary>
+        [Output("versionProfileName")]
+        public Output<string> VersionProfileName { get; private set; } = null!;
 
 
         /// <summary>
@@ -229,6 +349,12 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
+        /// </summary>
+        [Input("enrollmentCertId")]
+        public Input<string>? EnrollmentCertId { get; set; }
+
+        /// <summary>
         /// - Whether the Private Cloud Group is public
         /// </summary>
         [Input("isPublic")]
@@ -271,12 +397,6 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? OverrideVersionProfile { get; set; }
 
         /// <summary>
-        /// - Site ID for the Private Cloud Group
-        /// </summary>
-        [Input("siteId")]
-        public Input<string>? SiteId { get; set; }
-
-        /// <summary>
         /// - Private Cloud Controllers in this group will attempt to update to a newer version of the software during this specified day. Supported values: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`
         /// </summary>
         [Input("upgradeDay")]
@@ -288,11 +408,29 @@ namespace zscaler.PulumiPackage.Zpa
         [Input("upgradeTimeInSecs")]
         public Input<string>? UpgradeTimeInSecs { get; set; }
 
+        [Input("userCodes")]
+        private InputList<string>? _userCodes;
+
+        /// <summary>
+        /// User codes from deployed Private Cloud Controllers for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the Private Cloud Controllers. These codes are obtained from the Private Cloud Controller VM after deployment.
+        /// </summary>
+        public InputList<string> UserCodes
+        {
+            get => _userCodes ?? (_userCodes = new InputList<string>());
+            set => _userCodes = value;
+        }
+
         /// <summary>
         /// - ID of the version profile for the Private Cloud Group
         /// </summary>
         [Input("versionProfileId")]
         public Input<string>? VersionProfileId { get; set; }
+
+        /// <summary>
+        /// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
+        /// </summary>
+        [Input("versionProfileName")]
+        public Input<string>? VersionProfileName { get; set; }
 
         public PrivateCloudGroupArgs()
         {
@@ -327,6 +465,12 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
+        /// </summary>
+        [Input("enrollmentCertId")]
+        public Input<string>? EnrollmentCertId { get; set; }
+
+        /// <summary>
         /// - Whether the Private Cloud Group is public
         /// </summary>
         [Input("isPublic")]
@@ -369,12 +513,6 @@ namespace zscaler.PulumiPackage.Zpa
         public Input<bool>? OverrideVersionProfile { get; set; }
 
         /// <summary>
-        /// - Site ID for the Private Cloud Group
-        /// </summary>
-        [Input("siteId")]
-        public Input<string>? SiteId { get; set; }
-
-        /// <summary>
         /// - Private Cloud Controllers in this group will attempt to update to a newer version of the software during this specified day. Supported values: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`
         /// </summary>
         [Input("upgradeDay")]
@@ -386,11 +524,29 @@ namespace zscaler.PulumiPackage.Zpa
         [Input("upgradeTimeInSecs")]
         public Input<string>? UpgradeTimeInSecs { get; set; }
 
+        [Input("userCodes")]
+        private InputList<string>? _userCodes;
+
+        /// <summary>
+        /// User codes from deployed Private Cloud Controllers for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the Private Cloud Controllers. These codes are obtained from the Private Cloud Controller VM after deployment.
+        /// </summary>
+        public InputList<string> UserCodes
+        {
+            get => _userCodes ?? (_userCodes = new InputList<string>());
+            set => _userCodes = value;
+        }
+
         /// <summary>
         /// - ID of the version profile for the Private Cloud Group
         /// </summary>
         [Input("versionProfileId")]
         public Input<string>? VersionProfileId { get; set; }
+
+        /// <summary>
+        /// Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
+        /// </summary>
+        [Input("versionProfileName")]
+        public Input<string>? VersionProfileName { get; set; }
 
         public PrivateCloudGroupState()
         {

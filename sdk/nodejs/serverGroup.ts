@@ -7,6 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-server-groups)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-server-groups-using-api)
+ *
+ * The **zpa_server_group** resource creates a server group in the Zscaler Private Access cloud. This resource can then be referenced in an application segment or application server resource.
+ *
+ * ## Zenith Community - ZPA Server Groups
+ *
+ * ![ZPA Terraform provider Video Series Ep4 - Server Groups](https://community.zscaler.com/zenith/s/question/0D54u00009evlEmCAI/video-zpa-terraform-provider-video-series-ep4-server-groups)
+ *
  * ## Example Usage
  *
  * ### Dynamic Discovery Enabled
@@ -129,7 +138,6 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
- *
  * Visit
  *
  * Server Groups can be imported; use `<SERVER GROUP ID>` or `<SERVER GROUP NAME>` as the import ID.

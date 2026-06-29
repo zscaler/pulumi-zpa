@@ -24,9 +24,11 @@ class ConnectorGroupArgs:
                  longitude: pulumi.Input[_builtins.str],
                  city_country: Optional[pulumi.Input[_builtins.str]] = None,
                  country_code: Optional[pulumi.Input[_builtins.str]] = None,
+                 dc_hosting_info: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  dns_query_type: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enrollment_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
                  lss_app_connector_group: Optional[pulumi.Input[_builtins.bool]] = None,
                  microtenant_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -38,6 +40,7 @@ class ConnectorGroupArgs:
                  upgrade_day: Optional[pulumi.Input[_builtins.str]] = None,
                  upgrade_time_in_secs: Optional[pulumi.Input[_builtins.str]] = None,
                  use_in_dr_mode: Optional[pulumi.Input[_builtins.bool]] = None,
+                 user_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
                  version_profile_name: Optional[pulumi.Input[_builtins.str]] = None,
                  waf_disabled: Optional[pulumi.Input[_builtins.bool]] = None):
@@ -46,9 +49,11 @@ class ConnectorGroupArgs:
         :param pulumi.Input[_builtins.str] latitude: Latitude of the App Connector Group. Integer or decimal. With values in the range of -90 to 90
         :param pulumi.Input[_builtins.str] location: Location of the App Connector Group
         :param pulumi.Input[_builtins.str] longitude: Longitude of the App Connector Group. Integer or decimal. With values in the range of -180 to 180
+        :param pulumi.Input[_builtins.str] dc_hosting_info: Indicates the host data center information using a maximum of 64 characters. The Data Center Hosting information is used for the Quarterly Business Review Insights.
         :param pulumi.Input[_builtins.str] description: Description of the App Connector Group
         :param pulumi.Input[_builtins.str] dns_query_type: Whether to enable IPv4 or IPv6, or both, for DNS resolution of all applications in the App Connector Group
         :param pulumi.Input[_builtins.bool] enabled: Whether this App Connector Group is enabled or not
+        :param pulumi.Input[_builtins.str] enrollment_cert_id: ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
         :param pulumi.Input[_builtins.bool] lss_app_connector_group: Whether or not the App Connector Group is configured for the Log Streaming Service (LSS)
         :param pulumi.Input[_builtins.str] name: Name of the App Connector Group
         :param pulumi.Input[_builtins.bool] override_version_profile: Whether the default version profile of the App Connector Group is applied or overridden. Supported values: true, false
@@ -57,6 +62,7 @@ class ConnectorGroupArgs:
         :param pulumi.Input[_builtins.bool] tcp_quick_ack_read_assistant: Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value.
         :param pulumi.Input[_builtins.str] upgrade_day: App Connectors in this group will attempt to update to a newer version of the software during this specified day. List of valid days (i.e., Sunday, Monday)
         :param pulumi.Input[_builtins.str] upgrade_time_in_secs: App Connectors in this group will attempt to update to a newer version of the software during this specified time. Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute intervals
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_codes: User codes from deployed App Connector VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the connectors. These codes are obtained from the App Connector VM after deployment.
         :param pulumi.Input[_builtins.str] version_profile_id: ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         :param pulumi.Input[_builtins.str] version_profile_name: Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         """
@@ -67,12 +73,16 @@ class ConnectorGroupArgs:
             pulumi.set(__self__, "city_country", city_country)
         if country_code is not None:
             pulumi.set(__self__, "country_code", country_code)
+        if dc_hosting_info is not None:
+            pulumi.set(__self__, "dc_hosting_info", dc_hosting_info)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dns_query_type is not None:
             pulumi.set(__self__, "dns_query_type", dns_query_type)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if enrollment_cert_id is not None:
+            pulumi.set(__self__, "enrollment_cert_id", enrollment_cert_id)
         if lss_app_connector_group is not None:
             pulumi.set(__self__, "lss_app_connector_group", lss_app_connector_group)
         if microtenant_id is not None:
@@ -95,6 +105,8 @@ class ConnectorGroupArgs:
             pulumi.set(__self__, "upgrade_time_in_secs", upgrade_time_in_secs)
         if use_in_dr_mode is not None:
             pulumi.set(__self__, "use_in_dr_mode", use_in_dr_mode)
+        if user_codes is not None:
+            pulumi.set(__self__, "user_codes", user_codes)
         if version_profile_id is not None:
             pulumi.set(__self__, "version_profile_id", version_profile_id)
         if version_profile_name is not None:
@@ -157,6 +169,18 @@ class ConnectorGroupArgs:
         pulumi.set(self, "country_code", value)
 
     @_builtins.property
+    @pulumi.getter(name="dcHostingInfo")
+    def dc_hosting_info(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Indicates the host data center information using a maximum of 64 characters. The Data Center Hosting information is used for the Quarterly Business Review Insights.
+        """
+        return pulumi.get(self, "dc_hosting_info")
+
+    @dc_hosting_info.setter
+    def dc_hosting_info(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dc_hosting_info", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -191,6 +215,18 @@ class ConnectorGroupArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enrollmentCertId")
+    def enrollment_cert_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
+        """
+        return pulumi.get(self, "enrollment_cert_id")
+
+    @enrollment_cert_id.setter
+    def enrollment_cert_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "enrollment_cert_id", value)
 
     @_builtins.property
     @pulumi.getter(name="lssAppConnectorGroup")
@@ -316,6 +352,18 @@ class ConnectorGroupArgs:
         pulumi.set(self, "use_in_dr_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="userCodes")
+    def user_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        User codes from deployed App Connector VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the connectors. These codes are obtained from the App Connector VM after deployment.
+        """
+        return pulumi.get(self, "user_codes")
+
+    @user_codes.setter
+    def user_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "user_codes", value)
+
+    @_builtins.property
     @pulumi.getter(name="versionProfileId")
     def version_profile_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -354,9 +402,11 @@ class _ConnectorGroupState:
     def __init__(__self__, *,
                  city_country: Optional[pulumi.Input[_builtins.str]] = None,
                  country_code: Optional[pulumi.Input[_builtins.str]] = None,
+                 dc_hosting_info: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  dns_query_type: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enrollment_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
                  latitude: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  longitude: Optional[pulumi.Input[_builtins.str]] = None,
@@ -371,14 +421,17 @@ class _ConnectorGroupState:
                  upgrade_day: Optional[pulumi.Input[_builtins.str]] = None,
                  upgrade_time_in_secs: Optional[pulumi.Input[_builtins.str]] = None,
                  use_in_dr_mode: Optional[pulumi.Input[_builtins.bool]] = None,
+                 user_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
                  version_profile_name: Optional[pulumi.Input[_builtins.str]] = None,
                  waf_disabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ConnectorGroup resources.
+        :param pulumi.Input[_builtins.str] dc_hosting_info: Indicates the host data center information using a maximum of 64 characters. The Data Center Hosting information is used for the Quarterly Business Review Insights.
         :param pulumi.Input[_builtins.str] description: Description of the App Connector Group
         :param pulumi.Input[_builtins.str] dns_query_type: Whether to enable IPv4 or IPv6, or both, for DNS resolution of all applications in the App Connector Group
         :param pulumi.Input[_builtins.bool] enabled: Whether this App Connector Group is enabled or not
+        :param pulumi.Input[_builtins.str] enrollment_cert_id: ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
         :param pulumi.Input[_builtins.str] latitude: Latitude of the App Connector Group. Integer or decimal. With values in the range of -90 to 90
         :param pulumi.Input[_builtins.str] location: Location of the App Connector Group
         :param pulumi.Input[_builtins.str] longitude: Longitude of the App Connector Group. Integer or decimal. With values in the range of -180 to 180
@@ -390,6 +443,7 @@ class _ConnectorGroupState:
         :param pulumi.Input[_builtins.bool] tcp_quick_ack_read_assistant: Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value.
         :param pulumi.Input[_builtins.str] upgrade_day: App Connectors in this group will attempt to update to a newer version of the software during this specified day. List of valid days (i.e., Sunday, Monday)
         :param pulumi.Input[_builtins.str] upgrade_time_in_secs: App Connectors in this group will attempt to update to a newer version of the software during this specified time. Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute intervals
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_codes: User codes from deployed App Connector VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the connectors. These codes are obtained from the App Connector VM after deployment.
         :param pulumi.Input[_builtins.str] version_profile_id: ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         :param pulumi.Input[_builtins.str] version_profile_name: Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         """
@@ -397,12 +451,16 @@ class _ConnectorGroupState:
             pulumi.set(__self__, "city_country", city_country)
         if country_code is not None:
             pulumi.set(__self__, "country_code", country_code)
+        if dc_hosting_info is not None:
+            pulumi.set(__self__, "dc_hosting_info", dc_hosting_info)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dns_query_type is not None:
             pulumi.set(__self__, "dns_query_type", dns_query_type)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if enrollment_cert_id is not None:
+            pulumi.set(__self__, "enrollment_cert_id", enrollment_cert_id)
         if latitude is not None:
             pulumi.set(__self__, "latitude", latitude)
         if location is not None:
@@ -431,6 +489,8 @@ class _ConnectorGroupState:
             pulumi.set(__self__, "upgrade_time_in_secs", upgrade_time_in_secs)
         if use_in_dr_mode is not None:
             pulumi.set(__self__, "use_in_dr_mode", use_in_dr_mode)
+        if user_codes is not None:
+            pulumi.set(__self__, "user_codes", user_codes)
         if version_profile_id is not None:
             pulumi.set(__self__, "version_profile_id", version_profile_id)
         if version_profile_name is not None:
@@ -455,6 +515,18 @@ class _ConnectorGroupState:
     @country_code.setter
     def country_code(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "country_code", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dcHostingInfo")
+    def dc_hosting_info(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Indicates the host data center information using a maximum of 64 characters. The Data Center Hosting information is used for the Quarterly Business Review Insights.
+        """
+        return pulumi.get(self, "dc_hosting_info")
+
+    @dc_hosting_info.setter
+    def dc_hosting_info(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dc_hosting_info", value)
 
     @_builtins.property
     @pulumi.getter
@@ -491,6 +563,18 @@ class _ConnectorGroupState:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enrollmentCertId")
+    def enrollment_cert_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
+        """
+        return pulumi.get(self, "enrollment_cert_id")
+
+    @enrollment_cert_id.setter
+    def enrollment_cert_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "enrollment_cert_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -652,6 +736,18 @@ class _ConnectorGroupState:
         pulumi.set(self, "use_in_dr_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="userCodes")
+    def user_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        User codes from deployed App Connector VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the connectors. These codes are obtained from the App Connector VM after deployment.
+        """
+        return pulumi.get(self, "user_codes")
+
+    @user_codes.setter
+    def user_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "user_codes", value)
+
+    @_builtins.property
     @pulumi.getter(name="versionProfileId")
     def version_profile_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -693,9 +789,11 @@ class ConnectorGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  city_country: Optional[pulumi.Input[_builtins.str]] = None,
                  country_code: Optional[pulumi.Input[_builtins.str]] = None,
+                 dc_hosting_info: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  dns_query_type: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enrollment_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
                  latitude: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  longitude: Optional[pulumi.Input[_builtins.str]] = None,
@@ -710,12 +808,151 @@ class ConnectorGroup(pulumi.CustomResource):
                  upgrade_day: Optional[pulumi.Input[_builtins.str]] = None,
                  upgrade_time_in_secs: Optional[pulumi.Input[_builtins.str]] = None,
                  use_in_dr_mode: Optional[pulumi.Input[_builtins.bool]] = None,
+                 user_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
                  version_profile_name: Optional[pulumi.Input[_builtins.str]] = None,
                  waf_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
+        * [Official documentation](https://help.zscaler.com/zpa/about-connector-groups)
+        * [API documentation](https://automate.zscaler.com/docs/docs/api-reference-and-guides/api-reference/zpa/app-connector-group-management)
+
+        The **zpa_app_connector_group** resource creates a and manages app connector groups in the Zscaler Private Access (ZPA) cloud. This resource can then be associated with the following resources: server groups, log receivers and access policies.
+
+        ## Zenith Community - ZPA App Connector Group
+
+        ![ZPA Terraform provider Video Series Ep2 - Connector Groups](https://community.zscaler.com/zenith/s/question/0D54u00009evlEoCAI/video-zpa-terraform-provider-video-series-ep2-connector-groups)
+
+        ## App Connector Onboarding Methods
+
+        App Connectors can be onboarded into ZPA in two ways. This resource supports both:
+
+        1. **OAuth2 user codes** *(recommended for new deployments)* - Set `user_codes` with the codes generated on each App Connector VM. The provider creates the group and then calls the OAuth2 user code verification API to enroll the connectors.
+        2. **Provisioning key** *(legacy / still supported)* - Create the group with this resource, then create a `ProvisioningKey` referencing it. The key is then injected into the App Connector VM at deployment time.
+
+        In **both** methods, the App Connector enrollment requires an `enrollment_cert_id`. You can either:
+        - Set `enrollment_cert_id` explicitly using the `get_enrollment_cert` data source, or
+        - Omit it entirely - the provider will automatically look up the **"Connector"** enrollment certificate by name and populate the ID for you.
+
+        ***
+
         ## Example Usage
+
+        ### OAuth2 Enrollment With User Codes (Explicit Enrollment Certificate)
+
+        Set the enrollment certificate explicitly and provide the user codes displayed on the App Connector VMs after deployment. The provider will create the group and then call the user code verification API to complete enrollment.
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        connector = zpa.get_enrollment_cert(name="Connector")
+        example = zpa.ConnectorGroup("example",
+            name="Example",
+            description="Example",
+            enabled=True,
+            city_country="San Jose, CA",
+            country_code="US",
+            latitude="37.338",
+            longitude="-121.8863",
+            location="San Jose, CA, US",
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            dns_query_type="IPV4_IPV6",
+            enrollment_cert_id=connector.id,
+            user_codes=[
+                "CODE_FROM_VM_1",
+                "CODE_FROM_VM_2",
+            ])
+        ```
+
+        ### OAuth2 Enrollment With User Codes (Auto-Resolved Enrollment Certificate)
+
+        Omit `enrollment_cert_id` entirely and the provider will automatically resolve the **"Connector"** enrollment certificate for you. This is the simplest configuration and is functionally equivalent to the explicit example above.
+
+        ```python
+        import pulumi
+        import zscaler_pulumi_zpa as zpa
+
+        example = zpa.ConnectorGroup("example",
+            name="Example",
+            description="Example",
+            enabled=True,
+            city_country="San Jose, CA",
+            country_code="US",
+            latitude="37.338",
+            longitude="-121.8863",
+            location="San Jose, CA, US",
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            dns_query_type="IPV4_IPV6",
+            user_codes=[
+                "CODE_FROM_VM_1",
+                "CODE_FROM_VM_2",
+            ])
+        ```
+
+        ### Enrolling App Connectors Via Provisioning Key (Explicit Enrollment Certificate)
+
+        Create the App Connector Group, then create a `ProvisioningKey` that references the group's ID. The provisioning key is then injected into the App Connector VM at deployment time.
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        connector = zpa.get_enrollment_cert(name="Connector")
+        example = zpa.ConnectorGroup("example",
+            name="Example",
+            description="Example",
+            enabled=True,
+            city_country="San Jose, CA",
+            country_code="US",
+            latitude="37.338",
+            longitude="-121.8863",
+            location="San Jose, CA, US",
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            dns_query_type="IPV4_IPV6",
+            enrollment_cert_id=connector.id)
+        example_provisioning_key = zpa.ProvisioningKey("example",
+            name="ProvisioningKey01",
+            association_type="CONNECTOR_GRP",
+            max_usage="10",
+            enrollment_cert_id=connector.id,
+            zcomponent_id=example.id)
+        ```
+
+        ### Enrolling App Connectors Via Provisioning Key (Auto-Resolved Enrollment Certificate)
+
+        For the App Connector Group, you can omit `enrollment_cert_id` and let the provider auto-resolve it. The `ProvisioningKey` resource still requires `enrollment_cert_id` to be set explicitly.
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        connector = zpa.get_enrollment_cert(name="Connector")
+        example = zpa.ConnectorGroup("example",
+            name="Example",
+            description="Example",
+            enabled=True,
+            city_country="San Jose, CA",
+            country_code="US",
+            latitude="37.338",
+            longitude="-121.8863",
+            location="San Jose, CA, US",
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            dns_query_type="IPV4_IPV6")
+        example_provisioning_key = zpa.ProvisioningKey("example",
+            name="ProvisioningKey01",
+            association_type="CONNECTOR_GRP",
+            max_usage="10",
+            enrollment_cert_id=connector.id,
+            zcomponent_id=example.id)
+        ```
 
         ### Using Version Profile Name
 
@@ -770,7 +1007,6 @@ class ConnectorGroup(pulumi.CustomResource):
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         App Connector Group can be imported by using `<APP CONNECTOR GROUP ID>` or `<APP CONNECTOR GROUP NAME>`as the import ID.
@@ -787,9 +1023,11 @@ class ConnectorGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] dc_hosting_info: Indicates the host data center information using a maximum of 64 characters. The Data Center Hosting information is used for the Quarterly Business Review Insights.
         :param pulumi.Input[_builtins.str] description: Description of the App Connector Group
         :param pulumi.Input[_builtins.str] dns_query_type: Whether to enable IPv4 or IPv6, or both, for DNS resolution of all applications in the App Connector Group
         :param pulumi.Input[_builtins.bool] enabled: Whether this App Connector Group is enabled or not
+        :param pulumi.Input[_builtins.str] enrollment_cert_id: ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
         :param pulumi.Input[_builtins.str] latitude: Latitude of the App Connector Group. Integer or decimal. With values in the range of -90 to 90
         :param pulumi.Input[_builtins.str] location: Location of the App Connector Group
         :param pulumi.Input[_builtins.str] longitude: Longitude of the App Connector Group. Integer or decimal. With values in the range of -180 to 180
@@ -801,6 +1039,7 @@ class ConnectorGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] tcp_quick_ack_read_assistant: Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value.
         :param pulumi.Input[_builtins.str] upgrade_day: App Connectors in this group will attempt to update to a newer version of the software during this specified day. List of valid days (i.e., Sunday, Monday)
         :param pulumi.Input[_builtins.str] upgrade_time_in_secs: App Connectors in this group will attempt to update to a newer version of the software during this specified time. Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute intervals
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_codes: User codes from deployed App Connector VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the connectors. These codes are obtained from the App Connector VM after deployment.
         :param pulumi.Input[_builtins.str] version_profile_id: ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         :param pulumi.Input[_builtins.str] version_profile_name: Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         """
@@ -811,7 +1050,145 @@ class ConnectorGroup(pulumi.CustomResource):
                  args: ConnectorGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        * [Official documentation](https://help.zscaler.com/zpa/about-connector-groups)
+        * [API documentation](https://automate.zscaler.com/docs/docs/api-reference-and-guides/api-reference/zpa/app-connector-group-management)
+
+        The **zpa_app_connector_group** resource creates a and manages app connector groups in the Zscaler Private Access (ZPA) cloud. This resource can then be associated with the following resources: server groups, log receivers and access policies.
+
+        ## Zenith Community - ZPA App Connector Group
+
+        ![ZPA Terraform provider Video Series Ep2 - Connector Groups](https://community.zscaler.com/zenith/s/question/0D54u00009evlEoCAI/video-zpa-terraform-provider-video-series-ep2-connector-groups)
+
+        ## App Connector Onboarding Methods
+
+        App Connectors can be onboarded into ZPA in two ways. This resource supports both:
+
+        1. **OAuth2 user codes** *(recommended for new deployments)* - Set `user_codes` with the codes generated on each App Connector VM. The provider creates the group and then calls the OAuth2 user code verification API to enroll the connectors.
+        2. **Provisioning key** *(legacy / still supported)* - Create the group with this resource, then create a `ProvisioningKey` referencing it. The key is then injected into the App Connector VM at deployment time.
+
+        In **both** methods, the App Connector enrollment requires an `enrollment_cert_id`. You can either:
+        - Set `enrollment_cert_id` explicitly using the `get_enrollment_cert` data source, or
+        - Omit it entirely - the provider will automatically look up the **"Connector"** enrollment certificate by name and populate the ID for you.
+
+        ***
+
         ## Example Usage
+
+        ### OAuth2 Enrollment With User Codes (Explicit Enrollment Certificate)
+
+        Set the enrollment certificate explicitly and provide the user codes displayed on the App Connector VMs after deployment. The provider will create the group and then call the user code verification API to complete enrollment.
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        connector = zpa.get_enrollment_cert(name="Connector")
+        example = zpa.ConnectorGroup("example",
+            name="Example",
+            description="Example",
+            enabled=True,
+            city_country="San Jose, CA",
+            country_code="US",
+            latitude="37.338",
+            longitude="-121.8863",
+            location="San Jose, CA, US",
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            dns_query_type="IPV4_IPV6",
+            enrollment_cert_id=connector.id,
+            user_codes=[
+                "CODE_FROM_VM_1",
+                "CODE_FROM_VM_2",
+            ])
+        ```
+
+        ### OAuth2 Enrollment With User Codes (Auto-Resolved Enrollment Certificate)
+
+        Omit `enrollment_cert_id` entirely and the provider will automatically resolve the **"Connector"** enrollment certificate for you. This is the simplest configuration and is functionally equivalent to the explicit example above.
+
+        ```python
+        import pulumi
+        import zscaler_pulumi_zpa as zpa
+
+        example = zpa.ConnectorGroup("example",
+            name="Example",
+            description="Example",
+            enabled=True,
+            city_country="San Jose, CA",
+            country_code="US",
+            latitude="37.338",
+            longitude="-121.8863",
+            location="San Jose, CA, US",
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            dns_query_type="IPV4_IPV6",
+            user_codes=[
+                "CODE_FROM_VM_1",
+                "CODE_FROM_VM_2",
+            ])
+        ```
+
+        ### Enrolling App Connectors Via Provisioning Key (Explicit Enrollment Certificate)
+
+        Create the App Connector Group, then create a `ProvisioningKey` that references the group's ID. The provisioning key is then injected into the App Connector VM at deployment time.
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        connector = zpa.get_enrollment_cert(name="Connector")
+        example = zpa.ConnectorGroup("example",
+            name="Example",
+            description="Example",
+            enabled=True,
+            city_country="San Jose, CA",
+            country_code="US",
+            latitude="37.338",
+            longitude="-121.8863",
+            location="San Jose, CA, US",
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            dns_query_type="IPV4_IPV6",
+            enrollment_cert_id=connector.id)
+        example_provisioning_key = zpa.ProvisioningKey("example",
+            name="ProvisioningKey01",
+            association_type="CONNECTOR_GRP",
+            max_usage="10",
+            enrollment_cert_id=connector.id,
+            zcomponent_id=example.id)
+        ```
+
+        ### Enrolling App Connectors Via Provisioning Key (Auto-Resolved Enrollment Certificate)
+
+        For the App Connector Group, you can omit `enrollment_cert_id` and let the provider auto-resolve it. The `ProvisioningKey` resource still requires `enrollment_cert_id` to be set explicitly.
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        connector = zpa.get_enrollment_cert(name="Connector")
+        example = zpa.ConnectorGroup("example",
+            name="Example",
+            description="Example",
+            enabled=True,
+            city_country="San Jose, CA",
+            country_code="US",
+            latitude="37.338",
+            longitude="-121.8863",
+            location="San Jose, CA, US",
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            dns_query_type="IPV4_IPV6")
+        example_provisioning_key = zpa.ProvisioningKey("example",
+            name="ProvisioningKey01",
+            association_type="CONNECTOR_GRP",
+            max_usage="10",
+            enrollment_cert_id=connector.id,
+            zcomponent_id=example.id)
+        ```
 
         ### Using Version Profile Name
 
@@ -866,7 +1243,6 @@ class ConnectorGroup(pulumi.CustomResource):
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         App Connector Group can be imported by using `<APP CONNECTOR GROUP ID>` or `<APP CONNECTOR GROUP NAME>`as the import ID.
@@ -898,9 +1274,11 @@ class ConnectorGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  city_country: Optional[pulumi.Input[_builtins.str]] = None,
                  country_code: Optional[pulumi.Input[_builtins.str]] = None,
+                 dc_hosting_info: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  dns_query_type: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enrollment_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
                  latitude: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  longitude: Optional[pulumi.Input[_builtins.str]] = None,
@@ -915,6 +1293,7 @@ class ConnectorGroup(pulumi.CustomResource):
                  upgrade_day: Optional[pulumi.Input[_builtins.str]] = None,
                  upgrade_time_in_secs: Optional[pulumi.Input[_builtins.str]] = None,
                  use_in_dr_mode: Optional[pulumi.Input[_builtins.bool]] = None,
+                 user_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
                  version_profile_name: Optional[pulumi.Input[_builtins.str]] = None,
                  waf_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -929,9 +1308,11 @@ class ConnectorGroup(pulumi.CustomResource):
 
             __props__.__dict__["city_country"] = city_country
             __props__.__dict__["country_code"] = country_code
+            __props__.__dict__["dc_hosting_info"] = dc_hosting_info
             __props__.__dict__["description"] = description
             __props__.__dict__["dns_query_type"] = dns_query_type
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["enrollment_cert_id"] = enrollment_cert_id
             if latitude is None and not opts.urn:
                 raise TypeError("Missing required property 'latitude'")
             __props__.__dict__["latitude"] = latitude
@@ -952,6 +1333,7 @@ class ConnectorGroup(pulumi.CustomResource):
             __props__.__dict__["upgrade_day"] = upgrade_day
             __props__.__dict__["upgrade_time_in_secs"] = upgrade_time_in_secs
             __props__.__dict__["use_in_dr_mode"] = use_in_dr_mode
+            __props__.__dict__["user_codes"] = user_codes
             __props__.__dict__["version_profile_id"] = version_profile_id
             __props__.__dict__["version_profile_name"] = version_profile_name
             __props__.__dict__["waf_disabled"] = waf_disabled
@@ -967,9 +1349,11 @@ class ConnectorGroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             city_country: Optional[pulumi.Input[_builtins.str]] = None,
             country_code: Optional[pulumi.Input[_builtins.str]] = None,
+            dc_hosting_info: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             dns_query_type: Optional[pulumi.Input[_builtins.str]] = None,
             enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+            enrollment_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
             latitude: Optional[pulumi.Input[_builtins.str]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
             longitude: Optional[pulumi.Input[_builtins.str]] = None,
@@ -984,6 +1368,7 @@ class ConnectorGroup(pulumi.CustomResource):
             upgrade_day: Optional[pulumi.Input[_builtins.str]] = None,
             upgrade_time_in_secs: Optional[pulumi.Input[_builtins.str]] = None,
             use_in_dr_mode: Optional[pulumi.Input[_builtins.bool]] = None,
+            user_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             version_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
             version_profile_name: Optional[pulumi.Input[_builtins.str]] = None,
             waf_disabled: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ConnectorGroup':
@@ -994,9 +1379,11 @@ class ConnectorGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] dc_hosting_info: Indicates the host data center information using a maximum of 64 characters. The Data Center Hosting information is used for the Quarterly Business Review Insights.
         :param pulumi.Input[_builtins.str] description: Description of the App Connector Group
         :param pulumi.Input[_builtins.str] dns_query_type: Whether to enable IPv4 or IPv6, or both, for DNS resolution of all applications in the App Connector Group
         :param pulumi.Input[_builtins.bool] enabled: Whether this App Connector Group is enabled or not
+        :param pulumi.Input[_builtins.str] enrollment_cert_id: ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
         :param pulumi.Input[_builtins.str] latitude: Latitude of the App Connector Group. Integer or decimal. With values in the range of -90 to 90
         :param pulumi.Input[_builtins.str] location: Location of the App Connector Group
         :param pulumi.Input[_builtins.str] longitude: Longitude of the App Connector Group. Integer or decimal. With values in the range of -180 to 180
@@ -1008,6 +1395,7 @@ class ConnectorGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] tcp_quick_ack_read_assistant: Whether TCP Quick Acknowledgement is enabled or disabled for the application. The tcpQuickAckApp, tcpQuickAckAssistant, and tcpQuickAckReadAssistant fields must all share the same value.
         :param pulumi.Input[_builtins.str] upgrade_day: App Connectors in this group will attempt to update to a newer version of the software during this specified day. List of valid days (i.e., Sunday, Monday)
         :param pulumi.Input[_builtins.str] upgrade_time_in_secs: App Connectors in this group will attempt to update to a newer version of the software during this specified time. Integer in seconds (i.e., -66600). The integer should be greater than or equal to 0 and less than 86400, in 15 minute intervals
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_codes: User codes from deployed App Connector VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the connectors. These codes are obtained from the App Connector VM after deployment.
         :param pulumi.Input[_builtins.str] version_profile_id: ID of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         :param pulumi.Input[_builtins.str] version_profile_name: Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
         """
@@ -1017,9 +1405,11 @@ class ConnectorGroup(pulumi.CustomResource):
 
         __props__.__dict__["city_country"] = city_country
         __props__.__dict__["country_code"] = country_code
+        __props__.__dict__["dc_hosting_info"] = dc_hosting_info
         __props__.__dict__["description"] = description
         __props__.__dict__["dns_query_type"] = dns_query_type
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["enrollment_cert_id"] = enrollment_cert_id
         __props__.__dict__["latitude"] = latitude
         __props__.__dict__["location"] = location
         __props__.__dict__["longitude"] = longitude
@@ -1034,6 +1424,7 @@ class ConnectorGroup(pulumi.CustomResource):
         __props__.__dict__["upgrade_day"] = upgrade_day
         __props__.__dict__["upgrade_time_in_secs"] = upgrade_time_in_secs
         __props__.__dict__["use_in_dr_mode"] = use_in_dr_mode
+        __props__.__dict__["user_codes"] = user_codes
         __props__.__dict__["version_profile_id"] = version_profile_id
         __props__.__dict__["version_profile_name"] = version_profile_name
         __props__.__dict__["waf_disabled"] = waf_disabled
@@ -1048,6 +1439,14 @@ class ConnectorGroup(pulumi.CustomResource):
     @pulumi.getter(name="countryCode")
     def country_code(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "country_code")
+
+    @_builtins.property
+    @pulumi.getter(name="dcHostingInfo")
+    def dc_hosting_info(self) -> pulumi.Output[_builtins.str]:
+        """
+        Indicates the host data center information using a maximum of 64 characters. The Data Center Hosting information is used for the Quarterly Business Review Insights.
+        """
+        return pulumi.get(self, "dc_hosting_info")
 
     @_builtins.property
     @pulumi.getter
@@ -1072,6 +1471,14 @@ class ConnectorGroup(pulumi.CustomResource):
         Whether this App Connector Group is enabled or not
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="enrollmentCertId")
+    def enrollment_cert_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
+        """
+        return pulumi.get(self, "enrollment_cert_id")
 
     @_builtins.property
     @pulumi.getter
@@ -1175,6 +1582,14 @@ class ConnectorGroup(pulumi.CustomResource):
     @pulumi.getter(name="useInDrMode")
     def use_in_dr_mode(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "use_in_dr_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="userCodes")
+    def user_codes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        User codes from deployed App Connector VMs for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the connectors. These codes are obtained from the App Connector VM after deployment.
+        """
+        return pulumi.get(self, "user_codes")
 
     @_builtins.property
     @pulumi.getter(name="versionProfileId")

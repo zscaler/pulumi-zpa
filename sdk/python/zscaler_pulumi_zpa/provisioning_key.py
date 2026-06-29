@@ -23,12 +23,12 @@ class ProvisioningKeyArgs:
                  enrollment_cert_id: pulumi.Input[_builtins.str],
                  max_usage: pulumi.Input[_builtins.str],
                  zcomponent_id: pulumi.Input[_builtins.str],
-                 provisioning_key_value: Optional[pulumi.Input[_builtins.str]] = None,
                  app_connector_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  ip_acls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  microtenant_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provisioning_key_id: Optional[pulumi.Input[_builtins.str]] = None,
                  ui_config: Optional[pulumi.Input[_builtins.str]] = None,
                  usage_count: Optional[pulumi.Input[_builtins.str]] = None,
                  zcomponent_name: Optional[pulumi.Input[_builtins.str]] = None):
@@ -38,7 +38,6 @@ class ProvisioningKeyArgs:
         :param pulumi.Input[_builtins.str] enrollment_cert_id: ID of the enrollment certificate that can be used for this provisioning key.
         :param pulumi.Input[_builtins.str] max_usage: The maximum number of instances where this provisioning key can be used for enrolling an App Connector or Service Edge.
         :param pulumi.Input[_builtins.str] zcomponent_id: ID of the existing App Connector or Service Edge Group.
-        :param pulumi.Input[_builtins.str] provisioning_key_value: read only field. Ignored in PUT/POST calls.
         :param pulumi.Input[_builtins.bool] enabled: Whether the provisioning key is enabled or not. Supported values: true, false
         :param pulumi.Input[_builtins.str] name: Name of the provisioning key.
         :param pulumi.Input[_builtins.str] usage_count: The provisioning key utilization count.
@@ -48,8 +47,6 @@ class ProvisioningKeyArgs:
         pulumi.set(__self__, "enrollment_cert_id", enrollment_cert_id)
         pulumi.set(__self__, "max_usage", max_usage)
         pulumi.set(__self__, "zcomponent_id", zcomponent_id)
-        if provisioning_key_value is not None:
-            pulumi.set(__self__, "provisioning_key_value", provisioning_key_value)
         if app_connector_group_id is not None:
             pulumi.set(__self__, "app_connector_group_id", app_connector_group_id)
         if enabled is not None:
@@ -60,6 +57,8 @@ class ProvisioningKeyArgs:
             pulumi.set(__self__, "microtenant_id", microtenant_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provisioning_key_id is not None:
+            pulumi.set(__self__, "provisioning_key_id", provisioning_key_id)
         if ui_config is not None:
             pulumi.set(__self__, "ui_config", ui_config)
         if usage_count is not None:
@@ -116,18 +115,6 @@ class ProvisioningKeyArgs:
         pulumi.set(self, "zcomponent_id", value)
 
     @_builtins.property
-    @pulumi.getter(name="ProvisioningKeyValue")
-    def provisioning_key_value(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        read only field. Ignored in PUT/POST calls.
-        """
-        return pulumi.get(self, "provisioning_key_value")
-
-    @provisioning_key_value.setter
-    def provisioning_key_value(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "provisioning_key_value", value)
-
-    @_builtins.property
     @pulumi.getter(name="appConnectorGroupId")
     def app_connector_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "app_connector_group_id")
@@ -179,6 +166,15 @@ class ProvisioningKeyArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="provisioningKeyId")
+    def provisioning_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "provisioning_key_id")
+
+    @provisioning_key_id.setter
+    def provisioning_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "provisioning_key_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="uiConfig")
     def ui_config(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "ui_config")
@@ -225,13 +221,14 @@ class _ProvisioningKeyState:
                  max_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  microtenant_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provisioning_key_id: Optional[pulumi.Input[_builtins.str]] = None,
                  ui_config: Optional[pulumi.Input[_builtins.str]] = None,
                  usage_count: Optional[pulumi.Input[_builtins.str]] = None,
                  zcomponent_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zcomponent_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProvisioningKey resources.
-        :param pulumi.Input[_builtins.str] provisioning_key_value: read only field. Ignored in PUT/POST calls.
+        :param pulumi.Input[_builtins.str] provisioning_key_value: The provisioning key returned by the API. This value is required to onboard App Connector or Service Edge devices. Although marked as sensitive to prevent exposure in logs and console output, the value is stored in the Terraform state file and can be retrieved using 'terraform output' or by referencing the attribute in other resources.
         :param pulumi.Input[_builtins.str] app_connector_group_name: Read only property. Applicable only for GET calls, ignored in PUT/POST calls.
         :param pulumi.Input[_builtins.str] association_type: Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are CONNECTOR_GRP and SERVICE_EDGE_GRP.
         :param pulumi.Input[_builtins.bool] enabled: Whether the provisioning key is enabled or not. Supported values: true, false
@@ -262,6 +259,8 @@ class _ProvisioningKeyState:
             pulumi.set(__self__, "microtenant_id", microtenant_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provisioning_key_id is not None:
+            pulumi.set(__self__, "provisioning_key_id", provisioning_key_id)
         if ui_config is not None:
             pulumi.set(__self__, "ui_config", ui_config)
         if usage_count is not None:
@@ -275,7 +274,7 @@ class _ProvisioningKeyState:
     @pulumi.getter(name="ProvisioningKeyValue")
     def provisioning_key_value(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        read only field. Ignored in PUT/POST calls.
+        The provisioning key returned by the API. This value is required to onboard App Connector or Service Edge devices. Although marked as sensitive to prevent exposure in logs and console output, the value is stored in the Terraform state file and can be retrieved using 'terraform output' or by referencing the attribute in other resources.
         """
         return pulumi.get(self, "provisioning_key_value")
 
@@ -383,6 +382,15 @@ class _ProvisioningKeyState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="provisioningKeyId")
+    def provisioning_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "provisioning_key_id")
+
+    @provisioning_key_id.setter
+    def provisioning_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "provisioning_key_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="uiConfig")
     def ui_config(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "ui_config")
@@ -434,7 +442,6 @@ class ProvisioningKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 provisioning_key_value: Optional[pulumi.Input[_builtins.str]] = None,
                  app_connector_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  association_type: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -443,16 +450,127 @@ class ProvisioningKey(pulumi.CustomResource):
                  max_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  microtenant_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provisioning_key_id: Optional[pulumi.Input[_builtins.str]] = None,
                  ui_config: Optional[pulumi.Input[_builtins.str]] = None,
                  usage_count: Optional[pulumi.Input[_builtins.str]] = None,
                  zcomponent_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zcomponent_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        * [Official documentation](https://help.zscaler.com/zpa/about-connector-provisioning-keys)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-provisioning-keys-using-api)
+
+        The **zpa_provisioning_key** resource provides creates a provisioning key in the Zscaler Private Access portal. This resource can then be referenced in the following ZPA resources:
+
+        * App Connector Groups
+        * Service Edge Groups
+
+        ## Zenith Community - ZPA Provisioning Keys
+
+        ![ZPA Terraform provider Video Series Ep3 - Provisioning Keys](https://community.zscaler.com/zenith/s/question/0D54u00009evlEnCAI/video-zpa-terraform-provider-video-series-ep3-provisioning-keys)
+
+        ## Service Edge Provisioning Key Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        # Retrieve the Service Edge Enrollment Certificate
+        service_edge = zpa.get_enrollment_cert(name="Service Edge")
+        # Create a Service Edge Group
+        service_edge_group_nyc = zpa.ServiceEdgeGroup("service_edge_group_nyc",
+            name="Service Edge Group New York",
+            description="Service Edge Group New York",
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            latitude="40.7128",
+            longitude="-73.935242",
+            location="New York, NY, USA",
+            version_profile_id="0")
+        # Create Provisioning Key for Service Edge Group
+        test_provisioning_key = zpa.ProvisioningKey("test_provisioning_key",
+            name="test-provisioning-key",
+            association_type="SERVICE_EDGE_GRP",
+            max_usage="10",
+            enrollment_cert_id=service_edge.id,
+            zcomponent_id=service_edge_group_nyc.id)
+        ```
+
+        ## Accessing the Provisioning Key
+
+        The provisioning key value is required to onboard App Connector or Service Edge devices. The attribute is marked as sensitive to prevent accidental exposure in logs and console output, but it remains accessible through Terraform outputs and resource references.
+
+        ### Method 1: Using Terraform Output (Recommended)
+
+        ```python
+        import pulumi
+        import zscaler_pulumi_zpa as zpa
+
+        # Create provisioning key
+        connector_key = zpa.ProvisioningKey("connector_key",
+            name="connector-provisioning-key",
+            association_type="CONNECTOR_GRP",
+            max_usage="10",
+            enrollment_cert_id=connector["id"],
+            zcomponent_id=example["id"])
+        pulumi.export("connectorProvisioningKey", connector_key.provisioning_key_value)
+        ```
+
+        To retrieve the key value, use:
+
+        ### Method 2: Reference in Other Resources
+
+        ```python
+        import pulumi
+        import pulumi_command as command
+        import pulumi_null as null
+
+        # Use the provisioning key in automation scripts or other resources
+        app_connector_deployment = null.Resource("app_connector_deployment")
+        app_connector_deployment_provisioner0 = command.local.Command("appConnectorDeploymentProvisioner0", create=f"deploy-app-connector.sh {connector_key['provisioningKey']}",
+        opts = pulumi.ResourceOptions(depends_on=[app_connector_deployment]))
+        ```
+
+        ### Method 3: Using Data Source (For Existing Keys)
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+
+        # If the provisioning key already exists, use the data source
+        existing_key = zpa.get_provisioning_key(name="existing-connector-key",
+            association_type="CONNECTOR_GRP")
+        pulumi.export("existingProvisioningKey", existing_key.provisioning_key)
+        ```
+
+        ### Security Considerations
+
+        ⚠️ **Important Notes on Provisioning Key Security:**
+
+        1. **State File Storage**: The provisioning key is stored in the Terraform state file. This is standard Terraform behavior for all resource attributes, including sensitive ones. The state file should be:
+           - Stored in a secure backend (e.g., Terraform Cloud, AWS S3 with encryption, Azure Blob Storage)
+           - Access-controlled using appropriate IAM policies
+           - Never committed to version control
+
+        2. **Why the Key is in State**: The provisioning key must be stored in state because:
+           - It's returned by the ZPA API and is required for App Connector/Service Edge onboarding
+           - Terraform needs to track the value to detect drift and manage the resource lifecycle
+           - Users need programmatic access to deploy connectors
+
+        3. **API Behavior**: The ZPA API returns the provisioning key in clear text because it's a necessary operational value, not a secret like passwords or API tokens. It's used for device enrollment, similar to a registration token.
+
+        4. **Best Practices**:
+           - Use remote state backends with encryption at rest
+           - Implement state locking to prevent concurrent modifications
+           - Rotate provisioning keys periodically by creating new keys and updating deployments
+           - Use `max_usage` limits to control key reuse
+           - Monitor `usage_count` to detect unauthorized usage
+           - Enable `ip_acl` to restrict where the key can be used from
+
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         Provisioning key can be imported by using `<PROVISIONING KEY ID>` or `<PROVISIONING KEY NAME>` as the import ID.
@@ -471,7 +589,6 @@ class ProvisioningKey(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] provisioning_key_value: read only field. Ignored in PUT/POST calls.
         :param pulumi.Input[_builtins.str] association_type: Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are CONNECTOR_GRP and SERVICE_EDGE_GRP.
         :param pulumi.Input[_builtins.bool] enabled: Whether the provisioning key is enabled or not. Supported values: true, false
         :param pulumi.Input[_builtins.str] enrollment_cert_id: ID of the enrollment certificate that can be used for this provisioning key.
@@ -488,10 +605,120 @@ class ProvisioningKey(pulumi.CustomResource):
                  args: ProvisioningKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        * [Official documentation](https://help.zscaler.com/zpa/about-connector-provisioning-keys)
+        * [API documentation](https://help.zscaler.com/zpa/configuring-provisioning-keys-using-api)
+
+        The **zpa_provisioning_key** resource provides creates a provisioning key in the Zscaler Private Access portal. This resource can then be referenced in the following ZPA resources:
+
+        * App Connector Groups
+        * Service Edge Groups
+
+        ## Zenith Community - ZPA Provisioning Keys
+
+        ![ZPA Terraform provider Video Series Ep3 - Provisioning Keys](https://community.zscaler.com/zenith/s/question/0D54u00009evlEnCAI/video-zpa-terraform-provider-video-series-ep3-provisioning-keys)
+
+        ## Service Edge Provisioning Key Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+        import zscaler_pulumi_zpa as zpa
+
+        # Retrieve the Service Edge Enrollment Certificate
+        service_edge = zpa.get_enrollment_cert(name="Service Edge")
+        # Create a Service Edge Group
+        service_edge_group_nyc = zpa.ServiceEdgeGroup("service_edge_group_nyc",
+            name="Service Edge Group New York",
+            description="Service Edge Group New York",
+            upgrade_day="SUNDAY",
+            upgrade_time_in_secs="66600",
+            latitude="40.7128",
+            longitude="-73.935242",
+            location="New York, NY, USA",
+            version_profile_id="0")
+        # Create Provisioning Key for Service Edge Group
+        test_provisioning_key = zpa.ProvisioningKey("test_provisioning_key",
+            name="test-provisioning-key",
+            association_type="SERVICE_EDGE_GRP",
+            max_usage="10",
+            enrollment_cert_id=service_edge.id,
+            zcomponent_id=service_edge_group_nyc.id)
+        ```
+
+        ## Accessing the Provisioning Key
+
+        The provisioning key value is required to onboard App Connector or Service Edge devices. The attribute is marked as sensitive to prevent accidental exposure in logs and console output, but it remains accessible through Terraform outputs and resource references.
+
+        ### Method 1: Using Terraform Output (Recommended)
+
+        ```python
+        import pulumi
+        import zscaler_pulumi_zpa as zpa
+
+        # Create provisioning key
+        connector_key = zpa.ProvisioningKey("connector_key",
+            name="connector-provisioning-key",
+            association_type="CONNECTOR_GRP",
+            max_usage="10",
+            enrollment_cert_id=connector["id"],
+            zcomponent_id=example["id"])
+        pulumi.export("connectorProvisioningKey", connector_key.provisioning_key_value)
+        ```
+
+        To retrieve the key value, use:
+
+        ### Method 2: Reference in Other Resources
+
+        ```python
+        import pulumi
+        import pulumi_command as command
+        import pulumi_null as null
+
+        # Use the provisioning key in automation scripts or other resources
+        app_connector_deployment = null.Resource("app_connector_deployment")
+        app_connector_deployment_provisioner0 = command.local.Command("appConnectorDeploymentProvisioner0", create=f"deploy-app-connector.sh {connector_key['provisioningKey']}",
+        opts = pulumi.ResourceOptions(depends_on=[app_connector_deployment]))
+        ```
+
+        ### Method 3: Using Data Source (For Existing Keys)
+
+        ```python
+        import pulumi
+        import pulumi_zpa as zpa
+
+        # If the provisioning key already exists, use the data source
+        existing_key = zpa.get_provisioning_key(name="existing-connector-key",
+            association_type="CONNECTOR_GRP")
+        pulumi.export("existingProvisioningKey", existing_key.provisioning_key)
+        ```
+
+        ### Security Considerations
+
+        ⚠️ **Important Notes on Provisioning Key Security:**
+
+        1. **State File Storage**: The provisioning key is stored in the Terraform state file. This is standard Terraform behavior for all resource attributes, including sensitive ones. The state file should be:
+           - Stored in a secure backend (e.g., Terraform Cloud, AWS S3 with encryption, Azure Blob Storage)
+           - Access-controlled using appropriate IAM policies
+           - Never committed to version control
+
+        2. **Why the Key is in State**: The provisioning key must be stored in state because:
+           - It's returned by the ZPA API and is required for App Connector/Service Edge onboarding
+           - Terraform needs to track the value to detect drift and manage the resource lifecycle
+           - Users need programmatic access to deploy connectors
+
+        3. **API Behavior**: The ZPA API returns the provisioning key in clear text because it's a necessary operational value, not a secret like passwords or API tokens. It's used for device enrollment, similar to a registration token.
+
+        4. **Best Practices**:
+           - Use remote state backends with encryption at rest
+           - Implement state locking to prevent concurrent modifications
+           - Rotate provisioning keys periodically by creating new keys and updating deployments
+           - Use `max_usage` limits to control key reuse
+           - Monitor `usage_count` to detect unauthorized usage
+           - Enable `ip_acl` to restrict where the key can be used from
+
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         Provisioning key can be imported by using `<PROVISIONING KEY ID>` or `<PROVISIONING KEY NAME>` as the import ID.
@@ -523,7 +750,6 @@ class ProvisioningKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 provisioning_key_value: Optional[pulumi.Input[_builtins.str]] = None,
                  app_connector_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  association_type: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -532,6 +758,7 @@ class ProvisioningKey(pulumi.CustomResource):
                  max_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  microtenant_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provisioning_key_id: Optional[pulumi.Input[_builtins.str]] = None,
                  ui_config: Optional[pulumi.Input[_builtins.str]] = None,
                  usage_count: Optional[pulumi.Input[_builtins.str]] = None,
                  zcomponent_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -545,7 +772,6 @@ class ProvisioningKey(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProvisioningKeyArgs.__new__(ProvisioningKeyArgs)
 
-            __props__.__dict__["provisioning_key_value"] = provisioning_key_value
             __props__.__dict__["app_connector_group_id"] = app_connector_group_id
             if association_type is None and not opts.urn:
                 raise TypeError("Missing required property 'association_type'")
@@ -560,13 +786,17 @@ class ProvisioningKey(pulumi.CustomResource):
             __props__.__dict__["max_usage"] = max_usage
             __props__.__dict__["microtenant_id"] = microtenant_id
             __props__.__dict__["name"] = name
+            __props__.__dict__["provisioning_key_id"] = provisioning_key_id
             __props__.__dict__["ui_config"] = ui_config
             __props__.__dict__["usage_count"] = usage_count
             if zcomponent_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zcomponent_id'")
             __props__.__dict__["zcomponent_id"] = zcomponent_id
             __props__.__dict__["zcomponent_name"] = zcomponent_name
+            __props__.__dict__["provisioning_key_value"] = None
             __props__.__dict__["app_connector_group_name"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["ProvisioningKeyValue"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ProvisioningKey, __self__).__init__(
             'zpa:index/provisioningKey:ProvisioningKey',
             resource_name,
@@ -587,6 +817,7 @@ class ProvisioningKey(pulumi.CustomResource):
             max_usage: Optional[pulumi.Input[_builtins.str]] = None,
             microtenant_id: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            provisioning_key_id: Optional[pulumi.Input[_builtins.str]] = None,
             ui_config: Optional[pulumi.Input[_builtins.str]] = None,
             usage_count: Optional[pulumi.Input[_builtins.str]] = None,
             zcomponent_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -598,7 +829,7 @@ class ProvisioningKey(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] provisioning_key_value: read only field. Ignored in PUT/POST calls.
+        :param pulumi.Input[_builtins.str] provisioning_key_value: The provisioning key returned by the API. This value is required to onboard App Connector or Service Edge devices. Although marked as sensitive to prevent exposure in logs and console output, the value is stored in the Terraform state file and can be retrieved using 'terraform output' or by referencing the attribute in other resources.
         :param pulumi.Input[_builtins.str] app_connector_group_name: Read only property. Applicable only for GET calls, ignored in PUT/POST calls.
         :param pulumi.Input[_builtins.str] association_type: Specifies the provisioning key type for App Connectors or ZPA Private Service Edges. The supported values are CONNECTOR_GRP and SERVICE_EDGE_GRP.
         :param pulumi.Input[_builtins.bool] enabled: Whether the provisioning key is enabled or not. Supported values: true, false
@@ -623,6 +854,7 @@ class ProvisioningKey(pulumi.CustomResource):
         __props__.__dict__["max_usage"] = max_usage
         __props__.__dict__["microtenant_id"] = microtenant_id
         __props__.__dict__["name"] = name
+        __props__.__dict__["provisioning_key_id"] = provisioning_key_id
         __props__.__dict__["ui_config"] = ui_config
         __props__.__dict__["usage_count"] = usage_count
         __props__.__dict__["zcomponent_id"] = zcomponent_id
@@ -633,7 +865,7 @@ class ProvisioningKey(pulumi.CustomResource):
     @pulumi.getter(name="ProvisioningKeyValue")
     def provisioning_key_value(self) -> pulumi.Output[_builtins.str]:
         """
-        read only field. Ignored in PUT/POST calls.
+        The provisioning key returned by the API. This value is required to onboard App Connector or Service Edge devices. Although marked as sensitive to prevent exposure in logs and console output, the value is stored in the Terraform state file and can be retrieved using 'terraform output' or by referencing the attribute in other resources.
         """
         return pulumi.get(self, "provisioning_key_value")
 
@@ -699,6 +931,11 @@ class ProvisioningKey(pulumi.CustomResource):
         Name of the provisioning key.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningKeyId")
+    def provisioning_key_id(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "provisioning_key_id")
 
     @_builtins.property
     @pulumi.getter(name="uiConfig")

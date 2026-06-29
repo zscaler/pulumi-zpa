@@ -22,7 +22,6 @@ namespace zscaler.PulumiPackage.Zpa
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Zpa = Pulumi.Zpa;
     /// using Zpa = zscaler.PulumiPackage.Zpa;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -88,7 +87,6 @@ namespace zscaler.PulumiPackage.Zpa
     /// ## Import
     /// 
     /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-    /// 
     /// Visit
     /// 
     /// Inspection Application Segment can be imported by using `&lt;APPLICATION SEGMENT ID&gt;` or `&lt;APPLICATION SEGMENT NAME&gt;` as the import ID.
@@ -189,6 +187,12 @@ namespace zscaler.PulumiPackage.Zpa
 
         [Output("passiveHealthEnabled")]
         public Output<bool> PassiveHealthEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled).
+        /// </summary>
+        [Output("policyStyle")]
+        public Output<bool?> PolicyStyle { get; private set; } = null!;
 
         [Output("segmentGroupId")]
         public Output<string> SegmentGroupId { get; private set; } = null!;
@@ -382,6 +386,12 @@ namespace zscaler.PulumiPackage.Zpa
 
         [Input("passiveHealthEnabled")]
         public Input<bool>? PassiveHealthEnabled { get; set; }
+
+        /// <summary>
+        /// Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled).
+        /// </summary>
+        [Input("policyStyle")]
+        public Input<bool>? PolicyStyle { get; set; }
 
         [Input("segmentGroupId", required: true)]
         public Input<string> SegmentGroupId { get; set; } = null!;
@@ -577,6 +587,12 @@ namespace zscaler.PulumiPackage.Zpa
 
         [Input("passiveHealthEnabled")]
         public Input<bool>? PassiveHealthEnabled { get; set; }
+
+        /// <summary>
+        /// Enable dual policy evaluation (resolve FQDN to Server IP and enforce policies based on Server IP and FQDN). false = NONE (disabled), true = DUAL_POLICY_EVAL (enabled).
+        /// </summary>
+        [Input("policyStyle")]
+        public Input<bool>? PolicyStyle { get; set; }
 
         [Input("segmentGroupId")]
         public Input<string>? SegmentGroupId { get; set; }

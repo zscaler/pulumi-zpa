@@ -39,7 +39,6 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
- *
  * Visit
  *
  * **microtenant_controller** can be imported by using `<MICROTENANT ID>` or `<MICROTENANT NAME>` as the import ID.

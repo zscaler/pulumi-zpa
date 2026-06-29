@@ -10,12 +10,30 @@ import * as utilities from "./utilities";
  *
  * The **zpa_private_cloud_group** resource creates a private cloud group in the Zscaler Private Access cloud.
  *
+ * ## Private Cloud Connector Onboarding Methods
+ *
+ * Private Cloud Connectors can be onboarded into ZPA in two ways. This resource supports both:
+ *
+ * 1. **OAuth2 user codes** *(recommended for new deployments)* - Set `userCodes` with the codes generated on each Private Cloud Connector VM. The provider creates the group and then calls the OAuth2 user code verification API to enroll the connectors.
+ * 2. **Provisioning key** *(legacy / still supported)* - Create the group with this resource, then create a `zpa.ProvisioningKey` referencing it. The key is then injected into the Private Cloud Connector VM at deployment time.
+ *
+ * In **both** methods, the Private Cloud Connector enrollment requires an `enrollmentCertId`. You can either:
+ * - Set `enrollmentCertId` explicitly using the `zpa.getEnrollmentCert` data source, or
+ * - Omit it entirely - the provider will automatically look up the **"Connector"** enrollment certificate by name and populate the ID for you.
+ *
  * ## Example Usage
+ *
+ * ### OAuth2 Enrollment With User Codes (Explicit Enrollment Certificate)
+ *
+ * Set the enrollment certificate explicitly and provide the user codes displayed on the Private Cloud Connector VMs after deployment. The provider will create the group and then call the user code verification API to complete enrollment.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as zpa from "@bdzscaler/pulumi-zpa";
  *
+ * const connector = zpa.getEnrollmentCert({
+ *     name: "Connector",
+ * });
  * const _this = new zpa.PrivateCloudGroup("this", {
  *     name: "PrivateCloudGroup01",
  *     description: "Example private cloud group",
@@ -30,13 +48,81 @@ import * as utilities from "./utilities";
  *     versionProfileId: "0",
  *     overrideVersionProfile: true,
  *     isPublic: "TRUE",
+ *     enrollmentCertId: connector.then(connector => connector.id),
+ *     userCodes: [
+ *         "CODE_FROM_VM_1",
+ *         "CODE_FROM_VM_2",
+ *     ],
+ * });
+ * ```
+ *
+ * ### OAuth2 Enrollment With User Codes (Auto-Resolved Enrollment Certificate)
+ *
+ * Omit `enrollmentCertId` entirely and the provider will automatically resolve the **"Connector"** enrollment certificate for you. This is the simplest configuration and is functionally equivalent to the explicit example above.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const example = new zpa.PrivateCloudGroup("example", {
+ *     name: "PrivateCloudGroup01",
+ *     description: "Example private cloud group",
+ *     enabled: true,
+ *     countryCode: "US",
+ *     cityCountry: "San Jose, US",
+ *     latitude: "37.33874",
+ *     longitude: "-121.8852525",
+ *     location: "San Jose, CA, USA",
+ *     upgradeDay: "SUNDAY",
+ *     upgradeTimeInSecs: "66600",
+ *     siteId: "72058304855088543",
+ *     versionProfileId: "0",
+ *     overrideVersionProfile: true,
+ *     isPublic: "TRUE",
+ *     userCodes: [
+ *         "CODE_FROM_VM_1",
+ *         "CODE_FROM_VM_2",
+ *     ],
+ * });
+ * ```
+ *
+ * ### Enrolling Private Cloud Connectors Via Provisioning Key (Explicit Enrollment Certificate)
+ *
+ * Create the Private Cloud Connector Group, then create a `zpa.ProvisioningKey` that references the group's ID. The provisioning key is then injected into the Private Cloud Connector VM at deployment time.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as zpa from "@bdzscaler/pulumi-zpa";
+ *
+ * const connector = zpa.getEnrollmentCert({
+ *     name: "Connector",
+ * });
+ * const example = new zpa.PrivateCloudGroup("example", {
+ *     name: "Example",
+ *     description: "Example",
+ *     enabled: true,
+ *     cityCountry: "San Jose, CA",
+ *     countryCode: "US",
+ *     latitude: "37.338",
+ *     longitude: "-121.8863",
+ *     location: "San Jose, CA, US",
+ *     upgradeDay: "SUNDAY",
+ *     upgradeTimeInSecs: "66600",
+ *     dnsQueryType: "IPV4_IPV6",
+ *     enrollmentCertId: connector.then(connector => connector.id),
+ * });
+ * const exampleProvisioningKey = new zpa.ProvisioningKey("example", {
+ *     name: "ProvisioningKey01",
+ *     associationType: "CONNECTOR_GRP",
+ *     maxUsage: "10",
+ *     enrollmentCertId: connector.then(connector => connector.id),
+ *     zcomponentId: example.id,
  * });
  * ```
  *
  * ## Import
  *
  * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
- *
  * Visit
  *
  * Private Cloud Group can be imported by using `<GROUP ID>` or `<GROUP NAME>` as the import ID.
@@ -96,6 +182,10 @@ export class PrivateCloudGroup extends pulumi.CustomResource {
      */
     declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
+     * ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
+     */
+    declare public readonly enrollmentCertId: pulumi.Output<string>;
+    /**
      * - Whether the Private Cloud Group is public
      */
     declare public readonly isPublic: pulumi.Output<string>;
@@ -124,10 +214,6 @@ export class PrivateCloudGroup extends pulumi.CustomResource {
      */
     declare public readonly overrideVersionProfile: pulumi.Output<boolean | undefined>;
     /**
-     * - Site ID for the Private Cloud Group
-     */
-    declare public readonly siteId: pulumi.Output<string | undefined>;
-    /**
      * - Private Cloud Controllers in this group will attempt to update to a newer version of the software during this specified day. Supported values: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`
      */
     declare public readonly upgradeDay: pulumi.Output<string | undefined>;
@@ -136,9 +222,17 @@ export class PrivateCloudGroup extends pulumi.CustomResource {
      */
     declare public readonly upgradeTimeInSecs: pulumi.Output<string | undefined>;
     /**
+     * User codes from deployed Private Cloud Controllers for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the Private Cloud Controllers. These codes are obtained from the Private Cloud Controller VM after deployment.
+     */
+    declare public readonly userCodes: pulumi.Output<string[] | undefined>;
+    /**
      * - ID of the version profile for the Private Cloud Group
      */
-    declare public readonly versionProfileId: pulumi.Output<string | undefined>;
+    declare public readonly versionProfileId: pulumi.Output<string>;
+    /**
+     * Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
+     */
+    declare public readonly versionProfileName: pulumi.Output<string>;
 
     /**
      * Create a PrivateCloudGroup resource with the given unique name, arguments, and options.
@@ -157,6 +251,7 @@ export class PrivateCloudGroup extends pulumi.CustomResource {
             resourceInputs["countryCode"] = state?.countryCode;
             resourceInputs["description"] = state?.description;
             resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["enrollmentCertId"] = state?.enrollmentCertId;
             resourceInputs["isPublic"] = state?.isPublic;
             resourceInputs["latitude"] = state?.latitude;
             resourceInputs["location"] = state?.location;
@@ -164,16 +259,18 @@ export class PrivateCloudGroup extends pulumi.CustomResource {
             resourceInputs["microtenantId"] = state?.microtenantId;
             resourceInputs["name"] = state?.name;
             resourceInputs["overrideVersionProfile"] = state?.overrideVersionProfile;
-            resourceInputs["siteId"] = state?.siteId;
             resourceInputs["upgradeDay"] = state?.upgradeDay;
             resourceInputs["upgradeTimeInSecs"] = state?.upgradeTimeInSecs;
+            resourceInputs["userCodes"] = state?.userCodes;
             resourceInputs["versionProfileId"] = state?.versionProfileId;
+            resourceInputs["versionProfileName"] = state?.versionProfileName;
         } else {
             const args = argsOrState as PrivateCloudGroupArgs | undefined;
             resourceInputs["cityCountry"] = args?.cityCountry;
             resourceInputs["countryCode"] = args?.countryCode;
             resourceInputs["description"] = args?.description;
             resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["enrollmentCertId"] = args?.enrollmentCertId;
             resourceInputs["isPublic"] = args?.isPublic;
             resourceInputs["latitude"] = args?.latitude;
             resourceInputs["location"] = args?.location;
@@ -181,10 +278,11 @@ export class PrivateCloudGroup extends pulumi.CustomResource {
             resourceInputs["microtenantId"] = args?.microtenantId;
             resourceInputs["name"] = args?.name;
             resourceInputs["overrideVersionProfile"] = args?.overrideVersionProfile;
-            resourceInputs["siteId"] = args?.siteId;
             resourceInputs["upgradeDay"] = args?.upgradeDay;
             resourceInputs["upgradeTimeInSecs"] = args?.upgradeTimeInSecs;
+            resourceInputs["userCodes"] = args?.userCodes;
             resourceInputs["versionProfileId"] = args?.versionProfileId;
+            resourceInputs["versionProfileName"] = args?.versionProfileName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PrivateCloudGroup.__pulumiType, name, resourceInputs, opts);
@@ -212,6 +310,10 @@ export interface PrivateCloudGroupState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
+     * ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
+     */
+    enrollmentCertId?: pulumi.Input<string>;
+    /**
      * - Whether the Private Cloud Group is public
      */
     isPublic?: pulumi.Input<string>;
@@ -240,10 +342,6 @@ export interface PrivateCloudGroupState {
      */
     overrideVersionProfile?: pulumi.Input<boolean>;
     /**
-     * - Site ID for the Private Cloud Group
-     */
-    siteId?: pulumi.Input<string>;
-    /**
      * - Private Cloud Controllers in this group will attempt to update to a newer version of the software during this specified day. Supported values: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`
      */
     upgradeDay?: pulumi.Input<string>;
@@ -252,9 +350,17 @@ export interface PrivateCloudGroupState {
      */
     upgradeTimeInSecs?: pulumi.Input<string>;
     /**
+     * User codes from deployed Private Cloud Controllers for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the Private Cloud Controllers. These codes are obtained from the Private Cloud Controller VM after deployment.
+     */
+    userCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * - ID of the version profile for the Private Cloud Group
      */
     versionProfileId?: pulumi.Input<string>;
+    /**
+     * Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
+     */
+    versionProfileName?: pulumi.Input<string>;
 }
 
 /**
@@ -278,6 +384,10 @@ export interface PrivateCloudGroupArgs {
      */
     enabled?: pulumi.Input<boolean>;
     /**
+     * ID of the enrollment certificate that can be used for OAuth2 enrollment. If not set, the provider will automatically look up the 'Connector' enrollment certificate by name.
+     */
+    enrollmentCertId?: pulumi.Input<string>;
+    /**
      * - Whether the Private Cloud Group is public
      */
     isPublic?: pulumi.Input<string>;
@@ -306,10 +416,6 @@ export interface PrivateCloudGroupArgs {
      */
     overrideVersionProfile?: pulumi.Input<boolean>;
     /**
-     * - Site ID for the Private Cloud Group
-     */
-    siteId?: pulumi.Input<string>;
-    /**
      * - Private Cloud Controllers in this group will attempt to update to a newer version of the software during this specified day. Supported values: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`
      */
     upgradeDay?: pulumi.Input<string>;
@@ -318,7 +424,15 @@ export interface PrivateCloudGroupArgs {
      */
     upgradeTimeInSecs?: pulumi.Input<string>;
     /**
+     * User codes from deployed Private Cloud Controllers for OAuth2 enrollment. When provided, the provider will call the user code verification API to enroll the Private Cloud Controllers. These codes are obtained from the Private Cloud Controller VM after deployment.
+     */
+    userCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * - ID of the version profile for the Private Cloud Group
      */
     versionProfileId?: pulumi.Input<string>;
+    /**
+     * Name of the version profile. To learn more, see Version Profile Use Cases. This value is required, if the value for overrideVersionProfile is set to true
+     */
+    versionProfileName?: pulumi.Input<string>;
 }

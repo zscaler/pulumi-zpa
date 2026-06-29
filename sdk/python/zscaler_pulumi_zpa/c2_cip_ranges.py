@@ -485,7 +485,6 @@ class C2CIPRanges(pulumi.CustomResource):
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         C2C IP Ranges can be imported by using `<RANGE ID>` or `<RANGE NAME>` as the import ID
@@ -573,7 +572,6 @@ class C2CIPRanges(pulumi.CustomResource):
         ## Import
 
         Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-
         Visit
 
         C2C IP Ranges can be imported by using `<RANGE ID>` or `<RANGE NAME>` as the import ID

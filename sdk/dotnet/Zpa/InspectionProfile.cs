@@ -26,7 +26,6 @@ namespace zscaler.PulumiPackage.Zpa
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Zpa = Pulumi.Zpa;
     /// using Zpa = zscaler.PulumiPackage.Zpa;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -88,7 +87,6 @@ namespace zscaler.PulumiPackage.Zpa
     /// using System.Linq;
     /// using Pulumi;
     /// using Std = Pulumi.Std;
-    /// using Zpa = Pulumi.Zpa;
     /// using Zpa = zscaler.PulumiPackage.Zpa;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -127,14 +125,14 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     ///     var example = new Zpa.InspectionProfile("example", new()
     ///     {
-    ///         PredefinedControls = .Apply(entries =&gt; entries.Select(entry =&gt; 
+    ///         PredefinedControls = .Select(entry =&gt; 
     ///         {
-    ///             return 
+    ///             return new Zpa.Inputs.InspectionProfilePredefinedControlArgs
     ///             {
-    ///                 { "id", entry.Value.Id },
-    ///                 { "action", entry.Value.Action == "" ? entry.Value.DefaultAction : entry.Value.Action },
+    ///                 Id = entry.Id,
+    ///                 Action = entry.Action == "" ? entry.DefaultAction : entry.Action,
     ///             };
-    ///         }).ToList()),
+    ///         }).ToList(),
     ///         Name = "Example",
     ///         Description = "Example",
     ///         ParanoiaLevel = "2",
@@ -164,7 +162,6 @@ namespace zscaler.PulumiPackage.Zpa
     /// using System.Linq;
     /// using Pulumi;
     /// using Std = Pulumi.Std;
-    /// using Zpa = Pulumi.Zpa;
     /// using Zpa = zscaler.PulumiPackage.Zpa;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -209,20 +206,20 @@ namespace zscaler.PulumiPackage.Zpa
     /// 
     ///     var example = new Zpa.InspectionProfile("example", new()
     ///     {
-    ///         PredefinedControls = .Apply(entries =&gt; entries.Select(entry =&gt; 
+    ///         PredefinedControls = .Select(entry =&gt; 
     ///         {
-    ///             return 
+    ///             return new Zpa.Inputs.InspectionProfilePredefinedControlArgs
     ///             {
-    ///                 { "id", entry.Value.Id },
-    ///                 { "action", entry.Value.Action == "" ? entry.Value.DefaultAction : entry.Value.Action },
+    ///                 Id = entry.Id,
+    ///                 Action = entry.Action == "" ? entry.DefaultAction : entry.Action,
     ///             };
-    ///         }).ToList()),
-    ///         ThreatLabzControls = threatLabzControls.Select((v, k) =&gt; new { Key = k, Value = v }).Select(entry2 =&gt; 
+    ///         }).ToList(),
+    ///         ThreatLabzControls = threatLabzControls.Select(entry2 =&gt; 
     ///         {
     ///             return new Zpa.Inputs.InspectionProfileThreatLabzControlArgs
     ///             {
-    ///                 Id = entry2.Value.Id,
-    ///                 Action = entry2.Value.Action,
+    ///                 Id = entry2.Id,
+    ///                 Action = entry2.Action,
     ///             };
     ///         }).ToList(),
     ///         Name = "ThreatLabz_Inspection_Profile",
@@ -238,7 +235,6 @@ namespace zscaler.PulumiPackage.Zpa
     /// ## Import
     /// 
     /// Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
-    /// 
     /// Visit
     /// </summary>
     [ZpaResourceType("zpa:index/inspectionProfile:InspectionProfile")]

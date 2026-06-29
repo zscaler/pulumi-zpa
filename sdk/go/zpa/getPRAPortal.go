@@ -33,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ZPA PRA Portal Data Source
-//			_, err := zpa.LookupPRAPortal(ctx, &zpa.LookupPRAPortalArgs{
+//			_, err := zpa.GetPRAPortal(ctx, &zpa.LookupPRAPortalArgs{
 //				Name: pulumi.StringRef("Example"),
 //			}, nil)
 //			if err != nil {

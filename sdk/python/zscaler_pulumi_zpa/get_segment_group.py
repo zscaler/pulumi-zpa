@@ -143,6 +143,17 @@ def get_segment_group(id: Optional[_builtins.str] = None,
                       name: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSegmentGroupResult:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-segment-groups)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-segment-groups-using-api)
+
+    Use the **zpa_segment_group** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source can then be referenced in an application segment or Access Policy rule.
+
+    **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+
+    ## Zenith Community - ZPA Segment Group
+
+    ![ZPA Terraform provider Video Series Ep6 - Segment Group](https://community.zscaler.com/zenith/s/question/0D54u00009evlEfCAI/video-zpa-terraform-provider-video-series-ep6-zpa-segment-group)
+
     ## Example Usage
 
     ```python
@@ -179,6 +190,17 @@ def get_segment_group_output(id: Optional[pulumi.Input[Optional[_builtins.str]]]
                              name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSegmentGroupResult]:
     """
+    * [Official documentation](https://help.zscaler.com/zpa/about-segment-groups)
+    * [API documentation](https://help.zscaler.com/zpa/configuring-segment-groups-using-api)
+
+    Use the **zpa_segment_group** data source to get information about a machine group created in the Zscaler Private Access cloud. This data source can then be referenced in an application segment or Access Policy rule.
+
+    **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+
+    ## Zenith Community - ZPA Segment Group
+
+    ![ZPA Terraform provider Video Series Ep6 - Segment Group](https://community.zscaler.com/zenith/s/question/0D54u00009evlEfCAI/video-zpa-terraform-provider-video-series-ep6-zpa-segment-group)
+
     ## Example Usage
 
     ```python

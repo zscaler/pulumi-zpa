@@ -5,6 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-servers)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-servers-using-api)
+ *
+ * Use the **zpa_application_server** data source to get information about an application server created in the Zscaler Private Access cloud. This data source must be used in the following circumstances:
+ *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
+ * 1. Server Group (When Dynamic Discovery is set to false)
+ *
+ * ## Zenith Community - ZPA Application Server
+ *
+ * ![ZPA Terraform provider Video Series Ep5 - Application Server](https://community.zscaler.com/zenith/s/question/0D54u00009evlEgCAI/video-terraform-provider-video-series-ep5-zpa-application-server)
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -66,6 +79,19 @@ export interface GetApplicationServerResult {
     readonly name?: string;
 }
 /**
+ * * [Official documentation](https://help.zscaler.com/zpa/about-servers)
+ * * [API documentation](https://help.zscaler.com/zpa/configuring-servers-using-api)
+ *
+ * Use the **zpa_application_server** data source to get information about an application server created in the Zscaler Private Access cloud. This data source must be used in the following circumstances:
+ *
+ * **NOTE:** To ensure consistent search results across data sources, please avoid using multiple spaces or special characters in your search queries.
+ *
+ * 1. Server Group (When Dynamic Discovery is set to false)
+ *
+ * ## Zenith Community - ZPA Application Server
+ *
+ * ![ZPA Terraform provider Video Series Ep5 - Application Server](https://community.zscaler.com/zenith/s/question/0D54u00009evlEgCAI/video-terraform-provider-video-series-ep5-zpa-application-server)
+ *
  * ## Example Usage
  *
  * ```typescript

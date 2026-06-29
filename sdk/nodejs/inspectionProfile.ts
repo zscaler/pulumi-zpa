@@ -79,15 +79,15 @@ import * as utilities from "./utilities";
  *     group13: "Request smuggling or Response split or Header injection",
  * };
  * // Dynamically create data sources using for_each
- * const all = Object.entries(groupNames).reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: zpa.getInspectionAllPredefinedControls({
+ * const all = Object.entries(groupNames).sort().reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: zpa.getInspectionAllPredefinedControls({
  *     groupName: __value,
- * }) }));
+ * }) }), {});
  * const combinedPredefinedControls = _arg0_.result;
  * const example = new zpa.InspectionProfile("example", {
- *     predefinedControls: combinedPredefinedControls.map((v, k) => ({key: k, value: v})).apply(entries => entries.map(entry => ({
- *         id: entry.value.id,
- *         action: entry.value.action == "" ? entry.value.defaultAction : entry.value.action,
- *     }))),
+ *     predefinedControls: .map(entry => ({
+ *         id: entry.id,
+ *         action: entry.action == "" ? entry.defaultAction : entry.action,
+ *     })),
  *     name: "Example",
  *     description: "Example",
  *     paranoiaLevel: "2",
@@ -114,9 +114,9 @@ import * as utilities from "./utilities";
  *     defaultPredefinedControls: "preprocessors",
  * };
  * // Retrieve all IDs and Actions for the preprocessors Control
- * const all = Object.entries(groupNames).reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: zpa.getInspectionAllPredefinedControls({
+ * const all = Object.entries(groupNames).sort().reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: zpa.getInspectionAllPredefinedControls({
  *     groupName: __value,
- * }) }));
+ * }) }), {});
  * const combinedPredefinedControls = _arg0_.result;
  * const threatLabzControls = [
  *     {
@@ -133,13 +133,13 @@ import * as utilities from "./utilities";
  *     },
  * ];
  * const example = new zpa.InspectionProfile("example", {
- *     predefinedControls: combinedPredefinedControls.map((v, k) => ({key: k, value: v})).apply(entries => entries.map(entry => ({
- *         id: entry.value.id,
- *         action: entry.value.action == "" ? entry.value.defaultAction : entry.value.action,
- *     }))),
- *     threatLabzControls: threatLabzControls.map((v, k) => ({key: k, value: v})).map(entry2 => ({
- *         id: entry2.value.id,
- *         action: entry2.value.action,
+ *     predefinedControls: .map(entry => ({
+ *         id: entry.id,
+ *         action: entry.action == "" ? entry.defaultAction : entry.action,
+ *     })),
+ *     threatLabzControls: threatLabzControls.map(entry2 => ({
+ *         id: entry2.id,
+ *         action: entry2.action,
  *     })),
  *     name: "ThreatLabz_Inspection_Profile",
  *     description: "ThreatLabz Inspection Profile",
@@ -152,7 +152,6 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
- *
  * Visit
  */
 export class InspectionProfile extends pulumi.CustomResource {

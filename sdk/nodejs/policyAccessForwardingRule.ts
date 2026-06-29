@@ -37,7 +37,6 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * Zscaler offers a dedicated tool called Zscaler-Terraformer to allow the automated import of ZPA configurations into Terraform-compliant HashiCorp Configuration Language.
- *
  * Visit
  *
  * Policy Access Forwarding Rule can be imported by using `<POLICY FORWARDING RULE ID>` as the import ID.
