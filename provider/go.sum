@@ -4056,10 +4056,10 @@ github.com/zclconf/go-cty-yaml v1.0.3/go.mod h1:9YLUH4g7lOhVWqUbctnVlZ5KLpg7JApr
 github.com/zeebo/assert v1.3.0/go.mod h1:Pq9JiuJQpG8JLJdtkwrJESF0Foym2/D9XMU5ciN/wJ0=
 github.com/zeebo/errs v1.4.0/go.mod h1:sgbWHsvVuTPHcqJJGQ1WhI5KbWlHYz+2+2C/LSEtCw4=
 github.com/zeebo/xxh3 v1.0.2/go.mod h1:5NWz9Sef7zIDm2JHfFlcQvNekmcEl9ekUZQQKCYaDcA=
-github.com/zscaler/terraform-provider-zpa/v4 v4.4.5 h1:Uq1t6Ya1gsnMI7GMskK1vZlY8v0vePXAwfE1Ta6ZFFI=
-github.com/zscaler/terraform-provider-zpa/v4 v4.4.5/go.mod h1:BCz0rtsWdoH9Z+QfcYhuxDmfzfL4AUziegGx4QHp8JY=
-github.com/zscaler/zscaler-sdk-go/v3 v3.8.39 h1:ZZjCZtOg1ynVH8aaexR8IbGWQlPS/9OWjUJmCu3C/So=
-github.com/zscaler/zscaler-sdk-go/v3 v3.8.39/go.mod h1:x34CjhJzeH6slsOKhILDXx2lpWaQWeUiRXwsk9WazTY=
+github.com/zscaler/terraform-provider-zpa/v4 v4.4.6 h1:EbULlScwXohQ96aD4U3TOgqQgutLDy7LzJ/En4C7KwM=
+github.com/zscaler/terraform-provider-zpa/v4 v4.4.6/go.mod h1:O244EOubKAjVEN1ZliSa+UEQOfXn5MvYi7jUnqhrCBc=
+github.com/zscaler/zscaler-sdk-go/v3 v3.8.40 h1:0ca+Hm0VRT8sG8WOTQrG6XAcmOI/uCnHKr4H7GBqREw=
+github.com/zscaler/zscaler-sdk-go/v3 v3.8.40/go.mod h1:x34CjhJzeH6slsOKhILDXx2lpWaQWeUiRXwsk9WazTY=
 go.einride.tech/aip v0.66.0/go.mod h1:qAhMsfT7plxBX+Oy7Huol6YUvZ0ZzdUz26yZsQwfl1M=
 go.einride.tech/aip v0.67.1/go.mod h1:ZGX4/zKw8dcgzdLsrvpOOGxfxI2QSk12SlP7d6c0/XI=
 go.einride.tech/aip v0.68.0/go.mod h1:7y9FF8VtPWqpxuAxl0KQWqaULxW4zFIesD6zF5RIHHg=
